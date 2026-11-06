@@ -49,10 +49,8 @@ VN = ZoneInfo("Asia/Ho_Chi_Minh")
 WEB_ORIGIN_DEFAULT = "http://localhost:3000"
 THPT_EMAIL = "demo.thpt@example.com"
 NCS_EMAIL = "demo.ncs@example.com"
-QUIZ_PNG_DEFAULT = Path(
-    r"C:\Users\admin\AppData\Local\Temp\claude\d--FPT-Software-AI-Engineer-survey"
-    r"\4ae3d2b5-2393-4f52-b795-adf08fa30514\scratchpad\probe\quiz.png"
-)
+# Optional photo of a graded quiz for the THPT demo; skipped when absent (pass --quiz PATH to use your own).
+QUIZ_PNG_DEFAULT = ROOT / "infra" / "demo-quiz.png"
 
 THPT_CHAT = [
     "Mai em kiểm tra 15 phút Toán, ôn gì bây giờ ạ?",

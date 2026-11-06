@@ -1,8 +1,7 @@
 # mentor
 
 Personal AI mentor with long-term, file-based memory for high-school students (THPT) and graduate
-students (NCS/SV). Design: `../AI_Mentoring_Agent_Implementation_Plan_v3.md`. Interfaces between the
-parts: [CONTRACTS.md](CONTRACTS.md).
+students (NCS/SV). Interfaces between the parts: [CONTRACTS.md](CONTRACTS.md).
 
 ## Layout
 
@@ -19,7 +18,28 @@ parts: [CONTRACTS.md](CONTRACTS.md).
 | `apps/web` | Next.js app: chat, memory, plans, reports, workspace, settings; `/popup` is the desktop panel |
 | `apps/desktop` | Tauri 2 desktop pop-up: floating "M" bubble + compact chat panel (loads the web app's `/popup`) |
 | `evals` | Scenario evals: synthetic personas run through the harness in-process (`uv run --package mentor-evals mentor-evals run`) |
-| `infra` | Dev docker-compose and run guide; pilot deployment (`docker-compose.prod.yml`, `Caddyfile`, `deploy.sh`) |
+| `infra` | Dev docker-compose and run guide; local demo (`demo.sh`); pilot deployment (`docker-compose.prod.yml`, `Caddyfile`, `deploy.sh`) |
+
+## Chạy thử trên máy (Linux + Docker)
+
+Bản dùng thử trên một máy Linux, chỉ cần FPT key. Không cần email, Zalo hay tên miền; chỉ mở cho chính máy đó.
+
+```bash
+git clone https://github.com/katD2707/agent-mentor-maximum-experience.git mentor && cd mentor
+bash infra/demo.sh            # lần đầu: tạo infra/.env.demo rồi dừng lại
+nano infra/.env.demo          # điền FPT_API_BASE và FPT_API_KEY
+bash infra/demo.sh            # build + chạy (lần đầu 5-15 phút), xong mở http://localhost:3000
+```
+
+- **Đăng nhập**: gõ email bất kỳ, link và mã 6 số hiện ngay trên trang. Học sinh THPT: ở bước liên kết phụ huynh bấm
+  nút xác minh thử.
+- **Tài khoản mẫu có sẵn dữ liệu** (giả lập): `bash infra/demo.sh accounts` in link đăng nhập của học sinh lớp 11 và
+  nghiên cứu sinh.
+- Khác: `bash infra/demo.sh logs gateway` (xem log), `stop` (dừng, giữ dữ liệu), `reset` (xoá hết dữ liệu demo),
+  `login <email>` (link đăng nhập mới). Cổng 3000/8000 bận thì đổi `WEB_PORT`/`API_PORT` trong `infra/.env.demo`.
+- Cần Docker Engine + plugin compose, khoảng 4 GB RAM trống và 10 GB đĩa.
+- Đây là bản thử (chế độ dev, sandbox không tách container từng người): không dùng cho học viên thật; bản cho học viên
+  là mục "Triển khai lên server (pilot)" bên dưới.
 
 ## Dev setup
 
