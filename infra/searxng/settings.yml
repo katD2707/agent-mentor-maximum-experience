@@ -1,0 +1,16 @@
+# Dev SearXNG for the mentor's web_search tool (infra/README "Web search"). Only the gateway calls it.
+# Keep it bound to 127.0.0.1 (docker run / compose below): it has no auth and the limiter is off.
+use_default_settings: true
+
+server:
+  # overridden by the SEARXNG_SECRET env var; SearXNG refuses to start with its default "ultrasecretkey"
+  secret_key: "dev-only-change-me"
+  limiter: false        # the gateway is the only client and has its own per-learner rate limit
+  image_proxy: false
+  method: "POST"
+
+search:
+  safe_search: 1        # default; the gateway asks for 2 (strict) for THPT learners
+  formats:
+    - html
+    - json              # required: the gateway uses format=json

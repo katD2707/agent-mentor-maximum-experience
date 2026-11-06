@@ -1,0 +1,1190 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "eng.reading.001",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "In many coastal provinces of Viet Nam, mangrove forests act as a natural wall against storms and rising sea levels. Their thick roots hold the soil in place and reduce the power of waves before they reach villages. Mangroves also provide homes for fish, crabs and birds, which local families depend on for food and income. However, large areas of mangroves were cleared in the past to make room for shrimp farms. Since 2015, several communities have joined hands with environmental groups to replant young trees along the shore. Volunteers, many of them secondary school students, spend their weekends planting seedlings and checking on their growth. Thanks to these efforts, some once-empty mudflats are now green again.\n\nAccording to the passage, why were large areas of mangroves cleared in the past?",
+      "options": [
+        {
+          "id": "A",
+          "text": "To build houses for local families."
+        },
+        {
+          "id": "B",
+          "text": "To protect villages from storms."
+        },
+        {
+          "id": "C",
+          "text": "To provide homes for fish and birds."
+        },
+        {
+          "id": "D",
+          "text": "To make space for shrimp farms."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tìm câu nói về việc rừng ngập mặn bị chặt phá trong quá khứ.",
+      "explanation": "Câu \"However, large areas of mangroves were cleared in the past to make room for shrimp farms.\" cho biết rừng ngập mặn bị chặt để lấy chỗ làm đầm nuôi tôm; \"make room for\" = \"make space for\". (B) và (C) là lợi ích của rừng ngập mặn (chắn bão, làm nơi sinh sống cho cá, chim), không phải lý do chặt phá; (A) xây nhà không được nhắc đến. Chọn D.",
+      "tip": "Câu hỏi chi tiết: tìm từ khóa trong câu hỏi (cleared, in the past) rồi đối chiếu với cách diễn đạt tương đương ở phương án.",
+      "option_feedback": {
+        "A": "Bài đọc không nhắc đến việc chặt rừng để xây nhà.",
+        "B": "Đây là tác dụng của rừng ngập mặn, không phải lý do chặt phá rừng.",
+        "C": "Đây cũng là lợi ích của rừng; chặt rừng sẽ làm mất nơi sống của cá và chim."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "detail",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.reading.detail"
+      ]
+    },
+    {
+      "id": "eng.reading.002",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Farmers in the Mekong Delta are starting to use smartphone apps powered by artificial intelligence. A farmer simply takes a photo of a sick rice plant, and within seconds the app suggests what disease it might have and how to treat it. The app learns from thousands of images uploaded by other users, so its advice becomes more accurate over time. Some apps also send warnings when salt water is about to enter the fields, which helps farmers decide when to pump in fresh water. Although the technology is useful, experts remind farmers that the apps are not perfect. They recommend checking with local agricultural officers before using strong chemicals.\n\nAccording to the passage, what does a farmer need to do to get advice from the app?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Send a soil sample to experts."
+        },
+        {
+          "id": "B",
+          "text": "Take a photo of a sick rice plant."
+        },
+        {
+          "id": "C",
+          "text": "Call a local agricultural officer."
+        },
+        {
+          "id": "D",
+          "text": "Upload thousands of images of rice."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tìm câu mô tả cách nông dân sử dụng ứng dụng.",
+      "explanation": "Câu \"A farmer simply takes a photo of a sick rice plant, and within seconds the app suggests what disease it might have\" cho thấy người nông dân chỉ cần chụp ảnh cây lúa bị bệnh. (D) sai vì \"thousands of images\" là ảnh do NHIỀU người dùng khác tải lên để ứng dụng học, không phải việc mỗi nông dân phải làm; (C) là lời khuyên của chuyên gia trước khi dùng hóa chất mạnh, không phải điều kiện để nhận tư vấn; (A) không được nhắc đến. Chọn B.",
+      "tip": "Cẩn thận với phương án lấy nguyên cụm từ trong bài (\"thousands of images\") nhưng gán sai chủ thể.",
+      "option_feedback": {
+        "A": "Bài không nhắc đến việc gửi mẫu đất.",
+        "C": "Việc hỏi cán bộ nông nghiệp là lời khuyên trước khi dùng hóa chất, không phải cách nhận tư vấn từ ứng dụng.",
+        "D": "Hàng nghìn ảnh là do những người dùng khác tải lên; mỗi nông dân chỉ cần chụp một ảnh."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.2,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.18,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "detail",
+        "ai-technology"
+      ],
+      "skill_ids": [
+        "english.reading.detail"
+      ]
+    },
+    {
+      "id": "eng.reading.003",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Water puppetry is a traditional art form that began in the villages of the Red River Delta more than a thousand years ago. Farmers created it to entertain themselves after the rice harvest, using ponds and flooded fields as stages. The puppets are carved from wood and painted in bright colours. Puppeteers stand behind a bamboo screen in waist-deep water and control the puppets with long poles hidden under the surface. Shows usually tell stories about daily rural life, such as fishing and farming, or retell famous legends. Today, water puppetry attracts many international tourists, but fewer young people are learning the skills needed to keep the art alive.\n\nThe word \"it\" in the sentence \"Farmers created it to entertain themselves\" refers to _____.",
+      "options": [
+        {
+          "id": "A",
+          "text": "the Red River Delta"
+        },
+        {
+          "id": "B",
+          "text": "the rice harvest"
+        },
+        {
+          "id": "C",
+          "text": "water puppetry"
+        },
+        {
+          "id": "D",
+          "text": "a thousand years"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Đọc lại câu đầu tiên: nông dân \"tạo ra\" cái gì để giải trí? Thử thay từng phương án vào chỗ \"it\".",
+      "explanation": "Câu trước nói \"Water puppetry is a traditional art form that began in the villages of the Red River Delta...\". Thứ mà nông dân \"created ... to entertain themselves\" chính là môn nghệ thuật múa rối nước. Thay vào: \"Farmers created water puppetry to entertain themselves\" – hợp lý. Không thể \"tạo ra\" vùng đồng bằng (A) hay \"một nghìn năm\" (D); vụ mùa (B) là thời điểm biểu diễn (after the rice harvest), không phải thứ được tạo ra. Chọn C.",
+      "tip": "Với câu hỏi quy chiếu, thay từng phương án vào vị trí đại từ và kiểm tra câu có hợp nghĩa không.",
+      "option_feedback": {
+        "A": "Đồng bằng sông Hồng là nơi môn nghệ thuật ra đời, không phải thứ nông dân tạo ra.",
+        "B": "\"the rice harvest\" xuất hiện trong cùng câu nhưng chỉ thời điểm, không phải đối tượng của \"created\".",
+        "D": "\"a thousand years\" chỉ thời gian, không thể là thứ được tạo ra để giải trí."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.2,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "reference",
+        "cultural-heritage"
+      ],
+      "skill_ids": [
+        "english.reading.reference"
+      ]
+    },
+    {
+      "id": "eng.reading.004",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Over the past two decades, millions of young people have moved from rural areas to big cities such as Ha Noi and Ho Chi Minh City in search of better jobs and education. This movement has helped the cities grow quickly and has brought money back to villages, as many migrants send part of their wages home. However, rapid urbanisation has also created serious problems. Housing prices have risen sharply, forcing many newcomers to live in crowded rented rooms. Traffic jams and air pollution have become part of everyday life. Meanwhile, some villages are left with mainly elderly people and young children, as working-age adults have gone away. Planners argue that developing smaller cities and creating jobs in the countryside could ease the pressure on the largest cities.\n\nWhich of the following best states the main idea of the passage?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Migrants send most of their wages back to their home villages."
+        },
+        {
+          "id": "B",
+          "text": "Traffic jams are the most serious problem in big cities."
+        },
+        {
+          "id": "C",
+          "text": "Young people should stay in the countryside instead of moving to cities."
+        },
+        {
+          "id": "D",
+          "text": "Moving from rural areas to cities brings both benefits and problems."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Ý chính phải bao quát cả phần nói về lợi ích (helped the cities grow, brought money) và phần \"However, ... serious problems\".",
+      "explanation": "Đoạn văn trình bày cả mặt tích cực của làn sóng di cư từ nông thôn lên thành phố (thành phố phát triển, tiền gửi về quê) và mặt tiêu cực (giá nhà tăng, tắc đường, ô nhiễm, làng quê thiếu lao động). Vì vậy ý chính là \"di cư từ nông thôn ra thành phố mang lại cả lợi ích lẫn vấn đề\". (A) sai chi tiết (bài nói \"part of their wages\", không phải \"most\") và quá hẹp; (B) chỉ là một chi tiết, bài không nói đó là vấn đề nghiêm trọng nhất; (C) bài không khuyên giới trẻ ở lại nông thôn, chỉ nhắc ý kiến phát triển đô thị nhỏ và tạo việc làm ở nông thôn. Chọn D.",
+      "tip": "Ý chính phải bao quát toàn đoạn: loại phương án chỉ đúng một chi tiết hoặc đưa ra kết luận mà bài không nêu.",
+      "option_feedback": {
+        "A": "Sai chi tiết (\"part of\", không phải \"most\") và chỉ là một ý nhỏ.",
+        "B": "Tắc đường chỉ là một trong nhiều vấn đề; bài không xếp hạng mức độ nghiêm trọng.",
+        "C": "Bài không đưa ra lời khuyên này; đây là suy diễn quá mức."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.38,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "main-idea",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.reading.main_idea"
+      ]
+    },
+    {
+      "id": "eng.reading.005",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Choosing a career is one of the most important decisions a young person makes, yet many students rush into it. Some simply follow their friends or pick a university major because their parents say it is \"safe\". Career counsellors suggest a more careful approach. First, students should identify their strengths and interests through tests, part-time work or volunteering. Next, they should research the jobs that match these qualities, including the skills required and the likely salary. Talking to people who already work in a field can be especially valuable, because they can describe the daily reality of the job rather than its glamorous image. Finally, students should remain flexible, since the job market is changing rapidly and new careers appear every year.\n\nThe word \"glamorous\" in the passage is closest in meaning to _____.",
+      "options": [
+        {
+          "id": "A",
+          "text": "honest and accurate"
+        },
+        {
+          "id": "B",
+          "text": "attractive and exciting"
+        },
+        {
+          "id": "C",
+          "text": "difficult and tiring"
+        },
+        {
+          "id": "D",
+          "text": "ordinary and boring"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "\"glamorous image\" được đặt đối lập với \"the daily reality of the job\" bằng \"rather than\".",
+      "explanation": "Câu \"they can describe the daily reality of the job rather than its glamorous image\" đối lập thực tế hằng ngày của công việc với hình ảnh \"glamorous\" – tức là hình ảnh hào nhoáng, hấp dẫn, thú vị mà người ngoài tưởng tượng. \"attractive and exciting\" là nghĩa gần nhất. (A) \"trung thực, chính xác\" lại gần với \"reality\" chứ không phải điều bị đối lập; (C) \"khó khăn, mệt mỏi\" và (D) \"bình thường, nhàm chán\" là những đặc điểm của thực tế hằng ngày, ngược nghĩa với \"glamorous\". Chọn B.",
+      "tip": "Đoán nghĩa từ bằng tín hiệu đối lập (rather than, but, unlike) hoặc tương đồng (and, such as) xung quanh từ đó.",
+      "option_feedback": {
+        "A": "Trung thực, chính xác là đặc điểm của \"reality\" – vế bị đối lập với \"glamorous image\".",
+        "C": "Ngược nghĩa: khó khăn, mệt mỏi là thực tế công việc, không phải hình ảnh hào nhoáng.",
+        "D": "Ngược nghĩa với \"glamorous\"."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.38,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.38,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "vocabulary-in-context",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.reading.vocabulary_in_context"
+      ]
+    },
+    {
+      "id": "eng.reading.006",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Teenagers need between eight and ten hours of sleep each night, but surveys show that most get far less. One reason is biological: during adolescence, the body releases the sleep hormone melatonin later in the evening, so teenagers naturally feel awake until around 11 p.m. Homework, part-time jobs and social media make the problem worse. Lack of sleep does more than make students feel tired. It can weaken memory, reduce concentration in class and increase the risk of anxiety. Doctors advise teenagers to keep a regular bedtime, even at weekends, and to switch off screens at least an hour before going to bed. Some schools abroad have even moved the start of the school day later, and they report better attendance and grades.\n\nWhich of the following is NOT TRUE according to the passage?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Teenagers' bodies release melatonin later in the evening."
+        },
+        {
+          "id": "B",
+          "text": "Lack of sleep can affect students' memory and concentration."
+        },
+        {
+          "id": "C",
+          "text": "Doctors recommend sleeping later at weekends to recover."
+        },
+        {
+          "id": "D",
+          "text": "Some schools that start later have reported better grades."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Đối chiếu từng phương án với bài. Chú ý lời khuyên của bác sĩ về giờ ngủ \"even at weekends\".",
+      "explanation": "Bài viết: \"Doctors advise teenagers to keep a regular bedtime, even at weekends\" – bác sĩ khuyên giữ giờ ngủ đều đặn kể cả cuối tuần, chứ không khuyên ngủ muộn hơn vào cuối tuần để \"bù\". Vậy (C) không đúng. (A) đúng: \"the body releases the sleep hormone melatonin later in the evening\"; (B) đúng: \"It can weaken memory, reduce concentration\"; (D) đúng: các trường lùi giờ học \"report better attendance and grades\". Chọn C.",
+      "tip": "Với câu NOT TRUE, đánh dấu từng phương án đúng/sai/không có thông tin; phương án mâu thuẫn trực tiếp với bài là đáp án.",
+      "option_feedback": {
+        "A": "Đúng với bài: melatonin được tiết ra muộn hơn vào buổi tối ở tuổi vị thành niên.",
+        "B": "Đúng với bài: thiếu ngủ làm suy giảm trí nhớ và khả năng tập trung.",
+        "D": "Đúng với bài: các trường lùi giờ học báo cáo điểm số và chuyên cần tốt hơn."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.42,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 3
+        },
+        "author_estimate": 0.45,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.42,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.42,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 130,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "not-true",
+        "healthy-living"
+      ],
+      "skill_ids": [
+        "english.reading.detail"
+      ]
+    },
+    {
+      "id": "eng.reading.007",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "When the language-learning app LinguaPal added an AI chat partner last year, its designers expected users to practise for a few minutes a day. Instead, many users chatted for over an hour, asking the AI to correct their mistakes and explain grammar. Teachers have mixed feelings. Some welcome the tool because shy students can practise speaking without fear of being laughed at. Others worry that the AI sometimes gives confident but incorrect answers, and that students may stop thinking for themselves. Ms Ha, an English teacher in Da Nang, has found a middle way. She lets her class use the app for homework, but each student must write down one mistake the AI made and explain why it was wrong.\n\nWhat can be inferred about Ms Ha's approach to the AI chat partner?",
+      "options": [
+        {
+          "id": "A",
+          "text": "She believes AI apps should be banned from schools."
+        },
+        {
+          "id": "B",
+          "text": "She thinks the AI chat partner never makes mistakes."
+        },
+        {
+          "id": "C",
+          "text": "She allows only shy students to use the app."
+        },
+        {
+          "id": "D",
+          "text": "She wants students to use the AI but also to think critically about its answers."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Ms Ha tìm ra \"a middle way\" giữa hai luồng ý kiến. Học sinh của cô phải làm gì khi dùng ứng dụng?",
+      "explanation": "Ms Ha \"lets her class use the app for homework\" (vẫn cho dùng AI) nhưng yêu cầu mỗi học sinh \"write down one mistake the AI made and explain why it was wrong\" (phải phát hiện và giải thích lỗi của AI). Điều này cho thấy cô muốn học sinh dùng AI nhưng vẫn tư duy phản biện về câu trả lời của nó – đúng là \"middle way\" giữa hai nhóm giáo viên. (A) sai vì cô vẫn cho dùng; (B) mâu thuẫn vì bài tập của cô dựa trên việc AI có mắc lỗi; (C) bài nói \"her class\", không giới hạn ở học sinh nhút nhát. Chọn D.",
+      "tip": "Câu suy luận: đáp án không chép nguyên văn nhưng phải được bài hỗ trợ trực tiếp; loại phương án mâu thuẫn hoặc phóng đại.",
+      "option_feedback": {
+        "A": "Cô vẫn cho cả lớp dùng ứng dụng làm bài tập về nhà.",
+        "B": "Yêu cầu tìm \"one mistake the AI made\" cho thấy cô biết AI có mắc lỗi.",
+        "C": "Lợi ích cho học sinh nhút nhát là ý kiến của một số giáo viên khác; Ms Ha cho cả lớp dùng."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.58,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inference",
+        "ai-technology",
+        "education"
+      ],
+      "skill_ids": [
+        "english.reading.inference"
+      ]
+    },
+    {
+      "id": "eng.reading.008",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "In the northern mountains of Viet Nam, terraced rice fields and winding roads have made some villages popular destinations for young travellers. Tourism has brought new homestays, restaurants and jobs to communities that were once very poor. Yet the boom has a cost. In some places, concrete hotels now block the views that visitors came to see, and traditional stilt houses are being replaced by modern buildings. Local festivals, which were once community events, are sometimes performed only for tourists' cameras. Several ethnic minority families have responded by running small homestays in their own traditional houses and teaching guests about local customs. Their success suggests that tourism and heritage need not be enemies, as long as communities stay in control.\n\nWhat does the writer imply about tourism in these mountain villages?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tourism always destroys local culture."
+        },
+        {
+          "id": "B",
+          "text": "Tourism can help protect heritage when local people manage it themselves."
+        },
+        {
+          "id": "C",
+          "text": "Tourism should be stopped in mountain villages."
+        },
+        {
+          "id": "D",
+          "text": "Tourism has brought no economic benefits to local people."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Đọc kỹ hai câu cuối về các gia đình dân tộc thiểu số và cụm \"need not be enemies, as long as ...\".",
+      "explanation": "Hai câu cuối kể về các gia đình tự mở homestay trong chính nhà sàn truyền thống và giới thiệu phong tục với khách, rồi kết luận \"tourism and heritage need not be enemies, as long as communities stay in control\". Như vậy tác giả ngụ ý du lịch có thể góp phần gìn giữ di sản nếu người dân địa phương tự quản lý. (A) quá tuyệt đối (\"always\") và trái với kết luận; (C) tác giả không đề xuất dừng du lịch; (D) sai vì bài nói du lịch \"has brought new homestays, restaurants and jobs\". Chọn B.",
+      "tip": "Cảnh giác với các từ tuyệt đối như always, never, no, only trong phương án suy luận.",
+      "option_feedback": {
+        "A": "\"always\" là phóng đại; tác giả cho rằng du lịch và di sản \"need not be enemies\".",
+        "C": "Tác giả chỉ ra mặt trái nhưng không hề đề xuất dừng du lịch.",
+        "D": "Mâu thuẫn với bài: du lịch đã mang lại homestay, nhà hàng và việc làm."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.62,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.58,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inference",
+        "writer-attitude",
+        "cultural-heritage"
+      ],
+      "skill_ids": [
+        "english.reading.inference"
+      ]
+    },
+    {
+      "id": "eng.reading.009",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Every year, millions of tonnes of plastic waste end up in the ocean. Much of it breaks down into tiny pieces called microplastics, which are swallowed by fish and eventually reach our dinner tables. [I] In response to this problem, a growing number of cafés across Viet Nam have replaced plastic straws with alternatives made from rice, grass or bamboo. [II] Customers have generally welcomed the change, although some complain that grass straws give their drinks an unusual taste. [III] Some supermarkets are also experimenting with wrapping vegetables in banana leaves instead of plastic film. [IV] Environmentalists praise these steps but warn that they are only a beginning. Real progress, they say, will require stricter laws and better recycling systems.\n\nWhere in the passage does the following sentence best fit?\n\"Scientists are still investigating how these tiny particles affect human health.\"",
+      "options": [
+        {
+          "id": "A",
+          "text": "[I]"
+        },
+        {
+          "id": "B",
+          "text": "[II]"
+        },
+        {
+          "id": "C",
+          "text": "[III]"
+        },
+        {
+          "id": "D",
+          "text": "[IV]"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Câu cần chèn có cụm từ quy chiếu \"these tiny particles\". Hãy tìm trong bài danh từ mà cụm này thay thế.",
+      "explanation": "Cụm \"these tiny particles\" phải quy chiếu đến \"tiny pieces called microplastics\" và \"human health\" nối tiếp ý vi nhựa \"eventually reach our dinner tables\". Do đó câu cần chèn đứng ở vị trí [I], ngay sau câu về vi nhựa và trước \"In response to this problem\" (phản ứng trước vấn đề ô nhiễm nhựa vừa nêu). Ở [II] câu trước nói về ống hút từ gạo, cỏ, tre; ở [III] nói về vị lạ của ống hút cỏ; ở [IV] nói về gói rau bằng lá chuối – không có danh từ nào để \"these tiny particles\" thay thế, và việc chèn vào sẽ cắt đứt mạch ý về các giải pháp thay thế nhựa. Chọn A.",
+      "tip": "Dạng chèn câu: tìm từ quy chiếu (these, this, such, they) trong câu cần chèn rồi tìm danh từ tương ứng ngay trước vị trí đó.",
+      "option_feedback": {
+        "B": "Câu trước [II] nói về ống hút thay thế; \"these tiny particles\" không quy chiếu được.",
+        "C": "Câu trước [III] nói về vị của ống hút cỏ, không liên quan đến sức khỏe do vi nhựa.",
+        "D": "Câu trước [IV] nói về lá chuối thay màng bọc nhựa; chèn vào đây làm đứt mạch các giải pháp."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 180,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 2 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "sentence-insertion",
+        "cohesion",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.reading.coherence"
+      ]
+    },
+    {
+      "id": "eng.reading.010",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.reading"
+      ],
+      "language": "en",
+      "stem": "Headlines often warn that artificial intelligence will \"steal\" millions of jobs. The reality is more complicated. AI is very good at tasks that follow clear patterns, such as sorting documents or answering routine customer questions, and these tasks are indeed being automated. However, most jobs consist of many different tasks, and only some of them can be done by machines. A radiologist, for example, may use AI to scan X-rays faster, but still needs to talk to patients and make final decisions. At the same time, entirely new jobs, from data labelling to AI ethics advising, are appearing. The workers most at risk are not those whose jobs involve AI, but those who refuse to learn how to work alongside it.\n\nWhich of the following best summarises the passage?",
+      "options": [
+        {
+          "id": "A",
+          "text": "AI is changing jobs rather than simply destroying them, and workers who learn to use it are less at risk."
+        },
+        {
+          "id": "B",
+          "text": "AI will soon replace most workers, so many jobs will disappear completely."
+        },
+        {
+          "id": "C",
+          "text": "Radiologists are the professionals most likely to lose their jobs to AI."
+        },
+        {
+          "id": "D",
+          "text": "The new jobs created by AI will outnumber the jobs it removes."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Tác giả mở đầu bằng \"The reality is more complicated\" và kết bài bằng nhận định về những người lao động \"most at risk\".",
+      "explanation": "Tác giả phản bác quan điểm AI \"cướp\" hàng triệu việc làm: AI chỉ tự động hóa một số nhiệm vụ trong mỗi công việc, đồng thời tạo ra nghề mới, và người gặp rủi ro nhất là người \"refuse to learn how to work alongside it\". Vì vậy tóm tắt đúng là: AI làm thay đổi công việc chứ không đơn thuần xóa bỏ chúng, và người biết học cách dùng AI ít gặp rủi ro hơn. (B) chính là quan điểm của \"headlines\" mà tác giả bác bỏ; (C) sai vì bác sĩ X-quang được dùng làm ví dụ cho người vẫn giữ vai trò quan trọng; (D) bài có nói nghề mới xuất hiện nhưng không so sánh số lượng nghề mới với số nghề mất đi. Chọn A.",
+      "tip": "Câu tóm tắt phải phản ánh quan điểm của tác giả, không phải quan điểm tác giả nêu ra để phản bác; loại các so sánh mà bài không đưa ra.",
+      "option_feedback": {
+        "B": "Đây là quan điểm của báo chí mà tác giả phản bác (\"The reality is more complicated\").",
+        "C": "Bác sĩ X-quang là ví dụ cho người vẫn cần thiết khi dùng AI, không phải người dễ mất việc nhất.",
+        "D": "Bài không so sánh số nghề mới với số nghề mất đi – đây là suy diễn không có căn cứ."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.78,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.78,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 180,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "summary",
+        "main-idea",
+        "ai-technology",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.reading.main_idea"
+      ]
+    }
+  ]
+}

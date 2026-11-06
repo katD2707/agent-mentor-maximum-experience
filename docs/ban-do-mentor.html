@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bản đồ Mentor THPT</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (max 1080px) with a sticky section bar; each section opens with a figure, prose follows. */
+:root {
+  --bg: #f3f6f2;          /* paper with a faint sprout tint */
+  --surface: #ffffff;
+  --sunk: #e8eee8;
+  --ink: #14211b;
+  --muted: #5a6a61;
+  --line: #d3ddd5;
+  --edge: #8a9a90;
+  --sprout: #23894f;      /* Mầm's green, the one accent */
+  --sprout-soft: #d9efe1;
+  --thpt: #b9661c;        /* profile hue: high school */
+  --thpt-soft: #f6e6d4;
+  --ncs: #4057b8;         /* profile hue: PhD */
+  --ncs-soft: #e1e6f8;
+  --crit: #c13c35;
+  --crit-soft: #f8dfdc;
+  --plat: #5f6f86;
+  --plat-soft: #e3e8ef;
+  --f-display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
+  --f-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: light;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1512; --surface: #15201a; --sunk: #1b2721; --ink: #e2ebe5; --muted: #95a69c; --line: #2a3a31;
+    --edge: #6c7d73; --sprout: #4cc27e; --sprout-soft: #17382a; --thpt: #e5a25f; --thpt-soft: #3a2a19;
+    --ncs: #8a9df0; --ncs-soft: #222a4a; --crit: #ec6b62; --crit-soft: #42201e; --plat: #9fb0c8; --plat-soft: #222b38;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1512; --surface: #15201a; --sunk: #1b2721; --ink: #e2ebe5; --muted: #95a69c; --line: #2a3a31;
+  --edge: #6c7d73; --sprout: #4cc27e; --sprout-soft: #17382a; --thpt: #e5a25f; --thpt-soft: #3a2a19;
+  --ncs: #8a9df0; --ncs-soft: #222a4a; --crit: #ec6b62; --crit-soft: #42201e; --plat: #9fb0c8; --plat-soft: #222b38;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 16px/1.65 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h2 { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem); font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+code, .mono { font-family: var(--f-mono); font-size: 0.86em; }
+code { background: var(--sunk); padding: 0.08em 0.36em; border-radius: 4px; }
+a { color: var(--sprout); }
+:focus-visible { outline: 2px solid var(--sprout); outline-offset: 2px; border-radius: 4px; }
+.eyebrow { font: 600 0.74rem/1 var(--f-body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--sprout); }
+.lede { max-width: 65ch; color: var(--muted); font-size: 1.04rem; }
+.prose { max-width: 68ch; display: grid; gap: 12px; }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; gap: 16px; align-items: center; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 8px; font: 800 1.05rem/1 var(--f-display); white-space: nowrap; }
+.brand svg { width: 26px; height: 26px; }
+.nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { white-space: nowrap; text-decoration: none; color: var(--muted); font-size: 0.86rem; padding: 6px 10px; border-radius: 999px; }
+.nav a:hover { color: var(--ink); background: var(--sunk); }
+
+/* ---------- hero ---------- */
+.hero { padding-block: 56px 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.hero h1 { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.2rem); font-weight: 800; letter-spacing: -0.025em; }
+.hero h1 em { font-style: normal; color: var(--sprout); }
+.hero .lede { margin-top: 16px; font-size: 1.12rem; }
+.hero-mascot { width: clamp(110px, 16vw, 170px); height: auto; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 24px; padding: 0; list-style: none; }
+.facts li { display: flex; align-items: baseline; gap: 6px; color: var(--muted); font-size: 0.93rem; }
+.facts b { font: 700 1.05rem/1 var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* ---------- sections ---------- */
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 28px; }
+figure { margin: 0; }
+figcaption { color: var(--muted); font-size: 0.88rem; margin-top: 10px; max-width: 70ch; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+svg text { font-family: var(--f-body); fill: var(--ink); }
+svg .t-muted { fill: var(--muted); }
+svg .t-mono { font-family: var(--f-mono); }
+
+/* ---------- why students learn better ---------- */
+.better { background: var(--surface); }
+.vs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.chatcol { border-radius: 14px; padding: 18px; display: grid; gap: 10px; align-content: start; background: var(--sunk); }
+.chatcol.mentor { background: var(--sprout-soft); }
+.chatcol h3 { font-size: 1rem; display: flex; align-items: center; gap: 8px; }
+.chatcol h3 svg { width: 22px; height: 22px; }
+.msg { max-width: 88%; padding: 9px 13px; border-radius: 14px; font-size: 0.92rem; line-height: 1.5; }
+.msg.hs { justify-self: end; background: var(--surface); border-radius: 14px 14px 4px 14px; }
+.msg.bot { justify-self: start; background: var(--bg); border-radius: 14px 14px 14px 4px; }
+.chatcol.mentor .msg.bot { background: var(--surface); }
+.msg .tagline { display: block; margin-top: 6px; font: 500 0.74rem/1.4 var(--f-mono); color: var(--sprout); }
+.outcome { margin-top: 4px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: 0.9rem; color: var(--muted); }
+.outcome b { color: var(--ink); }
+.journey { margin-top: 40px; display: grid; gap: 14px; }
+.journey figure { padding: 16px; }
+.mchart { width: 100%; min-width: 560px; max-width: 820px; height: auto; display: block; margin-inline: auto; }
+.jsteps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.jsteps li { padding: 14px 16px; border-radius: 12px; background: var(--bg); display: grid; gap: 4px; align-content: start; }
+.jsteps time { font: 600 0.78rem/1 var(--f-mono); color: var(--sprout); }
+.jsteps b { font-weight: 600; line-height: 1.35; }
+.jsteps span { color: var(--muted); font-size: 0.88rem; }
+.principles { margin-top: 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.pr { padding: 18px; border-radius: 14px; background: var(--bg); display: grid; gap: 8px; align-content: start; }
+.pr .eyebrow { color: var(--muted); letter-spacing: 0.06em; }
+.pr h3 { font-size: 1.02rem; }
+.pr p { font-size: 0.9rem; }
+.pr .src { font-size: 0.78rem; color: var(--muted); }
+.honest { margin-top: 18px; font-size: 0.9rem; color: var(--muted); max-width: 80ch; }
+@media (max-width: 960px) { .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .jsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .vs, .principles, .jsteps { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- teaching cycle ---------- */
+.cycle-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.cycle svg { width: 100%; height: auto; max-width: 100%; display: block; }
+.cycle .ring { fill: none; stroke: var(--edge); stroke-width: 2; }
+.cycle .node circle { fill: var(--surface); stroke: var(--sprout); stroke-width: 2.5; }
+.cycle .node text.n { font: 800 18px var(--f-display); fill: var(--sprout); }
+.cycle .node.night circle { stroke: var(--plat); }
+.cycle .node.night text.n { fill: var(--plat); }
+.cycle .lbl-t { font: 700 15px var(--f-display); }
+.cycle .lbl-d { font-size: 12px; fill: var(--muted); }
+.cycle-notes { display: grid; gap: 14px; }
+.note { padding: 16px 18px; display: grid; gap: 6px; }
+.note h3 { font-size: 1rem; }
+.note p { color: var(--muted); font-size: 0.94rem; }
+.ladder-days { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.ladder-days span { font: 500 0.8rem/1 var(--f-mono); padding: 6px 8px; border-radius: 6px; background: var(--sprout-soft); color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* ---------- scaffold stepper ---------- */
+.stepper { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 0; overflow: hidden; }
+.steps { list-style: none; margin: 0; padding: 10px; display: grid; gap: 4px; background: var(--sunk); }
+.steps button {
+  all: unset; box-sizing: border-box; width: 100%; cursor: pointer;
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: center;
+  padding: 10px 12px; border-radius: 10px; color: var(--muted);
+}
+.steps button:hover { background: var(--surface); color: var(--ink); }
+.steps button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 0 var(--line), 0 0 0 1px var(--line); }
+.steps button:focus-visible { outline: 2px solid var(--sprout); }
+.steps .k {
+  width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+  font: 800 1rem/1 var(--f-display); background: var(--surface); border: 2px solid var(--line); color: var(--muted);
+}
+.steps button[aria-selected="true"] .k { border-color: var(--sprout); color: var(--sprout); }
+.steps .s-t { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
+.step-view { padding: 24px 26px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.bubble { position: relative; padding: 14px 16px; border-radius: 14px 14px 14px 4px; background: var(--sprout-soft); max-width: 56ch; }
+.bubble .who { font: 600 0.75rem/1 var(--f-body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--sprout); margin-bottom: 6px; display: block; }
+.bubble.ncs { background: var(--ncs-soft); border-radius: 14px 14px 14px 4px; }
+.bubble.ncs .who { color: var(--ncs); }
+.step-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.step-meta div { border-top: 2px solid var(--line); padding-top: 8px; font-size: 0.92rem; color: var(--muted); }
+.step-meta b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+.hint-meter { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.92rem; }
+.pips { display: flex; gap: 4px; }
+.pips i { width: 22px; height: 8px; border-radius: 4px; background: var(--line); display: block; }
+.pips i.on { background: var(--thpt); }
+.mode { font: 500 0.8rem/1 var(--f-mono); padding: 5px 8px; border-radius: 6px; }
+.mode.indep { background: var(--sprout-soft); color: var(--sprout); }
+.mode.guided { background: var(--thpt-soft); color: var(--thpt); }
+.skip-rules { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { font-size: 0.86rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); }
+
+/* ---------- day timeline ---------- */
+.day { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: 28px; align-items: start; }
+.tl { list-style: none; margin: 0; padding: 0; position: relative; }
+.tl::before { content: ""; position: absolute; left: 66px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+.tl li { display: grid; grid-template-columns: 56px 22px minmax(0, 1fr); gap: 0 10px; padding-block: 10px; position: relative; }
+.tl time { font: 500 0.92rem/1.5 var(--f-mono); text-align: right; font-variant-numeric: tabular-nums; color: var(--ink); }
+.tl .dot { width: 12px; height: 12px; border-radius: 50%; margin: 6px 0 0 5px; background: var(--surface); border: 2px solid var(--sprout); position: relative; z-index: 1; }
+.tl li.quiet .dot { border-color: var(--plat); background: var(--plat-soft); }
+.tl li.quiet { background: linear-gradient(90deg, transparent 0 60px, var(--plat-soft) 60px); border-radius: 10px; }
+.tl .ev { display: grid; gap: 2px; padding-right: 8px; }
+.tl .ev b { font-weight: 600; }
+.tl .ev span { color: var(--muted); font-size: 0.92rem; }
+.tags { display: inline-flex; gap: 4px; margin-left: 6px; vertical-align: 2px; }
+.tag { font: 600 0.68rem/1 var(--f-body); letter-spacing: 0.04em; padding: 3px 6px; border-radius: 4px; text-transform: uppercase; }
+.tag.thpt { background: var(--thpt-soft); color: var(--thpt); }
+.tag.ncs { background: var(--ncs-soft); color: var(--ncs); }
+.tag.both { background: var(--sprout-soft); color: var(--sprout); }
+.tag.sys { background: var(--plat-soft); color: var(--plat); }
+.week { padding: 18px; display: grid; gap: 12px; }
+.week ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.week li { background: var(--sunk); border-radius: 8px; min-height: 100px; padding: 6px 3px; display: grid; align-content: start; gap: 4px; text-align: center; font-size: 0.75rem; }
+.week li > b { font: 700 0.8rem/1.2 var(--f-display); }
+.week .w-ev { border-radius: 4px; padding: 3px 2px; line-height: 1.2; }
+.week .w-ev.thpt { background: var(--thpt-soft); color: var(--thpt); }
+.week .w-ev.ncs { background: var(--ncs-soft); color: var(--ncs); }
+.week .w-ev.both { background: var(--sprout-soft); color: var(--sprout); }
+.quiet-key { display: flex; align-items: center; gap: 8px; font-size: 0.86rem; color: var(--muted); }
+.quiet-key i { width: 18px; height: 12px; border-radius: 3px; background: var(--plat-soft); border: 1px solid var(--plat); display: block; }
+
+/* ---------- profiles ---------- */
+.profiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.prof { padding: 22px; display: grid; gap: 16px; align-content: start; }
+.prof header { display: grid; gap: 4px; padding: 14px 16px; margin: -8px -8px 0; border-radius: 10px; background: var(--thpt-soft); }
+.prof.ncs header { background: var(--ncs-soft); }
+.prof header .eyebrow { color: var(--thpt); }
+.prof.ncs header .eyebrow { color: var(--ncs); }
+.prof dl { margin: 0; display: grid; gap: 12px; }
+.prof dt { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.prof dd { margin: 2px 0 0; font-size: 0.95rem; }
+.skills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+.skills code { background: var(--thpt-soft); color: var(--ink); }
+.prof.ncs .skills code { background: var(--ncs-soft); }
+.core { margin-top: 16px; padding: 16px 18px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; align-items: baseline; }
+.core .skills code { background: var(--sprout-soft); }
+
+/* ---------- what Mentor does for students ---------- */
+.sub { font-size: 1.05rem; margin-bottom: 12px; }
+.onb { list-style: none; margin: 0 0 24px; padding: 0; counter-reset: o; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.onb li { counter-increment: o; display: grid; gap: 4px; align-content: start; padding: 14px 16px; border-radius: 12px; background: var(--sunk); }
+.onb li::before { content: counter(o); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 4px; font: 700 0.9rem/1 var(--f-display); background: var(--surface); color: var(--sprout); }
+.onb li:nth-child(3) { background: var(--thpt-soft); }
+.onb li:nth-child(3)::before { color: var(--thpt); }
+.onb b { font-weight: 600; }
+.onb span { color: var(--muted); font-size: 0.9rem; }
+.groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grp { padding: 20px 22px; display: grid; gap: 12px; align-content: start; }
+.grp dl { margin: 0; display: grid; gap: 10px; }
+.grp dt code { background: var(--sprout-soft); }
+.grp dd { margin: 2px 0 0; color: var(--muted); font-size: 0.93rem; }
+.grp:last-child dt code { background: var(--thpt-soft); }
+.subjects { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 16px; }
+.subj { padding: 18px 22px; display: grid; gap: 10px; align-content: start; }
+.subj ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 0.94rem; }
+.subj.math { background: var(--sprout-soft); border-color: transparent; }
+.subj-note { margin: 12px 0 28px; color: var(--muted); font-size: 0.92rem; max-width: 75ch; }
+@media (max-width: 640px) { .subjects { grid-template-columns: minmax(0, 1fr); } }
+.nots { margin-top: 16px; padding: 18px 22px; display: grid; gap: 10px; }
+.nots ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.nots li { font-size: 0.9rem; padding: 6px 12px; border-radius: 999px; background: var(--crit-soft); }
+@media (max-width: 860px) { .onb { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .onb, .groups { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- memory tree ---------- */
+.mem { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.tree { padding: 18px 8px 18px 18px; font: 400 0.88rem/1.5 var(--f-mono); }
+.tree ul { list-style: none; margin: 0; padding-left: 18px; border-left: 1px dashed var(--line); }
+.tree > ul { padding-left: 0; border-left: 0; }
+.tree li { padding: 3px 0; display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; }
+.tree li > ul { flex-basis: 100%; margin-top: 2px; }
+.tree .p { padding: 1px 7px; border-radius: 5px; }
+.tree .d { font-family: var(--f-body); font-size: 0.82rem; color: var(--muted); }
+.w-shared { background: var(--sprout-soft); }
+.w-mentor { background: var(--ncs-soft); }
+.w-script { background: var(--thpt-soft); }
+.w-plat { background: var(--plat-soft); }
+.w-gw { background: var(--sunk); }
+.legend { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.legend li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: start; font-size: 0.93rem; }
+.legend i { width: 22px; height: 16px; border-radius: 5px; display: block; margin-top: 4px; }
+.legend i.w-gw { box-shadow: inset 0 0 0 1px var(--line); }
+.legend b { font-weight: 600; display: block; }
+.legend span { color: var(--muted); }
+
+/* ---------- architecture ---------- */
+.flows { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.flows button {
+  font: 600 0.9rem/1 var(--f-body); color: var(--ink); cursor: pointer;
+  padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+}
+.flows button:hover { border-color: var(--sprout); }
+.flows button[aria-pressed="true"] { background: var(--sprout); border-color: var(--sprout); color: var(--bg); }
+.flows button[data-flow="crisis"][aria-pressed="true"] { background: var(--crit); border-color: var(--crit); }
+.arch-fig { padding: 14px; }
+.arch-svg { width: 100%; min-width: 760px; height: auto; display: block; }
+.arch .box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.arch .box.client { fill: var(--sunk); }
+.arch .box.gw { fill: var(--sprout-soft); stroke: var(--sprout); }
+.arch .box.mod { fill: var(--surface); stroke: var(--line); }
+.arch .box.model { fill: var(--plat-soft); stroke: var(--plat); }
+.arch .box.parent { fill: var(--thpt-soft); stroke: var(--thpt); }
+.arch .box.sb { fill: var(--surface); stroke: var(--ncs); }
+.arch .box.sb-shadow { fill: var(--ncs-soft); stroke: var(--ncs); stroke-opacity: 0.5; }
+.arch .t-h { font: 700 14px var(--f-display); }
+.arch .t-b { font-size: 11.5px; fill: var(--muted); }
+.arch .t-m { font: 600 12px var(--f-body); }
+.arch .t-e { font-size: 11px; fill: var(--muted); }
+.arch .edge path { fill: none; stroke: var(--edge); stroke-width: 1.6; marker-end: url(#ah); }
+.arch .edge.bi path { marker-start: url(#ah); }
+.arch .flowable { transition: opacity 0.25s ease; }
+.arch[data-flow] .flowable { opacity: 0.38; }
+.arch[data-flow] .edge.flowable { opacity: 0.22; }
+.arch[data-flow="chat"]   [data-f~="chat"],
+.arch[data-flow="night"]  [data-f~="night"],
+.arch[data-flow="nudge"]  [data-f~="nudge"],
+.arch[data-flow="report"] [data-f~="report"],
+.arch[data-flow="crisis"] [data-f~="crisis"] { opacity: 1; }
+.arch[data-flow="chat"]   .edge[data-f~="chat"] path,
+.arch[data-flow="night"]  .edge[data-f~="night"] path,
+.arch[data-flow="nudge"]  .edge[data-f~="nudge"] path,
+.arch[data-flow="report"] .edge[data-f~="report"] path { stroke: var(--sprout); stroke-width: 2.8; marker-end: url(#ah-on); }
+.arch[data-flow="chat"]   .edge.bi[data-f~="chat"] path,
+.arch[data-flow="nudge"]  .edge.bi[data-f~="nudge"] path { marker-start: url(#ah-on); }
+.arch[data-flow="crisis"] .edge[data-f~="crisis"] path { stroke: var(--crit); stroke-width: 2.8; marker-end: url(#ah-crit); }
+.arch[data-flow="crisis"] .edge.bi[data-f~="crisis"] path { marker-start: url(#ah-crit); }
+.flow-steps { margin: 18px 0 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; max-width: 80ch; }
+.flow-steps li { counter-increment: s; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; }
+.flow-steps li::before {
+  content: counter(s); width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center;
+  font: 700 0.9rem/1 var(--f-display); background: var(--sprout-soft); color: var(--sprout);
+}
+.arch-wrap[data-flow="crisis"] .flow-steps li::before { background: var(--crit-soft); color: var(--crit); }
+.flow-title { font: 700 1.1rem/1.3 var(--f-display); margin-top: 18px; }
+
+/* ---------- stack table ---------- */
+.stack { width: 100%; border-collapse: collapse; font-size: 0.94rem; min-width: 620px; }
+.stack th, .stack td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.stack th { font: 600 0.76rem/1.2 var(--f-body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.stack td:first-child { font-weight: 600; white-space: nowrap; }
+.stack td:last-child { color: var(--muted); }
+footer { padding-block: 32px 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.86rem; }
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 860px) {
+  .cycle-grid, .day, .mem { grid-template-columns: minmax(0, 1fr); }
+  .stepper { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .steps button { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding: 8px 4px; }
+  .steps .s-t { font-size: 0.72rem; }
+  .crisis { grid-template-columns: minmax(0, 1fr); }
+  .crisis li + li { border-left: 0; border-top-width: 1px; border-top-color: var(--line); }
+  .crisis li:first-child { border-top: 4px solid var(--crit); }
+}
+@media (max-width: 640px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-block: 36px 28px; }
+  .hero-mascot { order: -1; width: 92px; }
+  .profiles, .see { grid-template-columns: minmax(0, 1fr); }
+  .core { grid-template-columns: minmax(0, 1fr); }
+  .brand span { display: none; }
+  .week li { min-height: 96px; font-size: 0.72rem; }
+  section { padding-block: 40px; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mam" viewBox="0 0 120 120">
+      <g class="leaf-l"><ellipse cx="46" cy="18" rx="16" ry="8" transform="rotate(-28 46 18)" style="fill:var(--sprout)"/></g>
+      <g class="leaf-r"><ellipse cx="74" cy="14" rx="18" ry="9" transform="rotate(24 74 14)" style="fill:var(--sprout)"/></g>
+      <rect x="57" y="18" width="6" height="14" rx="3" style="fill:var(--sprout)"/>
+      <rect x="14" y="30" width="92" height="84" rx="26" style="fill:var(--sprout)"/>
+      <circle cx="44" cy="68" r="7" style="fill:var(--bg)"/>
+      <circle cx="76" cy="68" r="7" style="fill:var(--bg)"/>
+      <circle cx="46" cy="66" r="2.4" style="fill:var(--sprout)"/>
+      <circle cx="78" cy="66" r="2.4" style="fill:var(--sprout)"/>
+      <path d="M48 88 Q60 98 72 88" style="fill:none;stroke:var(--bg);stroke-width:4;stroke-linecap:round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" style="color:inherit;text-decoration:none"><svg aria-hidden="true"><use href="#mam"/></svg><span>Mentor</span></a>
+    <nav class="nav" aria-label="Mục lục">
+      <a href="#hoc-tot-hon">Học tốt hơn nhờ đâu</a>
+      <a href="#vong-day">Vòng dạy học</a>
+      <a href="#thang-goi-y">Thang gợi ý</a>
+      <a href="#mot-ngay">Một ngày</a>
+      <a href="#ho-so">Mentor giúp gì</a>
+      <a href="#tri-nho">Trí nhớ</a>
+      <a href="#kien-truc">Kiến trúc</a>
+      <a href="#cong-nghe">Công nghệ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1>Người hướng dẫn <em>nhớ</em> bạn là ai, đang học gì, hay vấp ở đâu.</h1>
+      <p class="lede">Mentor là AI hướng dẫn học tập cho học sinh lớp 10–12, dùng cho mọi môn học. Mỗi học sinh có một thư mục riêng gồm các file Markdown trong git: hồ sơ, mục tiêu, lỗi hay mắc, mức thành thạo từng kỹ năng. Mentor đọc thư mục đó trước mỗi câu trả lời, dạy bằng gợi ý tăng dần thay vì giải hộ, ghi lại bằng chứng học tập, tự nhắc ôn đúng lúc và báo tiến độ cho phụ huynh.</p>
+      <ul class="facts">
+        <li><b>Mọi</b> môn học</li>
+        <li><b>13</b> skill sư phạm</li>
+        <li><b>5</b> bậc gợi ý</li>
+        <li><b>2 tuần</b> một báo cáo phụ huynh</li>
+        <li><b>1</b> sandbox riêng mỗi học sinh</li>
+        <li><b>0</b> cơ sở dữ liệu vector: trí nhớ là file</li>
+      </ul>
+    </div>
+    <svg class="hero-mascot" viewBox="0 0 120 120" role="img" aria-label="Mầm, nhân vật của Mentor"><use href="#mam"/></svg>
+  </div>
+
+  <!-- ================= Học tốt hơn nhờ đâu ================= -->
+  <section id="hoc-tot-hon" class="better">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Điểm khác biệt</p>
+        <h2>Học tốt hơn nhờ đâu</h2>
+        <p class="lede">Chatbot thông thường trả lời nhanh nhưng làm thay học sinh và quên ngay sau khi đóng cửa sổ. Mentor được thiết kế quanh những cách học đã được nghiên cứu chứng minh là hiệu quả: tự làm trước, tự kiểm tra, ôn giãn cách, và biết chính xác mình yếu ở đâu.</p>
+      </div>
+
+      <h3 class="sub">Cùng một bài về nhà</h3>
+      <div class="vs">
+        <div class="chatcol">
+          <h3>Chatbot hỏi gì đáp nấy</h3>
+          <p class="msg hs">Giải giúp em: x² − 5x + 6 = 0</p>
+          <p class="msg bot">Δ = 25 − 24 = 1. Vậy x = 2 hoặc x = 3.</p>
+          <p class="msg hs">Dạ em cảm ơn.</p>
+          <p class="outcome"><b>Sau 1 phút, học sinh có:</b> đáp án để chép. Không biết mình hay sai ở đâu. Tuần sau không ai hỏi lại.</p>
+        </div>
+        <div class="chatcol mentor">
+          <h3><svg aria-hidden="true"><use href="#mam"/></svg>Mentor</h3>
+          <p class="msg hs">Giải giúp em: x² − 5x + 6 = 0</p>
+          <p class="msg bot">Em thử trước nhé, làm tới đâu gửi mình các bước.</p>
+          <p class="msg hs">Em ra x = −2 và x = −3 ạ.</p>
+          <p class="msg bot">Em đi đúng hướng rồi. Ở công thức nghiệm, em kiểm tra lại dấu của −b nhé.<span class="tagline">bậc 3: chỉ vào lỗi · SymPy: chưa đúng</span></p>
+          <p class="msg hs">À, b = −5 nên −b = 5. Vậy x = 2, x = 3!</p>
+          <p class="msg bot">Đúng rồi, em tự phát hiện ra sai dấu. Lần sau gặp dạng này em sẽ kiểm tra bước nào trước?<span class="tagline">ghi lỗi "nhầm dấu −b" · hẹn ôn lại tối mai</span></p>
+          <p class="outcome"><b>Sau 5 phút, học sinh có:</b> tự giải ra, biết lỗi mình hay mắc, và tối mai được hỏi lại đúng chỗ đó.</p>
+        </div>
+      </div>
+
+      <div class="journey">
+        <h3 class="sub">Hành trình một kỹ năng: từ làm sai đến nắm vững</h3>
+        <figure class="panel">
+          <div class="scroll-x">
+            <svg class="mchart" viewBox="0 0 640 230" role="img" aria-label="Mức thành thạo kỹ năng công thức nghiệm: 0,20 sau buổi làm sai có gợi ý, 0,60 sau lần tự làm đúng hôm sau, 0,89 sau lần ôn đúng tuần sau; báo cáo phụ huynh ghi vững.">
+              <rect x="60" y="30" width="540" height="32" style="fill:var(--sprout-soft)"/>
+              <rect x="60" y="62" width="540" height="48" style="fill:var(--sunk)"/>
+              <rect x="60" y="110" width="540" height="80" style="fill:var(--thpt-soft)"/>
+              <text x="70" y="51" class="t-muted" style="font-size:11.5px">vững (từ 0,8)</text>
+              <text x="70" y="82" class="t-muted" style="font-size:11.5px">đang tiến bộ (0,5–0,8)</text>
+              <text x="594" y="182" text-anchor="end" class="t-muted" style="font-size:11.5px">cần củng cố (dưới 0,5)</text>
+              <g style="font-size:11px" class="t-muted">
+                <text x="52" y="34" text-anchor="end">1,0</text>
+                <text x="52" y="114" text-anchor="end">0,5</text>
+                <text x="52" y="194" text-anchor="end">0</text>
+              </g>
+              <polyline points="100,158 250,94 400,47.6 540,47.6" style="fill:none;stroke:var(--sprout);stroke-width:3;stroke-linejoin:round"/>
+              <g style="fill:var(--surface);stroke:var(--sprout);stroke-width:3">
+                <circle cx="100" cy="158" r="7"/><circle cx="250" cy="94" r="7"/><circle cx="400" cy="47.6" r="7"/><circle cx="540" cy="47.6" r="7"/>
+              </g>
+              <g style="font:700 13px var(--f-mono)">
+                <text x="100" y="146" text-anchor="middle">0,20</text>
+                <text x="250" y="82" text-anchor="middle">0,60</text>
+                <text x="400" y="35" text-anchor="middle" style="fill:var(--ink)">0,89</text>
+              </g>
+              <g style="font-size:12px">
+                <text x="100" y="214" text-anchor="middle">T2: làm sai, có gợi ý</text>
+                <text x="250" y="214" text-anchor="middle">T3: tự làm đúng</text>
+                <text x="400" y="214" text-anchor="middle">tuần sau: ôn đúng</text>
+                <text x="540" y="214" text-anchor="middle">báo cáo phụ huynh</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Ví dụ minh hoạ với học sinh giả lập, kỹ năng "công thức nghiệm phương trình bậc hai". Số liệu tính đúng theo mô hình BKT mà app dùng (tham số mặc định). Bài làm có gợi ý không làm tăng mức thành thạo, nên con số không bị "ảo".</figcaption>
+        </figure>
+        <ol class="jsteps">
+          <li><time>Thứ Hai, tối</time><b>Làm sai, tự sửa nhờ gợi ý</b><span>Mentor chỉ vào bước sai chứ không giải hộ. Lỗi "nhầm dấu −b" được ghi vào <code>mistakes.md</code>. Bài có gợi ý nên mức thành thạo giữ nguyên.</span></li>
+          <li><time>Thứ Ba, 20:30</time><b>Được hỏi lại đúng chỗ yếu</b><span>Kỹ năng vừa cần gợi ý được hẹn ôn ngay hôm sau. Thẻ trắc nghiệm cố ý chọn b dương, đúng chỗ em hay nhầm. Em tự làm đúng: 0,20 → 0,60.</span></li>
+          <li><time>Tuần sau</time><b>Ôn giãn cách, nhớ lâu hơn</b><span>Lịch ôn giãn dần theo mức thành thạo. Đến hạn, em làm đúng lần nữa: 0,60 → 0,89. Lần ôn tiếp theo cách 14 ngày.</span></li>
+          <li><time>Thứ Sáu, 2 tuần</time><b>Phụ huynh thấy tiến bộ thật</b><span>Báo cáo ghi "Phương trình bậc hai: vững", dựa trên bài em tự làm, không kèm nội dung chat.</span></li>
+        </ol>
+      </div>
+
+      <div class="principles">
+        <article class="pr">
+          <p class="eyebrow">Scaffolding</p>
+          <h3>Tự làm trước, gợi ý vừa đủ</h3>
+          <p>Thang 5 bậc: hỏi đã thử gì, gợi ý hướng, chỉ vào lỗi, ví dụ tương tự, rồi mới giải thích. Không đưa lời giải bài về nhà khi chưa tự thử.</p>
+          <p class="src">Cơ sở: Wood, Bruner &amp; Ross (1976)</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Retrieval practice</p>
+          <h3>Tự kiểm tra thay vì đọc lại</h3>
+          <p>Thẻ trắc nghiệm ngay trong chat, 3–5 câu ôn mỗi tối, câu tự kiểm tra sau mỗi ghi chú bài giảng.</p>
+          <p class="src">Cơ sở: Roediger &amp; Karpicke (2006)</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Spaced repetition</p>
+          <h3>Ôn đúng lúc sắp quên</h3>
+          <p>Lịch ôn 1, 3, 7, 14, 30 ngày theo mức thành thạo; làm sai thì ôn lại hôm sau. Mentor tự nhắc lúc 20:30.</p>
+          <p class="src">Cơ sở: Cepeda và cộng sự (2006)</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Knowledge tracing</p>
+          <h3>Biết chính xác chỗ yếu</h3>
+          <p>Mức thành thạo theo từng kỹ năng nhỏ, chỉ tính bài tự làm và bài giáo viên đã chấm. Lỗi hay mắc được ghi lại để hỏi đúng chỗ.</p>
+          <p class="src">Cơ sở: Corbett &amp; Anderson (1995)</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Feedback</p>
+          <h3>Phản hồi đúng, ngay lúc làm</h3>
+          <p>Toán được chấm bằng SymPy trước khi mentor nói đúng hay sai, nên không có chuyện AI "chấm nhầm" rồi học sinh nhớ sai.</p>
+          <p class="src">Cơ sở: Hattie &amp; Timperley (2007)</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Tự điều chỉnh việc học</p>
+          <h3>Tự lên kế hoạch, tự đánh giá</h3>
+          <p>Check-in sáng chọn 3 việc chính, tổng kết tối, tổng kết tuần tự chấm mình, kế hoạch ôn ngược từ ngày thi, bấm giờ tập trung.</p>
+          <p class="src">Cơ sở: Zimmerman (2002)</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Cá nhân hoá</p>
+          <h3>Nhớ em là ai</h3>
+          <p>Mentor nhớ mục tiêu, lịch thi, cách học hợp, gợi ý nào từng hiệu quả (<code>what-works.md</code>). Học sinh không phải kể lại từ đầu.</p>
+          <p class="src">Trí nhớ là file học sinh đọc và sửa được</p>
+        </article>
+        <article class="pr">
+          <p class="eyebrow">Động lực bền</p>
+          <h3>Khích lệ, không gây áp lực</h3>
+          <p>Ăn mừng khi xong một mốc, khen cách làm cụ thể. Không bảng xếp hạng, không đếm ngược dọa dẫm; thấy em mệt thì giảm tải.</p>
+          <p class="src">Không ăn mừng khi em đang buồn hoặc gặp chuyện</p>
+        </article>
+      </div>
+      <p class="honest">Các nguyên lý trên có nhiều nghiên cứu ủng hộ. Hiệu quả của chính Mentor với học sinh thật sẽ được đo trong đợt dùng thử (pilot): mức thành thạo theo thời gian, số ngày học đều, điểm bài kiểm tra trên lớp.</p>
+    </div>
+  </section>
+
+  <!-- ================= Vòng dạy học ================= -->
+  <section id="vong-day">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Luồng dạy học</p>
+        <h2>Một vòng dạy, lặp lại mỗi ngày</h2>
+        <p class="lede">Bốn bước đầu diễn ra trong lúc chat. Hai bước sau chạy khi học sinh không mở app: ban đêm mentor tự tổng hợp, sáng và tối mentor chủ động nhắc.</p>
+      </div>
+      <div class="cycle-grid">
+        <figure class="cycle panel" style="padding:12px">
+          <svg viewBox="0 0 760 520" role="img" aria-label="Vòng dạy học 6 bước quanh workspace của học sinh: đọc trí nhớ, dạy theo thang gợi ý, kiểm chứng, ghi bằng chứng, tổng hợp ban đêm, chủ động nhắc, rồi quay lại đọc trí nhớ.">
+            <defs>
+              <marker id="cy-ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" style="fill:var(--edge)"/>
+              </marker>
+            </defs>
+            <!-- arcs between nodes, clockwise -->
+            <path class="ring" marker-end="url(#cy-ah)" d="M409.5 87.6 A170 170 0 0 1 510.2 145.7"/>
+            <path class="ring" marker-end="url(#cy-ah)" d="M539.7 196.9 A170 170 0 0 1 539.7 313.1"/>
+            <path class="ring" marker-end="url(#cy-ah)" d="M510.2 364.3 A170 170 0 0 1 409.5 422.4"/>
+            <path class="ring" marker-end="url(#cy-ah)" d="M350.5 422.4 A170 170 0 0 1 249.8 364.3"/>
+            <path class="ring" marker-end="url(#cy-ah)" d="M220.3 313.1 A170 170 0 0 1 220.3 196.9"/>
+            <path class="ring" marker-end="url(#cy-ah)" d="M249.8 145.7 A170 170 0 0 1 350.5 87.6"/>
+            <!-- center: the workspace -->
+            <circle cx="380" cy="255" r="92" style="fill:var(--sprout-soft);stroke:var(--sprout);stroke-width:1.5;stroke-dasharray:4 5"/>
+            <use href="#mam" x="352" y="186" width="56" height="56"/>
+            <text x="380" y="266" text-anchor="middle" class="lbl-t">Workspace</text>
+            <text x="380" y="286" text-anchor="middle" class="lbl-d">file Markdown + git</text>
+            <text x="380" y="302" text-anchor="middle" class="lbl-d">riêng từng học sinh</text>
+            <!-- nodes -->
+            <g class="node"><circle cx="380" cy="85" r="24"/><text class="n" x="380" y="91" text-anchor="middle">1</text></g>
+            <g class="node"><circle cx="527.2" cy="170" r="24"/><text class="n" x="527.2" y="176" text-anchor="middle">2</text></g>
+            <g class="node"><circle cx="527.2" cy="340" r="24"/><text class="n" x="527.2" y="346" text-anchor="middle">3</text></g>
+            <g class="node"><circle cx="380" cy="425" r="24"/><text class="n" x="380" y="431" text-anchor="middle">4</text></g>
+            <g class="node night"><circle cx="232.8" cy="340" r="24"/><text class="n" x="232.8" y="346" text-anchor="middle">5</text></g>
+            <g class="node night"><circle cx="232.8" cy="170" r="24"/><text class="n" x="232.8" y="176" text-anchor="middle">6</text></g>
+            <!-- labels -->
+            <text x="380" y="24" text-anchor="middle" class="lbl-t">Đọc trí nhớ</text>
+            <text x="380" y="43" text-anchor="middle" class="lbl-d">hồ sơ, mục tiêu, kế hoạch tuần, 3 nhật ký gần nhất</text>
+            <text x="563" y="160" class="lbl-t">Dạy theo thang gợi ý</text>
+            <text x="563" y="178" class="lbl-d">hỏi đã thử gì, rồi gợi ý</text>
+            <text x="563" y="194" class="lbl-d">tăng dần; không giải hộ</text>
+            <text x="563" y="330" class="lbl-t">Kiểm chứng</text>
+            <text x="563" y="348" class="lbl-d">Toán: chấm bằng SymPy</text>
+            <text x="563" y="364" class="lbl-d">môn khác: tài liệu, nguồn web</text>
+            <text x="380" y="474" text-anchor="middle" class="lbl-t">Ghi bằng chứng</text>
+            <text x="380" y="493" text-anchor="middle" class="lbl-d">events.jsonl: tự làm hay cần gợi ý, bao nhiêu gợi ý</text>
+            <text x="197" y="330" text-anchor="end" class="lbl-t">Tổng hợp ban đêm</text>
+            <text x="197" y="348" text-anchor="end" class="lbl-d">nhật ký, gộp trí nhớ,</text>
+            <text x="197" y="364" text-anchor="end" class="lbl-d">mức thành thạo, lịch ôn</text>
+            <text x="197" y="160" text-anchor="end" class="lbl-t">Chủ động nhắc</text>
+            <text x="197" y="178" text-anchor="end" class="lbl-d">check-in sáng, ôn đến hạn,</text>
+            <text x="197" y="194" text-anchor="end" class="lbl-d">thẻ hỏi nhanh, bóng thoại</text>
+          </svg>
+          <figcaption>Bước 1–4 (viền xanh lá) chạy trong lúc chat. Bước 5–6 (viền xám) do lịch routine kích hoạt, không cần học sinh mở app.</figcaption>
+        </figure>
+        <div class="cycle-notes">
+          <div class="panel note">
+            <h3>Trí nhớ là file, không phải hộp đen</h3>
+            <p>Mentor nhớ bằng cách ghi vào <code>me/</code>, <code>goals/</code>, <code>learning/</code>. Học sinh mở trang Workspace là đọc được mentor đang nhớ gì về mình, sửa hoặc bảo mentor quên.</p>
+          </div>
+          <div class="panel note">
+            <h3>Chỉ bài tự làm mới tính vào mức thành thạo</h3>
+            <p>Bài làm không cần gợi ý (<code>independent</code>) và bài giáo viên đã chấm (<code>classroom_graded</code>) cập nhật mức thành thạo theo mô hình BKT. Bài có gợi ý (<code>guided</code>) chỉ ghi nhận quá trình.</p>
+          </div>
+          <div class="panel note">
+            <h3>Lịch ôn giãn cách theo mức thành thạo</h3>
+            <p>Số ngày tới lần ôn tiếp theo, sau lần làm đúng gần nhất. Làm sai thì ôn lại ngay hôm sau.</p>
+            <div class="ladder-days" aria-label="Mức thành thạo và số ngày tới lần ôn">
+              <span>&lt;0,4 → 1</span><span>&lt;0,6 → 3</span><span>&lt;0,8 → 7</span><span>&lt;0,95 → 14</span><span>còn lại → 30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Thang gợi ý ================= -->
+  <section id="thang-goi-y">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Skill scaffolded-help</p>
+        <h2>Thang 5 bậc: gợi ý ít nhất có thể</h2>
+        <p class="lede">Mentor bắt đầu ở bậc 1 và chỉ lên một bậc khi người học đã thử mà vẫn kẹt. Thang này dùng cho mọi môn; ví dụ dưới đây là một bài Toán. Bấm từng bậc để xem mentor nói gì.</p>
+      </div>
+      <div class="panel stepper">
+        <ol class="steps" role="tablist" aria-label="Các bậc gợi ý">
+          <li><button role="tab" id="st-1" aria-selected="true" aria-controls="step-view" data-step="1"><span class="k">1</span><span class="s-t">Hỏi đã thử gì</span></button></li>
+          <li><button role="tab" id="st-2" aria-selected="false" aria-controls="step-view" data-step="2" tabindex="-1"><span class="k">2</span><span class="s-t">Gợi ý chung</span></button></li>
+          <li><button role="tab" id="st-3" aria-selected="false" aria-controls="step-view" data-step="3" tabindex="-1"><span class="k">3</span><span class="s-t">Chỉ vào lỗi</span></button></li>
+          <li><button role="tab" id="st-4" aria-selected="false" aria-controls="step-view" data-step="4" tabindex="-1"><span class="k">4</span><span class="s-t">Ví dụ tương tự</span></button></li>
+          <li><button role="tab" id="st-5" aria-selected="false" aria-controls="step-view" data-step="5" tabindex="-1"><span class="k">5</span><span class="s-t">Giải thích trực tiếp</span></button></li>
+        </ol>
+        <div class="step-view" id="step-view" role="tabpanel" aria-labelledby="st-1" aria-live="polite">
+          <div class="bubble"><span class="who">Mentor nói</span><span id="sv-thpt">Em đã làm tới đâu rồi? Gửi mình các bước nhé.</span></div>
+          <div class="hint-meter">
+            <span>Số gợi ý tính vào bằng chứng:</span>
+            <span class="pips" id="sv-pips" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <b id="sv-count" class="mono">hint_count = 0</b>
+            <span id="sv-mode" class="mode indep">independent</span>
+          </div>
+          <div class="step-meta">
+            <div><b>Khi nào dùng</b><span id="sv-when">Luôn bắt đầu ở đây. Học sinh đã gửi bài làm thì bỏ qua bậc này.</span></div>
+            <div><b>Mentor không làm</b><span id="sv-not">Không đưa cách làm, không đưa đáp án.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="skip-rules" aria-label="Khi nào được giải thích ngay">
+        <span class="chip"><b>Giải thích ngay (bậc 5) khi:</b></span>
+        <span class="chip">hỏi một khái niệm, không phải nhờ làm bài</span>
+        <span class="chip">rất mệt, bực, hoặc sắp thi</span>
+        <span class="chip">đã 3 lượt gợi ý mà không tiến triển</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Một ngày ================= -->
+  <section id="mot-ngay">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Routine mặc định, giờ Việt Nam</p>
+        <h2>Một ngày của Mentor</h2>
+        <p class="lede">Ngoài lúc học sinh chủ động chat, mentor có lịch riêng. Mọi lời nhắc tuân theo giờ yên lặng 22:00–07:00 và mức chủ động học sinh chọn (tắt, vừa, nhiều).</p>
+      </div>
+      <div class="day">
+        <ol class="tl">
+          <li><time>07:30</time><span class="dot"></span><div class="ev"><b>Check-in buổi sáng</b><span>Thứ Hai đến thứ Sáu. Gợi ý 3 việc chính hôm nay, kèm nút trả lời nhanh.</span></div></li>
+          <li><time>cả ngày</time><span class="dot"></span><div class="ev"><b>Học sinh chat</b><span>Trên web hoặc app máy tính: hỏi bài, gửi ảnh bài làm hay bài kiểm tra đã chấm, bấm giờ tập trung.</span></div></li>
+          <li><time>19:30</time><span class="dot"></span><div class="ev"><b>Chuẩn bị bài ôn tối nay</b><span>Ra 3–5 câu ngắn theo các kỹ năng đến hạn; câu Toán có đáp án đã kiểm bằng SymPy.</span></div></li>
+          <li><time>20:30</time><span class="dot"></span><div class="ev"><b>Nhắc ôn khi có kỹ năng đến hạn <span class="tags"><span class="tag sys">Gateway tự làm</span></span></b><span>Không cần gọi model: gateway đọc lịch ôn và gửi lời nhắc.</span></div></li>
+          <li><time>21:00</time><span class="dot"></span><div class="ev"><b>Tổng kết buổi tối</b><span>Một hai câu hỏi: hôm nay xong được gì, mai bắt đầu từ đâu.</span></div></li>
+          <li class="quiet"><time>22:00</time><span class="dot"></span><div class="ev"><b>Bắt đầu giờ yên lặng</b><span>Không gửi lời nhắc nào tới sáng.</span></div></li>
+          <li class="quiet"><time>23:30</time><span class="dot"></span><div class="ev"><b>Tổng hợp ban đêm</b><span>Viết nhật ký, gộp trí nhớ, ghi tín hiệu cảm xúc của ngày, cập nhật mức thành thạo và lịch ôn, sửa kế hoạch tuần.</span></div></li>
+        </ol>
+        <div class="panel week">
+          <h3>Trong tuần</h3>
+          <ol aria-label="Các việc định kỳ trong tuần">
+            <li><b>T2</b></li>
+            <li><b>T3</b></li>
+            <li><b>T4</b></li>
+            <li><b>T5</b></li>
+            <li><b>T6</b><span class="w-ev thpt">19:00 báo cáo phụ huynh</span></li>
+            <li><b>T7</b></li>
+            <li><b>CN</b><span class="w-ev both">16:00 tổng kết tuần</span></li>
+          </ol>
+          <p style="font-size:0.86rem;color:var(--muted)">Báo cáo phụ huynh kiểm tra mỗi thứ Sáu nhưng chỉ gửi khi đã đủ 2 tuần kể từ lần trước.</p>
+          <span class="quiet-key"><i></i>Giờ yên lặng 22:00–07:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Mentor giúp gì ================= -->
+  <section id="ho-so">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">13 skill dành cho học sinh</p>
+        <h2>Mentor giúp học sinh những gì</h2>
+        <p class="lede">Mỗi skill là một file hướng dẫn mentor làm một việc sư phạm cụ thể. Mentor tự chọn skill hợp với tình huống trong lúc chat hoặc khi chạy việc định kỳ.</p>
+      </div>
+
+      <h3 class="sub">Bắt đầu dùng</h3>
+      <ol class="onb">
+        <li><b>Đăng nhập bằng email</b><span>Nhận link hoặc mã 6 số, không cần mật khẩu.</span></li>
+        <li><b>Chọn hồ sơ học sinh</b><span>Nhập tên gọi; mentor tạo thư mục riêng từ mẫu.</span></li>
+        <li><b>Phụ huynh liên kết Zalo</b><span>Phụ huynh quét mã QR, nhắn bot Zalo. Chưa liên kết thì tài khoản bị khoá.</span></li>
+        <li><b>Học buổi đầu</b><span>Mentor hỏi mục tiêu, lịch thi sắp tới, rồi lập kế hoạch tuần.</span></li>
+      </ol>
+
+      <h3 class="sub">Mức hỗ trợ theo môn</h3>
+      <div class="subjects">
+        <div class="panel subj">
+          <p class="eyebrow">Mọi môn</p>
+          <ul>
+            <li>Gợi ý theo thang 5 bậc, giải thích khái niệm</li>
+            <li>Đọc ảnh bài làm, vở ghi, slide bài giảng</li>
+            <li>Tóm tắt bài giảng thành ghi chú kèm câu tự kiểm tra</li>
+            <li>Lập kế hoạch ôn thi ngược từ ngày thi, nhắc trước kỳ thi</li>
+            <li>Lưu bài kiểm tra đã chấm, ghi lại lỗi hay mắc</li>
+            <li>Tìm thông tin như lịch thi, quy chế, có ghi nguồn</li>
+          </ul>
+        </div>
+        <div class="panel subj math">
+          <p class="eyebrow">Toán: thêm phần đo lường</p>
+          <ul>
+            <li>Giáo trình theo mã kỹ năng (lớp 10–12)</li>
+            <li>Chấm tự động bằng SymPy, kể cả bài mentor tự ra</li>
+            <li>Mức thành thạo từng kỹ năng, lịch ôn giãn cách</li>
+            <li>Xu hướng theo chủ đề trong báo cáo phụ huynh</li>
+          </ul>
+        </div>
+      </div>
+      <p class="subj-note">Phần đo lường đã viết sẵn cho mọi môn. Muốn mở cho môn khác, chỉ cần thêm một file giáo trình <code>curricula/&lt;môn&gt;.yaml</code> liệt kê mã kỹ năng của môn đó.</p>
+
+      <div class="groups">
+        <article class="panel grp">
+          <h3>Học tập</h3>
+          <dl>
+            <dt><code>scaffolded-help</code></dt><dd>Mọi môn. Thang 5 bậc khi học sinh bị kẹt: hỏi đã thử gì, gợi ý tăng dần.</dd>
+            <dt><code>exam-prep</code></dt><dd>Mọi môn. Có lịch thi: lập kế hoạch ôn ngược từ ngày thi theo phần yếu, hẹn nhắc trước kỳ thi.</dd>
+            <dt><code>graded-work-review</code></dt><dd>Đọc ảnh bài kiểm tra đã chấm, tìm lỗi lặp lại. Điểm của giáo viên là chuẩn. Toán thì cập nhật luôn mức thành thạo.</dd>
+            <dt><code>math-tutoring</code></dt><dd>Toán. Giải theo thang gợi ý, kiểm mọi đáp án bằng SymPy, ghi bằng chứng theo mã kỹ năng.</dd>
+            <dt><code>spaced-review</code></dt><dd>Ôn ngắn 3–5 câu theo lịch giãn cách các kỹ năng đến hạn (môn có giáo trình).</dd>
+          </dl>
+        </article>
+        <article class="panel grp">
+          <h3>Kế hoạch và thói quen</h3>
+          <dl>
+            <dt><code>goal-planning</code></dt><dd>Biến mục tiêu thành mốc và kế hoạch tuần vừa sức; sửa kế hoạch khi bị chậm.</dd>
+            <dt><code>daily-checkin</code></dt><dd>Sáng gợi ý 3 việc chính, tối hỏi 1–2 câu tổng kết, có nút trả lời nhanh.</dd>
+            <dt><code>weekly-review</code></dt><dd>Cuối tuần tóm tắt bằng chứng, mời học sinh tự đánh giá, đề xuất kế hoạch tuần sau.</dd>
+          </dl>
+        </article>
+        <article class="panel grp">
+          <h3>Trí nhớ</h3>
+          <dl>
+            <dt><code>memory-keeper</code></dt><dd>Khi nào ghi, sửa, xoá điều mentor nhớ về học sinh; xoá ngay khi học sinh bảo quên.</dd>
+            <dt><code>intake-document</code></dt><dd>Xử lý ảnh, PDF học sinh gửi: phân loại, đọc, lưu đúng chỗ.</dd>
+            <dt><code>nightly-reflection</code></dt><dd>Mỗi đêm viết nhật ký, gộp trí nhớ, cập nhật mức thành thạo và kế hoạch.</dd>
+          </dl>
+        </article>
+        <article class="panel grp">
+          <h3>Phụ huynh và an toàn</h3>
+          <dl>
+            <dt><code>parent-report</code></dt><dd>2 tuần một lần gửi phụ huynh tiến độ, mức đều đặn, xu hướng theo chủ đề; không có nội dung chat.</dd>
+            <dt><code>wellbeing-and-crisis</code></dt><dd>Khi học sinh buồn, áp lực hoặc gặp nguy hiểm: cách phản hồi, khi nào báo phụ huynh.</dd>
+          </dl>
+        </article>
+      </div>
+
+      <div class="panel nots">
+        <h3>Mentor không làm</h3>
+        <ul>
+          <li>Đưa lời giải bài về nhà khi học sinh chưa tự thử.</li>
+          <li>Khẳng định đáp án Toán chưa kiểm bằng SymPy.</li>
+          <li>Chấm lại bài giáo viên đã chấm.</li>
+          <li>Chẩn đoán tâm lý, so sánh học sinh với người khác.</li>
+          <li>Kể cho phụ huynh nội dung chat hay tâm sự của học sinh.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Trí nhớ ================= -->
+  <section id="tri-nho">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Workspace của một học sinh</p>
+        <h2>Trí nhớ nằm ở đâu, ai được ghi</h2>
+        <p class="lede">Mỗi học sinh một git repo. Mọi thay đổi là một commit, nên xem lại được lịch sử và khôi phục được. Màu cho biết ai được phép ghi vào từng phần.</p>
+      </div>
+      <div class="mem">
+        <div class="panel tree" aria-label="Cây thư mục workspace">
+          <ul>
+            <li><span class="p w-plat">AGENTS.md</span><span class="d">luật làm việc của mentor</span></li>
+            <li><span class="p w-shared">me/</span><span class="d">người học là ai</span>
+              <ul>
+                <li><span class="p w-shared">profile.md · preferences.md</span><span class="d">hồ sơ, cách học hợp</span></li>
+                <li><span class="p w-shared">now.md · people.md</span><span class="d">đang bận gì, người liên quan</span></li>
+                <li><span class="p w-shared">what-works.md</span><span class="d">gợi ý nào hiệu quả</span></li>
+                <li><span class="p w-mentor">journal/2026-11-05.md</span><span class="d">nhật ký mỗi đêm</span></li>
+              </ul>
+            </li>
+            <li><span class="p w-shared">goals/</span><span class="d">goals.md, plans/this-week.md, plans/term.md</span></li>
+            <li><span class="p w-mentor">learning/&lt;môn&gt;/</span><span class="d">mỗi môn một thư mục, ví dụ learning/math/</span>
+              <ul>
+                <li><span class="p w-mentor">skills.md</span><span class="d">mức thành thạo từng kỹ năng</span></li>
+                <li><span class="p w-mentor">mistakes.md · review-queue.md</span><span class="d">lỗi hay mắc, lịch ôn</span></li>
+              </ul>
+            </li>
+            <li><span class="p w-script">events.jsonl</span><span class="d">bằng chứng học tập, chỉ thêm dòng</span></li>
+            <li><span class="p w-gw">inbox/</span><span class="d">ảnh bài làm, PDF tải lên</span></li>
+            <li><span class="p w-gw">sessions/</span><span class="d">bản ghi hội thoại theo ngày</span></li>
+            <li><span class="p w-gw">reports/</span><span class="d">báo cáo đã gửi phụ huynh</span></li>
+            <li><span class="p w-shared">routines.yaml</span><span class="d">lịch nhắc, giờ yên lặng, mức chủ động</span></li>
+            <li><span class="p w-plat">.mentor/</span><span class="d">ẩn với học sinh</span>
+              <ul>
+                <li><span class="p w-plat">skills/ · curricula/</span><span class="d">13 skill, giáo trình theo môn (hiện có Toán)</span></li>
+                <li><span class="p w-script">wellbeing.jsonl</span><span class="d">tín hiệu cảm xúc theo ngày</span></li>
+                <li><span class="p w-mentor">report-drafts/</span><span class="d">bản nháp báo cáo, chưa gửi</span></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <ul class="legend">
+          <li><i class="w-shared"></i><div><b>Học sinh và mentor cùng sửa</b><span>Học sinh sửa trên trang Workspace; mentor ghi khi nghe được điều đáng nhớ.</span></div></li>
+          <li><i class="w-mentor"></i><div><b>Mentor ghi</b><span>Nhật ký, mức thành thạo, lỗi hay mắc, lịch ôn. Học sinh đọc được.</span></div></li>
+          <li><i class="w-script"></i><div><b>Chỉ script ghi</b><span>Bằng chứng học tập và tín hiệu cảm xúc đi qua script kiểm tra định dạng; model không sửa tay được.</span></div></li>
+          <li><i class="w-plat"></i><div><b>Nền tảng quản lý</b><span>Luật và skill được cập nhật cho mọi học sinh bằng <code>refresh-content</code> khi triển khai bản mới.</span></div></li>
+          <li><i class="w-gw"></i><div><b>Gateway ghi</b><span>File tải lên, bản ghi chat, báo cáo đã gửi.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Kiến trúc ================= -->
+  <section id="kien-truc">
+    <div class="wrap arch-wrap" data-flow="chat">
+      <div class="sec-head">
+        <p class="eyebrow">Kiến trúc</p>
+        <h2>Dữ liệu đi đâu</h2>
+        <p class="lede">Toàn bộ phía server chạy trên một VM Linux bằng Docker. Chọn một luồng để xem nó đi qua những phần nào.</p>
+      </div>
+      <div class="flows" role="group" aria-label="Chọn luồng">
+        <button type="button" data-flow="chat" aria-pressed="true">Một lượt chat</button>
+        <button type="button" data-flow="night" aria-pressed="false">Tổng hợp ban đêm</button>
+        <button type="button" data-flow="nudge" aria-pressed="false">Lời nhắc</button>
+        <button type="button" data-flow="report" aria-pressed="false">Báo cáo phụ huynh</button>
+        <button type="button" data-flow="crisis" aria-pressed="false">Cảnh báo khủng hoảng</button>
+        <button type="button" data-flow="" aria-pressed="false">Xem tất cả</button>
+      </div>
+      <figure class="panel arch-fig">
+        <div class="scroll-x">
+          <svg class="arch arch-svg" id="arch" data-flow="chat" viewBox="0 0 1000 600" role="img" aria-label="Kiến trúc Mentor: web và app máy tính đi qua Caddy tới gateway; gateway giao việc cho sandbox riêng từng học sinh; sandbox gọi model FPT qua LiteLLM; gateway giữ mirror git, ops.db, kết nối dịch vụ ngoài và gửi tin Zalo cho phụ huynh.">
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--edge)"/></marker>
+              <marker id="ah-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--sprout)"/></marker>
+              <marker id="ah-crit" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--crit)"/></marker>
+            </defs>
+
+            <!-- edges first, so boxes sit on top -->
+            <g class="edge bi flowable" data-f="chat nudge crisis"><path d="M200 86 H238"/></g>
+            <g class="edge bi flowable" data-f="chat nudge"><path d="M200 175 H238"/></g>
+            <g class="edge flowable" data-f=""><path d="M200 328 H238"/></g>
+            <g class="edge flowable" data-f=""><path d="M200 420 H238"/></g>
+            <g class="edge bi flowable" data-f="chat nudge crisis"><path d="M312 255 H378"/><text x="345" y="246" text-anchor="middle" class="t-e">/api</text><text x="345" y="275" text-anchor="middle" class="t-e">/webhooks</text></g>
+            <g class="edge flowable" data-f="nudge"><path d="M440 40 V16 H110 V48"/><text x="275" y="11" text-anchor="middle" class="t-e">Web Push khi app đóng</text></g>
+            <g class="edge flowable" data-f="report crisis"><path d="M380 560 H110 V458"/><text x="245" y="552" text-anchor="middle" class="t-e">gửi tin qua Zalo Bot API</text></g>
+            <g class="edge bi flowable" data-f="chat night nudge report crisis"><path d="M622 120 H668"/><text x="645" y="110" text-anchor="middle" class="t-e">việc</text></g>
+            <g class="edge flowable" data-f="chat night nudge report crisis"><path d="M850 80 H878"/></g>
+            <g class="edge flowable" data-f="chat night nudge report crisis"><path d="M935 130 V168"/></g>
+            <g class="edge flowable" data-f="chat"><path d="M622 350 H668"/></g>
+            <g class="edge bi flowable" data-f="chat night report"><path d="M622 450 H668"/></g>
+            <g class="edge bi flowable" data-f="night nudge crisis"><path d="M622 545 H668"/></g>
+
+            <!-- clients -->
+            <g class="flowable" data-f="chat nudge crisis">
+              <rect class="box client" x="20" y="50" width="180" height="72" rx="10"/>
+              <text x="34" y="74" class="t-h">Web app</text>
+              <text x="34" y="93" class="t-b">Next.js, máy tính và điện thoại</text>
+              <text x="34" y="109" class="t-b">chat, workspace, cài đặt</text>
+            </g>
+            <g class="flowable" data-f="chat nudge">
+              <rect class="box client" x="20" y="138" width="180" height="84" rx="10"/>
+              <text x="34" y="162" class="t-h">App máy tính</text>
+              <text x="34" y="181" class="t-b">Tauri: Windows .exe,</text>
+              <text x="34" y="197" class="t-b">Linux .deb / .AppImage</text>
+              <text x="34" y="213" class="t-b">bong bóng Mầm, bóng thoại</text>
+            </g>
+            <g class="flowable" data-f="">
+              <rect class="box client" x="20" y="296" width="180" height="64" rx="10"/>
+              <text x="34" y="320" class="t-h">Email chuyển tiếp</text>
+              <text x="34" y="339" class="t-b">Cloudflare Email Worker</text>
+            </g>
+            <g class="flowable" data-f="report crisis">
+              <rect class="box parent" x="20" y="384" width="180" height="74" rx="10"/>
+              <text x="34" y="408" class="t-h">Phụ huynh (Zalo)</text>
+              <text x="34" y="427" class="t-b">liên kết, báo cáo,</text>
+              <text x="34" y="443" class="t-b">cảnh báo khủng hoảng</text>
+            </g>
+
+            <!-- caddy -->
+            <g class="flowable" data-f="chat nudge crisis">
+              <rect class="box" x="240" y="40" width="72" height="430" rx="10"/>
+              <text x="276" y="200" text-anchor="middle" class="t-h">Caddy</text>
+              <text x="276" y="219" text-anchor="middle" class="t-b">HTTPS</text>
+              <text x="276" y="235" text-anchor="middle" class="t-b">cổng 443</text>
+            </g>
+
+            <!-- gateway -->
+            <g class="flowable" data-f="chat night nudge report crisis">
+              <rect class="box gw" x="380" y="40" width="242" height="490" rx="12"/>
+              <text x="396" y="66" class="t-h">Gateway (FastAPI)</text>
+              <rect class="box mod" x="394" y="80" width="214" height="40" rx="7"/><text x="406" y="97" class="t-m">Đăng nhập</text><text x="406" y="112" class="t-e">link hoặc mã 6 số qua email</text>
+              <rect class="box mod" x="394" y="128" width="214" height="40" rx="7"/><text x="406" y="145" class="t-m">Chat WebSocket</text><text x="406" y="160" class="t-e">luồng chữ, thẻ, gợi ý trả lời</text>
+              <rect class="box mod" x="394" y="176" width="214" height="40" rx="7"/><text x="406" y="193" class="t-m">Workspace API</text><text x="406" y="208" class="t-e">đọc, sửa file, tải lên, xuất dữ liệu</text>
+              <rect class="box mod" x="394" y="224" width="214" height="40" rx="7"/><text x="406" y="241" class="t-m">Lịch routine</text><text x="406" y="256" class="t-e">chạy job đúng giờ</text>
+              <rect class="box mod" x="394" y="272" width="214" height="40" rx="7"/><text x="406" y="289" class="t-m">Nhắc nhở</text><text x="406" y="304" class="t-e">giờ yên lặng, mức chủ động</text>
+              <rect class="box mod" x="394" y="320" width="214" height="40" rx="7"/><text x="406" y="337" class="t-m">Cổng ra ngoài</text><text x="406" y="352" class="t-e">tìm web, tải trang</text>
+              <rect class="box mod" x="394" y="368" width="214" height="40" rx="7"/><text x="406" y="385" class="t-m">Kênh phụ huynh</text><text x="406" y="400" class="t-e">xác minh Zalo, báo cáo, cảnh báo</text>
+              <rect class="box mod" x="394" y="416" width="214" height="40" rx="7"/><text x="406" y="433" class="t-m">Đồng bộ git</text><text x="406" y="448" class="t-e">mirror từng học sinh, lịch sử</text>
+              <rect class="box mod" x="394" y="464" width="214" height="40" rx="7"/><text x="406" y="481" class="t-m">Sao lưu</text><text x="406" y="496" class="t-e">mã hoá, mỗi ngày 02:00</text>
+            </g>
+
+            <!-- sandboxes -->
+            <g class="flowable" data-f="chat night nudge report crisis">
+              <rect class="box sb-shadow" x="686" y="56" width="164" height="200" rx="10"/>
+              <rect class="box sb-shadow" x="678" y="48" width="164" height="200" rx="10"/>
+              <rect class="box sb" x="670" y="40" width="164" height="200" rx="10"/>
+              <text x="684" y="64" class="t-h">Sandbox học sinh</text>
+              <text x="684" y="84" class="t-b">1 container / người</text>
+              <text x="684" y="106" class="t-m">Harness</text>
+              <text x="684" y="122" class="t-e">vòng lặp agent, ≤12 vòng</text>
+              <text x="684" y="144" class="t-m">~30 công cụ</text>
+              <text x="684" y="160" class="t-e">file, ảnh, thẻ, nhắc</text>
+              <text x="684" y="182" class="t-m">Script</text>
+              <text x="684" y="198" class="t-e">SymPy, BKT, báo cáo</text>
+              <text x="684" y="222" class="t-e">ngủ sau 15 phút rảnh</text>
+            </g>
+
+            <!-- models -->
+            <g class="flowable" data-f="chat night nudge report crisis">
+              <rect class="box model" x="880" y="40" width="110" height="90" rx="10"/>
+              <text x="892" y="64" class="t-h">LiteLLM</text>
+              <text x="892" y="83" class="t-b">alias, dự phòng,</text>
+              <text x="892" y="99" class="t-b">timeout 60 s,</text>
+              <text x="892" y="115" class="t-b">key riêng</text>
+              <rect class="box model" x="880" y="170" width="110" height="112" rx="10"/>
+              <text x="892" y="194" class="t-h">FPT AI</text>
+              <text x="892" y="213" class="t-b">DeepSeek-V4.1-</text>
+              <text x="892" y="229" class="t-b">Flash: chat, ảnh</text>
+              <text x="892" y="250" class="t-b">Qwen3.8-27B:</text>
+              <text x="892" y="266" class="t-b">dự phòng, an toàn</text>
+            </g>
+
+            <!-- outside services, storage -->
+            <g class="flowable" data-f="chat">
+              <rect class="box" x="670" y="312" width="320" height="76" rx="10"/>
+              <text x="684" y="336" class="t-h">Dịch vụ ngoài</text>
+              <text x="684" y="355" class="t-b">SearXNG: tìm web, tự chạy trên VM</text>
+              <text x="684" y="371" class="t-b">Gmail SMTP: thư đăng nhập</text>
+            </g>
+            <g class="flowable" data-f="chat night report">
+              <rect class="box" x="670" y="420" width="320" height="60" rx="10"/>
+              <text x="684" y="444" class="t-h">Mirror git</text>
+              <text x="684" y="463" class="t-b">1 repo / học sinh: nguồn sự thật của trí nhớ</text>
+            </g>
+            <g class="flowable" data-f="night nudge crisis">
+              <rect class="box" x="670" y="512" width="320" height="66" rx="10"/>
+              <text x="684" y="536" class="t-h">ops.db (SQLite)</text>
+              <text x="684" y="555" class="t-b">tài khoản, thông báo, job, nhật ký kiểm toán;</text>
+              <text x="684" y="571" class="t-b">cột nhạy cảm được mã hoá</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Sandbox không có đường ra internet riêng: mọi lệnh tìm web, tải trang đều đi qua gateway, nơi chặn địa chỉ nội bộ và giới hạn kích thước. Chỉ model-router giữ key FPT.</figcaption>
+      </figure>
+      <p class="flow-title" id="flow-title">Một lượt chat</p>
+      <ol class="flow-steps" id="flow-steps">
+        <li>Học sinh gõ tin trên web hoặc app máy tính. Tin đi qua Caddy (HTTPS) vào gateway bằng WebSocket.</li>
+        <li>Gateway chuyển lượt cho sandbox của học sinh. Sandbox đã được đánh thức sẵn lúc học sinh mở khung chat.</li>
+        <li>Harness nạp ngữ cảnh: AGENTS.md, danh mục skill, hồ sơ, mục tiêu, kế hoạch tuần, 3 nhật ký gần nhất, danh sách file.</li>
+        <li>Model DeepSeek-V4.1-Flash (qua LiteLLM) suy nghĩ và gọi công cụ, tối đa 12 vòng: đọc, sửa file, kiểm bằng SymPy, đọc ảnh bài làm, tìm web qua gateway.</li>
+        <li>Câu trả lời chạy về từng đoạn, kèm thẻ (hỏi nhanh, bấm giờ tập trung), nút gợi ý trả lời và biểu cảm của Mầm.</li>
+        <li>File đã sửa được commit và đẩy về mirror git; bản ghi hội thoại lưu vào <code>sessions/</code>.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= Công nghệ ================= -->
+  <section id="cong-nghe">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Công nghệ</p>
+        <h2>Các thành phần</h2>
+      </div>
+      <div class="panel scroll-x">
+        <table class="stack">
+          <thead><tr><th>Phần</th><th>Công nghệ</th><th>Ghi chú</th></tr></thead>
+          <tbody>
+            <tr><td>Web app</td><td>Next.js 16, React 19</td><td>Chạy trên trình duyệt máy tính và điện thoại; có Web Push.</td></tr>
+            <tr><td>App máy tính</td><td>Tauri 2 (Rust + WebView)</td><td>Windows (.exe), Linux (.deb, .AppImage). Bong bóng Mầm, bóng thoại, thông báo hệ thống.</td></tr>
+            <tr><td>Gateway</td><td>Python, FastAPI, uvicorn</td><td>Đăng nhập, chat, lịch, nhắc nhở, kênh phụ huynh, cổng ra ngoài, sao lưu.</td></tr>
+            <tr><td>Agent</td><td>Harness tự viết, function calling chuẩn OpenAI</td><td>Không dùng framework agent. Tối đa 12 vòng công cụ mỗi lượt; công cụ chỉ đọc chạy song song.</td></tr>
+            <tr><td>Model</td><td>LiteLLM → FPT AI Factory</td><td>DeepSeek-V4.1-Flash cho chat, ảnh, suy luận; Qwen3.8-27B dự phòng và kiểm tra an toàn.</td></tr>
+            <tr><td>Trí nhớ</td><td>Markdown + git, SQLite</td><td>Một repo cho mỗi học sinh; ops.db cho tài khoản, thông báo, job.</td></tr>
+            <tr><td>Kiểm chứng</td><td>SymPy, BKT, pypdf, pypdfium2</td><td>Chấm Toán, mức thành thạo theo từng kỹ năng, đọc PDF.</td></tr>
+            <tr><td>Tìm kiếm</td><td>SearXNG</td><td>Tìm lịch thi, quy chế tuyển sinh; truy vấn không chứa dữ liệu cá nhân của học sinh.</td></tr>
+            <tr><td>Kênh ngoài</td><td>Zalo Bot API, Gmail SMTP</td><td>Liên kết và báo cáo phụ huynh, thư đăng nhập.</td></tr>
+            <tr><td>Triển khai</td><td>Docker Compose, Caddy, 1 VM Linux</td><td>Mỗi sandbox giới hạn 1 GB RAM, 1 CPU; sao lưu mã hoá hằng ngày.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Mentor · dự án nghiên cứu phi thương mại. Tài liệu mô tả trạng thái mã nguồn ngày 06/11/2026.</div>
+</footer>
+
+<script>
+(function () {
+  /* ---------- scaffold stepper ---------- */
+  var STEPS = {
+    1: { thpt: "Em đã làm tới đâu rồi? Gửi mình các bước nhé.",
+         hints: 0,
+         when: "Luôn bắt đầu ở đây. Học sinh đã gửi bài làm thì bỏ qua bậc này.",
+         not: "Không đưa cách làm, không đưa đáp án." },
+    2: { thpt: "Bài này hỏi giá trị nhỏ nhất của hàm bậc hai. Điểm nào của parabol cho giá trị đó?",
+         hints: 1,
+         when: "Học sinh đã thử nhưng chưa biết hướng đi.",
+         not: "Chỉ hướng đi, không nói cách làm." },
+    3: { thpt: "Bước 2 em tính −b/2a. Kiểm tra lại dấu của b nhé.",
+         hints: 2,
+         when: "Đã có hướng nhưng làm sai ở một bước cụ thể. Mentor tìm bước sai bằng sympy_check.",
+         not: "Chỉ đúng chỗ sai, chưa sửa hộ." },
+    4: { thpt: "Mình làm mẫu bài y = x² − 6x + 5 nhé (khác số). Xong em làm lại bài gốc.",
+         hints: 3,
+         when: "Gợi ý chỉ lỗi vẫn chưa đủ.",
+         not: "Không giải bài gốc; người học tự làm lại." },
+    5: { thpt: "Cách làm bài gốc: đỉnh parabol tại x = −b/2a… Giờ em thử bài tương tự này.",
+         hints: 4,
+         when: "Đã thử thật sự mà vẫn kẹt, hỏi khái niệm, rất mệt hoặc sắp thi.",
+         not: "Không dừng ở lời giải: luôn kèm một bài tự làm." }
+  };
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".steps button"));
+  var view = document.getElementById("step-view");
+  function showStep(n, focus) {
+    var s = STEPS[n];
+    tabs.forEach(function (b) {
+      var on = b.getAttribute("data-step") === String(n);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
+      if (on) { view.setAttribute("aria-labelledby", b.id); if (focus) b.focus(); }
+    });
+    document.getElementById("sv-thpt").textContent = s.thpt;
+    document.getElementById("sv-when").textContent = s.when;
+    document.getElementById("sv-not").textContent = s.not;
+    document.getElementById("sv-count").textContent = "hint_count = " + s.hints;
+    var mode = document.getElementById("sv-mode");
+    mode.textContent = s.hints ? "guided" : "independent";
+    mode.className = "mode " + (s.hints ? "guided" : "indep");
+    var pips = document.querySelectorAll("#sv-pips i");
+    for (var i = 0; i < pips.length; i++) pips[i].className = i < s.hints ? "on" : "";
+  }
+  tabs.forEach(function (b, i) {
+    b.addEventListener("click", function () { showStep(+b.getAttribute("data-step")); });
+    b.addEventListener("keydown", function (e) {
+      var d = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowUp") ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      showStep(((i + d + tabs.length) % tabs.length) + 1, true);
+    });
+  });
+
+  /* ---------- architecture flows ---------- */
+  var FLOWS = {
+    chat: { title: "Một lượt chat", steps: [
+      "Học sinh gõ tin trên web hoặc app máy tính. Tin đi qua Caddy (HTTPS) vào gateway bằng WebSocket.",
+      "Gateway chuyển lượt cho sandbox của học sinh. Sandbox đã được đánh thức sẵn lúc học sinh mở khung chat.",
+      "Harness nạp ngữ cảnh: AGENTS.md, danh mục skill, hồ sơ, mục tiêu, kế hoạch tuần, 3 nhật ký gần nhất, danh sách file.",
+      "Model DeepSeek-V4.1-Flash (qua LiteLLM) suy nghĩ và gọi công cụ, tối đa 12 vòng: đọc, sửa file, kiểm bằng SymPy, đọc ảnh bài làm, tìm web qua gateway.",
+      "Câu trả lời chạy về từng đoạn, kèm thẻ (hỏi nhanh, bấm giờ tập trung), nút gợi ý trả lời và biểu cảm của Mầm.",
+      "File đã sửa được commit và đẩy về mirror git; bản ghi hội thoại lưu vào <code>sessions/</code>." ] },
+    night: { title: "Tổng hợp ban đêm (23:30)", steps: [
+      "Lịch routine trong gateway mở job <code>nightly_reflection</code> cho từng học sinh. Không có ai chat, không gửi lời nhắc nào vì đang giờ yên lặng.",
+      "Sandbox dùng model ở chế độ suy luận, đọc bản ghi chat và bằng chứng học tập trong ngày.",
+      "Viết nhật ký <code>me/journal/</code>, gộp trí nhớ, bỏ nhãn [suy luận] với điều đã được xác nhận nhiều lần.",
+      "Ghi một mức cảm xúc cho cả ngày, rồi chạy BKT để cập nhật mức thành thạo và lịch ôn.",
+      "Sửa kế hoạch tuần, hẹn việc cho ngày mai. Thay đổi commit về mirror git; trạng thái job lưu ở ops.db." ] },
+    nudge: { title: "Lời nhắc", steps: [
+      "Đến giờ routine (07:30 check-in, 20:30 ôn đến hạn…), gateway kiểm tra mức chủ động, giờ yên lặng và khoá 24 giờ sau khủng hoảng.",
+      "Job chạy trong sandbox; mentor gọi <code>notify_user</code> với tiêu đề, nội dung, tối đa 3 nút và biểu cảm của Mầm. Riêng nhắc ôn đến hạn thì gateway tự làm, không gọi model.",
+      "Gateway gộp lời nhắc trùng, lưu vào ops.db.",
+      "Đang mở chat: lời nhắc đi qua WebSocket, app máy tính hiện bóng thoại cạnh Mầm. Đã đóng app: Web Push hoặc thông báo hệ thống.",
+      "Học sinh bấm nút (Hoãn 1 giờ, Xong rồi, Bắt đầu tập trung); hành động về gateway và có thể mở một lượt chat tiếp nối." ] },
+    report: { title: "Báo cáo phụ huynh (2 tuần/lần)", steps: [
+      "Thứ Sáu 19:00 job <code>parent_report</code> chạy; chỉ làm tiếp khi đã đủ 2 tuần kể từ báo cáo trước.",
+      "Mentor chỉ đọc dữ liệu có cấu trúc: mốc mục tiêu, số ngày có học, mức thành thạo theo chủ đề. Không đọc nội dung chat hay nhật ký.",
+      "Bản nháp ghi vào <code>.mentor/report-drafts/</code> (học sinh chưa thấy), qua script <code>check_report</code> lọc từ ngữ không được dùng.",
+      "Gateway gửi báo cáo tới phụ huynh đã xác minh qua Zalo bot.",
+      "Gửi xong, báo cáo chuyển sang <code>reports/</code> để học sinh cũng đọc được đúng bản phụ huynh nhận." ] },
+    crisis: { title: "Cảnh báo khủng hoảng", steps: [
+      "Trong lúc chat, học sinh nói điều cho thấy nguy cơ. Mentor dừng việc học, đưa Tổng đài 111 và 113/115.",
+      "Mentor gọi <code>flag_crisis</code> với loại nguy cơ và một câu mô tả khách quan.",
+      "Harness nhờ model an toàn thứ hai (Qwen) đọc lại đoạn hội thoại gần nhất để xác nhận.",
+      "Đã xác nhận: gateway gửi phụ huynh tin Zalo theo mẫu cố định, không kèm lời học sinh, và ghi nhật ký kiểm toán.",
+      "Gateway khoá 24 giờ: không ăn mừng, không thẻ vui, không lời nhắc thường. Mầm ở dáng điềm tĩnh." ] },
+    "": { title: "Toàn bộ hệ thống", steps: [
+      "Chọn một luồng ở trên để xem nó đi qua những thành phần nào." ] }
+  };
+  var arch = document.getElementById("arch");
+  var wrap = document.querySelector(".arch-wrap");
+  var btns = Array.prototype.slice.call(document.querySelectorAll(".flows button"));
+  function showFlow(k) {
+    var f = FLOWS[k];
+    if (k) { arch.setAttribute("data-flow", k); wrap.setAttribute("data-flow", k); }
+    else { arch.removeAttribute("data-flow"); wrap.removeAttribute("data-flow"); }
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-flow") === k ? "true" : "false"); });
+    document.getElementById("flow-title").textContent = f.title;
+    document.getElementById("flow-steps").innerHTML = f.steps.map(function (s) { return "<li>" + s + "</li>"; }).join("");
+  }
+  btns.forEach(function (b) { b.addEventListener("click", function () { showFlow(b.getAttribute("data-flow")); }); });
+})();
+</script>
+</body>
+</html>

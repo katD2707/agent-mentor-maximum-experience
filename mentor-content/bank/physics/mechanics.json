@@ -1,0 +1,1270 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "phys.mechanics.001",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Theo định luật III Newton, lực và phản lực",
+      "options": [
+        {
+          "id": "A",
+          "text": "có cùng độ lớn, cùng giá, ngược chiều và đặt vào hai vật khác nhau."
+        },
+        {
+          "id": "B",
+          "text": "có cùng độ lớn, ngược chiều và đặt vào cùng một vật nên chúng cân bằng nhau."
+        },
+        {
+          "id": "C",
+          "text": "có độ lớn khác nhau, vật nào có khối lượng lớn hơn thì chịu lực lớn hơn."
+        },
+        {
+          "id": "D",
+          "text": "luôn xuất hiện lần lượt, phản lực xuất hiện sau lực một khoảng thời gian rất ngắn."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Khi vật A tác dụng lực lên vật B thì vật B tác dụng ngược lại lên vật nào?",
+      "explanation": "Định luật III Newton: khi vật A tác dụng lên vật B một lực thì vật B cũng tác dụng lên vật A một lực. Hai lực này cùng giá, cùng độ lớn, ngược chiều, xuất hiện và mất đi đồng thời, và đặt vào hai vật khác nhau nên không cân bằng nhau. Chọn A.",
+      "tip": "Lực và phản lực đặt vào HAI vật khác nhau, nên không bao giờ triệt tiêu nhau.",
+      "option_feedback": {
+        "B": "Lực và phản lực đặt vào hai vật khác nhau, nên không thể là hai lực cân bằng.",
+        "D": "Lực và phản lực xuất hiện và mất đi đồng thời."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "newton-laws"
+      ],
+      "skill_ids": [
+        "physics.mechanics.newton_laws"
+      ]
+    },
+    {
+      "id": "phys.mechanics.002",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một con lắc đơn có chiều dài dây treo $l$, dao động điều hòa với biên độ góc nhỏ tại nơi có gia tốc trọng trường $g$. Chu kì dao động của con lắc là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$T = 2\\pi\\sqrt{\\dfrac{g}{l}}$"
+        },
+        {
+          "id": "B",
+          "text": "$T = \\dfrac{1}{2\\pi}\\sqrt{\\dfrac{g}{l}}$"
+        },
+        {
+          "id": "C",
+          "text": "$T = \\pi\\sqrt{\\dfrac{l}{g}}$"
+        },
+        {
+          "id": "D",
+          "text": "$T = 2\\pi\\sqrt{\\dfrac{l}{g}}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Nhớ lại tần số góc $\\omega$ của con lắc đơn và liên hệ $T = \\dfrac{2\\pi}{\\omega}$.",
+      "explanation": "Con lắc đơn dao động nhỏ có tần số góc $\\omega = \\sqrt{\\dfrac{g}{l}}$, nên chu kì $T = \\dfrac{2\\pi}{\\omega} = 2\\pi\\sqrt{\\dfrac{l}{g}}$. Kiểm tra: $\\dfrac{l}{g}$ có đơn vị $\\dfrac{\\text{m}}{\\text{m/s}^2} = \\text{s}^2$. Chọn D.",
+      "tip": "Dây dài thì chu kì lớn: l nằm ở tử số dưới dấu căn của T.",
+      "option_feedback": {
+        "A": "Đây là nghịch đảo của biểu thức dưới căn; $\\sqrt{\\dfrac{g}{l}}$ là tần số góc $\\omega$, không phải chu kì.",
+        "B": "Đây là công thức tần số f của con lắc đơn, không phải chu kì."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.1,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.1,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.1,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "pendulum"
+      ],
+      "skill_ids": [
+        "physics.oscillation.pendulum_spring"
+      ]
+    },
+    {
+      "id": "phys.mechanics.003",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một vật nhỏ nằm yên trên mặt phẳng nghiêng góc $30^\\circ$ so với phương ngang (hình vẽ). Các lực tác dụng lên vật gồm trọng lực $\\vec{P}$, phản lực $\\vec{N}$ của mặt phẳng nghiêng và lực ma sát $\\vec{F}_{ms}$. Lực giữ cho vật không trượt xuống dọc theo mặt phẳng nghiêng là",
+      "options": [
+        {
+          "id": "A",
+          "text": "phản lực $\\vec{N}$."
+        },
+        {
+          "id": "B",
+          "text": "trọng lực $\\vec{P}$."
+        },
+        {
+          "id": "C",
+          "text": "lực ma sát nghỉ $\\vec{F}_{ms}$."
+        },
+        {
+          "id": "D",
+          "text": "hợp lực của $\\vec{P}$ và $\\vec{N}$."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Xét các lực theo phương song song với mặt phẳng nghiêng: lực nào kéo vật xuống, lực nào hướng lên dốc?",
+      "explanation": "Theo phương vuông góc với mặt nghiêng, $\\vec{N}$ cân bằng với thành phần $P\\cos 30^\\circ$. Theo phương song song mặt nghiêng, thành phần $P\\sin 30^\\circ$ có xu hướng kéo vật trượt xuống; lực cân bằng với nó là lực ma sát nghỉ $\\vec{F}_{ms}$ hướng lên dọc mặt nghiêng, với $F_{ms} = P\\sin 30^\\circ$. Chọn C.",
+      "tip": "Phản lực N luôn vuông góc với mặt tiếp xúc nên không có thành phần dọc theo mặt nghiêng.",
+      "option_feedback": {
+        "A": "Phản lực N vuông góc với mặt nghiêng, không có thành phần dọc theo mặt nghiêng.",
+        "D": "Hợp lực của P và N hướng xuống dọc mặt nghiêng — chính là lực làm vật có xu hướng trượt xuống."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.2,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.2,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.25,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.2,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Vật nằm yên trên mặt phẳng nghiêng góc 30 độ; trọng lực P hướng thẳng xuống, phản lực N vuông góc với mặt nghiêng hướng ra ngoài, lực ma sát F_ms hướng lên dọc mặt nghiêng.",
+          "diagram": {
+            "kind": "force_diagram",
+            "body": "box",
+            "incline_deg": 30.0,
+            "forces": [
+              {
+                "label": "P",
+                "angle_deg": 270.0,
+                "magnitude": 1.0
+              },
+              {
+                "label": "N",
+                "angle_deg": 120.0,
+                "magnitude": 0.87
+              },
+              {
+                "label": "F_ms",
+                "angle_deg": 30.0,
+                "magnitude": 0.5
+              }
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inclined-plane",
+        "static-friction"
+      ],
+      "skill_ids": [
+        "physics.mechanics.newton_laws"
+      ]
+    },
+    {
+      "id": "phys.mechanics.004",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một vật có khối lượng 2 kg được thả rơi tự do (không vận tốc đầu) từ độ cao 5 m so với mặt đất. Bỏ qua sức cản của không khí, lấy g = 10 m/s². Khi vật ở độ cao 2 m so với mặt đất, động năng của vật bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$40\\ \\text{J}$"
+        },
+        {
+          "id": "B",
+          "text": "$60\\ \\text{J}$"
+        },
+        {
+          "id": "C",
+          "text": "$100\\ \\text{J}$"
+        },
+        {
+          "id": "D",
+          "text": "$30\\ \\text{J}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Cơ năng được bảo toàn. Động năng tăng thêm bằng phần thế năng đã mất khi vật rơi xuống.",
+      "explanation": "Chọn mốc thế năng tại mặt đất. Cơ năng ban đầu: $W = mgh_0 = 2 \\cdot 10 \\cdot 5 = 100\\ \\text{J}$. Tại độ cao $h = 2\\ \\text{m}$: thế năng $W_t = mgh = 2 \\cdot 10 \\cdot 2 = 40\\ \\text{J}$. Động năng: $W_d = W - W_t = 100 - 40 = 60\\ \\text{J}$ (tương đương $mg(h_0 - h)$). Chọn B.",
+      "tip": "Động năng thu được khi rơi tự do = mg × quãng đường đã rơi, không phụ thuộc vào mốc thế năng.",
+      "option_feedback": {
+        "A": "Đây là thế năng của vật tại độ cao 2 m, không phải động năng.",
+        "C": "Đây là cơ năng toàn phần (bằng động năng khi chạm đất).",
+        "D": "Đã nhân thêm hệ số $\\dfrac{1}{2}$ vào công của trọng lực."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.3,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.32,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "energy-conservation"
+      ],
+      "skill_ids": [
+        "physics.mechanics.work_energy"
+      ]
+    },
+    {
+      "id": "phys.mechanics.005",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một xe lăn khối lượng 2 kg đang chuyển động với tốc độ 3 m/s trên mặt phẳng ngang nhẵn thì va chạm với một xe lăn khác có khối lượng 1 kg đang đứng yên. Sau va chạm, hai xe dính vào nhau và chuyển động cùng vận tốc. Tốc độ của hai xe ngay sau va chạm là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2\\ \\text{m/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$3\\ \\text{m/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$1{,}5\\ \\text{m/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$6\\ \\text{m/s}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Hệ hai xe là hệ kín theo phương ngang. Đại lượng nào được bảo toàn trong va chạm mềm?",
+      "explanation": "Động lượng của hệ được bảo toàn: $m_1 v_1 = (m_1 + m_2)V$, suy ra $V = \\dfrac{m_1 v_1}{m_1 + m_2} = \\dfrac{2 \\cdot 3}{2 + 1} = 2\\ \\text{m/s}$. Chọn A.",
+      "tip": "Va chạm mềm (hai vật dính nhau) chỉ bảo toàn động lượng, động năng thì bị giảm.",
+      "option_feedback": {
+        "B": "Sau va chạm khối lượng chuyển động tăng lên nên tốc độ phải giảm.",
+        "D": "Đây là động lượng của hệ ($6\\ \\text{kg m/s}$), chưa chia cho tổng khối lượng."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.32,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.32,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "momentum",
+        "inelastic-collision"
+      ],
+      "skill_ids": [
+        "physics.mechanics.momentum"
+      ]
+    },
+    {
+      "id": "phys.mechanics.006",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một con lắc lò xo gồm vật nhỏ khối lượng 100 g gắn vào lò xo nhẹ có độ cứng 40 N/m, dao động điều hòa. Chu kì dao động của con lắc xấp xỉ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$9{,}93\\ \\text{s}$"
+        },
+        {
+          "id": "B",
+          "text": "$3{,}18\\ \\text{s}$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}05\\ \\text{s}$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}31\\ \\text{s}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Dùng $T = 2\\pi\\sqrt{\\dfrac{m}{k}}$ và nhớ đổi khối lượng sang kilôgam.",
+      "explanation": "Đổi $m = 100\\ \\text{g} = 0{,}1\\ \\text{kg}$. Chu kì: $T = 2\\pi\\sqrt{\\dfrac{m}{k}} = 2\\pi\\sqrt{\\dfrac{0{,}1}{40}} = 2\\pi \\cdot 0{,}05 = 0{,}1\\pi \\approx 0{,}31\\ \\text{s}$. Chọn D.",
+      "tip": "Chu kì con lắc lò xo chỉ phụ thuộc m và k, không phụ thuộc biên độ.",
+      "option_feedback": {
+        "A": "Quên đổi 100 g sang 0,1 kg.",
+        "B": "Đây là tần số $f = \\dfrac{1}{T} \\approx 3{,}18\\ \\text{Hz}$, không phải chu kì.",
+        "C": "Quên nhân với $2\\pi$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.33,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "spring-oscillator"
+      ],
+      "skill_ids": [
+        "physics.oscillation.pendulum_spring"
+      ]
+    },
+    {
+      "id": "phys.mechanics.007",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một vật nhỏ trượt xuống trên mặt phẳng nghiêng góc $\\alpha = 30^\\circ$ so với phương ngang (hình vẽ). Hệ số ma sát trượt giữa vật và mặt phẳng nghiêng là $\\mu = 0{,}2$. Lấy g = 10 m/s². Độ lớn gia tốc của vật là (làm tròn đến hai chữ số thập phân)",
+      "options": [
+        {
+          "id": "A",
+          "text": "$5{,}00\\ \\text{m/s}^2$"
+        },
+        {
+          "id": "B",
+          "text": "$3{,}27\\ \\text{m/s}^2$"
+        },
+        {
+          "id": "C",
+          "text": "$6{,}73\\ \\text{m/s}^2$"
+        },
+        {
+          "id": "D",
+          "text": "$4{,}00\\ \\text{m/s}^2$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Chiếu định luật II Newton lên phương song song và phương vuông góc với mặt nghiêng. Lực ma sát trượt bằng μ nhân với độ lớn phản lực N.",
+      "explanation": "Theo phương vuông góc mặt nghiêng: $N = mg\\cos\\alpha$, nên $F_{ms} = \\mu mg\\cos\\alpha$. Theo phương dọc mặt nghiêng (chiều dương hướng xuống): $mg\\sin\\alpha - \\mu mg\\cos\\alpha = ma$. Suy ra $a = g(\\sin\\alpha - \\mu\\cos\\alpha) = 10(0{,}5 - 0{,}2 \\cdot 0{,}866) \\approx 3{,}27\\ \\text{m/s}^2$. Chọn B.",
+      "tip": "Vật trượt xuống thì ma sát hướng lên dốc: a = g(sin α − μ cos α); vật trượt lên thì dấu cộng.",
+      "option_feedback": {
+        "A": "Đã bỏ qua lực ma sát.",
+        "C": "Lấy dấu cộng cho ma sát — chỉ đúng khi vật đang trượt lên dốc.",
+        "D": "Đã tính ma sát theo $\\mu mg\\sin\\alpha$ thay vì $\\mu mg\\cos\\alpha$."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.56,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.56,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.48,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 100,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Vật trượt xuống trên mặt phẳng nghiêng góc 30 độ; trọng lực P hướng thẳng xuống, phản lực N vuông góc mặt nghiêng, lực ma sát trượt F_ms hướng lên dọc mặt nghiêng (ngược chiều chuyển động).",
+          "diagram": {
+            "kind": "force_diagram",
+            "body": "box",
+            "incline_deg": 30.0,
+            "forces": [
+              {
+                "label": "P",
+                "angle_deg": 270.0,
+                "magnitude": 1.0
+              },
+              {
+                "label": "N",
+                "angle_deg": 120.0,
+                "magnitude": 0.87
+              },
+              {
+                "label": "F_ms",
+                "angle_deg": 30.0,
+                "magnitude": 0.17
+              }
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inclined-plane",
+        "kinetic-friction",
+        "newton-laws"
+      ],
+      "skill_ids": [
+        "physics.mechanics.newton_laws"
+      ]
+    },
+    {
+      "id": "phys.mechanics.008",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một con lắc lò xo nằm ngang có lò xo độ cứng 100 N/m, dao động điều hòa với biên độ 4 cm. Chọn mốc thế năng tại vị trí cân bằng. Khi vật cách vị trí cân bằng 2 cm thì động năng của vật bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}08\\ \\text{J}$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}02\\ \\text{J}$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}06\\ \\text{J}$"
+        },
+        {
+          "id": "D",
+          "text": "$600\\ \\text{J}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Cơ năng của con lắc lò xo bằng thế năng cực đại ở biên. Động năng tại li độ x bằng cơ năng trừ thế năng tại x.",
+      "explanation": "Đổi $A = 0{,}04\\ \\text{m}$, $x = 0{,}02\\ \\text{m}$. Cơ năng: $W = \\dfrac{1}{2}kA^2 = \\dfrac{1}{2} \\cdot 100 \\cdot 0{,}04^2 = 0{,}08\\ \\text{J}$. Thế năng tại $x$: $W_t = \\dfrac{1}{2}kx^2 = \\dfrac{1}{2} \\cdot 100 \\cdot 0{,}02^2 = 0{,}02\\ \\text{J}$. Động năng: $W_d = W - W_t = 0{,}06\\ \\text{J}$. Chọn C.",
+      "tip": "Khi $x = \\dfrac{A}{2}$ thì $W_t = \\dfrac{W}{4}$ và $W_d = \\dfrac{3W}{4}$ — có thể kiểm tra nhanh kết quả.",
+      "option_feedback": {
+        "A": "Đây là cơ năng toàn phần, không phải động năng tại x = 2 cm.",
+        "B": "Đây là thế năng tại x = 2 cm.",
+        "D": "Quên đổi cm sang m."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.5,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.55,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.52,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 100,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "shm-energy"
+      ],
+      "skill_ids": [
+        "physics.oscillation.pendulum_spring",
+        "physics.mechanics.work_energy"
+      ]
+    },
+    {
+      "id": "phys.mechanics.009",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một vật khối lượng 5 kg đặt tại chân một mặt phẳng nghiêng góc $\\alpha = 30^\\circ$ so với phương ngang. Kéo vật bằng lực $\\vec{F}$ không đổi, song song với mặt phẳng nghiêng và hướng lên trên (hình vẽ). Hệ số ma sát trượt giữa vật và mặt phẳng nghiêng là 0,1. Vật bắt đầu chuyển động từ trạng thái nghỉ và sau 2 s đi được 2 m dọc theo mặt phẳng nghiêng. Lấy g = 10 m/s². Độ lớn của lực F xấp xỉ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$34{,}3\\ \\text{N}$"
+        },
+        {
+          "id": "B",
+          "text": "$25{,}7\\ \\text{N}$"
+        },
+        {
+          "id": "C",
+          "text": "$29{,}3\\ \\text{N}$"
+        },
+        {
+          "id": "D",
+          "text": "$31{,}8\\ \\text{N}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Trước hết tìm gia tốc từ dữ kiện chuyển động nhanh dần đều từ nghỉ. Sau đó viết định luật II Newton theo phương mặt nghiêng, chú ý chiều của lực ma sát khi vật đi lên.",
+      "explanation": "Vật chuyển động nhanh dần đều từ nghỉ: $s = \\dfrac{1}{2}at^2 \\Rightarrow a = \\dfrac{2s}{t^2} = \\dfrac{2 \\cdot 2}{2^2} = 1\\ \\text{m/s}^2$. Vật đi lên nên lực ma sát hướng xuống dọc mặt nghiêng, $F_{ms} = \\mu mg\\cos\\alpha = 0{,}1 \\cdot 5 \\cdot 10 \\cdot 0{,}866 \\approx 4{,}33\\ \\text{N}$. Thành phần trọng lực dọc mặt nghiêng: $mg\\sin\\alpha = 25\\ \\text{N}$. Định luật II Newton (chiều dương hướng lên dốc): $F - mg\\sin\\alpha - F_{ms} = ma$ nên $F = 5 \\cdot 1 + 25 + 4{,}33 \\approx 34{,}3\\ \\text{N}$. Chọn A.",
+      "tip": "Bài động lực học có dữ kiện quãng đường – thời gian: luôn tìm gia tốc từ phương trình chuyển động trước.",
+      "option_feedback": {
+        "B": "Đã cho lực ma sát hướng lên dốc; khi vật đi lên, ma sát phải hướng xuống.",
+        "C": "Quên số hạng ma: đó là lực cần để vật chuyển động đều, không phải nhanh dần với a = 1 m/s².",
+        "D": "Đã tính gia tốc bằng $a = \\dfrac{s}{t^2}$, thiếu hệ số 2."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.7,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.7,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.68,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 180,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Vật trên mặt phẳng nghiêng góc 30 độ được kéo lên bởi lực F song song mặt nghiêng hướng lên; trọng lực P hướng thẳng xuống, phản lực N vuông góc mặt nghiêng, lực ma sát F_ms hướng xuống dọc mặt nghiêng.",
+          "diagram": {
+            "kind": "force_diagram",
+            "body": "box",
+            "incline_deg": 30.0,
+            "forces": [
+              {
+                "label": "P",
+                "angle_deg": 270.0,
+                "magnitude": 1.0
+              },
+              {
+                "label": "N",
+                "angle_deg": 120.0,
+                "magnitude": 0.87
+              },
+              {
+                "label": "F",
+                "angle_deg": 30.0,
+                "magnitude": 0.69
+              },
+              {
+                "label": "F_ms",
+                "angle_deg": 210.0,
+                "magnitude": 0.1
+              }
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inclined-plane",
+        "newton-laws",
+        "kinematics"
+      ],
+      "skill_ids": [
+        "physics.mechanics.work_energy",
+        "physics.mechanics.newton_laws"
+      ]
+    },
+    {
+      "id": "phys.mechanics.010",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.mechanics"
+      ],
+      "language": "vi",
+      "stem": "Một khối gỗ khối lượng 1,99 kg được treo vào đầu một sợi dây nhẹ, không dãn, dài 1 m và đang đứng yên. Một viên đạn khối lượng 10 g bay theo phương ngang với tốc độ 400 m/s đến cắm vào khối gỗ và nằm yên trong đó. Bỏ qua sức cản không khí, lấy g = 10 m/s². Độ cao cực đại mà khối gỗ (cùng viên đạn) được nâng lên so với vị trí ban đầu là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$40\\ \\text{m}$"
+        },
+        {
+          "id": "B",
+          "text": "$40\\ \\text{cm}$"
+        },
+        {
+          "id": "C",
+          "text": "$10\\ \\text{cm}$"
+        },
+        {
+          "id": "D",
+          "text": "$20\\ \\text{cm}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Bài toán gồm hai giai đoạn: va chạm (bảo toàn đại lượng nào?) và chuyển động đi lên sau va chạm (bảo toàn đại lượng nào?).",
+      "explanation": "Giai đoạn va chạm mềm, bảo toàn động lượng: $mv = (m + M)V \\Rightarrow V = \\dfrac{0{,}01 \\cdot 400}{0{,}01 + 1{,}99} = 2\\ \\text{m/s}$. Giai đoạn đi lên, bảo toàn cơ năng: $\\dfrac{1}{2}(m + M)V^2 = (m + M)gh \\Rightarrow h = \\dfrac{V^2}{2g} = \\dfrac{4}{20} = 0{,}2\\ \\text{m} = 20\\ \\text{cm}$. Vì $h < 1\\ \\text{m}$ nên dây luôn căng, kết quả hợp lí. Chọn D.",
+      "tip": "Không được dùng bảo toàn cơ năng cho quá trình va chạm mềm: phần lớn động năng của đạn đã chuyển thành nhiệt.",
+      "option_feedback": {
+        "A": "Đã bảo toàn cơ năng ngay từ động năng ban đầu của đạn; va chạm mềm làm mất phần lớn động năng.",
+        "B": "Quên hệ số 2 trong $h = \\dfrac{V^2}{2g}$."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.78,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.78,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.78,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.78,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 180,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "momentum",
+        "energy-conservation",
+        "ballistic-pendulum"
+      ],
+      "skill_ids": [
+        "physics.mechanics.momentum",
+        "physics.mechanics.work_energy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# The Linux desktop builder needs no build context (the repo is mounted at run time).
+*

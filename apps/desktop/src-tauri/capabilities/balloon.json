@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "balloon",
+  "description": "The local speech-balloon page: report its height, a click on the nudge or one of its actions, and closing it. Nothing else.",
+  "windows": ["balloon"],
+  "permissions": ["allow-balloon-ready", "allow-balloon-action", "allow-balloon-close"]
+}

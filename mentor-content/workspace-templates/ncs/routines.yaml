@@ -1,0 +1,37 @@
+# Job nền và lịch (plan 7.5). Người học bật/tắt và đổi giờ các routine có user_editable: true trên trang Cài đặt.
+# cron 5 trường theo giờ Việt Nam. job_kind là một JobKind; routine chung dùng job_kind: routine kèm prompt nêu skill.
+timezone: Asia/Ho_Chi_Minh
+proactivity: normal
+quiet_hours: ["22:00", "07:00"]
+routines:
+  - id: nightly_reflection
+    enabled: true
+    cron: "30 23 * * *"
+    job_kind: nightly_reflection
+    prompt: "Dùng skill nightly-reflection."
+    user_editable: false
+  - id: literature_watch
+    enabled: true
+    cron: "0 8 * * 1"
+    job_kind: literature_watch
+    prompt: "Dùng skill literature-watch."
+    user_editable: true
+  # Chủ động (theo mức proactivity và giờ yên lặng; mức off thì không chạy). Xóa một mục = tắt hẳn.
+  - id: morning_checkin
+    enabled: true
+    cron: "30 7 * * 1-5"
+    job_kind: routine
+    prompt: "Dùng skill daily-checkin, phần A (check-in buổi sáng)."
+    user_editable: true
+  - id: evening_wrapup
+    enabled: true
+    cron: "0 21 * * *"
+    job_kind: routine
+    prompt: "Dùng skill daily-checkin, phần B (tổng kết buổi tối)."
+    user_editable: true
+  - id: weekly_review
+    enabled: true
+    cron: "0 16 * * 0"
+    job_kind: routine
+    prompt: "Dùng skill weekly-review, phần A: chuẩn bị tổng kết tuần và mời người học tự đánh giá."
+    user_editable: true

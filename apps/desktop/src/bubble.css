@@ -1,0 +1,327 @@
+/* The Mentor bubble. With the mascot (packages/mentor-mascot, `body.has-mascot`) the character IS
+   the tile: the brand's accent rounded square with one tight corner as a speech tail, now with a
+   face, pointing at the screen edge the bubble is docked to. Without it (module missing or not
+   loaded yet) the button draws the same tile itself with a white "M", as before.
+   Colors copied from apps/web/src/app/globals.css so it matches the web app.
+
+   Geometry: the window is 72x72 (BUBBLE_WIN in main.rs) and the tile 56x56 (BUBBLE_CIRCLE) centered
+   in it. Shadows, the badge, the focus ring, the mascot's sparkles and hover/drag growth must stay
+   inside the 8px margin. */
+:root {
+  --accent: #2f6f62;
+  --accent-hover: #255a4f;
+  --accent-text: #ffffff;
+  --surface: #ffffff;
+  --danger: #b3261e;
+  --danger-text: #ffffff;
+  --focus: #1f6feb;
+  /* Rim (1px) over edge (2px): keep the tile readable on any wallpaper, light or dark. */
+  --rim: rgb(0 0 0 / 10%);
+  --edge: rgb(255 255 255 / 65%);
+  --cutout: #ffffff; /* ring that cuts the badge out of the tile */
+  --highlight: rgb(255 255 255 / 16%);
+  --shadow-rest: 0 1px 2px rgb(16 32 28 / 22%), 0 3px 6px -1px rgb(16 32 28 / 24%);
+  --shadow-lift: 0 2px 3px rgb(16 32 28 / 22%), 0 4px 6px -1px rgb(16 32 28 / 28%);
+  /* The same depth for the mascot's silhouette (filter: drop-shadow follows the tail corner). */
+  --mascot-rim: drop-shadow(0 0 0.6px rgb(0 0 0 / 32%));
+  --mascot-rest: var(--mascot-rim) drop-shadow(0 1px 1px rgb(16 32 28 / 22%))
+    drop-shadow(0 3px 3px rgb(16 32 28 / 18%));
+  --mascot-lift: var(--mascot-rim) drop-shadow(0 2px 1.5px rgb(16 32 28 / 22%))
+    drop-shadow(0 4px 4px rgb(16 32 28 / 24%));
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --r: 17px; /* tile corners (brand-mark ratio, 8/30 of the tile) */
+  --r-tail: 4px;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #6fbfab;
+    --accent-hover: #8ad0bd;
+    --accent-text: #0d1f1a;
+    --surface: #1a1f1c;
+    --danger: #f2a49c;
+    --danger-text: #3d1f1c;
+    --focus: #7ab4ff;
+    --rim: rgb(255 255 255 / 14%);
+    --edge: transparent;
+    --cutout: #121614;
+    --highlight: rgb(255 255 255 / 22%);
+    --shadow-rest: 0 1px 2px rgb(0 0 0 / 45%), 0 3px 6px -1px rgb(0 0 0 / 45%);
+    --shadow-lift: 0 2px 3px rgb(0 0 0 / 45%), 0 4px 6px -1px rgb(0 0 0 / 55%);
+    --mascot-rim: drop-shadow(0 0 0.6px rgb(255 255 255 / 30%));
+    --mascot-rest: var(--mascot-rim) drop-shadow(0 1px 1.5px rgb(0 0 0 / 50%))
+      drop-shadow(0 3px 3px rgb(0 0 0 / 40%));
+    --mascot-lift: var(--mascot-rim) drop-shadow(0 2px 2px rgb(0 0 0 / 50%))
+      drop-shadow(0 4px 4px rgb(0 0 0 / 50%));
+  }
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+body {
+  display: grid;
+  place-items: center;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+}
+
+#bubble {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 0;
+  /* Tail on the bottom corner nearest the docked edge (right by default). */
+  border-radius: var(--r) var(--r) var(--r-tail) var(--r);
+  background: var(--accent);
+  color: var(--accent-text);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 0 0 1px var(--rim),
+    0 0 0 2px var(--edge),
+    var(--shadow-rest);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  touch-action: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out),
+    background-color 160ms ease,
+    color 160ms ease,
+    border-radius 240ms var(--ease-out);
+}
+body[data-side="left"] #bubble {
+  border-radius: var(--r) var(--r) var(--r) var(--r-tail);
+}
+
+#bubble:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 0 0 1px var(--rim),
+    0 0 0 2px var(--edge),
+    var(--shadow-lift);
+}
+#bubble:active {
+  transform: scale(0.96);
+  transition-duration: 80ms;
+}
+#bubble:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+#bubble.dragging {
+  cursor: grabbing;
+  transform: scale(1.04);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 0 0 1px var(--rim),
+    0 0 0 2px var(--edge),
+    var(--shadow-lift);
+}
+
+/* Panel open: the tile takes the panel's surface color and shows a close mark in the accent. */
+#bubble.open {
+  background: var(--surface);
+  color: var(--accent);
+}
+#bubble.open:hover {
+  color: var(--accent-hover);
+}
+
+/* Signed out ("always show" mode): the same tile as an outline, an accent ring on the surface color
+   with a slightly faded "M" and no badge. Reads as "not ready yet" without looking broken.
+   Must stay after the hover/drag rules above (same specificity). */
+#bubble.signed-out {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow:
+    inset 0 0 0 2px var(--accent),
+    0 0 0 1px var(--rim),
+    0 0 0 2px var(--edge),
+    var(--shadow-rest);
+}
+#bubble.signed-out:not(.open) .glyph-mark {
+  opacity: 0.78;
+}
+#bubble.signed-out:hover,
+#bubble.signed-out.dragging {
+  background: var(--surface);
+  color: var(--accent-hover);
+  box-shadow:
+    inset 0 0 0 2px var(--accent-hover),
+    0 0 0 1px var(--rim),
+    0 0 0 2px var(--edge),
+    var(--shadow-lift);
+}
+#bubble.signed-out:not(.open):hover .glyph-mark {
+  opacity: 1;
+}
+
+/* Glyphs and the mascot share one cell; open/closed cross-fade with a quarter turn. */
+.glyph,
+.mascot {
+  grid-area: 1 / 1;
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    transform 260ms var(--ease-out),
+    filter 180ms var(--ease-out);
+}
+.glyph-mark {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.glyph-close {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+#bubble.open .glyph-mark,
+#bubble.open .mascot {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+#bubble.open .glyph-close {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------- with the mascot */
+
+/* Until the element is defined (or if mascot.js is missing) the "M" tile shows. */
+.mascot {
+  display: none;
+}
+body.has-mascot .mascot {
+  display: block;
+  width: 56px;
+  height: 56px;
+  filter: var(--mascot-rest);
+}
+body.has-mascot .glyph-mark {
+  display: none;
+}
+/* Closed: the mascot's body is the tile, so the button itself draws nothing but the focus ring. */
+body.has-mascot #bubble:not(.open),
+body.has-mascot #bubble:not(.open):hover,
+body.has-mascot #bubble:not(.open).dragging {
+  background: transparent;
+  box-shadow: none;
+}
+body.has-mascot #bubble:not(.open):hover .mascot,
+body.has-mascot #bubble.dragging .mascot {
+  filter: var(--mascot-lift);
+}
+/* Signed out: the outline tile. Surface body, accent face, and an accent ring drawn over the
+   mascot's body edge (the body spans 2..62 of its 64-unit grid: 1.75px in, corners 15.75/3.5). */
+body.has-mascot #bubble.signed-out .mascot {
+  --mascot-body: var(--surface);
+  --mascot-ink: var(--accent);
+  --mascot-spark: var(--accent);
+}
+body.has-mascot #bubble.signed-out:not(.open)::after {
+  content: "";
+  position: absolute;
+  inset: 1.75px;
+  border-radius: 15.75px 15.75px 3.5px 15.75px;
+  box-shadow: inset 0 0 0 2px var(--accent);
+  pointer-events: none;
+  transition: box-shadow 160ms ease;
+}
+body.has-mascot[data-side="left"] #bubble.signed-out:not(.open)::after {
+  border-radius: 15.75px 15.75px 15.75px 3.5px;
+}
+body.has-mascot #bubble.signed-out:not(.open):hover::after {
+  box-shadow: inset 0 0 0 2px var(--accent-hover);
+}
+
+/* Unread count: top corner on the side away from the docked edge, cut out from the tile by a ring. */
+.badge {
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: -5px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: var(--danger);
+  color: var(--danger-text);
+  box-shadow: 0 0 0 2px var(--cutout), 0 1px 2px rgb(0 0 0 / 25%);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 20px;
+  text-align: center;
+  pointer-events: none;
+  animation: badge-in 280ms var(--ease-out);
+}
+body[data-side="left"] .badge {
+  left: auto;
+  right: -5px;
+}
+.badge[hidden] {
+  display: none;
+}
+@keyframes badge-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bubble,
+  .glyph,
+  .mascot {
+    transition: opacity 120ms linear, background-color 120ms linear, color 120ms linear;
+  }
+  #bubble:hover,
+  #bubble:active,
+  #bubble.dragging,
+  .glyph-close,
+  #bubble.open .glyph-mark,
+  #bubble.open .mascot {
+    transform: none;
+  }
+  .badge {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  #bubble,
+  body.has-mascot #bubble:not(.open) {
+    border: 2px solid ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+  #bubble:focus-visible {
+    outline-color: Highlight;
+  }
+  #bubble.signed-out {
+    border-style: dashed;
+  }
+  body.has-mascot .mascot {
+    filter: none;
+  }
+}

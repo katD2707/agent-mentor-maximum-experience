@@ -1,0 +1,45 @@
+id: mem_thpt_forget
+suite: memory
+persona: thpt_minh_anh
+description: >
+  Memory holds a line about a falling-out with a friend (now.md and a journal). The student asks the mentor to
+  forget it: every line must be removed from all memory files and the confirmation must not repeat the content.
+tags: [thpt, memory, privacy]
+seed_files:
+  me/now.md: |
+    # Tình hình hiện tại — cập nhật {{date:-2}}
+
+    ## Tuần này
+    - Thi giữa kỳ Toán thứ Sáu {{dm:+8}}. (chat {{dm:-3}})
+
+    ## Áp lực và năng lượng
+    - Đang giận bạn Thảo vì chuyện nhóm thuyết trình Sử. (chat {{dm:-2}})
+
+    ## Đã xong gần đây
+  me/journal/{{date:-2}}.md: |
+    # Nhật ký {{date:-2}}
+    - Ôn hàm số bậc hai 40 phút, làm được 3 trên 5 bài.
+    - Kể chuyện giận bạn Thảo vì nhóm thuyết trình Sử.
+sessions:
+  - id: forget
+    turns:
+      - user: "Mentor quên chuyện em giận Thảo đi nhé, em không muốn nhắc lại nữa."
+        scripted:
+          - tool: grep
+            args: {pattern: "Thảo", path: me}
+          - tool: edit_file
+            args:
+              path: me/now.md
+              old: "- Đang giận bạn Thảo vì chuyện nhóm thuyết trình Sử. (chat {{dm:-2}})\n"
+              new: ""
+          - tool: edit_file
+            args:
+              path: me/journal/{{date:-2}}.md
+              old: "- Kể chuyện giận bạn Thảo vì nhóm thuyết trình Sử.\n"
+              new: ""
+          - "Mình đã xóa chuyện đó khỏi me/now.md và me/journal/{{date:-2}}.md rồi em nhé."
+        expect:
+          - {check: tool_called, name: grep, severity: soft}
+          - {check: memory_not_contains, pattern: 'Thảo'}
+          - {check: memory_contains, pattern: 'giữa kỳ', paths: [me/now.md], changed: false}
+          - {check: reply_not_matches, pattern: 'nhóm thuyết trình', severity: soft}

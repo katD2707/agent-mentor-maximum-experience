@@ -1,0 +1,1194 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "eng.vocabulary.001",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "Learners who want to _____ progress in English should practise speaking a little every day.",
+      "options": [
+        {
+          "id": "A",
+          "text": "do"
+        },
+        {
+          "id": "B",
+          "text": "make"
+        },
+        {
+          "id": "C",
+          "text": "take"
+        },
+        {
+          "id": "D",
+          "text": "get"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Danh từ \"progress\" kết hợp cố định với động từ nào?",
+      "explanation": "Collocation cố định: make progress (tiến bộ). Không nói \"do progress\", \"take progress\" hay \"get progress\". \"do\" thường đi với homework, research, exercise; \"take\" đi với part, notes, a break; \"get\" đi với a job, a chance... Chọn B.",
+      "tip": "Nhóm collocation với \"make\": make progress, make a decision, make an effort, make a mistake, make a difference.",
+      "option_feedback": {
+        "A": "\"do\" đi với homework, research, damage..., không đi với \"progress\".",
+        "C": "\"take\" đi với part, notes, a break..., không nói \"take progress\".",
+        "D": "Không có kết hợp \"get progress\" trong tiếng Anh chuẩn."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 25,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "collocation",
+        "make-progress",
+        "lifelong-learning"
+      ],
+      "skill_ids": [
+        "english.vocabulary.collocations"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.002",
+      "revision": 3,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "A lot of information on social media is not verified, so you should always check facts against _____ sources.",
+      "options": [
+        {
+          "id": "A",
+          "text": "reliable"
+        },
+        {
+          "id": "B",
+          "text": "trustful"
+        },
+        {
+          "id": "C",
+          "text": "dependent"
+        },
+        {
+          "id": "D",
+          "text": "faithful"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Cần tính từ mô tả nguồn tin \"có thể tin cậy được\".",
+      "explanation": "reliable sources = nguồn tin đáng tin cậy – kết hợp rất phổ biến khi nói về kiểm chứng thông tin. \"trustful\" nghĩa là \"cả tin, dễ tin người\" (mô tả tính cách người), không mô tả nguồn tin; \"dependent\" nghĩa là \"phụ thuộc\"; \"faithful\" nghĩa là \"trung thành, chung thủy\" – đều không kết hợp tự nhiên với \"sources\" trong ngữ cảnh này. Chọn A.",
+      "tip": "Phân biệt: reliable/trustworthy (đáng tin) ≠ trustful/trusting (hay tin người).",
+      "option_feedback": {
+        "B": "\"trustful\" = cả tin, dễ tin người – nói về tính cách con người, không phải nguồn tin.",
+        "C": "\"dependent\" = phụ thuộc, không mang nghĩa đáng tin cậy.",
+        "D": "\"faithful\" = trung thành, chung thủy – không kết hợp tự nhiên với \"sources\" ở đây."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.2,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.2,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck-r3@v1",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck-r3@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "word-choice",
+        "technology",
+        "media-literacy"
+      ],
+      "skill_ids": [
+        "english.vocabulary.collocations"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.003",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "After graduating, Minh decided to _____ for a job at an international logistics company.",
+      "options": [
+        {
+          "id": "A",
+          "text": "request"
+        },
+        {
+          "id": "B",
+          "text": "enrol"
+        },
+        {
+          "id": "C",
+          "text": "claim"
+        },
+        {
+          "id": "D",
+          "text": "apply"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Động từ nào đi với giới từ \"for\" mang nghĩa \"nộp đơn xin\"?",
+      "explanation": "apply for a job = nộp đơn xin việc. \"request\" là ngoại động từ, dùng trực tiếp \"request something\" chứ không nói \"request for a job\"; \"enrol\" (đăng kí nhập học) đi với khóa học, trường học; \"claim for\" dùng khi đòi tiền bồi thường, chi phí (claim for damages/expenses). Chọn D.",
+      "tip": "apply for + công việc/học bổng/visa; apply to + công ty/trường học.",
+      "option_feedback": {
+        "A": "\"request\" dùng trực tiếp với tân ngữ (request information), không đi với \"for a job\".",
+        "B": "\"enrol\" dùng cho khóa học, trường học, không dùng cho việc làm.",
+        "C": "\"claim for\" dùng khi đòi tiền bồi thường, chi phí, không phải xin việc."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 25,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "collocation",
+        "apply-for",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.vocabulary.collocations"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.004",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "The school had to _____ the outdoor music festival because of the approaching storm.",
+      "options": [
+        {
+          "id": "A",
+          "text": "call off"
+        },
+        {
+          "id": "B",
+          "text": "put on"
+        },
+        {
+          "id": "C",
+          "text": "take off"
+        },
+        {
+          "id": "D",
+          "text": "turn down"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Khi cơn bão sắp đến, một sự kiện ngoài trời thường sẽ ra sao?",
+      "explanation": "call off = hủy bỏ (sự kiện, kế hoạch). Vì bão sắp đến nên trường phải hủy lễ hội âm nhạc ngoài trời. \"put on\" = tổ chức, trình diễn – trái với lí do \"because of the approaching storm\"; \"take off\" = cởi ra, cất cánh, hoặc trở nên thành công nhanh; \"turn down\" = từ chối (lời mời, đề nghị) hoặc vặn nhỏ âm lượng. Chọn A.",
+      "tip": "Cụm động từ chỉ việc hủy/hoãn: call off (hủy), put off (hoãn lại).",
+      "option_feedback": {
+        "B": "\"put on\" = tổ chức/trình diễn – không hợp với lí do \"because of the approaching storm\".",
+        "C": "\"take off\" = cởi ra/cất cánh/thành công nhanh, không mang nghĩa hủy sự kiện.",
+        "D": "\"turn down\" = từ chối lời mời/đề nghị, hoặc vặn nhỏ âm lượng."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "phrasal-verb",
+        "call-off"
+      ],
+      "skill_ids": [
+        "english.vocabulary.phrasal_verbs"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.005",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "Rapid urbanisation has put a lot of _____ on public services such as hospitals, schools and public transport.",
+      "options": [
+        {
+          "id": "A",
+          "text": "tension"
+        },
+        {
+          "id": "B",
+          "text": "pressure"
+        },
+        {
+          "id": "C",
+          "text": "force"
+        },
+        {
+          "id": "D",
+          "text": "effort"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tìm danh từ kết hợp với \"put ... on\" mang nghĩa \"gây áp lực, gây quá tải\".",
+      "explanation": "put pressure on something/somebody = gây áp lực lên... Đô thị hóa nhanh gây áp lực lên bệnh viện, trường học, giao thông công cộng. \"tension\" = sự căng thẳng (thường giữa người với người, nhóm với nhóm), không dùng \"put tension on public services\"; \"force\" = lực, vũ lực, không tạo collocation này; \"effort\" đi với \"put effort into\" (dồn công sức vào) và sai nghĩa. Chọn B.",
+      "tip": "Collocation hay gặp: put pressure on, put a strain on, put emphasis on, put effort into.",
+      "option_feedback": {
+        "A": "\"tension\" thường nói về căng thẳng giữa người/nhóm (tension between...), không dùng \"put tension on public services\".",
+        "C": "\"force\" = lực/vũ lực, không tạo collocation với \"put ... on\" theo nghĩa gây quá tải.",
+        "D": "\"effort\" đi với \"put ... into\" và mang nghĩa nỗ lực, không hợp ngữ cảnh."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "collocation",
+        "put-pressure-on",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.vocabulary.collocations"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.006",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "Visitors are advised to _____ local customs, such as taking off their shoes before entering a pagoda.",
+      "options": [
+        {
+          "id": "A",
+          "text": "respond"
+        },
+        {
+          "id": "B",
+          "text": "reserve"
+        },
+        {
+          "id": "C",
+          "text": "respect"
+        },
+        {
+          "id": "D",
+          "text": "relieve"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Các phương án có hình thức gần giống nhau; hãy dịch nghĩa từng từ trong ngữ cảnh du lịch.",
+      "explanation": "respect local customs = tôn trọng phong tục địa phương – phù hợp với ví dụ cởi giày trước khi vào chùa. \"respond\" (đáp lại) là nội động từ, cần \"respond to\" và không hợp nghĩa; \"reserve\" = đặt trước, dành riêng; \"relieve\" = làm dịu, giảm bớt. Các từ này giống nhau về hình thức (re-) nhưng sai nghĩa. Chọn C.",
+      "tip": "Khi các phương án na ná nhau về chính tả, hãy dịch nghĩa từng từ rồi ghép vào câu.",
+      "option_feedback": {
+        "A": "\"respond\" = đáp lại, cần giới từ \"to\" và không hợp nghĩa.",
+        "B": "\"reserve\" = đặt trước (phòng, bàn) hoặc dành riêng – không dùng với phong tục.",
+        "D": "\"relieve\" = làm giảm nhẹ (cơn đau, căng thẳng) – sai nghĩa."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.32,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.2,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "word-choice",
+        "confusable-words",
+        "cultural-diversity"
+      ],
+      "skill_ids": [
+        "english.vocabulary.collocations"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.007",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "The new learning app looks complicated at first, but once you get the _____ of it, you'll find it really useful.",
+      "options": [
+        {
+          "id": "A",
+          "text": "grip"
+        },
+        {
+          "id": "B",
+          "text": "touch"
+        },
+        {
+          "id": "C",
+          "text": "hold"
+        },
+        {
+          "id": "D",
+          "text": "hang"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Thành ngữ \"get the ___ of something\" nghĩa là \"dần quen và biết cách làm/cách dùng\".",
+      "explanation": "get the hang of something (thân mật) = dần nắm được cách làm/cách dùng cái gì. Ngữ cảnh: ứng dụng lúc đầu trông phức tạp, nhưng khi đã quen cách dùng thì thấy rất hữu ích. \"grip\" chỉ có trong \"get a grip\" = bình tĩnh lại, hoặc \"get a grip on / get to grips with something\" = kiểm soát được, bắt đầu nắm được (vì vậy A dễ gây nhầm), nhưng không nói \"get the grip of\"; \"hold\" chỉ có trong \"get hold of\" (không có \"the\") = có được, liên lạc được; \"touch\" không tạo thành cụm \"get the touch of\". Chọn D.",
+      "tip": "Một số cụm với get: get the hang of (quen tay), get hold of (có được/liên lạc), get a grip (bình tĩnh lại).",
+      "option_feedback": {
+        "A": "Có \"get a grip on / get to grips with something\" (kiểm soát được, bắt đầu nắm được) và \"get a grip\" (bình tĩnh lại), nhưng không có \"get the grip of\".",
+        "B": "Không có thành ngữ \"get the touch of\".",
+        "C": "\"get hold of\" (không có \"the\") = có được, liên lạc với ai – sai cả nghĩa lẫn cấu trúc."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.55,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "idiom",
+        "get-the-hang-of",
+        "technology"
+      ],
+      "skill_ids": [
+        "english.vocabulary.idioms"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.008",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "After its sales fell sharply for the third year in a row, the company was forced to _____ 200 workers.",
+      "options": [
+        {
+          "id": "A",
+          "text": "take on"
+        },
+        {
+          "id": "B",
+          "text": "lay down"
+        },
+        {
+          "id": "C",
+          "text": "lay off"
+        },
+        {
+          "id": "D",
+          "text": "set up"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Doanh số giảm mạnh nhiều năm liền thì công ty \"buộc phải\" làm gì với nhân viên?",
+      "explanation": "lay off (workers) = cho nhân viên nghỉ việc (thường do công ty gặp khó khăn). Ngữ cảnh doanh số giảm mạnh ba năm liền cùng \"was forced to\" (buộc phải) cho thấy hành động tiêu cực. \"take on\" = tuyển thêm người – trái nghĩa, là phương án gây nhiễu; \"lay down\" = đặt xuống, đề ra (quy định); \"set up\" = thành lập, thiết lập – không dùng với tân ngữ \"workers\" theo nghĩa này. Chọn C.",
+      "tip": "Cặp trái nghĩa trong chủ đề việc làm: take on (tuyển dụng) ↔ lay off (cho nghỉ việc).",
+      "option_feedback": {
+        "A": "\"take on\" = tuyển dụng – trái với ngữ cảnh doanh số giảm và \"was forced to\".",
+        "B": "\"lay down\" = đặt xuống/đề ra quy định, không dùng với \"workers\".",
+        "D": "\"set up\" = thành lập (công ty, tổ chức), không phải hành động đối với nhân viên khi công ty khó khăn."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.5,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.5,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "phrasal-verb",
+        "lay-off",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.vocabulary.phrasal_verbs"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.009",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "After ten years of working in a bank, Hoa finally decided to _____ the plunge and start her own organic farm.",
+      "options": [
+        {
+          "id": "A",
+          "text": "give"
+        },
+        {
+          "id": "B",
+          "text": "get"
+        },
+        {
+          "id": "C",
+          "text": "take"
+        },
+        {
+          "id": "D",
+          "text": "do"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Thành ngữ \"___ the plunge\" nghĩa là quyết định làm một việc quan trọng, có phần mạo hiểm sau thời gian đắn đo.",
+      "explanation": "take the plunge = quyết định làm một việc lớn, mạo hiểm sau khi cân nhắc (ví dụ bỏ việc ổn định để khởi nghiệp). Ngữ cảnh: sau mười năm làm ngân hàng, Hoa \"finally decided\" mở trang trại hữu cơ của riêng mình. Thành ngữ cố định chỉ dùng động từ \"take\"; \"give/get/do the plunge\" đều không tồn tại. Chọn C.",
+      "tip": "Thành ngữ là cụm cố định – hãy học cả cụm: take the plunge, take a chance, take the bull by the horns.",
+      "option_feedback": {
+        "A": "Không có thành ngữ \"give the plunge\".",
+        "B": "\"get the plunge\" không phải thành ngữ tiếng Anh.",
+        "D": "\"do the plunge\" không tồn tại; thành ngữ cố định dùng \"take\"."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.7,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.7,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 55,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "idiom",
+        "take-the-plunge",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.vocabulary.idioms"
+      ]
+    },
+    {
+      "id": "eng.vocabulary.010",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.vocabulary"
+      ],
+      "language": "en",
+      "stem": "The residents' complaints about noise from the new factory fell on deaf _____; the authorities did nothing to solve the problem.",
+      "options": [
+        {
+          "id": "A",
+          "text": "eyes"
+        },
+        {
+          "id": "B",
+          "text": "ears"
+        },
+        {
+          "id": "C",
+          "text": "minds"
+        },
+        {
+          "id": "D",
+          "text": "hearts"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Vế sau dấu chấm phẩy (\"the authorities did nothing...\") giải thích nghĩa của thành ngữ.",
+      "explanation": "fall on deaf ears = (lời đề nghị, lời phàn nàn) bị phớt lờ, không ai lắng nghe. Vế sau \"the authorities did nothing to solve the problem\" xác nhận nghĩa này. Tính từ \"deaf\" (điếc) chỉ kết hợp hợp lí với \"ears\"; \"deaf eyes\", \"deaf minds\", \"deaf hearts\" không phải thành ngữ. Lưu ý không nhầm với \"turn a blind eye to\" (làm ngơ), vốn dùng \"blind\" chứ không phải \"deaf\". Chọn B.",
+      "tip": "Thành ngữ về sự phớt lờ: fall on deaf ears (không được lắng nghe), turn a blind eye to (làm ngơ).",
+      "option_feedback": {
+        "A": "Dễ nhầm với \"turn a blind eye\"; \"deaf eyes\" không phải thành ngữ.",
+        "C": "\"deaf minds\" không tồn tại như một thành ngữ trong tiếng Anh.",
+        "D": "\"deaf hearts\" không phải thành ngữ cố định."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.55,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 55,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "idiom",
+        "fall-on-deaf-ears",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.vocabulary.idioms"
+      ]
+    }
+  ]
+}

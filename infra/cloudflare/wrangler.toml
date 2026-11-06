@@ -1,0 +1,22 @@
+# Optional: deploy infra/cloudflare/email-worker.js with Wrangler instead of pasting it in the dashboard
+# (README.md, "Chuyển tiếp email của học viên"). From this directory:
+#   npx wrangler login
+#   npx wrangler secret put EMAIL_WEBHOOK_SECRET     # paste the value of EMAIL_WEBHOOK_SECRET from infra/.env.prod
+#   npx wrangler deploy
+# Then route the catch-all address to this Worker in Email Routing (dashboard). No secrets in this file.
+name = "mentor-email-inbound"
+main = "email-worker.js"
+compatibility_date = "2025-09-01"
+workers_dev = false   # email only: no public *.workers.dev URL
+
+# Optional (Wrangler 4.113.0 or later): let `wrangler deploy` create the catch-all rule "Send to a Worker" itself.
+# Catch-all works on an APEX domain only (Cloudflare: "Catch-all entries support apex domains only"), so this is
+# your INBOUND_EMAIL_DOMAIN when that is a whole domain. Without this line, set the catch-all in the dashboard.
+# addresses = ["*@mentor-inbox.example"]
+
+[vars]
+# Replace with your DOMAIN from infra/.env.prod (or set it in the dashboard and delete this line).
+MENTOR_WEBHOOK_URL = "https://mentor.example.vn/webhooks/email/inbound"
+
+[observability]
+enabled = true   # Workers Logs: status and size per message, never addresses or content

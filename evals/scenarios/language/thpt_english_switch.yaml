@@ -1,0 +1,12 @@
+id: lang_thpt_follows_user
+suite: language
+persona: thpt_gia_huy
+description: >
+  The student asks for English in session 1 (preference stored), comes back in English in a fresh session,
+  then switches back to Vietnamese. Each reply must be in the learner's current language.
+tags: [smoke, thpt, language, memory]
+sessions:
+  - persona_session: english_start
+  - persona_session: english_return
+expect:
+  - {check: memory_contains, pattern: 'tiếng Việt', paths: [me/preferences.md], changed: false, severity: soft}

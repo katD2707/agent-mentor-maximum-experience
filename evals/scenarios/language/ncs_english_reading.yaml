@@ -1,0 +1,22 @@
+id: lang_ncs_english_preference
+suite: language
+persona: ncs_duc_long
+description: >
+  The workspace says English; the learner writes English about his reading queue. The mentor replies in English
+  and helps plan without inventing papers beyond research/reading-queue.md.
+tags: [ncs, language]
+sessions:
+  - id: chat
+    turns:
+      - user: "Could you help me plan my reading for this week? I have five papers on causal inference in my queue."
+        scripted:
+          - tool: read_file
+            args: {path: research/reading-queue.md}
+          - "Sure. You have five papers queued. A good order: start with Athey & Imbens (2017) for the big picture, then Callaway & Sant'Anna (2021) and Roth et al. (2023) on difference-in-differences, then Abadie (2021), and finish with Chernozhukov et al. (2018). Which day this week do you have the longest block?"
+        expect:
+          - {check: language, expect: en}
+          - {check: tool_called, name: read_file, args: {path: reading-queue}, severity: soft}
+          - check: judge
+            criterion: >
+              The mentor replies in English, plans using only the papers listed in research/reading-queue.md
+              (no invented papers or authors), and leaves the decision to the learner.

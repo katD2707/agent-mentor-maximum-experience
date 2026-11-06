@@ -1,0 +1,51 @@
+# Job nền và lịch (plan 7.5). Người học bật/tắt và đổi giờ các routine có user_editable: true trên trang Cài đặt.
+# cron 5 trường theo giờ Việt Nam. job_kind là một JobKind; routine chung dùng job_kind: routine kèm prompt nêu skill.
+timezone: Asia/Ho_Chi_Minh
+proactivity: normal
+quiet_hours: ["22:00", "07:00"]
+routines:
+  - id: nightly_reflection
+    enabled: true
+    cron: "30 23 * * *"
+    job_kind: nightly_reflection
+    prompt: "Dùng skill nightly-reflection."
+    user_editable: false
+  - id: evening_review
+    enabled: true
+    cron: "30 19 * * *"
+    job_kind: routine
+    prompt: "Dùng skill spaced-review, phần A: chuẩn bị bài ôn nhanh tối nay và báo học sinh theo mức chủ động."
+    user_editable: true
+  # Chủ động (theo mức proactivity và giờ yên lặng; mức off thì không chạy). Xóa một mục = tắt hẳn.
+  - id: morning_checkin
+    enabled: true
+    cron: "30 7 * * 1-5"
+    job_kind: routine
+    prompt: "Dùng skill daily-checkin, phần A (check-in buổi sáng)."
+    user_editable: true
+  - id: evening_wrapup
+    enabled: true
+    cron: "0 21 * * *"
+    job_kind: routine
+    prompt: "Dùng skill daily-checkin, phần B (tổng kết buổi tối)."
+    user_editable: true
+  # Hệ thống tự kiểm review-queue.md (không chạy mentor); nhắc tối đa 1 lần/ngày, bỏ qua nếu tối nay đã nhắc ôn.
+  - id: review_due
+    enabled: true
+    cron: "30 20 * * *"
+    job_kind: routine
+    prompt: "Nhắc ôn khi có kỹ năng đến hạn (hệ thống tự làm)."
+    user_editable: true
+  - id: weekly_review
+    enabled: true
+    cron: "0 16 * * 0"
+    job_kind: routine
+    prompt: "Dùng skill weekly-review, phần A: chuẩn bị tổng kết tuần và mời học sinh tự đánh giá."
+    user_editable: true
+  # Chạy mỗi thứ Sáu; skill parent-report tự bỏ qua nếu chưa đủ 2 tuần kể từ báo cáo trước.
+  - id: parent_report
+    enabled: true
+    cron: "0 19 * * 5"
+    job_kind: parent_report
+    prompt: "Dùng skill parent-report. Chỉ gửi nếu đã đủ 2 tuần kể từ báo cáo trước."
+    user_editable: false

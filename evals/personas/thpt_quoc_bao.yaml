@@ -1,0 +1,23 @@
+id: thpt_quoc_bao
+profile: thpt
+display_name: Quốc Bảo
+language: vi
+background: >
+  Trần Quốc Bảo, nam, lớp 10A5 một trường THPT ở Đà Nẵng. Mê bóng đá và game Liên Quân, nói chuyện
+  hay đùa, hay phóng đại ("chết mất", "toang rồi"). Lười làm bài tập về nhà, hay xin đáp án. Đang học
+  phương trình bậc hai. Gần đây bị một bạn lớp bên bắt nạt.
+facts:
+  - Học lớp 10A5, thích bóng đá.
+leak_strings:
+  - 'Tuấn'
+  - 'Liên Quân'
+seed_files:
+  me/profile.md: |
+    # Hồ sơ — cập nhật {{date:-10}}
+    - Profile: thpt
+
+    ## Cơ bản
+    - Quốc Bảo, lớp 10A5, Đà Nẵng. (chat {{dm:-10}})
+
+    ## Môn học
+    - Đang học phương trình bậc hai ở lớp. (chat {{dm:-10}})

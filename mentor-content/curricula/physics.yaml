@@ -1,0 +1,193 @@
+# Physics skill graph for the THPT profile (CT GDPT 2018, Vật lí 10-12; topics follow the practice bank).
+# ids are stable: never rename an id once events reference it. `topic` = bank topic id. Must stay acyclic (tested).
+subject: physics
+skills:
+  # --- Mở đầu (lớp 10) ---
+  - id: physics.measurement.units_error
+    title: Đơn vị đo, sai số phép đo và an toàn thí nghiệm
+    grade: 10
+    topic: phys.measurement
+    prerequisites: []
+
+  # --- Cơ học (lớp 10) ---
+  - id: physics.mechanics.kinematics
+    title: Động học chất điểm - chuyển động thẳng, rơi tự do
+    grade: 10
+    topic: phys.mechanics
+    prerequisites: []
+  - id: physics.mechanics.newton_laws
+    title: Ba định luật Newton, lực, mặt phẳng nghiêng, ma sát
+    grade: 10
+    topic: phys.mechanics
+    prerequisites: [physics.mechanics.kinematics]
+  - id: physics.mechanics.work_energy
+    title: Công, công suất, động năng, thế năng, cơ năng
+    grade: 10
+    topic: phys.mechanics
+    prerequisites: [physics.mechanics.newton_laws]
+  - id: physics.mechanics.momentum
+    title: Động lượng và va chạm
+    grade: 10
+    topic: phys.mechanics
+    prerequisites: [physics.mechanics.newton_laws]
+  - id: physics.mechanics.circular_motion
+    title: Chuyển động tròn và lực hướng tâm
+    grade: 10
+    topic: phys.mechanics
+    prerequisites: [physics.mechanics.newton_laws]
+
+  # --- Dao động (lớp 11) ---
+  - id: physics.oscillation.harmonic
+    title: Dao động điều hòa - li độ, biên độ, chu kì, pha, vận tốc, gia tốc
+    grade: 11
+    topic: phys.oscillation
+    prerequisites: [physics.mechanics.kinematics]
+  - id: physics.oscillation.pendulum_spring
+    title: Con lắc lò xo, con lắc đơn - chu kì và năng lượng
+    grade: 11
+    topic: phys.oscillation
+    prerequisites: [physics.oscillation.harmonic, physics.mechanics.work_energy]
+
+  # --- Sóng và quang học (lớp 11) ---
+  - id: physics.waves.basics
+    title: Mô tả sóng - bước sóng, tần số, tốc độ truyền sóng
+    grade: 11
+    topic: phys.waves-optics
+    prerequisites: [physics.oscillation.harmonic]
+  - id: physics.waves.standing
+    title: Sóng dừng
+    grade: 11
+    topic: phys.waves-optics
+    prerequisites: [physics.waves.basics]
+  - id: physics.waves.interference
+    title: Giao thoa sóng
+    grade: 11
+    topic: phys.waves-optics
+    prerequisites: [physics.waves.basics]
+  - id: physics.optics.refraction
+    title: Khúc xạ ánh sáng, chiết suất
+    grade: 11
+    topic: phys.waves-optics
+    prerequisites: []
+  - id: physics.optics.total_reflection
+    title: Phản xạ toàn phần và góc tới hạn
+    grade: 11
+    topic: phys.waves-optics
+    prerequisites: [physics.optics.refraction]
+
+  # --- Trường điện, mạch điện (lớp 11) ---
+  - id: physics.electric.field
+    title: Định luật Coulomb, điện trường, điện thế, tụ điện
+    grade: 11
+    prerequisites: []
+  - id: physics.circuit.ohm
+    title: Dòng điện, điện trở, định luật Ohm
+    grade: 11
+    prerequisites: [physics.electric.field]
+  - id: physics.circuit.source_power
+    title: Nguồn điện, suất điện động, năng lượng và công suất điện
+    grade: 11
+    prerequisites: [physics.circuit.ohm]
+
+  # --- Vật lí nhiệt (lớp 12) ---
+  - id: physics.thermal.molecular_model
+    title: Mô hình động học phân tử về cấu tạo chất, các thể
+    grade: 12
+    topic: phys.thermal
+    prerequisites: []
+  - id: physics.thermal.temperature_scales
+    title: Nhiệt độ, thang Celsius và thang Kelvin
+    grade: 12
+    topic: phys.thermal
+    prerequisites: [physics.thermal.molecular_model]
+  - id: physics.thermal.internal_energy
+    title: Nội năng và định luật I của nhiệt động lực học
+    grade: 12
+    topic: phys.thermal
+    prerequisites: [physics.thermal.molecular_model]
+  - id: physics.thermal.specific_heat
+    title: Nhiệt dung riêng và nhiệt lượng thu, tỏa
+    grade: 12
+    topic: phys.thermal
+    prerequisites: [physics.thermal.temperature_scales]
+  - id: physics.thermal.latent_heat
+    title: Nhiệt nóng chảy riêng, nhiệt hóa hơi riêng
+    grade: 12
+    topic: phys.thermal
+    prerequisites: [physics.thermal.specific_heat]
+  - id: physics.thermal.heat_exchange
+    title: Phương trình cân bằng nhiệt
+    grade: 12
+    topic: phys.thermal
+    prerequisites: [physics.thermal.specific_heat, physics.thermal.latent_heat]
+
+  # --- Khí lí tưởng (lớp 12) ---
+  - id: physics.gas.kinetic_model
+    title: Mô hình động học phân tử của chất khí lí tưởng
+    grade: 12
+    topic: phys.gas
+    prerequisites: [physics.thermal.molecular_model]
+  - id: physics.gas.kinetic_energy_temperature
+    title: Động năng tịnh tiến trung bình và nhiệt độ tuyệt đối
+    grade: 12
+    topic: phys.gas
+    prerequisites: [physics.gas.kinetic_model, physics.thermal.temperature_scales]
+  - id: physics.gas.laws
+    title: Các định luật chất khí - Boyle, Charles, Gay-Lussac
+    grade: 12
+    topic: phys.gas
+    prerequisites: [physics.gas.kinetic_model]
+  - id: physics.gas.state_equation
+    title: Phương trình trạng thái khí lí tưởng
+    grade: 12
+    topic: phys.gas
+    prerequisites: [physics.gas.laws]
+
+  # --- Từ trường và cảm ứng điện từ (lớp 12) ---
+  - id: physics.em.magnetic_force
+    title: Từ trường, cảm ứng từ, lực từ lên dây dẫn mang dòng điện
+    grade: 12
+    topic: phys.electromagnetism
+    prerequisites: [physics.circuit.ohm]
+  - id: physics.em.flux
+    title: Từ thông
+    grade: 12
+    topic: phys.electromagnetism
+    prerequisites: [physics.em.magnetic_force]
+  - id: physics.em.lenz
+    title: Hiện tượng cảm ứng điện từ, định luật Lenz
+    grade: 12
+    topic: phys.electromagnetism
+    prerequisites: [physics.em.flux]
+  - id: physics.em.induced_emf
+    title: Suất điện động cảm ứng - định luật Faraday, thanh trượt, khung quay
+    grade: 12
+    topic: phys.electromagnetism
+    prerequisites: [physics.em.lenz]
+  - id: physics.em.ac_basics
+    title: Dòng điện xoay chiều - tần số, pha, giá trị hiệu dụng
+    grade: 12
+    topic: phys.electromagnetism
+    prerequisites: [physics.em.induced_emf]
+
+  # --- Vật lí hạt nhân (lớp 12) ---
+  - id: physics.nuclear.structure
+    title: Cấu tạo hạt nhân, số khối, đồng vị
+    grade: 12
+    topic: phys.nuclear
+    prerequisites: []
+  - id: physics.nuclear.binding_energy
+    title: Năng lượng liên kết và độ hụt khối
+    grade: 12
+    topic: phys.nuclear
+    prerequisites: [physics.nuclear.structure]
+  - id: physics.nuclear.radioactive_decay
+    title: Phóng xạ - chu kì bán rã, định luật phân rã
+    grade: 12
+    topic: phys.nuclear
+    prerequisites: [physics.nuclear.structure]
+  - id: physics.nuclear.reactions
+    title: Phản ứng hạt nhân - bảo toàn, năng lượng tỏa/thu, phân hạch, nhiệt hạch
+    grade: 12
+    topic: phys.nuclear
+    prerequisites: [physics.nuclear.binding_energy]

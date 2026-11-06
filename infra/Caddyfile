@@ -1,0 +1,53 @@
+# Reverse proxy for the pilot (infra/docker-compose.prod.yml). Caddy gets and renews the Let's Encrypt certificate
+# for $DOMAIN by itself (ports 80 and 443 must be reachable from the internet). A VM with only a public IP can use
+# sslip.io: DOMAIN=203-0-113-5.sslip.io resolves to 203.0.113.5 with no DNS setup. DOMAIN=localhost (local smoke
+# test) gets a certificate from Caddy's internal CA instead.
+{
+	admin localhost:2019
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+
+	# Gateway: REST + WebSocket (/api/ws/chat; Caddy proxies the upgrade itself), the Zalo bot webhook and the
+	# HMAC-signed inbound email webhook /webhooks/email/inbound (Cloudflare Email Worker).
+	# Everything else (including the gateway's /internal/*, /healthz, /docs) is not routed to the gateway, so the
+	# sandbox-only endpoints stay unreachable from the internet.
+	@gateway path /api/* /webhooks/*
+	handle @gateway {
+		reverse_proxy gateway:8000
+	}
+
+	handle {
+		reverse_proxy web:3000
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "SAMEORIGIN"
+		-Server
+	}
+
+	log {
+		output stdout
+		# never log query strings: /api/auth/verify?token=... carries the magic-link token
+		format filter {
+			wrap json
+			fields {
+				request>uri query {
+					delete token
+				}
+				request>headers>Cookie delete
+				request>headers>Authorization delete
+				# inbound email webhook: the learner's forwarding address and the HMAC signature
+				request>headers>X-Mentor-Rcpt delete
+				request>headers>X-Mentor-Signature delete
+			}
+		}
+	}
+}

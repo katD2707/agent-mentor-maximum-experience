@@ -1,0 +1,1198 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "eng.word-formation.001",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "Air _____ in big cities like Ha Noi has become a serious threat to public health.",
+      "options": [
+        {
+          "id": "A",
+          "text": "pollute"
+        },
+        {
+          "id": "B",
+          "text": "polluted"
+        },
+        {
+          "id": "C",
+          "text": "pollution"
+        },
+        {
+          "id": "D",
+          "text": "polluting"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Chỗ trống cùng với \"Air\" tạo thành chủ ngữ của câu – cần từ loại gì?",
+      "explanation": "Chỗ trống đứng sau \"Air\" và trước động từ \"has become\", tạo thành cụm danh từ ghép làm chủ ngữ: air pollution (ô nhiễm không khí). \"pollute\" là động từ; \"polluted\" là tính từ/quá khứ phân từ (bị ô nhiễm), phải đứng trước danh từ (polluted air); \"polluting\" là V-ing/tính từ (gây ô nhiễm), không tạo được cụm chủ ngữ hợp lệ với \"Air\". Chọn C.",
+      "tip": "Hậu tố -tion/-sion/-ment/-ness/-ity thường tạo danh từ: pollute → pollution.",
+      "option_feedback": {
+        "A": "\"pollute\" là động từ, không thể làm chủ ngữ cùng \"Air\".",
+        "B": "\"polluted\" là tính từ (bị ô nhiễm), cần đứng trước danh từ: polluted air.",
+        "D": "\"polluting\" là tính từ/V-ing (gây ô nhiễm), không kết hợp thành \"Air polluting\"."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 20,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "noun",
+        "compound-noun",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class"
+      ]
+    },
+    {
+      "id": "eng.word-formation.002",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "The students listened _____ to the guest speaker's talk about climate change.",
+      "options": [
+        {
+          "id": "A",
+          "text": "attentively"
+        },
+        {
+          "id": "B",
+          "text": "attentive"
+        },
+        {
+          "id": "C",
+          "text": "attention"
+        },
+        {
+          "id": "D",
+          "text": "attend"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Chỗ trống bổ nghĩa cho động từ \"listened\".",
+      "explanation": "Sau động từ thường \"listened\" cần trạng từ chỉ cách thức: listened attentively (lắng nghe chăm chú). \"attentive\" là tính từ (dùng sau linking verb như be/seem hoặc trước danh từ); \"attention\" là danh từ (pay attention to); \"attend\" là động từ. Chọn A.",
+      "tip": "Động từ thường + trạng từ (adj + -ly); linking verb (be, seem, look, become) + tính từ.",
+      "option_feedback": {
+        "B": "Tính từ không bổ nghĩa cho động từ thường \"listened\".",
+        "C": "\"attention\" là danh từ; muốn dùng phải viết \"listened with attention\".",
+        "D": "\"attend\" là động từ, không đứng ngay sau \"listened\"."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 20,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "adverb",
+        "manner",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class"
+      ]
+    },
+    {
+      "id": "eng.word-formation.003",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "Viet Nam is famous for its _____ landscapes, from terraced rice fields to limestone islands.",
+      "options": [
+        {
+          "id": "A",
+          "text": "beauty"
+        },
+        {
+          "id": "B",
+          "text": "beautify"
+        },
+        {
+          "id": "C",
+          "text": "beautifully"
+        },
+        {
+          "id": "D",
+          "text": "beautiful"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Giữa tính từ sở hữu \"its\" và danh từ \"landscapes\" cần từ loại nào?",
+      "explanation": "Cấu trúc: tính từ sở hữu + tính từ + danh từ → its beautiful landscapes (những phong cảnh đẹp). \"beauty\" là danh từ, \"beauty landscapes\" không phải cụm danh từ chuẩn; \"beautify\" là động từ (làm đẹp); \"beautifully\" là trạng từ, không bổ nghĩa trực tiếp cho danh từ. Chọn D.",
+      "tip": "Trước danh từ thường là tính từ; các đuôi tính từ hay gặp: -ful, -ous, -ive, -al, -able, -less.",
+      "option_feedback": {
+        "A": "\"beauty\" là danh từ; không dùng \"beauty landscapes\" để chỉ phong cảnh đẹp.",
+        "B": "\"beautify\" là động từ, không đứng trước danh từ để bổ nghĩa.",
+        "C": "Trạng từ không bổ nghĩa cho danh từ \"landscapes\"."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 20,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "adjective",
+        "before-noun",
+        "tourism"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class"
+      ]
+    },
+    {
+      "id": "eng.word-formation.004",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "In many countries, it is _____ to pay women less than men for doing exactly the same job.",
+      "options": [
+        {
+          "id": "A",
+          "text": "unlegal"
+        },
+        {
+          "id": "B",
+          "text": "inlegal"
+        },
+        {
+          "id": "C",
+          "text": "dislegal"
+        },
+        {
+          "id": "D",
+          "text": "illegal"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tiền tố phủ định thường phụ thuộc vào chữ cái đầu của từ gốc.",
+      "explanation": "Tính từ gốc \"legal\" bắt đầu bằng chữ \"l\", nên tiền tố phủ định là \"il-\": illegal (bất hợp pháp), tương tự illogical, illiterate. \"unlegal\", \"inlegal\", \"dislegal\" đều không tồn tại. Nghĩa của câu: Ở nhiều nước, trả lương cho phụ nữ thấp hơn nam giới khi làm cùng một công việc là bất hợp pháp. Chọn D.",
+      "tip": "il- trước l (illegal), im- trước m/p (immature, impossible), ir- trước r (irregular, irresponsible).",
+      "option_feedback": {
+        "A": "\"un-\" rất phổ biến nhưng không kết hợp với \"legal\".",
+        "B": "Tiền tố \"in-\" biến thành \"il-\" trước chữ \"l\", nên không có \"inlegal\".",
+        "C": "\"dis-\" đi với các từ như dishonest, disagree; không có \"dislegal\"."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.25,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.22,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.25,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; difficulty disagreement -> calibrator; 2 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "negative-prefix",
+        "adjective",
+        "gender-equality"
+      ],
+      "skill_ids": [
+        "english.wordform.prefixes"
+      ]
+    },
+    {
+      "id": "eng.word-formation.005",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "Jobs in the renewable energy sector usually require a high level of technical _____.",
+      "options": [
+        {
+          "id": "A",
+          "text": "expert"
+        },
+        {
+          "id": "B",
+          "text": "expertise"
+        },
+        {
+          "id": "C",
+          "text": "expertly"
+        },
+        {
+          "id": "D",
+          "text": "experts"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Cụm \"a high level of ...\" cần một danh từ chỉ năng lực/kiến thức, không phải danh từ chỉ người.",
+      "explanation": "Sau \"a high level of\" + tính từ \"technical\" cần một danh từ trừu tượng, không đếm được, chỉ năng lực: expertise (chuyên môn, kiến thức chuyên sâu). \"expert\" là danh từ đếm được chỉ người (chuyên gia) – ở số ít cần mạo từ và không diễn tả được \"mức độ\"; \"experts\" (các chuyên gia) cũng chỉ người, \"a high level of technical experts\" không hợp nghĩa với yêu cầu của công việc; \"expertly\" là trạng từ, không đứng sau giới từ \"of\". Chọn B.",
+      "tip": "Phân biệt danh từ chỉ người và danh từ trừu tượng: expert – expertise, employee – employment, competitor – competition.",
+      "option_feedback": {
+        "A": "\"expert\" là danh từ đếm được chỉ người (chuyên gia), không diễn tả \"mức độ chuyên môn\".",
+        "C": "\"expertly\" là trạng từ, không đứng sau giới từ \"of\" làm tân ngữ.",
+        "D": "\"experts\" chỉ người; \"a high level of technical experts\" không hợp nghĩa với yêu cầu của công việc."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.42,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.42,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "noun",
+        "abstract-noun",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class",
+        "english.wordform.suffixes"
+      ]
+    },
+    {
+      "id": "eng.word-formation.006",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "The museum's new interactive exhibits are very _____; even young children can learn a lot about science from them.",
+      "options": [
+        {
+          "id": "A",
+          "text": "inform"
+        },
+        {
+          "id": "B",
+          "text": "information"
+        },
+        {
+          "id": "C",
+          "text": "informative"
+        },
+        {
+          "id": "D",
+          "text": "informed"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Cần tính từ mô tả đặc điểm của hiện vật: chúng \"cung cấp nhiều thông tin\" hay \"được thông báo, có hiểu biết\"?",
+      "explanation": "Sau \"are very\" cần tính từ. informative = cung cấp nhiều thông tin, bổ ích – mô tả đúng hiện vật giúp trẻ em học về khoa học. \"informed\" cũng là tính từ nhưng mang nghĩa \"có hiểu biết, nắm được thông tin\" (well-informed citizens) – dùng cho người, không cho hiện vật; \"inform\" là động từ; \"information\" là danh từ, không đứng sau \"very\". Chọn C.",
+      "tip": "Đuôi -ive/-ing thường mô tả tính chất của sự vật (informative, interesting); đuôi -ed thường mô tả trạng thái của người (informed, interested).",
+      "option_feedback": {
+        "A": "\"inform\" là động từ, không đứng sau \"are very\".",
+        "B": "\"information\" là danh từ, không được bổ nghĩa bởi \"very\".",
+        "D": "\"informed\" (có hiểu biết) mô tả người được cung cấp thông tin, không mô tả hiện vật."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.38,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "adjective",
+        "suffix-ive",
+        "education"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class",
+        "english.wordform.suffixes"
+      ]
+    },
+    {
+      "id": "eng.word-formation.007",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "The _____ of the old textile factory into an art centre has attracted many young visitors to the area.",
+      "options": [
+        {
+          "id": "A",
+          "text": "convert"
+        },
+        {
+          "id": "B",
+          "text": "converter"
+        },
+        {
+          "id": "C",
+          "text": "convertible"
+        },
+        {
+          "id": "D",
+          "text": "conversion"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Sau \"The\" và trước \"of\" cần danh từ; danh từ đó chỉ quá trình hay chỉ người/thiết bị?",
+      "explanation": "Cấu trúc \"The + N + of + A + into + B\" cần danh từ chỉ quá trình: the conversion of A into B = việc chuyển đổi A thành B. \"convert\" chủ yếu là động từ (danh từ \"convert\" chỉ người cải đạo – sai nghĩa); \"converter\" là thiết bị chuyển đổi (bộ chuyển đổi điện), không phải quá trình; \"convertible\" là tính từ (có thể chuyển đổi) hoặc danh từ chỉ xe mui trần. Chọn D.",
+      "tip": "Một số động từ tận cùng -ert tạo danh từ -ersion: convert → conversion, divert → diversion, invert → inversion (nhưng assert → assertion, insert → insertion).",
+      "option_feedback": {
+        "A": "Danh từ \"convert\" nghĩa là người cải đạo – không hợp ngữ cảnh; \"convert\" thường là động từ.",
+        "B": "\"converter\" là thiết bị chuyển đổi, không chỉ việc biến nhà máy thành trung tâm nghệ thuật.",
+        "C": "\"convertible\" là tính từ (có thể chuyển đổi) hoặc chỉ xe mui trần – sai nghĩa."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "noun",
+        "suffix-sion",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.wordform.suffixes"
+      ]
+    },
+    {
+      "id": "eng.word-formation.008",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "Thanks to her _____ attitude towards people from other cultures, Mai made friends easily during her exchange year in Canada.",
+      "options": [
+        {
+          "id": "A",
+          "text": "tolerant"
+        },
+        {
+          "id": "B",
+          "text": "intolerant"
+        },
+        {
+          "id": "C",
+          "text": "tolerantly"
+        },
+        {
+          "id": "D",
+          "text": "tolerance"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Xác định từ loại đứng trước danh từ \"attitude\", rồi dựa vào \"Thanks to\" và \"made friends easily\" để chọn nghĩa tích cực hay tiêu cực.",
+      "explanation": "Trước danh từ \"attitude\" cần tính từ. \"Thanks to\" (nhờ có) và \"made friends easily\" cho thấy thái độ tích cực → tolerant (khoan dung, cởi mở). \"intolerant\" đúng từ loại nhưng mang nghĩa tiêu cực (không khoan dung), mâu thuẫn với việc dễ kết bạn; \"tolerantly\" là trạng từ; \"tolerance\" là danh từ (\"her tolerance attitude\" sai). Chọn A.",
+      "tip": "Khi phương án có cả dạng khẳng định và phủ định: xác định từ loại trước, rồi đọc kĩ ngữ cảnh để chọn nghĩa tích cực hay tiêu cực.",
+      "option_feedback": {
+        "B": "Đúng từ loại nhưng sai nghĩa: thái độ không khoan dung khó giúp Mai dễ kết bạn.",
+        "C": "\"tolerantly\" là trạng từ, không bổ nghĩa cho danh từ \"attitude\".",
+        "D": "\"tolerance\" là danh từ; trước \"attitude\" cần tính từ."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "adjective",
+        "positive-vs-negative",
+        "cultural-diversity"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class"
+      ]
+    },
+    {
+      "id": "eng.word-formation.009",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "Rapid urbanisation has led to the _____ of many traditional villages, as young people move to cities in search of jobs.",
+      "options": [
+        {
+          "id": "A",
+          "text": "depopulation"
+        },
+        {
+          "id": "B",
+          "text": "population"
+        },
+        {
+          "id": "C",
+          "text": "overpopulation"
+        },
+        {
+          "id": "D",
+          "text": "populousness"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Mệnh đề \"as young people move to cities\" cho biết dân số ở các làng tăng hay giảm?",
+      "explanation": "Sau \"the\" và trước \"of\" cần danh từ; cả bốn phương án đều là danh từ nên phải dựa vào nghĩa. Người trẻ rời làng lên thành phố → dân số làng giảm mạnh: depopulation (sự suy giảm dân số, tình trạng làng vắng người). \"overpopulation\" (quá tải dân số) ngược nghĩa – xảy ra ở thành phố chứ không phải ở làng; \"population\" (dân số) không diễn tả sự thay đổi là kết quả của \"has led to\"; \"populousness\" (sự đông dân) cũng trái nghĩa. Chọn A.",
+      "tip": "Tiền tố de- mang nghĩa \"giảm/loại bỏ\" (depopulation, deforestation, devalue); over- mang nghĩa \"quá mức\" (overpopulation, overwork).",
+      "option_feedback": {
+        "B": "\"population\" chỉ dân số nói chung, không diễn tả kết quả \"giảm dân\" do người trẻ rời đi.",
+        "C": "\"overpopulation\" (quá tải dân số) xảy ra ở thành phố, ngược với tình trạng của các làng.",
+        "D": "\"populousness\" = sự đông dân – trái nghĩa với ngữ cảnh."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.7,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.7,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 50,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "noun",
+        "prefix-de",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.wordform.suffixes"
+      ]
+    },
+    {
+      "id": "eng.word-formation.010",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.word-formation"
+      ],
+      "language": "en",
+      "stem": "Because technology develops so fast, nobody knows which skills will be needed in ten years. Workers must therefore keep learning to survive in this _____ changing job market.",
+      "options": [
+        {
+          "id": "A",
+          "text": "predictably"
+        },
+        {
+          "id": "B",
+          "text": "unpredictably"
+        },
+        {
+          "id": "C",
+          "text": "unpredictable"
+        },
+        {
+          "id": "D",
+          "text": "predictable"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Chỗ trống bổ nghĩa cho \"changing\" (tính từ dạng V-ing). Sau đó dựa vào \"nobody knows\" để chọn nghĩa.",
+      "explanation": "Bước 1 – từ loại: chỗ trống đứng trước \"changing\" (tính từ dạng V-ing bổ nghĩa cho \"job market\"), nên cần trạng từ bổ nghĩa cho tính từ → loại \"unpredictable\" và \"predictable\". Bước 2 – nghĩa: \"nobody knows which skills will be needed\" cho thấy thị trường thay đổi khó lường → unpredictably (một cách khó đoán trước). \"predictably\" đúng từ loại nhưng ngược nghĩa. Chọn B.",
+      "tip": "Trạng từ đứng trước tính từ để bổ nghĩa: rapidly growing, unpredictably changing, highly qualified.",
+      "option_feedback": {
+        "A": "Đúng từ loại nhưng ngược nghĩa: \"nobody knows\" cho thấy sự thay đổi khó đoán, không phải dễ đoán.",
+        "C": "\"unpredictable\" là tính từ; đứng trước tính từ \"changing\" cần trạng từ.",
+        "D": "Sai cả từ loại (tính từ) lẫn nghĩa (dễ đoán)."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.68,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.68,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.62,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 55,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "adverb",
+        "negative-prefix",
+        "lifelong-learning"
+      ],
+      "skill_ids": [
+        "english.wordform.word_class",
+        "english.wordform.suffixes"
+      ]
+    }
+  ]
+}

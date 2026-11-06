@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mentor mascot</title>
+    <style>
+      :root {
+        --bg: #f6f7f5;
+        --surface: #ffffff;
+        --border: #d9ddd6;
+        --text: #1d2420;
+        --muted: #5b655f;
+        --accent: #2f6f62;
+        --accent-soft: #e2efe9;
+        --dark-bg: #121614;
+        --dark-surface: #1a1f1c;
+        --dark-border: #313934;
+        --dark-text: #e4e9e5;
+        --dark-muted: #a5b0a9;
+        --focus: #1f6feb;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 24px 16px 64px;
+      }
+      main {
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin: 0 0 4px;
+        letter-spacing: -0.01em;
+      }
+      h2 {
+        font-size: 1rem;
+        margin: 40px 0 12px;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 68ch;
+        line-height: 1.5;
+      }
+      ::selection {
+        background: var(--accent-soft);
+        color: var(--text);
+      }
+      .intro {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        padding: 12px 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+      .group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+      }
+      .group > span {
+        font-size: 0.8125rem;
+        color: var(--muted);
+        margin-right: 4px;
+      }
+      button {
+        font: inherit;
+        font-size: 0.875rem;
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+      }
+      button:hover {
+        border-color: var(--accent);
+      }
+      button:active {
+        transform: scale(0.97);
+      }
+      button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 2px;
+      }
+      button[aria-pressed="true"] {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .stage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin-top: 20px;
+      }
+      .pane {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 36px;
+        padding: 48px 24px 28px;
+        min-height: 280px;
+        background: var(--surface);
+        flex-wrap: wrap;
+      }
+      .pane.dark {
+        background: var(--dark-bg);
+        color: var(--dark-text);
+      }
+      figure {
+        margin: 0;
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+      }
+      figcaption {
+        font-size: 0.75rem;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .dark figcaption {
+        color: var(--dark-muted);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .grid.dark {
+        background: var(--dark-border);
+        border-color: var(--dark-border);
+        margin-top: 12px;
+      }
+      .cell {
+        display: grid;
+        justify-items: center;
+        gap: 12px;
+        padding: 22px 8px 14px;
+        background: var(--surface);
+        border: 0;
+        border-radius: 0;
+        cursor: pointer;
+      }
+      .cell:hover {
+        background: var(--accent-soft);
+      }
+      .grid.dark .cell {
+        background: var(--dark-surface);
+        color: var(--dark-text);
+      }
+      .grid.dark .cell:hover {
+        background: #1f3530;
+      }
+      .cell .pair {
+        display: flex;
+        align-items: flex-end;
+        gap: 14px;
+        height: 72px;
+      }
+      .cell small {
+        font-size: 0.8125rem;
+      }
+      .contexts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+      }
+      .ctx {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 20px;
+        background: var(--surface);
+      }
+      .ctx h3 {
+        margin: 0 0 14px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .wallpaper {
+        height: 160px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #8aa6c9, #c9b38a 55%, #6b7d5e);
+        position: relative;
+      }
+      .wallpaper.night {
+        background: linear-gradient(135deg, #1b2433, #3b2f45 55%, #10161c);
+      }
+      .bubble {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        filter: drop-shadow(0 1px 1px rgb(16 32 28 / 25%)) drop-shadow(0 3px 4px rgb(16 32 28 / 25%));
+      }
+      .wallpaper .bubble.left {
+        left: 16px;
+        right: auto;
+      }
+      .chat {
+        display: grid;
+        gap: 10px;
+      }
+      .msg {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .msg .text {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 0.875rem;
+        line-height: 1.45;
+        max-width: 36ch;
+      }
+      .chat.dark .msg .text {
+        background: #1f2522;
+        border-color: var(--dark-border);
+        color: var(--dark-text);
+      }
+      .chat.dark {
+        background: var(--dark-bg);
+        padding: 14px;
+        border-radius: 10px;
+      }
+      .log {
+        font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        min-height: 1.5em;
+        margin-top: 8px;
+      }
+      .warn {
+        margin-top: 16px;
+        padding: 12px 14px;
+        border-radius: 10px;
+        background: #fbf0d9;
+        color: #5c3c00;
+      }
+      @media (max-width: 720px) {
+        .stage {
+          grid-template-columns: 1fr;
+        }
+        .pane {
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="intro">
+        <mentor-mascot id="hero" size="72" state="wave" theme="light"></mentor-mascot>
+        <div>
+          <h1>Mầm, the Mentor mascot</h1>
+          <p>
+            The brand tile grew a face. Pick a state below; every view on the page follows it. Click a cell in the grid to
+            preview just that state. <code>celebrate</code> and <code>wave</code> play once and return to idle.
+          </p>
+        </div>
+      </div>
+
+      <div class="controls" role="toolbar" aria-label="Mascot controls">
+        <div class="group" id="states"><span>State</span></div>
+        <div class="group" id="motion">
+          <span>Motion</span>
+          <button type="button" data-v="" aria-pressed="true">System</button>
+          <button type="button" data-v="reduce" aria-pressed="false">Reduced</button>
+        </div>
+        <div class="group" id="tail">
+          <span>Tail</span>
+          <button type="button" data-v="right" aria-pressed="true">Right</button>
+          <button type="button" data-v="left" aria-pressed="false">Left</button>
+        </div>
+      </div>
+      <p id="nofile" class="warn" hidden>
+        The browser blocked <code>mascot.js</code> because this page was opened as a file. Run
+        <code>python -m http.server 8765</code> in <code>packages/mentor-mascot</code> and open
+        <code>http://localhost:8765/demo.html</code>.
+      </p>
+      <div class="log" id="log" aria-live="polite"></div>
+
+      <section class="stage" aria-label="Selected state at four sizes">
+        <div class="pane" id="light"></div>
+        <div class="pane dark" id="dark"></div>
+      </section>
+
+      <h2>All states (72 px and 24 px)</h2>
+      <div class="grid" id="grid-light"></div>
+      <div class="grid dark" id="grid-dark"></div>
+
+      <h2>In context</h2>
+      <div class="contexts">
+        <div class="ctx">
+          <h3>Desktop bubble, 56 px on a wallpaper</h3>
+          <div class="wallpaper"><mentor-mascot class="bubble follow" size="56" theme="light"></mentor-mascot></div>
+          <div class="wallpaper night" style="margin-top: 12px">
+            <mentor-mascot class="bubble follow" size="56" theme="dark"></mentor-mascot>
+          </div>
+        </div>
+        <div class="ctx">
+          <h3>Chat avatar, 24 px</h3>
+          <div class="chat">
+            <div class="msg">
+              <mentor-mascot class="follow" size="24" theme="light"></mentor-mascot>
+              <div class="text">Hôm nay mình ôn lại phần đạo hàm nhé. Bạn muốn bắt đầu bằng một câu dễ hay một câu khó?</div>
+            </div>
+          </div>
+          <div class="chat dark" style="margin-top: 12px">
+            <div class="msg">
+              <mentor-mascot class="follow" size="24" theme="dark"></mentor-mascot>
+              <div class="text">Tuần này bạn đã sửa được 4 lỗi sai cũ. Làm tốt lắm.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module">
+      const $ = (s) => document.querySelector(s);
+      try {
+        await import("./mascot.js");
+      } catch (err) {
+        // Chromium refuses ES modules over file://. Serve the folder instead.
+        $("#nofile").hidden = false;
+        throw err;
+      }
+      const STATES = ["idle", "listening", "thinking", "talking", "happy", "celebrate", "sleepy", "calm", "wave"];
+      const SIZES = [24, 40, 72, 160];
+      const params = new URLSearchParams(location.search);
+      const make = (attrs) => {
+        const el = document.createElement("mentor-mascot");
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        return el;
+      };
+
+      for (const theme of ["light", "dark"]) {
+        for (const size of SIZES) {
+          const fig = document.createElement("figure");
+          fig.append(make({ size, theme, class: "follow" }));
+          const cap = document.createElement("figcaption");
+          cap.textContent = `${size} px`;
+          fig.append(cap);
+          $("#" + theme).append(fig);
+        }
+        for (const state of STATES) {
+          const cell = document.createElement("button");
+          cell.type = "button";
+          cell.className = "cell";
+          cell.innerHTML = `<span class="pair"></span><small>${state}</small>`;
+          const big = make({ size: 72, theme, state, label: "" });
+          const small = make({ size: 24, theme, state, label: "" });
+          cell.firstChild.append(big, small);
+          cell.addEventListener("click", () => {
+            big.play(state);
+            small.play(state);
+          });
+          $("#grid-" + theme).append(cell);
+        }
+      }
+
+      const follow = () => document.querySelectorAll(".follow, #hero");
+      const log = (t) => ($("#log").textContent = t);
+      function setState(state) {
+        for (const b of $("#states").querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.v === state));
+        follow().forEach((el) => el.play(state));
+        log(`state = ${state}`);
+      }
+      for (const s of STATES) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.dataset.v = s;
+        b.textContent = s;
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", () => setState(s));
+        $("#states").append(b);
+      }
+      // The hero reports one-shot endings; other views follow the same clock.
+      $("#hero").addEventListener("mascot-done", (e) => {
+        log(`mascot-done ${JSON.stringify(e.detail)}`);
+        if (!e.detail.interrupted) setState("idle");
+      });
+
+      function radio(groupId, attr) {
+        const btns = $(groupId).querySelectorAll("button");
+        btns.forEach((b) =>
+          b.addEventListener("click", () => {
+            btns.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+            document.querySelectorAll("mentor-mascot").forEach((el) =>
+              b.dataset.v ? el.setAttribute(attr, b.dataset.v) : el.removeAttribute(attr),
+            );
+          }),
+        );
+      }
+      radio("#motion", "motion");
+      radio("#tail", "tail");
+
+      // Screenshot hooks: ?state=thinking&tail=left&motion=reduce
+      if (params.get("motion")) $(`#motion [data-v="${params.get("motion")}"]`)?.click();
+      if (params.get("tail")) $(`#tail [data-v="${params.get("tail")}"]`)?.click();
+      setState(params.get("state") || "idle");
+    </script>
+  </body>
+</html>

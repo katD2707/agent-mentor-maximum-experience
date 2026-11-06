@@ -1,0 +1,1185 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "phys.gas.001",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Theo mô hình động học phân tử, chất khí lí tưởng có đặc điểm nào sau đây?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Các phân tử hút nhau rất mạnh nên khí luôn có thể tích xác định."
+        },
+        {
+          "id": "B",
+          "text": "Các phân tử chuyển động theo cùng một hướng với cùng một tốc độ."
+        },
+        {
+          "id": "C",
+          "text": "Các phân tử được coi là chất điểm, chỉ tương tác với nhau khi va chạm."
+        },
+        {
+          "id": "D",
+          "text": "Các phân tử đứng yên khi nhiệt độ của khí không đổi."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Nhớ lại các giả thuyết đơn giản hóa của mô hình khí lí tưởng về kích thước phân tử và lực tương tác.",
+      "explanation": "Trong mô hình khí lí tưởng, kích thước phân tử rất nhỏ so với khoảng cách giữa chúng nên coi là chất điểm; các phân tử chuyển động hỗn loạn không ngừng và chỉ tương tác với nhau khi va chạm. Khí không có thể tích riêng, phân tử không chuyển động có hướng và không bao giờ đứng yên. Chọn C.",
+      "tip": "Khí lí tưởng: chất điểm + chuyển động hỗn loạn + chỉ tương tác khi va chạm (va chạm đàn hồi).",
+      "option_feedback": {
+        "A": "Lực tương tác giữa các phân tử khí rất yếu; khí chiếm toàn bộ thể tích bình chứa.",
+        "B": "Chuyển động phân tử khí là hỗn loạn, không có hướng ưu tiên."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "kinetic-model"
+      ],
+      "skill_ids": [
+        "physics.gas.kinetic_model"
+      ]
+    },
+    {
+      "id": "phys.gas.002",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Đối với một lượng khí lí tưởng xác định, khi nhiệt độ được giữ không đổi thì áp suất $p$ và thể tích $V$ của khí liên hệ với nhau theo hệ thức",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{p}{V} = \\text{const}$"
+        },
+        {
+          "id": "B",
+          "text": "$pV = \\text{const}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{p}{T} = \\text{const}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{V}{T} = \\text{const}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Khi nén khí đẳng nhiệt để thể tích giảm một nửa thì áp suất thay đổi thế nào?",
+      "explanation": "Theo định luật Boyle, trong quá trình đẳng nhiệt áp suất tỉ lệ nghịch với thể tích: $pV = \\text{const}$, hay $p_1V_1 = p_2V_2$. Chọn B.",
+      "tip": "Đẳng nhiệt: $pV$ không đổi; đẳng tích: $\\frac{p}{T}$ không đổi; đẳng áp: $\\frac{V}{T}$ không đổi.",
+      "option_feedback": {
+        "C": "Đây là hệ thức của quá trình đẳng tích.",
+        "D": "Đây là hệ thức của quá trình đẳng áp."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "boyle"
+      ],
+      "skill_ids": [
+        "physics.gas.laws"
+      ]
+    },
+    {
+      "id": "phys.gas.003",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Theo thuyết động học phân tử chất khí, động năng tịnh tiến trung bình của một phân tử khí lí tưởng",
+      "options": [
+        {
+          "id": "A",
+          "text": "tỉ lệ thuận với nhiệt độ tuyệt đối của khí."
+        },
+        {
+          "id": "B",
+          "text": "tỉ lệ thuận với nhiệt độ Celsius của khí."
+        },
+        {
+          "id": "C",
+          "text": "tỉ lệ nghịch với nhiệt độ tuyệt đối của khí."
+        },
+        {
+          "id": "D",
+          "text": "không phụ thuộc vào nhiệt độ của khí."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Nhiệt độ là số đo mức độ chuyển động nhiệt của các phân tử.",
+      "explanation": "Động năng tịnh tiến trung bình của phân tử khí: $W_{d} = \\frac{3}{2}k_{B}T$, với $T$ là nhiệt độ tuyệt đối (K). Vậy nó tỉ lệ thuận với nhiệt độ tuyệt đối. Chọn A.",
+      "tip": "Gặp tỉ lệ với nhiệt độ trong chất khí, luôn dùng nhiệt độ kelvin, không dùng °C.",
+      "option_feedback": {
+        "B": "Ở 0 °C các phân tử vẫn chuyển động; tỉ lệ thuận chỉ đúng với nhiệt độ tuyệt đối.",
+        "C": "Nhiệt độ càng cao, phân tử chuyển động càng nhanh nên động năng phải tăng."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "kinetic-model",
+        "pressure-kinetic-energy"
+      ],
+      "skill_ids": [
+        "physics.gas.kinetic_energy_temperature"
+      ]
+    },
+    {
+      "id": "phys.gas.005",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Một lượng khí lí tưởng có thể tích 6 L ở 27 °C. Nung nóng đẳng áp lượng khí này đến 127 °C. Thể tích của khí lúc sau là",
+      "options": [
+        {
+          "id": "A",
+          "text": "4,5 L"
+        },
+        {
+          "id": "B",
+          "text": "28,2 L"
+        },
+        {
+          "id": "C",
+          "text": "6,0 L"
+        },
+        {
+          "id": "D",
+          "text": "8,0 L"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Trong quá trình đẳng áp, thể tích tỉ lệ thuận với nhiệt độ tuyệt đối. Đổi nhiệt độ sang kelvin trước.",
+      "explanation": "$T_1 = 27 + 273 = 300\\ \\text{K}$, $T_2 = 127 + 273 = 400\\ \\text{K}$. Đẳng áp: $\\frac{V_1}{T_1} = \\frac{V_2}{T_2} \\Rightarrow V_2 = V_1\\cdot\\frac{T_2}{T_1} = 6\\cdot\\frac{400}{300} = 8{,}0\\ \\text{L}$. Chọn D.",
+      "tip": "Bất kì công thức nào của chất khí có chứa T đều phải dùng nhiệt độ kelvin.",
+      "option_feedback": {
+        "A": "Đã đảo tỉ số nhiệt độ; khi nung nóng đẳng áp thể tích phải tăng.",
+        "B": "Đã dùng nhiệt độ Celsius thay cho nhiệt độ tuyệt đối."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.33,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "isobaric",
+        "unit-conversion"
+      ],
+      "skill_ids": [
+        "physics.gas.laws"
+      ]
+    },
+    {
+      "id": "phys.gas.006",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Một lốp xe chứa khí ở áp suất $2{,}0\\cdot 10^{5}\\ \\text{Pa}$ khi nhiệt độ là 17 °C. Sau khi xe chạy một thời gian, nhiệt độ khí trong lốp tăng lên 46 °C. Coi thể tích lốp không đổi. Áp suất khí trong lốp lúc này là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2{,}2\\cdot 10^{5}\\ \\text{Pa}$"
+        },
+        {
+          "id": "B",
+          "text": "$5{,}4\\cdot 10^{5}\\ \\text{Pa}$"
+        },
+        {
+          "id": "C",
+          "text": "$1{,}8\\cdot 10^{5}\\ \\text{Pa}$"
+        },
+        {
+          "id": "D",
+          "text": "$2{,}0\\cdot 10^{5}\\ \\text{Pa}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Thể tích không đổi: áp suất tỉ lệ thuận với nhiệt độ tuyệt đối.",
+      "explanation": "$T_1 = 17 + 273 = 290\\ \\text{K}$, $T_2 = 46 + 273 = 319\\ \\text{K}$. Đẳng tích: $\\frac{p_1}{T_1} = \\frac{p_2}{T_2} \\Rightarrow p_2 = 2{,}0\\cdot 10^{5}\\cdot\\frac{319}{290} = 2{,}2\\cdot 10^{5}\\ \\text{Pa}$. Chọn A.",
+      "tip": "Nhiệt độ Celsius tăng gần gấp ba nhưng nhiệt độ tuyệt đối chỉ tăng 10%, nên áp suất cũng chỉ tăng 10%.",
+      "option_feedback": {
+        "B": "Đã dùng nhiệt độ Celsius thay cho nhiệt độ tuyệt đối.",
+        "C": "Đã đảo tỉ số nhiệt độ; khi khí nóng lên đẳng tích áp suất phải tăng.",
+        "D": "Thể tích không đổi nhưng nhiệt độ thay đổi nên áp suất vẫn thay đổi."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.38,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.38,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.36,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 75,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "isochoric",
+        "unit-conversion"
+      ],
+      "skill_ids": [
+        "physics.gas.laws"
+      ]
+    },
+    {
+      "id": "phys.gas.007",
+      "revision": 3,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Một bình thép dung tích 20 L chứa khí oxygen ở áp suất $1{,}5\\cdot 10^{6}\\ \\text{Pa}$ và nhiệt độ 27 °C. Coi khí oxygen là khí lí tưởng, khối lượng mol của oxygen là 32 g/mol, $R = 8{,}31\\ \\text{J/(mol.K)}$. Khối lượng khí oxygen trong bình xấp xỉ (làm tròn đến hàng đơn vị)",
+      "options": [
+        {
+          "id": "A",
+          "text": "12 g"
+        },
+        {
+          "id": "B",
+          "text": "385 g"
+        },
+        {
+          "id": "C",
+          "text": "4279 g"
+        },
+        {
+          "id": "D",
+          "text": "193 g"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Dùng phương trình trạng thái $pV = nRT$ với các đại lượng ở đơn vị SI, rồi tính khối lượng $m = nM$.",
+      "explanation": "Đổi đơn vị: $V = 20\\ \\text{L} = 0{,}02\\ \\text{m}^3$, $T = 27 + 273 = 300\\ \\text{K}$. Số mol: $n = \\frac{pV}{RT} = \\frac{1{,}5\\cdot 10^{6}\\cdot 0{,}02}{8{,}31\\cdot 300} = \\frac{30000}{2493} \\approx 12{,}03\\ \\text{mol}$. Khối lượng: $m = nM \\approx 12{,}03\\cdot 32 \\approx 385\\ \\text{g}$. Chọn B.",
+      "tip": "Với $R = 8{,}31$, phải dùng $p$ (Pa), $V$ ($\\text{m}^3$), $T$ (K); 1 L = $10^{-3}\\ \\text{m}^3$.",
+      "option_feedback": {
+        "A": "Đây là số mol khí, chưa nhân với khối lượng mol.",
+        "C": "Đã dùng nhiệt độ 27 °C thay vì 300 K.",
+        "D": "Đã dùng khối lượng mol của nguyên tử oxygen (16 g/mol) thay vì phân tử $\\text{O}_2$ (32 g/mol)."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.57,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck-r3@v1",
+            "estimate": 0.57,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 140,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck-r3@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ideal-gas-equation",
+        "unit-conversion"
+      ],
+      "skill_ids": [
+        "physics.gas.state_equation"
+      ]
+    },
+    {
+      "id": "phys.gas.008",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Một bình có thể tích không đổi, có gắn van, chứa khí lí tưởng. Người ta làm nóng khí sao cho động năng tịnh tiến trung bình của các phân tử khí tăng gấp 3 lần, đồng thời mở van cho $\\frac{1}{3}$ số phân tử khí thoát ra ngoài. So với lúc đầu, áp suất khí trong bình",
+      "options": [
+        {
+          "id": "A",
+          "text": "không đổi."
+        },
+        {
+          "id": "B",
+          "text": "tăng 3 lần."
+        },
+        {
+          "id": "C",
+          "text": "tăng 4,5 lần."
+        },
+        {
+          "id": "D",
+          "text": "tăng 2 lần."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Áp suất khí phụ thuộc vào mật độ phân tử và động năng tịnh tiến trung bình của phân tử. Hãy xem mỗi đại lượng thay đổi bao nhiêu lần.",
+      "explanation": "Hệ thức giữa áp suất và động năng phân tử: $p = \\frac{2}{3}\\cdot\\frac{N}{V}\\cdot W_{d}$. Thể tích không đổi; số phân tử còn lại $N' = N - \\frac{N}{3} = \\frac{2}{3}N$; động năng $W_{d}' = 3W_{d}$. Do đó $\\frac{p'}{p} = \\frac{2}{3}\\cdot 3 = 2$: áp suất tăng 2 lần. Chọn D.",
+      "tip": "Bài tỉ lệ: viết công thức, giữ nguyên các đại lượng không đổi, rồi nhân các hệ số thay đổi với nhau.",
+      "option_feedback": {
+        "A": "Đã nhân 3 với $\\frac{1}{3}$ (phần khí thoát ra) thay vì $\\frac{2}{3}$ (phần khí còn lại).",
+        "B": "Đã bỏ qua việc số phân tử khí trong bình giảm.",
+        "C": "Đã chia cho $\\frac{2}{3}$ thay vì nhân, tức coi áp suất tỉ lệ nghịch với số phân tử."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.62,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.58,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "pressure-kinetic-energy"
+      ],
+      "skill_ids": [
+        "physics.gas.kinetic_energy_temperature",
+        "physics.gas.laws"
+      ]
+    },
+    {
+      "id": "phys.gas.009",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Một bọt khí nhỏ ở đáy hồ sâu 20 m, nơi nhiệt độ nước là 7 °C, nổi lên mặt nước, nơi nhiệt độ nước là 27 °C. Áp suất khí quyển là $1{,}0\\cdot 10^{5}\\ \\text{Pa}$, khối lượng riêng của nước $1000\\ \\text{kg/m}^3$, $g = 10\\ \\text{m/s}^2$. Coi khí trong bọt là khí lí tưởng, nhiệt độ khí bằng nhiệt độ nước xung quanh và bỏ qua áp suất phụ do sức căng mặt ngoài. Khi lên tới mặt nước, thể tích bọt khí tăng lên xấp xỉ bao nhiêu lần (làm tròn đến hai chữ số thập phân)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "3,00 lần"
+        },
+        {
+          "id": "B",
+          "text": "2,14 lần"
+        },
+        {
+          "id": "C",
+          "text": "3,21 lần"
+        },
+        {
+          "id": "D",
+          "text": "2,80 lần"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Áp suất ở đáy hồ gồm cả áp suất khí quyển và áp suất của cột nước. Cả áp suất và nhiệt độ đều thay đổi.",
+      "explanation": "Ở đáy hồ: $p_1 = p_0 + \\rho gh = 1{,}0\\cdot 10^{5} + 1000\\cdot 10\\cdot 20 = 3{,}0\\cdot 10^{5}\\ \\text{Pa}$, $T_1 = 280\\ \\text{K}$. Ở mặt nước: $p_2 = 1{,}0\\cdot 10^{5}\\ \\text{Pa}$, $T_2 = 300\\ \\text{K}$. Phương trình trạng thái: $\\frac{p_1V_1}{T_1} = \\frac{p_2V_2}{T_2} \\Rightarrow \\frac{V_2}{V_1} = \\frac{p_1}{p_2}\\cdot\\frac{T_2}{T_1} = 3\\cdot\\frac{300}{280} \\approx 3{,}21$. Chọn C.",
+      "tip": "Mỗi 10 m nước tạo thêm áp suất khoảng $1\\cdot 10^{5}\\ \\text{Pa}$, xấp xỉ 1 atm.",
+      "option_feedback": {
+        "A": "Đã bỏ qua sự thay đổi nhiệt độ của bọt khí.",
+        "B": "Đã quên cộng áp suất khí quyển vào áp suất ở đáy hồ.",
+        "D": "Đã đảo tỉ số nhiệt độ; khí nóng lên nên thể tích phải tăng thêm."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.72,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.72,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ideal-gas-equation",
+        "hydrostatic-pressure"
+      ],
+      "skill_ids": [
+        "physics.gas.state_equation",
+        "physics.gas.laws"
+      ]
+    },
+    {
+      "id": "phys.gas.010",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Hai bình cứng chứa cùng một loại khí lí tưởng ở cùng nhiệt độ 27 °C: bình 1 có thể tích 2 L, áp suất $3{,}0\\cdot 10^{5}\\ \\text{Pa}$; bình 2 có thể tích 4 L, áp suất $1{,}5\\cdot 10^{5}\\ \\text{Pa}$. Nối hai bình bằng một ống nhỏ có thể tích không đáng kể rồi nung nóng toàn bộ hệ đến 87 °C. Áp suất khí trong hệ khi cân bằng là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2{,}0\\cdot 10^{5}\\ \\text{Pa}$"
+        },
+        {
+          "id": "B",
+          "text": "$2{,}7\\cdot 10^{5}\\ \\text{Pa}$"
+        },
+        {
+          "id": "C",
+          "text": "$5{,}4\\cdot 10^{5}\\ \\text{Pa}$"
+        },
+        {
+          "id": "D",
+          "text": "$2{,}4\\cdot 10^{5}\\ \\text{Pa}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tổng số mol khí được bảo toàn khi nối hai bình. Biểu diễn số mol của mỗi bình theo $\\frac{pV}{RT}$.",
+      "explanation": "Số mol khí bảo toàn: $\\frac{p(V_1 + V_2)}{RT'} = \\frac{p_1V_1 + p_2V_2}{RT}$. Với $p_1V_1 + p_2V_2 = 3{,}0\\cdot 10^{5}\\cdot 2 + 1{,}5\\cdot 10^{5}\\cdot 4 = 12\\cdot 10^{5}\\ \\text{Pa.L}$, $V_1 + V_2 = 6\\ \\text{L}$, $T = 300\\ \\text{K}$, $T' = 360\\ \\text{K}$: $p = \\frac{12\\cdot 10^{5}}{6}\\cdot\\frac{360}{300} = 2{,}0\\cdot 10^{5}\\cdot 1{,}2 = 2{,}4\\cdot 10^{5}\\ \\text{Pa}$. Chọn D.",
+      "tip": "Khi trộn khí hoặc nối bình, đại lượng bảo toàn là tổng số mol, không phải áp suất.",
+      "option_feedback": {
+        "A": "Đây là áp suất ngay sau khi nối bình ở 27 °C, chưa tính đến việc nung nóng lên 87 °C.",
+        "B": "Đã lấy trung bình cộng hai áp suất thay vì bảo toàn số mol (hai bình có thể tích khác nhau).",
+        "C": "Đã cộng hai áp suất như thể khí của hai bình cùng chiếm một bình."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.8,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.68,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 220,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ideal-gas-equation",
+        "mole-conservation"
+      ],
+      "skill_ids": [
+        "physics.gas.state_equation"
+      ]
+    },
+    {
+      "id": "phys.gas.011",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "TRUE_FALSE_GROUP",
+      "topic_ids": [
+        "phys.gas"
+      ],
+      "language": "vi",
+      "stem": "Một khối khí lí tưởng có thể tích $V_1 = 6$ lít, áp suất $p_1 = 2 \\cdot 10^5\\ \\text{Pa}$ và nhiệt độ $T_1 = 300\\ \\text{K}$. Mỗi ý dưới đây xét độc lập, xuất phát từ trạng thái ban đầu trên.",
+      "hint": "Dùng các định luật Boyle, Charles và phương trình trạng thái $pV = nRT$ (đổi lít sang $\\text{m}^3$).",
+      "explanation": "Đẳng nhiệt: $p_2 = 4 \\cdot 10^5\\ \\text{Pa}$. Đẳng tích: $p_2 = 3 \\cdot 10^5\\ \\text{Pa}$. Đẳng áp: $V_2 = 8$ lít. $n = \\frac{pV}{RT} \\approx 0{,}48\\ \\text{mol}$. Vậy a) Đúng, b) Đúng, c) Đúng, d) Sai.",
+      "tip": "Trong $pV = nRT$ phải dùng $V$ theo $\\text{m}^3$: $6$ lít $= 6 \\cdot 10^{-3}\\ \\text{m}^3$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.5,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 300,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:Đ c:Đ d:S; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:Đ c:Đ d:S; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "statements": [
+        {
+          "id": "a",
+          "text": "Nén đẳng nhiệt khối khí đến thể tích $3$ lít thì áp suất của khí là $4 \\cdot 10^5\\ \\text{Pa}$.",
+          "truth": true,
+          "explanation": "$p_1V_1 = p_2V_2 \\Rightarrow p_2 = \\frac{2 \\cdot 10^5 \\cdot 6}{3} = 4 \\cdot 10^5\\ \\text{Pa}$.",
+          "level": 1
+        },
+        {
+          "id": "b",
+          "text": "Đun nóng đẳng tích khối khí đến $T_2 = 450\\ \\text{K}$ thì áp suất của khí là $3 \\cdot 10^5\\ \\text{Pa}$.",
+          "truth": true,
+          "explanation": "$\\frac{p_1}{T_1} = \\frac{p_2}{T_2} \\Rightarrow p_2 = 2 \\cdot 10^5 \\cdot \\frac{450}{300} = 3 \\cdot 10^5\\ \\text{Pa}$.",
+          "level": 1
+        },
+        {
+          "id": "c",
+          "text": "Đun nóng đẳng áp khối khí từ $300\\ \\text{K}$ đến $400\\ \\text{K}$ thì thể tích khí tăng thêm $2$ lít.",
+          "truth": true,
+          "explanation": "$V_2 = V_1 \\cdot \\frac{400}{300} = 8$ lít, tăng $2$ lít.",
+          "level": 2
+        },
+        {
+          "id": "d",
+          "text": "Số mol khí xấp xỉ $0{,}24\\ \\text{mol}$ (lấy $R = 8{,}31\\ \\text{J/(mol.K)}$).",
+          "truth": false,
+          "explanation": "$n = \\frac{pV}{RT} = \\frac{2 \\cdot 10^5 \\cdot 6 \\cdot 10^{-3}}{8{,}31 \\cdot 300} \\approx 0{,}48\\ \\text{mol}$.",
+          "level": 3
+        }
+      ],
+      "skill_ids": [
+        "physics.gas.laws",
+        "physics.gas.state_equation"
+      ]
+    }
+  ]
+}

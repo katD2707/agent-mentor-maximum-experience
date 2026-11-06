@@ -1,0 +1,89 @@
+# Dev stack: gateway + LiteLLM model router + mail catcher.
+#   docker compose -f infra/docker-compose.dev.yml up --build
+# Secrets come from the shell or a repo-root .env (not committed): FPT_API_BASE, FPT_API_KEY,
+# MODEL_ROUTER_MASTER_KEY, optionally ZALO_BOT_TOKEN / ZALO_WEBHOOK_SECRET, GATEWAY_INTERNAL_TOKEN.
+#
+# Sandbox isolation (SANDBOX_BACKEND=docker, infra/README "Sandbox isolation"): every learner's sandbox gets its
+# OWN internal network (mentor-sbx-net-<user>, no internet), and only the gateway (alias `gateway`) and the
+# model router (alias `model-router`) are attached to it, so sandboxes can never reach each other. The gateway
+# does this through the docker socket; SANDBOX_NETWORK_ATTACH names the containers (`self` = the gateway).
+# The router's container name below assumes the project name `mentor-dev` (set by `name:`); with `-p <other>`
+# change it to `<other>-model-router-1`.
+name: mentor-dev
+
+services:
+  gateway:
+    build:
+      context: ..
+      dockerfile: infra/gateway.Dockerfile
+    # non-root (the image default is 4242:4242); sandboxes get the same uid:gid, never root. On Linux the data dir
+    # must be writable by it: `sudo chown -R 4242:4242 var`, or set MENTOR_UID/MENTOR_GID to your own uid/gid.
+    user: "${MENTOR_UID:-4242}:${MENTOR_GID:-4242}"
+    # docker socket access: its group. Docker Desktop: 0. Linux: DOCKER_GID=$(stat -c %g /var/run/docker.sock)
+    group_add: ["${DOCKER_GID:-0}"]
+    ports:
+      - "8000:8000"   # API + WebSocket + /webhooks/zalo
+      - "2525:2525"   # inbound SMTP (forwarded email -> learner inbox)
+    environment:
+      MENTOR_ENV: dev   # required: an unset MENTOR_ENV means prod
+      MENTOR_DATA_DIR: /data
+      PUBLIC_BASE_URL: http://localhost:8000
+      WEB_ORIGIN: http://localhost:3000
+      INBOUND_EMAIL_DOMAIN: inbox.mentor.local
+      INBOUND_SMTP_PORT: "2525"
+      INBOUND_SMTP_HOST: 0.0.0.0
+      SMTP_HOST: mailpit             # magic links when MENTOR_ENV != dev
+      SMTP_PORT: "1025"
+      # POST /internal/email/inbound needs X-Internal-Token; without a token it is closed with the docker backend
+      GATEWAY_INTERNAL_TOKEN: ${GATEWAY_INTERNAL_TOKEN:-}
+      SANDBOX_BACKEND: ${SANDBOX_BACKEND:-local}
+      # docker backend: one internal network per sandbox with only these two containers attached
+      SANDBOX_NETWORK_ATTACH: self:gateway,mentor-dev-model-router-1:model-router
+      SANDBOX_TMPFS_SIZE: 256m          # sandbox root fs is read-only; /tmp is a tmpfs of this size
+      SANDBOX_GATEWAY_URL: http://gateway:8000   # sandboxes call /internal/papers|calendar/* here (per-sandbox token)
+      S2_API_KEY: ${S2_API_KEY:-}
+      ASTA_API_KEY: ${ASTA_API_KEY:-}   # Ai2 Asta (paper search/snippets/citations), see infra/README
+      # web_search backend (infra/README "Web search"): a Tavily key, or SEARXNG_URL=http://searxng:8080 together
+      # with `--profile search` (starts the searxng service below). Neither = the tool says "not configured".
+      TAVILY_API_KEY: ${TAVILY_API_KEY:-}
+      SEARXNG_URL: ${SEARXNG_URL:-}
+      GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}           # Google Calendar (NCS), see README
+      GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:-}
+      MENTOR_HOST_DATA_DIR: ${MENTOR_HOST_DATA_DIR:-}
+      MODEL_ROUTER_URL: http://model-router:4000
+      MODEL_ROUTER_KEY: ${MODEL_ROUTER_MASTER_KEY:-sk-dev-master}
+      MENTOR_MODEL_MODE: ${MENTOR_MODEL_MODE:-router}
+      ZALO_BOT_TOKEN: ${ZALO_BOT_TOKEN:-}
+      ZALO_WEBHOOK_SECRET: ${ZALO_WEBHOOK_SECRET:-dev-secret}
+    volumes:
+      - ${MENTOR_HOST_DATA_DIR:-../var}:/data       # absolute host path required for SANDBOX_BACKEND=docker
+      - /var/run/docker.sock:/var/run/docker.sock   # only used with SANDBOX_BACKEND=docker
+    depends_on: [model-router, mailpit]
+
+  model-router:
+    image: ghcr.io/berriai/litellm:main-stable
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    environment:
+      FPT_API_BASE: ${FPT_API_BASE:-}
+      FPT_API_KEY: ${FPT_API_KEY:-}
+      MODEL_ROUTER_MASTER_KEY: ${MODEL_ROUTER_MASTER_KEY:-sk-dev-master}
+    volumes:
+      - ../services/model-router/config.yaml:/app/config.yaml:ro
+    ports:
+      - "4000:4000"
+
+  searxng:   # optional self-hosted web search for web_search; only with `--profile search`
+    image: searxng/searxng:latest
+    profiles: ["search"]
+    environment:
+      SEARXNG_SECRET: ${SEARXNG_SECRET:-dev-only-searxng-secret}
+    volumes:
+      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro   # enables the JSON format
+    ports:
+      - "127.0.0.1:8888:8080"   # host-run gateway: SEARXNG_URL=http://localhost:8888
+
+  mailpit:   # catches outbound mail (magic links outside dev mode); UI at http://localhost:8025
+    image: axllent/mailpit:latest
+    ports:
+      - "8025:8025"
+      - "1025:1025"

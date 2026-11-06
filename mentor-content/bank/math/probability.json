@@ -1,0 +1,1427 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "math.probability.001",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Cho hai biến cố $A$ và $B$ với $P(A) = 0{,}5$, $P(B) = 0{,}4$ và $P(A \\cap B) = 0{,}12$. Xác suất có điều kiện $P(A | B)$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}24$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}048$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}28$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}3$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Xác suất của $A$ khi biết $B$ đã xảy ra: chia xác suất của giao cho xác suất của biến cố điều kiện.",
+      "explanation": "Theo định nghĩa, $P(A | B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}12}{0{,}4} = 0{,}3$. Chọn D.",
+      "tip": "Trong $P(A | B)$, biến cố đứng sau dấu gạch đứng ($B$) là biến cố đã biết, và nằm ở mẫu số.",
+      "option_feedback": {
+        "A": "Em chia cho $P(A)$, đó là $P(B | A) = 0{,}24$.",
+        "B": "Em nhân $P(A \\cap B)$ với $P(B)$ thay vì chia.",
+        "C": "Em lấy $P(B) - P(A \\cap B)$; đó không phải công thức xác suất có điều kiện."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "conditional-probability"
+      ],
+      "skill_ids": [
+        "probability.conditional"
+      ]
+    },
+    {
+      "id": "math.probability.002",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Một hộp có $6$ viên bi đỏ và $4$ viên bi xanh, các viên bi có cùng kích thước. Lấy ngẫu nhiên lần lượt hai viên bi, không hoàn lại. Xác suất để cả hai viên bi lấy ra đều màu đỏ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\dfrac{1}{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\dfrac{9}{25}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\dfrac{4}{15}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{1}{2}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Dùng công thức nhân xác suất: xác suất lần đầu lấy được bi đỏ nhân với xác suất lần hai lấy được bi đỏ khi biết lần đầu đã lấy bi đỏ.",
+      "explanation": "Gọi $A$: lần thứ nhất lấy được bi đỏ, $B$: lần thứ hai lấy được bi đỏ. Ta có $P(A) = \\dfrac{6}{10}$; khi $A$ đã xảy ra, hộp còn $5$ bi đỏ trong $9$ bi nên $P(B | A) = \\dfrac{5}{9}$. Do đó $P(A \\cap B) = P(A) \\cdot P(B | A) = \\dfrac{6}{10} \\cdot \\dfrac{5}{9} = \\dfrac{1}{3}$. Chọn A.",
+      "tip": "Công thức nhân: $P(A \\cap B) = P(A) \\cdot P(B | A)$; với lấy không hoàn lại, nhớ giảm cả số bi đỏ và tổng số bi ở lần sau.",
+      "option_feedback": {
+        "B": "$\\dfrac{9}{25} = \\left(\\dfrac{6}{10}\\right)^2$ ứng với lấy có hoàn lại.",
+        "C": "$\\dfrac{6}{10} \\cdot \\dfrac{4}{9} = \\dfrac{4}{15}$ là xác suất lần đầu đỏ, lần hai xanh."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 2
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.18,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 50,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "product-rule"
+      ],
+      "skill_ids": [
+        "probability.classical",
+        "probability.rules"
+      ]
+    },
+    {
+      "id": "math.probability.003",
+      "revision": 2,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Cho hai biến cố độc lập $A$ và $B$ với $P(A) = 0{,}3$ và $P(B) = 0{,}7$. Xác suất có điều kiện $P(A | B)$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}21$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}3$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}7$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{3}{7}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Viết định nghĩa $P(A | B)$ và dùng tính chất của hai biến cố độc lập cho $P(A \\cap B)$.",
+      "explanation": "Vì $A$, $B$ độc lập nên $P(A \\cap B) = P(A) \\cdot P(B) = 0{,}21$. Do đó $P(A | B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}21}{0{,}7} = 0{,}3 = P(A)$. Chọn B.",
+      "tip": "Hai biến cố độc lập thì $P(A | B) = P(A)$ (với $P(B) > 0$).",
+      "option_feedback": {
+        "A": "$0{,}21$ là $P(A \\cap B)$, chưa chia cho $P(B)$.",
+        "D": "Em lấy $\\dfrac{P(A)}{P(B)}$; công thức đúng là $\\dfrac{P(A \\cap B)}{P(B)}$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "conditional-probability",
+        "independence"
+      ],
+      "skill_ids": [
+        "probability.rules",
+        "probability.conditional"
+      ]
+    },
+    {
+      "id": "math.probability.004",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Một nhà máy có hai phân xưởng. Phân xưởng I sản xuất $60\\%$ tổng số sản phẩm với tỉ lệ phế phẩm $2\\%$; phân xưởng II sản xuất $40\\%$ tổng số sản phẩm với tỉ lệ phế phẩm $5\\%$. Lấy ngẫu nhiên một sản phẩm của nhà máy. Xác suất để sản phẩm đó là phế phẩm bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}035$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}07$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}032$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}968$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Chia trường hợp theo phân xưởng sản xuất ra sản phẩm (sơ đồ cây hai nhánh), rồi cộng xác suất của các nhánh dẫn tới phế phẩm.",
+      "explanation": "Gọi $A$: sản phẩm do phân xưởng I sản xuất, $B$: sản phẩm là phế phẩm. Theo công thức xác suất toàn phần: $P(B) = P(A) \\cdot P(B | A) + P(\\overline{A}) \\cdot P(B | \\overline{A}) = 0{,}6 \\cdot 0{,}02 + 0{,}4 \\cdot 0{,}05 = 0{,}012 + 0{,}02 = 0{,}032$. Chọn C.",
+      "tip": "Trên sơ đồ cây: nhân xác suất dọc theo mỗi nhánh, rồi cộng các nhánh cùng kết quả.",
+      "option_feedback": {
+        "A": "Em lấy trung bình cộng $\\dfrac{2\\% + 5\\%}{2}$ mà không xét tỉ lệ sản lượng $60\\%$ và $40\\%$.",
+        "B": "Em cộng trực tiếp hai tỉ lệ phế phẩm $2\\% + 5\\%$.",
+        "D": "$0{,}968$ là xác suất sản phẩm đạt chuẩn (biến cố đối)."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.3,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "total-probability",
+        "tree-diagram"
+      ],
+      "skill_ids": [
+        "probability.total_bayes"
+      ]
+    },
+    {
+      "id": "math.probability.005",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Kết quả khảo sát sở thích bóng đá của $40$ học sinh một lớp được cho trong bảng dưới đây. Chọn ngẫu nhiên một học sinh của lớp. Biết học sinh được chọn thích bóng đá, xác suất để học sinh đó là nam bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\dfrac{5}{9}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\dfrac{5}{11}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\dfrac{1}{4}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{11}{20}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Khi đã biết học sinh thích bóng đá, không gian mẫu thu hẹp lại chỉ còn các học sinh thích bóng đá.",
+      "explanation": "Gọi $A$: học sinh được chọn là nam, $B$: học sinh được chọn thích bóng đá. Số học sinh thích bóng đá là $10 + 12 = 22$, trong đó có $10$ nam. Vậy $P(A | B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{10/40}{22/40} = \\dfrac{10}{22} = \\dfrac{5}{11}$. Chọn B.",
+      "tip": "Với bảng số liệu, $P(A | B)$ bằng số phần tử thuộc cả $A$ và $B$ chia cho số phần tử của $B$.",
+      "option_feedback": {
+        "A": "$\\dfrac{10}{18} = \\dfrac{5}{9}$ là xác suất thích bóng đá khi biết học sinh là nam, tức là $P(B | A)$.",
+        "C": "$\\dfrac{10}{40}$ là $P(A \\cap B)$, em chưa thu hẹp không gian mẫu về nhóm thích bóng đá.",
+        "D": "$\\dfrac{22}{40}$ là xác suất học sinh thích bóng đá, không phải xác suất có điều kiện cần tìm."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.33,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.33,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.33,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng khảo sát: Nam thích bóng đá 10, nam không thích 8; nữ thích bóng đá 12, nữ không thích 10.",
+          "table": {
+            "headers": [
+              "",
+              "Thích bóng đá",
+              "Không thích bóng đá"
+            ],
+            "rows": [
+              [
+                "Nam",
+                "10",
+                "8"
+              ],
+              [
+                "Nữ",
+                "12",
+                "10"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "conditional-probability",
+        "two-way-table"
+      ],
+      "skill_ids": [
+        "probability.conditional"
+      ]
+    },
+    {
+      "id": "math.probability.006",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Một hộp có $5$ viên bi đỏ và $3$ viên bi xanh, các viên bi có cùng kích thước. Lấy ngẫu nhiên lần lượt hai viên bi, không hoàn lại. Xác suất để viên bi lấy ra ở lần thứ hai có màu đỏ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\dfrac{4}{7}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\dfrac{5}{7}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\dfrac{15}{56}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{5}{8}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Kết quả lần hai phụ thuộc vào lần một; hãy xét hai trường hợp màu của viên bi thứ nhất.",
+      "explanation": "Gọi $A$: lần một lấy được bi đỏ, $B$: lần hai lấy được bi đỏ. Ta có $P(A) = \\dfrac{5}{8}$, $P(\\overline{A}) = \\dfrac{3}{8}$, $P(B | A) = \\dfrac{4}{7}$, $P(B | \\overline{A}) = \\dfrac{5}{7}$. Theo công thức xác suất toàn phần: $P(B) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} + \\dfrac{3}{8} \\cdot \\dfrac{5}{7} = \\dfrac{20 + 15}{56} = \\dfrac{35}{56} = \\dfrac{5}{8}$. Chọn D.",
+      "tip": "Khi chưa biết kết quả lần đầu, xác suất lần thứ hai lấy được bi đỏ bằng đúng xác suất lần đầu (tính đối xứng của phép lấy không hoàn lại).",
+      "option_feedback": {
+        "A": "$\\dfrac{4}{7}$ là $P(B | A)$, chỉ đúng khi đã biết lần một lấy được bi đỏ.",
+        "B": "$\\dfrac{5}{7}$ là $P(B | \\overline{A})$, chỉ đúng khi đã biết lần một lấy được bi xanh.",
+        "C": "Em chỉ tính một nhánh (xanh rồi đỏ) mà quên cộng nhánh đỏ rồi đỏ."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 3
+        },
+        "author_estimate": 0.45,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.43,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "total-probability",
+        "tree-diagram"
+      ],
+      "skill_ids": [
+        "probability.total_bayes"
+      ]
+    },
+    {
+      "id": "math.probability.007",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Trong một cộng đồng, tỉ lệ người mắc bệnh X là $2\\%$. Một loại xét nghiệm cho kết quả dương tính với $95\\%$ người mắc bệnh và cho kết quả dương tính (nhầm) với $10\\%$ người không mắc bệnh. Chọn ngẫu nhiên một người và người đó có kết quả xét nghiệm dương tính. Xác suất để người đó thực sự mắc bệnh X bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}16$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}95$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}12$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}02$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Đây là bài toán ngược: biết kết quả (dương tính), cần tìm xác suất của nguyên nhân (mắc bệnh). Hãy tính xác suất dương tính trước.",
+      "explanation": "Gọi $A$: người đó mắc bệnh, $B$: xét nghiệm dương tính. Ta có $P(A) = 0{,}02$, $P(B | A) = 0{,}95$, $P(B | \\overline{A}) = 0{,}1$. Xác suất toàn phần: $P(B) = 0{,}02 \\cdot 0{,}95 + 0{,}98 \\cdot 0{,}1 = 0{,}019 + 0{,}098 = 0{,}117$. Theo công thức Bayes: $P(A | B) = \\dfrac{P(A) \\cdot P(B | A)}{P(B)} = \\dfrac{0{,}019}{0{,}117} \\approx 0{,}16$. Chọn A.",
+      "tip": "Khi bệnh hiếm, phần lớn kết quả dương tính đến từ nhóm không mắc bệnh, nên xác suất mắc bệnh khi dương tính thường thấp hơn nhiều so với độ nhạy của xét nghiệm.",
+      "option_feedback": {
+        "B": "$0{,}95$ là $P(B | A)$ (dương tính khi mắc bệnh); câu hỏi hỏi chiều ngược lại $P(A | B)$.",
+        "C": "$0{,}117 \\approx 0{,}12$ là xác suất xét nghiệm dương tính $P(B)$, mới là bước trung gian.",
+        "D": "$0{,}019 \\approx 0{,}02$ là $P(A \\cap B)$, em chưa chia cho $P(B)$."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.58,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 130,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "bayes",
+        "tree-diagram"
+      ],
+      "skill_ids": [
+        "probability.total_bayes"
+      ]
+    },
+    {
+      "id": "math.probability.008",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Hộp thứ nhất có $4$ viên bi đỏ và $2$ viên bi xanh; hộp thứ hai có $3$ viên bi đỏ và $5$ viên bi xanh. Các viên bi có cùng kích thước. Lấy ngẫu nhiên một viên bi từ hộp thứ nhất bỏ vào hộp thứ hai, sau đó lấy ngẫu nhiên một viên bi từ hộp thứ hai. Xác suất để viên bi lấy ra từ hộp thứ hai có màu đỏ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\dfrac{3}{8}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\dfrac{11}{27}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\dfrac{4}{9}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{1}{2}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Xét hai trường hợp theo màu viên bi được chuyển sang; sau khi chuyển, hộp thứ hai có $9$ viên bi.",
+      "explanation": "Gọi $A$: viên bi chuyển sang là bi đỏ, $B$: viên bi lấy từ hộp thứ hai là bi đỏ. $P(A) = \\dfrac{4}{6} = \\dfrac{2}{3}$, $P(\\overline{A}) = \\dfrac{1}{3}$. Nếu chuyển bi đỏ, hộp hai có $4$ đỏ trong $9$ bi: $P(B | A) = \\dfrac{4}{9}$; nếu chuyển bi xanh, hộp hai có $3$ đỏ trong $9$ bi: $P(B | \\overline{A}) = \\dfrac{3}{9}$. Vậy $P(B) = \\dfrac{2}{3} \\cdot \\dfrac{4}{9} + \\dfrac{1}{3} \\cdot \\dfrac{3}{9} = \\dfrac{8}{27} + \\dfrac{3}{27} = \\dfrac{11}{27}$. Chọn B.",
+      "tip": "Bài toán chuyển bi: vẽ sơ đồ cây với tầng thứ nhất là màu bi được chuyển, tầng thứ hai là màu bi lấy ra ở hộp nhận.",
+      "option_feedback": {
+        "A": "$\\dfrac{3}{8}$ là tỉ lệ bi đỏ ban đầu của hộp hai; em bỏ qua viên bi được chuyển sang.",
+        "C": "$\\dfrac{4}{9}$ chỉ đúng trong trường hợp viên bi chuyển sang là bi đỏ.",
+        "D": "Em gộp hai hộp lại ($7$ đỏ trong $14$ bi); hai lần lấy diễn ra ở hai hộp khác nhau nên không gộp được."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.62,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 140,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "total-probability",
+        "tree-diagram"
+      ],
+      "skill_ids": [
+        "probability.total_bayes"
+      ]
+    },
+    {
+      "id": "math.probability.009",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Hộp thứ nhất có $4$ viên bi đỏ và $2$ viên bi xanh; hộp thứ hai có $3$ viên bi đỏ và $5$ viên bi xanh. Các viên bi có cùng kích thước. Lấy ngẫu nhiên đồng thời hai viên bi từ hộp thứ nhất bỏ vào hộp thứ hai, sau đó lấy ngẫu nhiên một viên bi từ hộp thứ hai. Biết viên bi lấy ra từ hộp thứ hai có màu đỏ, xác suất để cả hai viên bi đã chuyển sang đều màu đỏ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\dfrac{2}{5}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\dfrac{13}{30}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\dfrac{6}{13}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{1}{2}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Có ba trường hợp cho hai viên bi được chuyển (2 đỏ, 1 đỏ 1 xanh, 2 xanh). Tính xác suất toàn phần của biến cố lấy được bi đỏ, rồi dùng công thức Bayes.",
+      "explanation": "Gọi $H_1$, $H_2$, $H_3$ lần lượt là các biến cố chuyển sang $2$ bi đỏ, $1$ đỏ $1$ xanh, $2$ bi xanh; $B$: bi lấy từ hộp hai màu đỏ. Ta có $P(H_1) = \\dfrac{C_4^2}{C_6^2} = \\dfrac{6}{15}$, $P(H_2) = \\dfrac{4 \\cdot 2}{15} = \\dfrac{8}{15}$, $P(H_3) = \\dfrac{1}{15}$. Sau khi chuyển, hộp hai có $10$ bi, nên $P(B | H_1) = \\dfrac{5}{10}$, $P(B | H_2) = \\dfrac{4}{10}$, $P(B | H_3) = \\dfrac{3}{10}$. Xác suất toàn phần: $P(B) = \\dfrac{6 \\cdot 5 + 8 \\cdot 4 + 1 \\cdot 3}{150} = \\dfrac{65}{150} = \\dfrac{13}{30}$. Theo công thức Bayes: $P(H_1 | B) = \\dfrac{P(H_1) \\cdot P(B | H_1)}{P(B)} = \\dfrac{30/150}{65/150} = \\dfrac{6}{13}$. Chọn C.",
+      "tip": "Với Bayes nhiều nhánh, nên quy đồng cùng mẫu số (ở đây là $150$) cho mọi nhánh rồi chỉ so sánh các tử số.",
+      "option_feedback": {
+        "A": "$\\dfrac{6}{15} = \\dfrac{2}{5}$ là xác suất tiên nghiệm $P(H_1)$, chưa cập nhật theo thông tin bi lấy ra màu đỏ.",
+        "B": "$\\dfrac{13}{30}$ là $P(B)$, mới là mẫu số của công thức Bayes.",
+        "D": "$\\dfrac{1}{2}$ là $P(B | H_1)$; em nhầm chiều của xác suất có điều kiện."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.8,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 5
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.78,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "bayes",
+        "tree-diagram"
+      ],
+      "skill_ids": [
+        "probability.total_bayes",
+        "probability.conditional"
+      ]
+    },
+    {
+      "id": "math.probability.010",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Tỉ lệ người mắc một bệnh hiếm trong cộng đồng là $1\\%$. Một loại xét nghiệm cho kết quả dương tính với $90\\%$ người mắc bệnh và dương tính (nhầm) với $5\\%$ người không mắc bệnh. Một người được chọn ngẫu nhiên và làm xét nghiệm hai lần; giả sử với mỗi nhóm (mắc bệnh hoặc không mắc bệnh), kết quả hai lần xét nghiệm độc lập với nhau. Biết cả hai lần đều dương tính, xác suất để người đó mắc bệnh bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}15$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}81$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}77$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}02$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Biến cố quan sát được là “hai lần dương tính”. Tính xác suất của biến cố này trong từng nhóm (mắc bệnh và không mắc bệnh) bằng quy tắc nhân, rồi dùng Bayes.",
+      "explanation": "Gọi $A$: người đó mắc bệnh, $D$: cả hai lần xét nghiệm dương tính. Do tính độc lập trong từng nhóm: $P(D | A) = 0{,}9^2 = 0{,}81$, $P(D | \\overline{A}) = 0{,}05^2 = 0{,}0025$. Xác suất toàn phần: $P(D) = 0{,}01 \\cdot 0{,}81 + 0{,}99 \\cdot 0{,}0025 = 0{,}0081 + 0{,}002475 = 0{,}010575$. Theo công thức Bayes: $P(A | D) = \\dfrac{0{,}0081}{0{,}010575} \\approx 0{,}766 \\approx 0{,}77$. Chọn C.",
+      "tip": "Xét nghiệm lặp lại làm xác suất mắc bệnh tăng mạnh: có thể coi xác suất sau lần một (khoảng $0{,}15$) là xác suất tiên nghiệm cho lần hai và áp dụng Bayes thêm một lần.",
+      "option_feedback": {
+        "A": "$0{,}15$ là xác suất mắc bệnh khi chỉ có một lần dương tính: $\\dfrac{0{,}009}{0{,}0585} \\approx 0{,}15$.",
+        "B": "$0{,}81$ là $P(D | A)$ (hai lần dương tính khi mắc bệnh), em nhầm chiều có điều kiện.",
+        "D": "Em bình phương kết quả của một lần ($0{,}15^2 \\approx 0{,}02$); không được nhân các xác suất hậu nghiệm với nhau."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.82,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 5
+        },
+        "author_estimate": 0.88,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.88,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.74,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 260,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "bayes",
+        "tree-diagram"
+      ],
+      "skill_ids": [
+        "probability.total_bayes"
+      ]
+    },
+    {
+      "id": "math.probability.011",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "TRUE_FALSE_GROUP",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Một hộp có $5$ viên bi đỏ và $3$ viên bi xanh có cùng kích thước. Lấy ngẫu nhiên đồng thời $2$ viên bi từ hộp.",
+      "hint": "Dùng tổ hợp $C_n^k$; với ý d) dùng xác suất có điều kiện $P(A \\mid B) = \\frac{P(AB)}{P(B)}$.",
+      "explanation": "$n(\\Omega) = C_8^2 = 28$. Hai bi đỏ: $10$ cách, xác suất $\\frac{5}{14}$. Cùng màu: $10 + 3 = 13$ cách, xác suất $\\frac{13}{28}$. Có ít nhất một bi đỏ: $28 - 3 = 25$ cách, trong đó cả hai đỏ $10$ cách, nên xác suất có điều kiện là $\\frac{10}{25} = \\frac{2}{5}$. Vậy a) Đúng, b) Đúng, c) Sai, d) Đúng.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 300,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:Đ c:S d:Đ; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:Đ c:S d:Đ; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "statements": [
+        {
+          "id": "a",
+          "text": "Số cách lấy $2$ viên bi là $28$.",
+          "truth": true,
+          "explanation": "$C_8^2 = 28$.",
+          "level": 1
+        },
+        {
+          "id": "b",
+          "text": "Xác suất lấy được $2$ viên bi đỏ là $\\frac{5}{14}$.",
+          "truth": true,
+          "explanation": "$\\frac{C_5^2}{C_8^2} = \\frac{10}{28} = \\frac{5}{14}$.",
+          "level": 2
+        },
+        {
+          "id": "c",
+          "text": "Xác suất lấy được $2$ viên bi cùng màu là $\\frac{1}{2}$.",
+          "truth": false,
+          "explanation": "$\\frac{C_5^2 + C_3^2}{28} = \\frac{13}{28}$.",
+          "level": 2
+        },
+        {
+          "id": "d",
+          "text": "Biết rằng trong $2$ viên lấy ra có ít nhất một viên bi đỏ, xác suất để cả hai viên đều đỏ là $\\frac{2}{5}$.",
+          "truth": true,
+          "explanation": "Xác suất có ít nhất một bi đỏ là $1 - \\frac{C_3^2}{28} = \\frac{25}{28}$; xác suất cần tìm là $\\frac{10/28}{25/28} = \\frac{2}{5}$.",
+          "level": 3
+        }
+      ],
+      "skill_ids": [
+        "probability.classical",
+        "probability.conditional"
+      ]
+    },
+    {
+      "id": "math.probability.012",
+      "revision": 2,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "math.probability"
+      ],
+      "language": "vi",
+      "stem": "Gieo một đồng xu cân đối và đồng chất $4$ lần liên tiếp. Tính xác suất để có đúng $3$ lần xuất hiện mặt ngửa (viết kết quả dưới dạng số thập phân).",
+      "hint": "Không gian mẫu có $2^4 = 16$ kết quả đồng khả năng.",
+      "explanation": "Có $C_4^3 = 4$ kết quả có đúng ba mặt ngửa trong $2^4 = 16$ kết quả đồng khả năng nên $P = \\frac{4}{16} = 0{,}25$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=0,25; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=0,25; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "0,25",
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "probability.classical",
+        "probability.rules"
+      ]
+    }
+  ]
+}

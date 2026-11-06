@@ -1,0 +1,1190 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "eng.sentence-arrangement.001",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\nIt's three years since I last visited my grandparents' village.",
+      "options": [
+        {
+          "id": "A",
+          "text": "I have visited my grandparents' village for three years."
+        },
+        {
+          "id": "B",
+          "text": "I haven't visited my grandparents' village for three years."
+        },
+        {
+          "id": "C",
+          "text": "I visited my grandparents' village for the first time three years ago."
+        },
+        {
+          "id": "D",
+          "text": "I didn't visit my grandparents' village three years ago."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "\"It's + khoảng thời gian + since + S + last + V2\" nghĩa là đã bao lâu rồi kể từ lần cuối làm việc gì.",
+      "explanation": "Cấu trúc \"It's three years since I last visited ...\" (Đã ba năm kể từ lần cuối tôi về thăm ...) tương đương \"S + haven't/hasn't + V3 + for + khoảng thời gian\": \"I haven't visited my grandparents' village for three years.\" (A) mang nghĩa ngược lại (đã thăm liên tục suốt ba năm); (C) đổi \"lần cuối\" thành \"lần đầu tiên\"; (D) nói ba năm trước không về thăm – trái với câu gốc (ba năm trước là lần cuối về thăm). Chọn B.",
+      "tip": "It's + time + since + S + last + V2 = S + haven't + V3 + for + time = The last time S + V2 was + time + ago.",
+      "option_feedback": {
+        "A": "Thể khẳng định của hiện tại hoàn thành mang nghĩa \"đã thăm suốt ba năm\", ngược với câu gốc.",
+        "C": "\"for the first time\" sai nghĩa; câu gốc nói về lần cuối cùng.",
+        "D": "Ba năm trước là lần cuối người nói về thăm, nên \"didn't visit three years ago\" sai nghĩa."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "rewrite",
+        "present-perfect"
+      ],
+      "skill_ids": [
+        "english.arrangement.rewrite"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.002",
+      "revision": 3,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the correct arrangement of the sentences to make a meaningful exchange.\n\na. Yes, I am. What do you have in mind?\nb. Hi Nam, are you free this Saturday afternoon?\nc. Some of us are going to clean up the park near school. Would you like to join?",
+      "options": [
+        {
+          "id": "A",
+          "text": "a – b – c"
+        },
+        {
+          "id": "B",
+          "text": "b – c – a"
+        },
+        {
+          "id": "C",
+          "text": "b – a – c"
+        },
+        {
+          "id": "D",
+          "text": "c – a – b"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Tìm câu mở đầu cuộc trò chuyện, rồi xem mỗi câu tiếp theo đang đáp lại câu nào.",
+      "explanation": "Hội thoại mở đầu bằng lời chào và câu hỏi (b) \"Hi Nam, are you free this Saturday afternoon?\". Nam trả lời (a) \"Yes, I am. What do you have in mind?\" (\"Yes, I am\" đáp cho \"are you free\"). Người kia giải thích kế hoạch và mời (c). Thứ tự: b – a – c. (B) b – c – a sai vì khi hai người nói luân phiên, câu c sẽ là của Nam: Nam chưa trả lời mình có rảnh không đã kể kế hoạch và mời lại, còn \"Yes, I am\" (câu a) không còn đáp cho \"are you free\"; (A) và (D) không bắt đầu bằng lời chào. Chọn C.",
+      "tip": "Hội thoại 3 câu thường theo mẫu A – B – A: câu hỏi/mở đầu, trả lời, phản hồi tiếp theo. Tìm cặp hỏi – đáp khớp nhau (are you ...? – Yes, I am).",
+      "option_feedback": {
+        "A": "Không thể bắt đầu bằng câu trả lời \"Yes, I am\".",
+        "B": "Theo thứ tự b – c – a, Nam (câu c) chưa trả lời có rảnh không đã mời lại, và \"Yes, I am\" không còn đáp cho câu hỏi \"are you free\".",
+        "D": "Câu c không phù hợp để mở đầu, và lời chào \"Hi Nam\" bị đặt ở cuối."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck-r3@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck-r3@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "arrangement",
+        "dialogue"
+      ],
+      "skill_ids": [
+        "english.arrangement.sentence_order"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.003",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\nAlthough the weather was bad, the students went on their field trip.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Because of the bad weather, the students went on their field trip."
+        },
+        {
+          "id": "B",
+          "text": "The weather was so bad that the students cancelled their field trip."
+        },
+        {
+          "id": "C",
+          "text": "If the weather had been bad, the students wouldn't have gone on their field trip."
+        },
+        {
+          "id": "D",
+          "text": "Despite the bad weather, the students went on their field trip."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "\"Although + mệnh đề\" diễn tả sự nhượng bộ. Cụm từ nào cùng nghĩa nhưng đi với danh từ/cụm danh từ?",
+      "explanation": "\"Although + S + V\" (mặc dù) tương đương \"Despite/In spite of + cụm danh từ\": \"Despite the bad weather, the students went on their field trip.\" (A) dùng \"Because of\" biến thời tiết xấu thành nguyên nhân của chuyến đi – sai logic; (B) nói chuyến đi bị hủy – trái với câu gốc; (C) là câu điều kiện loại 3 giả định thời tiết xấu, ngụ ý thực tế thời tiết tốt – sai nghĩa. Chọn D.",
+      "tip": "Although/Though/Even though + mệnh đề = Despite/In spite of + N/V-ing/the fact that + mệnh đề.",
+      "option_feedback": {
+        "A": "\"Because of\" chỉ nguyên nhân, không phải nhượng bộ.",
+        "B": "Câu gốc nói học sinh vẫn đi, không hủy chuyến đi.",
+        "C": "Câu điều kiện loại 3 ngụ ý thực tế thời tiết không xấu – trái với câu gốc."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "rewrite",
+        "concession"
+      ],
+      "skill_ids": [
+        "english.arrangement.rewrite"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.004",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the correct arrangement of the sentences to make a meaningful exchange.\n\na. Don't worry. You can borrow mine and make a copy tonight.\nb. You look worried, Lan. What's the matter?\nc. No problem. I've already finished revising, so you can keep them until the morning.\nd. I've lost my notes for tomorrow's history test.\ne. Really? Won't you need them to revise yourself?",
+      "options": [
+        {
+          "id": "A",
+          "text": "b – d – a – e – c"
+        },
+        {
+          "id": "B",
+          "text": "b – a – d – e – c"
+        },
+        {
+          "id": "C",
+          "text": "d – b – a – c – e"
+        },
+        {
+          "id": "D",
+          "text": "b – d – e – a – c"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Hội thoại 5 câu xen kẽ hai người (X – Y – X – Y – X). Đại từ \"mine\" và \"them\" thay cho danh từ nào?",
+      "explanation": "Người thứ nhất hỏi han (b) \"What's the matter?\" → Lan kể (d) bị mất vở ghi → người thứ nhất trấn an và đề nghị (a) \"You can borrow mine\" (mine = my notes) → Lan lo lắng hỏi lại (e) \"Won't you need them ...?\" (them = the notes) → người thứ nhất trả lời (c) \"No problem. I've already finished revising\". Thứ tự: b – d – a – e – c. (B) sai vì đề nghị cho mượn (a) trước khi biết Lan gặp chuyện gì; (C) mở đầu bằng d, trước cả câu hỏi \"What's the matter?\"; (D) đặt e trước a nên \"them\" chưa có gì để quy chiếu và Lan lại tự hỏi chính mình. Chọn A.",
+      "tip": "Xác định câu mở đầu, rồi lần theo đại từ (mine, them) và các cụm phản hồi (Don't worry, Really?, No problem) để nối các câu.",
+      "option_feedback": {
+        "B": "Đề nghị cho mượn vở trước khi Lan nói mình bị mất vở là vô lý.",
+        "C": "Lan kể chuyện trước khi được hỏi, và hội thoại kết thúc bằng câu hỏi chưa được trả lời.",
+        "D": "Câu e hỏi \"Won't you need them\" trước khi có lời đề nghị cho mượn, nên \"them\" không có nghĩa."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.33,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 75,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "arrangement",
+        "dialogue"
+      ],
+      "skill_ids": [
+        "english.arrangement.sentence_order"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.005",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\n\"Why don't we go cycling around the lake this weekend?\" said Hoa.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Hoa refused to go cycling around the lake that weekend."
+        },
+        {
+          "id": "B",
+          "text": "Hoa apologised for going cycling around the lake that weekend."
+        },
+        {
+          "id": "C",
+          "text": "Hoa suggested going cycling around the lake that weekend."
+        },
+        {
+          "id": "D",
+          "text": "Hoa reminded us that we had gone cycling around the lake that weekend."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "\"Why don't we + V?\" là câu rủ rê/đề nghị cùng làm gì. Động từ tường thuật nào diễn tả đúng chức năng đó?",
+      "explanation": "\"Why don't we + V?\" là lời đề nghị cùng làm gì, nên khi tường thuật dùng \"suggest + V-ing\": \"Hoa suggested going cycling around the lake that weekend.\" (\"this weekend\" chuyển thành \"that weekend\"). (A) \"refused\" (từ chối) ngược nghĩa; (B) \"apologised\" (xin lỗi) không đúng chức năng câu; (D) \"reminded us that we had gone\" biến lời rủ thành việc nhắc lại chuyện đã xảy ra – sai nghĩa. Chọn C.",
+      "tip": "Why don't we / Let's / Shall we / How about + V-ing → suggest + V-ing (hoặc suggest that S (should) V).",
+      "option_feedback": {
+        "A": "\"refuse\" là từ chối, ngược với lời rủ của Hoa.",
+        "B": "Câu gốc không phải lời xin lỗi.",
+        "D": "Câu gốc là lời rủ cho tương lai, không phải nhắc lại việc đã làm."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.38,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.25,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "rewrite",
+        "reported-speech"
+      ],
+      "skill_ids": [
+        "english.arrangement.rewrite"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.006",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the correct arrangement of the sentences to make a meaningful paragraph.\n\na. First, it keeps your heart and lungs strong, lowering the risk of many diseases.\nb. Regular exercise brings a wide range of benefits for teenagers.\nc. Finally, team sports teach valuable skills such as cooperation and leadership.\nd. In addition, physical activity reduces stress and helps you sleep better.",
+      "options": [
+        {
+          "id": "A",
+          "text": "b – d – a – c"
+        },
+        {
+          "id": "B",
+          "text": "b – a – d – c"
+        },
+        {
+          "id": "C",
+          "text": "a – d – c – b"
+        },
+        {
+          "id": "D",
+          "text": "b – c – a – d"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tìm câu chủ đề nêu ý khái quát, sau đó dựa vào các từ nối First, In addition, Finally.",
+      "explanation": "Câu (b) nêu ý khái quát (tập thể dục đều đặn mang lại nhiều lợi ích) nên là câu chủ đề. Các lợi ích được liệt kê theo từ nối: \"First\" (a) → \"In addition\" (d) → \"Finally\" (c). Thứ tự: b – a – d – c. (A) đặt \"In addition\" trước \"First\"; (C) đặt câu chủ đề xuống cuối và bắt đầu bằng \"First, it ...\" khi \"it\" chưa có gì để quy chiếu; (D) đặt \"Finally\" ngay sau câu chủ đề. Chọn B.",
+      "tip": "Đoạn văn liệt kê: câu chủ đề → First/Firstly → Second/In addition/Moreover → Finally/Lastly.",
+      "option_feedback": {
+        "A": "\"In addition\" không thể đứng trước ý thứ nhất \"First\".",
+        "C": "\"it\" trong câu a cần câu b đứng trước để quy chiếu (it = regular exercise).",
+        "D": "\"Finally\" phải là ý cuối cùng, không đứng ngay sau câu chủ đề."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.3,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.25,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "arrangement",
+        "paragraph",
+        "healthy-living"
+      ],
+      "skill_ids": [
+        "english.arrangement.sentence_order"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.007",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the correct arrangement of the sentences to make a meaningful letter.\n\nDear Ms Thuy,\na. I am writing to apply for the position of volunteer English tutor advertised on your centre's website.\nb. Thank you for considering my application, and I look forward to hearing from you.\nc. In addition, last summer I helped my younger cousins with their English homework, which taught me to be patient with young learners.\nd. I am currently a Grade 12 student, and I achieved an IELTS score of 7.0 last month.\ne. With these skills and this experience, I believe I could help the children at your centre make real progress.\nYours sincerely,\nPhong",
+      "options": [
+        {
+          "id": "A",
+          "text": "a – c – d – e – b"
+        },
+        {
+          "id": "B",
+          "text": "d – a – c – b – e"
+        },
+        {
+          "id": "C",
+          "text": "a – d – e – c – b"
+        },
+        {
+          "id": "D",
+          "text": "a – d – c – e – b"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Thư xin việc: nêu mục đích → trình bày năng lực → kinh nghiệm bổ sung → kết luận → lời cảm ơn. Chú ý \"In addition\" và \"With these skills and this experience\".",
+      "explanation": "Thư mở đầu bằng mục đích viết thư (a) \"I am writing to apply for ...\". Tiếp theo giới thiệu bản thân và năng lực tiếng Anh (d). \"In addition\" ở (c) bổ sung kinh nghiệm dạy kèm, nên phải đứng sau (d). (e) \"With these skills and this experience\" tổng kết cả kỹ năng (d) và kinh nghiệm (c), nên đứng sau cả hai. Cuối cùng là lời cảm ơn (b). Thứ tự: a – d – c – e – b. (A) đặt \"In addition\" ngay sau câu nêu mục đích, chưa có năng lực nào để bổ sung; (B) mở thư bằng giới thiệu bản thân và kết thúc bằng (e) sau lời cảm ơn; (C) đặt (e) trước (c) nên \"this experience\" chưa được nhắc đến và \"In addition\" lại xuất hiện sau câu kết luận. Chọn D.",
+      "tip": "Thư trang trọng: câu nêu mục đích (I am writing to ...) đứng đầu, câu cảm ơn/mong hồi âm (I look forward to ...) đứng cuối.",
+      "option_feedback": {
+        "A": "\"In addition\" cần một ý đứng trước để bổ sung; đặt ngay sau câu mục đích là không hợp lý.",
+        "B": "Câu mục đích (a) phải đứng đầu và lời cảm ơn (b) phải là câu kết thư.",
+        "C": "Câu e tổng kết \"this experience\" trước khi kinh nghiệm ở câu c được kể ra."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.58,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 110,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "arrangement",
+        "letter",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.arrangement.sentence_order"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.008",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the correct arrangement of the sentences to make a meaningful paragraph.\n\na. As a result, residents have fewer places to exercise, relax or simply breathe fresh air.\nb. In many fast-growing cities, parks and trees are disappearing to make room for new buildings.\nc. To tackle this problem, some city governments have begun turning empty lots and rooftops into small public gardens.\nd. These \"pocket parks\" may be tiny, but they cool the streets and bring neighbours together.\ne. Studies show that this lack of green space can increase stress and even heat-related illness.",
+      "options": [
+        {
+          "id": "A",
+          "text": "b – c – a – e – d"
+        },
+        {
+          "id": "B",
+          "text": "e – b – a – d – c"
+        },
+        {
+          "id": "C",
+          "text": "b – a – e – c – d"
+        },
+        {
+          "id": "D",
+          "text": "b – a – c – e – d"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Đoạn văn theo mạch: nguyên nhân → hệ quả → giải pháp → đánh giá giải pháp. Chú ý \"As a result\", \"this lack of green space\", \"To tackle this problem\", \"These pocket parks\".",
+      "explanation": "(b) nêu hiện tượng công viên, cây xanh biến mất → (a) \"As a result\" nêu hệ quả trực tiếp: cư dân ít chỗ tập thể dục, thư giãn → (e) \"this lack of green space\" (sự thiếu hụt không gian xanh này) nói thêm tác hại đến sức khỏe → (c) \"To tackle this problem\" đưa ra giải pháp vườn nhỏ trên đất trống, sân thượng → (d) \"These pocket parks\" quy chiếu đến các khu vườn nhỏ ở (c). Thứ tự: b – a – e – c – d. (A) đặt giải pháp (c) trước khi nêu hệ quả, rồi \"As a result\" lại đứng sau giải pháp – vô lý; (B) mở đầu bằng \"this lack of green space\" khi chưa có gì để quy chiếu và \"These pocket parks\" (d) đứng trước (c); (D) chèn (e) giữa (c) và (d) nên \"These pocket parks\" bị tách khỏi câu giới thiệu chúng. Chọn C.",
+      "tip": "Với đoạn 5 câu, xác định các cặp câu \"dính\" nhau trước (c – d qua \"These pocket parks\"), rồi mới ghép cả đoạn.",
+      "option_feedback": {
+        "A": "\"As a result\" đứng sau giải pháp sẽ biến hệ quả xấu thành kết quả của giải pháp.",
+        "B": "Câu e có \"this lack of green space\" không thể mở đầu đoạn văn.",
+        "D": "Câu d \"These pocket parks\" phải đứng ngay sau câu c giới thiệu các khu vườn nhỏ."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.62,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.55,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "arrangement",
+        "paragraph",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.arrangement.sentence_order"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.009",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the correct arrangement of the sentences to make a meaningful paragraph.\n\na. They are learning the craft from elderly artisans and promoting the prints on social media.\nb. Dong Ho folk paintings, printed from carved wooden blocks onto handmade paper, were once found in almost every Vietnamese home at Tet.\nc. However, as tastes changed and cheaper decorations became available, demand fell and many families gave up the craft.\nd. This combination of tradition and technology may be the key to keeping the art alive.\ne. Recently, though, a few young designers have decided not to let the tradition disappear.",
+      "options": [
+        {
+          "id": "A",
+          "text": "b – e – c – a – d"
+        },
+        {
+          "id": "B",
+          "text": "b – c – e – a – d"
+        },
+        {
+          "id": "C",
+          "text": "b – c – a – e – d"
+        },
+        {
+          "id": "D",
+          "text": "e – b – c – a – d"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Theo dõi diễn biến thời gian (once → However ... fell → Recently, though) và xác định \"They\" ở câu a là ai.",
+      "explanation": "(b) giới thiệu tranh Đông Hồ từng có mặt ở hầu hết mọi nhà dịp Tết (\"once\") → (c) \"However\" nêu sự suy giảm: nhu cầu giảm, nhiều gia đình bỏ nghề → (e) \"Recently, though\" đảo chiều: một số nhà thiết kế trẻ quyết không để truyền thống mai một → (a) \"They\" = the young designers, học nghề từ nghệ nhân cao tuổi và quảng bá trên mạng xã hội → (d) \"This combination of tradition and technology\" tổng kết việc học nghề truyền thống (tradition) kết hợp mạng xã hội (technology) ở (a). Thứ tự: b – c – e – a – d. (A) đặt (e) trước (c): truyền thống chưa bị mai một mà đã nói \"not to let the tradition disappear\", và \"They\" ở (a) sẽ chỉ \"many families\" vừa bỏ nghề – mâu thuẫn; (C) đặt (a) ngay sau (c) nên \"They\" cũng chỉ các gia đình đã bỏ nghề; (D) mở đầu bằng \"though\" mà không có ý nào trước đó để đối lập. Chọn B.",
+      "tip": "Đại từ ở đầu câu (They, This, These) luôn quy chiếu đến danh từ gần nhất phù hợp ở câu ngay trước – hãy kiểm tra nghĩa sau khi thay thế.",
+      "option_feedback": {
+        "A": "Nếu e đứng trước c, \"They\" ở câu a sẽ chỉ \"many families\" vừa bỏ nghề, gây mâu thuẫn.",
+        "C": "Câu a đứng ngay sau c khiến \"They\" chỉ các gia đình đã bỏ nghề, không phải các nhà thiết kế trẻ.",
+        "D": "\"though\" trong câu e cần một ý đối lập phía trước, không thể mở đầu đoạn."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.62,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.5,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "arrangement",
+        "paragraph",
+        "cultural-heritage",
+        "reference"
+      ],
+      "skill_ids": [
+        "english.arrangement.sentence_order"
+      ]
+    },
+    {
+      "id": "eng.sentence-arrangement.010",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.sentence-arrangement"
+      ],
+      "language": "en",
+      "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\nStudents only realised how valuable the old library was after it had been demolished.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Not until the old library had been demolished did students realise how valuable it was."
+        },
+        {
+          "id": "B",
+          "text": "Only after the old library had been demolished students realised how valuable it was."
+        },
+        {
+          "id": "C",
+          "text": "Hardly had students realised how valuable the old library was when it was demolished."
+        },
+        {
+          "id": "D",
+          "text": "It was not until students realised how valuable the old library was that it was demolished."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Câu gốc: thư viện bị phá dỡ TRƯỚC, học sinh nhận ra giá trị SAU. Cấu trúc đảo ngữ nào giữ đúng trình tự này và đúng ngữ pháp?",
+      "explanation": "Câu gốc: chỉ sau khi thư viện cũ bị phá dỡ, học sinh mới nhận ra nó quý giá thế nào. Cấu trúc tương đương: \"Not until + mốc thời gian/mệnh đề + trợ động từ + S + V\": \"Not until the old library had been demolished did students realise how valuable it was.\" (B) đúng nghĩa nhưng sai ngữ pháp: sau \"Only after + mệnh đề\" ở đầu câu phải đảo ngữ (did students realise); (C) \"Hardly ... when\" diễn tả học sinh nhận ra giá trị rồi ngay sau đó thư viện bị phá – đảo ngược trình tự sự việc; (D) \"It was not until students realised ... that it was demolished\" cũng đảo ngược quan hệ: thư viện chỉ bị phá sau khi học sinh nhận ra giá trị. Chọn A.",
+      "tip": "only after/not until/only when đứng đầu câu → đảo ngữ ở mệnh đề CHÍNH (vế sau). Luôn kiểm tra trình tự sự việc có giữ nguyên không.",
+      "option_feedback": {
+        "B": "Thiếu đảo ngữ: phải là \"Only after ... did students realise ...\".",
+        "C": "Đảo ngược trình tự: nhận ra giá trị trước rồi thư viện mới bị phá.",
+        "D": "Đảo ngược quan hệ: việc phá dỡ bị đặt sau việc nhận ra giá trị."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.78,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.78,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-b",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "rewrite",
+        "inversion"
+      ],
+      "skill_ids": [
+        "english.arrangement.rewrite"
+      ]
+    }
+  ]
+}

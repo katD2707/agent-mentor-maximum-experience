@@ -1,0 +1,1194 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "eng.communication.001",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following notice and choose the option that best fits the blank.\n\nNOTICE – CITY LIBRARY\nFrom 1 November, the reading room will be open from 7 a.m. to 9 p.m. on weekdays. Visitors are kindly asked to keep their phones on silent and _____ food or drinks into the computer area. Thank you for your cooperation.",
+      "options": [
+        {
+          "id": "A",
+          "text": "not bringing"
+        },
+        {
+          "id": "B",
+          "text": "don't bring"
+        },
+        {
+          "id": "C",
+          "text": "not to bring"
+        },
+        {
+          "id": "D",
+          "text": "to not bringing"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Chỗ trống nối với \"to keep\" bằng \"and\" sau cấu trúc \"be asked to do something\". Hai vế phải song song.",
+      "explanation": "Cấu trúc bị động \"be asked (not) to do something\" (được yêu cầu (không) làm gì). Câu có hai vế song song: \"asked to keep their phones on silent and not to bring food or drinks\". Dạng phủ định của to-infinitive là \"not to + V\". \"not bringing\" (A) là V-ing, không song song với \"to keep\"; \"don't bring\" (B) là câu mệnh lệnh, không đứng sau \"and\" trong cấu trúc này; \"to not bringing\" (D) sai vì sau \"to\" phải là động từ nguyên mẫu. Chọn C.",
+      "tip": "Phủ định của to-V là \"not to V\" (not đứng trước to). Gặp \"and\" thì kiểm tra tính song song với vế trước.",
+      "option_feedback": {
+        "A": "V-ing không song song với \"to keep\" trong cấu trúc \"be asked to do\".",
+        "B": "\"don't bring\" là câu mệnh lệnh độc lập, không ghép được vào cấu trúc \"asked to ...\".",
+        "D": "Sau \"to\" (to-infinitive) phải là động từ nguyên mẫu, không dùng V-ing."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.25,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.25,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "notice",
+        "to-infinitive",
+        "parallelism"
+      ],
+      "skill_ids": [
+        "english.communication.notices"
+      ]
+    },
+    {
+      "id": "eng.communication.002",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Choose the most suitable response to complete the exchange.\n\nMai: \"Congratulations on winning the school science fair, Nam!\"\nNam: \"_____\"",
+      "options": [
+        {
+          "id": "A",
+          "text": "Thanks a lot. I couldn't have done it without my team."
+        },
+        {
+          "id": "B",
+          "text": "You're welcome."
+        },
+        {
+          "id": "C",
+          "text": "Don't mention it."
+        },
+        {
+          "id": "D",
+          "text": "Never mind."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Khi được người khác chúc mừng, ta thường đáp lại bằng lời cảm ơn.",
+      "explanation": "Mai chúc mừng Nam thắng hội thi khoa học, nên câu đáp phù hợp là lời cảm ơn kèm sự khiêm tốn: \"Thanks a lot. I couldn't have done it without my team.\" (Cảm ơn nhiều. Mình không thể làm được nếu thiếu đội của mình.). \"You're welcome\" (B) và \"Don't mention it\" (C) dùng để đáp lại lời cảm ơn, không phải lời chúc mừng; \"Never mind\" (D) dùng để đáp lại lời xin lỗi hoặc an ủi. Chọn A.",
+      "tip": "Chúc mừng → cảm ơn. Cảm ơn → You're welcome / Don't mention it. Xin lỗi → Never mind / That's all right.",
+      "option_feedback": {
+        "B": "\"You're welcome\" là lời đáp lại khi người khác cảm ơn mình.",
+        "C": "\"Don't mention it\" cũng là lời đáp lại lời cảm ơn.",
+        "D": "\"Never mind\" dùng khi đáp lại lời xin lỗi hoặc để an ủi."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "dialogue",
+        "congratulating"
+      ],
+      "skill_ids": [
+        "english.communication.responses"
+      ]
+    },
+    {
+      "id": "eng.communication.003",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following advertisement and choose the option that best fits the blank.\n\nGREEN BIKE RENTAL\nExplore the Old Quarter on two wheels! Our bikes are light, safe and _____ for riders of all ages. Rent one for just VND 30,000 per hour, helmet included. Students with a valid ID card get a 20% discount every weekend. Book online or visit our shop at 15 Lotus Street.",
+      "options": [
+        {
+          "id": "A",
+          "text": "suit"
+        },
+        {
+          "id": "B",
+          "text": "suitably"
+        },
+        {
+          "id": "C",
+          "text": "suitability"
+        },
+        {
+          "id": "D",
+          "text": "suitable"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Chỗ trống đứng trong chuỗi \"light, safe and _____\" sau động từ \"are\". Các từ trong chuỗi cùng loại từ gì?",
+      "explanation": "Sau động từ to be \"are\" là chuỗi tính từ song song \"light, safe and _____\", nên cần một tính từ. Cụm \"suitable for somebody\" nghĩa là phù hợp với ai. \"suit\" (A) là động từ, \"suitably\" (B) là trạng từ, \"suitability\" (C) là danh từ, đều không song song với \"light, safe\". Chọn D.",
+      "tip": "Liệt kê bằng dấu phẩy và \"and\" thì các thành phần phải cùng loại từ. Đuôi -able thường là tính từ.",
+      "option_feedback": {
+        "A": "\"suit\" là động từ, không đứng sau \"are\" trong chuỗi tính từ.",
+        "B": "\"suitably\" là trạng từ, không bổ nghĩa cho chủ ngữ sau to be.",
+        "C": "\"suitability\" là danh từ, không song song với các tính từ \"light, safe\"."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "advertisement",
+        "word-form",
+        "parallelism"
+      ],
+      "skill_ids": [
+        "english.communication.notices"
+      ]
+    },
+    {
+      "id": "eng.communication.004",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following leaflet and choose the option that best fits the blank.\n\nSAVE WATER AT HOME\n• Turn off the tap while you are brushing your teeth.\n• Fix leaking pipes as soon as possible.\n• Take shorter showers _____ having long baths.\n• Collect rainwater to water your plants.\nSmall changes in your daily habits can make a big difference!",
+      "options": [
+        {
+          "id": "A",
+          "text": "as well as"
+        },
+        {
+          "id": "B",
+          "text": "instead of"
+        },
+        {
+          "id": "C",
+          "text": "in spite of"
+        },
+        {
+          "id": "D",
+          "text": "because of"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tờ rơi hướng dẫn tiết kiệm nước. Tắm vòi sen ngắn và tắm bồn lâu: nên làm cả hai hay thay cái này bằng cái kia?",
+      "explanation": "Mục đích của tờ rơi là tiết kiệm nước, nên lời khuyên là tắm vòi sen ngắn THAY VÌ ngâm bồn lâu (tốn nước): \"Take shorter showers instead of having long baths\". \"as well as\" (A, cũng như) lại khuyên làm cả hai, trái với mục đích tiết kiệm; \"in spite of\" (C, mặc dù) và \"because of\" (D, bởi vì) không tạo quan hệ logic giữa hai hành động. Chọn B.",
+      "tip": "Đọc tiêu đề để nắm mục đích văn bản, rồi chọn từ nối phù hợp với mục đích đó.",
+      "option_feedback": {
+        "A": "\"as well as\" nghĩa là \"cũng như\" – khuyên làm cả hai việc, trái với mục đích tiết kiệm nước.",
+        "C": "\"in spite of\" chỉ sự nhượng bộ, không hợp nghĩa giữa hai cách tắm.",
+        "D": "\"because of\" chỉ nguyên nhân; ngâm bồn không phải nguyên nhân của việc tắm vòi sen ngắn."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.32,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.25,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 50,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "leaflet",
+        "linking-words",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.communication.notices"
+      ]
+    },
+    {
+      "id": "eng.communication.005",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Choose the most suitable response to complete the exchange.\n\nLan: \"Would you mind if I opened the window? It's quite hot in here.\"\nPeter: \"_____\"",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes, of course. Go ahead."
+        },
+        {
+          "id": "B",
+          "text": "Yes, I'd be glad to."
+        },
+        {
+          "id": "C",
+          "text": "Not at all. Please do."
+        },
+        {
+          "id": "D",
+          "text": "Never mind. It's not your fault."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "\"Would you mind ...?\" hỏi \"Bạn có phiền không ...?\". Muốn đồng ý thì phải trả lời là KHÔNG phiền.",
+      "explanation": "Câu hỏi \"Would you mind if I opened the window?\" nghĩa là \"Bạn có phiền nếu mình mở cửa sổ không?\". Để cho phép, ta trả lời \"Not at all. Please do.\" (Không phiền chút nào. Bạn cứ mở đi.). \"Yes, of course\" (A) về mặt từ ngữ lại có nghĩa \"có, tôi phiền\" nên mâu thuẫn với \"Go ahead\"; \"Yes, I'd be glad to\" (B) là lời nhận lời giúp đỡ, không phải lời cho phép; \"Never mind. It's not your fault\" (D) dùng để đáp lại lời xin lỗi. Chọn C.",
+      "tip": "Would you mind ...? → đồng ý: No, not at all / Of course not / Please do; từ chối: I'd rather you didn't.",
+      "option_feedback": {
+        "A": "Bẫy phổ biến: \"Yes\" với \"Would you mind\" nghĩa là \"tôi có phiền\", mâu thuẫn với \"Go ahead\".",
+        "B": "\"I'd be glad to\" dùng khi nhận lời làm gì cho ai, trong khi Lan đang xin phép.",
+        "D": "Đây là lời đáp cho một lời xin lỗi, không hợp với lời xin phép."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.38,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.38,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.38,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "dialogue",
+        "asking-permission"
+      ],
+      "skill_ids": [
+        "english.communication.responses"
+      ]
+    },
+    {
+      "id": "eng.communication.006",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following text message and choose the option that best fits the blank.\n\nHi Minh, sorry, but I can't make it to the volunteer meeting at 4 p.m. today. My bus has broken down and I'm stuck on the highway. Could you please fill me _____ on the main points later? I'll make it up to you next week. Thanks! – Hoa",
+      "options": [
+        {
+          "id": "A",
+          "text": "in"
+        },
+        {
+          "id": "B",
+          "text": "up"
+        },
+        {
+          "id": "C",
+          "text": "out"
+        },
+        {
+          "id": "D",
+          "text": "off"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Hoa vắng mặt và muốn Minh kể lại những điểm chính của buổi họp. Cụm động từ nào với \"fill\" có nghĩa này?",
+      "explanation": "\"fill somebody in (on something)\" là cụm động từ nghĩa là cung cấp cho ai thông tin họ đã bỏ lỡ. Hoa không dự họp được nên nhờ Minh \"fill me in on the main points\" (kể cho mình những ý chính). \"fill up\" (B) là đổ đầy; \"fill out\" (C) là điền (đơn, mẫu); \"fill off\" (D) không phải cụm động từ có nghĩa. Chọn A.",
+      "tip": "Ghi nhớ: fill in a form / fill sb in on sth (kể lại thông tin); fill up the tank (đổ đầy); fill out a form (điền đơn).",
+      "option_feedback": {
+        "B": "\"fill up\" nghĩa là đổ đầy (bình xăng, cốc...), không hợp với \"me\" trong ngữ cảnh này.",
+        "C": "\"fill out\" thường đi với tân ngữ là đơn từ, biểu mẫu (fill out a form).",
+        "D": "\"fill off\" không phải cụm động từ tiếng Anh."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.45,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.42,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 50,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "text-message",
+        "phrasal-verb"
+      ],
+      "skill_ids": [
+        "english.communication.notices"
+      ]
+    },
+    {
+      "id": "eng.communication.007",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Choose the most suitable response to complete the exchange.\n\nLinh: \"Why don't we take part in the beach clean-up this Sunday?\"\nJack: \"_____\"",
+      "options": [
+        {
+          "id": "A",
+          "text": "Yes, I took part in it last year."
+        },
+        {
+          "id": "B",
+          "text": "Because the beach is really dirty."
+        },
+        {
+          "id": "C",
+          "text": "You're welcome to join us."
+        },
+        {
+          "id": "D",
+          "text": "I'd love to, but I've already promised to help my grandparents."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "\"Why don't we ...?\" là một lời đề nghị, không phải câu hỏi lý do. Câu đáp phải chấp nhận hoặc từ chối đề nghị.",
+      "explanation": "\"Why don't we + V?\" dùng để rủ rê, đề nghị cùng làm gì. Câu đáp phù hợp là lời từ chối lịch sự có lý do: \"I'd love to, but I've already promised to help my grandparents.\" (Mình rất muốn, nhưng mình đã hứa giúp ông bà rồi.). (A) chỉ kể chuyện năm ngoái, không trả lời lời rủ cho Chủ nhật này; (B) hiểu nhầm \"why\" là hỏi lý do; (C) là lời mời của người tổ chức, trong khi chính Linh mới là người rủ Jack. Chọn D.",
+      "tip": "Why don't we ...? = Let's ... → đáp: Good idea! / That sounds great. / I'd love to, but ...",
+      "option_feedback": {
+        "A": "Chỉ nói về quá khứ, không chấp nhận hay từ chối lời rủ cho Chủ nhật này.",
+        "B": "Bẫy: \"Why\" ở đây không hỏi lý do mà là cấu trúc đề nghị.",
+        "C": "Câu này là lời mời của người rủ; Jack là người được rủ nên nói vậy không hợp vai."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.56,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.56,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.28,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "dialogue",
+        "suggestion",
+        "refusing"
+      ],
+      "skill_ids": [
+        "english.communication.responses"
+      ]
+    },
+    {
+      "id": "eng.communication.008",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following notice and choose the option that best fits the blank.\n\nATTENTION ALL STUDENTS\nThe school will hold its annual Tet Charity Fair on 20 January. Each class is expected to run a stall selling handmade goods or traditional food. All money raised will go to children in mountainous areas. _____ you would like to help but cannot sell items, you can volunteer as a cashier or a decorator. Please register with your class monitor by Friday.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Unless"
+        },
+        {
+          "id": "B",
+          "text": "If"
+        },
+        {
+          "id": "C",
+          "text": "Although"
+        },
+        {
+          "id": "D",
+          "text": "Whether"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Vế sau \"you can volunteer as a cashier or a decorator\" là kết quả xảy ra khi có một điều kiện nào đó.",
+      "explanation": "Câu nêu điều kiện – kết quả: NẾU bạn muốn giúp nhưng không bán hàng được THÌ bạn có thể làm thu ngân hoặc trang trí. Vì vậy cần \"If\". \"Unless\" (A = if ... not) làm câu thành \"nếu bạn không muốn giúp thì có thể làm tình nguyện\" – vô lý; \"Although\" (C) sai vì trong mệnh đề đã có \"but\" (không dùng although ... but) và nghĩa nhượng bộ không hợp; \"Whether\" (D) cần đi với \"or (not)\" và không tạo nghĩa điều kiện ở đây. Chọn B.",
+      "tip": "Unless = If ... not. Thử thay \"Unless\" bằng \"If ... not\" để kiểm tra nghĩa. Không dùng \"Although ... but\" trong cùng câu.",
+      "option_feedback": {
+        "A": "\"Unless\" mang nghĩa phủ định (nếu không), làm câu mất logic.",
+        "C": "Mệnh đề đã có \"but\"; \"although\" và \"but\" không đi cùng nhau, và nghĩa nhượng bộ không phù hợp.",
+        "D": "\"Whether\" cần đi với \"or\" và diễn tả hai khả năng, không hợp ngữ cảnh."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.5,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.5,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "notice",
+        "conjunctions",
+        "conditionals"
+      ],
+      "skill_ids": [
+        "english.communication.notices"
+      ]
+    },
+    {
+      "id": "eng.communication.009",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following advertisement and choose the option that best fits the blank.\n\nSUMMER CODING CAMP\nWant to build your own mobile app? Join our two-week camp for teenagers aged 14–18. No previous experience is required – our instructors will guide you every step of the way. Places are limited and will be given on a first-come, first-_____ basis, so register early. Students who sign up before 15 May will also receive a free online course.",
+      "options": [
+        {
+          "id": "A",
+          "text": "served"
+        },
+        {
+          "id": "B",
+          "text": "paid"
+        },
+        {
+          "id": "C",
+          "text": "chosen"
+        },
+        {
+          "id": "D",
+          "text": "accepted"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Đây là một cụm cố định (thành ngữ) chỉ nguyên tắc \"ai đến trước được phục vụ trước\".",
+      "explanation": "Cụm cố định \"on a first-come, first-served basis\" nghĩa là theo nguyên tắc ai đăng ký/đến trước thì được ưu tiên trước. Câu \"so register early\" phía sau xác nhận nghĩa này. \"paid\" (B), \"chosen\" (C), \"accepted\" (D) đều có thể liên quan đến việc đăng ký nhưng không tạo thành cụm cố định đúng trong tiếng Anh. Chọn A.",
+      "tip": "Học các cụm cố định thường gặp trong quảng cáo: first-come, first-served; while stocks last; terms and conditions apply.",
+      "option_feedback": {
+        "B": "Hợp nghĩa \"trả tiền\" nhưng \"first-come, first-paid\" không phải cụm cố định.",
+        "C": "\"first-chosen\" không tồn tại trong cụm này.",
+        "D": "Dễ bị cuốn theo nghĩa \"được nhận\", nhưng cụm chuẩn là \"first-served\"."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "advertisement",
+        "fixed-expression",
+        "collocation"
+      ],
+      "skill_ids": [
+        "english.communication.notices"
+      ]
+    },
+    {
+      "id": "eng.communication.010",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.communication"
+      ],
+      "language": "en",
+      "stem": "Read the following leaflet and choose the sentence that best fits the blank.\n\nHEALTHY SCREEN HABITS FOR TEENS\nSpending long hours in front of screens can harm both your eyes and your sleep. Here are some simple tips. First, follow the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds. _____ Instead, put it in another room at least an hour before you go to sleep. Finally, replace some screen time with outdoor activities such as cycling or playing sports.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Also, remember to drink plenty of water every day."
+        },
+        {
+          "id": "B",
+          "text": "This simple rule was first suggested by eye doctors."
+        },
+        {
+          "id": "C",
+          "text": "Try not to check your phone while lying in bed."
+        },
+        {
+          "id": "D",
+          "text": "Keep your phone next to your pillow so you can hear your alarm."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Câu ngay sau chỗ trống bắt đầu bằng \"Instead, put it ...\". \"it\" chỉ vật gì, và \"Instead\" thay thế cho hành động nào?",
+      "explanation": "Câu sau chỗ trống \"Instead, put it in another room ...\" đòi hỏi câu trước phải (1) nhắc đến một vật mà \"it\" thay thế và (2) nêu một việc KHÔNG nên làm để \"Instead\" đưa ra cách thay thế. Câu \"Try not to check your phone while lying in bed.\" thoả cả hai: \"it\" = your phone, và thay vì dùng điện thoại trên giường thì để nó ở phòng khác. (A) nói về nước, \"it\" sẽ thành \"nước\" – vô lý; (B) nói về quy tắc 20-20-20, không liên quan đến việc cất đồ; (D) có nhắc đến điện thoại nhưng lại khuyên để cạnh gối, mâu thuẫn trực tiếp với lời khuyên cất sang phòng khác ngay sau đó. Chọn C.",
+      "tip": "Với dạng điền câu, hãy soi kỹ từ nối (Instead, However, Therefore) và đại từ (it, they, this) ở câu ngay sau chỗ trống.",
+      "option_feedback": {
+        "A": "Lời khuyên hợp lý về sức khỏe nhưng không có danh từ nào để \"it\" thay thế.",
+        "B": "Tiếp nối quy tắc 20-20-20 nhưng không khớp với \"Instead, put it in another room\".",
+        "D": "Có nhắc đến điện thoại nhưng khuyên để cạnh gối, trái ngược với câu \"put it in another room\" ngay sau."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.65,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-b@v1",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "leaflet",
+        "cohesion",
+        "sentence-insertion",
+        "healthy-living"
+      ],
+      "skill_ids": [
+        "english.communication.notices",
+        "english.completion.sentences"
+      ]
+    }
+  ]
+}

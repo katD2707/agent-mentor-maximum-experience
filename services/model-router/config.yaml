@@ -1,0 +1,28 @@
+# LiteLLM proxy config. Run: uv tool run --from 'litellm[proxy]' litellm --config services/model-router/config.yaml --port 4000
+# The harness only knows the aliases on the left (mentor_schemas.ModelAlias).
+# Routing is provisional until the Phase 0 benchmark (plan section 5.2).
+# DeepSeek-V4.1-Flash (probe 2026-11-02): chat, tool calls and vision all work; Qwen stays as fallback and as the
+# second, independent safety model.
+model_list:
+  - model_name: mentor-chat
+    litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: low}
+  - model_name: mentor-chat-fallback   # used only when mentor-chat fails; a shared model_name would load-balance and break sticky routing
+    litellm_params: {model: openai/fai/Qwen3.8-27B, api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+  - model_name: mentor-vision
+    litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: low}
+  - model_name: mentor-vision-fallback
+    litellm_params: {model: openai/fai/Qwen3.8-27B, api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+  - model_name: mentor-reasoning
+    litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: high}
+  - model_name: mentor-safety-a
+    litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: medium}
+  - model_name: mentor-safety-b
+    litellm_params: {model: openai/fai/Qwen3.8-27B, api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+
+router_settings:
+  num_retries: 2
+  timeout: 60   # seconds per call; a stuck upstream fails over instead of hanging the turn (observed 67 s on 2026-11-02)
+  fallbacks: [{mentor-chat: [mentor-chat-fallback]}, {mentor-vision: [mentor-vision-fallback]}]
+
+general_settings:
+  master_key: os.environ/MODEL_ROUTER_MASTER_KEY   # per-sandbox virtual keys are issued from this

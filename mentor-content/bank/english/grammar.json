@@ -1,0 +1,1195 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "eng.grammar.001",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "Since she moved to Da Nang in 2020, my sister _____ three different jobs in the tourism industry.",
+      "options": [
+        {
+          "id": "A",
+          "text": "had"
+        },
+        {
+          "id": "B",
+          "text": "has had"
+        },
+        {
+          "id": "C",
+          "text": "is having"
+        },
+        {
+          "id": "D",
+          "text": "was having"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Chú ý mốc thời gian với \"since\" và mối liên hệ của hành động với hiện tại.",
+      "explanation": "Mệnh đề \"Since + mốc thời gian quá khứ\" (Since she moved to Da Nang in 2020) cho biết khoảng thời gian bắt đầu trong quá khứ và được tính đến hiện tại, nên mệnh đề chính dùng thì hiện tại hoàn thành: \"has had three different jobs\" (tính đến nay đã làm ba công việc khác nhau). \"had\" (quá khứ đơn) diễn tả việc đã kết thúc, không nối được với hiện tại; \"is having\" sai vì \"have\" mang nghĩa có/sở hữu (công việc) là động từ trạng thái, không chia tiếp diễn và không đi với \"since\"; \"was having\" (quá khứ tiếp diễn) cũng không dùng với \"since\" để tính đến nay. Chọn B.",
+      "tip": "Mệnh đề chính đi với \"since + S + V2 (quá khứ đơn)\" thường chia ở hiện tại hoàn thành: S + have/has + V3.",
+      "option_feedback": {
+        "A": "\"had\" là quá khứ đơn, diễn tả việc đã kết thúc, không phù hợp với \"since\" tính đến hiện tại.",
+        "C": "\"have\" (có/sở hữu) là động từ trạng thái, không chia tiếp diễn; hiện tại tiếp diễn cũng không đi với \"since\".",
+        "D": "Quá khứ tiếp diễn diễn tả hành động đang xảy ra tại một thời điểm trong quá khứ, không dùng với \"since\" để tính đến nay."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "present-perfect",
+        "since",
+        "careers"
+      ],
+      "skill_ids": [
+        "english.grammar.tenses"
+      ]
+    },
+    {
+      "id": "eng.grammar.002",
+      "revision": 3,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "Every year, millions of tonnes of plastic waste _____ into the world's oceans.",
+      "options": [
+        {
+          "id": "A",
+          "text": "dump"
+        },
+        {
+          "id": "B",
+          "text": "are dumping"
+        },
+        {
+          "id": "C",
+          "text": "have dumped"
+        },
+        {
+          "id": "D",
+          "text": "are dumped"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Xác định thì từ dấu hiệu \"Every year\", rồi xét quan hệ giữa chủ ngữ và hành động.",
+      "explanation": "Chủ ngữ \"millions of tonnes of plastic waste\" không tự thực hiện hành động \"dump\" (đổ, vứt bỏ) mà bị con người đổ ra biển, nên phải dùng câu bị động. \"Every year\" chỉ sự việc lặp lại hằng năm → hiện tại đơn bị động: are + V3 = \"are dumped\". \"dump\", \"are dumping\", \"have dumped\" đều là dạng chủ động, nghĩa là rác thải tự đi đổ một thứ khác – vô lí, và câu cũng không có tân ngữ. Chọn D.",
+      "tip": "Chủ ngữ là vật không thể tự thực hiện hành động → nghĩ ngay đến bị động: be + V3/V-ed.",
+      "option_feedback": {
+        "A": "Dạng chủ động hiện tại đơn: rác thải không thể tự \"đổ\" thứ gì.",
+        "B": "Hiện tại tiếp diễn chủ động – vừa sai thể (cần bị động) vừa không hợp với \"Every year\".",
+        "C": "Hiện tại hoàn thành chủ động – rác thải không phải là chủ thể thực hiện hành động."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck-r3@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.27,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck-r3@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "passive",
+        "present-simple",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.grammar.passive"
+      ]
+    },
+    {
+      "id": "eng.grammar.003",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "Our teacher encouraged us _____ part in the community clean-up campaign last weekend.",
+      "options": [
+        {
+          "id": "A",
+          "text": "to take"
+        },
+        {
+          "id": "B",
+          "text": "taking"
+        },
+        {
+          "id": "C",
+          "text": "take"
+        },
+        {
+          "id": "D",
+          "text": "took"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Nhớ lại cấu trúc của động từ \"encourage\" khi có tân ngữ chỉ người.",
+      "explanation": "Cấu trúc: encourage + somebody + to V (khuyến khích ai làm gì), nên \"encouraged us to take part in\" là đúng. \"taking\" sai vì sau \"encourage + tân ngữ chỉ người\" không dùng V-ing (encourage + V-ing chỉ dùng khi không có tân ngữ người, ví dụ \"encourage recycling\"). \"take\" (nguyên mẫu không \"to\") và \"took\" (động từ đã chia thì) đều sai cấu trúc. Chọn A.",
+      "tip": "Nhóm động từ + O + to V hay gặp: encourage, advise, allow, ask, persuade, force, invite, remind, want.",
+      "option_feedback": {
+        "B": "encourage + V-ing chỉ dùng khi không có tân ngữ chỉ người; ở đây có \"us\" nên phải là \"to V\".",
+        "C": "Thiếu \"to\": \"encourage somebody\" không đi với động từ nguyên mẫu trần.",
+        "D": "Động từ đã chia thì (took) không thể đứng sau tân ngữ \"us\" trong cấu trúc này."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.2,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.18,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 25,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "infinitive",
+        "verb-patterns"
+      ],
+      "skill_ids": [
+        "english.grammar.gerund_infinitive"
+      ]
+    },
+    {
+      "id": "eng.grammar.004",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "The volunteers, most of _____ were university students, planted over 2,000 trees along the river.",
+      "options": [
+        {
+          "id": "A",
+          "text": "whom"
+        },
+        {
+          "id": "B",
+          "text": "them"
+        },
+        {
+          "id": "C",
+          "text": "who"
+        },
+        {
+          "id": "D",
+          "text": "which"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Phần giữa hai dấu phẩy cần nối với \"The volunteers\" bằng từ loại nào?",
+      "explanation": "Phần giữa hai dấu phẩy là mệnh đề quan hệ không xác định bổ nghĩa cho \"The volunteers\" (chỉ người). Cấu trúc lượng từ + of + whom/which: \"most of whom\" = hầu hết trong số họ. Sau giới từ, đại từ quan hệ chỉ người phải là \"whom\", không dùng \"who\". \"them\" là đại từ nhân xưng, không có chức năng nối mệnh đề, nên câu sẽ thành hai mệnh đề độc lập chỉ ngăn cách bằng dấu phẩy – sai ngữ pháp. \"which\" dùng cho vật, không dùng cho \"volunteers\". Chọn A.",
+      "tip": "some/many/most/all/none/both + of + whom (người) / which (vật) – trong mệnh đề quan hệ không dùng \"of who\" hay \"of them\".",
+      "option_feedback": {
+        "B": "\"them\" không phải đại từ quan hệ, không nối được hai mệnh đề; câu sẽ gồm hai mệnh đề độc lập chỉ nối bằng dấu phẩy.",
+        "C": "Sau giới từ \"of\" không dùng \"who\"; phải dùng \"whom\".",
+        "D": "\"which\" chỉ vật, trong khi \"volunteers\" là người."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.38,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "relative-clause",
+        "quantifier-of-whom",
+        "community"
+      ],
+      "skill_ids": [
+        "english.grammar.relative_clauses"
+      ]
+    },
+    {
+      "id": "eng.grammar.005",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "If more people in our city _____ to work by bicycle nowadays, the air would be much cleaner.",
+      "options": [
+        {
+          "id": "A",
+          "text": "cycle"
+        },
+        {
+          "id": "B",
+          "text": "will cycle"
+        },
+        {
+          "id": "C",
+          "text": "cycled"
+        },
+        {
+          "id": "D",
+          "text": "had cycled"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Mệnh đề chính dùng \"would be\" và câu có \"nowadays\": đây là giả định ở hiện tại hay ở quá khứ?",
+      "explanation": "Mệnh đề chính \"the air would be much cleaner\" cùng trạng từ \"nowadays\" cho thấy đây là câu điều kiện loại 2 – giả định trái với thực tế ở hiện tại (thực tế ít người đạp xe đi làm). Mệnh đề if dùng quá khứ đơn: \"If more people cycled...\". \"cycle\" (hiện tại đơn) dùng cho điều kiện loại 1, đi với \"will\" chứ không đi với \"would\"; \"will cycle\" không dùng trong mệnh đề if để nêu điều kiện; \"had cycled\" (quá khứ hoàn thành) chỉ giả định về quá khứ, mâu thuẫn với \"nowadays\". Chọn C.",
+      "tip": "Điều kiện loại 2: If + S + V2/V-ed, S + would/could + V – giả định trái với hiện tại.",
+      "option_feedback": {
+        "A": "Hiện tại đơn dùng cho điều kiện loại 1 (đi với \"will\"), không đi với \"would be\".",
+        "B": "Không dùng \"will\" trong mệnh đề if để nêu điều kiện.",
+        "D": "Quá khứ hoàn thành chỉ giả định về quá khứ, mâu thuẫn với \"nowadays\"."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "conditional-type-2",
+        "environment",
+        "urbanisation"
+      ],
+      "skill_ids": [
+        "english.grammar.conditionals"
+      ]
+    },
+    {
+      "id": "eng.grammar.006",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "Most of the products _____ in this factory are exported to Europe and Japan.",
+      "options": [
+        {
+          "id": "A",
+          "text": "making"
+        },
+        {
+          "id": "B",
+          "text": "are made"
+        },
+        {
+          "id": "C",
+          "text": "made"
+        },
+        {
+          "id": "D",
+          "text": "which make"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Câu đã có động từ chính \"are exported\". Chỗ trống là mệnh đề quan hệ rút gọn – mang nghĩa chủ động hay bị động?",
+      "explanation": "Câu đã có động từ chính \"are exported\", nên chỗ trống chỉ có thể là mệnh đề quan hệ (rút gọn) bổ nghĩa cho \"the products\". Sản phẩm được sản xuất (nghĩa bị động): \"which are made in this factory\" → rút gọn thành \"made in this factory\" (V3). \"making\" là rút gọn nghĩa chủ động (sản phẩm tự sản xuất – vô lí); \"are made\" khiến câu có hai động từ chia thì mà không có từ nối; \"which make\" cũng mang nghĩa chủ động sai. Chọn C.",
+      "tip": "Rút gọn mệnh đề quan hệ: nghĩa chủ động → V-ing; nghĩa bị động → V3/V-ed.",
+      "option_feedback": {
+        "A": "V-ing là rút gọn mang nghĩa chủ động: sản phẩm không tự sản xuất.",
+        "B": "Thêm \"are made\" khiến câu có hai động từ chính mà không có đại từ quan hệ nối.",
+        "D": "\"which make\" mang nghĩa chủ động (sản phẩm làm ra thứ gì đó) – sai nghĩa."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.42,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.42,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.42,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.42,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "reduced-relative-clause",
+        "past-participle"
+      ],
+      "skill_ids": [
+        "english.grammar.relative_clauses"
+      ]
+    },
+    {
+      "id": "eng.grammar.007",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "The ancient temple on the hill is believed _____ in the 11th century.",
+      "options": [
+        {
+          "id": "A",
+          "text": "to build"
+        },
+        {
+          "id": "B",
+          "text": "to be built"
+        },
+        {
+          "id": "C",
+          "text": "to have built"
+        },
+        {
+          "id": "D",
+          "text": "to have been built"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Xét hai điều: ngôi chùa tự xây hay được xây? Việc xây xảy ra trước hay cùng lúc với \"is believed\"?",
+      "explanation": "Cấu trúc bị động với động từ tường thuật: S + is believed + to V / to have V3. Việc xây (in the 11th century) xảy ra trước thời điểm \"is believed\" (hiện tại) nên dùng động từ nguyên mẫu hoàn thành; ngôi chùa \"được xây\" nên dùng dạng bị động → \"to have been built\". \"to build\" và \"to have built\" là chủ động (ngôi chùa tự xây – vô lí); \"to be built\" là bị động nhưng chỉ hành động cùng lúc hoặc sau thời điểm hiện tại, mâu thuẫn với \"in the 11th century\". Chọn D.",
+      "tip": "It is said/believed that + S + V2 ↔ S + is said/believed + to have + V3 (chủ động) / to have been + V3 (bị động).",
+      "option_feedback": {
+        "A": "Chủ động và không lùi thời gian – vừa sai thể vừa sai thời điểm.",
+        "B": "Đúng thể bị động nhưng không diễn tả được việc đã xảy ra trong quá khứ (thế kỉ 11).",
+        "C": "Đúng dạng hoàn thành nhưng là chủ động: ngôi chùa không tự xây."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.62,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 50,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "passive-reporting",
+        "perfect-infinitive",
+        "heritage"
+      ],
+      "skill_ids": [
+        "english.grammar.passive",
+        "english.grammar.gerund_infinitive"
+      ]
+    },
+    {
+      "id": "eng.grammar.008",
+      "revision": 2,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "I clearly remember _____ the front door before we left, so the burglar can't have got in that way.",
+      "options": [
+        {
+          "id": "A",
+          "text": "to lock"
+        },
+        {
+          "id": "B",
+          "text": "lock"
+        },
+        {
+          "id": "C",
+          "text": "to have locked"
+        },
+        {
+          "id": "D",
+          "text": "locking"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Người nói đang nhớ lại một việc đã làm, hay nhắc mình một việc cần làm?",
+      "explanation": "remember + V-ing = nhớ là đã làm việc gì (hành động xảy ra trước, bây giờ nhớ lại); remember + to V = nhớ để làm việc gì (việc chưa làm, cần làm). Câu nói về việc đã khóa cửa trước khi đi (\"before we left\") và dùng điều đó làm căn cứ để suy luận, nên phải là \"remember locking\". \"to lock\" mang nghĩa nhớ phải đi khóa – không khớp với việc đã xảy ra; \"lock\" (nguyên mẫu trần) sai cấu trúc; \"to have locked\" không phải cấu trúc chuẩn sau \"remember\". Chọn D.",
+      "tip": "remember/forget/regret + V-ing: việc đã xảy ra; remember/forget/regret + to V: việc sắp làm/cần làm.",
+      "option_feedback": {
+        "A": "remember + to V là nhớ để làm việc sắp làm, không dùng để kể lại việc đã làm \"before we left\".",
+        "B": "Không dùng động từ nguyên mẫu trần ngay sau \"remember\".",
+        "C": "\"remember to have done\" là cấu trúc cổ, không dùng trong tiếng Anh hiện đại; để nói việc đã làm, dùng remember + V-ing."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.48,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.48,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "gerund-vs-infinitive",
+        "remember"
+      ],
+      "skill_ids": [
+        "english.grammar.gerund_infinitive"
+      ]
+    },
+    {
+      "id": "eng.grammar.009",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "_____ the importance of lifelong learning, she would not have enrolled in an online course at the age of sixty.",
+      "options": [
+        {
+          "id": "A",
+          "text": "Had she not realised"
+        },
+        {
+          "id": "B",
+          "text": "Should she not realise"
+        },
+        {
+          "id": "C",
+          "text": "Were she not to realise"
+        },
+        {
+          "id": "D",
+          "text": "Hadn't she realised"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Mệnh đề chính \"would not have enrolled\" thuộc loại câu điều kiện nào? Dạng đảo ngữ tương ứng được viết thế nào?",
+      "explanation": "Mệnh đề chính \"would not have enrolled\" (would have + V3) cho biết đây là điều kiện loại 3 – giả định trái với quá khứ (thực tế bà đã nhận ra tầm quan trọng và đã đăng kí học). Câu gốc: \"If she had not realised...\" → đảo ngữ: Had + S + not + V3 = \"Had she not realised\". \"Should she not realise\" là đảo ngữ loại 1 và \"Were she not to realise\" là đảo ngữ loại 2 – đều không khớp với mệnh đề chính loại 3. \"Hadn't she realised\" sai vì đảo ngữ câu điều kiện không dùng dạng viết tắt \"Hadn't\" ở đầu; \"not\" phải đứng sau chủ ngữ. Chọn A.",
+      "tip": "Đảo ngữ điều kiện: loại 1 Should + S + V; loại 2 Were + S + to V; loại 3 Had + S + (not) + V3. Ở dạng phủ định, \"not\" đứng sau chủ ngữ và không viết tắt.",
+      "option_feedback": {
+        "B": "Đảo ngữ loại 1 (Should), không hợp với mệnh đề chính loại 3 \"would not have enrolled\".",
+        "C": "Đảo ngữ loại 2 (Were ... to V), không khớp với mệnh đề chính loại 3.",
+        "D": "Đảo ngữ câu điều kiện không dùng dạng viết tắt \"Hadn't\" ở đầu câu; phải là \"Had she not\"."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.75,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.75,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.68,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inversion",
+        "conditional-type-3",
+        "lifelong-learning"
+      ],
+      "skill_ids": [
+        "english.grammar.conditionals",
+        "english.grammar.inversion"
+      ]
+    },
+    {
+      "id": "eng.grammar.010",
+      "revision": 1,
+      "subject_id": "english",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "eng.grammar"
+      ],
+      "language": "en",
+      "stem": "Not until the late 20th century _____ widely accepted that human activities were seriously affecting the global climate.",
+      "options": [
+        {
+          "id": "A",
+          "text": "it was"
+        },
+        {
+          "id": "B",
+          "text": "was it"
+        },
+        {
+          "id": "C",
+          "text": "did it"
+        },
+        {
+          "id": "D",
+          "text": "it had been"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Cụm \"Not until...\" đứng đầu câu kéo theo hiện tượng ngữ pháp gì? \"accepted\" ở đây mang nghĩa chủ động hay bị động?",
+      "explanation": "Khi \"Not until + mốc thời gian\" đứng đầu câu, mệnh đề chính phải đảo ngữ (trợ động từ đứng trước chủ ngữ). Câu gốc dùng cấu trúc bị động \"It is accepted that...\": \"It was not widely accepted until the late 20th century that...\" → đảo ngữ: \"Not until the late 20th century was it widely accepted that...\". \"it was\" và \"it had been\" không đảo ngữ (riêng \"had been\" còn sai thì vì không có mốc quá khứ nào trước đó); \"did it\" sai vì sau \"did\" phải là động từ nguyên mẫu, không đi với \"accepted\", và câu cần nghĩa bị động với \"be\". Chọn B.",
+      "tip": "Not until / Only when / Only after... ở đầu câu → đảo trợ động từ ở mệnh đề chính. Với câu bị động, trợ động từ được đảo lên chính là \"be\".",
+      "option_feedback": {
+        "A": "Thiếu đảo ngữ: sau \"Not until...\" ở đầu câu, trợ động từ phải đứng trước chủ ngữ.",
+        "C": "\"did\" đòi hỏi động từ nguyên mẫu theo sau, không đi với \"accepted\"; câu cần bị động với \"was\".",
+        "D": "Không đảo ngữ và sai thì: không có mốc quá khứ nào trước đó để dùng quá khứ hoàn thành."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.75,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/english-a@v1",
+            "estimate": 0.75,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-english-a",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/english-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-english-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "inversion",
+        "not-until",
+        "passive",
+        "environment"
+      ],
+      "skill_ids": [
+        "english.grammar.inversion"
+      ]
+    }
+  ]
+}

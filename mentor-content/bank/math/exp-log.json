@@ -1,0 +1,1278 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "math.exp-log.001",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Tập xác định của hàm số $y = \\log_2 (x - 3)$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[3; +\\infty)$"
+        },
+        {
+          "id": "B",
+          "text": "$(3; +\\infty)$"
+        },
+        {
+          "id": "C",
+          "text": "$(-\\infty; 3)$"
+        },
+        {
+          "id": "D",
+          "text": "$(0; +\\infty)$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Biểu thức bên trong dấu logarit phải thỏa mãn điều kiện gì?",
+      "explanation": "Hàm số $y = \\log_2 (x - 3)$ xác định khi $x - 3 > 0$, tức $x > 3$. Vậy tập xác định là $(3; +\\infty)$. Chọn B.",
+      "tip": "$\\log_a u(x)$ (với $0 < a \\ne 1$) xác định khi và chỉ khi $u(x) > 0$.",
+      "option_feedback": {
+        "A": "Biểu thức trong logarit phải dương thực sự; tại $x = 3$ ta có $\\log_2 0$ không xác định.",
+        "D": "$(0; +\\infty)$ là tập xác định của $\\log_2 x$; ở đây biểu thức trong logarit là $x - 3$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.1,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "domain"
+      ],
+      "skill_ids": [
+        "explog.functions"
+      ]
+    },
+    {
+      "id": "math.exp-log.002",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Với $a$ là số thực dương tùy ý, $\\log_2 (8a)$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3\\log_2 a$"
+        },
+        {
+          "id": "B",
+          "text": "$8 + \\log_2 a$"
+        },
+        {
+          "id": "C",
+          "text": "$8\\log_2 a$"
+        },
+        {
+          "id": "D",
+          "text": "$3 + \\log_2 a$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Dùng công thức logarit của một tích.",
+      "explanation": "Ta có $\\log_2 (8a) = \\log_2 8 + \\log_2 a = 3 + \\log_2 a$. Chọn D.",
+      "tip": "$\\log_a (bc) = \\log_a b + \\log_a c$ với $b, c > 0$; logarit của tích là tổng, không phải tích.",
+      "option_feedback": {
+        "A": "Nhầm logarit của tích thành tích các logarit; đúng là $\\log_2 (8a) = \\log_2 8 + \\log_2 a$.",
+        "B": "Chưa tính $\\log_2 8 = 3$ mà giữ nguyên số $8$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "log-rules"
+      ],
+      "skill_ids": [
+        "explog.logarithm"
+      ]
+    },
+    {
+      "id": "math.exp-log.003",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Nghiệm của phương trình $3^{x - 1} = 27$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$x = 4$"
+        },
+        {
+          "id": "B",
+          "text": "$x = 3$"
+        },
+        {
+          "id": "C",
+          "text": "$x = 2$"
+        },
+        {
+          "id": "D",
+          "text": "$x = 10$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Viết $27$ dưới dạng lũy thừa cơ số $3$.",
+      "explanation": "Vì $27 = 3^3$ nên $3^{x - 1} = 3^3$, suy ra $x - 1 = 3$, tức $x = 4$. Chọn A.",
+      "tip": "Đưa hai vế về cùng cơ số: $a^{u} = a^{v}$ tương đương $u = v$ (với $0 < a \\ne 1$).",
+      "option_feedback": {
+        "B": "Đã giải $3^x = 27$, quên rằng số mũ là $x - 1$.",
+        "D": "Đã lấy $27 : 3 + 1$; phương trình mũ cần đưa về cùng cơ số rồi so sánh số mũ."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.1,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.1,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.1,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "exp-equation"
+      ],
+      "skill_ids": [
+        "explog.equations",
+        "explog.powers"
+      ]
+    },
+    {
+      "id": "math.exp-log.004",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Tập nghiệm của bất phương trình $\\log_{\\frac{1}{2}} (x - 1) > -2$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$(5; +\\infty)$"
+        },
+        {
+          "id": "B",
+          "text": "$(-\\infty; 5)$"
+        },
+        {
+          "id": "C",
+          "text": "$(1; 5)$"
+        },
+        {
+          "id": "D",
+          "text": "$\\left(1; \\frac{5}{4}\\right)$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Đặt điều kiện xác định trước; chú ý khi cơ số nhỏ hơn $1$ thì chiều bất phương trình thay đổi.",
+      "explanation": "Điều kiện: $x - 1 > 0$, tức $x > 1$. Vì cơ số $\\frac{1}{2} < 1$ nên bất phương trình tương đương $x - 1 < \\left(\\frac{1}{2}\\right)^{-2} = 4$, tức $x < 5$. Kết hợp điều kiện được $1 < x < 5$. Tập nghiệm là $(1; 5)$. Chọn C.",
+      "tip": "Với $0 < a < 1$: $\\log_a u > b$ tương đương $0 < u < a^b$.",
+      "option_feedback": {
+        "A": "Quên đổi chiều bất phương trình khi cơ số $\\frac{1}{2} < 1$.",
+        "B": "Thiếu điều kiện xác định $x - 1 > 0$.",
+        "D": "Tính sai $\\left(\\frac{1}{2}\\right)^{-2}$ thành $\\frac{1}{4}$; đúng là $\\left(\\frac{1}{2}\\right)^{-2} = 2^2 = 4$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "log-inequality"
+      ],
+      "skill_ids": [
+        "explog.inequalities"
+      ]
+    },
+    {
+      "id": "math.exp-log.005",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Tổng các nghiệm của phương trình $\\log_2 x + \\log_2 (x - 2) = 3$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$-2$"
+        },
+        {
+          "id": "C",
+          "text": "$8$"
+        },
+        {
+          "id": "D",
+          "text": "$4$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Đặt điều kiện cho cả hai logarit, gộp thành một logarit, giải rồi đối chiếu điều kiện.",
+      "explanation": "Điều kiện: $x > 0$ và $x - 2 > 0$, tức $x > 2$. Phương trình tương đương $\\log_2 [x(x - 2)] = 3$, tức $x(x - 2) = 8$, hay $x^2 - 2x - 8 = 0$, suy ra $x = 4$ hoặc $x = -2$. Đối chiếu điều kiện, chỉ nhận $x = 4$. Vậy tổng các nghiệm là $4$. Chọn D.",
+      "tip": "Với phương trình logarit, luôn đối chiếu nghiệm với điều kiện xác định trước khi dùng Vi-ét.",
+      "option_feedback": {
+        "A": "$2$ là tổng hai nghiệm của $x^2 - 2x - 8 = 0$ khi chưa loại nghiệm $x = -2$.",
+        "B": "$x = -2$ không thỏa mãn điều kiện $x > 2$ nên bị loại."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.38,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 3
+        },
+        "author_estimate": 0.38,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.38,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 80,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "log-equation"
+      ],
+      "skill_ids": [
+        "explog.equations",
+        "explog.logarithm"
+      ]
+    },
+    {
+      "id": "math.exp-log.006",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Đạo hàm của hàm số $y = \\log_3 (2x + 1)$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y' = \\frac{2}{(2x + 1)\\ln 3}$"
+        },
+        {
+          "id": "B",
+          "text": "$y' = \\frac{1}{(2x + 1)\\ln 3}$"
+        },
+        {
+          "id": "C",
+          "text": "$y' = \\frac{2\\ln 3}{2x + 1}$"
+        },
+        {
+          "id": "D",
+          "text": "$y' = \\frac{2}{2x + 1}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Áp dụng công thức đạo hàm của $\\log_a u$ với $u = 2x + 1$.",
+      "explanation": "Áp dụng $(\\log_a u)' = \\frac{u'}{u \\ln a}$ với $u = 2x + 1$, $u' = 2$, $a = 3$, ta được $y' = \\frac{2}{(2x + 1)\\ln 3}$. Chọn A.",
+      "tip": "$(\\log_a u)' = \\frac{u'}{u \\ln a}$: nhớ cả $u'$ ở tử và $\\ln a$ ở mẫu.",
+      "option_feedback": {
+        "B": "Quên nhân với đạo hàm của $u = 2x + 1$ là $u' = 2$.",
+        "C": "$\\ln 3$ phải nằm ở mẫu, không phải ở tử.",
+        "D": "Đây là đạo hàm của $\\ln (2x + 1)$; với cơ số $3$ cần chia thêm cho $\\ln 3$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.32,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.32,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "derivative"
+      ],
+      "skill_ids": [
+        "explog.functions",
+        "calculus.derivative.rules"
+      ]
+    },
+    {
+      "id": "math.exp-log.007",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Một người gửi $100$ triệu đồng vào ngân hàng theo thể thức lãi kép, kì hạn $1$ năm, lãi suất 6%/năm và không rút tiền trong suốt thời gian gửi. Hỏi sau ít nhất bao nhiêu năm thì tổng số tiền (cả gốc lẫn lãi) người đó có được vượt quá $150$ triệu đồng? (Giả sử lãi suất không thay đổi.)",
+      "options": [
+        {
+          "id": "A",
+          "text": "$6$ năm"
+        },
+        {
+          "id": "B",
+          "text": "$7$ năm"
+        },
+        {
+          "id": "C",
+          "text": "$8$ năm"
+        },
+        {
+          "id": "D",
+          "text": "$9$ năm"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Viết công thức lãi kép $A(1 + r)^n$, giải bất phương trình mũ và lấy số nguyên $n$ nhỏ nhất.",
+      "explanation": "Sau $n$ năm, số tiền là $100 \\cdot 1{,}06^n$ (triệu đồng). Cần $100 \\cdot 1{,}06^n > 150$, tức $1{,}06^n > 1{,}5$, hay $n > \\log_{1{,}06} 1{,}5 \\approx 6{,}96$. Vì $n$ là số nguyên nên $n$ nhỏ nhất bằng $7$ (kiểm tra: $1{,}06^6 \\approx 1{,}419 < 1{,}5$ và $1{,}06^7 \\approx 1{,}504 > 1{,}5$). Chọn B.",
+      "tip": "Bấm máy $\\log_{1{,}06} 1{,}5$ rồi làm tròn lên số nguyên gần nhất.",
+      "option_feedback": {
+        "A": "Đã làm tròn $6{,}96$ xuống; sau $6$ năm số tiền mới khoảng $141{,}9$ triệu đồng.",
+        "D": "Đây là kết quả khi tính theo lãi đơn $100(1 + 0{,}06n) > 150$; đề bài là lãi kép."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.58,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.58,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "real-world",
+        "compound-interest"
+      ],
+      "skill_ids": [
+        "explog.applications",
+        "explog.inequalities"
+      ]
+    },
+    {
+      "id": "math.exp-log.008",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Tổng các nghiệm của phương trình $4^x - 3 \\cdot 2^{x + 1} + 8 = 0$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$6$"
+        },
+        {
+          "id": "B",
+          "text": "$2$"
+        },
+        {
+          "id": "C",
+          "text": "$8$"
+        },
+        {
+          "id": "D",
+          "text": "$3$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Viết $4^x = (2^x)^2$ và $2^{x + 1} = 2 \\cdot 2^x$, rồi đặt ẩn phụ $t = 2^x$.",
+      "explanation": "Ta có $2^{x + 1} = 2 \\cdot 2^x$. Đặt $t = 2^x > 0$, phương trình trở thành $t^2 - 6t + 8 = 0$, suy ra $t = 2$ hoặc $t = 4$ (đều dương). Với $2^x = 2$ được $x = 1$; với $2^x = 4$ được $x = 2$. Tổng các nghiệm là $1 + 2 = 3$. Chọn D.",
+      "tip": "Nếu $t_1 = 2^{x_1}$, $t_2 = 2^{x_2}$ thì $x_1 + x_2 = \\log_2 (t_1 t_2)$; ở đây $\\log_2 8 = 3$.",
+      "option_feedback": {
+        "A": "$6$ là tổng hai nghiệm $t$, chưa đổi về $x$.",
+        "B": "$2$ là tích hai nghiệm $x$, không phải tổng.",
+        "C": "$8$ là tích hai nghiệm $t$, chưa đổi về $x$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.5,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.5,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.5,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "exp-equation",
+        "substitution"
+      ],
+      "skill_ids": [
+        "explog.equations",
+        "explog.powers"
+      ]
+    },
+    {
+      "id": "math.exp-log.009",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Có bao nhiêu số nguyên $m$ thuộc đoạn $[-10; 10]$ để phương trình $9^x - 2m \\cdot 3^x + m + 6 = 0$ có hai nghiệm thực phân biệt?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$8$"
+        },
+        {
+          "id": "B",
+          "text": "$15$"
+        },
+        {
+          "id": "C",
+          "text": "$7$"
+        },
+        {
+          "id": "D",
+          "text": "$6$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Đặt $t = 3^x$ và chuyển về điều kiện để phương trình bậc hai theo $t$ có hai nghiệm dương phân biệt.",
+      "explanation": "Đặt $t = 3^x > 0$; mỗi giá trị $t > 0$ cho đúng một giá trị $x$. Phương trình đã cho có hai nghiệm phân biệt khi và chỉ khi $t^2 - 2mt + m + 6 = 0$ có hai nghiệm dương phân biệt, tức $\\Delta' = m^2 - m - 6 > 0$, $S = 2m > 0$ và $P = m + 6 > 0$. Từ $\\Delta' > 0$ được $m < -2$ hoặc $m > 3$; kết hợp với $m > 0$ và $m > -6$ được $m > 3$. Các số nguyên thỏa mãn trong đoạn $[-10; 10]$ là $4, 5, 6, 7, 8, 9, 10$, gồm $7$ số. Chọn C.",
+      "tip": "Phương trình bậc hai có hai nghiệm dương phân biệt khi $\\Delta > 0$, $S > 0$, $P > 0$.",
+      "option_feedback": {
+        "A": "Đã nhận $m = 3$; khi đó $\\Delta' = 0$, phương trình theo $t$ có nghiệm kép $t = 3$ nên chỉ cho một nghiệm $x = 1$.",
+        "B": "Chỉ dùng điều kiện $\\Delta' > 0$, quên yêu cầu hai nghiệm $t$ đều dương ($S > 0$, $P > 0$)."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.75,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.75,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.72,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "exp-equation",
+        "parameter"
+      ],
+      "skill_ids": [
+        "explog.parameter",
+        "explog.equations"
+      ]
+    },
+    {
+      "id": "math.exp-log.010",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Có bao nhiêu số nguyên $x$ thỏa mãn $\\left(9^x - 10 \\cdot 3^x + 9\\right)\\left(\\log_2 x - 3\\right) \\le 0$?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7$"
+        },
+        {
+          "id": "B",
+          "text": "$5$"
+        },
+        {
+          "id": "C",
+          "text": "$6$"
+        },
+        {
+          "id": "D",
+          "text": "$8$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Đặt điều kiện, phân tích $9^x - 10 \\cdot 3^x + 9$ thành nhân tử theo $3^x$, rồi xét dấu từng thừa số.",
+      "explanation": "Điều kiện: $x > 0$. Đặt $A = 9^x - 10 \\cdot 3^x + 9 = (3^x - 1)(3^x - 9)$ và $B = \\log_2 x - 3$. Với $x > 0$ thì $3^x - 1 > 0$, nên $A$ cùng dấu với $3^x - 9$: $A < 0$ khi $0 < x < 2$, $A = 0$ khi $x = 2$, $A > 0$ khi $x > 2$. Còn $B < 0$ khi $0 < x < 8$, $B = 0$ khi $x = 8$, $B > 0$ khi $x > 8$. Khi $0 < x < 2$: $A < 0$, $B < 0$ nên $AB > 0$ (loại). Khi $2 \\le x \\le 8$: $A \\ge 0$, $B \\le 0$ nên $AB \\le 0$ (nhận). Khi $x > 8$: $A > 0$, $B > 0$ nên $AB > 0$ (loại). Tập nghiệm là $[2; 8]$, gồm các số nguyên $2, 3, 4, 5, 6, 7, 8$, tức $7$ số. Chọn A.",
+      "tip": "Bất phương trình dạng tích $\\le 0$: đừng quên các giá trị làm một thừa số bằng $0$ và điều kiện xác định của logarit.",
+      "option_feedback": {
+        "B": "Đã giải bất phương trình chặt, bỏ mất hai giá trị $x = 2$ và $x = 8$ làm vế trái bằng $0$.",
+        "C": "Bỏ sót một trong hai giá trị biên $x = 2$ hoặc $x = 8$; cả hai đều làm vế trái bằng $0$."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.8,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.75,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "log-inequality",
+        "exp-inequality",
+        "integer-count"
+      ],
+      "skill_ids": [
+        "explog.inequalities",
+        "explog.equations"
+      ]
+    },
+    {
+      "id": "math.exp-log.011",
+      "revision": 2,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "math.exp-log"
+      ],
+      "language": "vi",
+      "stem": "Bác An gửi tiết kiệm $100$ triệu đồng với lãi suất $6\\%$ một năm theo hình thức lãi kép (tiền lãi mỗi năm được nhập vào vốn). Sau $3$ năm, tổng số tiền (cả vốn lẫn lãi) bác An nhận được là bao nhiêu triệu đồng (làm tròn đến hàng đơn vị)?",
+      "hint": "Sau $n$ năm, số tiền là $A(1 + r)^n$.",
+      "explanation": "$100 \\cdot 1{,}06^3 = 100 \\cdot 1{,}191016 \\approx 119{,}1$ triệu đồng; làm tròn đến hàng đơn vị được $119$.",
+      "tip": "Lãi kép: nhân với $(1 + r)$ mỗi kì, không cộng $n \\cdot r$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=119; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=119; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "119",
+        "decimals": 0,
+        "unit": "triệu đồng",
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "explog.applications"
+      ]
+    }
+  ]
+}

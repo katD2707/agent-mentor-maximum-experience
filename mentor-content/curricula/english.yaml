@@ -1,0 +1,142 @@
+# English skill graph for the THPT profile (CT GDPT 2018, đề thi tốt nghiệp từ 2025; titles bilingual).
+# ids are stable: never rename an id once events reference it. `topic` = bank topic id. Must stay acyclic (tested).
+subject: english
+skills:
+  # --- Ngữ pháp ---
+  - id: english.grammar.tenses
+    title: Các thì - Verb tenses (present perfect, past, future...)
+    grade: 10
+    topic: eng.grammar
+    prerequisites: []
+  - id: english.grammar.passive
+    title: Câu bị động - Passive voice (kể cả bị động với động từ tường thuật)
+    grade: 10
+    topic: eng.grammar
+    prerequisites: [english.grammar.tenses]
+  - id: english.grammar.relative_clauses
+    title: Mệnh đề quan hệ - Relative clauses (kể cả rút gọn)
+    grade: 10
+    topic: eng.grammar
+    prerequisites: []
+  - id: english.grammar.conditionals
+    title: Câu điều kiện và wish - Conditionals
+    grade: 10
+    topic: eng.grammar
+    prerequisites: [english.grammar.tenses]
+  - id: english.grammar.gerund_infinitive
+    title: Danh động từ và động từ nguyên mẫu - Gerunds and infinitives
+    grade: 10
+    topic: eng.grammar
+    prerequisites: []
+  - id: english.grammar.inversion
+    title: Đảo ngữ và cấu trúc nhấn mạnh - Inversion
+    grade: 11
+    topic: eng.grammar
+    prerequisites: [english.grammar.tenses]
+
+  # --- Từ vựng ---
+  - id: english.vocabulary.collocations
+    title: Kết hợp từ - Collocations
+    grade: 10
+    topic: eng.vocabulary
+    prerequisites: []
+  - id: english.vocabulary.phrasal_verbs
+    title: Cụm động từ - Phrasal verbs
+    grade: 11
+    topic: eng.vocabulary
+    prerequisites: []
+  - id: english.vocabulary.idioms
+    title: Thành ngữ thông dụng - Idioms
+    grade: 11
+    topic: eng.vocabulary
+    prerequisites: [english.vocabulary.collocations]
+
+  # --- Cấu tạo từ ---
+  - id: english.wordform.word_class
+    title: Xác định từ loại theo vị trí trong câu - Word class
+    grade: 10
+    topic: eng.word-formation
+    prerequisites: []
+  - id: english.wordform.suffixes
+    title: Hậu tố tạo danh từ, tính từ, trạng từ - Suffixes
+    grade: 10
+    topic: eng.word-formation
+    prerequisites: [english.wordform.word_class]
+  - id: english.wordform.prefixes
+    title: Tiền tố, đặc biệt tiền tố phủ định - Prefixes
+    grade: 10
+    topic: eng.word-formation
+    prerequisites: [english.wordform.word_class]
+
+  # --- Giao tiếp, thông báo, quảng cáo ---
+  - id: english.communication.notices
+    title: Điền từ vào thông báo, quảng cáo, tin nhắn - Notices and ads
+    grade: 10
+    topic: eng.communication
+    prerequisites: []
+  - id: english.communication.responses
+    title: Phản hồi trong hội thoại - Conversational responses
+    grade: 10
+    topic: eng.communication
+    prerequisites: []
+  - id: english.completion.sentences
+    title: Chọn câu hoặc mệnh đề điền vào văn bản - Text completion
+    grade: 10
+    topic: eng.communication
+    prerequisites: [english.grammar.tenses]
+
+  # --- Đọc hiểu ---
+  - id: english.reading.main_idea
+    title: Tìm ý chính, tóm tắt đoạn văn - Main idea
+    grade: 10
+    topic: eng.reading
+    prerequisites: []
+  - id: english.reading.detail
+    title: Tìm thông tin chi tiết - Detail questions
+    grade: 10
+    topic: eng.reading
+    prerequisites: []
+  - id: english.reading.reference
+    title: Từ quy chiếu - Reference words
+    grade: 10
+    topic: eng.reading
+    prerequisites: []
+  - id: english.reading.vocabulary_in_context
+    title: Nghĩa của từ theo ngữ cảnh - Vocabulary in context
+    grade: 10
+    topic: eng.reading
+    prerequisites: [english.vocabulary.collocations]
+  - id: english.reading.inference
+    title: Suy luận từ đoạn văn - Inference
+    grade: 10
+    topic: eng.reading
+    prerequisites: [english.reading.detail]
+  - id: english.reading.coherence
+    title: Vị trí câu trong đoạn - Sentence placement and coherence
+    grade: 10
+    topic: eng.reading
+    prerequisites: [english.reading.reference]
+
+  # --- Sắp xếp câu và viết lại câu ---
+  - id: english.arrangement.sentence_order
+    title: Sắp xếp câu thành hội thoại, đoạn văn, thư - Sentence ordering
+    grade: 10
+    topic: eng.sentence-arrangement
+    prerequisites: []
+  - id: english.arrangement.rewrite
+    title: Chọn câu đồng nghĩa - Sentence transformation
+    grade: 10
+    topic: eng.sentence-arrangement
+    prerequisites: [english.grammar.tenses]
+
+  # --- Ngữ âm ---
+  - id: english.phonetics.sounds
+    title: Phát âm - nguyên âm, phụ âm, đuôi -s/-ed
+    grade: 10
+    topic: eng.phonetics
+    prerequisites: []
+  - id: english.phonetics.stress
+    title: Trọng âm từ - Word stress
+    grade: 10
+    topic: eng.phonetics
+    prerequisites: []

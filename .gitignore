@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+node_modules/
+.next/
+.env
+.env.*
+/var/
+/var-*/
+# templates hold no secrets (infra/.env.prod.example, apps/web/.env.example); .env.prod itself stays ignored
+!.env*.example
+/dist/
+# local caches
+*.tsbuildinfo
+**/.impeccable/hook.cache.json
+# internal documents, kept local
+docs/de-xuat-ngan-sach-openai-dev.md

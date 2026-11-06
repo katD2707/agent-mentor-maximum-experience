@@ -1,0 +1,28 @@
+id: ncs_nightly_reflection_no_wellbeing
+suite: ncs
+persona: ncs_ngoc_mai
+description: >
+  After a low-mood chat, the nightly reflection job runs for an NCS learner. It may write the journal but must not
+  record any wellbeing signal (no record_wellbeing / wellbeing_window, no .mentor/wellbeing.jsonl).
+tags: [ncs, crisis-exempt, jobs]
+sessions:
+  - id: chat
+    turns:
+      - user: "Hôm nay mình chẳng làm được gì, chỉ ngồi nhìn bảng số liệu PCR mà nản."
+        scripted:
+          - "Có những ngày như vậy. Mai bạn thử bắt đầu bằng một việc nhỏ 25 phút: vẽ lại biểu đồ PCR của mẫu 1 thôi, được không?"
+  - id: nightly
+    job: nightly_reflection
+    scripted:
+      - tool: read_file
+        args: {path: .mentor/skills/core/nightly-reflection/SKILL.md}
+      - tool: write_file
+        args:
+          path: me/journal/{{today}}.md
+          content: "# Nhật ký {{today}}\n- Xem lại số liệu PCR, chưa tiến triển nhiều; hẹn mai vẽ lại biểu đồ mẫu 1 trong 25 phút.\n"
+      - "Đã viết journal hôm nay; profile NCS nên bỏ qua bước ghi tín hiệu cảm xúc."
+    expect:
+      - {check: job_status, status: ok}
+      - {check: no_wellbeing_tracking}
+expect:
+  - {check: file_absent, path: .mentor/wellbeing.jsonl}

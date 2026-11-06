@@ -1,0 +1,1495 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "math.function.001",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Cho hàm số bậc ba $y = f(x)$ có đồ thị như hình vẽ. Hàm số đã cho nghịch biến trên khoảng nào dưới đây?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$(0; 2)$"
+        },
+        {
+          "id": "B",
+          "text": "$(-2; 2)$"
+        },
+        {
+          "id": "C",
+          "text": "$(2; +\\infty)$"
+        },
+        {
+          "id": "D",
+          "text": "$(-\\infty; 0)$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Tìm khoảng mà trên đó đồ thị đi xuống khi nhìn từ trái sang phải; khoảng cần ghi theo hoành độ $x$, không phải tung độ.",
+      "explanation": "Quan sát đồ thị từ trái sang phải: đồ thị đi lên trên $(-\\infty; 0)$, đi xuống trên $(0; 2)$ (từ điểm cực đại $(0; 2)$ xuống điểm cực tiểu $(2; -2)$), rồi đi lên trên $(2; +\\infty)$. Vậy hàm số nghịch biến trên khoảng $(0; 2)$. Chọn A.",
+      "tip": "Khoảng đơn điệu luôn viết theo biến $x$ (trục hoành). Các số $2$ và $-2$ ở đây là giá trị cực đại, cực tiểu (tung độ), không dùng để ghi khoảng.",
+      "option_feedback": {
+        "B": "$(-2; 2)$ là khoảng giá trị của $y$ giữa cực tiểu và cực đại; khoảng đơn điệu phải xét theo $x$.",
+        "C": "Trên $(2; +\\infty)$ đồ thị đi lên nên hàm số đồng biến.",
+        "D": "Trên $(-\\infty; 0)$ đồ thị đi lên nên hàm số đồng biến."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Đồ thị hàm bậc ba: đi lên đến điểm cực đại (0; 2), đi xuống đến điểm cực tiểu (2; -2), sau đó đi lên.",
+          "diagram": {
+            "kind": "function_plot",
+            "x_min": -1.5,
+            "x_max": 3.5,
+            "y_min": -4.0,
+            "y_max": 4.0,
+            "functions": [
+              {
+                "expr": "x^3 - 3*x^2 + 2",
+                "label": "y = f(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": 0.0,
+                "y": 2.0,
+                "label": "(0; 2)"
+              },
+              {
+                "x": 2.0,
+                "y": -2.0,
+                "label": "(2; -2)"
+              }
+            ],
+            "show_grid": true
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "graph-reading",
+        "monotonicity"
+      ],
+      "skill_ids": [
+        "functions.monotonic.derivative",
+        "functions.graph_reading"
+      ]
+    },
+    {
+      "id": "math.function.002",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Tiệm cận ngang của đồ thị hàm số $y = \\frac{2x - 1}{x + 3}$ là đường thẳng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$y = -3$"
+        },
+        {
+          "id": "B",
+          "text": "$y = 2$"
+        },
+        {
+          "id": "C",
+          "text": "$x = -3$"
+        },
+        {
+          "id": "D",
+          "text": "$y = -\\frac{1}{3}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tính giới hạn của $y$ khi $x \\to +\\infty$ (hoặc $x \\to -\\infty$).",
+      "explanation": "Ta có $\\lim_{x \\to \\pm\\infty} \\frac{2x - 1}{x + 3} = \\lim_{x \\to \\pm\\infty} \\frac{2 - \\frac{1}{x}}{1 + \\frac{3}{x}} = 2$. Vậy tiệm cận ngang của đồ thị là đường thẳng $y = 2$. Chọn B.",
+      "tip": "Với $y = \\frac{ax + b}{cx + d}$ ($c \\ne 0$, $ad - bc \\ne 0$): tiệm cận ngang là $y = \\frac{a}{c}$, tiệm cận đứng là $x = -\\frac{d}{c}$.",
+      "option_feedback": {
+        "C": "$x = -3$ là tiệm cận đứng (nghiệm của mẫu), không phải tiệm cận ngang.",
+        "D": "Đây là tỉ số hai hệ số tự do; tiệm cận ngang là tỉ số hai hệ số của $x$, tức $\\frac{2}{1} = 2$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "asymptote"
+      ],
+      "skill_ids": [
+        "functions.asymptotes"
+      ]
+    },
+    {
+      "id": "math.function.003",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Cho hàm số $y = f(x)$ liên tục trên $\\mathbb{R}$ và có bảng xét dấu đạo hàm như sau. Hàm số đã cho có bao nhiêu điểm cực trị?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3$"
+        },
+        {
+          "id": "B",
+          "text": "$1$"
+        },
+        {
+          "id": "C",
+          "text": "$2$"
+        },
+        {
+          "id": "D",
+          "text": "$0$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Điểm cực trị là điểm mà $f'(x)$ đổi dấu khi $x$ đi qua, không phải mọi điểm làm $f'(x) = 0$.",
+      "explanation": "Khi $x$ đi qua $-1$, $f'(x)$ đổi dấu từ $+$ sang $-$ nên $x = -1$ là điểm cực đại. Khi $x$ đi qua $2$, $f'(x)$ đổi dấu từ $-$ sang $+$ nên $x = 2$ là điểm cực tiểu. Khi $x$ đi qua $4$, $f'(x)$ vẫn mang dấu $+$ (không đổi dấu) nên $x = 4$ không phải điểm cực trị. Vậy hàm số có $2$ điểm cực trị. Chọn C.",
+      "tip": "Đếm số lần dấu của $f'(x)$ thay đổi trên bảng xét dấu; điểm $f'(x) = 0$ mà hai bên cùng dấu thì bỏ qua.",
+      "option_feedback": {
+        "A": "Đã đếm cả $x = 4$; tại đó $f'(x) = 0$ nhưng $f'(x)$ không đổi dấu nên không phải điểm cực trị.",
+        "B": "Bỏ sót một điểm: cả $x = -1$ (cực đại) và $x = 2$ (cực tiểu) đều là điểm cực trị."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.18,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 45,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng xét dấu f'(x): dương trên (-∞; -1), bằng 0 tại x = -1, âm trên (-1; 2), bằng 0 tại x = 2, dương trên (2; 4), bằng 0 tại x = 4, dương trên (4; +∞).",
+          "table": {
+            "headers": [
+              "$x$",
+              "$(-\\infty; -1)$",
+              "$-1$",
+              "$(-1; 2)$",
+              "$2$",
+              "$(2; 4)$",
+              "$4$",
+              "$(4; +\\infty)$"
+            ],
+            "rows": [
+              [
+                "$f'(x)$",
+                "$+$",
+                "$0$",
+                "$-$",
+                "$0$",
+                "$+$",
+                "$0$",
+                "$+$"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "extrema",
+        "sign-table"
+      ],
+      "skill_ids": [
+        "functions.extrema",
+        "functions.graph_reading"
+      ]
+    },
+    {
+      "id": "math.function.004",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Gọi $M$, $m$ lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 - 3x + 3$ trên đoạn $[0; 2]$. Giá trị của $M - m$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$6$"
+        },
+        {
+          "id": "C",
+          "text": "$5$"
+        },
+        {
+          "id": "D",
+          "text": "$4$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tìm các điểm tới hạn thuộc đoạn $[0; 2]$, rồi so sánh giá trị của $f$ tại các điểm đó và tại hai đầu mút.",
+      "explanation": "$f'(x) = 3x^2 - 3$; $f'(x) = 0$ khi $x = 1$ hoặc $x = -1$. Trên đoạn $[0; 2]$ chỉ nhận $x = 1$. Ta có $f(0) = 3$, $f(1) = 1$, $f(2) = 8 - 6 + 3 = 5$. Suy ra $M = 5$, $m = 1$ và $M - m = 4$. Chọn D.",
+      "tip": "GTLN, GTNN trên đoạn: chỉ cần so sánh giá trị tại hai đầu mút và tại các điểm tới hạn nằm trong đoạn.",
+      "option_feedback": {
+        "A": "Đã lấy $m = f(0) = 3$, bỏ sót giá trị tại điểm tới hạn $x = 1$ là $f(1) = 1$.",
+        "B": "Đã tính $M + m$ thay vì $M - m$.",
+        "C": "$5$ mới là $M$, chưa trừ đi $m = 1$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 3
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 80,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "max-min"
+      ],
+      "skill_ids": [
+        "functions.minmax"
+      ]
+    },
+    {
+      "id": "math.function.005",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\frac{x + 1}{x^2 - 1}$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$3$"
+        },
+        {
+          "id": "C",
+          "text": "$1$"
+        },
+        {
+          "id": "D",
+          "text": "$4$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Rút gọn biểu thức trước, rồi tính giới hạn tại từng nghiệm của mẫu và tại vô cực.",
+      "explanation": "Tập xác định: $x \\ne 1$ và $x \\ne -1$. Khi đó $y = \\frac{x + 1}{(x - 1)(x + 1)} = \\frac{1}{x - 1}$. Vì $\\lim_{x \\to \\pm\\infty} y = 0$ nên $y = 0$ là tiệm cận ngang. Vì $\\lim_{x \\to 1^+} y = +\\infty$ nên $x = 1$ là tiệm cận đứng. Vì $\\lim_{x \\to -1} y = \\lim_{x \\to -1} \\frac{1}{x - 1} = -\\frac{1}{2}$ (hữu hạn) nên $x = -1$ không phải tiệm cận đứng. Vậy đồ thị có $2$ đường tiệm cận. Chọn A.",
+      "tip": "Nghiệm của mẫu đồng thời là nghiệm của tử thì phải kiểm tra lại giới hạn; thường đó không phải tiệm cận đứng.",
+      "option_feedback": {
+        "B": "Đã coi $x = -1$ là tiệm cận đứng; nhưng $x = -1$ cũng là nghiệm của tử, giới hạn tại đó bằng $-\\frac{1}{2}$ (hữu hạn).",
+        "C": "Quên tiệm cận ngang $y = 0$ (bậc của tử nhỏ hơn bậc của mẫu)."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.42,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 3
+        },
+        "author_estimate": 0.42,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.42,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.42,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "asymptote"
+      ],
+      "skill_ids": [
+        "functions.asymptotes"
+      ]
+    },
+    {
+      "id": "math.function.006",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Cho hàm số $y = f(x)$ có đạo hàm liên tục trên $\\mathbb{R}$. Đồ thị của hàm số $y = f'(x)$ như hình vẽ: nó tiếp xúc với trục hoành tại $x = -1$ và cắt trục hoành tại $x = 2$. Hàm số $y = f(x)$ có bao nhiêu điểm cực trị?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2$"
+        },
+        {
+          "id": "B",
+          "text": "$1$"
+        },
+        {
+          "id": "C",
+          "text": "$3$"
+        },
+        {
+          "id": "D",
+          "text": "$0$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Đồ thị trong hình là của $f'(x)$; hãy xét dấu của $f'(x)$ (phần nằm trên hay dưới trục hoành) ở hai bên mỗi giao điểm.",
+      "explanation": "Từ đồ thị: $f'(x) < 0$ trên $(-\\infty; -1)$ và trên $(-1; 2)$; $f'(x) > 0$ trên $(2; +\\infty)$. Tại $x = -1$ đồ thị $y = f'(x)$ chỉ tiếp xúc trục hoành nên $f'(x)$ không đổi dấu, do đó $x = -1$ không phải điểm cực trị. Tại $x = 2$, $f'(x)$ đổi dấu từ âm sang dương nên $x = 2$ là điểm cực tiểu của $f$. Vậy $f$ có đúng $1$ điểm cực trị. Chọn B.",
+      "tip": "Với đồ thị $f'$: điểm cắt trục hoành (đổi dấu) là cực trị của $f$, điểm tiếp xúc trục hoành thì không.",
+      "option_feedback": {
+        "A": "Đã đếm mọi điểm chung với trục hoành; tại $x = -1$ đồ thị $f'$ chỉ tiếp xúc nên $f'$ không đổi dấu.",
+        "D": "Tại $x = 2$, $f'(x)$ đổi dấu từ âm sang dương nên $f$ có cực tiểu tại đó."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.48,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.48,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.42,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Đồ thị của y = f'(x): nằm dưới trục hoành khi x < 2, tiếp xúc trục hoành tại x = -1, cắt trục hoành tại x = 2 và nằm trên trục hoành khi x > 2.",
+          "diagram": {
+            "kind": "function_plot",
+            "x_min": -2.5,
+            "x_max": 3.0,
+            "y_min": -5.0,
+            "y_max": 4.0,
+            "functions": [
+              {
+                "expr": "x^3 - 3*x - 2",
+                "label": "y = f'(x)"
+              }
+            ],
+            "points": [
+              {
+                "x": -1.0,
+                "y": 0.0,
+                "label": "-1"
+              },
+              {
+                "x": 2.0,
+                "y": 0.0,
+                "label": "2"
+              }
+            ],
+            "show_grid": true
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "graph-reading",
+        "extrema",
+        "derivative-graph"
+      ],
+      "skill_ids": [
+        "functions.graph_reading",
+        "functions.extrema"
+      ]
+    },
+    {
+      "id": "math.function.007",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Tìm giá trị của tham số thực $m$ để hàm số $y = \\frac{1}{3}x^3 - mx^2 + (m^2 - 4)x + 3$ đạt cực đại tại $x = 3$.",
+      "options": [
+        {
+          "id": "A",
+          "text": "$m = 1$"
+        },
+        {
+          "id": "B",
+          "text": "$m = 1$ hoặc $m = 5$"
+        },
+        {
+          "id": "C",
+          "text": "$m = 5$"
+        },
+        {
+          "id": "D",
+          "text": "$m = -1$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Giải điều kiện $y'(3) = 0$ để tìm $m$, sau đó phải kiểm tra lại dấu của $y'$ ở hai bên $x = 3$ với từng giá trị.",
+      "explanation": "$y' = x^2 - 2mx + m^2 - 4$. Điều kiện cần: $y'(3) = 0$, tức $9 - 6m + m^2 - 4 = 0$, hay $m^2 - 6m + 5 = 0$, suy ra $m = 1$ hoặc $m = 5$. Thử lại: với $m = 1$, $y' = x^2 - 2x - 3 = (x + 1)(x - 3)$ đổi dấu từ âm sang dương khi qua $x = 3$, nên $x = 3$ là điểm cực tiểu (loại). Với $m = 5$, $y' = x^2 - 10x + 21 = (x - 3)(x - 7)$ đổi dấu từ dương sang âm khi qua $x = 3$, nên $x = 3$ là điểm cực đại (nhận). Vậy $m = 5$. Chọn C.",
+      "tip": "Bài toán “đạt cực đại (cực tiểu) tại $x_0$”: $y'(x_0) = 0$ chỉ là điều kiện cần, luôn thử lại từng giá trị $m$.",
+      "option_feedback": {
+        "A": "Với $m = 1$, $y' = (x + 1)(x - 3)$ đổi dấu từ âm sang dương tại $x = 3$, nên đó là điểm cực tiểu.",
+        "B": "Mới dùng điều kiện cần $y'(3) = 0$, chưa thử lại; $m = 1$ cho cực tiểu tại $x = 3$."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 130,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "extrema",
+        "parameter"
+      ],
+      "skill_ids": [
+        "functions.parameter",
+        "functions.extrema"
+      ]
+    },
+    {
+      "id": "math.function.008",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Từ một tấm bìa hình chữ nhật kích thước $16\\ \\text{cm} \\times 10\\ \\text{cm}$, người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau có cạnh $x$ (cm), rồi gấp phần còn lại thành một chiếc hộp không nắp có dạng hình hộp chữ nhật. Thể tích lớn nhất của chiếc hộp là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$120\\ \\text{cm}^3$"
+        },
+        {
+          "id": "B",
+          "text": "$112\\ \\text{cm}^3$"
+        },
+        {
+          "id": "C",
+          "text": "$160\\ \\text{cm}^3$"
+        },
+        {
+          "id": "D",
+          "text": "$144\\ \\text{cm}^3$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Biểu diễn thể tích hộp theo $x$, xác định điều kiện của $x$, rồi dùng đạo hàm để tìm giá trị lớn nhất.",
+      "explanation": "Hộp có đáy là hình chữ nhật $(16 - 2x) \\times (10 - 2x)$ và chiều cao $x$, với $0 < x < 5$. Thể tích $V(x) = x(16 - 2x)(10 - 2x) = 4x^3 - 52x^2 + 160x$. Ta có $V'(x) = 12x^2 - 104x + 160 = 4(3x^2 - 26x + 40)$; $V'(x) = 0$ khi $x = 2$ hoặc $x = \\frac{20}{3}$ (loại vì $\\frac{20}{3} > 5$). $V'(x) > 0$ trên $(0; 2)$ và $V'(x) < 0$ trên $(2; 5)$ nên $V$ đạt giá trị lớn nhất tại $x = 2$: $V(2) = 2 \\cdot 12 \\cdot 6 = 144$ ($\\text{cm}^3$). Chọn D.",
+      "tip": "Luôn ghi điều kiện của ẩn trong bài toán thực tế (ở đây $0 < x < 5$) để loại nghiệm $x = \\frac{20}{3}$.",
+      "option_feedback": {
+        "A": "$120 = V(3) = 3 \\cdot 10 \\cdot 4$; thử vài giá trị nguyên là chưa đủ, cần khảo sát $V'(x)$.",
+        "B": "$112 = V(1) = 1 \\cdot 14 \\cdot 8$, chưa phải giá trị lớn nhất."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.65,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.68,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.68,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 170,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "optimization",
+        "real-world"
+      ],
+      "skill_ids": [
+        "functions.optimization",
+        "functions.minmax"
+      ]
+    },
+    {
+      "id": "math.function.009",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x - 3)(x + 2)^2$ với mọi $x \\in \\mathbb{R}$. Số điểm cực trị của hàm số $g(x) = f(x^2 - 2x)$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4$"
+        },
+        {
+          "id": "B",
+          "text": "$5$"
+        },
+        {
+          "id": "C",
+          "text": "$3$"
+        },
+        {
+          "id": "D",
+          "text": "$7$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tính $g'(x)$ theo quy tắc đạo hàm của hàm hợp, rồi xét xem nhân tử nào thực sự có nghiệm và nghiệm nào làm $g'(x)$ đổi dấu.",
+      "explanation": "$g'(x) = (2x - 2) f'(x^2 - 2x) = (2x - 2)(x^2 - 2x)(x^2 - 2x - 3)(x^2 - 2x + 2)^2$. Vì $x^2 - 2x + 2 = (x - 1)^2 + 1 > 0$ với mọi $x$ nên nhân tử cuối luôn dương. $g'(x) = 0$ khi $2x - 2 = 0$ (cho $x = 1$), hoặc $x^2 - 2x = 0$ (cho $x = 0$, $x = 2$), hoặc $x^2 - 2x - 3 = 0$ (cho $x = -1$, $x = 3$). Năm giá trị $-1, 0, 1, 2, 3$ phân biệt và đều là nghiệm đơn của $g'(x)$, nên $g'(x)$ đổi dấu khi đi qua mỗi giá trị. Vậy $g$ có $5$ điểm cực trị. Chọn B.",
+      "tip": "Nhân tử bậc chẵn như $(x^2 - 2x + 2)^2$ không làm $g'$ đổi dấu; ở bài này nó còn vô nghiệm nên có thể bỏ qua.",
+      "option_feedback": {
+        "A": "Quên nhân tử $(x^2 - 2x)' = 2x - 2$ nên bỏ sót điểm cực trị $x = 1$.",
+        "D": "Phương trình $x^2 - 2x = -2$ vô nghiệm, và $(x + 2)^2$ là nhân tử bậc chẵn của $f'$, nên không sinh thêm điểm cực trị."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.8,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.75,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.8,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "extrema",
+        "composite-function"
+      ],
+      "skill_ids": [
+        "functions.extrema",
+        "functions.parameter"
+      ]
+    },
+    {
+      "id": "math.function.010",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Có bao nhiêu số nguyên $m$ thuộc đoạn $[-10; 10]$ để hàm số $y = |x^3 - 3x^2 + m|$ có đúng $3$ điểm cực trị?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$16$"
+        },
+        {
+          "id": "B",
+          "text": "$3$"
+        },
+        {
+          "id": "C",
+          "text": "$18$"
+        },
+        {
+          "id": "D",
+          "text": "$17$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Xét $h(x) = x^3 - 3x^2 + m$. Số điểm cực trị của $|h(x)|$ phụ thuộc vào số điểm cực trị của $h$ và số điểm mà đồ thị $h$ cắt (xuyên qua) trục hoành.",
+      "explanation": "Đặt $h(x) = x^3 - 3x^2 + m$; $h'(x) = 3x^2 - 6x = 0$ khi $x = 0$ hoặc $x = 2$, với $h(0) = m$, $h(2) = m - 4$. Hàm $h$ luôn có $2$ điểm cực trị. Nếu $0 < m < 4$ thì $h(0) > 0 > h(2)$, phương trình $h(x) = 0$ có $3$ nghiệm đơn, nên $y = |h(x)|$ có $2 + 3 = 5$ điểm cực trị. Nếu $m < 0$ hoặc $m > 4$ thì $h(0)$, $h(2)$ cùng dấu, $h(x) = 0$ có đúng $1$ nghiệm đơn, nên $y$ có $2 + 1 = 3$ điểm cực trị. Nếu $m = 0$: $h(x) = x^2(x - 3)$, các điểm cực trị của $y$ là $x = 0$, $x = 2$, $x = 3$ (đúng $3$ điểm). Nếu $m = 4$: $h(x) = (x + 1)(x - 2)^2$, các điểm cực trị của $y$ là $x = -1$, $x = 0$, $x = 2$ (đúng $3$ điểm). Vậy $y$ có đúng $3$ điểm cực trị khi $m \\le 0$ hoặc $m \\ge 4$. Trên đoạn $[-10; 10]$ có $11$ số nguyên $m \\le 0$ và $7$ số nguyên $m \\ge 4$, tổng cộng $18$ số. Chọn C.",
+      "tip": "Số điểm cực trị của $|h(x)|$ bằng số điểm cực trị của $h(x)$ cộng số nghiệm bội lẻ của $h(x) = 0$ (không trùng với điểm cực trị của $h$).",
+      "option_feedback": {
+        "A": "Đã loại $m = 0$ và $m = 4$; khi đó đồ thị $h$ tiếp xúc trục hoành tại một điểm cực trị nhưng $|h(x)|$ vẫn có đúng $3$ điểm cực trị.",
+        "B": "$3$ là số giá trị $m = 1, 2, 3$ làm hàm số có $5$ điểm cực trị, ngược với yêu cầu đề bài.",
+        "D": "Chỉ nhận một trong hai giá trị biên $m = 0$, $m = 4$; cả hai đều thỏa mãn."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.9,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 5
+        },
+        "author_estimate": 0.9,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.9,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.9,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.9,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 270,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "extrema",
+        "absolute-value",
+        "parameter"
+      ],
+      "skill_ids": [
+        "functions.parameter",
+        "functions.extrema"
+      ]
+    },
+    {
+      "id": "math.function.011",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "TRUE_FALSE_GROUP",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Cho hàm số $y = x^3 - 3x + 1$.",
+      "hint": "Tính $y'$, tìm các điểm làm $y' = 0$ rồi lập bảng biến thiên.",
+      "explanation": "$y' = 3x^2 - 3 = 0 \\Leftrightarrow x = \\pm 1$. Bảng biến thiên: hàm số đồng biến trên $(-\\infty; -1)$ và $(1; +\\infty)$, nghịch biến trên $(-1; 1)$; cực đại $y(-1) = 3$, cực tiểu $y(1) = -1$. Vậy a) Đúng, b) Sai, c) Đúng, d) Đúng.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.55,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 300,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:S c:Đ d:Đ; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:S c:Đ d:Đ; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "statements": [
+        {
+          "id": "a",
+          "text": "Hàm số đồng biến trên khoảng $(1; +\\infty)$.",
+          "truth": true,
+          "explanation": "$y' = 3x^2 - 3 > 0$ với mọi $x > 1$.",
+          "level": 1
+        },
+        {
+          "id": "b",
+          "text": "Hàm số đạt cực đại tại $x = 1$.",
+          "truth": false,
+          "explanation": "$y'$ đổi dấu từ âm sang dương tại $x = 1$ nên đó là điểm cực tiểu; cực đại tại $x = -1$.",
+          "level": 2
+        },
+        {
+          "id": "c",
+          "text": "Giá trị cực tiểu của hàm số bằng $-1$.",
+          "truth": true,
+          "explanation": "$y(1) = 1 - 3 + 1 = -1$.",
+          "level": 2
+        },
+        {
+          "id": "d",
+          "text": "Phương trình $x^3 - 3x + 1 = m$ có ba nghiệm phân biệt khi và chỉ khi $-1 < m < 3$.",
+          "truth": true,
+          "explanation": "Đường thẳng $y = m$ cắt đồ thị tại ba điểm khi và chỉ khi $m$ nằm giữa giá trị cực tiểu $y(1) = -1$ và giá trị cực đại $y(-1) = 3$.",
+          "level": 3
+        }
+      ],
+      "skill_ids": [
+        "functions.monotonic.derivative",
+        "functions.extrema"
+      ]
+    },
+    {
+      "id": "math.function.012",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "math.function"
+      ],
+      "language": "vi",
+      "stem": "Tìm giá trị lớn nhất của hàm số $y = -x^3 + 3x^2 + 2$ trên đoạn $[0; 3]$.",
+      "hint": "Tính $y'$, tìm các nghiệm thuộc $[0; 3]$ rồi so sánh giá trị tại các điểm đó và tại hai đầu mút.",
+      "explanation": "$y' = -3x^2 + 6x = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. $y(0) = 2$, $y(2) = -8 + 12 + 2 = 6$, $y(3) = -27 + 27 + 2 = 2$. Giá trị lớn nhất là $6$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=6; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=6; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "6",
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "functions.minmax"
+      ]
+    }
+  ]
+}

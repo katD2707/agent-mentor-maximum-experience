@@ -1,0 +1,1300 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "phys.nuclear.001",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Hạt nhân ${}^{235}_{92}\\text{U}$ có",
+      "options": [
+        {
+          "id": "A",
+          "text": "92 proton và 235 neutron."
+        },
+        {
+          "id": "B",
+          "text": "143 proton và 92 neutron."
+        },
+        {
+          "id": "C",
+          "text": "92 proton và 143 neutron."
+        },
+        {
+          "id": "D",
+          "text": "235 proton và 92 neutron."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Nhớ lại ý nghĩa của hai con số viết phía trên và phía dưới kí hiệu hạt nhân, rồi tính số neutron.",
+      "explanation": "Với ${}^{235}_{92}\\text{U}$: số proton $Z = 92$, số nucleon $A = 235$, nên số neutron $N = A - Z = 235 - 92 = 143$. Chọn C.",
+      "tip": "Số ở trên là số khối A (tổng proton và neutron), số ở dưới là số hiệu nguyên tử Z (số proton).",
+      "option_feedback": {
+        "A": "235 là số khối, tức tổng số proton và neutron, không phải số neutron.",
+        "B": "Đã đảo vai trò của proton và neutron."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "nucleus-structure"
+      ],
+      "skill_ids": [
+        "physics.nuclear.structure"
+      ]
+    },
+    {
+      "id": "phys.nuclear.002",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Đại lượng đặc trưng cho mức độ bền vững của một hạt nhân là",
+      "options": [
+        {
+          "id": "A",
+          "text": "năng lượng liên kết."
+        },
+        {
+          "id": "B",
+          "text": "số khối."
+        },
+        {
+          "id": "C",
+          "text": "độ hụt khối."
+        },
+        {
+          "id": "D",
+          "text": "năng lượng liên kết riêng."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Năng lượng liên kết lớn hơn có chắc là bền hơn không, nếu hạt nhân đó có nhiều nucleon hơn?",
+      "explanation": "Năng lượng liên kết riêng $\\frac{W_{lk}}{A}$ là năng lượng liên kết tính cho một nucleon; hạt nhân có năng lượng liên kết riêng càng lớn thì càng bền vững. Năng lượng liên kết toàn phần và độ hụt khối còn phụ thuộc số nucleon nên không dùng trực tiếp để so sánh độ bền. Chọn D.",
+      "tip": "Các hạt nhân có số khối trung bình (khoảng 50 đến 80, như sắt) có năng lượng liên kết riêng lớn nhất nên bền nhất.",
+      "option_feedback": {
+        "A": "Năng lượng liên kết toàn phần tăng theo số nucleon; phải chia cho A mới so sánh được độ bền.",
+        "C": "Độ hụt khối tỉ lệ với năng lượng liên kết toàn phần, cũng chưa tính cho mỗi nucleon."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "binding-energy"
+      ],
+      "skill_ids": [
+        "physics.nuclear.binding_energy"
+      ]
+    },
+    {
+      "id": "phys.nuclear.003",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Phát biểu nào sau đây về hiện tượng phóng xạ là đúng?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Tốc độ phân rã của một mẫu phóng xạ tăng mạnh khi tăng áp suất đặt lên mẫu."
+        },
+        {
+          "id": "B",
+          "text": "Phóng xạ là quá trình tự phát, không chịu ảnh hưởng của các yếu tố bên ngoài như nhiệt độ, áp suất."
+        },
+        {
+          "id": "C",
+          "text": "Nung nóng mẫu chất phóng xạ làm chu kì bán rã của nó giảm đi."
+        },
+        {
+          "id": "D",
+          "text": "Phóng xạ chỉ xảy ra khi có bức xạ từ bên ngoài chiếu vào mẫu."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Nhớ lại định nghĩa phóng xạ: quá trình này xảy ra ở đâu và có cần tác nhân bên ngoài kích thích hay không?",
+      "explanation": "Phóng xạ là quá trình hạt nhân không bền tự phát phân rã, phát ra tia phóng xạ. Quá trình này mang tính tự phát và ngẫu nhiên, không phụ thuộc vào các tác động bên ngoài như nhiệt độ, áp suất; chu kì bán rã chỉ phụ thuộc bản chất của hạt nhân phóng xạ. Chọn B.",
+      "tip": "Chu kì bán rã là hằng số đặc trưng của từng hạt nhân phóng xạ, không đổi theo điều kiện bên ngoài.",
+      "option_feedback": {
+        "C": "Chu kì bán rã chỉ phụ thuộc bản chất hạt nhân, không phụ thuộc nhiệt độ.",
+        "D": "Phóng xạ là quá trình tự phát, không cần tác nhân bên ngoài."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "radioactivity"
+      ],
+      "skill_ids": [
+        "physics.nuclear.radioactive_decay"
+      ]
+    },
+    {
+      "id": "phys.nuclear.004",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Cho phản ứng hạt nhân ${}^{27}_{13}\\text{Al} + {}^{4}_{2}\\text{He} \\to {}^{30}_{15}\\text{P} + \\text{X}$. Hạt X là",
+      "options": [
+        {
+          "id": "A",
+          "text": "neutron ${}^{1}_{0}\\text{n}$"
+        },
+        {
+          "id": "B",
+          "text": "proton ${}^{1}_{1}\\text{p}$"
+        },
+        {
+          "id": "C",
+          "text": "electron ${}^{0}_{-1}\\text{e}$"
+        },
+        {
+          "id": "D",
+          "text": "deuteron ${}^{2}_{1}\\text{H}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Áp dụng định luật bảo toàn số nucleon và bảo toàn điện tích cho phản ứng.",
+      "explanation": "Gọi X là ${}^{A}_{Z}\\text{X}$. Bảo toàn số nucleon: $27 + 4 = 30 + A \\Rightarrow A = 1$. Bảo toàn điện tích: $13 + 2 = 15 + Z \\Rightarrow Z = 0$. Vậy X là neutron ${}^{1}_{0}\\text{n}$. Chọn A.",
+      "tip": "Luôn kiểm tra cả hai hàng số: tổng số trên (A) và tổng số dưới (Z) ở hai vế phải bằng nhau.",
+      "option_feedback": {
+        "B": "Proton có Z = 1, khi đó tổng điện tích vế phải là 16, không bằng 15.",
+        "D": "Deuteron có A = 2 và Z = 1, không thỏa mãn cả hai định luật bảo toàn."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.25,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "nuclear-reaction",
+        "conservation-laws"
+      ],
+      "skill_ids": [
+        "physics.nuclear.reactions"
+      ]
+    },
+    {
+      "id": "phys.nuclear.005",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Cho khối lượng của hạt nhân ${}^{4}_{2}\\text{He}$ là 4,0015 u; của proton là 1,0073 u; của neutron là 1,0087 u; $1\\ \\text{u} = 931{,}5\\ \\text{MeV/c}^2$. Năng lượng liên kết của hạt nhân ${}^{4}_{2}\\text{He}$ xấp xỉ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7{,}1\\ \\text{MeV}$"
+        },
+        {
+          "id": "B",
+          "text": "$3727{,}4\\ \\text{MeV}$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}0305\\ \\text{MeV}$"
+        },
+        {
+          "id": "D",
+          "text": "$28{,}4\\ \\text{MeV}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tính độ hụt khối bằng tổng khối lượng các nucleon riêng lẻ trừ khối lượng hạt nhân, rồi đổi sang năng lượng.",
+      "explanation": "Độ hụt khối: $\\Delta m = 2\\cdot 1{,}0073 + 2\\cdot 1{,}0087 - 4{,}0015 = 4{,}0320 - 4{,}0015 = 0{,}0305\\ \\text{u}$. Năng lượng liên kết: $W_{lk} = \\Delta m c^2 = 0{,}0305\\cdot 931{,}5 \\approx 28{,}4\\ \\text{MeV}$. Chọn D.",
+      "tip": "Với khối lượng tính theo u, chỉ cần nhân $\\Delta m$ (u) với 931,5 là được năng lượng tính bằng MeV.",
+      "option_feedback": {
+        "A": "Đây là năng lượng liên kết riêng (đã chia cho 4 nucleon), không phải năng lượng liên kết.",
+        "B": "Đây là năng lượng nghỉ của cả hạt nhân, không phải năng lượng ứng với độ hụt khối.",
+        "C": "Đã quên đổi độ hụt khối từ u sang MeV."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "mass-defect",
+        "binding-energy"
+      ],
+      "skill_ids": [
+        "physics.nuclear.binding_energy"
+      ]
+    },
+    {
+      "id": "phys.nuclear.006",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Một chất phóng xạ có chu kì bán rã 8 ngày. Ban đầu có một mẫu nguyên chất của chất này. Sau 24 ngày, số hạt nhân đã bị phân rã chiếm bao nhiêu phần trăm số hạt nhân ban đầu?",
+      "options": [
+        {
+          "id": "A",
+          "text": "12,5%"
+        },
+        {
+          "id": "B",
+          "text": "75%"
+        },
+        {
+          "id": "C",
+          "text": "87,5%"
+        },
+        {
+          "id": "D",
+          "text": "66,7%"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Tính xem 24 ngày bằng bao nhiêu chu kì bán rã, rồi tìm phần còn lại trước.",
+      "explanation": "$t = 24$ ngày $= 3T$. Số hạt nhân còn lại: $N = N_0\\cdot 2^{-3} = \\frac{N_0}{8}$, tức 12,5%. Số hạt nhân đã phân rã chiếm 100% − 12,5% = 87,5%. Chọn C.",
+      "tip": "Đọc kĩ đề hỏi phần còn lại hay phần đã phân rã: hai đáp số luôn có tổng bằng 100%.",
+      "option_feedback": {
+        "A": "Đây là phần trăm số hạt nhân còn lại, không phải đã phân rã.",
+        "B": "Đây là kết quả sau 2 chu kì bán rã (16 ngày), không phải 3 chu kì.",
+        "D": "Đã chia $N_0$ cho số chu kì (3) thay vì cho $2^3$; số hạt nhân còn lại giảm theo hàm mũ $N = N_0 \\cdot 2^{-t/T}$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "half-life"
+      ],
+      "skill_ids": [
+        "physics.nuclear.radioactive_decay"
+      ]
+    },
+    {
+      "id": "phys.nuclear.007",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Cho phản ứng nhiệt hạch ${}^{2}_{1}\\text{H} + {}^{3}_{1}\\text{H} \\to {}^{4}_{2}\\text{He} + {}^{1}_{0}\\text{n}$. Biết khối lượng các hạt: $m_{H2} = 2{,}0136\\ \\text{u}$, $m_{H3} = 3{,}0155\\ \\text{u}$, $m_{He} = 4{,}0015\\ \\text{u}$, $m_{n} = 1{,}0087\\ \\text{u}$; $1\\ \\text{u} = 931{,}5\\ \\text{MeV/c}^2$. Phản ứng này",
+      "options": [
+        {
+          "id": "A",
+          "text": "thu năng lượng 17,6 MeV."
+        },
+        {
+          "id": "B",
+          "text": "tỏa năng lượng 17,6 MeV."
+        },
+        {
+          "id": "C",
+          "text": "tỏa năng lượng 957,2 MeV."
+        },
+        {
+          "id": "D",
+          "text": "thu năng lượng 957,2 MeV."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "So sánh tổng khối lượng các hạt trước và sau phản ứng; nếu khối lượng giảm thì phản ứng tỏa năng lượng.",
+      "explanation": "Tổng khối lượng trước: $m_t = 2{,}0136 + 3{,}0155 = 5{,}0291\\ \\text{u}$. Tổng khối lượng sau: $m_s = 4{,}0015 + 1{,}0087 = 5{,}0102\\ \\text{u}$. Vì $m_t > m_s$ nên phản ứng tỏa năng lượng: $E = (m_t - m_s)c^2 = 0{,}0189\\cdot 931{,}5 \\approx 17{,}6\\ \\text{MeV}$. Chọn B.",
+      "tip": "Khối lượng giảm thì tỏa năng lượng, khối lượng tăng thì thu năng lượng.",
+      "option_feedback": {
+        "A": "Tổng khối lượng sau phản ứng nhỏ hơn trước nên phản ứng tỏa chứ không thu năng lượng.",
+        "C": "Đã quên khối lượng của neutron ở vế sau khi tính độ chênh lệch khối lượng."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.48,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.48,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "nuclear-reaction",
+        "reaction-energy"
+      ],
+      "skill_ids": [
+        "physics.nuclear.reactions"
+      ]
+    },
+    {
+      "id": "phys.nuclear.008",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Hạt nhân phóng xạ ${}^{131}_{53}\\text{I}$ (iodine-131) có chu kì bán rã 8,0 ngày. Một mẫu chứa $1{,}0\\ \\mu\\text{g}$ ${}^{131}_{53}\\text{I}$ nguyên chất. Lấy $N_A = 6{,}02\\cdot 10^{23}\\ \\text{mol}^{-1}$ và khối lượng mol của iodine-131 là 131 g/mol. Độ phóng xạ của mẫu (làm tròn đến hai chữ số có nghĩa) là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4{,}6\\cdot 10^{9}\\ \\text{Bq}$"
+        },
+        {
+          "id": "B",
+          "text": "$6{,}6\\cdot 10^{9}\\ \\text{Bq}$"
+        },
+        {
+          "id": "C",
+          "text": "$4{,}0\\cdot 10^{14}\\ \\text{Bq}$"
+        },
+        {
+          "id": "D",
+          "text": "$4{,}6\\cdot 10^{12}\\ \\text{Bq}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Độ phóng xạ $H = \\lambda N$, trong đó hằng số phóng xạ $\\lambda$ phải tính theo đơn vị $\\text{s}^{-1}$.",
+      "explanation": "Số hạt nhân: $N = \\frac{m}{M}N_A = \\frac{1{,}0\\cdot 10^{-6}}{131}\\cdot 6{,}02\\cdot 10^{23} \\approx 4{,}595\\cdot 10^{15}$. Hằng số phóng xạ: $\\lambda = \\frac{\\ln 2}{T} = \\frac{0{,}693}{8\\cdot 86400} \\approx 1{,}003\\cdot 10^{-6}\\ \\text{s}^{-1}$. Độ phóng xạ: $H = \\lambda N \\approx 1{,}003\\cdot 10^{-6}\\cdot 4{,}595\\cdot 10^{15} \\approx 4{,}6\\cdot 10^{9}\\ \\text{Bq}$. Chọn A.",
+      "tip": "1 Bq là 1 phân rã mỗi giây, nên chu kì bán rã phải đổi ra giây: 1 ngày = 86400 s.",
+      "option_feedback": {
+        "B": "Đã dùng $\\lambda = \\frac{1}{T}$, quên hệ số $\\ln 2$.",
+        "C": "Đã để chu kì bán rã theo ngày, nên kết quả không phải số phân rã mỗi giây.",
+        "D": "Đã đổi microgam thành miligam (sai thừa số 1000)."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.65,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.62,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "activity",
+        "unit-conversion"
+      ],
+      "skill_ids": [
+        "physics.nuclear.radioactive_decay"
+      ]
+    },
+    {
+      "id": "phys.nuclear.009",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Hạt nhân polonium ${}^{210}_{84}\\text{Po}$ phóng xạ $\\alpha$ và biến thành hạt nhân chì ${}^{206}_{82}\\text{Pb}$ bền, với chu kì bán rã 138 ngày. Ban đầu có một mẫu ${}^{210}_{84}\\text{Po}$ nguyên chất. Tại thời điểm $t_1$, tỉ số giữa số hạt nhân chì và số hạt nhân polonium trong mẫu là 7. Tại thời điểm $t_2 = t_1 + 276$ ngày, tỉ số đó là",
+      "options": [
+        {
+          "id": "A",
+          "text": "9"
+        },
+        {
+          "id": "B",
+          "text": "15"
+        },
+        {
+          "id": "C",
+          "text": "31"
+        },
+        {
+          "id": "D",
+          "text": "28"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Mỗi hạt nhân polonium phân rã tạo ra một hạt nhân chì. Viết tỉ số theo số chu kì bán rã đã trôi qua.",
+      "explanation": "Số hạt nhân chì bằng số hạt nhân polonium đã phân rã: $\\frac{N_{Pb}}{N_{Po}} = \\frac{N_0(1 - 2^{-t/T})}{N_0 2^{-t/T}} = 2^{t/T} - 1$. Tại $t_1$: $2^{t_1/T} - 1 = 7 \\Rightarrow t_1 = 3T$. Vì $276$ ngày $= 2T$ nên $t_2 = 5T$, do đó tỉ số là $2^{5} - 1 = 31$. Chọn C.",
+      "tip": "Tỉ số hạt nhân con/mẹ luôn có dạng $2^{k} - 1$ sau $k$ chu kì bán rã: 1, 3, 7, 15, 31, ...",
+      "option_feedback": {
+        "A": "Đã coi tỉ số tăng tuyến tính theo thời gian (cộng thêm 2).",
+        "B": "Đã chỉ tính thêm một chu kì bán rã ($t_2 = 4T$), trong khi 276 ngày bằng hai chu kì.",
+        "D": "Đã nhân tỉ số 7 với 4, nhưng tỉ số con/mẹ không biến đổi theo cách nhân như vậy."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.8,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "decay-law",
+        "half-life"
+      ],
+      "skill_ids": [
+        "physics.nuclear.radioactive_decay",
+        "physics.nuclear.reactions"
+      ]
+    },
+    {
+      "id": "phys.nuclear.010",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Đồng vị ${}^{14}_{6}\\text{C}$ có chu kì bán rã 5730 năm. Đo độ phóng xạ của một mẫu gỗ cổ, người ta thấy độ phóng xạ tính trên một gam carbon của mẫu bằng 80% độ phóng xạ tính trên một gam carbon của gỗ cùng loại vừa mới chặt. Tuổi của mẫu gỗ cổ xấp xỉ bằng (làm tròn đến hàng đơn vị)",
+      "options": [
+        {
+          "id": "A",
+          "text": "1146 năm"
+        },
+        {
+          "id": "B",
+          "text": "1845 năm"
+        },
+        {
+          "id": "C",
+          "text": "1279 năm"
+        },
+        {
+          "id": "D",
+          "text": "4584 năm"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Độ phóng xạ giảm theo cùng quy luật với số hạt nhân: $H = H_0\\cdot 2^{-t/T}$. Lấy logarit để tìm $t$.",
+      "explanation": "Ta có $\\frac{H}{H_0} = 2^{-t/T} = 0{,}8 \\Rightarrow t = T\\cdot\\frac{\\ln(1/0{,}8)}{\\ln 2} = 5730\\cdot\\frac{\\ln 1{,}25}{\\ln 2} \\approx 5730\\cdot 0{,}3219 \\approx 1845$ năm. Chọn B.",
+      "tip": "Kiểm tra nhanh: độ phóng xạ còn 80% (lớn hơn 50%) nên tuổi phải nhỏ hơn một chu kì bán rã.",
+      "option_feedback": {
+        "A": "Đã coi độ phóng xạ giảm tuyến tính: 20% của chu kì bán rã.",
+        "C": "Đã quên chia cho $\\ln 2$ khi giải phương trình mũ.",
+        "D": "Đã nhân trực tiếp tỉ lệ 80% với chu kì bán rã."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.65,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.88,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.88,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.65,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "decay-law",
+        "radiocarbon-dating",
+        "logarithm"
+      ],
+      "skill_ids": [
+        "physics.nuclear.radioactive_decay"
+      ]
+    },
+    {
+      "id": "phys.nuclear.011",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "TRUE_FALSE_GROUP",
+      "topic_ids": [
+        "phys.nuclear"
+      ],
+      "language": "vi",
+      "stem": "Hạt nhân $^{226}_{88}\\text{Ra}$ phóng xạ $\\alpha$ và biến đổi thành hạt nhân X. Chu kì bán rã của $^{226}_{88}\\text{Ra}$ là $1600$ năm. Ban đầu có một mẫu $^{226}_{88}\\text{Ra}$ nguyên chất; coi hạt nhân X bền.",
+      "hint": "Bảo toàn số khối và điện tích; sau $k$ chu kì bán rã số hạt còn lại là $\\frac{N_0}{2^k}$.",
+      "explanation": "$^{226}_{88}\\text{Ra} \\to {}^4_2\\text{He} + {}^{222}_{86}\\text{X}$. Sau $2T$ còn $\\frac{N_0}{4}$, đã phân rã $\\frac{3N_0}{4}$. Sau $3T$ còn $\\frac{N_0}{8}$, số hạt X tạo thành $\\frac{7N_0}{8}$, tỉ số $7$. Vậy a) Đúng, b) Đúng, c) Sai, d) Sai.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.55,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 300,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:Đ c:S d:S; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:Đ c:S d:S; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "statements": [
+        {
+          "id": "a",
+          "text": "Hạt nhân X có số khối là $222$.",
+          "truth": true,
+          "explanation": "$A_X = 226 - 4 = 222$.",
+          "level": 1
+        },
+        {
+          "id": "b",
+          "text": "Hạt nhân X có $86$ proton.",
+          "truth": true,
+          "explanation": "$Z_X = 88 - 2 = 86$.",
+          "level": 1
+        },
+        {
+          "id": "c",
+          "text": "Sau $3200$ năm, số hạt nhân Ra đã bị phân rã bằng $\\frac{1}{4}$ số hạt nhân Ra ban đầu.",
+          "truth": false,
+          "explanation": "$3200$ năm $= 2T$: số hạt còn lại $\\frac{1}{4}$, số hạt đã phân rã $\\frac{3}{4}$ số hạt ban đầu.",
+          "level": 2
+        },
+        {
+          "id": "d",
+          "text": "Sau $4800$ năm, tỉ số giữa số hạt nhân X tạo thành và số hạt nhân Ra còn lại là $8$.",
+          "truth": false,
+          "explanation": "$4800$ năm $= 3T$: còn lại $\\frac{1}{8}$, đã phân rã $\\frac{7}{8}$ nên tỉ số là $7$.",
+          "level": 3
+        }
+      ],
+      "skill_ids": [
+        "physics.nuclear.radioactive_decay",
+        "physics.nuclear.reactions"
+      ]
+    }
+  ]
+}

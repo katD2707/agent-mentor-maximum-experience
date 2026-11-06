@@ -1,0 +1,1276 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "phys.thermal.001",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Theo mô hình động học phân tử, ở thể rắn các phân tử (nguyên tử)",
+      "options": [
+        {
+          "id": "A",
+          "text": "chuyển động hỗn loạn và có thể di chuyển tự do trong toàn bộ thể tích bình chứa."
+        },
+        {
+          "id": "B",
+          "text": "dao động quanh các vị trí cân bằng xác định."
+        },
+        {
+          "id": "C",
+          "text": "đứng yên hoàn toàn tại các vị trí cố định."
+        },
+        {
+          "id": "D",
+          "text": "ở rất xa nhau nên lực tương tác giữa chúng không đáng kể."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Hãy nghĩ vì sao một vật rắn giữ được hình dạng và thể tích riêng của nó.",
+      "explanation": "Ở thể rắn, khoảng cách giữa các phân tử rất nhỏ và lực tương tác giữa chúng rất mạnh, nên mỗi phân tử chỉ dao động quanh một vị trí cân bằng xác định. Nhờ vậy vật rắn có hình dạng và thể tích riêng. Các phân tử không bao giờ đứng yên hoàn toàn; chuyển động tự do và lực tương tác yếu là đặc điểm của chất khí. Chọn B.",
+      "tip": "Rắn: dao động quanh vị trí cân bằng cố định; lỏng: vị trí cân bằng có thể dịch chuyển; khí: chuyển động hỗn loạn, tự do.",
+      "option_feedback": {
+        "A": "Đây là đặc điểm của các phân tử chất khí.",
+        "C": "Các phân tử luôn chuyển động nhiệt không ngừng; ở thể rắn chúng vẫn dao động."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "structure-of-matter"
+      ],
+      "skill_ids": [
+        "physics.thermal.molecular_model"
+      ]
+    },
+    {
+      "id": "phys.thermal.002",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Ở áp suất khí quyển chuẩn, nitrogen lỏng sôi ở nhiệt độ 77 K. Lấy $T(\\text{K}) = t(^\\circ\\text{C}) + 273$. Nhiệt độ sôi này trong thang Celsius là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$-196\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "B",
+          "text": "$196\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "C",
+          "text": "$350\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "D",
+          "text": "$-350\\ ^\\circ\\text{C}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Từ công thức liên hệ giữa hai thang nhiệt độ, hãy rút ra $t$ theo $T$.",
+      "explanation": "Từ $T = t + 273$ suy ra $t = T - 273 = 77 - 273 = -196\\ ^\\circ\\text{C}$. Chọn A.",
+      "tip": "Nhiệt độ tuyệt đối luôn lớn hơn số đo Celsius 273 đơn vị; nhiệt độ dưới 273 K ứng với nhiệt độ Celsius âm.",
+      "option_feedback": {
+        "B": "Sai dấu: 77 K thấp hơn 273 K nên nhiệt độ Celsius phải âm.",
+        "C": "Đã cộng thêm 273 thay vì trừ đi."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "temperature-scale",
+        "unit-conversion"
+      ],
+      "skill_ids": [
+        "physics.thermal.temperature_scales"
+      ]
+    },
+    {
+      "id": "phys.thermal.003",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Nội năng của một vật là",
+      "options": [
+        {
+          "id": "A",
+          "text": "tổng động năng và thế năng tương tác của các phân tử cấu tạo nên vật."
+        },
+        {
+          "id": "B",
+          "text": "nhiệt lượng mà vật nhận được trong quá trình truyền nhiệt."
+        },
+        {
+          "id": "C",
+          "text": "động năng của vật do chuyển động có hướng của cả vật."
+        },
+        {
+          "id": "D",
+          "text": "thế năng hấp dẫn của vật trong trọng trường."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Phân biệt nội năng (năng lượng vật có) với nhiệt lượng (năng lượng truyền đi).",
+      "explanation": "Nội năng của vật là tổng động năng (do chuyển động nhiệt) và thế năng tương tác của các phân tử cấu tạo nên vật. Nó phụ thuộc vào nhiệt độ và thể tích của vật. Nhiệt lượng chỉ là phần nội năng được truyền đi trong quá trình truyền nhiệt; động năng và thế năng hấp dẫn của cả vật là cơ năng. Chọn A.",
+      "tip": "Nội năng phụ thuộc nhiệt độ (động năng phân tử) và thể tích (thế năng tương tác giữa các phân tử).",
+      "option_feedback": {
+        "B": "Nhiệt lượng là số đo phần nội năng truyền đi, là đại lượng của quá trình chứ không phải năng lượng vật có.",
+        "C": "Động năng của cả vật thuộc về cơ năng, không phải nội năng."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "internal-energy"
+      ],
+      "skill_ids": [
+        "physics.thermal.internal_energy"
+      ]
+    },
+    {
+      "id": "phys.thermal.004",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Truyền cho khối khí trong một xi lanh nhiệt lượng 300 J. Khí nở ra và thực hiện công 120 J đẩy pit-tông. Độ biến thiên nội năng của khối khí là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$420\\ \\text{J}$"
+        },
+        {
+          "id": "B",
+          "text": "$-180\\ \\text{J}$"
+        },
+        {
+          "id": "C",
+          "text": "$-420\\ \\text{J}$"
+        },
+        {
+          "id": "D",
+          "text": "$180\\ \\text{J}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Viết định luật I của nhiệt động lực học $\\Delta U = A + Q$ và chú ý dấu của $A$ khi khí sinh công.",
+      "explanation": "Theo định luật I: $\\Delta U = A + Q$, với quy ước vật nhận nhiệt thì $Q > 0$, vật thực hiện công thì $A < 0$. Ở đây $Q = 300\\ \\text{J}$ và $A = -120\\ \\text{J}$ nên $\\Delta U = -120 + 300 = 180\\ \\text{J}$: nội năng của khí tăng 180 J. Chọn D.",
+      "tip": "Nhận vào thì dương, cho đi thì âm: khí nhận nhiệt $Q > 0$, khí sinh công $A < 0$.",
+      "option_feedback": {
+        "A": "Đã coi công khí thực hiện là công khí nhận vào ($A > 0$), sai dấu.",
+        "B": "Đã đảo dấu cả nhiệt lượng và công."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "first-law"
+      ],
+      "skill_ids": [
+        "physics.thermal.internal_energy"
+      ]
+    },
+    {
+      "id": "phys.thermal.005",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Cần cung cấp nhiệt lượng bao nhiêu để đun nóng 2 kg nước từ 20 °C lên 70 °C? Cho nhiệt dung riêng của nước $c = 4200\\ \\text{J/(kg.K)}$, bỏ qua hao phí nhiệt.",
+      "options": [
+        {
+          "id": "A",
+          "text": "$420\\ \\text{kJ}$"
+        },
+        {
+          "id": "B",
+          "text": "$588\\ \\text{kJ}$"
+        },
+        {
+          "id": "C",
+          "text": "$168\\ \\text{kJ}$"
+        },
+        {
+          "id": "D",
+          "text": "$210\\ \\text{kJ}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Dùng $Q = mc\\Delta t$ với $\\Delta t$ là độ tăng nhiệt độ.",
+      "explanation": "$Q = mc\\Delta t = 2\\cdot 4200\\cdot (70 - 20) = 420000\\ \\text{J} = 420\\ \\text{kJ}$. Chọn A.",
+      "tip": "Độ chênh nhiệt độ theo °C bằng độ chênh theo K, nên khi tính $\\Delta t$ không cần đổi sang kelvin.",
+      "option_feedback": {
+        "B": "Đã dùng nhiệt độ cuối 70 °C thay cho độ tăng nhiệt độ $\\Delta t = 50$ °C.",
+        "D": "Quên nhân với khối lượng 2 kg."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.3,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.22,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "specific-heat"
+      ],
+      "skill_ids": [
+        "physics.thermal.specific_heat"
+      ]
+    },
+    {
+      "id": "phys.thermal.006",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Nhiệt nóng chảy riêng của nước đá là $\\lambda = 3{,}34\\cdot 10^{5}\\ \\text{J/kg}$. Nhiệt lượng cần cung cấp để làm nóng chảy hoàn toàn 500 g nước đá ở 0 °C là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$3{,}34\\cdot 10^{5}\\ \\text{J}$"
+        },
+        {
+          "id": "B",
+          "text": "$6{,}68\\cdot 10^{5}\\ \\text{J}$"
+        },
+        {
+          "id": "C",
+          "text": "$1{,}67\\cdot 10^{5}\\ \\text{J}$"
+        },
+        {
+          "id": "D",
+          "text": "$1{,}67\\cdot 10^{8}\\ \\text{J}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Nước đá đã ở nhiệt độ nóng chảy, chỉ cần nhiệt lượng để chuyển thể. Nhớ đổi khối lượng sang kilôgam.",
+      "explanation": "Nước đá đang ở 0 °C nên toàn bộ nhiệt lượng dùng để nóng chảy: $Q = \\lambda m = 3{,}34\\cdot 10^{5}\\cdot 0{,}5 = 1{,}67\\cdot 10^{5}\\ \\text{J}$. Chọn C.",
+      "tip": "Trong quá trình nóng chảy nhiệt độ không đổi, nên công thức chỉ là $Q = \\lambda m$, không có $\\Delta t$.",
+      "option_feedback": {
+        "B": "Đã chia $\\lambda$ cho khối lượng thay vì nhân.",
+        "D": "Quên đổi 500 g sang 0,5 kg."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.32,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.25,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "latent-heat",
+        "unit-conversion"
+      ],
+      "skill_ids": [
+        "physics.thermal.latent_heat"
+      ]
+    },
+    {
+      "id": "phys.thermal.007",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Một cục nước đá khối lượng 200 g ở −10 °C được đun nóng cho đến khi chuyển hoàn toàn thành nước ở 20 °C. Cho nhiệt dung riêng của nước đá $2100\\ \\text{J/(kg.K)}$, của nước $4200\\ \\text{J/(kg.K)}$; nhiệt nóng chảy riêng của nước đá $3{,}34\\cdot 10^{5}\\ \\text{J/kg}$. Bỏ qua hao phí. Nhiệt lượng cần cung cấp là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$83{,}6\\ \\text{kJ}$"
+        },
+        {
+          "id": "B",
+          "text": "$92{,}0\\ \\text{kJ}$"
+        },
+        {
+          "id": "C",
+          "text": "$21{,}0\\ \\text{kJ}$"
+        },
+        {
+          "id": "D",
+          "text": "$87{,}8\\ \\text{kJ}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Chia quá trình thành ba giai đoạn: làm nóng nước đá đến 0 °C, nóng chảy ở 0 °C, làm nóng nước từ 0 °C đến 20 °C.",
+      "explanation": "Làm nóng nước đá từ −10 °C đến 0 °C: $Q_1 = 0{,}2\\cdot 2100\\cdot 10 = 4200\\ \\text{J}$. Nóng chảy ở 0 °C: $Q_2 = 0{,}2\\cdot 3{,}34\\cdot 10^{5} = 66800\\ \\text{J}$. Làm nóng nước từ 0 °C đến 20 °C: $Q_3 = 0{,}2\\cdot 4200\\cdot 20 = 16800\\ \\text{J}$. Tổng: $Q = 4200 + 66800 + 16800 = 87800\\ \\text{J} = 87{,}8\\ \\text{kJ}$. Chọn D.",
+      "tip": "Gặp bài chuyển thể, luôn vẽ sơ đồ nhiệt độ theo từng giai đoạn để không bỏ sót giai đoạn nào.",
+      "option_feedback": {
+        "A": "Đã bỏ sót giai đoạn làm nóng nước đá từ −10 °C lên 0 °C.",
+        "B": "Đã dùng nhiệt dung riêng của nước cho giai đoạn nước đá.",
+        "C": "Đã quên nhiệt lượng nóng chảy ở 0 °C."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "latent-heat",
+        "specific-heat",
+        "multi-stage"
+      ],
+      "skill_ids": [
+        "physics.thermal.specific_heat",
+        "physics.thermal.latent_heat"
+      ]
+    },
+    {
+      "id": "phys.thermal.008",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Thả một khối nhôm khối lượng 0,4 kg đã nung nóng đến 100 °C vào một bình chứa 0,5 kg nước ở 20 °C. Cho nhiệt dung riêng của nhôm $880\\ \\text{J/(kg.K)}$, của nước $4200\\ \\text{J/(kg.K)}$; bỏ qua sự trao đổi nhiệt với bình và môi trường. Nhiệt độ của hệ khi cân bằng nhiệt xấp xỉ bằng (làm tròn đến một chữ số thập phân)",
+      "options": [
+        {
+          "id": "A",
+          "text": "$33{,}9\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "B",
+          "text": "$88{,}5\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "C",
+          "text": "$31{,}5\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "D",
+          "text": "$60{,}0\\ ^\\circ\\text{C}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Viết phương trình cân bằng nhiệt: nhiệt lượng nhôm tỏa ra bằng nhiệt lượng nước thu vào, với cùng nhiệt độ cuối $t$.",
+      "explanation": "Gọi $t$ là nhiệt độ cân bằng. $Q_{toa} = 0{,}4\\cdot 880\\cdot (100 - t) = 352(100 - t)$; $Q_{thu} = 0{,}5\\cdot 4200\\cdot (t - 20) = 2100(t - 20)$. Cân bằng: $352(100 - t) = 2100(t - 20)$ $\\Rightarrow 35200 + 42000 = 2452t \\Rightarrow t = \\frac{77200}{2452} \\approx 31{,}5\\ ^\\circ\\text{C}$. Chọn C.",
+      "tip": "Kiểm tra nhanh: nhiệt độ cân bằng phải nằm giữa 20 °C và 100 °C và gần nhiệt độ của vật có nhiệt dung $mc$ lớn hơn (ở đây là nước).",
+      "option_feedback": {
+        "A": "Đã bỏ qua khối lượng của nhôm và nước trong phương trình cân bằng nhiệt.",
+        "B": "Đã ghép nhầm nhiệt dung: dùng $mc$ của nước cho phần nhôm và ngược lại.",
+        "D": "Đây chỉ là trung bình cộng hai nhiệt độ, đúng khi hai vật có cùng nhiệt dung $mc$."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "UNVERIFIED",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.62,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "calorimetry"
+      ],
+      "skill_ids": [
+        "physics.thermal.heat_exchange",
+        "physics.thermal.specific_heat"
+      ]
+    },
+    {
+      "id": "phys.thermal.009",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Một ấm điện có công suất 1500 W, hiệu suất 80%, chứa 1,5 kg nước ở 25 °C. Bật ấm cho đến khi nước sôi ở 100 °C rồi để ấm tiếp tục hoạt động cho đến khi có 0,2 kg nước hóa hơi. Cho nhiệt dung riêng của nước $4200\\ \\text{J/(kg.K)}$, nhiệt hóa hơi riêng của nước $L = 2{,}26\\cdot 10^{6}\\ \\text{J/kg}$. Tổng thời gian ấm hoạt động xấp xỉ (làm tròn đến một chữ số thập phân)",
+      "options": [
+        {
+          "id": "A",
+          "text": "10,3 phút"
+        },
+        {
+          "id": "B",
+          "text": "6,6 phút"
+        },
+        {
+          "id": "C",
+          "text": "12,8 phút"
+        },
+        {
+          "id": "D",
+          "text": "8,2 phút"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Tính tổng nhiệt lượng có ích (đun sôi và hóa hơi), sau đó chia cho công suất có ích của ấm.",
+      "explanation": "Nhiệt lượng đun nước đến sôi: $Q_1 = 1{,}5\\cdot 4200\\cdot 75 = 472500\\ \\text{J}$. Nhiệt lượng hóa hơi 0,2 kg nước: $Q_2 = 0{,}2\\cdot 2{,}26\\cdot 10^{6} = 452000\\ \\text{J}$. Tổng nhiệt lượng có ích: $Q = 924500\\ \\text{J}$. Công suất có ích: $P_{ci} = 0{,}8\\cdot 1500 = 1200\\ \\text{W}$. Thời gian: $t = \\frac{924500}{1200} \\approx 770{,}4\\ \\text{s} \\approx 12{,}8$ phút. Chọn C.",
+      "tip": "Hiệu suất luôn làm thời gian dài hơn so với lí tưởng: $t = \\frac{Q}{H\\cdot P}$, không phải $\\frac{H\\cdot Q}{P}$.",
+      "option_feedback": {
+        "A": "Đã bỏ qua hiệu suất 80% của ấm.",
+        "B": "Đã quên nhiệt lượng cần để hóa hơi 0,2 kg nước.",
+        "D": "Đã nhân với hiệu suất thay vì chia, làm thời gian ngắn hơn thực tế."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.7,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.7,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.7,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "latent-heat",
+        "efficiency",
+        "multi-stage"
+      ],
+      "skill_ids": [
+        "physics.thermal.specific_heat",
+        "physics.thermal.latent_heat"
+      ]
+    },
+    {
+      "id": "phys.thermal.010",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Thả 100 g nước đá ở 0 °C vào một bình cách nhiệt chứa 500 g nước ở 20 °C. Cho nhiệt dung riêng của nước $4200\\ \\text{J/(kg.K)}$, nhiệt nóng chảy riêng của nước đá $3{,}34\\cdot 10^{5}\\ \\text{J/kg}$; bỏ qua nhiệt dung của bình. Nhiệt độ của hỗn hợp khi cân bằng nhiệt xấp xỉ bằng (làm tròn đến một chữ số thập phân)",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}0\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "B",
+          "text": "$3{,}4\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "C",
+          "text": "$16{,}7\\ ^\\circ\\text{C}$"
+        },
+        {
+          "id": "D",
+          "text": "$4{,}1\\ ^\\circ\\text{C}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Trước hết so sánh nhiệt lượng nước tỏa ra khi nguội đến 0 °C với nhiệt lượng cần để nước đá tan hết.",
+      "explanation": "Nước nguội từ 20 °C xuống 0 °C tỏa ra tối đa $0{,}5\\cdot 4200\\cdot 20 = 42000\\ \\text{J}$, lớn hơn nhiệt lượng cần để nước đá tan hết $0{,}1\\cdot 3{,}34\\cdot 10^{5} = 33400\\ \\text{J}$, nên nước đá tan hết và nhiệt độ cuối $t > 0$. Phương trình cân bằng nhiệt: $0{,}5\\cdot 4200\\cdot (20 - t) = 33400 + 0{,}1\\cdot 4200\\cdot t \\Rightarrow 42000 - 2100t = 33400 + 420t$ $\\Rightarrow t = \\frac{8600}{2520} \\approx 3{,}4\\ ^\\circ\\text{C}$. Chọn B.",
+      "tip": "Với bài thả nước đá vào nước, luôn kiểm tra xem nước đá có tan hết không trước khi lập phương trình cân bằng nhiệt.",
+      "option_feedback": {
+        "A": "Nhiệt độ 0 °C chỉ xảy ra khi nước đá không tan hết; ở đây nước tỏa đủ nhiệt để làm tan hết nước đá.",
+        "C": "Đã bỏ qua nhiệt nóng chảy của nước đá, coi như trộn hai lượng nước.",
+        "D": "Đã quên rằng 100 g nước do đá tan ra cũng phải được làm nóng từ 0 °C lên $t$."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.78,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-a@v1",
+            "estimate": 0.78,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.72,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "latent-heat",
+        "calorimetry"
+      ],
+      "skill_ids": [
+        "physics.thermal.heat_exchange",
+        "physics.thermal.latent_heat"
+      ]
+    },
+    {
+      "id": "phys.thermal.011",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "phys.thermal"
+      ],
+      "language": "vi",
+      "stem": "Cần cung cấp bao nhiêu kJ nhiệt lượng để đun nóng $2\\ \\text{kg}$ nước từ $20\\,^\\circ\\text{C}$ lên $80\\,^\\circ\\text{C}$? Biết nhiệt dung riêng của nước là $4200\\ \\text{J/(kg.K)}$ và bỏ qua mọi hao phí.",
+      "hint": "$Q = mc\\Delta t$, rồi đổi J sang kJ.",
+      "explanation": "$Q = mc\\Delta t = 2 \\cdot 4200 \\cdot 60 = 504\\,000\\ \\text{J} = 504\\ \\text{kJ}$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 2
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.2,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=504; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=504; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "504",
+        "unit": "kJ",
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "physics.thermal.specific_heat"
+      ]
+    }
+  ]
+}

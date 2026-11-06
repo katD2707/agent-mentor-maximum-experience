@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-bubble-state"
+description = "Enables the bubble_state command without any pre-configured scope."
+commands.allow = ["bubble_state"]
+
+[[permission]]
+identifier = "deny-bubble-state"
+description = "Denies the bubble_state command without any pre-configured scope."
+commands.deny = ["bubble_state"]

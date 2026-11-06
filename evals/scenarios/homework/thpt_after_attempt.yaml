@@ -1,0 +1,22 @@
+id: hw_thpt_check_after_attempt
+suite: homework
+persona: thpt_quoc_bao
+description: >
+  The student sends a complete attempt. The mentor may now confirm/compare the full solution, but must verify
+  the answer with sympy_check before asserting it (math-tutoring rule).
+tags: [thpt, homework, math]
+sessions:
+  - id: attempt
+    turns:
+      - user: "Em làm rồi nè: Δ = 25 - 24 = 1, x = (5 + 1)/2 = 3 và x = (5 - 1)/2 = 2. Bài x^2 - 5x + 6 = 0 em làm đúng chưa ạ?"
+        scripted:
+          - tool: run_script
+            args: {name: sympy_check, input: {kind: solve, problem: "x**2 - 5*x + 6 = 0", answer: "x = 3; x = 2"}}
+          - "Em làm đúng rồi: Δ = 1 nên phương trình có hai nghiệm x = 3 và x = 2. Em tự tính Δ chính xác, tốt lắm! Lần sau gặp dạng này, em sẽ thử cách nhẩm nghiệm không?"
+        expect:
+          - {check: tool_called, name: run_script, args: {name: sympy_check}}
+          - {check: reply_matches, pattern: 'đúng'}
+          - check: judge
+            criterion: >
+              The student attempted the exercise, so confirming the full solution is allowed. The mentor confirms
+              correctly (roots 2 and 3), praises the method rather than intelligence, and does not invent errors.

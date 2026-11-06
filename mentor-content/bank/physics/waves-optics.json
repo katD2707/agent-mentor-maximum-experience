@@ -1,0 +1,1167 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "phys.waves-optics.001",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Bước sóng của một sóng cơ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "quãng đường sóng truyền được trong 1 s."
+        },
+        {
+          "id": "B",
+          "text": "khoảng cách giữa hai điểm gần nhau nhất trên cùng một phương truyền sóng mà dao động tại hai điểm đó ngược pha."
+        },
+        {
+          "id": "C",
+          "text": "khoảng cách giữa hai điểm gần nhau nhất trên cùng một phương truyền sóng mà dao động tại hai điểm đó cùng pha."
+        },
+        {
+          "id": "D",
+          "text": "khoảng cách giữa hai điểm bất kì trên cùng một phương truyền sóng mà dao động tại hai điểm đó cùng pha."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Bước sóng cũng là quãng đường sóng truyền được trong một chu kì. Hai điểm cách nhau đúng một quãng như vậy dao động thế nào với nhau?",
+      "explanation": "Bước sóng $\\lambda$ là khoảng cách giữa hai điểm gần nhau nhất trên cùng một phương truyền sóng dao động cùng pha; đó cũng là quãng đường sóng truyền được trong một chu kì, $\\lambda = vT = \\dfrac{v}{f}$. Quãng đường truyền trong 1 s là tốc độ truyền sóng. Hai điểm gần nhất dao động ngược pha cách nhau $\\dfrac{\\lambda}{2}$. Chọn C.",
+      "tip": "Hai điểm cùng pha cách nhau $k\\lambda$, ngược pha cách nhau $(k + 0{,}5)\\lambda$.",
+      "option_feedback": {
+        "B": "Hai điểm gần nhất dao động ngược pha cách nhau nửa bước sóng $\\dfrac{\\lambda}{2}$.",
+        "D": "Thiếu điều kiện “gần nhau nhất”: hai điểm cùng pha có thể cách nhau $2\\lambda$, $3\\lambda$, ..."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "wave-definitions"
+      ],
+      "skill_ids": [
+        "physics.waves.basics"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.002",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Hiện tượng phản xạ toàn phần xảy ra khi",
+      "options": [
+        {
+          "id": "A",
+          "text": "ánh sáng truyền từ môi trường có chiết suất lớn sang môi trường có chiết suất nhỏ hơn và góc tới lớn hơn hoặc bằng góc tới hạn."
+        },
+        {
+          "id": "B",
+          "text": "ánh sáng truyền từ môi trường có chiết suất nhỏ sang môi trường có chiết suất lớn hơn và góc tới lớn hơn hoặc bằng góc tới hạn."
+        },
+        {
+          "id": "C",
+          "text": "ánh sáng truyền từ môi trường có chiết suất lớn sang môi trường có chiết suất nhỏ hơn và góc tới nhỏ hơn góc tới hạn."
+        },
+        {
+          "id": "D",
+          "text": "ánh sáng truyền vuông góc với mặt phân cách giữa hai môi trường trong suốt."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Khi nào góc khúc xạ lớn hơn góc tới? Khi đó, tăng dần góc tới thì tia khúc xạ sẽ ra sao?",
+      "explanation": "Phản xạ toàn phần cần đồng thời hai điều kiện: ánh sáng truyền từ môi trường chiết quang hơn sang môi trường chiết quang kém ($n_1 > n_2$) và góc tới không nhỏ hơn góc tới hạn (SGK cũ gọi là góc giới hạn phản xạ toàn phần): $i \\ge i_{th}$ với $\\sin i_{th} = \\dfrac{n_2}{n_1}$. Chọn A.",
+      "tip": "Nhớ hai điều kiện: \"từ đặc sang loãng\" (n lớn sang n nhỏ) và \"góc tới đủ lớn\".",
+      "option_feedback": {
+        "B": "Khi truyền sang môi trường chiết quang hơn, luôn có tia khúc xạ nên không thể phản xạ toàn phần.",
+        "C": "Khi góc tới nhỏ hơn góc tới hạn thì vẫn có tia khúc xạ ló ra."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "total-internal-reflection"
+      ],
+      "skill_ids": [
+        "physics.optics.total_reflection"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.003",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Khi có sóng dừng trên một sợi dây đàn hồi, khoảng cách giữa hai nút sóng liên tiếp bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "một bước sóng."
+        },
+        {
+          "id": "B",
+          "text": "hai bước sóng."
+        },
+        {
+          "id": "C",
+          "text": "một phần tư bước sóng."
+        },
+        {
+          "id": "D",
+          "text": "nửa bước sóng."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Một \"bó sóng\" trên dây nằm giữa hai nút liên tiếp. Bó sóng đó dài bao nhiêu phần của bước sóng?",
+      "explanation": "Trong sóng dừng, khoảng cách giữa hai nút liên tiếp (hoặc hai bụng liên tiếp) bằng $\\dfrac{\\lambda}{2}$; khoảng cách giữa một nút và bụng gần nhất bằng $\\dfrac{\\lambda}{4}$. Chọn D.",
+      "tip": "Nút – nút: $\\dfrac{\\lambda}{2}$; nút – bụng: $\\dfrac{\\lambda}{4}$.",
+      "option_feedback": {
+        "C": "Một phần tư bước sóng là khoảng cách từ một nút đến bụng gần nhất."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "standing-waves"
+      ],
+      "skill_ids": [
+        "physics.waves.standing"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.004",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Một nguồn dao động với tần số 20 Hz tạo ra sóng trên mặt nước. Khoảng cách giữa 5 gợn lồi (đỉnh sóng) liên tiếp đo được trên một phương truyền sóng là 12 cm. Tốc độ truyền sóng trên mặt nước là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}48\\ \\text{m/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}60\\ \\text{m/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$2{,}4\\ \\text{m/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$1{,}2\\ \\text{m/s}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Giữa 5 đỉnh sóng liên tiếp có bao nhiêu khoảng bước sóng? Sau đó dùng v = λf.",
+      "explanation": "5 gợn lồi liên tiếp tạo ra 4 khoảng, mỗi khoảng bằng một bước sóng: $4\\lambda = 12\\ \\text{cm} \\Rightarrow \\lambda = 3\\ \\text{cm}$. Tốc độ truyền sóng: $v = \\lambda f = 3 \\cdot 20 = 60\\ \\text{cm/s} = 0{,}60\\ \\text{m/s}$. Chọn B.",
+      "tip": "n đỉnh sóng liên tiếp cách nhau (n − 1) bước sóng — giống bài toán trồng cây.",
+      "option_feedback": {
+        "A": "Đã chia 12 cm cho 5 thay vì cho 4 khoảng.",
+        "C": "Đã coi 12 cm là một bước sóng.",
+        "D": "Đã coi hai đỉnh sóng liên tiếp cách nhau $\\dfrac{\\lambda}{2}$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "wave-speed"
+      ],
+      "skill_ids": [
+        "physics.waves.basics"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.005",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Chiếu một tia sáng đơn sắc từ không khí vào mặt một khối thủy tinh có chiết suất $\\sqrt{3}$ với góc tới $60^\\circ$. Góc khúc xạ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$45^\\circ$"
+        },
+        {
+          "id": "B",
+          "text": "$60^\\circ$"
+        },
+        {
+          "id": "C",
+          "text": "$30^\\circ$"
+        },
+        {
+          "id": "D",
+          "text": "$35^\\circ$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Áp dụng định luật khúc xạ $n_1\\sin i = n_2\\sin r$ với chiết suất không khí bằng 1.",
+      "explanation": "Theo định luật khúc xạ: $1 \\cdot \\sin 60^\\circ = \\sqrt{3}\\sin r \\Rightarrow \\sin r = \\dfrac{\\sqrt{3}/2}{\\sqrt{3}} = \\dfrac{1}{2} \\Rightarrow r = 30^\\circ$. Chọn C.",
+      "tip": "Ánh sáng đi vào môi trường chiết quang hơn thì bị lệch lại gần pháp tuyến: góc khúc xạ nhỏ hơn góc tới.",
+      "option_feedback": {
+        "B": "Góc khúc xạ chỉ bằng góc tới khi hai môi trường có cùng chiết suất (hoặc tia tới vuông góc với mặt phân cách)."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.3,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.28,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "snell-law"
+      ],
+      "skill_ids": [
+        "physics.optics.refraction"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.006",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Một khối thủy tinh có chiết suất 1,5 đặt trong không khí. Góc tới hạn (góc giới hạn) khi ánh sáng truyền từ thủy tinh ra không khí xấp xỉ bằng (làm tròn đến một chữ số thập phân)",
+      "options": [
+        {
+          "id": "A",
+          "text": "$41{,}8^\\circ$"
+        },
+        {
+          "id": "B",
+          "text": "$48{,}2^\\circ$"
+        },
+        {
+          "id": "C",
+          "text": "$33{,}7^\\circ$"
+        },
+        {
+          "id": "D",
+          "text": "$56{,}3^\\circ$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Góc tới hạn ứng với trường hợp góc khúc xạ bằng $90^\\circ$.",
+      "explanation": "Ta có $\\sin i_{th} = \\dfrac{n_2}{n_1} = \\dfrac{1}{1{,}5} \\approx 0{,}667$, suy ra $i_{th} \\approx 41{,}8^\\circ$. Chọn A.",
+      "tip": "Nhớ nhanh: thủy tinh n = 1,5 có góc tới hạn khoảng 42°; nước n = 4/3 có góc tới hạn khoảng 48,6°.",
+      "option_feedback": {
+        "B": "Đã tính $\\cos i_{th} = \\dfrac{1}{n}$ thay vì $\\sin i_{th} = \\dfrac{1}{n}$.",
+        "C": "Đã tính $\\tan i_{th} = \\dfrac{1}{n}$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.38,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "total-internal-reflection",
+        "critical-angle"
+      ],
+      "skill_ids": [
+        "physics.optics.total_reflection"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.007",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Một sợi dây đàn hồi dài 1,2 m có hai đầu cố định. Khi dây dao động với tần số 50 Hz thì trên dây có sóng dừng với 4 bụng sóng. Tốc độ truyền sóng trên dây là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$15\\ \\text{m/s}$"
+        },
+        {
+          "id": "B",
+          "text": "$30\\ \\text{m/s}$"
+        },
+        {
+          "id": "C",
+          "text": "$40\\ \\text{m/s}$"
+        },
+        {
+          "id": "D",
+          "text": "$60\\ \\text{m/s}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Dây hai đầu cố định: chiều dài dây bằng một số nguyên lần nửa bước sóng, số bó sóng bằng số bụng.",
+      "explanation": "Hai đầu cố định nên $l = k\\dfrac{\\lambda}{2}$ với $k$ là số bụng. Với $k = 4$: $\\lambda = \\dfrac{2l}{k} = \\dfrac{2 \\cdot 1{,}2}{4} = 0{,}6\\ \\text{m}$. Tốc độ truyền sóng: $v = \\lambda f = 0{,}6 \\cdot 50 = 30\\ \\text{m/s}$. Chọn B.",
+      "tip": "Dây hai đầu cố định: số nút = số bụng + 1.",
+      "option_feedback": {
+        "A": "Đã dùng $l = k\\lambda$ thay vì $l = k\\dfrac{\\lambda}{2}$.",
+        "C": "Đã nhầm 4 là số nút (khi đó chỉ có 3 bụng).",
+        "D": "Đã coi chiều dài dây bằng một bước sóng."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.55,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "standing-waves"
+      ],
+      "skill_ids": [
+        "physics.waves.standing"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.008",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Trên mặt nước có hai nguồn kết hợp $S_1$, $S_2$ cách nhau 10 cm, dao động cùng pha theo phương thẳng đứng với tần số 20 Hz. Tốc độ truyền sóng trên mặt nước là 40 cm/s. Số điểm dao động với biên độ cực đại trên đoạn thẳng $S_1S_2$ (không kể hai nguồn) là",
+      "options": [
+        {
+          "id": "A",
+          "text": "10"
+        },
+        {
+          "id": "B",
+          "text": "11"
+        },
+        {
+          "id": "C",
+          "text": "5"
+        },
+        {
+          "id": "D",
+          "text": "9"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tính bước sóng, rồi tìm các giá trị nguyên $k$ thỏa mãn điều kiện cực đại $d_1 - d_2 = k\\lambda$ cho các điểm nằm giữa hai nguồn.",
+      "explanation": "Bước sóng $\\lambda = \\dfrac{v}{f} = \\dfrac{40}{20} = 2\\ \\text{cm}$. Điểm cực đại trên $S_1S_2$ thỏa mãn $d_1 - d_2 = k\\lambda$ với $-S_1S_2 < d_1 - d_2 < S_1S_2$ (không kể hai nguồn): $-10 < 2k < 10 \\Rightarrow -5 < k < 5$, nên $k \\in \\{-4; -3; ...; 4\\}$, có 9 giá trị. Vậy có 9 điểm cực đại. Chọn D.",
+      "tip": "Hai nguồn cùng pha: các cực đại trên đoạn nối hai nguồn cách đều nhau $\\dfrac{\\lambda}{2}$, cực đại giữa nằm tại trung điểm.",
+      "option_feedback": {
+        "A": "Đây là số điểm cực tiểu trên đoạn S1S2.",
+        "B": "Đã tính cả hai điểm $k = \\pm 5$ trùng với vị trí hai nguồn."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.62,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "interference"
+      ],
+      "skill_ids": [
+        "physics.waves.interference"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.009",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Một nguồn sáng điểm S đặt trong nước, cách mặt nước 60 cm. Chiết suất của nước là 4/3. Để không có tia sáng nào từ S ló ra ngoài không khí, người ta thả nổi trên mặt nước một tấm gỗ mỏng, không trong suốt, hình tròn, có tâm nằm trên đường thẳng đứng đi qua S. Bán kính nhỏ nhất của tấm gỗ xấp xỉ bằng (làm tròn đến một chữ số thập phân)",
+      "options": [
+        {
+          "id": "A",
+          "text": "$45{,}0\\ \\text{cm}$"
+        },
+        {
+          "id": "B",
+          "text": "$52{,}9\\ \\text{cm}$"
+        },
+        {
+          "id": "C",
+          "text": "$68{,}0\\ \\text{cm}$"
+        },
+        {
+          "id": "D",
+          "text": "$39{,}7\\ \\text{cm}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Các tia tới mặt nước với góc tới lớn hơn hoặc bằng góc tới hạn đều bị phản xạ toàn phần. Tấm gỗ chỉ cần che vùng mặt nước mà ở đó góc tới nhỏ hơn góc tới hạn.",
+      "explanation": "Góc tới hạn: $\\sin i_{th} = \\dfrac{1}{n} = \\dfrac{3}{4}$, suy ra $\\cos i_{th} = \\dfrac{\\sqrt{7}}{4}$ và $\\tan i_{th} = \\dfrac{3}{\\sqrt{7}}$. Tia từ S tới điểm trên mặt nước cách chân đường vuông góc một khoảng $r$ có góc tới $i$ với $\\tan i = \\dfrac{r}{h}$. Các tia ló ra được khi $i < i_{th}$, nên tấm gỗ phải che hết hình tròn bán kính $R_{min} = h\\tan i_{th} = 60 \\cdot \\dfrac{3}{\\sqrt{7}} \\approx 68{,}0\\ \\text{cm}$. Chọn C.",
+      "tip": "Vẽ tam giác vuông với cạnh đứng là độ sâu h, cạnh ngang là bán kính R; góc ở đỉnh S chính là góc tới.",
+      "option_feedback": {
+        "A": "Đã tính $R = h\\sin i_{th}$ thay vì $R = h\\tan i_{th}$.",
+        "B": "Đã tính $R = \\dfrac{h}{\\tan i_{th}}$ (đặt nhầm góc trong tam giác vuông)."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.72,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.72,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.7,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "total-internal-reflection",
+        "geometry"
+      ],
+      "skill_ids": [
+        "physics.optics.total_reflection"
+      ]
+    },
+    {
+      "id": "phys.waves-optics.010",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.waves-optics"
+      ],
+      "language": "vi",
+      "stem": "Trên mặt nước có hai nguồn kết hợp A, B cách nhau 20 cm, dao động cùng pha, cùng tần số 25 Hz theo phương thẳng đứng. Tốc độ truyền sóng trên mặt nước là 75 cm/s. Xét hình vuông ABCD nằm trên mặt nước. Số điểm dao động với biên độ cực đại trên đoạn thẳng CD là",
+      "options": [
+        {
+          "id": "A",
+          "text": "5"
+        },
+        {
+          "id": "B",
+          "text": "6"
+        },
+        {
+          "id": "C",
+          "text": "13"
+        },
+        {
+          "id": "D",
+          "text": "7"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Điểm M là cực đại khi $MA - MB = k\\lambda$. Hãy tính hiệu đường đi tại hai đầu mút C và D để giới hạn các giá trị của $k$.",
+      "explanation": "Bước sóng $\\lambda = \\dfrac{v}{f} = \\dfrac{75}{25} = 3\\ \\text{cm}$. Với hình vuông cạnh $a = 20\\ \\text{cm}$: tại D có $DA - DB = 20 - 20\\sqrt{2} \\approx -8{,}28\\ \\text{cm}$; tại C có $CA - CB = 20\\sqrt{2} - 20 \\approx 8{,}28\\ \\text{cm}$. Điểm M trên CD là cực đại khi $MA - MB = 3k$ với $-8{,}28 \\le 3k \\le 8{,}28 \\Rightarrow -2{,}76 \\le k \\le 2{,}76$, nên $k \\in \\{-2; -1; 0; 1; 2\\}$. Có 5 điểm cực đại trên CD. Chọn A.",
+      "tip": "Đếm cực đại trên một đoạn bất kì: tính hiệu khoảng cách tới hai nguồn tại hai đầu đoạn, rồi đếm số k nguyên nằm giữa.",
+      "option_feedback": {
+        "B": "Đây là số điểm cực tiểu trên đoạn CD.",
+        "C": "Đây là số điểm cực đại trên đoạn AB, không phải trên CD."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.82,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-b",
+            "estimate": 0.72,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 210,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "interference"
+      ],
+      "skill_ids": [
+        "physics.waves.interference"
+      ]
+    }
+  ]
+}

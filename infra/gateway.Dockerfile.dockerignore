@@ -1,0 +1,16 @@
+**/.venv
+**/node_modules
+**/.next
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+var
+.git
+apps
+evals
+# never bake secrets or local data into the image (.env.dev.local, infra/.env.prod, ...)
+**/.env
+**/.env.*
+var-*
+docs
+snippets*

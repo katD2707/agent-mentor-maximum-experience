@@ -1,0 +1,1466 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "math.integral.001",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Họ nguyên hàm của hàm số $f(x) = 3x^2 + 2$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$6x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$3x^3 + 2x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$x^3 + 2x + C$"
+        },
+        {
+          "id": "D",
+          "text": "$x^3 + C$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Dùng $\\int x^n dx = \\frac{x^{n + 1}}{n + 1} + C$ và $\\int k dx = kx + C$.",
+      "explanation": "$\\int (3x^2 + 2) dx = 3 \\cdot \\frac{x^3}{3} + 2x + C = x^3 + 2x + C$. Chọn C.",
+      "tip": "Kiểm tra nhanh bằng cách đạo hàm đáp án: $(x^3 + 2x + C)' = 3x^2 + 2$.",
+      "option_feedback": {
+        "A": "$6x$ là đạo hàm của $f(x)$, không phải nguyên hàm.",
+        "B": "Quên chia cho số mũ mới: $\\int x^2 dx = \\frac{x^3}{3} + C$.",
+        "D": "Bỏ sót nguyên hàm của hằng số $2$ là $2x$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.1,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.1,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.1,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "antiderivative"
+      ],
+      "skill_ids": [
+        "integral.antiderivative"
+      ]
+    },
+    {
+      "id": "math.integral.002",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Cho $\\int_0^2 f(x) dx = 3$ và $\\int_0^2 g(x) dx = -1$. Giá trị của $\\int_0^2 [2f(x) - g(x)] dx$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$7$"
+        },
+        {
+          "id": "B",
+          "text": "$5$"
+        },
+        {
+          "id": "C",
+          "text": "$4$"
+        },
+        {
+          "id": "D",
+          "text": "$1$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Dùng tính chất tuyến tính của tích phân để tách thành hai tích phân đã biết.",
+      "explanation": "$\\int_0^2 [2f(x) - g(x)] dx = 2\\int_0^2 f(x) dx - \\int_0^2 g(x) dx = 2 \\cdot 3 - (-1) = 7$. Chọn A.",
+      "tip": "Cẩn thận dấu khi trừ một số âm: $6 - (-1) = 7$.",
+      "option_feedback": {
+        "B": "Sai dấu: $-(-1) = +1$, nên kết quả là $6 + 1$, không phải $6 - 1$.",
+        "C": "Quên nhân hệ số $2$ với $\\int_0^2 f(x) dx$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.15,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.15,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.15,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.15,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "integral-properties"
+      ],
+      "skill_ids": [
+        "integral.definite"
+      ]
+    },
+    {
+      "id": "math.integral.003",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Họ nguyên hàm của hàm số $f(x) = e^x + \\cos x$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$e^x - \\sin x + C$"
+        },
+        {
+          "id": "B",
+          "text": "$xe^{x - 1} + \\sin x + C$"
+        },
+        {
+          "id": "C",
+          "text": "$e^x - \\cos x + C$"
+        },
+        {
+          "id": "D",
+          "text": "$e^x + \\sin x + C$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Nhớ lại nguyên hàm của $e^x$ và của $\\cos x$.",
+      "explanation": "Ta có $\\int e^x dx = e^x + C$ và $\\int \\cos x dx = \\sin x + C$. Do đó $\\int (e^x + \\cos x) dx = e^x + \\sin x + C$. Chọn D.",
+      "tip": "Ghi nhớ: $\\int \\cos x dx = \\sin x + C$, còn $\\int \\sin x dx = -\\cos x + C$.",
+      "option_feedback": {
+        "A": "Nhầm dấu: nguyên hàm của $\\cos x$ là $\\sin x$ (không có dấu trừ).",
+        "B": "Áp dụng nhầm công thức lũy thừa cho $e^x$; nguyên hàm của $e^x$ là chính nó.",
+        "C": "$-\\cos x$ là nguyên hàm của $\\sin x$, không phải của $\\cos x$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "antiderivative"
+      ],
+      "skill_ids": [
+        "integral.antiderivative"
+      ]
+    },
+    {
+      "id": "math.integral.004",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Giá trị của tích phân $\\int_1^2 \\left(2x + \\frac{1}{x}\\right) dx$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4 + \\ln 2$"
+        },
+        {
+          "id": "B",
+          "text": "$3 + \\ln 2$"
+        },
+        {
+          "id": "C",
+          "text": "$3 - \\ln 2$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{15}{4}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tìm một nguyên hàm của từng số hạng rồi áp dụng công thức Newton – Leibniz.",
+      "explanation": "Một nguyên hàm của $2x + \\frac{1}{x}$ trên $[1; 2]$ là $F(x) = x^2 + \\ln x$. Do đó tích phân bằng $F(2) - F(1) = (4 + \\ln 2) - (1 + \\ln 1) = 4 + \\ln 2 - 1 = 3 + \\ln 2$. Chọn B.",
+      "tip": "Nguyên hàm của $\\frac{1}{x}$ là $\\ln |x| + C$; nhớ $\\ln 1 = 0$.",
+      "option_feedback": {
+        "A": "Chỉ thay cận trên, quên trừ $F(1) = 1$.",
+        "D": "Nhầm nguyên hàm của $\\frac{1}{x}$ thành $-\\frac{1}{x^2}$; đúng phải là $\\ln |x|$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "definite-integral"
+      ],
+      "skill_ids": [
+        "integral.definite"
+      ]
+    },
+    {
+      "id": "math.integral.005",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Biết $F(x)$ là một nguyên hàm của hàm số $f(x) = 3x^2 - 4x$ và $F(1) = 3$. Giá trị của $F(2)$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$4$"
+        },
+        {
+          "id": "B",
+          "text": "$0$"
+        },
+        {
+          "id": "C",
+          "text": "$3$"
+        },
+        {
+          "id": "D",
+          "text": "$2$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Viết dạng tổng quát của $F(x)$ có hằng số $C$, dùng $F(1) = 3$ để tìm $C$.",
+      "explanation": "$F(x) = x^3 - 2x^2 + C$. Từ $F(1) = 1 - 2 + C = 3$ suy ra $C = 4$. Vậy $F(2) = 8 - 8 + 4 = 4$. Chọn A.",
+      "tip": "Có thể tính nhanh: $F(2) = F(1) + \\int_1^2 f(x) dx = 3 + 1 = 4$.",
+      "option_feedback": {
+        "B": "Quên hằng số $C$ (coi như $C = 0$).",
+        "C": "Đã lấy luôn $C = 3$ từ $F(1) = 3$; cần giải $1 - 2 + C = 3$.",
+        "D": "Sai dấu: $F(2) = F(1) + \\int_1^2 f(x) dx$, không phải $F(1) - \\int_1^2 f(x) dx$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.38,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.38,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.38,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 75,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "antiderivative"
+      ],
+      "skill_ids": [
+        "integral.antiderivative"
+      ]
+    },
+    {
+      "id": "math.integral.006",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Diện tích hình phẳng giới hạn bởi đồ thị hai hàm số $y = x^2 - 2x$ và $y = x$ (như hình vẽ) bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{10}{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{9\\pi}{2}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{9}{2}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{27}{2}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Tìm hoành độ giao điểm của hai đồ thị, rồi xác định đồ thị nào nằm phía trên trong khoảng đó.",
+      "explanation": "Phương trình hoành độ giao điểm: $x^2 - 2x = x$, tức $x^2 - 3x = 0$, suy ra $x = 0$ hoặc $x = 3$. Trên $[0; 3]$ ta có $x \\ge x^2 - 2x$ (đường thẳng nằm trên parabol). Diện tích $S = \\int_0^3 [x - (x^2 - 2x)] dx = \\int_0^3 (3x - x^2) dx = \\frac{3 \\cdot 3^2}{2} - \\frac{3^3}{3} = \\frac{27}{2} - 9 = \\frac{9}{2}$. Chọn C.",
+      "tip": "$S = \\int_a^b |f(x) - g(x)| dx$; biết đường nào nằm trên thì lấy đường trên trừ đường dưới.",
+      "option_feedback": {
+        "A": "Đã lấy cận trên là $x = 2$ (giao điểm của parabol với trục hoành) thay vì $x = 3$ (giao điểm của hai đồ thị).",
+        "B": "Nhân thêm $\\pi$ như công thức thể tích khối tròn xoay; diện tích không có $\\pi$.",
+        "D": "Quên số hạng $-x^2$ khi tính tích phân."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 3
+        },
+        "author_estimate": 0.45,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 100,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Parabol y = x^2 - 2x và đường thẳng y = x cắt nhau tại O(0; 0) và A(3; 3); trên đoạn [0; 3] đường thẳng nằm phía trên parabol.",
+          "diagram": {
+            "kind": "function_plot",
+            "x_min": -1.0,
+            "x_max": 4.0,
+            "y_min": -2.0,
+            "y_max": 5.0,
+            "functions": [
+              {
+                "expr": "x^2 - 2*x",
+                "label": "y = x^2 - 2x"
+              },
+              {
+                "expr": "x",
+                "label": "y = x"
+              }
+            ],
+            "points": [
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "label": "O"
+              },
+              {
+                "x": 3.0,
+                "y": 3.0,
+                "label": "A"
+              }
+            ],
+            "show_grid": true
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "area",
+        "graph-reading"
+      ],
+      "skill_ids": [
+        "integral.area"
+      ]
+    },
+    {
+      "id": "math.integral.007",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Cho hình phẳng $(D)$ giới hạn bởi đồ thị hàm số $y = 2x - x^2$ và trục hoành. Thể tích khối tròn xoay tạo thành khi quay $(D)$ quanh trục $Ox$ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\frac{4}{3}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\frac{4\\pi}{3}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\frac{16}{15}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\frac{16\\pi}{15}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tìm cận từ giao điểm với trục hoành, rồi dùng công thức $V = \\pi\\int_a^b f^2(x) dx$.",
+      "explanation": "Hoành độ giao điểm với trục hoành: $2x - x^2 = 0$, tức $x = 0$ hoặc $x = 2$. Thể tích $V = \\pi\\int_0^2 (2x - x^2)^2 dx = \\pi\\int_0^2 (4x^2 - 4x^3 + x^4) dx = \\pi\\left(\\frac{32}{3} - 16 + \\frac{32}{5}\\right) = \\pi \\cdot \\frac{160 - 240 + 96}{15} = \\frac{16\\pi}{15}$. Chọn D.",
+      "tip": "Thể tích khối tròn xoay quanh $Ox$ luôn có thừa số $\\pi$ và bình phương hàm số dưới dấu tích phân.",
+      "option_feedback": {
+        "A": "$\\frac{4}{3}$ là diện tích của $(D)$, không phải thể tích.",
+        "B": "Đã lấy $\\pi$ nhân diện tích; công thức đúng là $\\pi\\int_0^2 (2x - x^2)^2 dx$.",
+        "C": "Quên thừa số $\\pi$ trong công thức thể tích."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.58,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.58,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 130,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "volume-of-revolution"
+      ],
+      "skill_ids": [
+        "integral.volume"
+      ]
+    },
+    {
+      "id": "math.integral.008",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Một ô tô đang chạy với vận tốc $15\\ \\text{m/s}$ thì người lái đạp phanh; từ thời điểm đó, ô tô chuyển động chậm dần đều với vận tốc $v(t) = 15 - 3t$ ($\\text{m/s}$), trong đó $t$ là thời gian (giây) tính từ lúc đạp phanh. Quãng đường ô tô di chuyển từ lúc đạp phanh đến khi dừng hẳn là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$75\\ \\text{m}$"
+        },
+        {
+          "id": "B",
+          "text": "$37{,}5\\ \\text{m}$"
+        },
+        {
+          "id": "C",
+          "text": "$45\\ \\text{m}$"
+        },
+        {
+          "id": "D",
+          "text": "$30\\ \\text{m}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tìm thời điểm ô tô dừng ($v(t) = 0$), rồi tính quãng đường bằng tích phân của vận tốc.",
+      "explanation": "Ô tô dừng khi $v(t) = 0$, tức $15 - 3t = 0$, suy ra $t = 5$ (giây). Quãng đường đi được là $s = \\int_0^5 (15 - 3t) dt = 15 \\cdot 5 - \\frac{3 \\cdot 5^2}{2} = 75 - 37{,}5 = 37{,}5$ (m). Chọn B.",
+      "tip": "Quãng đường $s = \\int_{t_1}^{t_2} v(t) dt$ (khi $v(t) \\ge 0$). Kiểm tra bằng công thức vật lí: $s = \\frac{v_0^2}{2a} = \\frac{225}{6} = 37{,}5$.",
+      "option_feedback": {
+        "A": "Đã lấy $15 \\cdot 5 = 75$, coi như ô tô giữ nguyên vận tốc $15\\ \\text{m/s}$ trong suốt $5$ giây."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.56,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.56,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.48,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 100,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "real-world",
+        "motion"
+      ],
+      "skill_ids": [
+        "integral.applications"
+      ]
+    },
+    {
+      "id": "math.integral.009",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Gọi $(H)$ là hình phẳng giới hạn bởi parabol $y = x^2$ và đường thẳng $y = 4$. Đường thẳng $y = k$ (với $0 < k < 4$) chia $(H)$ thành hai phần có diện tích bằng nhau. Giá trị của $k$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\sqrt[3]{16}$"
+        },
+        {
+          "id": "B",
+          "text": "$2$"
+        },
+        {
+          "id": "C",
+          "text": "$\\sqrt[3]{4}$"
+        },
+        {
+          "id": "D",
+          "text": "$2\\sqrt{2}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Tính diện tích hình phẳng giới hạn bởi $y = x^2$ và $y = a$ theo $a$, rồi so sánh phần phía dưới đường $y = k$ với một nửa diện tích $(H)$.",
+      "explanation": "Với $0 < a \\le 4$, hình phẳng giới hạn bởi $y = x^2$ và $y = a$ có diện tích $S(a) = \\int_{-\\sqrt{a}}^{\\sqrt{a}} (a - x^2) dx = 2\\left(a\\sqrt{a} - \\frac{a\\sqrt{a}}{3}\\right) = \\frac{4}{3}a\\sqrt{a}$. Diện tích $(H)$ là $S(4) = \\frac{4}{3} \\cdot 8 = \\frac{32}{3}$. Phần của $(H)$ nằm dưới đường thẳng $y = k$ chính là hình giới hạn bởi $y = x^2$ và $y = k$, nên cần $\\frac{4}{3}k\\sqrt{k} = \\frac{16}{3}$, tức $k\\sqrt{k} = 4$, hay $k^{\\frac{3}{2}} = 4$. Suy ra $k = 4^{\\frac{2}{3}} = \\sqrt[3]{16}$. Chọn A.",
+      "tip": "Diện tích phần parabol $y = x^2$ bị chặn bởi $y = a$ bằng $\\frac{2}{3}$ diện tích hình chữ nhật ngoại tiếp: $\\frac{2}{3} \\cdot 2\\sqrt{a} \\cdot a$.",
+      "option_feedback": {
+        "B": "Đã chia đôi chiều cao $4$; diện tích không tỉ lệ bậc nhất với $k$ mà tỉ lệ với $k\\sqrt{k}$.",
+        "C": "Đã giải $k\\sqrt{k} = 2$; điều kiện đúng là $\\frac{4}{3}k\\sqrt{k} = \\frac{16}{3}$, tức $k\\sqrt{k} = 4$."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.85,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-a@v1",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.85,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 220,
+      "assets": [
+        {
+          "id": "fig1",
+          "type": "diagram",
+          "alt_text": "Parabol y = x^2 và đường thẳng y = 4 cắt nhau tại hai điểm có hoành độ -2 và 2, giới hạn hình phẳng (H).",
+          "diagram": {
+            "kind": "function_plot",
+            "x_min": -3.0,
+            "x_max": 3.0,
+            "y_min": -1.0,
+            "y_max": 5.0,
+            "functions": [
+              {
+                "expr": "x^2",
+                "label": "y = x^2"
+              },
+              {
+                "expr": "4",
+                "label": "y = 4"
+              }
+            ],
+            "points": [
+              {
+                "x": -2.0,
+                "y": 4.0,
+                "label": "(-2; 4)"
+              },
+              {
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2; 4)"
+              }
+            ],
+            "show_grid": true
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "area",
+        "parameter"
+      ],
+      "skill_ids": [
+        "integral.area"
+      ]
+    },
+    {
+      "id": "math.integral.010",
+      "revision": 2,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Một cổng có dạng hình parabol, khoảng cách giữa hai chân cổng là $6\\ \\text{m}$ và chiều cao của cổng là $4{,}5\\ \\text{m}$. Người ta lắp một cửa hình chữ nhật rộng $2\\ \\text{m}$ đặt chính giữa cổng, cạnh dưới nằm trên mặt đất và hai đỉnh phía trên nằm trên parabol. Phần còn lại của mặt cổng (ngoài cửa) được ốp trang trí với giá 150.000 đồng cho mỗi mét vuông. Chi phí ốp trang trí là",
+      "options": [
+        {
+          "id": "A",
+          "text": "1.350.000 đồng"
+        },
+        {
+          "id": "B",
+          "text": "2.700.000 đồng"
+        },
+        {
+          "id": "C",
+          "text": "825.000 đồng"
+        },
+        {
+          "id": "D",
+          "text": "1.500.000 đồng"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Gắn hệ trục tọa độ để viết phương trình parabol, tính diện tích mặt cổng bằng tích phân, rồi trừ diện tích cửa.",
+      "explanation": "Chọn hệ trục $Oxy$ với $O$ là trung điểm đoạn nối hai chân cổng, trục $Oy$ là trục đối xứng của cổng. Parabol đi qua $(-3; 0)$, $(3; 0)$ và có đỉnh $(0; 4{,}5)$ nên có phương trình $y = 4{,}5 - \\frac{x^2}{2}$. Diện tích mặt cổng: $S_1 = \\int_{-3}^{3} \\left(4{,}5 - \\frac{x^2}{2}\\right) dx = 2\\left(4{,}5 \\cdot 3 - \\frac{3^3}{6}\\right) = 2(13{,}5 - 4{,}5) = 18$ ($\\text{m}^2$). Cửa rộng $2\\ \\text{m}$ nên hai đỉnh phía trên có hoành độ $x = \\pm 1$, chiều cao cửa là $y(1) = 4{,}5 - 0{,}5 = 4$ (m), diện tích cửa $S_2 = 2 \\cdot 4 = 8$ ($\\text{m}^2$). Diện tích phần ốp là $18 - 8 = 10$ ($\\text{m}^2$), nên chi phí là 10 × 150.000 = 1.500.000 đồng. Chọn D.",
+      "tip": "Diện tích hình giới hạn bởi parabol và đoạn thẳng nối hai chân bằng $\\frac{2}{3}$ diện tích hình chữ nhật bao quanh: $\\frac{2}{3} \\cdot 6 \\cdot 4{,}5 = 18$.",
+      "option_feedback": {
+        "A": "Đã lấy chiều cao cửa bằng chiều cao cổng $4{,}5\\ \\text{m}$; hai đỉnh trên của cửa nằm trên parabol nên cửa chỉ cao $4\\ \\text{m}$.",
+        "B": "Quên trừ diện tích cửa: $18 \\cdot 150.000$ là chi phí ốp toàn bộ mặt cổng.",
+        "C": "Đã tính mặt cổng như tam giác $\\frac{1}{2} \\cdot 6 \\cdot 4{,}5$; phần dưới parabol có diện tích bằng $\\frac{2}{3}$ hình chữ nhật bao quanh."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.72,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 5
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.7,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-a",
+            "estimate": 0.72,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "real-world",
+        "area",
+        "modelling"
+      ],
+      "skill_ids": [
+        "integral.applications",
+        "integral.area"
+      ]
+    },
+    {
+      "id": "math.integral.011",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "TRUE_FALSE_GROUP",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Cho hàm số $f(x) = 2x + 1$ và $F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $F(0) = 2$.",
+      "hint": "Tìm $F(x)$ từ điều kiện $F(0) = 2$; với diện tích, xét dấu $f(x)$ trên đoạn $[-1; 0]$.",
+      "explanation": "$F(x) = x^2 + x + 2$ nên $F(1) = 4$. $\\int_0^2 f(x)\\,dx = F(2) - F(0) = 8 - 2 = 6$. Trên $[-1; 0]$, $f(x)$ đổi dấu tại $x = -\\frac{1}{2}$ nên diện tích là $\\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$. Vậy a) Đúng, b) Sai, c) Đúng, d) Đúng.",
+      "tip": "Diện tích dùng $|f(x)|$: tách tích phân tại nghiệm của $f(x)$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.55,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 300,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:S c:Đ d:Đ; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=a:Đ b:S c:Đ d:Đ; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "statements": [
+        {
+          "id": "a",
+          "text": "$F(x) = x^2 + x + 2$.",
+          "truth": true,
+          "explanation": "$F(x) = x^2 + x + C$ và $F(0) = C = 2$.",
+          "level": 1
+        },
+        {
+          "id": "b",
+          "text": "$F(1) = 3$.",
+          "truth": false,
+          "explanation": "$F(1) = 1 + 1 + 2 = 4$.",
+          "level": 1
+        },
+        {
+          "id": "c",
+          "text": "$\\int_0^2 f(x)\\,dx = 6$.",
+          "truth": true,
+          "explanation": "$\\int_0^2 (2x + 1)\\,dx = \\left(x^2 + x\\right)\\Big|_0^2 = 6$.",
+          "level": 2
+        },
+        {
+          "id": "d",
+          "text": "Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = f(x)$, trục hoành và hai đường thẳng $x = -1$, $x = 0$ bằng $\\frac{1}{2}$.",
+          "truth": true,
+          "explanation": "$f(x)$ đổi dấu tại $x = -\\frac{1}{2}$: $S = \\int_{-1}^{-1/2} -(2x + 1)\\,dx + \\int_{-1/2}^{0} (2x + 1)\\,dx = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$.",
+          "level": 3
+        }
+      ],
+      "skill_ids": [
+        "integral.antiderivative"
+      ]
+    },
+    {
+      "id": "math.integral.012",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "math.integral"
+      ],
+      "language": "vi",
+      "stem": "Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^2$ và đường thẳng $y = 2x$ (làm tròn đến hàng phần mười).",
+      "hint": "Tìm hoành độ giao điểm rồi tính $\\int |2x - x^2|\\,dx$ giữa hai giao điểm.",
+      "explanation": "$x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. Trên $[0; 2]$, $2x \\ge x^2$ nên $S = \\int_0^2 (2x - x^2)\\,dx = \\left(x^2 - \\frac{x^3}{3}\\right)\\Big|_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3} \\approx 1{,}3$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 2
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=1,3; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=1,3; verdict=PASS; difficulty disagreement -> calibrator",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "1,3",
+        "decimals": 1,
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "integral.area"
+      ]
+    }
+  ]
+}

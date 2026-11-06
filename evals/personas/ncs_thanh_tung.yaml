@@ -1,0 +1,69 @@
+id: ncs_thanh_tung
+profile: ncs
+display_name: Thanh Tùng
+language: vi
+background: >
+  Đỗ Thanh Tùng, nam, nghiên cứu sinh năm 2 ngành Khoa học máy tính, Đại học Bách khoa Hà Nội. Đề tài:
+  tóm tắt văn bản tiếng Việt. Giáo viên hướng dẫn: PGS. Nguyễn Thị Hạnh, họp nhóm 9h sáng thứ Hai hằng tuần.
+  Đang viết paper nộp ACL, mới xong phần related work. Nói chuyện ngắn gọn, xưng "mình".
+facts:
+  - NCS năm 2 ngành KHMT, ĐH Bách khoa Hà Nội, đề tài tóm tắt văn bản tiếng Việt.
+  - GVHD là PGS. Nguyễn Thị Hạnh, họp nhóm 9h sáng thứ Hai hằng tuần.
+  - Deadline nộp paper ACL ngày {{date:+20}}; đã xong phần related work.
+sessions:
+  - id: intro
+    turns:
+      - user: "Chào mentor, mình là Tùng, NCS năm 2 ngành Khoa học máy tính ở Bách khoa Hà Nội, làm về tóm tắt văn bản tiếng Việt."
+        scripted:
+          - tool: read_file
+            args: {path: .mentor/skills/core/memory-keeper/SKILL.md}
+          - tool: edit_file
+            args:
+              path: me/profile.md
+              old: "## Cơ bản"
+              new: "## Cơ bản\n- Thanh Tùng, NCS năm 2 ngành Khoa học máy tính, ĐH Bách khoa Hà Nội. (chat {{dm:0}})"
+          - tool: edit_file
+            args:
+              path: me/profile.md
+              old: "## Hướng nghiên cứu"
+              new: "## Hướng nghiên cứu\n- Tóm tắt văn bản tiếng Việt. (chat {{dm:0}})"
+          - "Chào Tùng! Mình đã ghi lại hướng nghiên cứu của bạn. Hiện bạn đang ở giai đoạn nào của luận án?"
+        expect:
+          - {check: memory_contains, pattern: 'tóm tắt', paths: [me/profile.md, research/thesis.md]}
+          - {check: language, expect: vi}
+      - user: "GVHD của mình là PGS. Nguyễn Thị Hạnh, sáng thứ Hai nào cũng họp nhóm lúc 9h."
+        scripted:
+          - tool: edit_file
+            args:
+              path: me/people.md
+              old: "## Trong việc học"
+              new: "## Trong việc học\n- PGS. Nguyễn Thị Hạnh: GVHD, họp nhóm 9h sáng thứ Hai hằng tuần. (chat {{dm:0}})"
+          - "Mình ghi rồi. Trước mỗi buổi họp thứ Hai, mình có thể giúp bạn gom tiến độ thành agenda."
+        expect:
+          - {check: memory_contains, pattern: 'Hạnh', paths: [me/people.md]}
+      - user: "Deadline nộp paper ACL là {{date:+20}}, mình mới viết xong phần related work."
+        scripted:
+          - tool: edit_file
+            args:
+              path: me/now.md
+              old: "## Tuần này"
+              new: "## Tuần này\n- Viết paper ACL, hạn nộp {{date:+20}}; đã xong related work. (chat {{dm:0}})"
+          - "Còn khoảng 3 tuần. Bạn muốn mình chia các phần còn lại thành mốc theo tuần không?"
+        expect:
+          - {check: memory_contains, pattern: 'ACL', paths: [me/now.md, goals/*, research/*]}
+  - id: recall
+    turns:
+      - user: "Còn bao lâu nữa đến deadline ACL nhỉ? Mà sáng thứ Hai này mình họp với ai ấy nhỉ?"
+        scripted:
+          - tool: grep
+            args: {pattern: "ACL|họp", path: me}
+          - "Theo ghi chép hôm {{dm:0}}: hạn nộp ACL là {{date:+20}}, còn khoảng 20 ngày. Sáng thứ Hai 9h bạn họp nhóm với PGS. Nguyễn Thị Hạnh."
+        expect:
+          - {check: reply_matches, pattern: 'Hạnh'}
+          - {check: reply_matches, pattern: 'ACL'}
+          - {check: reply_matches, pattern: '{{date:+20}}|20 ngày|3 tuần|ba tuần', severity: soft}
+          - {check: language, expect: vi}
+          - check: judge
+            criterion: >
+              The mentor recalls both the ACL deadline and the advisor meeting (PGS. Nguyễn Thị Hạnh, Monday 9am)
+              correctly from memory, without inventing details, addressing the learner as "bạn".

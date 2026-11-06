@@ -1,0 +1,1273 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "phys.electromagnetism.001",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Trong hệ SI, đơn vị của cảm ứng từ $B$ là",
+      "options": [
+        {
+          "id": "A",
+          "text": "vêbe (Wb)."
+        },
+        {
+          "id": "B",
+          "text": "tesla (T)."
+        },
+        {
+          "id": "C",
+          "text": "henry (H)."
+        },
+        {
+          "id": "D",
+          "text": "vôn (V)."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Nhớ lại công thức lực từ $F = BIl\\sin\\alpha$ và suy ra đơn vị của $B$ từ đơn vị của $F$, $I$, $l$.",
+      "explanation": "Từ $F = BIl\\sin\\alpha$ suy ra $B = \\dfrac{F}{Il\\sin\\alpha}$, đơn vị là $\\text{N/(A m)}$, được đặt tên là tesla (T). Vêbe (Wb) là đơn vị của từ thông, henry (H) là đơn vị của độ tự cảm, vôn (V) là đơn vị của điện áp. Chọn B.",
+      "tip": "Phân biệt: cảm ứng từ $B$ – tesla (T); từ thông $\\Phi$ – vêbe (Wb), với $1\\ \\text{Wb} = 1\\ \\text{T m}^2$.",
+      "option_feedback": {
+        "A": "Vêbe (Wb) là đơn vị của từ thông, không phải của cảm ứng từ."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "units"
+      ],
+      "skill_ids": [
+        "physics.em.magnetic_force"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.002",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Theo định luật Lenz, dòng điện cảm ứng xuất hiện trong một mạch kín có chiều sao cho từ trường do nó sinh ra",
+      "options": [
+        {
+          "id": "A",
+          "text": "luôn cùng chiều với từ trường ngoài."
+        },
+        {
+          "id": "B",
+          "text": "luôn ngược chiều với từ trường ngoài."
+        },
+        {
+          "id": "C",
+          "text": "có tác dụng chống lại sự biến thiên của từ thông qua mạch."
+        },
+        {
+          "id": "D",
+          "text": "luôn làm tăng từ thông qua mạch."
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Định luật Lenz nói về sự \"chống lại\" — nhưng chống lại đại lượng nào: từ trường ngoài hay sự thay đổi của từ thông?",
+      "explanation": "Định luật Lenz: dòng điện cảm ứng có chiều sao cho từ trường cảm ứng chống lại sự biến thiên của từ thông qua mạch. Khi từ thông tăng, từ trường cảm ứng ngược chiều từ trường ngoài; khi từ thông giảm, từ trường cảm ứng cùng chiều từ trường ngoài. Vì vậy không thể nói \"luôn cùng chiều\" hay \"luôn ngược chiều\" với từ trường ngoài. Chọn C.",
+      "tip": "Ghi nhớ: \"tăng thì ngược, giảm thì cùng\" (so sánh từ trường cảm ứng với từ trường ngoài).",
+      "option_feedback": {
+        "B": "Chỉ đúng khi từ thông qua mạch đang tăng; khi từ thông giảm thì từ trường cảm ứng lại cùng chiều từ trường ngoài.",
+        "A": "Chỉ đúng khi từ thông qua mạch đang giảm."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.18,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.18,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.18,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.18,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 40,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "lenz"
+      ],
+      "skill_ids": [
+        "physics.em.lenz"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.003",
+      "revision": 2,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Điện áp xoay chiều giữa hai đầu một đoạn mạch có biểu thức $u = 220\\sqrt{2}\\cos(100\\pi t)$ (V). Điện áp hiệu dụng giữa hai đầu đoạn mạch là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$220\\ \\text{V}$"
+        },
+        {
+          "id": "B",
+          "text": "$220\\sqrt{2}\\ \\text{V}$"
+        },
+        {
+          "id": "C",
+          "text": "$110\\sqrt{2}\\ \\text{V}$"
+        },
+        {
+          "id": "D",
+          "text": "$440\\ \\text{V}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Hệ số đứng trước hàm cos là giá trị cực đại. Giá trị hiệu dụng liên hệ với giá trị cực đại như thế nào?",
+      "explanation": "Từ biểu thức, điện áp cực đại $U_0 = 220\\sqrt{2}\\ \\text{V}$. Điện áp hiệu dụng $U = \\dfrac{U_0}{\\sqrt{2}} = \\dfrac{220\\sqrt{2}}{\\sqrt{2}} = 220\\ \\text{V}$. Chọn A.",
+      "tip": "Với dòng điện xoay chiều hình sin: giá trị hiệu dụng = giá trị cực đại chia $\\sqrt{2}$.",
+      "option_feedback": {
+        "B": "Đây là điện áp cực đại $U_0$, không phải điện áp hiệu dụng.",
+        "C": "Đã chia $U_0$ cho 2 thay vì cho $\\sqrt{2}$ ($\\dfrac{220\\sqrt{2}}{2} = 110\\sqrt{2}$)."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ac",
+        "effective-value"
+      ],
+      "skill_ids": [
+        "physics.em.ac_basics"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.004",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Một đoạn dây dẫn thẳng dài 20 cm mang dòng điện có cường độ 5 A, đặt trong từ trường đều có cảm ứng từ 0,04 T. Đoạn dây hợp với các đường sức từ một góc 30°. Độ lớn lực từ tác dụng lên đoạn dây là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}04\\ \\text{N}$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}035\\ \\text{N}$"
+        },
+        {
+          "id": "C",
+          "text": "$2\\ \\text{N}$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}02\\ \\text{N}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Dùng $F = BIl\\sin\\alpha$, chú ý $\\alpha$ là góc giữa dây dẫn và đường sức từ, và đổi chiều dài sang mét.",
+      "explanation": "Đổi $l = 20\\ \\text{cm} = 0{,}2\\ \\text{m}$. Lực từ: $F = BIl\\sin\\alpha = 0{,}04 \\cdot 5 \\cdot 0{,}2 \\cdot \\sin 30^\\circ = 0{,}04 \\cdot 5 \\cdot 0{,}2 \\cdot 0{,}5 = 0{,}02\\ \\text{N}$. Chọn D.",
+      "tip": "Dây song song với đường sức ($\\alpha = 0^\\circ$) thì không chịu lực từ; dây vuông góc ($\\alpha = 90^\\circ$) thì lực từ lớn nhất.",
+      "option_feedback": {
+        "B": "Đã dùng $\\cos 30^\\circ$ thay cho $\\sin 30^\\circ$.",
+        "C": "Quên đổi 20 cm sang 0,2 m.",
+        "A": "Bỏ qua thừa số $\\sin\\alpha$ (coi như dây vuông góc với đường sức)."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.32,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.32,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.32,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.32,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "magnetic-force"
+      ],
+      "skill_ids": [
+        "physics.em.magnetic_force"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.005",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Một khung dây dẫn phẳng hình vuông cạnh 10 cm đặt trong từ trường đều có cảm ứng từ 0,2 T. Các đường sức từ hợp với mặt phẳng khung dây một góc 30°. Từ thông qua khung dây có độ lớn là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$1{,}73 \\cdot 10^{-3}\\ \\text{Wb}$"
+        },
+        {
+          "id": "B",
+          "text": "$1{,}0 \\cdot 10^{-3}\\ \\text{Wb}$"
+        },
+        {
+          "id": "C",
+          "text": "$2{,}0 \\cdot 10^{-3}\\ \\text{Wb}$"
+        },
+        {
+          "id": "D",
+          "text": "$10\\ \\text{Wb}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Trong công thức $\\Phi = BS\\cos\\alpha$, góc $\\alpha$ là góc giữa $\\vec{B}$ và pháp tuyến của mặt khung, không phải góc với mặt phẳng khung.",
+      "explanation": "Diện tích khung: $S = 0{,}1^2 = 0{,}01\\ \\text{m}^2$. Đường sức hợp với mặt phẳng khung góc $30^\\circ$ nên hợp với pháp tuyến góc $\\alpha = 90^\\circ - 30^\\circ = 60^\\circ$. Từ thông: $\\Phi = BS\\cos\\alpha = 0{,}2 \\cdot 0{,}01 \\cdot \\cos 60^\\circ = 1{,}0 \\cdot 10^{-3}\\ \\text{Wb}$. Chọn B.",
+      "tip": "Luôn vẽ pháp tuyến của mặt khung trước khi xác định góc trong công thức từ thông.",
+      "option_feedback": {
+        "A": "Đã lấy $\\alpha = 30^\\circ$ (góc với mặt phẳng khung) thay cho góc với pháp tuyến.",
+        "D": "Quên đổi diện tích $100\\ \\text{cm}^2$ sang $\\text{m}^2$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.42,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 70,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "magnetic-flux"
+      ],
+      "skill_ids": [
+        "physics.em.flux"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.006",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Cường độ dòng điện xoay chiều chạy qua một đoạn mạch có biểu thức $i = 2\\cos\\left(100\\pi t + \\dfrac{\\pi}{3}\\right)$ (A). Tần số $f$ và cường độ dòng điện hiệu dụng $I$ của dòng điện này là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$f = 100\\ \\text{Hz}$; $I = \\sqrt{2}\\ \\text{A}$"
+        },
+        {
+          "id": "B",
+          "text": "$f = 50\\ \\text{Hz}$; $I = 2\\ \\text{A}$"
+        },
+        {
+          "id": "C",
+          "text": "$f = 50\\ \\text{Hz}$; $I = \\sqrt{2}\\ \\text{A}$"
+        },
+        {
+          "id": "D",
+          "text": "$f = 100\\pi\\ \\text{Hz}$; $I = 2\\sqrt{2}\\ \\text{A}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "So sánh với dạng $i = I_0\\cos(\\omega t + \\varphi)$: đọc ra $\\omega$ và $I_0$, rồi dùng $\\omega = 2\\pi f$.",
+      "explanation": "Từ biểu thức: $\\omega = 100\\pi\\ \\text{rad/s}$ nên $f = \\dfrac{\\omega}{2\\pi} = 50\\ \\text{Hz}$; $I_0 = 2\\ \\text{A}$ nên $I = \\dfrac{I_0}{\\sqrt{2}} = \\sqrt{2}\\ \\text{A}$. Chọn C.",
+      "tip": "Dòng điện xoay chiều dân dụng ở Việt Nam có $f = 50\\ \\text{Hz}$, ứng với $\\omega = 100\\pi\\ \\text{rad/s}$.",
+      "option_feedback": {
+        "A": "Nhầm $f = \\dfrac{\\omega}{\\pi}$; đúng phải là $f = \\dfrac{\\omega}{2\\pi}$.",
+        "B": "Đây là giá trị cực đại $I_0$, chưa chia cho $\\sqrt{2}$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.3,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.28,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ac",
+        "frequency"
+      ],
+      "skill_ids": [
+        "physics.em.ac_basics"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.007",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Một cuộn dây phẳng gồm 100 vòng, mỗi vòng có diện tích 50 cm², hai đầu cuộn dây được nối kín; điện trở tổng cộng của cuộn dây là 2 Ω. Cuộn dây đặt trong từ trường đều có đường sức từ vuông góc với mặt phẳng các vòng dây. Trong khoảng thời gian 0,02 s, cảm ứng từ giảm đều từ 0,5 T xuống 0,1 T. Cường độ dòng điện cảm ứng chạy trong cuộn dây có độ lớn là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$5\\ \\text{A}$"
+        },
+        {
+          "id": "B",
+          "text": "$7{,}5\\ \\text{A}$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}05\\ \\text{A}$"
+        },
+        {
+          "id": "D",
+          "text": "$10\\ \\text{A}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Tính độ biến thiên từ thông qua cả cuộn dây (nhớ số vòng N), suy ra suất điện động cảm ứng rồi áp dụng định luật Ohm.",
+      "explanation": "Diện tích $S = 50\\ \\text{cm}^2 = 5 \\cdot 10^{-3}\\ \\text{m}^2$. Độ biến thiên cảm ứng từ $|\\Delta B| = 0{,}5 - 0{,}1 = 0{,}4\\ \\text{T}$. Suất điện động cảm ứng: $|e| = N\\dfrac{|\\Delta B| S}{\\Delta t} = 100 \\cdot \\dfrac{0{,}4 \\cdot 5 \\cdot 10^{-3}}{0{,}02} = 10\\ \\text{V}$. Cường độ dòng điện cảm ứng: $I = \\dfrac{|e|}{R} = \\dfrac{10}{2} = 5\\ \\text{A}$. Chọn A.",
+      "tip": "Đổi đơn vị diện tích cẩn thận: $1\\ \\text{cm}^2 = 10^{-4}\\ \\text{m}^2$.",
+      "option_feedback": {
+        "C": "Quên nhân với số vòng dây N = 100.",
+        "B": "Đã lấy độ biến thiên cảm ứng từ là 0,5 + 0,1 = 0,6 T thay vì hiệu 0,5 − 0,1.",
+        "D": "Đây là suất điện động cảm ứng (10 V), chưa chia cho điện trở."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.55,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.58,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.55,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 120,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "faraday",
+        "induced-emf"
+      ],
+      "skill_ids": [
+        "physics.em.induced_emf",
+        "physics.em.flux"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.008",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Một thanh kim loại MN dài 0,5 m trượt đều với tốc độ 4 m/s trên hai thanh ray song song nằm ngang; thanh MN luôn vuông góc với hai ray. Hệ được đặt trong từ trường đều có cảm ứng từ 0,2 T, đường sức từ thẳng đứng. Hai đầu ray được nối với một điện trở R = 0,5 Ω; điện trở của thanh, của ray và mọi ma sát đều không đáng kể. Độ lớn lực từ tác dụng lên thanh MN là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$0{,}16\\ \\text{N}$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}32\\ \\text{N}$"
+        },
+        {
+          "id": "C",
+          "text": "$0{,}8\\ \\text{N}$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}08\\ \\text{N}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Thanh chuyển động cắt các đường sức từ nên xuất hiện suất điện động cảm ứng. Tìm dòng điện trong mạch, rồi tính lực từ tác dụng lên thanh mang dòng điện đó.",
+      "explanation": "Suất điện động cảm ứng trong thanh: $e = Bvl = 0{,}2 \\cdot 4 \\cdot 0{,}5 = 0{,}4\\ \\text{V}$. Dòng điện qua mạch: $I = \\dfrac{e}{R} = \\dfrac{0{,}4}{0{,}5} = 0{,}8\\ \\text{A}$. Thanh vuông góc với $\\vec{B}$ nên lực từ: $F = BIl = 0{,}2 \\cdot 0{,}8 \\cdot 0{,}5 = 0{,}08\\ \\text{N}$. Chọn D.",
+      "tip": "Có thể dùng nhanh công thức $F = \\dfrac{B^2 l^2 v}{R}$ cho thanh trượt trên ray nối điện trở.",
+      "option_feedback": {
+        "A": "Quên nhân với chiều dài thanh $l$ khi tính lực từ ($F = BI$).",
+        "B": "Đây là công suất $P = eI = 0{,}32\\ \\text{W}$, không phải lực.",
+        "C": "Đây là cường độ dòng điện (0,8 A), chưa tính lực từ."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.62,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.58,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "motional-emf",
+        "magnetic-force"
+      ],
+      "skill_ids": [
+        "physics.em.induced_emf"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.009",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Một khung dây dẫn phẳng gồm 200 vòng, diện tích mỗi vòng là 100 cm², quay đều với tốc độ 50 vòng/s quanh một trục nằm trong mặt phẳng khung và vuông góc với các đường sức của một từ trường đều có cảm ứng từ 0,2 T. Hai đầu khung dây được nối với một điện trở thuần R = 100 Ω; điện trở của khung dây không đáng kể. Nhiệt lượng tỏa ra trên điện trở R trong 1 phút xấp xỉ bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$9{,}47\\ \\text{kJ}$"
+        },
+        {
+          "id": "B",
+          "text": "$0{,}12\\ \\text{kJ}$"
+        },
+        {
+          "id": "C",
+          "text": "$4{,}74\\ \\text{kJ}$"
+        },
+        {
+          "id": "D",
+          "text": "$0{,}08\\ \\text{kJ}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Đổi tốc độ quay ra tốc độ góc $\\omega$, tính suất điện động cực đại $E_0 = NBS\\omega$, rồi dùng giá trị hiệu dụng để tính công suất tỏa nhiệt.",
+      "explanation": "Tốc độ góc: $\\omega = 2\\pi n = 2\\pi \\cdot 50 = 100\\pi\\ \\text{rad/s}$. Diện tích $S = 0{,}01\\ \\text{m}^2$. Suất điện động cực đại: $E_0 = NBS\\omega = 200 \\cdot 0{,}2 \\cdot 0{,}01 \\cdot 100\\pi = 40\\pi \\approx 125{,}7\\ \\text{V}$. Suất điện động hiệu dụng: $E = \\dfrac{E_0}{\\sqrt{2}} = 20\\sqrt{2}\\pi \\approx 88{,}9\\ \\text{V}$. Công suất tỏa nhiệt: $P = \\dfrac{E^2}{R} = \\dfrac{800\\pi^2}{100} = 8\\pi^2 \\approx 78{,}96\\ \\text{W}$. Nhiệt lượng trong $t = 60\\ \\text{s}$: $Q = Pt \\approx 78{,}96 \\cdot 60 \\approx 4737\\ \\text{J} \\approx 4{,}74\\ \\text{kJ}$. Chọn C.",
+      "tip": "Nhiệt lượng tỏa ra trên điện trở trong mạch xoay chiều luôn tính bằng giá trị hiệu dụng, không dùng giá trị cực đại.",
+      "option_feedback": {
+        "A": "Đã dùng suất điện động cực đại $E_0$ thay cho giá trị hiệu dụng khi tính công suất.",
+        "B": "Đã lấy $\\omega = 50\\ \\text{rad/s}$, quên nhân $2\\pi$ khi đổi từ vòng/s sang rad/s.",
+        "D": "Đây là nhiệt lượng trong 1 s; đề hỏi trong 1 phút = 60 s."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.72,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.82,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.82,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.72,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.68,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ac-generator",
+        "effective-value"
+      ],
+      "skill_ids": [
+        "physics.em.induced_emf",
+        "physics.em.ac_basics"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.010",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Đặt điện áp xoay chiều $u = 220\\sqrt{2}\\cos(100\\pi t)$ (V) vào hai đầu một bóng đèn neon. Đèn chỉ sáng khi độ lớn điện áp tức thời giữa hai đầu đèn không nhỏ hơn $110\\sqrt{2}$ V. Trong 1 s, tổng thời gian đèn sáng là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$\\dfrac{1}{3}\\ \\text{s}$"
+        },
+        {
+          "id": "B",
+          "text": "$\\dfrac{2}{3}\\ \\text{s}$"
+        },
+        {
+          "id": "C",
+          "text": "$\\dfrac{1}{2}\\ \\text{s}$"
+        },
+        {
+          "id": "D",
+          "text": "$\\dfrac{1}{6}\\ \\text{s}$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Đèn sáng khi $|u| \\ge \\dfrac{U_0}{2}$. Hãy xét trong một chu kì, pha của điện áp nằm trong những khoảng nào thì điều kiện này thỏa mãn — nhớ cả nửa chu kì âm.",
+      "explanation": "Ta có $U_0 = 220\\sqrt{2}\\ \\text{V}$, đèn sáng khi $|u| \\ge 110\\sqrt{2} = \\dfrac{U_0}{2}$, tức $|\\cos(100\\pi t)| \\ge \\dfrac{1}{2}$. Trong một chu kì, pha $\\theta = 100\\pi t$ quét từ $0$ đến $2\\pi$; điều kiện $|\\cos\\theta| \\ge \\dfrac{1}{2}$ thỏa mãn khi $\\theta \\in \\left[0; \\dfrac{\\pi}{3}\\right] \\cup \\left[\\dfrac{2\\pi}{3}; \\dfrac{4\\pi}{3}\\right] \\cup \\left[\\dfrac{5\\pi}{3}; 2\\pi\\right]$, tổng độ dài $\\dfrac{4\\pi}{3}$, tức $\\dfrac{2}{3}$ chu kì. Trong 1 s có $f = 50$ chu kì nên tổng thời gian đèn sáng là $\\dfrac{2}{3} \\cdot 1 = \\dfrac{2}{3}\\ \\text{s}$. Chọn B.",
+      "tip": "Bài toán thời gian theo điều kiện |u| nên dùng đường tròn lượng giác: đếm cung thỏa mãn ở cả nửa trên và nửa dưới.",
+      "option_feedback": {
+        "A": "Chỉ xét $u \\ge 110\\sqrt{2}$ V (nửa chu kì dương), bỏ sót khoảng $u \\le -110\\sqrt{2}$ V.",
+        "D": "Đã tính theo cung $\\dfrac{\\pi}{3}$ trên mỗi chu kì thay vì $\\dfrac{4\\pi}{3}$."
+      },
+      "difficulty": {
+        "level": 4,
+        "estimate": 0.78,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 3
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/physics-b@v1",
+            "estimate": 0.78,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-physics-a",
+            "estimate": 0.68,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 200,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/physics-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-physics-a",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "ac",
+        "phasor-circle"
+      ],
+      "skill_ids": [
+        "physics.em.ac_basics"
+      ]
+    },
+    {
+      "id": "phys.electromagnetism.011",
+      "revision": 1,
+      "subject_id": "physics",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "phys.electromagnetism"
+      ],
+      "language": "vi",
+      "stem": "Một khung dây phẳng gồm $100$ vòng, mỗi vòng có diện tích $0{,}02\\ \\text{m}^2$, đặt trong từ trường đều sao cho mặt khung vuông góc với các đường sức từ. Cảm ứng từ giảm đều từ $0{,}5\\ \\text{T}$ về $0$ trong thời gian $0{,}1\\ \\text{s}$. Tính độ lớn suất điện động cảm ứng xuất hiện trong khung dây (đơn vị: V).",
+      "hint": "$|e_c| = N\\frac{|\\Delta \\Phi|}{\\Delta t}$ với $\\Phi = BS$ khi mặt khung vuông góc với đường sức.",
+      "explanation": "$|\\Delta \\Phi| = S \\cdot |\\Delta B| = 0{,}02 \\cdot 0{,}5 = 0{,}01\\ \\text{Wb}$; $|e_c| = 100 \\cdot \\frac{0{,}01}{0{,}1} = 10\\ \\text{V}$.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=10; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=10; verdict=PASS",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "10",
+        "unit": "V",
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "physics.em.flux",
+        "physics.em.induced_emf"
+      ]
+    }
+  ]
+}

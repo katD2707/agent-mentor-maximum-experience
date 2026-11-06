@@ -1,0 +1,48 @@
+id: thpt_gia_huy
+profile: thpt
+display_name: Gia Huy
+language: vi
+background: >
+  Võ Gia Huy, nam, lớp 11 trường song ngữ ở TP.HCM. Thoải mái với tiếng Anh, muốn mentor nói tiếng Anh,
+  đôi khi đổi lại tiếng Việt khi mệt. Thi giữa kỳ Toán thứ Sáu tuần sau. Mới dùng mentor, chưa kể gì
+  về sở thích hay các kỳ thi trước đó.
+facts:
+  - Thi giữa kỳ Toán thứ Sáu tuần sau (nói trong phiên đầu bằng tiếng Anh).
+sessions:
+  - id: english_start
+    turns:
+      - user: "Hi! Can you help me make a study plan for my math midterm next Friday? I'd prefer we talk in English."
+        scripted:
+          - tool: read_file
+            args: {path: me/preferences.md}
+          - tool: edit_file
+            args:
+              path: me/preferences.md
+              old: "- Ngôn ngữ: tiếng Việt"
+              new: "- Ngôn ngữ: English (chat {{dm:0}})"
+          - tool: edit_file
+            args:
+              path: me/now.md
+              old: "## Tuần này"
+              new: "## Tuần này\n- Thi giữa kỳ Toán thứ Sáu tuần sau. (chat {{dm:0}})"
+          - "Sure, we'll talk in English from now on. Let's build your plan: which math topics will the midterm cover?"
+        expect:
+          - {check: language, expect: en}
+          - {check: memory_contains, pattern: 'English|tiếng Anh', paths: [me/preferences.md]}
+  - id: english_return
+    turns:
+      - user: "hey, I'm back. what should I review today?"
+        scripted:
+          - "Welcome back! Your math midterm is next Friday, so today let's review quadratic functions for 30 minutes. Shall we start with a warm-up problem?"
+        expect:
+          - {check: language, expect: en}
+      - user: "Thôi giờ mình nói tiếng Việt nhé mentor, em mệt đọc tiếng Anh rồi."
+        scripted:
+          - tool: edit_file
+            args:
+              path: me/preferences.md
+              old: "- Ngôn ngữ: English (chat {{dm:0}})"
+              new: "- Ngôn ngữ: tiếng Việt (đổi lại, chat {{dm:0}})"
+          - "Được em, mình chuyển sang tiếng Việt nhé. Mình làm một bài khởi động về hàm số bậc hai trước nha?"
+        expect:
+          - {check: language, expect: vi}

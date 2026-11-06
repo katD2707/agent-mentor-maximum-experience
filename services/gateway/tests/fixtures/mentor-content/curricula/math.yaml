@@ -1,0 +1,6 @@
+subject: math
+skills:
+  - id: algebra.linear.solve
+    title: Giải phương trình bậc nhất
+    grade: 8
+    prerequisites: []

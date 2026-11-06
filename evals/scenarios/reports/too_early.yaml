@@ -1,0 +1,33 @@
+id: report_thpt_skip_within_two_weeks
+suite: reports
+persona: thpt_minh_anh
+description: A report was sent 7 days ago; the weekly job must skip ("BỎ QUA:") and queue nothing.
+tags: [thpt, reports]
+seed_files:
+  reports/{{date:-7}}.md: |
+    ---
+    period_start: {{date:-21}}
+    period_end: {{date:-7}}
+    includes_wellbeing_nudge: false
+    ---
+    # Báo cáo học tập 2 tuần
+
+    ## Tiến độ mục tiêu
+    - Ôn thi giữa kỳ Toán: đã xong 1 trên 4 mốc.
+
+    Báo cáo được tạo tự động bởi AI mentor, chỉ mang tính tham khảo.
+  me/journal/{{date:-20}}.md: |
+    # Nhật ký {{date:-20}}
+    - Ôn công thức nghiệm.
+sessions:
+  - id: report
+    job: parent_report
+    scripted:
+      - tool: list_dir
+        args: {path: reports}
+      - "BỎ QUA: chưa đủ 2 tuần kể từ báo cáo trước."
+    expect:
+      - {check: job_status, status: skipped}
+      - {check: outbox_none, kind: parent_report}
+      - {check: file_absent, path: 'reports/{{today}}.md'}
+      - {check: file_absent, path: '.mentor/report-drafts/{{today}}.md'}

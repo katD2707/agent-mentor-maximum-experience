@@ -1,0 +1,1537 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "math.statistics.001",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Cân nặng (đơn vị: kg) của một nhóm học sinh được cho trong bảng tần số ghép nhóm dưới đây. Khoảng biến thiên của mẫu số liệu ghép nhóm này bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$20$ kg"
+        },
+        {
+          "id": "B",
+          "text": "$25$ kg"
+        },
+        {
+          "id": "C",
+          "text": "$11$ kg"
+        },
+        {
+          "id": "D",
+          "text": "$5$ kg"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Khoảng biến thiên của mẫu ghép nhóm được tính từ đầu mút của nhóm đầu tiên và nhóm cuối cùng.",
+      "explanation": "Khoảng biến thiên của mẫu số liệu ghép nhóm là $R = a_{k+1} - a_1$, với $a_1$ là đầu mút trái của nhóm đầu tiên và $a_{k+1}$ là đầu mút phải của nhóm cuối cùng. Ở đây $R = 65 - 40 = 25$ (kg). Chọn B.",
+      "tip": "Khoảng biến thiên dùng đầu mút của các nhóm, không dùng giá trị đại diện (giá trị giữa) và không dùng tần số.",
+      "option_feedback": {
+        "A": "Em lấy hiệu hai giá trị đại diện $62{,}5 - 42{,}5$; phải dùng đầu mút $65$ và $40$.",
+        "C": "Em lấy hiệu của tần số lớn nhất và nhỏ nhất; khoảng biến thiên tính trên giá trị của dấu hiệu.",
+        "D": "$5$ kg là độ dài mỗi nhóm, không phải khoảng biến thiên."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.12,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.12,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.12,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.12,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 35,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm cân nặng: [40;45): 3, [45;50): 8, [50;55): 14, [55;60): 10, [60;65): 5.",
+          "table": {
+            "headers": [
+              "Cân nặng (kg)",
+              "$[40; 45)$",
+              "$[45; 50)$",
+              "$[50; 55)$",
+              "$[55; 60)$",
+              "$[60; 65)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "3",
+                "8",
+                "14",
+                "10",
+                "5"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "range",
+        "table-reading"
+      ],
+      "skill_ids": [
+        "statistics.grouped.range_iqr"
+      ]
+    },
+    {
+      "id": "math.statistics.002",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Điểm thi đánh giá năng lực (thang 100) của 20 học sinh được cho trong bảng tần số ghép nhóm dưới đây. Số trung bình của mẫu số liệu ghép nhóm này bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$62{,}5$"
+        },
+        {
+          "id": "B",
+          "text": "$57{,}5$"
+        },
+        {
+          "id": "C",
+          "text": "$65$"
+        },
+        {
+          "id": "D",
+          "text": "$67{,}5$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Thay mỗi nhóm bằng giá trị đại diện (trung điểm của nhóm), rồi tính trung bình có trọng số theo tần số.",
+      "explanation": "Giá trị đại diện của các nhóm lần lượt là $45; 55; 65; 75; 85$. Số trung bình: $\\overline{x} = \\dfrac{2 \\cdot 45 + 6 \\cdot 55 + 8 \\cdot 65 + 3 \\cdot 75 + 1 \\cdot 85}{20} = \\dfrac{90 + 330 + 520 + 225 + 85}{20} = \\dfrac{1250}{20} = 62{,}5$. Chọn A.",
+      "tip": "Giá trị đại diện của nhóm $[a; b)$ là $\\dfrac{a + b}{2}$.",
+      "option_feedback": {
+        "B": "Em dùng đầu mút trái của mỗi nhóm thay cho giá trị đại diện.",
+        "C": "$65$ là giá trị đại diện của nhóm có tần số lớn nhất, chưa phải số trung bình.",
+        "D": "Em dùng đầu mút phải của mỗi nhóm thay cho giá trị đại diện."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.22,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 2
+        },
+        "author_estimate": 0.2,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.2,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.25,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.22,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 60,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm điểm thi: [40;50): 2, [50;60): 6, [60;70): 8, [70;80): 3, [80;90): 1.",
+          "table": {
+            "headers": [
+              "Điểm",
+              "$[40; 50)$",
+              "$[50; 60)$",
+              "$[60; 70)$",
+              "$[70; 80)$",
+              "$[80; 90)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "2",
+                "6",
+                "8",
+                "3",
+                "1"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "mean",
+        "table-reading"
+      ],
+      "skill_ids": [
+        "statistics.grouped.mean_mode"
+      ]
+    },
+    {
+      "id": "math.statistics.003",
+      "revision": 2,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Chiều cao (đơn vị: cm) của 50 học sinh lớp 12 được cho trong bảng tần số ghép nhóm dưới đây. Nhóm chứa mốt của mẫu số liệu ghép nhóm này là",
+      "options": [
+        {
+          "id": "A",
+          "text": "$[150; 155)$"
+        },
+        {
+          "id": "B",
+          "text": "$[155; 160)$"
+        },
+        {
+          "id": "C",
+          "text": "$[160; 165)$"
+        },
+        {
+          "id": "D",
+          "text": "$[165; 170)$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Nhớ lại định nghĩa: nhóm chứa mốt của mẫu số liệu ghép nhóm được xác định dựa vào đại lượng nào trong bảng?",
+      "explanation": "Nhóm chứa mốt là nhóm có tần số lớn nhất. Tần số lớn nhất là $18$, ứng với nhóm $[160; 165)$. Chọn C.",
+      "tip": "Với các nhóm có độ dài bằng nhau, chỉ cần tìm cột tần số lớn nhất để xác định nhóm chứa mốt.",
+      "option_feedback": {
+        "B": "Nhóm $[155; 160)$ có tần số $12$, chưa phải tần số lớn nhất.",
+        "D": "Nhóm $[165; 170)$ có tần số $9$, nhỏ hơn tần số lớn nhất là $18$."
+      },
+      "difficulty": {
+        "level": 1,
+        "estimate": 0.1,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "RECALL",
+          "steps": 1
+        },
+        "author_estimate": 0.1,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/recheck@v1",
+            "estimate": 0.1,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.1,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 30,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm chiều cao: [150;155): 5, [155;160): 12, [160;165): 18, [165;170): 9, [170;175): 6.",
+          "table": {
+            "headers": [
+              "Chiều cao (cm)",
+              "$[150; 155)$",
+              "$[155; 160)$",
+              "$[160; 165)$",
+              "$[165; 170)$",
+              "$[170; 175)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "5",
+                "12",
+                "18",
+                "9",
+                "6"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/recheck@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "mode",
+        "table-reading"
+      ],
+      "skill_ids": [
+        "statistics.grouped.mean_mode"
+      ]
+    },
+    {
+      "id": "math.statistics.004",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Thời gian tự học mỗi tuần (đơn vị: giờ) của 40 học sinh được cho trong bảng tần số ghép nhóm dưới đây. Tứ phân vị thứ nhất $Q_1$ của mẫu số liệu ghép nhóm này bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$2{,}4$ giờ"
+        },
+        {
+          "id": "B",
+          "text": "$3$ giờ"
+        },
+        {
+          "id": "C",
+          "text": "$4$ giờ"
+        },
+        {
+          "id": "D",
+          "text": "$2{,}8$ giờ"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tìm nhóm chứa giá trị thứ $\\dfrac{n}{4}$ nhờ tần số tích lũy, rồi dùng công thức nội suy trong nhóm đó.",
+      "explanation": "Ta có $n = 40$, $\\dfrac{n}{4} = 10$. Tần số tích lũy: $6; 16; 30; 38; 40$. Giá trị thứ $10$ và $11$ thuộc nhóm $[2; 4)$ nên nhóm chứa $Q_1$ là $[2; 4)$ với $a_p = 2$, tần số nhóm $m_p = 10$, tần số tích lũy trước đó $C = 6$, độ dài nhóm $h = 2$. Vậy $Q_1 = 2 + \\dfrac{10 - 6}{10} \\cdot 2 = 2{,}8$ (giờ). Chọn D.",
+      "tip": "Công thức: $Q_1 = a_p + \\dfrac{\\frac{n}{4} - C}{m_p} \\cdot h$, trong đó $C$ là tổng tần số các nhóm đứng trước nhóm chứa $Q_1$.",
+      "option_feedback": {
+        "A": "Em quên nhân với độ dài nhóm $h = 2$.",
+        "B": "$3$ chỉ là giá trị đại diện của nhóm $[2; 4)$, chưa nội suy theo công thức.",
+        "C": "Em quên trừ tần số tích lũy $C = 6$ của nhóm đứng trước."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.35,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.35,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.35,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.35,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 80,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm thời gian tự học: [0;2): 6, [2;4): 10, [4;6): 14, [6;8): 8, [8;10): 2.",
+          "table": {
+            "headers": [
+              "Thời gian (giờ)",
+              "$[0; 2)$",
+              "$[2; 4)$",
+              "$[4; 6)$",
+              "$[6; 8)$",
+              "$[8; 10)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "6",
+                "10",
+                "14",
+                "8",
+                "2"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "quartile"
+      ],
+      "skill_ids": [
+        "statistics.grouped.quartiles"
+      ]
+    },
+    {
+      "id": "math.statistics.005",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Doanh thu bán hàng trong một ngày (đơn vị: triệu đồng) của 40 cửa hàng được cho trong bảng tần số ghép nhóm dưới đây. Mốt của mẫu số liệu ghép nhóm này bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$17{,}50$"
+        },
+        {
+          "id": "B",
+          "text": "$17{,}27$"
+        },
+        {
+          "id": "C",
+          "text": "$15{,}55$"
+        },
+        {
+          "id": "D",
+          "text": "$17{,}73$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Xác định nhóm có tần số lớn nhất, rồi dùng công thức mốt với tần số của hai nhóm liền kề.",
+      "explanation": "Nhóm chứa mốt là $[15; 20)$ (tần số lớn nhất $m_j = 15$), nhóm liền trước có $m_{j-1} = 9$, nhóm liền sau có $m_{j+1} = 10$, độ dài nhóm $h = 5$. Ta có $M_o = 15 + \\dfrac{15 - 9}{(15 - 9) + (15 - 10)} \\cdot 5 = 15 + \\dfrac{30}{11} \\approx 17{,}73$ (triệu đồng). Chọn D.",
+      "tip": "Công thức mốt: $M_o = a_j + \\dfrac{m_j - m_{j-1}}{(m_j - m_{j-1}) + (m_j - m_{j+1})} \\cdot h$. Tử số luôn dùng hiệu với nhóm liền trước.",
+      "option_feedback": {
+        "A": "$17{,}5$ là trung điểm của nhóm chứa mốt, chưa áp dụng công thức.",
+        "B": "Em đặt nhầm hiệu với nhóm liền sau $(15 - 10)$ lên tử số.",
+        "C": "Em quên nhân với độ dài nhóm $h = 5$."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.4,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.4,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm doanh thu: [5;10): 4, [10;15): 9, [15;20): 15, [20;25): 10, [25;30): 2.",
+          "table": {
+            "headers": [
+              "Doanh thu (triệu đồng)",
+              "$[5; 10)$",
+              "$[10; 15)$",
+              "$[15; 20)$",
+              "$[20; 25)$",
+              "$[25; 30)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "4",
+                "9",
+                "15",
+                "10",
+                "2"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "mode"
+      ],
+      "skill_ids": [
+        "statistics.grouped.mean_mode"
+      ]
+    },
+    {
+      "id": "math.statistics.006",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Điểm kiểm tra (thang 100) của 40 học sinh được cho trong bảng tần số ghép nhóm dưới đây. Tứ phân vị thứ ba $Q_3$ của mẫu số liệu ghép nhóm này bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$66$"
+        },
+        {
+          "id": "B",
+          "text": "$80{,}67$"
+        },
+        {
+          "id": "C",
+          "text": "$81{,}25$"
+        },
+        {
+          "id": "D",
+          "text": "$85$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Tìm nhóm chứa giá trị thứ $\\dfrac{3n}{4}$ bằng tần số tích lũy; cẩn thận vì tần số tích lũy của nhóm $[70; 80)$ rất gần $\\dfrac{3n}{4}$.",
+      "explanation": "Ta có $n = 40$, $\\dfrac{3n}{4} = 30$. Tần số tích lũy: $4; 14; 29; 37; 40$. Vì $29 < 30 \\le 37$ nên nhóm chứa $Q_3$ là $[80; 90)$, với $m = 8$, $C = 29$, $h = 10$. Vậy $Q_3 = 80 + \\dfrac{30 - 29}{8} \\cdot 10 = 81{,}25$. Chọn C.",
+      "tip": "Nhóm chứa $Q_3$ là nhóm đầu tiên có tần số tích lũy lớn hơn hoặc bằng $\\dfrac{3n}{4}$ (và các giá trị thứ $30$, $31$ đều nằm trong nhóm đó).",
+      "option_feedback": {
+        "A": "$66$ là tứ phân vị thứ nhất $Q_1$ (dùng $\\dfrac{n}{4} = 10$), không phải $Q_3$.",
+        "B": "Em chọn nhầm nhóm $[70; 80)$; tần số tích lũy đến hết nhóm này là $29 < 30$ nên $Q_3$ chưa nằm trong nhóm đó.",
+        "D": "$85$ là trung điểm của nhóm chứa $Q_3$, chưa nội suy."
+      },
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.45,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.45,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.45,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.45,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 90,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm điểm kiểm tra: [50;60): 4, [60;70): 10, [70;80): 15, [80;90): 8, [90;100): 3.",
+          "table": {
+            "headers": [
+              "Điểm",
+              "$[50; 60)$",
+              "$[60; 70)$",
+              "$[70; 80)$",
+              "$[80; 90)$",
+              "$[90; 100)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "4",
+                "10",
+                "15",
+                "8",
+                "3"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "quartile"
+      ],
+      "skill_ids": [
+        "statistics.grouped.quartiles"
+      ]
+    },
+    {
+      "id": "math.statistics.007",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Tuổi thọ (đơn vị: tháng) của 60 chiếc bóng đèn được cho trong bảng tần số ghép nhóm dưới đây. Khoảng tứ phân vị $\\Delta_Q$ của mẫu số liệu ghép nhóm này bằng",
+      "options": [
+        {
+          "id": "A",
+          "text": "$20$"
+        },
+        {
+          "id": "B",
+          "text": "$15{,}25$"
+        },
+        {
+          "id": "C",
+          "text": "$52{,}5$"
+        },
+        {
+          "id": "D",
+          "text": "$17{,}5$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "D"
+      },
+      "hint": "Tính riêng $Q_1$ (vị trí $\\dfrac{n}{4}$) và $Q_3$ (vị trí $\\dfrac{3n}{4}$) bằng công thức nội suy, rồi lấy hiệu.",
+      "explanation": "Ta có $n = 60$. Tần số tích lũy: $8; 22; 42; 54; 60$. Với $\\dfrac{n}{4} = 15$: $8 < 15 \\le 22$ nên $Q_1$ thuộc nhóm $[30; 40)$: $Q_1 = 30 + \\dfrac{15 - 8}{14} \\cdot 10 = 35$. Với $\\dfrac{3n}{4} = 45$: $42 < 45 \\le 54$ nên $Q_3$ thuộc nhóm $[50; 60)$: $Q_3 = 50 + \\dfrac{45 - 42}{12} \\cdot 10 = 52{,}5$. Vậy $\\Delta_Q = Q_3 - Q_1 = 52{,}5 - 35 = 17{,}5$ (tháng). Chọn D.",
+      "tip": "Khoảng tứ phân vị $\\Delta_Q = Q_3 - Q_1$ đo độ phân tán của nửa giữa mẫu số liệu; tính cẩn thận từng tứ phân vị trước khi trừ.",
+      "option_feedback": {
+        "A": "Em lấy hiệu trung điểm của hai nhóm chứa $Q_3$ và $Q_1$ $(55 - 35)$, chưa nội suy $Q_3$.",
+        "B": "Khi tính $Q_3$ em quên nhân với độ dài nhóm $h = 10$ nên được $Q_3 = 50{,}25$.",
+        "C": "$52{,}5$ là $Q_3$; khoảng tứ phân vị là $Q_3 - Q_1$."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.6,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.6,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.6,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.58,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.6,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm tuổi thọ bóng đèn: [20;30): 8, [30;40): 14, [40;50): 20, [50;60): 12, [60;70): 6.",
+          "table": {
+            "headers": [
+              "Tuổi thọ (tháng)",
+              "$[20; 30)$",
+              "$[30; 40)$",
+              "$[40; 50)$",
+              "$[50; 60)$",
+              "$[60; 70)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "8",
+                "14",
+                "20",
+                "12",
+                "6"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=D; verdict=PASS",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "quartile",
+        "interquartile-range"
+      ],
+      "skill_ids": [
+        "statistics.grouped.range_iqr",
+        "statistics.grouped.quartiles"
+      ]
+    },
+    {
+      "id": "math.statistics.008",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Thời gian chờ xe buýt (đơn vị: phút) của 20 hành khách được cho trong bảng tần số ghép nhóm dưới đây. Độ lệch chuẩn của mẫu số liệu ghép nhóm này bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$14{,}84$"
+        },
+        {
+          "id": "B",
+          "text": "$3{,}85$"
+        },
+        {
+          "id": "C",
+          "text": "$3{,}95$"
+        },
+        {
+          "id": "D",
+          "text": "$8{,}96$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "B"
+      },
+      "hint": "Tính số trung bình $\\overline{x}$ từ các giá trị đại diện, sau đó dùng $s^2 = \\dfrac{1}{n}\\sum m_i x_i^2 - \\overline{x}^2$ và lấy căn bậc hai.",
+      "explanation": "Giá trị đại diện: $2; 6; 10; 14$ với tần số $3; 5; 8; 4$, $n = 20$. Số trung bình: $\\overline{x} = \\dfrac{3 \\cdot 2 + 5 \\cdot 6 + 8 \\cdot 10 + 4 \\cdot 14}{20} = \\dfrac{172}{20} = 8{,}6$. Ta có $\\dfrac{1}{20}(3 \\cdot 4 + 5 \\cdot 36 + 8 \\cdot 100 + 4 \\cdot 196) = \\dfrac{1776}{20} = 88{,}8$. Phương sai: $s^2 = 88{,}8 - 8{,}6^2 = 88{,}8 - 73{,}96 = 14{,}84$. Độ lệch chuẩn: $s = \\sqrt{14{,}84} \\approx 3{,}85$ (phút). Chọn B.",
+      "tip": "Độ lệch chuẩn là căn bậc hai của phương sai; trong chương trình GDPT 2018 phương sai mẫu ghép nhóm chia cho $n$.",
+      "option_feedback": {
+        "A": "$14{,}84$ là phương sai; câu hỏi yêu cầu độ lệch chuẩn $s = \\sqrt{s^2}$.",
+        "C": "Em chia cho $n - 1 = 19$ thay vì $n = 20$ khi tính phương sai.",
+        "D": "Em trừ $\\overline{x}$ thay vì $\\overline{x}^2$: $\\sqrt{88{,}8 - 8{,}6} \\approx 8{,}96$."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.63,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.65,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.65,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.62,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.63,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 170,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm thời gian chờ: [0;4): 3, [4;8): 5, [8;12): 8, [12;16): 4.",
+          "table": {
+            "headers": [
+              "Thời gian (phút)",
+              "$[0; 4)$",
+              "$[4; 8)$",
+              "$[8; 12)$",
+              "$[12; 16)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "3",
+                "5",
+                "8",
+                "4"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=B; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "variance",
+        "standard-deviation"
+      ],
+      "skill_ids": [
+        "statistics.grouped.variance_sd"
+      ]
+    },
+    {
+      "id": "math.statistics.009",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Quãng đường đi bộ mỗi ngày (đơn vị: trăm mét) của một nhóm người được cho trong bảng tần số ghép nhóm dưới đây, trong đó $x$ là số nguyên dương. Biết số trung bình của mẫu số liệu ghép nhóm bằng $20$. Tứ phân vị thứ nhất $Q_1$ của mẫu số liệu bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$10{,}25$"
+        },
+        {
+          "id": "B",
+          "text": "$13{,}33$"
+        },
+        {
+          "id": "C",
+          "text": "$12{,}5$"
+        },
+        {
+          "id": "D",
+          "text": "$15$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "C"
+      },
+      "hint": "Lập phương trình theo $x$ từ số trung bình để tìm cỡ mẫu $n$, rồi mới xác định nhóm chứa $Q_1$.",
+      "explanation": "Giá trị đại diện: $5; 15; 25; 35$. Cỡ mẫu $n = 20 + x$. Từ $\\overline{x} = \\dfrac{5 \\cdot 5 + 15x + 25 \\cdot 12 + 35 \\cdot 3}{20 + x} = \\dfrac{430 + 15x}{20 + x} = 20$ suy ra $430 + 15x = 400 + 20x$, tức là $x = 6$ và $n = 26$. Khi đó $\\dfrac{n}{4} = 6{,}5$; tần số tích lũy: $5; 11; 23; 26$. Vì $5 < 6{,}5 \\le 11$ nên nhóm chứa $Q_1$ là $[10; 20)$ với $m = 6$, $C = 5$, $h = 10$. Vậy $Q_1 = 10 + \\dfrac{6{,}5 - 5}{6} \\cdot 10 = 12{,}5$. Chọn C.",
+      "tip": "Trong công thức tứ phân vị giữ nguyên $\\dfrac{n}{4}$ (kể cả khi không nguyên), không làm tròn thành số nguyên.",
+      "option_feedback": {
+        "A": "Em quên nhân với độ dài nhóm $h = 10$.",
+        "B": "Em làm tròn $\\dfrac{n}{4} = 6{,}5$ thành $7$ trước khi thay vào công thức.",
+        "D": "$15$ là trung điểm nhóm $[10; 20)$, chưa áp dụng công thức nội suy."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.72,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.8,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.8,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.72,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.72,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 210,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm quãng đường đi bộ: [0;10): 5, [10;20): x, [20;30): 12, [30;40): 3.",
+          "table": {
+            "headers": [
+              "Quãng đường (trăm mét)",
+              "$[0; 10)$",
+              "$[10; 20)$",
+              "$[20; 30)$",
+              "$[30; 40)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "5",
+                "$x$",
+                "12",
+                "3"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=C; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "mean",
+        "quartile",
+        "unknown-frequency"
+      ],
+      "skill_ids": [
+        "statistics.grouped.parameter",
+        "statistics.grouped.quartiles"
+      ]
+    },
+    {
+      "id": "math.statistics.010",
+      "revision": 1,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SINGLE_CHOICE",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Thời gian sử dụng mạng xã hội mỗi ngày (đơn vị: giờ) của một nhóm học sinh được cho trong bảng tần số ghép nhóm dưới đây, trong đó $x$ là số nguyên dương nhỏ hơn $12$. Biết mốt của mẫu số liệu ghép nhóm bằng $8$ và nhóm chứa mốt là $[5; 10)$. Số trung bình của mẫu số liệu bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+      "options": [
+        {
+          "id": "A",
+          "text": "$9{,}17$"
+        },
+        {
+          "id": "B",
+          "text": "$9{,}87$"
+        },
+        {
+          "id": "C",
+          "text": "$6{,}67$"
+        },
+        {
+          "id": "D",
+          "text": "$10{,}00$"
+        }
+      ],
+      "answer_key": {
+        "correct_option_id": "A"
+      },
+      "hint": "Viết công thức mốt cho nhóm $[5; 10)$ với tần số nhóm liền sau là $x$, giải ra $x$, rồi tính số trung bình.",
+      "explanation": "Nhóm chứa mốt $[5; 10)$ có $m_j = 12$, $m_{j-1} = 6$, $m_{j+1} = x$, $h = 5$. Ta có $M_o = 5 + \\dfrac{12 - 6}{(12 - 6) + (12 - x)} \\cdot 5 = 5 + \\dfrac{30}{18 - x} = 8$, suy ra $18 - x = 10$, tức là $x = 8$. Khi đó $n = 6 + 12 + 8 + 4 = 30$, giá trị đại diện $2{,}5; 7{,}5; 12{,}5; 17{,}5$. Số trung bình: $\\overline{x} = \\dfrac{6 \\cdot 2{,}5 + 12 \\cdot 7{,}5 + 8 \\cdot 12{,}5 + 4 \\cdot 17{,}5}{30} = \\dfrac{275}{30} \\approx 9{,}17$ (giờ). Chọn A.",
+      "tip": "Sau khi tìm được ẩn, kiểm tra lại điều kiện: với $x = 8 < 12$ thì $[5; 10)$ đúng là nhóm có tần số lớn nhất.",
+      "option_feedback": {
+        "B": "Em quên nhân với $h = 5$ trong công thức mốt nên được $x = 16$; khi đó $[5; 10)$ không còn là nhóm chứa mốt.",
+        "C": "Em dùng đầu mút trái của mỗi nhóm thay cho giá trị đại diện.",
+        "D": "Em lấy trung bình cộng của bốn giá trị đại diện mà không nhân với tần số."
+      },
+      "difficulty": {
+        "level": 3,
+        "estimate": 0.74,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "HIGH_APPLY",
+          "steps": 4
+        },
+        "author_estimate": 0.85,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.85,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/math-b@v1",
+            "estimate": 0.74,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/v2-math-b",
+            "estimate": 0.72,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 240,
+      "assets": [
+        {
+          "id": "tab1",
+          "type": "table",
+          "alt_text": "Bảng tần số ghép nhóm thời gian dùng mạng xã hội: [0;5): 6, [5;10): 12, [10;15): x, [15;20): 4.",
+          "table": {
+            "headers": [
+              "Thời gian (giờ)",
+              "$[0; 5)$",
+              "$[5; 10)$",
+              "$[10; 15)$",
+              "$[15; 20)$"
+            ],
+            "rows": [
+              [
+                "Tần số",
+                "6",
+                "12",
+                "$x$",
+                "4"
+              ]
+            ]
+          }
+        }
+      ],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-12"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-13"
+        },
+        {
+          "reviewer": "content-quality-auditor/math-b@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; difficulty disagreement -> calibrator; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-12"
+        },
+        {
+          "reviewer": "verifier-2/v2-math-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=A; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-19"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-19"
+        }
+      ],
+      "tags": [
+        "mode",
+        "mean",
+        "unknown-frequency"
+      ],
+      "skill_ids": [
+        "statistics.grouped.parameter",
+        "statistics.grouped.mean_mode"
+      ]
+    },
+    {
+      "id": "math.statistics.011",
+      "revision": 2,
+      "subject_id": "math",
+      "curriculum_version": "gdpt-2018",
+      "type": "SHORT_ANSWER",
+      "topic_ids": [
+        "math.statistics"
+      ],
+      "language": "vi",
+      "stem": "Thời gian tự học mỗi ngày của $20$ học sinh được cho như sau: nhóm $[0; 10)$ phút có $4$ học sinh, nhóm $[10; 20)$ phút có $9$ học sinh, nhóm $[20; 30)$ phút có $7$ học sinh. Tính số trung bình của mẫu số liệu ghép nhóm này (đơn vị: phút, làm tròn đến hàng phần mười).",
+      "hint": "Dùng giá trị đại diện (giá trị giữa) của mỗi nhóm.",
+      "explanation": "Giá trị đại diện: $5$, $15$, $25$. $\\bar{x} = \\frac{4 \\cdot 5 + 9 \\cdot 15 + 7 \\cdot 25}{20} = \\frac{20 + 135 + 175}{20} = \\frac{330}{20} = 16{,}5$ phút.",
+      "option_feedback": {},
+      "difficulty": {
+        "level": 2,
+        "estimate": 0.3,
+        "confidence": "PROVISIONAL",
+        "rubric": {
+          "cognitive_level": "UNDERSTAND",
+          "steps": 2
+        },
+        "author_estimate": 0.4,
+        "model_version": "calibrator-v2",
+        "sample_size": 0,
+        "signals": [
+          {
+            "source": "AUTHOR",
+            "estimate": 0.4,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:content-quality-auditor/formats-2025-a@v1",
+            "estimate": 0.3,
+            "weight": 1.0
+          },
+          {
+            "source": "AI_VERIFIER:verifier-2/formats-2025-b",
+            "estimate": 0.3,
+            "weight": 1.0
+          }
+        ]
+      },
+      "estimated_seconds": 150,
+      "assets": [],
+      "source": {
+        "type": "ORIGINAL_DEMO",
+        "license": "PROJECT_AUTHORED",
+        "usage_rights": "COMMERCIAL_OK",
+        "origin": "Biên soạn mới cho dự án (AI-assisted), không sao chép đề thi",
+        "author": "content-author-agent",
+        "obtained_at": "2026-10-23"
+      },
+      "quality_status": "APPROVED",
+      "reviews": [
+        {
+          "reviewer": "question-schema-validator@v1",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "schema, LaTeX, key, license checks",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "content-quality-auditor/formats-2025-a@v1",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=16,5; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "verifier-2/formats-2025-b",
+          "reviewer_type": "AI_VERIFIER",
+          "result": "PASS",
+          "notes": "independent_answer=16,5; verdict=PASS; 1 low-severity note(s)",
+          "reviewed_at": "2026-10-23"
+        },
+        {
+          "reviewer": "review-v2/gate",
+          "reviewer_type": "DETERMINISTIC",
+          "result": "PASS",
+          "notes": "review-v2: APPROVED approval=AI_VERIFIED; verifiers=2",
+          "reviewed_at": "2026-10-23"
+        }
+      ],
+      "tags": [
+        "format-2025"
+      ],
+      "short_answer": {
+        "answer": "16,5",
+        "decimals": 1,
+        "unit": "phút",
+        "max_chars": 4
+      },
+      "skill_ids": [
+        "statistics.grouped.mean_mode"
+      ]
+    }
+  ]
+}

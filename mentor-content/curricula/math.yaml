@@ -1,0 +1,330 @@
+# Math skill graph for the THPT profile (CT GDPT 2018): Toán 10 (đại số + tổ hợp), Toán 11-12 phần
+# hàm số, mũ-logarit, nguyên hàm-tích phân, Oxyz, thống kê, xác suất; plus the grade 8-9 prerequisites.
+# `topic` (optional) = agent-mentor bank topic id, used by the practice engine to group skills.
+# ids are stable: never rename an id once events reference it; add new ids instead.
+# Read by bkt_update (Track C) and by skills via grep. Must stay acyclic (tested).
+subject: math
+skills:
+  # --- Prerequisites (lớp 8-9) ---
+  - id: algebra.linear.solve
+    title: Giải phương trình bậc nhất một ẩn
+    grade: 8
+    prerequisites: []
+  - id: algebra.linear.inequality
+    title: Bất phương trình bậc nhất một ẩn
+    grade: 9
+    prerequisites: [algebra.linear.solve]
+  - id: algebra.linear.system2
+    title: Hệ hai phương trình bậc nhất hai ẩn
+    grade: 9
+    prerequisites: [algebra.linear.solve]
+  - id: algebra.radicals.basic
+    title: Căn bậc hai và biến đổi biểu thức chứa căn
+    grade: 9
+    prerequisites: []
+  - id: algebra.quadratic.formula
+    title: Công thức nghiệm phương trình bậc hai
+    grade: 9
+    prerequisites: [algebra.linear.solve, algebra.radicals.basic]
+  - id: algebra.quadratic.vieta
+    title: Định lí Viète và ứng dụng
+    grade: 9
+    prerequisites: [algebra.quadratic.formula]
+  - id: functions.parabola.basic
+    title: Hàm số y = ax² và đồ thị
+    grade: 9
+    prerequisites: []
+
+  # --- Chương I. Mệnh đề và tập hợp ---
+  - id: logic.proposition
+    title: Mệnh đề, mệnh đề phủ định, kéo theo, tương đương
+    grade: 10
+    prerequisites: []
+  - id: logic.quantifiers
+    title: Mệnh đề chứa biến, kí hiệu ∀ và ∃
+    grade: 10
+    prerequisites: [logic.proposition]
+  - id: sets.basic
+    title: Tập hợp, tập con, hai tập hợp bằng nhau
+    grade: 10
+    prerequisites: [logic.proposition]
+  - id: sets.operations
+    title: Giao, hợp, hiệu và phần bù của hai tập hợp
+    grade: 10
+    prerequisites: [sets.basic]
+  - id: sets.intervals
+    title: Các tập con của R - khoảng, đoạn, nửa khoảng
+    grade: 10
+    prerequisites: [sets.operations, algebra.linear.inequality]
+
+  # --- Chương II. Bất phương trình và hệ bất phương trình bậc nhất hai ẩn ---
+  - id: inequalities.linear2.solve
+    title: Bất phương trình bậc nhất hai ẩn và miền nghiệm
+    grade: 10
+    prerequisites: [algebra.linear.inequality]
+  - id: inequalities.linear2.system
+    title: Hệ bất phương trình bậc nhất hai ẩn
+    grade: 10
+    prerequisites: [inequalities.linear2.solve, algebra.linear.system2]
+  - id: inequalities.linear2.optimize
+    title: Tìm giá trị lớn nhất, nhỏ nhất của F = ax + by trên miền nghiệm
+    grade: 10
+    prerequisites: [inequalities.linear2.system]
+
+  # --- Chương III. Hàm số bậc hai và đồ thị ---
+  - id: functions.basic.definition
+    title: Khái niệm hàm số, tập xác định, tập giá trị
+    grade: 10
+    prerequisites: [sets.intervals]
+  - id: functions.basic.graph
+    title: Đồ thị hàm số, điểm thuộc đồ thị
+    grade: 10
+    prerequisites: [functions.basic.definition]
+  - id: functions.basic.monotonic
+    title: Hàm số đồng biến, nghịch biến
+    grade: 10
+    prerequisites: [functions.basic.graph]
+  - id: functions.quadratic.vertex
+    title: Hàm số bậc hai - đỉnh, trục đối xứng, bảng biến thiên
+    grade: 10
+    prerequisites: [functions.basic.monotonic, functions.parabola.basic]
+  - id: functions.quadratic.graph
+    title: Vẽ đồ thị hàm số bậc hai (parabol)
+    grade: 10
+    prerequisites: [functions.quadratic.vertex]
+  - id: functions.quadratic.applications
+    title: Ứng dụng hàm số bậc hai - giá trị lớn nhất, nhỏ nhất, bài toán thực tế
+    grade: 10
+    prerequisites: [functions.quadratic.vertex]
+  - id: algebra.quadratic.trinomial_sign
+    title: Dấu của tam thức bậc hai
+    grade: 10
+    prerequisites: [algebra.quadratic.formula, functions.quadratic.graph]
+  - id: algebra.quadratic.inequality
+    title: Giải bất phương trình bậc hai một ẩn
+    grade: 10
+    prerequisites: [algebra.quadratic.trinomial_sign, sets.intervals]
+  - id: algebra.quadratic.parameter
+    title: Bài toán chứa tham số m với tam thức và phương trình bậc hai
+    grade: 10
+    prerequisites: [algebra.quadratic.inequality, algebra.quadratic.vieta]
+  - id: algebra.equations.radical
+    title: Phương trình quy về phương trình bậc hai (chứa căn)
+    grade: 10
+    prerequisites: [algebra.quadratic.formula, algebra.radicals.basic]
+
+  # --- Chương VIII. Đại số tổ hợp ---
+  - id: combinatorics.counting_rules
+    title: Quy tắc cộng, quy tắc nhân, sơ đồ hình cây
+    grade: 10
+    prerequisites: []
+  - id: combinatorics.permutations
+    title: Hoán vị
+    grade: 10
+    prerequisites: [combinatorics.counting_rules]
+  - id: combinatorics.arrangements
+    title: Chỉnh hợp
+    grade: 10
+    prerequisites: [combinatorics.permutations]
+  - id: combinatorics.combinations
+    title: Tổ hợp
+    grade: 10
+    prerequisites: [combinatorics.arrangements]
+  - id: combinatorics.binomial
+    title: Nhị thức Newton (n ≤ 5)
+    grade: 10
+    prerequisites: [combinatorics.combinations]
+
+  # --- Lớp 11. Giới hạn, đạo hàm (tiền đề cho khảo sát hàm số) ---
+  - id: calculus.limits.basic
+    title: Giới hạn của hàm số và hàm số liên tục
+    grade: 11
+    prerequisites: [functions.basic.graph]
+    topic: math.function
+  - id: calculus.derivative.rules
+    title: Đạo hàm - định nghĩa và quy tắc tính
+    grade: 11
+    prerequisites: [calculus.limits.basic]
+    topic: math.function
+
+  # --- Chương: Ứng dụng đạo hàm, khảo sát hàm số (lớp 12) ---
+  - id: functions.monotonic.derivative
+    title: Xét tính đơn điệu của hàm số bằng đạo hàm
+    grade: 12
+    topic: math.function
+    prerequisites: [calculus.derivative.rules, functions.basic.monotonic]
+  - id: functions.extrema
+    title: Cực trị của hàm số
+    grade: 12
+    topic: math.function
+    prerequisites: [functions.monotonic.derivative]
+  - id: functions.minmax
+    title: Giá trị lớn nhất, nhỏ nhất của hàm số trên một đoạn
+    grade: 12
+    topic: math.function
+    prerequisites: [functions.extrema]
+  - id: functions.asymptotes
+    title: Đường tiệm cận của đồ thị hàm số
+    grade: 12
+    topic: math.function
+    prerequisites: [calculus.limits.basic]
+  - id: functions.graph_reading
+    title: Đọc đồ thị, bảng biến thiên, bảng xét dấu đạo hàm
+    grade: 12
+    topic: math.function
+    prerequisites: [functions.monotonic.derivative]
+  - id: functions.parameter
+    title: Bài toán chứa tham số m về đơn điệu, cực trị
+    grade: 12
+    topic: math.function
+    prerequisites: [functions.extrema, algebra.quadratic.parameter]
+  - id: functions.optimization
+    title: Bài toán tối ưu thực tế bằng đạo hàm
+    grade: 12
+    topic: math.function
+    prerequisites: [functions.minmax]
+
+  # --- Chương: Hàm số mũ và hàm số lôgarit (lớp 11) ---
+  - id: explog.powers
+    title: Lũy thừa với số mũ thực
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [algebra.radicals.basic]
+  - id: explog.logarithm
+    title: Lôgarit và các tính chất
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [explog.powers]
+  - id: explog.functions
+    title: Hàm số mũ, hàm số lôgarit - tập xác định, đạo hàm, đồ thị
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [explog.logarithm, calculus.derivative.rules]
+  - id: explog.equations
+    title: Phương trình mũ và phương trình lôgarit
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [explog.logarithm, algebra.quadratic.formula]
+  - id: explog.inequalities
+    title: Bất phương trình mũ và bất phương trình lôgarit
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [explog.equations]
+  - id: explog.parameter
+    title: Bài toán chứa tham số m với phương trình mũ, lôgarit
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [explog.equations, algebra.quadratic.parameter]
+  - id: explog.applications
+    title: Ứng dụng thực tế - lãi kép, tăng trưởng
+    grade: 11
+    topic: math.exp-log
+    prerequisites: [explog.equations]
+
+  # --- Chương: Nguyên hàm và tích phân (lớp 12) ---
+  - id: integral.antiderivative
+    title: Nguyên hàm và các quy tắc tìm nguyên hàm
+    grade: 12
+    topic: math.integral
+    prerequisites: [calculus.derivative.rules]
+  - id: integral.definite
+    title: Tích phân - định nghĩa và tính chất
+    grade: 12
+    topic: math.integral
+    prerequisites: [integral.antiderivative]
+  - id: integral.area
+    title: Diện tích hình phẳng giới hạn bởi các đồ thị
+    grade: 12
+    topic: math.integral
+    prerequisites: [integral.definite]
+  - id: integral.volume
+    title: Thể tích khối tròn xoay
+    grade: 12
+    topic: math.integral
+    prerequisites: [integral.definite]
+  - id: integral.applications
+    title: Ứng dụng tích phân - quãng đường, vận tốc, bài toán thực tế
+    grade: 12
+    topic: math.integral
+    prerequisites: [integral.definite]
+
+  # --- Chương: Phương pháp tọa độ trong không gian Oxyz (lớp 12) ---
+  - id: oxyz.vectors
+    title: Tọa độ của điểm và vectơ trong không gian
+    grade: 12
+    topic: math.oxyz
+    prerequisites: []
+  - id: oxyz.plane
+    title: Phương trình mặt phẳng
+    grade: 12
+    topic: math.oxyz
+    prerequisites: [oxyz.vectors]
+  - id: oxyz.line
+    title: Phương trình đường thẳng trong không gian
+    grade: 12
+    topic: math.oxyz
+    prerequisites: [oxyz.vectors]
+  - id: oxyz.sphere
+    title: Phương trình mặt cầu
+    grade: 12
+    topic: math.oxyz
+    prerequisites: [oxyz.vectors]
+  - id: oxyz.distance_angle
+    title: Khoảng cách và góc trong không gian Oxyz, hình chiếu
+    grade: 12
+    topic: math.oxyz
+    prerequisites: [oxyz.plane, oxyz.line]
+  - id: oxyz.optimization
+    title: Bài toán cực trị trong không gian Oxyz
+    grade: 12
+    topic: math.oxyz
+    prerequisites: [oxyz.distance_angle, oxyz.sphere]
+
+  # --- Thống kê mẫu số liệu ghép nhóm (lớp 11-12) ---
+  - id: statistics.grouped.mean_mode
+    title: Số trung bình và mốt của mẫu số liệu ghép nhóm
+    grade: 11
+    topic: math.statistics
+    prerequisites: []
+  - id: statistics.grouped.quartiles
+    title: Trung vị và tứ phân vị của mẫu số liệu ghép nhóm
+    grade: 11
+    topic: math.statistics
+    prerequisites: [statistics.grouped.mean_mode]
+  - id: statistics.grouped.range_iqr
+    title: Khoảng biến thiên và khoảng tứ phân vị
+    grade: 12
+    topic: math.statistics
+    prerequisites: [statistics.grouped.quartiles]
+  - id: statistics.grouped.variance_sd
+    title: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm
+    grade: 12
+    topic: math.statistics
+    prerequisites: [statistics.grouped.mean_mode]
+  - id: statistics.grouped.parameter
+    title: Bài toán tìm tham số từ số đặc trưng của mẫu ghép nhóm
+    grade: 12
+    topic: math.statistics
+    prerequisites: [statistics.grouped.quartiles, statistics.grouped.variance_sd]
+
+  # --- Xác suất (lớp 10-12) ---
+  - id: probability.classical
+    title: Xác suất cổ điển - không gian mẫu, biến cố, tính bằng tổ hợp
+    grade: 10
+    topic: math.probability
+    prerequisites: [combinatorics.combinations]
+  - id: probability.rules
+    title: Biến cố độc lập, quy tắc cộng và quy tắc nhân xác suất
+    grade: 11
+    topic: math.probability
+    prerequisites: [probability.classical]
+  - id: probability.conditional
+    title: Xác suất có điều kiện
+    grade: 12
+    topic: math.probability
+    prerequisites: [probability.rules]
+  - id: probability.total_bayes
+    title: Công thức xác suất toàn phần và công thức Bayes
+    grade: 12
+    topic: math.probability
+    prerequisites: [probability.conditional]

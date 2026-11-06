@@ -1,0 +1,14 @@
+id: ncs_parent_report_job_skipped
+suite: ncs
+persona: ncs_thanh_tung
+description: NCS learners have no parents and no reports; the harness must skip a parent_report job outright.
+tags: [ncs, reports]
+sessions:
+  - id: report
+    job: parent_report
+    expect:
+      - {check: job_status, status: skipped}
+      - {check: outbox_none, kind: parent_report}
+expect:
+  - {check: file_absent, path: 'reports/*'}
+  - {check: file_absent, path: '.mentor/report-drafts/*'}

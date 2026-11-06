@@ -1,0 +1,77 @@
+id: thpt_minh_anh
+profile: thpt
+display_name: Minh Anh
+language: vi
+background: >
+  Nguyễn Minh Anh, nữ, lớp 11A2 trường THPT Chu Văn An (Hà Nội). Học khá các môn xã hội, Toán ở mức
+  trung bình, sợ nhất phần hàm số bậc hai. Thi giữa kỳ Toán vào thứ Sáu tuần sau. Tối thứ Ba và thứ Năm
+  đi học thêm tiếng Anh. Hiểu nhanh hơn khi có ví dụ số trước rồi mới đến công thức. Hay quên mật khẩu.
+facts:
+  - Học lớp 11A2, trường THPT Chu Văn An.
+  - Thi giữa kỳ Toán thứ Sáu {{dm:+8}}, lo nhất phần hàm số bậc hai.
+  - Tối thứ Ba, thứ Năm đi học thêm tiếng Anh.
+leak_strings:
+  - '6[,.]5'
+  - 'cô Lan'
+  - 'Thảo'
+  - 'mắng'
+  - 'hoasen2009'
+  - 'khóc'
+sessions:
+  - id: intro
+    turns:
+      - user: "Chào mentor, em là Minh Anh, học lớp 11A2 trường Chu Văn An ạ."
+        scripted:
+          - tool: read_file
+            args: {path: .mentor/skills/core/memory-keeper/SKILL.md}
+          - tool: edit_file
+            args:
+              path: me/profile.md
+              old: "## Cơ bản"
+              new: "## Cơ bản\n- Minh Anh, lớp 11A2, THPT Chu Văn An. (chat {{dm:0}})"
+          - "Chào em Minh Anh! Mình là mentor của em. Hôm nay em muốn bắt đầu với môn nào?"
+        expect:
+          - {check: memory_contains, pattern: '11A2', paths: [me/profile.md]}
+      - user: "Thứ Sáu tuần sau ({{dm:+8}}) em thi giữa kỳ Toán, em sợ nhất phần hàm số bậc hai."
+        scripted:
+          - tool: edit_file
+            args:
+              path: me/now.md
+              old: "## Tuần này"
+              new: "## Tuần này\n- Thi giữa kỳ Toán thứ Sáu {{dm:+8}}, lo nhất phần hàm số bậc hai. (chat {{dm:0}})"
+          - "Mình ghi lại rồi. Còn 8 ngày, mình lập kế hoạch ôn hàm số bậc hai từ từ nhé. Em đã học tới phần đồ thị chưa?"
+        expect:
+          - {check: memory_contains, pattern: 'giữa kỳ|{{dm:+8}}', paths: [me/now.md, goals/*]}
+      - user: "Tối thứ Ba với thứ Năm em đi học thêm tiếng Anh nên hai tối đó không học với mentor được nhé."
+        scripted:
+          - tool: edit_file
+            args:
+              path: me/preferences.md
+              old: "## Giờ học và nhịp sinh hoạt"
+              new: "## Giờ học và nhịp sinh hoạt\n- Tối thứ Ba, thứ Năm đi học thêm tiếng Anh, không học với mentor. (chat {{dm:0}})"
+          - "Ok em, mình sẽ không xếp ôn vào tối thứ Ba và thứ Năm."
+        expect:
+          - {check: memory_contains, pattern: 'thứ Ba|thứ Năm|tiếng Anh', paths: [me/*, goals/*]}
+  - id: recall
+    turns:
+      - user: "Mentor ơi, em sắp thi môn gì, hôm nào ấy nhỉ? Em quên mất rồi."
+        scripted:
+          - tool: grep
+            args: {pattern: "thi", path: me}
+          - "Theo ghi chép hôm {{dm:0}} trong me/now.md, em thi giữa kỳ Toán vào thứ Sáu {{dm:+8}}, lo nhất phần hàm số bậc hai."
+        expect:
+          - {check: reply_matches, pattern: 'Toán'}
+          - {check: reply_matches, pattern: '{{dm:+8}}|thứ Sáu'}
+          - check: judge
+            criterion: >
+              The mentor recalls the upcoming exam correctly (Math mid-term, Friday {{dm:+8}}) from its memory
+              files, does not invent extra details, and ideally says where or when it learned this.
+      - user: "Tối thứ Năm này mình ôn hàm số cùng nhau được không mentor?"
+        scripted:
+          - "Tối thứ Năm em đi học thêm tiếng Anh mà (em nói hôm {{dm:0}}). Mình ôn tối thứ Tư hoặc tối thứ Sáu được không em?"
+        expect:
+          - {check: reply_matches, pattern: 'tiếng Anh|học thêm', severity: soft}
+          - check: judge
+            criterion: >
+              The mentor remembers that the student has English extra classes on Thursday evenings and points out
+              the conflict (or proposes another evening) instead of simply agreeing to Thursday.

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mentor</title>
+    <link rel="stylesheet" href="bubble.css" />
+    <!-- The mascot element (copied from packages/mentor-mascot by scripts/sync-mascot.mjs). If it is
+         missing or fails to load, the bubble keeps the "M" glyph tile. -->
+    <script type="module" src="mascot.js"></script>
+  </head>
+  <body data-side="right">
+    <button
+      id="bubble"
+      type="button"
+      aria-label="Mở Mentor (Ctrl+Alt+M)"
+      aria-expanded="false"
+      title="Mentor · Ctrl+Alt+M"
+    >
+      <!-- The mascot is the tile (body = brand tile with a speech-tail corner). Decorative: the
+           button carries the name. -->
+      <mentor-mascot id="mascot" class="mascot" size="56" tail="right" label="" state="idle"></mentor-mascot>
+      <!-- Fallback while/if the mascot is not defined: Mentor "M" (same path as icon.svg). -->
+      <svg class="glyph glyph-mark" viewBox="256 256 512 512" aria-hidden="true">
+        <path d="M256 768V256h126l130 236 130-236h126v512H660V468L548 664h-72L364 468v300z" />
+      </svg>
+      <!-- Shown while the panel is open: clicking collapses it. -->
+      <svg class="glyph glyph-close" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />
+      </svg>
+      <span id="badge" class="badge" hidden></span>
+    </button>
+    <script src="bubble.js"></script>
+  </body>
+</html>
