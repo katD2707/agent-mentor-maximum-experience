@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="308" rx="118" ry="18" fill="#E9E5F6"/>
+
+  <!-- basket body (trapezoid) -->
+  <path d="M96 208 L304 208 L276 300 Q200 322 124 300 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="7" stroke-linejoin="round"/>
+  <!-- basket weave lines -->
+  <g stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" opacity="0.55">
+    <path d="M118 232 L282 232"/>
+    <path d="M126 258 L274 258"/>
+    <path d="M136 282 L264 282"/>
+    <path d="M150 210 L136 300"/>
+    <path d="M184 210 L176 306"/>
+    <path d="M216 210 L224 306"/>
+    <path d="M250 210 L264 300"/>
+  </g>
+  <!-- basket rim -->
+  <rect x="88" y="192" width="224" height="26" rx="13" fill="#5A4BC0"/>
+  <rect x="98" y="197" width="204" height="8" rx="4" fill="#F7F1E3" opacity="0.35"/>
+
+  <!-- handle -->
+  <path d="M126 200 C132 120, 268 120, 274 200" fill="none" stroke="#5A4BC0" stroke-width="12" stroke-linecap="round"/>
+  <path d="M126 200 C132 120, 268 120, 274 200" fill="none" stroke="#F0D76E" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- apple 1 (left, coral) -->
+  <g>
+    <path d="M150 172 C126 168, 122 132, 148 122 C162 116, 176 124, 180 136 C190 122, 212 122, 220 136 C238 132, 248 158, 232 176 C220 192, 196 194, 184 184 C172 194, 160 190, 150 172 Z" fill="#E8806A"/>
+  </g>
+</svg>

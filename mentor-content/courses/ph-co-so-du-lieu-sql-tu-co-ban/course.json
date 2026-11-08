@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "ph-co-so-du-lieu-sql-tu-co-ban",
+  "title": "Cơ sở dữ liệu: SQL từ cơ bản",
+  "subject": "Cơ sở dữ liệu",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Bùi Anh Kiệt",
+  "description_short": "Mô hình quan hệ, chuẩn hóa và SQL, thực hành trên PostgreSQL với bộ dữ liệu cửa hàng sách. Dành cho sinh viên năm hai.",
+  "outcomes": [
+    "Thiết kế và chuẩn hóa được lược đồ quan hệ.",
+    "Viết được truy vấn nối, nhóm và truy vấn con.",
+    "Hiểu giao dịch và chỉ mục ở mức cơ bản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 152,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Mô hình",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Mô hình quan hệ",
+          "est_minutes": 23
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Chuẩn hóa",
+          "est_minutes": 33
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "SQL",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Truy vấn cơ bản",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Nối bảng",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Nhóm và truy vấn con",
+          "est_minutes": 38
+        }
+      ]
+    }
+  ]
+}

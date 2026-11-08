@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-# Pilot deployment on one Linux VM with Docker (README "Triển khai lên server (pilot)").
+# Pilot deployment on one Linux VM with Docker (README "Pilot deployment").
 #
 #   bash infra/deploy.sh            first deploy / re-deploy: check env, build images, start, wait for health
 #   bash infra/deploy.sh update     git pull (if this is a git checkout; otherwise rsync the code first), rebuild, up
 #   bash infra/deploy.sh backup     take an encrypted snapshot now, list snapshots, show how to copy them off the VM
-#   bash infra/deploy.sh logs [svc] follow logs (svc: caddy, gateway, model-router, web, searxng)
+#   bash infra/deploy.sh logs [svc] follow logs (svc: caddy, gateway, model-router, web)
 #   bash infra/deploy.sh status     container and health status
-#   bash infra/deploy.sh zalo       (re-)register the Zalo webhook https://$DOMAIN/webhooks/zalo
 #   bash infra/deploy.sh content    copy the current AGENTS.md/skills into existing learners' workspaces (deploy/update do it)
-#   bash infra/deploy.sh email      values for the Cloudflare Email Worker (URL, secret) + check the webhook answers
+#   bash infra/deploy.sh user USERNAME ROLE   create an account (ROLE = student|teacher); asks for the password
 #   bash infra/deploy.sh down       stop everything (data and certificates stay)
 #
 # Settings: infra/.env.prod (created from infra/.env.prod.example on the first run; ENV_FILE=... overrides).
@@ -19,9 +18,8 @@ ROOT="$(dirname "$INFRA")"
 ENV_FILE="${ENV_FILE:-$INFRA/.env.prod}"
 EXAMPLE="$INFRA/.env.prod.example"
 COMPOSE=(docker compose -f "$INFRA/docker-compose.prod.yml" --env-file "$ENV_FILE")
-SERVICES=(caddy gateway model-router web searxng)
-REQUIRED=(DOMAIN FPT_API_BASE FPT_API_KEY SMTP_HOST SMTP_USERNAME SMTP_PASSWORD MAIL_FROM
-          MENTOR_MASTER_KEY MODEL_ROUTER_MASTER_KEY SEARXNG_SECRET ZALO_WEBHOOK_SECRET DOCKER_GID)
+SERVICES=(caddy gateway model-router web)
+REQUIRED=(DOMAIN FPT_API_BASE FPT_API_KEY MENTOR_MASTER_KEY MODEL_ROUTER_MASTER_KEY)
 
 info() { printf '\n==> %s\n' "$*"; }
 warn() { printf 'CẢNH BÁO: %s\n' "$*" >&2; }
@@ -76,15 +74,9 @@ ensure_env() {
     # random secrets, generated once (never overwritten: a new MENTOR_MASTER_KEY would make all data unreadable)
     [ -n "$(env_get MENTOR_MASTER_KEY)" ] || { env_set MENTOR_MASTER_KEY "$(rand_b64_32)"; warn "đã tạo MENTOR_MASTER_KEY mới trong $ENV_FILE: chép nó ra ngoài VM (trình quản lý mật khẩu). Mất khoá = mất toàn bộ bản sao lưu."; }
     [ -n "$(env_get MODEL_ROUTER_MASTER_KEY)" ] || env_set MODEL_ROUTER_MASTER_KEY "sk-$(rand_hex 24)"
-    [ -n "$(env_get SEARXNG_SECRET)" ] || env_set SEARXNG_SECRET "$(rand_hex 32)"
-    [ -n "$(env_get ZALO_WEBHOOK_SECRET)" ] || env_set ZALO_WEBHOOK_SECRET "$(rand_hex 24)"
-    [ -n "$(env_get EMAIL_WEBHOOK_SECRET)" ] || env_set EMAIL_WEBHOOK_SECRET "$(rand_hex 32)"
     # Web Push: generated once, never replaced (browsers subscribed with the old public key would stop getting pushes)
     [ -n "$(env_get VAPID_PRIVATE_KEY)" ] || gen_vapid
     [ -n "$(env_get VAPID_SUBJECT)" ] || [ -z "$(env_get DOMAIN)" ] || env_set VAPID_SUBJECT "https://$(env_get DOMAIN)"
-    if [ -S /var/run/docker.sock ] && [ "$(uname -s)" = Linux ]; then
-        env_set DOCKER_GID "$(stat -c %g /var/run/docker.sock)"
-    fi
 
     local missing=() k
     for k in "${REQUIRED[@]}"; do [ -n "$(env_get "$k")" ] || missing+=("$k"); done
@@ -100,15 +92,6 @@ ensure_env() {
     esac
     key_len="$(env_get MENTOR_MASTER_KEY | tr '_-' '/+' | base64 -d 2>/dev/null | wc -c)"
     [ "$key_len" -eq 32 ] || die "MENTOR_MASTER_KEY phải là base64 (urlsafe) của đúng 32 byte."
-    if [ -z "$(env_get ZALO_BOT_TOKEN)" ]; then
-        warn "ZALO_BOT_TOKEN trống: tài khoản THPT sẽ kẹt ở bước liên kết phụ huynh (prod không có nút xác minh dev)."
-    fi
-    if [ -z "$(env_get INBOUND_EMAIL_DOMAIN)" ]; then
-        warn "INBOUND_EMAIL_DOMAIN trống: địa chỉ email chuyển tiếp của học viên sẽ là @inbox.mentor.local và không nhận được thư (README: \"Chuyển tiếp email của học viên\")."
-    fi
-    if [ "$(env_get SMTP_HOST)" = smtp.gmail.com ] && ! env_get MAIL_FROM | grep -qiF "$(env_get SMTP_USERNAME)"; then
-        warn "MAIL_FROM không chứa SMTP_USERNAME: Gmail sẽ thay người gửi bằng địa chỉ tài khoản."
-    fi
     chmod 600 "$ENV_FILE" 2>/dev/null || true
 }
 
@@ -126,7 +109,7 @@ prepare_dirs() {
     for d in "${data:-/srv/mentor/data}" "${backup:-/srv/mentor/backups}"; do
         case "$d" in /*) ;; *) die "DATA_DIR/BACKUP_DIR phải là đường dẫn tuyệt đối: $d";; esac
         as_root mkdir -p "$d"
-        as_root chown 4242:4242 "$d"   # the gateway (and sandboxes) run as uid 4242
+        as_root chown 4242:4242 "$d"   # the gateway runs as uid 4242
         as_root chmod 700 "$d"
     done
 }
@@ -134,12 +117,8 @@ prepare_dirs() {
 # ---- build / start ------------------------------------------------------------------------------------------------
 
 build() {
-    local sandbox_image
-    sandbox_image="$(env_get SANDBOX_IMAGE)"
-    info "Build sandbox image ${sandbox_image:=mentor-sandbox:prod}"
-    docker build -f "$ROOT/sandbox-image/Dockerfile" -t "$sandbox_image" "$ROOT"
-    info "Pull caddy, model-router, searxng"
-    "${COMPOSE[@]}" pull caddy model-router searxng
+    info "Pull caddy, model-router"
+    "${COMPOSE[@]}" pull caddy model-router
     info "Build gateway + web (web bakes in $(public_url)/api)"
     "${COMPOSE[@]}" build gateway web
 }
@@ -180,44 +159,19 @@ wait_healthy() {
     done
     local code   # an empty body must get the gateway's 422: proves /api is routed to the gateway
     code="$(curl -s "${curl_opts[@]:1}" -w '%{http_code}' -X POST -H 'Content-Type: application/json' -d '{}' \
-        "$url/api/auth/verify-code" || true)"
-    [ "$code" = 422 ] || warn "$url/api/auth/verify-code trả về HTTP $code (mong đợi 422): /api có tới được gateway không?"
-    email_check "${curl_opts[@]:1}"
+        "$url/api/auth/login" || true)"
+    [ "$code" = 422 ] || warn "$url/api/auth/login trả về HTTP $code (mong đợi 422): /api có tới được gateway không?"
 }
 
-email_check() {  # an unsigned POST must get the gateway's 401: the email webhook is routed and has its secret
-    [ -n "$(env_get EMAIL_WEBHOOK_SECRET)" ] || return 0
-    local code
-    code="$(curl -s "$@" -w '%{http_code}' -X POST --data-binary 'x' "$(public_url)/webhooks/email/inbound" || true)"
-    [ "$code" = 401 ] || warn "$(public_url)/webhooks/email/inbound trả về HTTP $code (mong đợi 401): webhook email chưa sẵn sàng (404 = gateway chưa có EMAIL_WEBHOOK_SECRET)."
-}
-
-zalo_webhook() {
-    if [ -z "$(env_get ZALO_BOT_TOKEN)" ]; then
-        warn "bỏ qua đăng ký webhook Zalo (ZALO_BOT_TOKEN trống)."
-        return 0
-    fi
-    info "Đăng ký webhook Zalo $(public_url)/webhooks/zalo"
-    "${COMPOSE[@]}" exec -T gateway python -m mentor_gateway.cli zalo-set-webhook --url "$(public_url)/webhooks/zalo" \
-        || warn "đăng ký webhook Zalo thất bại; thử lại: bash infra/deploy.sh zalo"
+create_user() {  # USERNAME ROLE: the gateway asks for the password (no sign-up: accounts are made by the operator)
+    [ $# -eq 2 ] || die "dùng: bash infra/deploy.sh user USERNAME student|teacher"
+    "${COMPOSE[@]}" exec gateway python -m mentor_gateway.cli create-user --username "$1" --role "$2"
 }
 
 refresh_content() {  # existing learners get the AGENTS.md/skills/curricula baked into the new gateway image
     info "Cập nhật nội dung nền tảng (AGENTS.md, skills) cho học viên hiện có"
     "${COMPOSE[@]}" exec -T gateway python -m mentor_gateway.cli refresh-content \
         || warn "cập nhật nội dung lỗi ở một số học viên (xem dòng ERROR ở trên); chạy lại: bash infra/deploy.sh content"
-}
-
-email_info() {
-    local curl_opts=(-sS -o /dev/null --max-time 10)
-    case "$(env_get DOMAIN)" in localhost|*.localhost) curl_opts+=(-k);; esac
-    info "Giá trị cho Cloudflare Email Worker (README: \"Chuyển tiếp email của học viên\")"
-    echo "    INBOUND_EMAIL_DOMAIN (bật Email Routing cho tên miền này): $(env_get INBOUND_EMAIL_DOMAIN)"
-    echo "    MENTOR_WEBHOOK_URL   (biến Text của Worker):              $(public_url)/webhooks/email/inbound"
-    echo "    EMAIL_WEBHOOK_SECRET (biến Secret của Worker):            $(env_get EMAIL_WEBHOOK_SECRET)"
-    echo "    (đừng dán secret vào chat/email; xoá màn hình sau khi chép: clear)"
-    [ -n "$(env_get INBOUND_EMAIL_DOMAIN)" ] || warn "INBOUND_EMAIL_DOMAIN trống: điền vào $ENV_FILE rồi chạy bash infra/deploy.sh update."
-    email_check "${curl_opts[@]}" && info "Kiểm tra webhook xong (không có cảnh báo ở trên = OK)."
 }
 
 done_banner() {
@@ -262,19 +216,17 @@ cmd="${1:-deploy}"
 [ $# -gt 0 ] && shift
 case "$cmd" in
     deploy|up)
-        check_docker; ensure_env; prepare_dirs; build; up; wait_healthy; refresh_content; zalo_webhook; done_banner;;
+        check_docker; ensure_env; prepare_dirs; build; up; wait_healthy; refresh_content; done_banner;;
     update)
-        check_docker; update_code; ensure_env; prepare_dirs; build; up; wait_healthy; refresh_content; zalo_webhook; done_banner;;
+        check_docker; update_code; ensure_env; prepare_dirs; build; up; wait_healthy; refresh_content; done_banner;;
     check)
         check_docker; ensure_env; "${COMPOSE[@]}" config --quiet; info "OK: $ENV_FILE đủ biến, compose hợp lệ.";;
     backup) check_docker; backup;;
     logs) "${COMPOSE[@]}" logs -f --tail=200 "$@";;
     status) "${COMPOSE[@]}" ps;;
-    zalo) zalo_webhook;;
+    user) create_user "$@";;
     content) refresh_content;;
-    email) email_info;;
     down)
-        "${COMPOSE[@]}" down   # the gateway stops its sandboxes on shutdown
-        docker network prune -f --filter label=mentor.sandbox=1 >/dev/null || true;;
-    *) sed -n '2,13p' "$0"; exit 1;;
+        "${COMPOSE[@]}" down;;
+    *) sed -n '2,12p' "$0"; exit 1;;
 esac

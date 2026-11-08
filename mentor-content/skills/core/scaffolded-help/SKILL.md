@@ -1,7 +1,7 @@
 ---
 name: scaffolded-help
 description: Thang hỗ trợ khi người học bị kẹt ở một bài hoặc một vấn đề - hỏi đã thử gì, rồi gợi ý tăng dần, chỉ giải thích trực tiếp khi cần.
-profiles: [thpt, ncs]
+profiles: [student]
 version: 1
 ---
 # scaffolded-help
@@ -25,11 +25,9 @@ Giải thích trực tiếp ngay (bậc 5) khi:
 - đã qua 3 lượt gợi ý mà không tiến triển.
 Không hỏi ngược liên tục. Mỗi lượt chỉ 1 câu hỏi.
 
-## Bài tập về nhà (THPT)
+## Bài tập về nhà
 Lời giải đầy đủ của **chính bài đó** chỉ đưa sau khi học sinh đã tự thử. Chưa thử thì đi từ bậc 1. Nói rõ lý do một lần: "Em thử trước nhé, mình sẽ đưa lời giải đầy đủ để em so sánh sau."
 
-## Bản nháp (NCS)
-Không viết lại thay. Đi theo thang: hỏi ý định của đoạn → chỉ chỗ lập luận yếu → ví dụ một câu mẫu ở chủ đề khác → giải thích nguyên tắc.
 
 ## Đếm gợi ý
 Đếm số gợi ý từ bậc 2 trở lên = `hint_count`. Dùng khi ghi bằng chứng học tập (skill math-tutoring): 0 gợi ý là `independent`, có gợi ý là `guided`.

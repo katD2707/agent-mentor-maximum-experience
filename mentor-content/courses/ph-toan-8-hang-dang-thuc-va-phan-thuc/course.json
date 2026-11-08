@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-8-hang-dang-thuc-va-phan-thuc",
+  "title": "Toán 8: Hằng đẳng thức và phân thức",
+  "subject": "Toán",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Đạt",
+  "description_short": "Bảy hằng đẳng thức đáng nhớ được dạy bằng hình diện tích, sau đó dùng để phân tích đa thức và rút gọn phân thức. Dành cho học sinh lớp 8.",
+  "outcomes": [
+    "Khai triển và thu gọn được biểu thức dùng hằng đẳng thức.",
+    "Phân tích được đa thức thành nhân tử.",
+    "Rút gọn và cộng trừ được phân thức đại số."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 85,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hằng đẳng thức",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Bình phương của tổng và hiệu",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hiệu hai bình phương",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Lập phương",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Phân thức",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Phân tích đa thức",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Rút gọn phân thức",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Cộng, trừ phân thức",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

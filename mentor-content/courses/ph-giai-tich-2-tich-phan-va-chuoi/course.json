@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-giai-tich-2-tich-phan-va-chuoi",
+  "title": "Giải tích 2: Tích phân và chuỗi",
+  "subject": "Giải tích",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Hoàng",
+  "description_short": "Tích phân xác định, tích phân suy rộng, chuỗi số và chuỗi lũy thừa, mỗi phần có ví dụ tính tay đầy đủ. Dành cho sinh viên năm nhất.",
+  "outcomes": [
+    "Tính được tích phân bằng đổi biến và từng phần.",
+    "Xét được sự hội tụ của chuỗi.",
+    "Khai triển được hàm thành chuỗi Taylor."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 199,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Tích phân",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Tích phân xác định",
+          "est_minutes": 41
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Kĩ thuật tích phân",
+          "est_minutes": 23
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Tích phân suy rộng",
+          "est_minutes": 25
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Chuỗi",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chuỗi số",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chuỗi lũy thừa",
+          "est_minutes": 42
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Chuỗi Taylor",
+          "est_minutes": 36
+        }
+      ]
+    }
+  ]
+}

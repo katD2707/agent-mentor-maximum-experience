@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-probability-for-data-science",
+  "title": "Probability for Data Science",
+  "subject": "Probability",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Minh Chau Tran",
+  "description_short": "Counting, conditional probability, random variables and the law of large numbers, with simulations for every idea. For students who know basic calculus.",
+  "outcomes": [
+    "Compute probabilities with Bayes' rule.",
+    "Work with common distributions.",
+    "Simulate a probabilistic model in Python."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 195,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Basics",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Counting",
+          "est_minutes": 29
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Conditional probability",
+          "est_minutes": 35
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Bayes' rule",
+          "est_minutes": 37
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Random variables",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Expectation",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Common distributions",
+          "est_minutes": 34
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Law of large numbers",
+          "est_minutes": 28
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 name: nightly-reflection
-description: Job nền mỗi đêm. Viết journal, hợp nhất trí nhớ, ghi tín hiệu cảm xúc (THPT), cập nhật mastery, sửa kế hoạch tuần, hẹn việc cho ngày mai.
-profiles: [thpt, ncs]
+description: Job nền mỗi đêm. Viết journal, hợp nhất trí nhớ, cập nhật mastery, sửa kế hoạch tuần, hẹn việc cho ngày mai.
+profiles: [student]
 version: 1
 ---
 # nightly-reflection
@@ -26,7 +26,7 @@ Job không có người học. Không hỏi, không gọi `notify_user` (đang g
 ## Ghi chú cho mentor
 - [suy luận] Học tốt hơn khi bắt đầu bằng 1 bài dễ. (chat 28/10, độ chắc: vừa)
 ```
-Không chép nguyên văn lời người học. Không ghi chi tiết khủng hoảng hay chuyện riêng của người khác.
+Không chép nguyên văn lời người học. Không ghi chuyện riêng của người khác.
 
 ## Bước 3. Hợp nhất trí nhớ
 Theo định dạng của skill memory-keeper:
@@ -35,26 +35,16 @@ Theo định dạng của skill memory-keeper:
 - `me/now.md`: xóa sự kiện đã qua; chuyển ý còn giá trị vào journal hôm nay.
 - Dòng `[suy luận]` được xác nhận nhiều lần: bỏ nhãn, ghi nguồn mới. Bị phủ định: xóa.
 
-## Bước 4. Tín hiệu cảm xúc (CHỈ THPT)
-Chỉ khi hôm nay có phiên chat. Chọn **một** mức cho cả ngày:
-- `none`: bình thường, vui, hoặc chỉ nói chuyện học.
-- `mild`: mệt, chán, lo lắng thoáng qua về bài vở.
-- `negative`: buồn hoặc lo kéo dài trong phiên; tự chê bản thân nặng nề; nói muốn bỏ cuộc; khổ sở vì gia đình hay bạn bè; có dấu hiệu khủng hoảng.
-
-Gọi `run_script` name `record_wellbeing`, input:
-`{"date": "2026-10-28", "level": "mild", "note_ref": "me/journal/2026-10-28.md"}`
-Chỉ ghi mức độ, không ghi nội dung. Profile NCS: bỏ qua bước này.
-
-## Bước 5. Mastery (CHỈ THPT)
+## Bước 4. Mastery
 Có event mới hôm nay: `run_script` name `bkt_update`, input `{"subject": "math"}`. Sau đó `read_file` `learning/math/review-queue.md` để biết kỹ năng đến hạn ôn ngày mai.
 
-## Bước 6. Deadline và kế hoạch tuần
-- Đọc `goals/goals.md`, `goals/plans/this-week.md`, `goals/plans/term.md`, `me/now.md` (NCS: thêm `research/thesis.md`).
+## Bước 5. Deadline và kế hoạch tuần
+- Đọc `goals/goals.md`, `goals/plans/this-week.md`, `goals/plans/term.md`, `me/now.md`.
 - Đánh dấu `[x]` việc đã xong hôm nay.
 - Bị chậm: **sửa** kế hoạch (dời, chia nhỏ, bớt việc), không lập lại từ đầu. Ghi lý do 1 dòng dưới mục `## Điều chỉnh`.
 - Deadline trong 7 ngày tới mà chưa có trong kế hoạch: thêm vào.
 
-## Bước 7. Việc chủ động cho ngày mai
+## Bước 6. Việc chủ động cho ngày mai
 - Ghi tối đa 3 việc vào mục `## Mentor sẽ làm` của `goals/plans/this-week.md`.
 - Việc cần thức dậy đúng giờ: gọi `schedule_wake`, ví dụ `at` = `2026-10-29T17:00:00+07:00`, `job_kind` = `routine`, `prompt` = "Dùng skill spaced-review: 3 kỹ năng đến hạn ôn."
 - Deadline trong 48 giờ: hẹn `schedule_wake` lúc 07:30 sáng mai, prompt "Nhắc deadline: <việc>, hạn <giờ>. Gửi bằng notify_user."

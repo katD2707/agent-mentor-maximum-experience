@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-7-so-huu-ti-va-tam-giac",
+  "title": "Toán 7: Số hữu tỉ và tam giác",
+  "subject": "Toán",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hà",
+  "description_short": "Khóa học nối số hữu tỉ với trục số và tỉ lệ thức, rồi chuyển sang tam giác bằng nhau với hình vẽ động. Mỗi chương có bài kiểm tra ngắn.",
+  "outcomes": [
+    "Cộng, trừ, nhân, chia được số hữu tỉ.",
+    "Giải được bài toán đại lượng tỉ lệ thuận, tỉ lệ nghịch.",
+    "Chứng minh được hai tam giác bằng nhau theo ba trường hợp."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 79,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Số hữu tỉ",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Số hữu tỉ và trục số",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Phép tính",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Tỉ lệ thức",
+          "est_minutes": 18
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tam giác",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tổng ba góc",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Hai tam giác bằng nhau",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tam giác cân",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

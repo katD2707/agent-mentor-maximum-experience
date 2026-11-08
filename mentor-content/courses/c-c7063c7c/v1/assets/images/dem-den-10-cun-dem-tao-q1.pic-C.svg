@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <clipPath id="bodyClip">
+      <rect x="104" y="148" width="192" height="170" rx="30"/>
+    </clipPath>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- handles -->
+  <path d="M132 148 C132 74 188 74 188 148" fill="none" stroke="#5A4BC0" stroke-width="12" stroke-linecap="round"/>
+  <path d="M212 148 C212 74 268 74 268 148" fill="none" stroke="#5A4BC0" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- bag body -->
+  <rect x="104" y="148" width="192" height="170" rx="30" fill="#E9E5F6"/>
+
+  <!-- coral top hem, clipped to body -->
+  <g clip-path="url(#bodyClip)">
+    <rect x="104" y="148" width="192" height="48" fill="#E8806A"/>
+  </g>
+
+  <!-- mint patch pocket -->
+  <rect x="138" y="226" width="124" height="56" rx="28" fill="#9FD8BF"/>
+
+  <!-- body outline -->
+  <rect x="104" y="148" width="192" height="170" rx="30" fill="none" stroke="#5A4BC0" stroke-width="7"/>
+
+  <!-- yellow rivets where handles meet the bag -->
+  <circle cx="132" cy="148" r="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+  <circle cx="188" cy="148" r="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+  <circle cx="212" cy="148" r="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+  <circle cx="268" cy="148" r="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

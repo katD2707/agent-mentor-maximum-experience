@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-microeconomics-principles",
+  "title": "Microeconomics Principles",
+  "subject": "Economics",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Thao Vu",
+  "description_short": "Supply and demand, consumer choice and market structures, with exercises built on Vietnamese and global markets. For first-year economics and business students.",
+  "outcomes": [
+    "Draw and shift supply and demand curves.",
+    "Explain consumer choice with budget lines.",
+    "Compare market structures."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 207,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Markets",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Demand",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Supply",
+          "est_minutes": 45
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Equilibrium",
+          "est_minutes": 43
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Firms and consumers",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Consumer choice",
+          "est_minutes": 34
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Costs",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Market structures",
+          "est_minutes": 34
+        }
+      ]
+    }
+  ]
+}

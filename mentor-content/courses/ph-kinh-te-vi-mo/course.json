@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "ph-kinh-te-vi-mo",
+  "title": "Kinh tế vĩ mô",
+  "subject": "Kinh tế vĩ mô",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "PGS. TS. Trịnh Hải Yến",
+  "description_short": "GDP, lạm phát, thất nghiệp và chính sách tiền tệ, tài khóa, với số liệu Việt Nam giai đoạn 2010–2024. Dành cho sinh viên năm hai khối kinh tế.",
+  "outcomes": [
+    "Đọc được các chỉ tiêu kinh tế vĩ mô.",
+    "Giải thích được lạm phát và thất nghiệp.",
+    "Phân tích được tác động của chính sách."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 186,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Chỉ tiêu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "GDP",
+          "est_minutes": 44
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Lạm phát",
+          "est_minutes": 42
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Thất nghiệp",
+          "est_minutes": 44
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Chính sách",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chính sách tiền tệ",
+          "est_minutes": 25
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chính sách tài khóa",
+          "est_minutes": 31
+        }
+      ]
+    }
+  ]
+}

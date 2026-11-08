@@ -36,18 +36,19 @@ class ItemScore:
 _LABELLED = re.compile(r"(?iu)\b([abcd])\s*[:)=.\-]\s*(đúng|sai|true|false|đ|s|t|f|1|0)")
 
 
-def parse_truths(raw: str | None) -> list[bool | None] | None:
-    """Four entries (None = blank) from a stored answer, or None when the text does not describe four statements."""
+def parse_truths(raw: str | None, n: int = 4) -> list[bool | None] | None:
+    """`n` entries (None = blank; 4 for the bank, 3-4 for course groups) from a stored answer, or None when the text does
+    not describe `n` statements."""
     text = (raw or "").strip()
     if not text:
         return None
     labelled = _LABELLED.findall(text)
     if labelled:
         by_id = {k.lower(): v.lower() in ("đúng", "true", "đ", "t", "1") for k, v in labelled}
-        return [by_id.get(i) for i in STATEMENT_IDS] if set(by_id) == set(STATEMENT_IDS) else None
+        return [by_id.get(i) for i in STATEMENT_IDS[:n]] if set(by_id) == set(STATEMENT_IDS[:n]) else None
     tokens = text.upper().replace("ĐÚNG", "Đ").replace("SAI", "S").replace("TRUE", "T").replace("FALSE", "F")
     chars = [c for c in tokens if not c.isspace() and c not in ",;|"]
-    if len(chars) != 4:
+    if len(chars) != n:
         return None
     out: list[bool | None] = []
     for c in chars:
@@ -67,11 +68,14 @@ def encode_truths(choices: list[bool | None]) -> str:
 
 
 def score_true_false(answer: str | None, truths: list[bool], max_points: float = 1.0) -> ItemScore:
-    given = parse_truths(answer) or [None] * 4
+    """Four statements: the official shares. Course groups with 1-3 statements: the share of statements right."""
+    n = len(truths)
+    given = parse_truths(answer, n) or [None] * n
     if all(g is None for g in given):
-        return ItemScore(None, 0.0, max_points, [False] * 4)
-    right = [given[i] == truths[i] for i in range(4)]  # a blank statement counts as not right
-    return ItemScore(all(right), round(TRUE_FALSE_SHARE[sum(right)] * max_points, 4), max_points, right)
+        return ItemScore(None, 0.0, max_points, [False] * n)
+    right = [given[i] == truths[i] for i in range(n)]  # a blank statement counts as not right
+    share = TRUE_FALSE_SHARE[sum(right)] if n == 4 else sum(right) / n
+    return ItemScore(all(right), round(share * max_points, 4), max_points, right)
 
 
 # ---- short answers -----------------------------------------------------------------------------
@@ -126,6 +130,47 @@ def short_answer_matches(text: str | None, key: dict[str, Any]) -> bool:
 # ---- items -------------------------------------------------------------------------------------
 
 
+# ---- course quiz items (same semantics as apps/app `lib/quiz.ts`) -----------------------------------
+
+_LOOSE = re.compile(r"^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$")
+
+
+def parse_loose_number(text: str) -> float | None:
+    """`0,5` = `0.5`, spaces ignored, `4.10^5`-style spellings are matched as text only; `4e5` and `4×10^5` are numbers."""
+    t = re.sub(r"\s+", "", str(text).strip().lower()).replace(",", ".")
+    t = t.replace("×10^", "e").replace("·10^", "e").replace("*10^", "e")
+    if not _LOOSE.match(t):
+        return None
+    try:
+        return float(t)
+    except ValueError:
+        return None
+
+
+def _norm(text: str) -> str:
+    return re.sub(r"\s+", " ", str(text).strip().lower())
+
+
+def course_short_answer_matches(text: str | None, accepted: list[str], tolerance: float | None = None) -> bool:
+    """Matches one accepted spelling as text or, when both are numbers, as a number; `tolerance` is relative
+    (0.01 = within 1 %), absolute against an accepted 0."""
+    v = _norm(text or "")
+    if not v:
+        return False
+    vn = parse_loose_number(v)
+    for a in accepted:
+        if _norm(a) == v:
+            return True
+        an = parse_loose_number(a)
+        if vn is None or an is None:
+            continue
+        if vn == an:
+            return True
+        if tolerance and abs(vn - an) <= tolerance * (1.0 if an == 0 else abs(an)):
+            return True
+    return False
+
+
 def score_item(doc: dict[str, Any], answer: str | None, max_points: float = 1.0) -> ItemScore:
     """Score one answer against the question document (the key never leaves the gateway)."""
     blank = answer is None or not str(answer).strip()
@@ -134,7 +179,15 @@ def score_item(doc: dict[str, Any], answer: str | None, max_points: float = 1.0)
         return score_true_false(answer, [bool(s["truth"]) for s in doc["statements"]], max_points)
     if blank:
         return ItemScore(None, 0.0, max_points)
-    if t == "SHORT_ANSWER":
+    if t == "TAP_COUNT":
+        try:
+            ok = int(str(answer).strip()) == int(doc["answer_key"]["count"])
+        except ValueError:
+            ok = False
+    elif t == "SHORT_ANSWER" and "accepted" in doc["short_answer"]:
+        sa = doc["short_answer"]
+        ok = course_short_answer_matches(answer, [str(a) for a in sa["accepted"]], sa.get("tolerance"))
+    elif t == "SHORT_ANSWER":
         ok = short_answer_matches(answer, doc["short_answer"])
     else:
         ok = str(answer).strip().upper() == str(doc["answer_key"]["correct_option_id"]).upper()
@@ -148,7 +201,11 @@ def correct_answer_text(doc: dict[str, Any]) -> str:
         return encode_truths([bool(s["truth"]) for s in doc["statements"]])
     if t == "SHORT_ANSWER":
         sa = doc["short_answer"]
+        if "accepted" in sa:
+            return str(sa["accepted"][0])
         return str(sa["answer"]) + (f" {sa['unit']}" if sa.get("unit") else "")
+    if t == "TAP_COUNT":
+        return str(doc["answer_key"]["count"])
     return str(doc["answer_key"]["correct_option_id"])
 
 

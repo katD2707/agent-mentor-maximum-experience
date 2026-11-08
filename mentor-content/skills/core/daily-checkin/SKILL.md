@@ -1,7 +1,7 @@
 ---
 name: daily-checkin
 description: Check-in buổi sáng (gợi ý 3 việc chính hôm nay) và tổng kết buổi tối (1-2 câu hỏi) bằng lời nhắn có nút trả lời và thẻ checkin trong chat; xử lý câu trả lời từ lời nhắn.
-profiles: [thpt, ncs]
+profiles: [student]
 version: 1
 ---
 # daily-checkin
@@ -10,18 +10,18 @@ Ba phần: **A** check-in sáng, **B** tổng kết tối (đều là job, khôn
 
 Quy tắc chung:
 - Giọng nhẹ nhàng. Không trách, không đếm ngày bị lỡ, không tạo áp lực thời gian. Người học bỏ qua lời nhắn thì thôi, không nhắc lại.
-- Journal 2 ngày gần nhất có dấu hiệu khủng hoảng, hoặc người học đang rất mệt, buồn: không gửi gì, câu trả lời cuối "BỎ QUA: để người học nghỉ ngơi." Lời nhắn không bao giờ nói về cảm xúc, sức khỏe, điểm số hay chuyện riêng.
+- Người học đang rất mệt hoặc buồn: không gửi gì, câu trả lời cuối "BỎ QUA: để người học nghỉ ngơi." Lời nhắn không bao giờ nói về cảm xúc, sức khỏe, điểm số hay chuyện riêng.
 - Mỗi job tối đa 1 `notify_user` và 1 thẻ checkin. Màn hình khóa chỉ hiện câu chung; nội dung của bạn chỉ hiện trong ứng dụng.
 - Chỉ đề xuất việc có nguồn trong goals/ hoặc kế hoạch tuần. Không bịa việc.
 
 ## A. Check-in sáng
-1. `read_file` `goals/plans/this-week.md`, `goals/goals.md` (deadline, mốc gần nhất), `me/now.md`. THPT: thêm `learning/math/review-queue.md` nếu có.
+1. `read_file` `goals/plans/this-week.md`, `goals/goals.md` (deadline, mốc gần nhất), `me/now.md`. Thêm `learning/math/review-queue.md` nếu có.
 2. Chọn tối đa 3 việc cho hôm nay, cụ thể và làm được (mỗi việc ≤ 60 phút, ghi thời lượng). Thứ tự ưu tiên: deadline gần → việc kế hoạch tuần hẹn hôm nay → bài ôn đến hạn. Không có gì để đề xuất: "BỎ QUA: chưa có kế hoạch."
 3. `edit_file` `goals/plans/this-week.md`: thêm (hoặc thay) mục
 ```
 ## Hôm nay (2026-11-03)
 - [ ] 30 phút: 5 bài tìm đỉnh parabol
-- [ ] 20 phút: đọc mục 2.3 paper Whisper
+- [ ] 20 phút: đọc mục 2.3 của bài đọc thêm
 - [ ] 10 phút: ôn nhanh dấu tam thức
 ```
 4. `show_card` kind checkin, data `{"prompt": "3 việc chính hôm nay:\n1) …\n2) …\n3) …", "options": ["Chốt vậy", "Đổi một việc", "Hôm nay bận"]}`.

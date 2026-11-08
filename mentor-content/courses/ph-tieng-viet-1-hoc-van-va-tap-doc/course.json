@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-viet-1-hoc-van-va-tap-doc",
+  "title": "Tiếng Việt 1: Học vần và tập đọc",
+  "subject": "Tiếng Việt",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Ngọc",
+  "description_short": "Học vần theo từng nhóm chữ, mỗi bài có giọng đọc mẫu và vài câu ngắn để em đọc theo. Dành cho học sinh lớp 1 đang tập đọc.",
+  "outcomes": [
+    "Đọc được các vần quen thuộc và ghép thành tiếng.",
+    "Đọc trơn câu ngắn từ 5 đến 8 tiếng.",
+    "Viết đúng các chữ cái và dấu thanh."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 57,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Chữ và âm",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Các chữ a, b, c",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Các dấu thanh",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Vần có hai chữ",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tập đọc",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Đọc từ có hai tiếng",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đọc câu ngắn",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Đọc đoạn nhỏ",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

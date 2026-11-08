@@ -1,8 +1,8 @@
 """`GET /api/engagement` (CONTRACTS section 9): streak and focus/progress numbers, from data that already exists.
 
 Days are local days in Asia/Ho_Chi_Minh; `week` = the last 7 local days including today.
-- Learner-initiated activity on a day: a chat turn (ops DB `chat_sessions`, one row per learner per local day; card
-  clicks are turns too), a web edit (mirror commit by author `user`), or a tap on a notification action.
+- Learner-initiated activity on a day: a workspace commit by author `user` (practice evidence, web edits, uploads) or
+  a tap on a notification action.
 - `streak_days`: consecutive active days ending today, or ending yesterday while today has no activity yet (the
   streak never "breaks" during the day; no penalties, no grace logic beyond that).
 - `focus_minutes`: focus sessions from `focus_end` jobs (start_focus schedules one per session, payload
@@ -12,9 +12,7 @@ Days are local days in Asia/Ho_Chi_Minh; `week` = the last 7 local days includin
 - `today.done` / `week.milestones_done`: checkboxes `[x]` that were not checked at the start of the period:
   today in goals/goals.md + goals/plans/*.md, the week in goals/goals.md (milestones). Compared by item text.
 - `week.mistakes_fixed`: new lines under "## Đã khắc phục" in learning/*/mistakes.md since the week started
-  (NCS without learning/: 0).
-No wellbeing data is read (NCS has none; THPT's .mentor/wellbeing.jsonl is never used here). Cached per learner
-for a minute.
+  Cached per learner for a minute.
 """
 
 import re
@@ -23,7 +21,7 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy import select
 
-from mentor_gateway.db import ChatSession, Database, JobRow, NotificationActionRow, User
+from mentor_gateway.db import Database, JobRow, NotificationActionRow, User
 from mentor_gateway.mirror import Mirror
 from mentor_gateway.settings import Clock
 
@@ -95,15 +93,6 @@ class EngagementService:
         since = datetime.combine(today - timedelta(days=STREAK_LOOKBACK_DAYS), time.min, TZ)
         days: set[date] = set()
         with self.db.session() as s:
-            for sid, last in s.execute(select(ChatSession.id, ChatSession.last_active_at).where(
-                    ChatSession.user_id == user_id)):
-                if sid.startswith("c-"):  # a named conversation: the day of its last message
-                    days.add(last.astimezone(TZ).date())
-                    continue
-                try:
-                    days.add(datetime.strptime(sid, "s-%Y%m%d").date())
-                except ValueError:
-                    continue
             for ts in s.scalars(select(NotificationActionRow.created_at).where(
                     NotificationActionRow.user_id == user_id, NotificationActionRow.created_at >= since)):
                 days.add(ts.astimezone(TZ).date())

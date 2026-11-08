@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-5-so-thap-phan",
+  "title": "Toán 5: Số thập phân",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hạnh",
+  "description_short": "Từ số đo độ dài và tiền quen thuộc, khóa học dẫn em đến cách đọc, so sánh và tính với số thập phân. Có phần ôn lại phân số trước khi bắt đầu.",
+  "outcomes": [
+    "Đọc, viết và so sánh được số thập phân.",
+    "Cộng, trừ, nhân, chia được số thập phân đơn giản.",
+    "Đổi được đơn vị đo có dùng số thập phân."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 8,
+  "est_minutes": 73,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Khái niệm số thập phân",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Từ phân số đến số thập phân",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hàng của số thập phân",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "So sánh",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Bốn phép tính",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Cộng và trừ",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Nhân với số tự nhiên",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Chia cho số tự nhiên",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Ứng dụng",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Đổi đơn vị đo",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Bài toán về tiền",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

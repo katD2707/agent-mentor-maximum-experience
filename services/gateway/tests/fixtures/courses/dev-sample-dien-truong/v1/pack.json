@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "course_id": "dev-sample-dien-truong",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "g10_12",
+  "title": "Vật lí 11: Điện trường (bản mẫu dev)",
+  "chapters": [
+    {
+      "id": "ch-dien-truong",
+      "title": "Điện trường",
+      "lessons": [
+        {
+          "id": "bai-3-duong-suc-dien",
+          "title": "Đường sức điện",
+          "est_minutes": 12,
+          "summary": "Đường sức cho ta thấy điện trường hướng về đâu và mạnh hay yếu.",
+          "key_ideas": [
+            "Đường sức đi ra từ điện tích dương, đi vào điện tích âm",
+            "Đường sức dày thì điện trường mạnh",
+            "Các đường sức không cắt nhau"
+          ],
+          "blocks": [
+            {
+              "id": "b1-video",
+              "kind": "video",
+              "video": {
+                "path": "l1/duong-suc-dien.mp4",
+                "mime": "video/mp4",
+                "sha256": "fce9b9434ab02ae1dbc8b13a2ec2215dc876927fc00ff90b282d4f17d2f13778",
+                "bytes": 2138469
+              },
+              "poster": {
+                "path": "l1/poster.jpg",
+                "mime": "image/jpeg",
+                "sha256": "ed54fa8455bf6c400c1b99167380e462f670fd6a5a254fd1859f057e4f3aee2b",
+                "bytes": 18624
+              },
+              "captions": {
+                "path": "l1/duong-suc-dien.vi.vtt",
+                "mime": "text/vtt",
+                "sha256": "e9e94ca537e4a93316945597fdc83a1995a327a7824aadc09361c919dba5cba3",
+                "bytes": 237
+              },
+              "duration_s": 36.0,
+              "title": "Đường sức đi ra từ điện tích dương, đi vào điện tích âm"
+            },
+            {
+              "id": "b2-doc",
+              "kind": "text",
+              "md": "Đường sức điện là đường vẽ trong điện trường sao cho tiếp tuyến tại mỗi điểm trùng với hướng của vectơ cường độ điện trường tại điểm đó. Nhìn đường sức, em biết ngay điện trường hướng về đâu và mạnh hay yếu.",
+              "audio": null
+            },
+            {
+              "id": "b3-nho",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Bốn điều cần nhớ",
+              "md": "- Qua mỗi điểm chỉ vẽ được một đường sức, nên các đường sức không cắt nhau.\n- Đường sức đi ra từ điện tích dương và đi vào điện tích âm (hoặc ra xa vô cực).\n- Chỗ điện trường mạnh, đường sức dày. Chỗ yếu, đường sức thưa.\n- Đường sức của điện trường tĩnh không khép kín.",
+              "audio": null
+            },
+            {
+              "id": "b4-hinh",
+              "kind": "image",
+              "image": {
+                "path": "l1/duong-suc-2-dien-tich.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e4f326621c33e7a4b919e8a3bffe4f0ef3f619ba8012a0b277d51f1d2a6049ee",
+                "bytes": 130978
+              },
+              "alt": "Đường sức điện của hai điện tích điểm cùng dấu",
+              "caption": "Đường sức của hai điện tích dương: đẩy nhau, không cắt nhau.",
+              "audio": null
+            },
+            {
+              "id": "b5-nghe",
+              "kind": "audio",
+              "audio": {
+                "path": "l1/doc-to-dinh-nghia.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e75b83d4008f05ed812be47db02ee502b5788ac8c3581a6592a1315ac935d952",
+                "bytes": 49536
+              },
+              "transcript": "Đường sức điện là đường vẽ trong điện trường sao cho tiếp tuyến tại mỗi điểm trùng với hướng của vectơ cường độ điện trường."
+            },
+            {
+              "id": "b6-vi-sao",
+              "kind": "text",
+              "md": "**Vì sao càng xa càng thưa?**\n\n$$E = k\\,\\frac{|q|}{\\varepsilon\\, r^2}$$\n\nVới $k = 9\\cdot 10^9\\ \\text{N}\\cdot\\text{m}^2/\\text{C}^2$. Trong không khí lấy $\\varepsilon \\approx 1$. $E$ tỉ lệ nghịch với $r^2$: đi xa gấp đôi thì $E$ còn một phần tư, nên đường sức phải thưa ra.",
+              "audio": null
+            },
+            {
+              "id": "b7-vi-du",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ",
+              "md": "Điện tích $q = 4\\cdot 10^{-8}$ C đặt trong không khí. Tính $E$ tại điểm cách $q$ 3 cm và 6 cm.\n\nỞ 3 cm: $E_1 = 9\\cdot 10^9 \\cdot \\dfrac{4\\cdot 10^{-8}}{(0{,}03)^2} = 4\\cdot 10^5$ V/m.\n\nỞ 6 cm, $r$ gấp đôi nên $E$ giảm 4 lần: $E_2 = 10^5$ V/m.",
+              "audio": null
+            },
+            {
+              "id": "b8-dan",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Thầy Minh dặn",
+              "md": "Gặp bài hỏi chỗ nào điện trường mạnh hơn, nhìn độ dày đường sức trước rồi hãy tính.",
+              "audio": null
+            },
+            {
+              "id": "b9-kiem-tra",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "q-chieu-duong-suc",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đường sức của một điện tích điểm dương có chiều nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đi vào điện tích",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đi ra xa điện tích",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Khép kín quanh điện tích",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Song song với điện tích",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Nhớ lại quy ước: ra từ dương.",
+                  "explanation": "Đường sức đi ra từ điện tích dương và đi vào điện tích âm.",
+                  "option_feedback": {
+                    "A": "Đó là điện tích âm.",
+                    "C": "Đường sức điện tĩnh không khép kín."
+                  },
+                  "skill_ids": [
+                    "vatli.dien-truong.duong-suc"
+                  ],
+                  "difficulty": 1
+                },
+                {
+                  "id": "q-nhan-dinh",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu về đường sức điện.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Hai đường sức có thể cắt nhau tại một điểm."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Chỗ đường sức dày thì điện trường mạnh hơn."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Đường sức của điện trường tĩnh là đường khép kín."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Tiếp tuyến tại mỗi điểm trùng hướng vectơ cường độ điện trường."
+                    }
+                  ],
+                  "tap": null,
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Qua mỗi điểm chỉ có một đường sức; đường sức dày là điện trường mạnh; điện trường tĩnh không khép kín.",
+                  "option_feedback": {},
+                  "skill_ids": [
+                    "vatli.dien-truong.duong-suc"
+                  ],
+                  "difficulty": 2
+                },
+                {
+                  "id": "q-tinh-e",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Điện tích $q = 4\\cdot 10^{-8}$ C trong không khí. Cường độ điện trường tại điểm cách $q$ 3 cm là bao nhiêu V/m? (viết dạng 4e5)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "4e5",
+                      "400000",
+                      "4.10^5",
+                      "4x10^5"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "E = k|q|/r², đổi r sang mét.",
+                  "explanation": "E = 9·10⁹ · 4·10⁻⁸ / (0,03)² = 4·10⁵ V/m. Nhầm thường gặp: quên đổi cm sang m.",
+                  "option_feedback": {},
+                  "skill_ids": [
+                    "vatli.dien-truong.cuong-do"
+                  ],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bai-4-dien-truong-deu",
+          "title": "Điện trường đều",
+          "est_minutes": 8,
+          "summary": "Điện trường đều có đường sức song song và cách đều nhau.",
+          "key_ideas": [
+            "Đường sức song song, cách đều",
+            "Cường độ E như nhau tại mọi điểm"
+          ],
+          "blocks": [
+            {
+              "id": "c1-doc",
+              "kind": "text",
+              "md": "Điện trường đều là điện trường mà vectơ cường độ điện trường tại mọi điểm đều có cùng phương, chiều và độ lớn. Đường sức của nó là những đường thẳng song song, cách đều nhau.",
+              "audio": null
+            },
+            {
+              "id": "c2-dn",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Điện trường đều",
+              "md": "$\\vec E$ không đổi tại mọi điểm. Ví dụ: khoảng giữa hai bản kim loại phẳng song song tích điện trái dấu.",
+              "audio": null
+            },
+            {
+              "id": "c3-kt",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "q-deu",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đường sức của điện trường đều có dạng nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đường tròn đồng tâm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đường thẳng song song, cách đều",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Đường cong khép kín",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "E giống nhau tại mọi điểm nên đường sức song song và cách đều.",
+                  "option_feedback": {},
+                  "skill_ids": [
+                    "vatli.dien-truong.dien-truong-deu"
+                  ],
+                  "difficulty": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

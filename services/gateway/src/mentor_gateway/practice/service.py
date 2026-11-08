@@ -22,13 +22,15 @@ from zoneinfo import ZoneInfo
 
 from sqlalchemy import delete, func, select
 
-from mentor_gateway.db import Database
+from mentor_gateway.content.store import ComingSoon, ContentError
+from mentor_gateway.db import Database, User
 from mentor_gateway.mirror import Mirror
 from mentor_gateway.practice import assembler as asm
 from mentor_gateway.practice import evidence, recommender, scoring
 from mentor_gateway.practice import mastery as bkt
-from mentor_gateway.practice.grade import parse_grade
 from mentor_gateway.practice.bank import SINGLE, TRUE_FALSE, Bank, Profile
+from mentor_gateway.practice.grade import grade_for
+from mentor_gateway.practice.mixed import MixedSessions
 from mentor_gateway.practice.tables import ItemReport, MasterySnapshot, PracticeAnswer, PracticeSession
 from mentor_gateway.settings import Clock
 
@@ -42,6 +44,8 @@ REPORTS_PER_DAY = 10
 REPORT_REASONS = ("wrong_key", "wrong_solution", "unclear", "typo", "other")
 _NO_GRADE_CONTENT = ("Chưa có câu hỏi phù hợp với chương trình lớp {grade} của em; mentor sẽ bổ sung dần. "
                      "Em có thể thử cả chủ đề lớp trên.")
+PICTURE, TAP = "PICTURE_CHOICE", "TAP_COUNT"
+CHOICE = (SINGLE, PICTURE)
 DONE = ("finished", "expired")
 TREND_POINTS = 12
 
@@ -66,9 +70,11 @@ class Plan:
     params: dict[str, Any]
 
 
-class PracticeService:
+class PracticeService(MixedSessions):
     def __init__(self, db: Database, mirror: Mirror, bank: Bank, clock: Clock) -> None:
         self.db, self.mirror, self.bank, self.clock = db, mirror, bank, clock
+        self.content = None  # ContentService, set by app.py (course quiz items)
+        self.planner = None  # PlannerService, set by app.py (the redo line)
         self._profile_ok: dict[str, bool] = {}
 
     # ---- state read from the workspace ---------------------------------------------------------------
@@ -89,8 +95,10 @@ class PracticeService:
     # ---- grade filter ----------------------------------------------------------------------------------
 
     def learner_grade(self, user_id: str) -> int | None:
-        """Grade 10-12 parsed from `me/profile.md`; None = unknown, nothing is filtered."""
-        return parse_grade(self.mirror.read_text(user_id, "me/profile.md"))
+        """Grade ceiling from the learner's age band (g10_12: parsed from `me/profile.md`); None = nothing is filtered."""
+        with self.db.session() as s:
+            user = s.get(User, user_id)
+        return grade_for(user.age_band if user else None, self.mirror.read_text(user_id, "me/profile.md"))
 
     def _above_topics(self, subject: str, grade: int | None) -> set[str]:
         """Bank topics of the subject whose grade (minimum grade of their skills) is above the learner's."""
@@ -232,8 +240,33 @@ class PracticeService:
     # ---- starting ----------------------------------------------------------------------------------------
 
     def start(self, user_id: str, body: dict[str, Any]) -> dict:
-        kind, subject = body["kind"], body["subject"]
-        self._check_subject(subject)
+        kind, subject, course_id = body.get("kind"), body.get("subject"), None
+        source = body.get("source")
+        if source:  # quick | course:<id> | mock:<profile>
+            if source == "quick":
+                kind, subject = "practice", "quick"
+            elif source.startswith("course:") and len(source) > 7:
+                kind, course_id = "practice", source[7:]
+                if self.content is not None:
+                    try:
+                        self.content.ensure_available(course_id)
+                    except ComingSoon:
+                        raise PracticeError(409, "coming_soon", "Khóa học này sắp có.") from None
+                    except ContentError:
+                        pass  # unknown course: the usual empty-source handling below
+                subject = f"c:{course_id}"[:32]
+            elif source.startswith("mock:") and len(source) > 5:
+                profile = self.bank.profiles.get(source[5:])
+                if profile is None:
+                    raise PracticeError(404, "unknown_profile", "Không tìm thấy đề thi thử này.")
+                kind, subject, body = "mock", profile.subject, {**body, "profile_id": profile.id}
+            else:
+                raise PracticeError(422, "bad_source", "source phải là quick, course:<id> hoặc mock:<đề>.")
+        elif not kind or not subject:
+            raise PracticeError(422, "bad_request", "Cần kind và subject, hoặc source.")
+        mixed = kind == "practice" and bool(source)
+        if not mixed:
+            self._check_subject(subject)
         self._finish_due(user_id)
         with self.db.session() as s:
             active = self._active_rows(s, user_id, subject)
@@ -247,7 +280,10 @@ class PracticeService:
         now = self.clock()
         deadline = None
         profile: Profile | None = None
-        if kind == "practice":
+        if mixed:
+            user = self._user(user_id)
+            plan = self._plan_mixed(user_id, source, seed, user.age_band if user else None, course_id)
+        elif kind == "practice":
             plan = self._plan_practice(user_id, subject, int(body.get("minutes") or 20), body.get("goal") or "balanced",
                                        body.get("topics"), seed, bool(body.get("include_above_grade")))
         elif kind == "mock":
@@ -300,8 +336,10 @@ class PracticeService:
 
     def _record(self, position: int, sel: asm.Selected) -> dict:
         it = sel.item
+        course = it.doc.get("course")
         return {"position": position, "doc": it.doc, "topic": it.topic, "level": it.level, "part": sel.part,
-                "points_each": sel.points_each, "seconds": it.seconds, "skill_ids": list(it.skill_ids)}
+                "points_each": sel.points_each, "seconds": it.seconds, "skill_ids": list(it.skill_ids),
+                "subject": it.subject, "topic_title": course["lesson_title"] if course else None}
 
     def skip_diagnostic(self, user_id: str, subject: str) -> None:
         self._check_subject(subject)
@@ -316,24 +354,36 @@ class PracticeService:
         doc = rec["doc"]
         out: dict[str, Any] = {
             "position": rec["position"], "id": doc["id"], "type": doc["type"], "stem": doc["stem"],
-            "assets": doc.get("assets") or [], "topic": rec["topic"], "topic_title": self.bank.topics.get(rec["topic"]).title,
+            "assets": doc.get("assets") or [], "topic": rec["topic"], "topic_title": self._topic_title(rec),
             "level": rec["level"], "estimated_seconds": rec["seconds"],
         }
-        if doc["type"] == SINGLE:
-            out["options"] = [{"id": o["id"], "text": o["text"]} for o in doc["options"]]
+        course = doc.get("course")
+        if course:  # a course quiz item: where it came from, and its media (URLs are the courses API's)
+            out["source"] = {k: course[k] for k in ("course_id", "version", "course_title", "lesson_id", "lesson_title", "item_id")}
+            for k in ("stem_audio", "stem_image"):
+                if doc.get(k):
+                    out[k] = doc[k]
+        if doc["type"] in CHOICE:
+            out["options"] = [{k: v for k, v in o.items() if k == "id" or v} | {"text": o.get("text") or ""}
+                              for o in doc["options"]]
         elif doc["type"] == TRUE_FALSE:
             out["statements"] = [{"id": st["id"], "text": st["text"]} for st in doc["statements"]]
+        elif doc["type"] == TAP:
+            out["tap"] = doc["tap"]
         else:
             sa = doc["short_answer"]
-            out["short_answer"] = {"max_chars": int(sa.get("max_chars") or 6), "unit": sa.get("unit"),
-                                   "decimals": sa.get("decimals")}
+            out["short_answer"] = {"max_chars": int(sa.get("max_chars") or (24 if "accepted" in sa else 6)),
+                                   "unit": sa.get("unit"), "decimals": sa.get("decimals")}
         return out
+
+    def _topic_title(self, rec: dict) -> str:
+        return rec.get("topic_title") or self.bank.topics.get(rec["topic"]).title
 
     def _result(self, rec: dict, row: PracticeAnswer) -> dict:
         doc = rec["doc"]
         res: dict[str, Any] = {"correct": row.correct, "points": row.points, "max_points": rec["points_each"],
                                "correct_answer": scoring.correct_answer_text(doc)}
-        if doc["type"] == SINGLE and row.answer and row.correct is False:
+        if doc["type"] in CHOICE and row.answer and row.correct is False:
             fb = (doc.get("option_feedback") or {}).get(row.answer.strip().upper())
             if fb:
                 res["option_feedback"] = fb
@@ -456,7 +506,8 @@ class PracticeService:
             row.answer = (answer or "").strip() or None
             row.checked, row.correct, row.points, row.answered_at = True, sc.correct, sc.points, self.clock()
             if rec["doc"]["type"] == TRUE_FALSE:
-                given = scoring.parse_truths(answer) or [None] * 4
+                n_st = len(rec["doc"]["statements"])
+                given = scoring.parse_truths(answer, n_st) or [None] * n_st
                 row.statement_results = [
                     {"id": st["id"], "given": given[i], "truth": bool(st["truth"]), "correct": given[i] == st["truth"],
                      **({"explanation": st["explanation"]} if st.get("explanation") else {})}
@@ -561,33 +612,86 @@ class PracticeService:
                 sess.status, sess.finished_at, sess.evidence_done = "abandoned", now, True
                 sess.report = self._report(sess, [], {}, {}, scored, now, rows)
                 return sess.report
-            line = self._log_line(sess, scored, rows, now)
-            events = evidence.make_events(sess.id, sess.subject, ev_rows, now)
-            try:
-                before_states, after_states = evidence.commit_session_evidence(
-                    self.mirror, user_id, sess.subject, sess.id, events, now.astimezone(VN).date(), line,
-                    self.bank.curriculum_path(sess.subject))
-            except Exception as exc:
-                log.exception("practice evidence of %s failed", sid)
-                raise PracticeError(503, "evidence_failed", "Chưa lưu được kết quả, hãy thử lại sau ít giây.") from exc
-            before = bkt.topic_mastery(self.bank, sess.subject, before_states)
-            after = bkt.topic_mastery(self.bank, sess.subject, after_states)
-            touched = {sid_ for r in ev_rows for sid_ in r["skill_ids"]}
-            for skill in sorted(touched):
-                st = after_states.get(skill)
-                if st is not None:
-                    s.add(MasterySnapshot(user_id=user_id, subject=sess.subject, skill_id=skill, mastery=st.mastery,
-                                          at=now, session_id=sess.id))
+            if sess.params.get("mixed"):  # items from several subjects/courses: evidence per item subject
+                before, after = self._commit_mixed(s, user_id, sess, ev_rows, now)
+            else:
+                line = self._log_line(sess, scored, rows, now)
+                events = evidence.make_events(sess.id, sess.subject, ev_rows, now)
+                try:
+                    before_states, after_states = evidence.commit_session_evidence(
+                        self.mirror, user_id, sess.subject, sess.id, events, now.astimezone(VN).date(), line,
+                        self.bank.curriculum_path(sess.subject))
+                except Exception as exc:
+                    log.exception("practice evidence of %s failed", sid)
+                    raise PracticeError(503, "evidence_failed", "Chưa lưu được kết quả, hãy thử lại sau ít giây.") from exc
+                before = bkt.topic_mastery(self.bank, sess.subject, before_states)
+                after = bkt.topic_mastery(self.bank, sess.subject, after_states)
+                touched = {sid_ for r in ev_rows for sid_ in r["skill_ids"]}
+                for skill in sorted(touched):
+                    st = after_states.get(skill)
+                    if st is not None:
+                        s.add(MasterySnapshot(user_id=user_id, subject=sess.subject, skill_id=skill, mastery=st.mastery,
+                                              at=now, session_id=sess.id))
             sess.status = "expired" if expired else "finished"
             sess.finished_at, sess.evidence_done = now, True
             sess.correct, sess.total = scored["correct"], scored["total"]
             sess.score_10, sess.minutes = scored["score_10"], scored["minutes"]
             report = self._report(sess, ev_rows, before, after, scored, now, rows)
             sess.report = report
-        report["recommendations"] = self._recs_for_report(user_id, sess.subject)
+            is_practice = sess.kind == "practice"
+            takeaway = self.takeaway([(bool(r["correct"]), self._topic_title(sess.items[r["position"]])) for r in ev_rows])
+            wrong = sum(1 for r in ev_rows if not r["correct"])
+            mixed = bool(sess.params.get("mixed"))
+        report["recommendations"] = [] if mixed else self._recs_for_report(user_id, sess.subject)
+        if is_practice:  # one line about the session, and when the planner will bring the wrong ones back
+            report["takeaway"] = takeaway
+            report["redo"] = self.redo_line(user_id, wrong)
         with self.db.session() as s:
             s.get(PracticeSession, sid).report = report
         return report
+
+    def _commit_mixed(self, s, user_id: str, sess: PracticeSession, ev_rows: list[dict], now: datetime):
+        """Evidence of a session whose items belong to several subjects: one mirror commit per subject (event ids are
+        deterministic, so a retry after a partial failure never duplicates). Returns topic masteries (before, after) for
+        the report: per session topic (a lesson or a bank topic), the evidence-weighted mean of its skills."""
+        by_subject: dict[str, list[dict]] = {}
+        for r in ev_rows:
+            by_subject.setdefault(sess.items[r["position"]].get("subject") or sess.subject, []).append(r)
+        before_s: dict[str, dict] = {}
+        after_s: dict[str, dict] = {}
+        for subject, rows in sorted(by_subject.items()):
+            right = sum(1 for r in rows if r["correct"])
+            titles = list(dict.fromkeys(self._topic_title(sess.items[r["position"]]) for r in rows))
+            local = now.astimezone(VN)
+            line = (f"- {local:%Y-%m-%d %H:%M} · luyện tập từ khóa học · {right}/{len(rows)} đúng · "
+                    f"{sum(r['hints'] for r in rows)} gợi ý · chủ đề: {', '.join(titles[:4]) or '—'} · session {sess.id}")
+            events = evidence.make_events(sess.id, subject, rows, now)
+            try:
+                before_s[subject], after_s[subject] = evidence.commit_session_evidence(
+                    self.mirror, user_id, subject, sess.id, events, local.date(), line, self.bank.curriculum_path(subject))
+            except Exception as exc:
+                log.exception("practice evidence of %s (%s) failed", sess.id, subject)
+                raise PracticeError(503, "evidence_failed", "Chưa lưu được kết quả, hãy thử lại sau ít giây.") from exc
+            for skill in sorted({sid_ for r in rows for sid_ in r["skill_ids"]}):
+                st = after_s[subject].get(skill)
+                if st is not None:
+                    s.add(MasterySnapshot(user_id=user_id, subject=subject, skill_id=skill, mastery=st.mastery, at=now,
+                                          session_id=sess.id))
+        skills_of: dict[str, tuple[str, set[str]]] = {}
+        for rec in sess.items:
+            subject, skills = skills_of.setdefault(rec["topic"], (rec.get("subject") or sess.subject, set()))
+            skills.update(rec["skill_ids"])
+
+        def topic_m(states_by_subject: dict[str, dict]) -> dict[str, bkt.TopicMastery]:
+            out = {}
+            for topic, (subject, skills) in skills_of.items():
+                rows = [states_by_subject.get(subject, {}).get(k) for k in skills]
+                rows = [x for x in rows if x is not None and x.mastery_attempts > 0]
+                n = sum(x.mastery_attempts for x in rows)
+                out[topic] = bkt.TopicMastery(topic, sum(x.mastery * x.mastery_attempts for x in rows) / n if n else None, n)
+            return out
+
+        return topic_m(before_s), topic_m(after_s)
 
     def _score_all(self, s, sess: PracticeSession, rows: dict[int, PracticeAnswer]) -> dict:
         """Score drafts (mock/diagnostic; practice rows are already scored) and summarise the session."""
@@ -606,7 +710,8 @@ class PracticeService:
                 row.answer, row.correct, row.points = row.draft, sc.correct, sc.points
                 if rec["doc"]["type"] == TRUE_FALSE:
                     row.statement_results = [
-                        {"id": st["id"], "given": (scoring.parse_truths(row.draft) or [None] * 4)[i], "truth": bool(st["truth"]),
+                        {"id": st["id"], "given": (scoring.parse_truths(row.draft, len(rec["doc"]["statements"]))
+                                                   or [None] * len(rec["doc"]["statements"]))[i], "truth": bool(st["truth"]),
                          "correct": sc.statement_correct[i] if sc.statement_correct else False}
                         for i, st in enumerate(rec["doc"]["statements"])]
                 row.answered_at = row.answered_at or (now if sc.correct is not None else None)
@@ -635,7 +740,7 @@ class PracticeService:
         for rec in sess.items:
             row = rows.get(rec["position"])
             if sess.kind == "mock" or (row is not None and row.correct is not None):
-                short = self.bank.topics.get(rec["topic"]).short
+                short = rec.get("topic_title") or self.bank.topics.get(rec["topic"]).short
                 if short not in topics:
                     topics.append(short)
         head = f"- {local:%Y-%m-%d %H:%M} · "
@@ -657,7 +762,7 @@ class PracticeService:
             e = rows.get(rec["position"])
             if e is None and sess.kind != "mock":
                 continue
-            d = per.setdefault(t, {"topic": t, "title": self.bank.topics.get(t).title, "right": 0, "total": 0})
+            d = per.setdefault(t, {"topic": t, "title": self._topic_title(rec), "right": 0, "total": 0})
             d["total"] += 1
             d["right"] += 1 if e and e["correct"] else 0
         for t, d in per.items():

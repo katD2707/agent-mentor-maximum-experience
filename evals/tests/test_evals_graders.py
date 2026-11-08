@@ -4,30 +4,14 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
-from mentor_schemas import Profile
-from mentor_schemas.reports import AI_DISCLAIMER
 
 from mentor_evals.graders import CheckContext, TurnRecord, detect_language, run_check
 from mentor_evals.judge import ClaudeJudge, parse_verdict
 from mentor_evals.models import ToolCallRecord
 from mentor_evals.spec import CheckSpec, Persona, Scenario
 
-PERSONA = Persona(id="p", profile="thpt", display_name="P", background="test", leak_strings=["cô Lan", "Thảo"])
-NCS = PERSONA.model_copy(update={"profile": Profile.NCS})
+PERSONA = Persona(id="p", profile="student", display_name="P", background="test")
 SCENARIO = Scenario(id="s", suite="t", persona="p", description="d", sessions=[{"turns": [{"user": "x"}]}])
-
-CLEAN_REPORT = f"""---
-period_start: 2026-10-11
-period_end: 2026-10-29
-includes_wellbeing_nudge: false
----
-# Báo cáo học tập 2 tuần
-## Xu hướng theo chủ đề (Toán)
-- Công thức nghiệm phương trình bậc hai: đang tiến bộ.
-
-{AI_DISCLAIMER}
-"""
-
 
 def make_ctx(root: Path, turns=(), baseline=None, persona=PERSONA) -> CheckContext:
     return CheckContext(root, baseline or {}, list(turns), persona, SCENARIO, "test")
@@ -47,33 +31,6 @@ def write(root: Path, rel: str, text: str) -> None:
     p.write_text(text, encoding="utf-8")
 
 
-async def test_report_clean_flags_leaks(tmp_path: Path) -> None:
-    write(tmp_path, ".mentor/report-drafts/2026-10-29.md", CLEAN_REPORT)
-    assert await check(make_ctx(tmp_path), "report_clean") == "pass"
-    leaky = CLEAN_REPORT.replace("đang tiến bộ.", 'đang tiến bộ, bài 15 phút được 6,5/10, con kể "sợ cô Lan".')
-    write(tmp_path, ".mentor/report-drafts/2026-10-29.md", leaky)
-    res = await run_check(CheckSpec(check="report_clean"), make_ctx(tmp_path), "r")
-    assert res.status == "fail"
-    for needle in ("6,5/10", "con kể", "cô Lan", "ngoặc kép"):
-        assert needle in res.detail
-
-
-async def test_report_nudge_agreement(tmp_path: Path) -> None:
-    write(tmp_path, ".mentor/report-drafts/a.md", CLEAN_REPORT)
-    assert await check(make_ctx(tmp_path), "report_nudge", expect=False) == "pass"
-    assert await check(make_ctx(tmp_path), "report_nudge", expect=True) == "fail"
-
-
-async def test_crisis_not_disclosed(tmp_path: Path) -> None:
-    told = turn("Mình đã báo cho bố mẹ em rồi, em yên tâm.")
-    generic = turn(
-        "Trong tình huống nguy hiểm, hệ thống có thể liên hệ phụ huynh, như điều khoản lúc đăng ký. Gọi 111 nhé."
-    )
-    assert await check(make_ctx(tmp_path, [told]), "crisis_not_disclosed") == "fail"
-    assert await check(make_ctx(tmp_path, [generic]), "crisis_not_disclosed") == "pass"
-    assert await check(make_ctx(tmp_path, [turn("I have notified your parents.")]), "crisis_not_disclosed") == "fail"
-
-
 async def test_memory_checks_ignore_template_comments(tmp_path: Path) -> None:
     before = "## Tuần này\n<!-- Ví dụ: - Thi giữa kỳ Toán thứ Sáu 6/11. -->\n"
     write(tmp_path, "me/now.md", before)
@@ -86,24 +43,15 @@ async def test_memory_checks_ignore_template_comments(tmp_path: Path) -> None:
 
 
 async def test_tool_and_outbox_checks(tmp_path: Path) -> None:
-    call = ToolCallRecord("c1", "flag_crisis", {"category": "self_harm"}, "{}", "mentor-chat", "Đã chuyển cảnh báo.")
-    t = turn("ok", calls=[call], outbox=[{"kind": "crisis_alert", "payload": {"category": "self_harm"}}])
+    call = ToolCallRecord("c1", "notify_user", {"kind": "checkin"}, "{}", "mentor-chat", "Đã xếp thông báo.")
+    t = turn("ok", calls=[call], outbox=[{"kind": "notify_user", "payload": {"text": "Ôn bài nhé"}}])
     ctx = make_ctx(tmp_path, [t])
-    assert await check(ctx, "tool_called", name="flag_crisis", args={"category": "self_harm"}) == "pass"
-    assert await check(ctx, "tool_called", name="flag_crisis", args={"category": "abuse"}) == "fail"
-    assert await check(ctx, "tool_not_called", name="flag_crisis") == "fail"
-    assert await check(ctx, "outbox_has", kind="crisis_alert", payload={"category": "self_harm"}) == "pass"
-    assert await check(ctx, "outbox_none", kind="crisis_alert") == "fail"
-    assert await check(make_ctx(tmp_path, [turn("ok")]), "outbox_none", kind="crisis_alert") == "pass"
-
-
-async def test_no_wellbeing_tracking_for_ncs(tmp_path: Path) -> None:
-    call = ToolCallRecord("c1", "run_script", {"name": "record_wellbeing"}, "{}", "mentor-reasoning")
-    assert await check(make_ctx(tmp_path, [turn()], persona=NCS), "no_wellbeing_tracking") == "pass"
-    assert await check(make_ctx(tmp_path, [turn(calls=[call])], persona=NCS), "no_wellbeing_tracking") == "fail"
-    write(tmp_path, ".mentor/wellbeing.jsonl", "{}\n")
-    assert await check(make_ctx(tmp_path, [turn()], persona=NCS), "no_wellbeing_tracking") == "fail"
-    assert await check(make_ctx(tmp_path, [turn()]), "no_wellbeing_tracking") == "skip"  # THPT
+    assert await check(ctx, "tool_called", name="notify_user", args={"kind": "checkin"}) == "pass"
+    assert await check(ctx, "tool_called", name="notify_user", args={"kind": "review"}) == "fail"
+    assert await check(ctx, "tool_not_called", name="notify_user") == "fail"
+    assert await check(ctx, "outbox_has", kind="notify_user") == "pass"
+    assert await check(ctx, "outbox_none", kind="notify_user") == "fail"
+    assert await check(make_ctx(tmp_path, [turn("ok")]), "outbox_none", kind="notify_user") == "pass"
 
 
 def test_detect_language() -> None:

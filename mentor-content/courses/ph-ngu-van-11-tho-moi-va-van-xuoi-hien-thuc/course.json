@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-ngu-van-11-tho-moi-va-van-xuoi-hien-thuc",
+  "title": "Ngữ văn 11: Thơ Mới và văn xuôi hiện thực",
+  "subject": "Ngữ văn",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Phúc",
+  "description_short": "Đọc Vội vàng, Tràng giang và truyện ngắn của Nam Cao, Nguyên Hồng, đặt trong bối cảnh xã hội những năm 1930. Mỗi bài có đề nghị luận mẫu.",
+  "outcomes": [
+    "Phân tích được hình ảnh và cảm xúc trong thơ Mới.",
+    "Hiểu giá trị hiện thực của văn xuôi 1930–1945.",
+    "Viết được bài nghị luận văn học đủ ba phần."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 105,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Thơ Mới",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Vội vàng",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Tràng giang",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đây thôn Vĩ Dạ",
+          "est_minutes": 13
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Văn xuôi",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chí Phèo",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Hai đứa trẻ",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Viết bài nghị luận",
+          "est_minutes": 20
+        }
+      ]
+    }
+  ]
+}

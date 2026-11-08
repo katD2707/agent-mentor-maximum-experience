@@ -1,7 +1,6 @@
-# Local demo on one Linux machine: the dev experience (login code on screen, "verify parent" button for THPT) in
-# Docker, reachable only from this machine. Start it with `bash infra/demo.sh` (README "Chạy thử trên máy").
-# Not for real learners: MENTOR_ENV=dev, sandboxes run as subprocesses inside the gateway container (no per-learner
-# container isolation), no HTTPS, no email, no Zalo. Data lives in the `mentor_demo_data` volume.
+# Local demo on one Linux machine: the dev experience (seeded accounts hocsinh / giaovien, password 123456) in
+# Docker, reachable only from this machine. Start it with `bash infra/demo.sh`.
+# Not for real learners: MENTOR_ENV=dev, no HTTPS. Data lives in the `mentor_demo_data` volume.
 name: mentor-demo
 
 x-logging: &logging
@@ -18,21 +17,12 @@ services:
     environment:
       MENTOR_ENV: dev
       MENTOR_DATA_DIR: /data
-      PUBLIC_BASE_URL: http://localhost:${API_PORT:-8000}   # the browser follows login links to this address
+      PUBLIC_BASE_URL: http://localhost:${API_PORT:-8000}
       WEB_ORIGIN: http://localhost:${WEB_PORT:-3000}
-      SANDBOX_BACKEND: local
-      SANDBOX_GATEWAY_URL: http://127.0.0.1:8000           # harness subprocesses call the gateway in-container
-      SANDBOX_PREWARM: "1"
-      MODEL_ROUTER_URL: http://model-router:4000
-      MODEL_ROUTER_KEY: ${MODEL_ROUTER_MASTER_KEY:?run bash infra/demo.sh (it generates this key)}
-      MENTOR_MODEL_MODE: router
-      SEARXNG_URL: http://searxng:8080
-      ASTA_API_KEY: ${ASTA_API_KEY:-}
     ports:
       - "127.0.0.1:${API_PORT:-8000}:8000"
     volumes:
       - mentor_demo_data:/data
-    depends_on: [model-router, searxng]
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3)"]
       interval: 15s
@@ -61,23 +51,15 @@ services:
 
   web:
     build:
-      context: ../apps/web
+      context: ..
+      dockerfile: infra/web.Dockerfile
       args:
-        NEXT_PUBLIC_API_BASE: http://localhost:${API_PORT:-8000}/api   # baked in at build time
+        VITE_API_BASE: http://localhost:${API_PORT:-8000}/api   # baked in at build time
     image: mentor-web:demo
     restart: unless-stopped
     ports:
       - "127.0.0.1:${WEB_PORT:-3000}:3000"
     depends_on: [gateway]
-    logging: *logging
-
-  searxng:   # web_search for the mentor; only the gateway reaches it
-    image: ${SEARXNG_IMAGE:-searxng/searxng:latest}
-    restart: unless-stopped
-    environment:
-      SEARXNG_SECRET: ${SEARXNG_SECRET:?run bash infra/demo.sh (it generates this secret)}
-    volumes:
-      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
     logging: *logging
 
 volumes:

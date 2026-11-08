@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5A4BC0"/></marker>
+</defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<line x1="526.00" y1="350.00" x2="730.00" y2="350.00" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="630.00,350.00 620.00,355.00 620.00,345.00" fill="#5A4BC0"/>
+<line x1="524.73" y1="358.03" x2="718.74" y2="421.07" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="623.64,390.17 612.58,391.84 615.67,382.33" fill="#5A4BC0"/>
+<line x1="521.03" y1="365.28" x2="686.07" y2="485.19" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="605.17,426.41 594.14,424.58 600.02,416.49" fill="#5A4BC0"/>
+<line x1="515.28" y1="371.03" x2="635.19" y2="536.07" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="576.41,455.17 566.49,450.02 574.58,444.14" fill="#5A4BC0"/>
+<line x1="508.03" y1="374.73" x2="571.07" y2="568.74" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="540.17,473.64 532.33,465.67 541.84,462.58" fill="#5A4BC0"/>
+<line x1="500.00" y1="376.00" x2="500.00" y2="580.00" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="500.00,480.00 495.00,470.00 505.00,470.00" fill="#5A4BC0"/>
+<line x1="491.97" y1="374.73" x2="428.93" y2="568.74" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="459.83,473.64 458.16,462.58 467.67,465.67" fill="#5A4BC0"/>
+<line x1="484.72" y1="371.03" x2="364.81" y2="536.07" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="423.59,455.17 425.42,444.14 433.51,450.02" fill="#5A4BC0"/>
+<line x1="478.97" y1="365.28" x2="313.93" y2="485.19" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="394.83,426.41 399.98,416.49 405.86,424.58" fill="#5A4BC0"/>
+<line x1="475.27" y1="358.03" x2="281.26" y2="421.07" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="376.36,390.17 384.33,382.33 387.42,391.84" fill="#5A4BC0"/>
+<line x1="474.00" y1="350.00" x2="270.00" y2="350.00" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="370.00,350.00 380.00,345.00 380.00,355.00" fill="#5A4BC0"/>
+<line x1="475.27" y1="341.97" x2="281.26" y2="278.93" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="376.36,309.83 387.42,308.16 384.33,317.67" fill="#5A4BC0"/>
+<line x1="478.97" y1="334.72" x2="313.93" y2="214.81" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="394.83,273.59 405.86,275.42 399.98,283.51" fill="#5A4BC0"/>
+<line x1="484.72" y1="328.97" x2="364.81" y2="163.93" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="423.59,244.83 433.51,249.98 425.42,255.86" fill="#5A4BC0"/>
+<line x1="491.97" y1="325.27" x2="428.93" y2="131.26" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="459.83,226.36 467.67,234.33 458.16,237.42" fill="#5A4BC0"/>
+<line x1="500.00" y1="324.00" x2="500.00" y2="120.00" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="500.00,220.00 505.00,230.00 495.00,230.00" fill="#5A4BC0"/>
+<line x1="508.03" y1="325.27" x2="571.07" y2="131.26" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="540.17,226.36 541.84,237.42 532.33,234.33" fill="#5A4BC0"/>
+<line x1="515.28" y1="328.97" x2="635.19" y2="163.93" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="576.41,244.83 574.58,255.86 566.49,249.98" fill="#5A4BC0"/>
+<line x1="521.03" y1="334.72" x2="686.07" y2="214.81" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="605.17,273.59 600.02,283.51 594.14,275.42" fill="#5A4BC0"/>
+<line x1="524.73" y1="341.97" x2="718.74" y2="278.93" stroke="#5A4BC0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="623.64,309.83 615.67,317.67 612.58,308.16" fill="#5A4BC0"/>
+<circle cx="500" cy="350" r="26" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="487" y="346" width="26" height="8" rx="2" fill="#F7F1E3"/>
+<rect x="496" y="337" width="8" height="26" rx="2" fill="#F7F1E3"/>
+<text x="40" y="75" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">E = k|q| / (&#949; r&#178;)</text>
+<text x="460" y="75" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#273;&#432;&#7901;ng s&#7913;c</text>
+<text x="720" y="75" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">chi&#7873;u c&#7911;a</text>
+<text x="900" y="75" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">E</text>
+<line x1="898" y1="48" x2="922" y2="48" stroke="#5A4BC0" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr)"/>
+<text x="20" y="360" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#273;i&#7879;n t&#237;ch d&#432;&#417;ng</text>
+<text x="30" y="620" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">g&#7847;n t&#226;m: &#273;&#432;&#7901;ng s&#7913;c d&#224;y, E m&#7841;nh</text>
+<text x="520" y="620" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">xa t&#226;m: &#273;&#432;&#7901;ng s&#7913;c th&#432;a, E y&#7871;u</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "dev-sample-dem-tao",
+  "title": "Toán 1: Đếm táo (bản mẫu dev)",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "giaovien",
+  "teacher_name": "Cô Hoa",
+  "description_short": "Cún đếm táo: chạm từng quả táo, chọn hình đúng số lượng. Có giọng đọc cho mọi câu. Khóa mẫu, xóa sau P4.",
+  "outcomes": [
+    "Đếm các số đến 10",
+    "Chọn hình có đúng số quả táo"
+  ],
+  "cover": "cover.jpg",
+  "media": [
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 1,
+  "est_minutes": 5,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-06T17:18:32.102933Z",
+      "published_at": "2026-11-06T17:18:32.305835Z",
+      "pack_sha256": "a7b3a7412d77fe3be97bcd0d9f218e13a9040ae39f37983994894898a3ea5e51",
+      "pack_bytes": 480042,
+      "note": "DEV SAMPLE: placeholder content for the player and API; delete after P4 (replaced by builder-made courses)."
+    }
+  ]
+}

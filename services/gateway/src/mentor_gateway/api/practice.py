@@ -1,7 +1,7 @@
-"""`/api/practice`: practice, mock exams, diagnostics, progress (CONTRACTS section 10.3). THPT learners only.
+"""`/api/practice`: practice, mock exams, diagnostics, progress (CONTRACTS section 10.3). Students only (all age bands).
 
 Handlers are plain `def`: the engine reads git and SQLite, so FastAPI runs them in its thread pool. Errors are
-`{detail, code, ...}` (`PracticeError`); NCS learners get 403.
+`{detail, code, ...}` (`PracticeError`); teachers get 403.
 """
 
 from typing import Literal
@@ -10,15 +10,15 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from mentor_gateway.api.deps import get_gw, provisioned_user
+from mentor_gateway.api.deps import current_user, get_gw
 from mentor_gateway.context import Gateway
 from mentor_gateway.db import User
 from mentor_gateway.practice import PracticeError, PracticeService
 
 
-def thpt_user(user: User = Depends(provisioned_user)) -> User:
-    if user.role != "thpt":
-        raise HTTPException(403, "Luyện tập và thi thử hiện chỉ dành cho học sinh THPT.")
+def student_user(user: User = Depends(current_user)) -> User:
+    if user.role != "student":
+        raise HTTPException(403, {"error": "role_mismatch"})
     return user
 
 
@@ -28,7 +28,7 @@ def svc(gw: Gateway = Depends(get_gw)) -> PracticeService:
     return gw.practice
 
 
-router = APIRouter(prefix="/practice", tags=["practice"], dependencies=[Depends(thpt_user)])
+router = APIRouter(prefix="/practice", tags=["practice"], dependencies=[Depends(student_user)])
 
 
 class PreviewBody(BaseModel):
@@ -41,8 +41,14 @@ class PreviewBody(BaseModel):
 
 
 class StartBody(PreviewBody):
-    kind: Literal["practice", "mock", "diagnostic"]
+    """Either `kind` + `subject` (bank practice, mock, diagnostic) or `source`: `quick` (the default 10-question session
+    from the student's courses and weak/due items), `course:<id>` (practice on the lessons studied so far) or
+    `mock:<profile_id>` (a mock exam from the bank)."""
+
+    subject: str | None = None
+    kind: Literal["practice", "mock", "diagnostic"] | None = None
     profile_id: str | None = None
+    source: str | None = Field(default=None, max_length=100)
 
 
 class SubjectBody(BaseModel):
@@ -78,94 +84,100 @@ def error_response(exc: PracticeError) -> JSONResponse:
 
 
 @router.get("/subjects")
-def subjects(user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> list[dict]:
+def subjects(user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> list[dict]:
     return p.subjects(user.id)
 
 
+@router.get("/home")
+def home(seed: int | None = None, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
+    """The Luyện tập screen: the default session, mock exams and per-course practice (CONTRACTS 10.12)."""
+    return p.home(user.id, seed)
+
+
 @router.post("/preview")
-def preview(body: PreviewBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def preview(body: PreviewBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.preview(user.id, body.subject, body.minutes, body.goal, body.topics, body.seed, body.include_above_grade)
 
 
 @router.post("/sessions")
-def start(body: StartBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def start(body: StartBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.start(user.id, body.model_dump())
 
 
 @router.post("/diagnostic/skip")
-def skip_diagnostic(body: SubjectBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def skip_diagnostic(body: SubjectBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     p.skip_diagnostic(user.id, body.subject)
     return {"ok": True}
 
 
 @router.get("/sessions/active")
-def active(subject: str | None = None, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict | None:
+def active(subject: str | None = None, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict | None:
     return p.active(user.id, subject)
 
 
 @router.get("/sessions")
-def sessions(subject: str | None = None, limit: int = Query(30, ge=1, le=100), user: User = Depends(thpt_user),
+def sessions(subject: str | None = None, limit: int = Query(30, ge=1, le=100), user: User = Depends(student_user),
              p: PracticeService = Depends(svc)) -> list[dict]:
     return p.history(user.id, subject, limit)
 
 
 @router.get("/sessions/{sid}")
-def get_session(sid: str, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def get_session(sid: str, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.get(user.id, sid)
 
 
 @router.post("/sessions/{sid}/answer")
-def answer(sid: str, body: AnswerBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def answer(sid: str, body: AnswerBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.answer(user.id, sid, body.position, body.answer, body.time_spent_sec)
 
 
 @router.post("/sessions/{sid}/hint")
-def hint(sid: str, body: PositionBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def hint(sid: str, body: PositionBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.hint(user.id, sid, body.position)
 
 
 @router.post("/sessions/{sid}/reveal")
-def reveal(sid: str, body: PositionBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def reveal(sid: str, body: PositionBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.reveal(user.id, sid, body.position)
 
 
 @router.post("/sessions/{sid}/flag")
-def flag(sid: str, body: FlagBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def flag(sid: str, body: FlagBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.flag(user.id, sid, body.position, body.flagged)
 
 
 @router.post("/sessions/{sid}/tick")
-def tick(sid: str, body: TickBody, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def tick(sid: str, body: TickBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.tick(user.id, sid, body.position, body.elapsed_sec)
 
 
 @router.post("/sessions/{sid}/finish")
-def finish(sid: str, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def finish(sid: str, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.finish(user.id, sid)
 
 
 @router.get("/sessions/{sid}/review")
-def review(sid: str, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> list[dict]:
+def review(sid: str, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> list[dict]:
     return p.review(user.id, sid)
 
 
 @router.get("/progress")
-def progress(subject: str | None = None, user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> dict:
+def progress(subject: str | None = None, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.progress(user.id, subject)
 
 
 @router.get("/recommendations")
-def recommendations(subject: str | None = None, user: User = Depends(thpt_user),
+def recommendations(subject: str | None = None, user: User = Depends(student_user),
                     p: PracticeService = Depends(svc)) -> list[dict]:
     return p.recommendations(user.id, subject)
 
 
 @router.get("/items/reports")
-def item_reports(user: User = Depends(thpt_user), p: PracticeService = Depends(svc)) -> list[dict]:
+def item_reports(user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> list[dict]:
     return p.list_reports(user.id)
 
 
 @router.post("/items/{item_id}/report")
-def report_item(item_id: str, body: ReportBody, user: User = Depends(thpt_user),
+def report_item(item_id: str, body: ReportBody, user: User = Depends(student_user),
                 p: PracticeService = Depends(svc)) -> dict:
     return p.report_item(user.id, item_id, body.session_id, body.reason, body.note)

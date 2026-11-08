@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-dia-li-8-khi-hau-va-song-ngoi-viet-nam",
+  "title": "Địa lí 8: Khí hậu và sông ngòi Việt Nam",
+  "subject": "Địa lí",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hương",
+  "description_short": "Đọc bản đồ khí hậu, biểu đồ nhiệt độ lượng mưa và hệ thống sông chính của nước ta. Mỗi bài có một bản đồ trống để em tự điền.",
+  "outcomes": [
+    "Giải thích được tính chất nhiệt đới gió mùa.",
+    "Đọc được biểu đồ nhiệt độ và lượng mưa.",
+    "Kể được các hệ thống sông lớn."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 79,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Khí hậu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Gió mùa",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Nhiệt độ và lượng mưa",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Thiên tai",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Sông ngòi",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Các hệ thống sông",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chế độ nước",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Sử dụng nguồn nước",
+          "est_minutes": 16
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-anh-6-ngu-phap-nen-tang",
+  "title": "Tiếng Anh 6: Ngữ pháp nền tảng",
+  "subject": "Tiếng Anh",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Ánh",
+  "description_short": "Giải thích bằng tiếng Việt các thì hiện tại, mạo từ và giới từ, mỗi điểm ngữ pháp kèm ví dụ ngắn và bài điền từ. Dành cho học sinh lớp 6.",
+  "outcomes": [
+    "Dùng đúng thì hiện tại đơn và hiện tại tiếp diễn.",
+    "Chọn đúng a, an, the và giới từ chỉ nơi chốn.",
+    "Viết được đoạn 5 câu giới thiệu bản thân."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 73,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Các thì",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hiện tại đơn",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hiện tại tiếp diễn",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Phân biệt hai thì",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Từ loại",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Mạo từ",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Giới từ chỉ nơi chốn",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Viết giới thiệu bản thân",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

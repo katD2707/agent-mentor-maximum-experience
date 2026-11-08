@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "ph-phuong-phap-nghien-cuu-khoa-hoc",
+  "title": "Phương pháp nghiên cứu khoa học",
+  "subject": "Phương pháp nghiên cứu",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Mai Thị Thu",
+  "description_short": "Cách chọn đề tài, đọc tài liệu, thiết kế khảo sát và trình bày kết quả, theo một đề tài mẫu của sinh viên. Dành cho sinh viên năm ba làm đồ án.",
+  "outcomes": [
+    "Đặt được câu hỏi nghiên cứu rõ ràng.",
+    "Tìm và trích dẫn được tài liệu.",
+    "Thiết kế được bảng hỏi đơn giản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 152,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Chuẩn bị",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Chọn đề tài",
+          "est_minutes": 39
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Tổng quan tài liệu",
+          "est_minutes": 25
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Thực hiện",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Thiết kế khảo sát",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Phân tích số liệu",
+          "est_minutes": 24
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Trình bày kết quả",
+          "est_minutes": 26
+        }
+      ]
+    }
+  ]
+}

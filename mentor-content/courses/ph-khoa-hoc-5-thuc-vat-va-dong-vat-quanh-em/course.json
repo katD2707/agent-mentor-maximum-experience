@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-khoa-hoc-5-thuc-vat-va-dong-vat-quanh-em",
+  "title": "Khoa học 5: Thực vật và động vật quanh em",
+  "subject": "Khoa học",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Thảo",
+  "description_short": "Em học cách thực vật sinh sản, động vật sinh sống và chuỗi thức ăn bằng vườn trường làm ví dụ. Có bài quan sát mà em tự ghi chép.",
+  "outcomes": [
+    "Nêu được vòng đời của cây có hoa.",
+    "Phân biệt động vật ăn thực vật và ăn thịt.",
+    "Vẽ được một chuỗi thức ăn đơn giản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 56,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Thực vật",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hạt nảy mầm",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cây ra hoa, kết quả",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Cây cần gì để sống",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Động vật",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Động vật sinh sản",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Thức ăn của động vật",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Chuỗi thức ăn",
+          "est_minutes": 8
+        }
+      ]
+    }
+  ]
+}

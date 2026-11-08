@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-roi-rac",
+  "title": "Toán rời rạc",
+  "subject": "Toán rời rạc",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Lý Hoàng Nam",
+  "description_short": "Logic, tập hợp, tổ hợp và đồ thị, chọn lọc các dạng chứng minh thường gặp trong ngành công nghệ thông tin. Dành cho sinh viên năm nhất, hai.",
+  "outcomes": [
+    "Chứng minh được bằng quy nạp và phản chứng.",
+    "Đếm được bằng hoán vị, tổ hợp.",
+    "Giải được bài toán đường đi trên đồ thị."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 219,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Logic và tập hợp",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Mệnh đề",
+          "est_minutes": 39
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Tập hợp",
+          "est_minutes": 45
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Quy nạp",
+          "est_minutes": 27
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tổ hợp và đồ thị",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Hoán vị, tổ hợp",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đồ thị",
+          "est_minutes": 36
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Cây khung",
+          "est_minutes": 34
+        }
+      ]
+    }
+  ]
+}

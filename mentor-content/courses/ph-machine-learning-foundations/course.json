@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-machine-learning-foundations",
+  "title": "Machine Learning Foundations",
+  "subject": "Machine Learning",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Quang Le",
+  "description_short": "Regression, classification, regularisation and neural networks with a project on a public dataset. Requires Python and basic probability.",
+  "outcomes": [
+    "Train and evaluate supervised models.",
+    "Diagnose overfitting and apply regularisation.",
+    "Report results from a full experiment."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 191,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Supervised learning",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Linear regression",
+          "est_minutes": 29
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Logistic regression",
+          "est_minutes": 23
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Trees and ensembles",
+          "est_minutes": 45
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Neural networks",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Perceptron",
+          "est_minutes": 40
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Backpropagation",
+          "est_minutes": 34
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Project",
+          "est_minutes": 20
+        }
+      ]
+    }
+  ]
+}

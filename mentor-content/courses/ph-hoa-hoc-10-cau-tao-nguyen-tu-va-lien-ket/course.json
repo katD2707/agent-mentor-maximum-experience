@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-hoa-hoc-10-cau-tao-nguyen-tu-va-lien-ket",
+  "title": "Hóa học 10: Cấu tạo nguyên tử và liên kết",
+  "subject": "Hóa học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Trinh",
+  "description_short": "Cấu hình electron, bảng tuần hoàn và các loại liên kết hóa học được giải thích bằng mô hình có thể xoay. Dành cho học sinh lớp 10.",
+  "outcomes": [
+    "Viết được cấu hình electron của 20 nguyên tố đầu.",
+    "Suy ra tính chất từ vị trí trong bảng tuần hoàn.",
+    "Phân biệt liên kết ion, cộng hóa trị."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 96,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Nguyên tử",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hạt cơ bản",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cấu hình electron",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đồng vị",
+          "est_minutes": 22
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Bảng tuần hoàn và liên kết",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Quy luật tuần hoàn",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Liên kết ion",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Liên kết cộng hóa trị",
+          "est_minutes": 15
+        }
+      ]
+    }
+  ]
+}

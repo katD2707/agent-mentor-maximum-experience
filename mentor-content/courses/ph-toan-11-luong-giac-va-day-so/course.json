@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-11-luong-giac-va-day-so",
+  "title": "Toán 11: Lượng giác và dãy số",
+  "subject": "Toán",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Thùy Dung",
+  "description_short": "Công thức lượng giác, phương trình lượng giác cơ bản, cấp số cộng và cấp số nhân, kèm bảng công thức để tra nhanh. Có bài trắc nghiệm theo dạng đề thi.",
+  "outcomes": [
+    "Giải được phương trình lượng giác cơ bản.",
+    "Biến đổi được biểu thức bằng công thức cộng, nhân đôi.",
+    "Tính được số hạng và tổng của cấp số."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 92,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Lượng giác",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Đường tròn lượng giác",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Công thức lượng giác",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Phương trình cơ bản",
+          "est_minutes": 22
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Dãy số",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Dãy số và giới hạn",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Cấp số cộng",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Cấp số nhân",
+          "est_minutes": 10
+        }
+      ]
+    }
+  ]
+}

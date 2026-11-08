@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "ph-cong-nghe-8-ban-ve-ki-thuat",
+  "title": "Công nghệ 8: Bản vẽ kĩ thuật",
+  "subject": "Công nghệ",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Lộc",
+  "description_short": "Em học vẽ hình chiếu vuông góc, ghi kích thước và đọc bản vẽ chi tiết đơn giản. Có bài tập dựng hình từ vật thật như hộp bút, ổ khóa.",
+  "outcomes": [
+    "Vẽ được ba hình chiếu của vật thể đơn giản.",
+    "Ghi đúng kích thước trên bản vẽ.",
+    "Đọc được bản vẽ chi tiết."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 60,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hình chiếu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Phép chiếu vuông góc",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Ba hình chiếu",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Vật thể đơn giản",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Bản vẽ",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Ghi kích thước",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đọc bản vẽ chi tiết",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

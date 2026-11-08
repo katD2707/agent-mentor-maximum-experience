@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-6-so-tu-nhien-va-phan-so",
+  "title": "Toán 6: Số tự nhiên và phân số",
+  "subject": "Toán",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Phong",
+  "description_short": "Ôn chắc ước, bội, số nguyên tố trước khi sang phân số và số thập phân, với nhiều bài tập từ dễ đến khó. Hợp với học sinh lớp 6 mới lên cấp hai.",
+  "outcomes": [
+    "Tìm được ước chung, bội chung của hai số.",
+    "Thực hiện được bốn phép tính với phân số.",
+    "Giải được bài toán thực tế về phân số của một số."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 83,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Số tự nhiên",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Ước và bội",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Số nguyên tố",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l3",
+          "title": "ƯCLN và BCNN",
+          "est_minutes": 17
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Phân số",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Rút gọn và quy đồng",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Cộng, trừ phân số",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Nhân, chia phân số",
+          "est_minutes": 14
+        }
+      ]
+    }
+  ]
+}

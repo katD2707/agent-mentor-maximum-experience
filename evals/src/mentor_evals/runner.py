@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from mentor_harness.agent import Harness
-from mentor_harness.config import Settings, now_local
+from mentor_harness.config import Settings
 from mentor_harness.scripts import run_mentor_script
 from mentor_harness.workspace import ensure_git_safe_directory
 from mentor_schemas import JobRequest, SandboxEvent, TurnRequest
@@ -24,7 +24,7 @@ from mentor_schemas import JobRequest, SandboxEvent, TurnRequest
 from mentor_evals.graders import CheckContext, CheckResult, JudgeFn, TurnRecord, run_check
 from mentor_evals.models import EvalScriptedModel, RecordingModel
 from mentor_evals.spec import CheckSpec, Persona, Scenario, Session
-from mentor_evals.workspace import MEMORY_DIRS, WELLBEING_PATH, provision, snapshot, wellbeing_series
+from mentor_evals.workspace import MEMORY_DIRS, provision, snapshot
 
 
 @dataclass
@@ -43,10 +43,6 @@ class ScenarioResult:
     def passed(self) -> bool:
         return self.error is None and not any(c.failed and c.severity == "critical" for c in self.checks)
 
-    @property
-    def crisis_alerted(self) -> bool:
-        return any(o.get("kind") == "crisis_alert" for t in self.turns for o in t.outbox)
-
     def to_dict(self, run_id: str, judge_mode: str) -> dict[str, Any]:
         s = self.scenario
         return {
@@ -56,11 +52,9 @@ class ScenarioResult:
             "persona": self.persona.id,
             "profile": self.persona.profile.value,
             "tags": s.tags,
-            "crisis": s.crisis,
             "model": self.model_mode,
             "judge": judge_mode,
             "passed": self.passed,
-            "crisis_alerted": self.crisis_alerted,
             "error": self.error,
             "duration_s": round(self.duration_s, 2),
             "usage": self.usage,
@@ -125,9 +119,6 @@ class ScenarioRunner:
 
     def _provision(self, root: Path, scenario: Scenario, persona: Persona) -> dict[str, str]:
         seeds = {**persona.seed_files, **scenario.seed_files}
-        if scenario.seed_wellbeing:
-            today = now_local().date()
-            seeds[WELLBEING_PATH] = wellbeing_series(today, **scenario.seed_wellbeing)
         provision(
             root,
             user_id=f"eval-{persona.id}",
@@ -165,7 +156,7 @@ class ScenarioRunner:
             return
         for ti, turn in enumerate(session.turns):
             if scripted is not None:
-                scripted.load(turn.scripted, safety_confirms=turn.scripted_safety)
+                scripted.load(turn.scripted)
             record = await self._run_turn(harness, si, ti, turn.user, session_id, persona, recorder)
             result.turns.append(record)
             await self._grade(
@@ -176,7 +167,7 @@ class ScenarioRunner:
         self, harness: Harness, si: int, ti: int, text: str, session_id: str, persona: Persona, recorder: RecordingModel
     ) -> TurnRecord:
         record = TurnRecord("turn", si, ti, session_id, text)
-        calls_before, reviews_before = len(recorder.tool_calls), len(recorder.safety_reviews)
+        calls_before = len(recorder.tool_calls)
         offered_before = len(recorder.offered)
         events: list[SandboxEvent] = []
 
@@ -199,9 +190,6 @@ class ScenarioRunner:
                 record.error = final.error or "error"
         record.tool_calls = recorder.tool_calls[calls_before:]
         record.offered_tools = sorted({n for o in recorder.offered[offered_before:] for n in o.split(",") if n})
-        record.safety_reviews = [
-            {"alias": r.alias, "confirmed": r.confirmed} for r in recorder.safety_reviews[reviews_before:]
-        ]
         return record
 
     async def _run_job(
@@ -209,7 +197,7 @@ class ScenarioRunner:
     ) -> TurnRecord:
         assert session.job is not None
         record = TurnRecord("job", si, 0, session_id, session.job.value)
-        calls_before, reviews_before = len(recorder.tool_calls), len(recorder.safety_reviews)
+        calls_before = len(recorder.tool_calls)
         offered_before = len(recorder.offered)
         started = time.perf_counter()
         req = JobRequest(
@@ -227,9 +215,6 @@ class ScenarioRunner:
         record.outbox = [o.model_dump(mode="json") for o in res.outbox]
         record.tool_calls = recorder.tool_calls[calls_before:]
         record.offered_tools = sorted({n for o in recorder.offered[offered_before:] for n in o.split(",") if n})
-        record.safety_reviews = [
-            {"alias": r.alias, "confirmed": r.confirmed} for r in recorder.safety_reviews[reviews_before:]
-        ]
         return record
 
     async def _grade(

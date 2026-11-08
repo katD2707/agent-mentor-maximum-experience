@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "ph-ielts-writing-task-2-essays",
+  "title": "IELTS Writing Task 2: Essays",
+  "subject": "IELTS",
+  "age_band": "g10_12",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Mr. Peter Ho",
+  "description_short": "A step-by-step course on planning and writing 250-word essays for the four main prompt types. Includes model answers marked against the band descriptors.",
+  "outcomes": [
+    "Plan an essay in five minutes.",
+    "Write clear introductions and paragraphs with one idea each.",
+    "Check your own writing against the scoring criteria."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 8,
+  "est_minutes": 135,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Planning",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Read the prompt",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Brainstorm and outline",
+          "est_minutes": 14
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Writing",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Introductions",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Body paragraphs",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Conclusions",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Prompt types",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Opinion essays",
+          "est_minutes": 19
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Discussion essays",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch3-l3",
+          "title": "Problem and solution",
+          "est_minutes": 21
+        }
+      ]
+    }
+  ]
+}

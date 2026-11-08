@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-sinh-hoc-10-te-bao",
+  "title": "Sinh học 10: Tế bào",
+  "subject": "Sinh học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Lý",
+  "description_short": "Cấu trúc tế bào, màng sinh chất, trao đổi chất và phân bào, có ảnh hiển vi để đối chiếu. Dành cho học sinh lớp 10.",
+  "outcomes": [
+    "Mô tả cấu trúc các bào quan chính.",
+    "Giải thích vận chuyển qua màng.",
+    "Trình bày các kì của nguyên phân."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 103,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cấu trúc tế bào",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Tế bào nhân sơ và nhân thực",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Màng sinh chất",
+          "est_minutes": 19
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Bào quan",
+          "est_minutes": 20
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Hoạt động tế bào",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Vận chuyển chất",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Quang hợp và hô hấp",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Nguyên phân",
+          "est_minutes": 13
+        }
+      ]
+    }
+  ]
+}

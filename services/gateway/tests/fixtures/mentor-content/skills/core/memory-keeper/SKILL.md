@@ -1,7 +1,7 @@
 ---
 name: memory-keeper
 description: Ghi nhớ
-profiles: [thpt, ncs]
+profiles: [student]
 version: 1
 ---
 Ghi nhớ.

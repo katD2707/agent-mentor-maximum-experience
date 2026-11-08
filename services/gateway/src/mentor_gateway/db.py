@@ -1,9 +1,10 @@
-"""Ops database (plan section 4.2): accounts, sessions, parent links, audit, schedules, outbox.
+"""Ops database: accounts, login tokens, audit, schedules, outbox, notifications, practice tables.
 
 No learner content lives here; the workspace is the source of truth about the learner.
 SQLite in dev; the schema avoids SQLite-only features so Postgres works with the same models.
 """
 
+import logging
 from collections.abc import Iterator
 from contextlib import contextmanager
 from datetime import UTC, datetime
@@ -21,9 +22,18 @@ from sqlalchemy import (
     UniqueConstraint,
     create_engine,
     event,
+    inspect,
 )
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sessionmaker
+
+log = logging.getLogger(__name__)
+
+
+# Columns added after first release (Nghiên cứu, CONTRACTS 15.8): study_goals.source / milestones
+_ADDED_COLUMNS: dict[str, list[tuple[str, str]]] = {
+    "study_goals": [("source", "VARCHAR(10) NOT NULL DEFAULT 'learning'"), ("milestones", "JSON")],
+}
 
 
 class UTCDateTime(TypeDecorator):
@@ -52,46 +62,35 @@ class Base(DeclarativeBase):
 
 
 class User(Base):
+    """Seeded accounts only (no sign-up). Roles: student | teacher (CONTRACTS section 4)."""
+
     __tablename__ = "users"
 
     id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
-    role: Mapped[str | None] = mapped_column(String(16), nullable=True)  # thpt | ncs
+    role: Mapped[str] = mapped_column(String(16))  # student | teacher
+    username: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    password_hash: Mapped[str] = mapped_column(String(300))  # "scrypt$n$r$p$salt$hash" (security.hash_password)
     display_name: Mapped[str] = mapped_column(String(200), default="")
-    language: Mapped[str] = mapped_column(String(8), default="vi")
-    inbound_code: Mapped[str | None] = mapped_column(String(64), unique=True, nullable=True)
-    provisioned_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
+    # Legacy cache of the band (column kept so old databases stay valid); never read. `age_band` below is derived.
+    age_band_cache: Mapped[str | None] = mapped_column("age_band", String(8), nullable=True)
+    birth_year: Mapped[int | None] = mapped_column(Integer, nullable=True)  # set once at first run (admin CLI fixes it)
+    language: Mapped[str | None] = mapped_column(String(8), nullable=True)  # vi | en
+    theme: Mapped[str] = mapped_column(String(8), default="system")  # light | dark | system
+    quiet_until: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)  # no notifications before this
+    provisioned_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)  # learner workspace created
     created_at: Mapped[datetime] = mapped_column(UTCDateTime)
 
+    @property
+    def age_band(self) -> str | None:
+        """g1_5 | g6_9 | g10_12 | uni, derived from `birth_year` and today's date (September school year)."""
+        from mentor_gateway.age import band_for_birth_year
 
-class MagicLink(Base):
-    __tablename__ = "magic_links"
-
-    token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
-    email: Mapped[str] = mapped_column(String(320))
-    expires_at: Mapped[datetime] = mapped_column(UTCDateTime)
-    used_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
-
-
-class LoginCode(Base):
-    """6-digit code sent with a magic link, for clients that cannot follow the link (the desktop pop-up).
-
-    A separate table (not columns on `magic_links`) so existing dev databases pick it up via `create_all`.
-    Using either the link or the code consumes the same `MagicLink` row.
-    """
-
-    __tablename__ = "login_codes"
-
-    token_hash: Mapped[str] = mapped_column(
-        String(64), ForeignKey("magic_links.token_hash", ondelete="CASCADE"), primary_key=True
-    )
-    email: Mapped[str] = mapped_column(String(320), index=True)
-    code_hash: Mapped[str] = mapped_column(String(64))
-    created_at: Mapped[datetime] = mapped_column(UTCDateTime)
-    failed_attempts: Mapped[int] = mapped_column(Integer, default=0)
+        return band_for_birth_year(self.birth_year)
 
 
 class WebSession(Base):
+    """A login token (only its hash is stored). Table name kept from the cookie era."""
+
     __tablename__ = "web_sessions"
 
     token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
@@ -100,70 +99,16 @@ class WebSession(Base):
     expires_at: Mapped[datetime] = mapped_column(UTCDateTime)
 
 
-class ChatSession(Base):
-    """session_id = "s-YYYYMMDD" per learner per local day, so the key is (user_id, id)."""
-
-    __tablename__ = "chat_sessions"
-
-    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    started_at: Mapped[datetime] = mapped_column(UTCDateTime)
-    last_active_at: Mapped[datetime] = mapped_column(UTCDateTime)
-
-
-class Conversation(Base):
-    """A named conversation (CONTRACTS section 10.5), session_id = "c-<id>". Only the label lives here; the messages
-    are in the workspace transcripts `sessions/<day>/c-<id>.jsonl`. The title is typed by the learner (or the first
-    words of their first message), so it is kept short (80 chars)."""
-
-    __tablename__ = "conversations"
-
-    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    id: Mapped[str] = mapped_column(String(12), primary_key=True)  # 12 hex chars
-    title: Mapped[str] = mapped_column(String(80), default="")
-    auto_title: Mapped[bool] = mapped_column(Boolean, default=True)  # still the default: the first message names it
-    subject: Mapped[str | None] = mapped_column(String(32), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(UTCDateTime)
-    updated_at: Mapped[datetime] = mapped_column(UTCDateTime)
-    archived_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
-
-
-class ParentLinkRow(Base):
-    __tablename__ = "parent_links"
-
-    student_user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    link_code: Mapped[str] = mapped_column(String(16), index=True)
-    code_expires_at: Mapped[datetime] = mapped_column(UTCDateTime)
-    zalo_chat_id: Mapped[str | None] = mapped_column(String(128), nullable=True, index=True)
-    status: Mapped[str] = mapped_column(String(32), default="pending")
-    verified_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
-
-
 class AuditRow(Base):
-    """Crisis alerts and consent events. Never exposed through any workspace or activity endpoint."""
+    """Content-free audit trail (e.g. which notification action was applied). Never exposed through any endpoint."""
 
     __tablename__ = "audit_log"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     student_user_id: Mapped[str] = mapped_column(String(64), index=True)
     kind: Mapped[str] = mapped_column(String(64))
-    detail: Mapped[str] = mapped_column(Text, default="")  # "enc1:" + sealed text (parent.AUDIT_AAD); see parent.py
+    detail: Mapped[str] = mapped_column(Text, default="")  # no learner content
     created_at: Mapped[datetime] = mapped_column(UTCDateTime)
-
-
-class ParentContact(Base):
-    """The parent's Zalo chat id, sealed with the master key (aad "parent_contacts:zalo_chat_id:<student>").
-
-    `zalo_chat_bidx` is an HMAC blind index so the webhook can find a link by chat id without decrypting rows.
-    A separate table (not columns on `parent_links`) so existing dev databases pick it up via `create_all`;
-    `parent_links.zalo_chat_id` is no longer written.
-    """
-
-    __tablename__ = "parent_contacts"
-
-    student_user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    zalo_chat_enc: Mapped[str] = mapped_column(Text)
-    zalo_chat_bidx: Mapped[str] = mapped_column(String(64), index=True)
 
 
 class UserDataKey(Base):
@@ -289,15 +234,6 @@ class PushSubscription(Base):
     last_sent_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
 
 
-class NudgeHold(Base):
-    """No proactive nudges for this learner until `until` (set when a crisis alert came through the outbox)."""
-
-    __tablename__ = "nudge_holds"
-
-    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    until: Mapped[datetime] = mapped_column(UTCDateTime)
-
-
 class OutboxSeen(Base):
     __tablename__ = "outbox_seen"
 
@@ -313,41 +249,6 @@ class UploadToken(Base):
     token_hash: Mapped[str] = mapped_column(String(64), primary_key=True)
     user_id: Mapped[str] = mapped_column(String(64), index=True)
     expires_at: Mapped[datetime] = mapped_column(UTCDateTime)
-
-
-class SentReport(Base):
-    __tablename__ = "sent_reports"
-
-    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    path: Mapped[str] = mapped_column(String(512), primary_key=True)
-    sent_at: Mapped[datetime] = mapped_column(UTCDateTime)
-
-
-class UserUiState(Base):
-    """Per-user web UI flags that must follow the learner across devices (web, desktop pop-up).
-
-    A separate table (not columns on `users`) so existing dev databases pick it up via `create_all`.
-    """
-
-    __tablename__ = "user_ui_state"
-
-    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    setup_guide_dismissed_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
-
-
-class UserOnboarding(Base):
-    """First-run tour progress and one-time tips, per learner (follows them across web and the desktop pop-up).
-
-    A new table (not columns on `user_ui_state`) because `create_all` does not add columns to existing SQLite tables.
-    """
-
-    __tablename__ = "user_onboarding"
-
-    user_id: Mapped[str] = mapped_column(String(64), primary_key=True)
-    tour_step: Mapped[str | None] = mapped_column(String(16), nullable=True)
-    tour_completed_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
-    tour_skipped_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)
-    tips_seen: Mapped[list] = mapped_column(JSON, default=list)
 
 
 def _sqlite_pragmas(dbapi_conn: Any, _record: Any) -> None:
@@ -371,7 +272,60 @@ class Database:
         self._factory = sessionmaker(self.engine, expire_on_commit=False)
 
     def create_all(self) -> None:
+        self._reset_pre_redesign_schema()
         Base.metadata.create_all(self.engine)
+        self._add_birth_year()
+        self._add_columns(_ADDED_COLUMNS)
+
+    def _add_columns(self, wanted: dict[str, list[tuple[str, str]]]) -> None:
+        """Idempotent `ALTER TABLE ... ADD COLUMN` for columns added to a table after databases already had it
+        (create_all never alters). Only tables that exist and lack the column are touched."""
+        from sqlalchemy import text
+
+        insp = inspect(self.engine)
+        for table, cols in wanted.items():
+            if not insp.has_table(table):
+                continue
+            have = {c["name"] for c in insp.get_columns(table)}
+            for name, ddl in cols:
+                if name not in have:
+                    with self.engine.begin() as conn:
+                        conn.execute(text(f'ALTER TABLE "{table}" ADD COLUMN "{name}" {ddl}'))
+
+    def _add_birth_year(self) -> None:
+        """`users.birth_year` replaced the stored age band. Add the column to an older database and give rows that
+        only had a band a birth year in the middle of it (the band is derived from now on)."""
+        from sqlalchemy import text
+
+        from mentor_gateway.age import birth_year_for_band
+
+        if "birth_year" in {c["name"] for c in inspect(self.engine).get_columns("users")}:
+            return
+        with self.engine.begin() as conn:
+            conn.execute(text("ALTER TABLE users ADD COLUMN birth_year INTEGER"))
+            for uid, band in conn.execute(text("SELECT id, age_band FROM users WHERE age_band IS NOT NULL")).all():
+                year = birth_year_for_band(band)
+                if year is not None:
+                    conn.execute(text("UPDATE users SET birth_year = :y WHERE id = :i"), {"y": year, "i": uid})
+
+    def _reset_pre_redesign_schema(self) -> None:
+        """Before the redesign `users` had `email` and no `username`; create_all cannot alter tables. Dev data is
+        disposable, so such a database is dropped and recreated (a prod one raises: migrate it by hand)."""
+        insp = inspect(self.engine)
+        if not insp.has_table("users"):
+            return
+        cols = {c["name"] for c in insp.get_columns("users")}
+        if "username" in cols:
+            return
+        if not self.engine.url.drivername.startswith("sqlite"):
+            raise RuntimeError("ops database has the pre-redesign users table; migrate or recreate it")
+        log.warning("ops database has the pre-redesign schema; dropping all tables (dev data is disposable)")
+        with self.engine.connect() as conn:
+            conn.exec_driver_sql("PRAGMA foreign_keys=OFF")
+            for name in insp.get_table_names():
+                conn.exec_driver_sql(f'DROP TABLE IF EXISTS "{name}"')
+            conn.commit()
+            conn.exec_driver_sql("PRAGMA foreign_keys=ON")
 
     @contextmanager
     def session(self) -> Iterator[Session]:

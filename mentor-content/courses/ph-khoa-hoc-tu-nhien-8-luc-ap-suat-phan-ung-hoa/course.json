@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-khoa-hoc-tu-nhien-8-luc-ap-suat-phan-ung-hoa",
+  "title": "Khoa học tự nhiên 8: Lực, áp suất, phản ứng hóa học",
+  "subject": "Khoa học tự nhiên",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Sơn",
+  "description_short": "Ba chủ đề được học đan xen: lực và áp suất, mol và phản ứng, cơ quan trong cơ thể người. Phù hợp học sinh lớp 8 cần hệ thống lại trước kì thi.",
+  "outcomes": [
+    "Tính được áp suất chất lỏng và lực đẩy Archimedes.",
+    "Viết và cân bằng được phương trình hóa học đơn giản.",
+    "Nối được kiến thức lí hóa với ví dụ đời sống."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 85,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Lực và áp suất",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Áp suất chất rắn",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Áp suất chất lỏng",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Lực đẩy Archimedes",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Phản ứng hóa học",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Phương trình hóa học",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Mol",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tính theo phương trình",
+          "est_minutes": 18
+        }
+      ]
+    }
+  ]
+}

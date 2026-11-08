@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-giai-tich-1-gioi-han-va-dao-ham",
+  "title": "Giải tích 1: Giới hạn và đạo hàm",
+  "subject": "Giải tích",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Thắng",
+  "description_short": "Giới hạn, liên tục và đạo hàm của hàm một biến, giải thích bằng định nghĩa epsilon–delta kèm hình minh họa. Dành cho sinh viên năm nhất khối kĩ thuật.",
+  "outcomes": [
+    "Tính được giới hạn bằng định nghĩa và quy tắc.",
+    "Xét được tính liên tục và khả vi.",
+    "Áp dụng đạo hàm vào cực trị và xấp xỉ."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 195,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Giới hạn và liên tục",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Giới hạn dãy số",
+          "est_minutes": 39
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Giới hạn hàm số",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Liên tục",
+          "est_minutes": 35
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Đạo hàm",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Định nghĩa đạo hàm",
+          "est_minutes": 26
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Quy tắc tính",
+          "est_minutes": 40
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Ứng dụng",
+          "est_minutes": 34
+        }
+      ]
+    }
+  ]
+}

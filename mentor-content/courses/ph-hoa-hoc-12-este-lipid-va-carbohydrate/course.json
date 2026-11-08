@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-hoa-hoc-12-este-lipid-va-carbohydrate",
+  "title": "Hóa học 12: Este, lipid và carbohydrate",
+  "subject": "Hóa học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Diễm",
+  "description_short": "Các hợp chất hữu cơ thường gặp trong đề thi tốt nghiệp được nhóm theo công thức và phản ứng đặc trưng. Mỗi bài có bảng so sánh và bài tập nhận biết.",
+  "outcomes": [
+    "Gọi tên và viết phản ứng thủy phân este.",
+    "Phân biệt glucose, saccharose và tinh bột.",
+    "Làm được bài tập xác định công thức este."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 96,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Este và lipid",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Este",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Chất béo",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Xà phòng",
+          "est_minutes": 14
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Carbohydrate",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Glucose",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Saccharose",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tinh bột và cellulose",
+          "est_minutes": 15
+        }
+      ]
+    }
+  ]
+}

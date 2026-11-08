@@ -30,13 +30,13 @@ FILES = {
     "events.jsonl": "",
     ".mentor/activity.jsonl": "",
     ".mentor/skills/core/memory-keeper/SKILL.md": SKILL.format(
-        name="memory-keeper", desc="Quy tắc ghi trí nhớ.", profiles="thpt, ncs"
+        name="memory-keeper", desc="Quy tắc ghi trí nhớ.", profiles="student, teacher"
     ),
-    ".mentor/skills/thpt/math-tutoring/SKILL.md": SKILL.format(
-        name="math-tutoring", desc="Dạy Toán THPT.", profiles="thpt"
+    ".mentor/skills/student/math-tutoring/SKILL.md": SKILL.format(
+        name="math-tutoring", desc="Dạy Toán THPT.", profiles="student"
     ),
-    ".mentor/skills/ncs/literature-watch/SKILL.md": SKILL.format(
-        name="literature-watch", desc="Theo dõi paper mới.", profiles="ncs"
+    ".mentor/skills/teacher/course-builder/SKILL.md": SKILL.format(
+        name="course-builder", desc="Soạn khóa học.", profiles="teacher"
     ),
 }
 
@@ -62,7 +62,7 @@ class FakeScripts:
         return out
 
 
-def turn_request(text: str = "Chào mentor", profile: Profile = Profile.THPT, session_id: str = "s1") -> TurnRequest:
+def turn_request(text: str = "Chào mentor", profile: Profile = Profile.STUDENT, session_id: str = "s1") -> TurnRequest:
     return TurnRequest(session_id=session_id, user_id="u1", profile=profile, text=text)
 
 

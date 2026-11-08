@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-coding-for-kids-scratch-stories",
+  "title": "Coding for Kids: Scratch Stories",
+  "subject": "Computing",
+  "age_band": "g1_5",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Mr. Quan Le",
+  "description_short": "Children build three animated stories in Scratch, learning loops, events and variables as they go. Lessons use drag-and-drop blocks, so typing is optional.",
+  "outcomes": [
+    "Move and animate a character with blocks.",
+    "Use loops and events to tell a short story.",
+    "Share a finished project with a classmate."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 54,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "First steps",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Meet the cat",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Moving and talking",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Changing costumes",
+          "est_minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Make a story",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Scenes and backdrops",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Repeat with loops",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Add a score",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

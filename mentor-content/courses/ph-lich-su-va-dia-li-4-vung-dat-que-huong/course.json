@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-lich-su-va-dia-li-4-vung-dat-que-huong",
+  "title": "Lịch sử và Địa lí 4: Vùng đất quê hương",
+  "subject": "Lịch sử và Địa lí",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Vân",
+  "description_short": "Em làm quen với bản đồ, các vùng miền và vài câu chuyện lịch sử gắn với từng nơi. Mỗi bài có bản đồ để chạm vào tên địa danh.",
+  "outcomes": [
+    "Chỉ được vị trí các vùng chính trên bản đồ Việt Nam.",
+    "Kể được một nét đặc trưng của mỗi vùng.",
+    "Đọc được kí hiệu cơ bản trên bản đồ."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 57,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Đọc bản đồ",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Bản đồ là gì",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Phương hướng và kí hiệu",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Tìm nơi em ở",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Các vùng miền",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Trung du và miền núi phía Bắc",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đồng bằng Bắc Bộ",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Duyên hải miền Trung",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-sinh-hoc-8-co-the-nguoi",
+  "title": "Sinh học 8: Cơ thể người",
+  "subject": "Sinh học",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Oanh",
+  "description_short": "Đi qua các hệ cơ quan theo thứ tự từ vận động, tuần hoàn đến tiêu hóa, mỗi hệ có sơ đồ và câu hỏi vận dụng. Dành cho học sinh lớp 8.",
+  "outcomes": [
+    "Mô tả chức năng của các hệ cơ quan chính.",
+    "Giải thích được đường đi của máu và thức ăn.",
+    "Đề ra được thói quen sống lành mạnh."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 75,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Vận động và tuần hoàn",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Bộ xương và cơ",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Máu và tim",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Vòng tuần hoàn",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tiêu hóa và hô hấp",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Ống tiêu hóa",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Hấp thụ dinh dưỡng",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Trao đổi khí",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

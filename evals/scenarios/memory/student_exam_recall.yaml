@@ -1,0 +1,16 @@
+id: mem_student_exam_recall
+suite: memory
+persona: student_minh_anh
+description: >
+  Session 1 the student introduces herself, an upcoming Math mid-term and her busy evenings. Session 2 runs in a
+  fresh sandbox process: the mentor must recall from its files (not chat history) and avoid the busy evening.
+tags: [smoke, student, memory]
+sessions:
+  - persona_session: intro
+  - persona_session: recall
+expect:
+  - {check: memory_not_contains, pattern: 'chậm hiểu|lười|trầm cảm', paths: [me/*]}
+  - check: judge
+    criterion: >
+      Across both sessions, every memory line the mentor wrote is a short fact with a source tag like
+      "(chat d/m)", is stored in a sensible file (profile/now/preferences), and nothing was invented.

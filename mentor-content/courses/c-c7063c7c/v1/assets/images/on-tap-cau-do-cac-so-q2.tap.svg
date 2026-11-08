@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="344" rx="88" ry="12" fill="#E9E5F6"/>
+
+  <!-- apple body -->
+  <path d="M 200 165
+           C 191 142, 166 133, 148 144
+           C 128 156, 115 189, 112 222
+           C 108 260, 122 304, 149 325
+           C 171 342, 229 342, 251 325
+           C 278 304, 292 260, 288 222
+           C 285 189, 272 156, 252 144
+           C 234 133, 209 142, 200 165 Z"
+        fill="#E8806A" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- yellow sheen / highlight crescent -->
+  <path d="M 140 202
+           C 140 178, 156 159, 176 152
+           C 168 166, 162 182, 160 200
+           C 158 220, 160 236, 166 250
+           C 150 244, 140 224, 140 202 Z"
+        fill="#F0D76E"/>
+
+  <!-- stem -->
+  <path d="M 200 168 C 199 146, 202 132, 209 122"
+        fill="none" stroke="#2B283F" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- leaf -->
+  <path d="M 206 130 C 216 104, 246 92, 268 98
+           C 268 120, 244 138, 214 134 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M 212 128 C 228 120, 248 108, 262 100"
+        fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+</svg>

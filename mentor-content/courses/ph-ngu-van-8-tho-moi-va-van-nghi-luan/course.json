@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-ngu-van-8-tho-moi-va-van-nghi-luan",
+  "title": "Ngữ văn 8: Thơ Mới và văn nghị luận",
+  "subject": "Ngữ văn",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Bình",
+  "description_short": "Bốn bài thơ Mới tiêu biểu được đọc chậm cùng phân tích hình ảnh, sau đó chuyển sang cách lập luận trong bài nghị luận. Dành cho học sinh lớp 8.",
+  "outcomes": [
+    "Cảm nhận được hình ảnh và cảm xúc trong thơ Mới.",
+    "Nhận ra luận điểm, luận cứ trong văn nghị luận.",
+    "Viết được đoạn nghị luận có dẫn chứng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 79,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Thơ Mới",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hoàn cảnh ra đời",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Đọc Nhớ rừng",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đọc Quê hương",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Nghị luận",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Luận điểm và luận cứ",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Dẫn chứng",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Viết đoạn nghị luận",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

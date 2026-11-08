@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "ph-dao-duc-3-trung-thuc-va-biet-on",
+  "title": "Đạo đức 3: Trung thực và biết ơn",
+  "subject": "Đạo đức",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Bích",
+  "description_short": "Những tình huống gần gũi ở lớp và ở nhà giúp em nghĩ xem nên làm gì khi nhặt được của rơi hay khi nhận lỗi. Mỗi bài có câu chuyện ngắn và một câu hỏi để em chọn.",
+  "outcomes": [
+    "Kể được biểu hiện của sự trung thực.",
+    "Biết nói lời cảm ơn và làm việc nhỏ để đền đáp.",
+    "Chọn được cách ứng xử phù hợp trong tình huống quen thuộc."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 4,
+  "est_minutes": 37,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Trung thực",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Nhặt được của rơi",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Nhận lỗi khi làm sai",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Biết ơn",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Biết ơn thầy cô",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Biết ơn người lao động",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "c-e451e31c",
+  "title": "Vật lí 11: Điện trường",
+  "subject": "Vật lí",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "giaovien",
+  "teacher_name": "Thầy Minh",
+  "description_short": "Khóa học bám theo 3 chương của tài liệu Vật lí 11: lực điện, điện trường, điện thế và tụ điện. Dành cho học sinh lớp 11A2 học trung bình, mỗi bài có video ngắn có phụ đề, bài đọc ngắn, ví dụ và câu hỏi kiểu đề thi.",
+  "outcomes": [
+    "Phát biểu được định luật Cu-lông và tính được lực tương tác giữa hai điện tích điểm.",
+    "Xác định được cường độ điện trường và biểu diễn được vectơ cường độ điện trường.",
+    "Mô tả được đường sức điện và vận dụng được sự phụ thuộc của E vào khoảng cách.",
+    "Nêu được khái niệm điện trường đều, thế năng điện, điện thế, hiệu điện thế và tụ điện."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 7,
+  "est_minutes": 105,
+  "level": "intermediate",
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-06T20:34:15.148931Z",
+      "published_at": "2026-11-06T22:19:28.955376Z",
+      "pack_sha256": "ee440aa02990719d2e158bc453dde6adbadf2cdef900101706cded2785edbf07",
+      "pack_bytes": 9754163,
+      "note": "draft by course-builder"
+    }
+  ]
+}

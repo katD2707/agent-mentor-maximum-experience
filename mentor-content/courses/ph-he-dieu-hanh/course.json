@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-he-dieu-hanh",
+  "title": "Hệ điều hành",
+  "subject": "Hệ điều hành",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "ThS. Hà Văn Quân",
+  "description_short": "Tiến trình, luồng, lập lịch, bộ nhớ ảo và hệ tệp, có bài thực hành trên Linux. Dành cho sinh viên năm hai, ba.",
+  "outcomes": [
+    "Phân biệt được tiến trình và luồng.",
+    "Mô phỏng được các thuật toán lập lịch.",
+    "Giải thích được bộ nhớ ảo và phân trang."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 195,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Tiến trình",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Tiến trình và luồng",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Lập lịch",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đồng bộ hóa",
+          "est_minutes": 42
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Bộ nhớ và tệp",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Bộ nhớ ảo",
+          "est_minutes": 27
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Phân trang",
+          "est_minutes": 33
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Hệ tệp",
+          "est_minutes": 39
+        }
+      ]
+    }
+  ]
+}

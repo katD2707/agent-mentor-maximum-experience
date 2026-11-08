@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-lich-su-7-viet-nam-thoi-ly-tran",
+  "title": "Lịch sử 7: Việt Nam thời Lý, Trần",
+  "subject": "Lịch sử",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Nam",
+  "description_short": "Dòng thời gian từ Lý Thái Tổ dời đô đến ba lần kháng chiến chống Mông–Nguyên, mỗi sự kiện kèm bản đồ trận đánh. Dành cho học sinh lớp 7.",
+  "outcomes": [
+    "Sắp xếp được các sự kiện lớn thời Lý, Trần.",
+    "Mô tả được diễn biến một trận đánh tiêu biểu.",
+    "Nêu được thành tựu văn hóa, giáo dục thời kì này."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 81,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Nhà Lý",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Dời đô ra Thăng Long",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Kháng chiến chống Tống",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Văn hóa và giáo dục",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Nhà Trần",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Ba lần kháng chiến",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Hội nghị Diên Hồng",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Kinh tế và xã hội",
+          "est_minutes": 16
+        }
+      ]
+    }
+  ]
+}

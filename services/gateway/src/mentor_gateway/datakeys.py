@@ -4,7 +4,7 @@ Key hierarchy:
     MENTOR_MASTER_KEY (secret manager)
       ├─ seals each user's random 32-byte data key   -> ops DB `user_keys` (aad "user-key:<user_id>")
       │    └─ HKDF per file -> that user's backup snapshots (backup.py)
-      ├─ seals sensitive columns directly            -> parent_contacts, audit_log.detail, gcal tokens, ...
+      ├─ seals sensitive columns directly            -> audit_log.detail, push subscriptions
       ├─ HKDF "mentor:blind-index" -> HMAC blind indexes for equality lookups on sealed columns
       └─ HKDF "mentor:ops-backup"  -> ops.db snapshots
 

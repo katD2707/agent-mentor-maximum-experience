@@ -95,7 +95,7 @@ class Workspace:
         job_id: str | None = None,
         actor: str = "mentor",
     ) -> ActivityEntry:
-        """Append one ActivityEntry to .mentor/activity.jsonl. Never call this for crisis alerts."""
+        """Append one ActivityEntry to .mentor/activity.jsonl."""
         entry = ActivityEntry(
             ts=now_local(),
             actor=actor,  # type: ignore[arg-type]

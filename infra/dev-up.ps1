@@ -1,10 +1,14 @@
 # Starts the dev stack with real models, each service in its own PowerShell window:
-#   model router (LiteLLM, :4000) -> gateway (:8000) -> web (:3000) [-> desktop bubble with -Desktop]
-# Secrets come from .env.dev.local at the repo root (gitignored). Usage, from the repo root:
+#   model router (LiteLLM, :4000) + gateway (:8000) + app (apps/app, Vite, :5173) [+ Tauri shell with -Desktop]
+# The router and the gateway read secrets from .env.dev.local at the repo root (gitignored).
+# Dev accounts (MENTOR_ENV=dev): hocsinh / 123456 (student), giaovien / 123456 (teacher).
+# Usage, from the repo root:
 #   powershell -ExecutionPolicy Bypass -File infra\dev-up.ps1 [-Desktop] [-DataDir var-dev]
+# After the data model changed, wipe the dev DB:  Remove-Item -Recurse -Force var-dev  (an old ops.db is also
+# recreated automatically on start-up when it has the pre-redesign schema).
 # A service whose port is already taken is skipped, never killed.
 param(
-    [ValidateSet("all", "router", "gateway", "web", "desktop")] [string]$Service = "all",
+    [ValidateSet("all", "router", "gateway", "app", "desktop")] [string]$Service = "all",
     [string]$DataDir = "var-dev",
     [switch]$Desktop
 )
@@ -44,36 +48,36 @@ switch ($Service) {
     }
     "gateway" {
         $Host.UI.RawUI.WindowTitle = "mentor: gateway :8000"
-        Import-DevEnv
         Set-Location $Root
-        Write-Host "Waiting for the model router on :4000 (first run downloads LiteLLM)..."
-        if (-not (Wait-Url "http://127.0.0.1:4000/health/liveliness" 600)) { throw "Model router did not come up on :4000." }
-        Remove-Item Env:MENTOR_MODEL_MODE -ErrorAction SilentlyContinue
+        $env:PYTHONUTF8 = "1"
         $env:MENTOR_ENV = "dev"
         $env:MENTOR_DATA_DIR = $DataDir
-        $env:SANDBOX_BACKEND = "local"
-        $env:MODEL_ROUTER_URL = "http://127.0.0.1:4000"  # not localhost: Windows tries ::1 first and LiteLLM listens on IPv4 only
-        $env:MODEL_ROUTER_KEY = $env:MODEL_ROUTER_MASTER_KEY
+        $env:WEB_ORIGIN = "http://localhost:5173"
+        # Ask, the planner, semantic course search and the course builder call models through the router
+        Import-DevEnv
+        # 127.0.0.1, not localhost: on Windows each new localhost connection costs 2-3 s
+        if (-not $env:MODEL_ROUTER_URL) { $env:MODEL_ROUTER_URL = "http://127.0.0.1:4000" }
+        # builder subprocesses read MODEL_ROUTER_KEY; the gateway itself also accepts the master key
+        if (-not $env:MODEL_ROUTER_KEY) { $env:MODEL_ROUTER_KEY = $env:MODEL_ROUTER_MASTER_KEY }
+        $env:BUILDER_DEEPTUTOR = "1"
         uv run uvicorn mentor_gateway.app:app --port 8000
     }
-    "web" {
-        $Host.UI.RawUI.WindowTitle = "mentor: web :3000"
-        Set-Location (Join-Path $Root "apps\web")
-        Remove-Item Env:NEXT_PUBLIC_API_MOCK -ErrorAction SilentlyContinue
-        $env:NEXT_PUBLIC_API_BASE = "http://localhost:8000/api"
+    "app" {
+        $Host.UI.RawUI.WindowTitle = "mentor: app :5173"
+        Set-Location (Join-Path $Root "apps\app")
         pnpm dev
     }
     "desktop" {
-        $Host.UI.RawUI.WindowTitle = "mentor: desktop bubble"
-        Set-Location (Join-Path $Root "apps\desktop")
+        $Host.UI.RawUI.WindowTitle = "mentor: desktop"
+        Set-Location (Join-Path $Root "apps\app")
         $cargo = Join-Path $env:USERPROFILE ".cargo\bin"
         if ($env:PATH -notlike "*$cargo*") { $env:PATH += ";$cargo" }
-        if (-not (Wait-Url "http://127.0.0.1:3000" 300)) { Write-Warning "Web app is not up on :3000 yet." }
+        $env:VITE_API_BASE = "http://localhost:8000/api"
         pnpm tauri dev
     }
     "all" {
-        Import-DevEnv  # fail fast on a missing key before opening windows
-        $plan = @(@{ Name = "router"; Port = 4000 }, @{ Name = "gateway"; Port = 8000 }, @{ Name = "web"; Port = 3000 })
+        Import-DevEnv  # fail fast on a missing router key before opening windows
+        $plan = @(@{ Name = "router"; Port = 4000 }, @{ Name = "gateway"; Port = 8000 }, @{ Name = "app"; Port = 5173 })
         if ($Desktop) { $plan += @{ Name = "desktop"; Port = 0 } }
         foreach ($s in $plan) {
             if ($s.Port -and (Test-Port $s.Port)) { Write-Host "skip $($s.Name): port $($s.Port) already in use"; continue }
@@ -82,6 +86,6 @@ switch ($Service) {
                 "-Service $($s.Name) -DataDir `"$DataDir`"") -WorkingDirectory $Root
             Write-Host "started $($s.Name)"
         }
-        Write-Host "Open http://localhost:3000 once the gateway window shows 'Uvicorn running'. Data dir: $DataDir"
+        Write-Host "Open http://localhost:5173 once the gateway window shows 'Uvicorn running'. Data dir: $DataDir"
     }
 }

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-dai-so-tuyen-tinh-ma-tran-va-he-phuong-trinh",
+  "title": "Đại số tuyến tính: Ma trận và hệ phương trình",
+  "subject": "Đại số tuyến tính",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Phạm Minh Đức",
+  "description_short": "Từ khử Gauss đến định thức và ma trận nghịch đảo, với hình ảnh hình học cho từng khái niệm. Dành cho sinh viên năm nhất, không yêu cầu kiến thức trước.",
+  "outcomes": [
+    "Giải được hệ phương trình bằng khử Gauss.",
+    "Tính được định thức và ma trận nghịch đảo.",
+    "Hiểu ý nghĩa hình học của phép biến đổi tuyến tính."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 195,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hệ phương trình",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Khử Gauss",
+          "est_minutes": 37
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Nghiệm và hạng",
+          "est_minutes": 19
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Dạng bậc thang",
+          "est_minutes": 33
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Ma trận",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Phép toán ma trận",
+          "est_minutes": 28
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Định thức",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Ma trận nghịch đảo",
+          "est_minutes": 40
+        }
+      ]
+    }
+  ]
+}

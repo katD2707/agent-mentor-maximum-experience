@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-ielts-listening-and-speaking-for-beginners",
+  "title": "IELTS Listening and Speaking for Beginners",
+  "subject": "IELTS",
+  "age_band": "g10_12",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Ms. Mai Dang",
+  "description_short": "Short listening tasks and speaking prompts for learners at about band 4.5, with slow models first and natural speed later. Each unit ends with a recording task.",
+  "outcomes": [
+    "Follow numbers, names and directions in a recording.",
+    "Answer Part 1 questions in two or three sentences.",
+    "Speak for one minute on a familiar topic."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 98,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Listening",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Numbers and spelling",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Maps and directions",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Short conversations",
+          "est_minutes": 22
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Speaking",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Talking about yourself",
+          "est_minutes": 19
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Describing places",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l3",
+          "title": "The one-minute talk",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

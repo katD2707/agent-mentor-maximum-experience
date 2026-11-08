@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="140" y="160" width="720" height="20" rx="10" fill="#5A4BC0"/>
+<rect x="140" y="520" width="720" height="20" rx="10" fill="#5A4BC0"/>
+<rect x="238" y="163" width="4" height="14" rx="2" fill="#F0D76E"/>
+<rect x="233" y="168" width="14" height="4" rx="2" fill="#F0D76E"/>
+<rect x="233" y="528" width="14" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="358" y="163" width="4" height="14" rx="2" fill="#F0D76E"/>
+<rect x="353" y="168" width="14" height="4" rx="2" fill="#F0D76E"/>
+<rect x="353" y="528" width="14" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="478" y="163" width="4" height="14" rx="2" fill="#F0D76E"/>
+<rect x="473" y="168" width="14" height="4" rx="2" fill="#F0D76E"/>
+<rect x="473" y="528" width="14" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="598" y="163" width="4" height="14" rx="2" fill="#F0D76E"/>
+<rect x="593" y="168" width="14" height="4" rx="2" fill="#F0D76E"/>
+<rect x="593" y="528" width="14" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="718" y="163" width="4" height="14" rx="2" fill="#F0D76E"/>
+<rect x="713" y="168" width="14" height="4" rx="2" fill="#F0D76E"/>
+<rect x="713" y="528" width="14" height="4" rx="2" fill="#9FD8BF"/>
+<line x1="240" y1="180" x2="240" y2="520" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<polyline points="235,505 240,515 245,505" fill="none" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="360" y1="180" x2="360" y2="520" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<polyline points="355,505 360,515 365,505" fill="none" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="480" y1="180" x2="480" y2="520" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<polyline points="475,505 480,515 485,505" fill="none" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="600" y1="180" x2="600" y2="520" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<polyline points="595,505 600,515 605,505" fill="none" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="720" y1="180" x2="720" y2="520" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<polyline points="715,505 720,515 725,505" fill="none" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="360" y1="230" x2="360" y2="470" stroke="#F0D76E" stroke-width="7" stroke-linecap="round"/>
+<polyline points="360,230 540,290 480,370 540,440 360,470" fill="none" stroke="#E8806A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="360" cy="230" r="6" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2"/>
+<circle cx="360" cy="470" r="6" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2"/>
+<line x1="900" y1="180" x2="900" y2="520" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<line x1="890" y1="180" x2="910" y2="180" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<line x1="890" y1="520" x2="910" y2="520" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<text x="160" y="130" font-family="Lexend, sans-serif" font-size="30" text-anchor="start" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">B&#x1EA3;n d&#x1B0;&#x1A1;ng (+)</text>
+<text x="160" y="590" font-family="Lexend, sans-serif" font-size="30" text-anchor="start" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">B&#x1EA3;n &#xE2;m (&#x2212;)</text>
+<text x="40" y="60" font-family="Lexend, sans-serif" font-size="30" text-anchor="start" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#x110;&#x1B0;&#x1EDD;ng s&#x1EE9;c song song, c&#xE1;ch &#x111;&#x1EC1;u</text>
+<text x="340" y="218" font-family="Lexend, sans-serif" font-size="32" text-anchor="end" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">M</text>
+<text x="400" y="505" font-family="Lexend, sans-serif" font-size="32" text-anchor="start" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">N</text>
+<text x="915" y="355" font-family="Lexend, sans-serif" font-size="32" text-anchor="start" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">d</text>
+<text x="760" y="650" font-family="Lexend, sans-serif" font-size="30" text-anchor="start" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">A = qEd</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

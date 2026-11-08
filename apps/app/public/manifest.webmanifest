@@ -1,0 +1,16 @@
+{
+  "name": "Mentor",
+  "short_name": "Mentor",
+  "description": "Mentor: one learning app for students and teachers",
+  "lang": "vi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F2F0F5",
+  "theme_color": "#5A4BC0",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

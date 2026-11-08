@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-lich-su-va-dia-li-5-dat-nuoc-viet-nam",
+  "title": "Lịch sử và Địa lí 5: Đất nước Việt Nam",
+  "subject": "Lịch sử và Địa lí",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Dũng",
+  "description_short": "Từ vị trí và khí hậu đất nước đến các cuộc kháng chiến tiêu biểu, nội dung được kể ngắn gọn với dòng thời gian trực quan. Dành cho học sinh lớp 5.",
+  "outcomes": [
+    "Nêu được vị trí, giới hạn và địa hình Việt Nam.",
+    "Sắp xếp được các mốc lịch sử lớn theo thứ tự.",
+    "Kể được về một nhân vật lịch sử em yêu thích."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 44,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Địa lí Việt Nam",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Vị trí và lãnh thổ",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Khí hậu và sông ngòi",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Dân cư",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Lịch sử",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Buổi đầu dựng nước",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Các cuộc chống giặc ngoại xâm",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Dòng thời gian",
+          "est_minutes": 6
+        }
+      ]
+    }
+  ]
+}

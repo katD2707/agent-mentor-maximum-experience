@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-12-dao-ham-va-khao-sat-ham-so",
+  "title": "Toán 12: Đạo hàm và khảo sát hàm số",
+  "subject": "Toán",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Hiếu",
+  "description_short": "Dùng đạo hàm để xét tính đơn điệu, cực trị và vẽ đồ thị, rồi áp dụng vào bài toán tối ưu. Mỗi chương có đề trắc nghiệm 20 câu.",
+  "outcomes": [
+    "Tìm được khoảng đơn điệu và cực trị của hàm số.",
+    "Khảo sát và vẽ được đồ thị hàm bậc ba, phân thức.",
+    "Giải được bài toán giá trị lớn nhất, nhỏ nhất thực tế."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 103,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Đạo hàm và đơn điệu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Quy tắc tính đạo hàm",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Tính đơn điệu",
+          "est_minutes": 19
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Cực trị",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Khảo sát hàm số",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tiệm cận",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đồ thị hàm bậc ba",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Bài toán tối ưu",
+          "est_minutes": 19
+        }
+      ]
+    }
+  ]
+}

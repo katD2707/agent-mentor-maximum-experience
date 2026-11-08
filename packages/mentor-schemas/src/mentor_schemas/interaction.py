@@ -29,12 +29,6 @@ CARD_ACTIONS: dict[str, tuple[str, ...]] = {
 # Kinds a background job may put into the chat (shown the next time the learner opens it).
 JOB_CARD_KINDS: frozenset[str] = frozenset({"weekly", "checkin", "deadline"})
 
-# Kinds refused in crisis context (flag_crisis ran, or the wellbeing-and-crisis skill is in use).
-CELEBRATORY_KINDS: frozenset[str] = frozenset({"celebration", "weekly"})
-
-# Also refused in crisis context: suggesting practice or a mock exam during a crisis hold is inappropriate.
-CRISIS_REFUSED_KINDS: frozenset[str] = CELEBRATORY_KINDS | {"practice", "mock"}
-
 MAX_SUGGESTIONS = 3
 SUGGESTION_LABEL_CHARS = 40
 SUGGESTION_TEXT_CHARS = 300

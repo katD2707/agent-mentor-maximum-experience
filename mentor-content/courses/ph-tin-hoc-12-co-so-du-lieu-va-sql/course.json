@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-tin-hoc-12-co-so-du-lieu-va-sql",
+  "title": "Tin học 12: Cơ sở dữ liệu và SQL",
+  "subject": "Tin học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hoài",
+  "description_short": "Thiết kế bảng, khóa chính, khóa ngoại và truy vấn SELECT trên bộ dữ liệu một thư viện trường. Dành cho học sinh lớp 12.",
+  "outcomes": [
+    "Thiết kế được cơ sở dữ liệu quan hệ nhỏ.",
+    "Viết được truy vấn SELECT có điều kiện và nối bảng.",
+    "Hiểu vai trò của khóa chính, khóa ngoại."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 78,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Thiết kế",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Bảng và khóa",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Quan hệ giữa các bảng",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Truy vấn",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "SELECT và WHERE",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Sắp xếp, nhóm",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Nối bảng",
+          "est_minutes": 14
+        }
+      ]
+    }
+  ]
+}

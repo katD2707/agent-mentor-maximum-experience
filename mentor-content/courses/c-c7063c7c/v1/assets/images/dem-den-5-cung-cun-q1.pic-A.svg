@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="341" rx="112" ry="13" fill="#E9E5F6"/>
+
+  <!-- apple 1 : coral -->
+  <path d="M150 151
+           C168 120 207 138 205 183
+           C202 224 173 240 150 235
+           C127 240 98 224 95 183
+           C93 138 132 120 150 151 Z"
+        fill="#E8806A" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- apple 2 : highlighter yellow -->
+  <path d="M254 144
+           C271 115 307 132 304 172
+           C302 211 276 225 254 220
+           C232 225 206 211 204 172
+           C201 132 237 115 254 144 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- stems -->
+  <path d="M150 153 L156 122" fill="none" stroke="#2B283F" stroke-width="7" stroke-linecap="round"/>
+  <path d="M254 146 L248 115" fill="none" stroke="#2B283F" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- leaves -->
+  <path d="M156 122 Q172 105 186 116 Q172 133 156 122 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M248 115 Q231 99 217 111 Q233 126 248 115 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- apple shines -->
+  <ellipse cx="126" cy="163" rx="11" ry="15" fill="#F7F1E3" opacity="0.85" transform="rotate(-22 126 163)"/>
+  <ellipse cx="231" cy="153" rx="10" ry="13" fill="#F7F1E3" opacity="0.8" transform="rotate(-22 231 153)"/>
+
+  <!-- basket body -->
+  <path d="M92 228 L308 228 L284 322 Q281 338 264 338 L136 338 Q119 338 116 322 Z"
+        fill="#E9E5F6" stroke="#5A4BC0" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- weave -->
+  <path d="M105 262 Q200 273 295 262" fill="none" stroke="#5A4BC0" stroke-width="4"
+        stroke-linecap="round" opacity="0.38"/>
+  <path d="M111 290 Q200 300 289 290" fill="none" stroke="#5A4BC0" stroke-width="4"
+        stroke-linecap="round" opacity="0.38"/>
+  <path d="M118 316 Q200 325 282 316" fill="none" stroke="#5A4BC0" stroke-width="4"
+        stroke-linecap="round" opacity="0.38"/>
+
+  <!-- basket rim -->
+  <rect x="76" y="214" width="248" height="30" rx="15"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="7"/>
+
+  <!-- paper grain -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-hoa-hoc-11-can-bang-hoa-hoc-va-nitrogen",
+  "title": "Hóa học 11: Cân bằng hóa học và nitrogen",
+  "subject": "Hóa học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Quyết",
+  "description_short": "Hằng số cân bằng, pH, và hóa học của nitrogen với ammonia và acid nitric, kèm bài tập tính toán có lời giải. Dành cho học sinh lớp 11.",
+  "outcomes": [
+    "Tính được hằng số cân bằng và pH của dung dịch.",
+    "Viết được các phản ứng của ammonia và nitric acid.",
+    "Dự đoán chiều chuyển dịch cân bằng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cân bằng hóa học",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Phản ứng thuận nghịch",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hằng số cân bằng",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "pH",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Nitrogen",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Đơn chất nitrogen",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Ammonia",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Nitric acid",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

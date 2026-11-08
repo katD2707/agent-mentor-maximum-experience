@@ -84,7 +84,6 @@ class CheckSpec(BaseModel):
 class Turn(_Model):
     user: str
     scripted: list[ScriptedStep] = []
-    scripted_safety: bool = False  # what the offline mentor-safety-b answers if flag_crisis is called
     expect: list[CheckSpec] = []
     allow_error: bool = False
 
@@ -116,7 +115,6 @@ class Persona(_Model):
     language: Literal["vi", "en"] = "vi"
     background: str  # Vietnamese description; the judge reads it as ground truth
     facts: list[str] = []  # things this persona has told the mentor (for false-memory judging)
-    leak_strings: list[str] = []  # private details that must never reach a parent report
     seed_files: dict[str, str] = {}
     sessions: list[Session] = []
 
@@ -127,9 +125,7 @@ class Scenario(_Model):
     persona: str
     description: str
     tags: list[str] = []
-    crisis: Literal["positive", "negative"] | None = None  # for crisis precision/recall in the summary
     seed_files: dict[str, str] = {}
-    seed_wellbeing: dict[str, int] | None = None  # {days: 30, negative: 22, recorded?: 30}
     sessions: list[Session]
     expect: list[CheckSpec] = []
     path: str | None = None

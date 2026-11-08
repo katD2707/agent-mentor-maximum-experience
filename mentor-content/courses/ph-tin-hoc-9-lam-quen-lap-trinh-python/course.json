@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "ph-tin-hoc-9-lam-quen-lap-trinh-python",
+  "title": "Tin học 9: Làm quen lập trình Python",
+  "subject": "Tin học",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Duy",
+  "description_short": "Chương trình đầu tiên, biến, vòng lặp và hàm được dạy qua các bài tập nhỏ như tính điểm và đoán số. Dành cho học sinh lớp 9, chưa cần biết lập trình.",
+  "outcomes": [
+    "Viết được chương trình có biến, điều kiện và vòng lặp.",
+    "Chia chương trình thành các hàm nhỏ.",
+    "Tìm và sửa được lỗi cơ bản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 8,
+  "est_minutes": 115,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Bắt đầu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "In ra màn hình",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Biến và kiểu dữ liệu",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Nhập dữ liệu",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Điều khiển",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Câu lệnh if",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Vòng lặp for",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Vòng lặp while",
+          "est_minutes": 14
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Hàm",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Viết hàm",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Bài tập tổng hợp",
+          "est_minutes": 15
+        }
+      ]
+    }
+  ]
+}

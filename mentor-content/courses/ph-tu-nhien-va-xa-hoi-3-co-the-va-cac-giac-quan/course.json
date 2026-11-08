@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "ph-tu-nhien-va-xa-hoi-3-co-the-va-cac-giac-quan",
+  "title": "Tự nhiên và Xã hội 3: Cơ thể và các giác quan",
+  "subject": "Tự nhiên và Xã hội",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Dung",
+  "description_short": "Năm giác quan được giới thiệu bằng những thí nghiệm nhỏ tại nhà: nhắm mắt nếm thử, nghe đoán tiếng. Em cũng học cách giữ gìn cơ quan hô hấp và tuần hoàn.",
+  "outcomes": [
+    "Kể tên và nêu chức năng của năm giác quan.",
+    "Biết cách bảo vệ mắt, tai và răng.",
+    "Nhận biết cơ quan hô hấp và tuần hoàn."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 58,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Giác quan",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Mắt và nhìn",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Tai và nghe",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Mũi, lưỡi, da",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Cơ quan trong cơ thể",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Hô hấp",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Tuần hoàn",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Giữ gìn sức khỏe",
+          "est_minutes": 12
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-machine-learning-co-ban",
+  "title": "Machine learning cơ bản",
+  "subject": "Machine learning",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Đặng Quang Huy",
+  "description_short": "Hồi quy, phân loại, cây quyết định và mạng nơ-ron nhỏ, mỗi mô hình được cài đặt bằng scikit-learn. Dành cho sinh viên đã học Python và xác suất.",
+  "outcomes": [
+    "Huấn luyện và đánh giá được mô hình hồi quy, phân loại.",
+    "Nhận ra quá khớp và cách giảm.",
+    "Chia dữ liệu và kiểm định chéo đúng cách."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 191,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Học có giám sát",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hồi quy tuyến tính",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hồi quy logistic",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Cây quyết định",
+          "est_minutes": 31
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Đánh giá",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tập huấn luyện, kiểm tra",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Quá khớp",
+          "est_minutes": 44
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Kiểm định chéo",
+          "est_minutes": 42
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-1-hinh-vuong-tron-tam-giac",
+  "title": "Toán 1: Hình vuông, tròn, tam giác",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Mai",
+  "description_short": "Em nhận ra hình vuông, hình tròn, hình tam giác trong đồ vật hằng ngày rồi xếp hình thành ngôi nhà, con thuyền. Hình to, đọc to, chạm để chọn đáp án.",
+  "outcomes": [
+    "Gọi đúng tên các hình vuông, tròn, tam giác.",
+    "Tìm được các hình đó trong đồ vật quanh nhà.",
+    "Xếp được hình mới từ các hình đã học."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 51,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Nhận biết hình",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hình vuông",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hình tròn",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Hình tam giác",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Xếp hình",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Ghép hình thành ngôi nhà",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Ghép hình thành con thuyền",
+          "est_minutes": 7
+        }
+      ]
+    }
+  ]
+}

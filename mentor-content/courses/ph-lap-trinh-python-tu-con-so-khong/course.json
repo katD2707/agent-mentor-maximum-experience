@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-lap-trinh-python-tu-con-so-khong",
+  "title": "Lập trình Python từ con số không",
+  "subject": "Lập trình Python",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "ThS. Lê Quốc Việt",
+  "description_short": "Mười tuần từ biến, vòng lặp đến hàm và tệp, mỗi tuần một bài tập nhỏ có thể chạy ngay trên máy. Dành cho sinh viên mới học lập trình.",
+  "outcomes": [
+    "Viết và chạy được chương trình Python hoàn chỉnh.",
+    "Dùng được danh sách, từ điển và hàm.",
+    "Đọc, ghi được tệp văn bản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 191,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cơ bản",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Cài đặt và chạy",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Biến, kiểu dữ liệu",
+          "est_minutes": 36
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Rẽ nhánh và vòng lặp",
+          "est_minutes": 30
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Cấu trúc",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Danh sách, từ điển",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Hàm",
+          "est_minutes": 41
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tệp và xử lí lỗi",
+          "est_minutes": 31
+        }
+      ]
+    }
+  ]
+}

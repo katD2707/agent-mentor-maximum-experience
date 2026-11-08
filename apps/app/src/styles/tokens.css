@@ -1,0 +1,66 @@
+/* Design tokens, ported from mockups/shared.css and DESIGN.md.
+   Theme: [data-theme="light"|"dark"] on <html>; no attribute = follow the system.
+   Age density: [data-age="g1_5"|"g6_9"|"g10_12"|"uni"] on <html>. */
+
+:root {
+  --paper: #F2F0F5;
+  --surface: #FAF9FB;
+  --ink: #2B283F;
+  --ink-2: #5F5B74;
+  --ink-3: #6C6882;
+  --rule: #E4E0EC;
+  --rule-strong: #D2CCE0;
+  --margin-line: #E9B4BF;
+  --tim: #5A4BC0;
+  --tim-ink: #46399E;
+  --tim-soft: #E9E5F6;
+  --on-tim: #FFFFFF;
+  --do: #B23C3C;
+  --do-soft: #F6E8E8;
+  --vang: #F0D76E;
+  --vang-soft: #F6EDCB;
+  --xanh: #1D7052;
+  --xanh-soft: #E0EEE7;
+  --cam: #925409;
+  --cam-soft: #F5EADC;
+  --shadow: 0 1px 0 rgba(0, 0, 0, .035), 0 10px 28px -16px rgba(0, 0, 0, .14);
+
+  --font-ui: "Lexend", system-ui, sans-serif;
+  --font-read: "Literata", Georgia, serif;
+
+  /* age-driven scale (default = grades 10-12) */
+  --fs: 17px;
+  --tap: 52px;
+  --gap: 20px;
+  --r-lg: 22px;
+  --r-md: 14px;
+  --r-sm: 8px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15132A; --surface: #1E1B38; --ink: #ECEAF7; --ink-2: #B4B0CC; --ink-3: #9692B4;
+    --rule: #26233F; --rule-strong: #34305A; --margin-line: #6B3446;
+    --tim: #9C8AFF; --tim-ink: #B8ABFF; --tim-soft: #2A2556; --on-tim: #15132A;
+    --do: #FF7B7B; --do-soft: #3A1E28; --vang: #E8CC3A; --vang-soft: #3B3519;
+    --xanh: #4FD39B; --xanh-soft: #173A2E; --cam: #FFB65C; --cam-soft: #3A2A16;
+    --shadow: 0 1px 0 rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15132A; --surface: #1E1B38; --ink: #ECEAF7; --ink-2: #B4B0CC; --ink-3: #9692B4;
+  --rule: #26233F; --rule-strong: #34305A; --margin-line: #6B3446;
+  --tim: #9C8AFF; --tim-ink: #B8ABFF; --tim-soft: #2A2556; --on-tim: #15132A;
+  --do: #FF7B7B; --do-soft: #3A1E28; --vang: #E8CC3A; --vang-soft: #3B3519;
+  --xanh: #4FD39B; --xanh-soft: #173A2E; --cam: #FFB65C; --cam-soft: #3A2A16;
+  --shadow: 0 1px 0 rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+
+/* Age density: the interface grows and simplifies for younger learners (DESIGN.md sections 3-5) */
+:root[data-age="g1_5"]   { --fs: 20px; --tap: 68px; --gap: 24px; --r-lg: 28px; --r-md: 20px; }
+:root[data-age="g6_9"]   { --fs: 18px; --tap: 56px; }
+:root[data-age="g10_12"] { --fs: 17px; --tap: 52px; }
+:root[data-age="uni"]    { --fs: 16px; --tap: 46px; --gap: 18px; --r-lg: 16px; --r-md: 10px; }

@@ -13,12 +13,12 @@ class ProactivityLevel(str, Enum):
 
 
 class Routine(BaseModel):
-    id: str  # e.g. "nightly_reflection", "evening_review", "parent_report", "literature_watch"
+    id: str  # e.g. "nightly_reflection", "evening_review"
     enabled: bool = True
     cron: str = Field(description="5-field cron in the learner's timezone, e.g. '30 23 * * *'")
     job_kind: str  # a JobKind value
     prompt: str | None = None  # extra instruction for the job
-    user_editable: bool = True  # parent_report and nightly_reflection are not
+    user_editable: bool = True  # nightly_reflection is not
 
 
 class RoutinesFile(BaseModel):

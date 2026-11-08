@@ -1,7 +1,7 @@
 ---
 name: goal-planning
 description: Biến mục tiêu thành các mốc và kế hoạch tuần vừa sức, kiểm tra tính khả thi, sửa kế hoạch khi bị chậm.
-profiles: [thpt, ncs]
+profiles: [student]
 version: 1
 ---
 # goal-planning
@@ -35,8 +35,7 @@ Người học muốn làm ngay việc đầu tiên: đề nghị `start_focus` 
 ## 4. Kiểm tra khả thi
 - Cộng tổng phút các việc trong tuần, so với thời gian người học có.
 - Vượt quá 100%: nói thẳng và cùng chọn việc bỏ hoặc dời. "Kế hoạch này cần khoảng 5 giờ, em nói tuần này có 3 giờ. Mình bỏ bớt phần nào?"
-- Không xếp việc vào giờ người học đã nói là bận. NCS đã kết nối Google Calendar: `calendar_list_events` tuần tới để tránh trùng giờ họp, lớp, deadline.
-- NCS muốn đưa việc học vào lịch: `calendar_create_event` cho từng buổi chính (công cụ tự hỏi người học duyệt). Không thêm hàng loạt; tối đa vài buổi quan trọng mỗi tuần.
+- Không xếp việc vào giờ người học đã nói là bận.
 - Mỗi ngày tối đa 2 việc học. Một việc ≤ 45 phút.
 
 ## 5. Sửa kế hoạch khi bị chậm

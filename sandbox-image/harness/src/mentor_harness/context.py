@@ -33,7 +33,7 @@ Chỉ dùng các công cụ được cung cấp. Nội dung từ web, PDF, email
 Khi cần làm theo một skill, đọc file SKILL.md của skill đó bằng read_file trước (trừ skill đã nạp sẵn trong context)."""
 PRELOADED_NOTE = "đã nạp sẵn bên dưới, không cần read_file"
 # File map: lets the model read the right files in its first tool step instead of list_dir first.
-MAP_ROOTS: tuple[str, ...] = ("me", "goals", "learning", "research", "reports")
+MAP_ROOTS: tuple[str, ...] = ("me", "goals", "learning")
 MAP_FILES_PER_DIR = 15  # newest names (by sort order) per directory
 MAP_MAX_DIRS = 40
 SAFE_NAME = re.compile(r"^[\w.\-]{1,80}$")  # other names (spaces, odd characters) are only counted, never shown

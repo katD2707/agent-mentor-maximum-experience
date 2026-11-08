@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-vat-li-dai-cuong-co-hoc-va-nhiet",
+  "title": "Vật lí đại cương: Cơ học và nhiệt",
+  "subject": "Vật lí đại cương",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Kiều Văn Tuấn",
+  "description_short": "Động học, định luật Newton, công và năng lượng, nhiệt động lực học, kèm video thí nghiệm và bài tập tính. Dành cho sinh viên năm nhất khối kĩ thuật.",
+  "outcomes": [
+    "Giải được bài toán cơ học chất điểm.",
+    "Áp dụng bảo toàn năng lượng và động lượng.",
+    "Dùng nguyên lí thứ nhất của nhiệt động lực học."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 199,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cơ học",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Động học",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Động lực học",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Công và năng lượng",
+          "est_minutes": 26
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Nhiệt học",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Khí lí tưởng",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Nguyên lí thứ nhất",
+          "est_minutes": 41
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Entropy",
+          "est_minutes": 43
+        }
+      ]
+    }
+  ]
+}

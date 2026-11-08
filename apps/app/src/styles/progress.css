@@ -1,0 +1,53 @@
+/* Progress (hs-10): goals, the planned week, per-course notes. Tokens and age density come from tokens.css. */
+.pg-main { max-width: 860px; margin: 0 auto; display: grid; gap: 36px; align-content: start; }
+.pg-sec { display: grid; gap: 14px; }
+.pg-sec > h2, .pg-head h2 { font-size: 1.35em; }
+.pg-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pg-head .btn { min-height: 44px; }
+
+.pg-goals { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.pg-goal { display: grid; gap: 10px; padding: 18px 20px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--rule); }
+.pg-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.pg-top h3 { font-size: 1.05em; min-width: 0; overflow-wrap: anywhere; }
+.pg-top .tag { flex: none; }
+.pg-goal .bar { height: 10px; }
+.pg-for { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.pg-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; max-width: 100%; padding: 4px 12px 4px 4px; border-radius: 999px; background: var(--paper); border: 1px solid var(--rule); font-size: .85em; color: var(--ink); text-decoration: none; }
+.pg-chip img { width: 28px; height: 28px; border-radius: 99px; object-fit: cover; background: #FBF5E8; flex: none; }
+.pg-why { margin: 0; color: var(--ink-2); font-size: .9em; }
+.pg-pct { font-weight: 600; color: var(--tim-ink); margin-right: 6px; }
+.pg-actions { display: flex; justify-content: flex-end; min-height: 1.4em; }
+.pg-actions .btn-link { color: var(--ink-3); font-weight: 400; }
+
+.pg-add { display: grid; gap: 12px; padding: 18px 20px; border-radius: var(--r-md); border: 2px dashed var(--rule-strong); }
+.pg-add-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; }
+.pg-field { min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); min-width: 0; }
+.pg-field:focus { outline: 3px solid var(--tim-soft); border-color: var(--tim); }
+.pg-date { max-width: 220px; }
+.pg-deadline { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.pg-pick { min-height: 40px; padding: 0 14px; border-radius: 999px; cursor: pointer; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); font-weight: 500; }
+.pg-pick[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.pg-err { color: var(--do); }
+@media (max-width: 720px) { .pg-add-row { grid-template-columns: 1fr; } }
+
+/* The plan holds the rest of this week plus the next seven days (up to 13), so it reads as a list, not a 7-column grid. */
+.pg-week { display: grid; gap: 8px; }
+.pg-day { border-radius: var(--r-md); padding: 12px 16px; background: var(--surface); border: 1.5px solid var(--rule); display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 8px; align-items: center; font-size: .92em; }
+.pg-day.next-week { margin-top: 12px; }
+.pg-day b { font-size: 1.05em; }
+.pg-day > .pg-plan + .pg-plan { grid-column: 2; }
+.pg-plan { display: grid; align-content: center; min-height: 44px; gap: 2px; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.pg-plan small { color: var(--ink-2); font-size: .9em; line-height: 1.35; }
+.pg-plan.done span::after { content: " \2713"; color: var(--xanh); }
+a.pg-plan:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.pg-day.done { border-color: var(--xanh); }
+.pg-day.today { border-color: var(--tim); border-width: 2.5px; }
+.pg-note { margin: 0; color: var(--ink-2); font-size: .92em; max-width: 60ch; }
+
+.pg-courses { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.pg-course { display: grid; grid-template-columns: 56px minmax(0, 1fr) 160px auto; gap: 16px; align-items: center; color: inherit; text-decoration: none; }
+.pg-thumb { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; background: #FBF5E8; border: 1px solid var(--rule); }
+.pg-course h3 { font-size: 1em; }
+.pg-course p { margin: 0; color: var(--ink-2); font-size: .85em; }
+.pg-course .pg-pct { width: 3.2em; text-align: right; margin: 0; }
+@media (max-width: 560px) { .pg-course { grid-template-columns: 56px minmax(0, 1fr) auto; } .pg-course .bar { grid-column: 2 / -1; grid-row: 2; } }

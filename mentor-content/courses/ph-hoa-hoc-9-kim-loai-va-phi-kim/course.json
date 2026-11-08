@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-hoa-hoc-9-kim-loai-va-phi-kim",
+  "title": "Hóa học 9: Kim loại và phi kim",
+  "subject": "Hóa học",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Loan",
+  "description_short": "Khóa học sắp xếp dãy hoạt động hóa học của kim loại, tính chất của clo, cacbon và các bài tập tính theo phương trình. Có bảng tổng kết sau từng chương.",
+  "outcomes": [
+    "Viết được phản ứng của kim loại với axit, muối.",
+    "Nêu được tính chất của clo và cacbon.",
+    "Giải được bài toán hỗn hợp kim loại."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 79,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Kim loại",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Dãy hoạt động",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Nhôm và sắt",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Ăn mòn kim loại",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Phi kim",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Clo",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Cacbon và oxit",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Bảng tuần hoàn",
+          "est_minutes": 13
+        }
+      ]
+    }
+  ]
+}

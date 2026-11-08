@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-anh-8-thi-va-cau-dieu-kien",
+  "title": "Tiếng Anh 8: Thì và câu điều kiện",
+  "subject": "Tiếng Anh",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hạ",
+  "description_short": "Ôn các thì quá khứ, hiện tại hoàn thành và câu điều kiện loại 1, 2 bằng bảng so sánh và bài tập sửa lỗi. Dành cho học sinh lớp 8.",
+  "outcomes": [
+    "Phân biệt quá khứ đơn và hiện tại hoàn thành.",
+    "Viết được câu điều kiện loại 1 và loại 2.",
+    "Tự sửa các lỗi sai phổ biến."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 77,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Các thì",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Quá khứ đơn",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hiện tại hoàn thành",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "So sánh hai thì",
+          "est_minutes": 18
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Câu điều kiện",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Loại 1",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Loại 2",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Sửa lỗi thường gặp",
+          "est_minutes": 15
+        }
+      ]
+    }
+  ]
+}

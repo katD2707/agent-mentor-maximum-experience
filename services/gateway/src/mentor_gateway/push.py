@@ -6,9 +6,8 @@
 - The gateway POSTs to the endpoint, so endpoints are limited to the browser push services (https, port 443,
   host under PUSH_HOST_SUFFIXES, no redirects); anything else would let a learner make the gateway call
   internal URLs.
-- Lock screens are public: a push never carries the agent's title/body/labels/prefill. It carries a generic
-  Vietnamese text per kind (fixed gateway templates marked `push_safe` are the exception) plus the notification
-  id; the app shows the details after the learner opens it (GET /api/notifications).
+- A push carries the notification's own title and body (a planner reminder shows its real text, no lock-screen
+  privacy handling), its actions, the notification id, and for a reminder `reminder_id` + `deep_link`.
 - 404/410 from the push service = the subscription is gone: it is deleted.
 """
 
@@ -28,7 +27,8 @@ from sqlalchemy.exc import IntegrityError
 
 from mentor_gateway.crypto import SecretBox
 from mentor_gateway.db import Database, PushSubscription
-from mentor_gateway.notifications import Item, primary_item
+from mentor_gateway.notifications import PLANNER_SOURCE, Item, primary_item
+from mentor_gateway.planner.tables import Reminder
 from mentor_gateway.settings import Clock, Settings
 
 log = logging.getLogger(__name__)
@@ -43,17 +43,6 @@ MAX_SUBSCRIPTIONS_PER_USER = 10
 MAX_ENDPOINT_CHARS = 2048
 PUSH_TIMEOUT_SECONDS = 10
 DEFAULT_PUSH_TTL = timedelta(hours=6)
-
-GENERIC_TEXT = {
-    "checkin": "Mentor có một câu hỏi nhanh cho bạn.",
-    "deadline": "Bạn có một hạn chót sắp tới. Mở để xem nhé.",
-    "review": "Có bài ôn nhanh đang chờ bạn.",
-    "focus_end": "Hết giờ tập trung rồi. Nghỉ một chút nhé!",
-    "celebration": "Có tin vui cho bạn!",
-    "report": "Có cập nhật mới trong ứng dụng.",
-    "nudge": "Mentor có lời nhắn cho bạn.",
-}
-GENERIC_LABELS = {"open": "Mở", "snooze_1h": "Nhắc lại sau 1 giờ", "done": "Xong", "start_focus": "Bắt đầu tập trung"}
 
 
 class PushSubscriptionError(ValueError):
@@ -97,24 +86,21 @@ def validate_subscription(raw: Any) -> dict:
     return {"endpoint": endpoint, "keys": {"p256dh": p256dh, "auth": auth}}
 
 
-def push_payload(batch: list[Item]) -> dict:
-    """What the service worker receives. Never the agent's text (see module docstring)."""
+def push_payload(batch: list[Item], reminder: Reminder | None = None) -> dict:
+    """What the service worker receives: the notification's own title and body (a reminder shows its real text). A
+    planner reminder adds `reminder_id` and `deep_link`: the tap opens that screen and reports the outcome like a
+    device reminder."""
     primary = primary_item(batch)
     if len(batch) > 1:
-        body = f"Mentor có {len(batch)} lời nhắn cho bạn."
-    elif primary.push_safe:
-        body = primary.body
+        title, body = "Mentor", f"Mentor có {len(batch)} lời nhắn cho bạn."
     else:
-        body = GENERIC_TEXT.get(primary.kind, GENERIC_TEXT["nudge"])
-    title = primary.title if primary.push_safe and len(batch) == 1 and primary.title else "Mentor"
-    if primary.push_safe:
-        actions = [a for a in primary.actions if not a["id"].startswith("answer:")]
-    else:  # answers need the app (their labels are the agent's words)
-        actions = [{"id": a["id"], "label": GENERIC_LABELS[a["id"]]} for a in primary.actions
-                   if a["id"] in GENERIC_LABELS]
-    return {"type": "notification", "id": primary.id, "kind": primary.kind, "title": title, "body": body,
-            "actions": actions, "mascot": primary.mascot, "created_at": primary.created_at.isoformat(),
-            "bundled_ids": [i.id for i in batch if i is not primary], "url": f"/chat?notification={primary.id}"}
+        title, body = primary.title or "Mentor", primary.body or primary.title or "Mentor có lời nhắn cho bạn."
+    payload = {"type": "notification", "id": primary.id, "kind": primary.kind, "title": title, "body": body,
+               "actions": list(primary.actions), "mascot": primary.mascot, "created_at": primary.created_at.isoformat(),
+               "bundled_ids": [i.id for i in batch if i is not primary], "url": f"/chat?notification={primary.id}"}
+    if reminder is not None:
+        payload.update(reminder_id=reminder.id, deep_link=reminder.deep_link)
+    return payload
 
 
 class PushService:
@@ -252,7 +238,16 @@ class PushService:
     async def send_batch(self, user_id: str, batch: list[Item], now: datetime) -> int:
         expiries = [i.expires_at for i in batch if i.expires_at is not None]
         ttl = (min(expiries) - now) if expiries else DEFAULT_PUSH_TTL
-        return await self.send(user_id, push_payload(batch), max(60, int(ttl.total_seconds())))
+        source = primary_item(batch).source
+        reminder = None
+        if len(batch) == 1 and source.startswith(PLANNER_SOURCE):  # a bundle opens the hub, not one reminder's screen
+            with self.db.session() as s:
+                reminder = s.get(Reminder, source[len(PLANNER_SOURCE):])
+                if reminder is not None and reminder.user_id == user_id:
+                    s.expunge(reminder)
+                else:
+                    reminder = None
+        return await self.send(user_id, push_payload(batch, reminder), max(60, int(ttl.total_seconds())))
 
 
 def rotate_subscriptions(s: Any, old: SecretBox, new: SecretBox) -> int:

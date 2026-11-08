@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-introduction-to-python-programming",
+  "title": "Introduction to Python Programming",
+  "subject": "Computer Science",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Hung Pham",
+  "description_short": "A ten-week introduction to Python for first-year students, with a weekly lab and an auto-checked exercise set. No prior coding experience is assumed.",
+  "outcomes": [
+    "Write and debug programs with functions and data structures.",
+    "Read data from files and handle errors.",
+    "Structure a small program into modules."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 199,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Foundations",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Variables and types",
+          "est_minutes": 28
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Control flow",
+          "est_minutes": 26
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Functions",
+          "est_minutes": 24
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Data",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Lists and dictionaries",
+          "est_minutes": 37
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Files",
+          "est_minutes": 43
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Modules and testing",
+          "est_minutes": 41
+        }
+      ]
+    }
+  ]
+}

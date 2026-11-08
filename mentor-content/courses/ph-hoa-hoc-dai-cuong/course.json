@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-hoa-hoc-dai-cuong",
+  "title": "Hóa học đại cương",
+  "subject": "Hóa học đại cương",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Lâm Thị Bích",
+  "description_short": "Cấu tạo chất, nhiệt hóa học, cân bằng và điện hóa với bài tập tính và phòng thí nghiệm ảo. Dành cho sinh viên năm nhất khối kĩ thuật, y dược.",
+  "outcomes": [
+    "Tính được hiệu ứng nhiệt của phản ứng.",
+    "Giải được bài toán cân bằng hóa học.",
+    "Viết được sơ đồ pin điện hóa."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 167,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cấu tạo chất",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Nguyên tử",
+          "est_minutes": 33
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Liên kết",
+          "est_minutes": 23
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Trạng thái chất",
+          "est_minutes": 25
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Phản ứng",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Nhiệt hóa học",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Cân bằng",
+          "est_minutes": 26
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Điện hóa",
+          "est_minutes": 28
+        }
+      ]
+    }
+  ]
+}

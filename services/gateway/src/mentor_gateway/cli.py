@@ -1,8 +1,10 @@
 """Operator commands. Run with `uv run python -m mentor_gateway.cli <command>`.
 
-  zalo-set-webhook --url https://<public host>/webhooks/zalo   register the webhook (uses ZALO_BOT_TOKEN,
-                                                               ZALO_WEBHOOK_SECRET); run once per deploy
-  zalo-webhook-info                                            show what Zalo has registered
+  create-user --username U --role student|teacher [--display-name N] [--birth-year Y] [--language L]
+                                                               create an account (password from MENTOR_NEW_PASSWORD
+                                                               or a prompt); there is no sign-up
+  set-birth-year --username U --year Y                         correct a learner's birth year (students cannot;
+                                                               the age band follows from it)
   backup-run [--user <uid>] [--force]                          snapshot changed mirrors + ops.db, apply retention
   backup-list [--user <uid>|_ops]                              list snapshots
   backup-restore --user <uid> --snapshot <id> --to <dir>       verify + decrypt + clone a learner snapshot
@@ -25,14 +27,6 @@ import sys
 from pathlib import Path
 
 from mentor_gateway.settings import Settings
-
-
-def _client(settings: Settings):
-    from mentor_parent_channel import ZaloBotClient
-
-    if not settings.zalo_bot_token:
-        sys.exit("ZALO_BOT_TOKEN is not set")
-    return ZaloBotClient(settings.zalo_bot_token)
 
 
 def _backups(settings: Settings):
@@ -82,9 +76,15 @@ def _rotate(settings: Settings, generate: bool) -> None:
 def main(argv: list[str] | None = None, settings: Settings | None = None) -> None:
     parser = argparse.ArgumentParser(prog="mentor_gateway.cli")
     sub = parser.add_subparsers(dest="cmd", required=True)
-    hook = sub.add_parser("zalo-set-webhook")
-    hook.add_argument("--url", required=True, help="public HTTPS URL ending in /webhooks/zalo")
-    sub.add_parser("zalo-webhook-info")
+    cu = sub.add_parser("create-user")
+    cu.add_argument("--username", required=True)
+    cu.add_argument("--role", required=True, choices=["student", "teacher"])
+    cu.add_argument("--display-name")
+    cu.add_argument("--birth-year", type=int)
+    cu.add_argument("--language", choices=["vi", "en"])
+    sb = sub.add_parser("set-birth-year")
+    sb.add_argument("--username", required=True)
+    sb.add_argument("--year", required=True, type=int)
     run = sub.add_parser("backup-run")
     run.add_argument("--user", help="only this learner; with --force even if unchanged")
     run.add_argument("--force", action="store_true")
@@ -107,14 +107,10 @@ def main(argv: list[str] | None = None, settings: Settings | None = None) -> Non
     args = parser.parse_args(argv)
     settings = settings or Settings.from_env()
 
-    if args.cmd == "zalo-set-webhook":
-        if not args.url.startswith("https://"):
-            sys.exit("Zalo requires an https:// webhook URL")
-        with _client(settings) as client:
-            print(json.dumps(client.set_webhook(args.url, settings.zalo_webhook_secret), default=str))
-    elif args.cmd == "zalo-webhook-info":
-        with _client(settings) as client:
-            print(json.dumps(client.get_webhook_info(), default=str))
+    if args.cmd == "create-user":
+        _create_user(settings, args)
+    elif args.cmd == "set-birth-year":
+        _set_birth_year(settings, args.username, args.year)
     elif args.cmd == "backup-run":
         svc = _backups(settings)
         if args.user:
@@ -147,6 +143,51 @@ def main(argv: list[str] | None = None, settings: Settings | None = None) -> Non
         _refresh_content(settings, args.user, args.dry_run)
 
 
+def _create_user(settings: Settings, args: argparse.Namespace) -> None:
+    import getpass
+
+    from mentor_gateway.db import Database
+    from mentor_gateway.gitrepo import UserLocks
+    from mentor_gateway.mirror import Mirror
+    from mentor_gateway.settings import utc_now
+    from mentor_gateway.users import UserService
+
+    password = os.environ.get("MENTOR_NEW_PASSWORD") or getpass.getpass("Password: ")
+    if len(password) < 6:
+        sys.exit("password must be at least 6 characters")
+    db = Database(settings.ops_db_url)
+    db.create_all()
+    users = UserService(db, Mirror(settings.mirrors_dir, UserLocks()), settings, utc_now)
+    if users.by_username(args.username):
+        sys.exit(f"user {args.username} already exists")
+    user = users.create(username=args.username, password=password, role=args.role,
+                        display_name=args.display_name or args.username, birth_year=args.birth_year,
+                        language=args.language)
+    print(user.id)
+
+
+def _set_birth_year(settings: Settings, username: str, year: int) -> None:
+    from mentor_gateway.age import BIRTH_YEAR_MAX, BIRTH_YEAR_MIN, band_for_birth_year
+    from mentor_gateway.db import Database
+    from mentor_gateway.gitrepo import UserLocks
+    from mentor_gateway.mirror import Mirror
+    from mentor_gateway.settings import utc_now
+    from mentor_gateway.users import UserService
+
+    if not BIRTH_YEAR_MIN <= year <= BIRTH_YEAR_MAX:
+        sys.exit(f"year must be between {BIRTH_YEAR_MIN} and {BIRTH_YEAR_MAX}")
+    db = Database(settings.ops_db_url)
+    db.create_all()
+    users = UserService(db, Mirror(settings.mirrors_dir, UserLocks()), settings, utc_now)
+    user = users.by_username(username)
+    if user is None:
+        sys.exit(f"no user {username}")
+    if user.role != "student":
+        sys.exit(f"{username} is not a student")
+    users.update(user.id, birth_year=year)
+    print(f"{username}: birth year {year} (age band {band_for_birth_year(year)})")
+
+
 def _refresh_content(settings: Settings, only: str | None, dry_run: bool) -> None:
     """One line per learner: changed paths, or "unchanged". Exit 1 if any learner failed."""
     from mentor_schemas import Profile
@@ -163,7 +204,7 @@ def _refresh_content(settings: Settings, only: str | None, dry_run: bool) -> Non
 
     db = Database(settings.ops_db_url)
     with db.session() as s:
-        query = select(User).where(User.provisioned_at.is_not(None))
+        query = select(User).where(User.provisioned_at.is_not(None), User.role == "student")
         users = [(u.id, u.role) for u in s.scalars(query if only is None else query.where(User.id == only))]
     if only and not users:
         sys.exit(f"no provisioned learner {only}")
@@ -171,7 +212,7 @@ def _refresh_content(settings: Settings, only: str | None, dry_run: bool) -> Non
     failed = 0
     for uid, role in users:
         try:
-            changed = refresh_content(settings.content_dir, mirror, uid, Profile(role))
+            changed = refresh_content(settings.content_dir, mirror, uid, Profile.STUDENT)
         except Exception as exc:  # noqa: BLE001 - report and go on with the other learners
             failed += 1
             print(f"{uid}\tERROR {type(exc).__name__}: {exc}")

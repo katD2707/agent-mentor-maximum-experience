@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "ph-english-for-kids-1-hello-colours-and-animals",
+  "title": "English for Kids 1: Hello, Colours and Animals",
+  "subject": "Tiếng Anh",
+  "age_band": "g1_5",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Ms. Linh Tran",
+  "description_short": "A first English course for children aged 6 to 8, built on songs, pictures and tapping games. Every word comes with a clear voice recording and no reading is needed.",
+  "outcomes": [
+    "Greet someone and say your name in English.",
+    "Name ten colours and twelve common animals.",
+    "Understand short spoken instructions such as \"stand up\" and \"sit down\"."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 9,
+  "est_minutes": 72,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hello!",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Greetings",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "My name is",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Goodbye",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Colours",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Red, blue, yellow",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Colour the picture",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Rainbow song",
+          "est_minutes": 9
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Animals",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Pets",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Farm animals",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch3-l3",
+          "title": "Animal sounds",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

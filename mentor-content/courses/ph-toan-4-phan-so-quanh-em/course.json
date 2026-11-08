@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-4-phan-so-quanh-em",
+  "title": "Toán 4: Phân số quanh em",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Hải",
+  "description_short": "Phân số được dạy qua chiếc bánh, thanh sô-cô-la và băng giấy chia phần, trước khi vào so sánh và cộng trừ. Dành cho học sinh lớp 4 mới học phân số.",
+  "outcomes": [
+    "Đọc, viết được phân số và nhận ra phần được tô màu.",
+    "So sánh được hai phân số cùng mẫu và khác mẫu.",
+    "Cộng, trừ được hai phân số cùng mẫu số."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 52,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Làm quen phân số",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Chia một cái bánh",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Đọc và viết phân số",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Phân số bằng nhau",
+          "est_minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "So sánh và tính",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "So sánh phân số",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Rút gọn, quy đồng",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Cộng trừ cùng mẫu",
+          "est_minutes": 8
+        }
+      ]
+    }
+  ]
+}

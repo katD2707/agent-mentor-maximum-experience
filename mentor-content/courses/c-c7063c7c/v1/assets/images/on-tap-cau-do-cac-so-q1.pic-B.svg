@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- handle (behind basket) -->
+  <path d="M 130 216 C 136 120 264 120 270 216" fill="none" stroke="#5A4BC0" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- basket body -->
+  <path d="M 122 212 L 278 212 C 274 262 266 306 254 322 Q 200 338 146 322 C 134 306 126 262 122 212 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="9" stroke-linejoin="round"/>
+
+  <!-- weave: horizontal bands -->
+  <path d="M 126 250 Q 200 264 274 250" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 138 288 Q 200 302 262 288" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- weave: verticals -->
+  <path d="M 156 230 L 150 315" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 178 232 L 176 326" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 200 232 L 200 330" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 222 232 L 224 326" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 244 230 L 250 315" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- apple -->
+  <path d="M 200 140 C 186 120 154 118 146 144 C 138 170 138 198 156 216 C 172 232 190 238 200 238
+           C 210 238 228 232 244 216 C 262 198 262 170 254 144 C 246 118 214 120 200 140 Z"
+        fill="#E8806A" stroke="#5A4BC0" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- apple highlight -->
+  <path d="M 166 158 C 158 176 160 196 172 208 C 162 194 162 172 172 156 Z" fill="#E9E5F6" opacity="0.55"/>
+
+  <!-- stem -->
+  <path d="M 200 140 C 200 128 204 118 208 110" fill="none" stroke="#2B283F" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- leaf -->
+  <path d="M 206 122 C 218 104 244 98 252 102 C 248 122 226 134 206 124 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M 210 122 C 224 116 240 108 250 104" fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- basket rim -->
+  <ellipse cx="200" cy="214" rx="84" ry="17" fill="#5A4BC0"/>
+  <ellipse cx="200" cy="211" rx="70" ry="10" fill="#2B283F"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

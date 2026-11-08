@@ -4,12 +4,9 @@ version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
     "mentor-schemas",
-    "mentor-parent-channel",
-    "mentor-email-ingest",
     "mentor-scripts",  # practice evidence: mastery is recomputed with bkt_update's own functions (CONTRACTS 10.2)
     "fastapi>=0.115",
-    "uvicorn[standard]>=0.30",  # [standard] brings websockets; without it /api/ws/chat returns 404
-    "httpx>=0.27",
+    "uvicorn[standard]>=0.30",
     "sqlalchemy>=2.0",
     "croniter>=2.0",
     "python-multipart>=0.0.9",
@@ -17,6 +14,11 @@ dependencies = [
     "tzdata>=2024.1",
     "cryptography>=43",
     "pywebpush>=2.0",
+    "fsrs>=6.0",  # MIT; FSRS spaced-repetition scheduling of due review items (planner/fsrs_items.py)
+    "httpx>=0.27",
+    "arxiv>=2.1",
+    "defusedxml>=0.7.1",
+    "pypdf>=6.21.3",  # text of paper PDFs for questions (same library as the sandbox pdf_extract script)
 ]
 
 [build-system]
@@ -28,6 +30,7 @@ packages = ["src/mentor_gateway"]
 
 [tool.ruff]
 extend = "../../pyproject.toml"
+extend-exclude = ["src/mentor_gateway/research/vendor"]  # vendored DeepTutor code, kept close to upstream
 
 [tool.ruff.lint.flake8-bugbear]
 extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.File", "fastapi.Header", "fastapi.Body"]

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tu-nhien-va-xa-hoi-2-gia-dinh-va-truong-hoc",
+  "title": "Tự nhiên và Xã hội 2: Gia đình và trường học",
+  "subject": "Tự nhiên và Xã hội",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hồng",
+  "description_short": "Em tìm hiểu ngôi nhà, người thân và những việc nên làm ở trường, có hình vẽ và câu hỏi chạm để chọn. Dành cho học sinh lớp 2.",
+  "outcomes": [
+    "Kể được các thành viên và công việc trong gia đình.",
+    "Biết giữ an toàn khi ở nhà và ở trường.",
+    "Nhận biết các phòng, khu vực trong trường."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 61,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Gia đình",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Người thân của em",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Nhà ở của em",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Giữ an toàn trong nhà",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Trường học",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Lớp học của em",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Các thầy cô và bạn bè",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Giữ trường sạch đẹp",
+          "est_minutes": 12
+        }
+      ]
+    }
+  ]
+}

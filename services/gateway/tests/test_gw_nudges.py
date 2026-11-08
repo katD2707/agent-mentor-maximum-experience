@@ -5,18 +5,19 @@ import base64
 import json
 import os
 from datetime import UTC, datetime, timedelta
-from zoneinfo import ZoneInfo
 
 import pytest
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import ec
-from gateway_fakes import onboard
-from mentor_schemas import OutboxItem, OutboxKind, Profile
+from gateway_fakes import FakeWS, new_student
+from mentor_schemas import OutboxItem, OutboxKind
 from pywebpush import WebPushException
 from sqlalchemy import select
 
 from mentor_gateway import push as push_mod
-from mentor_gateway.db import AuditRow, ChatSession, JobRow, NotificationRow, NudgeHold, PushSubscription
+from mentor_gateway.notifications import PLANNER_SOURCE, Nudge
+from mentor_gateway.planner.tables import Reminder
+from mentor_gateway.db import AuditRow, JobRow, NotificationActionRow, NotificationRow, PushSubscription
 
 CHECKIN = {
     "text": "3 việc hôm nay: ôn hàm số, đọc 1 bài, ngủ sớm.", "kind": "checkin", "title": "Chào buổi sáng",
@@ -26,9 +27,9 @@ CHECKIN = {
 }
 
 
-def _dispatch(client, gw, uid, payloads, profile=Profile.NCS, extra=()):
+def _dispatch(client, gw, uid, payloads, extra=()):
     items = [*extra, *(OutboxItem(kind=OutboxKind.NOTIFY_USER, payload=p) for p in payloads)]
-    return client.portal.call(gw.dispatcher.dispatch, uid, profile, items)
+    return client.portal.call(gw.dispatcher.dispatch, uid, items)
 
 
 def _tick(client, gw, now):
@@ -46,14 +47,15 @@ def _set_routines(gw, uid, body: str) -> None:
     gw.mirror.commit_files(uid, {"routines.yaml": body.encode()}, author="user", message="routines")
 
 
-def test_rich_fields_round_trip_and_actions(client, gw, ncs_user, sandbox, clock):
-    uid = ncs_user["user_id"]
+def test_rich_fields_round_trip_and_actions(client, gw, student, executor, clock):
+    uid = student["user_id"]
     gw.settings.vapid_public_key = None  # push off: delivery over the WebSocket only
     assert _dispatch(client, gw, uid, [CHECKIN, {"text": "Tin cũ chỉ có text"}]) == ["pending", "pending"]
     nid, old_id = _ids(gw, uid)
-    with client.websocket_connect("/api/ws/chat") as ws:
-        ws.receive_json()  # sandbox_status
-        note = ws.receive_json()  # normal proactivity: both bundled into one message
+    ws = FakeWS()
+    gw.hub.register(uid, ws)
+    client.portal.call(gw.hub.flush, uid)
+    (note,) = ws.sent  # normal proactivity: both bundled into one message
     assert note["type"] == "notification" and note["id"] == nid and note["kind"] == "checkin"
     assert note["title"] == "Chào buổi sáng" and note["body"] == CHECKIN["text"] and note["mascot"] == "wave"
     assert note["actions"] == CHECKIN["actions"] and note["prefill"] == CHECKIN["prefill"]
@@ -75,46 +77,32 @@ def test_rich_fields_round_trip_and_actions(client, gw, ncs_user, sandbox, clock
     first = act("answer:ok").json()
     assert act("answer:ok").json() == first
     client.portal.call(gw.runner.drain)
-    answer_jobs = [j for j in sandbox.jobs if j.job_id == first["job_id"]]
+    answer_jobs = [j for j in executor.jobs if j.job_id == first["job_id"]]
     assert len(answer_jobs) == 1 and "daily-checkin" in answer_jobs[0].prompt and "Chốt vậy" in answer_jobs[0].prompt
     assert client.get("/api/notifications").json()[1]["answer"] == "ok"
 
     focus = act("start_focus").json()
     client.portal.call(gw.runner.drain)
-    assert any(j.job_id == focus["job_id"] and "start_focus" in j.prompt for j in sandbox.jobs)
+    assert any(j.job_id == focus["job_id"] and "start_focus" in j.prompt for j in executor.jobs)
 
     # snooze: comes back after an hour even though today's `normal` slot is used
     snoozed = act("snooze_1h").json()
     assert snoozed["snoozed_until"] == (clock() + timedelta(hours=1)).isoformat()
-    with client.websocket_connect("/api/ws/chat") as ws:
-        ws.receive_json()
-        clock.advance(minutes=61)
-        client.portal.call(gw.hub.flush_all)
-        again = ws.receive_json()
-        assert again["type"] == "notification" and again["id"] == nid and "bundled_ids" not in again
+    clock.advance(minutes=61)
+    client.portal.call(gw.hub.flush_all)
+    again = ws.sent[-1]
+    assert again["type"] == "notification" and again["id"] == nid and "bundled_ids" not in again
     assert act("done").json()["ok"]
     assert client.get("/api/notifications").json()[1]["read_at"]
 
-    audit = [(k, d) for k, d, _ in gw.parent.store.read_audit(uid) if k == "notification_action"]
+    with gw.db.session() as db:
+        audit = [(r.kind, r.detail) for r in db.scalars(select(AuditRow).where(AuditRow.student_user_id == uid))]
+    audit = [(k, d) for k, d in audit if k == "notification_action"]
     assert len(audit) == 5  # open, answer (once), start_focus, snooze, done; no content
     assert all("Chốt" not in d and "hàm số" not in d for _, d in audit)
 
-    onboard(client, "other@example.com", "ncs")  # another learner cannot act on it
+    new_student(client, "other")  # another learner cannot act on it
     assert client.post(f"/api/notifications/{nid}/action", json={"action": "done"}).status_code == 404
-
-
-def test_crisis_context_suppresses_nudges(client, gw, ncs_user):
-    uid = ncs_user["user_id"]
-    crisis = OutboxItem(kind=OutboxKind.CRISIS_ALERT, payload={"category": "self_harm"})
-    assert _dispatch(client, gw, uid, [CHECKIN], extra=[crisis]) == ["ignored", "suppressed"]  # NCS: no alert
-    # the hold keeps proactive kinds back for a day; deadlines still go through
-    assert _dispatch(client, gw, uid, [dict(CHECKIN, text="Hôm nay làm gì?"),
-                                       {"text": "Hạn nộp bài 17:00 mai", "kind": "deadline"}]) == \
-        ["suppressed", "pending"]
-    with gw.db.session() as s:  # the hold is over
-        s.get(NudgeHold, uid).until = gw.clock() - timedelta(seconds=1)
-    assert _dispatch(client, gw, uid, [{"text": "Nếu bạn có ý định tự tử, gọi 111", "kind": "nudge"}]) == ["suppressed"]
-    assert _dispatch(client, gw, uid, [{"text": "Ôn 10 phút nhé", "kind": "review"}]) == ["pending"]
 
 
 ROUTINES = """timezone: Asia/Ho_Chi_Minh
@@ -145,15 +133,15 @@ QUEUE = """# Lịch ôn tập — math
 """
 
 
-def test_routines_follow_proactivity_and_quiet_hours(client, gw, ncs_user, sandbox, clock):
-    uid = ncs_user["user_id"]
+def test_routines_follow_proactivity_and_quiet_hours(client, gw, student, executor, clock):
+    uid = student["user_id"]
     gw.mirror.commit_files(uid, {"learning/math/review-queue.md": QUEUE.encode()}, author="mentor", message="q")
     _set_routines(gw, uid, ROUTINES.format(proactivity="high", quiet='"22:00", "07:00"'))
     clock.now = datetime(2026, 10, 28, 0, 0, tzinfo=UTC)  # Wed 07:00 local: schedules computed
     _tick(client, gw, clock())
     clock.now = datetime(2026, 10, 28, 1, 1, tzinfo=UTC)  # 08:01 local: both due
     _tick(client, gw, clock())
-    assert [j.prompt for j in sandbox.jobs] == ["Dùng skill daily-checkin, phần A (check-in buổi sáng)."]
+    assert [j.prompt for j in executor.jobs] == ["Dùng skill daily-checkin, phần A (check-in buổi sáng)."]
     items = [gw.hub.get(uid, i) for i in _ids(gw, uid)]
     assert [(i.kind, i.status, i.push_safe) for i in items] == [("review", "pending", True)]
     assert "1 kỹ năng" in items[0].body  # the overdue one; tomorrow's row is not due yet
@@ -167,25 +155,32 @@ def test_routines_follow_proactivity_and_quiet_hours(client, gw, ncs_user, sandb
     _set_routines(gw, uid, ROUTINES.format(proactivity="off", quiet='"22:00", "07:00"'))
     clock.now = datetime(2026, 10, 29, 1, 1, tzinfo=UTC)  # Thu 08:01: off -> nothing proactive
     _tick(client, gw, clock())
-    assert len(sandbox.jobs) == 1 and len(_ids(gw, uid)) == 1
+    assert len(executor.jobs) == 1 and len(_ids(gw, uid)) == 1
     assert [j.error for j in jobs("morning_checkin")][-1] == "proactivity off"
 
     _set_routines(gw, uid, ROUTINES.format(proactivity="high", quiet='"21:00", "08:30"'))
     clock.now = datetime(2026, 10, 30, 1, 1, tzinfo=UTC)  # Fri 08:01, inside the new quiet hours
     _tick(client, gw, clock())
-    assert len(sandbox.jobs) == 1 and len(_ids(gw, uid)) == 1
+    assert len(executor.jobs) == 1 and len(_ids(gw, uid)) == 1
     assert [j.error for j in jobs("review_due")][-1] == "quiet hours"
 
+    # the learner's own "quiet until" also skips proactive routines
+    _set_routines(gw, uid, ROUTINES.format(proactivity="high", quiet='"22:00", "07:00"'))
+    client.put("/api/me/quiet", json={"until": "2026-10-31T00:00:00Z"})
+    clock.now = datetime(2026, 10, 31, 1, 1, tzinfo=UTC)  # Sat 08:01 local, quiet_until just passed
+    gw.users.update(uid, quiet_until=datetime(2026, 10, 31, 2, 0, tzinfo=UTC))
+    _tick(client, gw, clock())
+    assert len(executor.jobs) == 1 and [j.error for j in jobs("review_due")][-1] == "quiet until"
 
-def test_engagement_summary(client, gw, ncs_user, clock):
-    uid = ncs_user["user_id"]
+
+def test_engagement_summary(client, gw, student, clock):
+    uid = student["user_id"]
     clock.now = datetime.now(UTC).replace(microsecond=0)  # git commit times are real time
-    today = clock.now.astimezone(ZoneInfo("Asia/Ho_Chi_Minh")).date()
     with gw.db.session() as s:
-        for d in (1, 2, 4):  # active yesterday and the day before, a gap, then 4 days ago
-            day = today - timedelta(days=d)
-            s.add(ChatSession(user_id=uid, id="s-" + day.strftime("%Y%m%d"), started_at=clock.now,
-                              last_active_at=clock.now))
+        for d in (1, 2, 4):  # active yesterday and the day before, a gap, then 4 days ago (notification taps)
+            day = clock.now - timedelta(days=d)
+            s.add(NotificationActionRow(notification_id=d, action="open", delivery=1, user_id=uid, created_at=day,
+                                        result={}))
         s.add(JobRow(id="f1", user_id=uid, kind="focus_end", payload={"card_id": "c1", "task": "x", "minutes": 25},
                      source="next_wake", scheduled_for=clock.now + timedelta(minutes=5), status="pending",
                      created_at=clock.now))
@@ -246,8 +241,23 @@ def pushes(monkeypatch):
     return sent, state
 
 
-def test_push_subscribe_send_and_prune(client, gw, ncs_user, pushes, clock):
-    uid = ncs_user["user_id"]
+def test_planner_reminder_push_carries_reminder_id_and_deep_link(client, gw, student, pushes, clock):
+    uid = student["user_id"]
+    sent, _ = pushes
+    _vapid(gw)
+    gw.push.subscribe(uid, _subscription())
+    now = clock()
+    with gw.db.session() as s:
+        s.add(Reminder(id="r-abc", user_id=uid, at=now, kind="study", text_vi="20 phút nhé?", text_en="20 minutes?",
+                       deep_link="/khoa-hoc/dien-truong?lesson=l1", created_at=now, updated_at=now))
+    client.portal.call(gw.hub.notify, uid, "20 phút nhé?", Nudge(text="20 phút nhé?", source=PLANNER_SOURCE + "r-abc"))
+    assert sent[-1]["data"]["reminder_id"] == "r-abc" and sent[-1]["data"]["deep_link"] == "/khoa-hoc/dien-truong?lesson=l1"
+    assert sent[-1]["data"]["body"] == "20 phút nhé?" and sent[-1]["data"]["title"] == "Mentor"  # the real reminder text
+    assert push_mod.push_payload([gw.hub.get(uid, _ids(gw, uid)[0])]).keys() & {"reminder_id", "deep_link"} == set()
+
+
+def test_push_subscribe_send_and_prune(client, gw, student, pushes, clock):
+    uid = student["user_id"]
     sent, state = pushes
     assert client.get("/api/push/vapid-public-key").json() == {"enabled": False, "public_key": None,
                                                                "subscribed_devices": 0}
@@ -264,20 +274,20 @@ def test_push_subscribe_send_and_prune(client, gw, ncs_user, pushes, clock):
         rows = s.scalars(select(PushSubscription)).all()
     assert len(rows) == 1 and "fcm.googleapis.com" not in rows[0].sealed and sub["keys"]["auth"] not in rows[0].sealed
 
-    # not connected -> push, with a generic lock-screen text (never the agent's words)
+    # not connected -> push, with the notification's own title, text and actions (no lock-screen privacy handling)
     assert _dispatch(client, gw, uid, [CHECKIN]) == ["delivered"]
     assert len(sent) == 1 and sent[0]["sub"]["endpoint"] == sub["endpoint"]
     data = sent[0]["data"]
-    assert data["kind"] == "checkin" and data["title"] == "Mentor" and "hàm số" not in json.dumps(data)
-    assert [a["id"] for a in data["actions"]] == ["start_focus", "snooze_1h"]  # answers need the app
-    assert "Chốt" not in json.dumps(data, ensure_ascii=False)
+    assert data["kind"] == "checkin" and data["title"] == "Chào buổi sáng" and data["body"] == CHECKIN["text"]
+    assert [a["id"] for a in data["actions"]] == ["answer:ok", "start_focus", "snooze_1h"]
 
-    # connected -> WebSocket only
+    # connected -> the live connection only
     _set_routines(gw, uid, ROUTINES.format(proactivity="high", quiet='"22:00", "07:00"'))
-    with client.websocket_connect("/api/ws/chat") as ws:
-        ws.receive_json()
-        assert _dispatch(client, gw, uid, [{"text": "Ôn nhé", "kind": "review"}]) == ["delivered"]
-        assert ws.receive_json()["kind"] == "review"
+    ws = FakeWS()
+    gw.hub.register(uid, ws)
+    assert _dispatch(client, gw, uid, [{"text": "Ôn nhé", "kind": "review"}]) == ["delivered"]
+    assert ws.sent[-1]["kind"] == "review"
+    gw.hub.unregister(uid, ws)
     assert len(sent) == 1
 
     # quiet hours: nothing is pushed

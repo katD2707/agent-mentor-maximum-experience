@@ -1,0 +1,28 @@
+/* Dark-theme treatments that are not plain token swaps.
+   The artwork (course covers, hub tiles, thumbnails) is drawn on cream; at full strength it glares on a dark page.
+   --img-dim is set in tokens.css (none in light). */
+
+:root { --img-dim: none; --img-dim-soft: none; --cover-bg: #FBF5E8; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --img-dim: brightness(.82) saturate(.92); --img-dim-soft: brightness(.78) saturate(.95); --cover-bg: #2A2640; }
+}
+:root[data-theme="dark"] { --img-dim: brightness(.82) saturate(.92); --img-dim-soft: brightness(.78) saturate(.95); --cover-bg: #2A2640; }
+
+.tile img, .thumb, .kid-tile .pic, .cover-media img, .row .media img, .ask-thumb, .sheet-cover img, .pg-thumb, .pg-chip img, .video-missing img { filter: var(--img-dim); }
+.blk-image img, .q-img, .bad img { filter: var(--img-dim-soft); }
+
+.tile, .thumb, .kid-tile .pic, .cover-media, .row .media, .ask-thumb, .sheet-cover, .pg-thumb, .pg-chip img { background-color: var(--cover-bg); }
+.video { background: var(--cover-bg); }
+.bad img, .bad .bad-ph { background: var(--cover-bg); }
+
+/* Figures drawn on white or cream (lesson images, question stems) sit on a dimmed, framed plate so they do not glare; photos are only dimmed, never inverted.
+   The plate colour shows through transparent SVGs, whose ink is dark. */
+:root[data-theme="dark"] .blk-image img, :root[data-theme="dark"] .q-img { background-color: #E6E3F0; padding: 6px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .blk-image img, :root:not([data-theme="light"]) .q-img { background-color: #E6E3F0; padding: 6px; } }
+
+/* Bank diagrams (inline SVG) use their own role colours in dark: softer than the UI accents, so thin strokes do not buzz. */
+:root { --dg-ink: var(--ink); --dg-grid: var(--rule); --dg-primary: var(--tim); --dg-accent: var(--do); --dg-secondary: var(--xanh); --dg-soft: var(--tim-soft); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dg-ink: #CFCCE2; --dg-grid: #3A3660; --dg-primary: #8F80E8; --dg-accent: #E98A8A; --dg-secondary: #4DB98E; --dg-soft: #2A2556; } }
+:root[data-theme="dark"] { --dg-ink: #CFCCE2; --dg-grid: #3A3660; --dg-primary: #8F80E8; --dg-accent: #E98A8A; --dg-secondary: #4DB98E; --dg-soft: #2A2556; }
+:root[data-theme="dark"] .dg { background: var(--surface); border-radius: var(--r-md); padding: 6px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .dg { background: var(--surface); border-radius: var(--r-md); padding: 6px; } }

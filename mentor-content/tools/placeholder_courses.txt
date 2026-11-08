@@ -1,0 +1,975 @@
+# Placeholder course overviews. One block per course:
+#   ## band | subject | motif | lang | teacher | title
+#   v: basic | intermediate | advanced (difficulty)   d: short description      o: outcome (repeat)      c: chapter title: lesson; lesson; ...
+# Parsed by make_placeholders.py. Motifs are listed in placeholder_covers.py.
+
+## g1_5 | Toán | counting | vi | Cô Lan | Toán 2: Cộng, trừ trong phạm vi 100
+v: basic
+d: Khóa học đi từ cộng, trừ không nhớ đến có nhớ trong phạm vi 100, mỗi bài một bảng chục đơn vị để em tự đếm và kiểm tra. Hợp với học sinh lớp 2 hay nhầm khi mượn, nhớ.
+o: Cộng, trừ được hai số có hai chữ số, không nhớ và có nhớ.
+o: Đặt tính đúng cột chục, cột đơn vị.
+o: Giải được bài toán có lời văn một bước.
+c: Cộng trong phạm vi 100: Cộng không nhớ; Cộng có nhớ; Bài toán thêm
+c: Trừ trong phạm vi 100: Trừ không nhớ; Trừ có mượn; Bài toán bớt
+c: Ôn tập: Tìm số còn thiếu; Kiểm tra cuối chương
+
+## g1_5 | Toán | calc | vi | Cô Thu | Toán 3: Bảng nhân, bảng chia
+v: intermediate
+d: Học thuộc bảng nhân 2 đến 9 bằng hình ảnh các nhóm đồ vật, sau đó dùng chính bảng đó để chia. Có bài đố nhanh sau mỗi bảng, phù hợp học sinh lớp 3.
+o: Thuộc bảng nhân, bảng chia từ 2 đến 9.
+o: Hiểu nhân là cộng nhiều nhóm bằng nhau.
+o: Giải được bài toán gấp một số lên nhiều lần.
+c: Bảng nhân: Bảng nhân 2, 3, 4, 5; Bảng nhân 6, 7, 8, 9; Gấp lên một số lần
+c: Bảng chia: Chia thành các phần bằng nhau; Quan hệ giữa nhân và chia; Chia có dư
+
+## g1_5 | Toán | shapes | vi | Thầy Hải | Toán 4: Phân số quanh em
+v: intermediate
+d: Phân số được dạy qua chiếc bánh, thanh sô-cô-la và băng giấy chia phần, trước khi vào so sánh và cộng trừ. Dành cho học sinh lớp 4 mới học phân số.
+o: Đọc, viết được phân số và nhận ra phần được tô màu.
+o: So sánh được hai phân số cùng mẫu và khác mẫu.
+o: Cộng, trừ được hai phân số cùng mẫu số.
+c: Làm quen phân số: Chia một cái bánh; Đọc và viết phân số; Phân số bằng nhau
+c: So sánh và tính: So sánh phân số; Rút gọn, quy đồng; Cộng trừ cùng mẫu
+
+## g1_5 | Toán | calc | vi | Cô Hạnh | Toán 5: Số thập phân
+v: intermediate
+d: Từ số đo độ dài và tiền quen thuộc, khóa học dẫn em đến cách đọc, so sánh và tính với số thập phân. Có phần ôn lại phân số trước khi bắt đầu.
+o: Đọc, viết và so sánh được số thập phân.
+o: Cộng, trừ, nhân, chia được số thập phân đơn giản.
+o: Đổi được đơn vị đo có dùng số thập phân.
+c: Khái niệm số thập phân: Từ phân số đến số thập phân; Hàng của số thập phân; So sánh
+c: Bốn phép tính: Cộng và trừ; Nhân với số tự nhiên; Chia cho số tự nhiên
+c: Ứng dụng: Đổi đơn vị đo; Bài toán về tiền
+
+## g1_5 | Toán | shapes | vi | Cô Mai | Toán 1: Hình vuông, tròn, tam giác
+v: basic
+d: Em nhận ra hình vuông, hình tròn, hình tam giác trong đồ vật hằng ngày rồi xếp hình thành ngôi nhà, con thuyền. Hình to, đọc to, chạm để chọn đáp án.
+o: Gọi đúng tên các hình vuông, tròn, tam giác.
+o: Tìm được các hình đó trong đồ vật quanh nhà.
+o: Xếp được hình mới từ các hình đã học.
+c: Nhận biết hình: Hình vuông; Hình tròn; Hình tam giác
+c: Xếp hình: Ghép hình thành ngôi nhà; Ghép hình thành con thuyền
+
+## g1_5 | Tiếng Việt | book | vi | Cô Ngọc | Tiếng Việt 1: Học vần và tập đọc
+v: basic
+d: Học vần theo từng nhóm chữ, mỗi bài có giọng đọc mẫu và vài câu ngắn để em đọc theo. Dành cho học sinh lớp 1 đang tập đọc.
+o: Đọc được các vần quen thuộc và ghép thành tiếng.
+o: Đọc trơn câu ngắn từ 5 đến 8 tiếng.
+o: Viết đúng các chữ cái và dấu thanh.
+c: Chữ và âm: Các chữ a, b, c; Các dấu thanh; Vần có hai chữ
+c: Tập đọc: Đọc từ có hai tiếng; Đọc câu ngắn; Đọc đoạn nhỏ
+
+## g1_5 | Tiếng Việt | book | vi | Cô Phượng | Tiếng Việt 2: Kể về gia đình em
+v: basic
+d: Em học nói và viết 4 đến 5 câu kể về ông bà, bố mẹ và anh chị em, có tranh gợi ý từng bước. Bài học kèm luyện chính tả ngắn.
+o: Kể được 4 đến 5 câu về người thân.
+o: Viết hoa đúng tên người và đầu câu.
+o: Dùng đúng dấu chấm và dấu phẩy.
+c: Nói và kể: Giới thiệu về em; Kể về ông bà; Kể về bố mẹ
+c: Viết câu: Viết hoa tên riêng; Dấu chấm, dấu phẩy; Viết đoạn văn ngắn
+
+## g1_5 | Tiếng Việt | speech | vi | Cô Yến | Tiếng Việt 3: Từ ngữ và câu
+v: intermediate
+d: Học cách nhận ra từ chỉ sự vật, hoạt động, đặc điểm và đặt câu theo mẫu Ai làm gì, Ai thế nào. Bài tập ngắn kèm trò chơi ghép từ.
+o: Phân biệt được từ chỉ sự vật, hoạt động, đặc điểm.
+o: Đặt được câu theo các mẫu đã học.
+o: Nhận ra phép so sánh trong câu văn.
+c: Từ ngữ: Từ chỉ sự vật; Từ chỉ hoạt động; Từ chỉ đặc điểm
+c: Câu: Ai làm gì; Ai thế nào; So sánh
+
+## g1_5 | Tiếng Việt | book | vi | Cô Quỳnh | Tiếng Việt 4: Đọc hiểu và viết đoạn
+v: intermediate
+d: Mỗi bài là một văn bản ngắn, có câu hỏi tìm ý chính rồi viết lại thành đoạn văn của riêng em. Dành cho học sinh lớp 4.
+o: Tìm được ý chính của đoạn, của bài.
+o: Viết được đoạn văn có câu mở đầu và câu kết.
+o: Dùng được từ nối để đoạn văn liền mạch.
+c: Đọc hiểu: Tìm ý chính; Hiểu nghĩa từ trong văn cảnh; Rút ra bài học
+c: Viết đoạn: Câu mở đoạn; Triển khai ý; Câu kết đoạn
+
+## g1_5 | Tiếng Việt | book | vi | Thầy Tuấn | Tiếng Việt 5: Tả cảnh, tả người
+v: intermediate
+d: Ôn cách quan sát và lập dàn ý cho bài văn tả cảnh, tả người, kèm nhiều đoạn văn mẫu để so sánh. Dành cho học sinh lớp 5 chuẩn bị thi cuối cấp.
+o: Lập được dàn ý ba phần cho bài văn tả.
+o: Dùng được hình ảnh so sánh và nhân hóa.
+o: Tự sửa được lỗi dùng từ trong bài viết.
+c: Tả cảnh: Quan sát buổi sáng ở quê; Dàn ý bài tả cảnh; Viết mở bài, kết bài
+c: Tả người: Tả ngoại hình; Tả hoạt động, tính tình; Hoàn chỉnh bài văn
+
+## g1_5 | Tự nhiên và Xã hội | home | vi | Cô Hồng | Tự nhiên và Xã hội 2: Gia đình và trường học
+v: basic
+d: Em tìm hiểu ngôi nhà, người thân và những việc nên làm ở trường, có hình vẽ và câu hỏi chạm để chọn. Dành cho học sinh lớp 2.
+o: Kể được các thành viên và công việc trong gia đình.
+o: Biết giữ an toàn khi ở nhà và ở trường.
+o: Nhận biết các phòng, khu vực trong trường.
+c: Gia đình: Người thân của em; Nhà ở của em; Giữ an toàn trong nhà
+c: Trường học: Lớp học của em; Các thầy cô và bạn bè; Giữ trường sạch đẹp
+
+## g1_5 | Tự nhiên và Xã hội | cell | vi | Cô Dung | Tự nhiên và Xã hội 3: Cơ thể và các giác quan
+v: basic
+d: Năm giác quan được giới thiệu bằng những thí nghiệm nhỏ tại nhà: nhắm mắt nếm thử, nghe đoán tiếng. Em cũng học cách giữ gìn cơ quan hô hấp và tuần hoàn.
+o: Kể tên và nêu chức năng của năm giác quan.
+o: Biết cách bảo vệ mắt, tai và răng.
+o: Nhận biết cơ quan hô hấp và tuần hoàn.
+c: Giác quan: Mắt và nhìn; Tai và nghe; Mũi, lưỡi, da
+c: Cơ quan trong cơ thể: Hô hấp; Tuần hoàn; Giữ gìn sức khỏe
+
+## g1_5 | Khoa học | flask | vi | Thầy Long | Khoa học 4: Nước và không khí
+v: basic
+d: Khóa học dùng thí nghiệm đơn giản với cốc nước, bóng bay và chai nhựa để giải thích nước, không khí và sự bay hơi. Dành cho học sinh lớp 4.
+o: Mô tả được ba thể của nước và sự chuyển thể.
+o: Nêu được tính chất và vai trò của không khí.
+o: Biết cách tiết kiệm và giữ sạch nguồn nước.
+c: Nước: Ba thể của nước; Vòng tuần hoàn của nước; Nước sạch và nước bẩn
+c: Không khí: Không khí ở quanh ta; Gió và áp suất; Bảo vệ bầu không khí
+
+## g1_5 | Khoa học | plant | vi | Cô Thảo | Khoa học 5: Thực vật và động vật quanh em
+v: intermediate
+d: Em học cách thực vật sinh sản, động vật sinh sống và chuỗi thức ăn bằng vườn trường làm ví dụ. Có bài quan sát mà em tự ghi chép.
+o: Nêu được vòng đời của cây có hoa.
+o: Phân biệt động vật ăn thực vật và ăn thịt.
+o: Vẽ được một chuỗi thức ăn đơn giản.
+c: Thực vật: Hạt nảy mầm; Cây ra hoa, kết quả; Cây cần gì để sống
+c: Động vật: Động vật sinh sản; Thức ăn của động vật; Chuỗi thức ăn
+
+## g1_5 | Lịch sử và Địa lí | map | vi | Cô Vân | Lịch sử và Địa lí 4: Vùng đất quê hương
+v: intermediate
+d: Em làm quen với bản đồ, các vùng miền và vài câu chuyện lịch sử gắn với từng nơi. Mỗi bài có bản đồ để chạm vào tên địa danh.
+o: Chỉ được vị trí các vùng chính trên bản đồ Việt Nam.
+o: Kể được một nét đặc trưng của mỗi vùng.
+o: Đọc được kí hiệu cơ bản trên bản đồ.
+c: Đọc bản đồ: Bản đồ là gì; Phương hướng và kí hiệu; Tìm nơi em ở
+c: Các vùng miền: Trung du và miền núi phía Bắc; Đồng bằng Bắc Bộ; Duyên hải miền Trung
+
+## g1_5 | Lịch sử và Địa lí | temple | vi | Thầy Dũng | Lịch sử và Địa lí 5: Đất nước Việt Nam
+v: intermediate
+d: Từ vị trí và khí hậu đất nước đến các cuộc kháng chiến tiêu biểu, nội dung được kể ngắn gọn với dòng thời gian trực quan. Dành cho học sinh lớp 5.
+o: Nêu được vị trí, giới hạn và địa hình Việt Nam.
+o: Sắp xếp được các mốc lịch sử lớn theo thứ tự.
+o: Kể được về một nhân vật lịch sử em yêu thích.
+c: Địa lí Việt Nam: Vị trí và lãnh thổ; Khí hậu và sông ngòi; Dân cư
+c: Lịch sử: Buổi đầu dựng nước; Các cuộc chống giặc ngoại xâm; Dòng thời gian
+
+## g1_5 | Tin học | code | vi | Thầy Khoa | Tin học 3: Làm quen với máy tính
+v: basic
+d: Em học bật máy, dùng chuột, mở thư mục và vẽ tranh đơn giản, mỗi bước có hình minh họa lớn. Dành cho học sinh lớp 3 lần đầu dùng máy.
+o: Thao tác đúng với chuột và bàn phím.
+o: Mở, lưu và đặt tên được một tệp.
+o: Biết ngồi và dùng máy đúng tư thế.
+c: Máy tính và em: Các bộ phận của máy tính; Dùng chuột; Dùng bàn phím
+c: Việc đầu tiên: Mở và lưu tệp; Vẽ một bức tranh
+
+## g1_5 | Tin học | terminal | vi | Cô Trang | Tin học 4: Gõ phím và soạn văn bản
+v: basic
+d: Luyện gõ mười ngón qua trò chơi ngắn, sau đó soạn một trang giới thiệu bản thân có chữ đậm, màu và hình ảnh. Dành cho học sinh lớp 4.
+o: Gõ đúng hàng phím cơ sở không nhìn bàn phím.
+o: Soạn và định dạng được đoạn văn bản.
+o: Chèn được hình ảnh vào bài.
+c: Gõ phím: Hàng phím cơ sở; Hàng phím trên và dưới; Gõ tiếng Việt
+c: Soạn văn bản: Chữ đậm, nghiêng, màu; Chèn hình ảnh; Lưu và in bài
+
+## g1_5 | Công nghệ | gear | vi | Cô Liên | Công nghệ 3: Làm thủ công từ giấy và bìa
+v: basic
+d: Em gấp, cắt, dán để làm hộp bút, thiệp và đồ chơi, có sơ đồ từng bước kèm danh sách dụng cụ. Dành cho học sinh lớp 3.
+o: Dùng kéo, hồ dán an toàn.
+o: Làm được một sản phẩm từ giấy theo hướng dẫn.
+o: Đánh giá được sản phẩm của mình và của bạn.
+c: Chuẩn bị: Dụng cụ và vật liệu; An toàn khi làm thủ công
+c: Sản phẩm: Hộp đựng bút; Thiệp chúc mừng; Đồ chơi gấp giấy
+
+## g1_5 | Đạo đức | heart | vi | Cô Bích | Đạo đức 3: Trung thực và biết ơn
+v: basic
+d: Những tình huống gần gũi ở lớp và ở nhà giúp em nghĩ xem nên làm gì khi nhặt được của rơi hay khi nhận lỗi. Mỗi bài có câu chuyện ngắn và một câu hỏi để em chọn.
+o: Kể được biểu hiện của sự trung thực.
+o: Biết nói lời cảm ơn và làm việc nhỏ để đền đáp.
+o: Chọn được cách ứng xử phù hợp trong tình huống quen thuộc.
+c: Trung thực: Nhặt được của rơi; Nhận lỗi khi làm sai
+c: Biết ơn: Biết ơn thầy cô; Biết ơn người lao động
+
+## g1_5 | Tiếng Anh | speech | en | Ms. Linh Tran | English for Kids 1: Hello, Colours and Animals
+v: basic
+d: A first English course for children aged 6 to 8, built on songs, pictures and tapping games. Every word comes with a clear voice recording and no reading is needed.
+o: Greet someone and say your name in English.
+o: Name ten colours and twelve common animals.
+o: Understand short spoken instructions such as "stand up" and "sit down".
+c: Hello!: Greetings; My name is; Goodbye
+c: Colours: Red, blue, yellow; Colour the picture; Rainbow song
+c: Animals: Pets; Farm animals; Animal sounds
+
+## g1_5 | Tiếng Anh | home | en | Ms. Emily Pham | English for Kids 2: My Family and My Day
+v: intermediate
+d: Short dialogues and picture stories about family members, food and the school day, for children who already know basic greetings. Each unit ends with a speaking game.
+o: Introduce family members with simple sentences.
+o: Say what you eat and what time you do daily activities.
+o: Ask and answer three basic questions.
+c: My family: Mum, dad and me; Brothers and sisters; Grandparents
+c: My day: Breakfast time; At school; Bedtime story
+
+## g1_5 | Science | flask | en | Mr. Minh Vo | Wonders of Science: Experiments at Home
+v: intermediate
+d: Ten safe experiments with kitchen items, from floating eggs to colour-changing cabbage water. Each lesson lists what you need and asks one question to think about.
+o: Follow a written experiment from start to finish.
+o: Predict what will happen, then compare with the result.
+o: Explain simple ideas such as density and acids in plain words.
+c: Water and floating: The floating egg; Sink or float; Oil and water
+c: Colour and change: Red cabbage indicator; Growing crystals; Baking soda volcano
+
+## g1_5 | Computing | terminal | en | Mr. Quan Le | Coding for Kids: Scratch Stories
+v: basic
+d: Children build three animated stories in Scratch, learning loops, events and variables as they go. Lessons use drag-and-drop blocks, so typing is optional.
+o: Move and animate a character with blocks.
+o: Use loops and events to tell a short story.
+o: Share a finished project with a classmate.
+c: First steps: Meet the cat; Moving and talking; Changing costumes
+c: Make a story: Scenes and backdrops; Repeat with loops; Add a score
+
+## g6_9 | Toán | calc | vi | Thầy Phong | Toán 6: Số tự nhiên và phân số
+v: basic
+d: Ôn chắc ước, bội, số nguyên tố trước khi sang phân số và số thập phân, với nhiều bài tập từ dễ đến khó. Hợp với học sinh lớp 6 mới lên cấp hai.
+o: Tìm được ước chung, bội chung của hai số.
+o: Thực hiện được bốn phép tính với phân số.
+o: Giải được bài toán thực tế về phân số của một số.
+c: Số tự nhiên: Ước và bội; Số nguyên tố; ƯCLN và BCNN
+c: Phân số: Rút gọn và quy đồng; Cộng, trừ phân số; Nhân, chia phân số
+
+## g6_9 | Toán | graph | vi | Cô Hà | Toán 7: Số hữu tỉ và tam giác
+v: intermediate
+d: Khóa học nối số hữu tỉ với trục số và tỉ lệ thức, rồi chuyển sang tam giác bằng nhau với hình vẽ động. Mỗi chương có bài kiểm tra ngắn.
+o: Cộng, trừ, nhân, chia được số hữu tỉ.
+o: Giải được bài toán đại lượng tỉ lệ thuận, tỉ lệ nghịch.
+o: Chứng minh được hai tam giác bằng nhau theo ba trường hợp.
+c: Số hữu tỉ: Số hữu tỉ và trục số; Phép tính; Tỉ lệ thức
+c: Tam giác: Tổng ba góc; Hai tam giác bằng nhau; Tam giác cân
+
+## g6_9 | Toán | matrix | vi | Thầy Đạt | Toán 8: Hằng đẳng thức và phân thức
+v: intermediate
+d: Bảy hằng đẳng thức đáng nhớ được dạy bằng hình diện tích, sau đó dùng để phân tích đa thức và rút gọn phân thức. Dành cho học sinh lớp 8.
+o: Khai triển và thu gọn được biểu thức dùng hằng đẳng thức.
+o: Phân tích được đa thức thành nhân tử.
+o: Rút gọn và cộng trừ được phân thức đại số.
+c: Hằng đẳng thức: Bình phương của tổng và hiệu; Hiệu hai bình phương; Lập phương
+c: Phân thức: Phân tích đa thức; Rút gọn phân thức; Cộng, trừ phân thức
+
+## g6_9 | Toán | shapes | vi | Cô Thủy | Toán 9: Hệ phương trình và đường tròn
+v: intermediate
+d: Giải hệ hai phương trình bậc nhất, ứng dụng vào toán đố, rồi sang tính chất đường tròn và góc nội tiếp. Có chuyên đề ôn thi vào lớp 10 ở cuối khóa.
+o: Giải được hệ phương trình bằng thế và cộng đại số.
+o: Lập được hệ từ bài toán có lời văn.
+o: Vận dụng góc nội tiếp, tiếp tuyến trong bài chứng minh.
+c: Hệ phương trình: Phương pháp thế; Phương pháp cộng; Giải toán bằng cách lập hệ
+c: Đường tròn: Góc ở tâm, góc nội tiếp; Tiếp tuyến; Tứ giác nội tiếp
+
+## g6_9 | Ngữ văn | book | vi | Cô Thanh | Ngữ văn 6: Truyện cổ tích và thơ lục bát
+v: intermediate
+d: Đọc kĩ ba truyện cổ tích và một số bài thơ lục bát, rồi tập kể lại và làm thơ bằng lời của em. Có hướng dẫn viết bài văn kể chuyện.
+o: Nhận ra nhân vật, sự kiện và bài học trong truyện.
+o: Nhận biết vần, nhịp của thơ lục bát.
+o: Viết được bài văn kể lại một câu chuyện.
+c: Truyện cổ tích: Thạch Sanh; Cây bút thần; Kể lại truyện
+c: Thơ lục bát: Vần và nhịp; Đọc một bài ca dao; Tập làm thơ
+
+## g6_9 | Ngữ văn | book | vi | Cô Diệp | Ngữ văn 7: Thơ và truyện ngắn
+v: intermediate
+d: Khóa học đọc thơ bốn chữ, năm chữ và truyện ngắn hiện đại, có các câu hỏi phân tích nhân vật và giọng kể. Kết thúc bằng bài viết phát biểu cảm nghĩ.
+o: Nhận biết đặc điểm thơ bốn chữ, năm chữ.
+o: Phân tích được nhân vật và ngôi kể trong truyện.
+o: Viết được bài phát biểu cảm nghĩ về tác phẩm.
+c: Thơ: Thơ bốn chữ; Thơ năm chữ; Biểu cảm trong thơ
+c: Truyện ngắn: Nhân vật và cốt truyện; Ngôi kể; Viết cảm nghĩ
+
+## g6_9 | Ngữ văn | book | vi | Thầy Bình | Ngữ văn 8: Thơ Mới và văn nghị luận
+v: intermediate
+d: Bốn bài thơ Mới tiêu biểu được đọc chậm cùng phân tích hình ảnh, sau đó chuyển sang cách lập luận trong bài nghị luận. Dành cho học sinh lớp 8.
+o: Cảm nhận được hình ảnh và cảm xúc trong thơ Mới.
+o: Nhận ra luận điểm, luận cứ trong văn nghị luận.
+o: Viết được đoạn nghị luận có dẫn chứng.
+c: Thơ Mới: Hoàn cảnh ra đời; Đọc Nhớ rừng; Đọc Quê hương
+c: Nghị luận: Luận điểm và luận cứ; Dẫn chứng; Viết đoạn nghị luận
+
+## g6_9 | Ngữ văn | exam | vi | Cô Hiền | Ngữ văn 9: Ôn thi vào lớp 10
+v: advanced
+d: Hệ thống lại cấu trúc đề thi vào lớp 10, kèm dàn ý mẫu cho nghị luận xã hội và nghị luận văn học. Mỗi bài có một đề tập viết trong 40 phút.
+o: Nắm cấu trúc và thang điểm đề thi.
+o: Lập dàn ý nhanh cho hai dạng nghị luận.
+o: Tự chấm bài viết theo tiêu chí.
+c: Đọc hiểu: Dạng câu hỏi thường gặp; Nhận diện biện pháp tu từ
+c: Làm văn: Nghị luận xã hội; Nghị luận văn học; Phân bổ thời gian
+
+## g6_9 | Tiếng Anh | speech | vi | Cô Ánh | Tiếng Anh 6: Ngữ pháp nền tảng
+v: basic
+d: Giải thích bằng tiếng Việt các thì hiện tại, mạo từ và giới từ, mỗi điểm ngữ pháp kèm ví dụ ngắn và bài điền từ. Dành cho học sinh lớp 6.
+o: Dùng đúng thì hiện tại đơn và hiện tại tiếp diễn.
+o: Chọn đúng a, an, the và giới từ chỉ nơi chốn.
+o: Viết được đoạn 5 câu giới thiệu bản thân.
+c: Các thì: Hiện tại đơn; Hiện tại tiếp diễn; Phân biệt hai thì
+c: Từ loại: Mạo từ; Giới từ chỉ nơi chốn; Viết giới thiệu bản thân
+
+## g6_9 | Tiếng Anh | speech | vi | Cô Hạ | Tiếng Anh 8: Thì và câu điều kiện
+v: intermediate
+d: Ôn các thì quá khứ, hiện tại hoàn thành và câu điều kiện loại 1, 2 bằng bảng so sánh và bài tập sửa lỗi. Dành cho học sinh lớp 8.
+o: Phân biệt quá khứ đơn và hiện tại hoàn thành.
+o: Viết được câu điều kiện loại 1 và loại 2.
+o: Tự sửa các lỗi sai phổ biến.
+c: Các thì: Quá khứ đơn; Hiện tại hoàn thành; So sánh hai thì
+c: Câu điều kiện: Loại 1; Loại 2; Sửa lỗi thường gặp
+
+## g6_9 | Khoa học tự nhiên | flask | vi | Thầy Cường | Khoa học tự nhiên 6: Chất và sự biến đổi
+v: basic
+d: Từ vật thể, chất đến hỗn hợp và cách tách chất, mỗi bài có thí nghiệm có thể làm bằng đồ dùng trong nhà. Dành cho học sinh lớp 6.
+o: Phân biệt vật thể, chất và hỗn hợp.
+o: Chọn được cách tách phù hợp cho từng hỗn hợp.
+o: Nêu được sự biến đổi vật lí và hóa học.
+c: Chất quanh ta: Vật thể và chất; Ba thể của chất; Sự nóng chảy và bay hơi
+c: Hỗn hợp: Dung dịch; Lọc, chiết, cô cạn; Biến đổi hóa học
+
+## g6_9 | Khoa học tự nhiên | atom | vi | Cô Nhung | Khoa học tự nhiên 7: Tốc độ và âm thanh
+v: intermediate
+d: Khóa học đo tốc độ chuyển động, vẽ đồ thị quãng đường, thời gian và tìm hiểu cách âm thanh truyền đi. Có bài thực hành đo tốc độ bằng đồng hồ bấm giờ.
+o: Tính được tốc độ và đọc đồ thị quãng đường, thời gian.
+o: Giải thích được sự truyền âm và phản xạ âm.
+o: Nêu được cách chống ô nhiễm tiếng ồn.
+c: Tốc độ: Tốc độ là gì; Đo tốc độ; Đồ thị
+c: Âm thanh: Nguồn âm và sóng âm; Độ cao, độ to; Phản xạ âm
+
+## g6_9 | Khoa học tự nhiên | atom | vi | Thầy Sơn | Khoa học tự nhiên 8: Lực, áp suất, phản ứng hóa học
+v: intermediate
+d: Ba chủ đề được học đan xen: lực và áp suất, mol và phản ứng, cơ quan trong cơ thể người. Phù hợp học sinh lớp 8 cần hệ thống lại trước kì thi.
+o: Tính được áp suất chất lỏng và lực đẩy Archimedes.
+o: Viết và cân bằng được phương trình hóa học đơn giản.
+o: Nối được kiến thức lí hóa với ví dụ đời sống.
+c: Lực và áp suất: Áp suất chất rắn; Áp suất chất lỏng; Lực đẩy Archimedes
+c: Phản ứng hóa học: Phương trình hóa học; Mol; Tính theo phương trình
+
+## g6_9 | Vật lí | circuit | vi | Thầy Trí | Vật lí 9: Điện từ học và ánh sáng
+v: intermediate
+d: Từ nam châm, cảm ứng điện từ đến khúc xạ ánh sáng và thấu kính, mỗi chương có hình vẽ đường đi tia sáng để tự làm lại. Hợp với học sinh lớp 9.
+o: Giải thích được cảm ứng điện từ và máy biến áp.
+o: Vẽ được đường truyền tia sáng qua thấu kính.
+o: Giải được bài tập về công suất điện.
+c: Điện từ học: Từ trường; Cảm ứng điện từ; Máy biến áp
+c: Quang học: Khúc xạ ánh sáng; Thấu kính hội tụ; Mắt và kính
+
+## g6_9 | Hóa học | flask | vi | Cô Loan | Hóa học 9: Kim loại và phi kim
+v: intermediate
+d: Khóa học sắp xếp dãy hoạt động hóa học của kim loại, tính chất của clo, cacbon và các bài tập tính theo phương trình. Có bảng tổng kết sau từng chương.
+o: Viết được phản ứng của kim loại với axit, muối.
+o: Nêu được tính chất của clo và cacbon.
+o: Giải được bài toán hỗn hợp kim loại.
+c: Kim loại: Dãy hoạt động; Nhôm và sắt; Ăn mòn kim loại
+c: Phi kim: Clo; Cacbon và oxit; Bảng tuần hoàn
+
+## g6_9 | Sinh học | cell | vi | Cô Oanh | Sinh học 8: Cơ thể người
+v: intermediate
+d: Đi qua các hệ cơ quan theo thứ tự từ vận động, tuần hoàn đến tiêu hóa, mỗi hệ có sơ đồ và câu hỏi vận dụng. Dành cho học sinh lớp 8.
+o: Mô tả chức năng của các hệ cơ quan chính.
+o: Giải thích được đường đi của máu và thức ăn.
+o: Đề ra được thói quen sống lành mạnh.
+c: Vận động và tuần hoàn: Bộ xương và cơ; Máu và tim; Vòng tuần hoàn
+c: Tiêu hóa và hô hấp: Ống tiêu hóa; Hấp thụ dinh dưỡng; Trao đổi khí
+
+## g6_9 | Lịch sử | temple | vi | Thầy Nam | Lịch sử 7: Việt Nam thời Lý, Trần
+v: intermediate
+d: Dòng thời gian từ Lý Thái Tổ dời đô đến ba lần kháng chiến chống Mông–Nguyên, mỗi sự kiện kèm bản đồ trận đánh. Dành cho học sinh lớp 7.
+o: Sắp xếp được các sự kiện lớn thời Lý, Trần.
+o: Mô tả được diễn biến một trận đánh tiêu biểu.
+o: Nêu được thành tựu văn hóa, giáo dục thời kì này.
+c: Nhà Lý: Dời đô ra Thăng Long; Kháng chiến chống Tống; Văn hóa và giáo dục
+c: Nhà Trần: Ba lần kháng chiến; Hội nghị Diên Hồng; Kinh tế và xã hội
+
+## g6_9 | Địa lí | map | vi | Cô Hương | Địa lí 8: Khí hậu và sông ngòi Việt Nam
+v: intermediate
+d: Đọc bản đồ khí hậu, biểu đồ nhiệt độ lượng mưa và hệ thống sông chính của nước ta. Mỗi bài có một bản đồ trống để em tự điền.
+o: Giải thích được tính chất nhiệt đới gió mùa.
+o: Đọc được biểu đồ nhiệt độ và lượng mưa.
+o: Kể được các hệ thống sông lớn.
+c: Khí hậu: Gió mùa; Nhiệt độ và lượng mưa; Thiên tai
+c: Sông ngòi: Các hệ thống sông; Chế độ nước; Sử dụng nguồn nước
+
+## g6_9 | GDCD | scales | vi | Thầy Hùng | GDCD 8: Pháp luật và kỉ luật
+v: intermediate
+d: Dùng tình huống ở trường và trên mạng để phân biệt quyền và nghĩa vụ, kỉ luật và pháp luật. Mỗi bài kết thúc bằng một câu hỏi xử lí tình huống.
+o: Phân biệt được pháp luật, kỉ luật và đạo đức.
+o: Nêu được quyền và nghĩa vụ cơ bản của học sinh.
+o: Biết cách xử lí khi gặp vi phạm trên mạng.
+c: Pháp luật và kỉ luật: Pháp luật là gì; Kỉ luật ở trường
+c: Quyền và nghĩa vụ: Quyền của học sinh; Nghĩa vụ công dân; An toàn trên mạng
+
+## g6_9 | Tin học | db | vi | Cô Xuân | Tin học 7: Bảng tính cơ bản
+v: basic
+d: Em dựng một bảng chi tiêu từ đầu, học công thức, hàm tính tổng, trung bình và vẽ biểu đồ cột. Dành cho học sinh lớp 7.
+o: Nhập dữ liệu và định dạng bảng.
+o: Dùng được hàm SUM, AVERAGE, MAX, MIN.
+o: Vẽ biểu đồ phù hợp với dữ liệu.
+c: Làm quen bảng tính: Ô, hàng, cột; Nhập và định dạng
+c: Tính toán: Công thức; Các hàm cơ bản; Biểu đồ
+
+## g6_9 | Tin học | terminal | vi | Thầy Duy | Tin học 9: Làm quen lập trình Python
+v: basic
+d: Chương trình đầu tiên, biến, vòng lặp và hàm được dạy qua các bài tập nhỏ như tính điểm và đoán số. Dành cho học sinh lớp 9, chưa cần biết lập trình.
+o: Viết được chương trình có biến, điều kiện và vòng lặp.
+o: Chia chương trình thành các hàm nhỏ.
+o: Tìm và sửa được lỗi cơ bản.
+c: Bắt đầu: In ra màn hình; Biến và kiểu dữ liệu; Nhập dữ liệu
+c: Điều khiển: Câu lệnh if; Vòng lặp for; Vòng lặp while
+c: Hàm: Viết hàm; Bài tập tổng hợp
+
+## g6_9 | Công nghệ | gear | vi | Thầy Lộc | Công nghệ 8: Bản vẽ kĩ thuật
+v: intermediate
+d: Em học vẽ hình chiếu vuông góc, ghi kích thước và đọc bản vẽ chi tiết đơn giản. Có bài tập dựng hình từ vật thật như hộp bút, ổ khóa.
+o: Vẽ được ba hình chiếu của vật thể đơn giản.
+o: Ghi đúng kích thước trên bản vẽ.
+o: Đọc được bản vẽ chi tiết.
+c: Hình chiếu: Phép chiếu vuông góc; Ba hình chiếu; Vật thể đơn giản
+c: Bản vẽ: Ghi kích thước; Đọc bản vẽ chi tiết
+
+## g6_9 | Công nghệ | plant | vi | Cô Tâm | Công nghệ 7: Trồng trọt và chăn nuôi
+v: intermediate
+d: Từ đất trồng, giống cây đến nuôi gà, cá ở quy mô gia đình, các bài đều có kế hoạch mà em có thể thực hiện tại nhà. Dành cho học sinh lớp 7.
+o: Chọn được đất, giống và phân bón phù hợp.
+o: Lập được kế hoạch trồng một loại rau.
+o: Nêu được cách phòng bệnh cho vật nuôi.
+c: Trồng trọt: Đất trồng; Giống và gieo hạt; Chăm sóc cây
+c: Chăn nuôi: Nuôi gà; Nuôi cá; Phòng bệnh
+
+## g6_9 | English | speech | en | Mr. David Nguyen | English Grammar in Use for Teens: Tenses
+v: intermediate
+d: Twelve tenses explained with timelines and examples from teenage life, followed by short gap-fill drills. For learners at pre-intermediate level.
+o: Choose between past simple, present perfect and past continuous.
+o: Build correct questions and negatives in each tense.
+o: Fix common tense mistakes in your own writing.
+c: Present: Simple and continuous; Present perfect; Perfect or past?
+c: Past and future: Past simple; Past continuous; Future forms
+
+## g6_9 | English | book | en | Ms. Hanh Vu | Reading Short Stories in English
+v: basic
+d: Eight graded stories with audio, vocabulary notes and three questions each. Reading gets longer from 200 to 600 words across the course.
+o: Read a 500-word story and retell it in your own words.
+o: Guess the meaning of new words from context.
+o: Talk about characters and endings in English.
+c: Short and simple: A lost key; The new bike; A rainy day
+c: A little longer: The school trip; A secret garden; The last bus
+
+## g10_12 | Toán | graph | vi | Thầy Kiên | Toán 10: Hàm số bậc hai và vectơ
+v: intermediate
+d: Hàm số bậc hai được học bằng đồ thị và bài toán thực tế, sau đó là vectơ với phép cộng, nhân số và tích vô hướng. Dành cho học sinh lớp 10.
+o: Khảo sát và vẽ được đồ thị hàm số bậc hai.
+o: Thực hiện được phép toán trên vectơ.
+o: Dùng tích vô hướng tính góc và độ dài.
+c: Hàm số bậc hai: Đồ thị parabol; Dấu của tam thức; Bất phương trình bậc hai
+c: Vectơ: Tổng và hiệu vectơ; Tích với một số; Tích vô hướng
+
+## g10_12 | Toán | graph | vi | Cô Thùy Dung | Toán 11: Lượng giác và dãy số
+v: intermediate
+d: Công thức lượng giác, phương trình lượng giác cơ bản, cấp số cộng và cấp số nhân, kèm bảng công thức để tra nhanh. Có bài trắc nghiệm theo dạng đề thi.
+o: Giải được phương trình lượng giác cơ bản.
+o: Biến đổi được biểu thức bằng công thức cộng, nhân đôi.
+o: Tính được số hạng và tổng của cấp số.
+c: Lượng giác: Đường tròn lượng giác; Công thức lượng giác; Phương trình cơ bản
+c: Dãy số: Dãy số và giới hạn; Cấp số cộng; Cấp số nhân
+
+## g10_12 | Toán | graph | vi | Thầy Hiếu | Toán 12: Đạo hàm và khảo sát hàm số
+v: advanced
+d: Dùng đạo hàm để xét tính đơn điệu, cực trị và vẽ đồ thị, rồi áp dụng vào bài toán tối ưu. Mỗi chương có đề trắc nghiệm 20 câu.
+o: Tìm được khoảng đơn điệu và cực trị của hàm số.
+o: Khảo sát và vẽ được đồ thị hàm bậc ba, phân thức.
+o: Giải được bài toán giá trị lớn nhất, nhỏ nhất thực tế.
+c: Đạo hàm và đơn điệu: Quy tắc tính đạo hàm; Tính đơn điệu; Cực trị
+c: Khảo sát hàm số: Tiệm cận; Đồ thị hàm bậc ba; Bài toán tối ưu
+
+## g10_12 | Toán | shapes | vi | Cô Nga | Toán 12: Hình học không gian Oxyz
+v: intermediate
+d: Tọa độ điểm, vectơ, phương trình mặt phẳng và đường thẳng trong không gian, có hình ba chiều xoay được. Dành cho học sinh lớp 12 ôn thi tốt nghiệp.
+o: Tính được tọa độ và độ dài trong hệ Oxyz.
+o: Lập được phương trình mặt phẳng và đường thẳng.
+o: Tính được khoảng cách và góc cơ bản.
+c: Tọa độ: Điểm và vectơ; Tích có hướng
+c: Mặt phẳng, đường thẳng: Phương trình mặt phẳng; Phương trình đường thẳng; Khoảng cách và góc
+
+## g10_12 | Ngữ văn | book | vi | Cô Khánh | Ngữ văn 10: Văn học dân gian và thơ trung đại
+v: intermediate
+d: Đọc sử thi, truyện thơ và thơ Nôm Đường luật với chú thích đầy đủ, rồi tập phân tích một đoạn trích. Dành cho học sinh lớp 10.
+o: Nhận diện thể loại văn học dân gian.
+o: Phân tích được một bài thơ Đường luật.
+o: Viết được bài nghị luận ngắn về tác phẩm.
+c: Văn học dân gian: Sử thi; Truyện thơ; Ca dao
+c: Thơ trung đại: Thơ Nôm Đường luật; Nguyễn Trãi; Nguyễn Du
+
+## g10_12 | Ngữ văn | book | vi | Thầy Phúc | Ngữ văn 11: Thơ Mới và văn xuôi hiện thực
+v: intermediate
+d: Đọc Vội vàng, Tràng giang và truyện ngắn của Nam Cao, Nguyên Hồng, đặt trong bối cảnh xã hội những năm 1930. Mỗi bài có đề nghị luận mẫu.
+o: Phân tích được hình ảnh và cảm xúc trong thơ Mới.
+o: Hiểu giá trị hiện thực của văn xuôi 1930–1945.
+o: Viết được bài nghị luận văn học đủ ba phần.
+c: Thơ Mới: Vội vàng; Tràng giang; Đây thôn Vĩ Dạ
+c: Văn xuôi: Chí Phèo; Hai đứa trẻ; Viết bài nghị luận
+
+## g10_12 | Ngữ văn | exam | vi | Cô Mỹ | Ngữ văn 12: Nghị luận xã hội và nghị luận văn học
+v: intermediate
+d: Hai dạng bài nặng điểm nhất của đề thi tốt nghiệp được tách ra luyện riêng, mỗi dạng có dàn ý, bài mẫu và bài chấm. Kèm đề đọc hiểu.
+o: Viết được đoạn nghị luận xã hội 200 chữ.
+o: Triển khai được bài nghị luận văn học 600 chữ.
+o: Làm đúng dạng câu hỏi đọc hiểu.
+c: Đọc hiểu: Nhận diện thể loại; Trả lời câu hỏi theo mức độ
+c: Nghị luận xã hội: Đề tư tưởng đạo lí; Đề hiện tượng đời sống
+c: Nghị luận văn học: Phân tích thơ; Phân tích truyện
+
+## g10_12 | Tiếng Anh | speech | vi | Cô Giang | Tiếng Anh 10: Từ vựng chủ đề và đọc hiểu
+v: intermediate
+d: Bốn chủ đề từ vựng quen thuộc của sách giáo khoa, mỗi chủ đề có bài đọc, bài nghe và cách đoán nghĩa từ. Dành cho học sinh lớp 10.
+o: Nắm được từ vựng cốt lõi theo bốn chủ đề.
+o: Tìm ý chính và chi tiết trong bài đọc.
+o: Đoán được nghĩa từ mới từ ngữ cảnh.
+c: Chủ đề: Gia đình và bạn bè; Giáo dục; Môi trường
+c: Kĩ năng đọc: Tìm ý chính; Đọc lướt, đọc kĩ; Đoán nghĩa từ
+
+## g10_12 | Tiếng Anh | exam | vi | Thầy Vinh | Tiếng Anh 12: Luyện đề tốt nghiệp THPT
+v: advanced
+d: Phân tích từng dạng câu hỏi của đề thi tốt nghiệp: ngữ âm, chọn từ, đọc hiểu, viết lại câu. Sau mỗi dạng là một đề rút gọn bấm giờ 20 phút.
+o: Nhận diện và làm nhanh từng dạng câu.
+o: Quản lí được thời gian khi làm đề 50 câu.
+o: Tránh được các bẫy thường gặp.
+c: Kiến thức: Ngữ âm và trọng âm; Từ vựng và cụm từ; Ngữ pháp trọng tâm
+c: Kĩ năng: Đọc điền từ; Đọc hiểu; Viết lại câu
+
+## g10_12 | IELTS | exam | en | Ms. Anna Le | IELTS Reading: Foundations
+v: basic
+d: Learn the question types in IELTS Academic Reading, from matching headings to True/False/Not Given, with timed practice passages. For learners aiming at band 5.5 to 6.5.
+o: Recognise and answer all main question types.
+o: Skim a 900-word passage in under three minutes.
+o: Manage 60 minutes across three passages.
+c: Skills: Skimming and scanning; Paraphrase; Keywords
+c: Question types: Matching headings; True, False, Not Given; Summary completion
+
+## g10_12 | IELTS | exam | en | Mr. Peter Ho | IELTS Writing Task 2: Essays
+v: advanced
+d: A step-by-step course on planning and writing 250-word essays for the four main prompt types. Includes model answers marked against the band descriptors.
+o: Plan an essay in five minutes.
+o: Write clear introductions and paragraphs with one idea each.
+o: Check your own writing against the scoring criteria.
+c: Planning: Read the prompt; Brainstorm and outline
+c: Writing: Introductions; Body paragraphs; Conclusions
+c: Prompt types: Opinion essays; Discussion essays; Problem and solution
+
+## g10_12 | IELTS | speech | en | Ms. Mai Dang | IELTS Listening and Speaking for Beginners
+v: basic
+d: Short listening tasks and speaking prompts for learners at about band 4.5, with slow models first and natural speed later. Each unit ends with a recording task.
+o: Follow numbers, names and directions in a recording.
+o: Answer Part 1 questions in two or three sentences.
+o: Speak for one minute on a familiar topic.
+c: Listening: Numbers and spelling; Maps and directions; Short conversations
+c: Speaking: Talking about yourself; Describing places; The one-minute talk
+
+## g10_12 | Vật lí | atom | vi | Thầy Dũng | Vật lí 10: Động học và động lực học
+v: intermediate
+d: Chuyển động thẳng, rơi tự do và ba định luật Newton, mỗi chương có thí nghiệm mô phỏng và bài giải mẫu. Dành cho học sinh lớp 10.
+o: Viết được phương trình chuyển động thẳng biến đổi đều.
+o: Áp dụng được ba định luật Newton.
+o: Giải được bài toán lực ma sát và lực hướng tâm.
+c: Động học: Chuyển động thẳng đều; Biến đổi đều; Rơi tự do
+c: Động lực học: Định luật Newton; Lực ma sát; Chuyển động tròn
+
+## g10_12 | Vật lí | circuit | vi | Thầy Lâm | Vật lí 12: Dao động cơ và sóng
+v: intermediate
+d: Con lắc lò xo, con lắc đơn, giao thoa và sóng dừng được học bằng đồ thị li độ theo thời gian. Có đề trắc nghiệm theo cấu trúc thi tốt nghiệp.
+o: Viết được phương trình dao động điều hòa.
+o: Tính chu kì và năng lượng của con lắc.
+o: Giải được bài toán giao thoa và sóng dừng.
+c: Dao động: Dao động điều hòa; Con lắc lò xo; Con lắc đơn
+c: Sóng: Sóng cơ; Giao thoa; Sóng dừng
+
+## g10_12 | Hóa học | flask | vi | Cô Trinh | Hóa học 10: Cấu tạo nguyên tử và liên kết
+v: intermediate
+d: Cấu hình electron, bảng tuần hoàn và các loại liên kết hóa học được giải thích bằng mô hình có thể xoay. Dành cho học sinh lớp 10.
+o: Viết được cấu hình electron của 20 nguyên tố đầu.
+o: Suy ra tính chất từ vị trí trong bảng tuần hoàn.
+o: Phân biệt liên kết ion, cộng hóa trị.
+c: Nguyên tử: Hạt cơ bản; Cấu hình electron; Đồng vị
+c: Bảng tuần hoàn và liên kết: Quy luật tuần hoàn; Liên kết ion; Liên kết cộng hóa trị
+
+## g10_12 | Hóa học | flask | vi | Thầy Quyết | Hóa học 11: Cân bằng hóa học và nitrogen
+v: intermediate
+d: Hằng số cân bằng, pH, và hóa học của nitrogen với ammonia và acid nitric, kèm bài tập tính toán có lời giải. Dành cho học sinh lớp 11.
+o: Tính được hằng số cân bằng và pH của dung dịch.
+o: Viết được các phản ứng của ammonia và nitric acid.
+o: Dự đoán chiều chuyển dịch cân bằng.
+c: Cân bằng hóa học: Phản ứng thuận nghịch; Hằng số cân bằng; pH
+c: Nitrogen: Đơn chất nitrogen; Ammonia; Nitric acid
+
+## g10_12 | Hóa học | flask | vi | Cô Diễm | Hóa học 12: Este, lipid và carbohydrate
+v: intermediate
+d: Các hợp chất hữu cơ thường gặp trong đề thi tốt nghiệp được nhóm theo công thức và phản ứng đặc trưng. Mỗi bài có bảng so sánh và bài tập nhận biết.
+o: Gọi tên và viết phản ứng thủy phân este.
+o: Phân biệt glucose, saccharose và tinh bột.
+o: Làm được bài tập xác định công thức este.
+c: Este và lipid: Este; Chất béo; Xà phòng
+c: Carbohydrate: Glucose; Saccharose; Tinh bột và cellulose
+
+## g10_12 | Sinh học | cell | vi | Cô Lý | Sinh học 10: Tế bào
+v: intermediate
+d: Cấu trúc tế bào, màng sinh chất, trao đổi chất và phân bào, có ảnh hiển vi để đối chiếu. Dành cho học sinh lớp 10.
+o: Mô tả cấu trúc các bào quan chính.
+o: Giải thích vận chuyển qua màng.
+o: Trình bày các kì của nguyên phân.
+c: Cấu trúc tế bào: Tế bào nhân sơ và nhân thực; Màng sinh chất; Bào quan
+c: Hoạt động tế bào: Vận chuyển chất; Quang hợp và hô hấp; Nguyên phân
+
+## g10_12 | Sinh học | dna | vi | Thầy Thịnh | Sinh học 12: Di truyền học
+v: advanced
+d: Từ gene, đột biến đến quy luật Mendel và di truyền quần thể, đi kèm các dạng bài lai thường gặp trong đề thi. Dành cho học sinh lớp 12.
+o: Giải được bài tập lai một và hai cặp tính trạng.
+o: Mô tả được cơ chế nhân đôi và phiên mã.
+o: Tính được tần số alen của quần thể.
+c: Gene và đột biến: ADN và gene; Phiên mã, dịch mã; Đột biến
+c: Quy luật di truyền: Quy luật Mendel; Liên kết gene; Quần thể
+
+## g10_12 | Lịch sử | temple | vi | Thầy Trọng | Lịch sử 12: Việt Nam giai đoạn 1954–1975
+v: intermediate
+d: Hai miền Bắc Nam sau Hiệp định Genève, các chiến lược chiến tranh và Đại thắng mùa Xuân 1975, với bản đồ và bảng niên biểu. Dành cho học sinh lớp 12.
+o: Lập được niên biểu các sự kiện chính.
+o: Phân tích được nguyên nhân thắng lợi.
+o: Làm đúng dạng câu hỏi nhận biết và vận dụng.
+c: 1954–1965: Sau Hiệp định Genève; Đồng khởi; Chiến tranh đặc biệt
+c: 1965–1975: Chiến tranh cục bộ; Tổng tiến công 1968; Hiệp định Paris và 1975
+
+## g10_12 | Địa lí | globe | vi | Cô Nhàn | Địa lí 12: Các vùng kinh tế
+v: intermediate
+d: Đặc điểm tự nhiên, dân cư và ngành kinh tế nổi bật của bảy vùng, học cùng Atlat và biểu đồ. Dành cho học sinh lớp 12.
+o: Nêu được thế mạnh của từng vùng.
+o: Đọc nhanh Atlat để trả lời câu hỏi.
+o: Chọn và vẽ được dạng biểu đồ phù hợp.
+c: Các vùng phía Bắc: Trung du và miền núi Bắc Bộ; Đồng bằng sông Hồng; Bắc Trung Bộ
+c: Các vùng phía Nam: Duyên hải Nam Trung Bộ; Tây Nguyên; Đồng bằng sông Cửu Long
+
+## g10_12 | Giáo dục kinh tế và pháp luật | scales | vi | Cô Thùy Anh | Giáo dục kinh tế và pháp luật 10
+v: intermediate
+d: Cơ chế thị trường, tiền tệ, thuế và tín dụng được giải thích bằng ví dụ về quán trà sữa của một học sinh. Dành cho học sinh lớp 10.
+o: Giải thích được cung, cầu và giá cả.
+o: Phân biệt được các loại thuế và chức năng của tiền.
+o: Nêu được cách quản lí chi tiêu cá nhân.
+c: Thị trường: Cung và cầu; Cạnh tranh; Giá cả
+c: Tiền và thuế: Chức năng của tiền; Thuế; Tín dụng
+
+## g10_12 | Tin học | terminal | vi | Thầy Bảo | Tin học 11: Python và thuật toán
+v: intermediate
+d: Sắp xếp, tìm kiếm và đệ quy được viết bằng Python từng dòng một, có biểu đồ thực thi từng bước. Dành cho học sinh lớp 11 đã biết biến và vòng lặp.
+o: Viết được chương trình sắp xếp và tìm kiếm.
+o: So sánh được độ phức tạp ở mức cơ bản.
+o: Dùng được đệ quy cho bài toán đơn giản.
+c: Dữ liệu: Danh sách và chuỗi; Từ điển
+c: Thuật toán: Tìm kiếm tuần tự và nhị phân; Sắp xếp; Đệ quy
+
+## g10_12 | Tin học | db | vi | Cô Hoài | Tin học 12: Cơ sở dữ liệu và SQL
+v: intermediate
+d: Thiết kế bảng, khóa chính, khóa ngoại và truy vấn SELECT trên bộ dữ liệu một thư viện trường. Dành cho học sinh lớp 12.
+o: Thiết kế được cơ sở dữ liệu quan hệ nhỏ.
+o: Viết được truy vấn SELECT có điều kiện và nối bảng.
+o: Hiểu vai trò của khóa chính, khóa ngoại.
+c: Thiết kế: Bảng và khóa; Quan hệ giữa các bảng
+c: Truy vấn: SELECT và WHERE; Sắp xếp, nhóm; Nối bảng
+
+## g10_12 | Công nghệ | circuit | vi | Thầy Tú | Công nghệ 12: Điện và điện tử
+v: intermediate
+d: Mạch điện xoay chiều, linh kiện điện tử cơ bản và mạch khuếch đại đơn giản, có sơ đồ mạch để tự lắp trên mô phỏng. Dành cho học sinh lớp 12.
+o: Đọc được sơ đồ mạch điện cơ bản.
+o: Nhận biết điốt, tranzito, tụ điện.
+o: Lắp được mạch đèn LED trên mô phỏng.
+c: Mạch điện: Mạch xoay chiều; Mạch ba pha
+c: Điện tử: Linh kiện thụ động; Điốt và tranzito; Mạch khuếch đại
+
+## g10_12 | Ôn thi | exam | vi | Thầy Lực | Luyện thi đánh giá năng lực: Tư duy định lượng
+v: advanced
+d: Các dạng toán, logic và biểu đồ trong phần tư duy định lượng, kèm đề bấm giờ và lời giải ngắn. Dành cho học sinh lớp 12 thi đánh giá năng lực.
+o: Nhận diện nhanh các dạng câu hỏi.
+o: Làm đề 50 câu trong 75 phút.
+o: Rút ra được cách loại trừ đáp án.
+c: Dạng bài: Đại số và hàm số; Xác suất cơ bản; Biểu đồ và bảng số liệu
+c: Luyện đề: Đề rút gọn 30 phút; Chữa đề và rút kinh nghiệm
+
+## g10_12 | Kĩ năng | bulb | vi | Cô Hồng Nhung | Kĩ năng học tập hiệu quả
+v: basic
+d: Cách lập lịch ôn tập, ghi chép và tự kiểm tra để nhớ lâu hơn, theo từng bước mà em có thể thử ngay trong tuần. Dành cho học sinh cấp ba.
+o: Lập được lịch ôn tập một tuần.
+o: Ghi chép được theo sơ đồ và thẻ ghi nhớ.
+o: Tự đặt câu hỏi kiểm tra sau mỗi buổi học.
+c: Quản lí thời gian: Mục tiêu tuần; Lịch ôn tập
+c: Nhớ lâu: Ghi chép; Thẻ ghi nhớ; Tự kiểm tra
+
+## g10_12 | Computing | terminal | en | Mr. Khai Tran | Python for High School Students
+v: intermediate
+d: Variables to functions and file handling, taught through small projects such as a quiz game and a grade tracker. No coding experience needed.
+o: Write programs that use variables, loops and functions.
+o: Read and write text files.
+o: Complete a small project of about 80 lines.
+c: Basics: Print and variables; Conditions; Loops
+c: Building: Functions; Lists and dictionaries; Files; Quiz game project
+
+## g10_12 | SAT | exam | en | Ms. Chi Nguyen | SAT Math: Algebra and Data Analysis
+v: advanced
+d: Linear equations, systems and data questions from the digital SAT, with timed sets and worked solutions. Aimed at students targeting 650 or above.
+o: Solve linear and quadratic problems quickly.
+o: Read tables, scatterplots and two-way tables.
+o: Check answers with the built-in calculator.
+c: Algebra: Linear equations; Systems; Quadratics
+c: Data analysis: Tables and graphs; Percentages and rates; Statistics
+
+## uni | Giải tích | graph | vi | TS. Thắng | Giải tích 1: Giới hạn và đạo hàm
+v: advanced
+d: Giới hạn, liên tục và đạo hàm của hàm một biến, giải thích bằng định nghĩa epsilon–delta kèm hình minh họa. Dành cho sinh viên năm nhất khối kĩ thuật.
+o: Tính được giới hạn bằng định nghĩa và quy tắc.
+o: Xét được tính liên tục và khả vi.
+o: Áp dụng đạo hàm vào cực trị và xấp xỉ.
+c: Giới hạn và liên tục: Giới hạn dãy số; Giới hạn hàm số; Liên tục
+c: Đạo hàm: Định nghĩa đạo hàm; Quy tắc tính; Ứng dụng
+
+## uni | Giải tích | graph | vi | TS. Hoàng | Giải tích 2: Tích phân và chuỗi
+v: advanced
+d: Tích phân xác định, tích phân suy rộng, chuỗi số và chuỗi lũy thừa, mỗi phần có ví dụ tính tay đầy đủ. Dành cho sinh viên năm nhất.
+o: Tính được tích phân bằng đổi biến và từng phần.
+o: Xét được sự hội tụ của chuỗi.
+o: Khai triển được hàm thành chuỗi Taylor.
+c: Tích phân: Tích phân xác định; Kĩ thuật tích phân; Tích phân suy rộng
+c: Chuỗi: Chuỗi số; Chuỗi lũy thừa; Chuỗi Taylor
+
+## uni | Giải tích | graph | vi | PGS. TS. Lê Văn Hải | Giải tích nhiều biến
+v: advanced
+d: Đạo hàm riêng, cực trị có điều kiện và tích phân bội, kèm hình mặt cong và đường mức xoay được. Dành cho sinh viên năm hai.
+o: Tính được đạo hàm riêng và gradient.
+o: Tìm cực trị bằng nhân tử Lagrange.
+o: Tính được tích phân kép và bội ba.
+c: Hàm nhiều biến: Giới hạn và liên tục; Đạo hàm riêng; Gradient
+c: Tích phân bội: Tích phân kép; Đổi biến; Tích phân bội ba
+
+## uni | Đại số tuyến tính | matrix | vi | TS. Phạm Minh Đức | Đại số tuyến tính: Ma trận và hệ phương trình
+v: intermediate
+d: Từ khử Gauss đến định thức và ma trận nghịch đảo, với hình ảnh hình học cho từng khái niệm. Dành cho sinh viên năm nhất, không yêu cầu kiến thức trước.
+o: Giải được hệ phương trình bằng khử Gauss.
+o: Tính được định thức và ma trận nghịch đảo.
+o: Hiểu ý nghĩa hình học của phép biến đổi tuyến tính.
+c: Hệ phương trình: Khử Gauss; Nghiệm và hạng; Dạng bậc thang
+c: Ma trận: Phép toán ma trận; Định thức; Ma trận nghịch đảo
+
+## uni | Đại số tuyến tính | matrix | vi | TS. Đỗ Thu Hà | Đại số tuyến tính: Không gian vectơ và trị riêng
+v: intermediate
+d: Cơ sở, số chiều, trị riêng và chéo hóa ma trận, đi kèm ứng dụng trong PageRank và nén ảnh. Dành cho sinh viên đã học ma trận cơ bản.
+o: Tìm được cơ sở và số chiều của không gian con.
+o: Tính được trị riêng và vectơ riêng.
+o: Chéo hóa được ma trận đối xứng.
+c: Không gian vectơ: Độc lập tuyến tính; Cơ sở và số chiều; Ánh xạ tuyến tính
+c: Trị riêng: Trị riêng, vectơ riêng; Chéo hóa; Ứng dụng
+
+## uni | Xác suất thống kê | prob | vi | TS. Nguyễn Hữu Tâm | Xác suất thống kê: Biến ngẫu nhiên và phân phối
+v: intermediate
+d: Biến ngẫu nhiên rời rạc và liên tục, kì vọng, phương sai và các phân phối thường dùng, kèm mô phỏng bằng Python. Dành cho sinh viên năm hai.
+o: Tính được kì vọng và phương sai.
+o: Chọn được phân phối phù hợp với bài toán.
+o: Dùng định lí giới hạn trung tâm để xấp xỉ.
+c: Biến ngẫu nhiên: Rời rạc; Liên tục; Kì vọng và phương sai
+c: Phân phối: Nhị thức và Poisson; Chuẩn; Giới hạn trung tâm
+
+## uni | Xác suất thống kê | prob | vi | ThS. Vũ Thanh Hằng | Thống kê ứng dụng: Kiểm định giả thuyết
+v: intermediate
+d: Khoảng tin cậy, kiểm định t, khi bình phương và hồi quy tuyến tính trên dữ liệu thật như điểm thi và giá nhà. Dành cho sinh viên đã học xác suất.
+o: Dựng được khoảng tin cậy cho trung bình.
+o: Chọn và thực hiện được kiểm định phù hợp.
+o: Đọc được kết quả hồi quy tuyến tính.
+c: Ước lượng: Khoảng tin cậy; Cỡ mẫu
+c: Kiểm định: Kiểm định t; Khi bình phương; Hồi quy tuyến tính
+
+## uni | Lập trình Python | terminal | vi | ThS. Lê Quốc Việt | Lập trình Python từ con số không
+v: basic
+d: Mười tuần từ biến, vòng lặp đến hàm và tệp, mỗi tuần một bài tập nhỏ có thể chạy ngay trên máy. Dành cho sinh viên mới học lập trình.
+o: Viết và chạy được chương trình Python hoàn chỉnh.
+o: Dùng được danh sách, từ điển và hàm.
+o: Đọc, ghi được tệp văn bản.
+c: Cơ bản: Cài đặt và chạy; Biến, kiểu dữ liệu; Rẽ nhánh và vòng lặp
+c: Cấu trúc: Danh sách, từ điển; Hàm; Tệp và xử lí lỗi
+
+## uni | Lập trình Python | code | vi | TS. Trần Quốc Bảo | Python cho phân tích dữ liệu
+v: intermediate
+d: Làm sạch, nhóm và vẽ biểu đồ dữ liệu bằng pandas và matplotlib trên bộ dữ liệu thực tế. Dành cho sinh viên đã biết Python cơ bản.
+o: Đọc và làm sạch được dữ liệu dạng bảng.
+o: Nhóm và tổng hợp bằng pandas.
+o: Vẽ được biểu đồ kể chuyện từ dữ liệu.
+c: Pandas: DataFrame và Series; Làm sạch dữ liệu; Nhóm và tổng hợp
+c: Trực quan hóa: Biểu đồ cơ bản; Biểu đồ nhiều nhóm; Dự án nhỏ
+
+## uni | Cấu trúc dữ liệu | tree | vi | TS. Ngô Thanh Sơn | Cấu trúc dữ liệu và giải thuật
+v: intermediate
+d: Mảng, danh sách liên kết, ngăn xếp, hàng đợi, cây và đồ thị, cài đặt bằng C++ với phân tích độ phức tạp. Dành cho sinh viên năm hai ngành công nghệ thông tin.
+o: Cài đặt được các cấu trúc dữ liệu cơ bản.
+o: Phân tích được độ phức tạp thời gian.
+o: Chọn được cấu trúc phù hợp cho bài toán.
+c: Cấu trúc tuyến tính: Mảng và danh sách; Ngăn xếp và hàng đợi
+c: Cây và đồ thị: Cây nhị phân; Cây tìm kiếm; Duyệt đồ thị
+c: Giải thuật: Sắp xếp; Tìm kiếm; Độ phức tạp
+
+## uni | Lập trình | code | vi | ThS. Phan Thị Lan | Lập trình hướng đối tượng với Java
+v: intermediate
+d: Lớp, kế thừa, đa hình và giao diện, dựng dần thành một ứng dụng quản lí thư viện nhỏ. Dành cho sinh viên đã biết lập trình cơ bản.
+o: Thiết kế được lớp và mối quan hệ giữa các lớp.
+o: Dùng kế thừa và đa hình đúng chỗ.
+o: Viết được kiểm thử đơn vị cơ bản.
+c: Lớp và đối tượng: Lớp và thuộc tính; Phương thức; Đóng gói
+c: Thiết kế: Kế thừa; Đa hình; Giao diện
+
+## uni | Cơ sở dữ liệu | db | vi | TS. Bùi Anh Kiệt | Cơ sở dữ liệu: SQL từ cơ bản
+v: intermediate
+d: Mô hình quan hệ, chuẩn hóa và SQL, thực hành trên PostgreSQL với bộ dữ liệu cửa hàng sách. Dành cho sinh viên năm hai.
+o: Thiết kế và chuẩn hóa được lược đồ quan hệ.
+o: Viết được truy vấn nối, nhóm và truy vấn con.
+o: Hiểu giao dịch và chỉ mục ở mức cơ bản.
+c: Mô hình: Mô hình quan hệ; Chuẩn hóa
+c: SQL: Truy vấn cơ bản; Nối bảng; Nhóm và truy vấn con
+
+## uni | Mạng máy tính | net | vi | TS. Đinh Công Minh | Mạng máy tính
+v: basic
+d: Các tầng giao thức từ liên kết đến ứng dụng, phân tích gói tin thật bằng Wireshark. Dành cho sinh viên năm ba ngành công nghệ thông tin.
+o: Mô tả được mô hình TCP/IP.
+o: Giải thích được định tuyến và địa chỉ IP.
+o: Đọc được gói tin HTTP và DNS.
+c: Nền tảng: Mô hình tầng; Địa chỉ IP
+c: Giao thức: TCP và UDP; DNS; HTTP
+
+## uni | Hệ điều hành | terminal | vi | ThS. Hà Văn Quân | Hệ điều hành
+v: basic
+d: Tiến trình, luồng, lập lịch, bộ nhớ ảo và hệ tệp, có bài thực hành trên Linux. Dành cho sinh viên năm hai, ba.
+o: Phân biệt được tiến trình và luồng.
+o: Mô phỏng được các thuật toán lập lịch.
+o: Giải thích được bộ nhớ ảo và phân trang.
+c: Tiến trình: Tiến trình và luồng; Lập lịch; Đồng bộ hóa
+c: Bộ nhớ và tệp: Bộ nhớ ảo; Phân trang; Hệ tệp
+
+## uni | Kinh tế vi mô | market | vi | TS. Lương Thu Phương | Kinh tế vi mô: Cung cầu và thị trường
+v: intermediate
+d: Cung, cầu, độ co giãn và cấu trúc thị trường, giải thích bằng đồ thị và tình huống thị trường gạo, cà phê. Dành cho sinh viên năm nhất khối kinh tế.
+o: Dựng và dịch chuyển đường cung, cầu.
+o: Tính độ co giãn của cầu.
+o: So sánh cạnh tranh hoàn hảo với độc quyền.
+c: Cung và cầu: Đường cầu; Đường cung; Cân bằng thị trường
+c: Hành vi doanh nghiệp: Chi phí; Cạnh tranh hoàn hảo; Độc quyền
+
+## uni | Kinh tế vĩ mô | market | vi | PGS. TS. Trịnh Hải Yến | Kinh tế vĩ mô
+v: intermediate
+d: GDP, lạm phát, thất nghiệp và chính sách tiền tệ, tài khóa, với số liệu Việt Nam giai đoạn 2010–2024. Dành cho sinh viên năm hai khối kinh tế.
+o: Đọc được các chỉ tiêu kinh tế vĩ mô.
+o: Giải thích được lạm phát và thất nghiệp.
+o: Phân tích được tác động của chính sách.
+c: Chỉ tiêu: GDP; Lạm phát; Thất nghiệp
+c: Chính sách: Chính sách tiền tệ; Chính sách tài khóa
+
+## uni | Machine learning | neural | vi | TS. Đặng Quang Huy | Machine learning cơ bản
+v: advanced
+d: Hồi quy, phân loại, cây quyết định và mạng nơ-ron nhỏ, mỗi mô hình được cài đặt bằng scikit-learn. Dành cho sinh viên đã học Python và xác suất.
+o: Huấn luyện và đánh giá được mô hình hồi quy, phân loại.
+o: Nhận ra quá khớp và cách giảm.
+o: Chia dữ liệu và kiểm định chéo đúng cách.
+c: Học có giám sát: Hồi quy tuyến tính; Hồi quy logistic; Cây quyết định
+c: Đánh giá: Tập huấn luyện, kiểm tra; Quá khớp; Kiểm định chéo
+
+## uni | Vật lí đại cương | atom | vi | TS. Kiều Văn Tuấn | Vật lí đại cương: Cơ học và nhiệt
+v: intermediate
+d: Động học, định luật Newton, công và năng lượng, nhiệt động lực học, kèm video thí nghiệm và bài tập tính. Dành cho sinh viên năm nhất khối kĩ thuật.
+o: Giải được bài toán cơ học chất điểm.
+o: Áp dụng bảo toàn năng lượng và động lượng.
+o: Dùng nguyên lí thứ nhất của nhiệt động lực học.
+c: Cơ học: Động học; Động lực học; Công và năng lượng
+c: Nhiệt học: Khí lí tưởng; Nguyên lí thứ nhất; Entropy
+
+## uni | Hóa học đại cương | flask | vi | TS. Lâm Thị Bích | Hóa học đại cương
+v: intermediate
+d: Cấu tạo chất, nhiệt hóa học, cân bằng và điện hóa với bài tập tính và phòng thí nghiệm ảo. Dành cho sinh viên năm nhất khối kĩ thuật, y dược.
+o: Tính được hiệu ứng nhiệt của phản ứng.
+o: Giải được bài toán cân bằng hóa học.
+o: Viết được sơ đồ pin điện hóa.
+c: Cấu tạo chất: Nguyên tử; Liên kết; Trạng thái chất
+c: Phản ứng: Nhiệt hóa học; Cân bằng; Điện hóa
+
+## uni | Toán rời rạc | tree | vi | TS. Lý Hoàng Nam | Toán rời rạc
+v: intermediate
+d: Logic, tập hợp, tổ hợp và đồ thị, chọn lọc các dạng chứng minh thường gặp trong ngành công nghệ thông tin. Dành cho sinh viên năm nhất, hai.
+o: Chứng minh được bằng quy nạp và phản chứng.
+o: Đếm được bằng hoán vị, tổ hợp.
+o: Giải được bài toán đường đi trên đồ thị.
+c: Logic và tập hợp: Mệnh đề; Tập hợp; Quy nạp
+c: Tổ hợp và đồ thị: Hoán vị, tổ hợp; Đồ thị; Cây khung
+
+## uni | Phương pháp nghiên cứu | bulb | vi | TS. Mai Thị Thu | Phương pháp nghiên cứu khoa học
+v: intermediate
+d: Cách chọn đề tài, đọc tài liệu, thiết kế khảo sát và trình bày kết quả, theo một đề tài mẫu của sinh viên. Dành cho sinh viên năm ba làm đồ án.
+o: Đặt được câu hỏi nghiên cứu rõ ràng.
+o: Tìm và trích dẫn được tài liệu.
+o: Thiết kế được bảng hỏi đơn giản.
+c: Chuẩn bị: Chọn đề tài; Tổng quan tài liệu
+c: Thực hiện: Thiết kế khảo sát; Phân tích số liệu; Trình bày kết quả
+
+## uni | Kế toán | calc | vi | ThS. Cao Thị Mỹ | Nguyên lí kế toán
+v: intermediate
+d: Phương trình kế toán, bút toán kép và lập báo cáo tài chính đơn giản cho một cửa hàng nhỏ. Dành cho sinh viên năm nhất khối kinh tế.
+o: Ghi được bút toán kép.
+o: Lập được bảng cân đối kế toán.
+o: Đọc được báo cáo kết quả kinh doanh.
+c: Nền tảng: Phương trình kế toán; Bút toán kép
+c: Báo cáo: Bảng cân đối kế toán; Báo cáo kết quả kinh doanh
+
+## uni | Computer Science | terminal | en | Dr. Hung Pham | Introduction to Python Programming
+v: basic
+d: A ten-week introduction to Python for first-year students, with a weekly lab and an auto-checked exercise set. No prior coding experience is assumed.
+o: Write and debug programs with functions and data structures.
+o: Read data from files and handle errors.
+o: Structure a small program into modules.
+c: Foundations: Variables and types; Control flow; Functions
+c: Data: Lists and dictionaries; Files; Modules and testing
+
+## uni | Computer Science | tree | en | Dr. Lan Nguyen | Data Structures and Algorithms
+v: intermediate
+d: Arrays, linked lists, trees, graphs and hashing, implemented in Python with complexity analysis for each. For students who finished a first programming course.
+o: Implement the standard data structures from scratch.
+o: Analyse running time with Big O.
+o: Choose a data structure for a given problem.
+c: Linear structures: Arrays and lists; Stacks and queues; Hash tables
+c: Trees and graphs: Binary trees; Heaps; Graph search
+c: Algorithms: Sorting; Recursion; Dynamic programming
+
+## uni | Linear Algebra | matrix | en | Dr. Tuan Anh Vo | Linear Algebra for Machine Learning
+v: advanced
+d: Vectors, matrices, eigenvalues and SVD, explained through the problems they solve in data science. Includes NumPy exercises for each topic.
+o: Compute with vectors and matrices in NumPy.
+o: Explain eigenvectors and the SVD geometrically.
+o: Apply PCA to a small dataset.
+c: Vectors and matrices: Vectors and norms; Matrix products; Solving linear systems
+c: Decompositions: Eigenvalues; SVD; PCA
+
+## uni | Machine Learning | neural | en | Dr. Quang Le | Machine Learning Foundations
+v: advanced
+d: Regression, classification, regularisation and neural networks with a project on a public dataset. Requires Python and basic probability.
+o: Train and evaluate supervised models.
+o: Diagnose overfitting and apply regularisation.
+o: Report results from a full experiment.
+c: Supervised learning: Linear regression; Logistic regression; Trees and ensembles
+c: Neural networks: Perceptron; Backpropagation; Project
+
+## uni | Probability | prob | en | Dr. Minh Chau Tran | Probability for Data Science
+v: advanced
+d: Counting, conditional probability, random variables and the law of large numbers, with simulations for every idea. For students who know basic calculus.
+o: Compute probabilities with Bayes' rule.
+o: Work with common distributions.
+o: Simulate a probabilistic model in Python.
+c: Basics: Counting; Conditional probability; Bayes' rule
+c: Random variables: Expectation; Common distributions; Law of large numbers
+
+## uni | Economics | market | en | Dr. Thao Vu | Microeconomics Principles
+v: intermediate
+d: Supply and demand, consumer choice and market structures, with exercises built on Vietnamese and global markets. For first-year economics and business students.
+o: Draw and shift supply and demand curves.
+o: Explain consumer choice with budget lines.
+o: Compare market structures.
+c: Markets: Demand; Supply; Equilibrium
+c: Firms and consumers: Consumer choice; Costs; Market structures
+
+## uni | Academic Writing | book | en | Dr. Helen Do | Academic Writing for University
+v: intermediate
+d: How to build an argument, cite sources and revise a 1500-word essay, with before and after examples. For students writing in English for the first time at university.
+o: State a thesis and support it in paragraphs.
+o: Cite and reference in APA style.
+o: Revise for clarity and concision.
+c: Argument: Thesis; Evidence; Structure
+c: Sources and style: Citing; Paraphrasing; Revising

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-cong-nghe-7-trong-trot-va-chan-nuoi",
+  "title": "Công nghệ 7: Trồng trọt và chăn nuôi",
+  "subject": "Công nghệ",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Tâm",
+  "description_short": "Từ đất trồng, giống cây đến nuôi gà, cá ở quy mô gia đình, các bài đều có kế hoạch mà em có thể thực hiện tại nhà. Dành cho học sinh lớp 7.",
+  "outcomes": [
+    "Chọn được đất, giống và phân bón phù hợp.",
+    "Lập được kế hoạch trồng một loại rau.",
+    "Nêu được cách phòng bệnh cho vật nuôi."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 73,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Trồng trọt",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Đất trồng",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Giống và gieo hạt",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Chăm sóc cây",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Chăn nuôi",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Nuôi gà",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Nuôi cá",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Phòng bệnh",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

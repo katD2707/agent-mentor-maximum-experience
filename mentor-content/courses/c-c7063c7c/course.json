@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "c-c7063c7c",
+  "title": "Toán 1: Các số đến 10",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "cohoa",
+  "teacher_name": "Cô Hoa",
+  "description_short": "Khóa học giúp học sinh lớp 1 làm quen các số đến 10 qua nhân vật Cún và giỏ táo, với hình to, giọng đọc và câu hỏi chỉ cần chạm vào hình. Khóa học dành cho lớp 1A, phù hợp với các em chưa đọc thạo chữ hoặc chưa rành tiếng Việt.",
+  "outcomes": [
+    "đếm được các đồ vật từ 1 đến 10",
+    "hiểu số 0 là khi không có gì",
+    "so sánh được nhóm nào nhiều hơn, ít hơn, bằng nhau",
+    "chọn đúng hình theo câu đố bằng cách chạm"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 46,
+  "level": "basic",
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-06T20:31:08.862072Z",
+      "published_at": "2026-11-06T22:35:00.187658Z",
+      "pack_sha256": "58099c6a94d2979868d8cde4d8d8685e0cd67cb35863988b82ca1ae751059ae8",
+      "pack_bytes": 3181414,
+      "note": "draft by course-builder"
+    }
+  ]
+}

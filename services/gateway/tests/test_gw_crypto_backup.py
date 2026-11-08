@@ -6,8 +6,6 @@ import sqlite3
 from datetime import UTC, datetime, timedelta
 
 import pytest
-from mentor_schemas import ParentLink
-from sqlalchemy import select
 
 from mentor_gateway.backup import (
     OPS_OWNER,
@@ -20,10 +18,9 @@ from mentor_gateway.backup import (
     retention_keep,
 )
 from mentor_gateway.crypto import DecryptError, SecretBox
-from mentor_gateway.db import AuditRow, Database, ParentContact, ParentLinkRow, User, UserDataKey
+from mentor_gateway.db import Database, User, UserDataKey
 from mentor_gateway.gitrepo import UserLocks, out, run_git
 from mentor_gateway.mirror import Mirror
-from mentor_gateway.parent import SqlParentLinkStore
 from mentor_gateway.rotation import rotate_master_key
 from mentor_gateway.settings import Settings
 
@@ -51,7 +48,7 @@ def svc(tmp_path, db, box) -> BackupService:
 
 def _add_user(db: Database, uid: str) -> None:
     with db.session() as s:
-        s.add(User(id=uid, email=f"{uid}@x.vn", created_at=NOW, provisioned_at=NOW))
+        s.add(User(id=uid, role="student", username=uid, password_hash="x", created_at=NOW, provisioned_at=NOW))
 
 
 def _commit(svc: BackupService, uid: str, files: dict[str, bytes]) -> str:
@@ -73,36 +70,6 @@ def test_seal_unseal_binds_aad_and_key(box):
     assert box.blind_index("x", purpose="a") == box.blind_index("x", purpose="a")
     assert box.blind_index("x", purpose="a") != box.blind_index("x", purpose="b")
     assert box.subkey("p") != box.subkey("q")
-
-
-# ---- parent contacts and audit -----------------------------------------------------------------------
-
-
-def test_parent_chat_id_encrypted_and_found_by_blind_index(db, box):
-    store = SqlParentLinkStore(db, lambda: NOW, box)
-    link = ParentLink(student_user_id="u1", link_code="123456", code_expires_at=NOW + timedelta(hours=1),
-                      zalo_chat_id="zalo-chat-777", status="verified", verified_at=NOW)
-    store.save(link)
-    store.save(link.model_copy(update={"student_user_id": "u2", "zalo_chat_id": "other", "status": "pending"}))
-    with db.session() as s:
-        assert s.get(ParentLinkRow, "u1").zalo_chat_id is None
-        contact = s.get(ParentContact, "u1")
-        assert "zalo-chat-777" not in contact.zalo_chat_enc + contact.zalo_chat_bidx
-    assert store.get_by_chat("zalo-chat-777").student_user_id == "u1"
-    assert store.get_by_student("u1").zalo_chat_id == "zalo-chat-777"
-    assert store.get_by_code("123456").student_user_id == "u2"  # the pending one
-    assert store.get_by_chat("nope") is None
-    store.save(link.model_copy(update={"zalo_chat_id": None}))  # unlinking removes the contact
-    assert store.get_by_chat("zalo-chat-777") is None
-
-    store.record_audit("u1", "consent", "zalo_chat_id=zalo-chat-777; display_name=Mẹ")
-    with db.session() as s:
-        raw = s.scalars(select(AuditRow.detail)).one()
-    assert "zalo-chat-777" not in raw and "Mẹ" not in raw
-    assert store.read_audit("u1")[0][:2] == ("consent", "zalo_chat_id=zalo-chat-777; display_name=Mẹ")
-    store.delete_student("u1")
-    with db.session() as s:
-        assert s.get(ParentContact, "u1") is None
 
 
 # ---- stream format ------------------------------------------------------------------------------------
@@ -216,10 +183,6 @@ def test_retention_keeps_daily_and_weekly(svc):
 
 
 def test_rotate_master_key_rewraps(svc, db, box, tmp_path):
-    store = SqlParentLinkStore(db, lambda: NOW, box)
-    store.save(ParentLink(student_user_id="u1", link_code="1", code_expires_at=NOW, zalo_chat_id="c1",
-                          status="verified"))
-    store.record_audit("u1", "consent", "c1")
     _add_user(db, "u1")
     _commit(svc, "u1", {"a.md": b"x"})
     snap = svc.backup_user("u1")
@@ -227,36 +190,33 @@ def test_rotate_master_key_rewraps(svc, db, box, tmp_path):
 
     new = SecretBox(secrets.token_bytes(32))
     counts = rotate_master_key(db, box, new)
-    assert counts["user_keys"] == 1 and counts["parent_contacts"] == 1 and counts["audit_log"] == 1
+    assert counts == {"user_keys": 1, "push_subscriptions": 0}
     svc.box = new
     svc.keys.box = new
     assert svc.reencrypt_ops(box) == 1
-    new_store = SqlParentLinkStore(db, lambda: NOW, new)
-    assert new_store.get_by_chat("c1").student_user_id == "u1"
-    assert new_store.read_audit("u1")[0][1] == "c1"
     assert svc.restore_user("u1", snap.id, tmp_path / "r").is_dir()  # data key unchanged, only re-wrapped
     assert svc.restore_ops(ops.id, tmp_path / "o.db").is_file()
     with db.session() as s:
         sealed = s.get(UserDataKey, "u1").sealed_key
     with pytest.raises(DecryptError):
-        SqlParentLinkStore(db, lambda: NOW, box).get_by_student("u1")
+        svc.keys.box = box  # the old master key no longer opens the re-wrapped data key
+        svc.keys.get("u1")
     assert sealed
 
 
-# ---- account deletion through the API ------------------------------------------------------------------
+# ---- forgetting a user ---------------------------------------------------------------------------------
 
 
-def test_delete_account_shreds_backups(client, gw, ncs_user, tmp_path):
-    uid = ncs_user["user_id"]
-    snap = gw.backups.backup_user(uid)
-    assert snap is not None and gw.backups.keys.get(uid) is not None
-    assert client.delete("/api/account").json() == {"ok": True}
-    assert gw.backups.keys.get(uid) is None
-    assert not gw.backups._dir(uid).exists()
+def test_forget_user_shreds_backups(svc, db, tmp_path):
+    _add_user(db, "u1")
+    _commit(svc, "u1", {"a.md": b"x"})
+    snap = svc.backup_user("u1")
+    assert snap is not None and svc.keys.get("u1") is not None
+    svc.forget_user("u1")
+    assert svc.keys.get("u1") is None
+    assert not svc._dir("u1").exists()
     with pytest.raises(BackupError):
-        gw.backups.restore_user(uid, snap.id, tmp_path / "r")
-    assert gw.scheduler.backups is None  # MENTOR_ENV=test: no daily job unless BACKUP_ENABLED
-    assert gw.backups.snapshots(OPS_OWNER) == []
+        svc.restore_user("u1", snap.id, tmp_path / "r")
 
 
 def test_cli_backup_run_list_restore(svc, db, tmp_path, capsys):

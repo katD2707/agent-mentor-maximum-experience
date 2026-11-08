@@ -9,7 +9,6 @@ from mentor_harness import cards
 from mentor_harness.model import ScriptedModel
 from mentor_harness.workspace import Workspace
 from mentor_schemas import JobKind, JobRequest, Profile
-from mentor_schemas.interaction import CRISIS_REFUSED_KINDS
 
 PRACTICE = {"subject": "math", "minutes": 20, "goal": "weak", "topics": ["exp-log"], "title": "Ôn mũ - log",
             "reason": "Tuần trước đúng 4/10 câu mũ - log."}
@@ -52,22 +51,14 @@ async def test_show_card_practice_in_turn_and_history_note(make_harness, ws_root
     assert [r["role"] for r in saved] == ["user", "card", "card", "mentor"]
 
 
-async def test_practice_and_mock_refused_in_crisis(make_harness) -> None:
-    model = ScriptedModel([ScriptedModel.call("show_card", kind="practice", data=PRACTICE), "Ừ."])
-    harness = make_harness(model)
-    events = await collect(harness, turn_request(session_id="c-0123456789ab").model_copy(update={"crisis_hold": True}))
-    assert "khủng hoảng" in results(model)[0] and not [e for e in events if e.type == "card"]
-    assert {"practice", "mock"} <= CRISIS_REFUSED_KINDS
-
-
 async def test_notification_action_job_may_show_practice_card(make_harness, ws_root: Path) -> None:
     model = ScriptedModel([ScriptedModel.call("show_card", kind="mock", data=MOCK), "Xong."])
-    req = JobRequest(job_id="j1", user_id="u1", kind=JobKind.ROUTINE, profile=Profile.THPT, prompt="x",
+    req = JobRequest(job_id="j1", user_id="u1", kind=JobKind.ROUTINE, profile=Profile.STUDENT, prompt="x",
                      payload={"source": "notification_action", "action": "answer:A"})
     result = await make_harness(model).run_job(req)
     assert [c["kind"] for c in result.cards] == ["mock"]
     plain = ScriptedModel([ScriptedModel.call("show_card", kind="mock", data=MOCK), "Xong."])
-    plain_result = await make_harness(plain).run_job(JobRequest(job_id="j2", user_id="u1", kind=JobKind.ROUTINE, profile=Profile.THPT,
+    plain_result = await make_harness(plain).run_job(JobRequest(job_id="j2", user_id="u1", kind=JobKind.ROUTINE, profile=Profile.STUDENT,
                                                                 prompt="x", payload={}))
     assert plain_result.cards == [] and "job nền" in results(plain)[0]
 
@@ -75,7 +66,7 @@ async def test_notification_action_job_may_show_practice_card(make_harness, ws_r
 async def test_conversation_history_reloads_across_days_and_restart(make_harness, ws_root: Path) -> None:
     sid = "c-0123456789ab"
     ws = Workspace(ws_root)
-    day = lambda d: ws.root / f"sessions/2026-10-{d}"  # noqa: E731
+    day = lambda d: ws.root / f"sessions/2026-10-{d}"
     for d, rows in (("20", [("user", "một"), ("mentor", "hai")]), ("21", [("user", "ba"), ("mentor", "bốn")])):
         day(d).mkdir(parents=True)
         (day(d) / f"{sid}.jsonl").write_text(

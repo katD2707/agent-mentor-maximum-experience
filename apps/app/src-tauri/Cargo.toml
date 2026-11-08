@@ -1,0 +1,34 @@
+[package]
+name = "mentor-app"
+version = "0.1.0"
+description = "Mentor: one learning app for students and teachers"
+edition = "2021"
+publish = false
+
+[build-dependencies]
+tauri-build = { version = "=2.7.4", features = [] }
+
+[dependencies]
+tauri = { version = "=2.12.5", features = ["tray-icon"] }
+tauri-plugin-opener = "=2.7.2"
+tauri-plugin-single-instance = "=2.5.5"
+tauri-plugin-autostart = "=2.7.0"
+tauri-plugin-notification = "=2.8.0"
+tauri-plugin-updater = "=2.14.1"
+semver = "=1.0.28"
+sha2 = "=0.10.9"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.154"
+
+[features]
+# Local update test only: lets the updater use plain http to a loopback host. Never set for a release.
+insecure-dev-feed = []
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "=0.61.2", features = ["Win32_Foundation", "Win32_System_Registry"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

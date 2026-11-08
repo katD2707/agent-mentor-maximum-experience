@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<path d="M 130 306 C 112 268 66 280 68 330 C 70 380 104 406 130 406 C 156 406 190 380 192 330 C 194 280 148 268 130 306 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="104" cy="332" rx="13" ry="19" fill="#F0D76E" transform="rotate(22 104 332)"/>
+<path d="M 130 308 L 137 268" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="158" cy="266" rx="21" ry="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" transform="rotate(-25 158 266)"/>
+<circle cx="130" cy="442" r="9" fill="#2B283F"/>
+<text x="130" y="520" font-family="Lexend, sans-serif" font-size="38" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">1</text>
+<path d="M 315 306 C 297 268 251 280 253 330 C 255 380 289 406 315 406 C 341 406 375 380 377 330 C 379 280 333 268 315 306 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="289" cy="332" rx="13" ry="19" fill="#F0D76E" transform="rotate(22 289 332)"/>
+<path d="M 315 308 L 322 268" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="343" cy="266" rx="21" ry="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" transform="rotate(-25 343 266)"/>
+<circle cx="315" cy="442" r="9" fill="#2B283F"/>
+<text x="315" y="520" font-family="Lexend, sans-serif" font-size="38" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">2</text>
+<path d="M 500 306 C 482 268 436 280 438 330 C 440 380 474 406 500 406 C 526 406 560 380 562 330 C 564 280 518 268 500 306 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="474" cy="332" rx="13" ry="19" fill="#F0D76E" transform="rotate(22 474 332)"/>
+<path d="M 500 308 L 507 268" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="528" cy="266" rx="21" ry="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" transform="rotate(-25 528 266)"/>
+<circle cx="500" cy="442" r="9" fill="#2B283F"/>
+<text x="500" y="520" font-family="Lexend, sans-serif" font-size="38" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">3</text>
+<path d="M 685 306 C 667 268 621 280 623 330 C 625 380 659 406 685 406 C 711 406 745 380 747 330 C 749 280 703 268 685 306 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="659" cy="332" rx="13" ry="19" fill="#F0D76E" transform="rotate(22 659 332)"/>
+<path d="M 685 308 L 692 268" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="713" cy="266" rx="21" ry="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" transform="rotate(-25 713 266)"/>
+<circle cx="685" cy="442" r="9" fill="#2B283F"/>
+<text x="685" y="520" font-family="Lexend, sans-serif" font-size="38" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">4</text>
+<path d="M 870 306 C 852 268 806 280 808 330 C 810 380 844 406 870 406 C 896 406 930 380 932 330 C 934 280 888 268 870 306 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="844" cy="332" rx="13" ry="19" fill="#F0D76E" transform="rotate(22 844 332)"/>
+<path d="M 870 308 L 877 268" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<ellipse cx="898" cy="266" rx="21" ry="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" transform="rotate(-25 898 266)"/>
+<circle cx="870" cy="442" r="9" fill="#2B283F"/>
+<text x="870" y="520" font-family="Lexend, sans-serif" font-size="38" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">5</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-vat-li-10-dong-hoc-va-dong-luc-hoc",
+  "title": "Vật lí 10: Động học và động lực học",
+  "subject": "Vật lí",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Dũng",
+  "description_short": "Chuyển động thẳng, rơi tự do và ba định luật Newton, mỗi chương có thí nghiệm mô phỏng và bài giải mẫu. Dành cho học sinh lớp 10.",
+  "outcomes": [
+    "Viết được phương trình chuyển động thẳng biến đổi đều.",
+    "Áp dụng được ba định luật Newton.",
+    "Giải được bài toán lực ma sát và lực hướng tâm."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Động học",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Chuyển động thẳng đều",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Biến đổi đều",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Rơi tự do",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Động lực học",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Định luật Newton",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Lực ma sát",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Chuyển động tròn",
+          "est_minutes": 13
+        }
+      ]
+    }
+  ]
+}

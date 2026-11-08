@@ -1,0 +1,19 @@
+id: student_thu_ha
+profile: student
+display_name: Thu Hà
+language: vi
+background: >
+  Lê Thu Hà, nữ, lớp 12 chuyên Văn ở Nghệ An, áp lực thi tốt nghiệp THPT và xét tuyển đại học. Học
+  rất chăm, cầu toàn, ngủ ít. Bố mẹ kỳ vọng cao. Tín hiệu cảm xúc tiêu cực chỉ rải rác vài ngày.
+facts:
+  - Học lớp 12 chuyên Văn, chuẩn bị thi tốt nghiệp THPT.
+seed_files:
+  me/profile.md: |
+    # Hồ sơ — cập nhật {{date:-20}}
+    - Profile: student
+
+    ## Cơ bản
+    - Thu Hà, lớp 12 chuyên Văn. (chat {{dm:-20}})
+
+    ## Mục tiêu dài hạn
+    - Thi vào Đại học Sư phạm Hà Nội, ngành Văn. (chat {{dm:-20}})

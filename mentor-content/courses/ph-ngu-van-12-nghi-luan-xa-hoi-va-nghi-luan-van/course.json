@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "ph-ngu-van-12-nghi-luan-xa-hoi-va-nghi-luan-van",
+  "title": "Ngữ văn 12: Nghị luận xã hội và nghị luận văn học",
+  "subject": "Ngữ văn",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Mỹ",
+  "description_short": "Hai dạng bài nặng điểm nhất của đề thi tốt nghiệp được tách ra luyện riêng, mỗi dạng có dàn ý, bài mẫu và bài chấm. Kèm đề đọc hiểu.",
+  "outcomes": [
+    "Viết được đoạn nghị luận xã hội 200 chữ.",
+    "Triển khai được bài nghị luận văn học 600 chữ.",
+    "Làm đúng dạng câu hỏi đọc hiểu."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 96,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Đọc hiểu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Nhận diện thể loại",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Trả lời câu hỏi theo mức độ",
+          "est_minutes": 14
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Nghị luận xã hội",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Đề tư tưởng đạo lí",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đề hiện tượng đời sống",
+          "est_minutes": 17
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Nghị luận văn học",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Phân tích thơ",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Phân tích truyện",
+          "est_minutes": 15
+        }
+      ]
+    }
+  ]
+}

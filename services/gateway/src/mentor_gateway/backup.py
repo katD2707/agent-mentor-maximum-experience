@@ -540,11 +540,8 @@ class BackupService:
 
 def scrub_user(conn: sqlite3.Connection, user_id: str) -> None:
     """Delete a user's rows from an ops.db copy: every table with a user_id/student_user_id column (except the
-    audit log), the users row, and login rows for the user's email."""
+    audit log) and the users row."""
     tables = [r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")]
-    emails = []
-    if "users" in tables:
-        emails = [r[0] for r in conn.execute("SELECT email FROM users WHERE id = ?", (user_id,))]
     for table in tables:
         if table in _SCRUB_KEEP or table.startswith("sqlite_"):
             continue
@@ -554,9 +551,6 @@ def scrub_user(conn: sqlite3.Connection, user_id: str) -> None:
                 conn.execute(f'DELETE FROM "{table}" WHERE "{col}" = ?', (user_id,))
         if table == "users":
             conn.execute('DELETE FROM "users" WHERE id = ?', (user_id,))
-        if "email" in cols and table != "users":
-            for email in emails:
-                conn.execute(f'DELETE FROM "{table}" WHERE email = ?', (email,))
 
 
 def _no_wal(data: bytes) -> bytes:

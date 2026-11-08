@@ -14,16 +14,12 @@ from mentor_schemas import Profile
 SCRIPT_ALLOWLIST: frozenset[str] = frozenset(
     {
         "record_event",
-        "record_wellbeing",
-        "wellbeing_window",
         "bkt_update",
         "sympy_check",
         "pdf_extract",
         "pdf_render",
-        "check_report",
     }
 )
-THPT_ONLY_SCRIPTS: frozenset[str] = frozenset({"record_wellbeing", "wellbeing_window"})
 MAX_SCRIPT_OUTPUT = 200_000
 
 
@@ -36,9 +32,7 @@ ScriptRunner = Callable[[str, dict[str, Any], Path, float], Awaitable[dict[str, 
 
 
 def script_allowed(name: str, profile: Profile) -> bool:
-    if name not in SCRIPT_ALLOWLIST:
-        return False
-    return profile == Profile.THPT or name not in THPT_ONLY_SCRIPTS
+    return name in SCRIPT_ALLOWLIST and profile == Profile.STUDENT
 
 
 def _run_blocking(name: str, payload: dict[str, Any], root: Path, timeout_s: float) -> dict[str, Any]:

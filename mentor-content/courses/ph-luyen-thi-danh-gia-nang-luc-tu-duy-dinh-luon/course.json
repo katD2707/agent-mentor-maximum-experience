@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-luyen-thi-danh-gia-nang-luc-tu-duy-dinh-luon",
+  "title": "Luyện thi đánh giá năng lực: Tư duy định lượng",
+  "subject": "Ôn thi",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Lực",
+  "description_short": "Các dạng toán, logic và biểu đồ trong phần tư duy định lượng, kèm đề bấm giờ và lời giải ngắn. Dành cho học sinh lớp 12 thi đánh giá năng lực.",
+  "outcomes": [
+    "Nhận diện nhanh các dạng câu hỏi.",
+    "Làm đề 50 câu trong 75 phút.",
+    "Rút ra được cách loại trừ đáp án."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 77,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Dạng bài",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Đại số và hàm số",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Xác suất cơ bản",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Biểu đồ và bảng số liệu",
+          "est_minutes": 18
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Luyện đề",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Đề rút gọn 30 phút",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chữa đề và rút kinh nghiệm",
+          "est_minutes": 18
+        }
+      ]
+    }
+  ]
+}

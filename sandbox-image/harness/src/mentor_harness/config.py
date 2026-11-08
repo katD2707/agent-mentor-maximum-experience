@@ -34,17 +34,9 @@ class Settings:
     job_token_cap: int = 600_000
     max_output_tokens: int = 4096
     approval_timeout_s: float = 300.0
-    sandbox_isolated: bool = False  # MENTOR_SANDBOX_ISOLATED=1 (Docker backend) enables run_python
-    python_timeout_s: float = 60.0
     script_timeout_s: float = 30.0  # scripts have no internal timeout (sympy can hang)
     model_timeout_s: float = 120.0
     session_history_messages: int = 60
-    gateway_url: str | None = None  # MENTOR_GATEWAY_URL: gateway as seen from the sandbox (paper_* tools)
-    gateway_token: str | None = None  # MENTOR_GATEWAY_TOKEN: per-sandbox token issued by the gateway
-    gateway_timeout_s: float = 45.0  # the gateway paces arXiv (3 s between calls), so allow queueing
-    # MENTOR_HARNESS_TOKEN: random per-start token from the gateway; every endpoint except /v1/health requires
-    # `Authorization: Bearer <token>`. None = no auth, allowed only outside the isolated container (tests, dev).
-    harness_token: str | None = None
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -64,8 +56,4 @@ class Settings:
             turn_token_cap=int(env.get("MENTOR_TURN_TOKEN_CAP", 200_000)),
             job_token_cap=int(env.get("MENTOR_JOB_TOKEN_CAP", 600_000)),
             approval_timeout_s=float(env.get("MENTOR_APPROVAL_TIMEOUT_S", 300)),
-            sandbox_isolated=env.get("MENTOR_SANDBOX_ISOLATED") == "1",
-            gateway_url=env.get("MENTOR_GATEWAY_URL") or None,
-            gateway_token=env.get("MENTOR_GATEWAY_TOKEN") or None,
-            harness_token=env.get("MENTOR_HARNESS_TOKEN") or None,
         )

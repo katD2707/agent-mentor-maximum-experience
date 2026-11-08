@@ -1,11 +1,10 @@
 """Loader tests: every persona/scenario file parses and validates; templating and seed helpers behave."""
 
-import json
 import re
 from datetime import date
 
 import pytest
-from mentor_schemas import Profile, WellbeingEntry
+from mentor_schemas import Profile
 
 from mentor_evals.graders import validate_check
 from mentor_evals.spec import (
@@ -18,7 +17,6 @@ from mentor_evals.spec import (
     render,
     select,
 )
-from mentor_evals.workspace import wellbeing_series
 
 TODAY = date(2026, 10, 29)
 
@@ -33,25 +31,22 @@ def scenarios(personas):
     return load_scenarios(TODAY, personas)
 
 
-def test_personas_cover_both_profiles(personas) -> None:
+def test_personas_are_students(personas) -> None:
     profiles = [p.profile for p in personas.values()]
-    assert profiles.count(Profile.THPT) >= 4 and profiles.count(Profile.NCS) >= 3
+    assert profiles and set(profiles) == {Profile.STUDENT}
     assert any(len(p.sessions) >= 2 for p in personas.values()), "need multi-session persona scripts"
 
 
 def test_scenarios_load_and_checks_validate(scenarios) -> None:
     suites = {s.suite for s in scenarios}
-    assert {"memory", "homework", "crisis", "ncs", "reports", "language"} <= suites
+    assert {"memory", "homework", "language"} <= suites
     for s in scenarios:
         for _, spec in all_checks(s):
             validate_check(spec)
-    crisis = [s for s in scenarios if s.crisis]
-    assert sum(s.crisis == "positive" for s in crisis) >= 4 and sum(s.crisis == "negative" for s in crisis) >= 4
-    assert all(s.persona.startswith("thpt_") for s in crisis), "crisis flow is THPT only"
 
 
 def test_persona_sessions_are_expanded(scenarios) -> None:
-    recall = next(s for s in scenarios if s.id == "mem_thpt_exam_recall")
+    recall = next(s for s in scenarios if s.id == "mem_student_exam_recall")
     assert [s.id for s in recall.sessions] == ["intro", "recall"]
     assert all(s.turns and s.persona_session is None for s in recall.sessions)
 
@@ -77,18 +72,9 @@ def test_validate_check_rejects_bad_specs() -> None:
 
 
 def test_select_filters(scenarios) -> None:
-    assert {s.suite for s in select(scenarios, suites=["ncs"])} == {"ncs"}
+    assert {s.suite for s in select(scenarios, suites=["memory"])} == {"memory"}
     assert all("smoke" in s.tags for s in select(scenarios, tags=["smoke"]))
-    assert {s.id for s in select(scenarios, ids=["crisis_pos_*"])} >= {"crisis_pos_self_harm", "crisis_pos_abuse"}
-
-
-def test_wellbeing_series_shape() -> None:
-    lines = wellbeing_series(TODAY, days=30, negative=22).splitlines()
-    entries = [WellbeingEntry(**json.loads(line)) for line in lines]
-    assert len(entries) == 30 and sum(e.level.value == "negative" for e in entries) == 22
-    assert min(e.date for e in entries) == date(2026, 9, 30) and max(e.date for e in entries) == TODAY
-    with pytest.raises(ValueError):
-        wellbeing_series(TODAY, days=30, negative=5, recorded=3)
+    assert {s.id for s in select(scenarios, ids=["mem_student_*"])} >= {"mem_student_exam_recall"}
 
 
 def test_session_needs_exactly_one_kind() -> None:

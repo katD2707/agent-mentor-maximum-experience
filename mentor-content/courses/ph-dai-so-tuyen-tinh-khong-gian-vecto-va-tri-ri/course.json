@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-dai-so-tuyen-tinh-khong-gian-vecto-va-tri-ri",
+  "title": "Đại số tuyến tính: Không gian vectơ và trị riêng",
+  "subject": "Đại số tuyến tính",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Đỗ Thu Hà",
+  "description_short": "Cơ sở, số chiều, trị riêng và chéo hóa ma trận, đi kèm ứng dụng trong PageRank và nén ảnh. Dành cho sinh viên đã học ma trận cơ bản.",
+  "outcomes": [
+    "Tìm được cơ sở và số chiều của không gian con.",
+    "Tính được trị riêng và vectơ riêng.",
+    "Chéo hóa được ma trận đối xứng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 215,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Không gian vectơ",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Độc lập tuyến tính",
+          "est_minutes": 26
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cơ sở và số chiều",
+          "est_minutes": 36
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Ánh xạ tuyến tính",
+          "est_minutes": 42
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Trị riêng",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Trị riêng, vectơ riêng",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chéo hóa",
+          "est_minutes": 37
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Ứng dụng",
+          "est_minutes": 43
+        }
+      ]
+    }
+  ]
+}

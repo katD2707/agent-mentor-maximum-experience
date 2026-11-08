@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-sinh-hoc-12-di-truyen-hoc",
+  "title": "Sinh học 12: Di truyền học",
+  "subject": "Sinh học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Thịnh",
+  "description_short": "Từ gene, đột biến đến quy luật Mendel và di truyền quần thể, đi kèm các dạng bài lai thường gặp trong đề thi. Dành cho học sinh lớp 12.",
+  "outcomes": [
+    "Giải được bài tập lai một và hai cặp tính trạng.",
+    "Mô tả được cơ chế nhân đôi và phiên mã.",
+    "Tính được tần số alen của quần thể."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 102,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Gene và đột biến",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "ADN và gene",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Phiên mã, dịch mã",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đột biến",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Quy luật di truyền",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Quy luật Mendel",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Liên kết gene",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Quần thể",
+          "est_minutes": 14
+        }
+      ]
+    }
+  ]
+}

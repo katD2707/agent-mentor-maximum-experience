@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "ph-thong-ke-ung-dung-kiem-dinh-gia-thuyet",
+  "title": "Thống kê ứng dụng: Kiểm định giả thuyết",
+  "subject": "Xác suất thống kê",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "ThS. Vũ Thanh Hằng",
+  "description_short": "Khoảng tin cậy, kiểm định t, khi bình phương và hồi quy tuyến tính trên dữ liệu thật như điểm thi và giá nhà. Dành cho sinh viên đã học xác suất.",
+  "outcomes": [
+    "Dựng được khoảng tin cậy cho trung bình.",
+    "Chọn và thực hiện được kiểm định phù hợp.",
+    "Đọc được kết quả hồi quy tuyến tính."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 115,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Ước lượng",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Khoảng tin cậy",
+          "est_minutes": 24
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cỡ mẫu",
+          "est_minutes": 22
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Kiểm định",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Kiểm định t",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Khi bình phương",
+          "est_minutes": 27
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Hồi quy tuyến tính",
+          "est_minutes": 21
+        }
+      ]
+    }
+  ]
+}

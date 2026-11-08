@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <clipPath id="basketClip">
+      <path d="M106,232 L132,326 Q134,340 150,340 L250,340 Q266,340 268,326 L294,232 Z"/>
+    </clipPath>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="200" cy="342" rx="108" ry="13" fill="#E9E5F6"/>
+
+  <!-- basket body -->
+  <path d="M106,232 L132,326 Q134,340 150,340 L250,340 Q266,340 268,326 L294,232 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- basket weave -->
+  <g clip-path="url(#basketClip)" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round">
+    <line x1="128" y1="240" x2="128" y2="346"/>
+    <line x1="152" y1="240" x2="152" y2="346"/>
+    <line x1="176" y1="240" x2="176" y2="346"/>
+    <line x1="200" y1="240" x2="200" y2="346"/>
+    <line x1="224" y1="240" x2="224" y2="346"/>
+    <line x1="248" y1="240" x2="248" y2="346"/>
+    <line x1="272" y1="240" x2="272" y2="346"/>
+  </g>
+
+  <!-- basket rim -->
+  <rect x="98" y="218" width="204" height="30" rx="15" fill="#5A4BC0"/>
+
+  <!-- back apple left -->
+  <circle cx="158" cy="180" r="38" fill="#E8806A" stroke="#5A4BC0" stroke-width="6"/>
+  <path d="M158,143 C152,133 146,128 138,126" fill="none" stroke="#2B283F" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="124" cy="120" rx="14" ry="7.5" transform="rotate(-22 124 120)" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+  <ellipse cx="142" cy="164" rx="8" ry="5.5" transform="rotate(-35 142 164)" fill="#F7F1E3" opacity="0.5"/>
+
+  <!-- back apple right -->
+  <circle cx="244" cy="180" r="38" fill="#E8806A" stroke="#5A4BC0" stroke-width="6"/>
+  <path d="M244,143 C250,133 256,128 264,126" fill="none" stroke="#2B283F" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="278" cy="120" rx="14" ry="7.5" transform="rotate(22 278 120)" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+  <ellipse cx="228" cy="164" rx="8" ry="5.5" transform="rotate(-35 228 164)" fill="#F7F1E3" opacity="0.5"/>
+
+  <!-- front apple left -->
+  <circle cx="116" cy="206" r="35" fill="#E8806A" stroke="#5A4BC0" stroke-width="6"/>
+  <path d="M116,172 C112,164 106,160 98,159" fill="none" stroke="#2B283F" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="86" cy="156" rx="12" ry="6.5" transform="rotate(-15 86 156)" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+  <ellipse cx="100" cy="190" rx="7.5" ry="5" transform="rotate(-35 100 190)" fill="#F7F1E3" opacity="0.5"/>
+
+  <!-- front apple middle -->
+  <circle cx="200" cy="196" r="37" fill="#E8806A" stroke="#5A4BC0" stroke-width="6"/>
+  <path d="M200,160 C198,150 202,144 210,141" fill="none" stroke="#2B283F" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="224" cy="137" rx="14" ry="7.5" transform="rotate(-20 224 137)" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+  <ellipse cx="182" cy="178" rx="8" ry="5.5" transform="rotate(-35 182 178)" fill="#F7F1E3" opacity="0.5"/>
+
+  <!-- front apple right -->
+  <circle cx="284" cy="206" r="35" fill="#E8806A" stroke="#5A4BC0" stroke-width="6"/>
+  <path d="M284,172 C288,164 294,160 302,159" fill="none" stroke="#2B283F" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="314" cy="156" rx="12" ry="6.5" transform="rotate(15 314 156)" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+  <ellipse cx="268" cy="190" rx="7.5" ry="5" transform="rotate(-35 268 190)" fill="#F7F1E3" opacity="0.5"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "ph-python-for-high-school-students",
+  "title": "Python for High School Students",
+  "subject": "Computing",
+  "age_band": "g10_12",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Mr. Khai Tran",
+  "description_short": "Variables to functions and file handling, taught through small projects such as a quiz game and a grade tracker. No coding experience needed.",
+  "outcomes": [
+    "Write programs that use variables, loops and functions.",
+    "Read and write text files.",
+    "Complete a small project of about 80 lines."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 7,
+  "est_minutes": 114,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Basics",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Print and variables",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Conditions",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Loops",
+          "est_minutes": 17
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Building",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Functions",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Lists and dictionaries",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Files",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l4",
+          "title": "Quiz game project",
+          "est_minutes": 12
+        }
+      ]
+    }
+  ]
+}

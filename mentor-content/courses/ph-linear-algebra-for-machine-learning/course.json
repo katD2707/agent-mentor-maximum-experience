@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-linear-algebra-for-machine-learning",
+  "title": "Linear Algebra for Machine Learning",
+  "subject": "Linear Algebra",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Tuan Anh Vo",
+  "description_short": "Vectors, matrices, eigenvalues and SVD, explained through the problems they solve in data science. Includes NumPy exercises for each topic.",
+  "outcomes": [
+    "Compute with vectors and matrices in NumPy.",
+    "Explain eigenvectors and the SVD geometrically.",
+    "Apply PCA to a small dataset."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 171,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Vectors and matrices",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Vectors and norms",
+          "est_minutes": 40
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Matrix products",
+          "est_minutes": 26
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Solving linear systems",
+          "est_minutes": 24
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Decompositions",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Eigenvalues",
+          "est_minutes": 25
+        },
+        {
+          "id": "ch2-l2",
+          "title": "SVD",
+          "est_minutes": 35
+        },
+        {
+          "id": "ch2-l3",
+          "title": "PCA",
+          "est_minutes": 21
+        }
+      ]
+    }
+  ]
+}

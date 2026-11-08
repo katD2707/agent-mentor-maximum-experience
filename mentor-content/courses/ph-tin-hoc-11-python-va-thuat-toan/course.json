@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "ph-tin-hoc-11-python-va-thuat-toan",
+  "title": "Tin học 11: Python và thuật toán",
+  "subject": "Tin học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Bảo",
+  "description_short": "Sắp xếp, tìm kiếm và đệ quy được viết bằng Python từng dòng một, có biểu đồ thực thi từng bước. Dành cho học sinh lớp 11 đã biết biến và vòng lặp.",
+  "outcomes": [
+    "Viết được chương trình sắp xếp và tìm kiếm.",
+    "So sánh được độ phức tạp ở mức cơ bản.",
+    "Dùng được đệ quy cho bài toán đơn giản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 95,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Dữ liệu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Danh sách và chuỗi",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Từ điển",
+          "est_minutes": 17
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Thuật toán",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tìm kiếm tuần tự và nhị phân",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Sắp xếp",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Đệ quy",
+          "est_minutes": 15
+        }
+      ]
+    }
+  ]
+}

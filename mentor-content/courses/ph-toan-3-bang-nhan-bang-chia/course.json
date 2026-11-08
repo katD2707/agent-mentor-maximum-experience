@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-3-bang-nhan-bang-chia",
+  "title": "Toán 3: Bảng nhân, bảng chia",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Thu",
+  "description_short": "Học thuộc bảng nhân 2 đến 9 bằng hình ảnh các nhóm đồ vật, sau đó dùng chính bảng đó để chia. Có bài đố nhanh sau mỗi bảng, phù hợp học sinh lớp 3.",
+  "outcomes": [
+    "Thuộc bảng nhân, bảng chia từ 2 đến 9.",
+    "Hiểu nhân là cộng nhiều nhóm bằng nhau.",
+    "Giải được bài toán gấp một số lên nhiều lần."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 58,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Bảng nhân",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Bảng nhân 2, 3, 4, 5",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Bảng nhân 6, 7, 8, 9",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Gấp lên một số lần",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Bảng chia",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chia thành các phần bằng nhau",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Quan hệ giữa nhân và chia",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Chia có dư",
+          "est_minutes": 12
+        }
+      ]
+    }
+  ]
+}

@@ -6,19 +6,16 @@ routines) with a local stand-in for `WorkspaceSync` that commits but has no mirr
 
 from __future__ import annotations
 
-import json
-import random
 import subprocess
-from datetime import date, timedelta
 from pathlib import Path
 
 from mentor_gateway.provisioning import provision_workspace
-from mentor_schemas import Profile, WorkspacePaths
+from mentor_schemas import Profile
 
 from mentor_evals.spec import EVALS_DIR
 
 CONTENT_DIR = EVALS_DIR.parent / "mentor-content"
-MEMORY_DIRS = ("me", "goals", "learning", "research", "reports")
+MEMORY_DIRS = ("me", "goals", "learning")
 
 
 def git(root: Path, *args: str) -> str:
@@ -71,25 +68,6 @@ def provision(
         git(root, "add", "-A")
         git(root, "-c", "user.name=system", "-c", "user.email=system@local", "commit", "-q", "-m", "eval seed")
     return warnings
-
-
-def wellbeing_series(today: date, *, days: int, negative: int, recorded: int | None = None, seed: int = 7) -> str:
-    """`.mentor/wellbeing.jsonl` content: `recorded` of the last `days` days, `negative` of them negative."""
-    recorded = days if recorded is None else recorded
-    if not 0 <= negative <= recorded <= days:
-        raise ValueError("need 0 <= negative <= recorded <= days")
-    rng = random.Random(seed)
-    dates = sorted(rng.sample([today - timedelta(days=i) for i in range(days)], recorded))
-    negative_days = set(rng.sample(dates, negative))
-    lines = []
-    for d in dates:
-        level = "negative" if d in negative_days else rng.choice(["none", "mild"])
-        entry = {"date": d.isoformat(), "level": level, "note_ref": f"me/journal/{d.isoformat()}.md"}
-        lines.append(json.dumps(entry, ensure_ascii=False))
-    return "".join(line + "\n" for line in lines)
-
-
-WELLBEING_PATH = WorkspacePaths.WELLBEING
 
 
 def snapshot(root: Path, dirs: tuple[str, ...] = MEMORY_DIRS) -> dict[str, str]:

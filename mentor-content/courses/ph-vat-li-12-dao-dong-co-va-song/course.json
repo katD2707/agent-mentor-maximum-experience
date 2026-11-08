@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-vat-li-12-dao-dong-co-va-song",
+  "title": "Vật lí 12: Dao động cơ và sóng",
+  "subject": "Vật lí",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Lâm",
+  "description_short": "Con lắc lò xo, con lắc đơn, giao thoa và sóng dừng được học bằng đồ thị li độ theo thời gian. Có đề trắc nghiệm theo cấu trúc thi tốt nghiệp.",
+  "outcomes": [
+    "Viết được phương trình dao động điều hòa.",
+    "Tính chu kì và năng lượng của con lắc.",
+    "Giải được bài toán giao thoa và sóng dừng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 103,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Dao động",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Dao động điều hòa",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Con lắc lò xo",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Con lắc đơn",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Sóng",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Sóng cơ",
+          "est_minutes": 19
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Giao thoa",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Sóng dừng",
+          "est_minutes": 20
+        }
+      ]
+    }
+  ]
+}

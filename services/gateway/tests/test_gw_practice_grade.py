@@ -4,6 +4,7 @@ from dataclasses import replace
 from pathlib import Path
 
 import pytest
+from gateway_fakes import set_band
 import yaml
 from practice_fixtures import TOPICS, build_content
 
@@ -46,14 +47,14 @@ def test_parse_grade(text, grade):
     assert parse_grade(text) == grade
 
 
-def test_unknown_grade_filters_nothing(client, gw, thpt_user):
+def test_unknown_grade_filters_nothing(client, gw, student):
     m = math_of(client)
     assert m["learner_grade"] is None and not any(t["above_grade"] for t in m["topics"])
     assert all(not p["above_grade"] and p["note"] is None for p in m["mock_profiles"])
 
 
-def test_subjects_mark_above_grade_topics_and_mocks(client, gw, thpt_user):
-    set_profile(gw, thpt_user["user_id"], "- Tên gọi An, học lớp 11A2.\n")
+def test_subjects_mark_above_grade_topics_and_mocks(client, gw, student):
+    set_profile(gw, student["user_id"], "- Tên gọi An, học lớp 11A2.\n")
     m = math_of(client)
     assert m["learner_grade"] == 11
     by = {t["id"]: t for t in m["topics"]}
@@ -61,13 +62,13 @@ def test_subjects_mark_above_grade_topics_and_mocks(client, gw, thpt_user):
     assert (by["math.function"]["grade"], by["math.function"]["above_grade"]) == (11, False)  # min over skills (11,12)
     assert (by["math.integral"]["grade"], by["math.integral"]["above_grade"]) == (12, True)
     assert m["mock_profiles"] and all(p["above_grade"] and "lớp 12" in p["note"] for p in m["mock_profiles"])
-    set_profile(gw, thpt_user["user_id"], "Lớp: 12")
+    set_profile(gw, student["user_id"], "Lớp: 12")
     assert not any(t["above_grade"] for t in math_of(client)["topics"])
     assert not any(p["above_grade"] for p in math_of(client)["mock_profiles"])
 
 
-def test_practice_defaults_to_in_grade_topics_and_opt_in_adds_the_rest(client, gw, thpt_user):
-    set_profile(gw, thpt_user["user_id"], "Lớp: 11")
+def test_practice_defaults_to_in_grade_topics_and_opt_in_adds_the_rest(client, gw, student):
+    set_profile(gw, student["user_id"], "Lớp: 11")
     body = {"subject": "math", "minutes": 45, "goal": "balanced", "seed": 3}
     pv = client.post(f"{P}/preview", json=body).json()
     assert {t["topic"] for t in pv["per_topic"]} <= {"math.exp-log", "math.function"}
@@ -81,8 +82,8 @@ def test_practice_defaults_to_in_grade_topics_and_opt_in_adds_the_rest(client, g
     assert pv3.status_code == 200
 
 
-def test_mock_above_grade_needs_opt_in(client, gw, thpt_user):
-    set_profile(gw, thpt_user["user_id"], "Lớp: 11")
+def test_mock_above_grade_needs_opt_in(client, gw, student):
+    set_profile(gw, student["user_id"], "Lớp: 11")
     r = client.post(f"{P}/sessions", json={"kind": "mock", "subject": "math", "profile_id": "math.mcq.t"})
     assert r.status_code == 422 and r.json()["code"] == "above_grade" and "lớp 12" in r.json()["detail"]
     assert client.post(f"{P}/sessions", json={"kind": "mock", "subject": "math"}).json()["code"] == "unknown_profile"
@@ -91,14 +92,14 @@ def test_mock_above_grade_needs_opt_in(client, gw, thpt_user):
     assert ok.status_code == 200 and len(ok.json()["items"]) == 9
 
 
-def test_diagnostic_covers_in_grade_topics_only(client, gw, thpt_user):
-    set_profile(gw, thpt_user["user_id"], "Lớp: 11")
+def test_diagnostic_covers_in_grade_topics_only(client, gw, student):
+    set_profile(gw, student["user_id"], "Lớp: 11")
     s = client.post(f"{P}/sessions", json={"kind": "diagnostic", "subject": "math"}).json()
     assert {i["topic"] for i in s["items"]} == {"math.exp-log", "math.function"}
 
 
-def test_nothing_for_the_grade_gives_a_friendly_insufficient_content(client, gw, thpt_user):
-    set_profile(gw, thpt_user["user_id"], "Lớp: 10")  # every topic is made grade 11+ below
+def test_nothing_for_the_grade_gives_a_friendly_insufficient_content(client, gw, student):
+    set_profile(gw, student["user_id"], "Lớp: 10")  # every topic is made grade 11+ below
     gw.practice.bank.skills["math"] = {k: replace(v, grade=11) for k, v in gw.practice.bank.skills["math"].items()}
     for kind, extra in (("diagnostic", {}), ("practice", {"minutes": 20})):
         r = client.post(f"{P}/sessions", json={"kind": kind, "subject": "math", **extra})
@@ -106,9 +107,20 @@ def test_nothing_for_the_grade_gives_a_friendly_insufficient_content(client, gw,
         assert "lớp 10" in r.json()["detail"]
 
 
-def test_recommendations_skip_above_grade_topics(client, gw, thpt_user):
-    set_profile(gw, thpt_user["user_id"], "Lớp: 11")
+def test_recommendations_skip_above_grade_topics(client, gw, student):
+    set_profile(gw, student["user_id"], "Lớp: 11")
     recs = client.get(f"{P}/recommendations", params={"subject": "math"}).json()
     for r in recs:
         assert "math.integral" not in r["action"]["params"].get("topics", [])
         assert r["action"]["kind"] != "mock"
+
+
+def test_age_band_maps_to_a_grade_range(client, gw, student):
+    set_profile(gw, student["user_id"], "Lớp: 11")
+    expected = {"g10_12": 11, None: 11, "g6_9": 9, "g1_5": 5, "uni": None}  # g10_12 keeps the profile.md behaviour
+    for band, grade in expected.items():
+        set_band(client, band)
+        assert math_of(client)["learner_grade"] == grade, band
+    # a young band sees every bank topic as above its grade (the bank starts at grade 10)
+    set_band(client, "g6_9")
+    assert all(t["above_grade"] for t in math_of(client)["topics"])

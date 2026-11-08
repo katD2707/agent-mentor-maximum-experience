@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <clipPath id="bodyClip">
+      <path d="M 118 176 C 122 244 130 292 142 314 Q 200 336 258 314 C 270 292 278 244 282 176 Z"/>
+    </clipPath>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow -->
+  <ellipse cx="200" cy="338" rx="86" ry="13" fill="#E9E5F6"/>
+
+  <!-- handle -->
+  <path d="M 130 170 C 132 62 268 62 270 170" fill="none"
+        stroke="#5A4BC0" stroke-width="17" stroke-linecap="round"/>
+  <path d="M 130 170 C 132 62 268 62 270 170" fill="none"
+        stroke="#F0D76E" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- basket body -->
+  <path d="M 118 176 C 122 244 130 292 142 314 Q 200 336 258 314 C 270 292 278 244 282 176 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- weave -->
+  <g clip-path="url(#bodyClip)">
+    <rect x="92" y="198" width="216" height="11" rx="5.5" fill="#E8806A"/>
+    <rect x="92" y="230" width="216" height="11" rx="5.5" fill="#E8806A"/>
+    <rect x="92" y="262" width="216" height="11" rx="5.5" fill="#E8806A"/>
+    <rect x="92" y="294" width="216" height="11" rx="5.5" fill="#E8806A"/>
+    <g stroke="#2B283F" stroke-width="3.5" stroke-linecap="round" opacity="0.28">
+      <path d="M 140 180 L 140 322"/>
+      <path d="M 164 180 L 164 326"/>
+      <path d="M 188 180 L 188 328"/>
+      <path d="M 212 180 L 212 328"/>
+      <path d="M 236 180 L 236 326"/>
+      <path d="M 260 180 L 260 322"/>
+    </g>
+  </g>
+
+  <!-- rim -->
+  <ellipse cx="200" cy="174" rx="84" ry="24" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="7"/>
+
+  <!-- empty inside -->
+  <ellipse cx="200" cy="174" rx="66" ry="15.5" fill="#5A4BC0" opacity="0.22"/>
+  <path d="M 140 178 Q 200 166 260 178" fill="none"
+        stroke="#2B283F" stroke-width="4" stroke-linecap="round" opacity="0.16"/>
+
+  <!-- paper grain -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

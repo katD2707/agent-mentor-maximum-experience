@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "id": "ph-data-structures-and-algorithms",
+  "title": "Data Structures and Algorithms",
+  "subject": "Computer Science",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Lan Nguyen",
+  "description_short": "Arrays, linked lists, trees, graphs and hashing, implemented in Python with complexity analysis for each. For students who finished a first programming course.",
+  "outcomes": [
+    "Implement the standard data structures from scratch.",
+    "Analyse running time with Big O.",
+    "Choose a data structure for a given problem."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 9,
+  "est_minutes": 336,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Linear structures",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Arrays and lists",
+          "est_minutes": 27
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Stacks and queues",
+          "est_minutes": 45
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Hash tables",
+          "est_minutes": 43
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Trees and graphs",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Binary trees",
+          "est_minutes": 26
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Heaps",
+          "est_minutes": 44
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Graph search",
+          "est_minutes": 38
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Algorithms",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Sorting",
+          "est_minutes": 33
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Recursion",
+          "est_minutes": 43
+        },
+        {
+          "id": "ch3-l3",
+          "title": "Dynamic programming",
+          "est_minutes": 37
+        }
+      ]
+    }
+  ]
+}

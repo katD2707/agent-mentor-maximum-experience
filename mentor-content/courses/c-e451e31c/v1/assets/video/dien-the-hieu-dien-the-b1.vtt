@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.600 --> 00:00:11.350
+Giữa hai bản kim loại phẳng nhiễm điện trái dấu có một điện trường đều: vectơ cường độ điện trường như nhau ở mọi điểm, đường sức là những đường thẳng song song và cách đều, hướng từ bản dương sang bản âm.
+
+2
+00:00:12.850 --> 00:00:19.612
+Trong điện trường đều, công của lực điện khi dịch chuyển điện tích q một đoạn d dọc theo đường sức là A bằng q nhân E nhân d.
+
+3
+00:00:19.612 --> 00:00:23.670
+Công này không phụ thuộc vào đường đi, chỉ phụ thuộc điểm đầu và điểm cuối.
+
+4
+00:00:25.170 --> 00:00:34.310
+Điện thế tại điểm M là thương số giữa công dịch chuyển q từ M ra xa vô cùng và độ lớn của q: V_M bằng A_M vô cùng chia cho q.
+
+5
+00:00:35.810 --> 00:00:46.660
+Hiệu điện thế giữa hai điểm M và N là hiệu các điện thế: U_MN bằng V_M trừ V_N, và cũng bằng công dịch chuyển q từ M đến N chia cho q.
+
+6
+00:00:48.160 --> 00:00:55.100
+Trong điện trường đều, cường độ điện trường E bằng U chia d, với d là khoảng cách giữa hai điểm trên cùng một đường sức.

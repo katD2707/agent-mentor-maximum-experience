@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow / ground -->
+  <ellipse cx="200" cy="332" rx="88" ry="15" fill="#E9E5F6"/>
+
+  <!-- apple body: left lobe -->
+  <path d="M200 112
+           C186 88, 152 82, 130 104
+           C104 130, 100 178, 112 216
+           C124 254, 152 292, 182 300
+           C194 303, 198 296, 200 296
+           C202 296, 206 303, 218 300
+           C248 292, 276 254, 288 216
+           C300 178, 296 130, 270 104
+           C248 82, 214 88, 200 112 Z"
+        fill="#E8806A"/>
+
+  <!-- body outline -->
+  <path d="M200 112
+           C186 88, 152 82, 130 104
+           C104 130, 100 178, 112 216
+           C124 254, 152 292, 182 300
+           C194 303, 198 296, 200 296
+           C202 296, 206 303, 218 300
+           C248 292, 276 254, 288 216
+           C300 178, 296 130, 270 104
+           C248 82, 214 88, 200 112 Z"
+        fill="none" stroke="#5A4BC0" stroke-width="6"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- highlighter yellow shine on upper left -->
+  <path d="M148 132
+           C136 150, 132 176, 138 198
+           C141 209, 150 214, 158 210
+           C165 206, 163 194, 160 182
+           C156 166, 158 148, 164 136
+           C168 127, 156 120, 148 132 Z"
+        fill="#F0D76E"/>
+
+  <!-- small mint leaf highlight -->
+  <path d="M244 128
+           C254 122, 262 132, 258 144
+           C254 155, 242 154, 238 146
+           C235 138, 238 131, 244 128 Z"
+        fill="#9FD8BF" opacity="0.9"/>
+
+  <!-- stem -->
+  <path d="M200 112
+           C198 98, 200 84, 208 74"
+        fill="none" stroke="#2B283F" stroke-width="7"
+        stroke-linecap="round"/>
+
+  <!-- leaf -->
+  <path d="M208 78
+           C224 58, 258 56, 274 70
+           C270 92, 238 104, 210 92
+           C206 88, 206 82, 208 78 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- leaf vein -->
+  <path d="M216 82 C232 76, 250 70, 266 70"
+        fill="none" stroke="#2B283F" stroke-width="3"
+        stroke-linecap="round" opacity="0.75"/>
+
+  <!-- gentle cheek blush -->
+  <ellipse cx="238" cy="222" rx="24" ry="16" fill="#F0D76E" opacity="0.55"/>
+
+  <!-- tiny face dots -->
+  <circle cx="176" cy="196" r="5" fill="#2B283F"/>
+  <circle cx="224" cy="196" r="5" fill="#2B283F"/>
+
+  <!-- smile -->
+  <path d="M184 220 C192 232, 208 232, 216 220"
+        fill="none" stroke="#2B283F" stroke-width="4"
+        stroke-linecap="round"/>
+
+  <!-- paper grain overlay -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

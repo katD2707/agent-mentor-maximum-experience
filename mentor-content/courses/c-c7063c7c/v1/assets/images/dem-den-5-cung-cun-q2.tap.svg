@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft floor shadow -->
+  <ellipse cx="200" cy="344" rx="96" ry="13" fill="#E9E5F6"/>
+
+  <!-- apple body -->
+  <path d="M 200 158
+           C 226 130 300 138 312 205
+           C 322 268 272 330 200 330
+           C 128 330 78 268 88 205
+           C 100 138 174 130 200 158 Z"
+        fill="#E8806A" stroke="#5A4BC0" stroke-width="8" stroke-linejoin="round"/>
+
+  <!-- gloss glint -->
+  <ellipse cx="152" cy="212" rx="15" ry="31" transform="rotate(-20 152 212)" fill="#E9E5F6"/>
+
+  <!-- stem -->
+  <path d="M 198 166 C 196 145 199 128 209 112"
+        fill="none" stroke="#2B283F" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- leaf -->
+  <path d="M 213 116
+           C 232 84 282 78 300 92
+           C 296 122 250 146 213 116 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M 216 114 C 242 104 270 97 295 93"
+        fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

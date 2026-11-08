@@ -1,0 +1,30 @@
+[project]
+name = "mentor-course-builder"
+version = "0.1.0"
+description = "Course-builder agent, stage 1-2: teacher material intake, per-page quality check, text extraction"
+requires-python = ">=3.11"
+dependencies = [
+    "mentor-schemas",
+    "httpx>=0.28.1",
+    "docling>=2.0",                  # MIT: PDF/DOCX/PPTX -> markdown + page images
+    "pypdfium2==5.14.0",             # Apache-2.0/BSD: render scanned PDF pages (same pin as mentor-scripts)
+    "pillow>=10",                    # HPND: image IO
+    "pillow-heif>=0.18",             # BSD-3: HEIC/HEIF decode
+    "numpy>=1.26",                   # BSD-3
+    "opencv-python-headless>=4.9",   # Apache-2.0: Laplacian variance, skew
+    "edge-tts>=7.0",                 # LGPL-3.0, used unmodified as an imported library: free neural TTS (Edge voices)
+]
+
+[project.scripts]
+mcb = "mentor_course_builder.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mentor_course_builder"]
+
+[tool.pytest.ini_options]
+markers = ["live: calls the real model API (opt-in: pytest -m live)"]
+addopts = "-m 'not live'"

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-viet-4-doc-hieu-va-viet-doan",
+  "title": "Tiếng Việt 4: Đọc hiểu và viết đoạn",
+  "subject": "Tiếng Việt",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Quỳnh",
+  "description_short": "Mỗi bài là một văn bản ngắn, có câu hỏi tìm ý chính rồi viết lại thành đoạn văn của riêng em. Dành cho học sinh lớp 4.",
+  "outcomes": [
+    "Tìm được ý chính của đoạn, của bài.",
+    "Viết được đoạn văn có câu mở đầu và câu kết.",
+    "Dùng được từ nối để đoạn văn liền mạch."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 50,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Đọc hiểu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Tìm ý chính",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hiểu nghĩa từ trong văn cảnh",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Rút ra bài học",
+          "est_minutes": 9
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Viết đoạn",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Câu mở đoạn",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Triển khai ý",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Câu kết đoạn",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

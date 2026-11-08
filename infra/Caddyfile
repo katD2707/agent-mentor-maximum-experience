@@ -12,11 +12,9 @@
 {$DOMAIN} {
 	encode zstd gzip
 
-	# Gateway: REST + WebSocket (/api/ws/chat; Caddy proxies the upgrade itself), the Zalo bot webhook and the
-	# HMAC-signed inbound email webhook /webhooks/email/inbound (Cloudflare Email Worker).
-	# Everything else (including the gateway's /internal/*, /healthz, /docs) is not routed to the gateway, so the
-	# sandbox-only endpoints stay unreachable from the internet.
-	@gateway path /api/* /webhooks/*
+	# Gateway: REST under /api (bearer-token auth). Everything else (including /healthz and /docs) is not routed to
+	# the gateway.
+	@gateway path /api/*
 	handle @gateway {
 		reverse_proxy gateway:8000
 	}
@@ -35,18 +33,12 @@
 
 	log {
 		output stdout
-		# never log query strings: /api/auth/verify?token=... carries the magic-link token
+		# never log credentials: the bearer token travels in the Authorization header
 		format filter {
 			wrap json
 			fields {
-				request>uri query {
-					delete token
-				}
 				request>headers>Cookie delete
 				request>headers>Authorization delete
-				# inbound email webhook: the learner's forwarding address and the HMAC signature
-				request>headers>X-Mentor-Rcpt delete
-				request>headers>X-Mentor-Signature delete
 			}
 		}
 	}

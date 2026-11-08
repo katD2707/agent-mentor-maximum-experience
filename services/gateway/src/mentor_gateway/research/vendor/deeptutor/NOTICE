@@ -1,0 +1,10 @@
+Mentor vendors a small subset of DeepTutor (https://github.com/HKUDS/DeepTutor), release v1.7.2
+(commit 60fb3bdfddb30b7740c7ce3bd9b28d908f2af6db), Copyright (c) HKUDS and the DeepTutor authors,
+licensed under the Apache License, Version 2.0 (see LICENSE in this folder).
+
+Files derived from DeepTutor (each carries its own "Modified by Mentor" header):
+  paper_search_tool.py   <- deeptutor/tools/paper_search_tool.py
+  knowledge_frontier.py  <- deeptutor/tools/knowledge_frontier.py
+  research_primitives.py <- deeptutor/services/research/primitives.py (arXiv search, Atom parsing, `literature` only)
+
+DeepTutor ships no NOTICE file of its own at this commit. The GitHub, alphaXiv, MCP, PDF and multi-user parts were not copied.

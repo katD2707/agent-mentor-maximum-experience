@@ -1,7 +1,7 @@
 """Authenticated encryption for secrets the gateway keeps at rest (OAuth tokens, parent contacts, backups).
 
 AES-256-GCM. A sealed blob is b"v1" + 12-byte nonce + ciphertext||tag. `aad` binds a blob to its purpose and owner
-(e.g. "gcal-refresh:<user_id>"), so a blob copied into another row or user fails to open.
+(e.g. "push-sub:<user_id>"), so a blob copied into another row or user fails to open.
 
 The master key comes from MENTOR_MASTER_KEY (urlsafe base64 of 32 bytes). In dev/test, if it is unset, a key is
 generated once at $MENTOR_DATA_DIR/master.key. Outside dev/test a missing key is an error.
@@ -64,7 +64,7 @@ class SecretBox:
     def blind_index(self, value: str, *, purpose: str) -> str:
         """Deterministic HMAC-SHA256 of `value` (hex) for equality lookups on an encrypted column.
 
-        `purpose` (e.g. "zalo-chat") separates indexes so equal values in different columns do not match.
+        `purpose` (e.g. "push-endpoint") separates indexes so equal values in different columns do not match.
         Changes when the master key rotates (re-index on rotation).
         """
         msg = purpose.encode() + b"\x00" + value.encode()

@@ -1,128 +1,115 @@
 """FastAPI app: `uvicorn mentor_gateway.app:app --port 8000`.
 
 `app` is built lazily from the environment on first access so importing this module has no side
-effects; tests call `create_app(settings, backend=..., parent=...)` directly.
+effects; tests call `create_app(settings, ...)` directly.
 """
 
 import asyncio
-import hmac
 import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
 
-from fastapi import APIRouter, Depends, FastAPI, Header, HTTPException, Query, Request
+from fastapi import APIRouter, FastAPI, HTTPException, Request
+from fastapi.exception_handlers import http_exception_handler
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
-from mentor_gateway.api import (
-    account,
-    auth,
-    calendar,
-    chat,
-    conversations,
-    email_webhook,
-    nudges,
-    papers,
-    web,
-    workspace,
-)
+from mentor_gateway.api import account, ask, auth, courses, goals, guide, nudges, plan, teacher, workspace
+from mentor_gateway.api import research as research_api
 from mentor_gateway.api import practice as practice_api
-from mentor_gateway.api.deps import get_gw
-from mentor_gateway.context import Gateway, build_gateway
-from mentor_gateway.email_ingest import handle_raw, start_smtp_server
-from mentor_gateway.parent import ParentChannel
+from mentor_gateway.content.service import ContentService
+from mentor_gateway.content.store import ContentError
+from mentor_gateway.context import build_gateway
+from mentor_gateway.jobs import JobExecutor
 from mentor_gateway.practice import PracticeError
-from mentor_gateway.sandbox import SandboxBackend
+from mentor_gateway.research.service import ResearchService
 from mentor_gateway.settings import Clock, Settings, utc_now
+from mentor_gateway.teacher import BuilderService
+from mentor_gateway.teacher.service import Busy, Forbidden
 
 log = logging.getLogger(__name__)
 
 
-internal = APIRouter(prefix="/internal", include_in_schema=False)
+def _warm_search(content) -> None:
+    try:
+        content.search_courses("khởi động", None)
+    except Exception:  # noqa: BLE001 - only a warm-up
+        pass
 
 
-@internal.post("/email/inbound")
-async def inbound_email(request: Request, rcpt: list[str] = Query(default_factory=list),
-                        x_internal_token: str | None = Header(None), gw: Gateway = Depends(get_gw)) -> dict:
-    """Raw RFC 822 message in the body; `rcpt` = SMTP envelope recipients (repeatable)."""
-    expected = gw.settings.internal_token
-    if expected:
-        if not hmac.compare_digest((x_internal_token or "").encode(), expected.encode()):
-            raise HTTPException(403)
-    elif gw.settings.env == "prod" or gw.settings.sandbox_backend == "docker":
-        # sandbox containers can reach the gateway (/internal/papers, /internal/calendar), so this endpoint must
-        # never be open to them: without GATEWAY_INTERNAL_TOKEN it is closed in prod and with the docker backend
-        raise HTTPException(403)
-    if gw.inbound is None:
-        raise HTTPException(503, "email ingest unavailable")
-    path = await handle_raw(gw.inbound, await request.body(), rcpt)
-    return {"accepted": path is not None, "path": path}
-
-
-def create_app(
-    settings: Settings | None = None,
-    *,
-    clock: Clock = utc_now,
-    backend: SandboxBackend | None = None,
-    parent: ParentChannel | None = None,
-) -> FastAPI:
+def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
+               executor: JobExecutor | None = None) -> FastAPI:
     settings = settings or Settings.from_env()
-    gw = build_gateway(settings, clock=clock, backend=backend, parent=parent)
+    gw = build_gateway(settings, clock=clock, executor=executor)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         tasks: list[asyncio.Task] = []
-        smtp: Any = None
+        await app.state.builder.start()  # resumes stages that were running when the gateway last stopped
         if settings.background_tasks:
             tasks.append(asyncio.create_task(gw.scheduler.run_forever()))
-            if settings.inbound_smtp_port and gw.inbound is not None:
-                smtp = start_smtp_server(gw.inbound, settings.inbound_smtp_port, settings.inbound_smtp_host)
+            if settings.model_router_url:  # embed new course documents now, so the first Ask search is not the slow one
+                tasks.append(asyncio.create_task(asyncio.to_thread(_warm_search, app.state.content)))
         try:
             yield
         finally:
             gw.scheduler.stop()
+            await app.state.builder.stop()
+            tasks += list(app.state.research.tasks)  # running research jobs end with the app
             for t in tasks:
                 t.cancel()
             await asyncio.gather(*tasks, return_exceptions=True)
-            if smtp is not None:
-                smtp.stop()
             await gw.runner.drain()
-            await gw.orchestrator.shutdown()
             gw.db.dispose()
 
     app = FastAPI(title="mentor-gateway", lifespan=lifespan)
     app.state.gw = gw
+    app.state.content = ContentService(settings, gw.db, gw.box, clock)
+    app.state.builder = BuilderService(settings, app.state.content, gw.db, clock, gw.hub)  # /api/teacher stages
+    gw.planner.content = gw.practice.content = app.state.content  # course quiz items for Luyện tập
+    gw.practice.planner = gw.planner
+    app.state.research = ResearchService(gw, app.state.content, ask.build_llm(gw))  # /api/research (uni band)
+    gw.scheduler.research = app.state.research.tick  # Monday discovery, agenda drafts
+    app.add_exception_handler(ContentError, lambda _req, exc: courses.content_error_response(exc))
+    app.add_exception_handler(Forbidden, lambda _req, exc: JSONResponse({"error": exc.code, "detail": str(exc)}, 403))
+    app.add_exception_handler(Busy, lambda _req, exc: JSONResponse({"error": exc.code, "detail": str(exc)}, 409))
     app.add_exception_handler(PracticeError, lambda _req, exc: practice_api.error_response(exc))
+
+    @app.exception_handler(HTTPException)
+    async def _http_error(request: Request, exc: HTTPException) -> Any:
+        """`HTTPException(detail={"error": code})` goes out as `{"error": code}` (CONTRACTS section 4)."""
+        if isinstance(exc.detail, dict) and "error" in exc.detail:
+            return JSONResponse(exc.detail, status_code=exc.status_code, headers=exc.headers)
+        return await http_exception_handler(request, exc)
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.allowed_origins,
-        allow_credentials=True,
+        allow_credentials=False,  # bearer tokens, no cookies
         allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
-        allow_headers=["Content-Type", "Accept"],
+        allow_headers=["Content-Type", "Accept", "Authorization", "If-None-Match", "Range"],
+        expose_headers=["ETag", "Content-Range", "Accept-Ranges", "Content-Length"],  # the app reads ETag (catalog revalidation)
     )
 
     api = APIRouter(prefix="/api")
     api.include_router(auth.router)
     api.include_router(account.router)
     api.include_router(workspace.router)
-    api.include_router(chat.router)
-    api.include_router(conversations.router)  # /api/conversations (section 10.5)
-    api.include_router(calendar.router)  # /api/integrations/google-calendar (NCS)
-    api.include_router(practice_api.router)  # /api/practice (THPT)
+    api.include_router(practice_api.router)  # /api/practice
     api.include_router(nudges.router)  # /api/notifications, /api/engagement, /api/push/*
+    api.include_router(courses.router)  # /api/catalog, /api/courses, /api/enrollments, /api/search
+    api.include_router(plan.router)  # /api/events, /api/today, /api/plan/week, /api/reminders
+    api.include_router(goals.router)  # /api/goals
+    api.include_router(ask.router)  # /api/ask (SSE Q&A)
+    api.include_router(guide.router)  # /api/guide (Muc)
+    api.include_router(teacher.router)  # /api/teacher (course authoring)
+    api.include_router(research_api.router)  # /api/research (Nghiên cứu, uni band)
     app.include_router(api)
-    app.include_router(internal)
-    app.include_router(papers.router)  # GET /internal/papers/* (sandbox token, NCS only)
-    app.include_router(calendar.internal_router)  # /internal/calendar/* (sandbox token, NCS only)
-    app.include_router(web.router)  # POST /internal/web/search and /internal/web/fetch (sandbox token, THPT and NCS)
-    if gw.parent.router is not None:
-        app.include_router(gw.parent.router)  # POST /webhooks/zalo
-    app.include_router(email_webhook.router)  # POST /webhooks/email/inbound (Cloudflare Email Worker, HMAC)
 
     @app.get("/healthz")
     def healthz() -> dict:
-        return {"status": "ok", "parent_channel": "library" if gw.parent.using_library else "dev",
-                "email_ingest": gw.inbound is not None}
+        return {"status": "ok"}
 
     return app
 

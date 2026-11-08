@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-viet-3-tu-ngu-va-cau",
+  "title": "Tiếng Việt 3: Từ ngữ và câu",
+  "subject": "Tiếng Việt",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Yến",
+  "description_short": "Học cách nhận ra từ chỉ sự vật, hoạt động, đặc điểm và đặt câu theo mẫu Ai làm gì, Ai thế nào. Bài tập ngắn kèm trò chơi ghép từ.",
+  "outcomes": [
+    "Phân biệt được từ chỉ sự vật, hoạt động, đặc điểm.",
+    "Đặt được câu theo các mẫu đã học.",
+    "Nhận ra phép so sánh trong câu văn."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 58,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Từ ngữ",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Từ chỉ sự vật",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Từ chỉ hoạt động",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Từ chỉ đặc điểm",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Câu",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Ai làm gì",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Ai thế nào",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l3",
+          "title": "So sánh",
+          "est_minutes": 8
+        }
+      ]
+    }
+  ]
+}

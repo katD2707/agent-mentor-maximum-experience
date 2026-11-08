@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-2-cong-tru-trong-pham-vi-100",
+  "title": "Toán 2: Cộng, trừ trong phạm vi 100",
+  "subject": "Toán",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Lan",
+  "description_short": "Khóa học đi từ cộng, trừ không nhớ đến có nhớ trong phạm vi 100, mỗi bài một bảng chục đơn vị để em tự đếm và kiểm tra. Hợp với học sinh lớp 2 hay nhầm khi mượn, nhớ.",
+  "outcomes": [
+    "Cộng, trừ được hai số có hai chữ số, không nhớ và có nhớ.",
+    "Đặt tính đúng cột chục, cột đơn vị.",
+    "Giải được bài toán có lời văn một bước."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 8,
+  "est_minutes": 73,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cộng trong phạm vi 100",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Cộng không nhớ",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cộng có nhớ",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Bài toán thêm",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Trừ trong phạm vi 100",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Trừ không nhớ",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Trừ có mượn",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Bài toán bớt",
+          "est_minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Ôn tập",
+      "lessons": [
+        {
+          "id": "ch3-l1",
+          "title": "Tìm số còn thiếu",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch3-l2",
+          "title": "Kiểm tra cuối chương",
+          "est_minutes": 6
+        }
+      ]
+    }
+  ]
+}

@@ -485,8 +485,6 @@ class DevScriptedModel:
         tool_choice: str | None,
     ) -> ModelResponse:
         usage = {"total_tokens": 1}
-        if alias == ModelAlias.SAFETY_CONFIRM:
-            return ModelResponse(content='{"confirmed": false, "reason": "scripted mode"}', usage=usage)
         if alias == ModelAlias.VISION:
             return ModelResponse(content="(chế độ scripted) Mình chưa xem được ảnh thật.", usage=usage)
         last = messages[-1] if messages else {}

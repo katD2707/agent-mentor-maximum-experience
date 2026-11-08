@@ -1,6 +1,6 @@
-"""Append-only learning evidence and wellbeing signals (plan sections 6.1, 7.3, 7.6)."""
+"""Append-only learning evidence (plan sections 6.1, 7.3)."""
 
-from datetime import date, datetime
+from datetime import datetime
 from enum import Enum
 from typing import Literal
 
@@ -26,19 +26,4 @@ class LearningEvent(BaseModel):
     hint_count: int = 0
     source_ref: str = Field(description="Workspace path of the evidence, e.g. learning/evidence/2026-10-25-kiem-tra-15p.md")
     grader: Literal["sympy", "teacher", "model", "bank"] = "model"
-    schema_version: int = 1
-
-
-class WellbeingLevel(str, Enum):
-    NONE = "none"
-    MILD = "mild"
-    NEGATIVE = "negative"
-
-
-class WellbeingEntry(BaseModel):
-    """One line of .mentor/wellbeing.jsonl. THPT only. Level only, never content."""
-
-    date: date
-    level: WellbeingLevel
-    note_ref: str | None = Field(default=None, description="Journal path for that day, never a quote")
     schema_version: int = 1

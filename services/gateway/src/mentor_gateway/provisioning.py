@@ -1,7 +1,7 @@
 """Create a learner's workspace from mentor-content (CONTRACTS.md section 1).
 
 Copies `workspace-templates/<profile>/` to the root, `AGENTS.md`, `skills/{core,<profile>}/` to
-`.mentor/skills/`, `curricula/` to `.mentor/curricula/` (THPT), then `git init` and a first commit
+`.mentor/skills/`, `curricula/` to `.mentor/curricula/`, then `git init` and a first commit
 authored `system <system@local>`, pushed to a new mirror. Missing content is logged and skipped so
 the gateway still works while mentor-content is being written.
 
@@ -23,17 +23,12 @@ log = logging.getLogger(__name__)
 _TEXT_SUFFIXES = {".md", ".yaml", ".yml", ".txt"}
 
 
-def default_routines(profile: Profile) -> RoutinesFile:
-    routines = [
+def default_routines() -> RoutinesFile:
+    return RoutinesFile(routines=[
         Routine(id="nightly_reflection", cron="30 23 * * *", job_kind="nightly_reflection", user_editable=False),
         Routine(id="evening_review", cron="0 20 * * *", job_kind="routine",
                 prompt="Nhắc nhẹ việc ôn tập hôm nay nếu có mục đến hạn."),
-    ]
-    if profile is Profile.THPT:
-        routines.append(Routine(id="parent_report", cron="0 19 1,15 * *", job_kind="parent_report", user_editable=False))
-    else:
-        routines.append(Routine(id="literature_watch", cron="0 8 * * 1", job_kind="literature_watch"))
-    return RoutinesFile(routines=routines)
+    ])
 
 
 def _copy_tree(src: Path, dst: Path, what: str, warnings: list[str]) -> None:
@@ -80,13 +75,12 @@ def provision_workspace(
         log.warning("provisioning: missing %s", agents)
     for group in ("core", profile.value):
         _copy_tree(content_dir / "skills" / group, wd / WorkspacePaths.SKILLS_DIR / group, f"skills '{group}'", warnings)
-    if profile is Profile.THPT:
-        _copy_tree(content_dir / "curricula", wd / WorkspacePaths.CURRICULA_DIR, "curricula", warnings)
+    _copy_tree(content_dir / "curricula", wd / WorkspacePaths.CURRICULA_DIR, "curricula", warnings)
 
     routines = wd / WorkspacePaths.ROUTINES
     if not routines.is_file():
         warnings.append("template has no routines.yaml; wrote defaults")
-        routines.write_text(default_routines(profile).to_yaml(), encoding="utf-8", newline="\n")
+        routines.write_text(default_routines().to_yaml(), encoding="utf-8", newline="\n")
     for d in (WorkspacePaths.INBOX_DIR, WorkspacePaths.MENTOR_DIR):
         (wd / d).mkdir(parents=True, exist_ok=True)
     activity = wd / WorkspacePaths.ACTIVITY
@@ -108,8 +102,7 @@ def _platform_files(content_dir: Path, profile: Profile) -> dict[str, bytes]:
     if agents.is_file():
         files[WorkspacePaths.AGENTS_MD] = agents.read_bytes()
     trees = [(content_dir / "skills" / g, f"{WorkspacePaths.SKILLS_DIR}/{g}") for g in ("core", profile.value)]
-    if profile is Profile.THPT:
-        trees.append((content_dir / "curricula", WorkspacePaths.CURRICULA_DIR))
+    trees.append((content_dir / "curricula", WorkspacePaths.CURRICULA_DIR))
     for src, dst in trees:
         for f in sorted(src.rglob("*")) if src.is_dir() else []:
             if f.is_file() and "__pycache__" not in f.parts:

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-viet-2-ke-ve-gia-dinh-em",
+  "title": "Tiếng Việt 2: Kể về gia đình em",
+  "subject": "Tiếng Việt",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Phượng",
+  "description_short": "Em học nói và viết 4 đến 5 câu kể về ông bà, bố mẹ và anh chị em, có tranh gợi ý từng bước. Bài học kèm luyện chính tả ngắn.",
+  "outcomes": [
+    "Kể được 4 đến 5 câu về người thân.",
+    "Viết hoa đúng tên người và đầu câu.",
+    "Dùng đúng dấu chấm và dấu phẩy."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 60,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Nói và kể",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Giới thiệu về em",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Kể về ông bà",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Kể về bố mẹ",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Viết câu",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Viết hoa tên riêng",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Dấu chấm, dấu phẩy",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Viết đoạn văn ngắn",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

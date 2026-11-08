@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-dia-li-12-cac-vung-kinh-te",
+  "title": "Địa lí 12: Các vùng kinh tế",
+  "subject": "Địa lí",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Nhàn",
+  "description_short": "Đặc điểm tự nhiên, dân cư và ngành kinh tế nổi bật của bảy vùng, học cùng Atlat và biểu đồ. Dành cho học sinh lớp 12.",
+  "outcomes": [
+    "Nêu được thế mạnh của từng vùng.",
+    "Đọc nhanh Atlat để trả lời câu hỏi.",
+    "Chọn và vẽ được dạng biểu đồ phù hợp."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 94,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Các vùng phía Bắc",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Trung du và miền núi Bắc Bộ",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Đồng bằng sông Hồng",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Bắc Trung Bộ",
+          "est_minutes": 20
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Các vùng phía Nam",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Duyên hải Nam Trung Bộ",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Tây Nguyên",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Đồng bằng sông Cửu Long",
+          "est_minutes": 18
+        }
+      ]
+    }
+  ]
+}

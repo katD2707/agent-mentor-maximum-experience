@@ -1,6 +1,6 @@
-"""mentor-harness: the agent harness that runs inside each learner's sandbox.
+"""mentor-harness: the agent loop (tools, skills, model client) as an importable library.
 
-Entry point: `mentor_harness.server:app` (CONTRACTS.md section 2).
+Server-side workers build a `Harness` and call `turn` / `stream_turn` / `run_job`.
 """
 
 from mentor_harness.agent import Harness

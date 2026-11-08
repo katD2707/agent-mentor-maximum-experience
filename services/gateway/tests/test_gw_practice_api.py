@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pytest
+from gateway_fakes import set_band
 from mentor_schemas import LearningEvent
 from practice_fixtures import build_content
 
@@ -48,12 +49,7 @@ def events_in_mirror(gw, uid) -> list[LearningEvent]:
     return [LearningEvent.model_validate_json(line) for line in text.splitlines() if line.strip()]
 
 
-def test_thpt_only_and_catalogue(client, thpt_user, ncs_user):
-    assert client.get(f"{P}/subjects").status_code == 403  # logged in as the NCS learner last
-    client.post("/api/auth/logout")
-    from gateway_fakes import login
-
-    login(client, "hs@example.com")
+def test_students_only_and_catalogue(client, student):
     subs = client.get(f"{P}/subjects").json()
     assert [s["id"] for s in subs] == ["math"]
     math = subs[0]
@@ -64,11 +60,24 @@ def test_thpt_only_and_catalogue(client, thpt_user, ncs_user):
     assert math["mock_profiles"][0]["disclaimer"] and math["mock_profiles"][0]["time_limit_sec"] == 600
 
 
+def test_teachers_get_403_on_every_practice_route(client, teacher):
+    for method, path in (("get", "/subjects"), ("get", "/progress"), ("get", "/sessions"),
+                         ("post", "/preview"), ("post", "/sessions"), ("get", "/items/reports")):
+        r = getattr(client, method)(f"{P}{path}", **({"json": {"subject": "math"}} if method == "post" else {}))
+        assert r.status_code == 403 and r.json() == {"error": "role_mismatch"}, path
+
+
+def test_every_age_band_can_practise(client, student):
+    for band in ("g1_5", "g6_9", "g10_12", "uni", None):
+        set_band(client, band)
+        assert client.get(f"{P}/subjects").status_code == 200, band
+
+
 def test_unauthenticated_is_401(client):
     assert client.get(f"{P}/subjects").status_code == 401
 
 
-def test_preview_equals_started_set_and_never_leaks_keys(client, gw, thpt_user):
+def test_preview_equals_started_set_and_never_leaks_keys(client, gw, student):
     body = {"subject": "math", "minutes": 20, "goal": "balanced", "seed": 5}
     pv = client.post(f"{P}/preview", json=body).json()
     s = start(client, kind="practice", **body)
@@ -88,7 +97,7 @@ def test_preview_equals_started_set_and_never_leaks_keys(client, gw, thpt_user):
     assert tiny.json()["code"] == "unknown_topic"
 
 
-def test_practice_hint_reveal_and_answer_rules(client, gw, thpt_user):
+def test_practice_hint_reveal_and_answer_rules(client, gw, student):
     s = start(client, kind="practice", subject="math", minutes=20, goal="balanced", seed=1)
     sid, items = s["id"], s["items"]
     # reveal is locked until the item is answered
@@ -117,7 +126,7 @@ def test_practice_hint_reveal_and_answer_rules(client, gw, thpt_user):
     assert back["answers"]["1"]["result"]["correct"] is True
 
 
-def test_practice_true_false_and_short_answer_feedback(client, gw, thpt_user):
+def test_practice_true_false_and_short_answer_feedback(client, gw, student):
     from mentor_gateway.practice import assembler as asm
 
     def types(seed):
@@ -139,8 +148,8 @@ def test_practice_true_false_and_short_answer_feedback(client, gw, thpt_user):
     assert r["correct"] is True
 
 
-def test_finish_writes_evidence_mastery_log_and_snapshots_once(client, gw, thpt_user):
-    uid = thpt_user["user_id"]
+def test_finish_writes_evidence_mastery_log_and_snapshots_once(client, gw, student):
+    uid = student["user_id"]
     s = start(client, kind="practice", subject="math", minutes=10, goal="balanced", seed=2)
     sid, items = s["id"], s["items"]
     client.post(f"{P}/sessions/{sid}/hint", json={"position": 0})
@@ -210,9 +219,9 @@ def test_finish_writes_evidence_mastery_log_and_snapshots_once(client, gw, thpt_
     assert review[0]["explanation"] and review[0]["correct_answer"] and review[0]["hints_seen"] == 1
 
 
-def test_finish_survives_a_concurrent_sandbox_commit(client, gw, thpt_user):
+def test_finish_survives_a_concurrent_sandbox_commit(client, gw, student):
     """The mirror moves between our read and our commit (a sandbox push): the step is redone on a fresh read."""
-    uid = thpt_user["user_id"]
+    uid = student["user_id"]
     s = start(client, kind="practice", subject="math", minutes=10, seed=2)
     client.post(f"{P}/sessions/{s['id']}/answer", json={"position": 0, "answer": key_of(gw, s["items"][0]["id"])})
     real = gw.mirror.commit_files
@@ -233,21 +242,21 @@ def test_finish_survives_a_concurrent_sandbox_commit(client, gw, thpt_user):
     assert '"event_id":"other"' in text and f"practice-{s['id']}-0-" in text and calls["n"] == 2
 
 
-def test_starting_a_new_practice_finishes_the_old_one_scored(client, gw, thpt_user):
+def test_starting_a_new_practice_finishes_the_old_one_scored(client, gw, student):
     a = start(client, kind="practice", subject="math", minutes=10, seed=1)
     client.post(f"{P}/sessions/{a['id']}/answer", json={"position": 0, "answer": key_of(gw, a["items"][0]["id"])})
     b = start(client, kind="practice", subject="math", minutes=10, seed=1)
     assert b["id"] != a["id"]
     assert client.get(f"{P}/sessions/{a['id']}").json()["status"] == "finished"
     assert {i["id"] for i in a["items"]}.isdisjoint({i["id"] for i in b["items"]})  # replaced items are left out
-    assert len(events_in_mirror(gw, thpt_user["user_id"])) >= 1
+    assert len(events_in_mirror(gw, student["user_id"])) >= 1
     # an unanswered practice is abandoned, not scored
     c = start(client, kind="practice", subject="math", minutes=10, seed=4)
     assert client.get(f"{P}/sessions/{b['id']}").json()["status"] == "abandoned"
     assert c["id"] != b["id"]
 
 
-def test_mock_flow_drafts_flags_and_no_feedback(client, gw, thpt_user):
+def test_mock_flow_drafts_flags_and_no_feedback(client, gw, student):
     s = start(client, kind="mock", subject="math", profile_id="math.mcq.t", seed=1)
     sid, items = s["id"], s["items"]
     assert len(items) == 9 and s["deadline"] and 590 <= s["remaining_sec"] <= 600 and s["disclaimer"]
@@ -264,15 +273,15 @@ def test_mock_flow_drafts_flags_and_no_feedback(client, gw, thpt_user):
     back = client.get(f"{P}/sessions/{sid}").json()
     assert back["answers"]["2"]["flagged"] and back["answers"]["0"]["draft"] and "correct" not in back["answers"]["0"]
     assert client.get(f"{P}/sessions/{sid}/review").status_code == 409  # not before finish
-    assert events_in_mirror(gw, thpt_user["user_id"]) == []  # the mentor never sees an unfinished mock
+    assert events_in_mirror(gw, student["user_id"]) == []  # the mentor never sees an unfinished mock
     rep = client.post(f"{P}/sessions/{sid}/finish").json()
     assert (rep["correct"], rep["total"]) == (7, 9) and rep["score_10"] == 7.78
-    assert "thi thử · 7,78/10 · 7/9 đúng" in gw.mirror.read_text(thpt_user["user_id"], "learning/math/practice-log.md")
-    assert all(e.mode.value == "independent" for e in events_in_mirror(gw, thpt_user["user_id"]))
+    assert "thi thử · 7,78/10 · 7/9 đúng" in gw.mirror.read_text(student["user_id"], "learning/math/practice-log.md")
+    assert all(e.mode.value == "independent" for e in events_in_mirror(gw, student["user_id"]))
     assert client.post(f"{P}/sessions/{sid}/answer", json={"position": 0, "answer": "A"}).status_code == 409
 
 
-def test_mock_deadline_auto_finishes_on_next_request_and_by_sweep(client, gw, clock, thpt_user):
+def test_mock_deadline_auto_finishes_on_next_request_and_by_sweep(client, gw, clock, student):
     s = start(client, kind="mock", subject="math", profile_id="math.mcq.t", seed=1)
     sid, items = s["id"], s["items"]
     for i in range(3):
@@ -298,7 +307,7 @@ def test_mock_deadline_auto_finishes_on_next_request_and_by_sweep(client, gw, cl
     assert client.post(f"{P}/sessions/{s2['id']}/tick", json={"position": 0, "elapsed_sec": 1}).json() == {"remaining_sec": 0, "expired": True}
 
 
-def test_a_running_mock_blocks_other_sessions_in_that_subject_and_survives_restart(client, gw, thpt_user):
+def test_a_running_mock_blocks_other_sessions_in_that_subject_and_survives_restart(client, gw, student):
     s = start(client, kind="mock", subject="math", profile_id="math.mcq.t", seed=1)
     client.post(f"{P}/sessions/{s['id']}/answer", json={"position": 0, "answer": "A"})
     r = client.post(f"{P}/sessions", json={"kind": "practice", "subject": "math", "minutes": 10})
@@ -307,11 +316,11 @@ def test_a_running_mock_blocks_other_sessions_in_that_subject_and_survives_resta
     from mentor_gateway.practice.bank import Bank
 
     fresh = PracticeService(gw.db, gw.mirror, Bank(gw.settings.content_dir), gw.clock)  # a restarted gateway
-    resumed = fresh.active(thpt_user["user_id"], "math")
+    resumed = fresh.active(student["user_id"], "math")
     assert resumed["id"] == s["id"] and resumed["answers"]["0"]["draft"] == "A" and resumed["remaining_sec"] > 0
 
 
-def test_three_part_mock_scores_parts_with_true_false_partial_credit(client, gw, thpt_user):
+def test_three_part_mock_scores_parts_with_true_false_partial_credit(client, gw, student):
     s = start(client, kind="mock", subject="math", profile_id="math.parts.t", seed=1)
     sid = s["id"]
     assert [p["label"] for p in s["parts"]] == ["Phần I", "Phần II", "Phần III"]
@@ -326,7 +335,7 @@ def test_three_part_mock_scores_parts_with_true_false_partial_credit(client, gw,
     assert rep["disclaimer"] == "Đề 3 phần luyện tập."
 
 
-def test_diagnostic_and_skip(client, gw, thpt_user):
+def test_diagnostic_and_skip(client, gw, student):
     d = start(client, kind="diagnostic", subject="math", seed=1)
     assert len(d["items"]) == 6 and d["deadline"] and all(i["type"] == "SINGLE_CHOICE" for i in d["items"])
     r = client.post(f"{P}/sessions/{d['id']}/answer", json={"position": 0, "answer": key_of(gw, d["items"][0]["id"])})
@@ -335,10 +344,10 @@ def test_diagnostic_and_skip(client, gw, thpt_user):
     rep = client.post(f"{P}/sessions/{d['id']}/finish").json()
     assert rep["answered"] == 1 and rep["score_10"] is None
     assert client.get(f"{P}/subjects").json()[0]["diagnostic"] == "done"
-    assert "đánh giá nhanh · 1/1 đúng" in gw.mirror.read_text(thpt_user["user_id"], "learning/math/practice-log.md")
+    assert "đánh giá nhanh · 1/1 đúng" in gw.mirror.read_text(student["user_id"], "learning/math/practice-log.md")
 
 
-def test_skip_diagnostic_and_recommendations(client, gw, thpt_user):
+def test_skip_diagnostic_and_recommendations(client, gw, student):
     recs = client.get(f"{P}/recommendations", params={"subject": "math"}).json()
     assert [r["code"] for r in recs] == ["TAKE_DIAGNOSTIC"] and recs[0]["reason"].startswith("Vì sao:")
     assert client.post(f"{P}/diagnostic/skip", json={"subject": "math"}).json() == {"ok": True}
@@ -346,7 +355,7 @@ def test_skip_diagnostic_and_recommendations(client, gw, thpt_user):
     assert [r["code"] for r in client.get(f"{P}/recommendations", params={"subject": "math"}).json()] == ["PROBE_UNKNOWN"]
 
 
-def test_take_a_break_after_two_hours_of_practice_today(client, gw, thpt_user):
+def test_take_a_break_after_two_hours_of_practice_today(client, gw, student):
     for seed in (1, 2):
         s = start(client, kind="practice", subject="math", minutes=10, seed=seed)
         client.post(f"{P}/sessions/{s['id']}/answer",
@@ -356,7 +365,7 @@ def test_take_a_break_after_two_hours_of_practice_today(client, gw, thpt_user):
     assert recs[0]["code"] == "TAKE_A_BREAK" and recs[0]["action"]["kind"] == "break"
 
 
-def test_item_reports_only_after_the_answer_was_shown_and_capped_per_day(client, gw, clock, thpt_user):
+def test_item_reports_only_after_the_answer_was_shown_and_capped_per_day(client, gw, clock, student):
     s = start(client, kind="practice", subject="math", minutes=20, seed=1)
     sid, items = s["id"], s["items"]
     url = f"{P}/items/{items[0]['id']}/report"
@@ -390,30 +399,30 @@ def test_item_reports_only_after_the_answer_was_shown_and_capped_per_day(client,
     assert client.post(f"{P}/items/{items[2]['id']}/report", json={"session_id": sid, "reason": "typo"}).status_code == 200
 
 
-def test_reports_after_a_finished_mock_and_other_learners_sessions_are_private(client, gw, thpt_user):
+def test_reports_after_a_finished_mock_and_other_learners_sessions_are_private(client, gw, student):
     s = start(client, kind="mock", subject="math", profile_id="math.mcq.t", seed=1)
     item = s["items"][0]["id"]
     assert client.post(f"{P}/items/{item}/report", json={"session_id": s["id"], "reason": "unclear"}).status_code == 409
     client.post(f"{P}/sessions/{s['id']}/finish")
     assert client.post(f"{P}/items/{item}/report", json={"session_id": s["id"], "reason": "unclear"}).status_code == 200
     client.post("/api/auth/logout")
-    from gateway_fakes import onboard, verify_parent
+    from gateway_fakes import new_student
 
-    me = onboard(client, "other@example.com", "thpt")
-    verify_parent(client, me["user_id"])
+    new_student(client, "other")
     assert client.get(f"{P}/sessions/{s['id']}").status_code == 404
     assert client.get(f"{P}/items/reports").json() == []
 
 
-def test_account_deletion_removes_practice_rows(client, gw, thpt_user):
+def test_forget_removes_practice_rows(client, gw, student):
     s = start(client, kind="practice", subject="math", minutes=10, seed=1)
     client.post(f"{P}/sessions/{s['id']}/answer", json={"position": 0, "answer": "A"})
     client.post(f"{P}/sessions/{s['id']}/finish")
-    assert client.delete("/api/account").status_code == 200
     from sqlalchemy import func, select
 
     from mentor_gateway.practice.tables import PracticeAnswer, PracticeSession
 
+    with gw.db.session() as db:
+        gw.practice.forget(db, student["user_id"])
     with gw.db.session() as db:
         assert db.scalar(select(func.count()).select_from(PracticeSession)) == 0
         assert db.scalar(select(func.count()).select_from(PracticeAnswer)) == 0

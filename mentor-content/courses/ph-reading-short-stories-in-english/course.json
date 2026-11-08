@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-reading-short-stories-in-english",
+  "title": "Reading Short Stories in English",
+  "subject": "English",
+  "age_band": "g6_9",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Ms. Hanh Vu",
+  "description_short": "Eight graded stories with audio, vocabulary notes and three questions each. Reading gets longer from 200 to 600 words across the course.",
+  "outcomes": [
+    "Read a 500-word story and retell it in your own words.",
+    "Guess the meaning of new words from context.",
+    "Talk about characters and endings in English."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 83,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Short and simple",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "A lost key",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l2",
+          "title": "The new bike",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch1-l3",
+          "title": "A rainy day",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "A little longer",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "The school trip",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l2",
+          "title": "A secret garden",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l3",
+          "title": "The last bus",
+          "est_minutes": 18
+        }
+      ]
+    }
+  ]
+}

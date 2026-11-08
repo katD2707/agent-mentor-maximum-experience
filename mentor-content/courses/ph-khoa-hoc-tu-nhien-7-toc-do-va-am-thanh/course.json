@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-khoa-hoc-tu-nhien-7-toc-do-va-am-thanh",
+  "title": "Khoa học tự nhiên 7: Tốc độ và âm thanh",
+  "subject": "Khoa học tự nhiên",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Nhung",
+  "description_short": "Khóa học đo tốc độ chuyển động, vẽ đồ thị quãng đường, thời gian và tìm hiểu cách âm thanh truyền đi. Có bài thực hành đo tốc độ bằng đồng hồ bấm giờ.",
+  "outcomes": [
+    "Tính được tốc độ và đọc đồ thị quãng đường, thời gian.",
+    "Giải thích được sự truyền âm và phản xạ âm.",
+    "Nêu được cách chống ô nhiễm tiếng ồn."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 79,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Tốc độ",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Tốc độ là gì",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Đo tốc độ",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đồ thị",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Âm thanh",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Nguồn âm và sóng âm",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Độ cao, độ to",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Phản xạ âm",
+          "est_minutes": 18
+        }
+      ]
+    }
+  ]
+}

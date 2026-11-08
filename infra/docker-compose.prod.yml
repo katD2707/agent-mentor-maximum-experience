@@ -1,15 +1,12 @@
-# Pilot deployment on ONE Linux VM with Docker: Caddy (HTTPS) -> web + gateway; LiteLLM router; SearXNG; and one
-# sandbox container per learner, started by the gateway through the docker socket.
+# Pilot deployment on ONE Linux VM with Docker: Caddy (HTTPS) -> web + gateway; LiteLLM router.
 #
 #   Use infra/deploy.sh (checks .env.prod, builds the images, starts, waits for health). By hand:
 #   docker compose -f infra/docker-compose.prod.yml --env-file infra/.env.prod up -d --build
 #
 # Every value comes from infra/.env.prod (template: infra/.env.prod.example). Each service gets only the variables
 # it needs (the FPT key reaches only the router; MENTOR_MASTER_KEY only the gateway). Only Caddy publishes ports.
-#
-# RISK: the gateway mounts /var/run/docker.sock to run sandboxes, so whoever takes over the gateway process is root
-# on the VM. Mitigations here: gateway runs as uid 4242 (not root), read-only root fs, all capabilities dropped,
-# no-new-privileges, not reachable from the internet except /api and /webhooks through Caddy.
+# The gateway no longer touches the docker socket (no per-learner sandboxes). Accounts are created by the operator:
+#   docker compose ... exec gateway python -m mentor_gateway.cli create-user --username U --role student
 name: mentor
 
 x-logging: &logging
@@ -47,9 +44,6 @@ services:
     restart: unless-stopped
     # non-root; the data dirs on the host must be owned by this uid (deploy.sh chowns them)
     user: "4242:4242"
-    # docker socket access through the socket's group (deploy.sh writes DOCKER_GID = `stat -c %g /var/run/docker.sock`)
-    group_add: ["${DOCKER_GID:?set DOCKER_GID (deploy.sh does)}"]
-    # do NOT set hostname: SANDBOX_NETWORK_ATTACH's `self` is resolved from the container hostname (= its id)
     read_only: true
     tmpfs: ["/tmp:size=64m"]
     cap_drop: [ALL]
@@ -62,47 +56,6 @@ services:
       PUBLIC_BASE_URL: ${PUBLIC_URL:-https://${DOMAIN}}
       WEB_ORIGIN: ${PUBLIC_URL:-https://${DOMAIN}}
       CORS_ORIGINS: ${CORS_ORIGINS:-}
-      COOKIE_SECURE: "true"
-      # sandboxes: one hardened container per learner, each on its own internal network shared only with the
-      # gateway (alias gateway) and the router (alias model-router)
-      SANDBOX_BACKEND: docker
-      SANDBOX_IMAGE: ${SANDBOX_IMAGE:-mentor-sandbox:prod}
-      SANDBOX_NETWORK_ATTACH: self:gateway,${ROUTER_CONTAINER_NAME:-mentor-model-router}:model-router
-      SANDBOX_GATEWAY_URL: http://gateway:8000
-      SANDBOX_TMPFS_SIZE: ${SANDBOX_TMPFS_SIZE:-256m}
-      SANDBOX_IDLE_SECONDS: ${SANDBOX_IDLE_SECONDS:-600}
-      SANDBOX_PREWARM: ${SANDBOX_PREWARM:-1}
-      MENTOR_HOST_DATA_DIR: ${SANDBOX_HOST_DATA_DIR:-${DATA_DIR:-/srv/mentor/data}}   # as the docker daemon sees it
-      MODEL_ROUTER_URL: http://model-router:4000
-      MODEL_ROUTER_KEY: ${MODEL_ROUTER_MASTER_KEY:?set MODEL_ROUTER_MASTER_KEY}
-      MENTOR_MODEL_MODE: ${MENTOR_MODEL_MODE:-router}   # `scripted` = fake model (smoke tests only)
-      # login mail (Gmail: smtp.gmail.com, 587, STARTTLS, app password)
-      SMTP_HOST: ${SMTP_HOST:-}
-      SMTP_PORT: ${SMTP_PORT:-587}
-      SMTP_STARTTLS: ${SMTP_STARTTLS:-true}
-      SMTP_SSL: ${SMTP_SSL:-false}
-      SMTP_USERNAME: ${SMTP_USERNAME:-}
-      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
-      MAIL_FROM: ${MAIL_FROM:-}
-      SIGNUP_ALLOWLIST: ${SIGNUP_ALLOWLIST:-}   # pilot: only these emails / @domains may log in; empty = open
-      # parent channel (Zalo bot); webhook = https://$DOMAIN/webhooks/zalo
-      ZALO_BOT_TOKEN: ${ZALO_BOT_TOKEN:-}
-      ZALO_WEBHOOK_SECRET: ${ZALO_WEBHOOK_SECRET:?set ZALO_WEBHOOK_SECRET (deploy.sh generates one)}
-      ZALO_BOT_URL: ${ZALO_BOT_URL:-}
-      ZALO_BOT_NAME: ${ZALO_BOT_NAME:-Mentor Phụ huynh}
-      # learner email forwarding: Cloudflare Email Routing -> Email Worker (infra/cloudflare/email-worker.js)
-      # -> https://$DOMAIN/webhooks/email/inbound, HMAC-signed with EMAIL_WEBHOOK_SECRET (empty = endpoint off)
-      INBOUND_EMAIL_DOMAIN: ${INBOUND_EMAIL_DOMAIN:-inbox.mentor.local}
-      EMAIL_WEBHOOK_SECRET: ${EMAIL_WEBHOOK_SECRET:-}
-      INBOUND_EMAIL_MAX_BYTES: ${INBOUND_EMAIL_MAX_BYTES:-26214400}
-      EMAIL_WEBHOOK_PER_RCPT_PER_HOUR: ${EMAIL_WEBHOOK_PER_RCPT_PER_HOUR:-30}
-      # tools
-      ASTA_API_KEY: ${ASTA_API_KEY:-}
-      S2_API_KEY: ${S2_API_KEY:-}
-      TAVILY_API_KEY: ${TAVILY_API_KEY:-}
-      SEARXNG_URL: ${SEARXNG_URL:-http://searxng:8080}
-      GOOGLE_OAUTH_CLIENT_ID: ${GOOGLE_OAUTH_CLIENT_ID:-}
-      GOOGLE_OAUTH_CLIENT_SECRET: ${GOOGLE_OAUTH_CLIENT_SECRET:-}
       # Web Push for nudges (deploy.sh generates the pair once; any of the three empty = push off)
       VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
       VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
@@ -111,8 +64,6 @@ services:
     volumes:
       - ${DATA_DIR:-/srv/mentor/data}:/data          # ops.db, mirrors, workspaces (plaintext: use an encrypted disk)
       - ${BACKUP_DIR:-/srv/mentor/backups}:/backups  # encrypted daily snapshots (MBK1)
-      - /var/run/docker.sock:/var/run/docker.sock
-    depends_on: [model-router, searxng]
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3)"]
       interval: 30s
@@ -123,7 +74,6 @@ services:
 
   model-router:
     image: ${LITELLM_IMAGE:-ghcr.io/berriai/litellm:main-stable}   # pin a version tag for a long pilot
-    # fixed name: the gateway attaches this container to every sandbox network (SANDBOX_NETWORK_ATTACH)
     container_name: ${ROUTER_CONTAINER_NAME:-mentor-model-router}
     restart: unless-stopped
     command: ["--config", "/app/config.yaml", "--port", "4000"]
@@ -144,11 +94,10 @@ services:
 
   web:
     build:
-      context: ../apps/web
+      context: ..
+      dockerfile: infra/web.Dockerfile
       args:
-        NEXT_PUBLIC_API_BASE: ${PUBLIC_URL:-https://${DOMAIN}}/api
-        NEXT_PUBLIC_DESKTOP_DOWNLOAD_URL: ${DESKTOP_DOWNLOAD_URL:-}
-        NEXT_PUBLIC_DESKTOP_DOWNLOAD_URL_LINUX: ${DESKTOP_DOWNLOAD_URL_LINUX:-}
+        VITE_API_BASE: ${PUBLIC_URL:-https://${DOMAIN}}/api
     image: mentor-web:prod
     restart: unless-stopped
     read_only: true
@@ -156,23 +105,7 @@ services:
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]
     logging: *logging
-    # healthcheck: built into the image (GET /login)
-
-  searxng:   # web_search backend; reached only by the gateway (no auth, limiter off: never publish its port)
-    image: ${SEARXNG_IMAGE:-searxng/searxng:latest}
-    restart: unless-stopped
-    environment:
-      SEARXNG_SECRET: ${SEARXNG_SECRET:?set SEARXNG_SECRET (deploy.sh generates one)}
-    volumes:
-      - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
-    security_opt: ["no-new-privileges:true"]
-    healthcheck:
-      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/healthz"]
-      interval: 30s
-      timeout: 5s
-      start_period: 20s
-      retries: 3
-    logging: *logging
+    # healthcheck: built into the image
 
 volumes:
   caddy_data:

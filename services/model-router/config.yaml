@@ -1,28 +1,31 @@
 # LiteLLM proxy config. Run: uv tool run --from 'litellm[proxy]' litellm --config services/model-router/config.yaml --port 4000
-# The harness only knows the aliases on the left (mentor_schemas.ModelAlias).
-# Routing is provisional until the Phase 0 benchmark (plan section 5.2).
-# DeepSeek-V4.1-Flash (probe 2026-11-02): chat, tool calls and vision all work; Qwen stays as fallback and as the
-# second, independent safety model.
+# Callers only know the aliases on the left (mentor_schemas.ModelAlias); the publisher swaps models here, not in code.
+# FPT_API_BASE is a multi-provider gateway: only `fai/` models are FPT AI Factory (P0 spike, 2026-11-06).
+# Never call a `fai/` model name that does not exist: one bad call rate-limits every fai model for ~2 minutes.
+# Vision/OCR and audio use Gemini 3.5 Flash: DeepSeek/Qwen vision output is cut at ~250 characters on full pages.
+# Embeddings/rerank: no fai model exists; azure-ai Cohere ranked Vietnamese course queries best.
 model_list:
   - model_name: mentor-chat
     litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: low}
   - model_name: mentor-chat-fallback   # used only when mentor-chat fails; a shared model_name would load-balance and break sticky routing
     litellm_params: {model: openai/fai/Qwen3.8-27B, api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
-  - model_name: mentor-vision
-    litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: low}
-  - model_name: mentor-vision-fallback
+  - model_name: mentor-vision          # page OCR, legibility checks, photo questions
+    litellm_params: {model: "openai/fai/Google:Gemini-3.5-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+  - model_name: mentor-vision-fallback # short image questions only (output is truncated on full pages)
     litellm_params: {model: openai/fai/Qwen3.8-27B, api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
-  - model_name: mentor-reasoning
+  - model_name: mentor-audio           # speech to text via chat input_audio (wav/mp3); no transcription endpoint exists
+    litellm_params: {model: "openai/fai/Google:Gemini-3.5-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+  - model_name: mentor-reasoning       # course outlines, planning; DeepSeek returns reasoning_content, give it a large max_tokens
     litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: high}
-  - model_name: mentor-safety-a
-    litellm_params: {model: "openai/fai/Alibaba:DeepSeek-V4.1-Flash", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY, reasoning_effort: medium}
-  - model_name: mentor-safety-b
-    litellm_params: {model: openai/fai/Qwen3.8-27B, api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+  - model_name: mentor-embed           # course retrieval (RAG over description_short + outline)
+    litellm_params: {model: "openai/azure-ai/Cohere-Embed-V5-Fast", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
+  - model_name: mentor-rerank
+    litellm_params: {model: "openai/azure-ai/Cohere-rerank-v4.0-fast", api_base: os.environ/FPT_API_BASE, api_key: os.environ/FPT_API_KEY}
 
 router_settings:
   num_retries: 2
-  timeout: 60   # seconds per call; a stuck upstream fails over instead of hanging the turn (observed 67 s on 2026-11-02)
+  timeout: 120  # long generations (course content) need more than a chat turn
   fallbacks: [{mentor-chat: [mentor-chat-fallback]}, {mentor-vision: [mentor-vision-fallback]}]
 
 general_settings:
-  master_key: os.environ/MODEL_ROUTER_MASTER_KEY   # per-sandbox virtual keys are issued from this
+  master_key: os.environ/MODEL_ROUTER_MASTER_KEY

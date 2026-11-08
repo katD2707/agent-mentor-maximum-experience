@@ -1,0 +1,1529 @@
+{
+  "schema_version": 1,
+  "course_id": "c-c7063c7c",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "g1_5",
+  "title": "Toán 1: Các số đến 10",
+  "chapters": [
+    {
+      "id": "ch-cac-so-den-10",
+      "title": "Các số đến 10",
+      "lessons": [
+        {
+          "id": "dem-den-5-cung-cun",
+          "title": "Đếm đến 5 cùng Cún",
+          "est_minutes": 10,
+          "summary": "Đếm từng quả táo từ 1 đến 5 bằng cách chạm vào từng quả.",
+          "key_ideas": [
+            "Cún có 5 quả táo đỏ",
+            "Chạm mỗi quả đúng một lần",
+            "Đếm: một, hai, ba, bốn, năm",
+            "Chạm vào giỏ có 3 quả"
+          ],
+          "blocks": [
+            {
+              "id": "dem-den-5-cung-cun-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/dem-den-5-cung-cun-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "16a3b708420ffc01a26125c38a87e17b152ac2a82887bc6469017bcd01293321",
+                "bytes": 443656
+              },
+              "poster": {
+                "path": "images/dem-den-5-cung-cun-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "aa94931f8888758b084ded5bfb23f49bb810ee6d8e918ac4040e7e706fb90eea",
+                "bytes": 15882
+              },
+              "captions": {
+                "path": "video/dem-den-5-cung-cun-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "2678dde6888574643d1b617e52b229ef56e80a9655386e16f00335bf0dd41fbc",
+                "bytes": 228
+              },
+              "duration_s": 14.97,
+              "title": "Đếm táo cùng Cún"
+            },
+            {
+              "id": "dem-den-5-cung-cun-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-5-cung-cun-b2.webp",
+                "mime": "image/webp",
+                "sha256": "a9e666c611f74f8a81b06e4a9a5e3b6ad159b560f7cf87a29e299e1269397d23",
+                "bytes": 21978
+              },
+              "alt": "Cún ngồi cạnh năm quả táo đỏ",
+              "caption": "Cún có 5 quả táo đỏ.",
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b2.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "63812cfaf1687ceccb0f581ef1f1ae1b2987fc632dec5a0d1ca0ab9f42c41692",
+                "bytes": 18668
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-5-cung-cun-b3.webp",
+                "mime": "image/webp",
+                "sha256": "01b44300b9acc048c3f17b0cda20151fb1afac2f98f371e1953de1936d1f240e",
+                "bytes": 18908
+              },
+              "alt": "Tay chạm quả táo thứ nhất, số 1 hiện lên",
+              "caption": null,
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "893f80a0d4ba03ac6439c51f79556f62571745d9d472663a8b32619a406c4bf8",
+                "bytes": 25724
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b4",
+              "kind": "text",
+              "md": "Chạm vào từng quả táo. Chạm mỗi quả đúng một lần.",
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "2b9981fc1ef69bd7a79cb0ec90120d0d8ecfe610f2cd9bd622f33f28f1d06a6b",
+                "bytes": 33788
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-5-cung-cun-b5.webp",
+                "mime": "image/webp",
+                "sha256": "ccd439902ddc062347a374d466caacd53df2d8db1fe81faad986e72634068c4a",
+                "bytes": 22436
+              },
+              "alt": "Năm quả táo với các số từ 1 đến 5",
+              "caption": null,
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "7b9feada1a68d29999705e05b319170f2b22f85d8a816cc76cfdcd2f17cdfa52",
+                "bytes": 24428
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b6",
+              "kind": "text",
+              "md": "Đếm: một, hai, ba, bốn, năm.",
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "605a883e9c7413d46f6436eb24e6193983c28b3f7bfba1657b823495ab84fda8",
+                "bytes": 29900
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-5-cung-cun-b7.webp",
+                "mime": "image/webp",
+                "sha256": "543089238fdf5f6c48c072a7fc2c6a552ecc668be2961472fa379fb048571cf0",
+                "bytes": 17010
+              },
+              "alt": "Ba giỏ táo và tay chỉ vào giỏ có ba quả",
+              "caption": null,
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b7.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "8e8224e0670030650fd77419448f568b3ac294d74a045438db1734b8dbb6b723",
+                "bytes": 26732
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b8",
+              "kind": "text",
+              "md": "Chạm vào giỏ có 3 quả táo.",
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b8.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "3ef44e3fa9682417550953095cb0c3464775dadec45975259f6054000353e656",
+                "bytes": 20108
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Chạm mỗi quả đúng một lần nhé.",
+              "audio": {
+                "path": "audio/dem-den-5-cung-cun-b9.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "23a61f270f09ffdc37db44d10f4af5ff106d1e80c39c61c9df174159ebe9072d",
+                "bytes": 19100
+              }
+            },
+            {
+              "id": "dem-den-5-cung-cun-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "dem-den-5-cung-cun-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Giỏ nào có 3 quả táo?",
+                  "stem_audio": {
+                    "path": "audio/dem-den-5-cung-cun-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "0d2edc81a323fc12eabb74bd290b4b9f475ce12ab523deac47bdbb46577185fc",
+                    "bytes": 18092
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/dem-den-5-cung-cun-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "9e77ed679098657353db984603df7dda05bda53d91a6e0ae05936d78282404aa",
+                        "bytes": 2689
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/dem-den-5-cung-cun-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "51c55e9e61419c4241d981a2ba9c5155bd5e75f69bb53364d520e63a13beecb1",
+                        "bytes": 2647
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/dem-den-5-cung-cun-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "00d701584fc7e2aa617cc96cb2c00e82486535990492a1a369c3bffc149d1be0",
+                        "bytes": 3823
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Chạm từng quả một và đếm chậm.",
+                  "explanation": "Đếm một, hai, ba: giỏ có 3 quả táo là giỏ đúng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dem-den-5-cung-cun-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm vào từng quả táo đỏ.",
+                  "stem_audio": {
+                    "path": "audio/dem-den-5-cung-cun-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "87118a62da072ff27095db9e495324bda5528422d70d94ea6cfe3033cd9dba22",
+                    "bytes": 18812
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/dem-den-5-cung-cun-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "4aa8351c8536574e45f162d0baa1219cae82b77b6dfe1f2ac5449a9e3686cedd",
+                      "bytes": 1401
+                    },
+                    "total": 5
+                  },
+                  "answer_key": {
+                    "count": 5
+                  },
+                  "hint": "Chạm mỗi quả đúng một lần.",
+                  "explanation": "Có 5 quả táo đỏ; đếm một, hai, ba, bốn, năm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dem-den-5-cung-cun-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cún có mấy quả táo đỏ?",
+                  "stem_audio": {
+                    "path": "audio/dem-den-5-cung-cun-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "8da5467f50406f1b0ba52044520d07130f691fc7987f21c66522161d3d857823",
+                    "bytes": 18524
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "3 quả",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-5-cung-cun-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "adc60414a7c4391ee68bdd39bffba919b1d0e0dbfcde0ed2641039f621b3d456",
+                        "bytes": 11900
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "4 quả",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-5-cung-cun-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "7d607de5290628c8c74da8e65974c7ba1bf59b9d9dd03a177dd1743bd9ecfc0e",
+                        "bytes": 12188
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "5 quả",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-5-cung-cun-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "5ea49ab760303a4583dd2aea0f6627fc46d78c02f6f89bb039317757c542e571",
+                        "bytes": 12332
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "6 quả",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-5-cung-cun-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "345cb734c6659d9468f419184cb54fb8e945ca3b03193197b2ae94c5ee0d2a6f",
+                        "bytes": 12332
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Đếm từ một đến năm.",
+                  "explanation": "Cún có 5 quả táo đỏ: một, hai, ba, bốn, năm.",
+                  "option_feedback": {
+                    "A": "Chưa đúng, Cún có nhiều hơn 3 quả.",
+                    "B": "Chưa đúng, đếm tiếp sau bốn nhé.",
+                    "D": "Chưa đúng, Cún chỉ có đến 5 quả thôi."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dem-den-10-cun-dem-tao",
+          "title": "Đếm đến 10: Cún đếm táo",
+          "est_minutes": 10,
+          "summary": "Đếm đến 10 qua phim ngắn và hoạt động chạm từng quả táo.",
+          "key_ideas": [
+            "Cún nhặt táo bỏ vào giỏ và đếm to",
+            "Nhận ra số 6, 7, 8, 9, 10",
+            "Chạm từng quả, mỗi quả một lần",
+            "Chọn giỏ có đúng 7 quả"
+          ],
+          "blocks": [
+            {
+              "id": "dem-den-10-cun-dem-tao-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/dem-den-10-cun-dem-tao-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "faadb00db2192bf4418ae9c96df9f511d5a6b8512f5fefd14202925ea8b1f9e7",
+                "bytes": 550597
+              },
+              "poster": {
+                "path": "images/dem-den-10-cun-dem-tao-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "0253c1ef5937c96a53dff4bc3608bea985bab3d5b11c9e451101f0cd974760dd",
+                "bytes": 12740
+              },
+              "captions": {
+                "path": "video/dem-den-10-cun-dem-tao-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "34244a8ee596644fe7f1b35f3f9bc33eeb2074365fdf5b122b132ed32a3803a1",
+                "bytes": 284
+              },
+              "duration_s": 15.57,
+              "title": "Cún đếm táo"
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-10-cun-dem-tao-b2.webp",
+                "mime": "image/webp",
+                "sha256": "09dd91db589d84d8c658ca48bf1e366201ed0b4cac06a668f0535687b4282f7a",
+                "bytes": 31570
+              },
+              "alt": "Bé chạm vào từng quả táo rải rác, số đếm tăng dần",
+              "caption": "Chạm từng quả táo",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b2.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "662b2d2a8acd53f6839c9339da2280da395e397ded591816ab61d51ef4e99e04",
+                "bytes": 15068
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b3",
+              "kind": "text",
+              "md": "Chạm vào từng quả táo. Mỗi quả chạm đúng một lần.",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b3.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "8dbcbede54ce2527b9d497edd337f925397725cbae84ec2fb68a2b7a03d9459b",
+                "bytes": 33932
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-10-cun-dem-tao-b4.webp",
+                "mime": "image/webp",
+                "sha256": "bd11415825f0313ec009da007772248f05d5ddda0a744fa3f2751a4fdbfe9f4c",
+                "bytes": 26448
+              },
+              "alt": "Cún chỉ vào từng quả táo, số 6 đến 10 hiện lên",
+              "caption": "Đếm đến 10",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b4.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "8f94e406c4f0b7cb24613c9cf75eb83206fea3c5c1843068f418d486c0c36dbc",
+                "bytes": 13628
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b5",
+              "kind": "text",
+              "md": "Chạm đến quả cuối cùng. Số dừng lại là số quả táo.",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b5.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "9b62483a8af5ce3ea93e8f1971c9b16db468d21f2fa866612a18bfdbad4a323a",
+                "bytes": 36380
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/dem-den-10-cun-dem-tao-b6.webp",
+                "mime": "image/webp",
+                "sha256": "a330a9b1ac732c03c638a6caa072e5f8da0d100704ee5da9e4da25ff0f246aa4",
+                "bytes": 24714
+              },
+              "alt": "Ba giỏ táo, bé chọn giỏ có đúng 7 quả",
+              "caption": "Chọn giỏ có 7 quả",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b6.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "92165d834dfba83ed7ada4062053301cbe1ac4e1c6d40464f595742ab16401fe",
+                "bytes": 17516
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b7",
+              "kind": "text",
+              "md": "Chọn giỏ có đúng 7 quả. Đếm chậm rồi chọn.",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "3ce4a0d9bf26fd465ff26998a574c14664ee65d47a0d1b9d835bc93009dddc21",
+                "bytes": 33212
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b8",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Chạm mỗi quả một lần và đếm to lên.",
+              "audio": {
+                "path": "audio/dem-den-10-cun-dem-tao-b8.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "0d2718a76aad0c90a7dab171efb8545292343900b5e7479b60fc6918a53adf6a",
+                "bytes": 22700
+              }
+            },
+            {
+              "id": "dem-den-10-cun-dem-tao-b9",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "dem-den-10-cun-dem-tao-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Cún nhặt táo bỏ vào đâu?",
+                  "stem_audio": {
+                    "path": "audio/dem-den-10-cun-dem-tao-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "66f7d065d3beb6686fb67e542c1c99ff2af443dfe004cdefd192914b01e97639",
+                    "bytes": 17228
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/dem-den-10-cun-dem-tao-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "be9496c3b21f437884a1eb777a90c82b92b26e2efdde388157c6a01190a9d6aa",
+                        "bytes": 2211
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/dem-den-10-cun-dem-tao-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "7419ac6c3f01c107901a6e8e676c2135ef04d9869a3fc5846a7573a6aa64fd5b",
+                        "bytes": 1447
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/dem-den-10-cun-dem-tao-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "8545b28316ac6862e727df3707f756ad955e67a7ce3fbc58edb8f205acf28f72",
+                        "bytes": 1717
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nhìn xem Cún đựng táo bằng vật gì.",
+                  "explanation": "Trong bài, Cún nhặt táo bỏ vào giỏ và đếm to.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "dem-den-10-cun-dem-tao-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm vào từng quả táo và đếm to lên nhé!",
+                  "stem_audio": {
+                    "path": "audio/dem-den-10-cun-dem-tao-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "adcfb0a4543947fad35f18dcbb74cafcfca5b418037d1e778150a6f5b2369a28",
+                    "bytes": 24140
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/dem-den-10-cun-dem-tao-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "1157365a8d2f6079206dfca189552499c50db9112a29b1986d81be11a2377702",
+                      "bytes": 2959
+                    },
+                    "total": 7
+                  },
+                  "answer_key": {
+                    "count": 7
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi quả chạm đúng một lần, quả cuối cùng chạm tới số 7 nên có 7 quả táo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "dem-den-10-cun-dem-tao-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đếm: một, hai, ba, bốn, năm, sáu, bảy. Có mấy quả táo?",
+                  "stem_audio": {
+                    "path": "audio/dem-den-10-cun-dem-tao-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "efab674fb7e6162a1f8ce3460c0aecb20e43ed2ce9c2cb6349bc3b31e5d0da0f",
+                    "bytes": 53084
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "6",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-10-cun-dem-tao-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "bc507a7d7fbf3ae743349f46761cc5b3a8275b852376fa0f202376b5b8a9fbe5",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "7",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-10-cun-dem-tao-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "75f31483297a787a50879c66c9cc34ebf1e9b21acfa2d222fb6fbbb6646411c4",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "8",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dem-den-10-cun-dem-tao-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "07923af686d4abcfbd30b5a704aed4061a9947a3b34075035e955e2a1aeba475",
+                        "bytes": 11756
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Số dừng lại ở quả cuối cùng là số quả táo.",
+                  "explanation": "Quả cuối cùng chạm tới số 7, nên có 7 quả táo.",
+                  "option_feedback": {
+                    "A": "Đếm thiếu rồi, em đếm chậm lại từ đầu nhé.",
+                    "C": "Đếm thừa một rồi, em chạm mỗi quả một lần nhé."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "so-0-khong-co-gi",
+          "title": "Số 0: không có gì",
+          "est_minutes": 8,
+          "summary": "Hiểu số 0 là khi không còn đồ vật nào.",
+          "key_ideas": [
+            "Giỏ không có quả táo nào",
+            "Sân không có con gà nào",
+            "Cún ăn dần: còn 3, còn 2, còn 1, hết rồi",
+            "Cả lớp nói: Không còn quả nào. Số 0"
+          ],
+          "blocks": [
+            {
+              "id": "so-0-khong-co-gi-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/so-0-khong-co-gi-b1.webp",
+                "mime": "image/webp",
+                "sha256": "e62174a9a5a6c1515c78a1df3f38f0450477afe9cb6d86b77c342c647697412f",
+                "bytes": 22300
+              },
+              "alt": "Cái giỏ rỗng, không có quả táo nào",
+              "caption": null,
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "5374fe9efe3af626bbe0b27e9839317c652f90423aedcc512042750c83aaa07f",
+                "bytes": 23708
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b2",
+              "kind": "text",
+              "md": "Giỏ không có quả táo nào.",
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "85e7d4bec00d241db372b9aefbaf88fed7200a87de67afe8700c258b76227c75",
+                "bytes": 18668
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/so-0-khong-co-gi-b3.webp",
+                "mime": "image/webp",
+                "sha256": "ccf5b519063aac7cdf60b30752cba3b6558b469d351181bb19a389fbbb0d8b09",
+                "bytes": 18958
+              },
+              "alt": "Sân trống, không có con gà nào",
+              "caption": null,
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "916502bdd45fd8ac9c99b750322192976756f7090465007cde0f770be7cc728d",
+                "bytes": 22268
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b4",
+              "kind": "text",
+              "md": "Sân không có con gà nào.",
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "48e55027a4bd00999dd3648c9a018067152a47ce9f45776dfb991cd49c7a9d82",
+                "bytes": 18668
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/so-0-khong-co-gi-b5.webp",
+                "mime": "image/webp",
+                "sha256": "6df29d23ccfa4a411fc91c8028cd586e42f466714b4ce6feb1258c97fc965367",
+                "bytes": 27758
+              },
+              "alt": "Cún ăn dần táo: còn ba, còn hai, còn một, rồi hết",
+              "caption": null,
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "fde461c454c9a0a2624afd188a5b2ba1fadb04b6ba938eebc0b0641e3a5c2af9",
+                "bytes": 35948
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b6",
+              "kind": "text",
+              "md": "Còn 3, còn 2, còn 1, hết rồi.",
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "45488448b1f9c8bf5d2774434a9a03f1791483fc1f0e8cb564f1c3c6fb508705",
+                "bytes": 27308
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/so-0-khong-co-gi-b7.webp",
+                "mime": "image/webp",
+                "sha256": "0bfca3b3047f69099934fb416ea60d7b7aa42b049509dbf9b6387ca66d3ff2e5",
+                "bytes": 26322
+              },
+              "alt": "Cả lớp cùng nói to",
+              "caption": null,
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b7.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d883f751417696d2eec4ac61fc1c372c6d10f98354aeacb9fb3d7c13a0a6f3d7",
+                "bytes": 16508
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b8",
+              "kind": "text",
+              "md": "Không còn quả nào. Đó là số 0.",
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b8.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "03300cec480e38b2a5b8e9421a8b6207e0a612186d59f2e27cd4d7d0a76869c4",
+                "bytes": 28460
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Không còn gì thì là số 0.",
+              "audio": {
+                "path": "audio/so-0-khong-co-gi-b9.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "a51ef7310b912b12567d188b5339a03b305bc8363f8a4aba4e2c81168555d9db",
+                "bytes": 19388
+              }
+            },
+            {
+              "id": "so-0-khong-co-gi-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "so-0-khong-co-gi-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Chọn hình chỉ số 0.",
+                  "stem_audio": {
+                    "path": "audio/so-0-khong-co-gi-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "7c2adab790ad4f88d1ede1c3ac2f864fcb66a65257ac287fea7241e7f33c9923",
+                    "bytes": 16652
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/so-0-khong-co-gi-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "788b10c26dc044a0b7edb8bdb3489b146acdd51b047c8e6d157a5d032d29284c",
+                        "bytes": 2742
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/so-0-khong-co-gi-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "bbf5ae0729fa00be3759cf8ed5abb88f60d1a770bc64bbc840e03609fc49a8b4",
+                        "bytes": 2290
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/so-0-khong-co-gi-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "dcb45f9b7c53890a42b69ec9976810b14d06546cbb58181145b4036ed89ea3fe",
+                        "bytes": 1413
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Số 0 là khi không còn gì.",
+                  "explanation": "Giỏ rỗng là không có quả nào, tức là số 0.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "so-0-khong-co-gi-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Đếm và chạm vào các quả táo.",
+                  "stem_audio": {
+                    "path": "audio/so-0-khong-co-gi-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "d6f307488bcd0feb95e81b55359fe6cefc33c9dc919252f90e807c297b684d53",
+                    "bytes": 19820
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/so-0-khong-co-gi-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "80ecb30c44c741bfc782bf3cd01c133ab135f6e013ef259bcb8da02416aa9626",
+                      "bytes": 1930
+                    },
+                    "total": 5
+                  },
+                  "answer_key": {
+                    "count": 5
+                  },
+                  "hint": "Chạm từng quả một, đếm to lên.",
+                  "explanation": "Có tất cả 5 quả táo, em chạm đủ 5 quả.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "so-0-khong-co-gi-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Không còn quả nào là số mấy?",
+                  "stem_audio": {
+                    "path": "audio/so-0-khong-co-gi-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "f52ddbd325cd0ccfed3d79965aaaff4b3330c29ecdc0709f3ba7ac3a98680260",
+                    "bytes": 19820
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Số 0",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/so-0-khong-co-gi-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "34cca6d94f2f7b8404e6d1f13f2599e8964fcad055bd70ac2e6f1147252bb952",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Số 1",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/so-0-khong-co-gi-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "0c517b284065b8075efb39529d859a904ac89c164ad85b92bb16b7708bf275d0",
+                        "bytes": 11180
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Số 3",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/so-0-khong-co-gi-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "0595a342d7a442c99a951b153793f17bae355c372ab6ad0aa8506603343fc286",
+                        "bytes": 11756
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Cún ăn hết rồi: còn 3, còn 2, còn 1, hết rồi.",
+                  "explanation": "Không còn gì thì là số 0.",
+                  "option_feedback": {
+                    "B": "Số 1 là còn một quả, chưa phải không còn gì.",
+                    "C": "Số 3 là còn ba quả, chưa phải không còn gì."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nhieu-hon-it-hon-bang-nhau",
+          "title": "Nhiều hơn, ít hơn, bằng nhau",
+          "est_minutes": 10,
+          "summary": "So sánh hai nhóm đồ vật đến 10 bằng cách ghép đôi từng cái một.",
+          "key_ideas": [
+            "Cún và Mèo mỗi bạn có một đĩa kẹo",
+            "Nối mỗi kẹo của Cún với một kẹo của Mèo",
+            "Bên còn thừa kẹo thì nhiều hơn",
+            "Không thừa thì hai bên bằng nhau",
+            "Từ khóa: nhiều hơn, ít hơn, bằng nhau"
+          ],
+          "blocks": [
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/nhieu-hon-it-hon-bang-nhau-b1.webp",
+                "mime": "image/webp",
+                "sha256": "f414fbd188befc1a7cd2d1fc0f2990f5384611d814cd2cbb6be5dcc81cb2d2de",
+                "bytes": 35528
+              },
+              "alt": "Cún và Mèo mỗi bạn có một đĩa kẹo",
+              "caption": "Mỗi bạn có một đĩa kẹo",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "0d70eb8d2479481ee6b2d99b7388d4572a959703a55c37d5d3cf1e6d3e5f8b8b",
+                "bytes": 17948
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b2",
+              "kind": "text",
+              "md": "Cún có một đĩa kẹo. Mèo cũng có một đĩa kẹo.",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "010b2ea562dbde9854a4b4eec195d393bcd11f47b1185e3f22e5f68ac7d71d00",
+                "bytes": 33644
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/nhieu-hon-it-hon-bang-nhau-b3.webp",
+                "mime": "image/webp",
+                "sha256": "08761c49cfcb6e8394a95046911ce3ad6e8c4b9b5609e4367c8eea2881a80663",
+                "bytes": 35622
+              },
+              "alt": "Nối từng cái kẹo của Cún với một cái kẹo của Mèo",
+              "caption": "Nối một kẹo với một kẹo",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "b8b18707dbcc2d6fd90e094d8eba14daac5e2d6517351726c72163fddf310981",
+                "bytes": 18524
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b4",
+              "kind": "text",
+              "md": "Nối mỗi kẹo của Cún với một kẹo của Mèo.",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "25fd1757cfe62520e76098f203339bf9ff5bdf8acd3b63352b9fdadbac41000c",
+                "bytes": 24572
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/nhieu-hon-it-hon-bang-nhau-b5.webp",
+                "mime": "image/webp",
+                "sha256": "09e2cd6754bf6569aa3de62411b6c15ce1a1aa219f4245917ff902061f8cf2df",
+                "bytes": 28744
+              },
+              "alt": "Bên Cún còn thừa kẹo",
+              "caption": "Bên thừa kẹo là bên nhiều hơn",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "18cb0b231d046f5ec3001649d0fd43bfd4201c643f1a710d2f7ae483f37f68c0",
+                "bytes": 20252
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b6",
+              "kind": "text",
+              "md": "Bên nào còn thừa kẹo thì bên đó nhiều hơn. Bên kia thì ít hơn.",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "32105c34401deea5eaeaf90ba02ed799bec99237c50d5585757e6a98f4d4532d",
+                "bytes": 39548
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/nhieu-hon-it-hon-bang-nhau-b7.webp",
+                "mime": "image/webp",
+                "sha256": "0dbb4905f3c633c51cfec34ecabf2e78a462fcec61c3cef9c77ccbfea744febf",
+                "bytes": 25220
+              },
+              "alt": "Hai bên nối hết, không thừa kẹo",
+              "caption": "Không thừa thì bằng nhau",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b7.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "88d54740791d423f3d7812b35563f4d09e989605d5bdf4443f11f33fee721709",
+                "bytes": 16364
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b8",
+              "kind": "text",
+              "md": "Không thừa cái nào thì hai bên bằng nhau.",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b8.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "223d8cba7b817fcd67137f243b8e2bf6d02c0a9fd308289de14a17bef94d7d82",
+                "bytes": 22268
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Nhớ ba từ: **nhiều hơn**, **ít hơn**, **bằng nhau**.",
+              "audio": {
+                "path": "audio/nhieu-hon-it-hon-bang-nhau-b9.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "49e1f34b668a6ad3c582182e586de5d9f3b9d4280ee3e2704c4c04bcda79ef45",
+                "bytes": 30908
+              }
+            },
+            {
+              "id": "nhieu-hon-it-hon-bang-nhau-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "nhieu-hon-it-hon-bang-nhau-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Đĩa nào ít kẹo nhất?",
+                  "stem_audio": {
+                    "path": "audio/nhieu-hon-it-hon-bang-nhau-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "f9a6e4effd6b720df12a583707b62b990944c683c006e02e273d35c9d7ae3246",
+                    "bytes": 15644
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhieu-hon-it-hon-bang-nhau-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "cee9ae7c9ef8f2136a5c05afda9c0976c09c39e9f4450b4a6925c50c73512890",
+                        "bytes": 2002
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhieu-hon-it-hon-bang-nhau-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "b537e6e0c83147abe2cc57a6c335c6187f6b1fb2c7fd0d0de6d46d4fc9ca3bd1",
+                        "bytes": 3545
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhieu-hon-it-hon-bang-nhau-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "815ed77343e5a88de1e3910de3ac1524c29685055c1a6fbcea40f655d13fb672",
+                        "bytes": 4333
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "2 ít hơn 5 và 7, nên đĩa có 2 cái kẹo là ít nhất.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "nhieu-hon-it-hon-bang-nhau-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Đếm số kẹo trong đĩa.",
+                  "stem_audio": {
+                    "path": "audio/nhieu-hon-it-hon-bang-nhau-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "936b2e172307d2e7a4f9cede6ce8768dcd9976a235dd0afcbf9272e5a27ccf95",
+                    "bytes": 16796
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/nhieu-hon-it-hon-bang-nhau-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "c92a212ec9fd0d6b83fcc42f58c86b1ccd35c8be133104c8d5abc7a4d292df34",
+                      "bytes": 3887
+                    },
+                    "total": 6
+                  },
+                  "answer_key": {
+                    "count": 6
+                  },
+                  "hint": null,
+                  "explanation": "Trong đĩa có 6 cái kẹo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "nhieu-hon-it-hon-bang-nhau-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cún có 4 kẹo, Mèo có 4 kẹo. Hai đĩa kẹo thế nào?",
+                  "stem_audio": {
+                    "path": "audio/nhieu-hon-it-hon-bang-nhau-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "b04c2c1e3421ca392132a2201f173384b90ea2936136817002b00dc86b366d2f",
+                    "bytes": 38828
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "bằng nhau",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhieu-hon-it-hon-bang-nhau-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "6b563b2fb93ff7069501cb8ce3570ca72a08d1b075df29b76dfb67631cb6adc9",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "nhiều hơn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhieu-hon-it-hon-bang-nhau-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "5d581fde32a56763b9a98c77b4064705146fa1c0fceee4b7ec653a9ff9690ac3",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "ít hơn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhieu-hon-it-hon-bang-nhau-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "f5467f5c934fe17170301436c2cc9bda648295c23fa00f8a71fe9016a078e274",
+                        "bytes": 11756
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Không thừa kẹo nào nên hai bên bằng nhau.",
+                  "option_feedback": {
+                    "B": "Không đúng vì hai bên không bên nào thừa kẹo.",
+                    "C": "Không đúng vì hai bên không bên nào thiếu kẹo."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "on-tap-cau-do-cac-so",
+          "title": "Ôn tập: Câu đố các số",
+          "est_minutes": 8,
+          "summary": "Ôn lại các số qua 5 câu đố chạm và chọn hình.",
+          "key_ideas": [
+            "Đếm số quả",
+            "Chọn giỏ có 7 quả",
+            "Chọn nhóm ít hơn",
+            "Chọn hình có số 0",
+            "Không có câu hỏi nào cần đọc chữ"
+          ],
+          "blocks": [
+            {
+              "id": "on-tap-cau-do-cac-so-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/on-tap-cau-do-cac-so-b1.webp",
+                "mime": "image/webp",
+                "sha256": "1158cb337375decb5733cdae0a7577908924762648f9c57157657bf9ca23ff39",
+                "bytes": 31728
+              },
+              "alt": "Ba giỏ táo với số quả khác nhau",
+              "caption": "Đếm táo trong giỏ",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "113c367981d4e07278564d6422c502af430bdaa8b55f79aaa9310f1df75440a3",
+                "bytes": 15500
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b2",
+              "kind": "text",
+              "md": "Đếm số quả táo trong mỗi giỏ. Chạm vào hình đúng.",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "8b6c30413f2b26d49c3e586208b45867ec84df9f3c6f7ca438a5aad9a62afeba",
+                "bytes": 33932
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/on-tap-cau-do-cac-so-b3.webp",
+                "mime": "image/webp",
+                "sha256": "d1ddfd4f77ce45b645a9a27983589e64e1dac25b32500bb85f8ea3d631e8d57d",
+                "bytes": 16132
+              },
+              "alt": "Giỏ có 7 quả táo được khoanh tròn",
+              "caption": "Chọn giỏ có 7 quả",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "92165d834dfba83ed7ada4062053301cbe1ac4e1c6d40464f595742ab16401fe",
+                "bytes": 17516
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b4",
+              "kind": "text",
+              "md": "Bé tìm giỏ có đúng 7 quả táo. Rồi chạm vào giỏ đó.",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "cb777a38ec7ceaedd679515b439a55ec93b439a8230a271b8aa81ef9886ffbcd",
+                "bytes": 37820
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/on-tap-cau-do-cac-so-b5.webp",
+                "mime": "image/webp",
+                "sha256": "9d6f3673fd1a342f9108742cf8a238d14f6834a78d85c8816656992dcbc88abd",
+                "bytes": 17026
+              },
+              "alt": "Hai nhóm cam, một nhóm ít hơn",
+              "caption": "Nhóm nào ít hơn?",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "6b76bdafc9ac4b9c10338d2107f515dd68370f795caa051d6f5e99bad73725c8",
+                "bytes": 14636
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b6",
+              "kind": "text",
+              "md": "Ghép đôi từng quả một. Nhóm thừa ra là nhóm nhiều hơn.",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "6094cf9e2bb0596ac30c45644a493193257d9c731f9ad711ffcdf115a4bc65df",
+                "bytes": 35228
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/on-tap-cau-do-cac-so-b7.webp",
+                "mime": "image/webp",
+                "sha256": "6cc4617f570b79cf0a22ca3017fa051130fdaf79eb4040aed33979047956fc28",
+                "bytes": 23752
+              },
+              "alt": "Giỏ rỗng và tấm thẻ số 0",
+              "caption": "Không có quả nào",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b7.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d9fdcf680e8f7adfa92c8779114d44d81cf9534433b06afc5e9df4d61f218459",
+                "bytes": 14924
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b8",
+              "kind": "text",
+              "md": "Giỏ không còn quả nào. Đó là số 0.",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b8.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "7e47d13c10664a787093c8a1fa19a4783eff1554658012c42043347dbdcfe287",
+                "bytes": 30620
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Nhớ nhé",
+              "md": "Không câu nào cần đọc chữ. Bé chỉ chạm và chọn hình.",
+              "audio": {
+                "path": "audio/on-tap-cau-do-cac-so-b9.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "cb953d9735fa18c752964e497a00ea72d668f4b357aad7259f6cd1a04e0d98b9",
+                "bytes": 45452
+              }
+            },
+            {
+              "id": "on-tap-cau-do-cac-so-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "on-tap-cau-do-cac-so-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Chọn hình có số 0.",
+                  "stem_audio": {
+                    "path": "audio/on-tap-cau-do-cac-so-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "ec447590c777e594bc16644f75ec79d7893e3929a2d080a010d65356b2429286",
+                    "bytes": 16508
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/on-tap-cau-do-cac-so-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "134015eb4747360637ca811ae951ed02c1dcb82a0746a148332b6d91e23c2c1b",
+                        "bytes": 2287
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/on-tap-cau-do-cac-so-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "f878346b356954cd6bad3ffa92f728b9278bfa5a9a9f19286fc1c8fa90ea7a1b",
+                        "bytes": 2564
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/on-tap-cau-do-cac-so-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "33943f9d50668b5f2b1fdc3a73c4cd83a2e67998f1ba93575822722370e6ba12",
+                        "bytes": 2458
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Số 0 là khi không còn gì.",
+                  "explanation": "Giỏ không có quả nào là số 0.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "on-tap-cau-do-cac-so-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm vào $4$ quả táo.",
+                  "stem_audio": {
+                    "path": "audio/on-tap-cau-do-cac-so-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "2a63ec6845e7198a3bb9791f596c1f4529e6fd75d0e00b1da67b50b02e085c32",
+                    "bytes": 17228
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/on-tap-cau-do-cac-so-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "382ce79ad88634f4176b7242e2491c48c4edb6263f8bc43c94e56016629480bf",
+                      "bytes": 1597
+                    },
+                    "total": 6
+                  },
+                  "answer_key": {
+                    "count": 4
+                  },
+                  "hint": "Đếm chậm từng quả một.",
+                  "explanation": "Có $6$ quả táo, chạm đúng $4$ quả là đúng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "on-tap-cau-do-cac-so-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Nhóm nào ít hơn?",
+                  "stem_audio": {
+                    "path": "audio/on-tap-cau-do-cac-so-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "6b76bdafc9ac4b9c10338d2107f515dd68370f795caa051d6f5e99bad73725c8",
+                    "bytes": 14636
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$3$ quả táo",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/on-tap-cau-do-cac-so-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "d95e19f61d5f0c46103ccb7095e01b7e51e5d2335207bd69d342582eaaae59bc",
+                        "bytes": 13628
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "$5$ quả táo",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/on-tap-cau-do-cac-so-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "925b2707ea7fa00203b7f679ebc6004d351b9fa81453eed2b475792723914823",
+                        "bytes": 13628
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "$7$ quả táo",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/on-tap-cau-do-cac-so-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "42e8e8fb5436c8ea457e3510074c2252b09afb41ac68280196f26c75d18e1f3a",
+                        "bytes": 13772
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Ghép đôi từng quả để so sánh.",
+                  "explanation": "$3$ ít hơn $5$ và $7$.",
+                  "option_feedback": {
+                    "B": "$5$ nhiều hơn $3$.",
+                    "C": "$7$ nhiều hơn $3$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

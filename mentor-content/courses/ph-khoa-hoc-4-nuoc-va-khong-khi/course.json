@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-khoa-hoc-4-nuoc-va-khong-khi",
+  "title": "Khoa học 4: Nước và không khí",
+  "subject": "Khoa học",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Long",
+  "description_short": "Khóa học dùng thí nghiệm đơn giản với cốc nước, bóng bay và chai nhựa để giải thích nước, không khí và sự bay hơi. Dành cho học sinh lớp 4.",
+  "outcomes": [
+    "Mô tả được ba thể của nước và sự chuyển thể.",
+    "Nêu được tính chất và vai trò của không khí.",
+    "Biết cách tiết kiệm và giữ sạch nguồn nước."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 54,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Nước",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Ba thể của nước",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Vòng tuần hoàn của nước",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Nước sạch và nước bẩn",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Không khí",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Không khí ở quanh ta",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Gió và áp suất",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Bảo vệ bầu không khí",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

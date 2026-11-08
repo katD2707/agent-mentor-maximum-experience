@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-10-ham-so-bac-hai-va-vecto",
+  "title": "Toán 10: Hàm số bậc hai và vectơ",
+  "subject": "Toán",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Kiên",
+  "description_short": "Hàm số bậc hai được học bằng đồ thị và bài toán thực tế, sau đó là vectơ với phép cộng, nhân số và tích vô hướng. Dành cho học sinh lớp 10.",
+  "outcomes": [
+    "Khảo sát và vẽ được đồ thị hàm số bậc hai.",
+    "Thực hiện được phép toán trên vectơ.",
+    "Dùng tích vô hướng tính góc và độ dài."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 98,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hàm số bậc hai",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Đồ thị parabol",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Dấu của tam thức",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Bất phương trình bậc hai",
+          "est_minutes": 21
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Vectơ",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tổng và hiệu vectơ",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Tích với một số",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tích vô hướng",
+          "est_minutes": 20
+        }
+      ]
+    }
+  ]
+}

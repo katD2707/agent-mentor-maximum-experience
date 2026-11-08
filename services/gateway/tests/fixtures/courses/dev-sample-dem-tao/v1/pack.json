@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "course_id": "dev-sample-dem-tao",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "g1_5",
+  "title": "Toán 1: Đếm táo (bản mẫu dev)",
+  "chapters": [
+    {
+      "id": "ch-dem",
+      "title": "Các số đến 10",
+      "lessons": [
+        {
+          "id": "bai-1-dem-tao",
+          "title": "Cún đếm táo",
+          "est_minutes": 5,
+          "summary": "Đếm từng quả táo, rồi chọn giỏ đúng số.",
+          "key_ideas": [
+            "Chạm từng quả để đếm",
+            "Số cuối cùng là số quả"
+          ],
+          "blocks": [
+            {
+              "id": "a1-xem",
+              "kind": "text",
+              "md": "Xem: **Cún đếm táo**. Chạm vào từng quả táo nhé!",
+              "audio": {
+                "path": "doc/xem-cun-dem-tao.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "12c35ec654dbb03b03f955d2772d232ce0caf508b866d2893755e915d90c487c",
+                "bytes": 45504
+              }
+            },
+            {
+              "id": "a2-hinh",
+              "kind": "image",
+              "image": {
+                "path": "so-den-10.jpg",
+                "mime": "image/jpeg",
+                "sha256": "4af258fa8c886bf3d7047b6cacc862fc87e272f837c00a9d74b017109646179b",
+                "bytes": 33340
+              },
+              "alt": "Các số từ 0 đến 10",
+              "caption": "Các số đến 10",
+              "audio": {
+                "path": "doc/xem-cun-dem-tao.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "12c35ec654dbb03b03f955d2772d232ce0caf508b866d2893755e915d90c487c",
+                "bytes": 45504
+              }
+            },
+            {
+              "id": "a3-cau-do",
+              "kind": "quiz",
+              "title": "Câu đố",
+              "items": [
+                {
+                  "id": "q-cham-dem",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm vào từng quả táo. Có mấy quả?",
+                  "stem_audio": {
+                    "path": "doc/chon-gio.wav",
+                    "mime": "audio/wav",
+                    "sha256": "b43b547bb764e066aaf9fe4408af08afdb317db12ff8bc38f666214924acddf0",
+                    "bytes": 392036
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "apple-one.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "52172668fac4835d3265b3e30defe8445ead69df9a6ea0edb88e4d97ca94c6a5",
+                      "bytes": 239
+                    },
+                    "total": 7
+                  },
+                  "answer_key": {
+                    "count": 7
+                  },
+                  "hint": null,
+                  "explanation": "Đếm lại chậm nhé: có 7 quả táo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "q-chon-hinh",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Chạm vào giỏ có 5 quả.",
+                  "stem_audio": {
+                    "path": "doc/chon-gio.wav",
+                    "mime": "audio/wav",
+                    "sha256": "b43b547bb764e066aaf9fe4408af08afdb317db12ff8bc38f666214924acddf0",
+                    "bytes": 392036
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "apples-3.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "9e827a9ea6d0fca96d09b9cae80935dbb95cde5c656109b8b474e5025c24812d",
+                        "bytes": 539
+                      },
+                      "audio": {
+                        "path": "doc/xem-cun-dem-tao.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "12c35ec654dbb03b03f955d2772d232ce0caf508b866d2893755e915d90c487c",
+                        "bytes": 45504
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "apples-5.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "901a171161db0f84c864ed9d59412bd5a1902980b35f9f52fbd887c23e9b5fe6",
+                        "bytes": 839
+                      },
+                      "audio": {
+                        "path": "doc/xem-cun-dem-tao.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "12c35ec654dbb03b03f955d2772d232ce0caf508b866d2893755e915d90c487c",
+                        "bytes": 45504
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "apples-7.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "bf999b47e9cfbc60790f3d84ef955d04ae05d2d0ebd1da8771f8199707b7ea19",
+                        "bytes": 1141
+                      },
+                      "audio": {
+                        "path": "doc/xem-cun-dem-tao.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "12c35ec654dbb03b03f955d2772d232ce0caf508b866d2893755e915d90c487c",
+                        "bytes": 45504
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Giỏ B có 5 quả táo.",
+                  "option_feedback": {
+                    "A": "Giỏ này ít hơn 5.",
+                    "C": "Giỏ này nhiều hơn 5."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

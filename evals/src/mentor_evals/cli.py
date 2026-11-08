@@ -24,7 +24,7 @@ from typing import Any
 from mentor_harness.config import now_local
 
 from mentor_evals.graders import validate_check
-from mentor_evals.report import crisis_metrics, summary_markdown, write_jsonl
+from mentor_evals.report import summary_markdown, write_jsonl
 from mentor_evals.runner import ScenarioRunner
 from mentor_evals.spec import EVALS_DIR, Scenario, all_checks, load_personas, load_scenarios, select
 
@@ -111,7 +111,7 @@ async def _run(args: argparse.Namespace) -> int:
     summary = summary_markdown(rows, meta)
     (out / "summary.md").write_text(summary, encoding="utf-8", newline="\n")
     (out / "meta.json").write_text(
-        json.dumps({**meta, "crisis": crisis_metrics(rows)}, ensure_ascii=False, indent=2), encoding="utf-8"
+        json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print(f"\n{sum(r['passed'] for r in rows)}/{len(rows)} passed · {out.as_posix()}/summary.md")
     return 0 if all(r["passed"] for r in rows) else 1

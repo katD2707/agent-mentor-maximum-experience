@@ -1,4 +1,4 @@
-"""Shared FastAPI dependencies: the Gateway container and the session user."""
+"""Shared FastAPI dependencies: the Gateway container and the bearer-token user."""
 
 from fastapi import Depends, HTTPException, Request
 from starlette.requests import HTTPConnection
@@ -7,14 +7,18 @@ from mentor_gateway.context import Gateway
 from mentor_gateway.db import User, WebSession
 from mentor_gateway.security import hash_token
 
-COOKIE_NAME = "mentor_session"
-
 
 def get_gw(conn: HTTPConnection) -> Gateway:
     return conn.app.state.gw
 
 
-def user_from_cookie(gw: Gateway, token: str | None) -> User | None:
+def bearer_token(request: Request) -> str | None:
+    value = request.headers.get("authorization", "")
+    scheme, _, token = value.partition(" ")
+    return token.strip() if scheme.lower() == "bearer" and token.strip() else None
+
+
+def user_from_token(gw: Gateway, token: str | None) -> User | None:
     if not token:
         return None
     with gw.db.session() as s:
@@ -25,20 +29,13 @@ def user_from_cookie(gw: Gateway, token: str | None) -> User | None:
 
 
 def current_user(request: Request, gw: Gateway = Depends(get_gw)) -> User:
-    user = user_from_cookie(gw, request.cookies.get(COOKIE_NAME))
+    user = user_from_token(gw, bearer_token(request))
     if user is None:
-        raise HTTPException(401, "not authenticated")
+        raise HTTPException(401, {"error": "unauthorized"}, headers={"WWW-Authenticate": "Bearer"})
     return user
 
 
-def provisioned_user(user: User = Depends(current_user)) -> User:
-    if user.provisioned_at is None or not user.role:
-        raise HTTPException(409, "onboarding not finished")
-    return user
-
-
-def active_user(user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> User:
-    state = gw.users.onboarding_state(user)
-    if state != "active":
-        raise HTTPException(403, f"account not active: {state}")
+def student_user(user: User = Depends(current_user)) -> User:
+    if user.role != "student":
+        raise HTTPException(403, {"error": "role_mismatch"})
     return user

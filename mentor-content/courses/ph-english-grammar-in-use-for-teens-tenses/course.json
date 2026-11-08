@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-english-grammar-in-use-for-teens-tenses",
+  "title": "English Grammar in Use for Teens: Tenses",
+  "subject": "English",
+  "age_band": "g6_9",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Mr. David Nguyen",
+  "description_short": "Twelve tenses explained with timelines and examples from teenage life, followed by short gap-fill drills. For learners at pre-intermediate level.",
+  "outcomes": [
+    "Choose between past simple, present perfect and past continuous.",
+    "Build correct questions and negatives in each tense.",
+    "Fix common tense mistakes in your own writing."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 89,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Present",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Simple and continuous",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Present perfect",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Perfect or past?",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Past and future",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Past simple",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Past continuous",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Future forms",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

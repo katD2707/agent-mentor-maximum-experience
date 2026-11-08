@@ -12,8 +12,7 @@ members = [
   "sandbox-image/harness",
   "sandbox-image/scripts",
   "services/gateway",
-  "services/parent-channel",
-  "services/email-ingest",
+  "services/course-builder",
   "evals",
 ]
 
@@ -21,12 +20,12 @@ members = [
 mentor-schemas = { workspace = true }
 mentor-scripts = { workspace = true }
 mentor-harness = { workspace = true }
-mentor-parent-channel = { workspace = true }
-mentor-email-ingest = { workspace = true }
+mentor-course-builder = { workspace = true }
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
+markers = ["live: calls a real external service; skipped unless its MENTOR_LIVE_* env var is 1"]
 
 [tool.ruff]
 line-length = 120

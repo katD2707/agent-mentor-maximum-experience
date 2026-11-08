@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-vat-li-9-dien-tu-hoc-va-anh-sang",
+  "title": "Vật lí 9: Điện từ học và ánh sáng",
+  "subject": "Vật lí",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Trí",
+  "description_short": "Từ nam châm, cảm ứng điện từ đến khúc xạ ánh sáng và thấu kính, mỗi chương có hình vẽ đường đi tia sáng để tự làm lại. Hợp với học sinh lớp 9.",
+  "outcomes": [
+    "Giải thích được cảm ứng điện từ và máy biến áp.",
+    "Vẽ được đường truyền tia sáng qua thấu kính.",
+    "Giải được bài tập về công suất điện."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 65,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Điện từ học",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Từ trường",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cảm ứng điện từ",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Máy biến áp",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Quang học",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Khúc xạ ánh sáng",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Thấu kính hội tụ",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Mắt và kính",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

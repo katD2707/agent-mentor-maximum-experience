@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-xac-suat-thong-ke-bien-ngau-nhien-va-phan-ph",
+  "title": "Xác suất thống kê: Biến ngẫu nhiên và phân phối",
+  "subject": "Xác suất thống kê",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Nguyễn Hữu Tâm",
+  "description_short": "Biến ngẫu nhiên rời rạc và liên tục, kì vọng, phương sai và các phân phối thường dùng, kèm mô phỏng bằng Python. Dành cho sinh viên năm hai.",
+  "outcomes": [
+    "Tính được kì vọng và phương sai.",
+    "Chọn được phân phối phù hợp với bài toán.",
+    "Dùng định lí giới hạn trung tâm để xấp xỉ."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 219,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Biến ngẫu nhiên",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Rời rạc",
+          "est_minutes": 35
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Liên tục",
+          "est_minutes": 37
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Kì vọng và phương sai",
+          "est_minutes": 35
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Phân phối",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Nhị thức và Poisson",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chuẩn",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Giới hạn trung tâm",
+          "est_minutes": 42
+        }
+      ]
+    }
+  ]
+}

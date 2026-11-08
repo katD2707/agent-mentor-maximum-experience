@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow under the dish -->
+  <ellipse cx="200" cy="324" rx="112" ry="17" fill="#E9E5F6"/>
+
+  <!-- dish -->
+  <ellipse cx="200" cy="265" rx="130" ry="54" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+  <ellipse cx="200" cy="268" rx="104" ry="38" fill="none" stroke="#5A4BC0" stroke-width="3.5"/>
+
+  <!-- mint shine on the front rim -->
+  <path d="M120,296 Q200,328 280,296" fill="none" stroke="#9FD8BF" stroke-width="8"/>
+
+  <!-- left candy -->
+  <g transform="translate(140,202) rotate(-12)">
+    <polygon points="-34,-9 -56,-26 -48,0 -56,26 -34,9"
+             fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+    <polygon points="34,-9 56,-26 48,0 56,26 34,9"
+             fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+    <ellipse cx="0" cy="0" rx="34" ry="27" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <path d="M-13,-9 q9,-7 21,-5" fill="none" stroke="#2B283F" stroke-width="3" opacity="0.3"/>
+  </g>
+
+  <!-- right candy -->
+  <g transform="translate(260,202) rotate(12)">
+    <polygon points="-34,-9 -56,-26 -48,0 -56,26 -34,9"
+             fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+    <polygon points="34,-9 56,-26 48,0 56,26 34,9"
+             fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+    <ellipse cx="0" cy="0" rx="34" ry="27" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <path d="M-13,-9 q9,-7 21,-5" fill="none" stroke="#2B283F" stroke-width="3" opacity="0.3"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

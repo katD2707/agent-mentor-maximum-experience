@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-kinh-te-vi-mo-cung-cau-va-thi-truong",
+  "title": "Kinh tế vi mô: Cung cầu và thị trường",
+  "subject": "Kinh tế vi mô",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Lương Thu Phương",
+  "description_short": "Cung, cầu, độ co giãn và cấu trúc thị trường, giải thích bằng đồ thị và tình huống thị trường gạo, cà phê. Dành cho sinh viên năm nhất khối kinh tế.",
+  "outcomes": [
+    "Dựng và dịch chuyển đường cung, cầu.",
+    "Tính độ co giãn của cầu.",
+    "So sánh cạnh tranh hoàn hảo với độc quyền."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 191,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Cung và cầu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Đường cầu",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Đường cung",
+          "est_minutes": 30
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Cân bằng thị trường",
+          "est_minutes": 28
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Hành vi doanh nghiệp",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chi phí",
+          "est_minutes": 33
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Cạnh tranh hoàn hảo",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Độc quyền",
+          "est_minutes": 37
+        }
+      ]
+    }
+  ]
+}

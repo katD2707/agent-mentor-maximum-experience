@@ -8,27 +8,18 @@ from mentor_schemas import JobKind, JobRequest, ModelAlias, Profile
 JOB_SKILLS: dict[JobKind, str | None] = {
     JobKind.NIGHTLY_REFLECTION: "nightly-reflection",
     JobKind.INTAKE: "intake-document",
-    JobKind.PARENT_REPORT: "parent-report",
-    JobKind.LITERATURE_WATCH: "literature-watch",
     JobKind.ROUTINE: None,  # the skill is named in the job's prompt
     JobKind.FOCUS_END: None,  # fixed prompt below
-}
-
-JOB_PROFILES: dict[JobKind, frozenset[Profile]] = {
-    JobKind.PARENT_REPORT: frozenset({Profile.THPT}),
-    JobKind.LITERATURE_WATCH: frozenset({Profile.NCS}),
 }
 
 JOB_TITLES_VI: dict[JobKind, str] = {
     JobKind.NIGHTLY_REFLECTION: "phản tư hằng đêm",
     JobKind.INTAKE: "xử lý file mới trong inbox",
     JobKind.ROUTINE: "việc định kỳ",
-    JobKind.PARENT_REPORT: "soạn báo cáo phụ huynh",
-    JobKind.LITERATURE_WATCH: "theo dõi tài liệu mới",
     JobKind.FOCUS_END: "hỏi thăm khi hết phiên tập trung",
 }
 
-REASONING_JOBS = frozenset({JobKind.NIGHTLY_REFLECTION, JobKind.PARENT_REPORT})
+REASONING_JOBS = frozenset({JobKind.NIGHTLY_REFLECTION})
 
 SKIP_PREFIX = "BỎ QUA:"
 
@@ -38,7 +29,7 @@ def job_alias(kind: JobKind) -> ModelAlias:
 
 
 def job_applies(kind: JobKind, profile: Profile) -> bool:
-    return profile in JOB_PROFILES.get(kind, frozenset(Profile))
+    return True  # per-profile gating of job kinds: none today
 
 
 def focus_end_prompt(req: JobRequest, card: dict) -> str:

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-academic-writing-for-university",
+  "title": "Academic Writing for University",
+  "subject": "Academic Writing",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Dr. Helen Do",
+  "description_short": "How to build an argument, cite sources and revise a 1500-word essay, with before and after examples. For students writing in English for the first time at university.",
+  "outcomes": [
+    "State a thesis and support it in paragraphs.",
+    "Cite and reference in APA style.",
+    "Revise for clarity and concision."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 147,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Argument",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Thesis",
+          "est_minutes": 25
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Evidence",
+          "est_minutes": 31
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Structure",
+          "est_minutes": 21
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Sources and style",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Citing",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Paraphrasing",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Revising",
+          "est_minutes": 28
+        }
+      ]
+    }
+  ]
+}

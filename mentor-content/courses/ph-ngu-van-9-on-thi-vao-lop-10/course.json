@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-ngu-van-9-on-thi-vao-lop-10",
+  "title": "Ngữ văn 9: Ôn thi vào lớp 10",
+  "subject": "Ngữ văn",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Hiền",
+  "description_short": "Hệ thống lại cấu trúc đề thi vào lớp 10, kèm dàn ý mẫu cho nghị luận xã hội và nghị luận văn học. Mỗi bài có một đề tập viết trong 40 phút.",
+  "outcomes": [
+    "Nắm cấu trúc và thang điểm đề thi.",
+    "Lập dàn ý nhanh cho hai dạng nghị luận.",
+    "Tự chấm bài viết theo tiêu chí."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 74,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Đọc hiểu",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Dạng câu hỏi thường gặp",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Nhận diện biện pháp tu từ",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Làm văn",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Nghị luận xã hội",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Nghị luận văn học",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Phân bổ thời gian",
+          "est_minutes": 18
+        }
+      ]
+    }
+  ]
+}

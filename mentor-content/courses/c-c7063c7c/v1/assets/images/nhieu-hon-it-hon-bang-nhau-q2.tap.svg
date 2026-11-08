@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- plate -->
+  <circle cx="200" cy="200" r="150" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="6"/>
+  <circle cx="200" cy="200" r="124" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="3"/>
+
+  <!-- candy 1 : right -->
+  <g transform="translate(278,200) rotate(0)">
+    <path d="M-28,-15 L-48,-17 L-43,-6 L-48,6 L-43,17 L-28,15 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28,-15 L48,-17 L43,-6 L48,6 L43,17 L28,15 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="-30" y="-17" width="60" height="34" rx="16" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+    <ellipse cx="-9" cy="-6" rx="12" ry="6" fill="#F7F1E3"/>
+  </g>
+
+  <!-- candy 2 : lower right -->
+  <g transform="translate(239,267.5) rotate(60)">
+    <path d="M-28,-15 L-48,-17 L-43,-6 L-48,6 L-43,17 L-28,15 Z" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28,-15 L48,-17 L43,-6 L48,6 L43,17 L28,15 Z" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="-30" y="-17" width="60" height="34" rx="16" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+    <ellipse cx="-9" cy="-6" rx="12" ry="6" fill="#F7F1E3"/>
+  </g>
+
+  <!-- candy 3 : lower left -->
+  <g transform="translate(161,267.5) rotate(120)">
+    <path d="M-28,-15 L-48,-17 L-43,-6 L-48,6 L-43,17 L-28,15 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28,-15 L48,-17 L43,-6 L48,6 L43,17 L28,15 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="-30" y="-17" width="60" height="34" rx="16" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+    <ellipse cx="-9" cy="-6" rx="12" ry="6" fill="#F7F1E3"/>
+  </g>
+
+  <!-- candy 4 : left -->
+  <g transform="translate(122,200) rotate(180)">
+    <path d="M-28,-15 L-48,-17 L-43,-6 L-48,6 L-43,17 L-28,15 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28,-15 L48,-17 L43,-6 L48,6 L43,17 L28,15 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="-30" y="-17" width="60" height="34" rx="16" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+    <ellipse cx="-9" cy="-6" rx="12" ry="6" fill="#F7F1E3"/>
+  </g>
+
+  <!-- candy 5 : upper left -->
+  <g transform="translate(161,132.5) rotate(240)">
+    <path d="M-28,-15 L-48,-17 L-43,-6 L-48,6 L-43,17 L-28,15 Z" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28,-15 L48,-17 L43,-6 L48,6 L43,17 L28,15 Z" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="-30" y="-17" width="60" height="34" rx="16" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+    <ellipse cx="-9" cy="-6" rx="12" ry="6" fill="#F7F1E3"/>
+  </g>
+
+  <!-- candy 6 : upper right -->
+  <g transform="translate(239,132.5) rotate(300)">
+    <path d="M-28,-15 L-48,-17 L-43,-6 L-48,6 L-43,17 L-28,15 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M28,-15 L48,-17 L43,-6 L48,6 L43,17 L28,15 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="-30" y="-17" width="60" height="34" rx="16" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+    <ellipse cx="-9" cy="-6" rx="12" ry="6" fill="#F7F1E3"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

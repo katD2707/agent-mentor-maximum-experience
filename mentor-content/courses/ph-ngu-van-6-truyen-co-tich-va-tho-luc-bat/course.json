@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-ngu-van-6-truyen-co-tich-va-tho-luc-bat",
+  "title": "Ngữ văn 6: Truyện cổ tích và thơ lục bát",
+  "subject": "Ngữ văn",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Thanh",
+  "description_short": "Đọc kĩ ba truyện cổ tích và một số bài thơ lục bát, rồi tập kể lại và làm thơ bằng lời của em. Có hướng dẫn viết bài văn kể chuyện.",
+  "outcomes": [
+    "Nhận ra nhân vật, sự kiện và bài học trong truyện.",
+    "Nhận biết vần, nhịp của thơ lục bát.",
+    "Viết được bài văn kể lại một câu chuyện."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 81,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Truyện cổ tích",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Thạch Sanh",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cây bút thần",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Kể lại truyện",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Thơ lục bát",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Vần và nhịp",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đọc một bài ca dao",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tập làm thơ",
+          "est_minutes": 13
+        }
+      ]
+    }
+  ]
+}

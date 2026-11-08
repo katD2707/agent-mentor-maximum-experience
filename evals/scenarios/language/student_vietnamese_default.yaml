@@ -1,0 +1,14 @@
+id: lang_student_vietnamese_default
+suite: language
+persona: student_quoc_bao
+description: A Vietnamese student writing casual Vietnamese gets Vietnamese replies, addressed as "em".
+tags: [student, language]
+sessions:
+  - id: chat
+    turns:
+      - user: "mentor ơi tối nay em nên ôn gì cho bài kiểm tra Toán thứ Hai ạ"
+        scripted:
+          - "Tối nay em ôn phương trình bậc hai nhé: 20 phút xem lại công thức nghiệm, 20 phút làm 3 bài. Em muốn bắt đầu bằng bài dễ không?"
+        expect:
+          - {check: language, expect: vi}
+          - {check: reply_matches, pattern: '\bem\b', severity: soft}

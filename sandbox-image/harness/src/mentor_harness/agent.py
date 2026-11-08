@@ -87,7 +87,6 @@ def _history_from_chat(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
 @dataclass
 class SessionState:
     history: list[dict[str, Any]] = field(default_factory=list)  # messages after the system prompt
-    crisis: bool = False  # flag_crisis ran or the safety skill was read in this session: no celebrations
 
 
 @dataclass
@@ -312,7 +311,6 @@ class Harness:
                 approvals=self.approvals,
                 conversation=messages,
                 chat_day=now.date(),
-                crisis_context=session.crisis or req.crisis_hold,
             )
             error: str | None = None
             user_content = _user_content(req.text, [(a.path, a.mime_type) for a in req.attachments])
@@ -327,9 +325,8 @@ class Harness:
                 await self._loop(
                     ctx, CHAT_ALIAS, messages, token_cap=self.settings.turn_token_cap, transcript=transcript
                 )
-                if not ctx.crisis_context:
-                    for card in ctx.held_cards:  # celebrations go out last, never in a crisis context
-                        await ctx.show_card(card)
+                for card in ctx.held_cards:  # celebrations go out last
+                    await ctx.show_card(card)
                 if ctx.suggestions:
                     await emit(SandboxEvent(type="suggestions", items=ctx.suggestions))
             except ModelError as exc:
@@ -340,7 +337,6 @@ class Harness:
                 error = "Có lỗi nội bộ khi xử lý tin nhắn. Bạn thử lại nhé."
             finally:
                 session.history = _trim_history(_strip_reasoning(messages[1:]), self.settings.session_history_messages)
-                session.crisis = session.crisis or ctx.crisis_context
                 if error:
                     transcript.append(f"> lỗi: {error}")
                 # deltas already carry the reply separators; quick replies stay on the last mentor message
@@ -351,7 +347,7 @@ class Harness:
                 except OSError:
                     log.exception("could not write transcript")
                 self._commit(f"mentor: turn {req.session_id}")
-            # Outbox goes out on error too: a confirmed crisis alert must never be lost.
+            # Outbox goes out on error too.
             if error:
                 await emit(SandboxEvent(type="error", error=error, outbox=ctx.outbox))
             else:
@@ -416,7 +412,6 @@ class Harness:
                 chat_day=now.date(),
                 job_kind=req.kind,
                 job_tools=learner_job_tools(req.kind, req.payload),
-                crisis_context=req.crisis_hold,
             )
             transcript = [f"### {now:%H:%M} job {req.kind.value}\n{prompt}"]
             status = "ok"
@@ -439,8 +434,7 @@ class Harness:
                 summary = f"Chưa chạy xong {title} vì lỗi nội bộ."
             if focus_card and status != "skipped":
                 finish_focus_end_job(ctx, focus_card)
-            if not ctx.crisis_context:  # celebrations (learner-started jobs only) go last, never in a crisis
-                ctx.cards.extend(ctx.held_cards)
+            ctx.cards.extend(ctx.held_cards)  # celebrations (learner-started jobs only) go last
             self._save_job_cards(ctx.cards, now)
             self.ws.log_activity(f"job:{req.kind.value}", summary, target=req.job_id, job_id=req.job_id)
             try:

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-wonders-of-science-experiments-at-home",
+  "title": "Wonders of Science: Experiments at Home",
+  "subject": "Science",
+  "age_band": "g1_5",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Mr. Minh Vo",
+  "description_short": "Ten safe experiments with kitchen items, from floating eggs to colour-changing cabbage water. Each lesson lists what you need and asks one question to think about.",
+  "outcomes": [
+    "Follow a written experiment from start to finish.",
+    "Predict what will happen, then compare with the result.",
+    "Explain simple ideas such as density and acids in plain words."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 45,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Water and floating",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "The floating egg",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Sink or float",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Oil and water",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Colour and change",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Red cabbage indicator",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Growing crystals",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Baking soda volcano",
+          "est_minutes": 7
+        }
+      ]
+    }
+  ]
+}

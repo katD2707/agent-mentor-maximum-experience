@@ -11,7 +11,6 @@ from __future__ import annotations
 
 import json
 import os
-import re
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -24,17 +23,15 @@ SCRIPT_EXHAUSTED = "(eval scripted) Hết kịch bản cho lượt này."
 
 
 class EvalScriptedModel:
-    """Replays scripted steps for chat/reasoning calls; answers mentor-safety-b from a per-turn flag."""
+    """Replays scripted steps for chat/reasoning calls."""
 
     def __init__(self) -> None:
         self.queue: list[ScriptedStep] = []
-        self.safety_confirms = False
         self.exhausted = 0
         self._n = 0
 
-    def load(self, steps: list[ScriptedStep], *, safety_confirms: bool = False) -> None:
+    def load(self, steps: list[ScriptedStep]) -> None:
         self.queue = list(steps)
-        self.safety_confirms = safety_confirms
 
     async def complete(
         self,
@@ -48,9 +45,6 @@ class EvalScriptedModel:
     ) -> ModelResponse:
         alias = ModelAlias(alias)
         usage = {"total_tokens": 1}
-        if alias in (ModelAlias.SAFETY_CONFIRM, ModelAlias.SAFETY_DETECT):
-            verdict = {"confirmed": self.safety_confirms, "reason": "eval scripted"}
-            return ModelResponse(content=json.dumps(verdict), usage=usage)
         if alias == ModelAlias.VISION:
             return ModelResponse(content="(eval scripted) Ảnh không đọc được trong chế độ scripted.", usage=usage)
         if not self.queue:
@@ -93,29 +87,11 @@ class ToolCallRecord:
 
 
 @dataclass
-class SafetyReview:
-    alias: str
-    content: str
-
-    @property
-    def confirmed(self) -> bool:
-        m = re.search(r"\{.*\}", self.content or "", re.DOTALL)
-        if not m:
-            return False
-        try:
-            data = json.loads(m.group(0))
-        except json.JSONDecodeError:
-            return False
-        return isinstance(data, dict) and data.get("confirmed") is True
-
-
-@dataclass
 class RecordingModel:
-    """Wraps a ModelClient; keeps tool calls (with results), safety reviews and token usage."""
+    """Wraps a ModelClient; keeps tool calls (with results) and token usage."""
 
     inner: Any
     tool_calls: list[ToolCallRecord] = field(default_factory=list)
-    safety_reviews: list[SafetyReview] = field(default_factory=list)
     usage: dict[str, int] = field(default_factory=dict)
     offered: list[str] = field(default_factory=list)  # tool names offered to the model, one entry per call
     calls: int = 0
@@ -142,8 +118,6 @@ class RecordingModel:
         )
         self.calls += 1
         self.usage[alias.value] = self.usage.get(alias.value, 0) + resp.total_tokens
-        if alias in (ModelAlias.SAFETY_CONFIRM, ModelAlias.SAFETY_DETECT):
-            self.safety_reviews.append(SafetyReview(alias.value, resp.content))
         if tool_choice != "none":
             for c in resp.tool_calls:
                 try:

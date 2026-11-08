@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-khoa-hoc-tu-nhien-6-chat-va-su-bien-doi",
+  "title": "Khoa học tự nhiên 6: Chất và sự biến đổi",
+  "subject": "Khoa học tự nhiên",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Cường",
+  "description_short": "Từ vật thể, chất đến hỗn hợp và cách tách chất, mỗi bài có thí nghiệm có thể làm bằng đồ dùng trong nhà. Dành cho học sinh lớp 6.",
+  "outcomes": [
+    "Phân biệt vật thể, chất và hỗn hợp.",
+    "Chọn được cách tách phù hợp cho từng hỗn hợp.",
+    "Nêu được sự biến đổi vật lí và hóa học."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 87,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Chất quanh ta",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Vật thể và chất",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Ba thể của chất",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Sự nóng chảy và bay hơi",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Hỗn hợp",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Dung dịch",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Lọc, chiết, cô cạn",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Biến đổi hóa học",
+          "est_minutes": 14
+        }
+      ]
+    }
+  ]
+}

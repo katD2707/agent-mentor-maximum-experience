@@ -7,7 +7,7 @@ from typing import Any
 from fastapi import APIRouter, Body, Depends, HTTPException, Query
 from pydantic import BaseModel, Field
 
-from mentor_gateway.api.deps import get_gw, provisioned_user
+from mentor_gateway.api.deps import current_user, get_gw
 from mentor_gateway.context import Gateway
 from mentor_gateway.db import User
 from mentor_gateway.push import PushSubscriptionError
@@ -17,7 +17,7 @@ router = APIRouter(tags=["nudges"])
 
 
 @router.get("/notifications")
-def list_notifications(limit: int = Query(30, ge=1, le=100), user: User = Depends(provisioned_user),
+def list_notifications(limit: int = Query(30, ge=1, le=100), user: User = Depends(current_user),
                        gw: Gateway = Depends(get_gw)) -> list[dict]:
     """Notifications the learner has received, newest first (the notification centre; push opens land here)."""
     return [i.view() for i in gw.hub.recent(user.id, limit)]
@@ -28,7 +28,7 @@ class ActionBody(BaseModel):
 
 
 @router.post("/notifications/{notification_id}/action")
-async def notification_action(notification_id: int, body: ActionBody, user: User = Depends(provisioned_user),
+async def notification_action(notification_id: int, body: ActionBody, user: User = Depends(current_user),
                               gw: Gateway = Depends(get_gw)) -> dict:
     try:
         result = await gw.nudges.apply(user, notification_id, body.action)
@@ -41,7 +41,7 @@ async def notification_action(notification_id: int, body: ActionBody, user: User
 
 
 @router.get("/engagement")
-async def engagement(user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> dict:
+async def engagement(user: User = Depends(current_user), gw: Gateway = Depends(get_gw)) -> dict:
     return await asyncio.to_thread(gw.engagement.summary, user)
 
 
@@ -49,7 +49,7 @@ async def engagement(user: User = Depends(provisioned_user), gw: Gateway = Depen
 
 
 @router.get("/push/vapid-public-key")
-def vapid_public_key(user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> dict:
+def vapid_public_key(user: User = Depends(current_user), gw: Gateway = Depends(get_gw)) -> dict:
     """`public_key` is null (and `enabled` false) when push is not configured: the web app hides the switch."""
     return {"enabled": gw.push.enabled, "public_key": gw.push.public_key,
             "subscribed_devices": gw.push.count(user.id)}
@@ -61,7 +61,7 @@ class SubscribeBody(BaseModel):
 
 
 @router.post("/push/subscribe")
-def push_subscribe(body: SubscribeBody, user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> dict:
+def push_subscribe(body: SubscribeBody, user: User = Depends(current_user), gw: Gateway = Depends(get_gw)) -> dict:
     if not gw.push.enabled:
         raise HTTPException(503, "push notifications are not configured")
     try:
@@ -78,7 +78,7 @@ class UnsubscribeBody(BaseModel):
 
 @router.delete("/push/subscribe")
 def push_unsubscribe(body: UnsubscribeBody | None = Body(default=None), endpoint: str | None = Query(None),
-                     user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> dict:
+                     user: User = Depends(current_user), gw: Gateway = Depends(get_gw)) -> dict:
     """One device (`endpoint`, in the body, `subscription.endpoint`, or `?endpoint=`) or, with none, all devices."""
     ep = endpoint
     if body is not None:

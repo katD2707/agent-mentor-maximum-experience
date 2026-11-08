@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "dev-sample-dien-truong",
+  "title": "Vật lí 11: Điện trường (bản mẫu dev)",
+  "subject": "Vật lí",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "giaovien",
+  "teacher_name": "Thầy Minh",
+  "description_short": "Điện trường, đường sức điện và cường độ điện trường qua video, bài đọc ngắn và câu hỏi kiểm tra. Khóa mẫu để thử trình học, xóa sau P4.",
+  "outcomes": [
+    "Vẽ và đọc được đường sức điện của điện tích điểm",
+    "Tính cường độ điện trường E = k|q|/(εr²)",
+    "Nhận ra chỗ điện trường mạnh hay yếu từ độ dày đường sức"
+  ],
+  "cover": "cover.jpg",
+  "media": [
+    "video",
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 2,
+  "est_minutes": 20,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-06T17:18:31.795981Z",
+      "published_at": "2026-11-06T17:18:32.065869Z",
+      "pack_sha256": "f531ca4f196465ddaf646c6829acbbf7d5b80854ac54f77d7bcda0f069aee9e0",
+      "pack_bytes": 2350989,
+      "note": "DEV SAMPLE: placeholder content for the player and API; delete after P4 (replaced by builder-made courses)."
+    }
+  ]
+}

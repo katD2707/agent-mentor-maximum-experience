@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "ph-nguyen-li-ke-toan",
+  "title": "Nguyên lí kế toán",
+  "subject": "Kế toán",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "ThS. Cao Thị Mỹ",
+  "description_short": "Phương trình kế toán, bút toán kép và lập báo cáo tài chính đơn giản cho một cửa hàng nhỏ. Dành cho sinh viên năm nhất khối kinh tế.",
+  "outcomes": [
+    "Ghi được bút toán kép.",
+    "Lập được bảng cân đối kế toán.",
+    "Đọc được báo cáo kết quả kinh doanh."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 4,
+  "est_minutes": 150,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Nền tảng",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Phương trình kế toán",
+          "est_minutes": 42
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Bút toán kép",
+          "est_minutes": 20
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Báo cáo",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Bảng cân đối kế toán",
+          "est_minutes": 43
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Báo cáo kết quả kinh doanh",
+          "est_minutes": 45
+        }
+      ]
+    }
+  ]
+}

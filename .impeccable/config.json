@@ -1,29 +1,9 @@
 {
   "detector": {
     "ignoreRules": [],
-    "ignoreFiles": [],
-    "ignoreValues": [
-      {
-        "rule": "low-contrast",
-        "value": "*",
-        "files": ["docs/ban-do-mentor.html"],
-        "createdAt": "2026-11-06T04:20:00.000Z",
-        "reason": "assistant triage: matches are architecture-diagram nodes dimmed on purpose (opacity) when one data flow is selected; full contrast under 'Xem tất cả' and on the highlighted path"
-      },
-      {
-        "rule": "tiny-text",
-        "value": "*",
-        "files": ["docs/ban-do-mentor.html"],
-        "createdAt": "2026-11-06T04:20:00.000Z",
-        "reason": "assistant triage: 11-11.5px are labels inside scalable inline SVG diagrams (viewBox scales them up on desktop); running text is 15-16px"
-      },
-      {
-        "rule": "cramped-padding",
-        "value": "*",
-        "files": ["docs/ban-do-mentor.html"],
-        "createdAt": "2026-11-06T04:20:00.000Z",
-        "reason": "assistant triage: sections use a 1px top divider with 56px padding-block on the section; crisis-frame and stepper are clip containers whose children carry their own padding"
-      }
-    ]
+    "ignoreFiles": [
+      "packages/mentor-mascot/demo.html"
+    ],
+    "ignoreValues": []
   }
 }

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# Local demo of Mentor on one Linux machine with Docker (README "Chạy thử trên máy").
+# Local demo of Mentor on one Linux machine with Docker (README "Local demo").
 #
 #   bash infra/demo.sh            first run: create infra/.env.demo, then build and start; later runs: start/update
-#   bash infra/demo.sh accounts   create two demo learners (THPT + NCS, synthetic data) and print their login links
-#   bash infra/demo.sh login EMAIL   print a fresh login link + code for EMAIL
-#   bash infra/demo.sh logs [svc]    follow logs (gateway, web, model-router, searxng)
+#   bash infra/demo.sh logs [svc]    follow logs (gateway, web, model-router)
 #   bash infra/demo.sh stop          stop everything (data stays in the mentor_demo_data volume)
 #   bash infra/demo.sh reset         stop and DELETE all demo data
 #
@@ -38,7 +36,6 @@ ensure_env() {
         info "Đã tạo $ENV_FILE"
     fi
     [ -n "$(env_get MODEL_ROUTER_MASTER_KEY)" ] || env_set MODEL_ROUTER_MASTER_KEY "sk-$(rand_hex 24)"
-    [ -n "$(env_get SEARXNG_SECRET)" ] || env_set SEARXNG_SECRET "$(rand_hex 32)"
     if [ -z "$(env_get FPT_API_BASE)" ] || [ -z "$(env_get FPT_API_KEY)" ]; then
         printf '\nĐiền FPT_API_BASE và FPT_API_KEY vào %s, rồi chạy lại: bash infra/demo.sh\n' "$ENV_FILE"
         exit 1
@@ -49,7 +46,7 @@ wait_up() {
     info "Chờ gateway và web sẵn sàng (lần đầu build có thể mất 5-15 phút)"
     local api web i
     api="http://127.0.0.1:$(api_port)/healthz"
-    web="http://127.0.0.1:$(web_port)/login"
+    web="http://127.0.0.1:$(web_port)/"
     for i in $(seq 1 90); do
         if curl -fs -o /dev/null "$api" 2>/dev/null && curl -fs -o /dev/null "$web" 2>/dev/null; then return 0; fi
         sleep 2
@@ -57,43 +54,25 @@ wait_up() {
     die "chưa lên sau 3 phút. Xem log: bash infra/demo.sh logs gateway"
 }
 
-login_link() {  # EMAIL -> prints link + code (dev mode returns them instead of sending an email)
-    local out
-    out="$(curl -fsS -X POST "http://127.0.0.1:$(api_port)/api/auth/request-link" \
-        -H "Origin: http://localhost:$(web_port)" -H 'Content-Type: application/json' \
-        --data "{\"email\":\"$1\"}")" || die "không tạo được link đăng nhập cho $1"
-    printf '%s\n' "$out" | sed -n 's/.*"dev_link":"\([^"]*\)".*"dev_code":"\([^"]*\)".*/  link: \1\n  mã:   \2/p'
-}
-
 up() {
     check_docker; ensure_env
-    info "Build và khởi động (gateway, web, model-router, searxng)"
+    info "Build và khởi động (gateway, web, model-router)"
     "${COMPOSE[@]}" up -d --build
     wait_up
     cat <<EOF
 
 Xong. Mở http://localhost:$(web_port) trên máy này.
-  - Đăng nhập bằng email bất kỳ: link và mã 6 số hiện ngay trên trang (không gửi email).
-  - Học sinh THPT: ở bước liên kết phụ huynh, bấm nút xác minh thử (chế độ dev).
-  - Tài khoản mẫu có sẵn dữ liệu: bash infra/demo.sh accounts
+  - Tài khoản mẫu: hocsinh / 123456 (học sinh), giaovien / 123456 (giáo viên).
 EOF
 }
 
 case "${1:-up}" in
     up|start|update) up ;;
-    accounts)
-        check_docker
-        info "Tạo 2 tài khoản mẫu (dữ liệu giả lập, không chat với model)"
-        "${COMPOSE[@]}" exec -T gateway python infra/seed-demo.py --base http://127.0.0.1:8000 \
-            --web-origin "http://localhost:$(web_port)" --no-chat
-        info "Đăng nhập"
-        for e in demo.thpt@example.com demo.ncs@example.com; do echo "$e"; login_link "$e"; done ;;
-    login) [ -n "${2:-}" ] || die "dùng: bash infra/demo.sh login EMAIL"; login_link "$2" ;;
     logs) shift; "${COMPOSE[@]}" logs -f --tail=200 "$@" ;;
     stop|down) "${COMPOSE[@]}" down ;;
     reset)
         read -r -p "Xoá TOÀN BỘ dữ liệu demo (tài khoản, trí nhớ, lịch sử)? Gõ XOA để xác nhận: " ans
         [ "$ans" = XOA ] || { echo "Đã huỷ."; exit 0; }
         "${COMPOSE[@]}" down -v ;;
-    *) sed -n '2,10p' "$0"; exit 1 ;;
+    *) sed -n '2,8p' "$0"; exit 1 ;;
 esac

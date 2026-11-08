@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/styles/research.css"
+        ],
+        "createdAt": "2026-11-07T12:38:38.223Z",
+        "reason": "Matches the user-approved research mockups hs-11/hs-12 (approved 2026-11-07, 'ok duyệt phần nghiên cứu'): left rules mark quoted text (the research question, cited paper passages) and one review warning callout"
+      }
+    ]
+  }
+}

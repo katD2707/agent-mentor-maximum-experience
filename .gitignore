@@ -9,7 +9,7 @@ node_modules/
 .env.*
 /var/
 /var-*/
-# templates hold no secrets (infra/.env.prod.example, apps/web/.env.example); .env.prod itself stays ignored
+# templates hold no secrets (infra/.env.prod.example); .env.prod itself stays ignored
 !.env*.example
 /dist/
 # local caches
@@ -17,3 +17,6 @@ node_modules/
 **/.impeccable/hook.cache.json
 # internal documents, kept local
 docs/de-xuat-ngan-sach-openai-dev.md
+
+# installers built by infra/linux-app.Dockerfile
+/out/

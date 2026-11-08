@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "course_id": "c-110e873a",
+  "version": 2,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Xác suất thống kê: Suy luận Bayes",
+  "chapters": [
+    {
+      "id": "ch-chuong-2-suy-luan-bayes",
+      "title": "Chương 2. Suy luận Bayes",
+      "lessons": [
+        {
+          "id": "dinh-ly-bayes",
+          "title": "Định lý Bayes",
+          "est_minutes": 15,
+          "summary": "Phát biểu định lý Bayes cho hai biến cố và cách tính mẫu số bằng công thức xác suất toàn phần. Áp dụng định lý Bayes để thấy vì sao một kết quả dương tính chỉ cho xác suất bệnh khoảng 0,16.",
+          "key_ideas": [
+            "Công thức P(A | B) = P(B | A)P(A) / P(B) với P(B) > 0",
+            "Mẫu số tính bằng xác suất toàn phần P(B) = tổng P(B | A_i)P(A_i)",
+            "Các biến cố A_i lập thành một phân hoạch của không gian mẫu",
+            "Điều kiện áp dụng: P(B) > 0",
+            "Tỉ lệ mắc bệnh 1%, xét nghiệm đúng 95% với người bệnh",
+            "Dương tính giả 5% với người khỏe",
+            "Kết quả hậu nghiệm xấp xỉ 0,16",
+            "Tiên nghiệm rất thấp nên dương tính phần lớn là dương tính giả"
+          ],
+          "blocks": [
+            {
+              "id": "dinh-ly-bayes-b1",
+              "kind": "text",
+              "md": "Với hai biến cố $A$, $B$ và $P(B)>0$, định lý Bayes phát biểu: $$P(A\\mid B)=\\frac{P(B\\mid A)P(A)}{P(B)}.$$ Công thức đảo chiều xác suất có điều kiện: từ $P(B\\mid A)$ và $P(A)$ suy ra $P(A\\mid B)$. Điều kiện áp dụng là $P(B)>0$; nếu $P(B)=0$ thì $P(A\\mid B)$ không xác định.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b2",
+              "kind": "text",
+              "md": "Mẫu số $P(B)$ tính bằng công thức xác suất toàn phần: với $\\{A_i\\}$ là một phân hoạch của không gian mẫu, $$P(B)=\\sum_i P(B\\mid A_i)P(A_i).$$ Như vậy định lý Bayes cho phép thay $P(B)$ bằng tổng các số hạng $P(B\\mid A_i)P(A_i)$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Phân hoạch",
+              "md": "Các biến cố $\\{A_i\\}$ lập thành một phân hoạch của không gian mẫu khi chúng phủ toàn bộ không gian mẫu và đôi một không giao nhau. Khi đó mọi kết quả $B$ đều được phân vào đúng một $A_i$, nên $P(B)=\\sum_i P(B\\mid A_i)P(A_i)$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b4",
+              "kind": "text",
+              "md": "Ví dụ trong bài: một bệnh có tỉ lệ mắc $1\\%$. Xét nghiệm đúng $95\\%$ với người bệnh, tức $P(\\text{dương tính}\\mid \\text{bệnh})=0,95$. Với người khỏe, xét nghiệm cho dương tính giả $5\\%$, tức $P(\\text{dương tính}\\mid \\text{khỏe})=0,05$. Đặt $A$ là biến cố người đó mắc bệnh, $B$ là biến cố kết quả dương tính. Ta cần $P(A\\mid B)$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính hậu nghiệm khi dương tính",
+              "md": "Tiên nghiệm là $P(A)=0,01$; do đó $P(\\text{khỏe})=0,99$. Áp dụng định lý Bayes: $$P(A\\mid B)=\\frac{0,95\\cdot 0,01}{0,95\\cdot 0,01+0,05\\cdot 0,99}.$$ Tử số: $0,95\\cdot 0,01=0,0095$. Mẫu số: $0,0095+0,05\\cdot 0,99=0,0095+0,0495=0,059$. Vậy $$P(A\\mid B)=\\frac{0,0095}{0,059}\\approx 0,161\\approx 0,16.$$ Kết quả dương tính chỉ cho xác suất bệnh khoảng $0,16$. Con số nhỏ vì tiên nghiệm $1\\%$ rất thấp: trong số người dương tính, dương tính giả từ người khỏe đóng góp $0,0495$, lớn hơn nhiều so với dương tính thật $0,0095$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/dinh-ly-bayes-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "4ffe85e7d3311c4d72c9a0a39214274b31a2329e1b2b7765b190c97fecc86f58",
+                "bytes": 1689
+              },
+              "alt": "Biểu đồ cột so sánh đóng góp 0,0095 của dương tính thật và 0,0495 của dương tính giả.",
+              "caption": "Mẫu số $P(B)$ gồm dương tính thật và dương tính giả.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tiên nghiệm và hậu nghiệm",
+              "md": "Trong định lý Bayes, $P(A)$ là xác suất tiên nghiệm: xác suất của $A$ trước khi biết kết quả $B$. $P(A\\mid B)$ là xác suất hậu nghiệm: xác suất của $A$ sau khi đã biết $B$. Trong ví dụ, tiên nghiệm là $0,01$ và hậu nghiệm là khoảng $0,16$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b8",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Dương tính giả",
+              "md": "Dương tính giả là kết quả xét nghiệm dương tính ở người khỏe. Trong ví dụ, xác suất dương tính giả là $P(B\\mid A^c)=0,05$, với $A^c$ là biến cố người đó khỏe.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "Công thức: $P(A\\mid B)=\\frac{P(B\\mid A)P(A)}{P(B)}$, với $P(B)>0$. Mẫu số tính bằng xác suất toàn phần: $P(B)=\\sum_i P(B\\mid A_i)P(A_i)$ khi $\\{A_i\\}$ là phân hoạch. Với bệnh có tỉ lệ $1\\%$, xét nghiệm đúng $95\\%$ ở người bệnh và dương tính giả $5\\%$ ở người khỏe, hậu nghiệm xấp xỉ $0,16$. Tiên nghiệm rất thấp nên dương tính phần lớn là dương tính giả.",
+              "audio": null
+            },
+            {
+              "id": "dinh-ly-bayes-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "dinh-ly-bayes-q1",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Một bệnh có tỉ lệ mắc 1%. Xét nghiệm đúng 95% với người bệnh và cho dương tính giả 5% với người khỏe. Một người có kết quả dương tính; xác suất người đó thực sự mắc bệnh là bao nhiêu? (làm tròn đến hai chữ số thập phân)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "0,16",
+                      "0.16",
+                      "0,161",
+                      "0.161",
+                      "0,1610",
+                      "0.1610"
+                    ],
+                    "tolerance": 0.02
+                  },
+                  "hint": "Tính P(B) bằng công thức xác suất toàn phần rồi áp dụng công thức Bayes.",
+                  "explanation": "Mẫu số theo xác suất toàn phần là 0,95·0,01 + 0,05·0,99 = 0,059, nên hậu nghiệm bằng 0,0095/0,059 ≈ 0,16.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tien-nghiem-hop-ly-hau-nghiem",
+          "title": "Tiên nghiệm, hợp lý, hậu nghiệm",
+          "est_minutes": 15,
+          "summary": "Ba thành phần của suy luận tham số khi xem tham số là biến ngẫu nhiên và quan hệ tỉ lệ của chúng.",
+          "key_ideas": [
+            "Tham số θ chưa biết được xem là biến ngẫu nhiên",
+            "Tiên nghiệm p(θ): niềm tin trước khi có dữ liệu",
+            "Hợp lý p(x | θ): dữ liệu khả dĩ thế nào nếu tham số là θ",
+            "Hậu nghiệm p(θ | x) tỉ lệ với hợp lý nhân tiên nghiệm",
+            "Mẫu số p(x) chỉ là hằng số chuẩn hóa"
+          ],
+          "blocks": [
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b1",
+              "kind": "text",
+              "md": "Trong suy luận tham số, đại lượng chưa biết là tham số $\\theta$. Thay vì coi $\\theta$ là một con số cố định, ta xem $\\theta$ là một **biến ngẫu nhiên**: nó có phân phối, và phân phối đó được cập nhật khi có dữ liệu.\n\nMỗi bài toán như vậy có ba thành phần:\n\n- **Tiên nghiệm** $p(\\theta)$: niềm tin về $\\theta$ trước khi có dữ liệu.\n- **Hợp lý** $p(x\\mid\\theta)$: dữ liệu $x$ có khả năng thế nào nếu tham số là $\\theta$.\n- **Hậu nghiệm** $p(\\theta\\mid x)$: niềm tin về $\\theta$ sau khi đã thấy dữ liệu.\n\nĐiểm cần nắm là quan hệ giữa chúng, không phải ba cái tên: hậu nghiệm tỉ lệ với hợp lý nhân tiên nghiệm, còn mẫu số chỉ là hằng số chuẩn hóa.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tiên nghiệm",
+              "md": "Phân phối tiên nghiệm $p(\\theta)$ mô tả niềm tin về tham số $\\theta$ **trước khi có dữ liệu**. Đó là một phân phối trên không gian tham số: nó cho biết, khi chưa quan sát gì, ta cho rằng những giá trị nào của $\\theta$ là khả dĩ hơn.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hợp lý",
+              "md": "Hợp lý $p(x\\mid\\theta)$ là mật độ (hoặc xác suất) của dữ liệu $x$ **với điều kiện** tham số nhận giá trị $\\theta$. Nó trả lời câu hỏi: nếu tham số đúng là $\\theta$ thì dữ liệu $x$ quan sát được khả dĩ đến mức nào.\n\nTrong toàn bộ phần này, $x$ là dữ liệu đã quan sát nên được giữ cố định; $\\theta$ là cái thay đổi.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hậu nghiệm",
+              "md": "Phân phối hậu nghiệm $p(\\theta\\mid x)$ là niềm tin về $\\theta$ **sau khi đã thấy dữ liệu** $x$. Đây là kết quả cuối cùng mà suy luận Bayes cần tính.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b5",
+              "kind": "text",
+              "md": "Ta có công thức nối ba thành phần bằng một bước tách phân phối đồng thời.\n\nViết $p(\\theta, x)$ theo hai cách:\n\n$$p(\\theta, x) = p(x\\mid\\theta)\\,p(\\theta), \\qquad p(\\theta, x) = p(\\theta\\mid x)\\,p(x).$$\n\nCho hai vế phải bằng nhau rồi chia cho $p(x)$:\n\n$$p(\\theta\\mid x) = \\frac{p(x\\mid\\theta)\\,p(\\theta)}{p(x)}.$$\n\nMẫu số $p(x)$ là phân phối biên của dữ liệu, tính bằng cách tích phân tử số theo toàn bộ không gian tham số:\n\n$$p(x) = \\int p(x\\mid\\theta)\\,p(\\theta)\\,d\\theta.$$\n\nVới dữ liệu $x$ đã cố định, tích phân này là **một con số**, không còn là hàm của $\\theta$.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b6",
+              "kind": "text",
+              "md": "Vì $p(x)$ không phụ thuộc $\\theta$, nó không làm thay đổi hình dạng của hậu nghiệm, chỉ co giãn để tổng “khối lượng” bằng $1$. Bỏ nó đi, ta đọc được quan hệ cốt lõi:\n\n$$p(\\theta\\mid x) \\;\\propto\\; p(x\\mid\\theta)\\,p(\\theta).$$\n\nHậu nghiệm tỉ lệ với **hợp lý nhân tiên nghiệm**.\n\nKhi so sánh hai giá trị $\\theta_1,\\theta_2$: hằng số $p(x)$ triệt tiêu trong tỉ số, nên\n\n$$\\frac{p(\\theta_1\\mid x)}{p(\\theta_2\\mid x)} = \\frac{p(x\\mid\\theta_1)\\,p(\\theta_1)}{p(x\\mid\\theta_2)\\,p(\\theta_2)}.$$\n\nNghĩa là: niềm tin sau khi có dữ liệu là sự thỏa hiệp giữa niềm tin ban đầu $p(\\theta)$ và mức độ dữ liệu ủng hộ $\\theta$, $p(x\\mid\\theta)$. Thành phần nào lớn hơn sẽ kéo hậu nghiệm về phía mình.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/tien-nghiem-hop-ly-hau-nghiem-b7.svg",
+                "mime": "image/svg+xml",
+                "sha256": "8b3bc1186a7dd8706a03ca3aa680648faffb17cb3c4d9d4c42983e6fa12b2e53",
+                "bytes": 12518
+              },
+              "alt": "Ba đường cong trên trục tham số θ: tiên nghiệm, hợp lý, và tích của chúng; diện tích dưới đường tích bằng p(x).",
+              "caption": "Hợp lý nhân tiên nghiệm cho hình dạng của hậu nghiệm; p(x) chỉ chuẩn hóa diện tích về 1.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Viết hậu nghiệm từ tiên nghiệm và hợp lý",
+              "md": "Cho tiên nghiệm $p(\\theta)$ và hợp lý $p(x\\mid\\theta)$, viết hậu nghiệm $p(\\theta\\mid x)$.\n\n**Bước 1: tử số theo $\\theta$.** $\\;N(\\theta) = p(x\\mid\\theta)\\,p(\\theta)$. Đây là phần mang toàn bộ thông tin: dữ liệu nói gì, nhân với ta tin gì trước đó.\n\n**Bước 2: hằng số chuẩn hóa.** $\\;p(x) = \\int N(\\theta)\\,d\\theta$. Tích phân theo $\\theta$, với $x$ đã cố định, nên kết quả là một số dương.\n\n**Bước 3: chia.** $\\;p(\\theta\\mid x) = \\dfrac{N(\\theta)}{p(x)}$.\n\n**Kiểm tra lại:**\n\n$$\\int p(\\theta\\mid x)\\,d\\theta = \\frac{1}{p(x)}\\int N(\\theta)\\,d\\theta = \\frac{p(x)}{p(x)} = 1,$$\n\nnên kết quả đúng là một phân phối trên không gian tham số. Nếu chỉ cần so sánh các giá trị của $\\theta$, bỏ hẳn bước 2 và 3: dùng tỉ số ở trên, $p(x)$ triệt tiêu.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba thành phần, một công thức",
+              "md": "- $\\theta$ chưa biết được xem là **biến ngẫu nhiên**.\n- **Tiên nghiệm** $p(\\theta)$: niềm tin trước khi có dữ liệu.\n- **Hợp lý** $p(x\\mid\\theta)$: dữ liệu khả dĩ thế nào nếu tham số là $\\theta$.\n- **Hậu nghiệm** $p(\\theta\\mid x)$: niềm tin sau khi thấy dữ liệu.\n\n$$p(\\theta\\mid x) = \\frac{p(x\\mid\\theta)\\,p(\\theta)}{p(x)}, \\qquad p(x) = \\int p(x\\mid\\theta)\\,p(\\theta)\\,d\\theta.$$\n\n$$p(\\theta\\mid x) \\;\\propto\\; p(x\\mid\\theta)\\,p(\\theta).$$\n\nHậu nghiệm tỉ lệ với hợp lý nhân tiên nghiệm; mẫu số $p(x)$ chỉ là hằng số chuẩn hóa, không phụ thuộc $\\theta$.",
+              "audio": null
+            },
+            {
+              "id": "tien-nghiem-hop-ly-hau-nghiem-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "tien-nghiem-hop-ly-hau-nghiem-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo quan hệ cốt lõi trong bài, hậu nghiệm $p(\\theta\\mid x)$ tỉ lệ với đại lượng nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$p(x\\mid\\theta)\\,p(\\theta)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$p(x\\mid\\theta)/p(\\theta)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$p(\\theta)/p(x\\mid\\theta)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$p(x)\\,p(\\theta)$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Bỏ hằng số chuẩn hóa $p(x)$, ta có $p(\\theta\\mid x)\\propto p(x\\mid\\theta)\\,p(\\theta)$.",
+                  "option_feedback": {
+                    "B": "Chia cho tiên nghiệm không phải quan hệ tỉ lệ được nêu trong bài.",
+                    "C": "Đảo ngược tử số và mẫu số không đúng với công thức Bayes.",
+                    "D": "$p(x)$ là hằng số chuẩn hóa, không nhân vào tử số theo cách này."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "tien-nghiem-hop-ly-hau-nghiem-q2",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Sau khi chuẩn hóa, phân phối hậu nghiệm $p(\\theta\\mid x)$ có tích phân theo $\\theta$ trên toàn không gian tham số bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "1",
+                      "1.0",
+                      "một"
+                    ]
+                  },
+                  "hint": "Đây là điều kiện để kết quả là một phân phối.",
+                  "explanation": "Vì $p(\\theta\\mid x)$ là một phân phối xác suất trên không gian tham số, tích phân của nó bằng $1$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "tien-nghiem-hop-ly-hau-nghiem-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu sau về tiên nghiệm, hợp lý và hậu nghiệm.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong suy luận tham số Bayes, $\\theta$ chưa biết được xem là biến ngẫu nhiên."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Tiên nghiệm $p(\\theta)$ biểu thị niềm tin về $\\theta$ sau khi đã quan sát dữ liệu $x$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Hợp lý $p(x\\mid\\theta)$ cho biết dữ liệu $x$ khả dĩ đến mức nào nếu tham số là $\\theta$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Mẫu số $p(x)$ phụ thuộc $\\theta$ nên làm thay đổi hình dạng của hậu nghiệm."
+                    }
+                  ],
+                  "tap": null,
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Tiên nghiệm là niềm tin trước dữ liệu, còn $p(x)$ không phụ thuộc $\\theta$ và chỉ là hằng số chuẩn hóa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "vi-sao-can-tien-nghiem-lien-hop",
+          "title": "Tiên nghiệm liên hợp Beta–Nhị thức",
+          "est_minutes": 18,
+          "summary": "Định nghĩa họ tiên nghiệm liên hợp và lý do nó giúp tránh tích phân mẫu số. Mô hình hóa tỉ lệ sản phẩm lỗi bằng hàm hợp lý nhị thức và tiên nghiệm Beta. Bỏ hằng số không chứa θ để nhận ra nhân của phân phối Beta và đọc ra hậu nghiệm. Công thức trung bình hậu nghiệm như trung bình có trọng số giữa tiên nghiệm và tỉ lệ quan sát. Tính hậu nghiệm Beta(5, 25) từ tiên nghiệm Beta(2, 8) và dữ liệu 3 lỗi trong 20 sản phẩm. So sánh đường cong mật độ Beta(2, 8) và Beta(5, 25) để thấy hậu nghiệm hẹp hơn và dịch về phía dữ liệu. Lời khuyên thực hành: khi nào tiên nghiệm gần như hết tác dụng và khi nào phải ghi rõ tiên nghiệm. Hai câu hỏi trắc nghiệm về cập nhật hậu nghiệm từ tiên nghiệm phẳng và giới hạn của trung bình hậu nghiệm khi n lớn.",
+          "key_ideas": [
+            "Mẫu số p(x) thường không có dạng đóng",
+            "Họ tiên nghiệm liên hợp: hậu nghiệm vẫn thuộc họ của tiên nghiệm",
+            "Khi đó cập nhật chỉ là cộng thêm vào tham số",
+            "Không cần tính tích phân khi cập nhật niềm tin",
+            "θ thuộc khoảng (0, 1) là tỉ lệ sản phẩm lỗi của dây chuyền",
+            "Kiểm n sản phẩm độc lập, thấy k lỗi",
+            "Hợp lý nhị thức: C(n, k) θ^k (1 − θ)^(n−k)",
+            "Tiên nghiệm Beta(α, β) với mật độ chứa θ^(α−1)(1 − θ)^(β−1) và hằng số B(α, β)"
+          ],
+          "blocks": [
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b1",
+              "kind": "text",
+              "md": "Hậu nghiệm tỉ lệ với hợp lý nhân tiên nghiệm:\n$$p(\\theta \\mid x) = \\frac{p(x \\mid \\theta)p(\\theta)}{p(x)} \\propto p(x \\mid \\theta)p(\\theta).$$\nMẫu số $p(x)=\\int p(x\\mid\\theta)p(\\theta)\\,d\\theta$ thường không có dạng đóng. Có những cặp hợp lý và tiên nghiệm mà hậu nghiệm vẫn thuộc đúng họ của tiên nghiệm. Khi đó cập nhật niềm tin chỉ là cộng thêm vào tham số, không phải tính tích phân.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tiên nghiệm liên hợp",
+              "md": "Cho mô hình $p(x\\mid\\theta)$. Họ tiên nghiệm $\\mathcal F$ được gọi là **liên hợp** với mô hình nếu với mọi $p(\\theta)\\in\\mathcal F$ và mọi dữ liệu $x$, hậu nghiệm $p(\\theta\\mid x)$ cũng thuộc $\\mathcal F$.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b3",
+              "kind": "text",
+              "md": "Gọi $\\theta\\in(0,1)$ là tỉ lệ sản phẩm lỗi của một dây chuyền. Kiểm $n$ sản phẩm độc lập, thấy $k$ lỗi. Hàm hợp lý là nhị thức:\n$$p(k\\mid\\theta)=\\binom{n}{k}\\theta^k(1-\\theta)^{n-k}.$$\nChọn tiên nghiệm Beta:\n$$p(\\theta)=\\frac{\\theta^{\\alpha-1}(1-\\theta)^{\\beta-1}}{B(\\alpha,\\beta)},\\qquad \\theta\\sim \\mathrm{Beta}(\\alpha,\\beta),$$\ntrong đó $B(\\alpha,\\beta)$ là hàm Beta.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Mô hình Beta–Nhị thức",
+              "md": "Trong mô hình này, $\\theta$ là tỉ lệ lỗi; $k$ là số lỗi trong $n$ sản phẩm độc lập. Hàm hợp lý nhị thức mô tả xác suất thấy $k$ lỗi khi biết $\\theta$. Tiên nghiệm $\\mathrm{Beta}(\\alpha,\\beta)$ là một mật độ trên $(0,1)$ có nhân $\\theta^{\\alpha-1}(1-\\theta)^{\\beta-1}$; $\\alpha,\\beta$ giống như số lỗi và số đạt “giả”, còn $\\alpha+\\beta$ đo độ tin vào tiên nghiệm, tính bằng số quan sát.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b5",
+              "kind": "text",
+              "md": "Bỏ các hằng số không chứa $\\theta$:\n$$p(\\theta\\mid k)\\propto \\theta^k(1-\\theta)^{n-k}\\cdot \\theta^{\\alpha-1}(1-\\theta)^{\\beta-1}\n= \\theta^{\\alpha+k-1}(1-\\theta)^{\\beta+n-k-1}.$$\nVế phải là nhân của một phân phối Beta. Do đó hằng số chuẩn hóa phải là $B(\\alpha+k,\\beta+n-k)$, và\n$$\\theta\\mid k\\sim \\mathrm{Beta}(\\alpha+k,\\beta+n-k).$$\nCập nhật chỉ là cộng số lỗi quan sát vào $\\alpha$ và số đạt quan sát vào $\\beta$: $\\alpha\\mapsto\\alpha+k$, $\\beta\\mapsto\\beta+n-k$.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b6",
+              "kind": "text",
+              "md": "Trung bình hậu nghiệm là trung bình có trọng số giữa trung bình tiên nghiệm và tỉ lệ quan sát:\n$$\\mathbb E[\\theta\\mid k]=\\frac{\\alpha+k}{\\alpha+\\beta+n}\n= w\\cdot \\frac{\\alpha}{\\alpha+\\beta}+(1-w)\\cdot \\frac{k}{n},\\qquad w=\\frac{\\alpha+\\beta}{\\alpha+\\beta+n}.$$\nTrọng số $w$ giảm khi $n$ tăng. Dữ liệu càng nhiều, ước lượng càng nghiêng về $k/n$.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tỉ lệ lỗi dây chuyền",
+              "md": "Kinh nghiệm xưởng: khoảng 20% sản phẩm lỗi, độ tin cỡ 10 sản phẩm, nên chọn $\\mathrm{Beta}(2,8)$. Kiểm 20 sản phẩm mới, thấy 3 lỗi. Hậu nghiệm:\n$$\\mathrm{Beta}(2+3,\\,8+20-3)=\\mathrm{Beta}(5,25).$$\nTrung bình tiên nghiệm $2/10=0{,}200$; tỉ lệ quan sát $3/20=0{,}150$; trung bình hậu nghiệm $5/30=0{,}167$; mode hậu nghiệm (giá trị có mật độ lớn nhất) $4/28=0{,}143$; độ lệch chuẩn hậu nghiệm $0{,}067$. Trọng số tiên nghiệm $w=10/30=1/3$: tiên nghiệm một phần ba, dữ liệu hai phần ba.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b8",
+              "kind": "image",
+              "image": {
+                "path": "images/vi-sao-can-tien-nghiem-lien-hop-b8.svg",
+                "mime": "image/svg+xml",
+                "sha256": "bce1d09f94440a3af338b0900553c51401ceca65954c90d873a754c6a8b9f956",
+                "bytes": 30996
+              },
+              "alt": "So sánh mật độ Beta(2,8) nét đứt và Beta(5,25) nét liền, hậu nghiệm hẹp hơn và dịch về phía tỉ lệ quan sát 0,15.",
+              "caption": "Hình 2.3. Tiên nghiệm Beta(2,8) (nét đứt) và hậu nghiệm Beta(5,25) (nét liền). Đường dọc là tỉ lệ quan sát 3/20. Hậu nghiệm hẹp hơn và dịch về phía dữ liệu.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Cần nhớ",
+              "md": "- Với hợp lý nhị thức và tiên nghiệm $\\mathrm{Beta}(\\alpha,\\beta)$, hậu nghiệm là $\\mathrm{Beta}(\\alpha+k,\\beta+n-k)$.\n- Không cần tính $p(x)=\\int p(x\\mid\\theta)p(\\theta)\\,d\\theta$; chỉ bỏ hằng số và đọc nhân Beta.\n- Trung bình hậu nghiệm $=\\frac{\\alpha+k}{\\alpha+\\beta+n}=w\\frac{\\alpha}{\\alpha+\\beta}+(1-w)\\frac{k}{n}$, với $w=\\frac{\\alpha+\\beta}{\\alpha+\\beta+n}$.\n- Khi $n$ lớn hơn nhiều so với $\\alpha+\\beta$, tiên nghiệm gần như hết tác dụng. Khi $n$ nhỏ, phải ghi rõ đã chọn tiên nghiệm nào.",
+              "audio": null
+            },
+            {
+              "id": "vi-sao-can-tien-nghiem-lien-hop-b10",
+              "kind": "text",
+              "md": "**Kiểm tra nhanh.**\n1. Tiên nghiệm $\\mathrm{Beta}(1,1)$. Quan sát 7 thành công trong 10 lần thử. Hậu nghiệm là:\nA. $\\mathrm{Beta}(7,3)$  B. $\\mathrm{Beta}(8,4)$  C. $\\mathrm{Beta}(8,11)$.\n*Gợi ý:* với tiên nghiệm $\\mathrm{Beta}(\\alpha,\\beta)$, cộng số thành công vào $\\alpha$ và số thất bại vào $\\beta$.\n2. Giữ nguyên tiên nghiệm, cho $n\\to\\infty$. Trung bình hậu nghiệm tiến về đâu?\nA. Trung bình tiên nghiệm $\\alpha/(\\alpha+\\beta)$  B. Tỉ lệ quan sát $k/n$  C. $0{,}5$.\n*Gợi ý:* khi $n$ rất lớn, so sánh lượng thông tin dữ liệu mang lại với lượng thông tin của tiên nghiệm.",
+              "audio": null
+            }
+          ]
+        },
+        {
+          "id": "khoang-tin-cay-bayes",
+          "title": "Khoảng tin cậy Bayes",
+          "est_minutes": 15,
+          "summary": "Định nghĩa khoảng đáng tin mức 1 − γ, khác biệt với khoảng tin cậy tần suất và hai cách lấy khoảng.",
+          "key_ideas": [
+            "Khoảng [a, b] mức 1 − γ thỏa P(a ≤ θ ≤ b | x) = 1 − γ",
+            "Xác suất nói về θ sau khi thấy dữ liệu, khác khoảng tin cậy tần suất",
+            "Khoảng đối xứng theo phân vị γ/2 và 1 − γ/2 của hậu nghiệm",
+            "Hoặc dùng khoảng mật độ cao nhất (HPD)",
+            "Với hậu nghiệm Beta(5, 25), khoảng 95% đối xứng xấp xỉ [0,06; 0,31]"
+          ],
+          "blocks": [
+            {
+              "id": "khoang-tin-cay-bayes-b1",
+              "kind": "text",
+              "md": "Sau khi có dữ liệu $x$, ta muốn khoảng $[a,b]$ cho tham số $\\theta$ sao cho xác suất hậu nghiệm để $\\theta$ nằm trong khoảng bằng mức định trước. Khoảng này là khoảng tin cậy Bayes, còn gọi là khoảng đáng tin. Mức tin cậy ký hiệu $1-\\gamma$, với $0<\\gamma<1$; thường gặp $1-\\gamma=0{,}95$.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Khoảng tin cậy Bayes mức $1-\\gamma$",
+              "md": "Xét phân phối hậu nghiệm của $\\theta$ sau khi quan sát dữ liệu $x$. Khoảng tin cậy Bayes (khoảng đáng tin) $[a,b]$ mức $1-\\gamma$ là khoảng thỏa $$P(a\\le \\theta\\le b\\mid x)=1-\\gamma.$$ Ở đây $P(\\cdot\\mid x)$ là xác suất theo phân phối hậu nghiệm; $0<\\gamma<1$. Sau khi thấy dữ liệu, xác suất để $\\theta$ nằm trong $[a,b]$ là $1-\\gamma$.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b3",
+              "kind": "text",
+              "md": "Công thức trên phát biểu xác suất về $\\theta$ sau khi thấy dữ liệu $x$. Điểm khác cơ bản với khoảng tin cậy tần suất: theo cách đọc Bayes, xác suất trong công thức gắn với $\\theta$ và có điều kiện trên $x$. Đừng đồng nhất hai khái niệm chỉ vì tên gần nhau.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Phân vị hậu nghiệm và khoảng đối xứng theo phân vị",
+              "md": "Với phân phối hậu nghiệm liên tục, phân vị mức $p$ (với $0<p<1$) là số $q_p$ thỏa $$P(\\theta\\le q_p\\mid x)=p.$$ Khoảng đối xứng theo phân vị $\\gamma/2$ và $1-\\gamma/2$ của hậu nghiệm là $$[a,b]=\\big[q_{\\gamma/2},\\,q_{1-\\gamma/2}\\big].$$ Đây là một cách lấy khoảng tin cậy Bayes.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b5",
+              "kind": "text",
+              "md": "Kiểm tra mức tin cậy của khoảng đối xứng. Nếu hậu nghiệm liên tục thì $$P(a\\le\\theta\\le b\\mid x)=P(\\theta\\le q_{1-\\gamma/2}\\mid x)-P(\\theta<q_{\\gamma/2}\\mid x)$$ $$=(1-\\gamma/2)-\\gamma/2=1-\\gamma.$$ Vậy khoảng $[q_{\\gamma/2},q_{1-\\gamma/2}]$ đúng là khoảng mức $1-\\gamma$. Cách này chia xác suất $\\gamma$ thành hai đuôi bằng nhau, mỗi đuôi $\\gamma/2$.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Khoảng mật độ cao nhất (HPD)",
+              "md": "Một cách lấy khoảng tin cậy Bayes khác là khoảng mật độ cao nhất (HPD): khoảng $[a,b]$ mức $1-\\gamma$ sao cho mật độ hậu nghiệm bên trong khoảng không nhỏ hơn mật độ tại các điểm ngoài khoảng, và $$P(a\\le\\theta\\le b\\mid x)=1-\\gamma.$$ Như vậy HPD là một lựa chọn khoảng ở mức $1-\\gamma$, bên cạnh khoảng đối xứng theo phân vị $\\gamma/2$ và $1-\\gamma/2$.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/khoang-tin-cay-bayes-b7.svg",
+                "mime": "image/svg+xml",
+                "sha256": "9e02f89dd19f2a16021434a964873b4f1c15d362debc0b54056c279da4123cd6",
+                "bytes": 12099
+              },
+              "alt": "Đường cong mật độ Beta(5,25) với hai đường thẳng đứng đánh dấu khoảng xấp xỉ từ 0,06 đến 0,31",
+              "caption": "Hậu nghiệm Beta(5,25): khoảng 95% đối xứng xấp xỉ [0,06; 0,31]",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Khoảng 95% cho hậu nghiệm Beta(5,25)",
+              "md": "Giả sử hậu nghiệm của $\\theta$ là $\\mathrm{Beta}(5,25)$. Lấy mức $1-\\gamma=0{,}95$, tức $\\gamma=0{,}05$. Khoảng đối xứng theo phân vị dùng $\\gamma/2=0{,}025$ và $1-\\gamma/2=0{,}975$. Khoảng 95% đối xứng khi đó xấp xỉ $$[0{,}06;\\,0{,}31].$$ Đây là khoảng tin cậy Bayes mức $95\\%$ cho $\\theta$.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b9",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Những điểm cần nhớ",
+              "md": "Khoảng tin cậy Bayes $[a,b]$ mức $1-\\gamma$ thỏa $$P(a\\le\\theta\\le b\\mid x)=1-\\gamma.$$ Xác suất ở đây nói về $\\theta$ sau khi thấy dữ liệu, khác với khoảng tin cậy tần suất. Có hai cách lấy khoảng: khoảng đối xứng theo phân vị $\\gamma/2$ và $1-\\gamma/2$ của hậu nghiệm, hoặc khoảng mật độ cao nhất (HPD). Với hậu nghiệm $\\mathrm{Beta}(5,25)$, khoảng $95\\%$ đối xứng xấp xỉ $[0{,}06;0{,}31]$.",
+              "audio": null
+            },
+            {
+              "id": "khoang-tin-cay-bayes-b10",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "khoang-tin-cay-bayes-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khoảng tin cậy Bayes $[a,b]$ mức $1-\\gamma$ cho tham số $\\theta$ được định nghĩa bởi điều kiện nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$P(a\\le \\theta\\le b\\mid x)=1-\\gamma$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$P(a\\le \\theta\\le b)=1-\\gamma$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$P(a\\le \\theta\\le b\\mid x)=\\gamma$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$P(x\\in[a,b]\\mid\\theta)=1-\\gamma$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Định nghĩa dùng xác suất hậu nghiệm của $\\theta$ với điều kiện dữ liệu $x$, và mức đó bằng $1-\\gamma$.",
+                  "option_feedback": {
+                    "B": "Thiếu điều kiện trên dữ liệu $x$: đây là xác suất tiên nghiệm, không phải hậu nghiệm.",
+                    "C": "Sai mức: xác suất hậu nghiệm phải bằng $1-\\gamma$, không phải $\\gamma$.",
+                    "D": "Đây là phát biểu kiểu tần suất về dữ liệu, không phải về $\\theta$ sau khi thấy dữ liệu."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "khoang-tin-cay-bayes-q2",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Với hậu nghiệm $\\mathrm{Beta}(5,25)$ ở mức $95\\%$, khoảng đối xứng theo phân vị có cận trên xấp xỉ bằng bao nhiêu? (Làm tròn đến hai chữ số thập phân.)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "0,31"
+                    ],
+                    "tolerance": 0
+                  },
+                  "hint": null,
+                  "explanation": "Khoảng $95\\%$ đối xứng của $\\mathrm{Beta}(5,25)$ xấp xỉ $[0{,}06;\\,0{,}31]$ nên cận trên là $0{,}31$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sau-dang-bai-tap-betanhi-thuc",
+          "title": "Bài tập Beta–Nhị thức",
+          "est_minutes": 20,
+          "summary": "Dàn ý sáu dạng bài tập luyện tập cập nhật hậu nghiệm, tính đặc trưng hậu nghiệm và khoảng tin cậy Bayes.",
+          "key_ideas": [
+            "cập nhật nhiều đợt dữ liệu"
+          ],
+          "blocks": [
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b1",
+              "kind": "text",
+              "md": "Mô hình **Beta–Nhị thức** là ví dụ mẫu mực của suy luận Bayes liên hợp và là dạng bài tập rèn kỹ năng tính toán nhiều nhất. Ta xét tham số $\\theta\\in(0,1)$ là xác suất thành công của một phép thử Bernoulli, với dữ liệu gồm $n$ phép thử độc lập và $k$ lần thành công.\n\nHàm hợp lý của dữ liệu là\n\n$$L(\\theta)=\\binom{n}{k}\\theta^{k}(1-\\theta)^{n-k}\\;\\propto\\;\\theta^{k}(1-\\theta)^{n-k}.$$\n\nHằng số $\\binom{n}{k}$ không phụ thuộc $\\theta$ nên bị nuốt vào hằng số chuẩn hoá khi áp dụng định lý Bayes. Chỉ hai con số $k$ (số thành công) và $n-k$ (số thất bại) thực sự mang thông tin về $\\theta$.\n\nVới tiên nghiệm $\\theta\\sim\\mathrm{Beta}(a,b)$, định lý Bayes cho\n\n$$p(\\theta\\mid k,n)=\\frac{p(\\theta)\\,L(\\theta)}{\\displaystyle\\int_0^1 p(\\theta)\\,L(\\theta)\\,d\\theta}.$$\n\nToàn bộ kỹ thuật của dạng bài này nằm ở chỗ: tích của một mật độ Beta với một nhân Nhị thức lại là một nhân Beta, nên tích phân ở mẫu số tính được tường minh và hậu nghiệm trở về họ Beta. Đó là ý nghĩa của tính liên hợp, và là lý do ta không bao giờ phải tính tích phân bằng số trong mô hình này.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Beta, tiên nghiệm liên hợp, siêu tham số",
+              "md": "**Phân phối Beta** $\\mathrm{Beta}(a,b)$ với $a,b>0$ có mật độ trên $(0,1)$:\n\n$$f(x;a,b)=\\frac{x^{a-1}(1-x)^{b-1}}{B(a,b)},\\qquad B(a,b)=\\int_0^1 t^{a-1}(1-t)^{b-1}\\,dt=\\frac{\\Gamma(a)\\Gamma(b)}{\\Gamma(a+b)}.$$\n\nĐặc trưng: $\\mathbb{E}[X]=\\dfrac{a}{a+b}$, $\\operatorname{Var}(X)=\\dfrac{ab}{(a+b)^2(a+b+1)}$; với $a,b>1$, mode $=\\dfrac{a-1}{a+b-2}$.\n\n**Tiên nghiệm liên hợp** (conjugate prior): họ tiên nghiệm liên hợp với hàm hợp lý nếu hậu nghiệm vẫn nằm trong họ đó. Beta liên hợp với Nhị thức.\n\n**Siêu tham số** (hyperparameter): các tham số $a,b$ của phân phối tiên nghiệm. Chúng không mô tả dữ liệu mà mô tả hiểu biết ban đầu về $\\theta$.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b3",
+              "kind": "text",
+              "md": "Tính hậu nghiệm tường minh. Thay mật độ Beta và nhân Nhị thức:\n\n$$p(\\theta)\\,L(\\theta)\\propto\\theta^{a-1}(1-\\theta)^{b-1}\\cdot\\theta^{k}(1-\\theta)^{n-k}=\\theta^{a+k-1}(1-\\theta)^{b+n-k-1}.$$\n\nMẫu số là\n\n$$\\int_0^1 \\theta^{a+k-1}(1-\\theta)^{b+n-k-1}d\\theta=B(a+k,\\,b+n-k),$$\n\nnên\n\n$$p(\\theta\\mid k,n)=\\frac{\\theta^{a+k-1}(1-\\theta)^{b+n-k-1}}{B(a+k,\\,b+n-k)},$$\n\ntức $\\theta\\mid k,n\\sim\\mathrm{Beta}(a+k,\\,b+n-k)$. Quy tắc ghi nhớ: **cộng số thành công vào $a$, cộng số thất bại vào $b$**. Tổng $a+b$ là \"cỡ mẫu tưởng tượng\" của tiên nghiệm: càng lớn thì hậu nghiệm càng bám tiên nghiệm, tức tiên nghiệm càng \"mạnh\".\n\nHậu nghiệm chỉ phụ thuộc $k$ và $n-k$; hoán đổi vai trò thành công/thất bại chỉ đổi chỗ $a$ với $b$ và $k$ với $n-k$.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b4",
+              "kind": "text",
+              "md": "**Cập nhật nhiều đợt dữ liệu.** Dạng bài này quan trọng nhất vì nó kiểm tra cách hiểu rằng cập nhật từng đợt cho cùng kết quả với gộp dữ liệu.\n\nGiả sử dữ liệu đến làm hai đợt: đợt 1 có $n_1$ phép thử, $k_1$ thành công; đợt 2 có $n_2$ phép thử, $k_2$ thành công. Xuất phát từ $\\mathrm{Beta}(a,b)$:\n\n$$\\theta\\mid \\text{đợt 1}\\sim\\mathrm{Beta}(a+k_1,\\,b+n_1-k_1).$$\n\nLấy hậu nghiệm này làm tiên nghiệm cho đợt 2:\n\n$$\\theta\\mid \\text{đợt 1, đợt 2}\\sim\\mathrm{Beta}\\big(a+k_1+k_2,\\;b+(n_1-k_1)+(n_2-k_2)\\big).$$\n\nKết quả trùng với việc gộp toàn bộ dữ liệu rồi cập nhật một lần, vì $k_1+k_2$ là tổng số thành công và $n_1+n_2$ là tổng số phép thử. **Thứ tự chia đợt không ảnh hưởng tới hậu nghiệm cuối cùng**, miễn là không bỏ sót dữ liệu. Đây là biểu hiện của tính khả hoán (exchangeability) của các quan sát Bernoulli, và là lý do có thể cập nhật trực tuyến từng quan sát một.\n\nMột hệ quả thực hành: nếu đề cho \"sau đợt 1, quan sát thêm…\", ta không cần viết lại tích phân. Chỉ cần đọc hai siêu tham số hiện tại rồi cộng tiếp.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/sau-dang-bai-tap-betanhi-thuc-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "aa1e4ae72baec292f2d79185df9ee102b0979d3131def2556ebc0c1bcea86326",
+                "bytes": 17900
+              },
+              "alt": "Ba mật độ Beta chồng lên nhau, mỗi lần cập nhật làm đường cong nhọn hơn và lệch về phía xác suất thành công thực nghiệm",
+              "caption": "Cập nhật liên tiếp: Beta(2,3) → Beta(5,4) → Beta(9,6); độ nhọn tăng theo lượng dữ liệu",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b6",
+              "kind": "text",
+              "md": "**Đặc trưng hậu nghiệm và khoảng tin cậy Bayes.** Sau khi có $\\theta\\mid \\text{dữ liệu}\\sim\\mathrm{Beta}(a',b')$ với $a'=a+k$, $b'=b+n-k$, bài tập thường yêu cầu:\n\n- Trung bình hậu nghiệm: $\\mathbb{E}[\\theta\\mid \\text{dữ liệu}]=\\dfrac{a'}{a'+b'}$.\n- Mode hậu nghiệm: $\\dfrac{a'-1}{a'+b'-2}$ (khi $a',b'>1$).\n- Phương sai hậu nghiệm: $\\dfrac{a'b'}{(a'+b')^2(a'+b'+1)}$.\n\n**Khoảng tin cậy Bayes** (credible interval) độ tin cậy $1-\\alpha$ là khoảng $[L,U]$ sao cho\n\n$$P(L\\le\\theta\\le U\\mid \\text{dữ liệu})=1-\\alpha.$$\n\nKhoảng này phát biểu về $\\theta$ khi đã có dữ liệu. Khoảng tin cậy tần suất phát biểu về quy trình lặp lại, khác về bản chất. Khi $a',b'$ lớn, ta dùng xấp xỉ chuẩn\n\n$$\\theta\\approx\\mathcal{N}\\!\\left(\\frac{a'}{a'+b'},\\;\\frac{a'b'}{(a'+b')^2(a'+b'+1)}\\right),$$\n\nrồi lấy $\\hat{\\mu}\\pm z_{1-\\alpha/2}\\,\\hat{\\sigma}$. Khoảng đối xứng quanh trung bình không phải khoảng ngắn nhất; muốn khoảng ngắn nhất (HPD) cần tra phân vị Beta.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cập nhật hai đợt",
+              "md": "Tiên nghiệm $\\theta\\sim\\mathrm{Beta}(2,3)$. Đợt 1: $n_1=4$, $k_1=3$. Đợt 2: $n_2=6$, $k_2=4$.\n\nSau đợt 1: $\\mathrm{Beta}(2+3,\\;3+1)=\\mathrm{Beta}(5,4)$, trung bình $5/9\\approx0{,}556$.\n\nSau đợt 2: $\\mathrm{Beta}(5+4,\\;4+2)=\\mathrm{Beta}(9,6)$, trung bình $9/15=0{,}6$.\n\nKiểm tra bằng cách gộp: $n=4+6=10$, $k=3+4=7$, cho $\\mathrm{Beta}(2+7,\\;3+3)=\\mathrm{Beta}(9,6)$, trùng khớp. Tiên nghiệm có trung bình $2/5=0{,}4$, dữ liệu đẩy ước lượng lên $0{,}6$; phương sai hậu nghiệm $=\\dfrac{9\\cdot6}{15^2\\cdot16}=\\dfrac{54}{3600}=0{,}015$, độ lệch chuẩn $\\approx0{,}1225$.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Khoảng tin cậy Bayes xấp xỉ",
+              "md": "Với hậu nghiệm $\\mathrm{Beta}(9,6)$ ở trên, lấy $1-\\gamma=0{,}95$ nên $z_{0{,}975}\\approx1{,}96$:\n\n$$0{,}6\\pm1{,}96\\cdot0{,}1225\\;\\Rightarrow\\;[0{,}360;\\;0{,}840].$$\n\nVới dữ liệu đã quan sát, xác suất $\\theta$ rơi vào khoảng này xấp xỉ $0{,}95$. Đây là **xấp xỉ chuẩn**; chỉ đáng tin khi $a',b'$ không quá nhỏ. Với $\\mathrm{Beta}(9,6)$, khoảng đúng theo phân vị Beta sẽ hơi khác và không đối xứng hoàn toàn quanh $0{,}6$.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b9",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Ba lỗi thường gặp",
+              "md": "1. **Quên nhân tử thất bại.** Viết hậu nghiệm là $\\mathrm{Beta}(a+k,\\,b)$ thay vì $\\mathrm{Beta}(a+k,\\,b+n-k)$. Số thất bại $n-k$ luôn phải được cộng vào $b$.\n2. **Cộng sai chỗ khi chia đợt.** Sau đợt 1 phải dùng $a'=a+k_1$, $b'=b+n_1-k_1$ làm tiên nghiệm mới; nếu cộng $n_1$ vào $b$ thì kết quả sai ngay.\n3. **Lẫn hai loại khoảng.** \"$95\\%$\" trong khoảng tin cậy Bayes là xác suất hậu nghiệm của $\\theta$; trong khoảng tin cậy tần suất, $95\\%$ là tỉ lệ che phủ của thủ tục qua vô số lần lặp mẫu. Không đọc lẫn hai câu này cho nhau.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b10",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Kết quả then chốt",
+              "md": "- Liên hợp: $\\theta\\sim\\mathrm{Beta}(a,b)$ và $k$ thành công trong $n$ phép thử cho $\\theta\\mid k,n\\sim\\mathrm{Beta}(a+k,\\,b+n-k)$.\n- Hậu nghiệm chỉ phụ thuộc số thành công và số thất bại; hằng số $\\binom{n}{k}$ biến mất.\n- Cập nhật nhiều đợt = cộng dồn: $\\mathrm{Beta}\\big(a+\\textstyle\\sum k_i,\\;b+\\sum(n_i-k_i)\\big)$, độc lập với cách chia đợt.\n- Trung bình $\\dfrac{a'}{a'+b'}$, phương sai $\\dfrac{a'b'}{(a'+b')^2(a'+b'+1)}$, mode $\\dfrac{a'-1}{a'+b'-2}$.\n- Khoảng tin cậy Bayes cỡ $1-\\alpha$ dùng phân vị Beta; xấp xỉ chuẩn chỉ nên dùng khi $a',b'$ đủ lớn.",
+              "audio": null
+            },
+            {
+              "id": "sau-dang-bai-tap-betanhi-thuc-b11",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "sau-dang-bai-tap-betanhi-thuc-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong tiên nghiệm $\\mathrm{Beta}(a,b)$ của mô hình Beta–Nhị thức, tổng $a+b$ được hiểu là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cỡ mẫu tưởng tượng của tiên nghiệm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Số lần thành công quan sát được",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Số lần thất bại quan sát được",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Hằng số chuẩn hoá của hàm hợp lý",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Bài học nêu rõ $a+b$ đóng vai trò 'cỡ mẫu tưởng tượng' của tiên nghiệm: nó càng lớn thì hậu nghiệm càng bám tiên nghiệm.",
+                  "option_feedback": {
+                    "B": "Số lần thành công quan sát được là $k$, không phải $a+b$.",
+                    "C": "Số lần thất bại là $n-k$, không phải $a+b$.",
+                    "D": "Hằng số chuẩn hoá của hàm hợp lý là $\\binom{n}{k}$, không liên quan tới $a+b$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "sau-dang-bai-tap-betanhi-thuc-q2",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Với tiên nghiệm $\\theta\\sim\\mathrm{Beta}(2,3)$, dữ liệu đến hai đợt: đợt 1 có $n_1=4$, $k_1=3$; đợt 2 có $n_2=6$, $k_2=4$. Trung bình hậu nghiệm của $\\theta$ sau cả hai đợt bằng bao nhiêu? (nhập số thập phân)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "0.6",
+                      "0,6",
+                      "0.60",
+                      "0,60",
+                      "3/5"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "Hậu nghiệm là $\\mathrm{Beta}(9,6)$ nên trung bình là $9/15=0{,}6$, trùng với kết quả khi gộp dữ liệu $n=10$, $k=7$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

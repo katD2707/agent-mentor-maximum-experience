@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-english-for-kids-2-my-family-and-my-day",
+  "title": "English for Kids 2: My Family and My Day",
+  "subject": "Tiếng Anh",
+  "age_band": "g1_5",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Ms. Emily Pham",
+  "description_short": "Short dialogues and picture stories about family members, food and the school day, for children who already know basic greetings. Each unit ends with a speaking game.",
+  "outcomes": [
+    "Introduce family members with simple sentences.",
+    "Say what you eat and what time you do daily activities.",
+    "Ask and answer three basic questions."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 54,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "My family",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Mum, dad and me",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Brothers and sisters",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Grandparents",
+          "est_minutes": 6
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "My day",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Breakfast time",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch2-l2",
+          "title": "At school",
+          "est_minutes": 7
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Bedtime story",
+          "est_minutes": 12
+        }
+      ]
+    }
+  ]
+}

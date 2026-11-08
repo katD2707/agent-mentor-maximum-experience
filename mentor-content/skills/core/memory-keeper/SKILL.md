@@ -1,7 +1,7 @@
 ---
 name: memory-keeper
 description: Quy tắc ghi, sửa, xóa trí nhớ về người học (me/, goals/) trong lúc chat. Đọc khi nghe thông tin mới đáng nhớ, khi người học sửa thông tin, hoặc khi bảo quên.
-profiles: [thpt, ncs]
+profiles: [student]
 version: 2
 preload: true
 ---
@@ -28,14 +28,13 @@ Không ghi:
 | Cách hỗ trợ hiệu quả / không hiệu quả | `me/what-works.md` |
 | Mục tiêu | `goals/goals.md` |
 | Việc tuần này | `goals/plans/this-week.md` |
-| THPT: lỗi Toán lặp lại | `learning/math/mistakes.md` |
-| NCS: câu hỏi nghiên cứu, mốc luận văn | `research/thesis.md` |
+| Lỗi Toán lặp lại | `learning/math/mistakes.md` |
 
 ## 3. Cách ghi
 Ghi **một lần, ở cuối**: xử lý xong tin nhắn, quyết định hết mọi điều cần ghi trong lượt này, rồi ghi tất cả trong **một bước công cụ**, ngay trước câu trả lời. Không ghi rải rác từng dòng qua nhiều bước.
 1. Nội dung file đích:
    - `me/profile.md`, `me/preferences.md`, `me/now.md`, `goals/goals.md`, `goals/plans/this-week.md` đã có nguyên văn trong context (mục "Trí nhớ cốt lõi"): **không `read_file` lại**, lấy `old` từ đó.
-   - File khác (`me/people.md`, `me/what-works.md`, `research/thesis.md`…): `read_file` trước để không ghi đè mất nội dung. Cần nhiều file thì đọc tất cả trong cùng một bước.
+   - File khác (`me/people.md`, `me/what-works.md`…): `read_file` trước để không ghi đè mất nội dung. Cần nhiều file thì đọc tất cả trong cùng một bước.
 2. **Mỗi file một lần gọi `edit_file`** với `edits` = danh sách mọi thay đổi cho file đó, gồm cả dòng `cập nhật`. Thêm dòng dưới đúng mục: `old` = dòng tiêu đề mục, `new` = tiêu đề + dòng mới. Sửa nhiều file thì gọi các `edit_file` cùng lúc trong một phản hồi. Chỉ dùng `write_file` khi tạo file mới.
 3. Định dạng:
    - Sự kiện: `- <ý ngắn>. (<nguồn> <dd/mm>)`

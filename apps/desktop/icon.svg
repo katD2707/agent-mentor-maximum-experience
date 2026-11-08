@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <!-- Mentor "M" mark: the web app's .brand-mark (accent #2f6f62, white bold M, rounded square). -->
-  <rect x="32" y="32" width="960" height="960" rx="256" fill="#2f6f62"/>
-  <path fill="#ffffff" d="M256 768V256h126l130 236 130-236h126v512H660V468L548 664h-72L364 468v300z"/>
-</svg>

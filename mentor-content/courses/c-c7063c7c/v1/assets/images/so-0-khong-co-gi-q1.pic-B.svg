@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <g id="apple">
+      <path d="M0,-40 C-14,-56 -46,-52 -50,-18 C-53,10 -34,44 0,44 C34,44 53,10 50,-18 C46,-52 14,-56 0,-40 Z"
+            fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+      <ellipse cx="-21" cy="-11" rx="8" ry="12" fill="#F7F1E3" opacity="0.5" transform="rotate(-18 -21 -11)"/>
+      <path d="M0,-38 C-2,-52 2,-58 8,-64" fill="none" stroke="#2B283F" stroke-width="5" stroke-linecap="round"/>
+      <path d="M10,-62 C20,-78 38,-76 42,-66 C32,-53 16,-52 10,-62 Z"
+            fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+  </defs>
+
+  <!-- ground shadow -->
+  <ellipse cx="200" cy="350" rx="102" ry="9" fill="#E9E5F6"/>
+
+  <!-- handle (behind rim) -->
+  <path d="M112,228 C112,72 288,72 288,228" fill="none" stroke="#5A4BC0" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- basket body -->
+  <path d="M78,238 L322,238 L296,330 Q292,344 278,344 L122,344 Q108,344 104,330 Z"
+        fill="#E9E5F6" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- weave: horizontal bands -->
+  <g fill="none" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round" opacity="0.75">
+    <path d="M88,266 Q200,274 312,266"/>
+    <path d="M96,294 Q200,302 304,294"/>
+    <path d="M103,320 Q200,328 297,320"/>
+  </g>
+
+  <!-- weave: vertical ribs -->
+  <g fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" opacity="0.45">
+    <path d="M122,252 L136,330"/>
+    <path d="M160,252 L168,330"/>
+    <path d="M200,252 L200,330"/>
+    <path d="M240,252 L232,330"/>
+    <path d="M280,252 L265,330"/>
+  </g>
+
+  <!-- the two apples -->
+  <use href="#apple" transform="translate(146,198)"/>
+  <use href="#apple" transform="translate(254,198)"/>
+
+  <!-- rim -->
+  <rect x="64" y="212" width="272" height="38" rx="17"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="6"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)" opacity="0.9"/>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+</svg>

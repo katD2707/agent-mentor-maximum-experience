@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-viet-5-ta-canh-ta-nguoi",
+  "title": "Tiếng Việt 5: Tả cảnh, tả người",
+  "subject": "Tiếng Việt",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Tuấn",
+  "description_short": "Ôn cách quan sát và lập dàn ý cho bài văn tả cảnh, tả người, kèm nhiều đoạn văn mẫu để so sánh. Dành cho học sinh lớp 5 chuẩn bị thi cuối cấp.",
+  "outcomes": [
+    "Lập được dàn ý ba phần cho bài văn tả.",
+    "Dùng được hình ảnh so sánh và nhân hóa.",
+    "Tự sửa được lỗi dùng từ trong bài viết."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 49,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Tả cảnh",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Quan sát buổi sáng ở quê",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Dàn ý bài tả cảnh",
+          "est_minutes": 6
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Viết mở bài, kết bài",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tả người",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tả ngoại hình",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Tả hoạt động, tính tình",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Hoàn chỉnh bài văn",
+          "est_minutes": 8
+        }
+      ]
+    }
+  ]
+}

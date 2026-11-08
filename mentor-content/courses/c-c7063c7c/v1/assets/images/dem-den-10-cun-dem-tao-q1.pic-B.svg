@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="200" cy="320" rx="98" ry="10" fill="#E9E5F6"/>
+
+  <!-- flaps behind the body -->
+  <g stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- back flap standing up -->
+    <polygon points="138,166 160,96 240,96 262,166" fill="#9FD8BF"/>
+    <!-- left flap fanned out -->
+    <polygon points="128,158 46,134 42,186 126,200" fill="#E8806A"/>
+    <!-- right flap fanned out -->
+    <polygon points="272,158 354,134 358,186 274,200" fill="#E8806A"/>
+  </g>
+
+  <!-- box body -->
+  <rect x="114" y="166" width="172" height="150" rx="14"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- dark opening of the box -->
+  <ellipse cx="200" cy="166" rx="85" ry="21" fill="#5A4BC0"/>
+
+  <!-- small blank label on the front -->
+  <rect x="162" y="230" width="76" height="40" rx="9"
+        fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

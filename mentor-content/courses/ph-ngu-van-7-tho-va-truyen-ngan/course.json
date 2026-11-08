@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-ngu-van-7-tho-va-truyen-ngan",
+  "title": "Ngữ văn 7: Thơ và truyện ngắn",
+  "subject": "Ngữ văn",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Diệp",
+  "description_short": "Khóa học đọc thơ bốn chữ, năm chữ và truyện ngắn hiện đại, có các câu hỏi phân tích nhân vật và giọng kể. Kết thúc bằng bài viết phát biểu cảm nghĩ.",
+  "outcomes": [
+    "Nhận biết đặc điểm thơ bốn chữ, năm chữ.",
+    "Phân tích được nhân vật và ngôi kể trong truyện.",
+    "Viết được bài phát biểu cảm nghĩ về tác phẩm."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 83,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Thơ",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Thơ bốn chữ",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Thơ năm chữ",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Biểu cảm trong thơ",
+          "est_minutes": 16
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Truyện ngắn",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Nhân vật và cốt truyện",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Ngôi kể",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Viết cảm nghĩ",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

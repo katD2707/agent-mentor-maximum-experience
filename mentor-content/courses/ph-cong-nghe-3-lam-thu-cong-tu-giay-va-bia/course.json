@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-cong-nghe-3-lam-thu-cong-tu-giay-va-bia",
+  "title": "Công nghệ 3: Làm thủ công từ giấy và bìa",
+  "subject": "Công nghệ",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Liên",
+  "description_short": "Em gấp, cắt, dán để làm hộp bút, thiệp và đồ chơi, có sơ đồ từng bước kèm danh sách dụng cụ. Dành cho học sinh lớp 3.",
+  "outcomes": [
+    "Dùng kéo, hồ dán an toàn.",
+    "Làm được một sản phẩm từ giấy theo hướng dẫn.",
+    "Đánh giá được sản phẩm của mình và của bạn."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 50,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Chuẩn bị",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Dụng cụ và vật liệu",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l2",
+          "title": "An toàn khi làm thủ công",
+          "est_minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Sản phẩm",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Hộp đựng bút",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Thiệp chúc mừng",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Đồ chơi gấp giấy",
+          "est_minutes": 12
+        }
+      ]
+    }
+  ]
+}

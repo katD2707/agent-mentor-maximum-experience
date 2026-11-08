@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="200" y="180" width="600" height="18" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="200" y="520" width="600" height="18" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="250" y="187" width="20" height="4" rx="2" fill="#E8806A"/>
+<rect x="258" y="179" width="4" height="20" rx="2" fill="#E8806A"/>
+<rect x="370" y="187" width="20" height="4" rx="2" fill="#E8806A"/>
+<rect x="378" y="179" width="4" height="20" rx="2" fill="#E8806A"/>
+<rect x="490" y="187" width="20" height="4" rx="2" fill="#E8806A"/>
+<rect x="498" y="179" width="4" height="20" rx="2" fill="#E8806A"/>
+<rect x="610" y="187" width="20" height="4" rx="2" fill="#E8806A"/>
+<rect x="618" y="179" width="4" height="20" rx="2" fill="#E8806A"/>
+<rect x="730" y="187" width="20" height="4" rx="2" fill="#E8806A"/>
+<rect x="738" y="179" width="4" height="20" rx="2" fill="#E8806A"/>
+<rect x="250" y="527" width="20" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="370" y="527" width="20" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="490" y="527" width="20" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="610" y="527" width="20" height="4" rx="2" fill="#9FD8BF"/>
+<rect x="730" y="527" width="20" height="4" rx="2" fill="#9FD8BF"/>
+<line x1="300" y1="205" x2="300" y2="495" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="300,500 292,484 308,484" fill="#5A4BC0"/>
+<line x1="400" y1="205" x2="400" y2="495" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="400,500 392,484 408,484" fill="#5A4BC0"/>
+<line x1="500" y1="205" x2="500" y2="495" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="500,500 492,484 508,484" fill="#5A4BC0"/>
+<line x1="600" y1="205" x2="600" y2="495" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="600,500 592,484 608,484" fill="#5A4BC0"/>
+<line x1="700" y1="205" x2="700" y2="495" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="700,500 692,484 708,484" fill="#5A4BC0"/>
+<line x1="850" y1="205" x2="850" y2="515" stroke="#E8806A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="850,200 842,215 858,215" fill="#E8806A"/>
+<polygon points="850,520 842,505 858,505" fill="#E8806A"/>
+<text x="500" y="140" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">b&#7843;n d&#432;&#417;ng (+)</text>
+<text x="500" y="590" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">b&#7843;n &#226;m (&#8722;)</text>
+<text x="110" y="350" text-anchor="start" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#273;&#432;&#7901;ng s&#7913;c</text>
+<text x="880" y="360" text-anchor="start" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">d</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

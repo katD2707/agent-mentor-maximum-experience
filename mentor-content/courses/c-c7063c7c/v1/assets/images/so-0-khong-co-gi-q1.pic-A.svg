@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow on the ground -->
+  <ellipse cx="200" cy="318" rx="112" ry="18" fill="#E9E5F6"/>
+
+  <!-- handle (behind the rim) -->
+  <path d="M132 168 C132 74 268 74 268 168" fill="none" stroke="#5A4BC0" stroke-width="16" stroke-linecap="round"/>
+  <path d="M132 168 C132 74 268 74 268 168" fill="none" stroke="#F0D76E" stroke-width="6" stroke-linecap="round" stroke-dasharray="14 12"/>
+
+  <!-- basket body -->
+  <path d="M104 164 L296 164 C288 262 254 306 200 306 C146 306 112 262 104 164 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="9" stroke-linejoin="round"/>
+
+  <!-- horizontal weave bands -->
+  <path d="M112 196 C160 208 240 208 288 196" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M120 232 C165 244 235 244 280 232" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M132 266 C170 278 230 278 268 266" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- vertical weave stakes -->
+  <path d="M148 172 L146 292" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M200 172 L200 302" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+  <path d="M252 172 L254 292" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+
+  <!-- mint checker accents on the weave -->
+  <rect x="158" y="204" width="16" height="16" rx="4" fill="#9FD8BF"/>
+  <rect x="226" y="204" width="16" height="16" rx="4" fill="#9FD8BF"/>
+  <rect x="176" y="244" width="16" height="16" rx="4" fill="#9FD8BF"/>
+  <rect x="208" y="244" width="16" height="16" rx="4" fill="#9FD8BF"/>
+  <rect x="192" y="278" width="16" height="16" rx="4" fill="#9FD8BF"/>
+
+  <!-- coral band across the middle -->
+  <path d="M116 214 C162 226 238 226 284 214" fill="none" stroke="#E8806A" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- empty mouth of the basket -->
+  <ellipse cx="200" cy="164" rx="96" ry="26" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="9"/>
+  <ellipse cx="200" cy="164" rx="76" ry="16" fill="#E9E5F6"/>
+
+  <!-- rim highlight -->
+  <path d="M140 158 C160 148 240 148 260 158" fill="none" stroke="#F0D76E" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

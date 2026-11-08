@@ -1,0 +1,1638 @@
+{
+  "schema_version": 1,
+  "course_id": "c-e451e31c",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "g10_12",
+  "title": "Vật lí 11: Điện trường",
+  "chapters": [
+    {
+      "id": "ch-chuong-1-luc-dien",
+      "title": "Chương 1. Lực điện",
+      "lessons": [
+        {
+          "id": "dien-tich-dinh-luat-cu-long",
+          "title": "Điện tích, định luật Cu-lông",
+          "est_minutes": 15,
+          "summary": "Học về hai loại điện tích, lực hút và lực đẩy giữa các điện tích, và định luật Cu-lông cho hai điện tích điểm đứng yên.",
+          "key_ideas": [
+            "Có hai loại điện tích: dương và âm",
+            "Cùng dấu đẩy nhau, trái dấu hút nhau",
+            "Lực Cu-lông F = k|q1q2|/(εr²)",
+            "Trong không khí lấy ε ≈ 1"
+          ],
+          "blocks": [
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/dien-tich-dinh-luat-cu-long-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "f8ab6861c3a2af12a6476ec616791a70587f0d0c5751011aa834a70370a8444d",
+                "bytes": 1056140
+              },
+              "poster": {
+                "path": "images/dien-tich-dinh-luat-cu-long-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "7a54514f870465b58996bde5c90ec9d227b921c68cc26054164b9f9da0c79aeb",
+                "bytes": 11496
+              },
+              "captions": {
+                "path": "video/dien-tich-dinh-luat-cu-long-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "66afab995182f6723e259576e6792b73fb0f4fe0e9c0f69973231a2901193761",
+                "bytes": 941
+              },
+              "duration_s": 38.57,
+              "title": "Điện tích và định luật Cu-lông"
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b2",
+              "kind": "text",
+              "md": "Có hai loại điện tích: **điện tích dương** và **điện tích âm**. Hai điện tích **cùng dấu thì đẩy nhau**, hai điện tích **trái dấu thì hút nhau**. Lực hút hoặc lực đẩy đó gọi là lực điện (lực Cu-lông).",
+              "audio": null
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b3",
+              "kind": "text",
+              "md": "Với hai **điện tích điểm đứng yên**, độ lớn lực tương tác là\n\n$$F = k\\frac{|q_1q_2|}{\\varepsilon r^2}$$\n\ntrong đó $q_1, q_2$ là các điện tích, $r$ là khoảng cách giữa chúng, $k = 9\\cdot10^{9}\\ \\text{N}\\cdot\\text{m}^2/\\text{C}^2$, còn $\\varepsilon$ là hằng số điện môi của môi trường. Trong không khí lấy $\\varepsilon \\approx 1$.",
+              "audio": null
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ nhanh",
+              "md": "- Hai loại điện tích: dương và âm.\n- Cùng dấu **đẩy**, trái dấu **hút**.\n- Độ lớn lực: $F = k\\dfrac{|q_1q_2|}{\\varepsilon r^2}$ với $k = 9\\cdot10^{9}\\ \\text{N}\\cdot\\text{m}^2/\\text{C}^2$.\n- Trong không khí: $\\varepsilon \\approx 1$.",
+              "audio": null
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/dien-tich-dinh-luat-cu-long-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "fd90b876a9699034990c825759c9e577bc932802158d0e36e43ee472d2f698f7",
+                "bytes": 3159
+              },
+              "alt": "Hai cặp điện tích: cặp cùng dấu đẩy nhau, cặp trái dấu hút nhau",
+              "caption": "Cùng dấu đẩy nhau, trái dấu hút nhau",
+              "audio": null
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ có lời giải",
+              "md": "**Đề:** Hai điện tích điểm $q_1 = 2\\cdot10^{-6}\\ \\text{C}$ và $q_2 = -3\\cdot10^{-6}\\ \\text{C}$ đặt trong không khí, cách nhau $r = 3\\ \\text{cm}$. Tính độ lớn lực tương tác và cho biết chúng hút hay đẩy.\n\n**Bước 1. Đổi đơn vị:** $r = 3\\ \\text{cm} = 0,03\\ \\text{m}$.\n\n**Bước 2. Lấy trị tuyệt đối và áp dụng công thức** (không khí nên $\\varepsilon = 1$):\n$$F = k\\frac{|q_1q_2|}{\\varepsilon r^2} = 9\\cdot10^{9}\\cdot\\frac{2\\cdot10^{-6}\\cdot 3\\cdot10^{-6}}{1\\cdot(0,03)^2}$$\n\n**Bước 3. Tính tử số:** $|q_1q_2| = 6\\cdot10^{-12}\\ \\text{C}^2$, nên $9\\cdot10^{9}\\cdot 6\\cdot10^{-12} = 5,4\\cdot10^{-2}$.\n\n**Bước 4. Tính mẫu số:** $(0,03)^2 = 9\\cdot10^{-4}\\ \\text{m}^2$.\n\n**Bước 5. Kết quả:** $F = \\dfrac{5,4\\cdot10^{-2}}{9\\cdot10^{-4}} = 60\\ \\text{N}$.\n\nHai điện tích trái dấu nên lực này là **lực hút**.",
+              "audio": null
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "- Bỏ quên dấu giá trị tuyệt đối: $F$ luôn dương; dấu của $q_1, q_2$ chỉ dùng để biết hút hay đẩy.\n- Quên bình phương $r$, hoặc để $r$ ở đơn vị cm; phải đổi về mét.\n- Quên chia cho $\\varepsilon$: trong không khí $\\varepsilon \\approx 1$ nhưng vẫn phải viết vào công thức.",
+              "audio": null
+            },
+            {
+              "id": "dien-tich-dinh-luat-cu-long-b8",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "dien-tich-dinh-luat-cu-long-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Phát biểu nào sau đây đúng về tương tác giữa hai điện tích điểm đứng yên?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cùng dấu thì đẩy nhau, trái dấu thì hút nhau.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Cùng dấu thì hút nhau, trái dấu thì đẩy nhau.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Hai điện tích luôn hút nhau, không phụ thuộc dấu.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Hai điện tích luôn đẩy nhau, không phụ thuộc dấu.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Dấu của điện tích quyết định lực hút hay đẩy.",
+                  "explanation": "Theo quy tắc: hai điện tích cùng dấu đẩy nhau, trái dấu hút nhau.",
+                  "option_feedback": {
+                    "B": "Quy tắc đúng là cùng dấu đẩy, trái dấu hút.",
+                    "C": "Chỉ hai điện tích trái dấu mới hút nhau.",
+                    "D": "Chỉ hai điện tích cùng dấu mới đẩy nhau."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "dien-tich-dinh-luat-cu-long-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Hai điện tích điểm $q_1=4\\cdot10^{-6}\\ \\text{C}$ và $q_2=1\\cdot10^{-6}\\ \\text{C}$ đặt trong không khí, cách nhau $6\\ \\text{cm}$. Độ lớn lực tương tác giữa chúng là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$10\\ \\text{N}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$20\\ \\text{N}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$40\\ \\text{N}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$2{,}5\\ \\text{N}$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Đổi $r$ sang mét rồi thay vào $F=k\\dfrac{|q_1q_2|}{r^2}$ với $\\varepsilon=1$.",
+                  "explanation": "Đổi $r=0{,}06\\ \\text{m}$, áp dụng $F=k\\dfrac{|q_1q_2|}{r^2}$ được $F=10\\ \\text{N}$.",
+                  "option_feedback": {
+                    "B": "Có thể đã quên bình phương khoảng cách hoặc đổi đơn vị sai.",
+                    "C": "Hãy kiểm tra lại phép tính $|q_1q_2|$ và $r^2$ sau khi đổi $r$ ra mét.",
+                    "D": "Có thể đã nhân thêm hệ số hoặc chia sai."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dien-tich-dinh-luat-cu-long-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu sau về điện tích và định luật Cu-lông.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Hai điện tích trái dấu thì hút nhau."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Độ lớn lực Cu-lông tỉ lệ nghịch với bình phương khoảng cách giữa hai điện tích."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Trong không khí, hằng số điện môi $\\varepsilon$ có giá trị lớn hơn 1 đáng kể."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Khi khoảng cách giữa hai điện tích điểm tăng gấp đôi (giữ nguyên độ lớn các điện tích), độ lớn lực Cu-lông tăng gấp đôi."
+                    }
+                  ],
+                  "tap": null,
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Xem lại phần bài đọc.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dien-tich-dinh-luat-cu-long-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Hai điện tích điểm $q_1=2\\cdot10^{-6}\\ \\text{C}$ và $q_2=2\\cdot10^{-6}\\ \\text{C}$ đặt trong không khí, cách nhau $3\\ \\text{cm}$. Độ lớn lực tương tác giữa chúng bằng bao nhiêu niu-tơn?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "40",
+                      "40 N",
+                      "40N"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Lấy $\\varepsilon=1$ và đổi $3\\ \\text{cm}=0{,}03\\ \\text{m}$.",
+                  "explanation": "Đổi $r=0{,}03\\ \\text{m}$; $F=9\\cdot10^9\\cdot\\dfrac{4\\cdot10^{-12}}{(0{,}03)^2}=40\\ \\text{N}$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-chuong-2-dien-truong",
+      "title": "Chương 2. Điện trường",
+      "lessons": [
+        {
+          "id": "cuong-do-dien-truong",
+          "title": "Cường độ điện trường",
+          "est_minutes": 15,
+          "summary": "Điện trường là môi trường quanh điện tích; cường độ điện trường đặc trưng cho độ mạnh yếu và được xác định bởi E = k|Q|/(εr²), kèm nguyên lí chồng chất.",
+          "key_ideas": [
+            "Điện trường tác dụng lực lên điện tích khác",
+            "E đặc trưng độ mạnh yếu của điện trường, đơn vị V/m",
+            "Với điện tích điểm: E = k|Q|/(εr²)",
+            "Vectơ E hướng ra xa nếu Q > 0, hướng vào nếu Q < 0",
+            "Nguyên lí chồng chất điện trường"
+          ],
+          "blocks": [
+            {
+              "id": "cuong-do-dien-truong-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/cuong-do-dien-truong-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "efec87bf2455cec4677ca368d5346477c33861fbf40d22bf9e5dac5b83842368",
+                "bytes": 1288021
+              },
+              "poster": {
+                "path": "images/cuong-do-dien-truong-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "6cf26500a751132d74491b652564f9b7f8a197b1b7cedf2892316003c4db7785",
+                "bytes": 18054
+              },
+              "captions": {
+                "path": "video/cuong-do-dien-truong-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "307b08f7ba1bc526f5ce32115890faee2d2d39eb5c0c3a10963a8dabaacd4f7b",
+                "bytes": 1067
+              },
+              "duration_s": 44.7,
+              "title": "Cường độ điện trường"
+            },
+            {
+              "id": "cuong-do-dien-truong-b2",
+              "kind": "text",
+              "md": "Quanh một điện tích có điện trường. Điện trường tác dụng lực lên điện tích khác đặt trong nó. Cường độ điện trường tại một điểm cho biết điện trường mạnh hay yếu ở điểm đó; đơn vị là vôn trên mét (V/m). Vectơ cường độ điện trường $\\vec E$ hướng ra xa điện tích nếu $Q>0$, hướng vào nếu $Q<0$.",
+              "audio": null
+            },
+            {
+              "id": "cuong-do-dien-truong-b3",
+              "kind": "text",
+              "md": "Với điện tích điểm trong chân không hoặc không khí, độ lớn cường độ điện trường tại điểm cách nó khoảng $r$ là $$E=k\\frac{|Q|}{\\varepsilon r^2}.$$ Trong đó $k$ là hằng số, $Q$ là điện tích, $\\varepsilon$ là hằng số điện môi của môi trường, $r$ là khoảng cách từ điện tích đến điểm đang xét. Nếu nhiều điện tích cùng gây ra điện trường tại một điểm thì điện trường tổng hợp bằng tổng các vectơ điện trường do từng điện tích gây ra (nguyên lí chồng chất).",
+              "audio": null
+            },
+            {
+              "id": "cuong-do-dien-truong-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Cần nhớ",
+              "md": "- Điện trường quanh điện tích tác dụng lực lên điện tích khác đặt trong nó.\n- Cường độ điện trường $E$ cho biết điện trường mạnh hay yếu; đơn vị là V/m.\n- Với điện tích điểm: $E=k\\dfrac{|Q|}{\\varepsilon r^2}$.\n- Vectơ $\\vec E$ hướng ra xa nếu $Q>0$, hướng vào nếu $Q<0$. Nhiều điện tích thì cộng các vectơ theo nguyên lí chồng chất.",
+              "audio": null
+            },
+            {
+              "id": "cuong-do-dien-truong-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/cuong-do-dien-truong-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "024708f3a2ccd585b6f49da35a64563a0d473e2eed54f2d5e6d158d4d6c1ceab",
+                "bytes": 6374
+              },
+              "alt": "Điện tích dương có vectơ điện trường hướng ra xa; điện tích âm có vectơ điện trường hướng vào tâm.",
+              "caption": "Chiều của vectơ cường độ điện trường phụ thuộc dấu của điện tích.",
+              "audio": null
+            },
+            {
+              "id": "cuong-do-dien-truong-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: khoảng cách tăng gấp đôi",
+              "md": "Điểm cách điện tích điểm $Q$ khoảng $r_1=0{,}20\\ \\text{m}$ có cường độ điện trường $E_1=900\\ \\text{V/m}$. Tính $E_2$ tại điểm cách $Q$ khoảng $r_2=0{,}40\\ \\text{m}$ (cùng môi trường, cùng $Q$).\n\nTừ $E=k\\dfrac{|Q|}{\\varepsilon r^2}$, với cùng $Q$ và $\\varepsilon$: $$\\frac{E_2}{E_1}=\\left(\\frac{r_1}{r_2}\\right)^2.$$\n\nThay số: $$\\frac{E_2}{900}=\\left(\\frac{0{,}20}{0{,}40}\\right)^2=\\left(\\frac12\\right)^2=\\frac14.$$\n\nSuy ra $E_2=900\\cdot\\dfrac14=225\\ \\text{V/m}$.\n\nKhi khoảng cách tăng gấp đôi, cường độ điện trường giảm còn một phần tư: $225\\ \\text{V/m}$.",
+              "audio": null
+            },
+            {
+              "id": "cuong-do-dien-truong-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "- Quên bình phương khoảng cách $r$ khi dùng $E=k\\dfrac{|Q|}{\\varepsilon r^2}$.\n- Thay $Q$ âm vào công thức mà không lấy trị tuyệt đối: độ lớn dùng $|Q|$.\n- Nhầm chiều vectơ $\\vec E$ với chiều lực tác dụng lên một điện tích thử; với $Q<0$, $\\vec E$ hướng vào $Q$.",
+              "audio": null
+            },
+            {
+              "id": "cuong-do-dien-truong-b8",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "cuong-do-dien-truong-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cường độ điện trường tại một điểm có đơn vị là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "N/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "V.m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "C/m",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Đơn vị này gắn với hiệu điện thế chia cho khoảng cách.",
+                  "explanation": "Cường độ điện trường đặc trưng độ mạnh yếu của điện trường và có đơn vị vôn trên mét (V/m).",
+                  "option_feedback": {
+                    "B": "N/m là đơn vị của độ cứng lò xo, không phải cường độ điện trường.",
+                    "C": "Đơn vị đúng là vôn chia mét, không phải vôn nhân mét.",
+                    "D": "C/m là đơn vị kiểu mật độ điện tích dài, không dùng cho E."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "cuong-do-dien-truong-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Tại điểm cách điện tích điểm $Q$ một khoảng $r_1=0{,}20\\ \\text{m}$, cường độ điện trường là $900\\ \\text{V/m}$. Trong cùng môi trường, cường độ điện trường tại điểm cách $Q$ khoảng $r_2=0{,}40\\ \\text{m}$ bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$225\\ \\text{V/m}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$450\\ \\text{V/m}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$1800\\ \\text{V/m}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$3600\\ \\text{V/m}$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Lập tỉ số $E_2/E_1=(r_1/r_2)^2$.",
+                  "explanation": "Với cùng $Q$ và $\\varepsilon$, $E$ tỉ lệ nghịch với $r^2$; $r$ tăng gấp đôi nên $E$ giảm 4 lần: $900/4=225\\ \\text{V/m}$.",
+                  "option_feedback": {
+                    "B": "Sai vì chỉ chia đôi theo khoảng cách mà quên rằng E tỉ lệ nghịch với bình phương $r$.",
+                    "C": "Sai chiều biến thiên: khoảng cách tăng thì cường độ điện trường phải giảm.",
+                    "D": "Sai cả chiều biến thiên và bậc của $r$ trong công thức."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                },
+                {
+                  "id": "cuong-do-dien-truong-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tại điểm cách điện tích điểm $Q$ một khoảng $r_1=0{,}10\\ \\text{m}$, cường độ điện trường là $1600\\ \\text{V/m}$. Tính cường độ điện trường tại điểm cách $Q$ khoảng $r_2=0{,}20\\ \\text{m}$ (cùng môi trường). Nêu kết quả theo đơn vị V/m.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "400",
+                      "400 V/m",
+                      "400V/m"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Dùng $E_2/E_1=(r_1/r_2)^2$.",
+                  "explanation": "$r$ tăng gấp 2 lần nên $E$ giảm $2^2=4$ lần: $1600/4=400\\ \\text{V/m}$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "duong-suc-dien",
+          "title": "Đường sức điện",
+          "est_minutes": 15,
+          "summary": "Đường sức điện là đường có tiếp tuyến tại mỗi điểm trùng với hướng của vectơ cường độ điện trường, giúp nhận biết hướng và độ mạnh yếu của điện trường.",
+          "key_ideas": [
+            "Qua mỗi điểm chỉ vẽ được một đường sức; các đường sức không cắt nhau",
+            "Đường sức đi ra từ điện tích dương và đi vào điện tích âm",
+            "Chỗ điện trường mạnh, đường sức dày; chỗ yếu, đường sức thưa",
+            "Đường sức của điện trường tĩnh không khép kín",
+            "E tỉ lệ nghịch với r² nên càng xa càng thưa"
+          ],
+          "blocks": [
+            {
+              "id": "duong-suc-dien-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/duong-suc-dien-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "f76b3967f8e264ea79f542fa6bea6fc2e38fede7ef9a82f35ac71dd0e5561dd0",
+                "bytes": 2049932
+              },
+              "poster": {
+                "path": "images/duong-suc-dien-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "aa7d9a87987b5dbe1c8a551403986fe73f0234ec849b0bbe734e718b950917d2",
+                "bytes": 9736
+              },
+              "captions": {
+                "path": "video/duong-suc-dien-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "79a9cc08196bda65326838d4c56a7457723d22d74157c27e8c5fb731e61f2a80",
+                "bytes": 1644
+              },
+              "duration_s": 66.43,
+              "title": "Đường sức điện"
+            },
+            {
+              "id": "duong-suc-dien-b2",
+              "kind": "text",
+              "md": "Đường sức điện là đường vẽ trong điện trường sao cho **tiếp tuyến tại mỗi điểm trùng với hướng của vectơ cường độ điện trường** tại điểm đó. Nhìn đường sức, ta biết điện trường hướng về đâu và mạnh hay yếu ở chỗ nào.\n\nQua mỗi điểm chỉ vẽ được một đường sức. Tại một điểm, vectơ $\\vec{E}$ chỉ có một hướng xác định, nên **các đường sức không cắt nhau**.\n\nĐường sức **đi ra từ điện tích dương** và **đi vào điện tích âm** (hoặc đi ra xa vô cực). Đường sức của điện trường tĩnh **không khép kín**.",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Bốn điều cần nhớ",
+              "md": "- Qua mỗi điểm chỉ vẽ được **một** đường sức, nên các đường sức **không cắt nhau**.\n- Đường sức **đi ra từ điện tích dương**, **đi vào điện tích âm** (hoặc ra xa vô cực).\n- Chỗ điện trường **mạnh**: đường sức **dày**; chỗ **yếu**: đường sức **thưa**.\n- Đường sức của **điện trường tĩnh không khép kín**.",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/duong-suc-dien-b4.webp",
+                "mime": "image/webp",
+                "sha256": "3b1e79f832bd5c502666dfc3660352289c547d74e0c57c56dff50f7424fe04a2",
+                "bytes": 17088
+              },
+              "alt": "Các đường sức tỏa ra từ một điện tích dương, dày ở gần và thưa dần khi ra xa",
+              "caption": "Đường sức của một điện tích dương: đi ra xa điện tích, càng xa càng thưa",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b5",
+              "kind": "text",
+              "md": "**Vì sao càng xa càng thưa?**\n\nCường độ điện trường của một điện tích điểm:\n\n$$E = k\\frac{|q|}{\\varepsilon r^2}$$\n\n$E$ tỉ lệ nghịch với $r^2$: đi xa gấp đôi thì $E$ chỉ còn một phần tư, nên đường sức phải thưa ra. Vì vậy chỉ cần nhìn độ dày của đường sức là biết chỗ nào điện trường mạnh hơn, chưa cần tính.",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/duong-suc-dien-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "2275585361652016871b249a64954991b2bba7abdbd051da6bfd8c697291f0c3",
+                "bytes": 9370
+              },
+              "alt": "Đồ thị cường độ điện trường giảm theo bình phương khoảng cách",
+              "caption": "E giảm theo $r^2$: gấp đôi khoảng cách, E còn một phần tư",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tính E ở hai khoảng cách",
+              "md": "Điện tích $q = 4\\cdot10^{-8}\\text{ C}$ đặt trong không khí. Tính $E$ tại điểm cách $q$ 3 cm và 6 cm.\n\n**Bước 1. Đổi đơn vị.** $r_1 = 3\\text{ cm} = 0{,}03\\text{ m}$; $r_2 = 6\\text{ cm} = 0{,}06\\text{ m}$.\n\n**Bước 2. Áp dụng công thức** $E = k\\dfrac{|q|}{\\varepsilon r^2}$ với $k = 9\\cdot10^{9}$, không khí nên $\\varepsilon \\approx 1$:\n\n$$E_1 = 9\\cdot10^{9}\\cdot\\frac{4\\cdot10^{-8}}{(0{,}03)^2} = \\frac{360}{9\\cdot10^{-4}} = 4\\cdot10^{5}\\text{ V/m}$$\n\n**Bước 3. Ở 6 cm, $r$ gấp đôi** nên $E$ giảm $2^2 = 4$ lần:\n\n$$E_2 = \\frac{4\\cdot10^{5}}{4} = 10^{5}\\text{ V/m}$$\n\nVậy $E_1 = 4\\cdot10^{5}\\text{ V/m}$, $E_2 = 10^{5}\\text{ V/m}$; các đường sức ở 6 cm thưa hơn ở 3 cm.",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Đừng nhầm",
+              "md": "Có bạn thấy hai đường sức gặp nhau ở chỗ điện trường mạnh rồi nghĩ chúng **cắt nhau** tại đó. Không đúng: tại một điểm, vectơ $\\vec{E}$ chỉ có một hướng, mà tiếp tuyến của đường sức phải trùng hướng đó, nên qua mỗi điểm chỉ vẽ được một đường sức.\n\nCũng đừng vẽ đường sức của điện trường tĩnh thành **vòng kín**: đường sức đi ra từ điện tích dương và đi vào điện tích âm, không khép kín.",
+              "audio": null
+            },
+            {
+              "id": "duong-suc-dien-b9",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "duong-suc-dien-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao hai đường sức điện không thể cắt nhau?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì tại mỗi điểm, vectơ E chỉ có một hướng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì điện trường chỉ mạnh ở gần điện tích.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì các đường sức luôn là đường thẳng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì mọi điện tích đều cùng dấu.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Liên hệ với hướng của vectơ cường độ điện trường tại một điểm.",
+                  "explanation": "Tại một điểm, vectơ cường độ điện trường chỉ có một hướng nên chỉ vẽ được một đường sức; do đó các đường sức không cắt nhau.",
+                  "option_feedback": {
+                    "B": "Độ mạnh của điện trường không phải lí do khiến các đường sức không cắt nhau.",
+                    "C": "Đường sức có thể là đường cong, nhưng vẫn không cắt nhau.",
+                    "D": "Điện tích có thể khác dấu; điều này không quyết định việc cắt nhau."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "duong-suc-dien-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Điện tích $q = 4\\cdot10^{-8}\\text{ C}$ đặt trong không khí. Cường độ điện trường tại điểm cách $q$ 6 cm là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$10^5$ V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$4\\cdot10^5$ V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$2\\cdot10^5$ V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$5\\cdot10^4$ V/m",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "So sánh khoảng cách 6 cm với 3 cm trong ví dụ.",
+                  "explanation": "Ở 6 cm, khoảng cách gấp đôi 3 cm nên $E$ giảm 4 lần: $4\\cdot10^5/4 = 10^5$ V/m.",
+                  "option_feedback": {
+                    "B": "Đây là cường độ điện trường tại điểm cách $q$ 3 cm.",
+                    "C": "Khi khoảng cách tăng gấp đôi, cường độ điện trường giảm 4 lần, không phải 2 lần.",
+                    "D": "Giá trị này không đúng với phép tính $E = k|q|/r^2$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "duong-suc-dien-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Điện tích $q = 4\\cdot10^{-8}\\text{ C}$ đặt trong không khí. Tính độ lớn cường độ điện trường tại điểm cách $q$ 3 cm. (Đơn vị: V/m)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "4e5",
+                      "400000"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Đổi 3 cm = 0,03 m rồi thay vào công thức $E = k\\dfrac{|q|}{r^2}$.",
+                  "explanation": "Áp dụng $E = k|q|/r^2$ với $r = 0,03$ m, ta được $E = 4\\cdot10^5$ V/m.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dien-truong-deu",
+          "title": "Điện trường đều",
+          "est_minutes": 15,
+          "summary": "Điện trường đều có vectơ cường độ như nhau ở mọi điểm, đường sức là các đường thẳng song song cách đều, ví dụ giữa hai bản kim loại phẳng nhiễm điện trái dấu, với liên hệ E = U/d.",
+          "key_ideas": [
+            "Vectơ cường độ điện trường như nhau ở mọi điểm",
+            "Đường sức là những đường thẳng song song cách đều",
+            "Ví dụ: điện trường giữa hai bản kim loại phẳng nhiễm điện trái dấu",
+            "Công thức E = U/d"
+          ],
+          "blocks": [
+            {
+              "id": "dien-truong-deu-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/dien-truong-deu-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "d35bc09e903706ede59fee0c174c0c4e2a7ac10207e3da4cc591c970ca125629",
+                "bytes": 1198273
+              },
+              "poster": {
+                "path": "images/dien-truong-deu-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "df53fe7bb1f831ceacafca460b86ddd27305268de6d3efc9aa2f2294c5806277",
+                "bytes": 16014
+              },
+              "captions": {
+                "path": "video/dien-truong-deu-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "95a3d901a75e2ec65ea8d939f6f4eac93527913173dbb8dfa751ef4c9062d0d1",
+                "bytes": 1043
+              },
+              "duration_s": 41.7,
+              "title": "Điện trường đều"
+            },
+            {
+              "id": "dien-truong-deu-b2",
+              "kind": "text",
+              "md": "**Điện trường đều** là điện trường có vectơ cường độ điện trường như nhau ở mọi điểm: cùng độ lớn, cùng hướng. Nên đường sức của nó là những **đường thẳng song song cách đều** nhau.\n\nVí dụ: điện trường giữa hai bản kim loại phẳng nhiễm điện trái dấu. Vùng giữa hai bản (xa mép bản) là một điện trường đều, đường sức đi từ bản dương sang bản âm.",
+              "audio": null
+            },
+            {
+              "id": "dien-truong-deu-b3",
+              "kind": "text",
+              "md": "Giữa hai bản phẳng cách nhau khoảng $d$, hiệu điện thế giữa hai bản là $U$, cường độ điện trường đều liên hệ với chúng theo công thức\n\n$$E = \\frac{U}{d}$$\n\nTrong đó $U$ đo bằng vôn (V), $d$ đo bằng mét (m), $E$ đo bằng vôn trên mét (V/m). Đại lượng $d$ là khoảng cách giữa hai bản, không phải khoảng cách từ một điểm bất kì tới một bản.",
+              "audio": null
+            },
+            {
+              "id": "dien-truong-deu-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ nhanh",
+              "md": "- Điện trường đều: vectơ $\\vec{E}$ như nhau ở **mọi điểm**. Cùng độ lớn, cùng hướng.\n- Đường sức: những đường thẳng **song song, cách đều**.\n- Ví dụ: điện trường giữa hai bản kim loại phẳng nhiễm điện trái dấu.\n- Công thức: $E = \\dfrac{U}{d}$, với $U$ tính bằng V, $d$ tính bằng m, $E$ tính bằng V/m.",
+              "audio": null
+            },
+            {
+              "id": "dien-truong-deu-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/dien-truong-deu-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "f35f42e4501f54a3bfb3d5c14c09146a20a424ea95e7eab4ef2315c3e61c99d0",
+                "bytes": 3561
+              },
+              "alt": "Điện trường đều giữa hai bản kim loại phẳng nhiễm điện trái dấu với các đường sức song song cách đều",
+              "caption": "Đường sức trong điện trường đều giữa hai bản phẳng: song song, cách đều, hướng từ bản dương sang bản âm.",
+              "audio": null
+            },
+            {
+              "id": "dien-truong-deu-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ có lời giải",
+              "md": "Hai bản kim loại phẳng song song, nhiễm điện trái dấu, cách nhau $d = 2\\ \\text{cm}$. Hiệu điện thế giữa hai bản là $U = 100\\ \\text{V}$. Tính cường độ điện trường đều giữa hai bản.\n\n**Bước 1: Đổi đơn vị khoảng cách.**\n$$d = 2\\ \\text{cm} = 0{,}02\\ \\text{m}$$\n\n**Bước 2: Áp dụng công thức.**\n$$E = \\frac{U}{d} = \\frac{100}{0{,}02}$$\n\n**Bước 3: Tính và ghi đơn vị.**\n$$E = 5000\\ \\text{V/m}$$\n\nVậy cường độ điện trường giữa hai bản là $5000\\ \\text{V/m}$, và vectơ $\\vec{E}$ có giá trị này tại mọi điểm trong vùng giữa hai bản.",
+              "audio": null
+            },
+            {
+              "id": "dien-truong-deu-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi hay gặp",
+              "md": "- Quên đổi $d$ sang mét: dùng $d = 2$ với $U = 100\\ \\text{V}$ sẽ ra $50$, sai đơn vị và sai giá trị. Phải dùng $d = 0{,}02\\ \\text{m}$.\n- Lấy $E$ thay đổi theo vị trí: trong điện trường đều $E$ như nhau ở mọi điểm, chỉ cần một giá trị $E = U/d$ cho cả vùng.\n- Vẽ đường sức cong hoặc không đều: đường sức của điện trường đều phải là các đường thẳng song song và cách đều.",
+              "audio": null
+            },
+            {
+              "id": "dien-truong-deu-b8",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "dien-truong-deu-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Điện trường đều là điện trường có",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "vectơ cường độ điện trường như nhau ở mọi điểm.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "độ lớn cường độ điện trường tăng dần theo vị trí.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "đường sức là những đường cong song song nhau.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "vectơ cường độ điện trường chỉ cùng phương, khác độ lớn.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nhớ định nghĩa vectơ cường độ điện trường như nhau.",
+                  "explanation": "Điện trường đều có vectơ cường độ điện trường như nhau tại mọi điểm: cùng độ lớn, cùng hướng.",
+                  "option_feedback": {
+                    "B": "Trong điện trường đều, độ lớn cường độ điện trường không đổi ở mọi điểm.",
+                    "C": "Đường sức của điện trường đều là các đường thẳng, không phải đường cong.",
+                    "D": "Trong điện trường đều, các vectơ cường độ điện trường còn cùng hướng và cùng độ lớn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "dien-truong-deu-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Hai bản kim loại phẳng song song cách nhau 2 cm và có hiệu điện thế 100 V. Cường độ điện trường đều giữa hai bản là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "50 V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "200 V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "5000 V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "50000 V/m",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Đổi khoảng cách từ cm sang m.",
+                  "explanation": "E = U/d = 100/0,02 = 5000 V/m.",
+                  "option_feedback": {
+                    "A": "Cần đổi d = 2 cm = 0,02 m trước khi chia.",
+                    "B": "Công thức đúng là E = U/d, không phải U nhân d.",
+                    "D": "Đã đổi sai 2 cm thành 0,002 m."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dien-truong-deu-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu về điện trường đều và công thức $E = U/d$. Chọn đúng hoặc sai.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong điện trường đều, vectơ cường độ điện trường có cùng độ lớn và cùng hướng tại mọi điểm."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Đường sức của điện trường đều là những đường cong nối từ bản dương sang bản âm."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Vùng giữa hai bản kim loại phẳng nhiễm điện trái dấu, xa mép bản, có thể coi là điện trường đều."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Trong công thức $E = U/d$, $d$ là khoảng cách từ điểm xét tới bản dương."
+                    }
+                  ],
+                  "tap": null,
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý ý nghĩa của $d$ trong $E = U/d$.",
+                  "explanation": "Điện trường đều có vectơ cường độ như nhau ở mọi điểm và đường sức thẳng song song cách đều; $d$ là khoảng cách giữa hai bản.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dien-truong-deu-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Hai bản kim loại phẳng song song cách nhau 5 cm. Hiệu điện thế giữa hai bản là 250 V. Cường độ điện trường đều giữa hai bản bằng bao nhiêu V/m?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "5000"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Đổi khoảng cách sang mét rồi dùng $E = U/d$.",
+                  "explanation": "Đổi $d = 5 cm = 0,05 m$, suy ra $E = U/d = 250/0,05 = 5000 V/m$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch-chuong-3-dien-the-va-tu-dien",
+      "title": "Chương 3. Điện thế và tụ điện",
+      "lessons": [
+        {
+          "id": "the-nang-dien",
+          "title": "Thế năng điện",
+          "est_minutes": 15,
+          "summary": "Công của lực điện trong điện trường đều không phụ thuộc đường đi và được tính bởi A = qEd; điện tích có thế năng trong điện trường.",
+          "key_ideas": [
+            "Công của lực điện trong điện trường đều: A = qEd",
+            "Công của lực điện không phụ thuộc đường đi",
+            "Thế năng của điện tích trong điện trường"
+          ],
+          "blocks": [
+            {
+              "id": "the-nang-dien-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/the-nang-dien-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "0fc946da05bfa654b170260eaf8f0a6135d72a5c73594beacdad530b9d4dff37",
+                "bytes": 1155383
+              },
+              "poster": {
+                "path": "images/the-nang-dien-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "e00a009df0c65d6f1ed9185ef89301dd27a00b8f2cb6059c59221b65edb21d5d",
+                "bytes": 8448
+              },
+              "captions": {
+                "path": "video/the-nang-dien-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "7a9f6b4ce13e9989830d86369d637c00b54abcb8b20170b214ab243fc51c5fcb",
+                "bytes": 1017
+              },
+              "duration_s": 40.3,
+              "title": "Thế năng điện"
+            },
+            {
+              "id": "the-nang-dien-b2",
+              "kind": "text",
+              "md": "Điện tích $q$ đặt trong điện trường chịu lực điện; nếu nó dịch chuyển thì lực điện sinh công. Trong điện trường đều (ví dụ giữa hai bản kim loại phẳng nhiễm điện trái dấu), với hai bản cách nhau $d$ và hiệu điện thế $U$, ta có $E = U/d$. Khi điện tích $q$ dịch chuyển trong điện trường đều, công của lực điện là $A = qEd$.",
+              "audio": null
+            },
+            {
+              "id": "the-nang-dien-b3",
+              "kind": "text",
+              "md": "Công của lực điện trong điện trường đều không phụ thuộc đường đi: đi từ M đến N theo đường nào thì công cũng như nhau, chỉ phụ thuộc vị trí đầu và cuối. Vì vậy, điện tích trong điện trường có thế năng. Thế năng điện gắn với vị trí của điện tích trong điện trường.",
+              "audio": null
+            },
+            {
+              "id": "the-nang-dien-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "- Trong điện trường đều, vectơ cường độ điện trường như nhau tại mọi điểm; đường sức là các đường thẳng song song, cách đều.\n- Công của lực điện: $A = qEd$.\n- Công của lực điện không phụ thuộc đường đi, chỉ phụ thuộc vị trí đầu và cuối.\n- Điện tích trong điện trường có thế năng điện.",
+              "audio": null
+            },
+            {
+              "id": "the-nang-dien-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/the-nang-dien-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "af680273a7514de92b54c050c5e29c56e182fc0e290052fe9a36c99b7957935c",
+                "bytes": 4812
+              },
+              "alt": "Điện trường đều giữa hai bản kim loại phẳng song song, với hai đường đi khác nhau từ M đến N",
+              "caption": "Công của lực điện từ M đến N như nhau với mọi đường đi.",
+              "audio": null
+            },
+            {
+              "id": "the-nang-dien-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ",
+              "md": "Một điện tích $q = 4\\cdot 10^{-6}\\ \\text{C}$ dịch chuyển trong điện trường đều $E = 5\\cdot 10^{3}\\ \\text{V/m}$ theo phương đường sức, quãng đường $d = 0,20\\ \\text{m}$. Tính công của lực điện.\n\nBước 1: Dùng công thức $A = qEd$.\n\nBước 2: Thay số:\n$$A = (4\\cdot 10^{-6})\\cdot (5\\cdot 10^{3})\\cdot 0,20$$\n\nBước 3: Tính $5\\cdot 10^{3}\\cdot 0,20 = 1,0\\cdot 10^{3}$; rồi $(4\\cdot 10^{-6})\\cdot (1,0\\cdot 10^{3}) = 4,0\\cdot 10^{-3}$.\n\nVậy $A = 4,0\\cdot 10^{-3}\\ \\text{J} = 4,0\\ \\text{mJ}$.",
+              "audio": null
+            },
+            {
+              "id": "the-nang-dien-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "- Dùng độ dài đường đi thay cho $d$: $d$ là độ dịch chuyển theo phương đường sức.\n- Nghĩ công phụ thuộc đường đi: trong điện trường đều, đi theo đường nào từ M đến N thì công vẫn như nhau.",
+              "audio": null
+            },
+            {
+              "id": "the-nang-dien-b8",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "the-nang-dien-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong công thức $A = qEd$ của điện trường đều, đại lượng $d$ là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Độ dịch chuyển của điện tích theo phương đường sức",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Độ dài quãng đường thực tế mà điện tích đã đi",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Khoảng cách giữa hai bản kim loại nhiễm điện",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Độ lớn cường độ điện trường tại điểm đang xét",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "$d$ là độ dịch chuyển của điện tích theo phương của đường sức, không phải độ dài quãng đường.",
+                  "option_feedback": {
+                    "B": "$d$ không phải độ dài quỹ đạo mà là hình chiếu dịch chuyển lên phương đường sức.",
+                    "C": "Khoảng cách hai bản liên quan đến $E=U/d$, còn trong $A=qEd$ thì $d$ là độ dịch chuyển theo phương đường sức.",
+                    "D": "Cường độ điện trường là $E$, không phải $d$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "the-nang-dien-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Một điện tích $q = 4\\cdot 10^{-6}\\ \\text{C}$ dịch chuyển theo phương đường sức trong điện trường đều $E = 5\\cdot 10^{3}\\ \\text{V/m}$ một đoạn $d = 0,20\\ \\text{m}$. Công của lực điện bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$4\\cdot 10^{-3}\\ \\text{J}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$4\\cdot 10^{-8}\\ \\text{J}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$1\\cdot 10^{-2}\\ \\text{J}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$2,5\\cdot 10^{8}\\ \\text{J}$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "$A=qEd=4\\cdot10^{-6}\\cdot 5\\cdot10^{3}\\cdot 0,20 = 4\\cdot10^{-3}\\ \\text{J}$.",
+                  "option_feedback": {
+                    "B": "Kết quả này ứng với phép nhân sai số mũ của $q$ và $E$.",
+                    "C": "Cần nhân đúng $qEd$, không phải chia cho $d$.",
+                    "D": "Biểu thức này ứng với $Ed/q$, không phải $qEd$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                },
+                {
+                  "id": "the-nang-dien-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét điện trường đều và công của lực điện, các nhận định sau đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong điện trường đều, vectơ cường độ điện trường như nhau tại mọi điểm."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Các đường sức của điện trường đều là những đường thẳng song song và cách đều nhau."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Công của lực điện trong điện trường đều phụ thuộc vào hình dạng quỹ đạo của điện tích."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Điện tích đứng yên trong điện trường thì không có thế năng điện."
+                    }
+                  ],
+                  "tap": null,
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Công của lực điện chỉ phụ thuộc vị trí đầu và cuối, không phụ thuộc đường đi; điện tích nằm trong điện trường luôn có thế năng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "the-nang-dien-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Một điện tích $q = 2\\cdot 10^{-6}\\ \\text{C}$ dịch chuyển theo phương đường sức trong điện trường đều $E = 4\\cdot 10^{3}\\ \\text{V/m}$ một đoạn $d = 0,05\\ \\text{m}$. Tính công của lực điện (theo đơn vị jun).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "4e-4",
+                      "0,0004",
+                      "0.0004",
+                      "4.10^-4"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "$A=qEd=2\\cdot10^{-6}\\cdot4\\cdot10^{3}\\cdot0,05=4\\cdot10^{-4}\\ \\text{J}$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dien-the-hieu-dien-the",
+          "title": "Điện thế, hiệu điện thế",
+          "est_minutes": 15,
+          "summary": "Điện thế tại M là V_M = A_M∞/q; hiệu điện thế U_MN = V_M - V_N = A_MN/q, và có liên hệ E = U/d.",
+          "key_ideas": [
+            "Điện thế V_M = A_M∞/q",
+            "Hiệu điện thế U_MN = V_M - V_N = A_MN/q",
+            "Liên hệ E = U/d"
+          ],
+          "blocks": [
+            {
+              "id": "dien-the-hieu-dien-the-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/dien-the-hieu-dien-the-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "16432515e97a3b710425b7318223263da3eca577f4417cd149bf0f7439bd8e10",
+                "bytes": 1592577
+              },
+              "poster": {
+                "path": "images/dien-the-hieu-dien-the-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "405ca86cb59bb0deab08d7384bc3fac6c99ec8b8ddd97795ff232dd062c0d3c7",
+                "bytes": 13590
+              },
+              "captions": {
+                "path": "video/dien-the-hieu-dien-the-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "2063c9a48afb329f439aeb73b7172ff5eb8af4039a801aef96f4c94bf45768ff",
+                "bytes": 1297
+              },
+              "duration_s": 56.0,
+              "title": "Điện thế, hiệu điện thế và liên hệ với cường độ điện trường"
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b2",
+              "kind": "text",
+              "md": "Trong điện trường đều, công của lực điện khi dịch chuyển điện tích $q$ **không phụ thuộc đường đi**: $A = qEd$, với $d$ là độ dài đoạn dịch chuyển dọc theo đường sức.\n\nNhờ tính chất đó, người ta đưa ra khái niệm điện thế. **Điện thế tại điểm M** trong điện trường là thương số giữa công của lực điện khi dịch chuyển một điện tích $q$ từ M ra xa vô cùng và độ lớn của điện tích đó:\n\n$$V_M = \\frac{A_{M\\infty}}{q}$$\n\nĐiện thế được đo bằng vôn (V).",
+              "audio": null
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b3",
+              "kind": "text",
+              "md": "**Hiệu điện thế** giữa hai điểm M và N là hiệu giữa điện thế tại M và điện thế tại N:\n\n$$U_{MN} = V_M - V_N = \\frac{A_{MN}}{q}$$\n\nTrong đó $A_{MN}$ là công của lực điện khi dịch chuyển điện tích $q$ từ M đến N. Hiệu điện thế cũng đo bằng vôn (V).\n\nVới điện trường đều, giữa cường độ điện trường và hiệu điện thế có hệ thức:\n\n$$E = \\frac{U}{d}$$\n\ntrong đó $d$ là khoảng cách giữa hai điểm (hoặc hai bản) tính dọc theo đường sức. Từ đây, đơn vị của $E$ là vôn trên mét (V/m).",
+              "audio": null
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba công thức cốt lõi",
+              "md": "- Điện thế tại M: $V_M = \\dfrac{A_{M\\infty}}{q}$, công dịch chuyển $q$ từ M ra xa vô cùng.\n- Hiệu điện thế: $U_{MN} = V_M - V_N = \\dfrac{A_{MN}}{q}$, công dịch chuyển $q$ từ M đến N.\n- Điện trường đều: $E = \\dfrac{U}{d}$, với $d$ là khoảng cách giữa hai điểm trên cùng một đường sức (hoặc giữa hai bản phẳng song song).\n- Công của lực điện trong điện trường đều: $A = qEd$, **không phụ thuộc đường đi**, chỉ phụ thuộc điểm đầu và điểm cuối.",
+              "audio": null
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/dien-the-hieu-dien-the-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "b3eac0af9971157de6aad49b1ac2172687fb7da1eb320588802d9ee82f154d0f",
+                "bytes": 3570
+              },
+              "alt": "Hai bản kim loại phẳng song song nhiễm điện trái dấu, các đường sức song song cách đều hướng từ bản dương sang bản âm, khoảng cách giữa hai bản là d.",
+              "caption": "Điện trường đều giữa hai bản phẳng: đường sức song song, cách đều; E = U/d.",
+              "audio": null
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: từ U ra E, rồi ra công và hiệu điện thế",
+              "md": "Giữa hai bản kim loại phẳng song song cách nhau $d = 2$ cm có hiệu điện thế $U = 200$ V. Một điện tích $q = 2\\cdot10^{-6}$ C dịch chuyển từ M đến N dọc theo một đường sức, với $MN = 1$ cm.\n\n**Bước 1: Đổi đơn vị:** $d = 2$ cm $= 0{,}02$ m; $MN = 1$ cm $= 0{,}01$ m.\n\n**Bước 2: Cường độ điện trường:** $E = \\dfrac{U}{d} = \\dfrac{200}{0{,}02} = 10\\,000$ V/m.\n\n**Bước 3: Công của lực điện:** $A_{MN} = qE\\cdot MN = 2\\cdot10^{-6}\\cdot10\\,000\\cdot0{,}01 = 2\\cdot10^{-4}$ J.\n\n**Bước 4: Hiệu điện thế:** $U_{MN} = \\dfrac{A_{MN}}{q} = \\dfrac{2\\cdot10^{-4}}{2\\cdot10^{-6}} = 100$ V.\n\n**Kiểm tra lại:** $U_{MN} = E\\cdot MN = 10\\,000\\cdot0{,}01 = 100$ V. Khớp kết quả.",
+              "audio": null
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi hay gặp",
+              "md": "- Lẫn $U$ với $E$: $U$ đo bằng vôn (V), $E$ đo bằng vôn trên mét (V/m).\n- Thay số vào $E = U/d$ khi $d$ còn tính bằng cm: phải đổi $d$ ra mét trước.\n- Quên rằng $d$ trong $E = U/d$ là khoảng cách **dọc theo đường sức**, không phải khoảng cách bất kì giữa hai điểm.\n- Đổi thứ tự chỉ số thì đổi dấu: $U_{MN} = V_M - V_N$, còn $U_{NM} = V_N - V_M = -U_{MN}$.",
+              "audio": null
+            },
+            {
+              "id": "dien-the-hieu-dien-the-b8",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "dien-the-hieu-dien-the-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Điện thế tại điểm M trong điện trường được xác định bằng hệ thức nào sau đây?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$V_M = \\frac{A_{M\\infty}}{q}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$V_M = \\frac{A_{MN}}{q}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$V_M = \\frac{q}{A_{M\\infty}}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$V_M = U_{MN}\\cdot q$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Điện thế tại M là thương số giữa công của lực điện khi dịch chuyển $q$ từ M ra xa vô cùng và độ lớn $q$.",
+                  "option_feedback": {
+                    "B": "Đó là công thức của hiệu điện thế $U_{MN}$, không phải điện thế tại M.",
+                    "C": "Điện thế là thương số của công chia cho điện tích, không phải nghịch đảo.",
+                    "D": "Không có hệ thức này; giữa chúng có liên hệ $U_{MN} = V_M - V_N$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "dien-the-hieu-dien-the-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Giữa hai bản kim loại phẳng song song cách nhau $d = 2$ cm có hiệu điện thế $U = 200$ V. Cường độ điện trường trong khoảng giữa hai bản là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$100$ V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$400$ V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$10\\,000$ V/m",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$40\\,000$ V/m",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Phải đổi $d$ ra mét trước khi thay số.",
+                  "explanation": "Đổi $d = 0{,}02$ m rồi tính $E = U/d = 200/0{,}02 = 10\\,000$ V/m.",
+                  "option_feedback": {
+                    "A": "Kết quả này ứng với $d = 2$ m, tức chưa đổi đơn vị cm ra m.",
+                    "B": "Đã nhân với $d$ thay vì chia cho $d$ trong hệ thức $E = U/d$.",
+                    "D": "Đây là kết quả khi đổi sai đơn vị của $d$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "dien-the-hieu-dien-the-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Một điện tích $q = 2\\cdot10^{-6}$ C dịch chuyển từ M đến N, công của lực điện là $A_{MN} = 2\\cdot10^{-4}$ J. Hiệu điện thế $U_{MN}$ bằng bao nhiêu vôn?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "100",
+                      "100 V",
+                      "100V"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Dùng hệ thức liên hệ giữa hiệu điện thế và công của lực điện.",
+                  "explanation": "$U_{MN} = A_{MN}/q = 2\\cdot10^{-4} : 2\\cdot10^{-6} = 100$ V.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tu-dien",
+          "title": "Tụ điện",
+          "est_minutes": 15,
+          "summary": "Tụ điện có cấu tạo gồm hai bản dẫn, điện dung C = Q/U với đơn vị F, và năng lượng tụ điện W = ½CU².",
+          "key_ideas": [
+            "Cấu tạo tụ điện",
+            "Điện dung C = Q/U, đơn vị F",
+            "Năng lượng tụ điện W = ½CU²"
+          ],
+          "blocks": [
+            {
+              "id": "tu-dien-b1",
+              "kind": "video",
+              "video": {
+                "path": "video/tu-dien-b1.mp4",
+                "mime": "video/mp4",
+                "sha256": "529250fe2333a2a7d6cd1962b671cb86262fbc83525e0c0bbc4ca69ed7988b3e",
+                "bytes": 1177470
+              },
+              "poster": {
+                "path": "images/tu-dien-b1-poster.webp",
+                "mime": "image/webp",
+                "sha256": "b6a1fca5f951bf50770f90e8a583d0c615be31014ce281fb3c01e1342467660a",
+                "bytes": 6636
+              },
+              "captions": {
+                "path": "video/tu-dien-b1.vtt",
+                "mime": "text/vtt",
+                "sha256": "8fcc49f36b473eb87c803b45ff2701cd70d2366fdddb0b73225db95e4526f240",
+                "bytes": 1115
+              },
+              "duration_s": 41.8,
+              "title": "Tụ điện: cấu tạo, điện dung, năng lượng"
+            },
+            {
+              "id": "tu-dien-b2",
+              "kind": "text",
+              "md": "**Cấu tạo.** Tụ điện gồm hai bản dẫn đặt gần nhau. Khi tụ tích điện, một bản mang điện $+Q$, bản kia mang $-Q$, giữa hai bản có hiệu điện thế $U$. Hai bản phẳng nhiễm điện trái dấu tạo giữa chúng một điện trường đều, nên $E = U/d$, với $d$ là khoảng cách giữa hai bản.",
+              "audio": null
+            },
+            {
+              "id": "tu-dien-b3",
+              "kind": "text",
+              "md": "**Điện dung.** Điện dung của tụ là $C = Q/U$, trong đó $Q$ là điện tích của một bản, $U$ là hiệu điện thế giữa hai bản. Đơn vị của điện dung là fara: $1\\ \\text{F} = 1\\ \\text{C/V}$. Từ công thức suy ra $Q = CU$: với cùng một tụ, $U$ càng lớn thì $Q$ càng lớn.\n\n**Năng lượng.** Tụ đã tích điện dự trữ năng lượng $W = \\frac12 CU^2$. Với $C$ đo bằng fara và $U$ đo bằng vôn, $W$ tính ra jun.",
+              "audio": null
+            },
+            {
+              "id": "tu-dien-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "- Tụ điện gồm hai bản dẫn đặt gần nhau; khi tích điện, hai bản nhiễm điện trái dấu.\n- Điện dung $C = Q/U$, với $Q$ là điện tích của một bản và $U$ là hiệu điện thế giữa hai bản.\n- Đơn vị điện dung là fara (F): $1\\ \\text{F} = 1\\ \\text{C/V}$.\n- Năng lượng của tụ điện: $W = \\frac12 CU^2$; $C$ bằng fara, $U$ bằng vôn thì $W$ bằng jun.",
+              "audio": null
+            },
+            {
+              "id": "tu-dien-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/tu-dien-b5.webp",
+                "mime": "image/webp",
+                "sha256": "64cd524b3cb5022efc9fac5b63d15d87ee08dfdf1d6b315b545cae65c5b82210",
+                "bytes": 9808
+              },
+              "alt": "Hai bản tụ điện song song nhiễm điện trái dấu và điện trường đều giữa chúng",
+              "caption": "Điện trường giữa hai bản phẳng nhiễm điện trái dấu là điện trường đều.",
+              "audio": null
+            },
+            {
+              "id": "tu-dien-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tích điện và năng lượng của một tụ",
+              "md": "Một tụ điện có điện dung $C = 2\\ \\mu\\text{F}$, hiệu điện thế giữa hai bản $U = 100\\ \\text{V}$.\n\n**Bước 1: Đổi đơn vị.** $C = 2\\ \\mu\\text{F} = 2\\cdot 10^{-6}\\ \\text{F}$.\n\n**Bước 2: Điện tích một bản.**\n$$Q = CU = 2\\cdot 10^{-6}\\ \\text{F}\\cdot 100\\ \\text{V} = 2\\cdot 10^{-4}\\ \\text{C} = 200\\ \\mu\\text{C}.$$\n\n**Bước 3: Năng lượng của tụ.**\n$$W = \\tfrac12 CU^2 = \\tfrac12\\cdot 2\\cdot 10^{-6}\\ \\text{F}\\cdot (100\\ \\text{V})^2 = \\tfrac12\\cdot 2\\cdot 10^{-6}\\cdot 10^4\\ \\text{J} = 10^{-2}\\ \\text{J} = 10\\ \\text{mJ}.$$\n\nKết quả: $Q = 200\\ \\mu\\text{C}$ và $W = 10\\ \\text{mJ}$.",
+              "audio": null
+            },
+            {
+              "id": "tu-dien-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "- Quên đổi $\\mu\\text{F}$ sang F: dùng $C = 2$ thay vì $2\\cdot 10^{-6}\\ \\text{F}$ sẽ sai đơn vị và sai kết quả.\n- Viết $W = CU^2$ thay vì $W = \\tfrac12 CU^2$: thiếu hệ số $\\tfrac12$.\n- Trong $C = Q/U$, $Q$ là điện tích của **một** bản, không phải tổng điện tích của cả hai bản.",
+              "audio": null
+            },
+            {
+              "id": "tu-dien-b8",
+              "kind": "quiz",
+              "title": "Kiểm tra",
+              "items": [
+                {
+                  "id": "tu-dien-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong công thức $C = Q/U$ của tụ điện, $Q$ là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "điện tích của một bản tụ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "tổng điện tích của hai bản tụ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "hiệu điện thế giữa hai bản tụ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "năng lượng dự trữ của tụ điện.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Trong $C = Q/U$, $Q$ là điện tích của một bản tụ và $U$ là hiệu điện thế giữa hai bản.",
+                  "option_feedback": {
+                    "B": "Sai: $Q$ chỉ là điện tích của một bản, không phải tổng hai bản.",
+                    "C": "Sai: hiệu điện thế giữa hai bản là $U$, không phải $Q$.",
+                    "D": "Sai: năng lượng dự trữ là $W$, không phải $Q$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                },
+                {
+                  "id": "tu-dien-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Một tụ điện có điện dung $C = 2\\ \\mu\\text{F}$ được tích điện đến hiệu điện thế $U = 100\\ \\text{V}$. Năng lượng dự trữ của tụ là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "10 mJ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "20 mJ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "5 mJ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "0,1 J.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "$W = \\tfrac12 CU^2 = \\tfrac12\\cdot 2\\cdot10^{-6}\\cdot 100^2 = 10^{-2}\\ \\text{J} = 10\\ \\text{mJ}$.",
+                  "option_feedback": {
+                    "B": "Sai: công thức $W = \\tfrac12 CU^2$ có hệ số $\\tfrac12$, nên không phải 20 mJ.",
+                    "C": "Sai: thay số đúng cho $W = 10\\ \\text{mJ}$, không phải 5 mJ.",
+                    "D": "Sai: $0{,}1\\ \\text{J}$ lớn gấp 10 lần giá trị đúng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                },
+                {
+                  "id": "tu-dien-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Một tụ điện có điện dung $C = 5\\ \\mu\\text{F}$ và hiệu điện thế giữa hai bản $U = 200\\ \\text{V}$. Điện tích của một bản tụ bằng bao nhiêu culông?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "answer_key": {
+                    "accepted": [
+                      "0,001",
+                      "0.001",
+                      "1e-3",
+                      "10^-3",
+                      "1.10^-3"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Đổi $\\mu\\text{F}$ sang F trước khi tính.",
+                  "explanation": "$Q = CU = 5\\cdot10^{-6}\\cdot 200 = 10^{-3}\\ \\text{C} = 0{,}001\\ \\text{C}$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

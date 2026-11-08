@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-sat-math-algebra-and-data-analysis",
+  "title": "SAT Math: Algebra and Data Analysis",
+  "subject": "SAT",
+  "age_band": "g10_12",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Ms. Chi Nguyen",
+  "description_short": "Linear equations, systems and data questions from the digital SAT, with timed sets and worked solutions. Aimed at students targeting 650 or above.",
+  "outcomes": [
+    "Solve linear and quadratic problems quickly.",
+    "Read tables, scatterplots and two-way tables.",
+    "Check answers with the built-in calculator."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 110,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Algebra",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Linear equations",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Systems",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Quadratics",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Data analysis",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tables and graphs",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Percentages and rates",
+          "est_minutes": 20
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Statistics",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

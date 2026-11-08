@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="translate(0,-12)">
+
+    <!-- soft shadow -->
+    <ellipse cx="200" cy="332" rx="96" ry="10" fill="#E9E5F6"/>
+
+    <!-- basket body -->
+    <path d="M92 200 C96 248 104 290 130 310 Q200 326 270 310 C296 290 304 248 308 200 Z"
+          fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+    <!-- weave: vertical ribs -->
+    <g stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" fill="none">
+      <path d="M120 226 L146 302"/>
+      <path d="M200 228 L200 310"/>
+      <path d="M280 226 L254 302"/>
+      <!-- weave: horizontal bands -->
+      <path d="M104 248 Q200 266 296 248"/>
+      <path d="M118 288 Q200 304 282 288"/>
+    </g>
+
+    <!-- apple 1 : back centre -->
+    <circle cx="200" cy="158" r="41" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <path d="M200 119 L195 101" stroke="#2B283F" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <g transform="translate(197,104) rotate(-12)">
+      <path d="M0 0 C5 -12 15 -16 22 -11 C18 -1 8 4 0 0 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+
+    <!-- apple 2 : front left -->
+    <circle cx="139" cy="174" r="38" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <path d="M139 138 L144 122" stroke="#2B283F" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <g transform="translate(142,125) rotate(-12)">
+      <path d="M0 0 C5 -12 15 -16 22 -11 C18 -1 8 4 0 0 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+
+    <!-- apple 3 : front right -->
+    <circle cx="261" cy="174" r="38" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <path d="M261 138 L256 122" stroke="#2B283F" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <g transform="translate(258,125) scale(-1,1) rotate(-12)">
+      <path d="M0 0 C5 -12 15 -16 22 -11 C18 -1 8 4 0 0 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+
+    <!-- rim of the basket, in front -->
+    <ellipse cx="200" cy="200" rx="114" ry="22" fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

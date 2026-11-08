@@ -1,29 +1,26 @@
-"""Workspace, uploads, activity and reports. Every read comes from the mirror (works while the sandbox sleeps)."""
+"""Workspace, uploads and activity of a student. Every read comes from the mirror."""
 
 import asyncio
-import io
 import json
 import mimetypes
 import re
-import zipfile
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-import yaml
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse, Response
-from mentor_schemas import ActivityEntry, Profile, WorkspacePaths
+from mentor_schemas import ActivityEntry, WorkspacePaths
 from pydantic import BaseModel
 
-from mentor_gateway.api.deps import active_user, get_gw, provisioned_user
+from mentor_gateway.api.deps import get_gw, student_user
 from mentor_gateway.context import Gateway
-from mentor_gateway.db import SentReport, UploadToken, User
+from mentor_gateway.db import UploadToken, User
 from mentor_gateway.mirror import StaleBaseError, normalize_path
 from mentor_gateway.security import hash_token, new_token
 
 router = APIRouter(tags=["workspace"])
 
-USER_EDITABLE_DIRS = ("me", "goals", "learning", "research")
+USER_EDITABLE_DIRS = ("me", "goals", "learning")
 MAX_UPLOAD_BYTES = 25_000_000
 
 
@@ -35,38 +32,23 @@ def _norm(path: str) -> str:
 
 
 def is_user_editable(path: str) -> bool:
-    """Web edits are allowed only under me/, goals/, learning/, research/ (CONTRACTS.md section 5)."""
+    """Web edits are allowed only under me/, goals/, learning/."""
     parts = path.split("/")
     return len(parts) >= 2 and parts[0] in USER_EDITABLE_DIRS
 
 
 def is_visible(path: str) -> bool:
-    """`.mentor/` (skills, wellbeing, parent-report drafts...) is hidden from the viewer except the activity log."""
+    """`.mentor/` (skills, agent state...) is hidden from the viewer except the activity log."""
     if path == WorkspacePaths.MENTOR_DIR or path == WorkspacePaths.ACTIVITY:
         return True
     return not path.startswith((".mentor/", ".git"))
-
-
-def _exportable(path: str) -> bool:
-    """The export zip has the whole workspace except unsent parent-report drafts (learners see reports once sent)."""
-    return not (path == WorkspacePaths.REPORT_DRAFTS_DIR or path.startswith(WorkspacePaths.REPORT_DRAFTS_DIR + "/"))
-
-
-def _filter_zip(data: bytes) -> bytes:
-    src = zipfile.ZipFile(io.BytesIO(data))
-    buf = io.BytesIO()
-    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as dst:
-        for info in src.infolist():
-            if _exportable(info.filename.rstrip("/")):
-                dst.writestr(info, src.read(info))
-    return buf.getvalue()
 
 
 # ---- tree / file / history / export --------------------------------------------------------------
 
 
 @router.get("/workspace/tree")
-async def tree(prefix: str = "", user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> list[dict]:
+async def tree(prefix: str = "", user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> list[dict]:
     pre = _norm(prefix.rstrip("/")) if prefix.strip("/") else ""
     entries, modified = await asyncio.gather(
         asyncio.to_thread(gw.mirror.ls_tree, user.id), asyncio.to_thread(gw.mirror.last_modified, user.id)
@@ -90,7 +72,7 @@ async def tree(prefix: str = "", user: User = Depends(provisioned_user), gw: Gat
 
 
 @router.get("/workspace/file")
-async def read_file(path: str, user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> dict:
+async def read_file(path: str, user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> dict:
     p = _norm(path)
     if not is_visible(p):
         raise HTTPException(404, "not found")
@@ -106,7 +88,7 @@ async def read_file(path: str, user: User = Depends(provisioned_user), gw: Gatew
 
 
 @router.get("/workspace/raw")
-async def read_raw(path: str, user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> Response:
+async def read_raw(path: str, user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> Response:
     p = _norm(path)
     if not is_visible(p):
         raise HTTPException(404, "not found")
@@ -130,11 +112,11 @@ def _conflict(exc: StaleBaseError) -> JSONResponse:
 
 def _check_editable(p: str) -> None:
     if not is_user_editable(p):
-        raise HTTPException(403, "only me/, goals/, learning/ and research/ can be edited")
+        raise HTTPException(403, "only me/, goals/ and learning/ can be edited")
 
 
 @router.put("/workspace/file", response_model=None)
-async def write_file(body: FileWrite, user: User = Depends(active_user),
+async def write_file(body: FileWrite, user: User = Depends(student_user),
                      gw: Gateway = Depends(get_gw)) -> dict | JSONResponse:
     p = _norm(body.path)
     _check_editable(p)
@@ -151,7 +133,7 @@ async def write_file(body: FileWrite, user: User = Depends(active_user),
 
 
 @router.delete("/workspace/file", response_model=None)
-async def delete_file(path: str, base_sha: str | None = None, user: User = Depends(active_user),
+async def delete_file(path: str, base_sha: str | None = None, user: User = Depends(student_user),
                       gw: Gateway = Depends(get_gw)) -> dict | JSONResponse:
     p = _norm(path)
     _check_editable(p)
@@ -169,7 +151,7 @@ async def delete_file(path: str, base_sha: str | None = None, user: User = Depen
 
 
 @router.get("/workspace/history")
-async def history(path: str | None = None, limit: int = Query(100, le=500), user: User = Depends(provisioned_user),
+async def history(path: str | None = None, limit: int = Query(100, le=500), user: User = Depends(student_user),
                   gw: Gateway = Depends(get_gw)) -> list[dict]:
     p = _norm(path) if path else None
     if p is not None and not is_visible(p):
@@ -179,18 +161,18 @@ async def history(path: str | None = None, limit: int = Query(100, le=500), user
 
 
 @router.get("/workspace/export")
-async def export(user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> Response:
-    data = await asyncio.to_thread(lambda: _filter_zip(gw.mirror.archive_zip(user.id)))
+async def export(user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> Response:
+    data = await asyncio.to_thread(gw.mirror.archive_zip, user.id)
     return Response(data, media_type="application/zip",
                     headers={"Content-Disposition": 'attachment; filename="mentor-workspace.zip"'})
 
 
-# ---- activity / reports --------------------------------------------------------------------------
+# ---- activity --------------------------------------------------------------------------
 
 
 @router.get("/activity")
 async def activity(limit: int = Query(50, ge=1, le=500), before: datetime | None = None,
-                   user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> list[dict]:
+                   user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> list[dict]:
     text = await asyncio.to_thread(gw.mirror.read_text, user.id, WorkspacePaths.ACTIVITY) or ""
     entries: list[ActivityEntry] = []
     for line in text.splitlines():
@@ -209,36 +191,6 @@ async def activity(limit: int = Query(50, ge=1, le=500), before: datetime | None
 
 def _aware(ts: datetime) -> datetime:
     return ts if ts.tzinfo else ts.replace(tzinfo=ZoneInfo("UTC"))
-
-
-@router.get("/reports")
-async def reports(user: User = Depends(provisioned_user), gw: Gateway = Depends(get_gw)) -> list[dict]:
-    if user.role != Profile.THPT.value:
-        return []
-    entries = await asyncio.to_thread(gw.mirror.ls_tree, user.id)
-    with gw.db.session() as s:
-        sent = {r.path: r.sent_at for r in s.query(SentReport).filter(SentReport.user_id == user.id)}
-    out = []
-    for e in entries:
-        # only reports the gateway actually delivered (drafts live hidden in .mentor/report-drafts/)
-        if e.type != "file" or not re.fullmatch(r"reports/[^/]+\.md", e.path) or e.path not in sent:
-            continue
-        text = await asyncio.to_thread(gw.mirror.read_text, user.id, e.path) or ""
-        fm: dict = {}
-        if text.startswith("---"):
-            try:
-                fm = yaml.safe_load(text.split("---", 2)[1]) or {}
-            except (yaml.YAMLError, IndexError):
-                fm = {}
-        sent_at = sent.get(e.path)
-        out.append({
-            "path": e.path,
-            "period_start": str(fm.get("period_start")) if fm.get("period_start") else None,
-            "period_end": str(fm.get("period_end")) if fm.get("period_end") else None,
-            "sent_at": sent_at.isoformat() if sent_at else None,
-        })
-    out.sort(key=lambda r: r["path"], reverse=True)
-    return out
 
 
 # ---- uploads -------------------------------------------------------------------------------------
@@ -263,12 +215,12 @@ async def _save_upload(gw: Gateway, user: User, file: UploadFile) -> dict:
 
 
 @router.post("/uploads")
-async def upload(file: UploadFile = File(...), user: User = Depends(active_user), gw: Gateway = Depends(get_gw)) -> dict:
+async def upload(file: UploadFile = File(...), user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> dict:
     return await _save_upload(gw, user, file)
 
 
 @router.post("/uploads/mobile-token")
-def mobile_token(user: User = Depends(active_user), gw: Gateway = Depends(get_gw)) -> dict:
+def mobile_token(user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> dict:
     token = new_token()
     expires = gw.clock() + timedelta(minutes=gw.settings.mobile_token_minutes)
     with gw.db.session() as s:
@@ -283,7 +235,7 @@ def _token_user(gw: Gateway, token: str) -> User:
         if row is None or row.expires_at <= gw.clock():
             raise HTTPException(404, "link expired")
         user = s.get(User, row.user_id)
-    if user is None or gw.users.onboarding_state(user) != "active":
+    if user is None or not gw.users.is_active(user):
         raise HTTPException(404, "link expired")
     return user
 

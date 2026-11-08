@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "c-110e873a",
+  "title": "Xác suất thống kê: Suy luận Bayes",
+  "subject": "Xác suất thống kê",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "tsquang",
+  "teacher_name": "TS. Quang",
+  "description_short": "Chương này trình bày suy luận Bayes từ định lý Bayes, tiên nghiệm – hợp lý – hậu nghiệm, đến tiên nghiệm liên hợp Beta–Nhị thức, khoảng tin cậy Bayes và bài tập. Dành cho sinh viên năm hai ngành kĩ thuật và khoa học dữ liệu đã học xác suất cơ bản.",
+  "outcomes": [
+    "Phát biểu và áp dụng được định lý Bayes, kể cả công thức xác suất toàn phần ở mẫu số.",
+    "Phân biệt được ba thành phần tiên nghiệm, hợp lý, hậu nghiệm trong suy luận tham số.",
+    "Cập nhật được hậu nghiệm Beta–Nhị thức và tính trung bình hậu nghiệm theo trọng số w.",
+    "Đọc được đồ thị so sánh tiên nghiệm với hậu nghiệm và giải thích vai trò của cỡ mẫu.",
+    "Xác định được khoảng tin cậy Bayes và nhận diện các dạng bài tập Beta–Nhị thức."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 83,
+  "level": "advanced",
+  "latest_published": 2,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-06T20:10:43.795145Z",
+      "published_at": "2026-11-06T20:41:30.640584Z",
+      "pack_sha256": "4033f998fb07c7401377c3eeb18fc7f0c8cb17bf082edc6c136c53d70176d4b8",
+      "pack_bytes": 130453,
+      "note": "draft by course-builder"
+    },
+    {
+      "version": 2,
+      "status": "published",
+      "created_at": "2026-11-06T20:42:02.015747Z",
+      "published_at": "2026-11-06T20:44:40.947120Z",
+      "pack_sha256": "a6bf33d32615598a94f5305af02661a9d0a574b2299ddd072384ee6582d69a35",
+      "pack_bytes": 130470,
+      "note": "edit of v1"
+    }
+  ]
+}

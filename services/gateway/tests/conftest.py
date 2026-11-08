@@ -7,15 +7,7 @@ from fastapi.testclient import TestClient
 
 sys.path.insert(0, str(Path(__file__).parent))
 
-from gateway_fakes import (
-    FakeBackend,
-    FakeParentService,
-    FakeSandbox,
-    FakeSandboxServer,
-    FrozenClock,
-    onboard,
-    verify_parent,
-)
+from gateway_fakes import FakeExecutor, FakeWS, FrozenClock, login
 
 from mentor_gateway.app import create_app
 from mentor_gateway.context import Gateway
@@ -34,11 +26,11 @@ def provisioning_cache(tmp_path_factory):
     """
     import shutil
 
-    from mentor_gateway.api import account
+    from mentor_gateway.api import auth
     from mentor_gateway.gitrepo import UserLocks, run_git
     from mentor_gateway.mirror import Mirror, WorkspaceSync
 
-    real = account.provision_workspace
+    real = auth.provision_workspace
     root = tmp_path_factory.mktemp("provision-cache")
     locks = UserLocks()
     template_sync = WorkspaceSync(root / "workspaces", Mirror(root / "mirrors", locks), locks)
@@ -57,22 +49,18 @@ def provisioning_cache(tmp_path_factory):
         return list(warnings)
 
     with pytest.MonkeyPatch.context() as mp:
-        mp.setattr(account, "provision_workspace", cached)
+        mp.setattr(auth, "provision_workspace", cached)
         yield
 
 
-@pytest.fixture(scope="session")
-def sandbox_server():
-    server = FakeSandboxServer(FakeSandbox())
-    server.start()
-    yield server
-    server.stop()
+@pytest.fixture
+def executor() -> FakeExecutor:
+    return FakeExecutor()
 
 
 @pytest.fixture
-def sandbox(sandbox_server) -> FakeSandbox:
-    sandbox_server.sandbox.reset()
-    return sandbox_server.sandbox
+def ws() -> FakeWS:
+    return FakeWS()
 
 
 @pytest.fixture
@@ -90,21 +78,13 @@ def settings(tmp_path) -> Settings:
         public_base_url="http://testserver",
         web_origin="http://web.test",
         background_tasks=False,
-        inbound_email_domain="inbox.mentor.local",
-        sandbox_prewarm=False,  # on by default; test_gw_prewarm.py turns it on (keeps status sequences exact)
+        seed_dev_accounts=True,  # hocsinh / giaovien, password 123456
     )
 
 
 @pytest.fixture
-def backend(sandbox_server) -> FakeBackend:
-    return FakeBackend(sandbox_server)
-
-
-@pytest.fixture
-def client(settings, clock, backend, sandbox):
-    app = create_app(settings, clock=clock, backend=backend)
-    gw: Gateway = app.state.gw
-    gw.parent.service = FakeParentService(gw.parent.store, clock)
+def client(settings, clock, executor):
+    app = create_app(settings, clock=clock, executor=executor)
     with TestClient(app) as c:
         yield c
 
@@ -115,12 +95,14 @@ def gw(client) -> Gateway:
 
 
 @pytest.fixture
-def ncs_user(client) -> dict:
-    return onboard(client, "ncs@example.com", "ncs")
+def student(client) -> dict:
+    """Logged in as the seeded student `hocsinh` (born 2010 = g10_12); `user_id` aliases `id`."""
+    user = login(client)
+    r = client.patch("/api/me", json={"language": "vi"})  # the seeded hocsinh is born 2010: g10_12 on the fixture clock
+    assert r.status_code == 200, r.text
+    return {**r.json(), "user_id": user["id"]}
 
 
 @pytest.fixture
-def thpt_user(client) -> dict:
-    me = onboard(client, "hs@example.com", "thpt")
-    verify_parent(client, me["user_id"])
-    return client.get("/api/me").json()
+def teacher(client) -> dict:
+    return login(client, "giaovien", "123456", "teacher")

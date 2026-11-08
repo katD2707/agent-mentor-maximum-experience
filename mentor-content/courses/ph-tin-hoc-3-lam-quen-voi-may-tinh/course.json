@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-tin-hoc-3-lam-quen-voi-may-tinh",
+  "title": "Tin học 3: Làm quen với máy tính",
+  "subject": "Tin học",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Khoa",
+  "description_short": "Em học bật máy, dùng chuột, mở thư mục và vẽ tranh đơn giản, mỗi bước có hình minh họa lớn. Dành cho học sinh lớp 3 lần đầu dùng máy.",
+  "outcomes": [
+    "Thao tác đúng với chuột và bàn phím.",
+    "Mở, lưu và đặt tên được một tệp.",
+    "Biết ngồi và dùng máy đúng tư thế."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 53,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Máy tính và em",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Các bộ phận của máy tính",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Dùng chuột",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Dùng bàn phím",
+          "est_minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Việc đầu tiên",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Mở và lưu tệp",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Vẽ một bức tranh",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-python-cho-phan-tich-du-lieu",
+  "title": "Python cho phân tích dữ liệu",
+  "subject": "Lập trình Python",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "TS. Trần Quốc Bảo",
+  "description_short": "Làm sạch, nhóm và vẽ biểu đồ dữ liệu bằng pandas và matplotlib trên bộ dữ liệu thực tế. Dành cho sinh viên đã biết Python cơ bản.",
+  "outcomes": [
+    "Đọc và làm sạch được dữ liệu dạng bảng.",
+    "Nhóm và tổng hợp bằng pandas.",
+    "Vẽ được biểu đồ kể chuyện từ dữ liệu."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 179,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Pandas",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "DataFrame và Series",
+          "est_minutes": 24
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Làm sạch dữ liệu",
+          "est_minutes": 38
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Nhóm và tổng hợp",
+          "est_minutes": 28
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Trực quan hóa",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Biểu đồ cơ bản",
+          "est_minutes": 37
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Biểu đồ nhiều nhóm",
+          "est_minutes": 27
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Dự án nhỏ",
+          "est_minutes": 25
+        }
+      ]
+    }
+  ]
+}

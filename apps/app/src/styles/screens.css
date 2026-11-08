@@ -1,0 +1,156 @@
+/* ---------- Login (hs-00) ---------- */
+.stage { position: relative; min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 72px 16px 48px; }
+.lang-mini { position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--rule-strong); }
+.lang-mini button { min-height: 44px; min-width: 44px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-weight: 600; font-size: 14px; cursor: pointer; }
+.lang-mini button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+.card { min-width: 0; width: min(560px, 100%); grid-template-columns: minmax(0, 1fr); border-radius: 28px; border: 1px solid var(--rule-strong); box-shadow: var(--shadow);
+        padding: 36px 32px 32px 76px; display: grid; gap: 26px; }
+@media (max-width: 520px) { .card { padding: 28px 20px 24px 34px; gap: 22px; } }
+.card .logo { justify-self: start; }
+
+.roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.role { position: relative; display: grid; place-items: center; padding: 14px 8px 8px; border-radius: 22px; border: 2px solid var(--rule-strong); background: var(--surface); cursor: pointer; }
+.role:hover { border-color: var(--ink-3); }
+.role svg { width: 100%; max-width: 150px; height: auto; }
+.role[aria-checked="true"] { border-color: var(--tim); box-shadow: inset 0 0 0 3px var(--tim); background: var(--tim-soft); }
+.role .tick { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 999px; background: var(--tim); color: var(--on-tim); display: none; place-items: center; }
+.role .tick svg { width: 20px; height: 20px; }
+.role[aria-checked="true"] .tick { display: grid; }
+.roles.shake { animation: shake .4s ease-in-out; }
+@keyframes shake { 0%, 100% { transform: translateX(0) } 20% { transform: translateX(-8px) } 40% { transform: translateX(7px) } 60% { transform: translateX(-5px) } 80% { transform: translateX(3px) } }
+
+.fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.field { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.field label { font-size: 14px; font-weight: 600; color: var(--ink-2); padding-left: 18px; }
+.pill { display: flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 8px 0 18px; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--rule-strong); }
+.pill:focus-within { border-color: var(--tim); outline: 4px solid var(--tim-soft); }
+.pill.bad { border-color: var(--do); }
+.pill > svg { width: 22px; height: 22px; color: var(--ink-3); flex: none; }
+.pill input { flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; min-height: 50px; }
+.eye { width: 44px; height: 44px; border-radius: 999px; border: 0; background: transparent; color: var(--ink-2); display: grid; place-items: center; cursor: pointer; flex: none; }
+.eye svg { width: 22px; height: 22px; }
+.eye:hover { background: var(--tim-soft); color: var(--ink); }
+.eye[aria-pressed="true"] { color: var(--tim-ink); }
+
+.alert { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: var(--do-soft); color: var(--ink); }
+.alert svg { flex: none; width: 22px; height: 22px; color: var(--do); margin-top: 1px; }
+.submit { width: 100%; }
+
+/* ---------- First run (hs-01) ---------- */
+.first-stage { min-height: 100vh; display: grid; place-items: center; padding: 32px 16px 48px; }
+.sheet { width: min(980px, 100%); border-radius: 28px; border: 1px solid var(--rule-strong); box-shadow: var(--shadow); padding: clamp(28px, 5vw, 56px) clamp(20px, 5vw, 56px) clamp(28px, 5vw, 48px) clamp(64px, 8vw, 96px); display: grid; gap: 28px; }
+.q { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.q h1 { font-size: clamp(1.7em, 4vw, 2.4em); }
+.first-stage .q { display: flex; padding: 0; border-top: 0; } /* courses.css also defines a quiz .q */
+.speak { width: 56px; height: 56px; border-radius: 999px; border: 2px solid var(--rule-strong); background: var(--surface); display: grid; place-items: center; cursor: pointer; color: var(--tim-ink); }
+.speak svg { width: 26px; height: 26px; }
+.langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.lang { display: grid; gap: 8px; justify-items: start; padding: 24px; border-radius: 22px; border: 2px solid var(--rule-strong); background: var(--surface); cursor: pointer; text-align: left; }
+.lang:hover, .age:hover { border-color: var(--tim); }
+.lang .hello-big { font-size: 2em; font-weight: 700; }
+.lang .name { color: var(--ink-2); }
+.first-stage .figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 2vw, 20px); align-items: end; max-width: 640px; width: 100%; justify-self: center; }
+.fig svg { width: 100%; height: auto; opacity: .55; filter: saturate(.6); transform-origin: 50% 100%; transition: opacity .25s ease, transform .3s cubic-bezier(.2,.8,.2,1.2), filter .25s ease; }
+.first-stage .figs[data-pick] .fig svg { opacity: .28; filter: grayscale(1); transform: scale(.88); }
+.first-stage .figs[data-pick] .fig.on svg { opacity: 1; filter: none; transform: scale(1.12); }
+@media (prefers-reduced-motion: reduce) { .fig svg { transition: none; } }
+.first-stage .pick { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; }
+.first-stage .year { min-width: 200px; min-height: 56px; padding: 0 44px 0 20px; border-radius: 16px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: 1.25em; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer; }
+.first-stage .year:focus-visible { border-color: var(--tim); }
+.first-stage .level { margin: 0; min-height: 1.5em; text-align: center; font-size: 1.1em; color: var(--ink-2); }
+.first-stage .go { justify-self: center; min-width: 200px; min-height: 56px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim, #fff); font: inherit; font-size: 1.1em; font-weight: 600; cursor: pointer; padding: 0 28px; }
+.first-stage .go:disabled { opacity: .45; cursor: default; }
+
+/* ---------- Hub (hs-02) ---------- */
+.hub-main { max-width: 860px; }
+.hello { font-size: clamp(1.4em, 3.2vw, 1.8em); margin: 4px 0 24px; }
+.grid4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2.5vw, 20px); }
+.cell { position: relative; }
+.tile {
+  position: relative; display: block; aspect-ratio: 1; overflow: hidden; isolation: isolate;
+  border-radius: var(--r-lg); text-decoration: none; color: var(--ink);
+  background: #FBF5E8; border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow);
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), border-color .2s; will-change: transform;
+}
+.tile img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+}
+.tile:hover img, .tile:focus-visible img { transform: scale(1.05); }
+.label {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  display: grid; gap: 4px; padding: 14px 18px 16px;
+  background: var(--surface); border-top: 1px solid var(--rule);
+  animation: rise .55s cubic-bezier(.2, .8, .2, 1) both;
+}
+.label h2 { font-size: clamp(1.1em, 2.6vw, 1.35em); }
+.label p { color: var(--ink-2); font-size: .88em; }
+.label .now { display: flex; align-items: center; gap: 6px; color: var(--tim-ink); font-weight: 600; font-size: .88em; }
+.label .now svg { width: 16px; height: 16px; flex: none; }
+.label > * { animation: rise .55s cubic-bezier(.2, .8, .2, 1) both; }
+.cell:nth-child(1) .label, .cell:nth-child(1) .label > * { animation-delay: .05s; }
+.cell:nth-child(2) .label, .cell:nth-child(2) .label > * { animation-delay: .13s; }
+.cell:nth-child(3) .label, .cell:nth-child(3) .label > * { animation-delay: .21s; }
+.cell:nth-child(4) .label, .cell:nth-child(4) .label > * { animation-delay: .29s; }
+.label > :nth-child(2) { animation-duration: .7s; }
+@keyframes rise { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* little ones: title only, bigger, centred, with a speaker on each square */
+:root[data-age="g1_5"] .label { justify-items: center; padding: 12px 12px 14px; }
+:root[data-age="g1_5"] .label h2 { font-size: clamp(1.25em, 3.4vw, 1.6em); }
+:root[data-age="g1_5"] .label p, :root[data-age="g1_5"] .label .now { display: none; }
+.cell .speak { display: none; }
+:root[data-age="g1_5"] .cell .speak {
+  display: grid; place-items: center; position: absolute; top: 12px; right: 12px; z-index: 2; width: 52px; height: 52px;
+}
+.cell .speak svg { width: 24px; height: 24px; }
+/* phones: a taller square so the picture keeps room beside the title and a two-line live line */
+@media (max-width: 480px) {
+  .tile { aspect-ratio: 4 / 5; }
+  .label { padding: 10px 12px 12px; }
+  .label p, .label .now span { font-size: .8em; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .label .now svg { width: 14px; height: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .tile { transform: none !important; } }
+
+/* ---------- Feature placeholder ---------- */
+.feature-main { max-width: 860px; }
+.wip { display: grid; gap: 12px; padding: clamp(28px, 5vw, 48px) clamp(20px, 5vw, 40px) clamp(28px, 5vw, 48px) 72px; border-radius: var(--r-lg); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+.wip h2 { font-size: 1.35em; }
+
+/* ---------- Teacher placeholder (gv-01) ---------- */
+.teacher-main { max-width: 920px; }
+.drop {
+  position: relative; display: grid; justify-items: center; text-align: center; gap: 18px;
+  padding: clamp(40px, 8vw, 88px) clamp(20px, 5vw, 56px) clamp(36px, 6vw, 64px) 72px;
+  border-radius: var(--r-lg); border: 2.5px dashed var(--rule-strong);
+}
+.drop-icon { width: 76px; height: 76px; border-radius: 999px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; }
+.drop-icon svg { width: 36px; height: 36px; }
+.drop h1 { font-size: clamp(1.6em, 4vw, 2.3em); }
+.kinds { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; color: var(--ink-2); font-size: .92em; }
+.kinds span { display: inline-flex; align-items: center; gap: 6px; }
+.kinds svg { width: 18px; height: 18px; }
+.promise { color: var(--ink-2); max-width: 46ch; }
+.p3-note { margin-top: 20px; display: inline-flex; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; }
+.row { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 8px 16px; align-items: center; padding: 16px 8px; border-bottom: 1px solid var(--rule); color: inherit; }
+.row h3 { font-size: 1em; font-weight: 600; }
+.row .sub { display: block; color: var(--ink-2); font-size: .85em; margin-top: 3px; }
+.row .media { width: 64px; height: 64px; border-radius: 14px; overflow: hidden; background: #FBF6EA; }
+.row .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.row .media.pending { display: grid; place-items: center; background: var(--cam-soft); color: var(--cam); }
+.row .media.pending svg { width: 26px; height: 26px; }
+@media (max-width: 560px) { .row { grid-template-columns: 56px minmax(0, 1fr); } .row .media { width: 56px; height: 56px; grid-row: 1 / span 2; } .row .tag { grid-column: 2; justify-self: start; } }
+.boot { min-height: 100vh; display: grid; place-items: center; color: var(--ink-2); }
+
+/* phones: the notebook margin hugs the left edge so the card content sits nearly centred */
+@media (max-width: 520px) {
+  :root .card, :root .sheet, :root .wip, :root .drop, :root .paper, :root .today, :root .finish, :root .resume { --ml: 18px; }
+  :root .card { padding-left: 34px; }
+  :root .sheet, :root .wip, :root .drop, :root .paper, :root .finish { padding-left: 34px; padding-right: 20px; }
+  :root .today-in { padding-left: 34px; padding-right: 20px; }
+  :root .resume { padding-left: 34px; }
+}

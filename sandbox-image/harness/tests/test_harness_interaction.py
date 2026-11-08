@@ -20,7 +20,6 @@ QUEUE = """# Lịch ôn tập — math
 """
 FLASH = {"skill": "algebra.quadratic.formula", "front": "Nghiệm của x**2 - 5*x + 6 = 0?",
          "choices": ["x = 1; x = 6", "x = 2; x = 3", "x = -2; x = -3"], "reveal": "B. x = 2; x = 3"}
-NO_CRISIS = '{"confirmed": false, "category": "self_harm", "reason": "joke"}'
 
 
 def chat_records(root: Path, session: str = "s1") -> list[dict]:
@@ -44,7 +43,7 @@ def test_specs_turn_only_and_jobs() -> None:
         job = {s["function"]["name"] for s in tool_specs(profile, is_turn=False)}
         assert {"suggest_replies", "show_card", "start_focus", "celebrate"} <= turn
         assert "show_card" in job and not {"suggest_replies", "start_focus", "celebrate"} & job
-    wake = next(s for s in tool_specs(Profile.THPT, is_turn=True) if s["function"]["name"] == "schedule_wake")
+    wake = next(s for s in tool_specs(Profile.STUDENT, is_turn=True) if s["function"]["name"] == "schedule_wake")
     assert "focus_end" not in wake["function"]["parameters"]["properties"]["job_kind"]["enum"]
 
 
@@ -94,7 +93,7 @@ async def test_flashcard_validation_order_and_card_action(make_harness, ws_root:
     # the learner clicks B: the model sees the [card:...] line plus the card, history stores the echo
     model.push("Đúng rồi!")
     act = CardAction(card_id=card["id"], kind="flashcard", action="answer", value="B", echo="Đã chọn: B. x = 2; x = 3")
-    req = TurnRequest(session_id="s1", user_id="u1", profile=Profile.THPT, text="[card:flashcard answer B]",
+    req = TurnRequest(session_id="s1", user_id="u1", profile=Profile.STUDENT, text="[card:flashcard answer B]",
                       card_action=act)
     await collect(harness, req)
     seen = model.calls[-1].messages[-1]["content"]
@@ -109,47 +108,20 @@ async def test_flashcard_validation_order_and_card_action(make_harness, ws_root:
     assert "[đã hiện thẻ flashcard" in history and "[card:flashcard answer B]" in history
 
 
-async def test_celebrate_refused_in_crisis(make_harness, ws_root: Path) -> None:
+async def test_celebrate_once_per_turn(make_harness, ws_root: Path) -> None:
     model = ScriptedModel([
         ScriptedModel.call("celebrate", title="Xong chương 1"),
         ScriptedModel.call("celebrate", title="Lần hai"),
-        ScriptedModel.call("flag_crisis", category="self_harm", reason="nói muốn biến mất"),
-        NO_CRISIS,
-        "Mình ở đây với em.",
-    ])
-    harness = make_harness(model)
-    events = await collect(harness, turn_request())
-    assert "một lần" in tool_results(model)[1]  # max 1 per turn
-    assert not [e for e in events if e.type == "card"]  # held celebration dropped after flag_crisis
-    # sticky for the session: celebrate, show_card celebration and weekly are refused next turn
-    model.push(
-        ScriptedModel.call("celebrate", title="Giỏi quá"),
-        ScriptedModel.call("show_card", kind="celebration", data={"title": "Giỏi"}),
-        ScriptedModel.call("show_card", kind="weekly", data={"milestones_done": 1, "mistakes_fixed": 0}),
-        "Ừ.",
-    )
-    events = await collect(harness, turn_request("mình ổn rồi"))
-    assert all("khủng hoảng" in r for r in tool_results(model)[-3:])
-    assert not [e for e in events if e.type == "card"]
-
-
-async def test_celebrate_refused_when_safety_skill_read(make_harness, ws_root: Path) -> None:
-    skill = ws_root / ".mentor/skills/core/wellbeing-and-crisis/SKILL.md"
-    skill.parent.mkdir(parents=True)
-    skill.write_text("---\nname: wellbeing-and-crisis\ndescription: x\nprofiles: [thpt]\nversion: 1\n---\nx\n",
-                     encoding="utf-8")
-    model = ScriptedModel([
-        ScriptedModel.call("read_file", path=".mentor/skills/core/wellbeing-and-crisis/SKILL.md"),
-        ScriptedModel.call("celebrate", title="Tuyệt"),
-        "Mình nghe em.",
+        "Giỏi lắm.",
     ])
     events = await collect(make_harness(model), turn_request())
-    assert "khủng hoảng" in tool_results(model)[-1] and not [e for e in events if e.type == "card"]
+    assert "một lần" in tool_results(model)[1]  # max 1 per turn
+    assert len([e for e in events if e.type == "card"]) == 1
 
 
 async def test_celebration_shown_last(make_harness, ws_root: Path) -> None:
     model = ScriptedModel([ScriptedModel.call("celebrate", title="Nộp xong bài báo", detail="Sau 3 tháng"), "Chúc mừng!"])
-    events = await collect(make_harness(model), turn_request(profile=Profile.NCS))
+    events = await collect(make_harness(model), turn_request(profile=Profile.STUDENT))
     cards = [e.card for e in events if e.type == "card"]
     assert cards and cards[0]["kind"] == "celebration" and cards[0]["detail"] == "Sau 3 tháng"
     assert [r["role"] for r in chat_records(ws_root)][-2:] == ["mentor", "card"]
@@ -173,7 +145,7 @@ async def test_start_focus_extend_done(make_harness, ws_root: Path) -> None:
 
     def click(action: str, value: str | None = None) -> TurnRequest:
         act = CardAction(card_id=card["id"], kind="focus", action=action, value=value, echo=action)
-        return TurnRequest(session_id="s1", user_id="u1", profile=Profile.THPT, text=f"[card:focus {action}]",
+        return TurnRequest(session_id="s1", user_id="u1", profile=Profile.STUDENT, text=f"[card:focus {action}]",
                            card_action=act)
 
     model.push("Thêm 10 phút nhé.")
@@ -189,7 +161,7 @@ async def test_start_focus_extend_done(make_harness, ws_root: Path) -> None:
 
     # the stale wake finds the session ended and skips without calling the model
     calls = len(model.calls)
-    res = await harness.run_job(JobRequest(job_id="f1", user_id="u1", profile=Profile.THPT, kind=JobKind.FOCUS_END,
+    res = await harness.run_job(JobRequest(job_id="f1", user_id="u1", profile=Profile.STUDENT, kind=JobKind.FOCUS_END,
                                            payload={"card_id": card["id"]}))
     assert res.status == "skipped" and len(model.calls) == calls
 
@@ -197,14 +169,14 @@ async def test_start_focus_extend_done(make_harness, ws_root: Path) -> None:
 async def test_focus_end_job_notifies(make_harness, ws_root: Path) -> None:
     model = ScriptedModel([ScriptedModel.call("start_focus", task="Đọc paper", minutes=5), "Bắt đầu!"])
     harness = make_harness(model)
-    events = await collect(harness, turn_request(profile=Profile.NCS))
+    events = await collect(harness, turn_request(profile=Profile.STUDENT))
     card = next(e.card for e in events if e.type == "card")
     # pretend the session has run out
     path = ws_root / "sessions" / now_local().date().isoformat() / "s1.jsonl"
     path.write_text(path.read_text(encoding="utf-8").replace(card["ends_at"], now_local().isoformat()),
                     encoding="utf-8")
     model.push(ScriptedModel.call("notify_user", text="Hết giờ rồi, đọc tới đâu rồi?"), "Đã hỏi thăm.")
-    job = JobRequest(job_id="f2", user_id="u1", profile=Profile.NCS, kind=JobKind.FOCUS_END,
+    job = JobRequest(job_id="f2", user_id="u1", profile=Profile.STUDENT, kind=JobKind.FOCUS_END,
                      payload={"card_id": card["id"], "task": "Đọc paper", "minutes": 5})
     res = await harness.run_job(job)
     assert res.status == "ok" and "Đọc paper" in model.calls[-1].messages[1]["content"]
@@ -229,7 +201,7 @@ async def test_job_cards_go_to_todays_chat(make_harness, ws_root: Path) -> None:
         "Đã gửi tổng kết tuần.",
     ])
     res = await make_harness(model).run_job(
-        JobRequest(job_id="w1", user_id="u1", profile=Profile.THPT, kind=JobKind.ROUTINE, prompt="weekly-review"))
+        JobRequest(job_id="w1", user_id="u1", profile=Profile.STUDENT, kind=JobKind.ROUTINE, prompt="weekly-review"))
     assert "Trong job nền" in tool_results(model)[0]
     assert [c["kind"] for c in res.cards] == ["checkin", "weekly"]
     weekly = res.cards[1]
@@ -240,7 +212,7 @@ async def test_job_cards_go_to_todays_chat(make_harness, ws_root: Path) -> None:
 
 
 def _routine(job_id: str, payload: dict | None = None, **kw) -> JobRequest:
-    return JobRequest(job_id=job_id, user_id="u1", profile=Profile.THPT, kind=JobKind.ROUTINE, prompt="x",
+    return JobRequest(job_id=job_id, user_id="u1", profile=Profile.STUDENT, kind=JobKind.ROUTINE, prompt="x",
                       payload=payload or {}, **kw)
 
 
@@ -274,29 +246,17 @@ async def test_start_focus_only_in_learner_started_jobs(make_harness, ws_root: P
     res = await harness.run_job(other)
     assert "start_focus" not in {t["function"]["name"] for t in model.calls[-3].tools}
     assert all(r.startswith("LỖI") for r in tool_results(model)[-2:]) and res.cards == []
-    res = await harness.run_job(JobRequest(job_id="w9", user_id="u1", profile=Profile.THPT,
+    res = await harness.run_job(JobRequest(job_id="w9", user_id="u1", profile=Profile.STUDENT,
                                            kind=JobKind.NIGHTLY_REFLECTION, payload=NOTIFICATION_JOB))
     assert "start_focus" not in {t["function"]["name"] for t in model.calls[-1].tools}
 
 
-async def test_crisis_hold_blocks_celebrations(make_harness, ws_root: Path) -> None:
+async def test_job_checkin_card_keeps_line_breaks(make_harness) -> None:
     model = ScriptedModel([
-        ScriptedModel.call("show_card", kind="weekly", data={"milestones_done": 2, "mistakes_fixed": 0}),
         ScriptedModel.call("show_card", kind="checkin",
                            data={"prompt": "3 việc hôm nay:\n1) Ôn   toán\n2) Đọc", "options": ["Chốt", "Đổi"]}),
         "Xong.",
     ])
-    harness = make_harness(model)
-    res = await harness.run_job(_routine("w1", crisis_hold=True))
-    assert "khủng hoảng" in tool_results(model)[0]
+    res = await make_harness(model).run_job(_routine("w1"))
     assert [c["kind"] for c in res.cards] == ["checkin"]
     assert res.cards[0]["prompt"] == "3 việc hôm nay:\n1) Ôn toán\n2) Đọc"  # line breaks kept
-    model.push(ScriptedModel.call("show_card", kind="celebration", data={"title": "Xong 3 việc"}), "Xong.")
-    learner = await harness.run_job(_routine("n8", NOTIFICATION_JOB, crisis_hold=True))
-    assert learner.status == "ok" and learner.cards == []  # refused even in a learner-started job
-    assert "khủng hoảng" in tool_results(model)[-1]
-
-    model.push(ScriptedModel.call("celebrate", title="Giỏi"), "Ừ.")
-    req = turn_request("xong rồi").model_copy(update={"crisis_hold": True, "session_id": "s-hold"})
-    events = await collect(harness, req)
-    assert "khủng hoảng" in tool_results(model)[-1] and not [e for e in events if e.type == "card"]

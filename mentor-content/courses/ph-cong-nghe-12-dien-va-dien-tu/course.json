@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-cong-nghe-12-dien-va-dien-tu",
+  "title": "Công nghệ 12: Điện và điện tử",
+  "subject": "Công nghệ",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Tú",
+  "description_short": "Mạch điện xoay chiều, linh kiện điện tử cơ bản và mạch khuếch đại đơn giản, có sơ đồ mạch để tự lắp trên mô phỏng. Dành cho học sinh lớp 12.",
+  "outcomes": [
+    "Đọc được sơ đồ mạch điện cơ bản.",
+    "Nhận biết điốt, tranzito, tụ điện.",
+    "Lắp được mạch đèn LED trên mô phỏng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 67,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Mạch điện",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Mạch xoay chiều",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Mạch ba pha",
+          "est_minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Điện tử",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Linh kiện thụ động",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Điốt và tranzito",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Mạch khuếch đại",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

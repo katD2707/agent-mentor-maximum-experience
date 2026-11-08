@@ -11,19 +11,14 @@ from pathlib import Path
 import pytest
 import yaml
 from mentor_schemas import (
-    REPORT_FORBIDDEN_PATTERNS,
     EvidenceMode,
     JobKind,
     LearningEvent,
-    ParentReport,
     ProactivityLevel,
     Routine,
     RoutinesFile,
-    WellbeingEntry,
-    WellbeingLevel,
     is_agent_writable,
 )
-from mentor_schemas.reports import AI_DISCLAIMER
 
 CONTENT = Path(__file__).resolve().parents[1]
 AGENTS_MD = CONTENT / "AGENTS.md"
@@ -35,40 +30,30 @@ CURRICULUM = CONTENT / "curricula" / "math.yaml"
 # if the contract changes, this test must change with it.
 TOOLS = {
     "read_file", "list_dir", "grep", "write_file", "edit_file", "delete_file", "run_script",
-    "look_at_image", "web_search", "web_fetch", "notify_user", "schedule_wake", "request_approval",
-    "send_parent_report", "flag_crisis", "paper_search", "paper_get", "paper_save",
-    "paper_snippets", "paper_citations",
-    "calendar_list_events", "calendar_create_event", "calendar_update_event", "calendar_delete_event",
+    "look_at_image", "notify_user", "schedule_wake", "request_approval",
     "suggest_replies", "show_card", "start_focus", "celebrate",  # CONTRACTS section 9
 }
 SCRIPTS = {
-    "record_event", "record_wellbeing", "wellbeing_window", "bkt_update", "sympy_check",
-    "pdf_extract", "pdf_render", "check_report",
+    "record_event", "bkt_update", "sympy_check", "pdf_extract", "pdf_render",
 }
-THPT_ONLY = {"send_parent_report", "flag_crisis", "record_wellbeing", "wellbeing_window", "bkt_update"}
-CRISIS_CATEGORIES = {"self_harm", "abuse", "harm_others", "run_away"}
 
 # Other snake_case identifiers skills may legitimately put in backticks: schema field names,
 # enum values, script input/output keys (CONTRACTS section 4).
 SCRIPT_IO_KEYS = {
-    "event_id", "note_ref", "days_recorded", "negative_ratio", "trigger_nudge", "skills_updated",
+    "event_id", "skills_updated",
     "problem_attempt", "graded_work_ingested", "all_correct",
 }
-# Tool argument / result fields skills may refer to (CONTRACTS section 3: calendar_list_events, paper_snippets).
-TOOL_IO_KEYS = {"created_by_mentor", "all_day", "paper_ids", "year_from", "profile_id"}  # profile_id: show_card mock (section 10.5)
+# Tool argument / result fields skills may refer to (CONTRACTS section 3).
+TOOL_IO_KEYS = {"profile_id"}  # profile_id: show_card mock (section 10.5)
 KNOWN_IDENTIFIERS = (
     TOOLS
     | TOOL_IO_KEYS
     | SCRIPTS
-    | CRISIS_CATEGORIES
     | SCRIPT_IO_KEYS
     | set(LearningEvent.model_fields)
-    | set(WellbeingEntry.model_fields)
     | set(Routine.model_fields)
     | set(RoutinesFile.model_fields)
-    | set(ParentReport.model_fields)
     | {e.value for e in EvidenceMode}
-    | {e.value for e in WellbeingLevel}
     | {e.value for e in JobKind}
     | {e.value for e in ProactivityLevel}
 )
@@ -76,13 +61,9 @@ KNOWN_IDENTIFIERS = (
 REQUIRED_SKILLS = {
     "core": {
         "memory-keeper", "nightly-reflection", "goal-planning", "scaffolded-help", "intake-document",
-        "weekly-review", "wellbeing-and-crisis", "daily-checkin",
+        "weekly-review", "daily-checkin",
     },
-    "thpt": {"math-tutoring", "graded-work-review", "exam-prep", "spaced-review", "parent-report"},
-    "ncs": {
-        "literature-watch", "paper-reading-coach", "advisor-meeting-prep", "writing-feedback",
-        "experiment-journal", "deadline-watch", "utility-code",
-    },
+    "student": {"math-tutoring", "graded-work-review", "exam-prep", "spaced-review"},
 }
 
 COMMON_TEMPLATE_FILES = {
@@ -91,13 +72,9 @@ COMMON_TEMPLATE_FILES = {
     "inbox/.gitkeep", "routines.yaml",
 }
 PROFILE_TEMPLATE_FILES = {
-    "thpt": {
+    "student": {
         "learning/math/skills.md", "learning/math/mistakes.md", "learning/math/review-queue.md",
-        "learning/evidence/.gitkeep", "reports/.gitkeep",
-    },
-    "ncs": {
-        "research/thesis.md", "research/reading-queue.md", "research/papers/.gitkeep",
-        "research/experiments/log.md", "research/meetings/.gitkeep",
+        "learning/evidence/.gitkeep",
     },
 }
 
@@ -140,11 +117,9 @@ def _curriculum() -> list[dict]:
 # ---------- AGENTS.md ----------
 
 
-def test_agents_md_safety_section():
+def test_agents_md_core_rules():
     text = AGENTS_MD.read_text(encoding="utf-8")
     assert "111" in text
-    for cat in CRISIS_CATEGORIES:
-        assert f"`{cat}`" in text, f"AGENTS.md must name crisis category {cat}"
     assert "[suy luận]" in text
 
 
@@ -166,17 +141,12 @@ def test_skill_frontmatter(path: Path):
     assert isinstance(fm["description"], str) and fm["description"].strip()
     assert "\n" not in fm["description"].strip()
     assert isinstance(fm["profiles"], list) and fm["profiles"]
-    assert set(fm["profiles"]) <= {"thpt", "ncs"}
+    assert set(fm["profiles"]) <= {"student", "teacher"}
     assert isinstance(fm["version"], int)
     group = path.parent.parent.name
-    if group in ("thpt", "ncs"):
+    if group == "student":
         assert fm["profiles"] == [group], f"{path}: skills in {group}/ must have profiles [{group}]"
     assert body.strip()
-
-
-def test_wellbeing_skill_is_thpt_only():
-    fm, _ = _split_frontmatter(SKILLS_DIR / "core" / "wellbeing-and-crisis" / "SKILL.md")
-    assert fm["profiles"] == ["thpt"]
 
 
 @pytest.mark.parametrize("path", _skill_files(), ids=lambda p: p.parent.name)
@@ -208,12 +178,6 @@ def test_skill_references_exist(path: Path):
     assert not bad, f"{path}: references to unknown skills {bad}"
 
 
-def test_ncs_skills_do_not_use_thpt_only_tools():
-    for path in sorted((SKILLS_DIR / "ncs").glob("*/SKILL.md")):
-        used = set(BACKTICK.findall(path.read_text(encoding="utf-8"))) & THPT_ONLY
-        assert not used, f"{path}: uses THPT-only tools/scripts {used}"
-
-
 def test_curriculum_ids_in_skills_exist():
     ids = {s["id"] for s in _curriculum()}
     for path in _content_docs():
@@ -225,74 +189,37 @@ def test_curriculum_ids_in_skills_exist():
 # ---------- specific skill rules ----------
 
 def test_math_tutoring_uses_sympy_check():
-    text = (SKILLS_DIR / "thpt" / "math-tutoring" / "SKILL.md").read_text(encoding="utf-8")
+    text = (SKILLS_DIR / "student" / "math-tutoring" / "SKILL.md").read_text(encoding="utf-8")
     assert "`sympy_check`" in text and "`record_event`" in text
 
 
 def test_graded_work_review_flow():
-    text = (SKILLS_DIR / "thpt" / "graded-work-review" / "SKILL.md").read_text(encoding="utf-8")
+    text = (SKILLS_DIR / "student" / "graded-work-review" / "SKILL.md").read_text(encoding="utf-8")
     for needle in ("`look_at_image`", "`record_event`", '"classroom_graded"', "`bkt_update`"):
         assert needle in text, f"graded-work-review must mention {needle}"
     assert text.index("`record_event`") < text.index("`bkt_update`")
 
 
-def test_nightly_reflection_records_wellbeing_for_thpt():
-    text = (SKILLS_DIR / "core" / "nightly-reflection" / "SKILL.md").read_text(encoding="utf-8")
-    assert "`record_wellbeing`" in text and "CHỈ THPT" in text
-
-
-def _report_example() -> str:
-    text = (SKILLS_DIR / "thpt" / "parent-report" / "SKILL.md").read_text(encoding="utf-8")
-    blocks = re.findall(r"```markdown\n(.*?)```", text, flags=re.DOTALL)
-    assert blocks, "parent-report must contain a ```markdown example report"
-    return blocks[0]
-
-
-def test_parent_report_skill_rules():
-    text = (SKILLS_DIR / "thpt" / "parent-report" / "SKILL.md").read_text(encoding="utf-8")
-    assert AI_DISCLAIMER in text
-    for needle in ("`wellbeing_window`", "`trigger_nudge`", "`check_report`", "`send_parent_report`", "13 ngày"):
-        assert needle in text, f"parent-report must mention {needle}"
-    assert text.index("`check_report`") < text.index("`send_parent_report`")
-
-
-def test_parent_report_example_passes_leak_patterns():
-    example = _report_example()
-    report = ParentReport.parse(example)
-    assert AI_DISCLAIMER in report.body_markdown
-    for pat in REPORT_FORBIDDEN_PATTERNS:
-        assert not re.search(pat, report.body_markdown, flags=re.IGNORECASE), f"example report matches forbidden {pat!r}"
-
-
-def test_parent_report_nudge_passes_leak_patterns():
-    text = (SKILLS_DIR / "thpt" / "parent-report" / "SKILL.md").read_text(encoding="utf-8")
-    nudge = re.findall(r"```markdown\n(.*?)```", text, flags=re.DOTALL)[1]
-    for pat in REPORT_FORBIDDEN_PATTERNS:
-        assert not re.search(pat, nudge, flags=re.IGNORECASE), f"nudge matches forbidden {pat!r}"
-
-
 # ---------- workspace templates ----------
 
-@pytest.mark.parametrize("profile", ["thpt", "ncs"])
+@pytest.mark.parametrize("profile", ["student"])
 def test_template_files(profile: str):
     root = TEMPLATES / profile
     present = {p.relative_to(root).as_posix() for p in root.rglob("*") if p.is_file()}
     expected = COMMON_TEMPLATE_FILES | PROFILE_TEMPLATE_FILES[profile]
     assert expected <= present, f"missing in {profile}: {expected - present}"
-    other = PROFILE_TEMPLATE_FILES["ncs" if profile == "thpt" else "thpt"]
-    assert not (other & present), f"{profile} template contains other profile's files"
     for rel in present:
         if not rel.endswith(".gitkeep"):
             assert is_agent_writable(rel), f"{profile}/{rel} is not agent-writable"
 
 
-@pytest.mark.parametrize("profile", ["thpt", "ncs"])
+@pytest.mark.parametrize("profile", ["student"])
 def test_template_profile_line(profile: str):
     text = (TEMPLATES / profile / "me" / "profile.md").read_text(encoding="utf-8")
-    assert f"- Profile: {profile}" in text
+    assert "- Vai trò: học sinh" in text
 
 
-@pytest.mark.parametrize("profile", ["thpt", "ncs"])
+@pytest.mark.parametrize("profile", ["student"])
 def test_routines_validate(profile: str):
     rf = RoutinesFile.parse_yaml((TEMPLATES / profile / "routines.yaml").read_text(encoding="utf-8"))
     by_id = {r.id: r for r in rf.routines}
@@ -311,17 +238,9 @@ def test_routines_validate(profile: str):
     nightly = by_id["nightly_reflection"]
     assert nightly.cron == "30 23 * * *" and not nightly.user_editable
     assert by_id["weekly_review"].cron.split()[4] == "0"  # Sunday
-    if profile == "thpt":
-        assert set(by_id) == {"nightly_reflection", "evening_review", "weekly_review", "parent_report",
-                              "morning_checkin", "evening_wrapup", "review_due"}
-        assert by_id["evening_review"].cron == "30 19 * * *" and by_id["evening_review"].user_editable
-        pr = by_id["parent_report"]
-        assert pr.cron == "0 19 * * 5" and pr.job_kind == "parent_report" and not pr.user_editable
-    else:
-        assert set(by_id) == {"nightly_reflection", "literature_watch", "weekly_review", "morning_checkin",
-                              "evening_wrapup"}
-        lw = by_id["literature_watch"]
-        assert lw.cron == "0 8 * * 1" and lw.job_kind == "literature_watch"
+    assert set(by_id) == {"nightly_reflection", "evening_review", "weekly_review", "morning_checkin",
+                          "evening_wrapup", "review_due"}
+    assert by_id["evening_review"].cron == "30 19 * * *" and by_id["evening_review"].user_editable
 
 
 # ---------- curriculum ----------

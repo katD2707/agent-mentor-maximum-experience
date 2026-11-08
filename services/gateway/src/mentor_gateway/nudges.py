@@ -4,11 +4,11 @@ Routines (`routines.yaml`, defaults in mentor-content/workspace-templates): a ro
 off, so existing workspaces keep what they have and only new workspaces get the defaults.
 - `morning_checkin` (07:30 weekdays) and `evening_wrapup` (21:00): agent jobs (skill daily-checkin) that send a
   `checkin` notification with answer actions and a `checkin` card into the chat.
-- `review_due`: handled by the gateway alone (no sandbox, no model call; the routine's prompt is ignored): when a
+- `review_due`: handled by the gateway alone (no agent, no model call; the routine's prompt is ignored): when a
   `learning/<subject>/review-queue.md` has rows due today or overdue, one `review` notification, at most one per
   local day (none if the agent already sent a `review` notification that day).
-All three are proactive: skipped when proactivity is `off`, when the run time is in quiet hours, and during a
-crisis hold. Other routines (nightly reflection, reports, ...) are jobs and never affected.
+All three are proactive: skipped when proactivity is `off`, when the run time is in quiet hours, and while the
+learner's `quiet_until` has not passed. Other routines (nightly reflection, reports, ...) are jobs and never affected.
 
 Actions (`POST /api/notifications/{id}/action`): open, done, snooze_1h (always allowed) and start_focus,
 answer:<x> (only when the notification offers them). Idempotent per (id, action, delivery number); audited
@@ -87,7 +87,7 @@ class NudgeService:
 
     async def before_job(self, user: User, row: JobRow) -> tuple[str, str | None, str | None] | None:
         """Called by the JobRunner before a job runs. Returns (status, summary, error) when the gateway handled or
-        skipped it, None when the sandbox should run it."""
+        skipped it, None when the job executor should run it."""
         rid = row.source.split(":", 1)[1] if row.source.startswith("routine:") else None
         if rid not in PROACTIVE_ROUTINES:
             return None
@@ -96,8 +96,8 @@ class NudgeService:
             return "skipped", None, "proactivity off"
         if in_quiet_hours(routines, row.scheduled_for):
             return "skipped", None, "quiet hours"
-        if self.hub.hold_active(user.id):
-            return "skipped", None, "nudge hold"
+        if self.users.quiet_active(user.id, self.clock()):
+            return "skipped", None, "quiet until"
         if rid == "review_due":
             return await self.review_due(user, routines.timezone)
         return None

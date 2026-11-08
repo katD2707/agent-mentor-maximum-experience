@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-06T20:24:26.147143Z",
+  "courses": [
+    {
+      "id": "dev-sample-dem-tao",
+      "title": "Toán 1: Đếm táo (bản mẫu dev)",
+      "subject": "Toán",
+      "age_band": "g1_5",
+      "language": "vi",
+      "teacher_name": "Cô Hoa",
+      "description_short": "Cún đếm táo: chạm từng quả táo, chọn hình đúng số lượng. Có giọng đọc cho mọi câu. Khóa mẫu, xóa sau P4.",
+      "outcomes": [
+        "Đếm các số đến 10",
+        "Chọn hình có đúng số quả táo"
+      ],
+      "cover_sha256": "4af258fa8c886bf3d7047b6cacc862fc87e272f837c00a9d74b017109646179b",
+      "media": [
+        "reading",
+        "quiz",
+        "interactive"
+      ],
+      "lessons_count": 1,
+      "est_minutes": 5,
+      "version": 1,
+      "pack_sha256": "a7b3a7412d77fe3be97bcd0d9f218e13a9040ae39f37983994894898a3ea5e51",
+      "pack_bytes": 480042,
+      "published_at": "2026-11-06T17:18:32.305835Z"
+    },
+    {
+      "id": "dev-sample-dien-truong",
+      "title": "Vật lí 11: Điện trường (bản mẫu dev)",
+      "subject": "Vật lí",
+      "age_band": "g10_12",
+      "language": "vi",
+      "teacher_name": "Thầy Minh",
+      "description_short": "Điện trường, đường sức điện và cường độ điện trường qua video, bài đọc ngắn và câu hỏi kiểm tra. Khóa mẫu để thử trình học, xóa sau P4.",
+      "outcomes": [
+        "Vẽ và đọc được đường sức điện của điện tích điểm",
+        "Tính cường độ điện trường E = k|q|/(εr²)",
+        "Nhận ra chỗ điện trường mạnh hay yếu từ độ dày đường sức"
+      ],
+      "cover_sha256": "ed54fa8455bf6c400c1b99167380e462f670fd6a5a254fd1859f057e4f3aee2b",
+      "media": [
+        "video",
+        "reading",
+        "audio",
+        "quiz"
+      ],
+      "lessons_count": 2,
+      "est_minutes": 20,
+      "version": 1,
+      "pack_sha256": "f531ca4f196465ddaf646c6829acbbf7d5b80854ac54f77d7bcda0f069aee9e0",
+      "pack_bytes": 2350989,
+      "published_at": "2026-11-06T17:18:32.065869Z"
+    }
+  ]
+}

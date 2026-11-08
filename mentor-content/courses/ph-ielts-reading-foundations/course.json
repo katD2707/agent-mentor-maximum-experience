@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-ielts-reading-foundations",
+  "title": "IELTS Reading: Foundations",
+  "subject": "IELTS",
+  "age_band": "g10_12",
+  "language": "en",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Ms. Anna Le",
+  "description_short": "Learn the question types in IELTS Academic Reading, from matching headings to True/False/Not Given, with timed practice passages. For learners aiming at band 5.5 to 6.5.",
+  "outcomes": [
+    "Recognise and answer all main question types.",
+    "Skim a 900-word passage in under three minutes.",
+    "Manage 60 minutes across three passages."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 87,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Skills",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Skimming and scanning",
+          "est_minutes": 22
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Paraphrase",
+          "est_minutes": 11
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Keywords",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Question types",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Matching headings",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "True, False, Not Given",
+          "est_minutes": 17
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Summary completion",
+          "est_minutes": 11
+        }
+      ]
+    }
+  ]
+}

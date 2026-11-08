@@ -3,20 +3,21 @@
 import json
 from pathlib import Path
 
-import httpx
 from harness_helpers import FakeScripts, collect, turn_request
+from mentor_harness.agent import Harness
 from mentor_harness.config import Settings
 from mentor_harness.model import ScriptedModel
-from mentor_harness.server import create_app
 from mentor_harness.workspace import Workspace, ensure_git_safe_directory
 from mentor_schemas import Attachment, Profile, TurnRequest
 
 
-async def post_turn(app, req: TurnRequest) -> str:
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url="http://sandbox") as client:
-        resp = await client.post("/v1/turn", json=req.model_dump(mode="json"))
-    assert '"type":"done"' in resp.text
-    return resp.text
+def create_app(settings: Settings, model: ScriptedModel, script_runner: FakeScripts) -> Harness:
+    return Harness(settings, model, script_runner=script_runner)
+
+
+async def post_turn(harness: Harness, req: TurnRequest) -> None:
+    events = await collect(harness, req)
+    assert events[-1].type == "done"
 
 
 def chat_records(root: Path, session_id: str = "s-20261028") -> list[dict]:
@@ -75,7 +76,7 @@ async def test_attachments_recorded_and_restored(make_harness, ws_root: Path) ->
     req = TurnRequest(
         session_id="s-20261028",
         user_id="u1",
-        profile=Profile.THPT,
+        profile=Profile.STUDENT,
         text="Bài kiểm tra của em",
         attachments=[Attachment(path="inbox/kt.jpg", mime_type="image/jpeg")],
     )

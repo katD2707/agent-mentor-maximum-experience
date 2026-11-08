@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-toan-9-he-phuong-trinh-va-duong-tron",
+  "title": "Toán 9: Hệ phương trình và đường tròn",
+  "subject": "Toán",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Thủy",
+  "description_short": "Giải hệ hai phương trình bậc nhất, ứng dụng vào toán đố, rồi sang tính chất đường tròn và góc nội tiếp. Có chuyên đề ôn thi vào lớp 10 ở cuối khóa.",
+  "outcomes": [
+    "Giải được hệ phương trình bằng thế và cộng đại số.",
+    "Lập được hệ từ bài toán có lời văn.",
+    "Vận dụng góc nội tiếp, tiếp tuyến trong bài chứng minh."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 77,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hệ phương trình",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Phương pháp thế",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Phương pháp cộng",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Giải toán bằng cách lập hệ",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Đường tròn",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Góc ở tâm, góc nội tiếp",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Tiếp tuyến",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tứ giác nội tiếp",
+          "est_minutes": 14
+        }
+      ]
+    }
+  ]
+}

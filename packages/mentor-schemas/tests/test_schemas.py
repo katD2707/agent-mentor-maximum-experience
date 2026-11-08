@@ -1,9 +1,4 @@
-import re
-from datetime import date
-
 from mentor_schemas import (
-    REPORT_FORBIDDEN_PATTERNS,
-    ParentReport,
     RoutinesFile,
     is_agent_writable,
 )
@@ -12,15 +7,9 @@ from mentor_schemas import (
 def test_agent_write_permissions():
     assert is_agent_writable("me/now.md")
     assert is_agent_writable("me/journal/2026-10-28.md")
-    assert is_agent_writable("research/papers/attention.md")
-    assert not is_agent_writable("reports/2026-11-07.md")  # only the gateway writes sent reports
-    assert is_agent_writable(".mentor/report-drafts/2026-11-07.md")
-    assert not is_agent_writable(".mentor/report-drafts/sub/2026-11-07.md")
-    assert not is_agent_writable(".mentor/report-drafts/x.txt")
-    assert not is_agent_writable(".mentor/report-drafts/../wellbeing.jsonl")
+    assert not is_agent_writable("research/papers/attention.md")
     assert not is_agent_writable("AGENTS.md")
     assert not is_agent_writable("events.jsonl")
-    assert not is_agent_writable(".mentor/wellbeing.jsonl")
     assert not is_agent_writable(".mentor/skills/core/memory-keeper/SKILL.md")
     assert not is_agent_writable("sessions/2026-10-28/abc.md")
     assert not is_agent_writable("../other-user/me/now.md")
@@ -35,8 +24,14 @@ def test_routines_roundtrip():
     assert RoutinesFile.parse_yaml(rf.to_yaml()) == rf
 
 
-def test_report_roundtrip_and_forbidden_patterns():
-    r = ParentReport(period_start=date(2026, 10, 24), period_end=date(2026, 11, 6), body_markdown="Con học đều 9/14 ngày.")
-    assert ParentReport.parse(r.render()) == r
-    assert any(re.search(p, "Bài 15 phút được 5/10", re.IGNORECASE) for p in REPORT_FORBIDDEN_PATTERNS)
-    assert not any(re.search(p, r.body_markdown, re.IGNORECASE) for p in REPORT_FORBIDDEN_PATTERNS)
+def test_catalog_entry_live_needs_pack_but_coming_soon_does_not():
+    import pytest
+    from pydantic import ValidationError
+
+    from mentor_schemas.course import CatalogEntry
+
+    base = dict(id="ph-x", title="t", subject="s", age_band="uni", language="vi", teacher_name="n", description_short="d",
+                cover_sha256="0" * 64, lessons_count=2, est_minutes=20)
+    assert CatalogEntry(**base, status="coming_soon").version == 0
+    with pytest.raises(ValidationError):
+        CatalogEntry(**base)  # live by default: needs version, pack_sha256, published_at

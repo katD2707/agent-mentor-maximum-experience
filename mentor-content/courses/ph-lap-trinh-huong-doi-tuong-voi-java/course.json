@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-lap-trinh-huong-doi-tuong-voi-java",
+  "title": "Lập trình hướng đối tượng với Java",
+  "subject": "Lập trình",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "ThS. Phan Thị Lan",
+  "description_short": "Lớp, kế thừa, đa hình và giao diện, dựng dần thành một ứng dụng quản lí thư viện nhỏ. Dành cho sinh viên đã biết lập trình cơ bản.",
+  "outcomes": [
+    "Thiết kế được lớp và mối quan hệ giữa các lớp.",
+    "Dùng kế thừa và đa hình đúng chỗ.",
+    "Viết được kiểm thử đơn vị cơ bản."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 187,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Lớp và đối tượng",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Lớp và thuộc tính",
+          "est_minutes": 27
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Phương thức",
+          "est_minutes": 33
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Đóng gói",
+          "est_minutes": 39
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Thiết kế",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Kế thừa",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đa hình",
+          "est_minutes": 32
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Giao diện",
+          "est_minutes": 38
+        }
+      ]
+    }
+  ]
+}

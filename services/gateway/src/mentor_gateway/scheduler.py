@@ -19,7 +19,6 @@ from mentor_gateway.db import Database, JobRow, RoutineSchedule
 from mentor_gateway.jobs import JobRunner
 from mentor_gateway.notifications import NotificationHub
 from mentor_gateway.routine_policy import routine_violation
-from mentor_gateway.sandbox import Orchestrator
 from mentor_gateway.settings import Clock
 from mentor_gateway.users import UserService
 
@@ -34,15 +33,16 @@ def next_run(cron: str, tz: str, after: datetime) -> datetime:
 
 class Scheduler:
     def __init__(self, db: Database, users: UserService, runner: JobRunner, hub: NotificationHub,
-                 orchestrator: Orchestrator, clock: Clock, interval: float = 30.0) -> None:
+                 clock: Clock, interval: float = 30.0) -> None:
         self.db = db
         self.users = users
         self.runner = runner
         self.hub = hub
-        self.orchestrator = orchestrator
         self.clock = clock
         self.interval = interval
         self.practice_sweep: Any = None  # PracticeService.sweep: auto-finishes mocks whose deadline passed (set by context)
+        self.planner: Any = None  # PlannerService.tick: nightly/weekly/event-driven replans (set by context)
+        self.research: Any = None  # ResearchService.tick: Monday discovery, agenda drafts (set by app)
         self.backups: Any = None  # backup.BackupService when the daily backup job is enabled (set by context)
         self._stopping = asyncio.Event()
 
@@ -50,7 +50,7 @@ class Scheduler:
         """Create job rows for routine occurrences that are due. Returns the new job ids."""
         created = []
         for user in self.users.all_provisioned():
-            if self.users.onboarding_state(user) != "active":
+            if not self.users.is_active(user):
                 continue
             try:
                 rf = self.users.routines(user)
@@ -75,7 +75,7 @@ class Scheduler:
                         log.warning("routine %s of %s is invalid; skipped", rid, user.id)
                         continue
                     if routine_violation(routine, from_user=False):
-                        # e.g. the agent wrote an every-minute or extra parent_report routine into routines.yaml
+                        # e.g. the agent wrote an every-minute or extra platform routine into routines.yaml
                         log.warning("routine %s of %s breaks the routine policy; skipped", rid, user.id)
                         continue
                     row = existing.get(rid)
@@ -104,7 +104,10 @@ class Scheduler:
         if self.practice_sweep is not None:
             await asyncio.to_thread(self.practice_sweep)
         await self.hub.flush_all()
-        await self.orchestrator.reap_idle(now)
+        if self.planner is not None:
+            await self.planner(now)
+        if self.research is not None:
+            await self.research(now)
         if self.backups is not None:
             await self.backups.maybe_run(now)  # starts the daily snapshot run in a thread; never blocks the tick
         return started

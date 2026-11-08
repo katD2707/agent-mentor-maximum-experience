@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-giai-tich-nhieu-bien",
+  "title": "Giải tích nhiều biến",
+  "subject": "Giải tích",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "PGS. TS. Lê Văn Hải",
+  "description_short": "Đạo hàm riêng, cực trị có điều kiện và tích phân bội, kèm hình mặt cong và đường mức xoay được. Dành cho sinh viên năm hai.",
+  "outcomes": [
+    "Tính được đạo hàm riêng và gradient.",
+    "Tìm cực trị bằng nhân tử Lagrange.",
+    "Tính được tích phân kép và bội ba."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 203,
+  "latest_published": null,
+  "versions": [],
+  "level": "advanced",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Hàm nhiều biến",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Giới hạn và liên tục",
+          "est_minutes": 39
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Đạo hàm riêng",
+          "est_minutes": 33
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Gradient",
+          "est_minutes": 43
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tích phân bội",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tích phân kép",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đổi biến",
+          "est_minutes": 40
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tích phân bội ba",
+          "est_minutes": 30
+        }
+      ]
+    }
+  ]
+}

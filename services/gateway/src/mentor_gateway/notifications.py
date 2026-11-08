@@ -11,14 +11,13 @@ Quiet hours (learner timezone) hold everything in the pending list. Jobs are nev
 Delivery: over the learner's open WebSockets; with none open, over Web Push (push.py) when it is configured and
 the learner subscribed a device. Otherwise the notification waits until the learner connects.
 
-Safety: nothing is sent in a crisis context. A crisis alert in an outbox puts a 24 h hold on proactive kinds
-(`outbox.py`), and a notification whose text touches crisis topics is suppressed outright. Pushes never show the
-agent's text on a lock screen (push.py uses a generic text per kind).
+Quiet (`users.quiet_until`, set by `PUT /api/me/quiet`): nothing is delivered until it passes; notifications wait in
+the pending list (or expire). Pushes never show the agent's text on a lock screen (push.py uses a generic text per
+kind).
 """
 
 import asyncio
 import logging
-import re
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime, time, timedelta
@@ -29,38 +28,24 @@ from mentor_schemas import NotifyPayload, ProactivityLevel, RoutinesFile
 from pydantic import ValidationError
 from sqlalchemy import select
 
-from mentor_gateway.db import Database, NotificationMeta, NotificationRow, NudgeHold, PushSubscription
+from mentor_gateway.db import Database, NotificationMeta, NotificationRow, PushSubscription
 from mentor_gateway.settings import Clock
 
 log = logging.getLogger(__name__)
 
-NotifyResult = Literal["delivered", "pending", "dropped", "suppressed"]
+NotifyResult = Literal["delivered", "pending", "dropped"]
 
-KINDS = ("checkin", "deadline", "review", "focus_end", "celebration", "report", "nudge")
+PLANNER_SOURCE = "planner:"  # Nudge.source of a planner reminder: "planner:<reminder id>"
+KINDS = ("checkin", "deadline", "review", "focus_end", "celebration", "nudge")
 DEFAULT_MASCOT = {"checkin": "wave", "deadline": "idle", "review": "happy", "focus_end": "happy",
-                  "celebration": "celebrate", "report": "idle", "nudge": "idle"}
+                  "celebration": "celebrate", "nudge": "idle"}
 # A nudge that could not be delivered in time is dropped instead of arriving stale ("top 3 for today" tomorrow).
 DEFAULT_TTL = {"checkin": timedelta(hours=6), "review": timedelta(hours=12), "focus_end": timedelta(hours=2),
                "celebration": timedelta(hours=24)}
 CAP_EXEMPT_KINDS = frozenset({"deadline", "focus_end"})
 OFF_EXEMPT_KINDS = frozenset({"focus_end"})
-# kinds held back while a crisis hold is active; deadline and focus_end stay (neutral, practical)
-HOLD_SUPPRESSED_KINDS = frozenset({"checkin", "review", "celebration", "report", "nudge"})
-CRISIS_HOLD = timedelta(hours=24)
-KIND_PRIORITY = {k: i for i, k in enumerate(("deadline", "checkin", "review", "focus_end", "report", "celebration",
+KIND_PRIORITY = {k: i for i, k in enumerate(("deadline", "checkin", "review", "focus_end", "celebration",
                                               "nudge"))}
-
-# Nudges never touch crisis topics (CONTRACTS section 9). Deliberately broad: a false positive only drops a nudge.
-_CRISIS_TEXT = re.compile(
-    r"tự\s*tử|tự\s*sát|tự\s*hại|tự\s*làm\s*(đau|hại)|kết\s*liễu|muốn\s*chết|không\s*muốn\s*sống|bạo\s*hành|"
-    r"xâm\s*hại|bỏ\s*nhà|khủng\s*hoảng|\b111\b|\b113\b|\b115\b|suicid|self[\s-]*harm|kill\s+(my|your)self|abuse",
-    re.IGNORECASE,
-)
-
-
-def mentions_crisis(*texts: str | None) -> bool:
-    return any(t and _CRISIS_TEXT.search(t) for t in texts)
-
 
 class Connection(Protocol):
     async def send_json(self, data: Any) -> None: ...
@@ -203,11 +188,12 @@ def primary_item(batch: list[Item]) -> Item:
 
 class NotificationHub:
     def __init__(self, db: Database, clock: Clock, routines_for: Callable[[str], RoutinesFile],
-                 push: Any = None) -> None:
+                 push: Any = None, quiet_active: Callable[[str, datetime], bool] | None = None) -> None:
         self.db = db
         self.clock = clock
         self.routines_for = routines_for
         self.push = push  # push.PushService, set by context
+        self.quiet_active = quiet_active or (lambda _user_id, _now: False)  # users.quiet_until
         self._conns: dict[str, dict[int, _Conn]] = {}
 
     # ---- connections -------------------------------------------------------------------------
@@ -235,25 +221,6 @@ class NotificationHub:
             conn = _Conn(ws)
         return await conn.send(message)
 
-    async def sandbox_status(self, user_id: str, state: str) -> None:
-        await self.send(user_id, {"type": "sandbox_status", "state": state})
-
-    # ---- crisis hold -------------------------------------------------------------------------
-
-    def hold_active(self, user_id: str, now: datetime | None = None) -> bool:
-        now = now or self.clock()
-        with self.db.session() as s:
-            row = s.get(NudgeHold, user_id)
-            return row is not None and row.until > now
-
-    def set_hold(self, user_id: str, until: datetime) -> None:
-        with self.db.session() as s:
-            row = s.get(NudgeHold, user_id)
-            if row is None:
-                s.add(NudgeHold(user_id=user_id, until=until))
-            elif row.until < until:
-                row.until = until
-
     # ---- notifications -----------------------------------------------------------------------
 
     async def notify(self, user_id: str, text: str, nudge: Nudge | None = None) -> NotifyResult:
@@ -264,11 +231,6 @@ class NotificationHub:
         status = "pending"
         if routines.proactivity == ProactivityLevel.OFF and kind not in OFF_EXEMPT_KINDS:
             status = "dropped"
-        else:
-            crisis_text = mentions_crisis(nudge.text, nudge.title, nudge.body, nudge.prefill,
-                                          *(str(a.get("label", "")) for a in nudge.actions))
-            if crisis_text or (kind in HOLD_SUPPRESSED_KINDS and self.hold_active(user_id, now)):
-                status = "suppressed"
         ttl = DEFAULT_TTL.get(kind)
         with self.db.session() as s:
             row = NotificationRow(user_id=user_id, text=nudge.text, created_at=now, status=status)
@@ -283,8 +245,6 @@ class NotificationHub:
                 cap_exempt=kind in CAP_EXEMPT_KINDS, deliveries=0, focus=nudge.focus,
             ))
         if status != "pending":
-            if status == "suppressed":
-                log.info("notification %s of %s suppressed (crisis context)", row_id, user_id)
             return status  # type: ignore[return-value]
         await self.flush(user_id, routines=routines)
         with self.db.session() as s:
@@ -365,11 +325,6 @@ class NotificationHub:
                     meta.channel = channel
                     meta.not_before = None
 
-    def _suppress(self, items: list[Item]) -> None:
-        with self.db.session() as s:
-            for item in items:
-                s.get(NotificationRow, item.id).status = "suppressed"
-
     def _can_push(self, user_id: str) -> bool:
         return self.push is not None and self.push.enabled and self.push.has_subscriptions(user_id)
 
@@ -380,15 +335,11 @@ class NotificationHub:
             return 0
         now = self.clock()
         routines = routines or self.routines_for(user_id)
-        if in_quiet_hours(routines, now):
+        if in_quiet_hours(routines, now) or self.quiet_active(user_id, now):
             return 0
         items = self._due(user_id, now)
         if routines.proactivity == ProactivityLevel.OFF:
             items = [i for i in items if i.kind in OFF_EXEMPT_KINDS]
-        if items and self.hold_active(user_id, now):
-            held = [i for i in items if i.kind in HOLD_SUPPRESSED_KINDS]
-            self._suppress(held)
-            items = [i for i in items if i.kind not in HOLD_SUPPRESSED_KINDS]
         if not items:
             return 0
         batches = [[i] for i in items if i.cap_exempt]

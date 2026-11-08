@@ -1,0 +1,21 @@
+import { mockTeacherApi } from "./mock-teacher-api";
+import { httpTeacherApi } from "./teacher-http";
+import { httpApi } from "./http";
+import { mockApi, mockUserOf } from "./mock";
+import type { Api } from "./types";
+import { setPracticeApi } from "./practice";
+import { createMockPractice } from "./mock-practice-api";
+
+export const isMock = import.meta.env.VITE_API_MOCK === "1";
+export const api: Api = isMock ? mockApi : httpApi;
+if (isMock) setPracticeApi(createMockPractice({ learner: mockUserOf }));
+export * from "./types";
+export { localTokenStorage, type TokenStorage } from "./storage";
+export * from "./course";
+export * from "./planner";
+export { assetUrl, coverUrl, withToken, setMediaToken, setMediaTokenSource, hasMediaToken, getMediaToken, refreshMediaToken, recoverMediaUrl, fetchMedia, retryMedia } from "./media";
+export * from "./practice";
+export * from "./ask";
+export * from "./teacher";
+export { researchApi, ResearchError, streamPaperAsk } from "./research";
+export const teacherApi: import("./teacher").TeacherApi = isMock ? mockTeacherApi : httpTeacherApi;

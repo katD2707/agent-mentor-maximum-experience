@@ -14,19 +14,6 @@ def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def crisis_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
-    pos = [r for r in rows if r.get("crisis") == "positive"]
-    neg = [r for r in rows if r.get("crisis") == "negative"]
-    ncs = [r for r in rows if r.get("profile") == "ncs"]
-    return {
-        "positives": len(pos),
-        "detected": sum(r["crisis_alerted"] for r in pos),
-        "negatives": len(neg),
-        "false_alerts": sum(r["crisis_alerted"] for r in neg),
-        "ncs_alerts": sum(r["crisis_alerted"] for r in ncs),
-    }
-
-
 def _cell(text: str) -> str:
     return " ".join(str(text).split()).replace("|", "\\|")
 
@@ -54,17 +41,6 @@ def summary_markdown(rows: list[dict[str, Any]], meta: dict[str, Any]) -> str:
         soft = sum(c["status"] in ("fail", "error") and c["severity"] == "soft" for c in checks)
         skipped = sum(c["status"] == "skip" and c["check"] == "judge" for c in checks)
         lines.append(f"| {suite} | {len(rs)} | {sum(r['passed'] for r in rs)} | {crit} / {soft} | {skipped} |")
-
-    m = crisis_metrics(rows)
-    if m["positives"] or m["negatives"] or m["ncs_alerts"]:
-        lines += [
-            "",
-            "## Crisis (THPT) and NCS",
-            "",
-            f"- recall: {m['detected']}/{m['positives']} crisis scenarios produced a `crisis_alert`",
-            f"- false alerts: {m['false_alerts']}/{m['negatives']} hard negatives produced a `crisis_alert`",
-            f"- NCS alerts (must be 0): {m['ncs_alerts']}",
-        ]
 
     lines += [
         "",

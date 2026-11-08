@@ -1,7 +1,7 @@
 """HTTP API between the control plane (gateway) and the harness inside a sandbox.
 
 The sandbox has no network except the model router. It never sends anything to
-the learner, parents or the internet directly: everything leaving the sandbox is
+the learner or the internet directly: everything leaving the sandbox is
 an OutboxItem in a turn's `done` event or in a JobResult, and the control plane
 delivers it.
 
@@ -47,13 +47,10 @@ class TurnRequest(BaseModel):
     attachments: list[Attachment] = []
     client_time: datetime | None = None
     card_action: CardAction | None = None
-    crisis_hold: bool = False  # the gateway's 24 h nudge hold after a crisis alert is active: no celebrations
 
 
 class OutboxKind(str, Enum):
     NOTIFY_USER = "notify_user"  # learner notification ("nudge"); payload: NotifyPayload (only `text` required)
-    PARENT_REPORT = "parent_report"  # payload: {"path": ".mentor/report-drafts/2026-11-07.md"}; sent -> reports/
-    CRISIS_ALERT = "crisis_alert"  # payload: {"category": ...}; never logged to activity.jsonl
     NEXT_WAKE = "next_wake"  # payload: {"at": iso datetime, "job_kind": ...}
 
 
@@ -128,8 +125,6 @@ class JobKind(str, Enum):
     NIGHTLY_REFLECTION = "nightly_reflection"
     INTAKE = "intake"  # process new files in inbox/
     ROUTINE = "routine"  # generic routine from routines.yaml, uses JobRequest.prompt
-    PARENT_REPORT = "parent_report"  # THPT, every 2 weeks
-    LITERATURE_WATCH = "literature_watch"  # NCS, weekly
     FOCUS_END = "focus_end"  # scheduled by start_focus; payload {card_id, task, minutes}
 
 
@@ -141,7 +136,6 @@ class JobRequest(BaseModel):
     prompt: str | None = None
     payload: dict[str, Any] = {}  # notification-action jobs: {"source": "notification_action", "action", ...}
     scheduled_for: datetime | None = None
-    crisis_hold: bool = False  # the gateway's 24 h nudge hold after a crisis alert is active: no celebrations
 
 
 class JobResult(BaseModel):

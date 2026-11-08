@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "ph-gdcd-8-phap-luat-va-ki-luat",
+  "title": "GDCD 8: Pháp luật và kỉ luật",
+  "subject": "GDCD",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Thầy Hùng",
+  "description_short": "Dùng tình huống ở trường và trên mạng để phân biệt quyền và nghĩa vụ, kỉ luật và pháp luật. Mỗi bài kết thúc bằng một câu hỏi xử lí tình huống.",
+  "outcomes": [
+    "Phân biệt được pháp luật, kỉ luật và đạo đức.",
+    "Nêu được quyền và nghĩa vụ cơ bản của học sinh.",
+    "Biết cách xử lí khi gặp vi phạm trên mạng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 55,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Pháp luật và kỉ luật",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Pháp luật là gì",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Kỉ luật ở trường",
+          "est_minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Quyền và nghĩa vụ",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Quyền của học sinh",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Nghĩa vụ công dân",
+          "est_minutes": 15
+        },
+        {
+          "id": "ch2-l3",
+          "title": "An toàn trên mạng",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}

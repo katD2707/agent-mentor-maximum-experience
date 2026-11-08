@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<line x1="505" y1="180" x2="505" y2="560" stroke="#2B283F" stroke-width="2" stroke-dasharray="8 10" opacity="0.35"/>
+<circle cx="150" cy="360" r="45" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/><rect x="132" y="354" width="36" height="12" rx="3" fill="#5A4BC0"/><rect x="144" y="342" width="12" height="36" rx="3" fill="#5A4BC0"/>
+<circle cx="350" cy="360" r="45" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/><rect x="332" y="354" width="36" height="12" rx="3" fill="#5A4BC0"/><rect x="344" y="342" width="12" height="36" rx="3" fill="#5A4BC0"/>
+<line x1="100" y1="360" x2="45.0" y2="360.0" stroke="#E8806A" stroke-width="7" stroke-linecap="round"/><polygon points="30.0,360.0 48.6,352.6 48.6,367.4" fill="#E8806A"/>
+<line x1="400" y1="360" x2="455.0" y2="360.0" stroke="#E8806A" stroke-width="7" stroke-linecap="round"/><polygon points="470.0,360.0 451.4,367.4 451.4,352.6" fill="#E8806A"/>
+<circle cx="640" cy="360" r="45" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/><rect x="622" y="354" width="36" height="12" rx="3" fill="#5A4BC0"/><rect x="634" y="342" width="12" height="36" rx="3" fill="#5A4BC0"/>
+<circle cx="860" cy="360" r="45" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/><rect x="842" y="354" width="36" height="12" rx="3" fill="#5A4BC0"/>
+<line x1="695" y1="330" x2="750.0" y2="330.0" stroke="#E8806A" stroke-width="7" stroke-linecap="round"/><polygon points="765.0,330.0 746.4,337.4 746.4,322.6" fill="#E8806A"/>
+<line x1="805" y1="390" x2="750.0" y2="390.0" stroke="#E8806A" stroke-width="7" stroke-linecap="round"/><polygon points="735.0,390.0 753.6,382.6 753.6,397.4" fill="#E8806A"/>
+<text x="150" y="288" text-anchor="middle" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">+q&#8321;</text>
+<text x="350" y="288" text-anchor="middle" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">+q&#8322;</text>
+<text x="250" y="468" text-anchor="middle" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">F &#273;&#7849;y</text>
+<text x="640" y="288" text-anchor="middle" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">+q&#8321;</text>
+<text x="860" y="288" text-anchor="middle" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#8722;q&#8322;</text>
+<text x="750" y="478" text-anchor="middle" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">F h&#250;t</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

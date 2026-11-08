@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-tieng-anh-10-tu-vung-chu-de-va-doc-hieu",
+  "title": "Tiếng Anh 10: Từ vựng chủ đề và đọc hiểu",
+  "subject": "Tiếng Anh",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Giang",
+  "description_short": "Bốn chủ đề từ vựng quen thuộc của sách giáo khoa, mỗi chủ đề có bài đọc, bài nghe và cách đoán nghĩa từ. Dành cho học sinh lớp 10.",
+  "outcomes": [
+    "Nắm được từ vựng cốt lõi theo bốn chủ đề.",
+    "Tìm ý chính và chi tiết trong bài đọc.",
+    "Đoán được nghĩa từ mới từ ngữ cảnh."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 87,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Chủ đề",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Gia đình và bạn bè",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Giáo dục",
+          "est_minutes": 10
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Môi trường",
+          "est_minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Kĩ năng đọc",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Tìm ý chính",
+          "est_minutes": 21
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Đọc lướt, đọc kĩ",
+          "est_minutes": 13
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Đoán nghĩa từ",
+          "est_minutes": 17
+        }
+      ]
+    }
+  ]
+}

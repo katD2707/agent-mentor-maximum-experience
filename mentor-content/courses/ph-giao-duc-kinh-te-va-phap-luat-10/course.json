@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "ph-giao-duc-kinh-te-va-phap-luat-10",
+  "title": "Giáo dục kinh tế và pháp luật 10",
+  "subject": "Giáo dục kinh tế và pháp luật",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Thùy Anh",
+  "description_short": "Cơ chế thị trường, tiền tệ, thuế và tín dụng được giải thích bằng ví dụ về quán trà sữa của một học sinh. Dành cho học sinh lớp 10.",
+  "outcomes": [
+    "Giải thích được cung, cầu và giá cả.",
+    "Phân biệt được các loại thuế và chức năng của tiền.",
+    "Nêu được cách quản lí chi tiêu cá nhân."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 91,
+  "latest_published": null,
+  "versions": [],
+  "level": "intermediate",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Thị trường",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Cung và cầu",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Cạnh tranh",
+          "est_minutes": 18
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Giá cả",
+          "est_minutes": 15
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Tiền và thuế",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chức năng của tiền",
+          "est_minutes": 14
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Thuế",
+          "est_minutes": 16
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Tín dụng",
+          "est_minutes": 14
+        }
+      ]
+    }
+  ]
+}

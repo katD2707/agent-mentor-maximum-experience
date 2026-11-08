@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- plate -->
+    <circle cx="200" cy="215" r="130" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="6"/>
+    <circle cx="200" cy="215" r="104" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="4"/>
+
+    <!-- candy 1 : top left, mint -->
+    <g transform="translate(168,150) rotate(-14)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+
+    <!-- candy 2 : top right, yellow -->
+    <g transform="translate(240,152) rotate(14)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+
+    <!-- candy 3 : middle left, upright, yellow -->
+    <g transform="translate(128,214) rotate(-90)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+
+    <!-- candy 4 : middle right, upright, mint -->
+    <g transform="translate(272,214) rotate(90)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+
+    <!-- candy 5 : centre, coral -->
+    <g transform="translate(200,212) rotate(3)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+
+    <!-- candy 6 : bottom left, coral -->
+    <g transform="translate(168,272) rotate(8)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+
+    <!-- candy 7 : bottom right, mint -->
+    <g transform="translate(238,270) rotate(-8)">
+      <path d="M-36,-19 L-21,-12 L-21,12 L-36,19 L-29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M36,-19 L21,-12 L21,12 L36,19 L29,0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+      <rect x="-23" y="-16" width="46" height="32" rx="15" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+      <path d="M-12,-7 Q-4,-12 4,-10" fill="none" stroke="#F7F1E3" stroke-width="3"/>
+    </g>
+  </g>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

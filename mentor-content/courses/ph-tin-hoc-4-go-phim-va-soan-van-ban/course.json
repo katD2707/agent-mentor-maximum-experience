@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "ph-tin-hoc-4-go-phim-va-soan-van-ban",
+  "title": "Tin học 4: Gõ phím và soạn văn bản",
+  "subject": "Tin học",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "ph-teacher",
+  "teacher_name": "Cô Trang",
+  "description_short": "Luyện gõ mười ngón qua trò chơi ngắn, sau đó soạn một trang giới thiệu bản thân có chữ đậm, màu và hình ảnh. Dành cho học sinh lớp 4.",
+  "outcomes": [
+    "Gõ đúng hàng phím cơ sở không nhìn bàn phím.",
+    "Soạn và định dạng được đoạn văn bản.",
+    "Chèn được hình ảnh vào bài."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "video",
+    "audio",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 53,
+  "latest_published": null,
+  "versions": [],
+  "level": "basic",
+  "status": "coming_soon",
+  "outline": [
+    {
+      "id": "ch1",
+      "title": "Gõ phím",
+      "lessons": [
+        {
+          "id": "ch1-l1",
+          "title": "Hàng phím cơ sở",
+          "est_minutes": 9
+        },
+        {
+          "id": "ch1-l2",
+          "title": "Hàng phím trên và dưới",
+          "est_minutes": 12
+        },
+        {
+          "id": "ch1-l3",
+          "title": "Gõ tiếng Việt",
+          "est_minutes": 7
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "Soạn văn bản",
+      "lessons": [
+        {
+          "id": "ch2-l1",
+          "title": "Chữ đậm, nghiêng, màu",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l2",
+          "title": "Chèn hình ảnh",
+          "est_minutes": 8
+        },
+        {
+          "id": "ch2-l3",
+          "title": "Lưu và in bài",
+          "est_minutes": 9
+        }
+      ]
+    }
+  ]
+}
