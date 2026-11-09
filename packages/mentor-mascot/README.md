@@ -2,7 +2,7 @@
 
 `<mentor-mascot>`: "Mực", the app's guide (an original purple ink drop holding a pencil). One dependency-free ES
 module with TypeScript types. It is the single source of truth for the character; the design mockups
-(`survey/mockups/mascot.js`) are a throwaway preview of it.
+(`mockups/mascot.js` at the repo root) are a throwaway preview of it.
 
 - Lives on every screen at a fixed spot, idles (bobs, blinks, looks around), and parks itself where no
   link, button or input is underneath. It re-checks after scrolling and DOM changes.
@@ -47,6 +47,9 @@ innermost `data-guide` wins. Add `data-mascot-avoid` to anything else Mực must
 | `openChat()`, `closeChat()` | Programmatic chat. |
 | `guide(key)` | Explain the first visible area with that key (same flow as a drop). |
 | `say(text, ms?)` | Short speech bubble, e.g. a first-run greeting. |
+| `tour(steps)` | First visit of a screen: walk through areas one by one (`{ key, title?, text? }`; no key = Mực speaks for itself). The page can't scroll and outside taps only nudge the bubble; "Got it, next" moves on, Skip or Escape ends it. Resolves `"done"`, `"skipped"` or `"none"`. |
+| `stopTour()` | End a running tour (e.g. on navigation). |
+| `replay` | Host callback; while set, the chat shows a "Show me this page again" chip that calls it. |
 | `relocate()` | Call after a route change; moves only if Mực now sits on something interactive. |
 | attribute `theme="light\|dark"` | Force a palette. Default follows `prefers-color-scheme`. |
 | attribute `motion="reduce"` | Force fade-only motion. Default follows `prefers-reduced-motion`. |

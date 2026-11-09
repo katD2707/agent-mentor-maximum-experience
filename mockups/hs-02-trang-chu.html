@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="vi" data-age="thpt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Màn chính</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .main { max-width: 860px; }
+  .hello { font-size: clamp(1.4em, 3.2vw, 1.8em); margin: 4px 0 24px; }
+  .grid4 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2.5vw, 20px); }
+  .cell { position: relative; }
+
+  /* the illustration fills the whole square; the words sit on their own band so the picture never touches the text */
+  .tile {
+    position: relative; display: block; aspect-ratio: 1; overflow: hidden; isolation: isolate;
+    border-radius: var(--r-lg); text-decoration: none; color: var(--ink);
+    background: #FBF5E8; border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow);
+  }
+  .tile img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+    transition: transform .5s cubic-bezier(.2, .7, .2, 1);
+  }
+  .tile:hover img, .tile:focus-visible img { transform: scale(1.05); }
+  .label {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+    display: grid; gap: 4px; padding: 14px 18px 16px;
+    background: var(--surface); border-top: 1px solid var(--rule);
+    animation: rise .55s cubic-bezier(.2, .8, .2, 1) both;
+  }
+  .label h2 { font-size: clamp(1.1em, 2.6vw, 1.35em); }
+  .label p { color: var(--ink-2); font-size: .88em; }
+  .label .now { display: flex; align-items: center; gap: 6px; color: var(--tim-ink); font-weight: 600; font-size: .88em; }
+  .label .now svg { width: 16px; height: 16px; flex: none; }
+  .label > * { animation: rise .55s cubic-bezier(.2, .8, .2, 1) both; }
+  .cell:nth-child(1) .label, .cell:nth-child(1) .label > * { animation-delay: .05s; }
+  .cell:nth-child(2) .label, .cell:nth-child(2) .label > * { animation-delay: .13s; }
+  .cell:nth-child(3) .label, .cell:nth-child(3) .label > * { animation-delay: .21s; }
+  .cell:nth-child(4) .label, .cell:nth-child(4) .label > * { animation-delay: .29s; }
+  .cell:nth-child(5) .label, .cell:nth-child(5) .label > * { animation-delay: .37s; }
+  /* university only: a fifth square, same size as the others.
+     Phone: 2 + 2 + 1, the fifth centred. Wider: 3 + 2 on a 6-column grid, the second row centred. */
+  .cell.fifth { grid-column: 1 / -1; justify-self: center; width: calc((100% - clamp(12px, 2.5vw, 20px)) / 2); }
+  @media (min-width: 760px) {
+    :root[data-age="dai-hoc"] .grid4 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    :root[data-age="dai-hoc"] .grid4 > .cell { grid-column: span 2; }
+    :root[data-age="dai-hoc"] .grid4 > .cell:nth-child(4) { grid-column: 2 / span 2; }
+    :root[data-age="dai-hoc"] .grid4 > .cell.fifth { grid-column: 4 / span 2; justify-self: stretch; width: auto; }
+  }
+  .label > :nth-child(2) { animation-duration: .7s; }
+  @keyframes rise { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  /* little ones: title only, bigger, centred, with a speaker on each square */
+  :root[data-age="tieu-hoc"] .label { justify-items: center; padding: 12px 12px 14px; }
+  :root[data-age="tieu-hoc"] .label h2 { font-size: clamp(1.25em, 3.4vw, 1.6em); }
+  :root[data-age="tieu-hoc"] .label p, :root[data-age="tieu-hoc"] .label .now { display: none; }
+  .speak { display: none; }
+  :root[data-age="tieu-hoc"] .speak {
+    display: grid; place-items: center; position: absolute; top: 12px; right: 12px; z-index: 2; width: 52px; height: 52px;
+    border-radius: 999px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); cursor: pointer;
+  }
+  .speak svg { width: 24px; height: 24px; }
+  @media (max-width: 480px) {
+    .label { padding: 10px 12px 12px; }
+    .label p, .label .now { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Màn chính</span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg"><span>Theo năm sinh, xem năm</span><button data-set="year:now">Nay</button><button data-set="year:2028">2028</button><button data-set="year:2030">2030</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-note">Tải lại trang để xem chữ trượt lên. Tranh do Stitch vẽ; bánh răng góc phải là cài đặt. Chọn Đại học để thấy ô thứ 5.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <span class="logo"><span class="logo-mark">M</span><span>Mentor</span></span>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <h1 class="hello" data-en="Hi Lan">Chào Lan</h1>
+
+    <div class="grid4">
+      <div class="cell">
+        <a class="tile" href="hs-02b-khoa-hoc.html">
+          <img src="assets/hub/khoa-hoc.jpg" alt="">
+          <span class="label">
+            <h2 data-en="Courses">Khóa học</h2>
+            <span class="now" data-when="age=thcs|thpt"><i data-i="play"></i><span data-en="Tonight: 20 min on electric fields">Tối nay: 20 phút Điện trường</span></span>
+            <span class="now" data-when="age=dai-hoc"><i data-i="play"></i><span data-en="Today: Bayes, part 3">Hôm nay: Suy luận Bayes, phần 3</span></span>
+          </span>
+        </a>
+        <button class="speak" type="button" aria-label="Đọc to: Khóa học"><i data-i="volume"></i></button>
+      </div>
+
+      <div class="cell">
+        <a class="tile" href="hs-07-luyen-tap.html">
+          <img src="assets/hub/luyen-tap.jpg" alt="">
+          <span class="label">
+            <h2 data-en="Practice">Luyện tập</h2>
+            <p data-en="10 questions, about 12 minutes">10 câu, khoảng 12 phút</p>
+          </span>
+        </a>
+        <button class="speak" type="button" aria-label="Đọc to: Luyện tập"><i data-i="volume"></i></button>
+      </div>
+
+      <div class="cell">
+        <a class="tile" href="hs-08-hoi-bai.html">
+          <img src="assets/hub/hoi-dap.jpg" alt="">
+          <span class="label">
+            <h2 data-en="Ask">Hỏi đáp</h2>
+            <p data-en="Snap a photo, type or talk">Chụp ảnh, gõ hoặc nói</p>
+          </span>
+        </a>
+        <button class="speak" type="button" aria-label="Đọc to: Hỏi đáp"><i data-i="volume"></i></button>
+      </div>
+
+      <div class="cell">
+        <a class="tile" href="hs-10-tien-bo.html">
+          <img src="assets/hub/tien-do.jpg" alt="">
+          <span class="label">
+            <h2 data-en="Progress">Tiến độ</h2>
+            <p data-en="3 goals, 3 of 5 sessions this week">3 mục tiêu, tuần này 3/5 buổi</p>
+          </span>
+        </a>
+        <button class="speak" type="button" aria-label="Đọc to: Tiến độ"><i data-i="volume"></i></button>
+      </div>
+
+      <div class="cell fifth" data-when="age=dai-hoc">
+        <a class="tile" href="hs-11-nghien-cuu.html">
+          <img src="assets/hub/nghien-cuu.jpg" alt="">
+          <span class="label">
+            <h2 data-en="Research">Nghiên cứu</h2>
+            <p data-en="Paper due in 9 days, 2 new papers">Hạn nộp bài còn 9 ngày, 2 paper mới</p>
+          </span>
+        </a>
+        <button class="speak" type="button" aria-label="Đọc to: Nghiên cứu"><i data-i="volume"></i></button>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

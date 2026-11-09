@@ -1,7 +1,7 @@
 # Mentor app
 
 One frontend (Vite + React 19 + TypeScript) for the desktop (Tauri 2), the web/PWA and, later, mobile. Design source:
-`survey/mockups` (`shared.css`, `DESIGN.md`). Spec: `survey/REQUIREMENTS-PLAN.md`.
+`mockups/` at the repo root (`shared.css`, `DESIGN.md`). Spec: `survey/REQUIREMENTS-PLAN.md`.
 
 ## Screens
 

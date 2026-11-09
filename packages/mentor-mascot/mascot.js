@@ -21,6 +21,10 @@ const STR = {
     you: "Bạn",
     mascot: "Mực",
     says: "Mực nói",
+    next: "Hiểu rồi, tiếp",
+    skip: "Bỏ qua",
+    replay: "Chỉ lại trang này",
+    step: "Bước {n} trên {total}",
   },
   en: {
     label: "Mực, your guide",
@@ -39,6 +43,10 @@ const STR = {
     you: "You",
     mascot: "Mực",
     says: "Mực says",
+    next: "Got it, next",
+    skip: "Skip",
+    replay: "Show me this page again",
+    step: "Step {n} of {total}",
   },
 };
 
@@ -156,6 +164,21 @@ const CSS = `
 .hl.live { transition: left .1s, top .1s, width .1s, height .1s; border-style: dashed; }
 @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
+/* first-visit tour: the page dims around the part being explained, and a clear layer takes every tap and scroll
+   so the highlight never drifts; the only way on is the bubble's button */
+.hl.dim { border: 0; background: none; box-shadow: 0 0 0 200vmax rgba(18, 14, 38, .55); border-radius: 18px; }
+.catch { position: absolute; inset: 0; pointer-events: auto; touch-action: none; overscroll-behavior: contain; }
+.bubble .tt { font-weight: 700; font-size: 1.04em; }
+.bubble .n { margin-left: 8px; font-size: .8em; font-weight: 600; opacity: .72; font-variant-numeric: tabular-nums; }
+.acts { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.skip {
+  min-height: 36px; padding: 0 8px; border: 0; background: none; color: inherit; cursor: pointer; opacity: .85;
+  font: 600 13px/1 inherit; font-family: inherit; text-decoration: underline; text-underline-offset: 3px;
+}
+.skip:hover { opacity: 1; }
+.bubble.nudge { animation: nudge .42s ease-in-out; }
+@keyframes nudge { 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+
 /* floating surfaces: guide bubble and chat window */
 .f {
   position: absolute; pointer-events: auto; border-radius: 18px;
@@ -210,6 +233,7 @@ const CSS = `
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chat .chip { background: var(--_soft); color: var(--_ink); border: 1px solid var(--_rule); min-height: 34px; }
 .chat .chip:hover { border-color: var(--_accent); }
+.chat .chip.replay { font-weight: 700; border-color: var(--_accent); }
 .form { display: flex; gap: 8px; padding: 8px 12px 12px; border-top: 1px solid var(--_rule); }
 .form input {
   flex: 1; min-width: 0; height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--_rule);
@@ -227,7 +251,9 @@ const CSS = `
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .f, .hl { animation: fade .2s both !important; }
+  .bubble.nudge { animation: flash .6s ease-out !important; }
 }
+@keyframes flash { from { box-shadow: 0 0 0 4px #FFD84D; } }
 :host([motion="reduce"]) *, :host([motion="reduce"]) *::before, :host([motion="reduce"]) *::after { animation: none !important; transition: none !important; }
 :host([motion="reduce"]) .f, :host([motion="reduce"]) .hl { animation: fade .2s both !important; }
 `;
@@ -259,6 +285,8 @@ export class MentorMascot extends Base {
     this._float = null;
     this._timers = new Set();
     this._ready = false;
+    this._replay = null;
+    this._tour = null;
   }
 
   // ------------------------------------------------------------ public API
@@ -293,10 +321,54 @@ export class MentorMascot extends Base {
   }
   /** Re-check the current spot (call after route changes). Moves only if Mực sits on something interactive. */
   relocate() { this._checkSpot(); }
+  /** Host callback behind the chat's "Show me this page again" chip; the chip only shows while it is set. */
+  get replay() { return this._replay; }
+  set replay(fn) { this._replay = typeof fn === "function" ? fn : null; if (this._mode === "chat") this._fillAreas(); }
+  /**
+   * Walk through parts of the page one at a time (a screen's first visit). A step is { key } (a data-guide key, its text
+   * from `guides`), optionally with { title } and/or { text } ({ vi, en } each); a step whose key is not on screen is left
+   * out. While it runs the page cannot scroll and taps outside only nudge the bubble: the person moves on with
+   * "Got it, next" or leaves with Skip / Escape. Resolves "done", "skipped", or "none" when there was nothing to show
+   * or Mực was busy.
+   */
+  tour(steps) {
+    if (!this._ready || this._tour || this._busy || this._drag) return Promise.resolve("none");
+    const areas = Array.from(document.querySelectorAll("[data-guide]"));
+    const list = [];
+    for (const s of Array.isArray(steps) ? steps : []) {
+      if (!s) continue;
+      let el = null;
+      if (s.key) {
+        el = areas.find((n) => n.getAttribute("data-guide") === s.key && this._visible(n)) || null;
+        if (!el || list.some((o) => o.el && (o.el.contains(el) || el.contains(o.el)))) continue;
+      }
+      const text = s.text || (s.key && this._guides[s.key]);
+      if (!text || !(text.vi || text.en)) continue;
+      list.push({ el, text, title: s.title || null });
+    }
+    if (!list.length) return Promise.resolve("none");
+    this._closeFloat();
+    return new Promise((resolve) => {
+      const a = document.activeElement;
+      this._tour = { steps: list, i: 0, y: window.scrollY, resolve, focus: a && a !== document.body ? a : null, token: 0 };
+      this._busy = true;
+      this._lockPage(true);
+      const c = document.createElement("div");
+      c.className = "catch";
+      c.addEventListener("pointerdown", (e) => { e.preventDefault(); this._nudge(); });
+      c.addEventListener("wheel", (e) => { e.preventDefault(); this._nudge(); }, { passive: false });
+      c.addEventListener("touchmove", (e) => e.preventDefault(), { passive: false });
+      this.shadowRoot.insertBefore(c, this._m);
+      this._catch = c;
+      this._tourStep();
+    });
+  }
+  /** End a running tour now (e.g. the host navigated away). */
+  stopTour() { if (this._tour) this._endTour("skipped"); }
 
   // ------------------------------------------------------------ lifecycle
   connectedCallback() {
-    for (const p of ["ask", "guides", "avoid", "lang"]) {
+    for (const p of ["ask", "guides", "avoid", "lang", "replay"]) {
       if (Object.prototype.hasOwnProperty.call(this, p)) { const v = this[p]; delete this[p]; this[p] = v; }
     }
     if (!this.shadowRoot) {
@@ -329,6 +401,17 @@ export class MentorMascot extends Base {
     });
 
     this._onKey = (e) => {
+      if (this._tour) {
+        if (e.key === "Escape") { e.preventDefault(); this._endTour("skipped"); }
+        else if (e.key === "Tab" && this._float) {
+          // keep focus on the bubble's buttons: the page behind is out of reach until the tour ends
+          const btns = Array.from(this._float.querySelectorAll("button"));
+          const i = btns.indexOf(this.shadowRoot.activeElement);
+          e.preventDefault();
+          btns[(i + (e.shiftKey ? -1 : 1) + btns.length) % btns.length].focus({ preventScroll: true });
+        }
+        return;
+      }
       if (e.key !== "Escape" || !this._mode) return;
       const kb = this._mode === "chat" || this._keyboardGuide;
       this._closeFloat();
@@ -340,6 +423,12 @@ export class MentorMascot extends Base {
     };
     this._onResize = () => {
       this._place(...Object.values(this._clampPos(this._pos.x, this._pos.y)));
+      if (this._tour) {
+        // resized or turned mid-tour: lay the same step out again for the new size
+        this._clear(this._redoT);
+        this._redoT = this._later(() => { if (this._tour) { this._clearStep(); this._tourStep(); } }, 180);
+        return;
+      }
       if (this._explaining) this._closeFloat();
       else if (this._float) this._placeFloat();
       this._scheduleCheck();
@@ -362,6 +451,7 @@ export class MentorMascot extends Base {
 
   disconnectedCallback() {
     if (!this._ready) return;
+    if (this._tour) this._endTour("skipped");
     this._ready = false;
     document.removeEventListener("keydown", this._onKey);
     document.removeEventListener("pointerdown", this._onDocDown, true);
@@ -377,6 +467,7 @@ export class MentorMascot extends Base {
   attributeChangedCallback(name) {
     if (name !== "lang" || !this._ready) return;
     this._syncLabel();
+    if (this._tour && this._float) { const a = this._floatAvoid; this._float.remove(); this._float = null; this._showStep(a); }
     if (this._mode === "chat") this._renderChatStatic();
   }
 
@@ -649,10 +740,18 @@ export class MentorMascot extends Base {
     if (!c || this._mode !== "chat") return;
     const box = c.querySelector(".show"), chips = box.querySelector(".chips");
     const areas = this._visibleAreas();
-    box.hidden = areas.length === 0;
+    box.hidden = areas.length === 0 && !this._replay;
     box.querySelector("b").textContent = this._t("show");
     box.querySelector("span").textContent = this._t("showHint");
     chips.replaceChildren();
+    if (this._replay) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip replay";
+      b.textContent = this._t("replay");
+      b.addEventListener("click", () => { const fn = this._replay; this._closeFloat(); if (fn) fn(); });
+      chips.append(b);
+    }
     areas.forEach((a) => {
       const b = document.createElement("button");
       b.type = "button";
@@ -847,6 +946,141 @@ export class MentorMascot extends Base {
     if (keyboard) this._float.querySelector(".ok").focus({ preventScroll: true });
     else this._armDismiss(Math.max(6000, text.length * 55));
   }
+  // ------------------------------------------------------------ tour (first visit of a screen)
+  async _tourStep() {
+    const t = this._tour;
+    if (!t) return;
+    const token = ++t.token;
+    const live = () => this._tour === t && t.token === token;
+    const s = t.steps[t.i];
+    let vr = null;
+    if (s.el) {
+      let r = s.el.getBoundingClientRect();
+      if (r.top < 8 || r.bottom > this._H()) {
+        s.el.scrollIntoView({ block: "center", behavior: this._rm.matches ? "auto" : "smooth" }); // the lock stops people, not code
+        await wait(this._rm.matches ? 30 : 450);
+        if (!live()) return;
+        r = s.el.getBoundingClientRect();
+      }
+      vr = this._clip(r, 8);
+      const hl = document.createElement("div");
+      hl.className = "hl dim";
+      this._setBox(hl, vr);
+      this.shadowRoot.insertBefore(hl, this._m);
+      this._hl = hl;
+      await this._moveTo(this._standBeside(vr), "hop");
+      if (!live()) return;
+      const me = this._rect();
+      this._m.classList.toggle("left", vr.left + vr.width / 2 < me.left + me.width / 2);
+      this._m.classList.add("pointing");
+    } else {
+      this._m.classList.add("waving"); // a step about Mực itself (the hello): wave where it stands
+    }
+    this._showStep(vr || this._rect());
+  }
+  _showStep(avoid) {
+    const t = this._tour;
+    const s = t.steps[t.i], n = t.steps.length, last = t.i >= n - 1, L = this.lang;
+    const text = s.text[L] || s.text.vi || s.text.en;
+    const b = document.createElement("div");
+    b.className = "f bubble";
+    b.setAttribute("role", "dialog");
+    b.setAttribute("aria-label", this._t("says"));
+    const title = s.title && (s.title[L] || s.title.vi);
+    if (title || n > 1) {
+      const h = this._p(title || "", "tt");
+      if (n > 1) {
+        const c = document.createElement("span");
+        c.className = "n";
+        c.setAttribute("aria-hidden", "true");
+        c.textContent = `${t.i + 1}/${n}`;
+        const sr = document.createElement("span");
+        sr.className = "sr";
+        sr.textContent = this._t("step").replace("{n}", t.i + 1).replace("{total}", n);
+        h.append(c, sr);
+      }
+      b.append(h);
+    }
+    b.append(this._p(text));
+    const ok = document.createElement("button");
+    ok.type = "button";
+    ok.className = "ok";
+    ok.textContent = last ? this._t("gotIt") : this._t("next");
+    ok.addEventListener("click", () => (last ? this._endTour("done") : this._nextStep()));
+    if (last) b.append(ok);
+    else {
+      const acts = document.createElement("div");
+      acts.className = "acts";
+      const skip = document.createElement("button");
+      skip.type = "button";
+      skip.className = "skip";
+      skip.textContent = this._t("skip");
+      skip.addEventListener("click", () => this._endTour("skipped"));
+      acts.append(skip, ok);
+      b.append(acts);
+    }
+    this._mount(b, "bubble", avoid);
+    this._talk(text);
+    ok.focus({ preventScroll: true });
+  }
+  _nextStep() {
+    const t = this._tour;
+    if (!t) return;
+    this._clearStep();
+    do t.i++; while (t.i < t.steps.length && t.steps[t.i].el && !this._visible(t.steps[t.i].el));
+    if (t.i >= t.steps.length) this._endTour("done");
+    else this._tourStep();
+  }
+  _clearStep() {
+    if (this._float) { this._float.remove(); this._float = null; }
+    this._mode = null;
+    if (this._hl) { this._hl.remove(); this._hl = null; }
+    this._clear(this._talkT);
+    this._m.classList.remove("waving", "talking", "pointing");
+  }
+  _nudge() {
+    const b = this._float;
+    if (!b) return;
+    b.classList.remove("nudge");
+    void b.offsetWidth;
+    b.classList.add("nudge");
+    const ok = b.querySelector(".ok");
+    if (ok) ok.focus({ preventScroll: true });
+  }
+  // the page stays put during a tour so the highlight never drifts off its part
+  _lockPage(on) {
+    const s = document.documentElement.style;
+    if (on) {
+      this._saved = { o: s.overflow, g: s.scrollbarGutter };
+      if (window.innerWidth > document.documentElement.clientWidth) s.scrollbarGutter = "stable"; // keep the bar's room
+      s.overflow = "hidden";
+    } else if (this._saved) {
+      s.overflow = this._saved.o;
+      s.scrollbarGutter = this._saved.g;
+      this._saved = null;
+    }
+  }
+  async _endTour(result) {
+    const t = this._tour;
+    if (!t) return;
+    this._tour = null;
+    t.token = -1;
+    this._clear(this._redoT);
+    this._clearStep();
+    if (this._catch) { this._catch.remove(); this._catch = null; }
+    this._lockPage(false);
+    t.resolve(result);
+    if (!this._ready) { this._busy = false; return; }
+    if (Math.abs(window.scrollY - t.y) > 4) {
+      // the tour scrolled to show its parts: put the page back where the person left it
+      window.scrollTo({ top: t.y, behavior: this._rm.matches ? "auto" : "smooth" });
+      await wait(this._rm.matches ? 30 : 420);
+    }
+    if (t.focus && document.contains(t.focus) && t.focus.focus) t.focus.focus({ preventScroll: true });
+    if (this._ready) await this._moveTo(this._randomSpot(null), "run");
+    this._busy = false;
+  }
+
   async _finishExplain() {
     this._explaining = false;
     const avoid = this._endTarget;

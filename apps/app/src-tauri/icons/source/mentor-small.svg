@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Mentor app icon, 16-32 px (tray, title bar, favicon): only Mực's droplet and eyes, which still read at that size. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D2E93"/><stop offset="1" stop-color="#140F38"/></linearGradient>
+    <linearGradient id="mascot" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#C9BEFF"/><stop offset="1" stop-color="#6E56EC"/></linearGradient>
+  </defs>
+  <rect class="tile" width="256" height="256" rx="58" fill="url(#bg)"/>
+  <path d="M128 22 C152 70 214 108 214 164 A86 86 0 0 1 42 164 C42 108 104 70 128 22 Z" fill="url(#mascot)"/>
+  <ellipse cx="98" cy="160" rx="24" ry="28" fill="#fff"/><ellipse cx="158" cy="160" rx="24" ry="28" fill="#fff"/>
+  <circle cx="102" cy="164" r="13" fill="#1F1B3A"/><circle cx="162" cy="164" r="13" fill="#1F1B3A"/>
+</svg>

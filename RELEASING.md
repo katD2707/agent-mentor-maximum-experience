@@ -26,7 +26,10 @@ export TAURI_SIGNING_PRIVATE_KEY_PASSWORD=...        # from the secret store, ne
 pnpm -C apps/app release --bump patch --channel stable --base-url https://updates.example.org/app --notes "What changed"
 ```
 
-The script bumps the version in `package.json`, `tauri.conf.json` and `Cargo.toml`, runs `tauri build` (which also builds the web bundle),
+Unsigned installers just for trying the app land in the repo root (`Mentor_<version>_...`, gitignored):
+`VITE_API_BASE=... pnpm -C apps/app installers` on Windows or a Mac, and `... installers --linux` for Linux (Docker, any OS).
+
+The release script bumps the version in `package.json`, `tauri.conf.json` and `Cargo.toml`, runs `tauri build` (which also builds the web bundle),
 and writes under `release-out/` (gitignored):
 
 - `<channel>/<version>/<installer>`: the signed bundle (upload next to the manifest)

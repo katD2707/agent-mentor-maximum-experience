@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="xem">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cấu trúc khóa học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .role { font-size: .85em; color: var(--ink-2); padding: 4px 12px; border-radius: 99px; background: var(--tim-soft); }
+  .main { max-width: 860px; padding-bottom: 40px; }
+  .course-head { display: grid; gap: 4px; margin-bottom: 18px; }
+  .course-head h1 { font-size: clamp(1.4em, 3.2vw, 1.8em); }
+
+  .thread { display: grid; gap: 18px; padding: clamp(14px, 3vw, 24px); border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .msg { display: grid; gap: 10px; max-width: 100%; }
+  .msg .who { font-size: .8em; color: var(--ink-2); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .msg .who .logo-mark { width: 22px; height: 22px; font-size: 12px; border-radius: 6px; }
+  .bubble { padding: 14px 16px; border-radius: 16px; background: var(--paper); border: 1px solid var(--rule); }
+  .me { justify-items: end; }
+  .me .bubble { background: var(--tim-soft); border-color: transparent; max-width: 520px; }
+  .mini-thumbs { display: flex; gap: 4px; margin-top: 8px; }
+  .mini-thumbs i { width: 22px; height: 30px; border-radius: 3px; background: #fff; border: 1px solid var(--rule-strong); }
+
+  /* unreadable pages */
+  .bad-pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .bad { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px; border-radius: 12px; background: var(--do-soft); }
+  .bad > svg { width: 70px; height: 94px; border-radius: 6px; border: 1px solid var(--rule-strong); }
+  .bad b { display: block; }
+  .bad .reason { color: var(--ink-2); font-size: .88em; margin: 2px 0 10px; }
+  .bad .btn { min-height: 40px; padding: 0 14px; font-size: .9em; background: var(--surface); border: 1.5px solid var(--do); color: var(--do); }
+
+  /* outline (editable in place) */
+  .outline { border-radius: 14px; padding: 16px 16px 16px 64px; border: 1px solid var(--rule-strong); }
+  .outline .hint { color: var(--ink-2); font-size: .85em; margin-bottom: 12px; }
+  .chapter { margin: 0 0 14px; }
+  .chapter > h2 { font-size: 1em; font-weight: 600; padding: 4px 6px; border-radius: 6px; }
+  .lessons { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; }
+  .lesson { display: grid; grid-template-columns: 28px auto minmax(0, 1fr) auto 36px; gap: 8px; align-items: center; padding: 6px 6px 6px 8px; border-radius: 10px; background: var(--surface); border: 1px solid var(--rule); }
+  .lesson.dragging { opacity: .4; }
+  .lesson.drop-before { outline: 2px dashed var(--tim); outline-offset: 2px; }
+  .handle { width: 28px; height: 32px; border: 0; background: transparent; cursor: grab; color: var(--ink-3); display: grid; place-items: center; border-radius: 6px; }
+  .handle:hover { color: var(--ink); background: var(--tim-soft); }
+  .num { color: var(--ink-2); font-size: .85em; white-space: nowrap; }
+  [contenteditable="true"] { outline: none; padding: 2px 6px; border-radius: 6px; }
+  [contenteditable="true"]:hover { background: var(--vang-soft); }
+  [contenteditable="true"]:focus { background: var(--vang-soft); box-shadow: inset 0 -2px 0 var(--tim); }
+  .has { display: flex; gap: 4px; color: var(--ink-2); }
+  .has svg { width: 18px; height: 18px; }
+  .del { width: 36px; height: 36px; border: 0; border-radius: 8px; background: transparent; color: var(--ink-3); cursor: pointer; display: grid; place-items: center; }
+  .del:hover { color: var(--do); background: var(--do-soft); }
+  .del svg { width: 18px; height: 18px; }
+  .add { margin-top: 6px; min-height: 38px; font-size: .9em; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--ink-2); font-size: .8em; margin-top: 4px; }
+  .legend span { display: inline-flex; gap: 5px; align-items: center; }
+  .legend svg { width: 16px; height: 16px; }
+  @media (max-width: 560px) { .outline { padding-left: 16px; background-image: none; } .lesson { grid-template-columns: 28px minmax(0, 1fr) 36px; } .lesson .num, .lesson .has { display: none; } }
+
+  /* locked while composing */
+  :root[data-state="dang-soan"] .handle, :root[data-state="dang-soan"] .del, :root[data-state="dang-soan"] .add, :root[data-state="dang-soan"] .outline .hint { display: none; }
+  :root[data-state="dang-soan"] .lesson { grid-template-columns: auto minmax(0, 1fr) auto; padding-left: 10px; }
+  :root[data-state="dang-soan"] .outline { opacity: .75; }
+
+  /* progress */
+  .prog { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+  .prog li { display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: .92em; }
+  .prog .st { color: var(--ink-2); font-size: .88em; }
+  .prog .done { color: var(--xanh); }
+  .prog .now { color: var(--tim-ink); font-weight: 600; }
+  .dot { width: 12px; height: 12px; border-radius: 99px; border: 2px solid var(--rule-strong); }
+  .dot.done { background: var(--xanh); border-color: var(--xanh); }
+  .dot.now { border-color: var(--tim); background: var(--tim-soft); }
+
+  .composer { display: grid; gap: 12px; margin-top: 16px; }
+  .composer .box { display: flex; align-items: flex-end; gap: 10px; padding: 8px 8px 8px 16px; border-radius: 18px; background: var(--surface); border: 1.5px solid var(--rule-strong); }
+  .composer .box:focus-within { border-color: var(--tim); }
+  .composer textarea { flex: 1; border: 0; outline: 0; background: transparent; resize: none; min-height: 44px; padding: 10px 0; line-height: 1.4; }
+  .composer .send { width: 44px; height: 44px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; cursor: pointer; flex: none; }
+  .composer .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Giáo viên: Xem và sửa cấu trúc khóa học</span>
+  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:xem">Cấu trúc</button><button data-set="state:loi">Có trang lỗi</button><button data-set="state:dang-soan">Đang soạn</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Sửa tên bài, kéo để đổi thứ tự, xóa hoặc thêm bài ngay trong khung.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="gv-01-gui-bai.html?state=co-khoa" aria-label="Quay lại"><i data-i="back"></i></a>
+    <a class="logo" href="gv-01-gui-bai.html?state=co-khoa"><span class="logo-mark">M</span><span>Mentor</span></a>
+    <span class="role" data-en="Teacher">Giáo viên</span>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings="teacher" aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <div class="course-head">
+      <h1 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h1>
+      <p class="muted small" data-en="From 24 textbook photos you sent at 8:14 pm">Từ 24 ảnh sách bạn gửi lúc 20:14</p>
+    </div>
+
+    <section class="thread" aria-label="Trao đổi về khóa học">
+      <div class="msg me">
+        <div class="bubble">
+          <span data-en="24 photos, Physics 11 textbook, chapter on electric fields. For my class 11A2, they're average.">24 ảnh sách Vật lí 11, chương Điện trường. Cho lớp 11A2, các em học trung bình.</span>
+          <div class="mini-thumbs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+
+      <div class="msg" data-when="state=loi">
+        <div class="who"><span class="logo-mark">M</span>Mentor</div>
+        <div class="bubble">
+          <p data-en="I couldn't read 2 pages. The rest is fine and the outline below already uses it. Retake these two and I'll add them in.">Mình chưa đọc được 2 trang. Các trang còn lại vẫn ổn, cấu trúc bên dưới đã dùng hết. Bạn chụp lại 2 trang này, mình sẽ bổ sung vào.</p>
+          <div class="bad-pages" style="margin-top:12px">
+            <div class="bad">
+              <svg viewBox="0 0 70 94" aria-hidden="true"><defs><filter id="blur"><feGaussianBlur stdDeviation="2.4"/></filter></defs><rect width="70" height="94" fill="#fff"/><g filter="url(#blur)" fill="#7B7795"><rect x="8" y="10" width="50" height="5"/><rect x="8" y="22" width="54" height="3"/><rect x="8" y="30" width="46" height="3"/><rect x="8" y="38" width="52" height="3"/><rect x="8" y="50" width="30" height="22"/><rect x="42" y="52" width="20" height="3"/><rect x="42" y="60" width="18" height="3"/><rect x="8" y="80" width="50" height="3"/></g></svg>
+              <div><b data-en="Page 3">Trang 3</b><p class="reason" data-en="Blurry photo, the text is unreadable">Ảnh bị mờ, không đọc được chữ</p>
+                <button class="btn"><i data-i="camera"></i><span data-en="Retake page 3">Chụp lại trang 3</span></button></div>
+            </div>
+            <div class="bad">
+              <svg viewBox="0 0 70 94" aria-hidden="true"><defs><linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#1F1B3A" stop-opacity=".92"/></linearGradient></defs><rect width="70" height="94" fill="#fff"/><g fill="#7B7795"><rect x="8" y="10" width="50" height="5"/><rect x="8" y="22" width="54" height="3"/><rect x="8" y="30" width="46" height="3"/><rect x="8" y="38" width="52" height="3"/><rect x="8" y="46" width="40" height="3"/></g><rect width="70" height="94" fill="url(#dark)"/></svg>
+              <div><b data-en="Page 7">Trang 7</b><p class="reason" data-en="Too dark, half the page is missing">Thiếu sáng, mất nửa trang dưới</p>
+                <button class="btn"><i data-i="camera"></i><span data-en="Retake page 7">Chụp lại trang 7</span></button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="msg">
+        <div class="who"><span class="logo-mark">M</span>Mentor</div>
+        <div class="bubble">
+          <p data-en="Here's how I'd split it: 3 chapters, 7 lessons, about 20 minutes each. Change anything directly below.">Mình chia thành 3 chương, 7 bài, mỗi bài khoảng 20 phút. Bạn sửa thẳng vào đây nếu chưa ưng.</p>
+        </div>
+        <div class="outline oli" id="outline">
+          <p class="hint" data-en="Click a name to rename it. Drag the handle to reorder.">Bấm vào tên để sửa. Kéo nút bên trái để đổi thứ tự.</p>
+
+          <div class="chapter">
+            <h2 contenteditable="true" spellcheck="false">Chương 1. Lực điện</h2>
+            <ol class="lessons">
+              <li class="lesson" data-has="text video quiz"><span>Điện tích, định luật Cu-lông</span></li>
+            </ol>
+            <button class="btn btn-quiet add"><i data-i="plus"></i><span data-en="Add lesson">Thêm bài</span></button>
+          </div>
+          <div class="chapter">
+            <h2 contenteditable="true" spellcheck="false">Chương 2. Điện trường</h2>
+            <ol class="lessons">
+              <li class="lesson" data-has="text image quiz"><span>Cường độ điện trường</span></li>
+              <li class="lesson" data-has="video text quiz"><span>Đường sức điện</span></li>
+              <li class="lesson" data-has="text quiz"><span>Điện trường đều</span></li>
+            </ol>
+            <button class="btn btn-quiet add"><i data-i="plus"></i><span data-en="Add lesson">Thêm bài</span></button>
+          </div>
+          <div class="chapter">
+            <h2 contenteditable="true" spellcheck="false">Chương 3. Điện thế và tụ điện</h2>
+            <ol class="lessons">
+              <li class="lesson" data-has="text video quiz"><span>Thế năng điện</span></li>
+              <li class="lesson" data-has="text quiz"><span>Điện thế, hiệu điện thế</span></li>
+              <li class="lesson" data-has="text image quiz"><span>Tụ điện</span></li>
+            </ol>
+            <button class="btn btn-quiet add"><i data-i="plus"></i><span data-en="Add lesson">Thêm bài</span></button>
+          </div>
+          <div class="legend" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div id="extra"></div>
+
+      <div class="msg me" data-when="state=dang-soan"><div class="bubble" data-en="Compose it like this">Soạn theo cấu trúc này</div></div>
+      <div class="msg" data-when="state=dang-soan">
+        <div class="who"><span class="logo-mark">M</span>Mentor</div>
+        <div class="bubble">
+          <p data-en="Composing 7 lessons. You can close the app, I'll let you know when they're ready to review.">Đang soạn 7 bài. Bạn có thể đóng app, xong mình sẽ báo để bạn xem lại.</p>
+          <ul class="prog">
+            <li><span class="dot done"></span><span>Bài 1. Điện tích, định luật Cu-lông</span><span class="st done" data-en="Done">Xong</span></li>
+            <li><span class="dot done"></span><span>Bài 2. Cường độ điện trường</span><span class="st done" data-en="Done">Xong</span></li>
+            <li><span class="dot now"></span><span>Bài 3. Đường sức điện</span><span class="st now" data-en="Making the video">Đang dựng video</span></li>
+            <li><span class="dot"></span><span>Bài 4. Điện trường đều</span><span class="st" data-en="Waiting">Chờ</span></li>
+            <li><span class="dot"></span><span>Bài 5. Thế năng điện</span><span class="st" data-en="Waiting">Chờ</span></li>
+            <li><span class="dot"></span><span>Bài 6. Điện thế, hiệu điện thế</span><span class="st" data-en="Waiting">Chờ</span></li>
+            <li><span class="dot"></span><span>Bài 7. Tụ điện</span><span class="st" data-en="Waiting">Chờ</span></li>
+          </ul>
+          <p class="muted small" style="margin-top:10px" data-en="Usually 15–25 minutes in total.">Thường mất 15–25 phút cho cả khóa.</p>
+        </div>
+      </div>
+    </section>
+
+    <form class="composer" id="composer" data-when="state=xem|loi">
+      <div class="box">
+        <textarea id="say" rows="1" placeholder="Hoặc nhắn thay đổi, ví dụ: Gộp bài 5 và 6, thêm 1 video về tụ điện" data-en-ph="Or type a change, e.g. Merge lessons 5 and 6, add a video on capacitors" aria-label="Nhắn thay đổi"></textarea>
+        <button class="send" aria-label="Gửi"><i data-i="send"></i></button>
+      </div>
+      <div class="row">
+        <span class="muted small" data-en="Nothing is sent to students until you publish.">Học sinh chưa thấy gì cho đến khi bạn xuất bản.</span>
+        <button type="button" class="btn btn-primary" id="go"><span data-en="Compose lessons from this outline">Soạn nội dung theo cấu trúc này</span></button>
+      </div>
+    </form>
+  </main>
+</div>
+
+<script>
+(function () {
+  const icon = (n) => window.mentorIcon(n);
+  const names = { text: "Bài đọc", video: "Video", quiz: "Câu hỏi", image: "Hình minh họa" };
+  const iconOf = { text: "text", video: "video", quiz: "quiz", image: "image" };
+  const outline = document.getElementById("outline");
+
+  function build(li) {
+    const title = li.querySelector("span").textContent;
+    const has = (li.dataset.has || "text quiz").split(" ");
+    li.innerHTML =
+      '<button type="button" class="handle" aria-label="Kéo để đổi thứ tự (hoặc dùng phím mũi tên)">' + '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg></button>' +
+      '<span class="num"></span>' +
+      '<span class="title" contenteditable="true" spellcheck="false"></span>' +
+      '<span class="has">' + has.map((h) => '<span title="' + names[h] + '">' + icon(iconOf[h]) + "</span>").join("") + "</span>" +
+      '<button type="button" class="del" aria-label="Xóa bài">' + icon("trash") + "</button>";
+    li.querySelector(".title").textContent = title;
+    wire(li);
+  }
+
+  function renumber() {
+    outline.querySelectorAll(".lesson").forEach((li, i) => {
+      li.querySelector(".num").textContent = "Bài " + (i + 1);
+      li.querySelector(".del").setAttribute("aria-label", "Xóa bài " + (i + 1));
+    });
+  }
+
+  let dragged = null;
+  function clearMarks() { outline.querySelectorAll(".drop-before").forEach((x) => x.classList.remove("drop-before")); }
+  function wire(li) {
+    const handle = li.querySelector(".handle");
+    // drag only from the handle so text inside stays selectable/editable
+    handle.addEventListener("pointerdown", () => { li.draggable = true; });
+    handle.addEventListener("pointerup", () => { li.draggable = false; });
+    li.addEventListener("dragstart", (e) => { dragged = li; li.classList.add("dragging"); e.dataTransfer.effectAllowed = "move"; e.dataTransfer.setData("text/plain", ""); });
+    li.addEventListener("dragend", () => { li.draggable = false; li.classList.remove("dragging"); dragged = null; clearMarks(); renumber(); });
+    li.addEventListener("dragover", (e) => {
+      if (!dragged || dragged === li) return;
+      e.preventDefault(); clearMarks(); li.classList.add("drop-before");
+    });
+    li.addEventListener("drop", (e) => { e.preventDefault(); if (dragged && dragged !== li) li.before(dragged); });
+    // keyboard reorder on the handle
+    handle.addEventListener("keydown", (e) => {
+      const all = [...outline.querySelectorAll(".lesson")];
+      const i = all.indexOf(li);
+      if (e.key === "ArrowUp" && i > 0) { all[i - 1].before(li); }
+      else if (e.key === "ArrowDown" && i < all.length - 1) { all[i + 1].after(li); }
+      else return;
+      e.preventDefault(); handle.focus(); renumber();
+    });
+    li.querySelector(".del").addEventListener("click", () => { li.remove(); renumber(); });
+    li.querySelector(".title").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); e.target.blur(); } });
+  }
+  // dropping on the empty end of a chapter appends to that chapter
+  outline.querySelectorAll(".lessons").forEach((ol) => {
+    ol.addEventListener("dragover", (e) => { if (dragged) e.preventDefault(); });
+    ol.addEventListener("drop", (e) => { if (dragged && e.target === ol) ol.appendChild(dragged); });
+  });
+
+  outline.querySelectorAll(".add").forEach((btn) => btn.addEventListener("click", () => {
+    const li = document.createElement("li");
+    li.className = "lesson"; li.dataset.has = "text quiz";
+    li.innerHTML = "<span>Bài mới</span>";
+    btn.previousElementSibling.appendChild(li);
+    build(li); renumber();
+    const t = li.querySelector(".title");
+    t.focus(); document.getSelection().selectAllChildren(t);
+  }));
+
+  // legend
+  outline.querySelector(".legend").innerHTML = Object.keys(names).map((k) => "<span>" + icon(iconOf[k]) + names[k] + "</span>").join("");
+
+  document.addEventListener("DOMContentLoaded", () => {
+    outline.querySelectorAll(".lesson").forEach(build);
+    renumber();
+    lock();
+  });
+
+  // lock editing while composing
+  function lock() {
+    const busy = document.documentElement.dataset.state === "dang-soan";
+    outline.querySelectorAll("[contenteditable]").forEach((el) => el.setAttribute("contenteditable", busy ? "false" : "true"));
+  }
+  document.addEventListener("mock:change", (e) => { if (e.detail.key === "state") lock(); });
+
+  // typed instruction: Mentor applies it, no follow-up questions
+  const extra = document.getElementById("extra");
+  const say = document.getElementById("say");
+  say.addEventListener("input", () => { say.style.height = "auto"; say.style.height = say.scrollHeight + "px"; });
+  say.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); document.getElementById("composer").requestSubmit(); } });
+  document.getElementById("composer").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const text = say.value.trim();
+    if (!text) return;
+    const me = document.createElement("div");
+    me.className = "msg me";
+    me.innerHTML = '<div class="bubble"></div>';
+    me.querySelector(".bubble").textContent = text;
+    const reply = document.createElement("div");
+    reply.className = "msg";
+    reply.innerHTML = '<div class="who"><span class="logo-mark">M</span>Mentor</div><div class="bubble">Đã sửa cấu trúc ở trên theo ý bạn.</div>';
+    extra.append(me, reply);
+    say.value = ""; say.style.height = "";
+    outline.animate([{ backgroundColor: getComputedStyle(document.documentElement).getPropertyValue("--vang-soft") }, { backgroundColor: getComputedStyle(outline).backgroundColor }], { duration: 900 });
+  });
+
+  document.getElementById("go").addEventListener("click", () => {
+    window.mockSet("state", "dang-soan");
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  });
+})();
+</script>
+</body>
+</html>

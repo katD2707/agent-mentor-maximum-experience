@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="vi" data-age="dai-hoc" data-state="doc">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suy luận Bayes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .lesson-top { display: flex; align-items: center; gap: 12px; padding: 8px clamp(16px, 3vw, 28px); border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 44px; z-index: 20; }
+  .lesson-top .t { flex: 1; min-width: 0; display: flex; align-items: center; gap: 16px; }
+  .lesson-top .t b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lesson-top .t .meta { display: flex; align-items: center; gap: 10px; font-size: .82em; color: var(--ink-2); white-space: nowrap; }
+  .lesson-top .bar { width: 140px; height: 6px; }
+  .lesson-top .icon-btn { width: 40px; height: 40px; }
+  .toc-btn { display: none; }
+
+  .layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); max-width: 1200px; margin: 0 auto; }
+  .toc { padding: 24px 18px 40px; border-right: 1px solid var(--rule); align-self: start; position: sticky; top: 100px; max-height: calc(100vh - 110px); overflow: auto; font-size: .88em; }
+  .toc h2 { font-size: 1em; margin-bottom: 2px; }
+  .toc > p { color: var(--ink-2); margin-bottom: 16px; }
+  .toc ol { list-style: none; margin: 0; padding: 0; }
+  .toc > ol > li + li { margin-top: 2px; }
+  .toc a { display: grid; grid-template-columns: 28px 1fr; gap: 6px; padding: 7px 8px; border-radius: 8px; color: var(--ink-2); text-decoration: none; line-height: 1.35; }
+  .toc a:hover { background: var(--surface); color: var(--ink); }
+  .toc .n { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .toc .ch-open > a { color: var(--ink); font-weight: 600; }
+  .toc .sec { padding-left: 18px; border-left: 1px solid var(--rule-strong); margin: 2px 0 8px 18px; }
+  .toc .sec a { grid-template-columns: 34px 1fr; }
+  .toc .sec a.done { color: var(--ink-2); }
+  .toc .sec a[aria-current="location"] { background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+
+  .article { padding: clamp(24px, 4vw, 48px) clamp(16px, 5vw, 64px) 120px; }
+  .prose { max-width: 68ch; font-family: var(--font-read); font-size: 1.06em; line-height: 1.72; display: grid; gap: 1.05em; }
+  .prose h1 { font-family: var(--font-ui); font-size: clamp(1.5em, 3vw, 1.9em); line-height: 1.2; }
+  .prose h2 { font-family: var(--font-ui); font-size: 1.12em; margin-top: .9em; }
+  .prose .lede { color: var(--ink-2); font-family: var(--font-ui); font-size: .86em; display: flex; gap: 16px; flex-wrap: wrap; }
+  .article, .prose > * { min-width: 0; }
+  .prose .katex-display { margin: .2em 0; overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+  .def { padding: 16px 20px; background: var(--tim-soft); border-radius: 10px; }
+  .def b { font-family: var(--font-ui); font-weight: 600; font-size: .9em; display: block; margin-bottom: 4px; color: var(--tim-ink); }
+  .example { padding: 18px 20px 18px 64px; border-radius: 12px; border: 1px solid var(--rule-strong); display: grid; gap: .7em; }
+  .example > b { font-family: var(--font-ui); font-weight: 600; font-size: .92em; }
+  table.nums { border-collapse: collapse; font-family: var(--font-ui); font-size: .86em; width: 100%; max-width: 440px; background: var(--surface); }
+  table.nums th, table.nums td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--rule); }
+  table.nums td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  table.nums th { font-weight: 500; color: var(--ink-2); }
+  figure { margin: 0; display: grid; gap: 8px; }
+  figure svg { width: 100%; height: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 12px; }
+  figcaption { font-size: .86em; color: var(--ink-2); font-style: italic; }
+  .pen { padding: 14px 18px; background: var(--do-soft); border-radius: 10px; }
+  .pen strong { color: var(--do); font-family: var(--font-ui); font-weight: 600; font-size: .9em; }
+  .pager { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; max-width: 68ch; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); }
+  .pager a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 500; }
+  .pager svg { width: 18px; height: 18px; }
+
+  /* quick check */
+  .q { display: grid; gap: 10px; padding: 18px 0; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: .94em; }
+  .q:first-of-type { border-top: 0; }
+  .q h3 { font-size: 1em; font-weight: 500; line-height: 1.5; }
+  .q h3 .qn { color: var(--ink-2); margin-right: 6px; }
+  .opts { display: grid; gap: 6px; }
+  .opt { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: center; text-align: left; min-height: 46px; padding: 6px 12px; border-radius: 10px; border: 1.5px solid var(--rule-strong); background: var(--surface); cursor: pointer; }
+  .opt:hover:not(:disabled) { border-color: var(--tim); }
+  .opt .k { width: 26px; height: 26px; border-radius: 6px; display: grid; place-items: center; font-weight: 600; font-size: .8em; border: 1px solid var(--rule-strong); }
+  .opt:disabled { cursor: default; }
+  .opt.right { border-color: var(--xanh); background: var(--xanh-soft); }
+  .opt.right .k { background: var(--xanh); border-color: var(--xanh); color: #fff; }
+  .opt.wrong { border-color: var(--do); background: var(--do-soft); }
+  .opt.wrong .k { background: var(--do); border-color: var(--do); color: #fff; }
+  .opt svg { width: 18px; height: 18px; }
+  .opt.right svg { color: var(--xanh); }
+  .opt.wrong svg { color: var(--do); }
+  .fb { font-size: .92em; }
+  .fb.ok { color: var(--xanh); }
+  .fb.no { color: var(--do); }
+  .next-box { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px; font-family: var(--font-ui); }
+
+  @media (max-width: 920px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .toc { display: none; position: static; max-height: none; border-right: 0; border-bottom: 1px solid var(--rule); }
+    :root[data-toc="open"] .toc { display: block; }
+    .toc-btn { display: grid; }
+    .lesson-top .t .meta .bar { display: none; }
+  }
+  .course-cover { margin: 0 0 12px; border-radius: 12px; overflow: hidden; background: #FBF6EA; border: 1px solid var(--rule); }
+  .course-cover img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Khóa mẫu đại học: Xác suất thống kê, Suy luận Bayes</span>
+  <span class="mock-seg"><span>Phần</span><button data-set="state:doc">Bài đọc</button><button data-set="state:quiz">Kiểm tra nhanh</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<div class="app">
+  <header class="lesson-top">
+    <a class="icon-btn" href="hs-02b-khoa-hoc.html" aria-label="Khóa học"><i data-i="back"></i></a>
+    <button class="icon-btn toc-btn" id="tocBtn" aria-label="Mục lục" aria-expanded="false"><i data-i="layers"></i></button>
+    <div class="t">
+      <b data-en="Probability and Statistics">Xác suất thống kê</b>
+      <span class="meta"><span class="bar"><i style="width:35%"></i></span><span data-en="Chapter 2 of 6">Chương 2/6</span></span>
+    </div>
+    <a class="icon-btn" href="hs-08-hoi-bai.html" aria-label="Chụp bài hỏi"><i data-i="camera"></i></a>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Mục lục khóa học">
+      <figure class="course-cover"><img src="assets/courses/bayes.jpg" alt=""></figure>
+      <h2 data-en="Probability and Statistics">Xác suất thống kê</h2>
+      <p data-en="Dr. Quang">TS. Quang</p>
+      <ol>
+        <li><a href="#"><span class="n">1</span><span data-en="Probability and random variables">Xác suất và biến ngẫu nhiên</span></a></li>
+        <li class="ch-open"><a href="#"><span class="n">2</span><span data-en="Bayesian inference">Suy luận Bayes</span></a>
+          <ol class="sec">
+            <li><a href="#" class="done"><span class="n">2.1</span><span data-en="Bayes' theorem">Định lý Bayes</span></a></li>
+            <li><a href="#" class="done"><span class="n">2.2</span><span data-en="Prior, likelihood, posterior">Tiên nghiệm, hợp lý, hậu nghiệm</span></a></li>
+            <li><a href="#" aria-current="location"><span class="n">2.3</span><span data-en="Beta–Binomial conjugacy">Tiên nghiệm liên hợp Beta–Nhị thức</span></a></li>
+            <li><a href="#"><span class="n">2.4</span><span data-en="Credible intervals">Khoảng tin cậy Bayes</span></a></li>
+            <li><a href="#"><span class="n">2.5</span><span data-en="Exercises">Bài tập</span></a></li>
+          </ol>
+        </li>
+        <li><a href="#"><span class="n">3</span><span data-en="Maximum likelihood estimation">Ước lượng hợp lý cực đại</span></a></li>
+        <li><a href="#"><span class="n">4</span><span data-en="Hypothesis testing">Kiểm định giả thuyết</span></a></li>
+        <li><a href="#"><span class="n">5</span><span data-en="Linear regression">Hồi quy tuyến tính</span></a></li>
+        <li><a href="#"><span class="n">6</span><span data-en="Markov chains and MCMC">Xích Markov và MCMC</span></a></li>
+      </ol>
+    </nav>
+
+    <main class="article">
+      <!-- READING -->
+      <article class="prose" data-when="state=doc">
+        <h1>2.3 Tiên nghiệm liên hợp Beta–Nhị thức</h1>
+        <p class="lede"><span data-en="About 18 minutes">Khoảng 18 phút đọc</span><span data-en="Needs: 2.2">Cần đọc trước: mục 2.2</span></p>
+
+        <p>Ở mục 2.2 ta có hậu nghiệm tỉ lệ với hợp lý nhân tiên nghiệm:</p>
+        $$p(\theta\mid x) = \frac{p(x\mid\theta)\,p(\theta)}{p(x)} \;\propto\; p(x\mid\theta)\,p(\theta).$$
+        <p>Cái khó nằm ở mẫu số \(p(x)=\int p(x\mid\theta)\,p(\theta)\,d\theta\), thường không có dạng đóng. Nhưng với một số cặp hợp lý và tiên nghiệm, hậu nghiệm rơi vào đúng họ phân phối của tiên nghiệm. Khi đó việc cập nhật niềm tin chỉ còn là cộng thêm vào tham số, không cần tích phân.</p>
+
+        <div class="def"><b>Định nghĩa</b>Họ tiên nghiệm \(\mathcal{F}\) là <em>liên hợp</em> với mô hình \(p(x\mid\theta)\) nếu với mọi \(p(\theta)\in\mathcal{F}\) và mọi dữ liệu \(x\), hậu nghiệm \(p(\theta\mid x)\) cũng thuộc \(\mathcal{F}\).</div>
+
+        <h2>Thiết lập</h2>
+        <p>Gọi \(\theta\in(0,1)\) là tỉ lệ sản phẩm lỗi của một dây chuyền. Kiểm \(n\) sản phẩm độc lập, thấy \(k\) lỗi. Hàm hợp lý là nhị thức:</p>
+        $$p(k\mid\theta) = \binom{n}{k}\,\theta^{k}(1-\theta)^{n-k}.$$
+        <p>Chọn tiên nghiệm Beta, với \(B(\alpha,\beta)\) là hàm Beta:</p>
+        $$p(\theta) = \frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}, \qquad \theta\sim\operatorname{Beta}(\alpha,\beta).$$
+
+        <h2>Suy ra hậu nghiệm</h2>
+        <p>Bỏ các hằng số không chứa \(\theta\):</p>
+        $$p(\theta\mid k) \;\propto\; \theta^{k}(1-\theta)^{n-k}\cdot\theta^{\alpha-1}(1-\theta)^{\beta-1} \;=\; \theta^{\alpha+k-1}(1-\theta)^{\beta+n-k-1}.$$
+        <p>Vế phải chính là nhân của một phân phối Beta. Hằng số chuẩn hóa vì thế phải là \(B(\alpha+k,\ \beta+n-k)\), và</p>
+        $$\theta\mid k \;\sim\; \operatorname{Beta}(\alpha+k,\ \beta+n-k).$$
+        <p>Cách đọc trực quan: \(\alpha\) và \(\beta\) giống số lỗi và số đạt "giả" mà ta đã thấy trước khi có dữ liệu. Tổng \(\alpha+\beta\) đo độ tin vào tiên nghiệm, tính bằng số quan sát.</p>
+
+        <h2>Trung bình hậu nghiệm là trung bình có trọng số</h2>
+        $$\mathbb{E}[\theta\mid k] = \frac{\alpha+k}{\alpha+\beta+n} = w\cdot\frac{\alpha}{\alpha+\beta} + (1-w)\cdot\frac{k}{n}, \qquad w=\frac{\alpha+\beta}{\alpha+\beta+n}.$$
+        <p>Trọng số \(w\) giảm dần khi \(n\) tăng. Dữ liệu càng nhiều, ước lượng càng nghiêng về tỉ lệ quan sát \(k/n\).</p>
+
+        <div class="example oli">
+          <b>Ví dụ: tỉ lệ lỗi dây chuyền</b>
+          <p>Kinh nghiệm của xưởng: khoảng 20% sản phẩm lỗi, độ tin cỡ 10 sản phẩm. Ta chọn \(\operatorname{Beta}(2,8)\). Kiểm 20 sản phẩm mới, thấy 3 lỗi.</p>
+          <p>Hậu nghiệm: \(\operatorname{Beta}(2+3,\ 8+17) = \operatorname{Beta}(5,25)\).</p>
+          <table class="nums">
+            <tr><th>Đại lượng</th><th style="text-align:right">Giá trị</th></tr>
+            <tr><td>Trung bình tiên nghiệm</td><td>0,200</td></tr>
+            <tr><td>Tỉ lệ quan sát \(k/n\)</td><td>0,150</td></tr>
+            <tr><td>Trung bình hậu nghiệm \(5/30\)</td><td>0,167</td></tr>
+            <tr><td>Mode hậu nghiệm \(4/28\)</td><td>0,143</td></tr>
+            <tr><td>Độ lệch chuẩn hậu nghiệm</td><td>0,067</td></tr>
+          </table>
+          <p>Ở đây \(w = 10/30 = 1/3\): tiên nghiệm chiếm một phần ba, dữ liệu hai phần ba.</p>
+        </div>
+
+        <figure>
+          <svg id="plot" viewBox="0 0 640 300" role="img" aria-label="Đồ thị mật độ tiên nghiệm Beta(2,8) và hậu nghiệm Beta(5,25)"></svg>
+          <figcaption>Hình 2.3. Tiên nghiệm Beta(2, 8) (nét đứt) và hậu nghiệm Beta(5, 25) (nét liền). Đường dọc là tỉ lệ quan sát 3/20. Hậu nghiệm hẹp hơn và dịch về phía dữ liệu.</figcaption>
+        </figure>
+
+        <div class="pen"><strong>Ghi chú của thầy Quang.</strong> Khi \(n\) lớn hơn nhiều so với \(\alpha+\beta\), tiên nghiệm gần như hết tác dụng. Đừng tốn công tranh cãi chọn tiên nghiệm nào nếu dữ liệu đã đủ nhiều. Ngược lại, với \(n\) nhỏ, hãy luôn ghi rõ mình đã chọn tiên nghiệm gì.</div>
+
+        <div class="next-box">
+          <button class="btn btn-primary" data-set="state:quiz"><span data-en="Quick check">Kiểm tra nhanh</span></button>
+          <span class="muted small" data-en="2 questions, about 3 minutes">2 câu, khoảng 3 phút</span>
+        </div>
+
+        <nav class="pager" aria-label="Chuyển mục">
+          <a href="#"><i data-i="back"></i><span>2.2 Tiên nghiệm, hợp lý, hậu nghiệm</span></a>
+          <a href="#"><span>2.4 Khoảng tin cậy Bayes</span><i data-i="next"></i></a>
+        </nav>
+      </article>
+
+      <!-- QUICK CHECK -->
+      <section class="prose" data-when="state=quiz">
+        <h1 data-en="Quick check: 2.3">Kiểm tra nhanh: mục 2.3</h1>
+        <div id="quiz"></div>
+        <div class="next-box" id="quizNext" hidden>
+          <a class="btn btn-primary" href="hs-07-luyen-tap.html"><span data-en="Practice 6 Beta–Binomial problems">Luyện 6 bài Beta–Nhị thức</span></a>
+          <button class="btn btn-ghost" data-set="state:doc"><span data-en="Back to reading">Quay lại bài đọc</span></button>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  const QUIZ = [
+    { q: "Tiên nghiệm \\(\\operatorname{Beta}(1,1)\\). Quan sát 7 thành công trong 10 lần thử. Hậu nghiệm là gì?",
+      opts: ["\\(\\operatorname{Beta}(7,3)\\)", "\\(\\operatorname{Beta}(8,4)\\)", "\\(\\operatorname{Beta}(8,11)\\)"],
+      a: 1, why: "\\(\\alpha+k = 1+7 = 8\\), \\(\\beta+n-k = 1+3 = 4\\)." },
+    { q: "Giữ nguyên tiên nghiệm, cho \\(n\\to\\infty\\). Trung bình hậu nghiệm tiến về đâu?",
+      opts: ["Trung bình tiên nghiệm \\(\\alpha/(\\alpha+\\beta)\\)", "Tỉ lệ quan sát \\(k/n\\)", "0,5"],
+      a: 1, why: "Trọng số \\(w=(\\alpha+\\beta)/(\\alpha+\\beta+n)\\to 0\\), nên chỉ còn \\(k/n\\), đúng bằng ước lượng hợp lý cực đại." },
+  ];
+  function math(el) {
+    if (window.renderMathInElement) renderMathInElement(el, { delimiters: [{ left: "$$", right: "$$", display: true }, { left: "\\(", right: "\\)", display: false }], throwOnError: false });
+  }
+  function buildQuiz() {
+    const root = document.getElementById("quiz");
+    let answered = 0;
+    QUIZ.forEach((item, i) => {
+      const box = document.createElement("div");
+      box.className = "q";
+      box.innerHTML = "<h3><span class=\"qn\">" + (i + 1) + ".</span>" + item.q + '</h3><div class="opts"></div><p class="fb" hidden></p>';
+      const opts = box.querySelector(".opts"), fb = box.querySelector(".fb");
+      item.opts.forEach((t, j) => {
+        const b = document.createElement("button");
+        b.className = "opt";
+        b.innerHTML = '<span class="k">' + "ABC"[j] + "</span><span>" + t + "</span><span></span>";
+        b.addEventListener("click", () => {
+          opts.querySelectorAll(".opt").forEach((x) => (x.disabled = true));
+          const ok = j === item.a;
+          b.classList.add(ok ? "right" : "wrong");
+          b.lastChild.innerHTML = window.mentorIcon(ok ? "check" : "x");
+          if (!ok) opts.children[item.a].classList.add("right");
+          fb.hidden = false;
+          fb.className = "fb " + (ok ? "ok" : "no");
+          fb.innerHTML = (ok ? "Đúng. " : "Chưa đúng. ") + item.why;
+          math(fb);
+          if (++answered === QUIZ.length) document.getElementById("quizNext").hidden = false;
+        });
+        opts.appendChild(b);
+      });
+      root.appendChild(box);
+    });
+  }
+
+  // Beta densities for integer parameters: 1/B(a,b) = (a+b-1)! / ((a-1)!(b-1)!)
+  function fact(n) { let r = 1; for (let i = 2; i <= n; i++) r *= i; return r; }
+  function betaPdf(a, b) { const c = fact(a + b - 1) / (fact(a - 1) * fact(b - 1)); return (t) => c * Math.pow(t, a - 1) * Math.pow(1 - t, b - 1); }
+  function drawPlot() {
+    const s = document.getElementById("plot");
+    const L = 50, R = 620, T = 20, B = 260, X = 0.6, Y = 7;
+    const px = (t) => L + (t / X) * (R - L), py = (y) => B - (y / Y) * (B - T);
+    const path = (f) => { let d = ""; for (let i = 0; i <= 240; i++) { const t = (i / 240) * X; d += (i ? "L" : "M") + px(t).toFixed(1) + " " + py(f(t)).toFixed(1); } return d; };
+    let h = "";
+    for (let t = 0; t <= 0.6001; t += 0.1) {
+      h += '<line x1="' + px(t) + '" x2="' + px(t) + '" y1="' + T + '" y2="' + B + '" stroke="var(--rule)"/>';
+      h += '<text x="' + px(t) + '" y="' + (B + 20) + '" text-anchor="middle" font-family="Lexend" font-size="12" fill="var(--ink-2)">' + t.toFixed(1).replace(".", ",") + "</text>";
+    }
+    for (let y = 0; y <= 6; y += 2) h += '<text x="' + (L - 10) + '" y="' + (py(y) + 4) + '" text-anchor="end" font-family="Lexend" font-size="12" fill="var(--ink-2)">' + y + "</text>";
+    h += '<line x1="' + L + '" x2="' + R + '" y1="' + B + '" y2="' + B + '" stroke="var(--ink-3)"/>';
+    h += '<line x1="' + px(0.15) + '" x2="' + px(0.15) + '" y1="' + T + '" y2="' + B + '" stroke="var(--do)" stroke-width="1.5"/>';
+    h += '<text x="' + (px(0.15) + 6) + '" y="' + (T + 12) + '" font-family="Lexend" font-size="12" fill="var(--do)">3/20</text>';
+    h += '<path d="' + path(betaPdf(2, 8)) + '" fill="none" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="6 5"/>';
+    h += '<path d="' + path(betaPdf(5, 25)) + '" fill="none" stroke="var(--tim)" stroke-width="2.5"/>';
+    h += '<text x="' + px(0.33) + '" y="' + py(1.3) + '" font-family="Lexend" font-size="13" fill="var(--ink-2)">Beta(2, 8)</text>';
+    h += '<text x="' + px(0.21) + '" y="' + py(5.4) + '" font-family="Lexend" font-size="13" fill="var(--tim-ink)">Beta(5, 25)</text>';
+    h += '<text x="' + R + '" y="' + (B + 38) + '" text-anchor="end" font-family="Literata" font-style="italic" font-size="13" fill="var(--ink-2)">θ</text>';
+    s.innerHTML = h;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    window.mockSet("age", "dai-hoc", false);
+    buildQuiz();
+    drawPlot();
+    const tb = document.getElementById("tocBtn");
+    tb.addEventListener("click", () => {
+      const open = document.documentElement.dataset.toc === "open";
+      document.documentElement.dataset.toc = open ? "" : "open";
+      tb.setAttribute("aria-expanded", String(!open));
+    });
+  });
+  window.addEventListener("load", () => math(document.querySelector(".article")));
+})();
+</script>
+</body>
+</html>

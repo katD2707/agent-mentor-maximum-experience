@@ -18,5 +18,8 @@ node_modules/
 # internal documents, kept local
 docs/de-xuat-ngan-sach-openai-dev.md
 
-# installers built by infra/linux-app.Dockerfile
-/out/
+# installers for trying the app, copied to the repo root by apps/app/scripts/installers.mjs: too big for git
+/Mentor_*.exe
+/Mentor_*.dmg
+/Mentor_*.deb
+/Mentor_*.AppImage

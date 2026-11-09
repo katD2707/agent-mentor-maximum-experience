@@ -18,6 +18,10 @@ export const GUIDES: MascotGuides = {
     vi: "Các khóa em đã thêm, kèm tiến độ. Khóa đã tải về máy thì học được cả khi mất mạng.",
     en: "The courses you've added, with progress. Downloaded courses work even without internet.",
   },
+  "more-courses": {
+    vi: "Các khóa khác hợp với lớp em. Nhấn Xem tất cả để tìm thêm khóa.",
+    en: "Other courses for your grade. Press See all to find more.",
+  },
   "course-search": {
     vi: "Gõ tên khóa hoặc điều em muốn học. Mặc định chỉ hiện khóa hợp lớp em, có nút xem mọi lứa tuổi.",
     en: "Type a course name or something you want to learn. It shows courses for your grade; there's a button for all ages.",
@@ -122,6 +126,14 @@ export const GUIDES: MascotGuides = {
     vi: "Nghiên cứu: đề tài của bạn, việc sắp tới, paper cần đọc và nhật ký thí nghiệm. Mentor tìm paper mới mỗi thứ Hai.",
     en: "Research: your topic, what is coming up, the papers to read and your experiment log. Mentor looks for new papers every Monday.",
   },
+  "research-tabs": {
+    vi: "Bốn chương: Đọc, Lịch, Thí nghiệm và Đề tài. Chấm tím là có paper mới, chấm cam là sắp tới hạn nộp.",
+    en: "Four chapters: Read, Schedule, Experiments and Topic. A purple dot means new papers, an orange one a deadline coming up.",
+  },
+  "research-hero": {
+    vi: "Paper bạn nên đọc tiếp và lý do Mentor chọn. Nhấn Đọc tiếp để mở paper.",
+    en: "The paper to read next and why Mentor picked it. Press Keep reading to open it.",
+  },
   "research-topic": {
     vi: "Đề tài và các từ khóa Mentor dùng để tìm paper. Bỏ từ khóa không hợp, hoặc nhấn Sửa để đổi đề tài.",
     en: "Your topic and the keywords Mentor searches with. Remove one that does not fit, or press Edit to change the topic.",
@@ -210,6 +222,10 @@ export const GUIDES: MascotGuides = {
     vi: "Những trang Mentor chưa đọc được. Bấm Chụp lại trang đó, các trang còn lại vẫn được dùng.",
     en: "Pages Mentor could not read. Press Retake for that page; the other pages are still used.",
   },
+  "gv-level": {
+    vi: "Mức độ của khóa, để Mentor soạn bài vừa sức học sinh. Cần xác nhận mức độ trước khi xuất bản.",
+    en: "The course level, so Mentor writes at the right difficulty. Confirm it before you publish.",
+  },
   "gv-compose": {
     vi: "Gõ yêu cầu bằng lời, ví dụ gộp bài 5 và 6. Khi ưng cấu trúc, bấm Soạn để Mentor soạn từng bài.",
     en: "Type a change in your own words, like merge lessons 5 and 6. When the outline looks right, press Compose.",
@@ -260,6 +276,7 @@ const KEYWORDS: Record<string, string[]> = {
   courses: ["khoa hoc", "bai hoc", "tim khoa", "course", "lesson", "search"],
   "course-today": ["hom nay", "hoc tiep", "bai hom nay", "today", "continue", "tonight"],
   "my-courses": ["khoa cua em", "tai ve", "offline", "mat mang", "my courses", "download", "progress", "sao"],
+  "more-courses": ["khoa khac", "xem tat ca", "other courses", "see all"],
   "course-search": ["tim", "tim kiem", "moi lua tuoi", "search", "find", "all ages"],
   "course-tree": ["cay", "chuong", "bat dau hoc", "noi dung", "tree", "chapter", "start learning", "outline"],
   "player-progress": ["thanh tien do", "dong", "dung lai", "tiep tuc", "luu", "close", "resume", "save", "bar"],
@@ -286,6 +303,8 @@ const KEYWORDS: Record<string, string[]> = {
   "progress-week": ["lich hoc", "tuan nay", "buoi hoc", "ly do", "week", "schedule", "session", "reason"],
   "progress-courses": ["vung", "can de y", "diem manh", "strong", "weak", "watch", "course progress"],
   research: ["nghien cuu", "de tai", "luan van", "paper", "research", "thesis", "topic"],
+  "research-tabs": ["chuong", "tab", "lich", "thi nghiem", "chapter", "schedule", "experiments"],
+  "research-hero": ["doc tiep", "paper nen doc", "keep reading", "next paper"],
   "research-topic": ["tu khoa", "de tai", "keyword", "topic"],
   "research-search": ["tim paper", "arxiv", "semantic scholar", "asta", "search paper", "key"],
   "research-upcoming": ["han nop", "hop", "deadline", "meeting", "advisor", "gvhd", "aoe"],
@@ -308,6 +327,7 @@ const KEYWORDS: Record<string, string[]> = {
   "gv-thread": ["tro chuyen", "cau truc", "chat", "outline", "structure"],
   "gv-outline": ["sua ten", "doi thu tu", "keo", "xoa bai", "them bai", "rename", "reorder", "drag", "delete", "add lesson"],
   "gv-retake": ["chup lai", "trang loi", "khong doc duoc", "retake", "unreadable", "blurry"],
+  "gv-level": ["muc do", "trinh do", "level", "difficulty"],
   "gv-compose": ["soan", "nhan thay doi", "gop bai", "compose", "merge", "change"],
   "gv-build": ["dang soan", "tien do bai", "video", "building", "composing", "progress"],
   "gv-review": ["xem lai", "duyet noi dung", "nhan xet", "review", "comment"],

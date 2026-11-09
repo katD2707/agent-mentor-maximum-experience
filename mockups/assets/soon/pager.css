@@ -1,0 +1,22 @@
+.pager { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 22px 0 8px; }
+.pager button { position: relative; min-width: 44px; min-height: 44px; padding: 0 6px; border: 0; background: none; color: var(--ink-3); font: inherit; font-size: 1.05em; font-weight: 500; cursor: pointer; display: grid; place-items: center; border-radius: 10px; }
+.pager button:hover:not(:disabled) { color: var(--ink); }
+.pager button[aria-current="page"] { color: var(--ink); font-weight: 700; cursor: default; }
+.pager button[aria-current="page"]::after { content: ""; position: absolute; left: 50%; bottom: 6px; width: 20px; height: 3px; margin-left: -10px; border-radius: 2px; background: var(--tim); }
+.pager button:disabled { opacity: .35; cursor: default; }
+.pager svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.pager-list > :focus { outline: none; }
+.pager-list > :focus-visible { outline: 3px solid var(--tim); outline-offset: 2px; border-radius: 12px; }
+.ctags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; font-size: .78rem; font-weight: 500; line-height: 1.2; }
+.ct { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; color: var(--ink-2); white-space: nowrap; }
+.ct-sub { background: var(--rule); color: var(--ink); }
+.ct-lang { border: 1px solid var(--rule-strong); }
+.ct-en { color: var(--ink); font-weight: 600; }
+.ct-en b { padding: 1px 5px; border-radius: 4px; background: var(--ink); color: var(--paper); font-size: .9em; }
+.ct-lv { padding-left: 0; padding-right: 2px; }
+.ct-lv .bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+.ct-lv .bars i { width: 4px; border-radius: 1px; background: var(--rule-strong); }
+.ct-lv .bars i:nth-child(1) { height: 5px; } .ct-lv .bars i:nth-child(2) { height: 8px; } .ct-lv .bars i:nth-child(3) { height: 12px; }
+.ct-lv .bars i.on { background: var(--ink-2); }
+.kid-tile .ctags { font-size: .8rem; margin-top: 0; }
+.kid-tile .ct { padding: 2px 6px; }

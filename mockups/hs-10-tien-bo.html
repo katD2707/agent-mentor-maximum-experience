@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="tien-do">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiến độ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .wrap { max-width: 820px; margin: 0 auto; display: grid; gap: 36px; }
+  section > h2 { font-size: 1.35em; }
+  .sec-head { display: flex; align-items: center; gap: 12px; justify-content: space-between; flex-wrap: wrap; }
+
+  .goals { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .goal { display: grid; gap: 10px; padding: 18px 20px; border-radius: var(--r-md); background-color: var(--surface); border: 1px solid var(--rule); }
+  .goal.main { border-color: var(--rule-strong); box-shadow: var(--shadow); }
+  .goal .for { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border-radius: 999px; background: var(--paper); border: 1px solid var(--rule); font-size: .85em; text-decoration: none; color: var(--ink); }
+  .chip img { width: 28px; height: 28px; border-radius: 99px; object-fit: cover; background: #FBF5E8; }
+  .cthumb { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; background: #FBF5E8; border: 1px solid var(--rule); }
+  /* month picker (custom, replaces the browser's) */
+  .mp { position: relative; }
+  .mp-btn { width: 100%; min-height: 48px; padding: 0 14px; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--surface); display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--ink-2); text-align: left; }
+  .mp-btn.has { color: var(--ink); font-weight: 500; }
+  .mp-btn svg { width: 20px; height: 20px; flex: none; color: var(--tim-ink); }
+  .mp-pop { position: absolute; z-index: 5; top: calc(100% + 6px); right: 0; width: 280px; padding: 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); display: grid; gap: 10px; }
+  .mp-head { display: flex; align-items: center; justify-content: space-between; font-weight: 600; }
+  .mp-head button { width: 36px; height: 36px; border-radius: 99px; border: 1px solid var(--rule-strong); background: var(--surface); cursor: pointer; display: grid; place-items: center; color: var(--ink-2); }
+  .mp-head button:disabled { opacity: .4; cursor: default; }
+  .mp-head svg { width: 18px; height: 18px; }
+  .mp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .mp-grid button { min-height: 40px; border-radius: 10px; border: 0; background: transparent; cursor: pointer; font-weight: 500; }
+  .mp-grid button:hover:not(:disabled) { background: var(--tim-soft); }
+  .mp-grid button[aria-pressed="true"] { background: var(--tim); color: var(--on-tim); }
+  .mp-grid button:disabled { color: var(--ink-3); cursor: default; }
+  .mp-foot { display: flex; justify-content: space-between; }
+  .mp-foot button { border: 0; background: none; color: var(--tim-ink); font-weight: 600; cursor: pointer; padding: 6px 2px; }
+  .goal .top { display: flex; align-items: flex-start; gap: 12px; justify-content: space-between; }
+  .goal h3 { font-size: 1.05em; }
+  .goal .bar { height: 10px; }
+  .goal .why { color: var(--ink-2); font-size: .9em; }
+  .goal .pct { font-weight: 600; color: var(--tim-ink); margin-right: 6px; }
+
+  .add { display: grid; gap: 12px; padding: 18px 20px; border-radius: var(--r-md); border: 2px dashed var(--rule-strong); }
+  .add .row { display: grid; grid-template-columns: minmax(0, 1fr) 180px auto; gap: 10px; }
+  @media (max-width: 640px) { .add .row { grid-template-columns: 1fr; } }
+  .field { min-height: 48px; padding: 0 16px; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--surface); }
+  .field:focus { outline: 3px solid var(--tim-soft); border-color: var(--tim); }
+
+  .week { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+  .day { border-radius: var(--r-md); padding: 10px 8px 12px; background: var(--surface); border: 1.5px solid var(--rule); display: grid; gap: 6px; align-content: start; min-height: 120px; font-size: .82em; }
+  .day b { font-size: 1.05em; }
+  .day .plan { color: var(--ink-2); }
+  .day.done { border-color: var(--xanh); }
+  .day.done b::after { content: " ✓"; color: var(--xanh); }
+  .day.miss .plan { text-decoration: line-through; text-decoration-color: var(--do); }
+  .day.today { border-color: var(--tim); border-width: 2.5px; }
+  @media (max-width: 640px) {
+    .week { grid-template-columns: 1fr; }
+    .day { min-height: 0; grid-template-columns: 64px 1fr; align-items: baseline; }
+  }
+  .note { color: var(--ink-2); font-size: .92em; max-width: 60ch; }
+
+  .courses { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .courses li { display: grid; grid-template-columns: 56px minmax(0, 1fr) 160px auto; gap: 16px; align-items: center; }
+  .courses .pct { font-weight: 600; width: 3.2em; text-align: right; }
+  .courses p { color: var(--ink-2); font-size: .85em; }
+  @media (max-width: 560px) { .courses li { grid-template-columns: 56px minmax(0, 1fr) auto; } .courses .bar { grid-column: 2 / -1; grid-row: 2; } }
+
+  .notif { max-width: 380px; margin-left: auto; display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 14px 16px; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow); border: 1px solid var(--rule); }
+  .notif .logo-mark { width: 40px; height: 40px; }
+  .notif .t { font-weight: 600; font-size: .92em; }
+  .notif .b { color: var(--ink-2); font-size: .88em; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Tiến độ (nhiều mục tiêu)</span>
+  <span class="mock-seg"><span>Xem</span><button data-set="state:tien-do">Trang tiến độ</button><button data-set="state:nhac">Thông báo nhắc học</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-note">Mentor tự đoán mục tiêu từ khóa em học; em thêm được mục tiêu riêng. Lịch và giờ nhắc Mentor tự đặt.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-02-trang-chu.html" aria-label="Màn chính"><i data-i="grid"></i></a>
+    <h1 class="page-title" data-en="Progress">Tiến độ</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <div class="wrap" data-when="state=nhac">
+      <p class="muted small" data-en="What a reminder looks like on the phone or computer:">Nhắc học hiện trên điện thoại hoặc máy tính như sau:</p>
+      <div class="notif">
+        <span class="logo-mark">M</span>
+        <div><p class="t">Mentor, 19:30</p><p class="b" data-en="15 minutes on field lines? You were 2 questions away from finishing lesson 3.">15 phút đường sức điện nhé? Em còn 2 câu là xong bài 3.</p></div>
+      </div>
+      <div class="notif">
+        <span class="logo-mark">M</span>
+        <div><p class="t">Mentor, 21:05</p><p class="b" data-en="You've studied 50 minutes straight. Take a break, Mentor saved your place.">Em học liền 50 phút rồi. Nghỉ chút đi, Mentor đã lưu chỗ em đang học.</p></div>
+      </div>
+    </div>
+
+    <div class="wrap" data-when="state=tien-do">
+      <section style="display:grid; gap:14px">
+        <div class="sec-head">
+          <h2 data-en="Your goals">Mục tiêu của em</h2>
+          <button class="btn btn-ghost" type="button" id="addBtn" style="min-height:44px"><i data-i="plus"></i><span data-en="Add goal">Thêm mục tiêu</span></button>
+        </div>
+
+        <form class="add" id="addForm" hidden>
+          <div class="row">
+            <input class="field" id="gName" required placeholder="Ví dụ: 8 điểm Toán học kì 1" data-en-ph="E.g. 8 in Math this semester" aria-label="Mục tiêu mới">
+            <div class="mp" id="mp">
+              <button class="mp-btn" type="button" id="mpBtn" aria-haspopup="dialog" aria-expanded="false"><i data-i="clock"></i><span id="mpLabel">Hạn (không bắt buộc)</span></button>
+              <div class="mp-pop" id="mpPop" role="dialog" aria-label="Chọn tháng" hidden>
+                <div class="mp-head"><button type="button" id="mpPrev" aria-label="Năm trước"><i data-i="back"></i></button><span id="mpYear"></span><button type="button" id="mpNext" aria-label="Năm sau"><i data-i="next"></i></button></div>
+                <div class="mp-grid" id="mpGrid"></div>
+                <div class="mp-foot"><button type="button" id="mpClear" data-en="No deadline">Không đặt hạn</button><button type="button" id="mpNow" data-en="This month">Tháng này</button></div>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit" data-en="Save">Lưu</button>
+          </div>
+          <p class="small muted" data-en="Deadline is optional. Mentor will fit it into your schedule.">Hạn không bắt buộc. Mentor sẽ tự xếp vào lịch học.</p>
+        </form>
+
+        <ul class="goals" id="goals">
+          <li class="goal main">
+            <div class="top"><h3 data-en="Graduation exam, June 2027">Thi tốt nghiệp THPT, tháng 6/2027</h3><span class="tag ok" data-en="On track">Đúng nhịp</span></div>
+            <div class="bar" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"><i style="width:38%"></i></div>
+            <p class="for"><a class="chip" href="hs-05-khoa-hoc-thpt.html"><img src="assets/courses/dien-truong.jpg" alt="">Điện trường</a><a class="chip" href="hs-02b-khoa-hoc.html"><img src="assets/courses/cap-so-cong.jpg" alt="">Cấp số cộng</a></p>
+            <p class="why"><span class="pct">38%</span> <span data-en="Physics is ahead. Math needs two more short sessions this week.">Vật lí đang đi trước. Toán cần thêm hai buổi ngắn trong tuần này.</span></p>
+          </li>
+          <li class="goal">
+            <div class="top"><h3 data-en="Finish Electric field before Nov 20">Xong Vật lí 11: Điện trường trước 20/11</h3><span class="tag wait" data-en="A bit behind">Hơi chậm</span></div>
+            <div class="bar"><i style="width:42%"></i></div>
+            <p class="for"><a class="chip" href="hs-05-khoa-hoc-thpt.html"><img src="assets/courses/dien-truong.jpg" alt="">Điện trường</a></p>
+            <p class="why"><span class="pct">42%</span> <span data-en="4 lessons left. Mentor added a Saturday session.">Còn 4 bài. Mentor đã thêm một buổi thứ Bảy.</span></p>
+          </li>
+          <li class="goal">
+            <div class="top"><h3 data-en="IELTS 6.5 before summer of grade 12">IELTS 6.5 trước hè lớp 12</h3><span class="tag" data-en="Just set">Mới đặt</span></div>
+            <div class="bar"><i style="width:8%"></i></div>
+            <p class="for"><a class="chip" href="hs-02b-khoa-hoc.html"><img src="assets/courses/tieng-anh-unit4.jpg" alt="">Tiếng Anh 11: Unit 4</a></p>
+            <p class="why"><span class="pct">8%</span> <span data-en="Two English sessions a week from now on.">Từ tuần này có hai buổi tiếng Anh mỗi tuần.</span></p>
+          </li>
+        </ul>
+      </section>
+
+      <section style="display:grid; gap:12px">
+        <h2 data-en="This week">Tuần này</h2>
+        <div class="week">
+          <div class="day done"><b data-en="Mon">T2</b><span class="plan">Điện trường 20′</span></div>
+          <div class="day done"><b data-en="Tue">T3</b><span class="plan">Luyện 10 câu</span></div>
+          <div class="day miss"><b data-en="Wed">T4</b><span class="plan">Cấp số cộng 15′</span></div>
+          <div class="day done"><b data-en="Thu">T5</b><span class="plan">Điện trường 25′</span></div>
+          <div class="day today"><b data-en="Fri">T6</b><span class="plan">Điện trường 20′, làm lại 4 câu</span></div>
+          <div class="day"><b data-en="Sat">T7</b><span class="plan">Cấp số cộng 15′, Điện trường 15′</span></div>
+          <div class="day"><b data-en="Sun">CN</b><span class="plan">IELTS 20′</span></div>
+        </div>
+        <p class="note" data-en="You skipped Wednesday, so Mentor moved sequences to Saturday. Sessions stay short because you focus best in the first 20 minutes.">Hôm thứ Tư em bỏ buổi, nên Mentor dời Cấp số cộng sang thứ Bảy. Buổi học giữ ngắn vì em tập trung tốt nhất trong 20 phút đầu.</p>
+      </section>
+
+      <section style="display:grid; gap:14px">
+        <h2 data-en="Courses">Khóa học</h2>
+        <ul class="courses">
+          <li><img class="cthumb" src="assets/courses/dien-truong.jpg" alt=""><div><h3 style="font-size:1em">Vật lí 11: Điện trường</h3><p data-en="Strong: Coulomb's law. Watch: unit conversion">Vững: định luật Cu-lông. Cần để ý: đổi đơn vị</p></div><div class="bar"><i style="width:42%"></i></div><span class="pct">42%</span></li>
+          <li><img class="cthumb" src="assets/courses/cap-so-cong.jpg" alt=""><div><h3 style="font-size:1em">Toán 11: Dãy số, cấp số cộng</h3><p data-en="Watch: sum formula">Cần để ý: công thức tổng</p></div><div class="bar"><i style="width:80%"></i></div><span class="pct">80%</span></li>
+          <li><img class="cthumb" src="assets/courses/tieng-anh-unit4.jpg" alt=""><div><h3 style="font-size:1em">Tiếng Anh 11: Unit 4</h3><p data-en="Just started">Mới bắt đầu</p></div><div class="bar"><i style="width:10%"></i></div><span class="pct">10%</span></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>
+<script>
+  // custom month picker
+  let picked = null, viewYear = new Date().getFullYear();
+  const mpPop = document.getElementById("mpPop"), mpBtn = document.getElementById("mpBtn");
+  const isEn = () => document.documentElement.lang === "en";
+  function renderLabel() {
+    mpBtn.classList.toggle("has", !!picked);
+    document.getElementById("mpLabel").textContent = picked
+      ? (isEn() ? "By " : "Hạn: ") + picked.m + "/" + picked.y
+      : (isEn() ? "Deadline (optional)" : "Hạn (không bắt buộc)");
+  }
+  function renderGrid() {
+    const now = new Date(), g = document.getElementById("mpGrid");
+    document.getElementById("mpYear").textContent = viewYear;
+    document.getElementById("mpPrev").disabled = viewYear <= now.getFullYear();
+    g.innerHTML = "";
+    const en = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    for (let m = 1; m <= 12; m++) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = isEn() ? en[m - 1] : "T" + m;
+      b.disabled = viewYear === now.getFullYear() && m < now.getMonth() + 1;
+      b.setAttribute("aria-pressed", String(!!picked && picked.y === viewYear && picked.m === m));
+      b.addEventListener("click", () => { picked = { y: viewYear, m: m }; renderLabel(); closeMp(); mpBtn.focus(); });
+      g.appendChild(b);
+    }
+  }
+  function closeMp() { mpPop.hidden = true; mpBtn.setAttribute("aria-expanded", "false"); }
+  mpBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (mpPop.hidden) { renderGrid(); mpPop.hidden = false; mpBtn.setAttribute("aria-expanded", "true"); } else closeMp();
+  });
+  document.getElementById("mpPrev").addEventListener("click", () => { viewYear--; renderGrid(); });
+  document.getElementById("mpNext").addEventListener("click", () => { viewYear++; renderGrid(); });
+  document.getElementById("mpClear").addEventListener("click", () => { picked = null; renderLabel(); closeMp(); });
+  document.getElementById("mpNow").addEventListener("click", () => { const n = new Date(); picked = { y: n.getFullYear(), m: n.getMonth() + 1 }; renderLabel(); closeMp(); });
+  document.addEventListener("click", (e) => { if (!document.getElementById("mp").contains(e.target)) closeMp(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !mpPop.hidden) { closeMp(); mpBtn.focus(); } });
+  document.addEventListener("mock:change", (e) => { if (e.detail.key === "lang") { renderLabel(); if (!mpPop.hidden) renderGrid(); } });
+
+  const form = document.getElementById("addForm");
+  document.getElementById("addBtn").addEventListener("click", () => {
+    form.hidden = !form.hidden;
+    if (!form.hidden) document.getElementById("gName").focus();
+  });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("gName").value.trim();
+    if (!name) return;
+    const d = picked;
+    const en = document.documentElement.lang === "en";
+    const due = d ? (en ? " by " : " trước tháng ") + d.m + "/" + d.y : "";
+    const li = document.createElement("li");
+    li.className = "goal";
+    li.innerHTML = '<div class="top"><h3></h3><span class="tag">' + (en ? "Just set" : "Mới đặt") + "</span></div>" +
+      '<div class="bar"><i style="width:0%"></i></div><p class="why"><span class="pct">0%</span> ' +
+      (en ? "Mentor is fitting this into your schedule." : "Mentor đang xếp mục tiêu này vào lịch học.") + "</p>";
+    li.querySelector("h3").textContent = name + due;
+    document.getElementById("goals").appendChild(li);
+    form.reset(); picked = null; renderLabel(); form.hidden = true;
+  });
+</script>
+</body>
+</html>

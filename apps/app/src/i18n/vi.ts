@@ -876,6 +876,8 @@ export const vi = {
     notifyEnable: "Bật",
     notifyDenied: "Trình duyệt đang chặn thông báo. Mở cài đặt trang web để cho phép.",
     quiet: "Tạm im lặng",
+    tips: "Hướng dẫn của Mực",
+    tipsReplay: "Xem lại từ đầu",
     quietOptions: { "30": "30 phút", "60": "1 giờ", "120": "2 giờ", tomorrow: "Đến mai", week: "Tuần này", custom: "Tùy chọn" },
     today: "Hôm nay",
     tomorrow: "Ngày mai",

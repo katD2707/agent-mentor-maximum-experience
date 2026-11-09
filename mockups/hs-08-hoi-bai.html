@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="trong">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hỏi đáp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .chat-main { width: 100%; max-width: 792px; margin: 0 auto; padding: 28px 16px 210px; display: grid; gap: 26px; align-content: start; }
+  .gone { display: none !important; }
+
+  /* ---------- empty state ---------- */
+  .greet { min-height: 44vh; display: grid; align-content: center; justify-items: center; text-align: center; gap: 14px; }
+  .greet h2 { font-size: clamp(1.6em, 4vw, 2.1em); }
+  .greet p { color: var(--ink-2); max-width: 44ch; }
+  .starters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 640px; margin-top: 8px; }
+  .starter { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: var(--surface); cursor: pointer; font-weight: 500; }
+  .starter:hover { border-color: var(--tim); }
+  .starter svg { width: 18px; height: 18px; color: var(--tim-ink); flex: none; }
+
+  /* ---------- messages ---------- */
+  .msg-me { justify-self: end; max-width: min(80%, 560px); padding: 12px 16px; border-radius: 20px 20px 6px 20px; background: var(--tim-soft); }
+  .msg-me.photo { position: relative; padding: 8px; }
+  .msg-me.photo svg { width: 150px; border-radius: 10px; }
+  .msg-me.photo .bad { position: absolute; left: 14px; right: 14px; top: 52%; bottom: 14px; border: 2.5px dashed var(--do); border-radius: 8px; }
+  .msg-ai { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .msg-ai > .logo-mark { width: 32px; height: 32px; font-size: 15px; border-radius: 9px; }
+  .msg-ai .body { display: grid; gap: 14px; min-width: 0; padding-top: 4px; }
+  .wait { color: var(--ink-2); }
+
+  /* ---------- course suggestions ---------- */
+  .sugs { list-style: none; margin: 0; padding: 0; border: 1px solid var(--rule-strong); border-radius: var(--r-md); background: var(--surface); overflow: hidden; }
+  .sug { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 14px; }
+  .sug + .sug { border-top: 1px solid var(--rule); }
+  .sug .open { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 14px; align-items: center; text-align: left; background: none; border: 0; padding: 4px; margin: -4px; border-radius: 12px; cursor: pointer; color: inherit; font: inherit; }
+  .sug .open:hover .ttl { color: var(--tim-ink); text-decoration: underline; text-underline-offset: 3px; }
+  .thumb { width: 52px; height: 52px; border-radius: 14px; overflow: hidden; background: #FBF6EA; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .sug .txt { display: grid; gap: 2px; min-width: 0; }
+  .sug .ttl { font-weight: 600; }
+  .sug .by, .sug .line { color: var(--ink-2); font-size: .86em; }
+  .add { display: inline-flex; align-items: center; gap: 6px; min-height: 42px; padding: 0 16px 0 12px; border-radius: 999px; border: 1.5px solid var(--tim); background: transparent; color: var(--tim-ink); font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .add svg { width: 18px; height: 18px; }
+  .add[aria-pressed="true"] { background: var(--xanh-soft); border-color: var(--xanh); color: var(--xanh); }
+  @media (max-width: 560px) {
+    .sug { grid-template-columns: 1fr; }
+    .sug .add { justify-self: start; margin-left: 66px; }
+  }
+
+  /* ---------- camera ---------- */
+  .cam { display: grid; gap: 18px; }
+  .cam-top { display: flex; align-items: center; gap: 12px; }
+  .viewfinder { position: relative; border-radius: 24px; overflow: hidden; background: #24212F; aspect-ratio: 3 / 4; max-height: 60vh; margin: 0 auto; width: 100%; max-width: 460px; display: grid; place-items: center; }
+  .viewfinder .paper { width: 78%; transform: rotate(-2deg); }
+  .viewfinder .guide { position: absolute; inset: 9% 7%; border: 3px solid rgba(255,255,255,.85); border-radius: 14px; }
+  .viewfinder .tip { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; color: #fff; font-size: 14px; }
+  .camrow { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; max-width: 460px; margin: 0 auto; width: 100%; }
+  .shutter { width: 76px; height: 76px; border-radius: 999px; border: 5px solid var(--tim); background: var(--surface); cursor: pointer; display: grid; place-items: center; }
+  .shutter::after { content: ""; width: 54px; height: 54px; border-radius: 999px; background: var(--tim); }
+
+  /* ---------- photo answer ---------- */
+  .problem { border-radius: var(--r-md); padding: 14px 18px 14px 64px; border: 1px solid var(--rule-strong); }
+  .problem p { font-family: var(--font-read); font-size: 1.05em; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 36px 1fr; gap: 14px; padding: 16px 18px; border-radius: var(--r-md); background: var(--surface); box-shadow: var(--shadow); }
+  .steps li::before { content: counter(s); width: 32px; height: 32px; border-radius: 10px; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; font-weight: 700; }
+  .steps .m { font-family: var(--font-read); font-size: 1.05em; margin-top: 6px; }
+  .steps li.locked { background: transparent; box-shadow: none; border: 2px dashed var(--rule-strong); color: var(--ink-2); }
+  .steps li.locked::before { background: var(--rule-strong); color: var(--ink-2); }
+  .acts { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tip-card { display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: var(--r-md); background: var(--tim-soft); }
+  .tip-card svg { flex: none; color: var(--tim-ink); margin-top: 2px; }
+  /* waiting for a photo solve: two stages (read the photo, solve), a bar that never stalls and never claims 100 % early */
+  .reading { display: none; gap: 8px; max-width: 360px; color: var(--ink-2); }
+  .reading .sw-label { display: flex; justify-content: space-between; gap: 12px; margin: 0; }
+  .reading .sw-step { font-size: .85em; font-variant-numeric: tabular-nums; }
+  .reading .sw-track { height: 6px; border-radius: 99px; background: var(--tim-soft); overflow: hidden; }
+  .reading .sw-track i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--tim); transition: width .25s linear; }
+  .is-reading .reading { display: grid; }
+  .is-reading .ans-body { display: none; }
+  .err-tips { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; color: var(--ink-2); }
+  .err-title { font-weight: 600; font-size: 1.1em; }
+
+  /* ---------- composer (pinned, ChatGPT-like) ---------- */
+  .composer-wrap { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 22px 16px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--paper) 30%); }
+  :root[data-state="chup"] .composer-wrap { display: none; }
+  .composer-in { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .added-bar { justify-self: center; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; background: var(--xanh-soft); color: var(--xanh); font-weight: 600; font-size: .88em; }
+  .added-bar svg { width: 18px; height: 18px; }
+  .composer { position: relative; min-width: 0; display: flex; align-items: flex-end; gap: 4px; padding: 7px; border-radius: 28px; background: var(--surface); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .composer:focus-within { border-color: var(--tim); }
+  .c-btn { width: 44px; height: 44px; flex: none; border-radius: 999px; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; color: var(--ink-2); }
+  .c-btn:hover { background: var(--tim-soft); color: var(--ink); }
+  .c-btn svg { width: 22px; height: 22px; }
+  .c-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; resize: none; padding: 10px 6px 10px 14px; max-height: 160px; line-height: 1.45; }
+  .c-input::placeholder { color: var(--ink-2); }
+  .c-send { background: var(--tim); color: var(--on-tim); }
+  .c-send:hover { background: var(--tim-ink); color: var(--on-tim); }
+  .c-send[aria-disabled="true"] { background: var(--rule-strong); color: var(--ink-2); cursor: default; }
+  .listen { display: none; flex: 1; min-width: 0; align-items: center; gap: 12px; min-height: 44px; padding: 0 6px 0 10px; }
+  :root[data-state="nghe"] .composer > :not(.listen),
+  :root.listening .composer > :not(.listen) { display: none; }
+  :root[data-state="nghe"] .composer .listen, :root.listening .composer .listen { display: flex; }
+  .wave { display: inline-flex; align-items: center; gap: 3px; height: 26px; flex: none; }
+  .wave i { width: 4px; height: 100%; border-radius: 2px; background: var(--tim); transform: scaleY(.35); }
+  :root[data-state="nghe"] .wave i, :root.listening .wave i { animation: wave 1s ease-in-out infinite; }
+  .wave i:nth-child(2) { animation-delay: .15s; } .wave i:nth-child(3) { animation-delay: .3s; }
+  .wave i:nth-child(4) { animation-delay: .45s; } .wave i:nth-child(5) { animation-delay: .6s; }
+  @keyframes wave { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+  .transcript { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .transcript:empty::before { content: attr(data-ph); color: var(--ink-2); }
+
+  /* ---------- course overview sheet ---------- */
+  .mock-seg { flex-wrap: wrap; }
+  .scrim { position: fixed; inset: 0; top: var(--mockh, 0px); z-index: 40; background: rgba(20, 18, 40, .4); }
+  .sheet { position: fixed; z-index: 41; top: var(--mockh, 0px); right: 0; bottom: 0; width: min(470px, 100vw); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: var(--surface); border-left: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; padding: 22px 20px 14px; }
+  .sheet-head h2 { font-size: 1.25em; }
+  .sheet-head .by { grid-column: 1; color: var(--ink-2); font-size: .88em; }
+  .sheet-head .icon-btn { grid-row: span 2; align-self: start; }
+  .sheet-body { overflow: auto; padding: 4px 20px 24px; display: grid; gap: 20px; align-content: start; }
+  .about { font-family: var(--font-read); line-height: 1.65; }
+  .sheet-cover { margin: 0; height: 220px; min-height: 220px; border-radius: 16px; overflow: hidden; background: #FBF6EA; }
+  .sheet-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 640px) { .sheet-cover { height: 160px; min-height: 160px; } }
+  .sheet-body h3 { font-size: 1em; }
+  .sheet-foot { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--rule); }
+  @media (max-width: 720px) {
+    .sheet { top: auto; left: 0; width: auto; max-height: min(86vh, calc(100vh - var(--mockh, 0px) - 16px)); border-left: 0; border-top: 1px solid var(--rule-strong); border-radius: 22px 22px 0 0; }
+    .sheet-head { padding-top: 26px; }
+    .sheet::before { content: ""; position: absolute; top: 9px; left: 50%; width: 40px; height: 5px; margin-left: -20px; border-radius: 99px; background: var(--rule-strong); }
+  }
+
+  /* tree */
+  .tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+  .tree > li + li { margin-top: 4px; }
+  .tree summary { list-style: none; display: flex; align-items: center; gap: 10px; min-height: 42px; padding: 6px 8px; border-radius: 10px; cursor: pointer; }
+  .tree summary::-webkit-details-marker { display: none; }
+  .tree summary:hover { background: var(--tim-soft); }
+  .tree .chev { width: 18px; height: 18px; flex: none; color: var(--ink-2); transition: transform .15s; }
+  .tree details[open] > summary .chev { transform: rotate(90deg); }
+  .tree .ch > summary { font-weight: 600; }
+  .tree .kids { margin-left: 16px; padding-left: 12px; background: linear-gradient(var(--rule-strong), var(--rule-strong)) no-repeat 0 0 / 1.5px 100%; }
+  .tree .n { width: 24px; height: 24px; flex: none; border-radius: 7px; display: grid; place-items: center; background: var(--tim-soft); color: var(--tim-ink); font-size: .78em; font-weight: 600; }
+  .tree .lt { flex: 1; min-width: 0; }
+  .tree .types { display: inline-flex; gap: 4px; color: var(--ink-2); flex: none; }
+  .tree .types svg { width: 16px; height: 16px; }
+  .tree .ideas { margin: 0 0 8px 50px; padding-left: 14px; display: grid; gap: 4px; color: var(--ink-2); font-size: .9em; background: linear-gradient(var(--rule), var(--rule)) no-repeat 0 0 / 1.5px 100%; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Hỏi đáp</span>
+  <span class="mock-seg"><span>Màn</span><button data-set="state:trong">Trống</button><button data-set="state:goi-y">Gợi ý khóa</button><button data-set="state:cay">Xem cây khóa</button><button data-set="state:chup">Chụp</button><button data-set="state:tra-loi">Lời giải</button><button data-set="state:loi">Ảnh mờ</button><button data-set="state:nghe">Đang nghe</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Bấm thử: gõ rồi gửi, mic, nút chụp ảnh, “Thêm”, bấm vào một khóa để xem cây nội dung.</span>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="paper">
+      <rect x="0" y="0" width="300" height="400" rx="6" fill="#FBFAF4"/>
+      <g stroke="#D9D4F0" stroke-width="1"><path d="M0 60h300M0 92h300M0 124h300M0 156h300M0 188h300M0 220h300M0 252h300M0 284h300M0 316h300M0 348h300"/></g>
+      <path d="M36 0v400" stroke="#F2A7B5" stroke-width="2"/>
+      <g font-family="Literata, serif" font-size="17" fill="#2A2650">
+        <text x="48" y="54">Bài 3. Cho cấp số cộng (uₙ)</text>
+        <text x="48" y="86">có u₁ = 3, công sai d = 4.</text>
+        <text x="48" y="118">a) Tìm u₁₀.</text>
+        <text x="48" y="150">b) Tính tổng 20 số hạng đầu.</text>
+        <text x="48" y="214">Bài 4. Tìm x biết 2, x, 18</text>
+        <text x="48" y="246">lập thành cấp số nhân.</text>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-02-trang-chu.html" aria-label="Màn chính"><i data-i="grid"></i></a>
+    <h1 class="page-title" data-en="Ask">Hỏi đáp</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="chat-main" id="thread">
+    <!-- ===== EMPTY ===== -->
+    <section class="greet" id="greet" data-when="state=trong|nghe">
+      <h2 data-en="What do you want to learn?">Em muốn hỏi gì?</h2>
+      <p data-en="Type, talk or snap your exercise. Mentor answers, or suggests a course for you.">Gõ, nói hoặc chụp bài. Mentor sẽ trả lời, hoặc gợi ý khóa học hợp với em.</p>
+      <div class="starters">
+        <button class="starter" type="button" data-ask="Em muốn học về điện trường" data-ask-en="I want to learn about electric fields"><i data-i="book"></i><span data-en="I want to learn about electric fields">Em muốn học về điện trường</span></button>
+        <button class="starter" type="button" data-cam><i data-i="camera"></i><span data-en="Solve this exercise">Giải giúp bài này</span></button>
+        <button class="starter" type="button" data-ask="Ôn thi tốt nghiệp môn Toán" data-ask-en="Revise maths for the graduation exam"><i data-i="target"></i><span data-en="Revise maths for the graduation exam">Ôn thi tốt nghiệp môn Toán</span></button>
+        <button class="starter" type="button" data-ask="Đường sức điện là gì?" data-ask-en="What are field lines?"><i data-i="quiz"></i><span data-en="What are field lines?">Đường sức điện là gì?</span></button>
+      </div>
+    </section>
+
+    <!-- ===== COURSE SUGGESTIONS (static demo) ===== -->
+    <div id="static-goiy" data-when="state=goi-y|cay" style="display:grid; gap:26px">
+      <div class="msg-me" data-en="I want to learn about electricity, grade 11">Em muốn học về điện, lớp 11</div>
+      <div class="msg-ai">
+        <span class="logo-mark" aria-hidden="true">M</span>
+        <div class="body">
+          <p data-en="Three courses fit you. Start with Electric field.">Có 3 khóa hợp với em, nên bắt đầu từ Điện trường.</p>
+          <div id="sug-static"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CAMERA ===== -->
+    <section class="cam" data-when="state=chup" aria-label="Chụp bài">
+      <div class="cam-top">
+        <button class="icon-btn" type="button" data-cam-close aria-label="Đóng camera"><i data-i="x"></i></button>
+        <span class="muted" data-en="Fit one exercise in the frame">Đưa một bài vào trong khung</span>
+      </div>
+      <div class="viewfinder">
+        <svg class="paper" viewBox="0 0 300 400" aria-hidden="true"><use href="#paper"/></svg>
+        <div class="guide"></div>
+        <p class="tip" data-en="Hold steady">Giữ máy thật yên</p>
+      </div>
+      <div class="camrow">
+        <button class="btn btn-quiet" type="button" data-pick style="justify-self:start"><i data-i="image"></i><span data-en="From photos">Ảnh có sẵn</span></button>
+        <button class="shutter" type="button" aria-label="Chụp" data-shoot></button>
+        <span></span>
+      </div>
+    </section>
+
+    <!-- ===== PHOTO ANSWER ===== -->
+    <div data-when="state=tra-loi" style="display:grid; gap:26px">
+      <div class="msg-me photo"><svg viewBox="0 0 300 400" aria-label="Ảnh em vừa chụp" role="img"><use href="#paper"/></svg></div>
+      <div class="msg-ai" id="ans">
+        <span class="logo-mark" aria-hidden="true">M</span>
+        <div class="body">
+          <div class="reading" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Đang giải bài">
+            <p class="sw-label"><span class="sw-text">Đang đọc đề…</span><span class="sw-step">1/2</span></p>
+            <div class="sw-track"><i></i></div>
+          </div>
+          <div class="ans-body" style="display:grid; gap:14px">
+            <div class="problem oli"><p>Bài 3b. Cho cấp số cộng có u₁ = 3, d = 4. Tính tổng 20 số hạng đầu.</p></div>
+            <p class="small muted" data-en="The photo has 2 exercises. Solving 3b. <a href='#'>Solve exercise 4</a>">Ảnh có 2 bài. Đang giải bài 3b. <a href="#">Giải bài 4</a></p>
+            <ol class="steps" id="steps">
+              <li><div><b data-en="Recall the sum formula">Nhớ lại công thức tổng</b><p class="m">Sₙ = n·(2u₁ + (n − 1)d) / 2</p></div></li>
+              <li><div><b data-en="Plug in n = 20, u₁ = 3, d = 4">Thay n = 20, u₁ = 3, d = 4</b><p class="m">S₂₀ = 20·(2·3 + 19·4) / 2 = 10·(6 + 76)</p></div></li>
+              <li class="locked"><div><span data-en="Try the last step yourself first">Thử tự tính bước cuối trước nhé</span><p style="margin-top:10px"><button class="btn btn-ghost" type="button" data-last data-en="Show last step">Xem bước cuối</button></p></div></li>
+            </ol>
+            <p class="tip-card"><i data-i="flag"></i><span data-en="Tip: work out (n − 1)d = 19 · 4 = 76 first, then add the first term.">Mẹo nhỏ: tính (n − 1)d = 19 · 4 = 76 trước, rồi mới cộng số hạng đầu.</span></p>
+            <div class="acts">
+              <button class="btn btn-ghost" type="button"><i data-i="refresh"></i><span data-en="Explain more simply">Giải thích dễ hơn</span></button>
+              <a class="btn btn-primary" href="hs-07-luyen-tap.html"><i data-i="target"></i><span data-en="Try 3 similar ones">Làm 3 bài tương tự</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BAD PHOTO ===== -->
+    <div data-when="state=loi" style="display:grid; gap:26px">
+      <div class="msg-me photo">
+        <svg viewBox="0 0 300 400" style="filter: blur(.6px) brightness(.7)" role="img" aria-label="Ảnh em vừa chụp, nửa dưới bị tối"><use href="#paper"/><rect x="0" y="200" width="300" height="200" fill="#24212F" opacity=".72"/></svg>
+        <div class="bad" aria-hidden="true"></div>
+      </div>
+      <div class="msg-ai">
+        <span class="logo-mark" aria-hidden="true">M</span>
+        <div class="body">
+          <p class="err-title" data-en="I couldn't read the bottom half">Mình chưa đọc được nửa dưới ảnh</p>
+          <p data-en="Exercise 3 is fine. Exercise 4 is too dark to read.">Bài 3 đọc được. Bài 4 bị tối quá, chưa ra chữ.</p>
+          <ul class="err-tips">
+            <li data-en="Turn on a light or move near a window">Bật đèn hoặc ra gần cửa sổ</li>
+            <li data-en="Hold the phone straight above the page">Giữ máy thẳng phía trên trang giấy</li>
+          </ul>
+          <div class="acts">
+            <button class="btn btn-primary" type="button" data-cam><i data-i="camera"></i><span data-en="Retake photo">Chụp lại</span></button>
+            <button class="btn btn-ghost" type="button" data-set="state:tra-loi" data-en="Solve exercise 3 only">Chỉ giải bài 3</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== live messages (typed / spoken) ===== -->
+    <div id="live" style="display:grid; gap:26px"></div>
+  </main>
+
+  <!-- ===== COMPOSER ===== -->
+  <div class="composer-wrap">
+    <div class="composer-in">
+      <p class="added-bar gone" id="addedBar" role="status"></p>
+      <form class="composer" id="composer" onsubmit="return false">
+        <textarea class="c-input" id="input" rows="1" placeholder="Hỏi Mentor bất cứ điều gì" data-en-ph="Ask Mentor anything" aria-label="Câu hỏi"></textarea>
+        <button class="c-btn" type="button" data-cam aria-label="Chụp ảnh" title="Chụp ảnh"><i data-i="camera"></i></button>
+        <button class="c-btn" type="button" data-pick aria-label="Ảnh có sẵn" title="Ảnh có sẵn"><i data-i="image"></i></button>
+        <button class="c-btn" type="button" id="micBtn" aria-label="Nói" title="Nói"><i data-i="mic"></i></button>
+        <button class="c-btn c-send" type="button" id="sendBtn" aria-label="Gửi" aria-disabled="true"><i data-i="up"></i></button>
+        <div class="listen" aria-live="polite">
+          <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          <span class="transcript" id="transcript" data-ph="Mentor đang nghe…"></span>
+          <button class="c-btn" type="button" id="cancelListen" aria-label="Hủy"><i data-i="x"></i></button>
+          <button class="c-btn c-send" type="button" id="doneListen" aria-label="Xong"><i data-i="check"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ===== course overview sheet ===== -->
+<div class="scrim" data-when="state=cay" data-sheet-close></div>
+<aside class="sheet" id="sheet" data-when="state=cay" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"></aside>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const I = (n) => window.mentorIcon(n);
+  const en = () => root.lang === "en";
+  const t = (vi, e) => (en() ? e : vi);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  const COURSES = [
+    { id: "dien-truong", img: "dien-truong", th: "Lí", bg: "#E8E3FF", fg: "#4B2EBF",
+      title: ["Vật lí 11: Điện trường", "Physics 11: Electric field"],
+      by: ["Thầy Minh, 7 bài, khoảng 2 giờ", "Teacher Minh, 7 lessons, about 2 hours"],
+      line: ["Lực điện, điện trường, đường sức và điện thế.", "Electric force, fields, field lines and potential."],
+      about: ["Điện tích hút, đẩy nhau thế nào, điện trường là gì và vẽ đường sức ra sao. Có video mô phỏng, bài đọc ngắn và bài tập theo dạng đề thi tốt nghiệp.",
+              "How charges attract and repel, what an electric field is and how to draw field lines. Includes simulations, short readings and graduation-exam style exercises."],
+      tryUrl: "hs-05-khoa-hoc-thpt.html",
+      tree: [
+        [["Chương 1. Lực điện", "Chapter 1. Electric force"], [
+          [["Điện tích, định luật Cu-lông", "Charge and Coulomb's law"], ["video", "quiz"], [["Cùng dấu thì đẩy, trái dấu thì hút", "Like charges repel, unlike attract"], ["F = k|q₁q₂| / r²", "F = k|q₁q₂| / r²"]]]]],
+        [["Chương 2. Điện trường", "Chapter 2. Electric field"], [
+          [["Cường độ điện trường", "Field strength"], ["text", "quiz"], [["E = F / q, đơn vị V/m", "E = F / q, measured in V/m"], ["Điện tích điểm: E = k|q| / r²", "Point charge: E = k|q| / r²"]]],
+          [["Đường sức điện", "Field lines"], ["video", "text", "quiz"], [["Các đường sức không cắt nhau", "Field lines never cross"], ["Dày ở chỗ điện trường mạnh", "Denser where the field is stronger"]]],
+          [["Điện trường đều", "Uniform field"], ["text", "quiz"], [["Đường sức song song, cách đều", "Parallel, evenly spaced lines"], ["Giữa hai bản kim loại tích điện trái dấu", "Between two oppositely charged plates"]]]]],
+        [["Chương 3. Điện thế và tụ điện", "Chapter 3. Potential and capacitors"], [
+          [["Công của lực điện", "Work of the electric force"], ["text", "quiz"], [["A = qEd", "A = qEd"], ["Không phụ thuộc đường đi", "Independent of the path"]]],
+          [["Điện thế, hiệu điện thế", "Potential and voltage"], ["video", "quiz"], [["U = A / q, đơn vị vôn", "U = A / q, measured in volts"]]],
+          [["Tụ điện", "Capacitors"], ["video", "text"], [["C = Q / U", "C = Q / U"], ["Tụ cất năng lượng trong điện trường", "A capacitor stores energy in its field"]]]]],
+      ] },
+    { id: "tu-dien", img: "tu-dien", th: "Lí", bg: "#FFF1DE", fg: "#9A5200",
+      title: ["Vật lí 11: Tụ điện và năng lượng điện trường", "Physics 11: Capacitors and field energy"],
+      by: ["Thầy Minh, 4 bài, khoảng 1 giờ", "Teacher Minh, 4 lessons, about 1 hour"],
+      line: ["Điện dung, ghép tụ và năng lượng của tụ.", "Capacitance, combining capacitors, stored energy."],
+      about: ["Tụ điện tích điện ra sao, điện dung phụ thuộc vào gì và năng lượng được cất trong điện trường thế nào. Nên học sau khóa Điện trường.",
+              "How capacitors store charge, what capacitance depends on and how energy sits in the field. Best taken after Electric field."],
+      tryUrl: "#",
+      tree: [
+        [["Chương 1. Tụ điện", "Chapter 1. Capacitors"], [
+          [["Tụ điện là gì", "What a capacitor is"], ["video", "text"], [["Hai bản dẫn điện đặt gần nhau", "Two conducting plates close together"]]],
+          [["Điện dung", "Capacitance"], ["text", "quiz"], [["C = Q / U, đơn vị fara", "C = Q / U, measured in farads"]]]]],
+        [["Chương 2. Ghép tụ và năng lượng", "Chapter 2. Combining and energy"], [
+          [["Ghép nối tiếp, song song", "Series and parallel"], ["text", "quiz"], [["Song song: C = C₁ + C₂", "Parallel: C = C₁ + C₂"], ["Nối tiếp: 1/C = 1/C₁ + 1/C₂", "Series: 1/C = 1/C₁ + 1/C₂"]]],
+          [["Năng lượng điện trường", "Field energy"], ["video", "quiz"], [["W = CU² / 2", "W = CU² / 2"]]]]],
+      ] },
+    { id: "hoa-lk", img: "hoa-lien-ket", th: "Hó", bg: "#E3F5EC", fg: "#12825A",
+      title: ["Hóa 10: Liên kết hóa học", "Chemistry 10: Chemical bonds"],
+      by: ["Cô Hạnh, 5 bài, khoảng 1,5 giờ", "Ms. Hạnh, 5 lessons, about 1.5 hours"],
+      line: ["Có phần độ âm điện và điện tích trong phân tử.", "Covers electronegativity and charge in molecules."],
+      about: ["Vì sao nguyên tử liên kết với nhau, liên kết ion khác cộng hóa trị ở đâu và độ âm điện quyết định độ phân cực ra sao. Có phần điện tích trong phân tử, nối với Vật lí phần điện.",
+              "Why atoms bond, how ionic and covalent bonds differ, and how electronegativity sets polarity. Covers charge inside molecules, linking to physics."],
+      tryUrl: "#",
+      tree: [
+        [["Chương 1. Vì sao nguyên tử liên kết", "Chapter 1. Why atoms bond"], [
+          [["Quy tắc octet", "The octet rule"], ["video", "quiz"], [["Đủ 8 electron lớp ngoài cùng thì bền", "Eight outer electrons is stable"]]]]],
+        [["Chương 2. Các kiểu liên kết", "Chapter 2. Kinds of bonds"], [
+          [["Liên kết ion", "Ionic bonds"], ["text", "quiz"], [["Cho và nhận electron, ví dụ NaCl", "Giving and taking electrons, e.g. NaCl"]]],
+          [["Liên kết cộng hóa trị", "Covalent bonds"], ["video", "text"], [["Dùng chung cặp electron", "Sharing electron pairs"]]],
+          [["Độ âm điện và phân cực", "Electronegativity and polarity"], ["text", "quiz"], [["Hiệu độ âm điện quyết định kiểu liên kết", "The difference decides the bond type"]]]]],
+        [["Chương 3. Tương tác giữa phân tử", "Chapter 3. Between molecules"], [
+          [["Liên kết hydrogen, van der Waals", "Hydrogen bonds, van der Waals"], ["text", "quiz"], [["Vì sao nước sôi ở 100 °C", "Why water boils at 100 °C"]]]]],
+      ] },
+  ];
+  const TYPE_LABEL = { video: ["Video", "Video"], text: ["Bài đọc", "Reading"], quiz: ["Quiz", "Quiz"] };
+
+  const added = new Set();
+  let demoAdded = false, cur = 0, beforeSheet = "goi-y", beforeCam = "trong", typing = null;
+  const msgs = [];
+
+  const $ = (id) => document.getElementById(id);
+  const input = $("input"), sendBtn = $("sendBtn"), live = $("live"), greet = $("greet");
+
+  function addLabel(id, long) {
+    if (added.has(id)) return I("check") + "<span>" + t("Đã thêm", "Added") + "</span>";
+    return I("plus") + "<span>" + (long ? t("Thêm khóa này", "Add this course") : t("Thêm", "Add")) + "</span>";
+  }
+  function sugList() {
+    return '<ul class="sugs">' + COURSES.map((c, i) =>
+      '<li class="sug"><button class="open" type="button" data-open="' + i + '">' +
+      '<span class="thumb" aria-hidden="true"><img src="assets/courses/' + c.img + '.jpg" alt=""></span>' +
+      '<span class="txt"><span class="ttl">' + t(...c.title) + '</span><span class="by">' + t(...c.by) + '</span><span class="line">' + t(...c.line) + "</span></span></button>" +
+      '<button class="add" type="button" data-add="' + c.id + '" aria-pressed="' + added.has(c.id) + '">' + addLabel(c.id) + "</button></li>").join("") + "</ul>";
+  }
+  function aiMsg(inner) { return '<div class="msg-ai"><span class="logo-mark" aria-hidden="true">M</span><div class="body">' + inner + "</div></div>"; }
+
+  function renderStatic() { $("sug-static").innerHTML = sugList(); }
+  function renderLive() {
+    live.innerHTML = msgs.map((m) => {
+      if (m.who === "me") return '<div class="msg-me">' + esc(m.text) + "</div>";
+      if (m.kind === "wait") return aiMsg('<p class="wait">' + t("Mentor đang trả lời…", "Mentor is replying…") + "</p>");
+      return aiMsg("<p>" + t("Mình tìm được mấy khóa hợp với điều em hỏi. Bấm vào một khóa để xem bên trong.", "Here are courses that match what you asked. Tap one to see what's inside.") + "</p>" + sugList());
+    }).join("");
+    greet.classList.toggle("gone", msgs.length > 0);
+  }
+  function renderBar() {
+    const st = root.dataset.state, n = added.size;
+    const listShown = st === "goi-y" || st === "cay" || msgs.some((m) => m.kind === "sug");
+    const bar = $("addedBar");
+    bar.classList.toggle("gone", !(n > 0 && listShown && st !== "chup"));
+    bar.innerHTML = I("check") + "<span>" + t("Đã thêm " + n + " khóa vào Khóa học của em", n === 1 ? "Added 1 course to your courses" : "Added " + n + " courses to your courses") + "</span>";
+  }
+  function renderSheet() {
+    const c = COURSES[cur];
+    const tree = c.tree.map((ch, ci) =>
+      '<li><details class="ch" open><summary>' + I("next").replace("<svg", '<svg class="chev"') + "<span>" + t(...ch[0]) + '</span></summary><ul class="kids">' +
+      ch[1].map((ls) => {
+        const num = c.tree.slice(0, ci).reduce((a, x) => a + x[1].length, 0) + ch[1].indexOf(ls) + 1;
+        return '<li><details class="ls"><summary>' + I("next").replace("<svg", '<svg class="chev"') + '<span class="n">' + num + '</span><span class="lt">' + t(...ls[0]) + '</span><span class="types">' +
+          ls[1].map((ty) => I(ty).replace("<svg", '<svg role="img" aria-label="' + t(...TYPE_LABEL[ty]) + '"').replace('aria-hidden="true"', "")).join("") + "</span></summary>" +
+          '<ul class="ideas">' + ls[2].map((idea) => "<li>" + t(...idea) + "</li>").join("") + "</ul></details></li>";
+      }).join("") + "</ul></details></li>").join("");
+    $("sheet").innerHTML =
+      '<div class="sheet-head">' +
+      '<h2 id="sheetTitle">' + t(...c.title) + '</h2><button class="icon-btn" type="button" data-sheet-close aria-label="' + t("Đóng", "Close") + '">' + I("x") + "</button>" +
+      '<span class="by">' + t(...c.by) + "</span></div>" +
+      '<div class="sheet-body"><figure class="sheet-cover"><img src="assets/courses/' + c.img + '.jpg" alt=""></figure><p class="about">' + t(...c.about) + "</p><h3>" + t("Nội dung khóa", "What's inside") + '</h3><ul class="tree">' + tree + "</ul></div>" +
+      '<div class="sheet-foot"><button class="btn btn-primary add-long" type="button" data-add="' + c.id + '" data-long="1" aria-pressed="' + added.has(c.id) + '">' + addLabel(c.id, true) + "</button>" +
+      '<a class="btn btn-ghost" href="' + c.tryUrl + '">' + I("play") + "<span>" + t("Học thử bài 1", "Try lesson 1") + "</span></a></div>";
+  }
+  function renderAll() { renderStatic(); renderLive(); renderSheet(); renderBar(); }
+
+  function toggleAdd(id) {
+    added.has(id) ? added.delete(id) : added.add(id);
+    document.querySelectorAll('[data-add="' + id + '"]').forEach((b) => {
+      b.setAttribute("aria-pressed", String(added.has(id)));
+      b.innerHTML = addLabel(id, !!b.dataset.long);
+    });
+    renderBar();
+  }
+
+  function scrollEnd() { window.scrollTo({ top: document.body.scrollHeight, behavior: reduce ? "auto" : "smooth" }); }
+  function syncSend() {
+    sendBtn.setAttribute("aria-disabled", String(!input.value.trim()));
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 160) + "px";
+  }
+  function send(text) {
+    text = (text || "").trim();
+    if (!text) return;
+    const st = root.dataset.state;
+    if (st === "trong" || st === "nghe" || st === "chup") window.mockSet("state", "chat");
+    msgs.push({ who: "me", text }, { who: "ai", kind: "wait" });
+    renderLive(); input.value = ""; syncSend(); scrollEnd();
+    setTimeout(() => { msgs[msgs.length - 1] = { who: "ai", kind: "sug" }; renderLive(); renderBar(); scrollEnd(); }, 700);
+  }
+
+  // speech (mock): words appear one by one while listening
+  const SAID = ["Em muốn học về cấp số nhân, có bài tập không ạ", "I want to learn geometric sequences, with exercises please"];
+  function startTyping() {
+    const tr = $("transcript"); clearInterval(typing); tr.textContent = "";
+    const words = t(...SAID).split(" ");
+    if (reduce) { tr.textContent = words.join(" "); return; }
+    let i = 0;
+    typing = setInterval(() => { if (i >= words.length) return clearInterval(typing); tr.textContent += (i ? " " : "") + words[i++]; }, 280);
+  }
+  function startListen() { root.classList.add("listening"); startTyping(); }
+  function stopListen(use) {
+    clearInterval(typing);
+    const said = $("transcript").textContent;
+    root.classList.remove("listening");
+    if (root.dataset.state === "nghe") window.mockSet("state", "trong");
+    if (use && said) { input.value = said; syncSend(); input.focus(); }
+  }
+
+  function openCam() {
+    closeMenu();
+    const st = root.dataset.state;
+    if (st !== "chup") beforeCam = st === "nghe" ? "trong" : st;
+    window.mockSet("state", "chup");
+  }
+  function showAnswer(read) {
+    window.mockSet("state", "tra-loi");
+    const a = $("ans");
+    if (!read) return;
+    // same curve as the app: each stage eases towards its share of the bar (reading 0-40 %, solving 40-95 %)
+    const bar = a.querySelector(".reading"), fill = bar.querySelector(".sw-track i");
+    const en = document.documentElement.lang === "en";
+    const stages = [{ text: en ? "Reading your exercise…" : "Đang đọc đề…", from: 0, to: 40, ms: 1200 },
+                    { text: en ? "Solving…" : "Đang giải…", from: 40, to: 95, ms: 2400 }];
+    a.classList.add("is-reading");
+    let k = 0, t0 = performance.now();
+    const tick = () => {
+      if (!a.classList.contains("is-reading")) return;
+      const s = stages[k], el = performance.now() - t0;
+      const p = s.from + (s.to - s.from) * (1 - Math.exp(-2.3 * el / s.ms));
+      fill.style.width = p.toFixed(1) + "%"; bar.setAttribute("aria-valuenow", Math.round(p));
+      bar.querySelector(".sw-text").textContent = s.text; bar.querySelector(".sw-step").textContent = (k + 1) + "/2";
+      if (el > s.ms * 1.1) {
+        if (k === 0) { k = 1; t0 = performance.now(); }
+        else { fill.style.width = "100%"; setTimeout(() => { a.classList.remove("is-reading"); scrollEnd(); }, 250); return; }
+      }
+      requestAnimationFrame(tick);
+    };
+    if (reduce) setTimeout(() => { a.classList.remove("is-reading"); scrollEnd(); }, 300); else requestAnimationFrame(tick);
+  }
+  function closeMenu() {}
+
+  function openSheet(i, fromLive) {
+    cur = i;
+    const st = root.dataset.state;
+    if (st !== "cay") beforeSheet = st;
+    root.classList.toggle("from-live", fromLive);
+    renderSheet();
+    window.mockSet("state", "cay");
+    const btn = document.querySelector("#sheet [data-sheet-close]");
+    if (btn) btn.focus();
+  }
+  function closeSheet() { window.mockSet("state", beforeSheet === "cay" ? "goi-y" : beforeSheet); }
+
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-open],[data-add],[data-sheet-close],[data-ask],[data-cam],[data-cam-close],[data-pick],[data-shoot],[data-last],#micBtn,#sendBtn,#cancelListen,#doneListen");
+    if (!el) return;
+    if (el.dataset.open !== undefined) return openSheet(+el.dataset.open, !!el.closest("#live"));
+    if (el.dataset.add) return toggleAdd(el.dataset.add);
+    if (el.hasAttribute("data-sheet-close")) return closeSheet();
+    if (el.dataset.ask) return send(en() ? el.dataset.askEn : el.dataset.ask);
+    if (el.hasAttribute("data-cam")) return openCam();
+    if (el.hasAttribute("data-cam-close")) return window.mockSet("state", beforeCam);
+    if (el.hasAttribute("data-pick")) { closeMenu(); return showAnswer(true); }
+    if (el.hasAttribute("data-shoot")) return showAnswer(true);
+    if (el.hasAttribute("data-last")) { el.closest("li").outerHTML = '<li><div><b>' + t("Kết quả", "Result") + '</b><p class="m">S₂₀ = 10 · 82 = 820</p></div></li>'; return; }
+    if (el.id === "micBtn") return startListen();
+    if (el.id === "sendBtn") return send(input.value);
+    if (el.id === "cancelListen") return stopListen(false);
+    if (el.id === "doneListen") return stopListen(true);
+  });
+  input.addEventListener("input", syncSend);
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(input.value); } });
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (root.dataset.state === "cay") closeSheet();
+    else if (root.classList.contains("listening") || root.dataset.state === "nghe") stopListen(false);
+  });
+
+  document.addEventListener("mock:change", (e) => {
+    const { key, value } = e.detail;
+    if (key === "lang") { renderAll(); return; }
+    if (key !== "state") return;
+    if ((value === "goi-y" || value === "cay") && !demoAdded && added.size === 0) {
+      added.add("dien-truong"); added.add("hoa-lk"); demoAdded = true; renderStatic(); renderSheet();
+    }
+    if (value !== "cay") root.classList.remove("from-live");
+    if (value === "nghe") startTyping(); else if (!root.classList.contains("listening")) clearInterval(typing);
+    if (value !== "tra-loi") $("ans").classList.remove("is-reading");
+    renderBar();
+  });
+
+  // reviewer bar is sticky on top; keep the sheet below it (0 in the real app)
+  function setMockH() { const mb = document.querySelector(".mock-bar"); root.style.setProperty("--mockh", (mb ? mb.offsetHeight : 0) + "px"); }
+  addEventListener("resize", setMockH);
+  document.addEventListener("DOMContentLoaded", setMockH);
+
+  renderAll();
+})();
+</script>
+<style>
+  /* when a sheet is opened from a typed conversation, hide the static demo thread behind it */
+  .from-live #static-goiy { display: none !important; }
+</style>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="hub">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luyện tập</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .quick { border-radius: var(--r-lg); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); padding: clamp(22px, 4vw, 36px) clamp(20px, 4vw, 36px) clamp(22px, 4vw, 32px) 72px; display: grid; gap: 16px; }
+  .quick h2 { font-size: clamp(1.5em, 3.4vw, 2em); }
+  .mix { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 4px; border-bottom: 1px solid var(--rule); }
+  .rows.with-media li { grid-template-columns: 64px minmax(0, 1fr) auto; }
+  .thumb { width: 64px; height: 64px; border-radius: 14px; overflow: hidden; background: #FBF6EA; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .rows h3 { font-size: 1em; }
+  .rows p { color: var(--ink-2); font-size: .88em; margin-top: 3px; }
+
+  /* player */
+  .player { max-width: 760px; margin: 0 auto; display: grid; gap: 24px; }
+  .ptop { display: flex; align-items: center; gap: 16px; }
+  .ptop .bar { flex: 1; }
+  .qtext { font-size: 1.2em; line-height: 1.55; }
+  .opts { display: grid; gap: 10px; }
+  .opt { display: grid; grid-template-columns: 40px 1fr auto; gap: 14px; align-items: center; min-height: var(--tap); padding: 10px 16px 10px 10px; border-radius: var(--r-md); border: 2px solid var(--rule-strong); background: var(--surface); cursor: pointer; text-align: left; }
+  .opt:hover { border-color: var(--ink-3); }
+  .opt .k { width: 36px; height: 36px; border-radius: 10px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; font-weight: 700; }
+  .opt.is-right { border-color: var(--xanh); background: var(--xanh-soft); }
+  .opt.is-right .k { background: var(--xanh); color: #fff; }
+  .opt.is-wrong { border-color: var(--do); background: var(--do-soft); }
+  .opt.is-wrong .k { background: var(--do); color: #fff; }
+  .feedback { padding: 14px 18px; background: var(--do-soft); border-radius: var(--r-md); display: grid; gap: 6px; }
+  .feedback b { color: var(--do); }
+  .pfoot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  /* result */
+  .result { max-width: 640px; margin: 0 auto; display: grid; gap: 22px; justify-items: start; }
+  .score { font-size: clamp(3.4em, 9vw, 5em); font-weight: 700; line-height: 1; color: var(--tim-ink); }
+  .score small { font-size: 24px; color: var(--ink-2); font-weight: 500; }
+  .plan { border-radius: var(--r-md); padding: 16px 18px; background: var(--tim-soft); display: flex; gap: 12px; align-items: flex-start; }
+  .plan svg { flex: none; color: var(--tim-ink); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Luyện tập</span>
+  <span class="mock-seg"><span>Màn</span><button data-set="state:hub">Tab Luyện tập</button><button data-set="state:lam-bai">Đang làm</button><button data-set="state:ket-qua">Kết quả</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+</div>
+
+<div class="app">
+  <header class="topbar" data-when="state=hub">
+    <a class="icon-btn" href="hs-02-trang-chu.html" aria-label="Màn chính"><i data-i="grid"></i></a>
+    <h1 class="page-title" data-en="Practice">Luyện tập</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <!-- ===== HUB ===== -->
+    <div data-when="state=hub">
+      <section class="quick oli">
+        <h2 data-en="10 questions, about 12 minutes">10 câu, khoảng 12 phút</h2>
+        <p class="muted" data-en="Picked from what you're learning and what you got wrong last time.">Chọn từ bài em đang học và những câu lần trước em sai.</p>
+        <div class="mix"><span class="tag">Điện trường 6</span><span class="tag">Cấp số cộng 3</span><span class="tag">Unit 4 1</span></div>
+        <p><a class="btn btn-primary btn-big" href="#" data-set="state:lam-bai"><i data-i="play"></i><span data-en="Start">Bắt đầu</span></a></p>
+      </section>
+
+      <div class="head"><h2 data-en="Mock exams">Thi thử</h2></div>
+      <ul class="rows">
+        <li><div><h3 data-en="Physics, graduation exam format">Vật lí, đề tốt nghiệp THPT</h3><p data-en="50 minutes, 40 questions. Last time: 6.75">50 phút, 40 câu. Lần trước 6,75 điểm</p></div><a class="btn btn-ghost" href="#" data-en="Take mock exam">Thi thử</a></li>
+        <li><div><h3 data-en="Math, graduation exam format">Toán, đề tốt nghiệp THPT</h3><p data-en="90 minutes, 50 questions. Not taken yet">90 phút, 50 câu. Chưa thi lần nào</p></div><a class="btn btn-ghost" href="#" data-en="Take mock exam">Thi thử</a></li>
+      </ul>
+
+      <div class="head"><h2 data-en="By course">Theo khóa học</h2></div>
+      <ul class="rows with-media">
+        <li><span class="thumb"><img src="assets/courses/dien-truong.jpg" alt=""></span><div><h3>Vật lí 11: Điện trường</h3><p data-en="Lessons 1–3, 24 questions">Bài 1–3, 24 câu</p></div><a class="btn btn-quiet" href="#" data-set="state:lam-bai" data-en="Practice">Luyện</a></li>
+        <li><span class="thumb"><img src="assets/courses/cap-so-cong.jpg" alt=""></span><div><h3>Toán 11: Dãy số, cấp số cộng</h3><p data-en="Lessons 1–8, 60 questions">Bài 1–8, 60 câu</p></div><a class="btn btn-quiet" href="#" data-set="state:lam-bai" data-en="Practice">Luyện</a></li>
+      </ul>
+    </div>
+
+    <!-- ===== PLAYER (focus screen: no tabs) ===== -->
+    <div class="player" data-when="state=lam-bai">
+      <div class="ptop">
+        <a class="icon-btn" href="#" data-set="state:hub" aria-label="Lưu và thoát"><i data-i="x"></i></a>
+        <div class="bar" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="10"><i style="width:30%"></i></div>
+        <span class="muted small">3/10</span>
+      </div>
+      <p class="qtext">Một điện tích điểm q = 4·10⁻⁹ C đặt trong chân không. Cường độ điện trường tại điểm cách q một khoảng 3 cm là bao nhiêu?</p>
+      <div class="opts" id="opts">
+        <button class="opt" data-ok="0"><span class="k">A</span><span>1,2·10³ V/m</span><span></span></button>
+        <button class="opt" data-ok="1"><span class="k">B</span><span>4·10⁴ V/m</span><span></span></button>
+        <button class="opt" data-ok="0"><span class="k">C</span><span>1,2·10⁴ V/m</span><span></span></button>
+        <button class="opt" data-ok="0"><span class="k">D</span><span>4·10² V/m</span><span></span></button>
+      </div>
+      <div class="feedback" id="fb" hidden>
+        <b data-en="Not quite">Chưa đúng</b>
+        <p data-en="You kept r in centimetres. Change 3 cm to 0.03 m first, then E = 9·10⁹ · 4·10⁻⁹ / 0.03² = 4·10⁴ V/m.">Em đang để r theo cm. Đổi 3 cm = 0,03 m trước, rồi E = 9·10⁹ · 4·10⁻⁹ / 0,03² = 4·10⁴ V/m.</p>
+      </div>
+      <div class="pfoot">
+        <button class="btn btn-quiet" type="button" style="padding-left:0" data-en="Hint">Gợi ý</button>
+        <a class="btn btn-primary" href="#" data-set="state:ket-qua" data-en="Next question">Câu tiếp</a>
+      </div>
+    </div>
+
+    <!-- ===== RESULT ===== -->
+    <div class="result" data-when="state=ket-qua">
+      <p class="score">8<small>/10</small></p>
+      <h1 style="font-size:1.5em" data-en="Good. Unit conversion is the only slip left.">Tốt rồi. Chỉ còn lỗi đổi đơn vị.</h1>
+      <p class="plan"><i data-i="clock"></i><span data-en="Mentor will bring back the 2 questions you missed on Thursday, when you usually study.">Mentor sẽ cho em làm lại 2 câu sai vào tối thứ Năm, giờ em hay học.</span></p>
+      <p style="display:flex; gap:12px; flex-wrap:wrap">
+        <a class="btn btn-primary" href="hs-02-trang-chu.html" data-en="Done">Xong</a>
+        <a class="btn btn-ghost" href="#" data-set="state:lam-bai" data-en="Review answers">Xem lại bài</a>
+      </p>
+    </div>
+  </main>
+</div>
+<script>
+  document.getElementById("opts").addEventListener("click", (e) => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    document.querySelectorAll(".opt").forEach((o) => o.classList.remove("is-right", "is-wrong"));
+    const ok = b.dataset.ok === "1";
+    b.classList.add(ok ? "is-right" : "is-wrong");
+    if (!ok) document.querySelector('.opt[data-ok="1"]').classList.add("is-right");
+    document.getElementById("fb").hidden = ok;
+  });
+</script>
+</body>
+</html>

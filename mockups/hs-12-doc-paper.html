@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi" data-age="dai-hoc" data-age-fixed="dai-hoc" data-state="tom-tat">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đọc paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 28px; padding-bottom: 80px; }
+  .head-p { display: grid; gap: 10px; }
+  .head-p h2 { font-family: var(--font-read); font-weight: 600; font-size: clamp(1.35em, 3.4vw, 1.7em); line-height: 1.3; letter-spacing: -.005em; }
+  .by { color: var(--ink-2); font-size: .92em; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+  .abs { font-family: var(--font-read); line-height: 1.72; display: grid; gap: 8px; padding: 16px 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); }
+  .abs .eyebrow { font-family: var(--font-ui); font-size: .74em; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  
+  .why { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; border-radius: var(--r-md); background: var(--tim-soft); color: var(--tim-ink); font-size: .9em; }
+  .why svg { width: 18px; height: 18px; flex: none; margin-top: 2px; }
+
+  .mine { display: grid; gap: 12px; padding: 20px 22px 20px 64px; border-radius: var(--r-lg); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .mine h3 { font-size: 1.1em; }
+  .mine textarea { width: 100%; min-height: 150px; padding: 4px 0; border: 0; outline: 0; background: transparent; resize: vertical; font-family: var(--font-read); font-size: 1.04em; line-height: 32px; }
+  .mine .act { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .mine .done-text { font-family: var(--font-read); line-height: 32px; margin: 0; }
+  .btn[aria-disabled="true"] { background: var(--rule-strong); color: var(--ink-2); box-shadow: none; cursor: default; transform: none; }
+  @media (max-width: 520px) { .mine { padding: 18px 16px 18px 54px; } }
+
+  .fb { display: grid; gap: 4px; padding: 18px 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .fb h3 { display: flex; align-items: center; gap: 10px; font-size: 1.05em; margin-bottom: 8px; }
+  .fb h3 .logo-mark { width: 26px; height: 26px; font-size: 13px; border-radius: 8px; }
+  .fb .fr { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 4px 12px; padding: 14px 0; border-top: 1px solid var(--rule); line-height: 1.6; }
+  .fb .fr .ic { width: 32px; height: 32px; border-radius: 99px; display: grid; place-items: center; }
+  .fb .fr .ic svg { width: 17px; height: 17px; }
+  .fb .fr.ok .ic { background: var(--xanh-soft); color: var(--xanh); } .fb .fr.ok .k { color: var(--xanh); }
+  .fb .fr.gap .ic { background: var(--vang-soft); color: var(--cam); }
+  .fb .fr.gap .k { background: var(--vang-soft); padding: 0 6px; border-radius: 4px; }
+  .fb .fr.bad .ic { background: var(--do-soft); color: var(--do); } .fb .fr.bad .k { color: var(--do); }
+  .fb .k { font-weight: 600; }
+  .fb .fr .tx { display: grid; gap: 2px; }
+  .fb .link-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 6px; padding: 12px 14px; border-radius: var(--r-md); background: var(--tim-soft); color: var(--ink); line-height: 1.55; }
+  .fb .link-note svg { width: 18px; height: 18px; flex: none; margin-top: 3px; color: var(--tim-ink); }
+  .fb .link-note b { color: var(--tim-ink); }
+
+  /* Q&A */
+  .thread { display: grid; gap: 22px; }
+  .msg-me { justify-self: end; max-width: min(86%, 520px); padding: 12px 16px; border-radius: 20px 20px 6px 20px; background: var(--tim-soft); }
+  .msg-ai { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .msg-ai > .logo-mark { width: 32px; height: 32px; font-size: 15px; border-radius: 9px; }
+  .msg-ai .body { display: grid; gap: 12px; min-width: 0; padding: 14px 16px; line-height: 1.65; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .src { display: grid; gap: 4px; padding: 10px 14px; border-left: 3px solid var(--tim); border-radius: 0 var(--r-md) var(--r-md) 0; background: var(--surface); font-size: .88em; }
+  .src b { font-weight: 600; }
+  .src q { font-family: var(--font-read); color: var(--ink-2); quotes: "“" "”"; }
+  .src a { font-weight: 600; text-decoration: none; }
+  .nf { color: var(--ink-2); }
+  .chipc { display: inline-flex; align-items: center; gap: 10px; padding: 5px 14px 5px 5px; border-radius: 999px; background: var(--paper); border: 1px solid var(--rule); text-decoration: none; color: var(--ink); font-size: .88em; justify-self: start; }
+  .chipc img { width: 32px; height: 32px; border-radius: 99px; object-fit: cover; background: #FBF5E8; }
+
+  /* composer, pinned like Hỏi đáp */
+  .composer-wrap { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 22px 16px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--paper) 30%); }
+  .composer { max-width: 720px; margin: 0 auto; display: flex; align-items: flex-end; gap: 4px; padding: 7px; border-radius: 28px; background: var(--surface); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .composer:focus-within { border-color: var(--tim); }
+  .c-btn { width: 44px; height: 44px; flex: none; border-radius: 999px; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; color: var(--ink-2); }
+  .c-btn:hover { background: var(--tim-soft); color: var(--ink); }
+  .c-btn svg { width: 22px; height: 22px; }
+  .c-send { background: var(--tim); color: var(--on-tim); }
+  .c-send:hover { background: var(--tim-ink); color: var(--on-tim); }
+  .c-input { flex: 1; min-width: 0; min-height: 44px; border: 0; outline: 0; background: transparent; resize: none; padding: 10px 6px 10px 14px; line-height: 1.45; }
+  .c-input::placeholder { color: var(--ink-2); }
+
+  /* related papers: Semantic Scholar citations / references (plus Asta get_citations when the user has a key) */
+  .rel { display: grid; gap: 10px; min-width: 0; padding: 16px 18px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .rel-head { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; }
+  .rel-head h3 { font-size: 1.05em; }
+  .rel-tabs { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--paper); border: 1px solid var(--rule); }
+  .rel-tabs button { min-height: 44px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font: inherit; font-size: .84em; cursor: pointer; }
+  .rel-tabs button[aria-pressed="true"] { background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+  .rel-none { display: flex; align-items: center; flex-wrap: wrap; gap: 0 8px; margin: 0; color: var(--ink-2); font-size: .9em; }
+  .rel[data-src-has="0"] .rel-tabs, .rel[data-src-has="0"] [data-asta-rel], .rel[data-src-has="0"] ul { display: none; }
+  .rel[data-src-has="1"] .rel-none { display: none; }
+  .rel ul { list-style: none; margin: 0; padding: 0; display: grid; }
+  .rel li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--rule); }
+  .rel li[hidden] { display: none; }
+  .rel .rt { font-family: var(--font-read); font-weight: 600; line-height: 1.4; font-size: .95em; color: inherit; text-decoration: none; overflow-wrap: anywhere; }
+  .rel .rt:hover { text-decoration: underline; }
+  .rel .rm { grid-column: 1; color: var(--ink-2); font-size: .8em; }
+  .rel .radd { grid-column: 2; grid-row: 1 / span 2; width: 44px; height: 44px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: transparent; color: var(--ink-2); display: grid; place-items: center; cursor: pointer; padding: 0; }
+  .rel .radd:hover { border-color: var(--tim); color: var(--tim-ink); }
+  .rel .radd svg { width: 18px; height: 18px; }
+  .rel .radd .on { display: none; }
+  .rel .radd[aria-pressed="true"] { background: var(--xanh-soft); border-color: transparent; color: var(--xanh); }
+  .rel .radd[aria-pressed="true"] .on { display: block; }
+  .rel .radd[aria-pressed="true"] .off { display: none; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đại học: Đọc một paper</span>
+  <span class="mock-seg"><span>Xem</span><button data-set="state:tom-tat">Viết tóm tắt</button><button data-set="state:goi-y">Góp ý của Mentor</button><button data-set="state:hoi">Hỏi về paper</button></span>
+  <span class="mock-seg"><span>Nguồn</span><button type="button" data-src-mode="arxiv">Chỉ arXiv</button><button type="button" data-src-mode="s2">+ S2</button><button type="button" data-src-mode="asta">+ Asta</button><button type="button" data-src-mode="both">+ cả hai</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-note">Mentor chỉ góp ý sau khi bạn tự tóm tắt. Paper, tác giả, đoạn trích là dữ liệu mẫu.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-11-nghien-cuu.html" aria-label="Quay lại Nghiên cứu"><i data-i="back"></i></a>
+    <h1 class="page-title" data-en="Paper">Paper</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+      <header class="head-p">
+        <h2>Equivariant Message Passing for Formation Energy Prediction in Inorganic Crystals</h2>
+        <p class="by">Pham, Okafor, Lindqvist · 2026 · Journal of Computational Materials</p>
+        <div class="meta-row">
+          <span class="tag wait" data-en="Reading">Đang đọc</span>
+          <span class="tag" data-en="Section 3 of yours">Mục 3 của bạn</span>
+          <span class="muted small" data-en="Cited 14 times">Được trích dẫn 14 lần</span>
+          <a class="btn btn-quiet" href="#" style="min-height:36px" onclick="return false"><i data-i="file"></i><span data-en="Open PDF">Mở PDF</span></a>
+        </div>
+      </header>
+
+      <p class="why" data-when="state=tom-tat|goi-y"><i data-i="target"></i><span data-en="Mentor picked this because it uses the same dataset as your chapter 3.">Mentor chọn bài này vì nó dùng cùng bộ dữ liệu với chương 3 của bạn.</span></p>
+
+      <section class="abs" data-when="state=tom-tat|goi-y">
+        <span class="eyebrow">Abstract</span>
+        <p>We propose an E(3)-equivariant message passing network that predicts formation energies of inorganic crystals directly from atomic positions and species. On 90,211 structures from a public materials database, the model reduces mean absolute error by 18% over a strong invariant baseline, and by 7% when trained on 3,000 structures. We also report calibrated uncertainty estimates and analyse failure cases on structures far from equilibrium.</p>
+      </section>
+
+      <!-- 1. the learner writes first -->
+      <section class="mine oli" data-when="state=tom-tat">
+        <h3 data-en="Your summary">Tóm tắt của bạn</h3>
+        <textarea id="sum" aria-label="Tóm tắt của bạn" placeholder="Paper này làm gì, kết quả chính là gì? Viết bằng lời của bạn." data-en-ph="What does this paper do, and what is the main result? In your own words."></textarea>
+        <div class="act">
+          <a class="btn btn-primary" id="goBtn" href="#" aria-disabled="true" data-set="state:goi-y" data-en="See feedback">Xem góp ý</a>
+          <button class="btn btn-quiet" type="button" data-en="Mark as read">Đã đọc</button>
+        </div>
+      </section>
+
+      <!-- 2. feedback after -->
+      <section class="mine oli" data-when="state=goi-y">
+        <h3 data-en="Your summary">Tóm tắt của bạn</h3>
+        <p class="done-text">Bài đề xuất một mạng truyền thông điệp bất biến theo phép quay để dự đoán năng lượng hình thành. Tác giả nói mô hình tốt hơn baseline 18%, và vẫn tốt hơn khi ít dữ liệu. Họ có thêm phần ước lượng độ bất định.</p>
+      </section>
+      <section class="fb" data-when="state=goi-y">
+        <h3><span class="logo-mark">M</span><span data-en="Mentor's feedback">Góp ý của Mentor</span></h3>
+        <div class="fr ok"><span class="ic"><i data-i="check"></i></span><span class="tx"><span class="k" data-en="You got it right.">Bạn nắm đúng.</span><span data-en="An equivariant message passing network for formation energy, with an uncertainty part.">Một mạng truyền thông điệp bất biến theo phép quay để dự đoán năng lượng hình thành, có thêm phần độ bất định.</span></span></div>
+        <div class="fr bad"><span class="ic"><i data-i="x"></i></span><span class="tx"><span class="k" data-en="Not accurate.">Chưa chính xác.</span><span data-en="You wrote 18% better. The paper gets 18% on the full set but only 7% with 3,000 structures. Which one do you mean?">Bạn viết hơn 18%. Bài đạt 18% trên toàn bộ dữ liệu, còn với 3.000 cấu trúc chỉ là 7%. Bạn muốn nói trường hợp nào?</span></span></div>
+        <div class="fr gap"><span class="ic"><i data-i="edit"></i></span><span class="tx"><span><span class="k" data-en="Missing.">Còn thiếu.</span></span><span data-en="The model assumes relaxed structures (section 2.1). Does that affect how you compare against it?">Mô hình giả định cấu trúc đã được tối ưu (mục 2.1). Giả định này có ảnh hưởng tới cách bạn so sánh không?</span></span></div>
+        <p class="link-note"><i data-i="target"></i><span><b data-en="For your thesis:">Với luận văn của bạn:</b> <span data-en="They use 90,000 samples and you have 3,200. This gap may belong in your section 3.2.">họ dùng 90.000 mẫu, bạn có 3.200. Khoảng cách này có thể nên nằm trong mục 3.2 của bạn.</span></span></p>
+        <div class="act" style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn btn-primary" type="button" data-en="Mark as read">Đã đọc</button>
+          </div>
+      </section>
+
+      <!-- 3. questions about the paper, with sources -->
+      <section class="thread" data-when="state=hoi">
+        <div class="msg-me">Bài này huấn luyện trên bộ dữ liệu nào, và chia train/test ra sao?</div>
+        <div class="msg-ai"><span class="logo-mark">M</span>
+          <div class="body">
+            <p>Huấn luyện trên 90.211 cấu trúc từ một cơ sở dữ liệu vật liệu công khai, chia 80/10/10 theo công thức hóa học, nên cùng một hợp chất không nằm vừa ở train vừa ở test.</p>
+            <div class="src"><b data-en="Section 4.1, Data">Mục 4.1, Dữ liệu</b><q>We split by composition so that polymorphs of the same compound never appear on both sides of the split.</q><a href="#" onclick="return false" data-en="Open this passage">Mở đoạn này</a></div>
+          </div>
+        </div>
+        <div class="msg-me">Họ có báo độ lệch chuẩn qua nhiều seed không?</div>
+        <div class="msg-ai"><span class="logo-mark">M</span>
+          <div class="body">
+            <p class="nf" data-en="I could not find a passage about this in the paper. It may be in the appendix, which I cannot see.">Mình không tìm thấy đoạn nào nói về điều này trong paper. Có thể nó nằm ở phụ lục, phần mình chưa đọc được.</p>
+          </div>
+        </div>
+        <div class="msg-me">Phần ước lượng độ bất định làm thế nào?</div>
+        <div class="msg-ai"><span class="logo-mark">M</span>
+          <div class="body">
+            <p>Họ gộp 5 mô hình cùng kiến trúc rồi hiệu chỉnh độ lệch chuẩn bằng một hệ số học trên tập kiểm định.</p>
+            <div class="src"><b data-en="Section 5, Uncertainty">Mục 5, Độ bất định</b><q>An ensemble of five models is recalibrated on the validation split with a single scale factor.</q><a href="#" onclick="return false" data-en="Open this passage">Mở đoạn này</a></div>
+            <p data-en="This is an ensemble view of uncertainty. The Bayes course covers the idea behind it, part 3:">Cách nhìn này gần với suy luận Bayes; khóa bạn đang học giải thích ý tưởng đó ở phần 3:</p>
+            <a class="chipc" href="hs-06-khoa-hoc-dai-hoc.html"><img src="assets/courses/bayes.jpg" alt="">Xác suất thống kê: Suy luận Bayes</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- related papers: who cites this one, and who it cites -->
+      <section class="rel" aria-labelledby="relH" id="rel" data-src-has="0">
+        <div class="rel-head">
+          <h3 id="relH" data-en="Related papers">Bài liên quan</h3>
+          <span class="rel-tabs" role="group" aria-label="Loại liên quan">
+            <button type="button" data-rel="citing" aria-pressed="true" data-en="Cite this paper (14)">Trích dẫn bài này (14)</button>
+            <button type="button" data-rel="cited" aria-pressed="false" data-en="Cited by this paper (38)">Bài này trích dẫn (38)</button>
+          </span>
+          <span class="muted small" data-asta-rel></span>
+        </div>
+        <p class="rel-none"><span data-en="Add Semantic Scholar to see citing and cited papers">Thêm Semantic Scholar để xem bài trích dẫn và được trích dẫn</span><button class="asta-chip" type="button" data-src-chip="s2" aria-haspopup="dialog" aria-label="Thêm Semantic Scholar"><span class="pill"><i data-i="plus"></i> Semantic Scholar</span></button></p>
+        <ul data-relist="citing">
+          <li><a class="rt" href="#" onclick="return false">Calibrated Uncertainty for Graph Neural Network Property Predictors</a><span class="rm"><span data-en="Tran, Weiss · 2025 · cited 21 times">Tran, Weiss · 2025 · trích dẫn 21 lần</span></span><button class="radd" type="button" aria-pressed="false" aria-label="Thêm vào Cần đọc" data-en-label="Add to To read"><i class="off" data-i="plus"></i><i class="on" data-i="check"></i></button></li>
+          <li><a class="rt" href="#" onclick="return false">Data-Efficient Crystal Graph Networks with Pretrained Atomic Embeddings</a><span class="rm"><span data-en="Reyes, Chen · 2026 · cited 3 times">Reyes, Chen · 2026 · trích dẫn 3 lần</span></span><button class="radd" type="button" aria-pressed="false" aria-label="Thêm vào Cần đọc" data-en-label="Add to To read"><i class="off" data-i="plus"></i><i class="on" data-i="check"></i></button></li>
+          <li><a class="rt" href="#" onclick="return false">Equivariant Features Without Relaxed Structures</a><span class="rm"><span data-en="Abdi, Moreau · 2026 · cited once">Abdi, Moreau · 2026 · trích dẫn 1 lần</span></span><button class="radd" type="button" aria-pressed="false" aria-label="Thêm vào Cần đọc" data-en-label="Add to To read"><i class="off" data-i="plus"></i><i class="on" data-i="check"></i></button></li>
+        </ul>
+        <ul data-relist="cited" hidden>
+          <li><a class="rt" href="#" onclick="return false">Message Passing Networks for Materials Property Prediction: A Survey</a><span class="rm"><span data-en="Lund, Abara · 2022 · cited 312 times">Lund, Abara · 2022 · trích dẫn 312 lần</span></span><button class="radd" type="button" aria-pressed="false" aria-label="Thêm vào Cần đọc" data-en-label="Add to To read"><i class="off" data-i="plus"></i><i class="on" data-i="check"></i></button></li>
+          <li><a class="rt" href="#" onclick="return false">Transfer Learning for Formation Energy with Limited Labels</a><span class="rm"><span data-en="Silva, Ng · 2021 · cited 175 times">Silva, Ng · 2021 · trích dẫn 175 lần</span></span><button class="radd" type="button" aria-pressed="false" aria-label="Thêm vào Cần đọc" data-en-label="Add to To read"><i class="off" data-i="plus"></i><i class="on" data-i="check"></i></button></li>
+          <li><a class="rt" href="#" onclick="return false">E(3)-Equivariant Graph Networks: Foundations</a><span class="rm"><span data-en="Berger, Ito, Salem · 2023 · cited 96 times">Berger, Ito, Salem · 2023 · trích dẫn 96 lần</span></span><button class="radd" type="button" aria-pressed="false" aria-label="Thêm vào Cần đọc" data-en-label="Add to To read"><i class="off" data-i="plus"></i><i class="on" data-i="check"></i></button></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <div class="composer-wrap">
+    <form class="composer" onsubmit="return false">
+      <textarea class="c-input" rows="1" aria-label="Hỏi về bài này" placeholder="Hỏi về bài này" data-en-ph="Ask about this paper"></textarea>
+      <button class="c-btn" type="button" aria-label="Nói"><i data-i="mic"></i></button>
+      <button class="c-btn c-send" type="submit" aria-label="Gửi" data-set="state:hoi"><i data-i="up"></i></button>
+    </form>
+  </div>
+</div>
+<script>
+  const sum = document.getElementById("sum"), go = document.getElementById("goBtn");
+  if (sum) sum.addEventListener("input", () => go.setAttribute("aria-disabled", String(sum.value.trim().length < 20)));
+  // the feedback button only works once the learner has written something
+  if (go) go.addEventListener("click", (e) => { if (go.getAttribute("aria-disabled") === "true") { e.stopImmediatePropagation(); e.preventDefault(); } }, true);
+
+  // citation data only comes from Semantic Scholar or Asta; arXiv has none
+  document.addEventListener("sources:change", () => {
+    const has = window.mockSources.on("s2") || window.mockSources.on("asta");
+    document.getElementById("rel").dataset.srcHas = has ? "1" : "0";
+  });
+  document.querySelectorAll("[data-rel]").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("[data-rel]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    document.querySelectorAll("[data-relist]").forEach((u) => { u.hidden = u.dataset.relist !== b.dataset.rel; });
+  }));
+  document.querySelectorAll(".radd").forEach((b) => b.addEventListener("click", () => b.setAttribute("aria-pressed", String(b.getAttribute("aria-pressed") !== "true"))));
+</script>
+</body>
+</html>

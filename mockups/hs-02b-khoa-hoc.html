@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="vi" data-age="thpt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khóa học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="assets/soon/pager.css">
+<script src="shared.js"></script>
+<script src="assets/soon/courses.js"></script><script src="assets/soon/pager.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .today { border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--rule-strong); }
+  .today-in { padding: clamp(20px, 4vw, 36px) clamp(20px, 4vw, 36px) clamp(20px, 4vw, 32px) 72px; display: grid; gap: 18px; }
+  .today h2 { font-size: clamp(1.5em, 3.4vw, 2em); max-width: 22ch; }
+  .today .why { color: var(--ink-2); max-width: 52ch; }
+  .today .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .week { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink-2); font-size: .9em; }
+  .week .dots { display: inline-flex; gap: 6px; }
+  .week .dots b { width: 14px; height: 14px; border-radius: 4px; background: var(--rule-strong); }
+  .week .dots b.on { background: var(--xanh); }
+  .week .dots b.today { outline: 2px solid var(--tim); outline-offset: 2px; background: var(--surface); }
+
+  /* kid hero */
+  .kid-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: center; }
+  .kid-pic { width: min(260px, 40vw); aspect-ratio: 1; border-radius: 28px; background: var(--vang-soft); display: grid; place-items: center; }
+  .speak { width: 64px; height: 64px; border-radius: 999px; border: 2px solid var(--rule-strong); background: var(--surface); display: grid; place-items: center; cursor: pointer; color: var(--tim-ink); }
+  .speak svg { width: 30px; height: 30px; }
+  @media (max-width: 560px) { .kid-hero { grid-template-columns: 1fr; } .kid-pic { width: 100%; max-width: 280px; } }
+
+  /* courses */
+  .courses { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+  .course { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 12px; border-radius: var(--r-md); text-decoration: none; color: inherit; }
+  .course:hover { background: var(--surface); box-shadow: var(--shadow); }
+  .thumb { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: #FBF5E8; border: 1px solid var(--rule); }
+  .course h3 { font-size: 1em; font-weight: 600; }
+  .course .meta { color: var(--ink-2); font-size: .85em; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .course .bar { width: 120px; }
+  .course .go { color: var(--ink-3); }
+
+  .kid-shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .kid-tile { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 14px; border-radius: 24px; background: var(--surface); border: 2px solid var(--rule); text-decoration: none; color: inherit; font-weight: 600; }
+  .kid-tile:hover { border-color: var(--tim); }
+  .kid-tile .pic { width: 100%; aspect-ratio: 4/3; border-radius: 16px; object-fit: cover; background: #FBF5E8; }
+  .kid-tile .stars { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; color: #9A5200; font-size: 20px; letter-spacing: 2px; padding-right: 64px; }
+  .kid-tile .stars small { font-size: 14px; letter-spacing: 0; color: var(--ink-2); font-weight: 500; }
+  .kid-cell { position: relative; }
+  .kid-cell .speak { position: absolute; right: 12px; bottom: 12px; width: 52px; height: 52px; }
+  .kid-cell .speak svg { width: 24px; height: 24px; }
+  .kid-more { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kid-more .kid-tile .tag { justify-self: start; }
+  .course .tag { white-space: nowrap; }
+  @media (max-width: 420px) { .course { grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; } .thumb { width: 56px; height: 56px; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Khóa học</span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-02-trang-chu.html" aria-label="Màn chính"><i data-i="grid"></i></a>
+    <h1 class="page-title" data-en="Courses">Khóa học</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+
+    <!-- ===== TODAY (agent-made plan, nothing to choose) ===== -->
+    <section class="today oli" aria-labelledby="today-h">
+      <div class="today-in">
+
+        <div class="kid-hero" data-when="age=tieu-hoc">
+          <div style="display:grid; gap:18px">
+            <h2 id="today-h" data-en="Let's count to 10!">Cùng đếm đến 10 nhé!</h2>
+            <div class="row">
+              <a class="btn btn-primary btn-big" href="hs-04-khoa-hoc-tieu-hoc.html"><i data-i="play"></i><span data-en="Start">Bắt đầu</span></a>
+              <button class="speak" aria-label="Đọc to"><i data-i="volume"></i></button>
+            </div>
+          </div>
+          <div class="kid-pic" aria-hidden="true">
+            <svg viewBox="0 0 200 200" width="200" height="200">
+              <g fill="#E5484D"><circle cx="58" cy="70" r="22"/><circle cx="108" cy="62" r="22"/><circle cx="152" cy="78" r="22"/><circle cx="80" cy="120" r="22"/><circle cx="132" cy="128" r="22"/></g>
+              <g stroke="#3B7A3B" stroke-width="5" stroke-linecap="round"><path d="M58 48v-9M108 40v-9M152 56v-9M80 98v-9M132 106v-9"/></g>
+              <g fill="#fff" opacity=".55"><circle cx="50" cy="62" r="5"/><circle cx="100" cy="54" r="5"/><circle cx="144" cy="70" r="5"/><circle cx="72" cy="112" r="5"/><circle cx="124" cy="120" r="5"/></g>
+              <text x="100" y="186" text-anchor="middle" font-family="Lexend" font-weight="700" font-size="30" fill="currentColor">5</text>
+            </svg>
+          </div>
+        </div>
+
+        <div data-when="age=thcs|thpt" style="display:grid; gap:18px">
+          <h2 data-en="Tonight: 20 minutes on electric fields">Tối nay: 20 phút Điện trường</h2>
+          <p class="why" data-en="You stopped at lesson 3 yesterday. Finish it, then redo the 4 questions you missed on Tuesday.">Hôm qua em dừng ở bài 3. Học nốt bài này, rồi làm lại 4 câu em sai hôm thứ Ba.</p>
+          <div class="row">
+            <a class="btn btn-primary btn-big" href="hs-05-khoa-hoc-thpt.html"><i data-i="play"></i><span data-en="Continue">Học tiếp</span></a>
+            <a class="week" href="hs-10-tien-bo.html" aria-label="Tuần này: 3 trên 5 buổi">
+              <span class="dots"><b class="on"></b><b class="on"></b><b></b><b class="on"></b><b class="today"></b><b></b><b></b></span>
+              <span data-en="3 of 5 sessions this week">Tuần này 3/5 buổi</span>
+            </a>
+          </div>
+        </div>
+
+        <div data-when="age=dai-hoc" style="display:grid; gap:18px">
+          <h2 data-en="Today: Bayesian inference, part 3">Hôm nay: Suy luận Bayes, phần 3</h2>
+          <p class="why" data-en="About 35 minutes: read conjugate priors, then 6 exercises. Your mock exam is in 9 days, so the plan moves Markov chains to next week.">Khoảng 35 phút: đọc mục tiên nghiệm liên hợp, rồi 6 bài tập. Còn 9 ngày nữa thi giữa kỳ nên lịch dời Xích Markov sang tuần sau.</p>
+          <div class="row">
+            <a class="btn btn-primary" href="hs-06-khoa-hoc-dai-hoc.html"><i data-i="play"></i><span data-en="Continue reading">Đọc tiếp</span></a>
+            <a class="week" href="hs-10-tien-bo.html">
+              <span class="dots"><b class="on"></b><b class="on"></b><b class="on"></b><b></b><b class="today"></b><b></b><b></b></span>
+              <span data-en="5h 10m this week">Tuần này 5 giờ 10 phút</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== My courses ===== -->
+    <div class="head">
+      <h2 data-en="Your courses">Khóa học của em</h2>
+      <span class="grow"></span>
+    </div>
+
+    <form class="search" action="hs-03-tim-khoa-hoc.html" role="search" style="margin-bottom:18px">
+      <i data-i="search"></i>
+      <input name="q" type="search" placeholder="Tìm khóa học" data-en-ph="Search courses" aria-label="Tìm khóa học">
+    </form>
+
+    <div class="kid-shelf" data-when="age=tieu-hoc">
+      <div class="kid-cell"><a class="kid-tile" href="hs-04-khoa-hoc-tieu-hoc.html">
+        <img class="pic" src="assets/courses/so-den-10.jpg" alt="">
+        <span data-en="Numbers to 10">Các số đến 10</span>
+        <span class="stars" aria-label="2 trên 5 sao">★★☆☆☆ <small data-en="Learning">Đang học</small></span>
+      </a>
+      <button class="speak" aria-label="Đọc tên khóa"><i data-i="volume"></i></button></div>
+      <div class="kid-cell"><a class="kid-tile" href="hs-03-tim-khoa-hoc.html">
+        <img class="pic" src="assets/courses/chu-cai.jpg" alt="">
+        <span data-en="Letters and sounds">Chữ cái và âm</span>
+        <span class="stars" aria-label="4 trên 5 sao">★★★★☆ <small data-en="Almost there">Gần thuộc</small></span>
+      </a>
+      <button class="speak" aria-label="Đọc tên khóa"><i data-i="volume"></i></button></div>
+      <div class="kid-cell"><a class="kid-tile" href="hs-03-tim-khoa-hoc.html">
+        <img class="pic" src="assets/courses/hinh-quanh-em.jpg" alt="">
+        <span data-en="Shapes around us">Hình quanh em</span>
+        <span class="stars" aria-label="Chưa học">☆☆☆☆☆ <small data-en="Not started">Chưa học</small></span>
+      </a>
+      <button class="speak" aria-label="Đọc tên khóa"><i data-i="volume"></i></button></div>
+    </div>
+
+    <ul class="courses" data-when="age=thcs|thpt|dai-hoc">
+      <li data-when="age=thcs|thpt"><a class="course" href="hs-05-khoa-hoc-thpt.html">
+        <img class="thumb" src="assets/courses/dien-truong.jpg" alt="">
+        <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3>
+          <span class="meta"><span class="bar"><i style="width:42%"></i></span><span data-en="Lesson 3 of 7, teacher Minh">Bài 3/7, thầy Minh</span></span></span>
+        <i data-i="next" class="go"></i>
+      </a></li>
+      <li data-when="age=thcs|thpt"><a class="course" href="hs-03-tim-khoa-hoc.html">
+        <img class="thumb" src="assets/courses/cap-so-cong.jpg" alt="">
+        <span><h3 data-en="Math 11: Sequences">Toán 11: Dãy số, cấp số cộng</h3>
+          <span class="meta"><span class="bar"><i style="width:80%"></i></span><span data-en="Lesson 8 of 10, teacher Lan">Bài 8/10, cô Lan</span></span></span>
+        <i data-i="next" class="go"></i>
+      </a></li>
+      <li data-when="age=thcs|thpt"><a class="course" href="hs-03-tim-khoa-hoc.html">
+        <img class="thumb" src="assets/courses/tieng-anh-unit4.jpg" alt="">
+        <span><h3 data-en="English 11: Unit 4">Tiếng Anh 11: Unit 4 Volunteer work</h3>
+          <span class="meta"><span class="bar"><i style="width:10%"></i></span><span data-en="Just started">Mới bắt đầu</span></span></span>
+        <i data-i="next" class="go"></i>
+      </a></li>
+
+      <li data-when="age=dai-hoc"><a class="course" href="hs-06-khoa-hoc-dai-hoc.html">
+        <img class="thumb" src="assets/courses/bayes.jpg" alt="">
+        <span><h3 data-en="Probability and Statistics: Bayesian inference">Xác suất thống kê: Suy luận Bayes</h3>
+          <span class="meta"><span class="bar"><i style="width:35%"></i></span><span data-en="Chapter 2 of 6, Dr. Quang">Chương 2/6, TS. Quang</span></span></span>
+        <i data-i="next" class="go"></i>
+      </a></li>
+      <li data-when="age=dai-hoc"><a class="course" href="hs-03-tim-khoa-hoc.html">
+        <img class="thumb" src="assets/courses/hoc-may.jpg" alt="">
+        <span><h3 data-en="Machine learning basics">Nhập môn học máy</h3>
+          <span class="meta"><span class="bar"><i style="width:62%"></i></span><span data-en="Chapter 5 of 8">Chương 5/8</span></span></span>
+        <i data-i="next" class="go"></i>
+      </a></li>
+    </ul>
+
+    <!-- ===== Other courses: a short preview, the full catalog is hs-03 ===== -->
+    <div class="head">
+      <h2 data-en="Other courses">Khóa học khác</h2>
+      <span class="grow"></span>
+      <a class="btn btn-quiet" id="more-all" href="hs-03-tim-khoa-hoc.html"><span data-en="See all">Xem tất cả</span><i data-i="next"></i></a>
+    </div>
+    <ul class="courses" id="more-rows" hidden></ul>
+    <div class="kid-shelf kid-more" id="more-kid" hidden></div>
+  </main>
+</div>
+<script>
+(function () {
+  var root = document.documentElement, rows = document.getElementById("more-rows"), kid = document.getElementById("more-kid"), all = document.getElementById("more-all");
+  function sync() {
+    var age = root.dataset.age;
+    if (!age) return;
+    var isKid = age === "tieu-hoc", items = SOON_LIST[age].slice(0, 4), el = isKid ? kid : rows;
+    rows.hidden = isKid; kid.hidden = !isKid;
+    (isKid ? rows : kid).innerHTML = "";
+    el.innerHTML = items.map(function (c) { return SoonPager.build[isKid ? "kid" : "row"](c); }).join("");
+    el.querySelectorAll("[tabindex]").forEach(function (n) { n.removeAttribute("tabindex"); });
+    all.href = "hs-03-tim-khoa-hoc.html?age=" + age;
+  }
+  document.addEventListener("mock:change", function (e) { if (e.detail.key === "age" || e.detail.key === "lang") sync(); });
+  document.addEventListener("DOMContentLoaded", sync);
+})();
+</script>
+</body>
+</html>

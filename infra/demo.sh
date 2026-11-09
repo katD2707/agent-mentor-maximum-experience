@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Local demo of Mentor on one Linux machine with Docker (README "Local demo").
+# Local demo of Mentor on one Linux or macOS machine with Docker (README "Local demo").
 #
 #   bash infra/demo.sh            first run: create infra/.env.demo, then build and start; later runs: start/update
 #   bash infra/demo.sh logs [svc]    follow logs (gateway, web, model-router)
@@ -17,7 +17,8 @@ info() { printf '\n==> %s\n' "$*"; }
 die() { printf 'LỖI: %s\n' "$*" >&2; exit 1; }
 env_get() { grep -E "^$1=" "$ENV_FILE" 2>/dev/null | tail -n1 | cut -d= -f2- | sed -e 's/^"//' -e 's/"$//' -e "s/^'//" -e "s/'$//"; }
 env_set() {  # KEY VALUE (generated values only: [A-Za-z0-9])
-    if grep -qE "^$1=" "$ENV_FILE"; then sed -i "s|^$1=.*|$1=$2|" "$ENV_FILE"; else printf '%s=%s\n' "$1" "$2" >>"$ENV_FILE"; fi
+    # sed -i.bak (not sed -i): the same command works with GNU sed on Linux and BSD sed on macOS
+    if grep -qE "^$1=" "$ENV_FILE"; then sed -i.bak "s|^$1=.*|$1=$2|" "$ENV_FILE" && rm -f "$ENV_FILE.bak"; else printf '%s=%s\n' "$1" "$2" >>"$ENV_FILE"; fi
 }
 rand_hex() { head -c "$1" /dev/urandom | od -An -tx1 | tr -d ' \n'; }
 web_port() { local p; p="$(env_get WEB_PORT)"; echo "${p:-3000}"; }

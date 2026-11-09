@@ -7,7 +7,7 @@ Docker and scripts for running the gateway, the model router and the web build. 
 |---|---|
 | `dev-up.ps1` | Windows: router (:4000), gateway (:8000), app (:5173) in separate windows; `-Desktop` adds the Tauri window |
 | `docker-compose.dev.yml` | Gateway + model router in Docker; the app runs on the host (`pnpm dev` in `apps/app`) |
-| `docker-compose.demo.yml`, `demo.sh` | Local demo on one Linux machine, dev mode, bound to 127.0.0.1 |
+| `docker-compose.demo.yml`, `demo.sh` | Local demo on one Linux or macOS machine, dev mode, bound to 127.0.0.1 |
 | `docker-compose.prod.yml`, `Caddyfile`, `deploy.sh`, `.env.prod.example` | Pilot on one Linux VM |
 | `gateway.Dockerfile`, `web.Dockerfile`, `web.Caddyfile` | Images: gateway; static build of `apps/app` served by Caddy |
 | `import-agent-mentor-bank.py` | Imports the agent-mentor seed question bank into `mentor-content/bank` (CONTRACTS 10.1) |

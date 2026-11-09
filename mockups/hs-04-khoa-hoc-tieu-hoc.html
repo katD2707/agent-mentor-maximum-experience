@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="vi" data-age="tieu-hoc" data-state="video">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toán 1: Các số đến 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .lesson-top { display: flex; align-items: center; gap: 14px; padding: 12px clamp(16px, 4vw, 40px); border-bottom: 1px solid var(--rule); }
+  .lesson-top .t { flex: 1; min-width: 0; display: grid; gap: 8px; }
+  .lesson-top .t b { font-weight: 600; font-size: .9em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lesson-top .icon-btn { width: 56px; height: 56px; }
+  .steps { display: flex; gap: 8px; }
+  .steps i { flex: 1; height: 12px; border-radius: 99px; background: var(--rule-strong); }
+  .steps i.done { background: var(--xanh); }
+  .steps i.now { background: var(--tim); }
+
+  .stage { max-width: 860px; margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 40px) 60px; display: grid; gap: 24px; justify-items: center; text-align: center; }
+  .say { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; justify-content: center; }
+  .basket svg { width: 100%; max-width: 140px; height: auto; }
+  .say h1 { font-size: clamp(1.4em, 4vw, 1.9em); }
+  .speak { width: 72px; height: 72px; flex: none; border-radius: 999px; border: 2px solid var(--rule-strong); background: var(--surface); display: grid; place-items: center; cursor: pointer; color: var(--tim-ink); }
+  .speak:hover { border-color: var(--tim); }
+  .speak svg { width: 34px; height: 34px; }
+
+  .board { width: 100%; border-radius: var(--r-lg); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); padding: 28px 28px 28px 72px; }
+
+  /* video */
+  .poster { position: relative; width: 100%; aspect-ratio: 16/10; border-radius: var(--r-lg); overflow: hidden; background: #FFF6C2; border: 1px solid var(--rule-strong); }
+  .poster svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 128px; height: 128px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; cursor: pointer; box-shadow: 0 10px 24px -10px rgba(31,27,58,.5), inset 0 -5px 0 rgba(0,0,0,.2); }
+  .play svg { width: 56px; height: 56px; margin-left: 8px; }
+  .poster.playing .play { display: none; }
+  .scene .ap { opacity: 0; }
+  .poster.playing .scene .ap { animation: pop .5s ease-out forwards; }
+  .scene .num { font: 700 64px var(--font-ui); fill: #1F1B3A; }
+  @keyframes pop { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+  .vbar { position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: rgba(31,27,58,.15); }
+  .vbar i { display: block; height: 100%; width: 0; background: var(--tim); }
+  .poster.playing .vbar i { animation: grow 5.5s linear forwards; }
+  @keyframes grow { to { width: 100%; } }
+
+  /* count */
+  .frame { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(8px, 2vw, 16px); width: 100%; max-width: 620px; }
+  .apple { aspect-ratio: 1; border-radius: 22px; border: 3px dashed var(--rule-strong); background: var(--surface); cursor: pointer; display: grid; place-items: center; padding: 8px; position: relative; }
+  .apple svg { width: 82%; height: 82%; }
+  .apple.on { border-style: solid; border-color: var(--xanh); background: var(--xanh-soft); }
+  .apple .n { position: absolute; top: 4px; right: 8px; font-weight: 700; font-size: 22px; color: var(--xanh); }
+  .bignum { font: 700 clamp(96px, 18vw, 150px)/1 var(--font-ui); color: var(--tim-ink); min-height: 1em; font-variant-numeric: tabular-nums; }
+
+  /* quiz */
+  .baskets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 3vw, 24px); width: 100%; }
+  .basket { border-radius: 26px; border: 3px solid var(--rule-strong); background: var(--surface); padding: 12px 8px 16px; cursor: pointer; min-height: 160px; display: grid; place-items: center; }
+  .basket:hover { border-color: var(--tim); }
+  .basket.wrong { border-color: var(--do); background: var(--do-soft); animation: wiggle .45s ease-in-out; }
+  .basket.right { border-color: var(--xanh); background: var(--xanh-soft); }
+  @keyframes wiggle { 0%,100% { transform: none; } 25% { transform: rotate(-3deg); } 75% { transform: rotate(3deg); } }
+  .hint { display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 999px; background: var(--do-soft); color: var(--do); font-weight: 600; }
+  .stars { display: flex; gap: 10px; justify-content: center; }
+  .stars svg { width: clamp(64px, 14vw, 104px); height: auto; }
+  .stars .s { opacity: 0; animation: pop .45s ease-out forwards; }
+  .stars .s:nth-child(2) { animation-delay: .15s; }
+  .stars .s:nth-child(3) { animation-delay: .3s; }
+
+  .next { min-width: 220px; }
+  @media (prefers-reduced-motion: reduce) {
+    .stars .s, .poster.playing .scene .ap { opacity: 1; }
+    .poster.playing .vbar i { width: 100%; }
+  }
+  @media (max-width: 520px) { .basket { min-height: 120px; padding: 6px; } .speak { width: 64px; height: 64px; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Khóa mẫu tiểu học: Toán 1, Các số đến 10</span>
+  <span class="mock-seg"><span>Phần</span><button data-set="state:video">Video</button><button data-set="state:dem">Đếm</button><button data-set="state:quiz">Câu đố</button><button data-set="state:xong">Xong</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Mọi chữ đều có nút loa đọc to; trẻ chưa đọc thạo vẫn học được.</span>
+</div>
+
+<div class="app">
+  <header class="lesson-top">
+    <a class="icon-btn" href="hs-02b-khoa-hoc.html" aria-label="Khóa học"><i data-i="back"></i></a>
+    <div class="t">
+      <b data-en="Math 1: Numbers to 10">Toán 1: Các số đến 10</b>
+      <div class="steps" aria-label="Tiến độ bài">
+        <i id="st1"></i><i id="st2"></i><i id="st3"></i>
+      </div>
+    </div>
+    <a class="icon-btn" href="hs-08-hoi-bai.html" aria-label="Chụp bài hỏi"><i data-i="camera"></i></a>
+  </header>
+
+  <!-- (a) VIDEO -->
+  <section class="stage" data-when="state=video">
+    <div class="say">
+      <h1 data-en="Watch: the puppy counts apples">Xem: Cún đếm táo</h1>
+      <button class="speak" data-say="Xem nào. Cún đếm táo." aria-label="Đọc to"><i data-i="volume"></i></button>
+    </div>
+    <div class="poster" id="poster">
+      <svg class="scene" viewBox="0 0 640 400" aria-hidden="true">
+        <rect x="0" y="300" width="640" height="100" fill="#BFE3A8"/>
+        <!-- puppy -->
+        <g transform="translate(40 170)">
+          <ellipse cx="70" cy="110" rx="62" ry="40" fill="#D9A066"/>
+          <circle cx="70" cy="50" r="46" fill="#E8B57E"/>
+          <ellipse cx="30" cy="40" rx="16" ry="30" fill="#A86B3C"/>
+          <ellipse cx="110" cy="40" rx="16" ry="30" fill="#A86B3C"/>
+          <circle cx="56" cy="46" r="6" fill="#1F1B3A"/><circle cx="86" cy="46" r="6" fill="#1F1B3A"/>
+          <ellipse cx="71" cy="64" rx="9" ry="6" fill="#1F1B3A"/>
+          <path d="M60 76q11 9 22 0" stroke="#1F1B3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+        </g>
+        <!-- apples appear one by one when playing -->
+        <g id="vapples"></g>
+        <text class="num" x="560" y="110" text-anchor="middle" id="vnum"></text>
+      </svg>
+      <button class="play" id="playBtn" aria-label="Phát video"><i data-i="play"></i></button>
+      <div class="vbar"><i></i></div>
+    </div>
+    <button class="btn btn-primary btn-big next" data-set="state:dem"><span data-en="Next">Tiếp</span><i data-i="next"></i></button>
+  </section>
+
+  <!-- (b) COUNT TOGETHER -->
+  <section class="stage" data-when="state=dem">
+    <div class="say">
+      <h1 data-en="Tap each apple">Chạm vào từng quả táo</h1>
+      <button class="speak" data-say="Chạm vào từng quả táo và đếm cùng nhau nhé." aria-label="Đọc to"><i data-i="volume"></i></button>
+    </div>
+    <div class="board oli" style="display:grid; gap:20px; justify-items:center">
+      <div class="bignum" id="count" aria-live="polite">0</div>
+      <div class="frame" id="frame"></div>
+    </div>
+    <button class="btn btn-primary btn-big next" id="countNext" data-set="state:quiz" hidden><span data-en="Next">Tiếp</span><i data-i="next"></i></button>
+  </section>
+
+  <!-- (c) QUIZ -->
+  <section class="stage" data-when="state=quiz">
+    <div class="say">
+      <h1 data-en="Tap the basket with 7">Chạm vào giỏ có <span style="font-size:1.4em;color:var(--tim-ink)">7</span> quả</h1>
+      <button class="speak" data-say="Giỏ nào có bảy quả táo? Chạm vào giỏ đó nhé." aria-label="Đọc to"><i data-i="volume"></i></button>
+    </div>
+    <div class="baskets" id="baskets"></div>
+    <div class="hint" id="hint" hidden><i data-i="volume"></i><span data-en="Count again, slowly">Đếm lại chậm nhé</span></div>
+    <div class="stars" id="winStars" hidden></div>
+    <button class="btn btn-primary btn-big next" id="quizNext" data-set="state:xong" hidden><span data-en="Next">Tiếp</span><i data-i="next"></i></button>
+  </section>
+
+  <!-- (d) DONE -->
+  <section class="stage" data-when="state=xong">
+    <div class="stars" id="doneStars"></div>
+    <div class="say">
+      <h1 data-en="Great job!">Giỏi lắm!</h1>
+      <button class="speak" data-say="Giỏi lắm! Con đã đếm được đến mười." aria-label="Đọc to"><i data-i="volume"></i></button>
+    </div>
+    <a class="btn btn-primary btn-big next" href="hs-02b-khoa-hoc.html"><span data-en="Next">Tiếp</span><i data-i="next"></i></a>
+  </section>
+</div>
+
+<script>
+(function () {
+  const APPLE = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 9v-5" stroke="#3B7A3B" stroke-width="3" stroke-linecap="round"/><path d="M21 8c3-4 8-4 10-2-3 3-6 3-10 2z" fill="#5BA35B"/><circle cx="20" cy="23" r="14" fill="#E5484D"/><circle cx="14" cy="18" r="3.5" fill="#fff" opacity=".5"/></svg>';
+  const STAR = '<svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z" fill="#FFC21A" stroke="#9A5200" stroke-width="1"/></svg>';
+  const WORDS = ["một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín", "mười"];
+
+  function say(text) {
+    try {
+      if (!("speechSynthesis" in window)) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "vi-VN"; u.rate = .9;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-say]");
+    if (b) say(b.dataset.say);
+  });
+
+  // progress steps follow the part
+  function steps() {
+    const s = document.documentElement.dataset.state;
+    const order = ["video", "dem", "quiz", "xong"];
+    const at = order.indexOf(s);
+    ["st1", "st2", "st3"].forEach((id, i) => {
+      const el = document.getElementById(id);
+      el.className = i < at ? "done" : i === at ? "now" : "";
+    });
+  }
+  document.addEventListener("mock:change", steps);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // this sample course is always the primary-school layout
+    window.mockSet("age", "tieu-hoc", false);
+
+    // (a) video: apples drop in with the count
+    const g = document.getElementById("vapples");
+    const vnum = document.getElementById("vnum");
+    for (let i = 0; i < 5; i++) {
+      const x = 230 + i * 62;
+      g.insertAdjacentHTML("beforeend", '<g class="ap" style="animation-delay:' + (i * .9 + .3) + 's"><circle cx="' + x + '" cy="250" r="24" fill="#E5484D"/><path d="M' + x + ' 226v-10" stroke="#3B7A3B" stroke-width="5" stroke-linecap="round"/><circle cx="' + (x - 8) + '" cy="242" r="5" fill="#fff" opacity=".5"/></g>');
+    }
+    document.getElementById("playBtn").addEventListener("click", () => {
+      const p = document.getElementById("poster");
+      p.classList.add("playing");
+      for (let i = 0; i < 5; i++) setTimeout(() => { vnum.textContent = i + 1; say(WORDS[i]); }, i * 900 + 500);
+    });
+
+    // (b) count: tap apples in any order, count goes up
+    const frame = document.getElementById("frame");
+    const count = document.getElementById("count");
+    let n = 0;
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement("button");
+      b.className = "apple";
+      b.setAttribute("aria-label", "Quả táo");
+      b.innerHTML = APPLE;
+      b.addEventListener("click", () => {
+        if (b.classList.contains("on")) return;
+        n++;
+        b.classList.add("on");
+        b.insertAdjacentHTML("beforeend", '<span class="n">' + n + "</span>");
+        count.textContent = n;
+        say(WORDS[n - 1]);
+        if (n === 10) { document.getElementById("countNext").hidden = false; setTimeout(() => say("Mười quả táo. Giỏi quá!"), 700); }
+      });
+      frame.appendChild(b);
+    }
+
+    // (c) quiz: three baskets, 5 / 7 / 9 apples
+    const baskets = document.getElementById("baskets");
+    const hint = document.getElementById("hint");
+    [5, 7, 9].forEach((k) => {
+      const b = document.createElement("button");
+      b.className = "basket";
+      b.setAttribute("aria-label", "Giỏ táo");
+      let apples = "";
+      for (let i = 0; i < k; i++) {
+        const col = i % 3, row = Math.floor(i / 3);
+        const x = 30 + col * 30, y = 30 + row * 24;
+        apples += '<circle cx="' + x + '" cy="' + y + '" r="11" fill="#E5484D"/><circle cx="' + (x - 4) + '" cy="' + (y - 4) + '" r="2.5" fill="#fff" opacity=".5"/>';
+      }
+      b.innerHTML = '<svg viewBox="0 0 120 130" width="140" aria-hidden="true">' + apples +
+        '<path d="M8 96h104l-12 30H20z" fill="#C98B4A"/><path d="M8 96h104" stroke="#8A5A2B" stroke-width="5" stroke-linecap="round"/><path d="M20 106h80M24 116h72" stroke="#8A5A2B" stroke-width="2.5" opacity=".6"/></svg>';
+      b.addEventListener("click", () => {
+        if (k === 7) {
+          baskets.querySelectorAll(".basket").forEach((x) => { x.classList.remove("wrong"); x.disabled = true; });
+          b.classList.add("right");
+          hint.hidden = true;
+          const st = document.getElementById("winStars");
+          st.innerHTML = STAR + STAR + STAR;
+          st.hidden = false;
+          document.getElementById("quizNext").hidden = false;
+          say("Đúng rồi! Bảy quả táo.");
+        } else {
+          b.classList.remove("wrong"); void b.offsetWidth; b.classList.add("wrong");
+          hint.hidden = false;
+          say("Chưa đúng. Đếm lại chậm nhé.");
+        }
+      });
+      baskets.appendChild(b);
+    });
+
+    document.getElementById("doneStars").innerHTML = STAR + STAR + STAR;
+    steps();
+  });
+})();
+</script>
+</body>
+</html>

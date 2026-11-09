@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="duyet">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Xem lại bài giảng</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .role { font-size: .85em; color: var(--ink-2); padding: 4px 12px; border-radius: 99px; background: var(--tim-soft); white-space: nowrap; }
+  .main { max-width: 1160px; }
+  @media (max-width: 480px) { .role { display: none; } .topbar .logo span:last-child { display: none; } }
+  .pub { min-height: 46px; }
+
+  .version {
+    display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; margin-bottom: 20px;
+    border-radius: var(--r-md); background: var(--cam-soft); color: var(--ink);
+  }
+  .version svg { color: var(--cam); flex: none; margin-top: 2px; }
+
+  .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 14px; }
+  .crumbs h1 { font-size: 1.15em; }
+  .crumbs .pager { display: inline-flex; gap: 6px; align-items: center; color: var(--ink-2); font-size: .9em; }
+  .crumbs .pager .icon-btn { width: 38px; height: 38px; }
+  .hint { color: var(--ink-2); font-size: .9em; margin-bottom: 16px; max-width: 70ch; }
+
+
+  /* course level: teacher confirms, agent only suggests */
+  .lvbars { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; flex: none; }
+  .lvbars i { display: block; width: 4px; border-radius: 1px; background: var(--rule-strong); }
+  .lvbars i:nth-child(1) { height: 6px; } .lvbars i:nth-child(2) { height: 10px; } .lvbars i:nth-child(3) { height: 14px; }
+  .lvbars i.on { background: var(--tim); }
+  .lvtag { display: inline-flex; align-items: center; gap: 7px; padding: 3px 10px; border-radius: 99px; font-size: .78em; font-weight: 600; background: var(--tim-soft); color: var(--tim-ink); white-space: nowrap; }
+  .levelrow { display: grid; gap: 10px; margin-bottom: 18px; padding: 14px 16px; border-radius: var(--r-md); background: var(--surface); border: 1.5px solid var(--rule-strong); }
+  .levelrow.need { border-color: var(--cam); }
+  .lv-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; justify-content: space-between; }
+  .lv-label { font-weight: 600; font-size: .95em; }
+  .lv-seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; max-width: 520px; }
+  .lv-opt { display: grid; justify-items: center; align-content: center; gap: 3px; min-height: 64px; padding: 8px 6px; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--paper); color: var(--ink); font: 500 .92em var(--font-ui); cursor: pointer; }
+  .lv-opt:hover { border-color: var(--tim); }
+  .lv-opt[aria-checked="true"] { border-color: var(--tim); background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; box-shadow: inset 0 0 0 1px var(--tim); }
+  .lv-opt .sug { font-style: normal; font-size: .72em; font-weight: 600; padding: 1px 8px; border-radius: 99px; background: var(--vang); color: #3A3000; }
+  .lv-opt .sug[hidden] { display: none; }
+  .lv-note { color: var(--ink-2); font-size: .85em; }
+  .lv-ok { min-height: 44px; padding: 0 18px; }
+  .pub[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
+  @media (max-width: 960px) { .layout { grid-template-columns: 1fr; } }
+
+  /* lesson as the student sees it */
+  .paper { position: relative; border-radius: var(--r-lg); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); padding: clamp(22px, 4vw, 40px) clamp(20px, 4vw, 44px) 40px 76px; }
+  @media (max-width: 560px) { .paper { padding-left: 56px; padding-right: 16px; } }
+  .lesson-body { font-family: var(--font-read); font-size: 1.06em; line-height: 1.75; max-width: 64ch; }
+  .lesson-body h2 { font-family: var(--font-ui); font-size: 1.6em; margin-bottom: 4px; }
+  .lesson-body h3 { font-family: var(--font-ui); font-size: 1.05em; margin: 26px 0 8px; }
+  .lesson-body p { margin: 0 0 14px; }
+  .lesson-body ul { margin: 0 0 14px; padding-left: 1.2em; }
+  .lesson-body li { margin-bottom: 6px; }
+  .lesson-meta { font-family: var(--font-ui); color: var(--ink-2); font-size: .82em; margin-bottom: 20px; }
+
+  /* video with a review player bar */
+  .poster { position: relative; margin: 6px 0 22px; border-radius: 16px; overflow: hidden; background: #1F1B3A; aspect-ratio: 16/9; }
+  .poster svg.field { width: 100%; height: 100%; }
+  .poster .play { position: absolute; inset: 0 0 48px; margin: auto; width: 72px; height: 72px; border-radius: 999px; border: 0; background: rgba(255,255,255,.94); color: #1F1B3A; display: grid; place-items: center; cursor: pointer; }
+  .poster .play svg { width: 30px; height: 30px; margin-left: 4px; }
+  .poster.playing .play { display: none; }
+  .vbar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: rgba(15, 12, 30, .86); color: #fff; font: 500 13px var(--font-ui); }
+  .vbtn { width: 34px; height: 34px; border-radius: 99px; border: 0; background: rgba(255,255,255,.16); color: #fff; display: grid; place-items: center; cursor: pointer; flex: none; padding: 0; }
+  .vbtn svg { width: 18px; height: 18px; }
+  .vtrack { position: relative; flex: 1; min-width: 60px; display: flex; align-items: center; }
+  .vtrack input { width: 100%; margin: 0; accent-color: #B8ABFF; cursor: pointer; }
+  .vmark {
+    position: absolute; bottom: calc(100% + 4px); transform: translateX(-50%) rotate(-6deg);
+    width: 24px; height: 24px; padding: 0; border-radius: 99px; border: 2px solid #FF8A8A;
+    background: #1E1B38; color: #FFC2C2; font: 600 12px/20px var(--font-ui); text-align: center; cursor: pointer;
+  }
+  .vmark.fixed { border-color: #4FD39B; color: #A6F0CB; }
+  .vtime { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .vcmt { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px; border-radius: 99px; border: 0; background: #fff; color: #1F1B3A; font: 600 13px var(--font-ui); cursor: pointer; flex: none; }
+  .vcmt svg { width: 16px; height: 16px; }
+  @media (max-width: 560px) {
+    .vcmt .lbl, .vtime { display: none; } .vcmt { padding: 0 10px; }
+    .poster .play { width: 48px; height: 48px; inset: 0 0 50px; } .poster .play svg { width: 22px; height: 22px; }
+  }
+
+  /* figure that can be pinned */
+  .fig { margin: 6px 0 22px; font-family: var(--font-ui); }
+  .figimg { position: relative; max-width: 520px; border-radius: 14px; background: var(--surface); border: 1px solid var(--rule-strong); cursor: crosshair; }
+  .figimg svg { width: 100%; height: auto; display: block; color: var(--tim-ink); }
+  .fig figcaption { font-size: .82em; color: var(--ink-2); margin-top: 8px; }
+  .ipin {
+    position: absolute; transform: translate(-50%, -50%) rotate(-6deg); width: 28px; height: 28px; padding: 0;
+    border-radius: 99px; border: 2px solid var(--do); background: var(--surface); color: var(--do);
+    font: 600 13px/24px var(--font-ui); text-align: center; cursor: pointer;
+  }
+  .ipin.fixed { border-color: var(--xanh); color: var(--xanh); }
+  .ipin.pending { border-style: dashed; }
+  .ipin.active, .vmark.active { outline: 3px solid var(--vang); outline-offset: 2px; }
+
+  .quiz { font-family: var(--font-ui); margin-top: 26px; padding: 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--rule-strong); }
+  .quiz h3 { margin: 0 0 12px; font-size: 1em; }
+  .quiz ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .quiz li { display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--rule-strong); }
+  .quiz li b { width: 28px; height: 28px; border-radius: 99px; display: grid; place-items: center; background: var(--tim-soft); color: var(--tim-ink); flex: none; font-size: .85em; }
+  .quiz li.key { border-color: var(--xanh); }
+  .quiz .keynote { font-size: .8em; color: var(--xanh); margin-left: auto; }
+
+  /* teacher marks on text */
+  mark.cmt { background: var(--vang); color: #1F1B3A; border-radius: 3px; padding: 0 1px; cursor: pointer; }
+  mark.cmt.fixed { background: transparent; color: inherit; box-shadow: inset 0 -2px 0 var(--xanh); }
+  mark.cmt.active { outline: 2px solid var(--do); outline-offset: 1px; }
+  del { color: var(--do); text-decoration-thickness: 2px; }
+  ins { text-decoration: none; background: var(--xanh-soft); box-shadow: inset 0 -2px 0 var(--xanh); }
+  .pen {
+    position: absolute; left: 14px; width: 30px; height: 30px; padding: 0; border-radius: 999px;
+    border: 2px solid var(--do); color: var(--do); background: var(--surface);
+    font: 600 14px/26px var(--font-ui); text-align: center; cursor: pointer; transform: rotate(-6deg);
+  }
+  .pen.fixed { border-color: var(--xanh); color: var(--xanh); }
+
+  /* floating tools */
+  .float { position: absolute; z-index: 40; transform: translate(-50%, -100%); }
+  .float .btn { min-height: 40px; padding: 0 14px; font-size: .9em; background: var(--ink); color: var(--paper); box-shadow: var(--shadow); }
+  .pop { position: absolute; z-index: 41; width: min(340px, 90vw); padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); display: grid; gap: 10px; }
+  .pop q { font-size: .85em; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pop-m { display: flex; gap: 10px; align-items: center; font-size: .88em; font-weight: 600; }
+  .pop-m .thumb { width: 96px; height: 54px; border-radius: 8px; border: 1px solid var(--rule-strong); background: var(--surface); flex: none; }
+  .pop textarea { width: 100%; min-height: 76px; resize: vertical; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--rule-strong); background: var(--paper); }
+  .pop textarea:focus { outline: none; border-color: var(--do); }
+  .pop .acts { display: flex; justify-content: flex-end; gap: 8px; }
+  .pop .btn { min-height: 40px; padding: 0 16px; font-size: .9em; }
+
+  /* side panel */
+  .panel { position: sticky; top: 64px; display: grid; gap: 12px; }
+  .panel h2 { font-size: 1em; }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .note { padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1.5px solid var(--rule); cursor: pointer; display: grid; gap: 8px; font-size: .92em; }
+  .note.active { border-color: var(--tim); }
+  .note .top { display: flex; align-items: center; gap: 8px; }
+  .note .n { width: 26px; height: 26px; border-radius: 99px; border: 2px solid var(--do); color: var(--do); display: grid; place-items: center; font-weight: 600; font-size: .82em; flex: none; }
+  .note.fixed .n { border-color: var(--xanh); color: var(--xanh); }
+  .note .where { font-weight: 600; font-size: .9em; }
+  .note q { color: var(--ink-2); font-size: .9em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .note .thumb { width: 128px; height: 72px; border-radius: 8px; display: block; background: var(--surface); border: 1px solid var(--rule-strong); }
+  .note .ba { display: flex; gap: 12px; }
+  .note .ba figure { margin: 0; display: grid; gap: 4px; font-size: .8em; color: var(--ink-2); }
+  .note .ba svg { width: 80px; height: 60px; border-radius: 8px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); }
+  .note .said { color: var(--ink); }
+  .note .done-txt { color: var(--ink-2); font-size: .88em; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Giáo viên: Xem lại nội dung và nhận xét</span>
+  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:duyet">Duyệt lần đầu</button><button data-set="state:da-xuat-ban">Sửa khóa đã xuất bản</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Bôi đen chữ, bấm vào ảnh, hoặc dừng video để nhận xét.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="gv-01-gui-bai.html?state=co-khoa" aria-label="Quay lại"><i data-i="back"></i></a>
+    <a class="logo" href="gv-01-gui-bai.html?state=co-khoa"><span class="logo-mark">M</span><span>Mentor</span></a>
+    <span class="role" data-en="Teacher">Giáo viên</span>
+    <span class="grow"></span>
+    <button class="btn btn-primary pub" id="pub" data-when="state=duyet"><span data-en="Publish">Xuất bản</span></button>
+    <button class="btn btn-primary pub" id="pub2" data-when="state=da-xuat-ban"><span data-en="Publish version 2">Xuất bản bản 2</span></button>
+  </header>
+
+  <main class="main">
+    <div class="version" data-when="state=da-xuat-ban" role="note">
+      <i data-i="layers"></i>
+      <p data-en="38 students are on version 1. These edits become version 2: new students get version 2, anyone already learning keeps version 1 and their progress.">38 học sinh đang học bản 1. Bản sửa này là bản 2: học sinh mới học bản 2, ai đang học vẫn giữ bản 1 và tiến độ cũ.</p>
+    </div>
+
+    <div class="version" data-when="state=duyet" role="note">
+      <i data-i="layers"></i>
+      <p data-en="This course needs app version 0.2.0 or newer. Students on an older version are asked to update before they open it.">Khóa này cần app bản 0.2.0 trở lên; học sinh dùng bản cũ sẽ được nhắc cập nhật trước khi mở.</p>
+    </div>
+
+    <div class="crumbs">
+      <h1 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h1>
+      <span class="lvtag" id="lvtag"></span>
+      <span class="grow"></span>
+      <span class="pager">
+        <a class="icon-btn" href="#" aria-label="Bài trước"><i data-i="back"></i></a>
+        <span data-en="Lesson 3 of 7">Bài 3/7</span>
+        <a class="icon-btn" href="#" aria-label="Bài sau"><i data-i="next"></i></a>
+      </span>
+    </div>
+    <div class="levelrow" id="levelrow">
+      <div class="lv-top">
+        <span class="lv-label" id="lv-l" data-en="Course level">Mức độ khóa học</span>
+        <button type="button" class="btn btn-primary lv-ok" id="lv-ok"><span data-en="Confirm level">Xác nhận mức độ</span></button>
+      </div>
+      <div class="lv-seg" role="radiogroup" aria-labelledby="lv-l">
+        <button type="button" class="lv-opt" role="radio" data-lv="basic" aria-checked="false"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span data-en="Basic">Cơ bản</span><em class="sug" hidden data-en="Suggested">Gợi ý</em></button>
+        <button type="button" class="lv-opt" role="radio" data-lv="intermediate" aria-checked="false"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span><span data-en="Intermediate">Trung bình</span><em class="sug" hidden data-en="Suggested">Gợi ý</em></button>
+        <button type="button" class="lv-opt" role="radio" data-lv="advanced" aria-checked="false"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span data-en="Advanced">Nâng cao</span><em class="sug" hidden data-en="Suggested">Gợi ý</em></button>
+      </div>
+      <p class="lv-note" id="lv-note" hidden></p>
+    </div>
+
+    <p class="hint" data-en="Highlight text, tap a spot on a picture, or pause the video where it needs work, then comment. Mentor fixes it straight away, no questions back.">Bôi đen chữ, chạm vào chỗ chưa ưng trên hình, hoặc dừng video ở đoạn cần sửa rồi nhận xét. Mentor sửa luôn theo ý bạn, không hỏi lại.</p>
+
+    <div class="layout">
+      <article class="paper oli" id="paper">
+        <div class="lesson-body" id="body">
+          <h2>Đường sức điện</h2>
+          <p class="lesson-meta">Bài 3, khoảng 20 phút: video 1 phút 40, bài đọc, hình vẽ, 3 câu hỏi</p>
+
+          <div class="poster" id="poster" aria-label="Video: đường sức quanh hai điện tích">
+            <svg class="field" viewBox="0 0 320 180" aria-hidden="true">
+              <g id="vidg">
+                <g fill="none" stroke="#9C8AFF" stroke-width="1.4" opacity=".85">
+                  <path d="M110 90 C140 40, 180 40, 210 90"/><path d="M110 90 C140 60, 180 60, 210 90"/>
+                  <path d="M110 90 L210 90"/><path d="M110 90 C140 120, 180 120, 210 90"/><path d="M110 90 C140 140, 180 140, 210 90"/>
+                  <path d="M110 90 C80 30, 40 20, 10 30"/><path d="M110 90 C70 70, 30 70, 4 70"/><path d="M110 90 C70 110, 30 110, 4 110"/><path d="M110 90 C80 150, 40 160, 10 150"/>
+                  <path d="M210 90 C240 30, 280 20, 310 30"/><path d="M210 90 C250 70, 290 70, 316 70"/><path d="M210 90 C250 110, 290 110, 316 110"/><path d="M210 90 C240 150, 280 160, 310 150"/>
+                </g>
+                <circle cx="110" cy="90" r="14" fill="#E5484D"/><text x="110" y="95" text-anchor="middle" font-family="Lexend" font-size="16" font-weight="700" fill="#fff">+</text>
+                <circle cx="210" cy="90" r="14" fill="#4FA3FF"/><text x="210" y="95" text-anchor="middle" font-family="Lexend" font-size="18" font-weight="700" fill="#fff">−</text>
+              </g>
+            </svg>
+            <button class="play" id="bigplay" type="button" aria-label="Phát video"><i data-i="play"></i></button>
+            <div class="vbar">
+              <button class="vbtn" id="vplay" type="button" aria-label="Phát"></button>
+              <div class="vtrack">
+                <input type="range" id="vrange" min="0" max="100" step="1" value="42" aria-label="Vị trí trong video">
+                <div id="vmarks"></div>
+              </div>
+              <span class="vtime" id="vtime">0:42 / 1:40</span>
+              <button class="vcmt" id="vcmt" type="button"><i data-i="comment"></i><span class="lbl" id="vcmt-lbl">Nhận xét tại 0:42</span></button>
+            </div>
+          </div>
+
+          <p>Điện trường thì không nhìn thấy được. Để hình dung nó, người ta vẽ các <b>đường sức điện</b>: tại mỗi điểm trên đường, tiếp tuyến chỉ đúng hướng của vectơ cường độ điện trường ở điểm đó.</p>
+
+          <h3>Đường sức có gì đặc biệt?</h3>
+          <ul>
+            <li>Qua mỗi điểm trong điện trường chỉ vẽ được một đường sức.</li>
+            <li>Đường sức đi ra từ điện tích dương và kết thúc ở điện tích âm, hoặc chạy ra xa vô cực.</li>
+            <li><mark class="cmt" data-id="2">Chỗ điện trường mạnh thì đường sức dày, chỗ yếu thì thưa.</mark></li>
+            <li>Các đường sức không bao giờ cắt nhau.</li>
+          </ul>
+
+          <figure class="fig">
+            <div class="figimg" id="figimg" tabindex="0" role="group" aria-label="Hình 3.2. Bấm vào một chỗ trên hình để nhận xét, hoặc nhấn Enter để ghim ở giữa.">
+              <svg viewBox="0 0 320 180" aria-hidden="true">
+                <defs>
+                  <marker id="arw" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 1 L9 5 L0 9 z" fill="currentColor"/>
+                  </marker>
+                </defs>
+                <g id="fig32g">
+                  <g fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#arw)">
+                    <path d="M91 90 H16"/><path d="M95 80 C80 55, 60 35, 30 18"/><path d="M95 100 C80 125, 60 145, 30 162"/>
+                    <path d="M103 76 C100 50, 92 30, 84 8"/><path d="M103 104 C100 130, 92 150, 84 172"/>
+                    <path d="M117 82 C135 70, 150 45, 154 10"/><path d="M117 98 C135 110, 150 135, 154 170"/>
+                    <path d="M229 90 H304"/><path d="M225 80 C240 55, 260 35, 290 18"/><path d="M225 100 C240 125, 260 145, 290 162"/>
+                    <path d="M217 76 C220 50, 228 30, 236 8"/><path d="M217 104 C220 130, 228 150, 236 172"/>
+                    <path d="M203 82 C185 70, 170 45, 166 10"/><path d="M203 98 C185 110, 170 135, 166 170"/>
+                  </g>
+                  <circle cx="105" cy="90" r="14" fill="#E5484D"/><text x="105" y="95" text-anchor="middle" font-family="Lexend" font-size="16" font-weight="700" fill="#fff">+</text>
+                  <circle cx="215" cy="90" r="14" fill="#E5484D"/><text x="215" y="95" text-anchor="middle" font-family="Lexend" font-size="16" font-weight="700" fill="#fff">+</text>
+                </g>
+              </svg>
+            </div>
+            <figcaption data-en="Figure 3.2: Field lines of two like charges">Hình 3.2: Đường sức của hai điện tích cùng dấu</figcaption>
+          </figure>
+
+          <p><mark class="cmt fixed" data-id="1"><del>Đường sức điện chính là quỹ đạo chuyển động của điện tích thử.</del> <ins>Đường sức không phải là đường đi của điện tích. Thả một hạt mang điện vào điện trường, nó không nhất thiết chạy dọc theo đường sức.</ins></mark></p>
+
+          <div class="quiz">
+            <h3>Câu 1. Quanh một điện tích dương đứng yên, đường sức điện có dạng nào?</h3>
+            <ol>
+              <li class="key"><b>A</b><span>Các đường thẳng hướng ra xa điện tích</span><span class="keynote">Đáp án</span></li>
+              <li><b>B</b><span>Các đường thẳng hướng vào điện tích</span></li>
+              <li><b>C</b><span>Các vòng tròn đồng tâm quanh điện tích</span></li>
+              <li><b>D</b><span>Các đường cong cắt nhau tại điện tích</span></li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <aside class="panel" aria-labelledby="notes-h">
+        <h2 id="notes-h" data-en="Your comments">Nhận xét của bạn</h2>
+        <ul class="notes" id="notes"></ul>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<div class="float" id="float" hidden><button class="btn" id="float-btn"><i data-i="comment"></i><span data-en="Comment">Nhận xét</span></button></div>
+<form class="pop" id="pop" hidden>
+  <q id="pop-q"></q>
+  <div class="pop-m" id="pop-m" hidden></div>
+  <textarea id="pop-t" placeholder="Bạn muốn sửa thế nào? Ví dụ: viết ngắn lại, làm chậm đoạn này" data-en-ph="What should change? E.g. shorter, slow this part down" aria-label="Nhận xét"></textarea>
+  <div class="acts"><button type="button" class="btn btn-ghost" id="pop-x" data-en="Cancel">Hủy</button><button class="btn btn-primary" data-en="Send">Gửi</button></div>
+</form>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const body = $("body"), paper = $("paper"), notes = $("notes"), float = $("float");
+  const pop = $("pop"), popQ = $("pop-q"), popM = $("pop-m"), popT = $("pop-t");
+  const poster = $("poster"), vrange = $("vrange"), vmarks = $("vmarks"), vtime = $("vtime");
+  const vcmt = $("vcmt"), vcmtLbl = $("vcmt-lbl"), vplay = $("vplay"), bigPlay = $("bigplay");
+  const figimg = $("figimg");
+  const LEN = 100; // video length in seconds (1:40)
+  const en = () => document.documentElement.lang === "en";
+  const L = (vi, e) => (en() ? e : vi);
+  const fmt = (s) => Math.floor(s / 60) + ":" + String(Math.round(s % 60)).padStart(2, "0");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const smooth = reduce ? "auto" : "smooth";
+
+  // comments already on this lesson
+  const list = [
+    { id: 1, kind: "text", quote: "Đường sức điện chính là quỹ đạo chuyển động của điện tích thử.",
+      said: "Câu này sai, dễ làm các em hiểu nhầm. Sửa lại cho đúng.", saidEn: "This is wrong and will confuse students. Correct it.", fixed: true },
+    { id: 2, kind: "text", quote: "Chỗ điện trường mạnh thì đường sức dày, chỗ yếu thì thưa.",
+      said: "Thêm một ví dụ quanh điện tích điểm cho dễ hình dung.", saidEn: "Add an example around a point charge so it's easier to picture.", fixed: false },
+    { id: 3, kind: "video", t: 44,
+      said: "Làm chậm đoạn đường sức đi ra từ điện tích dương.", saidEn: "Slow down the part where field lines leave the positive charge.",
+      done: "Đã dựng lại đoạn 0:38–0:50, chậm hơn một nửa.", doneEn: "Rebuilt 0:38–0:50 at half the speed.", fixed: true },
+    { id: 4, kind: "image", x: 22, y: 25, beforeAfter: true,
+      said: "Mũi tên đường sức bị ngược chiều.", saidEn: "The arrows on the field lines point the wrong way.",
+      done: "Đã vẽ lại: mũi tên hướng ra xa điện tích dương.", doneEn: "Redrawn: arrows now point away from the positive charges.", fixed: true },
+  ];
+  let nextId = 5;
+
+  const markOf = (id) => body.querySelector('mark.cmt[data-id="' + id + '"]');
+  const where = (c) => c.kind === "video" ? L("Video, ", "Video, ") + fmt(c.t) : c.kind === "image" ? L("Hình 3.2", "Figure 3.2") : "";
+
+  function cropBox(c) {
+    const cx = c.x / 100 * 320, cy = c.y / 100 * 180;
+    return { vb: (cx - 56) + " " + (cy - 31.5) + " 112 63", cx, cy };
+  }
+  const arrows = (inward) => {
+    const d = inward
+      ? ["M4 22.5 H20", "M56 22.5 H40", "M30 2 V13", "M30 43 V32"]
+      : ["M22 22.5 H5", "M38 22.5 H55", "M30 14 V3", "M30 31 V42"];
+    return '<svg viewBox="0 0 60 45" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" marker-end="url(#arw)">' +
+      d.map((p) => '<path d="' + p + '"/>').join("") + '</g><circle cx="30" cy="22.5" r="7" fill="#E5484D"/></svg>';
+  };
+  function media(c) {
+    if (c.kind === "video") {
+      return '<svg class="thumb" viewBox="0 0 320 180" aria-hidden="true"><rect width="320" height="180" fill="#1F1B3A"/><use href="#vidg"/></svg>';
+    }
+    if (c.kind === "image" && c.beforeAfter) {
+      return '<div class="ba"><figure>' + arrows(true) + "<figcaption>" + L("Trước", "Before") + "</figcaption></figure><figure>" +
+        arrows(false) + "<figcaption>" + L("Sau khi sửa", "After") + "</figcaption></figure></div>";
+    }
+    if (c.kind === "image") {
+      const b = cropBox(c);
+      return '<svg class="thumb" viewBox="' + b.vb + '" aria-hidden="true" style="color:var(--tim-ink)"><use href="#fig32g"/>' +
+        '<circle cx="' + b.cx + '" cy="' + b.cy + '" r="9" fill="none" stroke="#D23A3A" stroke-width="2.5"/></svg>';
+    }
+    return "";
+  }
+  function doneText(c) {
+    if (c.kind === "text") return L("Mentor đã viết lại đoạn này. Chữ gạch là bản cũ.", "Mentor rewrote this part. Struck-through text is the old version.");
+    return (en() && c.doneEn) || c.done;
+  }
+  function flashEl(el) { if (!el) return; el.classList.add("active"); setTimeout(() => el.classList.remove("active"), 1400); }
+
+  function go(c) {
+    if (c.kind === "text") {
+      const m = markOf(c.id);
+      if (m) { m.scrollIntoView({ behavior: smooth, block: "center" }); flashEl(m); }
+    } else if (c.kind === "video") {
+      setPlay(false);
+      vrange.value = c.t; vupdate();
+      poster.scrollIntoView({ behavior: smooth, block: "center" });
+      flashEl(vmarks.querySelector('[data-id="' + c.id + '"]'));
+    } else {
+      figimg.scrollIntoView({ behavior: smooth, block: "center" });
+      flashEl(figimg.querySelector('.ipin[data-id="' + c.id + '"]'));
+    }
+  }
+
+  function render() {
+    notes.innerHTML = "";
+    paper.querySelectorAll(".pen").forEach((p) => p.remove());
+    vmarks.innerHTML = "";
+    figimg.querySelectorAll(".ipin:not(.pending)").forEach((p) => p.remove());
+    list.forEach((c, i) => {
+      const n = i + 1;
+      const li = document.createElement("li");
+      li.className = "note" + (c.fixed ? " fixed" : "");
+      li.tabIndex = 0;
+      li.dataset.id = c.id;
+      const tag = c.fixed ? '<span class="tag ok">' + L("Đã sửa", "Fixed") + "</span>" : '<span class="tag wait">' + L("Đang sửa", "Fixing") + "</span>";
+      li.innerHTML = '<div class="top"><span class="n">' + n + '</span><span class="where">' + where(c) + '</span><span style="flex:1"></span>' + tag + "</div>" +
+        media(c) + '<p class="said"></p>' + (c.fixed ? '<p class="done-txt"></p>' : "");
+      if (c.kind === "text") { const q = document.createElement("q"); q.textContent = c.quote; li.querySelector(".top").after(q); }
+      li.querySelector(".said").textContent = (en() && c.saidEn) || c.said;
+      if (c.fixed) li.querySelector(".done-txt").textContent = doneText(c);
+      li.addEventListener("click", () => go(c));
+      li.addEventListener("keydown", (e) => { if (e.key === "Enter") go(c); });
+      notes.appendChild(li);
+
+      const toNote = () => { li.scrollIntoView({ behavior: smooth, block: "nearest" }); flashEl(li); li.focus({ preventScroll: true }); };
+      const marker = (cls, label) => {
+        const b = document.createElement("button");
+        b.type = "button"; b.className = cls + (c.fixed ? " fixed" : ""); b.textContent = n; b.dataset.id = c.id;
+        b.setAttribute("aria-label", L("Nhận xét ", "Comment ") + n + ", " + label);
+        b.addEventListener("click", (e) => { e.stopPropagation(); toNote(); });
+        return b;
+      };
+      if (c.kind === "text") {
+        const m = markOf(c.id);
+        if (!m) return;
+        const pen = marker("pen", L("đoạn văn", "text"));
+        pen.style.top = (m.getBoundingClientRect().top - paper.getBoundingClientRect().top - 3) + "px";
+        paper.appendChild(pen);
+      } else if (c.kind === "video") {
+        const b = marker("vmark", "video " + fmt(c.t));
+        b.style.left = (c.t / LEN * 100) + "%";
+        vmarks.appendChild(b);
+      } else {
+        const b = marker("ipin", L("hình 3.2", "figure 3.2"));
+        b.style.left = c.x + "%"; b.style.top = c.y + "%";
+        figimg.appendChild(b);
+      }
+    });
+  }
+
+  // ---- video: mock player ----
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="5" width="3.6" height="14" rx="1" fill="currentColor"/><rect x="13.4" y="5" width="3.6" height="14" rx="1" fill="currentColor"/></svg>';
+  let playing = false, timer = null;
+  function vupdate() {
+    const t = +vrange.value;
+    vtime.textContent = fmt(t) + " / " + fmt(LEN);
+    vcmtLbl.textContent = L("Nhận xét tại ", "Comment at ") + fmt(t);
+    vcmt.setAttribute("aria-label", L("Nhận xét tại ", "Comment at ") + fmt(t));
+  }
+  function setPlay(p) {
+    playing = p;
+    poster.classList.toggle("playing", p);
+    vplay.innerHTML = p ? ICON_PAUSE : ICON_PLAY;
+    vplay.setAttribute("aria-label", p ? L("Dừng", "Pause") : L("Phát", "Play"));
+    clearInterval(timer);
+    if (p) timer = setInterval(() => {
+      if (+vrange.value >= LEN) return setPlay(false);
+      vrange.value = +vrange.value + 1; vupdate();
+    }, 1000);
+  }
+  vrange.addEventListener("input", vupdate);
+  vplay.addEventListener("click", () => setPlay(!playing));
+  bigPlay.addEventListener("click", () => setPlay(true));
+  vcmt.addEventListener("click", () => {
+    setPlay(false);
+    openPop(vcmt.getBoundingClientRect(), { kind: "video", t: +vrange.value });
+  });
+
+  // ---- image: tap to pin ----
+  let pending = null;
+  function dropPin(x, y) {
+    clearPending();
+    pending = document.createElement("span");
+    pending.className = "ipin pending";
+    pending.textContent = list.length + 1;
+    pending.style.left = x + "%"; pending.style.top = y + "%";
+    pending.setAttribute("aria-hidden", "true");
+    figimg.appendChild(pending);
+    const r = pending.getBoundingClientRect();
+    openPop(r, { kind: "image", x, y });
+  }
+  function clearPending() { if (pending) { pending.remove(); pending = null; } }
+  figimg.addEventListener("click", (e) => {
+    if (e.target.closest(".ipin")) return;
+    const r = figimg.getBoundingClientRect();
+    const x = Math.round(((e.clientX - r.left) / r.width) * 1000) / 10;
+    const y = Math.round(((e.clientY - r.top) / r.height) * 1000) / 10;
+    dropPin(Math.min(97, Math.max(3, x)), Math.min(95, Math.max(5, y)));
+  });
+  figimg.addEventListener("keydown", (e) => {
+    if (e.target !== figimg || (e.key !== "Enter" && e.key !== " ")) return;
+    e.preventDefault();
+    dropPin(50, 50);
+  });
+
+  // ---- text: select -> "Nhận xét" ----
+  let range = null;
+  function hideTools() { float.hidden = true; }
+  function blockOf(node) {
+    const el = node.nodeType === 1 ? node : node.parentElement;
+    return el.closest("p, li, h2, h3");
+  }
+  function onSelect() {
+    if (!pop.hidden) return;
+    const sel = document.getSelection();
+    if (!sel.rangeCount || sel.isCollapsed) return hideTools();
+    const r = sel.getRangeAt(0);
+    if (!body.contains(r.commonAncestorContainer) || !r.toString().trim()) return hideTools();
+    const block = blockOf(r.startContainer);
+    if (!block || block.closest(".poster, .fig")) return hideTools();
+    const clamped = r.cloneRange();
+    if (!block.contains(r.endContainer)) clamped.setEnd(block, block.childNodes.length); // one comment stays inside one paragraph
+    range = clamped;
+    const rect = r.getBoundingClientRect();
+    float.style.left = rect.left + rect.width / 2 + scrollX + "px";
+    float.style.top = rect.top + scrollY - 8 + "px";
+    float.hidden = false;
+  }
+  document.addEventListener("mouseup", (e) => { if (!float.contains(e.target) && !pop.contains(e.target)) setTimeout(onSelect, 0); });
+  document.addEventListener("keyup", (e) => { if (e.shiftKey) onSelect(); });
+  document.addEventListener("mousedown", (e) => { if (!float.contains(e.target) && !pop.contains(e.target)) hideTools(); });
+  $("float-btn").addEventListener("click", () => {
+    if (!range) return;
+    openPop(float.getBoundingClientRect(), { kind: "text", quote: range.toString() });
+  });
+
+  // ---- one comment box for text, video and image ----
+  let ctx = null, back = null;
+  function openPop(r, c) {
+    ctx = c; back = document.activeElement;
+    if (c.kind === "text") {
+      popQ.hidden = false; popQ.textContent = c.quote; popM.hidden = true;
+    } else {
+      popQ.hidden = true; popM.hidden = false;
+      popM.innerHTML = media(c) + "<span>" + where(c) + "</span>";
+    }
+    pop.style.left = Math.max(12, Math.min(r.left + r.width / 2 + scrollX - 170, scrollX + innerWidth - 352)) + "px";
+    pop.style.top = r.bottom + scrollY + 10 + "px";
+    float.hidden = true;
+    pop.hidden = false;
+    popT.value = "";
+    popT.focus();
+  }
+  function closePop(restore) {
+    pop.hidden = true; range = null; ctx = null; clearPending();
+    if (restore && back && document.contains(back) && back.offsetParent) back.focus();
+  }
+  $("pop-x").addEventListener("click", () => closePop(true));
+  pop.addEventListener("keydown", (e) => { if (e.key === "Escape") closePop(true); });
+
+  pop.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const said = popT.value.trim();
+    if (!said || !ctx) return;
+    const id = nextId++;
+    let c, m = null;
+    if (ctx.kind === "text") {
+      if (!range) return;
+      m = document.createElement("mark");
+      m.className = "cmt"; m.dataset.id = id;
+      const quote = range.toString().trim();
+      m.appendChild(range.extractContents());
+      range.insertNode(m);
+      document.getSelection().removeAllRanges();
+      c = { id, kind: "text", quote, said, fixed: false };
+    } else if (ctx.kind === "video") {
+      const a = fmt(Math.max(0, ctx.t - 6)), b = fmt(Math.min(LEN, ctx.t + 6));
+      c = { id, kind: "video", t: ctx.t, said, fixed: false,
+        done: "Đã dựng lại đoạn " + a + "–" + b + " theo nhận xét.", doneEn: "Rebuilt " + a + "–" + b + " as you asked." };
+    } else {
+      c = { id, kind: "image", x: ctx.x, y: ctx.y, said, fixed: false,
+        done: "Đã vẽ lại hình theo nhận xét.", doneEn: "Redrew the figure as you asked." };
+    }
+    list.push(c);
+    closePop(false);
+    render();
+    // Mentor applies the change on its own; no follow-up question
+    setTimeout(() => { c.fixed = true; if (m) m.classList.add("fixed"); render(); }, 3500);
+  });
+
+  // ---- course level: the agent suggests, the teacher confirms ----
+  const LV = { basic: ["Cơ bản", "Basic", 1], intermediate: ["Trung bình", "Intermediate", 2], advanced: ["Nâng cao", "Advanced", 3] };
+  const SUGGESTED = "intermediate";
+  const lvs = { duyet: { v: SUGGESTED, ok: false }, "da-xuat-ban": { v: "intermediate", ok: true, orig: "intermediate" } };
+  const lvBars = (n) => '<span class="lvbars" aria-hidden="true">' + [1, 2, 3].map((i) => '<i class="' + (n >= i ? "on" : "") + '"></i>').join("") + "</span>";
+  const curState = () => document.documentElement.dataset.state;
+  function lvRender() {
+    const st = curState(), s = lvs[st];
+    if (!s) return;
+    document.querySelectorAll(".lv-opt").forEach((b) => {
+      b.setAttribute("aria-checked", String(b.dataset.lv === s.v));
+      b.querySelector(".sug").hidden = s.ok || b.dataset.lv !== SUGGESTED;
+    });
+    $("lv-ok").hidden = s.ok;
+    $("levelrow").classList.toggle("need", !s.ok && !!s.nudged);
+    const changed = st === "da-xuat-ban" && s.v !== s.orig;
+    const n = $("lv-note");
+    n.hidden = !(changed || (!s.ok && s.nudged));
+    n.textContent = changed ? L("Mức độ mới sẽ có trong bản 2.", "The new level will be in version 2.") : L("Xác nhận mức độ để xuất bản.", "Confirm the level to publish.");
+    $("lvtag").innerHTML = lvBars(LV[s.v][2]) + (en() ? LV[s.v][1] : LV[s.v][0]);
+    $("pub").setAttribute("aria-disabled", String(!s.ok));
+  }
+  document.querySelectorAll(".lv-opt").forEach((b) => b.addEventListener("click", () => { const s = lvs[curState()]; if (s) { s.v = b.dataset.lv; s.ok = true; lvRender(); } }));
+  $("lv-ok").addEventListener("click", () => { const s = lvs[curState()]; if (s) { s.ok = true; lvRender(); } });
+
+  // ---- publish ----
+  const toast = $("toast");
+  function say(t) { toast.textContent = t; toast.hidden = false; clearTimeout(say.t); say.t = setTimeout(() => (toast.hidden = true), 3200); }
+  $("pub").addEventListener("click", () => !lvs.duyet.ok ? (lvs.duyet.nudged = true, lvRender(), $("levelrow").scrollIntoView({ block: "center", behavior: "smooth" })) : say(L("Đã xuất bản. Học sinh lớp 11A2 sẽ thấy khóa học trong vài phút.", "Published. Class 11A2 will see the course in a few minutes.")));
+  $("pub2").addEventListener("click", () => say(L("Đã xuất bản bản 2. Học sinh đang học bản 1 không bị ảnh hưởng.", "Version 2 published. Students on version 1 are not affected.")));
+
+  function refresh() { lvRender(); vupdate(); setPlay(playing); render(); }
+  document.addEventListener("DOMContentLoaded", refresh);
+  window.addEventListener("resize", render);
+  document.addEventListener("mock:change", () => requestAnimationFrame(refresh));
+  if (document.fonts) document.fonts.ready.then(render);
+})();
+</script>
+</body>
+</html>

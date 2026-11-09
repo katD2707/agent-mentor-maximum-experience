@@ -15,6 +15,10 @@
   "vi": "Các khóa em đã thêm, kèm tiến độ. Khóa đã tải về máy thì học được cả khi mất mạng.",
   "en": "The courses you've added, with progress. Downloaded courses work even without internet."
  },
+ "more-courses": {
+  "vi": "Các khóa khác hợp với lớp em. Nhấn Xem tất cả để tìm thêm khóa.",
+  "en": "Other courses for your grade. Press See all to find more."
+ },
  "course-search": {
   "vi": "Gõ tên khóa hoặc điều em muốn học. Mặc định chỉ hiện khóa hợp lớp em, có nút xem mọi lứa tuổi.",
   "en": "Type a course name or something you want to learn. It shows courses for your grade; there's a button for all ages."
@@ -119,6 +123,14 @@
   "vi": "Nghiên cứu: đề tài của bạn, việc sắp tới, paper cần đọc và nhật ký thí nghiệm. Mentor tìm paper mới mỗi thứ Hai.",
   "en": "Research: your topic, what is coming up, the papers to read and your experiment log. Mentor looks for new papers every Monday."
  },
+ "research-tabs": {
+  "vi": "Bốn chương: Đọc, Lịch, Thí nghiệm và Đề tài. Chấm tím là có paper mới, chấm cam là sắp tới hạn nộp.",
+  "en": "Four chapters: Read, Schedule, Experiments and Topic. A purple dot means new papers, an orange one a deadline coming up."
+ },
+ "research-hero": {
+  "vi": "Paper bạn nên đọc tiếp và lý do Mentor chọn. Nhấn Đọc tiếp để mở paper.",
+  "en": "The paper to read next and why Mentor picked it. Press Keep reading to open it."
+ },
  "research-topic": {
   "vi": "Đề tài và các từ khóa Mentor dùng để tìm paper. Bỏ từ khóa không hợp, hoặc nhấn Sửa để đổi đề tài.",
   "en": "Your topic and the keywords Mentor searches with. Remove one that does not fit, or press Edit to change the topic."
@@ -206,6 +218,10 @@
  "gv-retake": {
   "vi": "Những trang Mentor chưa đọc được. Bấm Chụp lại trang đó, các trang còn lại vẫn được dùng.",
   "en": "Pages Mentor could not read. Press Retake for that page; the other pages are still used."
+ },
+ "gv-level": {
+  "vi": "Mức độ của khóa, để Mentor soạn bài vừa sức học sinh. Cần xác nhận mức độ trước khi xuất bản.",
+  "en": "The course level, so Mentor writes at the right difficulty. Confirm it before you publish."
  },
  "gv-compose": {
   "vi": "Gõ yêu cầu bằng lời, ví dụ gộp bài 5 và 6. Khi ưng cấu trúc, bấm Soạn để Mentor soạn từng bài.",

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi" data-age="thpt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khóa sắp có</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="assets/soon/pager.css">
+<script src="shared.js"></script>
+<script src="assets/soon/courses.js"></script><script src="assets/soon/pager.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .detail { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; align-items: start; }
+  @media (max-width: 860px) { .detail { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+  .cover { display: grid; gap: 12px; }
+  .cover-media { margin: 0 0 6px; border-radius: var(--r-lg); overflow: hidden; background: #FBF6EA; border: 1px solid var(--rule-strong); }
+  .cover-media img { width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 340px; object-fit: cover; display: block; }
+  .cover h2 { font-size: clamp(1.6em, 3.5vw, 2.2em); overflow-wrap: anywhere; }
+  .cover .ctags { margin-top: 0; font-size: .85rem; }
+  .lead { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; color: var(--ink-2); }
+  .sub-h { font-size: 1.1em; margin: 0 0 8px; }
+  .learn { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+  .tree details { border-bottom: 1px solid var(--rule); }
+  .tree summary { cursor: pointer; padding: 14px 0; font-weight: 600; }
+  .tree ol { list-style: none; margin: 0 0 8px; padding: 0; counter-reset: l; }
+  .tree li { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 8px 0; counter-increment: l; }
+  .tree li::before { content: counter(l); width: 28px; height: 28px; border-radius: 8px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; font-weight: 600; font-size: .85em; }
+  .kinds { display: flex; gap: 6px; color: var(--ink-3); }
+  .kinds svg { width: 18px; height: 18px; }
+  .side { position: sticky; top: 64px; display: grid; gap: 14px; padding: 22px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); }
+  @media (max-width: 860px) { .side { position: static; } }
+  .soon-label { margin: 0; padding: 14px 18px; border-radius: var(--r-md); background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; text-align: center; }
+  .facts { display: grid; gap: 8px; color: var(--ink-2); font-size: .9em; }
+  .facts span { display: flex; gap: 8px; align-items: center; }
+  .facts svg { width: 18px; height: 18px; flex: none; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Khóa sắp có</span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-02b-khoa-hoc.html" aria-label="Khóa học"><i data-i="back"></i></a>
+    <h1 class="page-title" data-en="Courses">Khóa học</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <div class="detail">
+      <div style="display:grid; gap:28px; min-width:0">
+        <section class="cover">
+          <figure class="cover-media"><img id="c-img" alt=""></figure>
+          <h2 id="c-title"></h2>
+          <p class="lead" id="c-teacher"></p>
+          <div id="c-tags"></div>
+          <p id="c-desc"></p>
+        </section>
+        <section style="display:grid; gap:4px" id="c-out-wrap">
+          <h2 class="sub-h" data-en="After this course you can">Học xong em sẽ</h2>
+          <ul class="learn" id="c-out"></ul>
+        </section>
+        <section>
+          <h2 class="sub-h" data-en="Lessons">Các bài</h2>
+          <div class="tree" id="c-tree"></div>
+        </section>
+      </div>
+      <aside class="side">
+        <p class="soon-label" data-en="Coming soon">Sắp có</p>
+        <div class="facts">
+          <span><i data-i="clock"></i><span id="c-fact"></span></span>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+<script>
+(function () {
+  var D = window.SOON_DETAIL;
+  var k = new URLSearchParams(location.search).get("c");
+  if (!D[k]) k = "vat-li-12-dao-dong-co-va-song";
+  var c = D[k], $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (m) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]; }); };
+  var dur = function (m, en) { var h = Math.floor(m / 60), r = m % 60; return en ? (h ? h + " h" : "") + (h && r ? " " : "") + (r ? r + " min" : "") : (h ? h + " giờ" : "") + (h && r ? " " : "") + (r ? r + " phút" : ""); };
+  document.title = c.t;
+  $("c-img").src = "assets/soon/" + k + ".webp";
+  $("c-title").textContent = c.t;
+  $("c-teacher").textContent = c.te;
+  $("c-tags").innerHTML = SoonPager.tags(c, false, "bi");
+  $("c-desc").textContent = c.d;
+  $("c-out").innerHTML = c.o.map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("");
+  $("c-fact").setAttribute("data-en", "About " + dur(c.m, 1) + ", " + c.n + " lessons");
+  $("c-fact").textContent = "Khoảng " + dur(c.m, 0) + ", " + c.n + " bài";
+  var kinds = c.med.map(function (m) { return '<i data-i="' + (m === "reading" ? "text" : m) + '"></i>'; }).join("");
+  $("c-tree").innerHTML = c.tree.map(function (ch, i) {
+    return "<details" + (i === 0 || c.tree.length <= 3 ? " open" : "") + "><summary>" + esc(ch[0]) + "</summary><ol>" +
+      ch[1].map(function (l) { return "<li><span>" + esc(l) + '</span><span class="kinds">' + kinds + "</span></li>"; }).join("") + "</ol></details>";
+  }).join("");
+})();
+</script>
+</body>
+</html>

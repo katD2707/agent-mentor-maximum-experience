@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi" data-age="thpt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mentor mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  .main { max-width: 980px; }
+  .intro { border-radius: 22px; border: 1px solid var(--rule-strong); padding: 32px 32px 32px 76px; display: grid; gap: 14px; }
+  .intro h1 { font-size: clamp(1.7em, 4vw, 2.4em); }
+  .intro p { max-width: 64ch; color: var(--ink-2); }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 40px; margin-top: 40px; }
+  h2 { font-size: 1.35em; margin-bottom: 12px; }
+  .screens { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .screens a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 14px 4px; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
+  .screens a:hover { background: var(--surface); }
+  .screens b { font-weight: 600; }
+  .screens span { grid-column: 1; color: var(--ink-2); font-size: .85em; }
+  .screens svg { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: var(--ink-3); }
+  .facts { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+  .facts li::marker { color: var(--tim); }
+  .cut { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cut span { padding: 4px 12px; border-radius: 99px; background: var(--do-soft); color: var(--do); font-size: .85em; text-decoration: line-through; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <span class="mock-title">Mentor: bản xem thử giao diện</span>
+  <span class="mock-note">Dải tối này chỉ để xem thử, không thuộc app. Mỗi màn có nút đổi trạng thái, độ tuổi, ngôn ngữ ở đây.</span>
+  <span class="mock-spacer"></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<div class="app">
+  <main class="main">
+    <section class="intro oli">
+      <h1>Học sinh chỉ thấy 4 ô: Khóa học, Luyện tập, Hỏi đáp, Tiến độ. Đại học có thêm ô Nghiên cứu.</h1>
+      <p>Giáo viên chỉ thả tài liệu vào là xong. Mọi việc còn lại như đọc tài liệu, soạn khóa, xếp lịch, nhắc học, chỉnh độ khó đều do Mentor làm phía sau, người dùng không phải cài đặt hay chọn gì.</p>
+    </section>
+
+    <div class="cols">
+      <section>
+        <h2>Học sinh</h2>
+        <ul class="screens">
+          <li><a href="hs-00-dang-nhap.html"><b>Đăng nhập</b><span>Chọn vai trò bằng hình, tài khoản phải khớp vai trò</span><i data-i="next"></i></a></li>
+          <li><a href="hs-01-bat-dau.html"><b>Lần đầu mở app</b><span>Chọn ngôn ngữ, rồi chọn năm sinh: hình của cấp học sáng lên. App tự lên lớp mỗi năm học.</span><i data-i="next"></i></a></li>
+          <li><a href="hs-02-trang-chu.html"><b>Màn chính: 4 ô (Đại học có ô thứ 5)</b><span>Tranh phủ kín từng ô, chữ trượt lên. Chọn Đại học trên dải tối để thấy ô Nghiên cứu. Cài đặt (có tạm im lặng) là nút bánh răng góc phải.</span><i data-i="next"></i></a></li>
+          <li><a href="hs-02b-khoa-hoc.html"><b>Khóa học</b><span>Việc hôm nay do Mentor xếp, khóa của em, mục Khóa học khác (khóa Sắp có). Đổi 4 độ tuổi trên dải tối.</span><i data-i="next"></i></a></li>
+          <li><a href="hs-03-tim-khoa-hoc.html"><b>Tìm khóa học</b><span>Danh mục kiểu Shopee: tìm có gợi ý, sắp xếp, bộ lọc, lưới thẻ, 10 khóa một trang. Tiểu học có bản đơn giản. Không có kết quả, trang giới thiệu khóa.</span><i data-i="next"></i></a></li>
+          <li><a href="hs-02c-khoa-sap-co.html"><b>Khóa Sắp có</b><span>Trang giới thiệu khóa chưa mở: nhãn Sắp có thay nút Bắt đầu, mục tiêu và các bài</span><i data-i="next"></i></a></li>
+          <li><a href="hs-04-khoa-hoc-tieu-hoc.html"><b>Khóa mẫu tiểu học: Các số đến 10</b><span>Cho bé chưa đọc thạo: hình, giọng đọc, chạm</span><i data-i="next"></i></a></li>
+          <li><a href="hs-05-khoa-hoc-thpt.html"><b>Khóa mẫu THPT: Vật lí 11, Điện trường</b><span>Video, bài đọc ngắn, ví dụ, quiz</span><i data-i="next"></i></a></li>
+          <li><a href="hs-06-khoa-hoc-dai-hoc.html"><b>Khóa mẫu đại học: Suy luận Bayes</b><span>Đọc chuyên sâu, công thức, đồ thị, bài kiểm tra nhanh</span><i data-i="next"></i></a></li>
+          <li><a href="hs-07-luyen-tap.html"><b>Luyện tập và thi thử</b><span>Giữ như bản hiện tại, Mentor tự chọn câu</span><i data-i="next"></i></a></li>
+          <li><a href="hs-08-hoi-bai.html"><b>Hỏi đáp</b><span>Chat, giọng nói, chụp ảnh. Gợi ý khóa học, xem khóa dạng cây, thêm khóa.</span><i data-i="next"></i></a></li>
+          <li><a href="hs-10-tien-bo.html"><b>Tiến độ</b><span>Nhiều mục tiêu, lịch tuần Mentor tự xếp, thông báo nhắc học</span><i data-i="next"></i></a></li>
+          <li><a href="hs-11-nghien-cuu.html"><b>Nghiên cứu (chỉ Đại học)</b><span>Đề tài, tìm paper, paper mới mỗi tuần, hạn nộp và họp GVHD, mốc luận văn, nhật ký thí nghiệm. Năm trạng thái: trống, vừa đặt đề tài, Mentor đang tìm, đã có dữ liệu, kết quả tìm.</span><i data-i="next"></i></a></li>
+          <li><a href="hs-12-doc-paper.html"><b>Đọc một paper (chỉ Đại học)</b><span>Tự tóm tắt trước, Mentor góp ý sau, hỏi về paper kèm nguồn đoạn trích, xem bài liên quan.</span><i data-i="next"></i></a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Giáo viên</h2>
+        <ul class="screens">
+          <li><a href="gv-01-gui-bai.html"><b>Gửi bài giảng</b><span>Thả ảnh, PDF, slide, video. Gửi xong đóng app được.</span><i data-i="next"></i></a></li>
+          <li><a href="gv-02-cau-truc.html"><b>Xem và sửa cấu trúc khóa</b><span>Sửa thẳng trong khung chat. Báo trang ảnh không đọc được.</span><i data-i="next"></i></a></li>
+          <li><a href="gv-03-duyet-noi-dung.html"><b>Duyệt nội dung</b><span>Nhận xét trên chữ, video (theo giây) và ảnh (ghim). Mentor tự sửa. Sửa khi đã xuất bản thì thành bản mới.</span><i data-i="next"></i></a></li>
+        </ul>
+
+        <h2 style="margin-top:36px">Chung</h2>
+        <ul class="screens">
+          <li><a href="icon-app.html"><b>Biểu tượng app (đang chọn)</b><span>3 phương án, xem ở cỡ thật: khay hệ thống, thanh tác vụ, thông báo.</span><i data-i="next"></i></a></li>
+        </ul>
+
+        <h2 style="margin-top:36px">Mình hiểu như sau</h2>
+        <ul class="facts">
+          <li>Một app duy nhất, chạy trên Windows, macOS, Linux, web và điện thoại. Đăng nhập theo vai trò học sinh hoặc giáo viên; hai bên độc lập, học sinh không nhận thông báo gì về giáo viên.</li>
+          <li>Chat chỉ có trong Hỏi đáp: hỏi bài và tìm khóa học. Không có trò chuyện tự do ở chỗ khác.</li>
+          <li>Hành vi học (giờ học, thời lượng, đúng sai) được ghi lặng lẽ. Mentor tự đặt lịch, nhắc học và chỉnh mục tiêu.</li>
+          <li>Nội dung đổi theo độ tuổi: tiểu học thiên về hình và giọng đọc, đại học thiên về chữ và công thức.</li>
+          <li>Khóa học mới tự về máy, không cần phát hành bản app mới. Bản app mới tự tải và áp dụng khi mở lại.</li>
+          <li>Giáo viên sửa khóa đang có người học thì tạo bản mới. Học sinh đang học giữ bản cũ và tiến độ cũ.</li>
+          <li>Hai ngôn ngữ: Tiếng Việt và English.</li>
+          <li>Nhân vật Mực (giọt mực tím) hướng dẫn trên mọi màn: bấm để hỏi, nhấn giữ rồi kéo tới chỗ cần hướng dẫn.</li>
+        </ul>
+
+        <h2 style="margin-top:36px">Đã bỏ</h2>
+        <p class="cut"><span>Thanh chuyển tab</span><span>Trang cài đặt riêng</span><span>Phụ huynh</span><span>Khóa an toàn</span><span>Kiểm duyệt</span><span>Pháp lý</span><span>Thanh toán</span><span>Mạng xã hội</span><span>Bảng xếp hạng</span></p>
+
+        <h2 style="margin-top:36px">Thiết kế</h2>
+        <ul class="screens">
+          <li><a href="DESIGN.md"><b>DESIGN.md</b><span>Hệ thiết kế đã nạp vào Stitch (project 329963714617921949): vở ô li, mực tím, bút đỏ</span><i data-i="next"></i></a></li>
+        </ul>
+        <p class="muted small" style="margin:16px 0 8px">Tranh 4 ô và ảnh bìa 10 khóa học trong assets/ cũng do Stitch vẽ. Các màn Stitch sinh để đối chiếu:</p>
+        <ul class="screens">
+          <li><a href="stitch/s1_home_thpt.png"><b>Trang chủ THPT</b><span>Khớp hướng thiết kế. Lấy: ô theo dõi tuần nằm trong khối Hôm nay.</span><i data-i="next"></i></a></li>
+          <li><a href="stitch/s2_home_kid.png"><b>Trang chủ tiểu học</b><span>Lấy: nút loa trên từng khóa, chữ trạng thái cạnh sao, tranh vẽ thật.</span><i data-i="next"></i></a></li>
+          <li><a href="stitch/s3_photo_answer.png"><b>Lời giải từ ảnh</b><span>Lấy: thẻ Mẹo nhỏ cuối lời giải.</span><i data-i="next"></i></a></li>
+          <li><a href="stitch/t1_drop.png"><b>Giáo viên: gửi bài</b><span>Khớp. Lấy: loại tệp hiện thành nhãn nhỏ.</span><i data-i="next"></i></a></li>
+          <li><a href="stitch/t2_structure.png"><b>Giáo viên: cấu trúc</b><span>Không lấy: ô nhắn tin đè lên giữa danh sách bài.</span><i data-i="next"></i></a></li>
+          <li><a href="stitch/t3_review.png"><b>Giáo viên: duyệt</b><span>Không lấy: tab, chuông, checklist phát hành. Giáo viên không cần điều hướng.</span><i data-i="next"></i></a></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>
+</body>
+</html>

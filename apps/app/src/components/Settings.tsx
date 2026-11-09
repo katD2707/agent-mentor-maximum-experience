@@ -10,6 +10,7 @@ import { enableWebNotifications, isTauri, notifyState, type NotifyState } from "
 import { REMIND_KEY as REMIND_STORE, refreshReminders } from "../lib/behaviour";
 import { UpdateRow } from "./UpdateRow";
 import { SettingsSourcesRow } from "../screens/research/Sources";
+import { REPLAY_EVENT } from "../lib/tours";
 
 const PICKS: QuietPick[] = ["30", "60", "120", "tomorrow", "week"];
 const THEMES: Theme[] = ["system", "light", "dark"];
@@ -261,6 +262,19 @@ export function Settings() {
               </div>
             </>
           )}
+          <div className="set-row">
+            <span className="set-label">{t("settings.tips")}</span>
+            <button
+              type="button"
+              className="set-chip-btn"
+              onClick={() => {
+                setOpen(false);
+                window.dispatchEvent(new Event(REPLAY_EVENT));
+              }}
+            >
+              {t("settings.tipsReplay")}
+            </button>
+          </div>
           <UpdateRow />
           <p className="set-foot">
             <span>{t("settings.version", { version: VERSION })}</span>

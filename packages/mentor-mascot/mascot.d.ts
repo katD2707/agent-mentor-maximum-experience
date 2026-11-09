@@ -8,6 +8,14 @@ export type MascotGuides = Record<string, { vi: string; en: string }>;
 /** Answers a how-to-use-the-app question. Set by the host app; the element never calls an API itself. */
 export type MascotAsk = (question: string, lang: MascotLang) => Promise<string>;
 
+/** One step of a tour: a data-guide area (text from `guides` unless given) or, without a key, a message from Mực itself. */
+export interface MascotTourStep {
+  key?: string;
+  title?: { vi: string; en: string };
+  text?: { vi: string; en: string };
+}
+export type MascotTourResult = "done" | "skipped" | "none";
+
 export interface MascotAskDetail {
   question: string;
   lang: MascotLang;
@@ -44,6 +52,16 @@ export declare class MentorMascot extends HTMLElement {
   say(text: string, ms?: number): void;
   /** Re-check the spot after a route change; moves only if Mực sits on something interactive. */
   relocate(): void;
+  /** Host callback behind the chat's "Show me this page again" chip (shown only while set). */
+  replay: (() => void) | null;
+  /**
+   * Walk through areas one at a time (first visit of a screen). Steps whose key is not on screen are left out. The page
+   * cannot scroll meanwhile and outside taps only nudge the bubble; "Got it, next" moves on, Skip or Escape leaves.
+   * Resolves "none" when nothing could be shown or Mực was busy.
+   */
+  tour(steps: MascotTourStep[]): Promise<MascotTourResult>;
+  /** End a running tour now. */
+  stopTour(): void;
 
   addEventListener(type: "mascot-ask", listener: (ev: MascotAskEvent) => unknown, options?: boolean | AddEventListenerOptions): void;
   addEventListener(type: "mascot-guide", listener: (ev: MascotGuideEvent) => unknown, options?: boolean | AddEventListenerOptions): void;

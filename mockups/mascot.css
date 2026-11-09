@@ -1,0 +1,149 @@
+/* Mực: the in-app guide. An original ink-droplet character (purple school ink). */
+
+:root {
+  --m-h: 72px;
+  --m-a: #8E7CF2;
+  --m-b: #4B2EBF;
+  --m-shoe: #2B2740;
+}
+:root[data-age="tieu-hoc"] { --m-h: 88px; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --m-a: #B3A6FF; --m-b: #6C57E6; --m-shoe: #0F0D1F; }
+}
+:root[data-theme="dark"] { --m-a: #B3A6FF; --m-b: #6C57E6; --m-shoe: #0F0D1F; }
+
+.mascot {
+  position: fixed; left: 0; top: 0; z-index: 9995;
+  width: calc(var(--m-h) * .8); height: var(--m-h);
+  padding: 0; margin: 0; border: 0; background: none; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.mascot:focus-visible { outline: 3px solid var(--tim); outline-offset: 6px; border-radius: 40%; }
+.mascot.is-dragging { cursor: grabbing; }
+.m-flip { display: block; width: 100%; height: 100%; transform-origin: 50% 50%; }
+.mascot.face-left .m-flip { transform: scaleX(-1); }
+.m-fig { display: block; width: 100%; height: 100%; transform-origin: 50% 92%; transition: transform .2s cubic-bezier(.2, .8, .2, 1); }
+.m-svg { display: block; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .16)); transition: filter .2s; }
+.m-svg g { transform-box: fill-box; }
+
+/* idle: breathe */
+.mascot:not(.is-dragging):not(.is-running):not(.is-hopping) .m-fig { animation: m-bob 3.2s ease-in-out infinite; }
+@keyframes m-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px) scaleY(1.02); } }
+
+/* eyes */
+.m-eyes { transform-origin: 50% 55%; transition: transform .07s; }
+.mascot.blink .m-eyes { transform: scaleY(.12); }
+.m-pupils { transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+
+/* limbs */
+.m-legL, .m-legR { transform-origin: 50% 0%; }
+.m-armR { transform-origin: 0% 95%; transition: transform .25s cubic-bezier(.2, .8, .2, 1); }
+.m-armL { transform-origin: 100% 10%; transition: transform .25s; }
+.m-shadow { transform-origin: 50% 50%; transition: transform .2s, opacity .2s; }
+
+.mascot.is-waving .m-armR { animation: m-wave .45s ease-in-out infinite alternate; }
+@keyframes m-wave { from { transform: rotate(-38deg); } to { transform: rotate(14deg); } }
+.mascot.is-pointing .m-armR { transform: rotate(-32deg); }
+.mascot.is-pointing .m-armL { transform: rotate(-12deg); }
+
+/* mouth */
+.m-mouth-open { transform-origin: 50% 50%; opacity: 0; }
+.mascot.is-talking .m-mouth-open { opacity: 1; animation: m-talk .17s ease-in-out infinite alternate; }
+.mascot.is-talking .m-mouth-smile { opacity: 0; }
+@keyframes m-talk { from { transform: scaleY(.3); } to { transform: scaleY(1.05); } }
+
+/* lifted while dragging */
+.mascot.is-dragging .m-fig { transform: scale(1.14, 1.06) rotate(-5deg); }
+.mascot.is-dragging .m-svg { filter: drop-shadow(0 16px 14px rgba(0, 0, 0, .28)); }
+.mascot.is-dragging .m-shadow { transform: scale(.6); opacity: .3; }
+.mascot.is-dragging .m-legL { animation: m-dangle .6s ease-in-out infinite alternate; }
+.mascot.is-dragging .m-legR { animation: m-dangle .6s ease-in-out infinite alternate-reverse; }
+.mascot.is-dragging .m-armL, .mascot.is-dragging .m-armR { transform: rotate(-24deg); }
+@keyframes m-dangle { from { transform: rotate(14deg); } to { transform: rotate(-10deg); } }
+
+/* running */
+.mascot.is-running .m-fig { transform: rotate(9deg) translateY(-2px); }
+.mascot.is-running .m-legL { animation: m-step .2s linear infinite alternate; }
+.mascot.is-running .m-legR { animation: m-step .2s linear infinite alternate-reverse; }
+.mascot.is-running .m-armL { animation: m-swing .2s linear infinite alternate; }
+@keyframes m-step { from { transform: rotate(30deg); } to { transform: rotate(-30deg); } }
+@keyframes m-swing { from { transform: rotate(-30deg); } to { transform: rotate(25deg); } }
+
+.m-dust {
+  position: fixed; z-index: 9994; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--rule-strong); pointer-events: none;
+  animation: m-dust .6s ease-out forwards;
+}
+@keyframes m-dust { from { transform: scale(.4); opacity: .9; } to { transform: translate(var(--dx, 0), -9px) scale(1.7); opacity: 0; } }
+
+/* drop hint while dragging */
+.m-hint { outline: 2.5px dashed var(--tim) !important; outline-offset: 5px !important; border-radius: 14px; }
+
+/* spotlight */
+.m-catch { position: fixed; inset: 0; z-index: 9990; background: transparent; touch-action: none; overscroll-behavior: contain; }
+/* a tap or scroll outside during a tour: the bubble nudges toward its button instead of closing */
+.m-bubble.m-nudge { animation: m-nudge .42s ease-in-out; }
+@keyframes m-nudge { 0%, 100% { transform: none; } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+@media (prefers-reduced-motion: reduce) {
+  .m-bubble.m-nudge { animation: m-nudge-still .6s ease-out; }
+  @keyframes m-nudge-still { from { box-shadow: 0 0 0 4px #FFD84D; } }
+}
+.m-spot {
+  position: fixed; z-index: 9991; pointer-events: none; border-radius: 18px;
+  box-shadow: 0 0 0 200vmax rgba(18, 14, 38, .55);
+  animation: m-spot-in .3s ease-out both;
+}
+@keyframes m-spot-in { from { box-shadow: 0 0 0 200vmax rgba(18, 14, 38, 0); } }
+
+/* speech bubble, after the user's reference: rounded gradient box + a small "…" bubble */
+.m-bubble {
+  position: fixed; z-index: 9996; left: 0; top: 0;
+  width: max-content; max-width: min(320px, calc(100vw - 24px));
+  display: grid; gap: 10px; padding: 14px 16px;
+  border-radius: 18px; color: #fff;
+  background: linear-gradient(135deg, #4F5FD0 0%, #5B4CC4 100%);
+  box-shadow: 0 12px 28px -14px rgba(0, 0, 0, .5);
+  font: 600 15px/1.45 var(--font-ui, "Lexend", system-ui, sans-serif);
+  animation: m-pop .24s cubic-bezier(.2, .9, .3, 1.3) both;
+}
+:root[data-age="tieu-hoc"] .m-bubble { font-size: 18px; max-width: min(360px, calc(100vw - 24px)); }
+.m-bubble .m-t { margin: 0; font-size: 1.07em; font-weight: 700; }
+.m-bubble .m-d { margin: 0; font-weight: 500; }
+.m-bubble .m-say { margin: 0; font-weight: 700; }
+.m-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.m-chips button, .m-ok {
+  min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px; cursor: pointer;
+  background: #fff; color: #3A2299; font: 600 13.5px/1 var(--font-ui, "Lexend", system-ui, sans-serif);
+  transition: transform .12s, background .12s;
+}
+:root[data-age="tieu-hoc"] .m-chips button, :root[data-age="tieu-hoc"] .m-ok { min-height: 44px; font-size: 16px; }
+.m-chips button:hover, .m-ok:hover { background: #EEEAFD; }
+.m-chips button:active, .m-ok:active { transform: scale(.96); }
+.m-ok { justify-self: end; font-weight: 700; }
+/* first-visit tour: step count, Skip + Next */
+.m-bubble .m-n { margin-left: 8px; font-size: .78em; font-weight: 600; opacity: .7; font-variant-numeric: tabular-nums; }
+.m-acts { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.m-skip {
+  min-height: 36px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent;
+  color: inherit; opacity: .82; font: inherit; font-size: .92em; font-weight: 600; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.m-skip:hover { opacity: 1; }
+:root[data-age="tieu-hoc"] .m-skip { min-height: 44px; }
+.m-chips .m-replay { font-weight: 700; }
+.mock-bar .mock-fresh {
+  margin-left: auto; padding: 4px 10px; border: 1px solid #6F64B8; border-radius: 999px;
+  background: transparent; color: #CFC6FF; font: inherit; cursor: pointer;
+}
+.mock-bar .mock-fresh:hover { background: #2E2752; }
+.m-bubble button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+.m-tail {
+  position: fixed; z-index: 9996; left: 0; top: 0; width: 46px; height: 24px;
+  display: flex; align-items: center; justify-content: center; gap: 4px;
+  border-radius: 12px; background: linear-gradient(135deg, #5D6BDA, #6656CC);
+  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, .45);
+  animation: m-pop .24s cubic-bezier(.2, .9, .3, 1.3) both; pointer-events: none;
+}
+.m-tail i { width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+@keyframes m-pop { from { transform: scale(.85) translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }

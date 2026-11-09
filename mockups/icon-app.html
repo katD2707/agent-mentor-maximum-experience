@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biểu tượng app</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { background: var(--paper); color: var(--ink); margin: 0; }
+  main { max-width: 1080px; margin: 0 auto; padding: 32px 16px 64px; display: grid; gap: 28px; }
+  h1 { margin: 0; font-size: 1.6em; }
+  .lead { margin: 0; color: var(--ink-2); max-width: 70ch; line-height: 1.6; }
+  .opt { display: grid; grid-template-columns: 256px minmax(0, 1fr); gap: 28px; padding: 24px; border-radius: var(--r-lg, 18px); background: var(--surface); border: 1px solid var(--rule); }
+  @media (max-width: 760px) { .opt { grid-template-columns: minmax(0, 1fr); } }
+  .opt h2 { margin: 0 0 6px; font-size: 1.2em; }
+  .opt p { margin: 0 0 14px; color: var(--ink-2); line-height: 1.55; }
+  .hero svg { width: 256px; height: 256px; max-width: 100%; display: block; filter: drop-shadow(0 10px 24px rgba(20, 12, 60, .28)); }
+  .sizes { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 18px; padding: 16px; border-radius: 12px; }
+  .sizes.light { background: #F3F3F3; color: #333; }
+  .sizes.dark { background: #1F1F1F; color: #ddd; margin-top: 10px; }
+  .sizes figure { margin: 0; display: grid; justify-items: center; gap: 6px; font-size: 11px; }
+  .ctx { display: grid; gap: 10px; margin-top: 14px; }
+  .titlebar, .taskbar, .wtoast { display: flex; align-items: center; gap: 8px; font: 12px "Segoe UI", system-ui, sans-serif; }
+  .titlebar { background: #202020; color: #eee; padding: 8px 12px; border-radius: 8px 8px 0 0; }
+  .taskbar { background: #1c1c2a; padding: 8px 14px; border-radius: 8px; gap: 14px; }
+  .taskbar span { width: 24px; height: 24px; border-radius: 4px; background: #3a3a4a; }
+  .taskbar .on { position: relative; padding: 6px; background: #2e2e40; border-radius: 6px; width: auto; height: auto; }
+  .taskbar .on::after { content: ""; position: absolute; left: 50%; bottom: -4px; width: 14px; height: 3px; transform: translateX(-50%); border-radius: 2px; background: #9C8AFF; }
+  .wtoast { background: #2b2b2b; color: #eee; padding: 10px 14px; border-radius: 8px; flex-wrap: wrap; }
+  .wtoast b { flex-basis: 100%; font-weight: 600; margin-top: 6px; }
+  .note { font-size: .9em; color: var(--ink-2); }
+  .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+</style>
+</head>
+<body>
+<svg class="defs" aria-hidden="true">
+  <defs>
+    <!-- shared -->
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBF0"/><stop offset="1" stop-color="#E9DDC4"/></linearGradient>
+    <linearGradient id="mascot" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#C9BEFF"/><stop offset="1" stop-color="#6E56EC"/></linearGradient>
+    <clipPath id="sq"><rect width="256" height="256" rx="58"/></clipPath>
+    <path id="spark" d="M0 -10 C1.5 -2 2 -1.5 10 0 C2 1.5 1.5 2 0 10 C-1.5 2 -2 1.5 -10 0 C-2 -1.5 -1.5 -2 0 -10 Z"/>
+
+    <!-- A: night sky -->
+    <linearGradient id="a-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3D2E93"/><stop offset="1" stop-color="#140F38"/></linearGradient>
+    <radialGradient id="a-glow" cx=".5" cy=".42" r=".5"><stop offset="0" stop-color="#9C8AFF" stop-opacity=".6"/><stop offset="1" stop-color="#9C8AFF" stop-opacity="0"/></radialGradient>
+    <!-- B: brand purple -->
+    <linearGradient id="b-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9C8AFF"/><stop offset="1" stop-color="#3F25B0"/></linearGradient>
+    <radialGradient id="b-glow" cx=".3" cy=".2" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="b-drop" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCD4FF"/></linearGradient>
+    <linearGradient id="b-m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B3FD6"/><stop offset="1" stop-color="#2E1C8A"/></linearGradient>
+    <!-- C: dusk -->
+    <linearGradient id="c-bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#211A5C"/><stop offset=".6" stop-color="#4B3BB8"/><stop offset="1" stop-color="#7E6BF0"/></linearGradient>
+    <linearGradient id="c-1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FE3BC"/><stop offset="1" stop-color="#3FB58A"/></linearGradient>
+    <linearGradient id="c-2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9AD6FF"/><stop offset="1" stop-color="#4FA3E8"/></linearGradient>
+    <linearGradient id="c-3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB3CB"/><stop offset="1" stop-color="#F0709A"/></linearGradient>
+    <linearGradient id="c-4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE68A"/><stop offset="1" stop-color="#F4B92E"/></linearGradient>
+
+    <!-- open book used by A and C -->
+    <g id="book">
+      <ellipse cx="128" cy="216" rx="90" ry="9" fill="#000" opacity=".28"/>
+      <path d="M30 180 Q80 162 128 182 Q176 162 226 180 L226 214 Q176 198 128 216 Q80 198 30 214 Z" fill="#241B63"/>
+      <path d="M38 172 Q84 154 126 174 L126 208 Q84 190 38 206 Z" fill="url(#page)"/>
+      <path d="M130 174 Q172 154 218 172 L218 206 Q172 190 130 208 Z" fill="url(#page)"/>
+      <g stroke="#CDBF9F" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".9">
+        <path d="M52 178 Q84 167 112 180"/><path d="M52 188 Q84 177 112 190"/><path d="M52 198 Q76 190 96 197"/>
+        <path d="M144 180 Q172 167 204 178"/><path d="M144 190 Q172 177 204 188"/><path d="M160 197 Q180 190 204 198"/>
+      </g>
+    </g>
+
+    <!-- A full: Mực peeking from behind an open book, under a night sky -->
+    <symbol id="ic-a" viewBox="0 0 256 256">
+      <rect width="256" height="256" rx="58" fill="url(#a-bg)"/>
+      <circle cx="128" cy="112" r="112" fill="url(#a-glow)"/>
+      <use href="#spark" transform="translate(206 56) scale(1.3)" fill="#FFD84D"/>
+      <use href="#spark" transform="translate(50 64) scale(.75)" fill="#fff" opacity=".85"/>
+      <use href="#spark" transform="translate(222 132) scale(.55)" fill="#FF8FB1"/>
+      <circle cx="78" cy="38" r="3" fill="#fff" opacity=".6"/><circle cx="182" cy="96" r="2.4" fill="#fff" opacity=".5"/><circle cx="36" cy="118" r="2.6" fill="#9AD6FF" opacity=".8"/>
+      <g transform="translate(70 54) scale(1.45)">
+        <path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="url(#mascot)"/>
+        <ellipse cx="28" cy="35" rx="4.5" ry="8.5" fill="#fff" opacity=".45" transform="rotate(28 28 35)"/><circle cx="25" cy="25" r="1.8" fill="#fff" opacity=".5"/>
+        <ellipse cx="31" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="50" rx="7" ry="8" fill="#fff"/>
+        <circle cx="32" cy="51" r="4.1" fill="#1F1B3A"/><circle cx="50" cy="51" r="4.1" fill="#1F1B3A"/>
+        <circle cx="33.6" cy="49.2" r="1.5" fill="#fff"/><circle cx="51.6" cy="49.2" r="1.5" fill="#fff"/>
+        <ellipse cx="22.5" cy="60" rx="4.6" ry="2.8" fill="#FF8FB1" opacity=".85"/><ellipse cx="57.5" cy="60" rx="4.6" ry="2.8" fill="#FF8FB1" opacity=".85"/>
+        <path d="M35 62 Q40 67.5 45 62" stroke="#1F1B3A" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M63 58 Q71 55 73 48" stroke="#6E56EC" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <g transform="rotate(-24 74.5 40)"><rect x="72" y="28" width="5" height="16" rx="1" fill="#FFD84D"/><rect x="72" y="25.5" width="5" height="4" rx="1.3" fill="#FF8FB1"/><rect x="72" y="29.2" width="5" height="1.4" fill="#C9C3D9"/><path d="M72 44 L74.5 49.5 L77 44 Z" fill="#F2C9A0"/><path d="M73.7 47.6 L74.5 49.5 L75.3 47.6 Z" fill="#1F1B3A"/></g>
+        <circle cx="73" cy="47.5" r="3.7" fill="#6E56EC"/>
+      </g>
+      <use href="#book"/>
+      <rect x="1.5" y="1.5" width="253" height="253" rx="57" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="3"/>
+    </symbol>
+    <!-- A small (16-32 px): only the droplet and its eyes -->
+    <symbol id="ic-a-s" viewBox="0 0 256 256">
+      <rect width="256" height="256" rx="58" fill="url(#a-bg)"/>
+      <path d="M128 22 C152 70 214 108 214 164 A86 86 0 0 1 42 164 C42 108 104 70 128 22 Z" fill="url(#mascot)"/>
+      <ellipse cx="98" cy="160" rx="24" ry="28" fill="#fff"/><ellipse cx="158" cy="160" rx="24" ry="28" fill="#fff"/>
+      <circle cx="102" cy="164" r="13" fill="#1F1B3A"/><circle cx="162" cy="164" r="13" fill="#1F1B3A"/>
+    </symbol>
+
+    <!-- B full: an ink drop with an M cut in, four levels orbiting it -->
+    <symbol id="ic-b" viewBox="0 0 256 256">
+      <rect width="256" height="256" rx="58" fill="url(#b-bg)"/>
+      <rect width="256" height="256" rx="58" fill="url(#b-glow)"/>
+      <ellipse cx="128" cy="158" rx="104" ry="34" transform="rotate(-18 128 158)" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="4"/>
+      <circle cx="217.3" cy="116.8" r="7" fill="#7CC8FF"/>
+      <ellipse cx="128" cy="236" rx="58" ry="6" fill="#1A0F5C" opacity=".35"/>
+      <path d="M128 26 C152 74 202 108 202 160 A74 74 0 0 1 54 160 C54 108 104 74 128 26 Z" fill="url(#b-drop)"/>
+      <ellipse cx="78" cy="150" rx="7" ry="17" fill="#fff" transform="rotate(18 78 150)"/>
+      <path d="M94 178 V118 h18 l16 25 l16 -25 h18 V178 h-16 V146 l-18 25 l-18 -25 V178 Z" fill="url(#b-m)"/>
+      <path d="M226.9 125.9 A104 34 -18 0 1 29.1 190.1" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="219" cy="146.4" r="9" fill="#FFD84D"/>
+      <circle cx="104.1" cy="199.3" r="10" fill="#FF8FB1" stroke="#fff" stroke-width="3"/>
+      <circle cx="38.7" cy="199.2" r="11" fill="#5FD3A8"/>
+      <use href="#spark" transform="translate(208 50) scale(1.2)" fill="#FFE68A"/>
+      <use href="#spark" transform="translate(48 62) scale(.7)" fill="#fff"/>
+      <rect x="1.5" y="1.5" width="253" height="253" rx="57" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="3"/>
+    </symbol>
+    <symbol id="ic-b-s" viewBox="0 0 256 256">
+      <rect width="256" height="256" rx="58" fill="url(#b-bg)"/>
+      <path d="M128 18 C154 70 216 108 216 166 A88 88 0 0 1 40 166 C40 108 102 70 128 18 Z" fill="url(#b-drop)"/>
+      <path d="M78 214 V126 h26 l24 36 l24 -36 h26 V214 h-26 V170 l-24 32 l-24 -32 V214 Z" fill="#3F25B0"/>
+    </symbol>
+
+    <!-- C full: steps rising out of an open book (grade 1 to university), a cap on top -->
+    <symbol id="ic-c" viewBox="0 0 256 256">
+      <rect width="256" height="256" rx="58" fill="url(#c-bg)"/>
+      <circle cx="196" cy="70" r="80" fill="#fff" opacity=".08" clip-path="url(#sq)"/>
+      <path d="M50 150 C80 120 120 110 150 80" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+      <rect x="62" y="134" width="28" height="44" rx="7" fill="url(#c-1)"/>
+      <rect x="96" y="110" width="28" height="68" rx="7" fill="url(#c-2)"/>
+      <rect x="130" y="86" width="28" height="92" rx="7" fill="url(#c-3)"/>
+      <rect x="164" y="62" width="28" height="116" rx="7" fill="url(#c-4)"/>
+      <g fill="#fff" opacity=".35"><rect x="66" y="138" width="6" height="18" rx="3"/><rect x="100" y="114" width="6" height="26" rx="3"/><rect x="134" y="90" width="6" height="34" rx="3"/><rect x="168" y="66" width="6" height="42" rx="3"/></g>
+      <g transform="translate(178 40)">
+        <path d="M-24 14 v12 q24 12 48 0 v-12" fill="#2B2740"/>
+        <path d="M0 -6 L40 10 L0 26 L-40 10 Z" fill="#1F1B3A" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
+        <path d="M0 10 L30 18 V36" stroke="#FFD84D" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="30" cy="38" r="4.5" fill="#FFD84D"/>
+      </g>
+      <use href="#book"/>
+      <use href="#spark" transform="translate(52 52) scale(1.1)" fill="#FFE68A"/>
+      <use href="#spark" transform="translate(226 140) scale(.6)" fill="#fff"/>
+      <circle cx="40" cy="104" r="3" fill="#fff" opacity=".6"/><circle cx="112" cy="40" r="2.6" fill="#fff" opacity=".55"/>
+      <rect x="1.5" y="1.5" width="253" height="253" rx="57" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="3"/>
+    </symbol>
+    <symbol id="ic-c-s" viewBox="0 0 256 256">
+      <rect width="256" height="256" rx="58" fill="url(#c-bg)"/>
+      <rect x="40" y="150" width="46" height="70" rx="10" fill="url(#c-1)"/>
+      <rect x="105" y="104" width="46" height="116" rx="10" fill="url(#c-3)"/>
+      <rect x="170" y="58" width="46" height="162" rx="10" fill="url(#c-4)"/>
+      <path d="M193 14 L243 36 L193 58 L143 36 Z" fill="#1F1B3A"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main>
+  <h1>Biểu tượng app: 3 phương án</h1>
+  <p class="lead">
+    Mỗi phương án có hai bản. Bản đầy đủ dùng từ 48px trở lên: cửa sổ, Start menu, bộ cài, trang web.
+    Bản rút gọn dùng ở 16–32px: khay hệ thống, thanh tiêu đề, thông báo, tab trình duyệt.
+    Ở cỡ đó các chi tiết nhỏ sẽ thành vệt nhòe, nên phải lược bớt; các app lớn cũng làm vậy.
+    Màu theo tím chủ đạo của app.
+  </p>
+
+  <section class="opt" data-opt="a"></section>
+  <section class="opt" data-opt="b"></section>
+  <section class="opt" data-opt="c"></section>
+</main>
+
+<script>
+  const OPTS = {
+    a: { title: "A. Mực bên trang sách", text: "Mực, nhân vật hướng dẫn trong app, cầm bút chì, ló lên sau quyển sách mở dưới bầu trời đêm có sao. Thân thiện, nhận ra ngay là Mentor. Bản nhỏ chỉ giữ giọt mực và đôi mắt." },
+    b: { title: "B. Giọt mực chữ M", text: "Một giọt mực trắng có chữ M khắc vào, quanh nó là quỹ đạo với 4 chấm màu tượng trưng 4 bậc học, từ tiểu học đến đại học. Gọn, mang tính thương hiệu, hợp cả người lớn. Bản nhỏ giữ giọt mực và chữ M." },
+    c: { title: "C. Bậc thang từ trang sách", text: "Bốn bậc màu (4 bậc học) mọc lên từ quyển sách mở, bậc cao nhất đội mũ tốt nghiệp, có đường chấm chỉ hướng đi lên. Nói về hành trình học. Bản nhỏ giữ 3 bậc và chiếc mũ." },
+  };
+  const ic = (id, px) => `<svg width="${px}" height="${px}" role="img" aria-label="icon ${px}px"><use href="#${px >= 48 ? id : id + "-s"}"/></svg>`;
+  for (const sec of document.querySelectorAll(".opt")) {
+    const k = sec.dataset.opt, o = OPTS[k], id = "ic-" + k;
+    const sizes = [128, 64, 48, 32, 24, 16].map((px) => `<figure>${ic(id, px)}<figcaption>${px}px</figcaption></figure>`).join("");
+    sec.innerHTML = `
+      <div class="hero"><svg viewBox="0 0 256 256" role="img" aria-label="${o.title}"><use href="#${id}"/></svg></div>
+      <div>
+        <h2>${o.title}</h2><p>${o.text}</p>
+        <div class="sizes light">${sizes}</div>
+        <div class="sizes dark">${sizes}</div>
+        <div class="ctx">
+          <div class="titlebar">${ic(id, 16)} Mentor</div>
+          <div class="taskbar"><span></span><span></span><span class="on">${ic(id, 24)}</span><span></span></div>
+          <div class="wtoast">${ic(id, 16)} Mentor<b>Đến giờ học rồi</b>Điện trường: 10 phút hôm nay.</div>
+        </div>
+      </div>`;
+  }
+</script>
+</body>
+</html>

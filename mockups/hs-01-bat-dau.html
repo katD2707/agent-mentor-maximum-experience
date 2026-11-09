@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi" data-age="thcs" data-state="ngon-ngu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Màn mở đầu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .stage { min-height: calc(100vh - 44px); display: grid; place-items: center; padding: 32px 16px 48px; }
+  .sheet { width: min(980px, 100%); border-radius: 28px; border: 1px solid var(--rule-strong); box-shadow: var(--shadow); padding: clamp(28px, 5vw, 56px) clamp(20px, 5vw, 56px) clamp(28px, 5vw, 48px) clamp(64px, 8vw, 96px); display: grid; gap: 28px; }
+  .q { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .q h1 { font-size: clamp(1.7em, 4vw, 2.4em); }
+  .speak { width: 56px; height: 56px; border-radius: 999px; border: 2px solid var(--rule-strong); background: var(--surface); display: grid; place-items: center; cursor: pointer; color: var(--tim-ink); }
+  .speak svg { width: 26px; height: 26px; }
+
+  .langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .lang { display: grid; gap: 8px; justify-items: start; padding: 24px; border-radius: 22px; border: 2px solid var(--rule-strong); background: var(--surface); cursor: pointer; text-align: left; }
+  .lang:hover, .age:hover { border-color: var(--tim); }
+  .lang .hello { font-size: 2em; font-weight: 700; }
+  .lang .name { color: var(--ink-2); }
+
+  /* birth year: a select; the matching picture stands out, the line below says what learning looks like then */
+  .figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 2vw, 20px); align-items: end; max-width: 640px; width: 100%; justify-self: center; }
+  .figs svg { width: 100%; height: auto; opacity: .55; filter: saturate(.6); transform-origin: 50% 100%; transition: opacity .25s ease, transform .3s cubic-bezier(.2,.8,.2,1.2), filter .25s ease; }
+  .figs[data-pick] svg { opacity: .28; filter: grayscale(1); transform: scale(.88); }
+  .figs[data-pick] svg.on { opacity: 1; filter: none; transform: scale(1.12); }
+  @media (prefers-reduced-motion: reduce) { .figs svg { transition: none; } }
+  .pick { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; }
+  .year { min-width: 200px; min-height: 56px; padding: 0 44px 0 20px; border-radius: 16px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: 1.25em; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer; }
+  .year:focus-visible { border-color: var(--tim); }
+  .level { margin: 0; min-height: 1.5em; text-align: center; font-size: 1.1em; color: var(--ink-2); }
+  .go:disabled { opacity: .45; cursor: default; }
+  .go { justify-self: center; min-width: 200px; min-height: 56px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim, #fff); font: inherit; font-size: 1.1em; font-weight: 600; cursor: pointer; padding: 0 28px; }
+  .foot { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; color: var(--ink-2); font-size: .9em; }
+  .teacher { display: inline-flex; align-items: center; gap: 8px; color: var(--tim-ink); font-weight: 500; text-decoration: none; padding: 10px 0; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Lần đầu mở app</span>
+  <span class="mock-seg"><span>Bước</span><button data-set="state:ngon-ngu">1. Ngôn ngữ</button><button data-set="state:tuoi">2. Độ tuổi</button></span>
+  <span class="mock-seg"><span>Xem trước năm</span><button data-set="year:now">Nay</button><button data-set="year:2028">2028</button><button data-set="year:2030">2030</button></span>
+  <span class="mock-note">Chọn năm sinh một lần, không đổi về sau. App tính tuổi và lớp ngầm theo năm học; mỗi tháng 9 tự đổi giao diện khi sang cấp mới.</span>
+</div>
+
+<div class="stage">
+  <section class="sheet oli" data-when="state=ngon-ngu" aria-labelledby="h-lang">
+    <h1 id="h-lang" class="sr">Chọn ngôn ngữ</h1>
+    <div class="langs">
+      <button class="lang" data-set="lang:vi" onclick="mockSet('state','tuoi')">
+        <span class="hello">Xin chào</span><span class="name">Tiếng Việt</span>
+      </button>
+      <button class="lang" data-set="lang:en" onclick="mockSet('state','tuoi')">
+        <span class="hello">Hello</span><span class="name">English</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="sheet oli" data-when="state=tuoi" aria-labelledby="h-age">
+    <div class="q">
+      <h1 id="h-age" data-en="What year were you born?">Em sinh năm nào?</h1>
+      <button class="speak" aria-label="Đọc to câu hỏi"><i data-i="volume"></i></button>
+    </div>
+
+    <div class="figs" id="figs" aria-hidden="true">
+        <!-- small child, red scarf, backpack -->
+        <svg viewBox="0 0 120 170" data-band="tieu-hoc">
+          <ellipse cx="60" cy="162" rx="34" ry="5" fill="var(--rule-strong)"/>
+          <rect x="30" y="92" width="20" height="34" rx="6" fill="#2F6FB5"/>
+          <rect x="47" y="128" width="10" height="30" rx="4" fill="#25305C"/><rect x="63" y="128" width="10" height="30" rx="4" fill="#25305C"/>
+          <rect x="42" y="88" width="36" height="44" rx="10" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+          <path d="M50 90 L60 108 L70 90 Z" fill="#E5484D"/>
+          <circle cx="60" cy="68" r="20" fill="#F4C9A1"/>
+          <path d="M40 66 C40 48 80 46 80 64 C72 58 52 58 40 66 Z" fill="#2B2321"/>
+          <circle cx="53" cy="70" r="2.4" fill="#2B2321"/><circle cx="67" cy="70" r="2.4" fill="#2B2321"/>
+          <path d="M54 78 Q60 83 66 78" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <!-- middle schooler, white shirt, book -->
+        <svg viewBox="0 0 120 170" data-band="thcs">
+          <ellipse cx="60" cy="162" rx="34" ry="5" fill="var(--rule-strong)"/>
+          <rect x="46" y="112" width="12" height="46" rx="4" fill="#25305C"/><rect x="62" y="112" width="12" height="46" rx="4" fill="#25305C"/>
+          <rect x="40" y="64" width="40" height="54" rx="10" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+          <path d="M52 66 L60 78 L68 66" stroke="#CFCAEB" stroke-width="2" fill="none"/>
+          <rect x="70" y="86" width="22" height="28" rx="3" fill="#FFB020" transform="rotate(-8 81 100)"/>
+          <circle cx="60" cy="44" r="18" fill="#E9B98E"/>
+          <path d="M42 42 C42 24 78 22 78 42 L74 36 C66 32 52 32 44 38 Z" fill="#2B2321"/>
+          <circle cx="54" cy="46" r="2.2" fill="#2B2321"/><circle cx="66" cy="46" r="2.2" fill="#2B2321"/>
+          <path d="M55 53 Q60 57 65 53" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <!-- high schooler in white áo dài -->
+        <svg viewBox="0 0 120 170" data-band="thpt">
+          <ellipse cx="60" cy="162" rx="34" ry="5" fill="var(--rule-strong)"/>
+          <path d="M44 100 L40 158 L80 158 L76 100 Z" fill="#F3F1FA" stroke="#CFCAEB" stroke-width="2"/>
+          <path d="M44 52 C40 80 40 120 46 150 L74 150 C80 120 80 80 76 52 Z" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+          <path d="M60 52 L60 150" stroke="#E6E3F4" stroke-width="2"/>
+          <path d="M40 34 C38 60 40 84 44 96 L50 60 Z" fill="#2B2321"/><path d="M80 34 C82 60 80 84 76 96 L70 60 Z" fill="#2B2321"/>
+          <circle cx="60" cy="34" r="17" fill="#F2C49B"/>
+          <path d="M42 34 C42 14 78 14 78 34 C70 26 50 26 42 34 Z" fill="#2B2321"/>
+          <circle cx="54" cy="36" r="2.2" fill="#2B2321"/><circle cx="66" cy="36" r="2.2" fill="#2B2321"/>
+          <path d="M55 43 Q60 47 65 43" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <!-- university student, hoodie, laptop -->
+        <svg viewBox="0 0 120 170" data-band="dai-hoc">
+          <ellipse cx="60" cy="162" rx="34" ry="5" fill="var(--rule-strong)"/>
+          <rect x="45" y="106" width="13" height="52" rx="4" fill="#3B3F4A"/><rect x="62" y="106" width="13" height="52" rx="4" fill="#3B3F4A"/>
+          <rect x="36" y="50" width="48" height="62" rx="14" fill="#4B2EBF"/>
+          <path d="M48 52 Q60 64 72 52" stroke="#3A2299" stroke-width="3" fill="none"/>
+          <rect x="30" y="84" width="40" height="26" rx="3" fill="#C9CCD6"/><rect x="33" y="87" width="34" height="18" rx="2" fill="#E9EDF5"/>
+          <circle cx="60" cy="30" r="17" fill="#D9A47C"/>
+          <path d="M43 28 C44 10 78 10 77 28 L72 22 C64 18 52 19 46 24 Z" fill="#2B2321"/>
+          <rect x="49" y="28" width="9" height="6" rx="2" fill="none" stroke="#2B2321" stroke-width="1.6"/><rect x="62" y="28" width="9" height="6" rx="2" fill="none" stroke="#2B2321" stroke-width="1.6"/>
+          <path d="M58 31 h4" stroke="#2B2321" stroke-width="1.6"/>
+          <path d="M55 40 Q60 43 65 40" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+    </div>
+
+    <div class="pick">
+      <select class="year" id="year" aria-label="Năm sinh" data-en-label="Year of birth">
+        <option value="" disabled selected data-en="Year of birth">Năm sinh</option>
+      </select>
+      <button class="go" type="button" id="go" disabled data-en="Start">Bắt đầu</button>
+    </div>
+    <p class="level" id="level" aria-live="polite"></p>
+  </section>
+</div>
+
+<script>
+// Birth year (1980-2020) -> band, through mentorAge in shared.js. Age and grade are worked out in the
+// background and never shown; the student only sees which picture is theirs and what learning looks like.
+document.addEventListener("DOMContentLoaded", () => {
+  const year = document.getElementById("year"), go = document.getElementById("go");
+  const figs = document.getElementById("figs"), level = document.getElementById("level");
+  const LEVEL = {
+    "tieu-hoc": ["Hình to, có giọng đọc, chạm vào hình để trả lời.", "Big pictures, read aloud, tap a picture to answer."],
+    thcs: ["Bài ngắn, ví dụ gần gũi, làm từng bước một.", "Short lessons, everyday examples, one step at a time."],
+    thpt: ["Bám chương trình lớp 10–12, video ngắn và câu hỏi kiểu đề thi.", "Grade 10–12 curriculum, short videos and exam-style questions."],
+    "dai-hoc": ["Lý thuyết sâu, công thức và bài tập mở, tự học theo nhịp riêng.", "In-depth theory, formulas and open problems, at your own pace."],
+  };
+  for (let y = 2020; y >= 1980; y--) year.add(new Option(String(y), String(y)));
+
+  const show = () => {
+    const y = Number(year.value);
+    go.disabled = !y;
+    if (!y) return;
+    const band = mentorAge(y).band;
+    figs.dataset.pick = band;
+    figs.querySelectorAll("svg").forEach((s) => s.classList.toggle("on", s.dataset.band === band));
+    level.textContent = LEVEL[band][document.documentElement.lang === "en" ? 1 : 0];
+  };
+  year.addEventListener("change", show);
+  go.addEventListener("click", () => { mentorAge.save(Number(year.value)); location.href = "hs-02-trang-chu.html"; });
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key === "lang") year.setAttribute("aria-label", e.detail.value === "en" ? "Year of birth" : "Năm sinh");
+    if (e.detail.key === "lang" || e.detail.key === "year") show();
+  });
+  const saved = mentorAge.saved();
+  if (saved >= 1980 && saved <= 2020) { year.value = String(saved); show(); }
+});
+</script>
+</body>
+</html>

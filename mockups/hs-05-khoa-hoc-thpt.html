@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="video">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vật lí 11: Điện trường</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .lesson-top { display: flex; align-items: center; gap: 14px; padding: 10px clamp(16px, 4vw, 32px); border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 44px; z-index: 20; }
+  .lesson-top .t { flex: 1; min-width: 0; display: grid; gap: 6px; }
+  .lesson-top .t b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lesson-top .t .meta { display: flex; align-items: center; gap: 12px; font-size: .82em; color: var(--ink-2); }
+  .lesson-top .bar { width: 160px; }
+  .outline-btn { display: none; }
+
+  .layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 0; max-width: 1180px; margin: 0 auto; }
+  .outline { padding: 24px 20px; border-right: 1px solid var(--rule); align-self: start; position: sticky; top: 120px; }
+  .outline h2 { font-size: .95em; margin-bottom: 4px; }
+  .outline p { font-size: .82em; color: var(--ink-2); margin-bottom: 14px; }
+  .outline ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .outline a { display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 10px; text-decoration: none; color: var(--ink-2); font-size: .9em; line-height: 1.3; }
+  .outline a:hover { background: var(--surface); color: var(--ink); }
+  .outline a[aria-current="step"] { background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+  .outline .st { width: 26px; height: 26px; border-radius: 99px; display: grid; place-items: center; font-size: 12px; font-weight: 600; border: 1.5px solid var(--rule-strong); color: var(--ink-2); }
+  .outline .st.done { background: var(--xanh); border-color: var(--xanh); color: #fff; }
+  .outline .st.done svg { width: 15px; height: 15px; }
+  .outline a[aria-current="step"] .st { border-color: var(--tim); color: var(--tim-ink); background: var(--surface); }
+
+  .content { padding: clamp(20px, 4vw, 36px) clamp(16px, 4vw, 48px) 100px; display: grid; gap: 24px; align-content: start; }
+  .content > * { max-width: 760px; min-width: 0; }
+  .parts { display: flex; gap: 6px; flex-wrap: wrap; }
+  .parts button { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: transparent; cursor: pointer; color: var(--ink-2); font-weight: 500; }
+  .parts button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .parts svg { width: 18px; height: 18px; }
+  .lesson-h { font-size: clamp(1.5em, 3vw, 1.9em); }
+
+  /* video */
+  .video { position: relative; aspect-ratio: 16/9; border-radius: var(--r-lg); overflow: hidden; background: #F3F1FB; border: 1px solid var(--rule-strong); }
+  .video svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .video .play { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); width: 84px; height: 84px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; cursor: pointer; box-shadow: 0 8px 20px -10px rgba(31,27,58,.5), inset 0 -4px 0 rgba(0,0,0,.2); }
+  .video .play svg { width: 36px; height: 36px; margin-left: 5px; }
+  .video.playing .play { display: none; }
+  .video .dur { position: absolute; right: 12px; top: 12px; padding: 2px 10px; border-radius: 99px; background: rgba(31,27,58,.8); color: #fff; font-size: 13px; }
+  .video .cap { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); width: max-content; max-width: 88%; padding: 6px 14px; border-radius: 8px; background: rgba(31,27,58,.86); color: #fff; font-size: 15px; text-align: center; }
+  .video .vbar { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: rgba(31,27,58,.15); }
+  .video .vbar i { display: block; height: 100%; width: 0; background: var(--tim); }
+  .video.playing .vbar i { animation: grow 9s linear forwards; }
+  @keyframes grow { to { width: 100%; } }
+  .after-video { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+  /* reading */
+  .read { display: grid; gap: 16px; max-width: 68ch; }
+  .read h2.sub { font-size: 1.1em; margin-top: 10px; }
+  .read ol { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+  .formula { padding: 18px 20px 18px 64px; border-radius: var(--r-md); border: 1px solid var(--rule-strong); font-size: 1.15em; overflow-x: auto; }
+  .formula p { font-size: .82em; color: var(--ink-2); margin-top: 6px; }
+  .example { padding: 18px 20px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--rule); display: grid; gap: 10px; }
+  .example b { font-weight: 600; }
+  .pen { padding: 14px 18px; background: var(--do-soft); border-radius: var(--r-md); color: var(--ink); }
+  .pen strong { color: var(--do); font-weight: 600; }
+
+  /* quiz */
+  .q { display: grid; gap: 12px; padding: 20px 0; border-top: 1px solid var(--rule); }
+  .q:first-of-type { border-top: 0; }
+  .q h3 { font-size: 1.02em; font-weight: 500; line-height: 1.45; }
+  .q h3 .qn { color: var(--ink-2); margin-right: 6px; }
+  .opts { display: grid; gap: 8px; }
+  .opt { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: center; text-align: left; min-height: 52px; padding: 8px 14px; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--surface); cursor: pointer; }
+  .opt:hover:not(:disabled) { border-color: var(--tim); }
+  .opt .k { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-weight: 600; font-size: .85em; background: var(--paper); border: 1px solid var(--rule-strong); }
+  .opt:disabled { cursor: default; }
+  .opt.right { border-color: var(--xanh); background: var(--xanh-soft); }
+  .opt.right .k { background: var(--xanh); border-color: var(--xanh); color: #fff; }
+  .opt.wrong { border-color: var(--do); background: var(--do-soft); }
+  .opt.wrong .k { background: var(--do); border-color: var(--do); color: #fff; }
+  .opt svg { width: 20px; height: 20px; }
+  .opt.right svg { color: var(--xanh); }
+  .opt.wrong svg { color: var(--do); }
+  .fb { font-size: .92em; padding-left: 4px; }
+  .fb.ok { color: var(--xanh); }
+  .fb.no { color: var(--do); }
+
+  .finish { display: grid; gap: 18px; justify-items: start; padding: clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px) 72px; border-radius: var(--r-lg); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .finish .score { font: 700 3.2em/1 var(--font-ui); color: var(--tim-ink); }
+  .finish .row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .outline { display: none; position: static; border-right: 0; border-bottom: 1px solid var(--rule); }
+    :root[data-outline="open"] .outline { display: block; }
+    .outline-btn { display: grid; }
+    .lesson-top .bar { width: 100px; }
+  }
+  .course-cover { margin: 0 0 12px; border-radius: 12px; overflow: hidden; background: #FBF6EA; border: 1px solid var(--rule); }
+  .course-cover img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Khóa mẫu THPT: Vật lí 11, Điện trường</span>
+  <span class="mock-seg"><span>Phần</span><button data-set="state:video">Video</button><button data-set="state:doc">Bài đọc</button><button data-set="state:quiz">Kiểm tra</button><button data-set="state:xong">Xong</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<div class="app">
+  <header class="lesson-top">
+    <a class="icon-btn" href="hs-02b-khoa-hoc.html" aria-label="Khóa học"><i data-i="back"></i></a>
+    <button class="icon-btn outline-btn" id="outlineBtn" aria-label="Danh sách bài" aria-expanded="false"><i data-i="layers"></i></button>
+    <div class="t">
+      <b data-en="Physics 11: Electric field">Vật lí 11: Điện trường</b>
+      <span class="meta"><span class="bar"><i style="width:36%"></i></span><span data-en="Lesson 3 of 7">Bài 3/7</span></span>
+    </div>
+    <a class="icon-btn" href="hs-08-hoi-bai.html" aria-label="Chụp bài hỏi"><i data-i="camera"></i></a>
+  </header>
+
+  <div class="layout">
+    <nav class="outline" aria-label="Các bài trong khóa">
+      <figure class="course-cover"><img src="assets/courses/dien-truong.jpg" alt=""></figure>
+      <h2 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h2>
+      <p data-en="Teacher Minh">Thầy Minh</p>
+      <ol>
+        <li><a href="#"><span class="st done"><i data-i="check"></i></span><span data-en="Charges and Coulomb's law">Điện tích, định luật Cu-lông</span></a></li>
+        <li><a href="#"><span class="st done"><i data-i="check"></i></span><span data-en="Electric field strength">Cường độ điện trường</span></a></li>
+        <li><a href="#" aria-current="step"><span class="st">3</span><span data-en="Electric field lines">Đường sức điện</span></a></li>
+        <li><a href="#"><span class="st">4</span><span data-en="Uniform electric field">Điện trường đều</span></a></li>
+        <li><a href="#"><span class="st">5</span><span data-en="Work done by the electric force">Công của lực điện</span></a></li>
+        <li><a href="#"><span class="st">6</span><span data-en="Potential and voltage">Điện thế, hiệu điện thế</span></a></li>
+        <li><a href="#"><span class="st">7</span><span data-en="Capacitors">Tụ điện</span></a></li>
+      </ol>
+    </nav>
+
+    <main class="content">
+      <h1 class="lesson-h" data-en="Lesson 3: Electric field lines">Bài 3: Đường sức điện</h1>
+      <div class="parts" role="group" aria-label="Phần của bài">
+        <button data-set="state:video" aria-pressed="false"><i data-i="video"></i><span data-en="Video">Video</span></button>
+        <button data-set="state:doc" aria-pressed="false"><i data-i="text"></i><span data-en="Reading">Bài đọc</span></button>
+        <button data-set="state:quiz" aria-pressed="false"><i data-i="quiz"></i><span data-en="Check">Kiểm tra</span></button>
+      </div>
+
+      <!-- VIDEO -->
+      <section data-when="state=video" style="display:grid; gap:16px">
+        <div class="video" id="video">
+          <svg class="scene" viewBox="0 0 640 360" aria-hidden="true" id="fieldSvg"></svg>
+          <button class="play" id="vplay" aria-label="Phát video"><i data-i="play"></i></button>
+          <span class="dur">2:40</span>
+          <div class="cap" id="vcap" data-en="Field lines leave the positive charge and end on the negative one.">Đường sức đi ra từ điện tích dương, đi vào điện tích âm.</div>
+          <div class="vbar"><i></i></div>
+        </div>
+        <div class="after-video">
+          <button class="btn btn-primary" data-set="state:doc"><span data-en="Read the lesson">Đọc bài</span></button>
+          <span class="muted small" data-en="Subtitles on. Video stays saved on your device.">Có phụ đề. Video đã tải sẵn về máy.</span>
+        </div>
+      </section>
+
+      <!-- READING -->
+      <section class="read" data-when="state=doc">
+        <p>Đường sức điện là đường vẽ trong điện trường sao cho tiếp tuyến tại mỗi điểm trùng với hướng của vectơ cường độ điện trường tại điểm đó. Nhìn đường sức, em biết ngay điện trường hướng về đâu và mạnh hay yếu.</p>
+
+        <h2 class="sub">Bốn điều cần nhớ</h2>
+        <ol>
+          <li>Qua mỗi điểm chỉ vẽ được một đường sức, nên các đường sức không cắt nhau.</li>
+          <li>Đường sức đi ra từ điện tích dương và đi vào điện tích âm (hoặc ra xa vô cực).</li>
+          <li>Chỗ điện trường mạnh, đường sức dày. Chỗ yếu, đường sức thưa.</li>
+          <li>Đường sức của điện trường tĩnh không khép kín.</li>
+        </ol>
+
+        <h2 class="sub">Vì sao càng xa càng thưa?</h2>
+        <div class="formula oli">
+          $$E = k\,\frac{|q|}{\varepsilon\, r^2}$$
+          <p>Với \(k = 9\cdot 10^9\ \text{N}\cdot\text{m}^2/\text{C}^2\). Trong không khí lấy \(\varepsilon \approx 1\).</p>
+        </div>
+        <p>\(E\) tỉ lệ nghịch với \(r^2\). Đi xa gấp đôi thì \(E\) còn một phần tư, nên đường sức phải thưa ra.</p>
+
+        <div class="example">
+          <b>Ví dụ</b>
+          <p>Điện tích \(q = 4\cdot 10^{-8}\) C đặt trong không khí. Tính \(E\) tại điểm cách \(q\) 3 cm và 6 cm.</p>
+          <p>Ở 3 cm: \(E_1 = 9\cdot 10^9 \cdot \dfrac{4\cdot 10^{-8}}{(0{,}03)^2} = 4\cdot 10^5\) V/m.</p>
+          <p>Ở 6 cm, \(r\) gấp đôi nên \(E\) giảm 4 lần: \(E_2 = 10^5\) V/m.</p>
+        </div>
+
+        <div class="pen"><strong>Thầy Minh dặn:</strong> gặp bài hỏi chỗ nào điện trường mạnh hơn, nhìn độ dày đường sức trước rồi hãy tính.</div>
+
+        <div><button class="btn btn-primary" data-set="state:quiz"><span data-en="Check yourself">Làm 3 câu kiểm tra</span></button></div>
+      </section>
+
+      <!-- QUIZ -->
+      <section data-when="state=quiz" style="display:grid; gap:4px" id="quiz"></section>
+      <div data-when="state=quiz"><button class="btn btn-primary" id="quizDone" data-set="state:xong" hidden><span data-en="Finish lesson">Xong bài</span></button></div>
+
+      <!-- DONE -->
+      <section class="finish oli" data-when="state=xong">
+        <span class="score" id="score">3/3</span>
+        <h2 data-en="Lesson 3 done">Xong bài 3</h2>
+        <p class="muted" data-en="Next up is the uniform field. You'll see it again in tomorrow's plan.">Bài tiếp là Điện trường đều. Mai em sẽ thấy nó trong kế hoạch học.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="#" data-set="state:video"><span data-en="Next lesson">Học bài 4</span></a>
+          <a class="btn btn-ghost" href="hs-02b-khoa-hoc.html"><span data-en="Stop here">Dừng ở đây</span></a>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  const QUIZ = [
+    { q: "Đường sức điện của một điện tích dương đứng yên có dạng nào?",
+      opts: ["Hướng vào điện tích", "Hướng ra xa điện tích", "Là những vòng tròn quanh điện tích", "Song song với nhau"],
+      a: 1, why: "Đường sức đi ra từ điện tích dương." },
+    { q: "Hai đường sức điện có cắt nhau được không?",
+      opts: ["Có, tại vị trí điện tích", "Không bao giờ", "Có, khi điện trường rất mạnh"],
+      a: 1, why: "Tại mỗi điểm \\(\\vec E\\) chỉ có một hướng, nên chỉ có một đường sức đi qua." },
+    { q: "Tại A cách \\(q\\) 2 cm, \\(E = 9\\cdot 10^5\\) V/m. Tại B cách \\(q\\) 6 cm, \\(E\\) bằng bao nhiêu?",
+      opts: ["\\(3\\cdot 10^5\\) V/m", "\\(10^5\\) V/m", "\\(2{,}7\\cdot 10^6\\) V/m"],
+      a: 1, why: "\\(r\\) gấp 3 lần thì \\(E\\) giảm \\(3^2 = 9\\) lần." },
+  ];
+
+  function math(el) {
+    if (window.renderMathInElement) renderMathInElement(el, { delimiters: [{ left: "$$", right: "$$", display: true }, { left: "\\(", right: "\\)", display: false }], throwOnError: false });
+  }
+
+  function buildQuiz() {
+    const root = document.getElementById("quiz");
+    let answered = 0, right = 0;
+    QUIZ.forEach((item, i) => {
+      const box = document.createElement("div");
+      box.className = "q";
+      box.innerHTML = "<h3><span class=\"qn\">" + (i + 1) + ".</span>" + item.q + '</h3><div class="opts"></div><p class="fb" hidden></p>';
+      const opts = box.querySelector(".opts");
+      const fb = box.querySelector(".fb");
+      item.opts.forEach((t, j) => {
+        const b = document.createElement("button");
+        b.className = "opt";
+        b.innerHTML = '<span class="k">' + "ABCD"[j] + "</span><span>" + t + "</span><span></span>";
+        b.addEventListener("click", () => {
+          opts.querySelectorAll(".opt").forEach((x) => (x.disabled = true));
+          const ok = j === item.a;
+          b.classList.add(ok ? "right" : "wrong");
+          b.lastChild.innerHTML = window.mentorIcon(ok ? "check" : "x");
+          if (!ok) opts.children[item.a].classList.add("right");
+          fb.hidden = false;
+          fb.className = "fb " + (ok ? "ok" : "no");
+          fb.innerHTML = (ok ? "Đúng. " : "Chưa đúng. ") + item.why;
+          math(fb);
+          answered++; if (ok) right++;
+          if (answered === QUIZ.length) {
+            document.getElementById("score").textContent = right + "/" + QUIZ.length;
+            document.getElementById("quizDone").hidden = false;
+          }
+        });
+        opts.appendChild(b);
+      });
+      root.appendChild(box);
+    });
+  }
+
+  function drawField() {
+    const s = document.getElementById("fieldSvg");
+    const P = [200, 180], N = [440, 180];
+    let h = "";
+    [180, 120, 60, 0, 240, 300, 360].forEach((y) => {
+      h += '<path d="M' + P[0] + " " + P[1] + " C 270 " + y + ", 370 " + y + ", " + N[0] + " " + N[1] + '" fill="none" stroke="#4B2EBF" stroke-width="2" opacity=".75"/>';
+      const ym = (2 * 180 + 6 * y) / 8;
+      h += '<path d="M314 ' + (ym - 6) + " L326 " + ym + " L314 " + (ym + 6) + 'z" fill="#4B2EBF"/>';
+    });
+    [[60, 180], [90, 90], [90, 270]].forEach(([x, y]) => {
+      h += '<path d="M' + P[0] + " " + P[1] + " L" + x + " " + y + '" stroke="#4B2EBF" stroke-width="2" opacity=".55"/>';
+      h += '<path d="M' + (640 - x) + " " + y + " L" + N[0] + " " + N[1] + '" stroke="#4B2EBF" stroke-width="2" opacity=".55"/>';
+    });
+    h += '<circle cx="200" cy="180" r="24" fill="#D23A3A"/><text x="200" y="189" text-anchor="middle" font-family="Lexend" font-size="28" font-weight="700" fill="#fff">+</text>';
+    h += '<circle cx="440" cy="180" r="24" fill="#2F6FB5"/><text x="440" y="189" text-anchor="middle" font-family="Lexend" font-size="30" font-weight="700" fill="#fff">−</text>';
+    s.innerHTML = h;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    window.mockSet("age", "thpt", false);
+    drawField();
+    buildQuiz();
+    const parts = () => {
+      const st = document.documentElement.dataset.state;
+      document.querySelectorAll(".parts button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.set === "state:" + st)));
+    };
+    document.addEventListener("mock:change", parts);
+    parts();
+
+    const caps = ["Đường sức đi ra từ điện tích dương, đi vào điện tích âm.", "Giữa hai điện tích, đường sức dày nhất: điện trường mạnh nhất.", "Ra xa, đường sức thưa dần."];
+    document.getElementById("vplay").addEventListener("click", () => {
+      document.getElementById("video").classList.add("playing");
+      caps.forEach((c, i) => setTimeout(() => { document.getElementById("vcap").textContent = c; }, i * 3000));
+    });
+
+    const ob = document.getElementById("outlineBtn");
+    ob.addEventListener("click", () => {
+      const open = document.documentElement.dataset.outline === "open";
+      document.documentElement.dataset.outline = open ? "" : "open";
+      ob.setAttribute("aria-expanded", String(!open));
+    });
+  });
+  window.addEventListener("load", () => math(document.querySelector(".content")));
+})();
+</script>
+</body>
+</html>

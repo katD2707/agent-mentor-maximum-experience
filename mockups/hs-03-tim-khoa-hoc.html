@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="ket-qua">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tìm khóa học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="assets/soon/pager.css">
+<link rel="stylesheet" href="assets/soon/catalog.css">
+<script src="shared.js"></script>
+<script src="assets/soon/courses.js"></script><script src="assets/soon/pager.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .scope { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 14px 4px 8px; color: var(--ink-2); font-size: .9em; }
+  .scope button { border: 0; background: none; color: var(--tim-ink); font-weight: 500; cursor: pointer; padding: 6px 0; text-decoration: underline; text-underline-offset: 3px; }
+  .results { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .res { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 18px 4px; border-bottom: 1px solid var(--rule); }
+  .thumb { width: 72px; height: 72px; border-radius: 16px; overflow: hidden; background: #FBF6EA; flex: none; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+  .res h2 { font-size: 1.05em; }
+  .res mark { background: var(--vang-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
+  .res h2 .tag { vertical-align: middle; white-space: nowrap; margin-left: 4px; }
+  .res .by { color: var(--ink-2); font-size: .88em; margin-top: 4px; }
+  .res .has { display: flex; gap: 12px; margin-top: 8px; color: var(--ink-2); font-size: .82em; flex-wrap: wrap; }
+  .res .has span { display: inline-flex; gap: 5px; align-items: center; }
+  .res .has svg { width: 16px; height: 16px; }
+  @media (max-width: 600px) { .res { grid-template-columns: 56px minmax(0, 1fr); } .res .thumb { width: 56px; height: 56px; } .res .btn { grid-column: 2; justify-self: start; } }
+
+  .empty { padding: 48px 0; display: grid; gap: 12px; max-width: 46ch; }
+  .empty h2 { font-size: 1.3em; }
+
+  /* course detail */
+  .detail { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; align-items: start; }
+  @media (max-width: 860px) { .detail { grid-template-columns: 1fr; } }
+  .cover { display: grid; gap: 12px; }
+  .cover-media { margin: 0 0 6px; border-radius: var(--r-lg); overflow: hidden; background: #FBF6EA; border: 1px solid var(--rule-strong); }
+  .cover-media img { width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 340px; object-fit: cover; display: block; }
+  .cover h1 { font-size: clamp(1.6em, 3.5vw, 2.2em); }
+  .learn { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+  .lessons { list-style: none; margin: 0; padding: 0; counter-reset: l; }
+  .lessons li { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rule); counter-increment: l; }
+  .lessons li::before { content: counter(l); width: 28px; height: 28px; border-radius: 8px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; font-weight: 600; font-size: .85em; }
+  .lessons .kinds { display: flex; gap: 6px; color: var(--ink-3); }
+  .lessons .kinds svg { width: 18px; height: 18px; }
+  .side { position: sticky; top: 64px; display: grid; gap: 14px; padding: 22px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); }
+  .side .facts { display: grid; gap: 8px; color: var(--ink-2); font-size: .9em; }
+  .side .facts span { display: flex; gap: 8px; align-items: center; }
+  .side .facts svg { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Tìm khóa học</span>
+  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:ket-qua">Danh mục</button><button data-set="state:trong">Không có kết quả</button><button data-set="state:chi-tiet">Mở 1 khóa</button></span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-02b-khoa-hoc.html" aria-label="Khóa học"><i data-i="back"></i></a>
+    <h1 class="page-title" data-en="Find courses">Tìm khóa học</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <!-- ===== catalog: search, sort, filters, results (built by assets/soon/catalog.js) ===== -->
+    <div data-when="state=ket-qua|trong"><div id="cat"></div></div>
+
+    <!-- ===== course detail ===== -->
+    <div data-when="state=chi-tiet">
+      <p style="margin-bottom:16px"><a class="btn btn-quiet" href="#" data-set="state:ket-qua" style="padding-left:0"><i data-i="back"></i><span data-en="Back to results">Kết quả tìm</span></a></p>
+      <div class="detail">
+        <div style="display:grid; gap:28px">
+          <section class="cover">
+            <figure class="cover-media"><img src="assets/courses/dien-truong.jpg" alt=""></figure>
+            <h2 style="font-size:clamp(1.6em,3.5vw,2.2em)">Vật lí 11: Điện trường</h2>
+            <p class="muted" data-en="Teacher Minh, based on the grade 11 textbook, chapter III">Thầy Minh soạn theo SGK Vật lí 11, chương III</p>
+          </section>
+          <section style="display:grid; gap:12px">
+            <h2 style="font-size:1.1em" data-en="After this course you can">Học xong em sẽ</h2>
+            <ul class="learn">
+              <li data-en="Explain why charges push and pull without touching">Giải thích được vì sao điện tích hút, đẩy nhau mà không cần chạm</li>
+              <li data-en="Draw field lines around one or two charges">Vẽ được đường sức quanh một hoặc hai điện tích</li>
+              <li data-en="Solve field-strength problems in the exam format">Giải bài cường độ điện trường theo dạng đề thi</li>
+            </ul>
+          </section>
+          <section>
+            <h2 style="font-size:1.1em; margin-bottom:6px" data-en="Lessons">Các bài</h2>
+            <ol class="lessons">
+              <li><span>Điện tích, định luật Cu-lông</span><span class="kinds"><i data-i="video"></i><i data-i="quiz"></i></span></li>
+              <li><span>Cường độ điện trường</span><span class="kinds"><i data-i="text"></i><i data-i="quiz"></i></span></li>
+              <li><span>Đường sức điện</span><span class="kinds"><i data-i="video"></i><i data-i="text"></i><i data-i="quiz"></i></span></li>
+              <li><span>Điện trường đều</span><span class="kinds"><i data-i="text"></i><i data-i="quiz"></i></span></li>
+              <li><span>Công của lực điện</span><span class="kinds"><i data-i="text"></i><i data-i="quiz"></i></span></li>
+              <li><span>Điện thế, hiệu điện thế</span><span class="kinds"><i data-i="video"></i><i data-i="quiz"></i></span></li>
+              <li><span>Tụ điện</span><span class="kinds"><i data-i="video"></i><i data-i="text"></i></span></li>
+            </ol>
+          </section>
+        </div>
+        <aside class="side">
+          <a class="btn btn-primary btn-big" href="hs-05-khoa-hoc-thpt.html"><i data-i="play"></i><span data-en="Start learning">Bắt đầu học</span></a>
+          <div class="facts">
+            <span><i data-i="clock"></i><span data-en="About 2 hours, 15–20 min a day">Khoảng 2 giờ, mỗi ngày 15–20 phút</span></span>
+            <span><i data-i="download"></i><span data-en="Works offline once opened">Mở một lần là học được khi mất mạng</span></span>
+          </div>
+          <p class="small muted" data-en="Mentor fits this course into your study plan automatically.">Mentor tự xếp khóa này vào lịch học của em.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/soon/catalog.js"></script>
+</body>
+</html>

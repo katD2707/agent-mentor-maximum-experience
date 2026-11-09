@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="vi" data-age="thcs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .stage { position: relative; min-height: calc(100vh - 44px); display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 72px 16px 48px; }
+  .lang-mini { position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--rule-strong); }
+  .lang-mini button { min-height: 34px; min-width: 44px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-weight: 600; font-size: 14px; cursor: pointer; }
+  .lang-mini button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  .card { min-width: 0; width: min(560px, 100%); grid-template-columns: minmax(0, 1fr); border-radius: 28px; border: 1px solid var(--rule-strong); box-shadow: var(--shadow);
+          padding: 36px 32px 32px 76px; display: grid; gap: 26px; }
+  @media (max-width: 520px) { .card { padding: 28px 18px 24px 60px; gap: 22px; } }
+  .logo { justify-self: start; }
+
+  .roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .role { position: relative; display: grid; place-items: center; padding: 14px 8px 8px; border-radius: 22px; border: 2px solid var(--rule-strong); background: var(--surface); cursor: pointer; }
+  .role:hover { border-color: var(--ink-3); }
+  .role svg { width: 100%; max-width: 150px; height: auto; }
+  .role[aria-checked="true"] { border-color: var(--tim); box-shadow: inset 0 0 0 3px var(--tim); background: var(--tim-soft); }
+  .role .tick { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 999px; background: var(--tim); color: var(--on-tim); display: none; place-items: center; }
+  .role .tick svg { width: 20px; height: 20px; }
+  .role[aria-checked="true"] .tick { display: grid; }
+  .roles.shake { animation: shake .4s ease-in-out; }
+  @keyframes shake { 0%, 100% { transform: translateX(0) } 20% { transform: translateX(-8px) } 40% { transform: translateX(7px) } 60% { transform: translateX(-5px) } 80% { transform: translateX(3px) } }
+
+  .fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .field { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .field label { font-size: 14px; font-weight: 600; color: var(--ink-2); padding-left: 18px; }
+  .pill { display: flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 8px 0 18px; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--rule-strong); }
+  .pill:focus-within { border-color: var(--tim); outline: 4px solid var(--tim-soft); }
+  .pill.bad { border-color: var(--do); }
+  .pill > svg { width: 22px; height: 22px; color: var(--ink-3); flex: none; }
+  .pill input { flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; min-height: 50px; }
+  .eye { width: 42px; height: 42px; border-radius: 999px; border: 0; background: transparent; color: var(--ink-2); display: grid; place-items: center; cursor: pointer; flex: none; }
+  .eye:hover { background: var(--tim-soft); color: var(--ink); }
+  .eye[aria-pressed="true"] { color: var(--tim-ink); }
+
+  .alert { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: var(--do-soft); color: var(--ink); }
+  .alert svg { flex: none; width: 22px; height: 22px; color: var(--do); margin-top: 1px; }
+  .alert b { color: var(--do); }
+  .submit { width: 100%; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đăng nhập</span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Tài khoản thử: hocsinh / 123456 (học sinh), giaovien / 123456 (giáo viên). Thử chọn sai vai trò để xem thông báo.</span>
+</div>
+
+<div class="stage">
+  <div class="lang-mini" role="group" aria-label="Ngôn ngữ">
+    <button type="button" data-set="lang:vi" aria-pressed="true">VI</button>
+    <button type="button" data-set="lang:en" aria-pressed="false">EN</button>
+  </div>
+
+  <form class="card oli" id="login" novalidate>
+    <span class="logo"><span class="logo-mark">M</span><span>Mentor</span></span>
+
+    <div class="roles" id="roles" role="radiogroup" aria-label="Vai trò">
+      <button type="button" class="role" role="radio" aria-checked="false" data-role="hs" aria-label="Học sinh" data-en-label="Student">
+        <span class="tick" aria-hidden="true"><i data-i="check"></i></span>
+        <!-- student: white shirt, backpack, book -->
+        <svg viewBox="0 0 140 170" aria-hidden="true">
+          <ellipse cx="70" cy="162" rx="40" ry="5" fill="var(--rule-strong)"/>
+          <rect x="40" y="74" width="20" height="38" rx="7" fill="#2F6FB5"/>
+          <rect x="55" y="114" width="12" height="44" rx="4" fill="#25305C"/><rect x="73" y="114" width="12" height="44" rx="4" fill="#25305C"/>
+          <rect x="50" y="66" width="40" height="54" rx="11" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+          <path d="M62 68 L70 80 L78 68" stroke="#CFCAEB" stroke-width="2" fill="none"/>
+          <path d="M62 68 L70 84 L78 68 Z" fill="#E5484D"/>
+          <rect x="80" y="88" width="22" height="28" rx="3" fill="#FFB020" transform="rotate(-8 91 102)"/>
+          <circle cx="70" cy="46" r="18" fill="#F2C49B"/>
+          <path d="M52 44 C52 26 88 24 88 44 L84 38 C76 34 62 34 54 40 Z" fill="#2B2321"/>
+          <circle cx="64" cy="48" r="2.2" fill="#2B2321"/><circle cx="76" cy="48" r="2.2" fill="#2B2321"/>
+          <path d="M65 55 Q70 59 75 55" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button type="button" class="role" role="radio" aria-checked="false" data-role="gv" aria-label="Giáo viên" data-en-label="Teacher">
+        <span class="tick" aria-hidden="true"><i data-i="check"></i></span>
+        <!-- teacher: glasses, cardigan, book, small chalkboard -->
+        <svg viewBox="0 0 140 170" aria-hidden="true">
+          <ellipse cx="70" cy="162" rx="44" ry="5" fill="var(--rule-strong)"/>
+          <rect x="84" y="30" width="48" height="36" rx="4" fill="#24453A" stroke="#8A5A2B" stroke-width="3"/>
+          <path d="M92 44 h8 M96 40 v8 M106 44 h8 M92 56 q6 -6 12 0 t12 0" stroke="#E9F2EC" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <rect x="49" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/><rect x="66" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/>
+          <rect x="40" y="62" width="48" height="58" rx="13" fill="#12825A"/>
+          <path d="M56 64 L64 80 L72 64" fill="#fff"/>
+          <rect x="30" y="86" width="26" height="20" rx="3" fill="#4B2EBF" transform="rotate(6 43 96)"/>
+          <path d="M88 82 L112 62" stroke="#8A5A2B" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="64" cy="40" r="18" fill="#E2AE85"/>
+          <path d="M46 40 C44 20 84 18 82 40 C80 30 74 26 64 26 C54 26 48 30 46 40 Z" fill="#4A3A35"/>
+          <rect x="53" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/><rect x="66" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/>
+          <path d="M63 41 h3" stroke="#2B2321" stroke-width="1.8"/>
+          <path d="M59 51 Q64 55 69 51" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="fields">
+      <div class="field">
+        <label for="acc" data-en="Account">Tài khoản</label>
+        <div class="pill" id="accPill"><i data-i="user"></i><input id="acc" name="acc" autocomplete="username" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="field">
+        <label for="pw" data-en="Password">Mật khẩu</label>
+        <div class="pill" id="pwPill"><i data-i="lock"></i><input id="pw" name="pw" type="password" autocomplete="current-password">
+          <button type="button" class="eye" id="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div>
+      </div>
+    </div>
+
+    <div class="alert" id="alert" role="alert" hidden><i data-i="x"></i><span id="alertText"></span></div>
+
+    <button class="btn btn-primary btn-big submit" type="submit" data-en="Log in">Đăng nhập</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  const ACCOUNTS = { hocsinh: { pw: "123456", role: "hs" }, giaovien: { pw: "123456", role: "gv" } };
+  const MSG = {
+    noRole: { vi: "Chọn vai trò trước nhé.", en: "Pick your role first." },
+    isTeacher: { vi: "Vai trò và tài khoản không khớp.", en: "Role and account don't match." },
+    isStudent: { vi: "Vai trò và tài khoản không khớp.", en: "Role and account don't match." },
+    wrong: { vi: "Tài khoản hoặc mật khẩu chưa đúng.", en: "Account or password is incorrect." },
+  };
+  const $ = (id) => document.getElementById(id);
+  const roles = $("roles"), alertBox = $("alert"), alertText = $("alertText");
+  let role = null, lastMsg = null;
+  const lang = () => (document.documentElement.lang === "en" ? "en" : "vi");
+
+  function show(key) {
+    lastMsg = key;
+    alertText.innerHTML = MSG[key][lang()];
+    alertBox.hidden = false;
+  }
+  function clear() { alertBox.hidden = true; lastMsg = null; $("accPill").classList.remove("bad"); $("pwPill").classList.remove("bad"); }
+
+  roles.addEventListener("click", (e) => {
+    const b = e.target.closest(".role"); if (!b) return;
+    role = b.dataset.role;
+    roles.querySelectorAll(".role").forEach((r) => r.setAttribute("aria-checked", String(r === b)));
+    if (lastMsg === "noRole" || lastMsg === "isTeacher" || lastMsg === "isStudent") clear();
+  });
+  // arrow keys move between the two radios
+  roles.addEventListener("keydown", (e) => {
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) return;
+    e.preventDefault();
+    const list = [...roles.querySelectorAll(".role")];
+    const next = list[(list.indexOf(document.activeElement) + 1) % list.length];
+    next.focus(); next.click();
+  });
+
+  $("eye").addEventListener("click", function () {
+    const on = this.getAttribute("aria-pressed") !== "true";
+    this.setAttribute("aria-pressed", String(on));
+    this.setAttribute("aria-label", on ? "Ẩn mật khẩu" : "Hiện mật khẩu");
+    $("pw").type = on ? "text" : "password";
+  });
+  ["acc", "pw"].forEach((id) => $(id).addEventListener("input", () => { if (lastMsg === "wrong") clear(); }));
+
+  $("login").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!role) {
+      show("noRole");
+      roles.classList.remove("shake"); void roles.offsetWidth; roles.classList.add("shake");
+      roles.querySelector(".role").focus();
+      return;
+    }
+    const acc = ACCOUNTS[$("acc").value.trim().toLowerCase()];
+    if (!acc || acc.pw !== $("pw").value) {
+      show("wrong");
+      $("accPill").classList.add("bad"); $("pwPill").classList.add("bad");
+      return;
+    }
+    if (acc.role !== role) { show(acc.role === "gv" ? "isTeacher" : "isStudent"); return; }
+    location.href = role === "hs" ? "hs-01-bat-dau.html" : "gv-01-gui-bai.html";
+  });
+
+  // keep the page's own VI/EN switch and any open message in sync with the language
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key !== "lang") return;
+    document.querySelectorAll(".lang-mini button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.set === "lang:" + e.detail.value)));
+    document.querySelectorAll(".role").forEach((r) => {
+      if (!r.dataset.viLabel) r.dataset.viLabel = r.getAttribute("aria-label");
+      r.setAttribute("aria-label", e.detail.value === "en" ? r.dataset.enLabel : r.dataset.viLabel);
+    });
+    if (lastMsg) alertText.innerHTML = MSG[lastMsg][lang()];
+  });
+})();
+</script>
+</body>
+</html>

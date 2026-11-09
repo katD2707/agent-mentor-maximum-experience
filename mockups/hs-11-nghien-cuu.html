@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="vi" data-age="dai-hoc" data-age-fixed="dai-hoc" data-state="co-du-lieu" data-review="off">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nghiên cứu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  .wrap { max-width: 1080px; margin: 0 auto; display: grid; gap: 20px; }
+  .narrow { max-width: 760px; width: 100%; margin: 0 auto; display: grid; gap: 20px; }
+  h2.s { font-size: 1.1em; }
+  .link { color: var(--tim-ink); font-weight: 600; text-decoration: none; font-size: .9em; }
+  .link:hover { text-decoration: underline; }
+  .eyebrow { font-size: .74em; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  .sec-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .sec-head .grow { flex: 1; }
+
+  /* every part is its own card */
+  .card { display: grid; align-content: start; gap: 12px; min-width: 0; padding: 18px 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+
+  /* board: bento grid on wide screens */
+  .board { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+  .board > .full { grid-column: 1 / -1; }
+  .hero { grid-column: span 2; }
+  .events { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .readrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
+  .readrow .papers-col { grid-column: span 2; display: grid; gap: 12px; min-width: 0; }
+  .papers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .papers > li { display: grid; }
+
+  /* hero: today, on ô li paper */
+  .today { display: grid; align-content: start; gap: 14px; padding: 22px 24px 22px 68px; border-radius: var(--r-lg); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .today .top { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .today h2 { font-family: var(--font-read); font-weight: 600; font-size: 1.35em; line-height: 1.3; }
+  .today .why { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; border-radius: var(--r-md); background: var(--vang-soft); color: var(--ink); font-size: .9em; }
+  .today .why svg { width: 18px; height: 18px; flex: none; margin-top: 2px; color: var(--cam); }
+  .today .act { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  @media (max-width: 520px) { .today { padding: 20px 16px 20px 58px; } }
+
+  /* first-use card */
+  .ask-topic { display: grid; gap: 16px; padding: 28px 28px 28px 68px; border-radius: var(--r-lg); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .ask-topic h2 { font-size: 1.5em; }
+  .drop { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 16px 18px; border-radius: var(--r-md); border: 2px dashed var(--rule-strong); background: var(--surface); color: var(--ink-2); }
+  .drop svg { width: 22px; height: 22px; color: var(--tim-ink); }
+  .kinds { display: inline-flex; gap: 6px; margin-left: auto; }
+  @media (max-width: 520px) { .ask-topic { padding: 22px 18px 22px 58px; } .kinds { margin-left: 0; } }
+
+  /* topic card */
+  .q { font-family: var(--font-read); font-size: 1.08em; line-height: 1.6; border-left: 3px solid var(--tim); padding-left: 14px; margin: 0; }
+  .kw { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .kw li { display: inline-flex; align-items: center; gap: 6px; padding: 4px 6px 4px 12px; border-radius: 999px; background: var(--paper); border: 1px solid var(--rule-strong); font-size: .84em; }
+  .today .kw li { background: var(--surface); }
+  .kw button { width: 22px; height: 22px; border-radius: 99px; border: 0; background: transparent; color: var(--ink-3); cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .kw button:hover { background: var(--do-soft); color: var(--do); }
+  .kw button svg { width: 14px; height: 14px; }
+
+  .waiting { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-md); background: var(--cam-soft); color: var(--cam); font-weight: 500; }
+  .waiting svg { width: 22px; height: 22px; flex: none; margin-top: 1px; }
+  .waiting .dots i { display: inline-block; width: 6px; height: 6px; margin-right: 3px; border-radius: 99px; background: currentColor; animation: blink 1.2s infinite; }
+  .waiting .dots i:nth-child(2) { animation-delay: .2s; } .waiting .dots i:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25; } 40% { opacity: 1; } }
+
+  /* event cards */
+  .ev { grid-template-columns: 56px minmax(0, 1fr); column-gap: 14px; row-gap: 6px; }
+  .ev .date { grid-row: span 2; display: grid; justify-items: center; align-content: center; width: 56px; padding: 6px 0; border-radius: var(--r-md); background: var(--tim-soft); color: var(--tim-ink); line-height: 1.15; }
+  .ev .date small { font-size: .64em; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+  .ev .date b { font-size: 1.5em; font-weight: 700; }
+  .ev h3 { font-size: 1em; font-weight: 600; line-height: 1.35; }
+  .ev .sub { color: var(--ink-2); font-size: .86em; line-height: 1.45; grid-column: 2; }
+  .ev .foot { grid-column: 1 / -1; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+  .ev.hot { background: var(--vang-soft); border-color: var(--vang); }
+  .ev.hot .date { background: var(--vang); color: #3A3000; }
+  .agenda .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; font-size: .92em; }
+  .agenda h3 { font-size: 1em; }
+  .agenda ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; }
+  .agenda li { display: flex; gap: 8px; align-items: baseline; }
+  .agenda li svg { width: 16px; height: 16px; flex: none; transform: translateY(3px); color: var(--xanh); }
+  .agenda li.half svg { color: var(--cam); }
+  .box { width: 100%; min-height: 64px; padding: 10px 14px; border-radius: 12px; border: 1.5px solid var(--rule-strong); background: var(--paper); resize: vertical; line-height: 1.5; margin-top: 6px; }
+  .box:focus { outline: 3px solid var(--tim-soft); border-color: var(--tim); }
+
+  /* milestones: horizontal timeline of four cards */
+  .mswrap { padding-top: 22px; }
+  .ms { list-style: none; margin: 0; padding: 14px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .ms li { position: relative; display: grid; align-content: start; gap: 6px; padding: 14px; border-radius: var(--r-md); background: var(--paper); border: 1px solid var(--rule-strong); }
+  .ms li::before { content: ""; position: absolute; top: -8px; left: 50%; width: calc(100% + 14px); height: 2px; background: var(--rule-strong); }
+  .ms li:last-child::before { display: none; }
+  .ms .dot { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); z-index: 1; width: 16px; height: 16px; border-radius: 99px; border: 2px solid var(--rule-strong); background: var(--surface); display: grid; place-items: center; }
+  .ms .dot svg { width: 10px; height: 10px; stroke-width: 3; }
+  .ms li.done { background: var(--xanh-soft); border-color: transparent; }
+  .ms li.done::before { background: var(--xanh); }
+  .ms li.done .dot { background: var(--xanh); border-color: var(--xanh); color: #fff; }
+  .ms li.next { background: var(--tim-soft); border: 2px solid var(--tim); }
+  .ms li.next .dot { border-color: var(--tim); background: var(--tim); box-shadow: 0 0 0 4px var(--tim-soft); }
+  .ms .d { color: var(--ink-2); font-size: .82em; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ms li.done .d { color: var(--xanh); }
+  .ms li.next .d { color: var(--tim-ink); }
+  .ms .what { font-weight: 500; line-height: 1.35; font-size: .95em; }
+
+  /* paper cards */
+  .pcard { display: grid; align-content: start; gap: 8px; padding: 16px 18px; text-decoration: none; color: inherit; transition: transform .15s ease, border-color .2s ease; }
+  .pcard:hover { border-color: var(--tim); transform: translateY(-2px); }
+  .pcard .top { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .pcard .by { color: var(--ink-2); font-size: .82em; }
+  .pcard .tag { white-space: nowrap; flex: none; }
+  .pcard .t { font-family: var(--font-read); font-weight: 600; line-height: 1.4; }
+  .pcard .reason { display: flex; gap: 8px; align-items: flex-start; margin-top: 2px; padding: 8px 10px; border-radius: var(--r-md); background: var(--paper); font-size: .86em; color: var(--ink); }
+  .pcard .reason svg { width: 15px; height: 15px; flex: none; margin-top: 3px; color: var(--tim-ink); }
+  .pcard.reading { border: 2px solid var(--tim); }
+  .pcard.skel { min-height: 118px; animation: blink 1.4s infinite; }
+  .skel .l { display: block; height: 14px; border-radius: 6px; background: var(--rule); width: 70%; }
+  .skel .l + .l { width: 40%; height: 11px; }
+  .add-row { display: grid; gap: 10px; }
+
+  /* experiment log panel */
+  /* min-width 0 all the way down: a textarea's intrinsic width (20 cols) otherwise pushes the box past the card */
+  .card.log { min-width: 0; }
+  .card.log > * { min-width: 0; max-width: 100%; }
+  .logbox { display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 24px; background: var(--paper); border: 1.5px solid var(--rule-strong); }
+  .logbox:focus-within { border-color: var(--tim); }
+  .logbox textarea { flex: 1; width: 0; min-width: 0; height: 42px; border: 0; outline: 0; background: transparent; resize: none; overflow: hidden; font: inherit; font-size: .95em; color: var(--ink); padding: 10px 4px 10px 12px; line-height: 22px; white-space: nowrap; text-overflow: ellipsis; }
+  .logbox textarea::placeholder { color: var(--ink-3); }
+  .c-btn { width: 42px; height: 42px; flex: none; border-radius: 999px; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; color: var(--ink-2); }
+  .c-btn:hover { background: var(--tim-soft); color: var(--ink); }
+  .c-btn svg { width: 21px; height: 21px; }
+  .c-send { background: var(--tim); color: var(--on-tim); }
+  .c-send:hover { background: var(--tim-ink); color: var(--on-tim); }
+  .exps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .exp { display: grid; gap: 4px; padding: 12px 14px; border-radius: var(--r-md); background: var(--paper); border: 1px solid var(--rule-strong); }
+  .exp.fail { background: var(--do-soft); border-color: transparent; }
+  .exp .top { display: flex; gap: 10px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .exp .code { color: var(--ink-3); font-size: .76em; font-variant-numeric: tabular-nums; }
+  .exp.fail .code { color: var(--ink-2); }  /* ink-3 is only 4.1:1 on the dark red tint */
+  .exp b { font-weight: 600; font-size: .95em; }
+  .exp p { color: var(--ink-2); font-size: .86em; margin: 0; }
+  .exp .nudge { color: var(--cam); }
+
+
+  /* chapters: one tab per part, like files open in an editor */
+  .chapters { display: grid; min-width: 0; }
+  .rtabs { display: flex; min-width: 0; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--rule-strong); }
+  .rtabs::-webkit-scrollbar { display: none; }
+  .rtab { position: relative; flex: none; display: inline-flex; align-items: center; gap: 8px; min-height: 48px; margin-bottom: -1px; padding: 0 20px; border: 1px solid transparent; border-bottom: 0; border-radius: 12px 12px 0 0; background: transparent; color: var(--ink-2); font: inherit; font-size: .95em; font-weight: 500; cursor: pointer; transition: color .15s ease, background-color .15s ease; }
+  .rtab svg { width: 18px; height: 18px; flex: none; }
+  .rtab + .rtab::before { content: ""; position: absolute; left: -1px; top: 14px; bottom: 14px; width: 1px; background: var(--rule-strong); }
+  .rtab[aria-selected="true"]::before, .rtab[aria-selected="true"] + .rtab::before { display: none; }
+  .rtab:hover { color: var(--ink); background: var(--surface); }
+  .rtab[aria-selected="true"] { color: var(--ink); font-weight: 600; background: var(--paper); border-color: var(--rule-strong); box-shadow: inset 0 3px 0 var(--tim); }
+  .rtab[aria-selected="true"] svg { color: var(--tim-ink); }
+  .rtab:focus-visible { outline: 3px solid var(--tim); outline-offset: -3px; }
+  .tdot { width: 8px; height: 8px; border-radius: 99px; background: var(--tim); flex: none; }
+  .tdot.hot { background: var(--cam); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .rpanel { display: grid; align-content: start; gap: 20px; min-width: 0; padding-top: 24px; }
+  .rpanel[hidden] { display: none; }
+  .rpanel:not([hidden]) { animation: panel-in .2s ease; }
+  @keyframes panel-in { from { opacity: 0; transform: translateY(4px); } }
+  @media (prefers-reduced-motion: reduce) { .rpanel:not([hidden]) { animation: none; } }
+  .rpanel > * { grid-column: 1 / -1; }
+  .papers-col { display: grid; gap: 12px; min-width: 0; }
+  .papers { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+  #p-tn .exps { grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); }
+  @media (max-width: 520px) { .rtab { flex: 1 1 auto; justify-content: center; padding: 0 8px; gap: 5px; font-size: .88em; } .rtab svg { width: 16px; height: 16px; } }
+
+  /* paper search */
+  .sbar { display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; }
+  .sform { position: relative; flex: 1 1 320px; min-width: 0; }
+  .sform .search input { width: 100%; min-width: 0; font: inherit; padding: 0; color: var(--ink); }
+  .sform .search input::placeholder { color: var(--ink-3); }
+  .srcs { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 0 6px; min-width: 0; color: var(--ink-2); font-size: .82em; }
+  .srcs svg { width: 15px; height: 15px; flex: none; }
+  .sugg { display: none; position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 8px); gap: 10px; padding: 14px 16px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .sform:focus-within:has(input:placeholder-shown) .sugg { display: grid; }
+  .sugg .eyebrow { text-transform: none; letter-spacing: 0; font-size: .82em; }
+  .sugg .chips, .fbar { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fchip { min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: .86em; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background-color .2s ease, border-color .2s ease; }
+  .fchip:hover { border-color: var(--ink-3); }
+  .fchip[aria-pressed="true"] { background: var(--tim-soft); border-color: var(--tim); color: var(--tim-ink); font-weight: 600; }
+  .fchip svg { width: 14px; height: 14px; }
+  .fgap { width: 1px; align-self: stretch; margin: 4px 2px; background: var(--rule-strong); }
+  .results { display: grid; gap: 14px; min-width: 0; }
+  .rhead { display: flex; align-items: baseline; gap: 6px 12px; flex-wrap: wrap; }
+  .rhead h2 { overflow-wrap: anywhere; }
+  .rcards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .rcards > li { display: grid; }
+  .rcards > li[hidden] { display: none; }
+  .rcard { gap: 10px; }
+  .rcard:hover { transform: none; border-color: var(--rule-strong); }
+  .rcard .t { margin: 0; font-size: 1em; }
+  .rcard .t a { color: inherit; text-decoration: none; }
+  .rcard .t a:hover { text-decoration: underline; }
+  .rcard .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: .82em; color: var(--ink-2); }
+  .tldr { margin: 0; padding: 8px 10px; border-radius: var(--r-md); background: var(--paper); font-size: .86em; line-height: 1.5; }
+  .tldr b { font-size: .8em; letter-spacing: .06em; color: var(--tim-ink); margin-right: 6px; }
+  /* TL;DR is Semantic Scholar's own (English, not every paper has one); otherwise the abstract's start, shown as is */
+  .tldr.abs b { color: var(--ink-2); }
+  .tldr.abs span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .rcard .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: auto; }
+  .addbtn { min-height: 44px; padding: 0 16px; }
+  .addbtn .on, .addbtn .off { align-items: center; gap: 6px; }
+  .addbtn .on { display: none; }
+  .addbtn .off { display: inline-flex; }
+  .addbtn[aria-pressed="true"] { background: var(--xanh-soft); border-color: transparent; color: var(--xanh); }
+  .addbtn[aria-pressed="true"] .on { display: inline-flex; }
+  .addbtn[aria-pressed="true"] .off { display: none; }
+  .rempty { padding: 20px; border-radius: var(--r-lg); border: 1.5px dashed var(--rule-strong); color: var(--ink-2); text-align: center; margin: 0; }
+
+  .rbtn { min-height: 44px; }
+  .fchip { min-height: 44px; }
+  /* literature pass: comparison table */
+  .rv { gap: 12px; min-width: 0; padding: 16px 18px; }
+  .rv-run { display: flex; align-items: center; gap: 12px; color: var(--ink-2); }
+  .rv-head { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; }
+  .rv-note { margin: 0; padding: 10px 14px; border-radius: var(--r-md); background: var(--cam-soft); border-left: 4px solid var(--cam); color: var(--ink); font-weight: 500; line-height: 1.5; }
+  .mx-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--rule); border-radius: var(--r-md); }
+  .mx { width: 100%; min-width: 880px; border-collapse: separate; border-spacing: 0; font-size: .84em; line-height: 1.45; }
+  .mx th, .mx td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule); overflow-wrap: anywhere; }
+  .mx thead th { color: var(--ink-2); font-weight: 600; background: var(--paper); }
+  .mx tbody tr:last-child > * { border-bottom: 0; }
+  .mx tbody th { width: 250px; font-weight: 500; }
+  .mx th:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--rule); }
+  .mx thead th:first-child { background: var(--paper); }
+  .mx-t { display: block; color: inherit; font-weight: 600; text-decoration: none; }
+  .mx-t:hover { text-decoration: underline; }
+  .mx-m { display: block; color: var(--ink-2); font-size: .94em; }
+  .mx-m a { display: inline-flex; align-items: center; min-height: 44px; color: var(--tim-ink); font-weight: 600; }
+  .rv-follow { display: grid; gap: 8px; }
+  .rv-follow .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rv-follow .fchip { text-align: left; }
+  @media (max-width: 700px) {
+    .rv { padding: 14px; }
+    .mx-wrap { overflow: visible; border: 0; }
+    .mx { min-width: 0; display: block; }
+    .mx thead { display: none; }
+    .mx tbody, .mx tr, .mx th, .mx td { display: block; }
+    .mx tr { padding: 12px; margin-bottom: 10px; border: 1px solid var(--rule); border-radius: var(--r-md); }
+    .mx th, .mx td { padding: 4px 0; border: 0; }
+    .mx tbody th { width: auto; }
+    .mx th:first-child { position: static; background: none; box-shadow: none; }
+    .mx td::before { content: attr(data-label); display: block; font-size: .82em; font-weight: 600; color: var(--ink-2); }
+  }
+
+  /* narrow screens: cards stack; event, paper and milestone cards swipe sideways */
+  @media (max-width: 859px) {
+    .board, .readrow { grid-template-columns: minmax(0, 1fr); }
+    .hero, .readrow .papers-col { grid-column: auto; }
+    .scroller { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(-1 * clamp(16px, 4vw, 40px)); padding: 4px clamp(16px, 4vw, 40px) 12px; scrollbar-width: none; scroll-padding: 0 clamp(16px, 4vw, 40px); }
+    .scroller::-webkit-scrollbar { display: none; }
+    .scroller > * { flex: 0 0 min(82%, 320px); scroll-snap-align: start; }
+    .papers > li { display: block; }
+    .ms { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 16px 2px 8px; margin: 0 -2px; scrollbar-width: none; }
+    .ms::-webkit-scrollbar { display: none; }
+    .ms li { flex: 0 0 150px; scroll-snap-align: start; }
+    .agenda .cols { grid-template-columns: 1fr; }
+    .rcards { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 520px) { .fgap { display: none; } .sform .search { padding: 0 14px; gap: 10px; } .sform .search input { font-size: .92em; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đại học: Nghiên cứu</span>
+  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:trong">Trống</button><button data-set="state:vua-dat">Vừa đặt đề tài</button><button data-set="state:dang-tim">Mentor đang tìm</button><button data-set="state:co-du-lieu">Đã có dữ liệu</button><button data-set="state:ket-qua">Kết quả tìm</button></span>
+  <span class="mock-seg"><span>Key đã thêm</span><button type="button" data-src-mode="arxiv">Chưa có</button><button type="button" data-src-mode="s2">+ S2</button><button type="button" data-src-mode="asta">+ Asta</button><button type="button" data-src-mode="both">+ cả hai</button></span>
+  <span class="mock-seg"><span>Hộp thoại key</span><button type="button" data-src-demo="s2:empty">S2 trống</button><button type="button" data-src-demo="s2:checking">S2 đang kiểm tra</button><button type="button" data-src-demo="s2:invalid">S2 key sai</button><button type="button" data-src-demo="s2:connected">S2 đã thêm</button><button type="button" data-src-demo="asta:empty">Asta trống</button></span>
+  <span class="mock-seg"><span>Tổng quan nhanh</span><button data-set="review:off">Chưa chạy</button><button data-set="review:run">Đang đọc</button><button data-set="review:done">Bảng so sánh</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-note">Chỉ băng Đại học thấy màn này. Mỗi phần là một chương riêng, mở bằng tab như tab file trong trình soạn thảo: Đọc, Lịch, Thí nghiệm, Đề tài. Tên paper, tác giả, số liệu và kết quả tìm đều là dữ liệu mẫu.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-02-trang-chu.html" aria-label="Về màn chính"><i data-i="back"></i></a>
+    <h1 class="page-title" data-en="Research">Nghiên cứu</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <div class="wrap">
+
+      <!-- first use: nothing yet -->
+      <div class="narrow" data-when="state=trong">
+        <form class="ask-topic oli" onsubmit="return false">
+          <h2 data-en="What is your research about?">Đề tài của bạn là gì?</h2>
+          <label class="search"><i data-i="edit"></i>
+            <input type="text" aria-label="Đề tài" placeholder="Một câu là đủ, ví dụ: mạng nơ-ron đồ thị dự đoán độ bền vật liệu" data-en-ph="One sentence is enough, e.g. graph neural networks for predicting material stability">
+          </label>
+          <div class="drop"><i data-i="upload"></i><span data-en="Or drop a paper here">Hoặc thả một paper vào đây</span><span class="kinds"><span class="tag">PDF</span><span class="tag">Link</span><span class="tag">DOI</span></span></div>
+          <div><button class="btn btn-primary" type="submit" data-set="state:vua-dat" data-en="Start">Bắt đầu</button></div>
+        </form>
+      </div>
+
+      <!-- topic saved, first search running -->
+      <div class="narrow" data-when="state=vua-dat">
+        <div class="today oli">
+          <h2 style="font-family:var(--font-ui)" data-en="Topic saved">Đã ghi đề tài</h2>
+          <p class="q">Mạng nơ-ron đồ thị dự đoán năng lượng hình thành của vật liệu tinh thể khi chỉ có vài nghìn mẫu.</p>
+          <ul class="kw">
+            <li>graph neural network<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>formation energy<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>crystal structure<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>small data<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>uncertainty<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+          </ul>
+        </div>
+        <div class="waiting"><i data-i="clock"></i><span data-en="Mentor is looking for your first papers. You can close the app; they will be here when you come back.">Mentor đang tìm những paper đầu tiên. Bạn có thể đóng app, xong sẽ hiện ở đây.</span></div>
+      </div>
+
+      <!-- the research space: four chapters, one tab each (like files open in an editor) -->
+      <div class="chapters" data-when="state=dang-tim|co-du-lieu|ket-qua">
+        <div class="rtabs" role="tablist" aria-label="Các phần của Nghiên cứu">
+          <button class="rtab" type="button" role="tab" id="tab-doc" aria-controls="p-doc" aria-selected="true" data-tab="doc"><i data-i="book"></i><span data-en="Reading">Đọc</span><span class="tdot" title="2 paper mới"><span class="sr" data-en="2 new papers">2 paper mới</span></span></button>
+          <button class="rtab" type="button" role="tab" id="tab-lich" aria-controls="p-lich" aria-selected="false" tabindex="-1" data-tab="lich"><i data-i="clock"></i><span data-en="Schedule">Lịch</span><span class="tdot hot" title="Hạn nộp còn 9 ngày"><span class="sr" data-en="A deadline in 9 days">Hạn nộp còn 9 ngày</span></span></button>
+          <button class="rtab" type="button" role="tab" id="tab-tn" aria-controls="p-tn" aria-selected="false" tabindex="-1" data-tab="tn"><i data-i="chart"></i><span data-en="Experiments">Thí nghiệm</span></button>
+          <button class="rtab" type="button" role="tab" id="tab-dt" aria-controls="p-dt" aria-selected="false" tabindex="-1" data-tab="dt"><i data-i="target"></i><span data-en="Topic">Đề tài</span></button>
+        </div>
+
+        <section class="rpanel" role="tabpanel" id="p-doc" aria-labelledby="tab-doc">
+        <div class="sbar">
+          <form class="sform" id="sform" role="search" onsubmit="return false">
+            <label class="search"><i data-i="search"></i>
+              <input type="text" id="q" autocomplete="off" aria-label="Tìm paper" placeholder="Tìm paper theo chủ đề, tên bài, tác giả" data-en-ph="Search papers by topic, title or author">
+            </label>
+            <div class="sugg" id="sugg">
+              <span class="eyebrow" data-en="Suggested from your topic">Gợi ý từ đề tài của bạn</span>
+              <div class="chips">
+                <button class="fchip" type="button" data-q="graph neural network formation energy small data">graph neural network</button>
+                <button class="fchip" type="button" data-q="formation energy">formation energy</button>
+                <button class="fchip" type="button" data-q="crystal structure">crystal structure</button>
+                <button class="fchip" type="button" data-q="small data">small data</button>
+                <button class="fchip" type="button" data-q="uncertainty">uncertainty</button>
+              </div>
+            </div>
+          </form>
+          <span class="depth"><button class="depth-btn" type="button" data-src-depth aria-haspopup="menu" aria-expanded="false">Nhanh</button></span>
+        </div>
+
+        <section class="results" data-when="state=ket-qua" aria-live="polite">
+          <div class="rhead"><h2 class="s"><span data-en="Results for">Kết quả cho</span> “<span id="qOut">graph neural network formation energy small data</span>”</h2><span class="muted small" id="rCount"></span><span style="flex:1"></span><button class="btn btn-ghost rbtn" type="button" id="rvBtn" data-en="Quick review">Tổng quan nhanh</button><button class="btn btn-quiet rbtn" type="button" data-set="state:co-du-lieu" data-en="Clear search">Xóa tìm kiếm</button></div>
+          <section class="card rv" data-when="state=ket-qua; review=run" id="rvRun"><div role="status" class="rv-run"><span class="asta-spin" aria-hidden="true"></span><span></span></div></section>
+          <section class="card rv" data-when="state=ket-qua; review=done" aria-labelledby="rvH">
+            <div class="rv-head"><h3 id="rvH" class="s" data-en="Comparison table">Bảng so sánh</h3><span class="muted small" id="rvCount"></span><span style="flex:1"></span><button class="btn btn-quiet rbtn" type="button" id="rvClose" data-en="Hide">Ẩn</button></div>
+            <p class="rv-note" role="note" data-en="Based on abstracts only, not enough to draw a conclusion. Read the full text before citing.">Chỉ dựa trên abstract, chưa đủ để kết luận. Đọc toàn văn trước khi trích dẫn.</p>
+            <div class="mx-wrap"><table class="mx" id="mx"></table></div>
+            <div class="rv-follow"><span class="eyebrow" data-en="Search next">Tìm tiếp</span><div class="chips" id="rvFollow"></div></div>
+          </section>
+          <div class="fbar" role="group" aria-label="Bộ lọc">
+            <button class="fchip" type="button" data-yr="0" aria-pressed="true" data-en="Any year">Mọi năm</button>
+            <button class="fchip" type="button" data-yr="2022" aria-pressed="false" data-en="Last 5 years">5 năm gần đây</button>
+            <button class="fchip" type="button" data-yr="2026" aria-pressed="false" data-en="This year">Năm nay</button>
+            <span class="fgap"></span>
+            <button class="fchip" type="button" id="pdfChip" aria-pressed="false"><i data-i="file"></i><span data-en="Has PDF">Có PDF</span></button>
+          </div>
+          <ul class="rcards" id="rcards"></ul>
+          <p class="rempty" id="rEmpty" hidden data-en="No paper matches these filters. Try a wider range of years.">Không có paper nào khớp bộ lọc. Thử mở rộng khoảng năm.</p>
+        </section>
+
+        <div class="waiting" data-when="state=dang-tim"><i data-i="clock"></i><span><span data-en="Mentor is checking this week's new papers">Mentor đang xem paper mới của tuần này</span> <span class="dots"><i></i><i></i><i></i></span></span></div>
+
+        <section class="today oli hero" data-when="state=co-du-lieu|dang-tim">
+          <div class="top"><span class="tag wait" data-en="Reading">Đang đọc</span><span class="muted small" data-en="25 minutes. You stopped at section 3.">25 phút. Bạn đang đọc dở mục 3.</span></div>
+          <h2>Equivariant Message Passing for Formation Energy Prediction in Inorganic Crystals</h2>
+          <p class="why"><i data-i="flag"></i><span data-en="Your full paper is due in 9 days, and section 3 of it compares against this one.">Bài full paper của bạn còn 9 ngày nữa đến hạn, và mục 3 của bài so sánh với paper này.</span></p>
+          <div class="act"><a class="btn btn-primary" href="hs-12-doc-paper.html" data-en="Keep reading">Đọc tiếp</a></div>
+        </section>
+
+        <section class="papers-col" data-when="state=co-du-lieu|dang-tim">
+          <div class="sec-head"><h2 class="s" data-en="To read">Cần đọc</h2><span class="muted small" data-en="Mentor looks again every Monday">Mentor tìm lại mỗi thứ Hai</span><span class="grow"></span><button class="btn btn-quiet" type="button" id="addBtn" style="min-height:36px"><i data-i="plus"></i><span data-en="Add a paper">Thêm paper</span></button></div>
+          <div class="add-row" id="addRow" hidden>
+            <label class="search"><i data-i="file"></i><input type="text" aria-label="Link hoặc DOI" placeholder="Dán link hoặc DOI, hoặc thả PDF" data-en-ph="Paste a link or DOI, or drop a PDF"></label>
+          </div>
+          <ul class="papers scroller">
+            <li data-when="state=dang-tim" aria-hidden="true"><div class="card pcard skel"><span class="l"></span><span class="l"></span></div></li>
+            <li data-when="state=dang-tim" aria-hidden="true"><div class="card pcard skel"><span class="l"></span><span class="l"></span></div></li>
+            <li><a class="card pcard reading" href="hs-12-doc-paper.html">
+              <span class="top"><span class="by">Pham, Okafor, Lindqvist · 2026</span><span class="tag wait" data-en="Reading">Đang đọc</span></span>
+              <span class="t">Equivariant Message Passing for Formation Energy Prediction in Inorganic Crystals</span>
+              <span class="reason"><i data-i="target"></i><span data-en="Uses the same dataset as your chapter 3.">Dùng cùng bộ dữ liệu với chương 3 của bạn.</span></span>
+            </a></li>
+            <li><a class="card pcard" href="hs-12-doc-paper.html">
+              <span class="top"><span class="by">Tran, Weiss · 2025</span><span class="tag new" data-en="New">Mới</span></span>
+              <span class="t">Calibrated Uncertainty for Graph Neural Network Property Predictors</span>
+              <span class="reason"><i data-i="target"></i><span data-en="Cites the paper you read last week; covers your keyword “uncertainty”.">Trích dẫn paper bạn đọc tuần trước, đúng từ khóa “uncertainty”.</span></span>
+            </a></li>
+            <li><a class="card pcard" href="hs-12-doc-paper.html">
+              <span class="top"><span class="by">Haddad, Nguyen, Kim · 2026</span><span class="tag new" data-en="New">Mới</span></span>
+              <span class="t">A Benchmark of Data-Efficient Learning on Small Materials Datasets</span>
+              <span class="reason"><i data-i="target"></i><span data-en="Compares methods on a few thousand samples, like your setup.">So sánh các phương pháp trên vài nghìn mẫu, giống thiết lập của bạn.</span></span>
+            </a></li>
+            <li><a class="card pcard" href="hs-12-doc-paper.html">
+              <span class="top"><span class="by">Ito, Vo · 2026</span><span class="tag" data-en="Unread">Chưa đọc</span></span>
+              <span class="t">Active Learning Loops for Perovskite Stability Screening</span>
+              <span class="reason"><i data-i="target"></i><span data-en="Another way to cope with little data; worth a skim.">Một cách khác để làm việc với ít dữ liệu, nên lướt qua.</span></span>
+            </a></li>
+            <li><a class="card pcard" href="hs-12-doc-paper.html">
+              <span class="top"><span class="by">Sørensen, Le · 2026</span><span class="tag ok" data-en="Read">Đã đọc</span></span>
+              <span class="t">Transfer Learning from Large Atomistic Models to Low-Data Targets</span>
+              <span class="reason"><i data-i="check"></i><span data-en="Your note is saved.">Ghi chú của bạn đã lưu.</span></span>
+            </a></li>
+          </ul>
+        </section>
+        </section>
+
+        <section class="rpanel" role="tabpanel" id="p-lich" aria-labelledby="tab-lich" hidden>
+          <div class="sec-head"><h2 class="s" data-en="Coming up">Sắp tới</h2><span class="grow"></span><button class="btn btn-quiet" type="button" style="min-height:36px"><i data-i="plus"></i><span data-en="Add a deadline">Thêm hạn</span></button><button class="btn btn-quiet" type="button" style="min-height:36px"><i data-i="plus"></i><span data-en="Add a meeting">Thêm buổi họp</span></button></div>
+        <div class="events scroller">
+          <article class="card ev">
+            <span class="date"><small data-en="Wed">Thứ Tư</small><b>11</b><small data-en="Nov">Th11</small></span>
+            <h3 data-en="Advisor meeting, 14:00">Họp GVHD, 14:00</h3>
+            <span class="sub" data-en="Mentor drafted the agenda from your log and last meeting.">Mentor đã soạn khung agenda từ nhật ký và buổi họp trước.</span>
+            <div class="foot"><button class="btn btn-ghost" type="button" id="agBtn" style="min-height:40px;padding:0 18px" aria-expanded="false" aria-controls="agenda" data-en="See agenda">Xem agenda</button></div>
+          </article>
+          <article class="card ev hot">
+            <span class="date"><small data-en="Mon">Thứ Hai</small><b>16</b><small data-en="Nov">Th11</small></span>
+            <h3 data-en="Full paper due at the conference">Nộp full paper hội nghị</h3>
+            <span class="sub" data-en="18:59 Vietnam time (23:59 AoE on 15/11). Mentor planned two writing sessions.">18:59 giờ VN (23:59 AoE ngày 15/11). Mentor đã xếp hai buổi viết.</span>
+            <div class="foot"><span class="tag wait" data-en="9 days left">Còn 9 ngày</span></div>
+          </article>
+          <article class="card ev">
+            <span class="date"><small data-en="Tue">Thứ Ba</small><b>01</b><small data-en="Dec">Th12</small></span>
+            <h3 data-en="Progress report to the department">Báo cáo tiến độ cho khoa</h3>
+            <span class="sub" data-en="No time given yet. You mentioned it on 20/10.">Chưa rõ giờ. Bạn nhắc ngày 20/10.</span>
+            <div class="foot"><span class="tag" data-en="Unconfirmed">Chưa xác nhận</span></div>
+          </article>
+        </div>
+        <section class="card agenda" id="agenda" hidden>
+          <div class="cols">
+            <div><h3 data-en="Promised last time">Việc đã hứa lần trước</h3>
+              <ul>
+                <li><i data-i="check"></i><span data-en="Rerun the baseline on dataset B">Chạy lại baseline trên bộ dữ liệu B</span></li>
+                <li class="half"><i data-i="clock"></i><span data-en="Finish section 3.2 (about half done)">Viết xong mục 3.2 (mới được nửa)</span></li>
+              </ul></div>
+            <div><h3 data-en="New results">Kết quả mới</h3><textarea class="box" aria-label="Kết quả mới" placeholder="Một hai kết quả, kèm hình hoặc bảng" data-en-ph="One or two results, with a figure or table"></textarea></div>
+            <div><h3 data-en="Open questions">Câu hỏi mở</h3><textarea class="box" aria-label="Câu hỏi mở" placeholder="Điều bạn cần GVHD quyết" data-en-ph="What you need your advisor to decide"></textarea></div>
+          </div>
+        </section>
+        </section>
+
+        <section class="rpanel" role="tabpanel" id="p-tn" aria-labelledby="tab-tn" hidden>
+        <section class="card log">
+          <h2 class="s" data-en="Experiment log">Nhật ký thí nghiệm</h2>
+          <form class="logbox" onsubmit="return false">
+            <textarea rows="1" aria-label="Thí nghiệm vừa chạy" placeholder="Vừa chạy gì?" data-en-ph="What did you just run?"></textarea>
+            <button class="c-btn" type="button" aria-label="Chụp bảng kết quả"><i data-i="camera"></i></button>
+            <button class="c-btn c-send" type="submit" aria-label="Ghi lại"><i data-i="up"></i></button>
+          </form>
+          <ul class="exps">
+            <li class="exp">
+              <div class="top"><span class="code">EXP-2026-11-05-a</span><span class="tag ok" data-en="Done">Xong</span></div>
+              <b data-en="Baseline graph network on 3,200 samples">Baseline mạng đồ thị trên bộ 3.200 mẫu</b>
+              <p data-en="MAE 0.061 eV/atom, seed 3. Your note: close to the paper's number, with far less data.">MAE 0,061 eV/nguyên tử, seed 3. Nhận xét của bạn: gần số của paper dù dữ liệu ít hơn nhiều.</p>
+              <p class="nudge" data-en="No commit recorded. Add it so you can rerun this later.">Chưa ghi commit. Thêm vào để sau này chạy lại được.</p>
+            </li>
+            <li class="exp fail">
+              <div class="top"><span class="code">EXP-2026-11-03-a</span><span class="tag err" data-en="Failed">Thất bại</span></div>
+              <b data-en="Add noise to atom positions">Thêm nhiễu vào vị trí nguyên tử</b>
+              <p data-en="Loss diverged after epoch 12. Your note: learning rate 3e-3 may be too high. Next: try 1e-3.">Loss phân kỳ sau epoch 12. Nhận xét của bạn: learning rate 3e-3 có thể quá cao. Bước tiếp: thử 1e-3.</p>
+            </li>
+          </ul>
+        </section>
+        </section>
+
+        <section class="rpanel" role="tabpanel" id="p-dt" aria-labelledby="tab-dt" hidden>
+        <section class="card topic">
+          <div class="sec-head"><span class="eyebrow" data-en="Your topic">Đề tài</span><span class="grow"></span><button class="btn btn-quiet" type="button" style="min-height:32px" data-en="Edit">Sửa</button></div>
+          <p class="q">Mạng nơ-ron đồ thị dự đoán năng lượng hình thành của vật liệu tinh thể khi chỉ có vài nghìn mẫu.</p>
+          <ul class="kw">
+            <li>graph neural network<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>formation energy<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>crystal structure<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>small data<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+            <li>uncertainty<button type="button" aria-label="Bỏ từ khóa"><i data-i="x"></i></button></li>
+          </ul>
+        </section>
+        <section class="card mswrap">
+          <div class="sec-head"><h2 class="s" data-en="Thesis milestones">Mốc luận văn</h2><span class="grow"></span><a class="link" href="hs-10-tien-bo.html" data-en="See in Progress">Xem trong Tiến độ</a></div>
+          <ul class="ms">
+            <li class="done"><span class="dot"><i data-i="check"></i></span><span class="d">15/10</span><span class="what" data-en="Chapter 2, literature review, done">Xong chương 2, tổng quan tài liệu</span></li>
+            <li class="next"><span class="dot"></span><span class="d">16/11</span><span class="what" data-en="Submit the conference full paper">Nộp full paper hội nghị</span></li>
+            <li><span class="dot"></span><span class="d">15/12</span><span class="what" data-en="Draft of chapter 3">Bản nháp chương 3</span></li>
+            <li><span class="dot"></span><span class="d">28/02</span><span class="what" data-en="Send the whole draft to your advisor">Gửi GVHD toàn bộ bản nháp</span></li>
+          </ul>
+        </section>
+        </section>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script>
+  (function () {
+    const tabs = [...document.querySelectorAll(".rtab")];
+    const KEY = "mentor-mock-rtab";
+    function show(tab, focus) {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+      if (focus) tab.focus();
+      try { localStorage.setItem(KEY, tab.dataset.tab); } catch (e) {}
+    }
+    tabs.forEach((t) => {
+      t.addEventListener("click", () => show(t, false));
+      t.addEventListener("keydown", (e) => {
+        const i = tabs.indexOf(t);
+        const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (to === undefined) return;
+        e.preventDefault();
+        show(tabs[(to + tabs.length) % tabs.length], true);
+      });
+    });
+    let saved = null;
+    try { saved = localStorage.getItem(KEY); } catch (e) {}
+    const start = tabs.find((t) => t.dataset.tab === saved);
+    if (start) show(start, false);
+    // a search always lands on the Reading tab
+    document.getElementById("sform").addEventListener("submit", () => show(tabs[0], false));
+    document.addEventListener("mock:change", (e) => { if (e.detail.key === "state" && e.detail.value === "ket-qua") show(tabs[0], false); });
+  })();
+</script>
+<script>
+  const ag = document.getElementById("agBtn"), agenda = document.getElementById("agenda");
+  if (ag) ag.addEventListener("click", () => { agenda.hidden = !agenda.hidden; ag.setAttribute("aria-expanded", String(!agenda.hidden)); });
+  const addBtn = document.getElementById("addBtn"), addRow = document.getElementById("addRow");
+  if (addBtn) addBtn.addEventListener("click", () => { addRow.hidden = !addRow.hidden; if (!addRow.hidden) addRow.querySelector("input").focus(); });
+  document.querySelectorAll(".kw button").forEach((b) => b.addEventListener("click", () => b.closest("li").remove()));
+
+  // paper search (sample data only)
+  // Default source is arXiv (DeepTutor ArxivSearchTool): title, authors, year, abstract, url, arXiv id. No citation count, no TL;DR.
+  // Semantic Scholar (user key) adds citations and tldr; Asta (user key) adds full-text snippets. Best source wins per paper (dedupe by arXiv id / DOI).
+  const qIn = document.getElementById("q"), SAMPLE = "graph neural network formation energy small data";
+  const lg = () => (document.documentElement.lang === "en" ? "en" : "vi");
+  const tt = (vi, en) => (lg() === "en" ? en : vi);
+  const PAPERS = [
+    { id: "2603.01234", au: "Haddad, Nguyen", y: 2026, venue: "Digital Discovery", cites: 6, pdf: 1, t: "Learning Formation Energies from Fewer Than Five Thousand Crystal Structures",
+      abs: "Formation energy models usually need tens of thousands of labelled structures. We train an equivariant network on fewer than five thousand and evaluate it on a held-out split, with and without augmentation of the training set.",
+      tldr: "An equivariant network that predicts formation energy from fewer than 5,000 structures.", snip: "…with 3,000 training structures the equivariant model reaches a mean absolute error of 0.047 eV/atom on the held-out split…" },
+    { id: "2507.04411", au: "Moreau, Abdi", y: 2025, venue: "NeurIPS Workshop", cites: 2, pdf: 1, t: "Sample-Efficient Graph Networks for Inorganic Stability Prediction",
+      abs: "We study how a pretraining stage affects graph networks that predict inorganic stability when only a few thousand labelled structures are available, and ablate each component of the pipeline.",
+      snip: "…ablating the pretraining stage raises the error by 18% when fewer than 5,000 labelled structures are available…" },
+    { id: "2601.08832", au: "Pham, Okafor, Lindqvist", y: 2026, venue: "Journal of Computational Materials", cites: 14, pdf: 1, t: "Equivariant Message Passing for Formation Energy Prediction in Inorganic Crystals",
+      abs: "We introduce an equivariant message passing network for formation energy in inorganic crystals. It lowers the mean absolute error by 18% against a strong baseline, and by 7% when only 3,000 structures are used for training.",
+      tldr: "An equivariant message passing network. Cuts MAE by 18% against the baseline, and by 7% with only 3,000 structures." },
+    { id: "2602.11975", au: "Reyes, Chen", y: 2026, venue: "arXiv", cites: 3, pdf: 1, t: "Data-Efficient Crystal Graph Networks with Pretrained Atomic Embeddings",
+      abs: "We show that atom embeddings pretrained on large unlabelled structure sets let crystal graph networks reach chemical accuracy on formation energy with only a few hundred labelled samples, and we release the embeddings for 89 elements." },
+    { id: "2405.09317", au: "Marchetti, Dang", y: 2024, venue: "Digital Discovery", cites: 47, pdf: 1, t: "Ensembles and Evidential Learning for Uncertainty in Crystal Property Prediction",
+      abs: "Uncertainty estimates matter most when training data is scarce. We compare deep ensembles and evidential regression on five crystal property benchmarks of different sizes and report calibration as well as accuracy." },
+    { id: "2209.05471", au: "Lund, Abara", y: 2022, venue: "ACM Computing Surveys", cites: 312, pdf: 1, t: "Message Passing Networks for Materials Property Prediction: A Survey",
+      abs: "We survey graph network architectures for materials property prediction, group them by how they encode geometry, and compare their reported accuracy in a table organised by training set size.",
+      tldr: "A survey of graph network architectures for materials, with a comparison table by data size." },
+    { id: "2108.07720", au: "Silva, Ng", y: 2021, venue: "arXiv preprint", cites: 175, pdf: 1, t: "Transfer Learning for Formation Energy with Limited Labels",
+      abs: "Formation energy labels are expensive to compute. We study transfer from a model trained on a large dataset to small target sets, freezing the structure encoder and retraining only the readout layers." },
+    { id: "2604.02210", au: "Sørensen, Le", y: 2026, venue: "arXiv", cites: 0, pdf: 1, t: "Transfer Learning from Large Atomistic Models to Low-Data Targets",
+      abs: "We adapt large pretrained atomistic models to target datasets with fewer than one thousand structures, and compare full fine-tuning, adapter layers and a linear probe on the frozen features." },
+    { id: "", doi: "10.1021/acs.chemmater.5c00412", au: "Okonkwo, Bauer, Tanaka", y: 2025, venue: "Chemistry of Materials", cites: 58, pdf: 0, s2only: 1, t: "Learning Formation Energies from a Few Hundred Structures with Graph Contrastive Pretraining",
+      abs: "We pretrain a graph encoder with a contrastive objective on unlabelled structures, then fine-tune it with very few energy labels.",
+      tldr: "Contrastive pretraining on unlabelled structures, then fine-tuning with very few energy labels." }
+  ];
+  // literature pass sample: what the model reads out of each abstract, [problem, method, data, main result]
+  const REV = {
+    "2603.01234": { vi: ["Dự đoán năng lượng hình thành khi chỉ có dưới 5.000 cấu trúc", "Mạng tương đẳng, có tăng cường dữ liệu huấn luyện", "Dưới 5.000 cấu trúc; một tập giữ lại để kiểm tra", "Abstract không nêu số"], en: ["Predict formation energy with under 5,000 structures", "Equivariant network, with training-set augmentation", "Under 5,000 structures; a held-out split", "No figures in the abstract"] },
+    "2507.04411": { vi: ["Dự đoán độ bền vô cơ khi ít nhãn", "Mạng đồ thị có bước tiền huấn luyện, bỏ từng thành phần để so", "Vài nghìn cấu trúc có nhãn", "Abstract không nêu số"], en: ["Predict inorganic stability with few labels", "Graph network with a pretraining stage, ablating each part", "A few thousand labelled structures", "No figures in the abstract"] },
+    "2601.08832": { vi: ["Năng lượng hình thành của tinh thể vô cơ", "Truyền thông điệp tương đẳng", "Huấn luyện đủ và bản chỉ 3.000 cấu trúc", "MAE giảm 18% so với baseline, 7% với 3.000 cấu trúc"], en: ["Formation energy of inorganic crystals", "Equivariant message passing", "Full training set and a 3,000-structure subset", "MAE down 18% vs baseline, 7% at 3,000 structures"] },
+    "2602.11975": { vi: ["Đạt độ chính xác hóa học khi chỉ có vài trăm nhãn", "Embedding nguyên tử tiền huấn luyện, gắn vào mạng đồ thị tinh thể", "Bộ cấu trúc không nhãn lớn; vài trăm mẫu có nhãn", "Đạt độ chính xác hóa học; công bố embedding cho 89 nguyên tố"], en: ["Reach chemical accuracy with a few hundred labels", "Pretrained atom embeddings in a crystal graph network", "Large unlabelled set; a few hundred labelled samples", "Chemical accuracy; embeddings released for 89 elements"] },
+    "2405.09317": { vi: ["Ước lượng bất định khi dữ liệu ít", "So ensemble sâu với hồi quy evidential", "Năm benchmark tính chất tinh thể, nhiều cỡ", "Báo cả độ hiệu chuẩn lẫn độ chính xác; abstract không nêu số"], en: ["Uncertainty estimates when data is scarce", "Deep ensembles vs evidential regression", "Five crystal property benchmarks of different sizes", "Reports calibration and accuracy; no figures in the abstract"] },
+    "2209.05471": { vi: ["Tổng quan mạng truyền thông điệp cho vật liệu", "Khảo sát, nhóm theo cách mã hóa hình học", "Số liệu đã công bố, xếp theo cỡ tập huấn luyện", "Bảng so sánh theo cỡ dữ liệu; không có thí nghiệm mới"], en: ["Overview of message passing networks for materials", "Survey, grouped by how geometry is encoded", "Published results, by training set size", "A comparison table by data size; no new experiments"] },
+    "2108.07720": { vi: ["Nhãn năng lượng hình thành đắt", "Chuyển giao: đóng băng encoder, huấn luyện lại lớp đọc", "Mô hình huấn luyện trên tập lớn, chuyển sang tập đích nhỏ", "Abstract không nêu số"], en: ["Formation energy labels are expensive", "Transfer: freeze the encoder, retrain the readout", "Model trained on a large set, moved to small targets", "No figures in the abstract"] },
+    "2604.02210": { vi: ["Chuyển mô hình nguyên tử lớn sang tập dưới 1.000 cấu trúc", "So tinh chỉnh toàn bộ, adapter và linear probe", "Tập đích dưới 1.000 cấu trúc", "Abstract không nêu số"], en: ["Adapt large atomistic models to sets under 1,000 structures", "Full fine-tuning vs adapters vs linear probe", "Target sets under 1,000 structures", "No figures in the abstract"] }
+  };
+  const FOLLOW = ["equivariant graph network small dataset", "contrastive pretraining crystal structures", "uncertainty calibration materials property prediction"];
+  const added = new Set(["2601.08832"]);
+  let yrMin = 0, needPdf = false, reviewTimer = 0, shownIds = [];
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const key = (p) => p.id || p.doi;
+  // asta, then S2, then arXiv; one card per paper
+  function pick(p) {
+    if (window.mockSources.use("asta") && p.snip) return "asta";
+    if (window.mockSources.use("s2")) return "s2";
+    return p.s2only ? null : "arxiv";
+  }
+  function cardHtml(p, v) {
+    const k = key(p), isOn = added.has(k), ic = (n) => window.mentorIcon(n);
+    const by = esc(p.au) + " · " + p.y + " · " + (v === "arxiv" ? "arXiv" : esc(p.venue));
+    const pdf = p.pdf ? '<span class="tag ok">' + tt("PDF mở", "Open PDF") + "</span>" : '<span class="tag">' + tt("Chỉ có abstract", "Abstract only") + "</span>";
+    const cites = v === "arxiv" ? "" : "<span>" + tt("Trích dẫn " + p.cites + " lần", "Cited " + p.cites + " times") + "</span>";
+    let line;
+    if (v === "asta") line = '<p class="tldr abs"><b>' + tt("Đoạn trích toàn văn · Asta", "Full-text snippet · Asta") + '</b><span lang="en">' + esc(p.snip) + "</span></p>";
+    else if (v === "s2" && p.tldr) line = '<p class="tldr"><b>TL;DR · Semantic Scholar</b><span lang="en">' + esc(p.tldr) + "</span></p>";
+    else line = '<p class="tldr abs"><b>' + tt("Trích abstract", "From the abstract") + '</b><span lang="en">' + esc(p.abs) + "</span></p>";
+    const src = v === "asta" ? "Asta" : v === "s2" ? "Semantic Scholar" : "arXiv";
+    return '<li><article class="card pcard rcard"><span class="by">' + by + '</span><h3 class="t"><a href="hs-12-doc-paper.html">' + esc(p.t) + "</a></h3>" +
+      '<span class="meta">' + cites + pdf + "</span>" + line +
+      '<div class="foot"><button class="btn btn-ghost addbtn" type="button" data-k="' + esc(k) + '" aria-pressed="' + isOn + '"><span class="off">' + ic("plus") + "<span>" + tt("Thêm vào Cần đọc", "Add to To read") + '</span></span><span class="on">' + ic("check") + "<span>" + tt("Đã thêm", "Added") + "</span></span></button>" +
+      '<span class="muted small">' + src + "</span></div></article></li>";
+  }
+  function renderResults() {
+    let html = "", n = 0; shownIds = [];
+    PAPERS.forEach((p) => {
+      const v = pick(p);
+      if (!v || p.y < yrMin || (needPdf && !p.pdf)) return;
+      html += cardHtml(p, v); n++; if (p.id) shownIds.push(p.id);
+    });
+    document.getElementById("rcards").innerHTML = html;
+    document.getElementById("rCount").textContent = lg() === "en" ? n + " papers" : n + " paper";
+    document.getElementById("rEmpty").hidden = n > 0;
+  }
+  function renderReview() {
+    const ids = shownIds.filter((id) => REV[id]).slice(0, 8), L = lg();
+    const heads = L === "en" ? ["Paper", "Problem", "Method", "Data", "Main result"] : ["Paper", "Vấn đề", "Cách làm", "Dữ liệu", "Kết quả chính"];
+    document.getElementById("rvCount").textContent = L === "en" ? ids.length + " papers, from their abstracts" : ids.length + " bài, đọc từ abstract";
+    document.getElementById("rvRun").querySelector("span:last-child").textContent = L === "en" ? "Mentor is reading the abstracts of " + ids.length + " papers…" : "Mentor đang đọc abstract của " + ids.length + " bài…";
+    let h = "<thead><tr>" + heads.map((x) => "<th scope=\"col\">" + x + "</th>").join("") + "</tr></thead><tbody>";
+    ids.forEach((id) => {
+      const p = PAPERS.find((x) => x.id === id), c = REV[id][L];
+      h += '<tr><th scope="row"><a class="mx-t" href="hs-12-doc-paper.html">' + esc(p.t) + '</a><span class="mx-m">' + p.y + ' · <a href="https://arxiv.org/abs/' + id + '" target="_blank" rel="noopener">arXiv:' + id + "</a></span></th>" +
+        c.map((x, i) => '<td data-label="' + heads[i + 1] + '">' + esc(x) + "</td>").join("") + "</tr>";
+    });
+    document.getElementById("mx").innerHTML = h + "</tbody>";
+    document.getElementById("rvFollow").innerHTML = FOLLOW.map((q) => '<button class="fchip" type="button" data-q="' + q + '">' + q + "</button>").join("");
+  }
+  function setReview(v) { clearTimeout(reviewTimer); mockSet("review", v, false); }
+  function runSearch(text) { qIn.value = text; document.getElementById("qOut").textContent = text; setReview("off"); mockSet("state", "ket-qua", false); qIn.blur(); applyFilter(); }
+  function applyFilter() { renderResults(); renderReview(); }
+  document.getElementById("sform").addEventListener("submit", () => { if (qIn.value.trim()) runSearch(qIn.value.trim()); });
+  document.querySelectorAll("#sugg [data-q]").forEach((b) => {
+    b.addEventListener("mousedown", (e) => e.preventDefault());
+    b.addEventListener("click", () => runSearch(b.dataset.q));
+  });
+  document.getElementById("rvFollow").addEventListener("click", (e) => { const b = e.target.closest("[data-q]"); if (b) { runSearch(b.dataset.q); window.scrollTo({ top: 0 }); } });
+  document.querySelectorAll(".fbar [data-yr]").forEach((b) => b.addEventListener("click", () => {
+    yrMin = +b.dataset.yr;
+    document.querySelectorAll(".fbar [data-yr]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    applyFilter();
+  }));
+  document.getElementById("pdfChip").addEventListener("click", (e) => {
+    needPdf = !needPdf; e.currentTarget.setAttribute("aria-pressed", String(needPdf)); applyFilter();
+  });
+  document.getElementById("rcards").addEventListener("click", (e) => {
+    const b = e.target.closest(".addbtn"); if (!b) return;
+    const on = b.getAttribute("aria-pressed") !== "true";
+    b.setAttribute("aria-pressed", String(on)); on ? added.add(b.dataset.k) : added.delete(b.dataset.k);
+  });
+  // literature pass: "Tổng quan nhanh" shows a working state, then the comparison table
+  document.getElementById("rvBtn").addEventListener("click", () => {
+    setReview("run");
+    reviewTimer = setTimeout(() => mockSet("review", "done", false), 1800);
+  });
+  document.getElementById("rvClose").addEventListener("click", () => { setReview("off"); document.getElementById("rvBtn").focus(); });
+  document.addEventListener("sources:change", () => { setReview("off"); applyFilter(); });
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key === "review") { if (e.detail.value !== "run") clearTimeout(reviewTimer); return; }
+    const st = document.documentElement.dataset.state;
+    if (st === "ket-qua" && !qIn.value.trim()) { qIn.value = SAMPLE; document.getElementById("qOut").textContent = SAMPLE; }
+    if (st !== "ket-qua") qIn.value = "";
+    applyFilter();
+  });
+  applyFilter();
+</script>
+</body>
+</html>

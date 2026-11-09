@@ -4,26 +4,38 @@
 # Dev accounts (MENTOR_ENV=dev): hocsinh / 123456 (student), giaovien / 123456 (teacher).
 # Usage, from the repo root:
 #   powershell -ExecutionPolicy Bypass -File infra\dev-up.ps1 [-Desktop] [-DataDir var-dev]
+#   powershell -ExecutionPolicy Bypass -File infra\dev-up.ps1 -ServerOnly    router + gateway only, for an installed app
+#     (needs only uv; the Python packages are installed on the first run)
 # After the data model changed, wipe the dev DB:  Remove-Item -Recurse -Force var-dev  (an old ops.db is also
 # recreated automatically on start-up when it has the pre-redesign schema).
 # A service whose port is already taken is skipped, never killed.
 param(
     [ValidateSet("all", "router", "gateway", "app", "desktop")] [string]$Service = "all",
     [string]$DataDir = "var-dev",
-    [switch]$Desktop
+    [switch]$Desktop,
+    [switch]$ServerOnly
 )
 $ErrorActionPreference = "Stop"
 $Root = Split-Path -Parent $PSScriptRoot
 $EnvFile = Join-Path $Root ".env.dev.local"
 
 function Import-DevEnv {
-    if (-not (Test-Path $EnvFile)) { throw "Missing $EnvFile (needs FPT_API_BASE, FPT_API_KEY, MODEL_ROUTER_MASTER_KEY)." }
+    if (-not (Test-Path $EnvFile)) { throw "Missing $EnvFile (copy .env.dev.example, fill in FPT_API_BASE and FPT_API_KEY)." }
     foreach ($line in Get-Content $EnvFile -Encoding UTF8) {
         if ($line -match '^\s*([A-Z0-9_]+)\s*=\s*(.*)$' -and $Matches[2].Trim() -ne "") {
             Set-Item -Path "Env:$($Matches[1])" -Value $Matches[2].Trim()
         }
     }
     if (-not $env:FPT_API_KEY) { throw "FPT_API_KEY is empty in $EnvFile." }
+    if (-not $env:MODEL_ROUTER_MASTER_KEY) {
+        # made up once and kept in the file, so the router and the gateway windows share it (LiteLLM wants an sk- prefix)
+        $bytes = New-Object byte[] 24
+        [System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+        $env:MODEL_ROUTER_MASTER_KEY = "sk-" + (($bytes | ForEach-Object { $_.ToString("x2") }) -join "")
+        $raw = [System.IO.File]::ReadAllText($EnvFile)
+        $sep = if ($raw.Length -and -not $raw.EndsWith("`n")) { "`r`n" } else { "" }
+        [System.IO.File]::AppendAllText($EnvFile, "${sep}MODEL_ROUTER_MASTER_KEY=$($env:MODEL_ROUTER_MASTER_KEY)`r`n")
+    }
     $env:PYTHONUTF8 = "1"
     $env:PYTHONIOENCODING = "utf-8"
 }
@@ -77,7 +89,15 @@ switch ($Service) {
     }
     "all" {
         Import-DevEnv  # fail fast on a missing router key before opening windows
-        $plan = @(@{ Name = "router"; Port = 4000 }, @{ Name = "gateway"; Port = 8000 }, @{ Name = "app"; Port = 5173 })
+        if (-not (Test-Path (Join-Path $Root ".venv"))) {
+            Write-Host "First run: installing the Python packages (a few minutes)..."
+            Push-Location $Root
+            uv sync --all-packages --python 3.11
+            if ($LASTEXITCODE -ne 0) { Pop-Location; throw "uv sync failed." }
+            Pop-Location
+        }
+        $plan = @(@{ Name = "router"; Port = 4000 }, @{ Name = "gateway"; Port = 8000 })
+        if (-not $ServerOnly) { $plan += @{ Name = "app"; Port = 5173 } }
         if ($Desktop) { $plan += @{ Name = "desktop"; Port = 0 } }
         foreach ($s in $plan) {
             if ($s.Port -and (Test-Port $s.Port)) { Write-Host "skip $($s.Name): port $($s.Port) already in use"; continue }
@@ -86,6 +106,7 @@ switch ($Service) {
                 "-Service $($s.Name) -DataDir `"$DataDir`"") -WorkingDirectory $Root
             Write-Host "started $($s.Name)"
         }
-        Write-Host "Open http://localhost:5173 once the gateway window shows 'Uvicorn running'. Data dir: $DataDir"
+        if ($ServerOnly) { Write-Host "Open the installed Mentor app once the gateway window shows 'Uvicorn running'. Data dir: $DataDir" }
+        else { Write-Host "Open http://localhost:5173 once the gateway window shows 'Uvicorn running'. Data dir: $DataDir" }
     }
 }

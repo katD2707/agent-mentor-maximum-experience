@@ -878,6 +878,8 @@ export const en: Messages = {
     notifyEnable: "Turn on",
     notifyDenied: "The browser is blocking notifications. Allow them in the site settings.",
     quiet: "Quiet for",
+    tips: "Mực's tips",
+    tipsReplay: "Show them again",
     quietOptions: { "30": "30 min", "60": "1 hour", "120": "2 hours", tomorrow: "Until tomorrow", week: "This week", custom: "Custom" },
     today: "Today",
     tomorrow: "Tomorrow",

@@ -1,9 +1,10 @@
 # syntax=docker/dockerfile:1
 # Linux installers of the desktop app (apps/app + Tauri), built on Windows or anywhere Docker runs. Build context = repo root:
-#   docker build -f infra/linux-app.Dockerfile --build-arg VITE_API_BASE=https://<domain>/api --output type=local,dest=out/linux .
-# Out come Mentor_<version>_amd64.deb (double-click opens the software center on Ubuntu/Debian/Mint) and
-# Mentor_<version>_amd64.AppImage (one file for any other distro). Ubuntu 22.04 is the base so the binaries run on
-# glibc 2.35 and newer, which covers every desktop distro still supported.
+#   VITE_API_BASE=https://<domain>/api pnpm -C apps/app installers --linux
+# (runs this build, then copies the files to the repo root next to the Windows and macOS ones). Out come
+# Mentor_<version>_amd64.deb (double-click opens the software center on Ubuntu/Debian/Mint) and
+# Mentor_<version>_amd64.AppImage (one file for any other distro). Ubuntu 22.04 is the base so the binaries run on glibc
+# 2.35 and newer, which covers every desktop distro still supported.
 # VITE_API_BASE is compiled into the app, like the web build. Updater artifacts are not signed here: release signing
 # stays in scripts/release.mjs.
 
