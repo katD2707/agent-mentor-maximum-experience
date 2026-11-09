@@ -19,8 +19,10 @@ const os = process.platform;
 const target = join(app, "src-tauri", "target");
 const linuxOut = join(target, "linux-docker"); // Docker writes here first, never into the repo root itself
 
+// pnpm is a .cmd on Windows and needs the shell; docker is an .exe and must not get one (the shell would split the
+// repo path, which has spaces, into several arguments)
 function run(cmd, args, cwd) {
-  const r = spawnSync(cmd, args, { cwd, stdio: "inherit", shell: os === "win32" });
+  const r = spawnSync(cmd, args, { cwd, stdio: "inherit", shell: os === "win32" && cmd === "pnpm" });
   if (r.status !== 0) process.exit(r.status ?? 1);
 }
 
