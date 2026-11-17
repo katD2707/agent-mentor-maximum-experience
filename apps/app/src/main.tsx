@@ -19,6 +19,7 @@ import "./styles/progress.css";
 import "./styles/ask.css";
 import "./styles/practice.css";
 import "./styles/research.css";
+import "./styles/today.css";
 import "./styles/dark.css";
 import "./i18n";
 

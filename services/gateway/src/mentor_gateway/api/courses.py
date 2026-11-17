@@ -157,7 +157,7 @@ def search_suggest(q: str = Query(min_length=1, max_length=100), user: User = De
     return content.suggest(q)
 
 
-# ---------------------------------------------------------------- catalog query (hs-03)
+# ---------------------------------------------------------------- catalog query (hs-07)
 @router.get("/catalog/query")
 def catalog_query(
     q: str = Query("", max_length=200),

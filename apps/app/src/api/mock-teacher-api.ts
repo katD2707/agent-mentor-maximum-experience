@@ -63,6 +63,10 @@ interface MCourse {
   packs: Record<string, CoursePack>;
   comments: MComment[];
   seq: number;
+  /** block ids Mentor is unsure about, per version */
+  unsure?: Record<string, string[]>;
+  /** test size overrides by profile id */
+  tests?: Record<string, { items: number; minutes: number }>;
 }
 export interface DB {
   courses: MCourse[];
@@ -579,6 +583,83 @@ export const mockTeacherApi: TeacherApi = {
     c.updatedAt = Date.now();
     save(db);
     return next;
+  },
+  async patchBlock(_token, id, v, blockId, patch) {
+    await wait(40);
+    const db = view(load());
+    const c = get(db, id);
+    const ver = c.versions.find((x) => x.version === v);
+    const pack = c.packs[String(v)];
+    if (!ver || !pack) throw new ApiError(404, "not_found");
+    if (ver.status === "published") throw new ApiError(409, "unknown");
+    for (const l of pack.chapters.flatMap((x) => x.lessons)) {
+      const b = l.blocks.find((x) => x.id === blockId) as Record<string, unknown> | undefined;
+      if (!b) continue;
+      const { items, ...rest } = patch as { items?: { id: string }[] };
+      Object.assign(b, rest);
+      if (b.kind === "quiz" && items) for (const it of items) Object.assign((b.items as { id: string }[]).find((q) => q.id === it.id) ?? {}, it);
+      c.updatedAt = Date.now();
+      save(db);
+      return clone(b) as unknown as import("./course").Block;
+    }
+    throw new ApiError(404, "not_found");
+  },
+  async putRecap(_token, id, v, chapterId, script) {
+    await wait(40);
+    const db = view(load());
+    const c = get(db, id);
+    const ch = c.packs[String(v)]?.chapters.find((x) => x.id === chapterId);
+    if (!ch) throw new ApiError(404, "not_found");
+    if (c.versions.find((x) => x.version === v)?.status === "published") throw new ApiError(409, "unknown");
+    ch.recap = { script: [...script], audio: ch.recap?.audio ?? null, duration_s: Math.max(30, Math.round(script.join(" ").split(/\s+/).length / 2.5)) };
+    save(db);
+    return { job_id: `job-${Date.now()}` };
+  },
+  async putGloss(_token, id, v, glossStart) {
+    await wait(40);
+    const db = view(load());
+    const p = get(db, id).packs[String(v)];
+    if (!p) throw new ApiError(404, "not_found");
+    p.gloss_start = Math.max(0, Math.min(100, Math.round(glossStart)));
+    save(db);
+  },
+  async getReview(_token, id, v) {
+    await wait(30);
+    const c = get(view(load()), id);
+    const pack = c.packs[String(v)];
+    if (!pack) throw new ApiError(404, "not_found");
+    if (!c.unsure) c.unsure = {};
+    if (!c.unsure[String(v)]) {
+      // the first look: Mentor is unsure about the first quiz step of the second lesson, if there is one
+      const ls = pack.chapters.flatMap((x) => x.lessons);
+      const q = ls[0]?.blocks.find((b) => b.kind === "quiz");
+      c.unsure[String(v)] = q ? [q.id] : [];
+    }
+    return c.unsure[String(v)].map((block_id) => ({ block_id, item_id: null, reason_vi: "Mentor chưa chắc đáp án này", reason_en: "Mentor is not sure about this answer" }));
+  },
+  async markSeen(_token, id, v, blockId) {
+    await wait(30);
+    const db = view(load());
+    const c = get(db, id);
+    if (c.unsure?.[String(v)]) c.unsure[String(v)] = c.unsure[String(v)].filter((b) => b !== blockId);
+    save(db);
+  },
+  async listTests(_token, id) {
+    await wait(30);
+    const c = get(view(load()), id);
+    const base = [
+      { profile_id: "cuoi-chuong", title: "Kiểm tra cuối chương", items: 20, minutes: 30 },
+      { profile_id: "thi-thu", title: "Thi thử", items: 40, minutes: 50 },
+    ];
+    return base.map((t) => ({ ...t, ...(c.tests?.[t.profile_id] ?? {}) }));
+  },
+  async putTest(_token, id, profileId, body) {
+    await wait(30);
+    const db = view(load());
+    const c = get(db, id);
+    if (body.items < 1 || body.minutes < 1) throw new ApiError(422, "unknown");
+    (c.tests ??= {})[profileId] = { items: Math.round(body.items), minutes: Math.round(body.minutes) };
+    save(db);
   },
   thumbSrc: (_t, url) => url ?? "",
 };

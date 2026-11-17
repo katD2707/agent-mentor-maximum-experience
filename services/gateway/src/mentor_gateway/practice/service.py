@@ -12,6 +12,7 @@ Rules enforced here (server side, whatever the client does; CONTRACTS 10.2/10.3,
 Positions are 0-based indexes into `Session.items`. Nothing here calls an LLM.
 """
 
+import json
 import logging
 import math
 import secrets
@@ -74,6 +75,7 @@ class PracticeService(MixedSessions):
     def __init__(self, db: Database, mirror: Mirror, bank: Bank, clock: Clock) -> None:
         self.db, self.mirror, self.bank, self.clock = db, mirror, bank, clock
         self.content = None  # ContentService, set by app.py (course quiz items)
+        self.course_tests = lambda course_id: {}  # per-course test sizes (CONTRACTS 16.5), set by app.py
         self.planner = None  # PlannerService, set by app.py (the redo line)
         self._profile_ok: dict[str, bool] = {}
 
@@ -255,6 +257,8 @@ class PracticeService(MixedSessions):
                     except ContentError:
                         pass  # unknown course: the usual empty-source handling below
                 subject = f"c:{course_id}"[:32]
+            elif source.startswith("notes:") and len(source) > 6:
+                kind, subject = "practice", f"n:{source[6:]}"[:32]
             elif source.startswith("mock:") and len(source) > 5:
                 profile = self.bank.profiles.get(source[5:])
                 if profile is None:
@@ -282,7 +286,14 @@ class PracticeService(MixedSessions):
         profile: Profile | None = None
         if mixed:
             user = self._user(user_id)
-            plan = self._plan_mixed(user_id, source, seed, user.age_band if user else None, course_id)
+            level = body.get("level")
+            if source.startswith("notes:"):
+                plan = self._plan_notes(user_id, source[6:], seed)
+            elif level is not None and (not course_id or int(level) not in (1, 2, 3, 4)):
+                raise PracticeError(422, "bad_level", "level (1–4) chỉ dùng với source course:<id>.")
+            else:
+                plan = self._plan_mixed(user_id, source, seed, user.age_band if user else None, course_id,
+                                        int(level) if level is not None else None)
         elif kind == "practice":
             plan = self._plan_practice(user_id, subject, int(body.get("minutes") or 20), body.get("goal") or "balanced",
                                        body.get("topics"), seed, bool(body.get("include_above_grade")))
@@ -370,6 +381,8 @@ class PracticeService(MixedSessions):
             out["statements"] = [{"id": st["id"], "text": st["text"]} for st in doc["statements"]]
         elif doc["type"] == TAP:
             out["tap"] = doc["tap"]
+        elif doc["type"] in scoring.STEP_TYPES:
+            out["parts"] = doc.get("parts") or []
         else:
             sa = doc["short_answer"]
             out["short_answer"] = {"max_chars": int(sa.get("max_chars") or (24 if "accepted" in sa else 6)),
@@ -770,8 +783,12 @@ class PracticeService(MixedSessions):
             d["mastery_before"] = round(b.mastery, 3) if b and b.mastery is not None else None
             d["mastery_after"] = round(a.mastery, 3) if a and a.mastery is not None else None
             d["label"] = a.label if a else bkt.LABEL_UNKNOWN
+        wrong = [{"position": rec["position"], "item_id": rec["doc"]["id"], "type": rec["doc"]["type"],
+                  "chosen": answers[rec["position"]].answer}
+                 for rec in sess.items if answers.get(rec["position"]) is not None
+                 and answers[rec["position"]].correct is False]
         report: dict[str, Any] = {
-            "session": self._summary(sess) | {"status": sess.status}, "correct": scored["correct"], "total": scored["total"],
+            "wrong": wrong, "session": self._summary(sess) | {"status": sess.status}, "correct": scored["correct"], "total": scored["total"],
             "answered": scored["answered"], "score_10": scored["score_10"], "minutes": scored["minutes"],
             "hints": scored["hints"], "per_topic": list(per.values()), "recommendations": [],
         }
@@ -798,6 +815,40 @@ class PracticeService(MixedSessions):
         if sess.report is None:
             raise PracticeError(409, "no_report", "Bài làm này không có báo cáo.")
         return sess.report
+
+    # ---- fix wrong answers (CONTRACTS 16.3) ---------------------------------------------------------------------
+
+    def fix(self, user_id: str, sid: str, item_id: str, answer: Any) -> dict:
+        """One more try at an item answered wrong, after the session ended; each item once. A wrong retry shows the
+        right answer. Nothing is written to the learner's evidence: still-wrong items stay in review as before."""
+        with self.db.session() as s:
+            sess = self._load(s, user_id, sid)
+            if sess.status not in DONE:
+                raise PracticeError(409, "not_finished", "Chỉ sửa được câu sai của bài đã kết thúc.")
+            rec = next((r for r in sess.items if r["doc"]["id"] == item_id), None)
+            row = s.get(PracticeAnswer, (sid, rec["position"])) if rec else None
+            if rec is None or row is None or row.correct is not False:
+                raise PracticeError(422, "not_wrong", "Câu này không nằm trong các câu em làm sai.")
+            report = dict(sess.report or {})
+            fixed = dict(report.get("fixed") or {})
+            if item_id in fixed:
+                raise PracticeError(409, "already_fixed", "Câu này em đã sửa rồi.")
+            doc = rec["doc"]
+            if isinstance(answer, (dict, list)):
+                answer = json.dumps(answer, ensure_ascii=False)
+            ok = bool(scoring.score_item(doc, None if answer is None else str(answer)).correct)
+            fixed[item_id] = ok
+            report["fixed"] = fixed
+            sess.report = report
+            if ok:
+                return {"correct": True}
+            out: dict[str, Any] = {"correct": False, "right": scoring.correct_answer_text(doc),
+                                   "explanation": doc.get("explanation") or ""}
+            if doc["type"] in CHOICE and answer:
+                fb = (doc.get("option_feedback") or {}).get(str(answer).strip().upper())
+                if fb:
+                    out["note"] = fb
+            return out
 
     # ---- review ------------------------------------------------------------------------------------------
 

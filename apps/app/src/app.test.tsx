@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import i18n from "./i18n";
@@ -37,7 +37,7 @@ describe("login", () => {
     await ui.type(screen.getByLabelText("Mật khẩu"), "123456");
     await ui.click(screen.getByRole("button", { name: "Đăng nhập" }));
 
-    expect(await screen.findByRole("alert")).toHaveTextContent("Tài khoản và vai trò phải khớp nhau");
+    expect(await screen.findByRole("alert")).toHaveTextContent("Sai vai trò.");
   });
 
   it("first run: language, then a birth year picks the figure and one line, then Start", async () => {
@@ -67,13 +67,15 @@ describe("login", () => {
     expect(band).toBe("uni");
     expect(document.querySelector(".figs")).toHaveAttribute("data-pick", "uni");
     expect(document.querySelectorAll(".fig.on")).toHaveLength(1);
-    expect(document.querySelector(".level")).toHaveTextContent("In-depth theory, formulas and open problems, at your own pace.");
+    expect(document.querySelector(".level")).toHaveTextContent("University");
     // never any age, grade or "change it later" text
     expect(document.body.textContent).not.toMatch(/Settings|grade \d|Grade \d|years old|tuổi|lớp \d/i);
     expect(start).toBeEnabled();
 
     await ui.click(start);
-    expect(await screen.findByRole("heading", { name: "Hi Lan" })).toBeInTheDocument();
+    // into Today, where Mực introduces himself in the conversation
+    const log = await screen.findByRole("log", { name: "Talking with Mực" });
+    expect(await within(log).findByText(/Hi Lan, I'm Mực!/)).toBeInTheDocument();
   });
 
   it("settings shows the birth year read-only, with no band or grade chips", async () => {

@@ -1,8 +1,9 @@
 import { API_BASE, qs, raw, request } from "./http";
 import { getMediaToken, withToken } from "./media";
 import { ApiError } from "./types";
-import type { CoursePack } from "./course";
-import type { ChatMessage, CommentStatus, Outline, TeacherApi, TeacherComment, TeacherCourseDetail, TeacherCourseSummary, UploadProgress } from "./teacher";
+import type { Block, CoursePack } from "./course";
+import type { PCourseLevels } from "./practice";
+import type { ChatMessage, CommentStatus, Outline, TeacherApi, TeacherComment, TeacherCourseDetail, TeacherCourseSummary, TeacherTest, UnsureStep, UploadProgress } from "./teacher";
 
 const P = "/teacher";
 const enc = encodeURIComponent;
@@ -65,6 +66,26 @@ export const httpTeacherApi: TeacherApi = {
   async newVersion(token, id) {
     const r = await request<{ version?: number; latest_version?: number }>("POST", `${P}/courses/${enc(id)}/versions`, { token });
     return r.version ?? r.latest_version ?? 0;
+  },
+  async patchBlock(token, id, v, blockId, patch) {
+    return (await request<{ block: Block }>("PATCH", `${P}/courses/${enc(id)}/versions/${v}/blocks/${enc(blockId)}`, { token, body: patch })).block;
+  },
+  putRecap: (token, id, v, chapterId, script) => request<{ job_id: string }>("PUT", `${P}/courses/${enc(id)}/versions/${v}/chapters/${enc(chapterId)}/recap`, { token, body: { script } }),
+  async putGloss(token, id, v, glossStart) {
+    await request("PUT", `${P}/courses/${enc(id)}/versions/${v}/gloss`, { token, body: { gloss_start: glossStart } });
+  },
+  async getReview(token, id, v) {
+    return (await request<{ unsure: UnsureStep[] }>("GET", `${P}/courses/${enc(id)}/versions/${v}/review`, { token })).unsure;
+  },
+  async markSeen(token, id, v, blockId) {
+    await request("POST", `${P}/courses/${enc(id)}/versions/${v}/review/${enc(blockId)}/seen`, { token });
+  },
+  async listTests(token, id): Promise<TeacherTest[]> {
+    const r = await request<PCourseLevels>("GET", `/practice/courses/${enc(id)}/levels`, { token });
+    return r.mocks.map((m) => ({ profile_id: m.profile_id, title: m.title, items: m.items, minutes: m.minutes }));
+  },
+  async putTest(token, id, profileId, body) {
+    await request("PUT", `${P}/courses/${enc(id)}/tests/${enc(profileId)}`, { token, body });
   },
   thumbSrc(token, url) {
     if (!url) return "";

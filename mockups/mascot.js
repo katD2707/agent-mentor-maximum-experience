@@ -18,15 +18,7 @@
   // page: only used on pages whose file name contains this text. Order matters for ties and quick picks.
   const G = (sel, vt, vd, et, ed, page) => ({ sel, page, vi: { t: vt, d: vd }, en: { t: et, d: ed } });
   const GUIDES = [
-    // hub
-    G('a.tile[href*="khoa-hoc"]', "Khóa học", "Các khóa em đang học và việc Mentor xếp cho hôm nay. Bấm vào để học tiếp.", "Courses", "The courses you're taking and what Mentor planned for today. Tap to carry on."),
-    G('a.tile[href*="luyen-tap"]', "Luyện tập", "Mentor chọn sẵn câu hỏi từ bài em đang học và những câu em hay sai. Có cả thi thử.", "Practice", "Questions picked from what you're learning and what you often miss. Mock exams live here too."),
-    G('a.tile[href*="hoi-bai"]', "Hỏi đáp", "Chụp bài tập, gõ hoặc nói câu hỏi. Muốn học gì cũng hỏi được, Mentor sẽ gợi ý khóa hợp với em.", "Ask", "Snap an exercise, type or talk. Ask what to learn and Mentor suggests courses."),
-    G('a.tile[href*="tien-bo"]', "Tiến độ", "Xem các mục tiêu, lịch tuần Mentor xếp và em đã đi được bao xa.", "Progress", "Your goals, the weekly plan Mentor made and how far you've come."),
     // courses
-    G(".today", "Việc hôm nay", "Mentor xếp sẵn theo giờ em hay học và bài em đang dở. Chỉ cần bấm nút là học.", "Today", "Mentor plans this from when you usually study and what you left unfinished. Just press the button.", "hs-02b"),
-    G(".kid-tile", "Khóa của em", "Chạm vào hình để học. Càng nhiều sao là em càng giỏi.", "Your courses", "Tap a picture to learn. More stars means you're doing great."),
-    G(".course", "Khóa em đang học", "Thanh tím cho biết em đã xong bao nhiêu. Bấm vào để học tiếp.", "Your course", "The purple bar shows how much you've done. Tap to continue."),
     G(".search", "Tìm khóa học", "Gõ tên môn hoặc chủ đề, ví dụ “điện trường”, để tìm khóa hợp với lớp của em.", "Find courses", "Type a subject or topic, like “electric field”, to find courses for your grade."),
     G(".res", "Kết quả tìm", "Bấm Xem để đọc giới thiệu khóa trước khi học.", "Search result", "Tap View to read about the course first."),
     G(".side", "Bắt đầu khóa", "Bấm Bắt đầu học, Mentor sẽ tự xếp khóa này vào lịch của em.", "Start the course", "Press Start and Mentor fits this course into your plan."),
@@ -36,7 +28,7 @@
     G("[data-cam]", "Chụp bài", "Chụp một bài tập thật rõ, Mentor đọc đề rồi giải từng bước.", "Snap an exercise", "Take a clear photo of one exercise; Mentor reads it and solves it step by step."),
     G("[data-pick]", "Ảnh có sẵn", "Chọn ảnh bài tập em đã chụp từ trước.", "From photos", "Pick a photo of an exercise you took earlier."),
     G("#sendBtn", "Gửi", "Gửi câu hỏi cho Mentor.", "Send", "Sends your question to Mentor."),
-    G("#composer", "Ô hỏi Mentor", "Gõ câu hỏi rồi bấm nút tím để gửi. Hỏi bài hay hỏi nên học gì đều được.", "Ask Mentor", "Type a question and press the purple button. Ask about homework or what to learn.", "hs-08"),
+    G("#composer", "Ô hỏi Mentor", "Gõ câu hỏi rồi bấm nút tím để gửi. Hỏi bài hay hỏi nên học gì đều được.", "Ask Mentor", "Type a question and press the purple button. Ask about homework or what to learn.", "hs-11"),
     G(".sug", "Khóa gợi ý", "Bấm vào để xem khóa có những bài gì. Bấm Thêm để đưa khóa vào danh sách học của em.", "Suggested course", "Tap to see what's inside. Tap Add to put it in your courses."),
     G("#sheet", "Nội dung khóa", "Cây này cho thấy khóa có những chương, bài nào. Bấm mũi tên để mở từng bài.", "Course outline", "This tree shows the chapters and lessons. Tap an arrow to open one."),
     G(".starter", "Gợi ý câu hỏi", "Chưa biết hỏi gì thì bấm một gợi ý để bắt đầu.", "Starter", "Not sure what to ask? Tap one to begin."),
@@ -53,16 +45,10 @@
     G(".opt", "Chọn đáp án", "Bấm vào đáp án em chọn. Sai thì Mentor chỉ ra chỗ nhầm ngay.", "Pick an answer", "Tap your answer. If it's wrong, Mentor shows the slip right away."),
     G(".feedback, #fb", "Vì sao sai", "Đọc chỗ nhầm để lần sau không mắc lại.", "Why it's wrong", "Read the slip so it doesn't happen again."),
     G(".result", "Kết quả", "Điểm của lần luyện này. Câu sai sẽ được làm lại vào buổi sau.", "Result", "Your score. Missed questions come back next session."),
-    // lessons
-    G("#baskets", "Chọn giỏ", "Chạm vào giỏ có đúng số quả. Bấm loa để nghe lại câu hỏi.", "Pick a basket", "Tap the basket with the right number. Tap the speaker to hear it again."),
+    // lesson (speaker button)
     G(".speak", "Nút loa", "Chạm để nghe đọc to.", "Speaker", "Tap to hear it read aloud."),
-    G("#video, .video, #poster, .poster", "Video bài học", "Bấm nút phát để xem. Video ngắn và có phụ đề.", "Lesson video", "Press play. Videos are short and captioned.", "hs-0"),
-    G(".read, .prose", "Bài đọc", "Phần chữ ngắn gọn, có công thức và ví dụ. Đọc xong thì làm câu hỏi.", "Reading", "Short text with formulas and examples. Then answer the questions."),
-    G("#plot", "Đồ thị", "Đồ thị cho thấy niềm tin thay đổi thế nào sau khi có dữ liệu.", "Plot", "How belief changes once data comes in."),
-    G("#quiz", "Câu hỏi", "Trả lời để xem em hiểu bài chưa. Sai thì có giải thích ngay.", "Questions", "Check you understood. Wrong answers get an explanation."),
-    G(".outline, .toc", "Mục lục", "Các bài trong khóa. Dấu tích là bài em đã học xong.", "Contents", "Lessons in the course. Ticks mark the ones you've finished.", "hs-0"),
     // login + first run
-    G(".role", "Chọn vai trò", "Chạm hình học sinh hoặc giáo viên. Vai trò phải khớp với tài khoản.", "Pick your role", "Tap student or teacher. It must match your account.", "hs-00"),
+    G(".role", "Chọn vai trò", "Chạm hình học sinh hoặc giáo viên. Vai trò phải khớp với tài khoản.", "Pick your role", "Tap student or teacher. It must match your account.", "hs-01"),
     G("#accPill, #acc", "Tài khoản", "Nhập tên tài khoản trường hoặc thầy cô đưa cho em.", "Account", "Enter the account your school or teacher gave you."),
     G("#pwPill, #pw", "Mật khẩu", "Nhập mật khẩu. Bấm hình con mắt để xem lại.", "Password", "Enter your password. Tap the eye to check it."),
     G("#login", "Đăng nhập", "Bấm sau khi đã chọn vai trò và điền đủ.", "Log in", "Press after picking a role and filling both boxes."),
@@ -75,12 +61,12 @@
     G("#outline", "Cấu trúc khóa", "Sửa thẳng ở đây: đổi tên, kéo để đổi thứ tự, xóa hoặc thêm bài.", "Course structure", "Edit right here: rename, drag to reorder, delete or add lessons."),
     G("#go", "Soạn nội dung", "Bấm khi đã ưng cấu trúc. Mentor soạn xong sẽ báo bạn.", "Write the lessons", "Press when the structure looks right. Mentor tells you when it's done."),
     G("#composer", "Nhắn Mentor", "Gõ điều cần sửa rồi gửi. Mentor làm theo luôn, không hỏi lại.", "Message Mentor", "Type what to change. Mentor just does it.", "gv-02"),
-    G(".vbar, #vcmt", "Nhận xét video", "Tua tới đoạn cần sửa rồi bấm Nhận xét tại giây đó.", "Comment on the video", "Scrub to the part to fix, then comment at that second.", "gv-03"),
-    G("#figimg", "Nhận xét hình", "Bấm vào chỗ chưa đúng trên hình để cắm ghim và ghi nhận xét.", "Comment on a figure", "Click the wrong spot on the figure to pin a comment."),
+    G(".rv-list", "Các bước", "Mỗi bước là một màn hình học sinh sẽ thấy. Chấm là chỗ Mentor chưa chắc hoặc có nhận xét.", "Steps", "Each step is one screen students see. A dot marks what Mentor is unsure about or has a comment.", "gv-03"),
+    G("#phone", "Học sinh thấy gì", "Bản xem trước đúng như trong bài học. Sửa bên phải thì hình đổi theo.", "What students see", "A preview of the real lesson. Edit on the right and it follows.", "gv-03"),
+    G("#rv-fields", "Sửa bước này", "Chỉ hiện phần của bước này. Gõ nhận xét cho Mentor ở cuối, Mentor sửa luôn.", "Edit this step", "Only this step's fields. Type a note for Mentor at the bottom; it fixes it.", "gv-03"),
     G(".panel", "Nhận xét của bạn", "Mentor sửa theo từng nhận xét. Xong thì nhãn đổi thành Đã sửa.", "Your comments", "Mentor fixes each one; the tag turns to Fixed.", "gv-03"),
     G("#pub, #pub2", "Xuất bản", "Đưa bản này tới học sinh. Ai đang học bản cũ vẫn giữ tiến độ.", "Publish", "Sends this version to students. Anyone mid-course keeps their progress."),
     G(".version", "Phiên bản", "Học sinh đang học bản cũ vẫn học tiếp bản cũ. Bản sửa chỉ đến học sinh mới.", "Versions", "Students on the old version keep it; edits go to new students."),
-    G("#paper, .lesson-body", "Nội dung bài", "Bôi đen câu chưa ưng rồi bấm Nhận xét. Mentor sửa luôn.", "Lesson text", "Select a sentence you don't like and comment. Mentor fixes it.", "gv-03"),
     // everywhere
     G("[data-settings]", "Cài đặt", "Đổi lớp, ngôn ngữ, nền sáng tối. Muốn yên tĩnh thì chọn Tạm im lặng, Mentor sẽ không nhắc trong lúc đó.", "Settings", "Change grade, language and theme. Pick Quiet for a while and Mentor won't remind you."),
   ];
@@ -95,31 +81,32 @@
     ? { vi: { t: "Chào bạn, mình là Mực!", d: "Lần đầu bạn mở một trang, mình sẽ chỉ nhanh vài chỗ chính. Sau đó cần gì cứ bấm vào mình." }, en: { t: "Hi, I'm Mực!", d: "The first time you open a page I'll point out its main parts. After that, tap me whenever you need help." } }
     : { vi: { t: "Chào em, mình là Mực!", d: "Lần đầu em mở một trang, mình sẽ chỉ nhanh vài chỗ chính. Sau đó cần gì cứ bấm vào mình." }, en: { t: "Hi, I'm Mực!", d: "The first time you open a page I'll point out its main parts. After that, tap me whenever you need help." } };
   const TOURS = {
-    "hs-00-dang-nhap": [".role", "#accPill, #acc"],
-    "hs-01-bat-dau": [".lang", ".age"],
-    "hs-02-trang-chu": [HELLO, 'a.tile[href*="khoa-hoc"]', "[data-settings]"],
-    "hs-02b-khoa-hoc": [".today", ".kid-tile", ".course", ".search"],
-    "hs-02c-khoa-sap-co": [G(".tree", "Nội dung khóa", "Các chương và bài của khóa. Khóa chưa mở nhưng em xem trước được.", "What's inside", "The chapters and lessons. The course isn't open yet, but you can look ahead."), ".side"],
-    "hs-03-tim-khoa-hoc": [".search", ".side", ".lessons"],
-    "hs-04-khoa-hoc-tieu-hoc": ["#baskets", ".speak"],
-    "hs-05-khoa-hoc-thpt": ["#video, .video, #poster, .poster", ".outline, .toc", "#quiz"],
-    "hs-06-khoa-hoc-dai-hoc": [".read, .prose", "#plot", "#quiz"],
-    "hs-07-luyen-tap": [".quick", ".opt", ".result"],
-    "hs-08-hoi-bai": ["#composer", "[data-cam]", ".starter"],
-    "hs-10-tien-bo": [".goal", ".week", "#addBtn"],
-    "hs-11-nghien-cuu": [
+    "hs-01-dang-nhap": [".role", "#accPill, #acc"],
+    "hs-02-bat-dau": [".lang", ".age"],
+    "hs-08-khoa-sap-co": [G(".tree", "Nội dung khóa", "Các chương và bài của khóa. Khóa chưa mở nhưng em xem trước được.", "What's inside", "The chapters and lessons. The course isn't open yet, but you can look ahead."), ".side"],
+    "hs-07-tim-khoa-hoc": [".search", ".side", ".lessons"],
+    "hs-06-luyen-tap": [".quick", ".opt", ".result"],
+    "hs-11-hoi-bai": ["#composer", "[data-cam]", ".starter"],
+    "hs-12-tien-bo": [".goal", ".week", "#addBtn"],
+    "hs-09-nghien-cuu": [
       G(".rtabs", "Bốn chương", "Đọc, Lịch, Thí nghiệm và Đề tài. Chấm tím là có paper mới, chấm cam là sắp tới hạn nộp.", "Four chapters", "Read, Schedule, Experiments and Topic. A purple dot means new papers, an orange one a deadline coming up."),
       G(".sform", "Tìm paper", "Gõ chủ đề, tên bài hoặc tác giả. Kết quả hiện ngay trong chương Đọc.", "Find papers", "Type a topic, a title or an author. Results show up in the Read chapter."),
       G(".depth-btn", "Tìm sâu đến đâu", "Nhanh chỉ tìm trên arXiv. Kỹ và Sâu tìm thêm Semantic Scholar và Asta, cần key của bạn.", "How deep", "Quick searches arXiv only. Thorough and Deep add Semantic Scholar and Asta, with your own key."),
     ],
-    "hs-12-doc-paper": [
+    "hs-10-doc-paper": [
       G(".mine", "Tóm tắt của bạn", "Viết tóm tắt bằng lời của bạn trước. Mentor chỉ góp ý sau khi bạn viết.", "Your summary", "Write a summary in your own words first. Mentor only gives feedback after you write."),
       G(".composer-wrap", "Hỏi về paper", "Câu trả lời kèm đoạn trích nguyên văn. Không thấy đoạn nào thì Mentor nói thẳng.", "Ask about the paper", "Answers come with quoted passages. If nothing is found, Mentor says so."),
       G(".rel", "Bài liên quan", "Bài trích dẫn paper này và bài paper này trích dẫn.", "Related papers", "Papers citing this one and papers it cites."),
     ],
+    "hs-04-khoa-hoc": [
+      G(".nextc", "Tiếp tục", "Mentor đưa em tới đúng chỗ nên học bây giờ.", "Continue", "Mentor takes you to what to do now."),
+      G(".lessons", "Bài học", "Chạm một nhóm để gập hoặc mở. Dấu tích là xong.", "Lessons", "Tap a group to fold or open it. A tick means done."),
+      G("#listen", "Nghe tóm tắt", "Bản tóm tắt vài phút để nghe khi đi đường. Tải về nghe không cần mạng.", "Listen", "A few-minute recap for the commute. Download it to play offline."),
+      G(".ladder", "Luyện tập", "Mức từ dễ tới khó. Ổ khóa là mức của gói khác.", "Practice", "Levels from easy to hard. A lock means another plan."),
+    ],
     "gv-01-gui-bai": ["#drop", ".list .row"],
     "gv-02-cau-truc": ["#outline", ".bad", "#go"],
-    "gv-03-duyet-noi-dung": ["#paper, .lesson-body", ".panel", "#pub, #pub2"],
+    "gv-03-duyet-noi-dung": [".rv-list", "#phone", "#rv-fields", ".panel", "#pub, #pub2"],
   };
   const firstVisible = (sel) => Array.from(document.querySelectorAll(sel)).find((x) => visible(x) && !x.closest(".mock-bar"));
   function tourSteps() {

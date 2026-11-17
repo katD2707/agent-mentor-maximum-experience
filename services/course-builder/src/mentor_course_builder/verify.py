@@ -17,7 +17,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 from typing import Any
 
-from mentor_schemas.course import CalloutBlock, Lesson, QuizBlock, QuizItem, TextBlock
+from mentor_schemas.course import CalloutBlock, Lesson, QuizBlock, QuizItem, RecallBlock, TextBlock
 
 from mentor_course_builder.contracts import MediaRequest
 from mentor_course_builder.gen import AGE_RULES, ask_json, lang_name
@@ -125,6 +125,11 @@ def check_item(item: QuizItem, client: ModelClient, language: str) -> ItemVerdic
         return ItemVerdict(item.id, True, "tap count not re-solved")
     if item.type == "PICTURE_CHOICE":
         return ItemVerdict(item.id, True, "picture choice not re-solved")
+    if item.type in ("FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS"):  # the key is the content itself: check it hangs together
+        from mentor_course_builder.steps import step_item_problem
+
+        bad = step_item_problem(item)
+        return ItemVerdict(item.id, bad is None, bad or "tiles/pairs/steps: structure checked, not re-solved")
     if item.type == "SHORT_ANSWER":
         nums = [parse_number(a) for a in k["accepted"]]
         if all(n is not None for n in nums):
@@ -185,6 +190,9 @@ def all_markdown(lesson: Lesson) -> list[tuple[str, str]]:
             for q in b.items:
                 out.append((q.id, q.stem + "\n" + q.explanation))
                 out += [(f"{q.id}.{o.id}", o.text or "") for o in q.options]
+                out += [(f"{q.id}.{p.id}", p.text) for p in q.parts]
+        elif isinstance(b, RecallBlock):
+            out += [(f"{b.id}.{i}", f"{r.prompt}\n{r.answer}") for i, r in enumerate(b.items)]
     return out
 
 

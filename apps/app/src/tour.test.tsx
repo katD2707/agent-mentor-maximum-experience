@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import "@mentor/mentor-mascot/mascot.js";
@@ -34,8 +34,8 @@ afterEach(() => {
 describe("tours: which screen, which steps", () => {
   it("maps routes to tours for students, teachers and the login screen", () => {
     expect(tourScreen("/", null)).toBe("login");
-    expect(tourScreen("/", "student")).toBe("hub");
-    expect(tourScreen("/khoa-hoc", "student")).toBe("courses");
+    expect(tourScreen("/", "student")).toBeUndefined(); // Today: Mực introduces himself in the conversation
+    expect(tourScreen("/khoa-hoc", "student")).toBeUndefined(); // the old list now redirects to Today
     expect(tourScreen("/khoa-hoc/tim-kiem", "student")).toBe("course-search");
     expect(tourScreen("/khoa-hoc/c1", "student")).toBe("course");
     expect(tourScreen("/khoa-hoc/c1/hoc", "student")).toBe("player");
@@ -55,23 +55,20 @@ describe("tours: which screen, which steps", () => {
     const all = () => true;
     expect(tourSteps("practice", false, all)).toHaveLength(MAX_STEPS);
     expect(tourSteps("practice", false, (k) => k !== "practice-resume").map((s) => s.key)).toEqual(["practice-quick", "practice-mock", "practice-courses"]);
-    const hub = tourSteps("hub", false, all);
-    expect(hub[0].key).toBeUndefined();
-    expect(hub[0].title?.vi).toBe("Chào em, mình là Mực!");
-    expect(tourSteps("hub", true, all)[0].title?.vi).toBe("Chào bạn, mình là Mực!");
-    expect(tourSteps("hub", false, () => false)).toEqual([]);
-    // the bubble already shows the name: "Khóa học: bài hôm nay…" becomes "Bài hôm nay…"
-    expect(hub[1].text?.vi).toMatch(/^Bài hôm nay Mentor/);
-    expect(hub[1].text?.en).toMatch(/^Today's lesson/);
+    const home = tourSteps("gv-home", true, all); // the teacher's home opens with a hello
+    expect(home[0].key).toBeUndefined();
+    expect(home[0].title?.vi).toBe("Chào bạn, mình là Mực!");
+    expect(home.slice(1).map((s) => s.key)).toEqual(["drop", "teacher-courses"]);
+    expect(tourSteps("gv-home", false, () => false)).toEqual([]);
   });
 
   it("remembers screens per account until reset", () => {
-    markSeen("u1", "hub");
-    expect(hasSeen("u1", "hub")).toBe(true);
-    expect(hasSeen("u2", "hub")).toBe(false);
-    markSeen("u1", "hub", false);
-    expect(hasSeen("u1", "hub")).toBe(false);
-    markSeen("u1", "hub");
+    markSeen("u1", "today");
+    expect(hasSeen("u1", "today")).toBe(true);
+    expect(hasSeen("u2", "today")).toBe(false);
+    markSeen("u1", "today", false);
+    expect(hasSeen("u1", "today")).toBe(false);
+    markSeen("u1", "today");
     markSeen("u1", "progress");
     resetSeen("u1");
     expect(hasSeen("u1", "progress")).toBe(false);
@@ -145,29 +142,32 @@ describe("Mực guides a new user on each new screen", () => {
       </MemoryRouter>,
     );
 
-  it("home: hello, then its parts, once; Settings shows the tours again", async () => {
+  it("a screen's parts, once; Settings shows the tours again (on Today, Mực introduces himself again)", async () => {
     const ui = userEvent.setup();
-    const view = open("/");
-    await waitFor(() => expect(bubble()).toHaveTextContent("Chào em, mình là Mực!"));
+    const view = open("/tien-do");
+    await waitFor(() => expect(bubble()).toHaveTextContent("Mục tiêu"));
     expect(shadow().querySelector(".bubble .n")).toHaveTextContent("1/3");
     fireEvent.click(okBtn());
-    await waitFor(() => expect(bubble()).toHaveTextContent("Khóa học"));
+    await waitFor(() => expect(bubble()).toHaveTextContent("Lịch tuần"));
     fireEvent.click(okBtn());
-    await waitFor(() => expect(bubble()).toHaveTextContent("Cài đặt"));
+    await waitFor(() => expect(bubble()).toHaveTextContent("Từng khóa"));
     fireEvent.click(okBtn());
     await waitFor(() => expect(bubble()).toBeNull());
-    expect(hasSeen("u-hs", "hub")).toBe(true);
+    expect(hasSeen("u-hs", "progress")).toBe(true);
 
     view.unmount();
-    open("/");
-    await screen.findByRole("button", { name: /Cài đặt/ });
+    open("/tien-do");
+    await screen.findByRole("heading", { name: "Mục tiêu" });
     await new Promise((r) => setTimeout(r, 1600));
     expect(bubble()).toBeNull(); // seen: never twice
+    cleanup();
 
-    markSeen("u-hs", "progress");
+    open("/"); // Today: no tour of parts, Mực speaks in the conversation instead
+    const log = await screen.findByRole("log", { name: "Trò chuyện với Mực" });
+    await within(log).findByText(/mình là Mực/);
     await ui.click(screen.getByRole("button", { name: /Cài đặt/ }));
     await ui.click(await screen.findByRole("button", { name: "Xem lại từ đầu" }));
-    await waitFor(() => expect(bubble()).toHaveTextContent("Chào em, mình là Mực!"));
+    await waitFor(() => expect(within(log).getAllByText(/mình là Mực/)).toHaveLength(1)); // the conversation starts over
     expect(hasSeen("u-hs", "progress")).toBe(false); // every screen will show its tour again
   });
 });

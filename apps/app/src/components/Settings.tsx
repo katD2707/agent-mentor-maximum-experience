@@ -14,7 +14,7 @@ import { REPLAY_EVENT } from "../lib/tours";
 
 const PICKS: QuietPick[] = ["30", "60", "120", "tomorrow", "week"];
 const THEMES: Theme[] = ["system", "light", "dark"];
-const VERSION = "0.1.0";
+const VERSION = "0.2.0";
 const REMIND_KEY = REMIND_STORE;
 const PICK_KEY = "mentor.quietPick";
 

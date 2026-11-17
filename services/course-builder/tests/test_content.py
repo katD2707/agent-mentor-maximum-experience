@@ -134,7 +134,7 @@ def test_split_explanation_and_raw_mapping():
     assert expl == "Theo định nghĩa, A đúng. Đây là ý hai." and fb["B"] == "hai đường sức không cắt nhau." and "A" not in fb
     item = map_raw_choice(raw, "l1-q1")
     assert item.type == "SINGLE_CHOICE" and item.options[0].text == "Đúng" and item.answer_key == {"correct_option_id": "A"}
-    assert item.stem == "Phát biểu nào đúng?" and item.difficulty == 2 and set(item.option_feedback) == {"B", "C"}
+    assert item.stem == "Phát biểu nào đúng?" and item.difficulty == 2 and set(item.option_feedback) == {"B", "C", "D"}  # every wrong option has a line
 
 
 def test_quiz_from_dict_every_type():
@@ -307,15 +307,15 @@ def test_write_lesson_blocks_and_media_contract():
     o, ol, pages, client = _draft()
     d = write_lesson(o, ol, client, pages, dt=FakeDT([RAW]), kb="kb", quiz_items=3)
     kinds = [type(b).__name__ for b in d.lesson.blocks]
-    assert kinds == ["VideoBlock", "TextBlock", "CalloutBlock", "ImageBlock", "QuizBlock"]
-    assert [b.id for b in d.lesson.blocks][:3] == [f"{ol.id}-b{i}" for i in (1, 2, 3)]
+    assert kinds == ["VideoBlock", "TextBlock", "QuizBlock", "CalloutBlock", "QuizBlock", "ImageBlock", "QuizBlock", "RecallBlock"]  # recall from the key ideas
+    assert [b.id for b in d.lesson.blocks if not isinstance(b, QuizBlock)] == [f"{ol.id}-b{i}" for i in (1, 2, 3, 4)] + [f"{ol.id}-r1"]
     by = {m.id: m for m in d.media}
     v = by[f"{ol.id}-b1"]
     assert v.kind == "video" and len(v.spec["scenes"]) == 3 and set(v.spec["scenes"][0]) == {"caption", "narration", "visual"}
     assert by[f"{ol.id}-b4"].kind == "diagram" and by[f"{ol.id}-b4"].spec["math"] == "E=kq/r^2"
     assert not any(m.kind == "tts" for m in d.media)  # g10_12: no read-aloud
-    q = d.lesson.blocks[-1]
-    assert isinstance(q, QuizBlock) and len(q.items) == 3 and q.items[0].id == f"{ol.id}-q1"
+    qs = [b for b in d.lesson.blocks if isinstance(b, QuizBlock)]
+    assert len(qs) == 3 and all(len(b.items) == 1 for b in qs) and qs[0].items[0].id == f"{ol.id}-q1"
     assert d.grounded and "deeptutor: 1 choice items" in d.notes
 
 
@@ -330,7 +330,7 @@ def test_g1_5_has_tts_for_every_text_callout_and_option():
 def test_verify_drops_and_regenerates():
     o, ol, pages, client = _draft()
     d = write_lesson(o, ol, client, pages, dt=None, kb=None, quiz_items=3)
-    first = next(b for b in d.lesson.blocks if isinstance(b, QuizBlock)).items
+    first = [q for b in d.lesson.blocks if isinstance(b, QuizBlock) for q in b.items]
     ids = [q.id for q in first]
     # solver contradicts the key of the first item and agrees with everything after; regeneration returns the same item
     solver = FakeClient({"Solve this quiz": {"answer": "Z"}, "write quiz items": {"items": [OWN["items"][2]]}})
@@ -340,8 +340,8 @@ def test_verify_drops_and_regenerates():
     rep = verify_and_repair(d, ctx, solver)
     assert rep.checked == len(ids) and rep.failed
     assert set(rep.dropped) | set(rep.regenerated) == set(ids)  # solver says "Z" for all: nothing is silently kept
-    left = [b for b in d.lesson.blocks if isinstance(b, QuizBlock)]
-    assert not left or all(q.id in ids for q in left[0].items)
+    left = [q for b in d.lesson.blocks if isinstance(b, QuizBlock) for q in b.items]
+    assert all(q.id in ids for q in left)
 
 
 # ---------------------------------------------------------------- assemble
@@ -350,7 +350,7 @@ def test_assemble_without_media_skips_and_is_valid(tmp_path):
     d = write_lesson(o, ol, client, pages, dt=None, kb=None, quiz_items=2)
     a = assemble(o, [d])
     CoursePack.model_validate(a.pack.model_dump())
-    assert [type(b).__name__ for b in a.pack.chapters[0].lessons[0].blocks] == ["TextBlock", "CalloutBlock", "QuizBlock"]
+    assert [type(b).__name__ for b in a.pack.chapters[0].lessons[0].blocks] == ["TextBlock", "QuizBlock", "CalloutBlock", "QuizBlock", "RecallBlock"]
     assert any("video block skipped" in n for n in a.notes) and any("image block skipped" in n for n in a.notes)
     assert a.meta.lessons_count == 1 and not a.assets and a.meta.id == o.course_id
     write_to_dir(a, tmp_path / "out")
@@ -362,8 +362,8 @@ def test_assemble_sets_min_app_version_from_what_the_pack_uses(monkeypatch):
 
     o, ol, pages, client = _draft()
     d = write_lesson(o, ol, client, pages, dt=None, kb=None, quiz_items=2)
-    assert assemble(o, [d]).pack.min_app_version == "0.1.0"
-    qtype = d.lesson.blocks[-1].items[0].type
+    assert assemble(o, [d]).pack.min_app_version == "0.2.0"  # the recall made from the key ideas needs 0.2.0
+    qtype = [b for b in d.lesson.blocks if isinstance(b, QuizBlock)][0].items[0].type
     monkeypatch.setitem(course.APP_VERSION_FOR, qtype, "0.10.0")
     monkeypatch.setitem(course.APP_VERSION_FOR, "callout", "0.2.3")
     assert assemble(o, [d]).pack.min_app_version == "0.10.0"  # numeric, not string, comparison
@@ -380,7 +380,7 @@ def test_assemble_with_media_and_store(tmp_path):
                MediaFile(role="main", path="img/b4.png", mime="image/png", file=png)])}
     a = assemble(o, [d], res)
     blocks = a.pack.chapters[0].lessons[0].blocks
-    assert [type(b).__name__ for b in blocks] == ["VideoBlock", "TextBlock", "CalloutBlock", "ImageBlock", "QuizBlock"]
+    assert [type(b).__name__ for b in blocks] == ["VideoBlock", "TextBlock", "QuizBlock", "CalloutBlock", "ImageBlock", "QuizBlock", "RecallBlock"]
     assert blocks[0].duration_s == 61.5 and blocks[0].video.sha256 != PENDING_SHA and set(a.assets) == {"video/b1.mp4", "img/b4.png"}
     assert "video" in a.meta.media and "quiz" in a.meta.media
     pytest.importorskip("mentor_gateway.content.store")

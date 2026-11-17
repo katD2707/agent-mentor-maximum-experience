@@ -1,4 +1,4 @@
-/* ---------- Login (hs-00) ---------- */
+/* ---------- Login (hs-01) ---------- */
 .stage { position: relative; min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 72px 16px 48px; }
 .lang-mini { position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--rule-strong); }
 .lang-mini button { min-height: 44px; min-width: 44px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2); font-weight: 600; font-size: 14px; cursor: pointer; }
@@ -37,7 +37,7 @@
 .alert svg { flex: none; width: 22px; height: 22px; color: var(--do); margin-top: 1px; }
 .submit { width: 100%; }
 
-/* ---------- First run (hs-01) ---------- */
+/* ---------- First run (hs-02) ---------- */
 .first-stage { min-height: 100vh; display: grid; place-items: center; padding: 32px 16px 48px; }
 .sheet { width: min(980px, 100%); border-radius: 28px; border: 1px solid var(--rule-strong); box-shadow: var(--shadow); padding: clamp(28px, 5vw, 56px) clamp(20px, 5vw, 56px) clamp(28px, 5vw, 48px) clamp(64px, 8vw, 96px); display: grid; gap: 28px; }
 .q { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }

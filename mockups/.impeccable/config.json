@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "flow-hom-nay.html"
+        ],
+        "createdAt": "2026-11-10T04:23:02.430Z",
+        "reason": "Claude: flow diagram, stage panels hold diagram nodes (doors/age cards) by design, not UI cards"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "flow-hom-nay.html"
+        ],
+        "createdAt": "2026-11-10T04:23:02.688Z",
+        "reason": "Claude: literal chat typing indicator copied from approved mockup hs-03-hom-nay.html"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "hs-03-hom-nay.html"
+        ],
+        "createdAt": "2026-11-10T08:03:40.036Z",
+        "reason": "assistant: only dot is Mực's typing indicator, shown while a reply is produced (live state)"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "hs-09-nghien-cuu.html"
+        ],
+        "createdAt": "2026-11-10T08:03:40.328Z",
+        "reason": "assistant: only dots are the 'Mentor đang tìm' search-in-progress indicator (live state)"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "hs-11-hoi-bai.html"
+        ],
+        "createdAt": "2026-11-10T08:03:40.581Z",
+        "reason": "assistant: full-bleed camera viewfinder, image meant to touch the edges"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "gv-01-gui-bai.html"
+        ],
+        "createdAt": "2026-11-10T08:03:40.834Z",
+        "reason": "assistant: drop zone has 36-64px padding; flagged child is the notebook margin decoration"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "hs-09-nghien-cuu.html"
+        ],
+        "createdAt": "2026-11-10T08:03:41.106Z",
+        "reason": "assistant: tab underline on the tab bar rule, a 7px dot without text, and 44px rows with centred text"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "hs-06-luyen-tap.html"
+        ],
+        "createdAt": "2026-11-10T09:33:50.983Z",
+        "reason": "False positive: .quick card has 22-36px padding on every side; the detector misreads the ruled notebook background as children flush to the edge"
+      }
+    ]
+  }
+}

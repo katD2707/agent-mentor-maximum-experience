@@ -405,12 +405,12 @@ def test_guide_uses_the_map_as_context(client, student, llm):
     _, msgs = llm.calls[0]
     ctx = json.loads(msgs[1]["content"])
     assert ctx["visible_keys"] == ["course-search", "my-courses"] and "course-search" in ctx["guide_map"]
-    assert ctx["guide_map"]["ask"].startswith("Hỏi đáp") and "ONLY questions about how to use the app" in msgs[0]["content"].replace("\n", " ")
+    assert ctx["guide_map"]["ask"].startswith("Trò chuyện với Mực") and "ONLY questions about how to use the app" in msgs[0]["content"].replace("\n", " ")
 
 
 def test_guide_without_model_answers_from_the_visible_area(client, student):
     r = client.post("/api/guide", json={"question": "nút tìm kiếm là gì", "lang": "en", "visible_keys": ["my-courses", "course-search"]})
-    assert r.json()["answer"].startswith("Type a course name")
+    assert r.json()["answer"].startswith("Type a subject or topic")
     r = client.post("/api/guide", json={"question": "asdf", "lang": "vi"})
     assert "nhấn giữ" in r.json()["answer"]
 

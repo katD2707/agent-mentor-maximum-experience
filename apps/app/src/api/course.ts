@@ -10,7 +10,26 @@ export interface AssetRef {
   bytes: number;
 }
 
-export type QuizType = "SINGLE_CHOICE" | "TRUE_FALSE_GROUP" | "SHORT_ANSWER" | "PICTURE_CHOICE" | "TAP_COUNT";
+export type QuizType =
+  | "SINGLE_CHOICE"
+  | "TRUE_FALSE_GROUP"
+  | "SHORT_ANSWER"
+  | "PICTURE_CHOICE"
+  | "TAP_COUNT"
+  // stepped-lesson kinds (app 0.2.0)
+  | "FILL_TILES"
+  | "MATCH_PAIRS"
+  | "ORDER_STEPS";
+
+/** FILL_TILES: where a tile goes in the stem; one per answer_key.gaps entry. */
+export const GAP = "{{gap}}";
+
+/** A tile (FILL_TILES), one side of a pair (MATCH_PAIRS) or a step (ORDER_STEPS). Shown shuffled. */
+export interface QuizPart {
+  id: string;
+  text: string;
+  side?: "left" | "right" | null;
+}
 
 export interface QuizOption {
   id: string;
@@ -35,6 +54,9 @@ export interface TapTarget {
  *   TRUE_FALSE_GROUP                {statements: {a: true, ...}}
  *   SHORT_ANSWER                    {accepted: string[], tolerance?: number}
  *   TAP_COUNT                       {count}
+ *   FILL_TILES                      {gaps: [partId, ...]}   one per {{gap}} in stem, in order
+ *   MATCH_PAIRS                     {pairs: {leftId: rightId}}
+ *   ORDER_STEPS                     {order: [partId, ...]}
  */
 export interface QuizItem {
   id: string;
@@ -45,6 +67,8 @@ export interface QuizItem {
   options: QuizOption[];
   statements: TrueFalseStatement[];
   tap?: TapTarget | null;
+  /** FILL_TILES / MATCH_PAIRS / ORDER_STEPS */
+  parts?: QuizPart[];
   answer_key: Record<string, unknown>;
   hint?: string | null;
   explanation: string;
@@ -58,6 +82,8 @@ export interface TextBlock {
   kind: "text";
   md: string;
   audio?: AssetRef | null;
+  /** English courses: the same text in Vietnamese (the "VI" button). */
+  gloss?: string | null;
 }
 export interface CalloutBlock {
   id: string;
@@ -106,7 +132,40 @@ export interface QuizBlock {
   title?: string | null;
   items: QuizItem[];
 }
-export type Block = TextBlock | CalloutBlock | ImageBlock | VideoBlock | AudioBlock | QuizBlock;
+export interface Axis {
+  symbol: string;
+  label: string;
+  unit: string;
+}
+/** "Kéo sơ đồ": drag x along [x_min, x_max] on a plot of y = expr(x) until |y - target_y| <= tolerance. */
+export interface InteractiveBlock {
+  id: string;
+  kind: "interactive";
+  prompt: string;
+  x: Axis;
+  y: Axis;
+  expr: string;
+  x_min: number;
+  x_max: number;
+  x_step: number;
+  x_start: number;
+  target_y: number;
+  tolerance: number;
+  praise: string;
+  audio?: AssetRef | null;
+}
+export interface RecallItem {
+  prompt: string;
+  answer: string;
+  image?: AssetRef | null;
+}
+/** "Nhớ lại": recall the key ideas without options, then mark Nhớ / Chưa nhớ. */
+export interface RecallBlock {
+  id: string;
+  kind: "recall";
+  items: RecallItem[];
+}
+export type Block = TextBlock | CalloutBlock | ImageBlock | VideoBlock | AudioBlock | QuizBlock | InteractiveBlock | RecallBlock;
 
 export interface Lesson {
   id: string;
@@ -116,10 +175,17 @@ export interface Lesson {
   key_ideas: string[];
   blocks: Block[];
 }
+/** "Nghe tóm tắt": a 3-5 minute spoken recap of the chapter. audio is null while the voice is being made. */
+export interface ChapterRecap {
+  script: string[];
+  audio?: AssetRef | null;
+  duration_s: number;
+}
 export interface Chapter {
   id: string;
   title: string;
   lessons: Lesson[];
+  recap?: ChapterRecap | null;
 }
 
 export interface CoursePack {
@@ -131,6 +197,8 @@ export interface CoursePack {
   age_band: AgeBand;
   title: string;
   chapters: Chapter[];
+  /** English courses: share of explanations offered in Vietnamese at the start (0-100). */
+  gloss_start?: number | null;
 }
 
 export interface VersionInfo {
@@ -246,7 +314,7 @@ export interface Enrollment {
   quiz?: Record<string, { correct: boolean; seconds: number; attempts: number }>;
 }
 
-// ---- catalog query (hs-03): GET /catalog/query and GET /search/suggest (CONTRACTS.md section 11)
+// ---- catalog query (hs-07): GET /catalog/query and GET /search/suggest (CONTRACTS.md section 11)
 export type FacetKey = "band" | "subject" | "language" | "level" | "duration" | "media" | "status" | "teacher";
 export type DurationBucket = "short" | "medium" | "long";
 export type CatalogSort = "rel" | "new" | "pop" | "dur";

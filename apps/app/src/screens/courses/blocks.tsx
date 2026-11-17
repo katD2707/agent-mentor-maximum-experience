@@ -14,6 +14,8 @@ export interface BlockCtx {
   url(ref: AssetRef | null | undefined): string;
   /** behaviour log: how far into a video the learner got (25, 50, 75, 100), each once */
   watch?(blockId: string, pct: number): void;
+  /** English courses: the share (0-100) of explanations offered in Vietnamese right now; undefined = no "VI" button */
+  glossPct?: number;
 }
 
 export function Md({ md, className }: { md: string; className?: string }) {
@@ -47,11 +49,41 @@ export function SpeakButton({ text, audioUrl, lang, label }: { text: string; aud
   );
 }
 
+/** "Tiếng Việt 30%": how much Mực still offers in Vietnamese; it goes down as the learner answers right. */
+export function GlossChip({ pct }: { pct: number }) {
+  const { t } = useTranslation();
+  const dots = pct >= 60 ? 3 : pct >= 25 ? 2 : pct > 0 ? 1 : 0;
+  return (
+    <p className="mix">
+      <span className="mixchip" title={t("lesson.gloss.chip", { n: pct })}>
+        <span>{t("lesson.gloss.chip", { n: pct })}</span>
+        <span aria-hidden="true" className="dots">
+          {[1, 2, 3].map((k) => (
+            <i key={k} className={k <= dots ? "on" : ""} />
+          ))}
+        </span>
+      </span>
+      <span>{t("lesson.gloss.less")}</span>
+    </p>
+  );
+}
+
 function TextView({ b, ctx }: { b: TextBlock; ctx: BlockCtx }) {
+  const { t } = useTranslation();
+  const [vi, setVi] = useState(false);
+  const offer = !!b.gloss && ctx.glossPct !== undefined && ctx.glossPct > 0;
   return (
     <div className="blk-text">
       <Md md={b.md} />
       <SpeakButton text={b.md} audioUrl={ctx.url(b.audio)} lang={ctx.lang} />
+      {offer && (
+        <>
+          <button className="vibtn" type="button" aria-pressed={vi} aria-label={t("lesson.gloss.show")} onClick={() => setVi((v) => !v)}>
+            VI
+          </button>
+          {vi && <Md md={b.gloss!} className="vi" />}
+        </>
+      )}
     </div>
   );
 }
@@ -167,7 +199,7 @@ function AudioView({ b, ctx }: { b: AudioBlock; ctx: BlockCtx }) {
 }
 
 /** Every non-quiz block kind (quiz blocks are rendered by the runner so it can track answers). */
-export function StaticBlock({ b, ctx }: { b: Exclude<Block, { kind: "quiz" }>; ctx: BlockCtx }) {
+export function StaticBlock({ b, ctx }: { b: Exclude<Block, { kind: "quiz" | "interactive" | "recall" }>; ctx: BlockCtx }) {
   switch (b.kind) {
     case "text":
       return <TextView b={b} ctx={ctx} />;

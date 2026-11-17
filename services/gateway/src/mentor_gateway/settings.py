@@ -58,7 +58,7 @@ class Settings(BaseModel):
     builder_workers: int = 1  # BUILDER_WORKERS: stages running at once (one per course)
     builder_python: str | None = None  # BUILDER_PYTHON: interpreter that has mentor_course_builder (default: this one)
     builder_job_timeout_s: int = 3600  # BUILDER_JOB_TIMEOUT_S
-    builder_media_kinds: str = "tts,video,diagram,illustration,picture,cover"  # BUILDER_MEDIA_KINDS: media stage kinds
+    builder_media_kinds: str = "tts,video,diagram,illustration,picture,cover,recap"  # BUILDER_MEDIA_KINDS: media stage kinds
     builder_deeptutor: bool = False  # BUILDER_DEEPTUTOR=1: DeepTutor knowledge base for quizzes (needs uvx)
     builder_chat_wait_s: float = 20.0  # BUILDER_CHAT_WAIT_S: POST /chat waits this long for the agent's reply
 

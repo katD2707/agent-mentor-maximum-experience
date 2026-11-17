@@ -27,8 +27,8 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Callable
 
-from mentor_schemas.course import (AssetRef, CalloutBlock, CoursePack, ImageBlock, Lesson, QuizBlock, QuizItem, TextBlock,
-                                   VideoBlock)
+from mentor_schemas.course import (AssetRef, CalloutBlock, CoursePack, ImageBlock, InteractiveBlock, Lesson, QuizBlock,
+                                   QuizItem, RecallBlock, TextBlock, VideoBlock)
 
 from mentor_course_builder import humanize, katex_check, verify
 from mentor_course_builder.assemble import Assembled, assemble
@@ -42,7 +42,7 @@ from mentor_course_builder.quiz import PENDING_SHA
 log = logging.getLogger("mentor_course_builder")
 
 HARD = {"lesson_missing", "quiz_missing", "lesson_empty", "pack_invalid", "asset_missing", "asset_hash", "block_empty",
-        "block_placeholder", "katex", "quiz_key", "quiz_wrong"}
+        "block_placeholder", "katex", "quiz_key", "quiz_wrong", "interactive_bad", "recall_bad"}
 
 # plain words for the teacher: {code: (vi, en)}; {t} = lesson title, {d} = detail
 WORDS: dict[str, tuple[str, str]] = {
@@ -60,6 +60,10 @@ WORDS: dict[str, tuple[str, str]] = {
                  "A quiz question in lesson «{t}» has an answer key that does not match its choices ({d})."),
     "quiz_wrong": ("Một câu hỏi ở bài «{t}» có đáp án mình tự giải ra khác đáp án ghi sẵn. Bạn xem lại giúp mình.",
                    "In lesson «{t}» a question's answer differs from what I got solving it myself. Please check it."),
+    "interactive_bad": ("Phần «Kéo sơ đồ» ở bài «{t}» chưa chạy được ({d}).",
+                        "The drag-the-diagram step in lesson «{t}» does not work ({d})."),
+    "recall_bad": ("Phần «Nhớ lại» ở bài «{t}» còn thiếu câu hỏi hoặc đáp án.",
+                   "The recall step in lesson «{t}» is missing a question or an answer."),
     "media_missing": ("Bài «{t}»: {d} không tạo được nên mình bỏ qua.", "Lesson «{t}»: {d} could not be made, so I left it out."),
     "lint": ("Bài «{t}» vẫn còn vài câu nghe như văn máy.", "Lesson «{t}» still has a few phrases that sound machine-written."),
     "repeat": ("Bài «{t}» lặp lại nhiều ý của bài trước.", "Lesson «{t}» repeats a lot of the previous lesson."),
@@ -109,7 +113,7 @@ def _lessons(pack: CoursePack) -> list[Lesson]:
 
 
 def _item_texts(q: QuizItem) -> str:
-    parts = [q.stem, q.explanation, q.hint or "", *[o.text or "" for o in q.options], *[s.text for s in q.statements],
+    parts = [q.stem, q.explanation, q.hint or "", *[o.text or "" for o in q.options], *[s.text for s in q.statements], *[p.text for p in q.parts],
              *q.option_feedback.values()]
     return "\n".join(p for p in parts if p)
 
@@ -138,6 +142,10 @@ def quiz_key_problem(q: QuizItem) -> str | None:
             tol = float(k.get("tolerance") or 0.01)
             if any(not verify.numbers_agree(nums[0], n, tol) for n in nums[1:]):  # type: ignore[arg-type]
                 return f"accepted spellings differ numerically: {acc}"
+    elif q.type in ("FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS"):
+        from mentor_course_builder.steps import step_item_problem
+
+        return step_item_problem(q)
     elif q.type == "TAP_COUNT":
         total = q.tap.total if q.tap else 0
         if not q.tap or not 0 <= int(k.get("count", -1)) <= total:
@@ -187,8 +195,16 @@ def check_pack(pack: CoursePack, resolve: Resolve, outline: CourseOutline | None
         if not any(isinstance(b, (TextBlock, CalloutBlock)) and b.md.strip() for b in ls.blocks):
             out.append(Issue("lesson_empty", ls.id))
     # empty / placeholder blocks and asset files
+    from mentor_course_builder.steps import interactive_problem, recall_problem
+
     for ls in lessons:
         for b in ls.blocks:
+            if isinstance(b, InteractiveBlock):
+                bad = interactive_problem(b)
+                if bad:
+                    out.append(Issue("interactive_bad", ls.id, b.id, bad))
+            elif isinstance(b, RecallBlock) and recall_problem(b):
+                out.append(Issue("recall_bad", ls.id, b.id))
             if isinstance(b, (TextBlock, CalloutBlock)):
                 if not b.md.strip():
                     out.append(Issue("block_empty", ls.id, b.id))
@@ -266,6 +282,10 @@ def _block_assets(b) -> list[AssetRef]:
         refs += [r for r in (b.image, b.audio) if r]
     elif isinstance(b, VideoBlock):
         refs += [r for r in (b.video, b.poster, b.captions) if r]
+    elif isinstance(b, InteractiveBlock):
+        refs += [b.audio] if b.audio else []
+    elif isinstance(b, RecallBlock):
+        refs += [r.image for r in b.items if r.image]
     elif isinstance(b, QuizBlock):
         for q in b.items:
             refs += [r for r in (q.stem_audio, q.stem_image) if r]
@@ -367,9 +387,10 @@ class Refiner:
         self.outline, self.client, self.results = outline, client, results
         self.drafts = {d.lesson.id: d for d in drafts}
         self.write, self.render, self.forget = write, render, forget
-        self.kinds = kinds or {"tts", "video", "diagram", "illustration", "picture", "cover"}
+        self.kinds = kinds or {"tts", "video", "diagram", "illustration", "picture", "cover", "recap"}
         self.max_rounds, self.teacher_id, self.teacher_name, self.workers, self.log_fn = max_rounds, teacher_id, teacher_name, workers, log_fn
         self.tries: dict[tuple, int] = {}
+        self.recaps: dict[str, list[str]] = {}  # chapter id -> recap script (the workflow writes them before the gate runs)
         self.fixed: list[Issue] = []
         self.removed: list[Issue] = []
         self.engine = "katex" if katex_check.find_katex() else "regex"
@@ -379,7 +400,8 @@ class Refiner:
         return [self.drafts[ol.id] for ol in self.outline.lessons() if ol.id in self.drafts]
 
     def assemble(self) -> Assembled:
-        return assemble(self.outline, self.ordered(), self.results, teacher_id=self.teacher_id, teacher_name=self.teacher_name)
+        return assemble(self.outline, self.ordered(), self.results, teacher_id=self.teacher_id,
+                        teacher_name=self.teacher_name, recaps=self.recaps)
 
     def media_issues(self, asm: Assembled | None = None) -> list[Issue]:
         out = []
@@ -478,9 +500,9 @@ class Refiner:
             return False
         keep = {it.id for it in items}
         new_media = [m for m in q.media if m.id.split(".")[0] in keep]
-        d.lesson.blocks = [b for b in d.lesson.blocks if not isinstance(b, QuizBlock)]
-        d.lesson.blocks.append(QuizBlock(id=f"{lid}-b{len(d.lesson.blocks) + 1}", title="Kiểm tra" if self.outline.language == "vi"
-                                         else "Check", items=items))
+        from mentor_course_builder.steps import place_quiz
+
+        d.lesson.blocks = place_quiz([b for b in d.lesson.blocks if not isinstance(b, QuizBlock)], items, lid)
         d.media = [m for m in d.media if not m.id.startswith(f"{lid}-q")] + new_media
         self._render_all(new_media)
         return True
@@ -692,4 +714,32 @@ class Refiner:
 
 
 __all__ = ["Issue", "Refiner", "RefineResult", "check_pack", "check_store_version", "publish_blockers", "quiz_key_problem",
-           "repeat_ratio", "titles_of", "HARD", "WORDS"]
+           "repeat_ratio", "titles_of", "HARD", "WORDS", "review_rows"]
+
+
+def review_rows(pack: CoursePack, issues: list[Issue]) -> list[dict[str, Any]]:
+    """Steps the build is not sure about, for `versions/<v>/review.json` ({block_id, item_id?, reason_vi, reason_en}).
+    Plain words a teacher understands; the issue's lesson-level problems point at the lesson's first step."""
+    where: dict[str, tuple[str, str | None]] = {}
+    first: dict[str, str] = {}
+    for ls in _lessons(pack):
+        first[ls.id] = ls.blocks[0].id
+        for b in ls.blocks:
+            where[b.id] = (b.id, None)
+            if isinstance(b, QuizBlock):
+                for q in b.items:
+                    where[q.id] = (b.id, q.id)
+    rows: list[dict[str, Any]] = []
+    seen: set[tuple] = set()
+    for i in issues:
+        if i.code in ("media_missing",) and not i.block_id:
+            continue
+        bid, item = where.get(i.block_id or "", (first.get(i.lesson_id or ""), None))
+        if bid is None or (bid, item, i.code) in seen:
+            continue
+        seen.add((bid, item, i.code))
+        row: dict[str, Any] = {"block_id": bid, "reason_vi": i.vi or i.detail, "reason_en": i.en or i.detail}
+        if item:
+            row["item_id"] = item
+        rows.append(row)
+    return rows

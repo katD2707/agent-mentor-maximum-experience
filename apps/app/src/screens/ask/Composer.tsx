@@ -13,10 +13,12 @@ export interface ComposerProps {
   onAudio(blob: Blob): void;
   /** a line above the bar ("added a course") */
   notice?: React.ReactNode;
+  /** the hint in the empty field (default: Hỏi đáp's) */
+  placeholder?: string;
 }
 
 /** ChatGPT-style bar pinned to the bottom: growing text field, camera, photo library, microphone, round send button. */
-export function Composer({ busy, onSend, onCancel, onCamera, onPhoto, onAudio, notice }: ComposerProps) {
+export function Composer({ busy, onSend, onCancel, onCamera, onPhoto, onAudio, notice, placeholder }: ComposerProps) {
   const { t } = useTranslation();
   const [text, setText] = useState("");
   const [listening, setListening] = useState(false);
@@ -115,7 +117,7 @@ export function Composer({ busy, onSend, onCancel, onCamera, onPhoto, onAudio, n
                 className="c-input"
                 rows={1}
                 value={text}
-                placeholder={t("ask.placeholder")}
+                placeholder={placeholder ?? t("ask.placeholder")}
                 aria-label={t("ask.label")}
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={(e) => {

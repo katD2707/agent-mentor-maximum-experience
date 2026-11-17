@@ -85,6 +85,7 @@ export function CourseCards({
   const { t } = useTranslation();
   return (
     <div className="sug-wrap" data-guide="ask-courses" data-guide-label={t("hub.courses")}>
+      <p>{t("ask.courses.count", { count: items.length })}</p>
       {suggestedAllAges && <p className="small muted">{t("ask.courses.other")}</p>}
       <ul className="sugs">
         {items.map((c) => (
@@ -104,6 +105,9 @@ export function CourseCards({
           </li>
         ))}
       </ul>
+      <Link className="more-link" to="/khoa-hoc/tim-kiem">
+        {t("ask.courses.more")}
+      </Link>
     </div>
   );
 }
@@ -138,7 +142,10 @@ export function CourseSheet({ card, adder, onClose, onStart, starting }: { card:
           <figure className="sheet-cover">
             <CourseCover courseId={card.course_id} />
           </figure>
-          <p className="about">{card.description_short}</p>
+          <details className="intro">
+            <summary>{t("ask.sheet.about")}</summary>
+            <p className="about">{card.description_short}</p>
+          </details>
           {tree.length > 0 && (
             <section aria-label={t("ask.sheet.tree")}>
               <h3 className="sub-h">{t("ask.sheet.tree")}</h3>

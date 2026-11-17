@@ -47,7 +47,12 @@ class AssetRef(_Strict):
 
 
 # ---------------------------------------------------------------- quiz items
-QuizType = Literal["SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SHORT_ANSWER", "PICTURE_CHOICE", "TAP_COUNT"]
+QuizType = Literal[
+    "SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SHORT_ANSWER", "PICTURE_CHOICE", "TAP_COUNT",
+    # stepped-lesson kinds (app 0.2.0): build a formula from tiles, match pairs, put steps in order
+    "FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS",
+]
+GAP = "{{gap}}"  # FILL_TILES: where a tile goes in the stem; one per answer_key.gaps entry
 
 
 class QuizOption(_Strict):
@@ -69,6 +74,14 @@ class TapTarget(_Strict):
     total: int = Field(ge=1, le=20)
 
 
+class QuizPart(_Strict):
+    """A tile (FILL_TILES), one side of a pair (MATCH_PAIRS) or a step (ORDER_STEPS). Shown shuffled."""
+
+    id: Annotated[str, Field(pattern=r"^[a-z0-9]{1,8}$")]
+    text: str  # Markdown, short (a symbol, a word, a few words)
+    side: Literal["left", "right"] | None = None  # MATCH_PAIRS only
+
+
 class QuizItem(_Strict):
     """Same answer semantics as the practice bank (mentor-content/bank), so practice can draw course items.
 
@@ -77,6 +90,9 @@ class QuizItem(_Strict):
       TRUE_FALSE_GROUP                {"statements": {"a": true, "b": false, ...}}
       SHORT_ANSWER                    {"accepted": ["4e4", "40000"], "tolerance": 0.01}   (tolerance optional)
       TAP_COUNT                       {"count": 7}
+      FILL_TILES                      {"gaps": ["p3"]}              part ids, in the order of the {{gap}} marks in stem
+      MATCH_PAIRS                     {"pairs": {"l1": "r2", ...}}  every left part -> its right part
+      ORDER_STEPS                     {"order": ["s1", "s2", ...]}  every part, in the right order
     """
 
     id: Id
@@ -87,6 +103,7 @@ class QuizItem(_Strict):
     options: list[QuizOption] = []
     statements: list[TrueFalseStatement] = []
     tap: TapTarget | None = None
+    parts: list[QuizPart] = []  # FILL_TILES / MATCH_PAIRS / ORDER_STEPS
     answer_key: dict
     hint: str | None = None
     explanation: str  # one or two short sentences: why the right answer is right / the slip
@@ -112,6 +129,23 @@ class QuizItem(_Strict):
         elif t == "TAP_COUNT":
             if not self.tap or not isinstance(k.get("count"), int) or not 0 <= k["count"] <= self.tap.total:
                 raise ValueError(f"{self.id}: TAP_COUNT needs tap and 0 <= count <= tap.total")
+        elif t in ("FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS"):
+            ids = [p.id for p in self.parts]
+            if len(ids) != len(set(ids)) or len(ids) < 2:
+                raise ValueError(f"{self.id}: {t} needs >=2 parts with unique ids")
+            if t == "FILL_TILES":
+                gaps = k.get("gaps")
+                if not gaps or self.stem.count(GAP) != len(gaps) or not set(gaps) <= set(ids):
+                    raise ValueError(f"{self.id}: FILL_TILES needs one {GAP} per answer_key.gaps entry, each a part id")
+            elif t == "MATCH_PAIRS":
+                left = {p.id for p in self.parts if p.side == "left"}
+                right = {p.id for p in self.parts if p.side == "right"}
+                pairs = k.get("pairs") or {}
+                if len(left) < 2 or len(left) + len(right) != len(ids) or set(pairs) != left \
+                        or not set(pairs.values()) <= right or len(set(pairs.values())) != len(pairs):
+                    raise ValueError(f"{self.id}: MATCH_PAIRS needs left/right parts and one right part per left part")
+            elif sorted(k.get("order") or []) != sorted(ids):
+                raise ValueError(f"{self.id}: ORDER_STEPS answer_key.order must list every part once")
         return self
 
 
@@ -124,6 +158,9 @@ class TextBlock(_Block):
     kind: Literal["text"] = "text"
     md: str
     audio: AssetRef | None = None  # read-aloud (always present for g1_5)
+    # English courses: the same text in Vietnamese, revealed by the "VI" button; less of it is offered as the learner
+    # improves (CoursePack.gloss_start). None for Vietnamese courses.
+    gloss: str | None = None
 
 
 class CalloutBlock(_Block):
@@ -169,8 +206,54 @@ class QuizBlock(_Block):
     items: list[QuizItem] = Field(min_length=1)
 
 
+class Axis(_Strict):
+    symbol: str  # e.g. "r"
+    label: str  # e.g. "Khoảng cách"
+    unit: str = ""  # e.g. "m"
+
+
+class InteractiveBlock(_Block):
+    """'Kéo sơ đồ': the learner drags x along [min, max] on a plot of y = f(x) and watches y change, until the target
+    is met. f is `expr` in x (the app's expression parser: + - * / ^, sqrt, sin, cos, exp, log, pi). Drawn with the
+    app's function-plot renderer, so one kind serves physics, maths, economics..."""
+
+    kind: Literal["interactive"] = "interactive"
+    prompt: str  # the task, one line: "Kéo để E còn 1/4"
+    x: Axis
+    y: Axis
+    expr: str  # y as a function of x, e.g. "9e9*4e-8/x^2"
+    x_min: float
+    x_max: float
+    x_step: float = Field(gt=0)
+    x_start: float
+    target_y: float  # reached when |y - target_y| <= tolerance
+    tolerance: float = Field(ge=0)
+    praise: str  # what Mực says when it is reached: "Xa gấp đôi thì E còn 1/4."
+    audio: AssetRef | None = None  # read-aloud of the prompt (g1_5)
+
+    @model_validator(mode="after")
+    def _range(self) -> "InteractiveBlock":
+        if not self.x_min < self.x_max or not self.x_min <= self.x_start <= self.x_max:
+            raise ValueError(f"{self.id}: needs x_min < x_max and x_start inside")
+        return self
+
+
+class RecallItem(_Strict):
+    prompt: str  # "Quanh điện tích có gì?"
+    answer: str  # the idea to recall, shown after the learner says or types theirs
+    image: AssetRef | None = None  # kids: a picture instead of words
+
+
+class RecallBlock(_Block):
+    """'Nhớ lại': near the end of a lesson the learner recalls the key ideas without options, then marks Nhớ /
+    Chưa nhớ; forgotten ones come back in review. Usually built from Lesson.key_ideas."""
+
+    kind: Literal["recall"] = "recall"
+    items: list[RecallItem] = Field(min_length=1, max_length=4)
+
+
 Block = Annotated[
-    Union[TextBlock, CalloutBlock, ImageBlock, VideoBlock, AudioBlock, QuizBlock],
+    Union[TextBlock, CalloutBlock, ImageBlock, VideoBlock, AudioBlock, QuizBlock, InteractiveBlock, RecallBlock],
     Field(discriminator="kind"),
 ]
 
@@ -178,7 +261,8 @@ Block = Annotated[
 # version that ships its renderer, so packs using it carry that min_app_version and older apps refuse them.
 APP_VERSION_FOR: dict[str, str] = {
     **{k: "0.1.0" for k in ("text", "callout", "image", "video", "audio", "quiz")},
-    **{t: "0.1.0" for t in QuizType.__args__},  # type: ignore[attr-defined]
+    **{t: "0.1.0" for t in ("SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SHORT_ANSWER", "PICTURE_CHOICE", "TAP_COUNT")},
+    **{k: "0.2.0" for k in ("interactive", "recall", "FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS")},
 }
 
 
@@ -192,10 +276,19 @@ class Lesson(_Strict):
     blocks: list[Block] = Field(min_length=1)
 
 
+class ChapterRecap(_Strict):
+    """'Nghe tóm tắt': a 3-5 minute spoken recap of the chapter, playable offline."""
+
+    script: list[str] = Field(min_length=1)  # short paragraphs; the teacher edits these, the audio is redone
+    audio: AssetRef | None = None  # None while the voice is being made
+    duration_s: float = Field(default=0, ge=0)
+
+
 class Chapter(_Strict):
     id: Id
     title: str
     lessons: list[Lesson] = Field(min_length=1)
+    recap: ChapterRecap | None = None
 
 
 class CoursePack(_Strict):
@@ -210,6 +303,9 @@ class CoursePack(_Strict):
     age_band: AgeBand
     title: str
     chapters: list[Chapter] = Field(min_length=1)
+    # English courses: share of explanations offered in Vietnamese (TextBlock.gloss) at the start; the app offers less
+    # as the learner improves. The teacher may change it. None for Vietnamese courses.
+    gloss_start: int | None = Field(default=None, ge=0, le=100)
 
     @model_validator(mode="after")
     def _unique_ids(self) -> "CoursePack":
@@ -243,10 +339,14 @@ class CoursePack(_Strict):
             out.extend(r for r in refs if r is not None)
 
         for ch in self.chapters:
+            if ch.recap:
+                add(ch.recap.audio)
             for ls in ch.lessons:
                 for b in ls.blocks:
-                    if isinstance(b, (TextBlock, CalloutBlock)):
+                    if isinstance(b, (TextBlock, CalloutBlock, InteractiveBlock)):
                         add(b.audio)
+                    elif isinstance(b, RecallBlock):
+                        add(*(r.image for r in b.items))
                     elif isinstance(b, ImageBlock):
                         add(b.image, b.audio)
                     elif isinstance(b, VideoBlock):

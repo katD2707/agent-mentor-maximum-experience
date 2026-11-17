@@ -1,26 +1,22 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "katex/dist/katex.min.css";
-import { assetUrl, teacherApi, type AssetRef, type Block, type CommentAnchor, type CourseLevel, type CoursePack, type TeacherComment, type TeacherCourseDetail } from "../../api";
+import { assetUrl, teacherApi, type AssetRef, type Block, type CommentAnchor, type CourseLevel, type CoursePack, type TeacherComment, type TeacherCourseDetail, type TeacherTest, type UnsureStep } from "../../api";
 import { useAuth } from "../../state/auth";
 import { Icon } from "../../components/Icon";
 import { allLessons } from "../../lib/courseProgress";
-import { markText, textAnchor } from "../../lib/teacher/anchors";
-import { numberComments, textMarks, type Numbered } from "../../lib/teacher/comments";
+import { numberComments, type Numbered } from "../../lib/teacher/comments";
 import { versionLevel } from "../../lib/teacher/level";
-import { needsNewerApp } from "../../lib/version";
 import { commentPending, latestPublished } from "../../lib/teacher/status";
-import { StaticBlock, type BlockCtx } from "../courses/blocks";
-import { QuizItemView } from "../courses/QuizItemView";
-import { TeacherTop } from "./common";
+import type { BlockCtx } from "../courses/blocks";
+import { TeacherTop, useToast } from "./common";
 import { useTeacherCourses } from "./live";
-import { LevelPicker, LevelTag } from "./LevelPicker";
-import { CommentPop, Notes, PinLayer, VideoBar, type Draft } from "./ReviewParts";
+import { LevelPicker } from "./LevelPicker";
+import { Notes } from "./ReviewParts";
+import { LessonTab, PracticeTab, RecapTab, TestsTab } from "./ReviewTabs";
 
-const noop = () => undefined;
-
-/** gv-03: the lesson exactly as students see it (same player components), with comments in a red-pen margin. */
+/** gv-03: the lesson exactly as students see it (same player components), with one-line comments in a red-pen margin; Publish is the one action. */
 export default function Review() {
   const { id = "" } = useParams();
   const [params, setParams] = useSearchParams();
@@ -33,18 +29,13 @@ export default function Review() {
   const [pack, setPack] = useState<CoursePack | null>(null);
   const [comments, setComments] = useState<TeacherComment[]>([]);
   const [active, setActive] = useState<string | null>(null);
-  const [draft, setDraft] = useState<Draft | null>(null);
-  const [float, setFloat] = useState<(Draft & { rectTop: number }) | null>(null);
-  const [sending, setSending] = useState(false);
   const [busy, setBusy] = useState<"publish" | "edit" | null>(null);
-  const [confirm, setConfirm] = useState(false);
-  const [flash, setFlash] = useState<string | null>(null);
+  const toast = useToast(3200);
   const [error, setError] = useState<string | null>(null);
   const [picked, setPicked] = useState<CourseLevel | null>(null);
   const [nudged, setNudged] = useState(false);
   const [levelBusy, setLevelBusy] = useState(false);
   const levelRow = useRef<HTMLDivElement>(null);
-  const paper = useRef<HTMLElement>(null);
 
   const loadDetail = useCallback(async () => {
     if (!token) return null;
@@ -129,69 +120,87 @@ export default function Review() {
     [pack?.language, token, id, version],
   );
 
-  // red-pen highlights in the text
-  useLayoutEffect(() => {
-    const root = paper.current;
-    if (!root || !lesson) return;
-    root.querySelectorAll<HTMLElement>("[data-block]").forEach((slot) => {
-      const b = slot.dataset.block!;
-      const own = notes.filter((n) => n.block_id === b && n.anchor.kind === "text");
-      if (!own.length && !slot.querySelector("mark[data-cmt]")) return;
-      markText(slot, textMarks(notes, b, slot.textContent ?? "", active));
-    });
-  }, [notes, lesson, active, pack]);
-
-  // selecting text offers "Nhận xét"
+  const [tab, setTab] = useState<"bai" | "luyen" | "kiem" | "nghe">("bai");
+  const [unsure, setUnsure] = useState<UnsureStep[]>([]);
+  const [tests, setTests] = useState<TeacherTest[]>([]);
+  const [saving, setSaving] = useState(false);
   useEffect(() => {
-    let h: ReturnType<typeof setTimeout>;
-    const on = () => {
-      clearTimeout(h);
-      h = setTimeout(() => {
-        const sel = window.getSelection();
-        if (!sel || sel.isCollapsed || !sel.rangeCount) return setFloat(null);
-        const r = sel.getRangeAt(0);
-        const el = r.commonAncestorContainer.nodeType === 1 ? (r.commonAncestorContainer as Element) : r.commonAncestorContainer.parentElement;
-        const slot = el?.closest<HTMLElement>("[data-block]");
-        if (!slot || !paper.current?.contains(slot)) return setFloat(null);
-        const anchor = textAnchor(slot, r);
-        if (!anchor) return setFloat(null);
-        const rect = r.getBoundingClientRect();
-        setFloat({ block_id: slot.dataset.block!, anchor, x: rect.left + rect.width / 2, y: rect.bottom, rectTop: rect.top });
-      }, 120);
-    };
-    document.addEventListener("selectionchange", on);
-    return () => {
-      clearTimeout(h);
-      document.removeEventListener("selectionchange", on);
-    };
-  }, []);
+    if (!token || !detail) return;
+    void teacherApi.getReview(token, id, version).then(setUnsure, () => setUnsure([]));
+    void teacherApi.listTests(token, id).then(setTests, () => setTests([]));
+  }, [token, id, version, detail?.course.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  const unsureMap = useMemo(() => new Map(unsure.map((u) => [u.block_id, u])), [unsure]);
+  const commented = useMemo(() => new Set(comments.map((c) => c.block_id)), [comments]);
+  const locked = !!published;
 
-  const open = (block_id: string, anchor: CommentAnchor, rect: DOMRect) => {
-    setFloat(null);
-    setDraft({ block_id, anchor, x: rect.left + rect.width / 2, y: rect.bottom });
-  };
-
-  const send = async (body: string) => {
-    if (!token || !draft) return;
-    setSending(true);
+  const replaceBlock = (blk: Block) =>
+    setPack((p) => (p ? { ...p, chapters: p.chapters.map((c) => ({ ...c, lessons: c.lessons.map((l) => ({ ...l, blocks: l.blocks.map((x) => (x.id === blk.id ? blk : x)) })) })) } : p));
+  const saveBlock = async (blockId: string, patch: Record<string, unknown>) => {
+    if (!token) return;
+    setSaving(true);
     try {
-      const r = await teacherApi.postComment(token, id, version, { block_id: draft.block_id, anchor: draft.anchor, body });
-      setComments((c) => [...c, { id: r.id, block_id: draft.block_id, anchor: draft.anchor, body, status: r.status }]);
+      replaceBlock(await teacherApi.patchBlock(token, id, version, blockId, patch));
+      toast.show(t("gv.saved"));
+    } catch {
+      setError(t("gv.saveFailed"));
+    } finally {
+      setSaving(false);
+    }
+  };
+  const seen = async (blockId: string) => {
+    if (!token) return;
+    setUnsure((u) => u.filter((x) => x.block_id !== blockId));
+    try {
+      await teacherApi.markSeen(token, id, version, blockId);
+    } catch {
+      setError(t("gv.saveFailed"));
+    }
+  };
+  const sendNote = async (blockId: string, body: string) => {
+    if (!token) return;
+    const anchor: CommentAnchor = { kind: "text", start: 0, end: 0, quote: body.slice(0, 40) };
+    try {
+      const r = await teacherApi.postComment(token, id, version, { block_id: blockId, anchor, body });
+      setComments((c) => [...c, { id: r.id, block_id: blockId, anchor, body, status: r.status }]);
       prev.current.set(r.id, r.status);
-      setDraft(null);
-      window.getSelection()?.removeAllRanges();
     } catch {
       setError(t("gv.commentFailed"));
-    } finally {
-      setSending(false);
+      throw new Error("comment");
+    }
+  };
+  const saveTest = async (profileId: string, body: { items: number; minutes: number }) => {
+    if (!token) return;
+    setTests((x) => x.map((r) => (r.profile_id === profileId ? { ...r, ...body } : r)));
+    try {
+      await teacherApi.putTest(token, id, profileId, body);
+      toast.show(t("gv.saved"));
+    } catch {
+      setError(t("gv.saveFailed"));
+    }
+  };
+  const saveRecap = async (chapterId: string, script: string[]) => {
+    if (!token) return;
+    try {
+      await teacherApi.putRecap(token, id, version, chapterId, script);
+      setPack(await teacherApi.getPack(token, id, version));
+      toast.show(t("gv.saved"));
+    } catch {
+      setError(t("gv.saveFailed"));
+    }
+  };
+  const saveGloss = async (n: number) => {
+    if (!token) return;
+    setPack((p) => (p ? { ...p, gloss_start: n } : p));
+    try {
+      await teacherApi.putGloss(token, id, version, n);
+    } catch {
+      setError(t("gv.saveFailed"));
     }
   };
 
   const pick = (n: Numbered) => {
     setActive(n.id);
-    const slot = paper.current?.querySelector<HTMLElement>(`[data-block="${CSS.escape(n.block_id)}"]`);
-    const target = n.anchor.kind === "text" ? (slot?.querySelector(`mark[data-cmt="${CSS.escape(n.id)}"]`) ?? slot) : slot;
-    target?.scrollIntoView?.({ block: "center", behavior: "smooth" });
+    setTab("bai");
   };
 
   const needLevel = () => {
@@ -219,12 +228,11 @@ export default function Review() {
   const publish = async () => {
     if (!token) return;
     setBusy("publish");
-    setConfirm(false);
     try {
       await teacherApi.publish(token, id, version);
       await loadDetail();
       refreshList();
-      setFlash(t("gv.publishedOk", { version }));
+      toast.show(version > 1 ? t("gv.publishedOkN", { version }) : t("gv.publishedOk"));
     } catch (e) {
       if ((e as { status?: number }).status === 409 && !levelConfirmed) needLevel();
       else setError(t("gv.publishFailed"));
@@ -240,7 +248,6 @@ export default function Review() {
       await loadDetail();
       refreshList();
       setParams({ v: String(v) }, { replace: true });
-      setFlash(null);
     } catch {
       setError(t("gv.newVersionFailed"));
     } finally {
@@ -250,10 +257,11 @@ export default function Review() {
 
   const prevPub = detail ? latestPublished({ versions: detail.course.versions.filter((v) => v.version < version) }) : null;
 
+  const back = `/khoa/${encodeURIComponent(id)}`;
   if (missing)
     return (
       <div className="app">
-        <TeacherTop back />
+        <TeacherTop step={3} courseId={id} backTo={back} />
         <main className="main">
           <p role="alert">{t("gv.notFound")}</p>
         </main>
@@ -265,14 +273,14 @@ export default function Review() {
 
   return (
     <div className="app review">
-      <TeacherTop back>
+      <TeacherTop step={3} courseId={id} backTo={back}>
         {detail && pack &&
           (published ? (
-            <button className="btn btn-primary pub" type="button" onClick={() => void edit()} disabled={busy !== null} data-guide="gv-publish" data-guide-label={t("gv.editPublished")}>
+            <button className="btn btn-primary act pub" type="button" onClick={() => void edit()} disabled={busy !== null} data-guide="gv-publish" data-guide-label={t("gv.editPublished")}>
               <span>{t("gv.editPublished")}</span>
             </button>
           ) : (
-            <button className="btn btn-primary pub" type="button" onClick={() => (levelConfirmed ? setConfirm(true) : needLevel())} disabled={busy !== null || blocked} aria-disabled={!levelConfirmed || undefined} aria-describedby={blocked ? "pub-why" : undefined} data-guide="gv-publish" data-guide-label={publishLabel}>
+            <button className="btn btn-primary act pub" type="button" onClick={() => (levelConfirmed ? void publish() : needLevel())} disabled={busy !== null || blocked} aria-disabled={!levelConfirmed || undefined} aria-describedby={blocked ? "pub-why" : undefined} data-guide="gv-publish" data-guide-label={publishLabel}>
               <span>{publishLabel}</span>
             </button>
           ))}
@@ -280,14 +288,8 @@ export default function Review() {
 
       <main className="main review-main">
         {blocked && (
-          <p id="pub-why" className="muted small pub-why">
+          <p id="pub-why" className="sr">
             {t("gv.publishWait")}
-          </p>
-        )}
-        {flash && (
-          <p className="close-ok" role="status">
-            <Icon name="check" />
-            <span>{flash}</span>
           </p>
         )}
         {error && (
@@ -296,24 +298,6 @@ export default function Review() {
             <button className="btn btn-ghost" type="button" onClick={() => setError(null)}>
               {t("gv.ok")}
             </button>
-          </div>
-        )}
-        {pack && !published && needsNewerApp(pack.min_app_version, detail?.released_app_version) && (
-          <div className="version" role="note">
-            <Icon name="layers" />
-            <p>{t("gv.needsNewerApp", { v: pack.min_app_version })}</p>
-          </div>
-        )}
-        {detail && version > 1 && !published && (
-          <div className="version" role="note">
-            <Icon name="layers" />
-            <p>{prevPub && prevPub.students > 0 ? t("gv.versionNote", { students: prevPub.students, prev: prevPub.version, version }) : t("gv.versionNoteNone", { prev: prevPub?.version ?? version - 1, version })}</p>
-          </div>
-        )}
-        {detail && published && (
-          <div className="version" role="note">
-            <Icon name="layers" />
-            <p>{t("gv.publishedNote", { version, students: vinfo?.students ?? 0 })}</p>
           </div>
         )}
 
@@ -325,8 +309,6 @@ export default function Review() {
           <>
             <div className="crumbs">
               <h1>{pack.title}</h1>
-              <span className="tag">{t("gv.versionTag", { version })}</span>
-              {levelShown && <LevelTag level={levelShown} pill />}
               <span className="grow" />
               <span className="pager">
                 <button className="icon-btn" type="button" aria-label={t("gv.prevLesson")} disabled={idx === 0} onClick={() => goto(idx - 1)}>
@@ -338,6 +320,8 @@ export default function Review() {
                 </button>
               </span>
             </div>
+            {detail && version > 1 && !published && <VerNote>{prevPub && prevPub.students > 0 ? t("gv.versionNote", { students: prevPub.students, prev: prevPub.version, version }) : t("gv.versionNoteNone", { version })}</VerNote>}
+            {detail && published && <VerNote>{t("gv.publishedNote", { version, students: vinfo?.students ?? 0 })}</VerNote>}
             <LevelPicker
               rowRef={levelRow}
               value={levelShown}
@@ -349,87 +333,36 @@ export default function Review() {
               onPick={(l) => void chooseLevel(l)}
               onConfirm={() => levelShown && void chooseLevel(levelShown)}
             />
-            {!published && <p className="hint">{t("gv.reviewHint")}</p>}
 
-            <div className="layout">
-              <article
-                ref={paper}
-                className="paper oli"
-                lang={pack.language}
-                data-lang={pack.language}
-                data-guide="gv-review"
-                data-guide-label={t("gv.reviewTitle")}
-                onClick={(e) => {
-                  const m = (e.target as Element).closest?.("mark[data-cmt]");
-                  if (m) {
-                    const n = notes.find((x) => x.id === (m as HTMLElement).dataset.cmt);
-                    if (n) setActive(n.id);
-                    document.getElementById(`note-${(m as HTMLElement).dataset.cmt}`)?.scrollIntoView?.({ block: "nearest", behavior: "smooth" });
-                  }
-                }}
-              >
-                <div className="lesson-body">
-                  <h2>{lesson.title}</h2>
-                  <p className="lesson-meta">{t("gv.lessonMeta", { n: idx + 1, minutes: lesson.est_minutes })}</p>
-                  {lesson.blocks.map((b) => (
-                    <ReviewBlock key={b.id} b={b} ctx={ctx} notes={notes} active={active} draft={draft} onComment={(a, r) => open(b.id, a, r)} onPick={(nid) => setActive(nid)} />
-                  ))}
-                </div>
-              </article>
-              <Notes notes={notes} active={active} onPick={pick} others={others} />
+            <div className="tabs" role="tablist" aria-label={t("gv.tabsAria")}>
+              {(["bai", "luyen", "kiem", "nghe"] as const).map((k) => (
+                <button key={k} type="button" role="tab" aria-selected={tab === k} onClick={() => setTab(k)}>
+                  {t(k === "bai" ? "gv.tabLesson" : k === "luyen" ? "gv.tabPractice" : k === "kiem" ? "gv.tabTests" : "gv.tabListen")}
+                </button>
+              ))}
             </div>
+            {tab === "bai" && (
+              <LessonTab lesson={lesson} ctx={ctx} unsure={unsureMap} commented={commented} locked={locked} english={pack.language === "en"} saving={saving} onSave={(b, p) => void saveBlock(b, p)} onSeen={(b) => void seen(b)} onComment={sendNote} />
+            )}
+            {tab === "luyen" && <PracticeTab pack={pack} locked={locked} saving={saving} onSave={(b, p) => void saveBlock(b, p)} />}
+            {tab === "kiem" && <TestsTab tests={tests} locked={locked} onSave={(p, b) => void saveTest(p, b)} />}
+            {tab === "nghe" && <RecapTab chapters={pack.chapters} locked={locked} english={pack.language === "en"} glossStart={pack.gloss_start ?? 30} urlOf={ctx.url} onSave={(c, sc) => void saveRecap(c, sc)} onGloss={(n) => void saveGloss(n)} />}
+            <Notes notes={notes} active={active} onPick={pick} others={others} />
           </>
         )}
       </main>
 
-      {float && !draft && (
-        <div className="float" style={{ left: float.x, top: float.rectTop }}>
-          <button className="btn" type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => open(float.block_id, float.anchor, new DOMRect(float.x, float.y, 0, 0))} data-guide="gv-text-comment" data-guide-label={t("gv.comment")}>
-            <Icon name="comment" />
-            <span>{t("gv.comment")}</span>
-          </button>
-        </div>
-      )}
-      {draft && <CommentPop draft={draft} busy={sending} onSend={(b) => void send(b)} onCancel={() => setDraft(null)} />}
+      {toast.node}
 
-      {confirm && (
-        <div className="scrim" role="presentation" onClick={() => setConfirm(false)}>
-          <div className="dialog" role="dialog" aria-modal="true" aria-labelledby="pub-h" onClick={(e) => e.stopPropagation()}>
-            <h2 id="pub-h">{t("gv.confirmTitle", { version })}</h2>
-            <p>{prevPub && prevPub.students > 0 ? t("gv.confirmUpdate", { students: prevPub.students, prev: prevPub.version, version }) : t("gv.confirmFirst")}</p>
-            <div className="acts">
-              <button className="btn btn-ghost" type="button" onClick={() => setConfirm(false)}>
-                {t("gv.cancel")}
-              </button>
-              <button className="btn btn-primary" type="button" onClick={() => void publish()} autoFocus>
-                {publishLabel}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
 
-function ReviewBlock({ b, ctx, notes, active, draft, onComment, onPick }: { b: Block; ctx: BlockCtx; notes: Numbered[]; active: string | null; draft: Draft | null; onComment(a: CommentAnchor, rect: DOMRect): void; onPick(id: string): void }) {
-  const { t } = useTranslation();
-  const slot = useRef<HTMLDivElement>(null);
-  const own = notes.filter((n) => n.block_id === b.id);
+function VerNote({ children }: { children: React.ReactNode }) {
   return (
-    <div ref={slot} className="slot" data-block={b.id} id={`b-${b.id}`}>
-      {b.kind === "quiz" ? (
-        <div className="quiz-block">
-          <h2 className="quiz-h">{b.title || t("courses.player.quizTitle")}</h2>
-          {b.items.map((item, i) => (
-            <QuizItemView key={item.id} item={item} ctx={ctx} kid={false} n={b.items.length > 1 ? i + 1 : undefined} onResult={noop} onDone={noop} />
-          ))}
-        </div>
-      ) : (
-        <StaticBlock b={b} ctx={ctx} />
-      )}
-      {b.kind === "video" && <VideoBar block={b} slot={slot} notes={own.filter((n) => n.anchor.kind === "time")} active={active} onComment={onComment} onPick={onPick} />}
-      {b.kind === "image" && <PinLayer slot={slot} notes={own.filter((n) => n.anchor.kind === "point")} active={active} pending={draft?.block_id === b.id ? draft.anchor : null} onComment={onComment} onPick={onPick} />}
-    </div>
+    <p className="vernote" role="note">
+      <Icon name="layers" />
+      <span>{children}</span>
+    </p>
   );
 }

@@ -115,6 +115,7 @@
     document.dispatchEvent(new CustomEvent("mock:change", { detail: { key, value } }));
   }
   window.mockSet = set;
+  window.mockPaint = paintIcons; // pages that add markup later (e.g. chat messages) paint its <i data-i> icons
 
   document.addEventListener("click", (e) => {
     const b = e.target.closest("[data-set]");
@@ -165,7 +166,7 @@
       '<div class="set-row"><span class="set-label" data-en="Mực\'s tips">Hướng dẫn của Mực</span>' +
       '<button type="button" class="set-chip-btn set-replay" data-en="Show them again">Xem lại từ đầu</button></div>' +
       '<p class="set-foot"><span data-en="Mentor 1.4.2, up to date">Mentor 1.4.2, bản mới nhất</span>' +
-      '<a href="hs-00-dang-nhap.html" data-en="Log out">Đăng xuất</a></p>';
+      '<a href="hs-01-dang-nhap.html" data-en="Log out">Đăng xuất</a></p>';
     document.body.appendChild(pop);
     btn.setAttribute("aria-expanded", "false");
     btn.setAttribute("aria-controls", "set-pop");
@@ -659,6 +660,14 @@
   if (trail.length > 1 && trail[trail.length - 2] === here) trail.pop();      // arrived by going back
   else if (trail[trail.length - 1] !== here) trail.push(here);                // a new screen
   write(trail);
+  // A "return" action (leave a lesson, finish a test): step back when the previous screen is the target, so the
+  // browser history and the trail stay in step and the next back arrow still goes to the right place.
+  const file = (u) => page(u).split("?")[0].split("/").pop();
+  window.mockReturn = (target) => {
+    const t = read();
+    if (t.length > 1 && history.length > 1 && file(t[t.length - 2]) === file(target)) history.back();
+    else location.href = target;
+  };
   document.addEventListener("click", (e) => {
     const a = e.target.closest("header a.icon-btn, .topbar a.icon-btn");
     if (!a || !a.querySelector('svg, i[data-i="back"]') || a.hasAttribute("data-settings")) return;

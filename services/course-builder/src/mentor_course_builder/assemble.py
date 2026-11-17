@@ -15,8 +15,8 @@ import shutil
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from mentor_schemas.course import (AssetRef, AudioBlock, CalloutBlock, CourseMeta, CoursePack, Chapter, ImageBlock,
-                                   Lesson, QuizBlock, QuizItem, TextBlock, VideoBlock)
+from mentor_schemas.course import (AssetRef, AudioBlock, CalloutBlock, Chapter, ChapterRecap, CourseMeta, CoursePack,
+                                   ImageBlock, InteractiveBlock, Lesson, QuizBlock, QuizItem, TextBlock, VideoBlock)
 
 from mentor_course_builder.contracts import MediaFile, MediaResult
 from mentor_course_builder.lessons import LessonDraft
@@ -138,14 +138,17 @@ def derive_media(pack: CoursePack) -> list[str]:
                 has["audio"] |= isinstance(b, AudioBlock) or bool(getattr(b, "audio", None))
                 if isinstance(b, QuizBlock):
                     has["quiz"] = True
-                    if any(q.type in ("TAP_COUNT", "PICTURE_CHOICE") for q in b.items):
+                    if any(q.type in ("TAP_COUNT", "PICTURE_CHOICE", "FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS")
+                           for q in b.items):
                         has["interactive"] = True
+                has["interactive"] |= isinstance(b, InteractiveBlock)
     return [k for k, v in has.items() if v]
 
 
 def assemble(outline: CourseOutline, drafts: list[LessonDraft], results: dict[str, MediaResult] | None = None, *,
              teacher_id: str = "teacher", teacher_name: str = "Giáo viên", version: int = 1,
-             cover_path: str = "cover.webp") -> Assembled:
+             cover_path: str = "cover.webp", recaps: dict[str, list[str]] | None = None) -> Assembled:
+    """`recaps`: {chapter id: script paragraphs}; the audio comes from the MediaResult `recap-<chapter id>` when there is one."""
     res = _Resolver(results or {})
     by_id = {d.lesson.id: d for d in drafts}
     chapters: list[Chapter] = []
@@ -162,11 +165,21 @@ def assemble(outline: CourseOutline, drafts: list[LessonDraft], results: dict[st
                 continue
             lessons.append(d.lesson.model_copy(update={"blocks": blocks}))
         if lessons:
-            chapters.append(Chapter(id=och.id, title=och.title, lessons=lessons))
+            script = [p for p in (recaps or {}).get(och.id, []) if p.strip()]
+            recap = None
+            if script:
+                rid = f"recap-{och.id}"
+                audio = res.file(rid, "audio") or res.file(rid, "main")
+                if audio is None:
+                    res.notes.append(f"{rid}: recap audio missing, script kept without voice")
+                r = res.results.get(rid)
+                recap = ChapterRecap(script=script, audio=audio, duration_s=float((r.duration_s if r else 0) or 0))
+            chapters.append(Chapter(id=och.id, title=och.title, lessons=lessons, recap=recap))
     if not chapters:
         raise ValueError("nothing to assemble: no lesson has any block")
     pack = CoursePack(course_id=outline.course_id, version=version, language=outline.language,
-                      age_band=outline.age_band, title=outline.title, chapters=chapters)
+                      age_band=outline.age_band, title=outline.title, chapters=chapters,
+                      gloss_start=30 if outline.language == "en" else None)
     pack = pack.model_copy(update={"min_app_version": pack.required_app_version()})
     stray = [a.path for a in pack.assets() if a.sha256 == PENDING_SHA]
     if stray:  # cannot happen if the resolver is complete; never ship placeholders

@@ -1,4 +1,4 @@
-/* Courses (hs-02b, hs-03) and the lesson player (hs-04/05/06). Tokens and age density come from tokens.css. */
+/* The course page as a tree (hs-04), search (hs-07) and the coming-soon preview (hs-08). The lesson player has its own lesson.css. Tokens and age density come from tokens.css. */
 
 /* ---------- shared bits ---------- */
 .search {
@@ -20,66 +20,15 @@
 .dl-ready { color: var(--xanh); }
 .dl-error { color: var(--do); }
 
-/* ---------- hs-02b: today block ---------- */
-.today { border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; border: 1px solid var(--rule-strong); }
-.today-in { padding: clamp(20px, 4vw, 36px) clamp(20px, 4vw, 36px) clamp(20px, 4vw, 32px) 72px; display: grid; gap: 18px; }
-.today-skeleton { min-height: 160px; }
-.today h2 { font-size: clamp(1.5em, 3.4vw, 2em); max-width: 22ch; }
-.today .why { color: var(--ink-2); max-width: 52ch; }
-.today .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-.kid-hero { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 20px; }
-.today-text { display: grid; gap: 18px; }
-.kid-pic { width: min(260px, 40vw); aspect-ratio: 1; border-radius: 28px; overflow: hidden; background: var(--vang-soft); }
-.kid-pic img { width: 100%; height: 100%; object-fit: cover; }
-.today .speak, .kid-cell .speak { width: 64px; height: 64px; }
-.today .speak svg { width: 30px; height: 30px; }
-@media (max-width: 560px) {
-  .today-in { padding-left: 60px; }
-  .kid-hero { grid-template-columns: 1fr; }
-  .kid-pic { width: 100%; max-width: 280px; }
-}
 
-/* ---------- my courses ---------- */
-.none-yet { margin: 16px 4px; }
-.courses { display: grid; gap: 4px; margin: 18px 0 0; padding: 0; list-style: none; }
-.course { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 12px; border-radius: var(--r-md); text-decoration: none; color: inherit; }
-.course:hover { background: var(--surface); box-shadow: var(--shadow); }
-.thumb { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: #FBF5E8; border: 1px solid var(--rule); }
-.course h3 { font-size: 1em; font-weight: 600; }
-.course .meta { color: var(--ink-2); font-size: .85em; display: flex; gap: 6px 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
-.course .bar { width: 120px; }
-.course .go { width: 22px; height: 22px; color: var(--ink-3); }
-@media (max-width: 480px) { .course { grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; padding: 10px 4px; } .thumb { width: 56px; height: 56px; } .course .bar { width: 80px; } }
-
-.kid-shelf { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 18px; }
-.kid-tile { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 14px; border-radius: 24px; background: var(--surface); border: 2px solid var(--rule); text-decoration: none; color: inherit; font-weight: 600; }
-.kid-tile:hover { border-color: var(--tim); }
-.kid-tile .pic { width: 100%; aspect-ratio: 4 / 3; border-radius: 16px; object-fit: cover; background: #FBF5E8; }
-.kid-tile .stars { display: flex; flex-direction: column; gap: 2px; align-items: flex-start; color: var(--cam); font-size: 20px; letter-spacing: 2px; padding-right: 64px; }
-.kid-tile .stars small { font-size: 14px; letter-spacing: 0; color: var(--ink-2); font-weight: 500; }
-.kid-cell { position: relative; }
-.kid-cell .speak { position: absolute; right: 12px; bottom: 12px; width: 52px; height: 52px; }
-.kid-cell .speak svg { width: 24px; height: 24px; }
-@media (max-width: 480px) { .kid-shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
-
-/* ---------- hs-03: search ---------- */
-.scope { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin: 14px 4px 8px; color: var(--ink-2); font-size: .9em; }
-.scope button { border: 0; background: none; color: var(--tim-ink); font-weight: 500; cursor: pointer; padding: 0; min-height: 44px; text-decoration: underline; text-underline-offset: 3px; }
+/* ---------- hs-07: search ---------- */
 .results { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.res { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 18px; align-items: center; padding: 18px 4px; border-bottom: 1px solid var(--rule); }
-.res .thumb { width: 72px; height: 72px; border-radius: 16px; }
-.res h2 { font-size: 1.05em; }
 mark { background: var(--vang-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
-.res .by { color: var(--ink-2); font-size: .88em; margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
-.res .has, .lessons .kinds { display: flex; gap: 12px; margin-top: 8px; color: var(--ink-2); font-size: .82em; flex-wrap: wrap; }
-.res .has > span, .lessons .kinds > span { display: inline-flex; }
-.res .has svg, .lessons .kinds svg { width: 18px; height: 18px; }
-@media (max-width: 600px) { .res { grid-template-columns: 56px minmax(0, 1fr); gap: 12px; } .res .thumb { width: 56px; height: 56px; } .res .btn { grid-column: 2; justify-self: start; } }
 .empty { padding: 48px 0; display: grid; gap: 12px; max-width: 46ch; }
 .empty h2 { font-size: 1.3em; }
 .empty .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
 
-/* ---------- hs-03: course intro ---------- */
+/* ---------- hs-07: course intro ---------- */
 .detail { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 40px; align-items: start; }
 .detail-main { display: grid; gap: 28px; min-width: 0; }
 /* phone: cover and title first, then the start button, then the rest */
@@ -93,51 +42,18 @@ mark { background: var(--vang-soft); color: inherit; border-radius: 3px; padding
 .cover { display: grid; gap: 12px; }
 .cover-media { margin: 0 0 6px; border-radius: var(--r-lg); overflow: hidden; background: #FBF6EA; border: 1px solid var(--rule-strong); }
 .cover-media img { width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 340px; object-fit: cover; }
-.course-h { font-size: clamp(1.6em, 3.5vw, 2.2em); }
-.desc { max-width: 62ch; }
-.desc .tag { vertical-align: 2px; margin-left: 4px; }
 .sub-h { font-size: 1.1em; margin-bottom: 8px; }
-.learn { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
 .tree details { border-bottom: 1px solid var(--rule); }
 .tree summary { cursor: pointer; padding: 12px 0; font-weight: 600; }
 .lessons { list-style: none; margin: 0 0 8px; padding: 0; counter-reset: l; }
 .lessons > li { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 10px 0; counter-increment: l; }
 .lessons > li::before { content: counter(l); width: 28px; height: 28px; border-radius: 8px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; font-weight: 600; font-size: .85em; }
-.lesson-title { display: inline-block; padding: 10px 0; font-weight: 500; color: var(--ink); text-decoration: none; }
-a.lesson-title:hover { color: var(--tim-ink); text-decoration: underline; }
 .ideas { margin: 6px 0 0; padding-left: 1.1em; color: var(--ink-2); font-size: .9em; display: grid; gap: 3px; }
-.lessons .kinds { margin-top: 2px; color: var(--ink-3); }
-.side { position: sticky; top: 24px; display: grid; gap: 14px; padding: 22px; border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow); }
-.side-err { color: var(--do); font-size: .92em; }
-.soon-label { margin: 0; padding: 14px 18px; border-radius: var(--r-md); background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; text-align: center; }
-.soon-tag { background: var(--cam-soft); color: var(--cam); }
-.facts { display: grid; gap: 8px; color: var(--ink-2); font-size: .9em; }
-.facts > span:not(.dl) { display: flex; gap: 8px; align-items: center; }
-.facts svg { width: 18px; height: 18px; flex: none; }
+.lessons .kinds { display: flex; gap: 12px; margin-top: 2px; color: var(--ink-3); font-size: .82em; flex-wrap: wrap; }
+.lessons .kinds > span { display: inline-flex; }
+.lessons .kinds svg { width: 18px; height: 18px; }
 
-/* ---------- player: focus screen ---------- */
-.player { background: var(--paper); }
-.lesson-top { display: flex; align-items: center; gap: 14px; padding: 10px clamp(16px, 4vw, 32px); border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 20; }
-.lesson-top .t { flex: 1; min-width: 0; display: grid; gap: 6px; }
-.lesson-top .t b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lesson-top .meta { display: flex; align-items: center; gap: 12px; font-size: .82em; color: var(--ink-2); }
-.lesson-top .bar { width: min(220px, 40vw); }
-:root[data-age="uni"] .lesson-top { padding-block: 8px; }
-:root[data-age="uni"] .lesson-top .icon-btn { width: 40px; height: 40px; }
-:root[data-age="uni"] .lesson-top .bar { height: 6px; }
-:root[data-age="g1_5"] .lesson-top { padding-block: 12px; }
-:root[data-age="g1_5"] .lesson-top .icon-btn { width: 56px; height: 56px; }
-.steps { display: flex; gap: 8px; }
-.steps i { flex: 1; height: 12px; border-radius: 99px; background: var(--rule-strong); }
-.steps i.done { background: var(--xanh); }
-.steps i.now { background: var(--tim); }
-.player-msg { flex: 1; display: grid; place-content: center; justify-items: center; gap: 16px; padding: 40px 16px; text-align: center; }
-
-.lesson-col { width: 100%; max-width: 820px; margin: 0 auto; padding: clamp(20px, 4vw, 36px) clamp(16px, 4vw, 40px) 120px; display: grid; gap: 24px; align-content: start; }
-.lesson-col > * { min-width: 0; }
-.lesson-h { font-size: clamp(1.5em, 3vw, 1.9em); }
-.slot { scroll-margin-top: 88px; min-width: 0; }
-.lesson-end { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding-top: 12px; }
+/* ---------- lesson content blocks (the player itself is in lesson.css) ---------- */
 
 /* text and markdown */
 .md > :first-child { margin-top: 0; }
@@ -162,7 +78,7 @@ a.lesson-title:hover { color: var(--tim-ink); text-decoration: underline; }
 /* callouts */
 .callout { display: flex; gap: 14px; align-items: flex-start; padding: 16px 20px; border-radius: var(--r-md); max-width: 68ch; }
 .callout-body { flex: 1; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
-.callout-body .katex-display, .lesson-col .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.callout-body .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .callout-title { font-weight: 600; font-size: .92em; }
 .callout-remember { padding: 18px 20px 18px 64px; border: 1px solid var(--rule-strong); }
 .callout-definition { background: var(--tim-soft); }
@@ -238,18 +154,6 @@ a.lesson-title:hover { color: var(--tim-ink); text-decoration: underline; }
 .check { justify-self: start; }
 
 /* the little ones */
-.kid-player .stage { max-width: 860px; width: 100%; margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 40px) 60px; display: grid; gap: 24px; justify-items: center; text-align: center; }
-.kid-player .blk-text { max-width: none; align-items: center; justify-content: center; font-size: 1.3em; font-weight: 500; }
-.kid-player .blk-text .md { flex: 0 1 auto; }
-.kid-player .blk-image { width: 100%; justify-items: center; }
-.kid-player .blk-image img { max-height: 340px; background: var(--vang-soft); }
-.kid-player .blk-image figcaption { justify-content: center; font-size: 1.15em; }
-.kid-player .callout { text-align: left; font-size: 1.1em; }
-.kid-player .q { border-top: 0; justify-items: center; width: 100%; }
-.kid-player .q-stem { justify-content: center; font-size: 1.4em; font-weight: 600; }
-.kid-player .q-stem .md { flex: 0 1 auto; }
-.kid-player .q-stem strong { font-size: 1.4em; color: var(--tim-ink); }
-.kid-player .next { min-width: 220px; }
 .pics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: clamp(10px, 3vw, 24px); width: 100%; }
 .opt.pic { display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 12px 8px 16px; min-height: 160px; border-radius: 26px; border-width: 3px; }
 .opt.pic img { width: 100%; max-width: 150px; height: auto; }
@@ -274,22 +178,105 @@ a.lesson-title:hover { color: var(--tim-ink); text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { .win-stars .s { opacity: 1; } }
 @media (max-width: 520px) { .opt.pic { min-height: 120px; padding: 6px; } .frame { gap: 6px; } .apple { border-radius: 14px; padding: 4px; } }
 
-/* done card */
-.done-wrap { width: 100%; max-width: 860px; margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 40px); }
-.finish { display: grid; gap: 18px; justify-items: start; padding: clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px) 72px; border-radius: var(--r-lg); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
-.finish .score { font: 700 3.2em/1 var(--font-ui); color: var(--tim-ink); }
-.finish .say { display: flex; align-items: center; gap: 16px; }
-.finish .row { display: flex; gap: 12px; flex-wrap: wrap; }
-.kid-player .finish, :root[data-age="g1_5"] .finish { justify-items: center; text-align: center; padding-left: clamp(24px, 4vw, 36px); }
-@media (max-width: 520px) { .finish { padding-left: 56px; } .kid-player .finish { padding-left: 24px; } }
-
 /* university: the serif reading column (DESIGN.md) */
-:root[data-age="uni"] .lesson-col { max-width: 900px; }
-:root[data-age="uni"] .lesson-col .md,
-:root[data-age="uni"] .lesson-col .callout-body .md { font-family: var(--font-read); font-size: 1.06em; line-height: 1.72; }
 :root[data-age="uni"] .blk-text { max-width: 68ch; }
 :root[data-age="uni"] .md h1, :root[data-age="uni"] .md h2, :root[data-age="uni"] .md h3 { font-family: var(--font-ui); line-height: 1.2; }
 :root[data-age="uni"] .md h1 { font-size: clamp(1.5em, 3vw, 1.9em); }
 :root[data-age="uni"] .callout-example { padding-left: 64px; background: transparent; border-color: var(--rule-strong); }
 @media (max-width: 480px) { :root[data-age="uni"] .callout-example, .callout-remember { padding-left: 56px; padding-right: 14px; } }
 :root[data-age="uni"] .q { font-size: .94em; }
+
+/* ---------- the course page as a tree (mockups/hs-04; also the intro and the coming-soon preview) ---------- */
+.ct-main { max-width: 720px; display: grid; gap: 22px; padding-bottom: 80px; align-content: start; }
+.ct-hero { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; align-items: center; }
+.ct-hero img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; border: 1px solid var(--rule); background: #FBF6EA; }
+.ct-hero h2 { font-size: clamp(1.25em, 3.4vw, 1.6em); overflow-wrap: anywhere; }
+:root[data-age="uni"] .ct-hero h2 { font-family: var(--font-read); }
+.ct-hero .meta { color: var(--ink-2); font-size: .85em; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; margin-top: 6px; }
+.ct-hero .bar { width: 120px; }
+.ct-soon { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 99px; background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+.ct-soon svg { width: 15px; height: 15px; }
+.ct-next { justify-self: start; }
+.ct-next small { font-weight: 500; opacity: .8; margin-left: 4px; font-size: .85em; }
+
+.ct-tree { display: grid; gap: 2px; }
+.ct-grp > summary { list-style: none; }
+.ct-grp > summary::-webkit-details-marker { display: none; }
+.ct-node { display: grid; grid-template-columns: 22px 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; min-height: 44px; padding: 0 10px 0 6px; border-radius: 10px; color: var(--ink); text-decoration: none; cursor: pointer; font: inherit; background: none; border: 0; width: 100%; text-align: left; }
+a.ct-node:hover, button.ct-node:hover:not(:disabled), summary.ct-node:hover { background: var(--tim-soft); }
+.ct-node:focus-visible { outline: 2px solid var(--tim); outline-offset: -2px; }
+.ct-node:disabled { cursor: default; opacity: .6; }
+.ct-node > .chev svg { width: 16px; height: 16px; color: var(--ink-3); transform: rotate(-90deg); transition: transform .15s; }
+.ct-grp[open] > summary .chev svg { transform: none; }
+.ct-node > .ic svg { width: 19px; height: 19px; color: var(--ink-2); }
+.ct-node .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ct-grp > summary .t { font-weight: 600; }
+.ct-node .end { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-3); font-size: .82em; }
+.ct-node .end svg { width: 16px; height: 16px; }
+.ct-kids { display: grid; gap: 2px; padding-left: 30px; }
+.ct-kids .ct-node { grid-template-columns: minmax(22px, auto) minmax(0, 1fr) auto; }
+.ct-kids > div.ct-node, .ct-kids > span.ct-node { cursor: default; }
+.ct-kids .ic { display: inline-flex; }
+.ct-kids .no { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; font-size: .75em; font-weight: 600; color: var(--ink-2); border: 1px solid var(--rule-strong); }
+.ct-kids .out { grid-template-columns: minmax(0, 1fr); padding: 6px 10px; color: var(--ink-2); }
+.ct-kids .out .t { white-space: normal; }
+.ct-empty { padding: 6px 10px 10px 36px; color: var(--ink-3); font-size: .88em; margin: 0; }
+.ct-empty .btn-link { min-height: 40px; }
+
+.ct-node.done .no { background: var(--xanh-soft); color: var(--xanh); border-color: transparent; }
+.ct-node.done .end { color: var(--xanh); }
+.ct-node.now { background: var(--tim-soft); }
+.ct-node.now .no { background: var(--tim); color: var(--on-tim); border-color: transparent; }
+.ct-node.now .t { font-weight: 600; }
+.ct-node.now .end { color: var(--tim-ink); font-weight: 600; }
+.ct-node.later .t, .ct-node.later .no, .ct-node.later .stars { color: var(--ink-3); }
+.ct-node.locked .t { color: var(--ink-2); }
+.plan-chip { display: inline-flex; align-items: center; min-height: 32px; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--rule-strong); color: var(--ink-2); font-size: 1em; font-weight: 600; cursor: pointer; }
+.plan-chip:focus-visible { outline: 2px solid var(--tim); outline-offset: 2px; }
+.pct { font-variant-numeric: tabular-nums; }
+.ct-kids .stars { color: #9A5200; letter-spacing: 1px; font-size: .85em; }
+.ct-node .end .stars { font-size: 1.1em; }
+.cp-err { color: var(--do); }
+
+/* plans: compared in one sheet */
+.ct-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(18, 14, 38, .38); }
+.ct-sheet { position: fixed; z-index: 61; left: 50%; bottom: 0; transform: translateX(-50%); width: min(760px, 100%); max-height: min(88vh, 760px); overflow: auto; overscroll-behavior: contain; background: var(--paper); border-radius: 24px 24px 0 0; box-shadow: 0 -18px 40px -20px rgba(0,0,0,.4); padding: 10px clamp(16px, 4vw, 32px) calc(24px + env(safe-area-inset-bottom)); display: grid; gap: 16px; align-content: start; animation: ct-up .28s cubic-bezier(.2,.9,.3,1) both; }
+@keyframes ct-up { from { transform: translate(-50%, 40px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ct-sheet { animation: none; } .ct-node > .chev svg { transition: none; } }
+.ct-sheet .grab { justify-self: center; width: 44px; height: 5px; border-radius: 99px; background: var(--rule-strong); }
+.ct-sheet .sheet-h { display: flex; align-items: center; gap: 12px; }
+.ct-sheet .sheet-h h2 { font-size: 1.2em; flex: 1; }
+.ct-sheet .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ct-sheet .plan { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--rule-strong); }
+.ct-sheet .plan h3 { font-size: 1.05em; }
+.ct-sheet .plan ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; color: var(--ink-2); font-size: .86em; }
+.ct-sheet .plan li::marker { color: var(--tim); }
+.ct-sheet .plan .btn, .ct-sheet .plan .btn-line, .ct-sheet .plan .tag { justify-self: start; }
+.btn-line { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: transparent; color: var(--ink); font: inherit; font-weight: 600; font-size: .9em; cursor: pointer; }
+.btn-line:hover { border-color: var(--tim); }
+.ct-sheet .note { color: var(--ink-2); font-size: .85em; margin: 0; }
+@media (max-width: 640px) { .ct-sheet .plans { grid-template-columns: minmax(0, 1fr); } .ct-kids { padding-left: 18px; } }
+
+/* "Nghe tóm tắt": one quiet row in Lessons, a mini player docked at the bottom (hs-04) */
+.listen .no { border: 0; background: none; }
+.listen .no svg { width: 19px; height: 19px; color: var(--tim-ink); }
+.listen .end svg { color: var(--xanh); width: 18px; height: 18px; }
+.mini { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--rule-strong); box-shadow: 0 -10px 28px -18px rgba(0,0,0,.45); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); }
+.mini-in { max-width: 720px; margin: 0 auto; display: grid; gap: 4px; }
+.mini .pp { width: 52px; height: 52px; flex: none; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; cursor: pointer; box-shadow: inset 0 -3px 0 rgba(0,0,0,.2); }
+.mini .pp:hover { background: var(--tim-ink); }
+.mini svg { width: 22px; height: 22px; }
+.mini .ttl { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.mini .ttl b { font-weight: 600; font-size: .92em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+.mini .tm { color: var(--ink-2); font-size: .8em; font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 34px; text-align: right; }
+.mini .ctl { display: flex; align-items: center; gap: 6px; }
+.mini .ib { min-width: 44px; height: 44px; padding: 0 8px; border-radius: 999px; border: 0; background: none; color: var(--ink-2); font: inherit; font-size: .85em; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+.mini .ib:hover { background: var(--tim-soft); color: var(--ink); }
+.mini .ib svg { width: 20px; height: 20px; }
+.mini .dl { min-height: 32px; height: 32px; padding: 0 10px; font-size: .8em; color: var(--xanh); background: var(--xanh-soft); }
+.mini input[type=range] { flex: 1; width: 100%; min-width: 0; height: 24px; margin: 0; accent-color: var(--tim); cursor: pointer; }
+.mini.kid .ctl { justify-content: center; }
+.mini.kid .pp { width: 72px; height: 72px; }
+.mini.kid .pp svg { width: 32px; height: 32px; }
+.mini.kid .ttl b { font-size: 1.05em; }
+.main:has(.mini) { padding-bottom: 150px; }

@@ -17,8 +17,8 @@ from sqlalchemy import select
 from mentor_gateway.content.service import ContentService
 from mentor_gateway.db import Database, User
 from mentor_gateway.notifications import PLANNER_SOURCE, NotificationHub, Nudge
+from mentor_gateway.planner import engage, fsrs_items, goals, research_plan
 from mentor_gateway.planner import events as ev
-from mentor_gateway.planner import fsrs_items, goals, research_plan
 from mentor_gateway.planner.bands import TZ, band_for, hhmm, to_min
 from mentor_gateway.planner.fallback import deep_link, explain_moves, plan_fallback
 from mentor_gateway.planner.llm import PlannerLLM, PlannerLLMError, llm_plan
@@ -143,6 +143,8 @@ class PlannerService:
         rec = self._record(user.id)
         study_days = {local(s["start"]).date() for s in sessions(evs)}
         profile["missed_recent"] = self._missed(rec, study_days, local(now).date())
+        profile["streak_days"] = engage.streak(study_days, local(now).date())[0]
+        profile["age_band"] = user.age_band
         with self.db.session() as s:
             last_nudge = s.scalars(select(Reminder.created_at).where(Reminder.user_id == user.id, Reminder.kind == "nudge")
                                    .order_by(Reminder.created_at.desc())).first()
@@ -235,9 +237,13 @@ class PlannerService:
             rec.generated_at, rec.source, rec.trigger, rec.plan = now, source, trigger, plan
             rec.moves, rec.snapshot, rec.dirty, rec.note = moves, self._snapshot(ctx, old, user.id, plan["items"]), None, (note or None)
             for r in s.scalars(select(Reminder).where(Reminder.user_id == user.id, Reminder.status == "scheduled",
-                                                      Reminder.at > now)):
+                                                      Reminder.at > now, Reminder.kind.not_in(engage.OWN_KINDS))):
                 r.status, r.updated_at = "cancelled", now
-            for r in plan["reminders"]:
+        reminders = plan["reminders"]
+        if engage.state(self.db, user, now)["reminders_backoff"]:
+            reminders = engage.thin(reminders)
+        with self.db.session() as s:
+            for r in reminders:
                 s.add(Reminder(id="r-" + secrets.token_hex(8), user_id=user.id, at=datetime.fromisoformat(r["at"]),
                                kind=r["kind"], text_vi=r["text_vi"], text_en=r["text_en"], deep_link=r["deep_link"],
                                status="scheduled", created_at=now, updated_at=now))
@@ -306,6 +312,7 @@ class PlannerService:
                 if trigger:
                     await self.generate(user, trigger)
                     ran.append((user.id, trigger))
+                await asyncio.to_thread(engage.maintain, self.db, user, now)
                 await self.deliver_due(user, now)
             except Exception:
                 log.exception("planner tick for %s", user.id)
@@ -431,6 +438,7 @@ class PlannerService:
             hub["research"] = status_line(self.db, user.id, now)
         return {"date": loc.date().isoformat(), "now": now.isoformat(), "today": block, "hub": hub,
                 "week": {"done": done, "planned": planned}, "due_review_count": due_n,
+                **engage.state(self.db, user, now),  # streak and backing off (60 days of events, not the 14 above)
                 "quiet_until": user.quiet_until.isoformat() if user.quiet_until else None, "plan_source": rec.source}
 
     def reminders_view(self, user: User, since: datetime | None) -> dict:
@@ -447,6 +455,17 @@ class PlannerService:
                 "reminders": [{"id": r.id, "at": r.at.astimezone(TZ).isoformat(), "kind": r.kind, "text_vi": r.text_vi,
                                "text_en": r.text_en, "deep_link": r.deep_link, "status": r.status, "outcome": r.outcome}
                               for r in rows]}
+
+    def remind_later(self, user: User, at: datetime, title_vi: str, title_en: str, deep_link: str) -> dict:
+        """The learner's "remind me at ..." (Today's "Để sau"): one reminder, delivered like the plan's. EngageError on a
+        time outside 2 days, at bedtime or in quiet mode."""
+        now = self.clock()
+        with self.db.session() as s:
+            fresh = s.get(User, user.id)
+            quiet = fresh.quiet_until if fresh else None
+        r = engage.create_later(self.db, user, now, at, title_vi, title_en, deep_link, quiet)
+        return {"id": r.id, "at": r.at.astimezone(TZ).isoformat(), "kind": r.kind, "text_vi": r.text_vi, "text_en": r.text_en,
+                "deep_link": r.deep_link, "status": r.status, "outcome": None}
 
     def record_outcome(self, user: User, reminder_id: str, outcome: str) -> bool:
         now = self.clock()

@@ -182,7 +182,7 @@ class StatusInput(_M):
     status: ReadStatus
 
 
-# ---------------------------------------------------------------- paper reader (hs-12)
+# ---------------------------------------------------------------- paper reader (hs-10)
 class FeedbackRow(_M):
     kind: FeedbackKind
     text: str
@@ -504,7 +504,7 @@ class ExperimentList(_M):
     next_before: str | None = None  # pass as `before` for the next page
 
 
-# ---------------------------------------------------------------- overview (home screen, hs-11)
+# ---------------------------------------------------------------- overview (home screen, hs-09)
 class ReadNext(_M):
     """The "Đọc tiếp" hero."""
 

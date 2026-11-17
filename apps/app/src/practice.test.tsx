@@ -105,15 +105,16 @@ describe("practice screens", () => {
     setPracticeApi(createMockPractice());
     const ui = userEvent.setup();
     open("/luyen-tap");
-    expect(await screen.findByText("5 câu, khoảng 6 phút")).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "5 câu" })).toBeInTheDocument();
+    expect(screen.getByText("Khoảng 6 phút")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Bắt đầu" }));
-    expect(await screen.findByText("1/5")).toBeInTheDocument();
+    expect(await screen.findByRole("img", { name: /^Câu 1/ })).toHaveAttribute("aria-current", "true");
 
     await ui.click(screen.getByRole("button", { name: /^B\s*5/ })); // right
     expect(await screen.findByText("Đúng rồi")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Câu tiếp" }));
 
-    expect(await screen.findByText("2/5")).toBeInTheDocument();
+    expect(await screen.findByRole("img", { name: /^Câu 2/ })).toHaveAttribute("aria-current", "true");
     await ui.click(screen.getByRole("button", { name: "Gợi ý" }));
     expect(await screen.findByText("Đếm chậm từng quả.")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "4" })); // PICTURE_CHOICE B (text fallback): wrong
@@ -147,9 +148,29 @@ describe("practice screens", () => {
 
     expect(await screen.findByText("Tốt rồi. Chỉ còn lỗi đếm thiếu.")).toBeInTheDocument();
     expect(screen.getByText(/Mentor sẽ cho em làm lại/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Xong" })).toBeInTheDocument();
-    await ui.click(screen.getByRole("link", { name: "Xem lại bài" }));
-    expect(await screen.findAllByText(/^Câu \d/)).toHaveLength(5);
+    expect(screen.getByRole("button", { name: "Xong" })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Xem lại" })).not.toBeInTheDocument();
+
+    // fix the two wrong ones before the solution
+    await ui.click(screen.getByRole("button", { name: "Sửa 2 câu sai" }));
+    expect(await screen.findByText("Câu sai 1/2")).toBeInTheDocument();
+    expect(screen.getByText("Thử lại trước khi xem lời giải.")).toBeInTheDocument();
+    expect(screen.getByText("Em đã chọn")).toBeInTheDocument(); // the first answer is marked
+    expect(screen.getByRole("button", { name: "4" })).toBeDisabled();
+    await ui.click(screen.getByRole("button", { name: "3" })); // right this time
+    expect(await screen.findByText("Đúng rồi!")).toBeInTheDocument();
+    await ui.click(screen.getByRole("button", { name: "Câu sai tiếp" }));
+
+    expect(await screen.findByText("Câu sai 2/2")).toBeInTheDocument();
+    const rows2 = (await screen.findAllByRole("group")).filter((g) => g.classList.contains("tf-btns"));
+    for (const r of rows2) await ui.click(within(r).getByRole("button", { name: "Đúng" })); // still wrong: b is false
+    await ui.click(screen.getByRole("button", { name: "Kiểm tra" }));
+    expect(await screen.findByText(/3 \+ 1 = 4, không phải 5/)).toBeInTheDocument();
+    await ui.click(screen.getByRole("button", { name: "Xong phần sửa" }));
+
+    expect(await screen.findByText(/Sửa được 1\/2 câu/)).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /^Sửa 2/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Xong" })).toBeInTheDocument();
   }, 30000);
 
   it("an unfinished session is offered again and reopens at the next question", async () => {
@@ -163,7 +184,7 @@ describe("practice screens", () => {
     expect(await screen.findByText("Làm tiếp bài đang dở")).toBeInTheDocument();
     expect(screen.getByText("Em đã làm 2/5 câu.")).toBeInTheDocument();
     await ui.click(screen.getByRole("link", { name: "Làm tiếp" }));
-    expect(await screen.findByText("3/5")).toBeInTheDocument();
+    expect(await screen.findByRole("img", { name: /^Câu 3/ })).toHaveAttribute("aria-current", "true");
     // feedback of an answered item survives (go back is not offered in practice; the progress bar counts 2 done)
     expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "2");
   });
@@ -172,7 +193,7 @@ describe("practice screens", () => {
     setPracticeApi(createMockPractice({ enough: false }));
     open("/luyen-tap");
     expect(await screen.findByText(/Em chưa học đủ để luyện/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Mở Khóa học" })).toHaveAttribute("href", "/khoa-hoc");
+    expect(screen.getByRole("link", { name: "Tìm khóa học" })).toHaveAttribute("href", "/khoa-hoc/tim-kiem");
     expect(screen.queryByRole("button", { name: "Bắt đầu" })).toBeNull();
   });
 
@@ -180,9 +201,9 @@ describe("practice screens", () => {
     setPracticeApi(createMockPractice({ mockMinutes: 1 }));
     const ui = userEvent.setup();
     open("/luyen-tap");
-    await ui.click(await screen.findByRole("button", { name: "Thi thử" }));
+    await ui.click(await screen.findByRole("button", { name: "Thi" }));
     expect(screen.getByText(/Đồng hồ chạy ngay/)).toBeInTheDocument();
-    await ui.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Thi thử" }));
+    await ui.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Thi" }));
 
     expect(await screen.findByRole("timer")).toHaveTextContent(/^(01:00|00:59)$/);
     await ui.click(screen.getByRole("button", { name: /^B/ }));
@@ -192,18 +213,16 @@ describe("practice screens", () => {
     expect(screen.getByRole("button", { name: "Bỏ đánh dấu" })).toBeInTheDocument();
 
     // free navigation, the grid shows flag and answered
-    await ui.click(screen.getByRole("button", { name: "Tất cả câu" }));
-    expect(screen.getByRole("button", { name: /Câu 1, Đánh dấu, đã làm/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Câu 1, Đánh dấu, đã làm/ })).toHaveAttribute("aria-current", "true");
     await ui.click(screen.getByRole("button", { name: "Nộp bài" }));
     expect(screen.getByText("Em đã trả lời 1/5 câu. Nộp xong thì không sửa được nữa.")).toBeInTheDocument();
     expect(screen.getByText("Còn 4 câu chưa làm.")).toBeInTheDocument();
     expect(screen.getByText("Còn 1 câu em đã đánh dấu.")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Làm tiếp" })); // back
     expect(screen.queryByRole("dialog")).toBeNull();
-    await ui.click(screen.getByRole("button", { name: "Tất cả câu" }));
     await ui.click(screen.getByRole("button", { name: "Nộp bài" }));
     await ui.click(within(screen.getByRole("dialog")).getByRole("button", { name: "Nộp bài" }));
-    expect(await screen.findByText("Đúng 1/5 câu, đã làm 1 câu.")).toBeInTheDocument();
+    await screen.findByRole("button", { name: "Xong" });
     expect(document.querySelector(".score")).toHaveTextContent("2/10");
   }, 30000);
 
@@ -213,7 +232,7 @@ describe("practice screens", () => {
     const s = await api.start("t", { source: "mock:demo" });
     open(`/luyen-tap/${s.id}`);
     expect(await screen.findByRole("timer")).toHaveTextContent(/^00:0[123]$/);
-    await waitFor(() => expect(screen.getByRole("link", { name: "Xong" })).toBeInTheDocument(), { timeout: 8000 });
+    await waitFor(() => expect(screen.getByRole("button", { name: "Xong" })).toBeInTheDocument(), { timeout: 8000 });
     expect((await api.get("t", s.id)).status).toBe("finished");
   }, 20000);
 
@@ -228,6 +247,40 @@ describe("practice screens", () => {
     expect(await screen.findByText("Gần đúng rồi!")).toBeInTheDocument();
     expect(document.querySelector(".opt.wrong")).toBeNull();
     expect(document.querySelector(".opt.right")).not.toBeNull();
+  }, 20000);
+});
+
+describe("leaving a run", () => {
+  beforeEach(async () => {
+    await i18n.changeLanguage("vi");
+    student();
+  });
+  const openState = async (back?: string) => {
+    const api = createMockPractice();
+    setPracticeApi(api);
+    const s = await api.start("t", { source: "quick" });
+    await api.finish("t", s.id);
+    const entry = { pathname: `/luyen-tap/${s.id}/ket-qua`, state: back ? { back } : undefined };
+    render(
+      <MemoryRouter initialEntries={back ? ["/luyen-tap", entry] : [entry]} initialIndex={back ? 1 : 0}>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </MemoryRouter>,
+    );
+  };
+
+  it("Done returns to where the run was opened", async () => {
+    await openState("/luyen-tap");
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Xong" }));
+    expect(await screen.findByText("Khoảng 6 phút")).toBeInTheDocument();
+  }, 20000);
+
+  it("Done from a direct link goes to Today", async () => {
+    await openState();
+    await userEvent.setup().click(await screen.findByRole("button", { name: "Xong" }));
+    await waitFor(() => expect(screen.queryByRole("button", { name: "Xong" })).toBeNull());
+    expect(screen.queryByText("Khoảng 6 phút")).toBeNull();
   }, 20000);
 });
 

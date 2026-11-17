@@ -13,6 +13,7 @@ Specs per kind (keys are required unless marked optional):
   illustration  {"description": str}   in-lesson picture, no text inside the image
   picture       {"description": str, "count": int (optional)}  small object pictures for PICTURE_CHOICE / TAP_COUNT
   cover         {"title": str, "subject": str, "idea": str}   course cover, no text inside the image
+  recap         {"script": [str]}   chapter recap ("Nghe tóm tắt"): paragraphs read in order, one mp3 (role "main")
 """
 
 from __future__ import annotations
@@ -24,7 +25,7 @@ from pydantic import BaseModel, ConfigDict
 
 from mentor_schemas.course import AgeBand, Lang
 
-MediaKind = Literal["tts", "video", "diagram", "illustration", "picture", "cover"]
+MediaKind = Literal["tts", "video", "diagram", "illustration", "picture", "cover", "recap"]
 
 
 class MediaRequest(BaseModel):

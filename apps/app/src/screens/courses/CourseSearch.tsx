@@ -11,7 +11,9 @@ import { activeCount, emptyFilters, parseState, toParams, toQuery, type CatState
 import { saveScroll, peekScroll } from "../../lib/scrollMemory";
 import { CourseCard, ListCover, Pager, useFacetLabel } from "./catalogUi";
 
+/** Every facet a filter can hold (chips, "drop this filter" hints); the sidebar offers the first five (hs-07). */
 const ORDER: FacetKey[] = ["subject", "band", "language", "level", "duration", "media", "status", "teacher"];
+const SIDEBAR: FacetKey[] = ["subject", "band", "language", "level", "duration"];
 const POPULAR = ["Toán 12", "IELTS", "Python", "Vật lí", "Hóa học", "Machine learning"];
 const LONG = new Set<FacetKey>(["subject", "teacher"]);
 const SHOWN = 6;
@@ -19,7 +21,7 @@ const SHOWN = 6;
 type Load = { status: "loading" | "ready" | "error"; data: CatalogPage | null };
 
 /**
- * hs-03: the course catalog. Search (with autocomplete), sort tabs, facets with live counts, filter chips, product cards
+ * hs-07: the course catalog. Search (with autocomplete), sort tabs, facets with live counts, filter chips, product cards
  * and a pager. The whole state lives in the URL (`?q=&subject=&sort=&page=`), so coming back from a course restores it.
  * A g1_5 learner gets the simple version: big search box, subject pictures, two-column tiles.
  */
@@ -143,7 +145,7 @@ export function CourseSearch() {
   return (
     <div className="app">
       <header className="topbar">
-        <Link className="icon-btn" to="/khoa-hoc" aria-label={t("courses.intro.back")}>
+        <Link className="icon-btn" to="/" aria-label={t("back")}>
           <Icon name="back" />
         </Link>
         <h1 className="page-title">{t("courses.catalog.title")}</h1>
@@ -183,7 +185,7 @@ export function CourseSearch() {
                 </div>
                 <div className="fbody">
                   {data &&
-                    ORDER.map((k) => {
+                    SIDEBAR.map((k) => {
                       let opts = data.facets[k] ?? [];
                       if (LONG.has(k)) opts = opts.filter((o) => o.n > 0 || st.f[k].includes(o.v));
                       const all = !!expanded[k];

@@ -174,14 +174,7 @@ export function TopicCard({ profile, onChanged }: { profile: ResearchProfile; on
     }
   };
   return (
-    <section className="rs-card rs-topic" data-guide="research-topic" data-guide-label={t("research.topic.eyebrow")}>
-      <div className="rs-sec-head">
-        <span className="rs-eyebrow">{t("research.topic.eyebrow")}</span>
-        <span className="rs-grow" />
-        <button className="btn btn-quiet rs-mini" type="button" aria-expanded={editing} onClick={() => { setTitle(profile.title); setEditing((x) => !x); }}>
-          {t("research.topic.edit")}
-        </button>
-      </div>
+    <section className="rs-topic-in" data-guide="research-topic" data-guide-label={t("research.topic.eyebrow")}>
       {editing ? (
         <form className="rs-edit" onSubmit={save}>
           <label className="rs-search">
@@ -205,6 +198,14 @@ export function TopicCard({ profile, onChanged }: { profile: ResearchProfile; on
         <p className="rs-q">{profile.question || profile.title}</p>
       )}
       <Keywords words={profile.keywords} onRemove={(w) => void put({ keywords: profile.keywords.filter((x) => x !== w) })} />
+      {!editing && (
+        <div>
+          <button className="btn btn-quiet rs-mini" type="button" aria-expanded={editing} onClick={() => { setTitle(profile.title); setEditing(true); }}>
+            <Icon name="edit" />
+            <span>{t("research.topic.edit")}</span>
+          </button>
+        </div>
+      )}
       {err && (
         <p className="rs-alert" role="alert">
           {err}

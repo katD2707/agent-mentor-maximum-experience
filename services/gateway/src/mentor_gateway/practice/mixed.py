@@ -25,7 +25,7 @@ from mentor_gateway.planner import fsrs_items
 from mentor_gateway.practice import assembler as asm
 from mentor_gateway.practice import mastery as bkt
 from mentor_gateway.practice.bank import LOCATION_PER_LEVEL, Item
-from mentor_gateway.practice.sources import SEPARATOR, CourseBundle, load_bundles, slug
+from mentor_gateway.practice.sources import SEPARATOR, CourseBundle, load_bundles, quiz_to_item, slug
 from mentor_gateway.practice.tables import PracticeSession
 from mentor_gateway.practice.topics import SUBJECT_LABELS
 
@@ -36,6 +36,8 @@ MIN_ITEMS = 3
 BAND_SESSION = {"g1_5": (5, 6), "g6_9": (8, 10)}
 DEFAULT_SESSION = (10, 12)
 KID_TYPES = ("PICTURE_CHOICE", "TAP_COUNT", "SINGLE_CHOICE")
+# a level counts as solid once this share of its studied items was last answered right
+SOLID = 0.8
 TOPIC_CAP = 0.4
 BANK_CAP = 0.3
 WEEKDAY_VI = ("thứ Hai", "thứ Ba", "thứ Tư", "thứ Năm", "thứ Sáu", "thứ Bảy", "Chủ nhật")
@@ -215,7 +217,8 @@ class MixedSessions:
 
     # ---- planning ----------------------------------------------------------------------------------------
 
-    def _plan_mixed(self, user_id: str, source: str, seed: int, band: str | None, course_id: str | None = None):
+    def _plan_mixed(self, user_id: str, source: str, seed: int, band: str | None, course_id: str | None = None,
+                    level: int | None = None):
         from mentor_gateway.practice.service import PracticeError
 
         bundles = self.bundles(user_id, course_id)
@@ -223,6 +226,12 @@ class MixedSessions:
             raise PracticeError(404, "course_not_found", "Em chưa tham gia khóa học này.")
         n, minutes = session_size(band)
         course_items = [i for b in bundles for i in b.studied_items()]
+        if level is not None:  # practice one level of one course (the course page's level ladder)
+            course_items = [i for i in course_items if i.level == level]
+            if len(course_items) < MIN_ITEMS:
+                raise PracticeError(422, "insufficient_content",
+                                    "Mức này chưa đủ câu hỏi trong các bài em đã học; học thêm vài bài rồi quay lại nhé.",
+                                    available=len(course_items), required=MIN_ITEMS)
         current = {(b.course_id, ls.id) for b in bundles for ls in b.lessons if ls.current}
         bank_items: list[Item] = []
         if not course_id:
@@ -248,8 +257,30 @@ class MixedSessions:
         shown_minutes = max(1, round(minutes * len(chosen) / n))
         assembly = asm.Assembly(asm._order(chosen, seed), seed, sum(s.item.seconds for s in chosen), [], VERSION)
         params = {"minutes": shown_minutes, "goal": "balanced", "topics": [], "mixed": True, "source": source,
-                  "course_id": course_id, "band": band}
+                  "course_id": course_id, "band": band, "level": level}
         return MixedPlan(assembly, params, self._from_summary(assembly, bundles))
+
+    def _plan_notes(self, user_id: str, notes_id: str, seed: int):
+        """The review questions written from one set of the learner's class notes (CONTRACTS 16.4)."""
+        from mentor_schemas.course import QuizItem
+
+        from mentor_gateway.ask.tables import NotesSet
+        from mentor_gateway.practice.service import PracticeError
+
+        with self.db.session() as s:  # type: ignore[attr-defined]
+            row = s.get(NotesSet, notes_id)
+            if row is None or row.user_id != user_id:
+                raise PracticeError(404, "notes_not_found", "Không tìm thấy vở này.")
+            title, subject, raw = row.title, row.subject, list(row.items)
+        cid = f"notes-{notes_id[2:]}"[:60]
+        items = [quiz_to_item(QuizItem.model_validate(d), course_id=cid, version=1, course_title=title, subject_label=subject,
+                              lesson_id="notes", lesson_title=title, lesson_index=1, bank=self.bank)  # type: ignore[attr-defined]
+                 for d in raw]
+        chosen = [asm.Selected(i, reasons=["NOTES"]) for i in items]
+        assembly = asm.Assembly(asm._order(chosen, seed), seed, sum(i.seconds for i in items), [], VERSION)
+        params = {"minutes": max(1, round(assembly.total_seconds / 60)), "goal": "balanced",
+                  "topics": [], "mixed": True, "source": f"notes:{notes_id}", "course_id": None, "band": None, "level": None}
+        return MixedPlan(assembly, params, [{"notes_id": notes_id, "label": title, "n": len(items)}])
 
     @staticmethod
     def _weak(sig: Signals, item: Item) -> bool:
@@ -268,6 +299,44 @@ class MixedSessions:
             label = short_title(titles.get(ident, ident)) if kind == "course_id" else SUBJECT_LABELS.get(ident, ident)
             out.append({kind: ident, "label": label, "n": n})
         return out
+
+    # ---- /practice/courses/{id}/levels ----------------------------------------------------------------------
+
+    def course_levels(self, user_id: str, course_id: str) -> dict:
+        """Practice of one course by level (1 easiest .. 4 hardest): how many items each level has, how many are in the
+        lessons studied so far, and how many of those the learner last answered right. `suggested` is where Mentor
+        starts: the easiest studied level that is not solid yet (else the hardest studied one). Mocks of the course's
+        subject come along, since tests live in the course too."""
+        from mentor_gateway.practice.service import PracticeError
+
+        bundles = self.bundles(user_id, course_id)
+        if not bundles:
+            raise PracticeError(404, "course_not_found", "Em chưa tham gia khóa học này.")
+        b = bundles[0]
+        last: dict[str, bool] = {}
+        for e in planner_events.load(self.db, user_id, self.clock()):  # type: ignore[attr-defined]
+            if e["kind"] == "quiz_answer":
+                last[_event_key(e["data"])] = bool(e["data"].get("correct"))
+        studied = {i.id for i in b.studied_items()}
+        levels = []
+        for lv in (1, 2, 3, 4):
+            items = [i for i in b.items if i.level == lv]
+            mine = [i for i in items if i.id in studied]
+            answered = [i for i in mine if i.id in last]
+            correct = sum(1 for i in answered if last[i.id])
+            levels.append({"level": lv, "items": len(items), "studied": len(mine), "answered": len(answered),
+                           "correct": correct, "solid": bool(mine) and correct >= SOLID * len(mine)})
+        open_levels = [x for x in levels if x["studied"] >= MIN_ITEMS]
+        weak = [x for x in open_levels if not x["solid"]]
+        suggested = (weak[0] if weak else open_levels[-1])["level"] if open_levels else None
+        subjects = self._matching_bank_subjects([b])
+        mocks = [m for m in self._mock_cards(user_id) if m["subject"] in subjects]
+        for m in mocks:  # the teacher's own size for this course's tests
+            own = (self.course_tests(course_id) or {}).get(m["profile_id"])  # type: ignore[attr-defined]
+            if own:
+                m["items"], m["minutes"] = own["items"], own["minutes"]
+        return {"course_id": b.course_id, "title": b.title, "min_items": MIN_ITEMS, "levels": levels,
+                "suggested": suggested, "mocks": mocks}
 
     # ---- /practice/home ----------------------------------------------------------------------------------
 

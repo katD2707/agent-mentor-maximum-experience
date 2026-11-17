@@ -5,7 +5,10 @@ export type Answer =
   | { kind: "choice"; id: string } //                      SINGLE_CHOICE, PICTURE_CHOICE
   | { kind: "tf"; values: Record<string, boolean> } //     TRUE_FALSE_GROUP
   | { kind: "text"; value: string } //                     SHORT_ANSWER
-  | { kind: "count"; value: number }; //                   TAP_COUNT
+  | { kind: "count"; value: number } //                    TAP_COUNT
+  | { kind: "gaps"; ids: (string | null)[] } //            FILL_TILES: tile id per gap, null while empty
+  | { kind: "pairs"; map: Record<string, string>; slips: number } // MATCH_PAIRS: left id -> right id; slips = wrong taps
+  | { kind: "order"; ids: string[] }; //                   ORDER_STEPS: step ids in the order tapped
 
 export interface Verdict {
   correct: boolean;
@@ -64,8 +67,37 @@ export function checkAnswer(item: QuizItem, answer: Answer): Verdict {
     }
     case "TAP_COUNT":
       return { correct: answer.kind === "count" && answer.value === key.count };
+    case "FILL_TILES": {
+      const want = ((key.gaps ?? []) as unknown[]).map(String);
+      return { correct: answer.kind === "gaps" && answer.ids.length === want.length && want.every((w, i) => answer.ids[i] === w) };
+    }
+    case "MATCH_PAIRS": {
+      const want = Object.entries((key.pairs ?? {}) as Record<string, unknown>).map(([l, r]) => [l, String(r)] as const);
+      return { correct: answer.kind === "pairs" && answer.slips === 0 && want.every(([l, r]) => answer.map[l] === r) && Object.keys(answer.map).length === want.length };
+    }
+    case "ORDER_STEPS": {
+      const want = ((key.order ?? []) as unknown[]).map(String);
+      return { correct: answer.kind === "order" && answer.ids.length === want.length && want.every((w, i) => answer.ids[i] === w) };
+    }
   }
 }
+
+/** Stable shuffle (same tiles, same order on every render); never returns the original order for 2+ parts. */
+export function shuffled<T extends { id: string }>(parts: T[], seed: string): T[] {
+  let h = 2166136261;
+  for (const c of seed) h = Math.imul(h ^ c.charCodeAt(0), 16777619) >>> 0;
+  const rnd = () => ((h = (Math.imul(h, 1664525) + 1013904223) >>> 0) / 4294967296);
+  const a = [...parts];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  if (a.length > 1 && a.every((x, i) => x.id === parts[i].id)) a.push(a.shift()!);
+  return a;
+}
+
+/** The stem of a FILL_TILES item cut at its gaps: n gaps give n + 1 pieces. */
+export const stemPieces = (stem: string): string[] => stem.split("{{gap}}");
 
 /** Can the learner submit yet? (TRUE_FALSE_GROUP needs every statement answered, SHORT_ANSWER some text, TAP_COUNT a tap.) */
 export function canSubmit(item: QuizItem, answer: Answer | null): boolean {
@@ -73,5 +105,8 @@ export function canSubmit(item: QuizItem, answer: Answer | null): boolean {
   if (answer.kind === "tf") return item.statements.every((s) => s.id in answer.values);
   if (answer.kind === "text") return answer.value.trim().length > 0;
   if (answer.kind === "count") return answer.value > 0;
+  if (answer.kind === "gaps") return answer.ids.length > 0 && answer.ids.every((x) => !!x);
+  if (answer.kind === "pairs") return Object.keys(answer.map).length >= (item.parts ?? []).filter((p) => p.side === "left").length;
+  if (answer.kind === "order") return answer.ids.length >= (item.parts ?? []).length;
   return true;
 }

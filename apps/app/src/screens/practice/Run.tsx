@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link, Navigate, Route, Routes, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { practice, PracticeError, type PItem, type PReport, type PResult, type PReviewItem, type PSession } from "../../api";
 import { useAuth } from "../../state/auth";
@@ -8,6 +8,7 @@ import { speak } from "../../lib/speak";
 import { Md } from "../courses/blocks";
 import { ItemView } from "./ItemView";
 import { Dialog } from "./Dialog";
+import { FixFlow } from "./Fix";
 import {
   answerOf,
   canCheck,
@@ -18,10 +19,12 @@ import {
   handInStats,
   initialRemaining,
   isBlank,
+  isStepType,
   isLow,
   isOpen,
   resumePosition,
   shown,
+  stepText,
   wrongStatements,
 } from "../../lib/practice";
 
@@ -81,6 +84,7 @@ function SessionScreen() {
     };
   }, [token, id, attempt]);
   const { t } = useTranslation();
+  const { state } = useLocation();
   if (load.s === "loading") return <div className="boot" />;
   if (load.s === "error")
     return (
@@ -98,7 +102,7 @@ function SessionScreen() {
         </main>
       </div>
     );
-  if (!isOpen(load.session)) return <Navigate replace to={`/luyen-tap/${encodeURIComponent(id)}/ket-qua`} />;
+  if (!isOpen(load.session)) return <Navigate replace to={`/luyen-tap/${encodeURIComponent(id)}/ket-qua`} state={state} />;
   return <Player session={load.session} />;
 }
 
@@ -106,6 +110,7 @@ function Player({ session }: { session: PSession }) {
   const { t } = useTranslation();
   const lang = useLang();
   const nav = useNavigate();
+  const { state } = useLocation();
   const { token, user } = useAuth();
   const tk = token ?? "";
   const kid = user?.age_band === "g1_5";
@@ -130,7 +135,7 @@ function Player({ session }: { session: PSession }) {
   const [flags, setFlags] = useState<Record<number, boolean>>(() => Object.fromEntries(items.map((it) => [it.position, !!session.answers[String(it.position)]?.flagged])));
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<string | null>(null);
-  const [dialog, setDialog] = useState<null | "exit" | "submit" | "grid">(null);
+  const [dialog, setDialog] = useState<null | "exit" | "submit">(null);
   const [finishing, setFinishing] = useState(false);
 
   // ---- clocks: seconds on the item (cumulative) and, for a mock, the server's deadline
@@ -163,13 +168,13 @@ function Player({ session }: { session: PSession }) {
         await practice.tick(tk, id, live.current.pos, seconds(live.current.pos)).catch(() => undefined);
         const report = await practice.finish(tk, id);
         cacheReport(report);
-        nav(`/luyen-tap/${encodeURIComponent(id)}/ket-qua${auto ? "?auto=1" : ""}`, { replace: true });
+        nav(`/luyen-tap/${encodeURIComponent(id)}/ket-qua${auto ? "?auto=1" : ""}`, { replace: true, state });
       } catch {
         setFinishing(false);
         setNote(t("practice.finishFailed"));
       }
     },
-    [id, nav, seconds, t, tk],
+    [id, nav, seconds, state, t, tk],
   );
 
   // mock: count down every second; the server (tick, every 5 s) corrects the clock; zero hands the exam in
@@ -334,7 +339,9 @@ function Player({ session }: { session: PSession }) {
   const leave = () => {
     flushDraft();
     void practice.tick(tk, id, pos, seconds(pos)).catch(() => undefined);
-    nav("/luyen-tap");
+    // back to where the run was opened from (hub, course page); opened directly: Today
+    if ((state as { back?: string } | null)?.back) nav(-1);
+    else nav("/");
   };
 
   const stats = useMemo(() => handInStats(session, answers, flags), [session, answers, flags]);
@@ -354,9 +361,9 @@ function Player({ session }: { session: PSession }) {
           <div className="bar" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={items.length}>
             <i style={{ width: `${(progress / Math.max(1, items.length)) * 100}%` }} />
           </div>
-          <span className="muted small pr-count">{t("practice.count", { n: pos + 1, total: items.length })}</span>
           {mock && left !== null && (
             <span className={`pr-clock ${isLow(left) ? "low" : ""}`} role="timer" aria-label={t("practice.timeLeft")} data-guide="practice-clock" data-guide-label={t("practice.timeLeft")}>
+              <Icon name="clock" />
               {clockText(left)}
             </span>
           )}
@@ -365,9 +372,10 @@ function Player({ session }: { session: PSession }) {
         {mock && session.parts && (
           <p className="muted small pr-part">{session.parts.find((p) => p.positions.includes(item.position))?.label}</p>
         )}
-        <p className="muted small pr-topic">{item.source ? `${item.source.lesson_title}` : item.topic_title}</p>
 
-        <ItemView item={item} token={tk} lang={lang} kid={kid} value={value} onChange={change} locked={!mock && !!result} result={mock ? null : result} />
+        <div data-guide="practice-answer" data-guide-label={t("practice.answerLabel")}>
+          <ItemView item={item} token={tk} lang={lang} kid={kid} value={value} onChange={change} locked={!mock && !!result} result={mock ? null : result} />
+        </div>
 
         {!mock && hints[pos] && !result && (
           <p className="hint pr-hint" role="status">
@@ -382,6 +390,11 @@ function Player({ session }: { session: PSession }) {
             {out.outcome !== "right" && out.outcome !== "blank" && item.type === "SHORT_ANSWER" && result.correct_answer && (
               <span>
                 {t("practice.correctAnswer")}: <b className="ok">{result.correct_answer}</b>
+              </span>
+            )}
+            {out.outcome !== "right" && isStepType(item.type) && result.correct_answer && (
+              <span>
+                {t("practice.rightIs")}: <b className="ok">{stepText(item, result.correct_answer)}</b>
               </span>
             )}
             {out.outcome !== "right" && item.type === "TAP_COUNT" && result.correct_answer && (
@@ -401,6 +414,24 @@ function Player({ session }: { session: PSession }) {
           </p>
         )}
 
+        <div className="qmap" role="group" aria-label={t("practice.qmap")}>
+          {items.map((it) => {
+            const p = it.position;
+            const isDone = mock ? !isBlank(answers[p]) : !!results[p];
+            const label = `${t("courses.player.questionN", { n: p + 1 })}${flags[p] ? `, ${t("practice.flag")}` : ""}${isDone ? `, ${t("practice.answeredCell")}` : ""}`;
+            const cls = `qn ${isDone ? "done" : ""} ${flags[p] ? "flag" : ""}`;
+            return mock ? (
+              <button key={p} type="button" className={cls} aria-label={label} aria-current={p === pos ? "true" : undefined} onClick={() => goTo(p)}>
+                {p + 1}
+              </button>
+            ) : (
+              <span key={p} className={cls} role="img" aria-label={label} aria-current={p === pos ? "true" : undefined}>
+                {p + 1}
+              </span>
+            );
+          })}
+        </div>
+
         <div className="pfoot">
           {!mock && !result && (
             <span className="pr-row">
@@ -419,17 +450,14 @@ function Player({ session }: { session: PSession }) {
               <button className="btn btn-quiet" type="button" aria-pressed={!!flags[pos]} onClick={flag} data-guide="practice-flag" data-guide-label={t("practice.flag")}>
                 <Icon name="flag" /> {flags[pos] ? t("practice.unflag") : t("practice.flag")}
               </button>
-              <button className="btn btn-quiet" type="button" onClick={() => setDialog("grid")}>
-                {t("practice.allQuestions")}
-              </button>
+              {pos < last && (
+                <button className="btn btn-ghost" type="button" onClick={() => (flushDraft(), setDialog("submit"))}>
+                  {t("practice.handIn")}
+                </button>
+              )}
             </span>
           )}
           <span className="pr-row">
-            {mock && pos > 0 && (
-              <button className="btn btn-ghost" type="button" onClick={() => goTo(pos - 1)}>
-                {t("practice.prev")}
-              </button>
-            )}
             {!mock && !result && item.type !== "SINGLE_CHOICE" && item.type !== "PICTURE_CHOICE" && (
               <button className="btn btn-primary" type="button" disabled={busy || !canCheck(item, value)} onClick={() => void check(pos, value)}>
                 {t("practice.check")}
@@ -477,28 +505,6 @@ function Player({ session }: { session: PSession }) {
           </p>
         </Dialog>
       )}
-      {dialog === "grid" && (
-        <Dialog title={t("practice.allQuestions")} onClose={() => setDialog(null)}>
-          <div className="pr-grid" role="group">
-            {items.map((it) => (
-              <button
-                key={it.position}
-                type="button"
-                className={`pr-cell ${it.position === pos ? "now" : ""} ${isBlank(answers[it.position]) ? "" : "has"} ${flags[it.position] ? "flag" : ""}`}
-                aria-label={`${t("courses.player.questionN", { n: it.position + 1 })}${flags[it.position] ? `, ${t("practice.flag")}` : ""}${isBlank(answers[it.position]) ? "" : `, ${t("practice.answeredCell")}`}`}
-                onClick={() => goTo(it.position)}
-              >
-                {it.position + 1}
-              </button>
-            ))}
-          </div>
-          <p className="pr-row">
-            <button className="btn btn-primary" onClick={() => setDialog("submit")}>
-              {t("practice.handIn")}
-            </button>
-          </p>
-        </Dialog>
-      )}
       {finishing && <div className="pr-busy" role="status" aria-label={t("practice.finishing")} />}
     </div>
   );
@@ -506,13 +512,23 @@ function Player({ session }: { session: PSession }) {
 
 // =============================================================== the result
 
+/** Done / exit: back to where the run was opened (course page, hub), else Today. */
+function useLeave(n = 1) {
+  const nav = useNavigate();
+  const { state } = useLocation();
+  return () => ((state as { back?: string } | null)?.back ? nav(-n) : nav("/"));
+}
+
 function ResultScreen() {
   const { id = "" } = useParams();
+  const done = useLeave();
   const { token } = useAuth();
   const { t } = useTranslation();
   const lang = useLang();
   const [rep, setRep] = useState<PReport | null>(() => cachedReport(id));
   const [failed, setFailed] = useState(false);
+  const [fixing, setFixing] = useState(false);
+  const [fixed, setFixed] = useState<{ right: number; total: number } | null>(null);
   useEffect(() => {
     if (rep || !token) return;
     let alive = true;
@@ -545,7 +561,23 @@ function ResultScreen() {
   const ratio = rep.total ? rep.correct / rep.total : 0;
   const generic = ratio >= 0.8 ? t("practice.line.good") : ratio >= 0.5 ? t("practice.line.ok") : t("practice.line.more");
   const takeaway = rep.takeaway ? (lang === "en" ? rep.takeaway.line_en : rep.takeaway.line_vi) : generic;
+  const wrongN = rep.wrong?.length ?? 0;
   const redo = rep.redo ? (lang === "en" ? rep.redo.line_en : rep.redo.line_vi) : null;
+  if (fixing)
+    return (
+      <div className="app practice-run">
+        <main className="main">
+          <FixFlow
+            id={id}
+            report={rep}
+            onDone={(right, total) => {
+              setFixed({ right, total });
+              setFixing(false);
+            }}
+          />
+        </main>
+      </div>
+    );
   return (
     <div className="app practice-run">
       <main className="main">
@@ -555,9 +587,8 @@ function ResultScreen() {
             <small>/{mock && rep.score_10 != null ? 10 : rep.total}</small>
           </p>
           <h1>{takeaway}</h1>
-          {mock && <p className="muted">{t("practice.mockCounts", { right: rep.correct, total: rep.total, answered: rep.answered })}</p>}
           {redo && (
-            <p className="plan">
+            <p className="muted plan">
               <Icon name="clock" />
               <span>{redo}</span>
             </p>
@@ -574,26 +605,25 @@ function ResultScreen() {
               ))}
             </ul>
           )}
-          {rep.per_topic.length > 0 && (
-            <ul className="pr-parts">
-              {rep.per_topic.map((p) => (
-                <li key={p.topic}>
-                  <span>{p.title}</span>
-                  <b>
-                    {p.right}/{p.total}
-                  </b>
-                </li>
-              ))}
-            </ul>
-          )}
           {rep.disclaimer && <p className="muted small">{rep.disclaimer}</p>}
+          {fixed && fixed.total > 0 && (
+            <p className="muted plan" role="status">
+              <Icon name="clock" />
+              <span>
+                {fixed.right === fixed.total ? t("practice.fixAll") : `${t("practice.fixSummary", { right: fixed.right, total: fixed.total })} ${t("practice.fixLeft")}`}
+              </span>
+            </p>
+          )}
+          {!fixed && wrongN > 0 && <p className="muted small">{t("practice.yourSummary", { count: wrongN })}</p>}
           <p className="pr-row">
-            <Link className="btn btn-primary" to="/">
+            {!fixed && wrongN > 0 && (
+              <button className="btn btn-primary" type="button" onClick={() => setFixing(true)}>
+                {t("practice.fixN", { count: wrongN })}
+              </button>
+            )}
+            <button className={`btn ${!fixed && wrongN > 0 ? "btn-ghost" : "btn-primary"}`} type="button" onClick={done}>
               {t("practice.done")}
-            </Link>
-            <Link className="btn btn-ghost" to={`/luyen-tap/${encodeURIComponent(id)}/xem-lai`}>
-              {t("practice.reviewAnswers")}
-            </Link>
+            </button>
           </p>
         </div>
       </main>
@@ -605,6 +635,9 @@ function ResultScreen() {
 
 function ReviewScreen() {
   const { id = "" } = useParams();
+  const { state } = useLocation();
+  const nav = useNavigate();
+  const done = useLeave(2);
   const { token } = useAuth();
   const { t } = useTranslation();
   const lang = useLang();
@@ -624,9 +657,9 @@ function ReviewScreen() {
   return (
     <div className="app practice-run">
       <header className="topbar">
-        <Link className="icon-btn" to={`/luyen-tap/${encodeURIComponent(id)}/ket-qua`} aria-label={t("back")} data-guide="back" data-guide-label={t("back")}>
+        <button className="icon-btn" type="button" aria-label={t("back")} data-guide="back" data-guide-label={t("back")} onClick={() => ((state as { back?: string } | null)?.back ? nav(-1) : nav(`/luyen-tap/${encodeURIComponent(id)}/ket-qua`, { replace: true }))}>
           <Icon name="x" />
-        </Link>
+        </button>
         <h1 className="page-title">{t("practice.reviewTitle")}</h1>
       </header>
       <main className="main pr-review" data-guide="practice-review" data-guide-label={t("practice.reviewTitle")}>
@@ -654,9 +687,9 @@ function ReviewScreen() {
           );
         })}
         <p className="pr-row">
-          <Link className="btn btn-primary" to="/">
+          <button className="btn btn-primary" type="button" onClick={done}>
             {t("practice.done")}
-          </Link>
+          </button>
         </p>
       </main>
     </div>

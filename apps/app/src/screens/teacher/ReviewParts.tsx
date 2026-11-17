@@ -187,27 +187,28 @@ export function PinLayer({ slot, notes, active, pending, onComment, onPick }: { 
   );
 }
 
-// ---------------------------------------------------------------- the red-pen margin
+// ---------------------------------------------------------------- the red-pen margin: one line per comment
 export function Notes({ notes, active, onPick, others }: { notes: Numbered[]; active: string | null; onPick(n: Numbered): void; others: number }) {
   const { t } = useTranslation();
   return (
-    <aside className="panel" aria-labelledby="notes-h" data-guide="gv-comments" data-guide-label={t("gv.yourComments")}>
-      <h2 id="notes-h">{t("gv.yourComments")}</h2>
+    <aside className="panel" aria-label={t("gv.yourComments")} data-guide="gv-comments" data-guide-label={t("gv.yourComments")}>
       {notes.length === 0 && <p className="muted small">{t("gv.noComments")}</p>}
       <ul className="notes">
         {notes.map((n) => {
           const s = commentStatusInfo(n.status);
+          const where = n.anchor.kind === "time" ? t("gv.whereVideo", { time: fmtTime(n.anchor.t) }) : n.anchor.kind === "point" ? t("gv.wherePoint") : "";
+          const label = t(s.key);
           return (
-            <li key={n.id} id={`note-${n.id}`} className={`gv-notecard${s.fixed ? " fixed" : ""}${s.failed ? " failed" : ""}${active === n.id ? " active" : ""}`}>
+            <li key={n.id} id={`note-${n.id}`} className={`note${s.fixed ? " fixed" : ""}${s.failed ? " failed" : ""}${active === n.id ? " active" : ""}`}>
               <button type="button" className="note-btn" onClick={() => onPick(n)}>
-                <span className="top">
-                  <span className="n">{n.n}</span>
-                  <span className="where">{n.anchor.kind === "text" ? t("gv.whereText") : n.anchor.kind === "time" ? t("gv.whereVideo", { time: fmtTime(n.anchor.t) }) : t("gv.wherePoint")}</span>
-                  <span className={`tag ${s.fixed ? "ok" : s.failed ? "err" : "wait"}`}>{t(s.key)}</span>
+                <span className="n">{n.n}</span>
+                <span>
+                  {where && <span className="where">{where}</span>}
+                  <span className="said">{n.body}</span>
                 </span>
-                {n.anchor.kind === "text" && <q>{n.anchor.quote}</q>}
-                <span className="said">{n.body}</span>
-                {n.note && <span className="done-txt">{n.note}</span>}
+                <span className="st" role="img" aria-label={label} title={n.note && s.fixed ? n.note : label}>
+                  <Icon name={s.fixed ? "check" : s.failed ? "flag" : "refresh"} />
+                </span>
               </button>
             </li>
           );

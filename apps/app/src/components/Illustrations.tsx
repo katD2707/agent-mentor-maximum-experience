@@ -1,4 +1,4 @@
-/* Flat illustrations ported 1:1 from mockups/hs-00 (roles) and mockups/hs-01 (age bands). */
+/* Flat illustrations ported 1:1 from mockups/hs-01 (roles) and mockups/hs-02 (age bands). */
 import type { AgeBand } from "../api/types";
 
 export function StudentArt() {

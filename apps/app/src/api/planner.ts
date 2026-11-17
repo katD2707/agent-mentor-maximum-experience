@@ -30,6 +30,10 @@ export interface Today {
   hub: { courses: LiveLine; practice: LiveLine; ask: LiveLine; progress: LiveLine; research?: LiveLine };
   today: TodaySession | null;
   week: { done: number; planned: number };
+  /** days in a row with a study session (CONTRACTS 12.1) */
+  streak?: { days: number; today_done: boolean };
+  /** reminders kept being ignored: Mực reminds every other day for now */
+  reminders_backoff?: boolean;
   due_review_count: number;
   quiet_until: string | null;
   plan_source: "llm" | "fallback";
@@ -104,7 +108,8 @@ export interface GoalInput {
 }
 export type GoalPatch = Partial<GoalInput>;
 
-export type ReminderKind = "study" | "break" | "nudge" | "research";
+/** `later`: the learner asked "remind me at ..."; `streak`: the evening streak saver (CONTRACTS 12.1) */
+export type ReminderKind = "study" | "break" | "nudge" | "research" | "later" | "streak";
 export type ReminderStatus = "scheduled" | "cancelled" | "skipped_quiet" | "pushed";
 export type ReminderOutcome = "opened" | "ignored" | "snoozed";
 

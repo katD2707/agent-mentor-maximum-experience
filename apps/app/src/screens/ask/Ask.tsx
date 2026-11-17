@@ -14,7 +14,7 @@ import { CourseSheet, useAddCourse } from "./Courses";
 import { logEvent } from "../../lib/events";
 import { useAsk } from "./useAsk";
 
-/** hs-08 Hỏi đáp: one thread for the session (no history), the composer pinned at the bottom. */
+/** hs-11 Hỏi đáp: one thread for the session (no history), the composer pinned at the bottom. */
 export default function Ask() {
   const { t, i18n } = useTranslation();
   const { token, user } = useAuth();

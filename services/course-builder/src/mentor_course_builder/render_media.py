@@ -26,6 +26,7 @@ _REQUIRED = {
     "illustration": ("description",),
     "picture": ("description",),
     "cover": ("title", "subject", "idea"),
+    "recap": ("script",),
 }
 
 
@@ -49,6 +50,23 @@ def render_tts(req: MediaRequest, out_dir: Path, tts: TtsService) -> MediaResult
                        files=[MediaFile(role="main", path=rel, mime="audio/mpeg", file=clip.path)])
 
 
+def render_recap(req: MediaRequest, out_dir: Path, tts: TtsService) -> MediaResult:
+    """One mp3 for the whole script: each paragraph is a (cached) clip; MP3 frames concatenate, a short silence-free join."""
+    rel = f"audio/{req.id}.mp3"
+    dest = out_dir / rel
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    data, total, notes = b"", 0.0, []
+    for i, para in enumerate(p for p in req.spec["script"] if str(p).strip()):
+        clip = tts.synthesize(str(para), lang=req.language, age_band=req.age_band, rate=req.spec.get("rate"),
+                              gender=req.spec.get("voice", "female"), dest=out_dir / "recap-parts" / f"{req.id}-{i}.mp3")
+        data += Path(clip.path).read_bytes()
+        total += clip.duration_s
+        notes += clip.notes[-1:]
+    dest.write_bytes(data)
+    return MediaResult(id=req.id, kind="recap", duration_s=round(total, 2), notes=notes[-2:],
+                       files=[MediaFile(role="main", path=rel, mime="audio/mpeg", file=dest)])
+
+
 def render_media(req: MediaRequest, out_dir: Path, *, client: ModelClient | None = None,
                  tts: TtsService | None = None) -> MediaResult:
     """Dispatch by kind. `client` is only needed for model-written kinds (not tts); `tts` defaults to Edge+Gemini."""
@@ -57,6 +75,8 @@ def render_media(req: MediaRequest, out_dir: Path, *, client: ModelClient | None
     out_dir.mkdir(parents=True, exist_ok=True)
     if req.kind == "tts":
         return render_tts(req, out_dir, tts or TtsService())
+    if req.kind == "recap":
+        return render_recap(req, out_dir, tts or TtsService())
     owned = client is None
     client = client or ModelClient.from_env()
     try:

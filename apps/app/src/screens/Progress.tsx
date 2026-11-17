@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { api, type Goal, type PlanItem, type WeekPlan } from "../api";
+import type { Milestone } from "../api/research-types";
 import { useAuth } from "../state/auth";
 import { Icon } from "../components/Icon";
 import { CourseCover } from "./courses/common";
@@ -9,15 +10,34 @@ import { useMyCourses, type MyCourse } from "./courses/useMyCourses";
 import { buildGoal, toYmd, type DeadlinePick } from "../lib/goalForm";
 import { pickLang } from "../lib/today";
 import { resolveDeepLink } from "../lib/deeplink";
-import { courseInsight } from "../lib/insight";
 import { refreshReminders } from "../lib/behaviour";
 
 type Load<T> = { status: "loading" } | { status: "error" } | { status: "ready"; data: T };
 
-/** hs-10: goals (inferred + the student's), the week the agent planned, and where each course is strong or needs care. */
+/** hs-12: goals (inferred + the student's), the week the agent planned, and the courses with their progress. */
 export function Progress() {
   const { t } = useTranslation();
-  const { token } = useAuth();
+  return (
+    <div className="app">
+      <header className="topbar">
+        <Link className="icon-btn" to="/" aria-label={t("back")} data-guide="back" data-guide-label={t("back")}>
+          <Icon name="grid" />
+        </Link>
+        <h1 className="page-title">{t("hub.progress")}</h1>
+      </header>
+      <main className="main pg-main">
+        <ProgressBody />
+      </main>
+    </div>
+  );
+}
+
+/**
+ * The Tiến độ page (goals, week, courses), or with `compact` the sheet Today opens from its ring (the week as 7 cells, uni
+ * deadlines, goals as one-line rows). Sessions opened from here come back here (`back`).
+ */
+export function ProgressBody({ compact = false, back = "/tien-do" }: { compact?: boolean; back?: string }) {
+  const { token, user } = useAuth();
   const [goals, setGoals] = useState<Load<Goal[]>>({ status: "loading" });
   const [plan, setPlan] = useState<Load<WeekPlan>>({ status: "loading" });
   const my = useMyCourses();
@@ -47,20 +67,20 @@ export function Progress() {
     void refreshReminders();
   }, [token]);
 
+  if (compact)
+    return (
+      <>
+        <WeekSection state={plan} onRetry={load} back={back} compact />
+        {user?.age_band === "uni" && <Soon goals={goals} />}
+        <GoalsSection state={goals} setGoals={setGoals} onChanged={replan} onRetry={load} compact />
+      </>
+    );
   return (
-    <div className="app">
-      <header className="topbar">
-        <Link className="icon-btn" to="/" aria-label={t("back")} data-guide="back" data-guide-label={t("back")}>
-          <Icon name="grid" />
-        </Link>
-        <h1 className="page-title">{t("hub.progress")}</h1>
-      </header>
-      <main className="main pg-main">
-        <GoalsSection state={goals} setGoals={setGoals} onChanged={replan} onRetry={load} />
-        <WeekSection state={plan} onRetry={load} />
-        <CoursesSection my={my} />
-      </main>
-    </div>
+    <>
+      <GoalsSection state={goals} setGoals={setGoals} onChanged={replan} onRetry={load} />
+      <WeekSection state={plan} onRetry={load} back={back} />
+      <CoursesSection my={my} />
+    </>
   );
 }
 
@@ -76,8 +96,34 @@ function Retry({ onRetry }: { onRetry: () => void }) {
   );
 }
 
+// ---------------------------------------------------------------- university: what is coming up
+/** The next deadlines of the thesis goal ("Full paper · còn 9 ngày"), one line each. */
+function Soon({ goals }: { goals: Load<Goal[]> }) {
+  const { t } = useTranslation();
+  const list: Milestone[] =
+    goals.status === "ready"
+      ? goals.data
+          .filter((g) => g.source === "research")
+          .flatMap((g) => g.milestones ?? [])
+          .filter((m) => !m.done && m.days_left >= 0)
+          .sort((a, b) => a.due_date.localeCompare(b.due_date))
+          .slice(0, 2)
+      : [];
+  if (list.length === 0) return null;
+  return (
+    <div className="pg-soon">
+      {list.map((m) => (
+        <p key={m.id}>
+          <Icon name="flag" />
+          <span>{t("progress.daysLeft", { title: m.title, n: m.days_left })}</span>
+        </p>
+      ))}
+    </div>
+  );
+}
+
 // ---------------------------------------------------------------- goals
-function GoalsSection({ state, setGoals, onChanged, onRetry }: { state: Load<Goal[]>; setGoals: (l: Load<Goal[]>) => void; onChanged: () => void; onRetry: () => void }) {
+function GoalsSection({ state, setGoals, onChanged, onRetry, compact = false }: { state: Load<Goal[]>; setGoals: (l: Load<Goal[]>) => void; onChanged: () => void; onRetry: () => void; compact?: boolean }) {
   const { t } = useTranslation();
   const { token } = useAuth();
   const [adding, setAdding] = useState(false);
@@ -97,6 +143,20 @@ function GoalsSection({ state, setGoals, onChanged, onRetry }: { state: Load<Goa
       /* the goal stays; the list is still right */
     }
   };
+  const list = (
+    <>
+      {state.status === "loading" && <p className="muted">…</p>}
+      {state.status === "error" && <Retry onRetry={onRetry} />}
+      {state.status === "ready" && goals.length === 0 && !adding && !compact && <p className="muted">{t("progress.noGoals")}</p>}
+      <ul className="pg-goals">
+        {goals.map((g) => (
+          <GoalRow key={g.id} g={g} compact={compact} onRemove={() => remove(g)} />
+        ))}
+      </ul>
+    </>
+  );
+  // the sheet keeps to what is there: no heading, no adding (that lives on the page and in the box on Today)
+  if (compact) return <section aria-label={t("progress.goals")}>{list}</section>;
   return (
     <section className="pg-sec" data-guide="progress-goals" data-guide-label={t("progress.goals")}>
       <div className="pg-head">
@@ -107,14 +167,7 @@ function GoalsSection({ state, setGoals, onChanged, onRetry }: { state: Load<Goa
         </button>
       </div>
       {adding && <AddGoal onAdded={add} />}
-      {state.status === "loading" && <p className="muted">…</p>}
-      {state.status === "error" && <Retry onRetry={onRetry} />}
-      {state.status === "ready" && goals.length === 0 && !adding && <p className="muted">{t("progress.noGoals")}</p>}
-      <ul className="pg-goals">
-        {goals.map((g) => (
-          <GoalCard key={g.id} g={g} onRemove={() => remove(g)} />
-        ))}
-      </ul>
+      {list}
     </section>
   );
 }
@@ -179,140 +232,163 @@ function niceDate(iso: string, lang: string): string {
   return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString(lang === "en" ? "en-GB" : "vi-VN", { day: "numeric", month: "numeric", year: "numeric" });
 }
 
-function GoalCard({ g, onRemove }: { g: Goal; onRemove: () => void }) {
+/** One goal on one line: title, tag (and the percentage on the page), a thin bar under it. */
+function GoalRow({ g, compact, onRemove }: { g: Goal; compact: boolean; onRemove: () => void }) {
   const { t, i18n } = useTranslation();
   const [ask, setAsk] = useState(false);
   const research = g.source === "research";
   const title = g.deadline && g.kind === "student" ? `${g.title} ${t("progress.byDate", { date: niceDate(g.deadline, i18n.language) })}` : g.title;
+  const pct = Math.round(g.progress_pct);
   return (
     <li className="pg-goal">
       <div className="pg-top">
         <h3>{title}</h3>
         <span className={TAG[g.status]}>{t(`progress.status.${g.status}`)}</span>
+        {!compact && <span className="pg-pct">{pct}%</span>}
       </div>
-      <div className="bar" role="progressbar" aria-label={g.title} aria-valuenow={Math.round(g.progress_pct)} aria-valuemin={0} aria-valuemax={100}>
-        <i style={{ width: `${Math.round(g.progress_pct)}%` }} />
+      <div className="bar" role="progressbar" aria-label={g.title} aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
+        <i style={{ width: `${pct}%` }} />
       </div>
-      {g.courses.length > 0 && (
-        <p className="pg-for">
-          {g.courses.map((c) => (
-            <Link key={c.id} className="pg-chip" to={`/khoa-hoc/${c.id}`}>
-              <CourseCover courseId={c.id} />
-              {c.title}
+      {!compact && (
+        <div className="pg-actions">
+          {research ? (
+            <Link className="btn-link small" to="/nghien-cuu">
+              {t("research.milestones.open")}
             </Link>
-          ))}
-        </p>
-      )}
-      {research && (g.milestones?.length ?? 0) > 0 && (
-        <ul className="pg-ms" aria-label={t("research.milestones.title")}>
-          {g.milestones!.map((m) => (
-            <li key={m.id} className={m.done ? "done" : undefined}>
-              <span className="pg-ms-d">{m.due_date.slice(8, 10)}/{m.due_date.slice(5, 7)}</span>
-              <span>{m.title}</span>
-              {m.done && <Icon name="check" />}
-            </li>
-          ))}
-        </ul>
-      )}
-      <p className="pg-why">
-        <span className="pg-pct">{Math.round(g.progress_pct)}%</span> {pickLang(g, "line", i18n.language)}
-      </p>
-      <div className="pg-actions">
-        {research ? (
-          <Link className="btn-link small" to="/nghien-cuu">
-            {t("research.milestones.open")}
-          </Link>
-        ) : ask ? (
-          <span role="group" aria-label={t("progress.removeAsk")}>
-            <span className="small muted">{t("progress.removeAsk")} </span>
-            <button className="btn-link" type="button" onClick={onRemove}>
-              {t("progress.removeYes")}
-            </button>{" "}
-            <button className="btn-link" type="button" onClick={() => setAsk(false)}>
-              {t("progress.removeNo")}
+          ) : ask ? (
+            <span role="group" aria-label={t("progress.removeAsk")}>
+              <span className="small muted">{t("progress.removeAsk")} </span>
+              <button className="btn-link" type="button" onClick={onRemove}>
+                {t("progress.removeYes")}
+              </button>{" "}
+              <button className="btn-link" type="button" onClick={() => setAsk(false)}>
+                {t("progress.removeNo")}
+              </button>
+            </span>
+          ) : (
+            <button className="btn-link small" type="button" onClick={() => setAsk(true)}>
+              {t("progress.remove")}
             </button>
-          </span>
-        ) : (
-          <button className="btn-link small" type="button" onClick={() => setAsk(true)}>
-            {t("progress.remove")}
-          </button>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </li>
   );
 }
 
 // ---------------------------------------------------------------- week
-function WeekSection({ state, onRetry }: { state: Load<WeekPlan>; onRetry: () => void }) {
+/** Monday of the week a YYYY-MM-DD day belongs to. */
+function weekStart(ymd: string): string {
+  const d = new Date(`${ymd}T00:00:00`);
+  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  return toYmd(d);
+}
+
+function WeekSection({ state, onRetry, back, compact = false }: { state: Load<WeekPlan>; onRetry: () => void; back: string; compact?: boolean }) {
   const { t, i18n } = useTranslation();
-  const { token } = useAuth();
   const plan = state.status === "ready" ? state.data : null;
   const byDay = useMemo(() => {
     const m = new Map<string, PlanItem[]>();
     for (const it of plan?.items ?? []) m.set(it.date, [...(m.get(it.date) ?? []), it]);
     return m;
   }, [plan]);
-  const reasonCount = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const it of plan?.items ?? []) {
+  // a reason shown on every row says nothing; keep only the ones that differ from the rest
+  const why = useMemo(() => {
+    const count = new Map<string, number>();
+    const items = plan?.items ?? [];
+    for (const it of items) {
       const r = pickLang(it, "reason", i18n.language).trim();
-      if (r) m.set(r, (m.get(r) ?? 0) + 1);
+      if (r) count.set(r, (count.get(r) ?? 0) + 1);
     }
-    return m;
+    return items.filter((it) => {
+      const r = pickLang(it, "reason", i18n.language).trim();
+      return r && count.get(r) === 1 && it.kind !== "break";
+    });
   }, [plan, i18n.language]);
   const weekdays = t("progress.weekdays", { returnObjects: true }) as unknown as string[];
-  const [count, setCount] = useState<{ done: number; planned: number } | null>(null);
-  useEffect(() => {
-    if (token)
-      void api.getToday(token).then(
-        (x) => setCount(x.week),
-        () => undefined,
-      );
-  }, [token]);
+  // the 7 cells are the Monday-to-Sunday week the plan is in (the plan also holds the days after it)
+  const days = useMemo(() => {
+    if (!plan) return [];
+    const start = weekStart(plan.today);
+    const wk = plan.days.filter((d) => weekStart(d) === start);
+    return wk.length > 0 ? wk : plan.days.slice(0, 7);
+  }, [plan]);
+  const note = plan ? pickLang(plan, "note", i18n.language) : "";
 
-  return (
-    <section className="pg-sec" data-guide="progress-week" data-guide-label={t("progress.week")}>
-      <div className="pg-head">
-        <h2>{t("progress.week")}</h2>
-        {count && count.planned > 0 && <span className="muted small">{t("progress.weekCount", count)}</span>}
-      </div>
+  const head = <h2>{t("progress.week")}</h2>;
+  const body = (
+    <>
       {state.status === "loading" && <p className="muted">…</p>}
       {state.status === "error" && <Retry onRetry={onRetry} />}
       {plan && plan.items.length === 0 && <p className="muted">{t("progress.weekEmpty")}</p>}
       {plan && plan.items.length > 0 && (
         <>
-          <div className="pg-week">
-            {/* a reason shown on every row says nothing; keep only the ones that differ from the rest */}
-            {plan.days.map((d) => {
+          <div className="pg-week" aria-label={t("progress.weekAria")}>
+            {days.map((d) => {
               const items = byDay.get(d) ?? [];
               const wd = (new Date(`${d}T00:00:00`).getDay() + 6) % 7;
               const isToday = d === plan.today;
-              const nextWeek = wd === 0 && d !== plan.days[0];
               const study = items.filter((i) => i.kind !== "break");
               const done = study.length > 0 && study.every((i) => i.done);
-              return (
-                <div key={d} className={"pg-day" + (isToday ? " today" : "") + (done ? " done" : "") + (nextWeek ? " next-week" : "")} aria-current={isToday ? "date" : undefined}>
+              const miss = !done && study.length > 0 && d < plan.today && !study.some((i) => i.done);
+              const next = study.find((i) => !i.done);
+              const cls = "pg-day" + (isToday ? " today" : "") + (done ? " done" : "") + (miss ? " miss" : "") + (study.length === 0 ? " rest" : "");
+              const inner = (
+                <>
                   <b>{weekdays[wd]}</b>
-                  {items.length === 0 ? (
-                    <span className="pg-plan muted">{t("progress.rest")}</span>
+                  {done ? (
+                    <>
+                      <Icon name="check" />
+                      <span className="sr">{t("progress.done")}</span>
+                    </>
+                  ) : miss ? (
+                    <>
+                      <Icon name="x" />
+                      <span className="pg-plan">{t("progress.minShort", { n: next?.minutes ?? 0 })}</span>
+                    </>
+                  ) : study.length === 0 ? (
+                    <span className="pg-plan">{t("progress.rest")}</span>
                   ) : (
-                    items.map((it, i) => (
-                      <Link key={i} className={"pg-plan" + (it.done ? " done" : "")} to={resolveDeepLink(it.deep_link).to}>
-                        <span>{it.label}</span>
-                        {(() => {
-                          const r = pickLang(it, "reason", i18n.language).trim();
-                          return r && reasonCount.get(r) === 1 ? <small>{r}</small> : null;
-                        })()}
-                      </Link>
-                    ))
+                    <span className="pg-plan">{t("progress.minShort", { n: study.reduce((n, i) => n + i.minutes, 0) })}</span>
                   )}
+                </>
+              );
+              const aria = isToday ? "date" : undefined;
+              return next && !miss ? (
+                <Link key={d} className={cls} to={resolveDeepLink(next.deep_link).to} state={{ back }} aria-current={aria} aria-label={`${weekdays[wd]}: ${next.label}`}>
+                  {inner}
+                </Link>
+              ) : (
+                <div key={d} className={cls} aria-current={aria}>
+                  {inner}
                 </div>
               );
             })}
           </div>
-          <p className="pg-note">{pickLang(plan, "note", i18n.language)}</p>
+          {!compact && (note || why.length > 0) && (
+            <details className="pg-why-fold">
+              <summary>{t("progress.why")}</summary>
+              {note && <p>{note}</p>}
+              {why.length > 0 && (
+                <ul>
+                  {why.map((it, i) => (
+                    <li key={i}>
+                      <b>{weekdays[(new Date(`${it.date}T00:00:00`).getDay() + 6) % 7]}</b> {pickLang(it, "reason", i18n.language).trim()}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </details>
+          )}
         </>
       )}
+    </>
+  );
+  if (compact) return <section aria-label={t("progress.week")}>{body}</section>;
+  return (
+    <section className="pg-sec" data-guide="progress-week" data-guide-label={t("progress.week")}>
+      {head}
+      {body}
     </section>
   );
 }
@@ -333,24 +409,18 @@ function CoursesSection({ my }: { my: ReturnType<typeof useMyCourses> }) {
   );
 }
 
+/** A course on one line: cover, name (a link to the course), bar, percentage. */
 function CourseLine({ c }: { c: MyCourse }) {
-  const { t } = useTranslation();
-  const insight = courseInsight(c.pack, c.enrollment);
-  const note = [insight.strong.length ? t("progress.strong", { what: insight.strong.join(", ") }) : "", insight.watch.length ? t("progress.watch", { what: insight.watch.join(", ") }) : ""].filter(Boolean);
-  const fallback = c.finished ? t("progress.finished") : !c.enrollment.progress ? t("progress.notStarted") : c.percent === 0 ? t("progress.justStarted") : t("progress.keepGoing");
   return (
-    <li>
-      <Link className="pg-course" to={`/khoa-hoc/${c.info.id}`}>
-        <CourseCover courseId={c.info.id} className="pg-thumb" />
-        <span>
-          <h3>{c.info.title}</h3>
-          <p>{note.length ? note.join(". ") : fallback}</p>
-        </span>
-        <span className="bar" role="progressbar" aria-valuenow={c.percent} aria-valuemin={0} aria-valuemax={100}>
-          <i style={{ width: `${c.percent}%` }} />
-        </span>
-        <span className="pg-pct">{c.percent}%</span>
+    <li className="pg-course">
+      <CourseCover courseId={c.info.id} className="pg-thumb" />
+      <Link className="pg-cname" to={`/khoa-hoc/${encodeURIComponent(c.info.id)}`}>
+        {c.info.title}
       </Link>
+      <span className="bar" role="progressbar" aria-label={c.info.title} aria-valuenow={c.percent} aria-valuemin={0} aria-valuemax={100}>
+        <i style={{ width: `${c.percent}%` }} />
+      </span>
+      <span className="pg-pct">{c.percent}%</span>
     </li>
   );
 }

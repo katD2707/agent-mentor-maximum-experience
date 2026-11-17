@@ -292,6 +292,36 @@ def test_course_practice_covers_only_studied_lessons(client, gw, student, store)
     assert len(start(client, source=f"course:{KID}")["items"]) == 5
 
 
+def test_course_levels_and_practice_of_one_level(client, gw, student, store):
+    """The course page's level ladder: counts per level, where Mentor starts, and a session of one level only."""
+    set_band(client, "g1_5")
+    assert client.get(f"{P}/courses/{KID}/levels").json()["code"] == "course_not_found"  # not enrolled
+    enroll(client, KID, "bai-2")  # both lessons studied: level 1 has 5 items, level 2 has 3
+    lv = client.get(f"{P}/courses/{KID}/levels").json()
+    assert [(x["level"], x["items"], x["studied"], x["answered"]) for x in lv["levels"]] == [
+        (1, 5, 5, 0), (2, 3, 3, 0), (3, 0, 0, 0), (4, 0, 0, 0)]
+    assert lv["suggested"] == 1 and lv["min_items"] == 3 and lv["mocks"] == []
+
+    two = start(client, source=f"course:{KID}", level=2)
+    assert len(two["items"]) == 3
+    assert {session_doc(gw, two["id"], p)["difficulty"]["level"] for p in range(3)} == {2}
+    assert client.post(f"{P}/sessions/{two['id']}/finish").status_code == 200
+
+    one = start(client, source=f"course:{KID}", level=1)  # all right: level 1 becomes solid, Mentor moves on to 2
+    for pos in range(len(one["items"])):
+        client.post(f"{P}/sessions/{one['id']}/answer", json={"position": pos, "answer": right_answer(gw, one["id"], pos),
+                                                              "time_spent_sec": 5})
+    assert client.post(f"{P}/sessions/{one['id']}/finish").status_code == 200
+    lv = client.get(f"{P}/courses/{KID}/levels").json()
+    first = lv["levels"][0]
+    assert first["answered"] == len(one["items"]) == first["correct"] and first["solid"] is (first["correct"] >= 4)
+    assert lv["suggested"] == (2 if first["solid"] else 1)
+
+    assert client.post(f"{P}/sessions", json={"source": "quick", "level": 2}).json()["code"] == "bad_level"
+    assert client.post(f"{P}/sessions", json={"source": f"course:{KID}", "level": 5}).status_code == 422
+    assert client.post(f"{P}/sessions", json={"source": f"course:{KID}", "level": 3}).json()["code"] == "insufficient_content"
+
+
 # ---------------------------------------------------------------- 6. home payload and the bank
 def test_home_payload_for_a_g10_12_student(client, gw, student, store):
     enroll(client, "dev-sample-dien-truong", "bai-4-dien-truong-deu")

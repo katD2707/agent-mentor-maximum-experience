@@ -143,8 +143,9 @@ describe("catalog screen (thpt)", () => {
     expect(screen.getByTestId("active-chips")).toHaveTextContent("Cấp học: THPT");
     expect(screen.getByText("30 khóa")).toBeInTheDocument();
     const first = cards()[0];
-    expect(within(first).getByTestId("course-tags")).toHaveTextContent(/Vật lí|Toán|Tiếng Anh|Ngữ văn|Tin học|Hóa học|Sinh học/);
-    expect(first.textContent).toMatch(/học sinh đang học/); // the live course comes first
+    // title and one meta line: teacher · lessons · duration
+    expect(first.querySelector(".pm")?.textContent).toMatch(/ · \d+ bài · /);
+    expect(first.querySelector(".ctags")).toBeNull();
     expect(cards().some((c) => /Sắp có/.test(c.textContent ?? ""))).toBe(true);
     const pager = screen.getByRole("navigation", { name: "Trang" });
     expect(within(pager).getByRole("button", { name: "Trang trước" })).toBeDisabled();
@@ -158,12 +159,13 @@ describe("catalog screen (thpt)", () => {
     expect(screen.getByRole("button", { name: "Dạng danh sách" })).toBeInTheDocument();
   });
 
-  it("an English course shows the EN badge, and every card shows the difficulty word", async () => {
+  it("the sidebar has 5 filters (no format, status or teacher) and the back arrow goes to Today", async () => {
     seed(THPT, "g10_12");
-    open("/khoa-hoc/tim-kiem?q=ielts");
-    await waitFor(() => expect(cards().length).toBeGreaterThan(0));
-    expect(within(cards()[0]).getByText("EN")).toBeInTheDocument();
-    expect(within(cards()[0]).getByTestId("course-tags").querySelector("[data-level]")).not.toBeNull();
+    open("/khoa-hoc/tim-kiem");
+    await waitFor(() => expect(cards()).toHaveLength(10));
+    const facets = Array.from(document.querySelectorAll("[data-facet]")).map((x) => x.getAttribute("data-facet"));
+    expect(facets).toEqual(["subject", "band", "language", "level", "duration"]);
+    expect(screen.getByRole("link", { name: "Về màn chính" })).toHaveAttribute("href", "/");
   });
 
   it("page 2 starts at item 11, scrolls under the sticky bar and moves focus to it", async () => {
@@ -333,8 +335,8 @@ describe("catalog screen (g1_5)", () => {
     expect(screen.getByRole("navigation", { name: "Trang" })).toBeInTheDocument();
     const ui = userEvent.setup();
     await ui.click(within(chips).getByRole("button", { name: "Toán" }));
-    await waitFor(() => expect(cards().every((c) => /Toán/.test(c.querySelector(".ct-sub")?.textContent ?? ""))).toBe(true));
-    expect(where()).toContain("subject=");
+    await waitFor(() => expect(where()).toContain("subject="));
+    expect(within(chips).getByRole("button", { name: "Toán" })).toHaveAttribute("aria-pressed", "true");
     // no band is ever offered to a kid
     expect(where()).not.toContain("band");
   });
@@ -388,30 +390,57 @@ describe("navigation", () => {
     expect(where()).toContain("page=2");
   });
 
-  it("'Khóa học khác' previews 4 courses with tags and 'Xem tất cả' opens the catalog", async () => {
+  it("/khoa-hoc (the old course list) sends you to Today", async () => {
     seed(THPT, "g10_12");
-    const ui = userEvent.setup();
     open("/khoa-hoc");
-    const more = await waitFor(() => {
-      const el = document.querySelector('[data-guide="more-courses"]') as HTMLElement | null;
-      expect(el).not.toBeNull();
-      return el!;
-    });
-    expect(more.querySelectorAll("li")).toHaveLength(4);
-    expect(more.querySelectorAll('[data-testid="course-tags"]')).toHaveLength(4);
-    await ui.click(within(more).getByRole("link", { name: /Xem tất cả/ }));
-    await waitFor(() => expect(cards()).toHaveLength(10));
-    expect(where()).toBe("/khoa-hoc/tim-kiem");
+    await waitFor(() => expect(where()).toBe("/"));
   });
 
-  it("the coming-soon course page shows the tags", async () => {
+  it("the coming-soon course page is the same tree: chapters fold open, a Coming soon label, no start button, back to search", async () => {
     seed(THPT, "g10_12");
     const c = SOON.find((x) => x.meta.id === "ph-toan-12-dao-ham-va-khao-sat-ham-so")!;
     open(`/khoa-hoc/${c.meta.id}`);
-    const tags = await screen.findByTestId("course-tags");
-    expect(tags).toHaveTextContent("Toán");
-    expect(tags).toHaveTextContent("Tiếng Việt");
-    expect(tags).toHaveTextContent(c.meta.level === "advanced" ? "Nâng cao" : c.meta.level === "basic" ? "Cơ bản" : "Trung bình");
-    expect(tags.querySelectorAll(".bars i.on").length).toBeGreaterThan(0);
+    expect(await screen.findByRole("heading", { name: c.meta.title })).toBeInTheDocument();
+    expect(screen.getByText("Sắp có")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Bắt đầu" })).toBeNull();
+    expect(document.querySelectorAll(".ct-grp").length).toBeGreaterThan(1);
+    expect(screen.getByRole("link", { name: "Tìm khóa học" })).toHaveAttribute("href", "/khoa-hoc/tim-kiem");
+  });
+});
+
+// ------------------------------------------------------------------ the course page (hs-04)
+describe("course page as a tree", () => {
+  const COURSE = "vat-li-11-dien-truong"; // the learner's own band: enrolled in the mock
+  const OTHER = "xac-suat-bayes"; // university: not enrolled
+
+  it("not enrolled: lessons and outcomes folds; Bắt đầu enrolls and opens lesson 1 in the player", async () => {
+    seed(THPT, "g10_12");
+    const ui = userEvent.setup();
+    open(`/khoa-hoc/${OTHER}`);
+    const start = await screen.findByRole("button", { name: /^Bắt đầu/ });
+    expect(screen.getByText("Bài học")).toBeInTheDocument();
+    expect(screen.getByText("Học xong em sẽ")).toBeInTheDocument();
+    expect(screen.queryByText("Luyện tập")).toBeNull();
+    await ui.click(start);
+    await waitFor(() => expect(where()).toMatch(new RegExp(`^/khoa-hoc/${OTHER}/hoc\\?lesson=`)));
+  });
+
+  it("enrolled: one Tiếp tục link, lessons done/now/later, the practice ladder open, tests closed", async () => {
+    seed(THPT, "g10_12");
+    open(`/khoa-hoc/${COURSE}`);
+    const next = await screen.findByRole("link", { name: /Tiếp tục|Bắt đầu/ });
+    expect(next.getAttribute("href")).toMatch(new RegExp(`^/khoa-hoc/${COURSE}/hoc\\?lesson=`));
+    const lessons = document.querySelector(".ct-grp.lessons") as HTMLElement;
+    expect(lessons.querySelectorAll(".ct-node.now")).toHaveLength(1);
+    expect(lessons.querySelectorAll(".ct-node.later").length).toBeGreaterThan(0);
+    const ladder = await waitFor(() => {
+      const el = document.querySelector(".ct-grp.ladder") as HTMLElement | null;
+      expect(el).not.toBeNull();
+      return el!;
+    });
+    expect(ladder).toHaveAttribute("open");
+    expect(within(ladder).getByText("Thông hiểu")).toBeInTheDocument();
+    const tests = screen.getByText("Kiểm tra").closest("details")!;
+    expect(tests).not.toHaveAttribute("open");
   });
 });

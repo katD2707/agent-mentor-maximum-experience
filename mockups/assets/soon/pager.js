@@ -13,7 +13,7 @@
     vi: { soon: "Sắp có", prev: "Trang trước", next: "Trang sau", page: "Trang", les: "bài" },
     en: { soon: "Coming soon", prev: "Previous page", next: "Next page", page: "Page", les: "lessons" }
   };
-  function href(c) { return "hs-02c-khoa-sap-co.html?c=" + c.k; }
+  function href(c) { return "hs-08-khoa-sap-co.html?c=" + c.k; }
   function meta(c) {
     var en = lang() === "en";
     return esc(c.te) + ", " + c.n + " " + T[lang()].les + ", " + dur(c.m, en);

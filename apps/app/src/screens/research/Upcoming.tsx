@@ -254,16 +254,7 @@ export function Milestones({ items, goalId }: { items: Milestone[]; goalId: stri
   const { t } = useTranslation();
   const nextId = items.find((m) => !m.done)?.id;
   return (
-    <section className="rs-card rs-mswrap full" data-guide="research-milestones" data-guide-label={t("research.milestones.title")}>
-      <div className="rs-sec-head">
-        <h2 className="rs-s">{t("research.milestones.title")}</h2>
-        <span className="rs-grow" />
-        {goalId && (
-          <Link className="rs-link" to="/tien-do">
-            {t("research.milestones.seeProgress")}
-          </Link>
-        )}
-      </div>
+    <section className="rs-mswrap" data-guide="research-milestones" data-guide-label={t("research.milestones.title")}>
       <ul className="rs-ms">
         {items.map((m) => (
           <li key={m.id} className={m.done ? "done" : m.id === nextId ? "next" : undefined} aria-current={m.id === nextId ? "step" : undefined}>
@@ -276,6 +267,11 @@ export function Milestones({ items, goalId }: { items: Milestone[]; goalId: stri
           </li>
         ))}
       </ul>
+      {goalId && (
+        <Link className="rs-link" to="/tien-do">
+          {t("research.milestones.seeProgress")}
+        </Link>
+      )}
     </section>
   );
 }

@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-step="0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài học từng bước</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  /* A lesson in bite-sized steps (learned from Duolingo): one idea or one small task per screen, an answer is checked at
+     once, the explanation comes right then. Only the close button and the progress bar stay on top. */
+  body { background: var(--paper); }
+  /* a lesson is a focus screen with no floating Mực: no phone strip kept for him either */
+  html:root, html:root[data-age] { --dock-h: 0px; }
+  .mascot-bar, .mascot-dock { display: none !important; }
+  .lfoot { z-index: 30; }
+  /* the streak's own warm orange (the amber token reads brown); the number keeps enough contrast on paper */
+  :root { --lua: #F2891F; --lua-ink: #B35400; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --lua: #FFA94D; --lua-ink: #FFB65C; } }
+  :root[data-theme="dark"] { --lua: #FFA94D; --lua-ink: #FFB65C; }
+  .lesson { min-height: calc(100vh - 44px); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; max-width: 720px; margin: 0 auto; }
+  .ltop { display: flex; align-items: center; gap: 14px; padding: 18px 20px 6px; }
+  .ltop .x { width: 44px; height: 44px; border-radius: 999px; border: 0; background: none; color: var(--ink-3); display: grid; place-items: center; cursor: pointer; }
+  .ltop .x svg { width: 26px; height: 26px; }
+  .lbar { flex: 1; height: 16px; border-radius: 99px; background: var(--rule-strong); overflow: hidden; }
+  .lbar i { display: block; height: 100%; border-radius: inherit; background: var(--xanh); transition: width .45s cubic-bezier(.2, .8, .2, 1); box-shadow: inset 0 -4px 0 rgba(0,0,0,.12), inset 0 3px 0 rgba(255,255,255,.3); }
+  .combo { display: inline-flex; align-items: center; gap: 4px; color: var(--cam); font-weight: 700; font-size: .9em; min-width: 54px; justify-content: flex-end; }
+  .combo[hidden] { display: none; }
+
+  .stage { padding: 16px 20px 24px; display: grid; align-content: start; gap: 18px; }
+  .ask { font-size: clamp(1.25em, 3.4vw, 1.5em); font-weight: 600; }
+  :root[data-age="dai-hoc"] .ask { font-size: 1.25em; }
+  .step { display: none; gap: 18px; animation: in .3s ease-out both; }
+  .step.on { display: grid; }
+  @keyframes in { from { opacity: 0; transform: translateX(16px); } }
+
+  /* Mực speaks inside the lesson */
+  .say { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: end; }
+  .say .muc { width: 76px; height: 92px; }
+  .say .bub { position: relative; padding: 14px 18px; border-radius: 20px; border: 2px solid var(--rule-strong); background: var(--surface); font-size: 1.05em; line-height: 1.5; }
+  .say .bub::before { content: ""; position: absolute; left: -10px; bottom: 18px; width: 16px; height: 16px; background: var(--surface); border-left: 2px solid var(--rule-strong); border-bottom: 2px solid var(--rule-strong); transform: rotate(45deg); }
+  .say .bub b { color: var(--tim-ink); }
+  .speakb { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; border: 0; background: var(--tim); color: var(--on-tim); cursor: pointer; margin-right: 8px; vertical-align: middle; }
+  .speakb svg { width: 22px; height: 22px; }
+  .figure { border-radius: var(--r-lg); border: 2px solid var(--rule); background: var(--surface); padding: 12px; display: grid; place-items: center; }
+  .figure svg { width: 100%; max-width: 420px; height: auto; }
+
+  /* pick the right picture */
+  .pics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pic { display: grid; gap: 6px; justify-items: center; padding: 12px; border-radius: 18px; border: 2px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); cursor: pointer; font: inherit; color: var(--ink); }
+  .pic svg { width: 100%; max-width: 180px; height: auto; }
+  .pic[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); color: var(--tim-ink); }
+  .pic.right { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); }
+  .pic.wrong { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); }
+
+  /* tiles: tap to place, tap again to take back */
+  .slots { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-height: 64px; padding: 10px 4px; border-bottom: 2px solid var(--rule-strong); font-family: var(--font-read); font-size: 1.35em; }
+  .slots .gap { min-width: 72px; min-height: 52px; border-radius: 14px; border: 2px dashed var(--tim); background: var(--tim-soft); }
+  .bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 64px; }
+  .tile { min-height: 52px; min-width: 52px; padding: 0 16px; border-radius: 14px; border: 2px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); font: inherit; font-family: var(--font-read); font-size: 1.15em; color: var(--ink); cursor: pointer; transition: transform .12s ease; }
+  .tile:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--rule-strong); }
+  .tile.used { visibility: hidden; }
+  .tile.ui { font-family: var(--font-ui); font-size: 1em; text-align: left; padding: 10px 16px; }
+  .slots.right .tile { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); }
+  .slots.wrong .tile { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); }
+  .order { display: grid; gap: 10px; border-bottom: 0; font-family: var(--font-ui); font-size: 1em; min-height: 200px; align-content: start; padding: 12px; border: 2px dashed var(--rule-strong); border-radius: 18px; }
+  .order:empty::before { content: attr(data-empty); color: var(--ink-3); }
+
+  /* match pairs */
+  .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  .pairs .tile { width: 100%; }
+  .pairs .tile[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); }
+  .pairs .tile.done { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: none; color: var(--xanh); cursor: default; opacity: .7; }
+  .pairs .tile.shake { animation: shake .35s; border-color: var(--do); }
+  @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+  /* the bottom: one big button; after checking, the feedback band slides up with it */
+  .lfoot { position: sticky; bottom: 0; padding: 16px 20px calc(18px + env(safe-area-inset-bottom)); border-top: 2px solid var(--rule); background: var(--paper); display: grid; gap: 12px; }
+  .lfoot.ok { background: var(--xanh-soft); border-color: transparent; }
+  .lfoot.no { background: var(--do-soft); border-color: transparent; }
+  .fb { display: none; gap: 4px; }
+  .lfoot.ok .fb, .lfoot.no .fb { display: grid; animation: up .25s ease-out both; }
+  @keyframes up { from { opacity: 0; transform: translateY(10px); } }
+  .fb h3 { font-size: 1.25em; display: flex; align-items: center; gap: 10px; }
+  .lfoot.ok .fb h3 { color: var(--xanh); }
+  .lfoot.no .fb h3 { color: var(--do); }
+  .fb h3 svg { width: 28px; height: 28px; }
+  .fb p { color: var(--ink); }
+  .go { width: 100%; min-height: 58px; border-radius: 18px; border: 0; background: var(--tim); color: var(--on-tim); font: inherit; font-size: 1.1em; font-weight: 700; cursor: pointer; box-shadow: 0 5px 0 var(--tim-ink); letter-spacing: .01em; }
+  .go:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--tim-ink); }
+  .go[disabled] { background: var(--rule-strong); color: var(--ink-3); box-shadow: 0 5px 0 var(--rule); cursor: default; }
+  .lfoot.ok .go { background: var(--xanh); box-shadow: 0 5px 0 #145039; }
+  .lfoot.no .go { background: var(--do); box-shadow: 0 5px 0 #7d2828; }
+  :root[data-age="tieu-hoc"] .go { min-height: 72px; font-size: 1.25em; }
+
+  /* the end: what was done, then the streak */
+  .done-sum { display: grid; justify-items: center; text-align: center; gap: 18px; padding-top: 12px; }
+  .done-sum h2 { font-size: 1.8em; color: var(--tim-ink); }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 480px; }
+  .stat { border-radius: 16px; border: 2px solid var(--rule-strong); overflow: hidden; background: var(--surface); }
+  .stat b { display: block; padding: 6px; font-size: .78em; color: var(--on-tim); background: var(--tim); }
+  .stat.g b { background: var(--xanh); } .stat.o b { background: var(--cam); }
+  .stat span { display: block; padding: 12px 6px; font-size: 1.35em; font-weight: 700; }
+  .streak { display: grid; justify-items: center; text-align: center; gap: 14px; padding-top: 6px; }
+  .streak .bubble { position: relative; padding: 12px 18px; border: 2px solid var(--rule-strong); border-radius: 18px; background: var(--surface); max-width: 360px; }
+  .streak .bubble::after { content: ""; position: absolute; left: 50%; bottom: -10px; width: 16px; height: 16px; background: var(--surface); border-right: 2px solid var(--rule-strong); border-bottom: 2px solid var(--rule-strong); transform: translateX(-50%) rotate(45deg); }
+  .flame { width: 150px; height: 150px; }
+  .bignum { font-size: 5.2em; line-height: 1; font-weight: 700; color: var(--lua-ink); }
+  .bignum + p { color: var(--lua-ink); font-weight: 700; font-size: 1.3em; margin-top: -8px; }
+  .wk { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; width: 100%; max-width: 420px; padding: 14px; border: 2px solid var(--rule-strong); border-radius: 18px; background: var(--surface); }
+  .wk span { display: grid; gap: 6px; justify-items: center; font-size: .8em; color: var(--ink-3); font-weight: 600; }
+  .wk i { width: 34px; height: 34px; border-radius: 50%; background: var(--rule); display: grid; place-items: center; color: #fff; }
+  .wk .on i { background: var(--lua); } .wk .on { color: var(--lua-ink); }
+  .wk i svg { width: 18px; height: 18px; }
+
+  /* outside the app: the reminder on a phone's lock screen */
+  .phone { justify-self: center; width: min(340px, 100%); aspect-ratio: 9 / 14; border-radius: 40px; padding: 18px 14px; background: linear-gradient(160deg, #3D2E93, #140F38); color: #fff; display: grid; align-content: start; gap: 10px; box-shadow: var(--shadow); }
+  .phone .clock { text-align: center; font-size: 3.2em; font-weight: 600; margin: 18px 0 2px; }
+  .phone .date { text-align: center; opacity: .8; margin-bottom: 18px; }
+  .note { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 12px; border-radius: 18px; background: rgba(255,255,255,.16); backdrop-filter: blur(8px); }
+  .note img { width: 34px; height: 34px; border-radius: 9px; }
+  .note b { font-size: .85em; display: flex; justify-content: space-between; opacity: .9; }
+  .note b small { font-weight: 400; opacity: .8; }
+  .note p { font-size: .92em; line-height: 1.4; margin-top: 2px; }
+  .why { color: var(--ink-2); font-size: .9em; text-align: center; max-width: 52ch; justify-self: center; }
+  details.why summary { cursor: pointer; min-height: 44px; display: grid; place-items: center; }
+
+  [hidden] { display: none !important; }
+
+  /* English course: the explanation in English, "VI" opens the Vietnamese, a small chip shows the current mix */
+  .vibtn { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); font: inherit; font-size: .8em; font-weight: 700; cursor: pointer; margin-left: 8px; vertical-align: middle; }
+  .vibtn[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); }
+  .bub .vi { display: block; margin-top: 8px; padding-top: 8px; border-top: 2px dashed var(--rule-strong); color: var(--ink-2); font-size: .95em; }
+  .mix { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; color: var(--ink-2); font-size: .9em; }
+  .mixchip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 99px; background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+  .mixchip i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--tim); }
+  .mixchip i.on { background: var(--tim); }
+
+  /* the draggable diagram: drag the test charge, E and the arrow follow */
+  .drag-say { margin-top: 2px; }
+  #fld { touch-action: none; user-select: none; -webkit-user-select: none; max-width: 420px; width: 100%; height: auto; cursor: ew-resize; }
+  #hnd { outline: none; cursor: grab; }
+  #hnd .ring { fill: none; stroke: var(--tim); stroke-width: 3; opacity: 0; }
+  #hnd:focus-visible .ring { opacity: 1; }
+  #fld.hint #hnd .pulse { animation: pulse 1.6s ease-out infinite; }
+  @keyframes pulse { from { r: 16; opacity: .7; } to { r: 30; opacity: 0; } }
+  #hnd .pulse { fill: none; stroke: var(--tim); stroke-width: 3; opacity: 0; }
+  .readout { font-size: 1.05em; color: var(--ink-2); text-align: center; }
+  .readout b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .readout small { display: block; font-size: .85em; color: var(--ink-3); }
+  .apples { gap: 14px; width: 100%; }
+  .basket { display: grid; justify-items: center; gap: 4px; width: 100%; }
+  .bk-in { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 4px; min-height: 52px; max-width: 260px; }
+  .bk-in svg, .bk-in .apple { width: 46px; height: 46px; }
+  .bk-body { width: min(260px, 100%); height: 48px; border-radius: 0 0 40px 40px; background: #C98A4B; margin-top: -14px; display: grid; place-items: center; font-weight: 700; font-size: 1.6em; color: #fff; }
+  .ground { display: flex; gap: 10px; justify-content: center; min-height: 72px; padding: 8px; width: 100%; border: 2px dashed var(--rule-strong); border-radius: 18px; }
+  .apple { width: 64px; height: 64px; border: 0; border-radius: 50%; background: none; padding: 0; cursor: grab; touch-action: none; position: relative; }
+  .apple svg { width: 100%; height: 100%; display: block; pointer-events: none; }
+  .apple.drag { cursor: grabbing; z-index: 5; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); }
+  .basket.over .bk-body { outline: 3px dashed var(--tim); outline-offset: 3px; }
+
+  /* recall: no choices, say or type it, then see the idea and mark it */
+  .rc-n { font-size: .9em; font-weight: 600; color: var(--ink-3); }
+  .rc-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+  .rc-in input { min-height: 56px; padding: 0 16px; border-radius: 16px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: 1.05em; width: 100%; }
+  .rc-in input:focus-visible { outline: none; border-color: var(--tim); box-shadow: 0 0 0 3px var(--tim-soft); }
+  .mic { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); cursor: pointer; }
+  .mic svg { width: 26px; height: 26px; }
+  .mic[aria-pressed="true"] { background: var(--tim); border-color: var(--tim); color: var(--on-tim); animation: pulse2 1.2s ease-in-out infinite; }
+  @keyframes pulse2 { 50% { box-shadow: 0 0 0 10px var(--tim-soft); } }
+  :root[data-age="tieu-hoc"] .rc-in { grid-template-columns: 1fr; justify-items: center; }
+  :root[data-age="tieu-hoc"] .rc-in input { display: none; }
+  :root[data-age="tieu-hoc"] .mic { width: 96px; height: 96px; background: var(--tim); border-color: var(--tim); color: var(--on-tim); box-shadow: 0 5px 0 var(--tim-ink); }
+  :root[data-age="tieu-hoc"] .mic svg { width: 44px; height: 44px; }
+  .rc-heard { color: var(--ink-2); text-align: center; min-height: 1.5em; }
+  .rc-ans { display: grid; gap: 4px; padding: 14px 18px; border-radius: 18px; border: 2px solid var(--tim); background: var(--tim-soft); }
+  .rc-ans small { color: var(--tim-ink); font-weight: 600; }
+  .rc-ans b { font-family: var(--font-read); font-size: 1.3em; font-weight: 600; }
+  .rc-mark { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .rc-mark .tile { min-height: 58px; font-family: var(--font-ui); font-size: 1.05em; font-weight: 600; }
+  .rc-mark .yes { border-color: var(--xanh); box-shadow: 0 4px 0 var(--xanh); }
+  .rc-mark .no { border-color: var(--do); box-shadow: 0 4px 0 var(--do); }
+
+  @media (prefers-reduced-motion: reduce) { .step, .fb, .lbar i, .mic, #fld.hint #hnd .pulse { animation: none; transition: none; } }
+  @media (max-width: 520px) { .say { grid-template-columns: 60px minmax(0, 1fr); } .say .muc { width: 60px; height: 74px; } .pairs { gap: 8px; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đề xuất: bài học từng bước</span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg" style="flex-wrap:wrap"><span>Tới bước</span><button data-jump="0">1 Mực giảng</button><button data-jump="1">2 Chọn hình</button><button data-jump="2">3 Ghép công thức</button><button data-jump="3">4 Nối cặp</button><button data-jump="4">5 Xếp bước</button><button data-jump="5">6 Tự tính</button><button data-jump="6">7 Kéo sơ đồ</button><button data-jump="7">8 Nhớ lại</button><button data-jump="8">Xong bài</button><button data-jump="9">Chuỗi ngày</button><button data-jump="10">Thông báo</button></span>
+  <span class="mock-seg"><span>Khóa</span><button data-set="course:vat-li">Vật lí</button><button data-set="course:anh">Tiếng Anh</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Mỗi màn một việc; làm xong biết đúng sai ngay.</span>
+</div>
+
+<div class="lesson">
+  <header class="ltop">
+    <button class="x" type="button" aria-label="Thoát" onclick="leave()"><i data-i="x"></i></button>
+    <span class="lbar" role="progressbar" aria-label="Tiến độ" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><i id="bar" style="width:4%"></i></span>
+    <span class="combo" id="combo" hidden></span>
+  </header>
+
+  <main class="stage" id="stage">
+    <!-- 1 · Mực explains one idea -->
+    <section class="step" data-kind="read">
+      <div class="say">
+        <svg class="muc" viewBox="0 0 80 100" aria-hidden="true"><path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="var(--tim)"/><ellipse cx="31" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="50" rx="7" ry="8" fill="#fff"/><circle cx="32" cy="51" r="4" fill="#1F1B3A"/><circle cx="50" cy="51" r="4" fill="#1F1B3A"/><path d="M34 62 Q40 68 46 62" stroke="#1F1B3A" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+        <div class="bub" data-when="age=thpt;course=vat-li"><button class="speakb" type="button" aria-label="Đọc to"><i data-i="volume"></i></button>Quanh điện tích có <b>điện trường</b>. Càng xa, lực càng yếu.</div>
+        <div class="bub" data-when="age=dai-hoc;course=vat-li">Bayes: <b>hậu nghiệm ∝ hợp lý × tiên nghiệm</b></div>
+        <div class="bub" data-when="age=tieu-hoc;course=vat-li"><button class="speakb" type="button" aria-label="Đọc to"><i data-i="volume"></i></button><b>3 quả táo</b>, thêm <b>2 quả</b>. Đếm nhé!</div>
+        <div class="bub" data-when="age=thpt|dai-hoc;course=anh"><button class="speakb" type="button" aria-label="Đọc to"><i data-i="volume"></i></button><span lang="en">We use the <b>present simple</b> for habits: I <b>study</b> every day.</span><button class="vibtn" type="button" aria-pressed="false" aria-label="Xem nghĩa tiếng Việt">VI</button><span class="vi" hidden>Thì <b>hiện tại đơn</b> nói về thói quen: Tôi <b>học</b> mỗi ngày.</span></div>
+        <div class="bub" data-when="age=tieu-hoc;course=anh"><button class="speakb" type="button" aria-label="Đọc to"><i data-i="volume"></i></button><span lang="en">This is an <b>apple</b>. I like apples.</span><button class="vibtn" type="button" aria-pressed="false" aria-label="Xem nghĩa tiếng Việt">VI</button><span class="vi" hidden>Đây là <b>quả táo</b>. Em thích táo.</span></div>
+      </div>
+      <div class="mix" data-when="course=anh"><span class="mixchip" title="Tiếng Việt 30%"><span>Tiếng Việt 30%</span><span aria-hidden="true" style="display:inline-flex;gap:3px"><i class="on"></i><i></i><i></i></span></span><span>Em tiến bộ, Mực nói ít tiếng Việt dần.</span></div>
+      <div class="figure" data-when="age=thpt;course=vat-li">
+        <svg viewBox="0 0 420 170" aria-label="Hai điện tích dương đẩy nhau"><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="var(--do)"/></marker></defs><circle cx="150" cy="85" r="30" fill="#F26D6D"/><text x="150" y="95" text-anchor="middle" font-size="30" font-weight="700" fill="#fff">+</text><circle cx="270" cy="85" r="30" fill="#F26D6D"/><text x="270" y="95" text-anchor="middle" font-size="30" font-weight="700" fill="#fff">+</text><path d="M112 85 H50" stroke="var(--do)" stroke-width="5" marker-end="url(#ar)"/><path d="M308 85 H370" stroke="var(--do)" stroke-width="5" marker-end="url(#ar)"/><text x="210" y="155" text-anchor="middle" font-size="15" fill="currentColor" opacity=".7">cùng dấu: đẩy</text></svg>
+      </div>
+      <div class="figure" data-when="age=tieu-hoc">
+        <svg viewBox="0 0 420 120" aria-hidden="true"><g fill="#E5484D"><circle cx="60" cy="60" r="28"/><circle cx="130" cy="60" r="28"/><circle cx="200" cy="60" r="28"/></g><text x="250" y="72" font-size="36" font-weight="700" fill="currentColor">+</text><g fill="#E5484D"><circle cx="310" cy="60" r="28"/><circle cx="380" cy="60" r="28"/></g></svg>
+      </div>
+    </section>
+
+    <!-- 2 · pick the right picture -->
+    <section class="step" data-kind="pick" data-answer="b">
+      <p class="ask" data-when="age=thpt|dai-hoc">Hình nào <b>hút</b> nhau?</p>
+      <p class="ask" data-when="age=tieu-hoc"><button class="speakb" type="button" aria-label="Đọc to"><i data-i="volume"></i></button>Giỏ nào có 5 táo?</p>
+      <div class="pics" data-when="age=thpt|dai-hoc">
+        <button class="pic" type="button" data-v="a"><svg viewBox="0 0 180 90"><circle cx="55" cy="45" r="20" fill="#F26D6D"/><text x="55" y="53" text-anchor="middle" font-size="22" fill="#fff" font-weight="700">+</text><circle cx="125" cy="45" r="20" fill="#F26D6D"/><text x="125" y="53" text-anchor="middle" font-size="22" fill="#fff" font-weight="700">+</text><path d="M30 45h-20M150 45h20" stroke="var(--do)" stroke-width="4"/></svg><span>A</span></button>
+        <button class="pic" type="button" data-v="b"><svg viewBox="0 0 180 90"><circle cx="55" cy="45" r="20" fill="#F26D6D"/><text x="55" y="53" text-anchor="middle" font-size="22" fill="#fff" font-weight="700">+</text><circle cx="125" cy="45" r="20" fill="#5B8DEF"/><text x="125" y="52" text-anchor="middle" font-size="24" fill="#fff" font-weight="700">−</text><path d="M78 45h24" stroke="var(--xanh)" stroke-width="4"/></svg><span>B</span></button>
+        <button class="pic" type="button" data-v="c"><svg viewBox="0 0 180 90"><circle cx="55" cy="45" r="20" fill="#5B8DEF"/><text x="55" y="52" text-anchor="middle" font-size="24" fill="#fff" font-weight="700">−</text><circle cx="125" cy="45" r="20" fill="#5B8DEF"/><text x="125" y="52" text-anchor="middle" font-size="24" fill="#fff" font-weight="700">−</text><path d="M30 45h-20M150 45h20" stroke="var(--do)" stroke-width="4"/></svg><span>C</span></button>
+        <button class="pic" type="button" data-v="d"><svg viewBox="0 0 180 90"><circle cx="90" cy="45" r="20" fill="#F26D6D"/><text x="90" y="53" text-anchor="middle" font-size="22" fill="#fff" font-weight="700">+</text></svg><span>D</span></button>
+      </div>
+      <div class="pics" data-when="age=tieu-hoc">
+        <button class="pic" type="button" data-v="a" aria-label="Giỏ thứ nhất"><svg viewBox="0 0 180 110"><path d="M20 50h140l-14 50H34z" fill="#C98A4B"/><g fill="#E5484D"><circle cx="60" cy="40" r="16"/><circle cx="100" cy="40" r="16"/><circle cx="80" cy="22" r="16"/></g></svg></button>
+        <button class="pic" type="button" data-v="b" aria-label="Giỏ thứ hai"><svg viewBox="0 0 180 110"><path d="M20 50h140l-14 50H34z" fill="#C98A4B"/><g fill="#E5484D"><circle cx="45" cy="40" r="15"/><circle cx="78" cy="40" r="15"/><circle cx="111" cy="40" r="15"/><circle cx="62" cy="18" r="15"/><circle cx="95" cy="18" r="15"/></g></svg></button>
+        <button class="pic" type="button" data-v="c" aria-label="Giỏ thứ ba"><svg viewBox="0 0 180 110"><path d="M20 50h140l-14 50H34z" fill="#C98A4B"/><g fill="#E5484D"><circle cx="70" cy="40" r="16"/><circle cx="110" cy="40" r="16"/></g></svg></button>
+        <button class="pic" type="button" data-v="d" aria-label="Giỏ thứ tư"><svg viewBox="0 0 180 110"><path d="M20 50h140l-14 50H34z" fill="#C98A4B"/><g fill="#E5484D"><circle cx="40" cy="40" r="14"/><circle cx="70" cy="40" r="14"/><circle cx="100" cy="40" r="14"/><circle cx="130" cy="40" r="14"/></g></svg></button>
+      </div>
+    </section>
+
+    <!-- 3 · build the formula from tiles -->
+    <section class="step" data-kind="tiles" data-answer="r²">
+      <p class="ask">Điền chỗ trống</p>
+      <div class="slots" id="s3" data-when="age=thpt|tieu-hoc"><span>E = k · |q| /</span><span class="gap" data-gap></span></div>
+      <div class="bank" data-when="age=thpt|tieu-hoc"><button class="tile" type="button">r</button><button class="tile" type="button">q</button><button class="tile" type="button">r²</button><button class="tile" type="button">k</button></div>
+      <div class="slots" id="s3u" data-when="age=dai-hoc"><span>Beta(α, β) sau k ngửa / n lần → Beta(α + k, β +</span><span class="gap" data-gap></span><span>)</span></div>
+      <div class="bank" data-when="age=dai-hoc"><button class="tile" type="button">k</button><button class="tile" type="button">n − k</button><button class="tile" type="button">n</button><button class="tile" type="button">n + k</button></div>
+    </section>
+
+    <!-- 4 · match pairs -->
+    <section class="step" data-kind="pairs">
+      <p class="ask">Nối đơn vị</p>
+      <div class="pairs" id="pairs">
+        <button class="tile ui" type="button" data-l="E">Cường độ E</button><button class="tile ui" type="button" data-r="C">C</button>
+        <button class="tile ui" type="button" data-l="F">Lực điện F</button><button class="tile ui" type="button" data-r="E">V/m</button>
+        <button class="tile ui" type="button" data-l="C">Điện tích q</button><button class="tile ui" type="button" data-r="F">N</button>
+      </div>
+    </section>
+
+    <!-- 5 · order the steps of a solution -->
+    <section class="step" data-kind="order" data-answer="1234">
+      <p class="ask">Xếp thứ tự</p>
+      <div class="slots order" id="ord" data-empty="Chạm theo thứ tự"></div>
+      <div class="bank">
+        <button class="tile ui" type="button" data-o="3">Thay số</button>
+        <button class="tile ui" type="button" data-o="1">Đọc đề</button>
+        <button class="tile ui" type="button" data-o="4">Ra kết quả</button>
+        <button class="tile ui" type="button" data-o="2">Chọn công thức</button>
+      </div>
+    </section>
+
+    <!-- 6 · work it out, pick the result -->
+    <section class="step" data-kind="pick" data-answer="c">
+      <p class="ask">q = 2·10⁻⁸ C, r = 0,1 m. E = ?</p>
+      <div class="pics" style="grid-template-columns:1fr 1fr">
+        <button class="pic" type="button" data-v="a"><span style="font-size:1.25em;font-weight:600">1 800 V/m</span></button>
+        <button class="pic" type="button" data-v="b"><span style="font-size:1.25em;font-weight:600">180 V/m</span></button>
+        <button class="pic" type="button" data-v="c"><span style="font-size:1.25em;font-weight:600">18 000 V/m</span></button>
+        <button class="pic" type="button" data-v="d"><span style="font-size:1.25em;font-weight:600">36 000 V/m</span></button>
+      </div>
+    </section>
+
+    <!-- 7 · draggable diagram: drag, the number and the arrow follow, Mực reacts (skipped for university) -->
+    <section class="step" data-kind="drag">
+      <p class="ask" data-when="age=thpt|dai-hoc">Kéo để E còn 1/4</p>
+      <p class="ask" data-when="age=tieu-hoc"><button class="speakb" type="button" aria-label="Đọc to"><i data-i="volume"></i></button>Kéo táo vào giỏ cho đủ 5</p>
+      <div class="figure" data-when="age=thpt|dai-hoc">
+        <svg id="fld" class="hint" viewBox="0 58 360 132" role="group" aria-label="Điện tích q và điện tích thử. Kéo điện tích thử để đổi khoảng cách r.">
+          <circle cx="56" cy="95" r="24" fill="#F26D6D"/><text x="56" y="105" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">+</text>
+          <text x="56" y="140" text-anchor="middle" font-size="15" fill="currentColor" opacity=".8">q</text>
+          <line id="dim" x1="56" y1="158" x2="124" y2="158" stroke="currentColor" stroke-width="2" opacity=".5"/>
+          <g id="ticks" stroke="currentColor" stroke-width="2" opacity=".5"></g>
+          <text id="dimt" x="90" y="178" text-anchor="middle" font-size="15" fill="currentColor">r = 0,10 m</text>
+          <line id="arl" x1="139" y1="95" x2="230" y2="95" stroke="var(--do)" stroke-width="6" stroke-linecap="round"/>
+          <polygon id="arh" points="239,95 228,88 228,102" fill="var(--do)"/>
+          <g id="hnd" tabindex="0" role="slider" aria-label="Điện tích thử, kéo để đổi khoảng cách r" aria-orientation="horizontal" aria-valuemin="10" aria-valuemax="40" aria-valuenow="10" aria-valuetext="r = 0,10 m, E = 18 000 V/m" transform="translate(124 95)">
+            <circle r="34" fill="transparent"/><circle class="pulse" r="16"/><circle class="ring" r="21"/>
+            <circle r="14" fill="#F26D6D" stroke="var(--surface)" stroke-width="3"/><text y="6" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">+</text>
+          </g>
+        </svg>
+        <p class="readout">r = <b id="rv">0,10</b> m · E = <b id="ev">18 000</b> V/m<small>Lúc đầu E = 18 000 V/m</small></p>
+      </div>
+      <div class="figure apples" data-when="age=tieu-hoc">
+        <div class="basket" id="bsk" aria-label="Giỏ táo"><div class="bk-in" id="bkin"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div><div class="bk-body"><span id="bcount" aria-live="polite">3</span></div></div>
+        <div class="ground" id="grd">
+          <button class="apple" type="button" aria-label="Quả táo, chạm để bỏ vào giỏ"><svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg></button>
+          <button class="apple" type="button" aria-label="Quả táo, chạm để bỏ vào giỏ"><svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg></button>
+          <button class="apple" type="button" aria-label="Quả táo, chạm để bỏ vào giỏ"><svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg></button>
+          <button class="apple" type="button" aria-label="Quả táo, chạm để bỏ vào giỏ"><svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg></button>
+        </div>
+      </div>
+      <div class="say drag-say">
+        <svg class="muc" viewBox="0 0 80 100" aria-hidden="true"><path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="var(--tim)"/><ellipse cx="31" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="50" rx="7" ry="8" fill="#fff"/><circle cx="32" cy="51" r="4" fill="#1F1B3A"/><circle cx="50" cy="51" r="4" fill="#1F1B3A"/><path d="M34 62 Q40 68 46 62" stroke="#1F1B3A" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+        <div class="bub" id="fldsay" role="status" aria-live="polite">Kéo điện tích thử ra xa q.</div>
+      </div>
+    </section>
+
+    <!-- 8 · recall with no choices: say or type, then see the idea and mark it; missed ones return later -->
+    <section class="step" data-kind="recall">
+      <div class="say">
+        <svg class="muc" viewBox="0 0 80 100" aria-hidden="true"><path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="var(--tim)"/><ellipse cx="31" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="50" rx="7" ry="8" fill="#fff"/><circle cx="32" cy="51" r="4" fill="#1F1B3A"/><circle cx="50" cy="51" r="4" fill="#1F1B3A"/><path d="M34 62 Q40 68 46 62" stroke="#1F1B3A" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+        <div class="bub"><span class="rc-n" id="rcn">1/3</span><br><span id="rcq">Nhớ lại: quanh điện tích có gì?</span></div>
+      </div>
+      <div class="figure" id="rcpic" hidden></div>
+      <div id="rcin">
+        <div class="rc-in"><input id="rctext" type="text" autocomplete="off" aria-label="Câu trả lời của em" placeholder="Gõ ý em nhớ"><button class="mic" id="rcmic" type="button" aria-pressed="false" aria-label="Nói câu trả lời"><i data-i="mic"></i></button></div>
+        <p class="rc-heard" id="rcheard" role="status" aria-live="polite"></p>
+      </div>
+      <div class="rc-ans" id="rcans" hidden><small>Ý đúng</small><b id="rca"></b></div>
+      <div class="rc-mark" id="rcmark" hidden><button class="tile no" type="button" data-m="0">Chưa nhớ</button><button class="tile yes" type="button" data-m="1">Nhớ</button></div>
+    </section>
+
+    <!-- the end of the lesson -->
+    <section class="step" data-kind="end">
+      <div class="done-sum">
+        <svg viewBox="0 0 80 100" width="110" height="138" aria-hidden="true"><path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="var(--tim)"/><ellipse cx="31" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="50" rx="7" ry="8" fill="#fff"/><circle cx="32" cy="51" r="4" fill="#1F1B3A"/><circle cx="50" cy="51" r="4" fill="#1F1B3A"/><path d="M33 61 Q40 70 47 61" stroke="#1F1B3A" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M8 40 L2 30 M72 40 L78 30" stroke="var(--vang)" stroke-width="4" stroke-linecap="round"/></svg>
+        <h2>Xong bài 3!</h2>
+        <div class="stats">
+          <div class="stat g"><b>Đúng</b><span id="acc">5/5</span></div>
+          <div class="stat"><b>Thời gian</b><span>6 phút</span></div>
+          <div class="stat o"><b>Ôn lại</b><span id="redo">0 câu</span></div>
+        </div>
+        <p class="why">Câu sai và ý chưa nhớ: ôn lại sau 2 ngày.</p>
+      </div>
+    </section>
+
+    <!-- the streak -->
+    <section class="step" data-kind="streak">
+      <div class="streak">
+        <p class="bubble">Ngày thứ 4! Mực khoe cả lớp.</p>
+        <svg class="flame" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 8 C72 34 98 46 98 76 A38 38 0 0 1 22 76 C22 56 34 46 40 30 C46 44 52 48 56 48 C54 32 56 20 60 8 Z" fill="var(--lua)"/><path d="M60 54 C66 66 78 72 78 86 A18 18 0 0 1 42 86 C42 76 50 70 52 62 C55 68 58 70 60 70 Z" fill="var(--vang)"/></svg>
+        <div class="bignum">4</div>
+        <p>ngày liên tiếp</p>
+        <div class="wk" aria-label="Đã học T2 đến T5">
+          <span class="on">T2<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span class="on">T3<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span class="on">T4<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span class="on">T5<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span>T6<i></i></span><span>T7<i></i></span><span>CN<i></i></span>
+        </div>
+        <p class="why">Quên thì Mực nhắc tối mai.</p>
+      </div>
+    </section>
+
+    <!-- outside the app -->
+    <section class="step" data-kind="notif">
+      <div class="phone" aria-label="Thông báo màn khóa">
+        <div class="clock">21:30</div>
+        <div class="date">Thứ Sáu, 13 tháng 11</div>
+        <div class="note"><img src="../apps/app/public/icons/icon-192.png" alt=""><div><b>Mentor <small>bây giờ</small></b><p>Em chưa học hôm nay. 5 phút giữ chuỗi 4 ngày.</p></div></div>
+        <div class="note"><img src="../apps/app/public/icons/icon-192.png" alt=""><div><b>Mentor <small>19:30</small></b><p>15 phút Đường sức điện nhé?</p></div></div>
+      </div>
+      <details class="why"><summary>Quy tắc nhắc</summary>Tối đa 3 lời nhắc mỗi ngày, không nhắc giờ ngủ; bị lờ 4 lần thì nhắc thưa lại.</details>
+    </section>
+  </main>
+
+  <footer class="lfoot" id="foot">
+    <div class="fb" id="fb" role="status" aria-live="polite"><h3 id="fbh"></h3><p id="fbp"></p></div>
+    <button class="go" id="go" type="button">Tiếp tục</button>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const steps = [...document.querySelectorAll(".step")];
+  const go = document.getElementById("go"), foot = document.getElementById("foot");
+  const fbh = document.getElementById("fbh"), fbp = document.getElementById("fbp"), bar = document.getElementById("bar");
+  const comboEl = document.getElementById("combo");
+  const TASKS = 7; // steps 2..8 are tasks (the diagram and the recall count too)
+  const EXPLAIN = {
+    1: { ok: "Trái dấu thì hút.", no: "Đáp án B: trái dấu thì hút." },
+    2: { ok: "Mẫu là r².", no: "Mẫu là r²." },
+    4: { ok: "Đề, công thức, số, kết quả.", no: "Đề, công thức, số, kết quả." },
+    5: { ok: "E = k·|q| / r² = 18 000 V/m.", no: "0,1² = 0,01, nên E = 18 000 V/m." },
+  };
+  let i = 0, checked = false, right = 0, wrong = 0, combo = 0, choice = null;
+
+  const kind = () => steps[i].dataset.kind;
+  const paintBar = () => {
+    const done = Math.min(TASKS + 1, i);
+    bar.style.width = Math.max(4, (done / (TASKS + 1)) * 100) + "%";
+    bar.parentElement.setAttribute("aria-valuenow", String(done));
+  };
+  function show(n) {
+    // primary school: a shorter lesson (Mực explains, one picture task), then straight to the end
+    // (the drag step is the simple apples version for them); university skips the diagram
+    if (document.documentElement.dataset.age === "tieu-hoc" && n >= 2 && n <= 5) n = 6;
+    if (document.documentElement.dataset.age === "dai-hoc" && n === 6) n = 7;
+    i = Math.max(0, Math.min(steps.length - 1, n));
+    steps.forEach((s, k) => s.classList.toggle("on", k === i));
+    checked = false; choice = null;
+    foot.className = "lfoot";
+    const k = kind();
+    go.textContent = k === "read" || k === "end" || k === "drag" ? "Tiếp tục" : k === "recall" ? "Xem ý đúng" : k === "streak" ? "Giữ chuỗi" : k === "notif" ? (new URLSearchParams(location.search).get("from") === "khoa" ? "Về khóa học" : "Về Hôm nay") : "Kiểm tra";
+    go.disabled = ["pick", "tiles", "order", "drag"].includes(k);
+    if (k === "pairs") go.disabled = true;
+    if (k === "drag") initDrag();
+    if (k === "recall") initRecall();
+    document.querySelector(".lfoot").hidden = false;
+    if (k === "end") {
+      document.getElementById("acc").textContent = `${right}/${right + wrong || TASKS}`;
+      document.getElementById("redo").textContent = `${wrong} câu`;
+    }
+    paintBar();
+    window.scrollTo(0, 0);
+  }
+
+  // pick: one option
+  document.querySelectorAll(".step[data-kind=pick] .pic").forEach((b) => b.addEventListener("click", () => {
+    if (checked) return;
+    b.closest(".pics").querySelectorAll(".pic").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    choice = b.dataset.v; go.disabled = false;
+  }));
+  // tiles: tap moves a tile into the gap (or back)
+  document.querySelectorAll(".step[data-kind=tiles] .bank .tile").forEach((t) => t.addEventListener("click", () => {
+    if (checked) return;
+    const slots = t.closest(".step").querySelector(".slots:not([hidden])");
+    const gap = slots.querySelector("[data-gap]");
+    if (!gap || gap.querySelector(".tile")) return;
+    const placed = t.cloneNode(true);
+    gap.replaceWith(placed);
+    t.classList.add("used");
+    placed.addEventListener("click", () => {
+      if (checked) return;
+      const g = document.createElement("span"); g.className = "gap"; g.dataset.gap = "";
+      placed.replaceWith(g); t.classList.remove("used"); choice = null; go.disabled = true;
+    });
+    choice = placed.textContent.trim(); go.disabled = false;
+  }));
+  // order: tap steps in order
+  const ord = document.getElementById("ord");
+  document.querySelectorAll(".step[data-kind=order] .bank .tile").forEach((t) => t.addEventListener("click", () => {
+    if (checked || t.classList.contains("used")) return;
+    const c = t.cloneNode(true); ord.append(c); t.classList.add("used");
+    c.addEventListener("click", () => { if (checked) return; c.remove(); t.classList.remove("used"); choice = [...ord.children].map((x) => x.dataset.o).join(""); go.disabled = ord.children.length < 4; });
+    choice = [...ord.children].map((x) => x.dataset.o).join(""); go.disabled = ord.children.length < 4;
+  }));
+  // pairs: tap one on the left, then its match on the right
+  let left = null, pairsDone = 0;
+  document.querySelectorAll("#pairs .tile").forEach((t) => t.addEventListener("click", () => {
+    if (t.classList.contains("done")) return;
+    if (t.dataset.l) { document.querySelectorAll("#pairs [data-l]").forEach((x) => x.setAttribute("aria-pressed", String(x === t))); left = t; return; }
+    if (!left) return;
+    if (left.dataset.l === t.dataset.r) {
+      left.classList.add("done"); t.classList.add("done"); left.removeAttribute("aria-pressed"); left = null; pairsDone++;
+      if (pairsDone === 3) { right++; combo++; feedback(true, "Đúng cả ba."); }
+    } else {
+      wrong++; combo = 0; paintCombo();
+      [left, t].forEach((x) => { x.classList.remove("shake"); void x.offsetWidth; x.classList.add("shake"); });
+    }
+  }));
+
+  function paintCombo() { comboEl.hidden = combo < 3; comboEl.textContent = combo >= 3 ? `${combo} đúng liền` : ""; }
+  function feedback(ok, text) {
+    checked = true;
+    foot.className = "lfoot " + (ok ? "ok" : "no");
+    fbh.innerHTML = window.mentorIcon(ok ? "check" : "x") + (ok ? (combo >= 3 ? "Xuất sắc!" : "Chính xác!") : "Chưa đúng");
+    fbp.textContent = text;
+    go.textContent = "Tiếp tục"; go.disabled = false;
+    paintCombo();
+  }
+  function check() {
+    const st = steps[i], ans = st.dataset.answer;
+    let ok;
+    if (kind() === "pick") {
+      ok = choice === ans;
+      st.querySelectorAll(".pics:not([hidden]) .pic").forEach((x) => { if (x.dataset.v === ans) x.classList.add("right"); else if (x.dataset.v === choice) x.classList.add("wrong"); });
+    } else if (kind() === "tiles") {
+      const want = root.dataset.age === "dai-hoc" ? "n − k" : ans;
+      ok = choice === want;
+      st.querySelector(".slots:not([hidden])").classList.add(ok ? "right" : "wrong");
+    } else if (kind() === "order") {
+      ok = choice === ans; ord.classList.add(ok ? "right" : "wrong");
+    }
+    ok ? (right++, combo++) : (wrong++, combo = 0);
+    const e = EXPLAIN[i] || { ok: "Đúng rồi.", no: "Xem lại nhé." };
+    const kidText = root.dataset.age === "tieu-hoc" && i === 1 ? (ok ? "Đúng, 5 quả!" : "Giỏ thứ hai có 5 quả.") : null;
+    const uniText = root.dataset.age === "dai-hoc" && i === 2 ? "Sấp là n − k lần." : null;
+    feedback(ok, kidText || uniText || (ok ? e.ok : e.no));
+  }
+  const root = document.documentElement;
+
+  // ---- drag: THPT diagram (test charge on a line) and the kids' apples ----
+  const fld = document.getElementById("fld"), hnd = document.getElementById("hnd"), fldsay = document.getElementById("fldsay");
+  const X0 = 56, KX = 680; // svg x = X0 + KX * r (r in metres), r from 0.10 to 0.40 m in 0.05 m steps
+  const fmt = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  const fmtR = (cm) => (cm / 100).toFixed(2).replace(".", ",");
+  const eOf = (cm) => 18000 * (10 / cm) ** 2;
+  let rcm = 10, dragWon = false, dragging = false;
+  const ticks = document.getElementById("ticks");
+  for (let c = 10; c <= 40; c += 5) { const x = X0 + KX * c / 100; ticks.insertAdjacentHTML("beforeend", `<line x1="${x}" y1="152" x2="${x}" y2="164"/>`); }
+  const setSay = (t) => { fldsay.textContent = t; };
+  function setR(cm, byUser) {
+    cm = Math.max(10, Math.min(40, Math.round(cm / 5) * 5));
+    const changed = cm !== rcm; rcm = cm;
+    const x = X0 + KX * cm / 100, E = eOf(cm), L = Math.max(12, 100 * E / 18000), s = x + 15, e = s + L;
+    hnd.setAttribute("transform", `translate(${x} 95)`);
+    const arl = document.getElementById("arl"), arh = document.getElementById("arh");
+    arl.setAttribute("x1", s); arl.setAttribute("x2", e - 9);
+    arh.setAttribute("points", `${e},95 ${e - 11},88 ${e - 11},102`);
+    document.getElementById("dim").setAttribute("x2", x);
+    const dt = document.getElementById("dimt"); dt.setAttribute("x", (X0 + x) / 2); dt.textContent = `r = ${fmtR(cm)} m`;
+    document.getElementById("rv").textContent = fmtR(cm); document.getElementById("ev").textContent = fmt(E);
+    hnd.setAttribute("aria-valuenow", cm); hnd.setAttribute("aria-valuetext", `r = ${fmtR(cm)} m, E = ${fmt(E)} V/m`);
+    if (!byUser || !changed) return;
+    fld.classList.remove("hint");
+    if (cm === 20) {
+      setSay("Đúng! Xa gấp đôi thì E còn 1/4.");
+      if (!dragWon) { dragWon = true; right++; combo++; feedback(true, ""); }
+    } else if (cm < 20) setSay(cm === 10 ? "Kéo điện tích thử ra xa q." : "Gần hơn thì E mạnh hơn. Xa thêm chút.");
+    else setSay("Xa quá, E nhỏ hơn 1/4. Kéo gần lại.");
+  }
+  const svgX = (ev) => { const r = fld.getBoundingClientRect(); return (ev.clientX - r.left) * 360 / r.width; };
+  const moveTo = (ev) => setR((svgX(ev) - X0) / KX * 100, true);
+  fld.addEventListener("pointerdown", (ev) => { dragging = true; fld.setPointerCapture(ev.pointerId); hnd.focus({ preventScroll: true }); moveTo(ev); ev.preventDefault(); });
+  fld.addEventListener("pointermove", (ev) => { if (dragging) moveTo(ev); });
+  ["pointerup", "pointercancel"].forEach((n) => fld.addEventListener(n, () => { dragging = false; }));
+  hnd.addEventListener("keydown", (ev) => {
+    const d = { ArrowRight: 5, ArrowUp: 5, ArrowLeft: -5, ArrowDown: -5 }[ev.key];
+    if (d) { setR(rcm + d, true); ev.preventDefault(); }
+    else if (ev.key === "Home") { setR(10, true); ev.preventDefault(); }
+    else if (ev.key === "End") { setR(40, true); ev.preventDefault(); }
+  });
+  // kids: drag an apple into the basket (or tap / Enter); tap an apple in the basket to take it out
+  const grd = document.getElementById("grd"), bkin = document.getElementById("bkin"), bsk = document.getElementById("bsk");
+  const apples = [...grd.querySelectorAll(".apple")];
+  let basketWon = false, suppress = false;
+  const count = () => 3 + bkin.querySelectorAll(".apple").length;
+  function paintBasket(byUser) {
+    const n = count();
+    document.getElementById("bcount").textContent = n;
+    if (!byUser) return;
+    if (n === 5) {
+      setSay("Đúng! 3 và 2 là 5.");
+      if (!basketWon) { basketWon = true; right++; combo++; feedback(true, "3 và 2 là 5."); }
+    } else setSay(n < 5 ? "Thêm táo vào giỏ nhé." : "Nhiều quá. Bỏ bớt một quả.");
+  }
+  apples.forEach((a) => {
+    let sx = 0, sy = 0, moved = false, pid = null;
+    a.addEventListener("pointerdown", (ev) => { pid = ev.pointerId; a.setPointerCapture(pid); sx = ev.clientX; sy = ev.clientY; moved = false; });
+    a.addEventListener("pointermove", (ev) => {
+      if (pid !== ev.pointerId) return;
+      const dx = ev.clientX - sx, dy = ev.clientY - sy;
+      if (!moved && Math.hypot(dx, dy) < 8) return;
+      moved = true; a.classList.add("drag"); a.style.transform = `translate(${dx}px, ${dy}px)`;
+      const r = bsk.getBoundingClientRect(); bsk.classList.toggle("over", ev.clientX > r.left && ev.clientX < r.right && ev.clientY > r.top - 20 && ev.clientY < r.bottom);
+    });
+    const end = (ev) => {
+      if (pid !== ev.pointerId) return;
+      pid = null; a.classList.remove("drag"); a.style.transform = "";
+      if (moved) {
+        suppress = true; setTimeout(() => { suppress = false; }, 0);
+        const r = bsk.getBoundingClientRect(), inside = ev.clientX > r.left && ev.clientX < r.right && ev.clientY > r.top - 20 && ev.clientY < r.bottom;
+        (inside ? bkin : grd).append(a); paintBasket(true);
+      }
+      bsk.classList.remove("over");
+    };
+    a.addEventListener("pointerup", end); a.addEventListener("pointercancel", end);
+    a.addEventListener("click", () => {
+      if (suppress) return;
+      (a.parentElement === grd ? bkin : grd).append(a); paintBasket(true);
+    });
+  });
+  function initDrag() {
+    dragWon = false; basketWon = false;
+    if (root.dataset.age === "tieu-hoc") { apples.forEach((a) => grd.append(a)); paintBasket(false); setSay("Cho đủ 5 quả táo nhé!"); }
+    else { rcm = 0; setR(10, false); fld.classList.add("hint"); setSay("Kéo điện tích thử ra xa q."); }
+  }
+
+  // ---- recall: no choices; say it or type it, see the idea, mark it ----
+  const APPLE = '<g><circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></g>';
+  const applesPic = (n) => `<svg viewBox="0 0 ${n * 44} 44" width="${n * 44}" height="44" aria-hidden="true" style="max-width:100%;height:auto">${Array.from({ length: n }, (_, k) => `<g transform="translate(${k * 44 + 2} 2) scale(1)">${APPLE}</g>`).join("")}</svg>`;
+  const RECALL = {
+    thpt: [
+      { q: "Quanh điện tích có gì?", a: "Điện trường", say: "Điện trường" },
+      { q: "Công thức của E?", a: "E = k·|q| / r²", say: "E bằng k nhân q chia r bình" },
+      { q: "Xa gấp đôi, E thế nào?", a: "Còn 1/4", say: "Giảm một nửa" },
+    ],
+    "tieu-hoc": [
+      { pic: applesPic(5), q: "Mấy quả táo?", a: "5 quả", say: "Năm quả" },
+      { pic: applesPic(4), q: "Còn đây?", a: "4 quả", say: "Bốn quả" },
+    ],
+    "dai-hoc": [
+      { q: "Bayes: hậu nghiệm ∝ ?", a: "Hợp lý × tiên nghiệm", say: "Hợp lý nhân tiên nghiệm" },
+      { q: "Beta(α, β) sau k ngửa / n lần?", a: "Beta(α + k, β + n − k)", say: "Beta α cộng k, β cộng n trừ k" },
+    ],
+  };
+  const rcEl = (id) => document.getElementById(id);
+  let rc = [], rn = 0, rstate = "ask", micTimer = null;
+  function renderRecall() {
+    const c = rc[rn];
+    rcEl("rcn").textContent = `${rn + 1}/${rc.length}`; rcEl("rcq").textContent = c.q;
+    const pic = rcEl("rcpic"); pic.hidden = !c.pic; pic.innerHTML = c.pic || "";
+    rcEl("rctext").value = ""; rcEl("rcheard").textContent = "";
+    clearTimeout(micTimer); rcEl("rcmic").setAttribute("aria-pressed", "false");
+    rcEl("rcin").hidden = false; rcEl("rcans").hidden = true; rcEl("rcmark").hidden = true;
+    foot.className = "lfoot"; go.textContent = "Xem ý đúng"; go.disabled = false; rstate = "ask";
+  }
+  function initRecall() { rc = RECALL[root.dataset.age] || RECALL.thpt; rn = 0; renderRecall(); }
+  rcEl("rcmic").addEventListener("click", (ev) => {
+    const m = ev.currentTarget;
+    if (m.getAttribute("aria-pressed") === "true") return;
+    m.setAttribute("aria-pressed", "true"); rcEl("rcheard").textContent = "Mực đang nghe…";
+    micTimer = setTimeout(() => { m.setAttribute("aria-pressed", "false"); rcEl("rcheard").textContent = `Em nói: “${rc[rn].say}”`; }, 1400);
+  });
+  rcEl("rcmark").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-m]"); if (!b || rstate !== "reveal") return;
+    const ok = b.dataset.m === "1";
+    ok ? (right++, combo++) : (wrong++, combo = 0);
+    paintCombo();
+    foot.className = "lfoot " + (ok ? "ok" : "no");
+    fbh.innerHTML = window.mentorIcon(ok ? "check" : "x") + (ok ? "Nhớ rồi!" : "Chưa nhớ");
+    fbp.textContent = ok ? "Ý này gặp lại sau 6 ngày." : "Ý này quay lại sau 2 ngày.";
+    rcEl("rcmark").hidden = true; go.textContent = "Tiếp tục"; go.disabled = false; rstate = "marked";
+  });
+  function recallGo() {
+    if (rstate === "ask") {
+      rcEl("rca").textContent = rc[rn].a; rcEl("rcans").hidden = false; rcEl("rcin").hidden = true; rcEl("rcmark").hidden = false;
+      go.textContent = "Nhớ hay chưa?"; go.disabled = true; rstate = "reveal";
+    } else if (rstate === "marked") {
+      if (rn + 1 < rc.length) { rn++; renderRecall(); window.scrollTo(0, 0); } else show(i + 1);
+    }
+  }
+  // English course: "VI" shows the Vietnamese meaning inline
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".vibtn"); if (!b) return;
+    const vi = b.parentElement.querySelector(".vi"), on = vi.hidden;
+    vi.hidden = !on; b.setAttribute("aria-pressed", String(on));
+  });
+  document.addEventListener("mock:change", (e) => { if (e.detail.key === "course") show(0); });
+  window.mockSet && window.mockSet("course", "vat-li");
+
+  go.addEventListener("click", () => {
+    const k = kind();
+    if (k === "notif") return leave();
+    if (k === "recall") return recallGo();
+    if (["pick", "tiles", "order"].includes(k) && !checked) return check();
+    show(i + 1);
+  });
+  document.addEventListener("click", (e) => { const j = e.target.closest("[data-jump]"); if (j) show(Number(j.dataset.jump)); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Enter" && !go.disabled && document.activeElement?.tagName !== "BUTTON") go.click(); });
+  // ?mode=practice (from a course's level ladder or Mực's "10 câu ôn"): only the tasks, no explanation step
+  const practice = new URLSearchParams(location.search).get("mode") === "practice";
+  if (practice) document.title = "Luyện tập từng bước";
+  show(practice ? 1 : 0);
+})();
+// back to the screen the lesson was opened from (Today or the course page); Today when opened directly
+function leave() {
+  mockReturn(new URLSearchParams(location.search).get("from") === "khoa" ? "hs-04-khoa-hoc.html" : "hs-03-hom-nay.html");
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { practice, PracticeError, type PHome, type PSession, type StartSource } from "../../api";
 import { useAuth } from "../../state/auth";
@@ -10,15 +10,19 @@ import { answeredCount, clockText, fmtScore10, initialRemaining, unfinished } fr
 import { CourseCover } from "../courses/common";
 import { Dialog } from "./Dialog";
 
+const BACK = { back: "/luyen-tap" };
+
 type State = { s: "loading" } | { s: "error" } | { s: "ready"; home: PHome; active: PSession | null };
 
-/** hs-07: quick practice, mock exams, by course. Only the back button on top (sessions are focus screens). */
+/** hs-06: quick practice, mock exams, tests. Runs opened from here return here (state.back). */
 export function Practice() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language === "en" ? "en" : "vi";
   const { token, user } = useAuth();
   const kid = user?.age_band === "g1_5";
   const nav = useNavigate();
+  const [params] = useSearchParams();
+  const notes = params.get("notes");
   const [st, setSt] = useState<State>({ s: "loading" });
   const [attempt, setAttempt] = useState(0);
   const [starting, setStarting] = useState<string | null>(null);
@@ -38,6 +42,19 @@ export function Practice() {
     };
   }, [token, attempt]);
 
+  // a notes review reminder lands here as `/luyen-tap?notes=<id>`: go straight into that session
+  useEffect(() => {
+    if (!token || !notes) return;
+    practice.start(token, { source: `notes:${notes}` }).then(
+      (s) => nav(`/luyen-tap/${encodeURIComponent(s.id)}`, { replace: true, state: { back: "/" } }),
+      (e) => {
+        if (e instanceof PracticeError && e.code === "active_session" && typeof e.body.session_id === "string") nav(`/luyen-tap/${encodeURIComponent(e.body.session_id)}`, { replace: true, state: { back: "/" } });
+        else nav("/luyen-tap", { replace: true });
+      },
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token, notes]);
+
   const start = useCallback(
     async (source: StartSource, seed?: string | number) => {
       if (!token || starting) return;
@@ -46,9 +63,9 @@ export function Practice() {
       setConfirm(null);
       try {
         const s = await practice.start(token, { source, ...(seed !== undefined ? { seed } : {}) });
-        nav(`/luyen-tap/${encodeURIComponent(s.id)}`);
+        nav(`/luyen-tap/${encodeURIComponent(s.id)}`, { state: BACK });
       } catch (e) {
-        if (e instanceof PracticeError && e.code === "active_session" && typeof e.body.session_id === "string") nav(`/luyen-tap/${encodeURIComponent(e.body.session_id)}`);
+        if (e instanceof PracticeError && e.code === "active_session" && typeof e.body.session_id === "string") nav(`/luyen-tap/${encodeURIComponent(e.body.session_id)}`, { state: BACK });
         else if (e instanceof PracticeError && e.code === "insufficient_content") setError("insufficient");
         else setError("failed");
         setStarting(null);
@@ -91,7 +108,7 @@ export function Practice() {
                   : t("practice.resumeBody", { done: answeredCount(active), total: active.items.length })}
               </p>
             </div>
-            <Link className="btn btn-primary" to={`/luyen-tap/${encodeURIComponent(active.id)}`}>
+            <Link className="btn btn-primary" to={`/luyen-tap/${encodeURIComponent(active.id)}`} state={BACK}>
               {t("practice.resumeBtn")}
             </Link>
           </section>
@@ -106,7 +123,7 @@ export function Practice() {
                   {t(kid ? "practice.insufficientKid" : "practice.insufficient")}
                 </p>
                 <p>
-                  <Link className={`btn btn-primary ${kid ? "btn-big" : ""}`} to="/khoa-hoc">
+                  <Link className={`btn btn-primary ${kid ? "btn-big" : ""}`} to="/khoa-hoc/tim-kiem">
                     {t("practice.goCourses")}
                   </Link>
                 </p>
@@ -114,8 +131,8 @@ export function Practice() {
             ) : (
               <>
                 {kid && <img className="quick-pic" src={quickArt} alt="" />}
-                <h2>{t(kid ? "practice.quickTitleKid" : "practice.quickTitle", { n: quick.count, minutes: quick.minutes })}</h2>
-                <p className="muted">{t(kid ? "practice.quickBodyKid" : "practice.quickBody")}</p>
+                <h2>{t(kid ? "practice.quickTitleKid" : "practice.quickTitle", { n: quick.count })}</h2>
+                {kid ? <p className="muted">{t("practice.quickBodyKid")}</p> : <p className="muted">{t("practice.quickMinutes", { minutes: quick.minutes })}</p>}
                 {!kid && quick.from.length > 0 && (
                   <div className="mix">
                     {quick.from.map((f, i) => (
@@ -140,7 +157,7 @@ export function Practice() {
             )}
             {error === "insufficient" && !empty && (
               <p className="note" role="alert">
-                {t(kid ? "practice.insufficientKid" : "practice.insufficient")} <Link to="/khoa-hoc">{t("practice.goCourses")}</Link>
+                {t(kid ? "practice.insufficientKid" : "practice.insufficient")} <Link to="/khoa-hoc/tim-kiem">{t("practice.goCourses")}</Link>
               </p>
             )}
           </section>
@@ -162,7 +179,8 @@ export function Practice() {
                   <div>
                     <h3>{m.title}</h3>
                     <p>
-                      {t("practice.mockMeta", { minutes: m.minutes, items: m.items })}. {m.last_score != null ? t("practice.mockLast", { score: fmtScore10(m.last_score, lang) }) : t("practice.mockNew")}
+                      {t("practice.mockMeta", { minutes: m.minutes, items: m.items })}
+                      {m.last_score != null ? ` · ${t("practice.mockLast", { score: fmtScore10(m.last_score, lang) })}` : ""}
                     </p>
                   </div>
                   <button className="btn btn-ghost" type="button" disabled={!!starting} onClick={() => setConfirm(m)}>
@@ -190,7 +208,7 @@ export function Practice() {
                     </span>
                     <div>
                       <h3>{c.title}</h3>
-                      <p>{t("practice.courseMeta", { range: c.lessons_range, n: c.items })}</p>
+                      <p>{t("practice.courseMeta", { n: c.items })}</p>
                     </div>
                     <button className="btn btn-quiet" type="button" disabled={!!starting} onClick={() => void start(`course:${c.course_id}`)}>
                       {t("practice.practiceBtn")}

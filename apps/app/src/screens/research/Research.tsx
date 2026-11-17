@@ -18,7 +18,7 @@ type Load = { status: "loading" } | { status: "error"; code: string } | { status
 /** Mentor looks for papers in the background; the overview is read again until it is done. */
 const WATCH_MS = 3000;
 
-/** hs-11: the research home, four chapters in tabs (Reading, Schedule, Experiments, Topic). The states are worked out from one GET /research. */
+/** hs-09: the research home, four chapters in tabs (Reading, Schedule, Experiments, Topic). The states are worked out from one GET /research. */
 export default function Research() {
   const { t } = useTranslation();
   const { token } = useAuth();
@@ -126,10 +126,28 @@ export default function Research() {
                 schedule: <Upcoming items={data.upcoming} onChanged={() => void load()} />,
                 experiments: <ExperimentLog items={data.experiments} onChanged={() => void load()} />,
                 topic: (
-                  <>
-                    <TopicCard profile={data.profile} onChanged={() => void load()} />
-                    {data.milestones.length > 0 && <Milestones items={data.milestones} goalId={data.goal_id} />}
-                  </>
+                  <div className="rs-tree">
+                    <details className="rs-grp" open>
+                      <summary className="rs-node">
+                        <Icon name="chev" />
+                        <span className="rs-nt">{t("research.topic.eyebrow")}</span>
+                      </summary>
+                      <div className="rs-kids">
+                        <TopicCard profile={data.profile} onChanged={() => void load()} />
+                      </div>
+                    </details>
+                    {data.milestones.length > 0 && (
+                      <details className="rs-grp" open>
+                        <summary className="rs-node">
+                          <Icon name="chev" />
+                          <span className="rs-nt">{t("research.milestones.title")}</span>
+                        </summary>
+                        <div className="rs-kids">
+                          <Milestones items={data.milestones} goalId={data.goal_id} />
+                        </div>
+                      </details>
+                    )}
+                  </div>
                 ),
               }}
             />

@@ -12,7 +12,7 @@ export function Hero({ hero }: { hero: ReadNext }) {
   const { t } = useTranslation();
   const tag = hero.status === "reading" ? t("research.status.reading") : hero.status === "read" ? t("research.status.read") : t("research.status.new");
   return (
-    <section className="rs-today oli rs-hero" data-guide="research-hero" data-guide-label={t("research.hero.keep")}>
+    <section className="rs-hero" data-guide="research-hero" data-guide-label={t("research.hero.keep")}>
       <div className="rs-top">
         <span className={STATUS_TAG[hero.status]}>{tag}</span>
         {hero.minutes_spent > 0 && <span className="muted small">{t("research.hero.minutes", { count: hero.minutes_spent })}</span>}
@@ -69,7 +69,6 @@ export function ReadList({ items, suggestions, searching, onChanged }: { items: 
     <section className="rs-papers-col" data-guide="research-reading" data-guide-label={t("research.reading.title")}>
       <div className="rs-sec-head">
         <h2 className="rs-s">{t("research.reading.title")}</h2>
-        <span className="muted small">{t("research.reading.weekly")}</span>
         <span className="rs-grow" />
         <button className="btn btn-quiet rs-mini" type="button" aria-expanded={adding} onClick={() => setAdding((a) => !a)}>
           <Icon name="plus" />
@@ -117,7 +116,7 @@ export function ReadList({ items, suggestions, searching, onChanged }: { items: 
         </p>
       )}
       {items.length === 0 && sugg.length === 0 && !searching && <p className="rs-rempty">{t("research.reading.empty")}</p>}
-      <ul className="rs-papers rs-scroller">
+      <ul className="rs-papers">
         {searching && [0, 1].map((i) => (
           <li key={`s${i}`} aria-hidden="true">
             <div className="rs-card rs-pcard rs-skel">

@@ -5,11 +5,10 @@ import { useAuth } from "./state/auth";
 import { needsFirstRun } from "./lib/gate";
 import { Login } from "./screens/Login";
 import { FirstRun } from "./screens/FirstRun";
-import { Hub } from "./screens/Hub";
+import { Today } from "./screens/today/Today";
 import { Progress } from "./screens/Progress";
 import { resolveDeepLink } from "./lib/deeplink";
 import { startBackground, type Background } from "./lib/behaviour";
-import { Courses } from "./screens/courses/Courses";
 import { CourseSearch } from "./screens/courses/CourseSearch";
 import { CourseIntro } from "./screens/courses/CourseIntro";
 
@@ -111,8 +110,8 @@ export function App() {
       <SourceKeysGate>
       <BackgroundWork />
       <Routes>
-        <Route path="/" element={<Hub />} />
-        <Route path="/khoa-hoc" element={<Courses />} />
+        <Route path="/" element={<Today />} />
+        <Route path="/khoa-hoc" element={<Navigate to="/" replace />} />
         <Route path="/khoa-hoc/tim-kiem" element={<CourseSearch />} />
         <Route path="/khoa-hoc/:id" element={<CourseRoute />} />
         <Route

@@ -1,4 +1,4 @@
-/* Hỏi đáp (hs-08): thread, course suggestions, camera, solution, composer. Ported from mockups/hs-08-hoi-bai.html. */
+/* Hỏi đáp (hs-11): thread, course suggestions, camera, solution, composer. Ported from mockups/hs-11-hoi-bai.html. */
 
 .chat-main { flex: 1; width: 100%; max-width: 792px; margin: 0 auto; padding: 28px 16px 220px; display: grid; gap: 26px; align-content: start; }
 
@@ -29,7 +29,7 @@
 .dots i:nth-child(2) { animation-delay: .18s; } .dots i:nth-child(3) { animation-delay: .36s; }
 @keyframes dot { 0%, 100% { opacity: .3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
 .msg-note { display: grid; gap: 10px; }
-/* waiting for a solve (hs-08): stage label, step 1/2, a time-based bar */
+/* waiting for a solve (hs-11): stage label, step 1/2, a time-based bar */
 .solve-wait { display: grid; gap: 8px; max-width: 360px; color: var(--ink-2); }
 .solve-wait .sw-label { display: flex; justify-content: space-between; gap: 12px; margin: 0; }
 .solve-wait .sw-step { font-size: .85em; font-variant-numeric: tabular-nums; }
@@ -79,12 +79,12 @@
 .choice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; align-items: start; padding: 14px 16px; border-radius: var(--r-md); border: 1px solid var(--rule-strong); background: var(--surface); }
 .choice .btn { grid-column: 1 / -1; justify-self: start; }
 .choices { display: grid; gap: 10px; }
-.problem { display: grid; gap: 6px; border-radius: var(--r-md); padding: 14px 18px 14px 64px; border: 1px solid var(--rule-strong); }
+.problem { display: grid; gap: 6px; border-radius: var(--r-md); padding: 12px 16px; border: 1px solid var(--rule-strong); }
 .problem .ask-chip { justify-self: start; }
 .problem .md { font-family: var(--font-read); font-size: 1.05em; }
 .solution { display: grid; gap: 14px; }
 .solve-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
-.solve-steps > li { counter-increment: s; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; padding: 16px 18px; border-radius: var(--r-md); background: var(--surface); box-shadow: var(--shadow); }
+.solve-steps > li { counter-increment: s; display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 12px 14px; border-radius: var(--r-md); background: var(--surface); box-shadow: var(--shadow); }
 .solve-steps > li::before { content: counter(s); width: 32px; height: 32px; border-radius: 10px; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; font-weight: 700; }
 .solve-steps .m { font-family: var(--font-read); font-size: 1.05em; margin-top: 6px; overflow-x: auto; }
 .solve-steps > li.locked { background: transparent; box-shadow: none; border: 2px dashed var(--rule-strong); color: var(--ink-2); }
@@ -139,6 +139,10 @@
 .sheet-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .sheet-body h3 { font-size: 1em; margin-bottom: 6px; }
 .sheet-foot { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px 20px calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--rule); }
+.intro { color: var(--ink-2); font-size: .9em; }
+.intro summary { cursor: pointer; min-height: 40px; display: flex; align-items: center; }
+.intro .about { margin-top: 6px; }
+.more-link { justify-self: start; display: inline-flex; align-items: center; min-height: 40px; color: var(--tim-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .ask-sheet .tree details { border-bottom: 1px solid var(--rule); }
 @media (max-width: 720px) {
   .ask-sheet { top: auto; left: 0; width: auto; max-height: min(86vh, calc(100vh - 16px)); border-left: 0; border-top: 1px solid var(--rule-strong); border-radius: 22px 22px 0 0; }

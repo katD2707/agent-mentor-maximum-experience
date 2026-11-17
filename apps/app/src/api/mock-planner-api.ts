@@ -130,7 +130,7 @@ export function makeMockPlannerApi(userOf: (token: string) => User) {
         kind: "study",
         text_vi: `Đến giờ học ${first?.minutes ?? 15} phút nhé. Mentor đã mở sẵn đúng chỗ em dừng.`,
         text_en: `Time for ${first?.minutes ?? 15} minutes. Mentor has your place ready.`,
-        deep_link: first?.deep_link ?? "/khoa-hoc",
+        deep_link: first?.deep_link ?? "/",
         status: "scheduled",
         outcome: (readJson<Record<string, string>>(outcomeKey(t), {})["mock-r1"] as Reminder["outcome"]) ?? null,
       },
@@ -139,7 +139,8 @@ export function makeMockPlannerApi(userOf: (token: string) => User) {
 
   const status = (p: number): GoalStatus => (p >= 100 ? "on_track" : "new");
 
-  const planApi: Pick<Api, "getToday" | "getWeekPlan" | "listGoals" | "createGoal" | "patchGoal" | "deleteGoal" | "getReminders" | "reminderOutcome" | "postEvents" | "vapidPublicKey" | "pushSubscribe"> = {
+  const laterKey = (t: string) => `mentor.mock.later.${userOf(t).id}`;
+  const planApi: Pick<Api, "getToday" | "getWeekPlan" | "listGoals" | "createGoal" | "patchGoal" | "deleteGoal" | "getReminders" | "reminderOutcome" | "remindLater" | "postEvents" | "vapidPublicKey" | "pushSubscribe"> = {
     async getToday(token) {
       await delay();
       const u = userOf(token);
@@ -175,6 +176,8 @@ export function makeMockPlannerApi(userOf: (token: string) => User) {
         },
         today,
         week: { done: 3, planned: 5 },
+        streak: { days: 3, today_done: false },
+        reminders_backoff: false,
         due_review_count: 4,
         quiet_until: u.quiet_until,
         plan_source: "fallback",
@@ -247,7 +250,26 @@ export function makeMockPlannerApi(userOf: (token: string) => User) {
       await delay();
       const u = userOf(token);
       const brk = u.age_band === "g1_5" ? 15 : u.age_band === "g6_9" ? 25 : u.age_band === "uni" ? 50 : 40;
-      return { now: new Date().toISOString(), quiet_until: u.quiet_until, break_after_minutes: brk, reminders: reminders(token) };
+      return { now: new Date().toISOString(), quiet_until: u.quiet_until, break_after_minutes: brk, reminders: [...reminders(token), ...readJson<Reminder[]>(laterKey(token), [])] };
+    },
+    async remindLater(token, body) {
+      await delay();
+      const at = new Date(body.at);
+      const h = at.getHours();
+      if (at.getTime() < Date.now() + 5 * 60000 || at.getTime() > Date.now() + 48 * 3600000) throw new ApiError(422, "bad_time");
+      if (h >= 22 || h < 6) throw new ApiError(422, "bedtime");
+      const r: Reminder = {
+        id: `mock-later-${Date.now()}`,
+        at: at.toISOString(),
+        kind: "later",
+        text_vi: `Tới giờ hẹn rồi: ${body.title_vi || "bài học"}. Mực để sẵn bài cho em.`,
+        text_en: `It's the time you picked: ${body.title_en || body.title_vi || "your lesson"}. Your lesson is ready.`,
+        deep_link: body.deep_link || "/",
+        status: "scheduled",
+        outcome: null,
+      };
+      writeJson(laterKey(token), [...readJson<Reminder[]>(laterKey(token), []).slice(-1), r]);
+      return r;
     },
     async reminderOutcome(token, id, outcome) {
       const m = readJson<Record<string, string>>(outcomeKey(token), {});

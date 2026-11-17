@@ -26,7 +26,8 @@ from mentor_gateway.practice.bank import _LEVEL_MIDPOINT, Bank, Item
 log = logging.getLogger(__name__)
 
 SEPARATOR = ":"
-_BASE_SECONDS = {"SINGLE_CHOICE": 40, "PICTURE_CHOICE": 25, "TAP_COUNT": 25, "TRUE_FALSE_GROUP": 120, "SHORT_ANSWER": 75}
+_BASE_SECONDS = {"SINGLE_CHOICE": 40, "PICTURE_CHOICE": 25, "TAP_COUNT": 25, "TRUE_FALSE_GROUP": 120, "SHORT_ANSWER": 75,
+                 "FILL_TILES": 50, "MATCH_PAIRS": 60, "ORDER_STEPS": 60}
 _COURSE_QUALITY = 0.9
 
 
@@ -79,6 +80,8 @@ def quiz_to_item(q: QuizItem, *, course_id: str, version: int, course_title: str
         "course": {"course_id": course_id, "version": version, "course_title": course_title, "lesson_id": lesson_id,
                    "lesson_title": lesson_title, "lesson_index": lesson_index, "item_id": q.id},
     }
+    if q.type in ("FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS"):
+        doc["parts"] = [{"id": p.id, "text": p.text, **({"side": p.side} if p.side else {})} for p in q.parts]
     if q.type == "SHORT_ANSWER":
         doc["short_answer"] = {"accepted": [str(a) for a in key["accepted"]], "tolerance": key.get("tolerance")}
     if q.type == "TAP_COUNT" and q.tap is not None:

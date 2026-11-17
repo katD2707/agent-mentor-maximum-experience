@@ -37,7 +37,14 @@ def ask_json(client: ModelClient, system: str, user: str, *, alias: ModelAlias =
     msgs: list[dict[str, Any]] = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     last = ""
     for _ in range(retries + 1):
-        raw = client.complete(alias, msgs, max_tokens=max_tokens, temperature=temperature)
+        try:
+            raw = client.complete(alias, msgs, max_tokens=max_tokens, temperature=temperature)
+        except ModelError as exc:
+            # a reasoning model can spend the whole budget thinking and return nothing: ask again
+            if "empty model reply" not in str(exc):
+                raise
+            last = str(exc)
+            continue
         try:
             return parse_model_json(raw)
         except ValueError as exc:
@@ -86,11 +93,11 @@ def pages_block(pages: list[tuple[str, str]], max_chars: int = 60000) -> str:
 AGE_RULES: dict[str, dict[str, Any]] = {
     "g1_5": {"max_sentence_words": 9, "max_text_chars": 160, "max_blocks": 10, "quiz_items": 3,
              "label": "primary school (grades 1-5)"},
-    "g6_9": {"max_sentence_words": 16, "max_text_chars": 600, "max_blocks": 9, "quiz_items": 3,
+    "g6_9": {"max_sentence_words": 16, "max_text_chars": 320, "max_blocks": 14, "quiz_items": 5,
              "label": "lower secondary (grades 6-9)"},
-    "g10_12": {"max_sentence_words": 24, "max_text_chars": 900, "max_blocks": 9, "quiz_items": 4,
+    "g10_12": {"max_sentence_words": 24, "max_text_chars": 420, "max_blocks": 14, "quiz_items": 6,
                "label": "upper secondary (grades 10-12)"},
-    "uni": {"max_sentence_words": 40, "max_text_chars": 3500, "max_blocks": 10, "quiz_items": 3,
+    "uni": {"max_sentence_words": 40, "max_text_chars": 900, "max_blocks": 14, "quiz_items": 5,
             "label": "university"},
 }
 

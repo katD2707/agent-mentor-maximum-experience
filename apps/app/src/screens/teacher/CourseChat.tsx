@@ -1,35 +1,31 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { teacherApi, type BuildLesson, type ChatMessage, type Outline, type OutlineOp, type RetakeItem, type TeacherCourseDetail } from "../../api";
+import { teacherApi, type CoursePack, type TeacherTest, type UnsureStep, type BuildState, type Outline, type OutlineOp, type RetakeItem, type TeacherCourseDetail } from "../../api";
 import { useAuth } from "../../state/auth";
 import { Icon } from "../../components/Icon";
-import { applyOutlineOps } from "../../lib/teacher/outline";
-import { onMediaError } from "../../lib/mediaRetry";
-import { buildStateInfo } from "../../lib/teacher/status";
-import { CameraButton, TeacherTop, useLangText } from "./common";
-import { OutlineEditor } from "./OutlineEditor";
+import { applyOutlineOps, lessonCount } from "../../lib/teacher/outline";
+import { courseRoute } from "../../lib/teacher/status";
+import { CameraButton, TeacherTop, useLangText, useToast } from "./common";
+import { OutlineEditor, type TreeMeta } from "./OutlineEditor";
+import { questionsByLevel, stepKind } from "../../lib/teacher/steps";
 import { useTeacherCourses } from "./live";
 
 const EDITABLE = new Set(["needs_retake", "outline_ready"]);
 
-/** The course as a conversation (gv-02): outline to edit in place, unreadable pages, then per-lesson progress. */
+/** gv-02: the outline tree is the page. Unreadable pages above it, a one-line box to tell Mentor what to change, per-lesson progress on the rows while composing. */
 export function CourseChat() {
   const { id = "" } = useParams();
   const { t } = useTranslation();
   const { token } = useAuth();
-  const nav = useNavigate();
   const { refresh: refreshList } = useTeacherCourses();
   const [detail, setDetail] = useState<TeacherCourseDetail | null>(null);
   const [missing, setMissing] = useState(false);
   const [outline, setOutline] = useState<Outline | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [extra, setExtra] = useState<ChatMessage[]>([]);
-  const lang = useLangText();
-  const lt = (vi?: string | null, en?: string | null) => (vi == null ? vi : lang(vi, en || vi));
+  const toast = useToast();
   const queue = useRef<Promise<unknown>>(Promise.resolve());
   const inflight = useRef(0);
-  const end = useRef<HTMLDivElement>(null);
 
   const load = useCallback(async () => {
     if (!token) return;
@@ -49,14 +45,30 @@ export function CourseChat() {
     return () => clearInterval(h);
   }, [load]);
 
-  // the thread follows new messages and the build
-  const n = (detail?.chat.length ?? 0) + extra.length;
-  const building = detail?.status === "building";
-  useEffect(() => {
-    end.current?.scrollIntoView?.({ block: "end", behavior: "smooth" });
-  }, [n, building]);
-
   const editable = !!detail && EDITABLE.has(detail.status);
+
+  // what the built lessons look like (steps, icons, unsure dots), the practice levels and the tests
+  const [pack, setPack] = useState<CoursePack | null>(null);
+  const [unsure, setUnsure] = useState<UnsureStep[]>([]);
+  const [tests, setTests] = useState<TeacherTest[]>([]);
+  const ver = detail?.course.latest_version ?? 0;
+  const built = ver > 0 && !!detail && !EDITABLE.has(detail.status) && detail.status !== "building";
+  useEffect(() => {
+    if (!token || !built) return;
+    void teacherApi.getPack(token, id, ver).then(setPack, () => setPack(null));
+    void teacherApi.getReview(token, id, ver).then(setUnsure, () => setUnsure([]));
+    void teacherApi.listTests(token, id).then(setTests, () => setTests([]));
+  }, [token, id, ver, built]);
+  const meta: TreeMeta | null = useMemo(() => {
+    if (!pack) return built ? { lessons: new Map(), recapMinutes: new Map(), levels: null, tests } : null;
+    const bad = new Set(unsure.map((u) => u.block_id));
+    return {
+      lessons: new Map(pack.chapters.flatMap((c) => c.lessons).map((l) => [l.id, { steps: l.blocks.length, minutes: l.est_minutes, kinds: l.blocks.map(stepKind), unsure: l.blocks.filter((b) => bad.has(b.id)).length }])),
+      recapMinutes: new Map(pack.chapters.filter((c) => c.recap).map((c) => [c.id, Math.max(1, Math.round(c.recap!.duration_s / 60))])),
+      levels: questionsByLevel(pack).map((x) => x.items.length),
+      tests,
+    };
+  }, [pack, unsure, tests, built]);
 
   /** Apply to our copy at once, send in order; on failure show the server's version again. */
   const onOps = (ops: OutlineOp[]) => {
@@ -107,9 +119,9 @@ export function CourseChat() {
     setText("");
     try {
       await queue.current;
-      const msgs = await teacherApi.chat(token, id, v);
-      setExtra((x) => [...x, ...msgs]);
+      await teacherApi.chat(token, id, v);
       await load();
+      toast.show(t("gv.fixed"));
     } catch {
       setError(t("gv.chatFailed"));
       setText(v);
@@ -134,10 +146,17 @@ export function CourseChat() {
     }
   };
 
+  const building = detail?.status === "building";
+  const header = (action?: React.ReactNode) => (
+    <TeacherTop step={2} courseId={id} backTo="/">
+      {action}
+    </TeacherTop>
+  );
+
   if (missing)
     return (
       <div className="app">
-        <TeacherTop back />
+        {header()}
         <main className="main chat-main">
           <p role="alert">{t("gv.notFound")}</p>
         </main>
@@ -146,87 +165,49 @@ export function CourseChat() {
   if (!detail || !outline)
     return (
       <div className="app">
-        <TeacherTop back />
+        {header()}
         <main className="main chat-main">
           <p className="muted" role="status">
             {detail && !detail.outline ? t("gv.readingNow") : t("gv.loading")}
           </p>
-          {detail && !detail.outline && <ReadingNote title={detail.course.title} />}
         </main>
       </div>
     );
 
-  const seen = new Set(detail.chat.map((m) => m.id));
-  const messages = [...detail.chat, ...extra.filter((m) => !seen.has(m.id))];
-  const hasKind = (k: ChatMessage["kind"]) => messages.some((m) => m.kind === k);
   // the gateway lists every lesson as "waiting" as soon as there is an outline: that is not a build yet
   const showBuild = detail.build.lessons.length > 0 && (!editable || detail.build.lessons.some((l) => l.state !== "waiting"));
+  const states = new Map<string, BuildState>(detail.build.lessons.map((l) => [l.id, l.state]));
   const done = detail.build.lessons.filter((l) => l.state === "done").length;
-
-  const outlineNode = <OutlineEditor outline={outline} editable={editable} onOps={onOps} onAdd={onAdd} />;
-  const retakeNode = detail.retake.length > 0 ? <RetakeCards id={id} items={detail.retake} onDone={() => void load()} onError={setError} /> : null;
-  const thread: { key: string; node: React.ReactNode }[] = [];
-  // every outline/retake message of the thread would show the same live editor: only the latest one does
-  const lastOf = (k: ChatMessage["kind"]) => messages.reduce((at, m, i) => (m.kind === k ? i : at), -1);
-  const lastOutline = lastOf("outline");
-  const lastRetake = lastOf("retake");
-  for (const [i, m] of messages.entries()) {
-    if (m.kind === "outline")
-      thread.push({ key: m.id, node: i === lastOutline ? <AgentBubble bare>{outlineNode}</AgentBubble> : <AgentBubble text={lt(m.text, m.text_en)} /> });
-    else if (m.kind === "retake") {
-      if (retakeNode) thread.push({ key: m.id, node: i === lastRetake ? <AgentBubble>{retakeNode}</AgentBubble> : <AgentBubble text={lt(m.text, m.text_en)} /> });
-    } else if (m.kind === "build")
-      thread.push({
-        key: m.id,
-        node: (
-          <AgentBubble text={lt(m.text, m.text_en)}>
-            <BuildProgress lessons={detail.build.lessons} />
-          </AgentBubble>
-        ),
-      });
-    else if (m.role === "teacher") thread.push({ key: m.id, node: <TeacherBubble text={m.text ?? ""} /> });
-    else thread.push({ key: m.id, node: <AgentBubble text={lt(m.text, m.text_en)} /> });
-  }
-  // an outline or retake list the server did not put in the thread still shows, after the messages
-  if (!hasKind("retake") && retakeNode) thread.push({ key: "retake*", node: <AgentBubble>{retakeNode}</AgentBubble> });
-  if (!hasKind("outline")) thread.push({ key: "outline*", node: <AgentBubble bare>{outlineNode}</AgentBubble> });
-  if (showBuild && !hasKind("build")) {
-    thread.push({ key: "me-build", node: <TeacherBubble text={t("gv.composeThis")} /> });
-    thread.push({ key: "build*", node: <AgentBubble text={t("gv.composing", { lessons: detail.build.lessons.length })}><BuildProgress lessons={detail.build.lessons} /></AgentBubble> });
-  }
+  const reviewTo = courseRoute({ id, status: detail.status, latest_version: detail.course.latest_version || 1 });
+  const action = editable ? (
+    <button type="button" className="btn btn-primary act" id="go" onClick={() => void compose()} disabled={starting} data-guide="gv-go" data-guide-label={t("gv.composeBtn")}>
+      {t("gv.composeBtn")}
+    </button>
+  ) : building ? (
+    <button type="button" className="btn btn-primary act" id="go" aria-disabled="true" data-guide="gv-go" data-guide-label={t("gv.composingBtn")}>
+      {t("gv.composingBtn")}
+    </button>
+  ) : reviewTo?.includes("/duyet") ? (
+    <Link className="btn btn-primary act" to={reviewTo}>
+      {t("teacher.step3")}
+    </Link>
+  ) : null;
 
   return (
     <div className="app">
-      <TeacherTop back />
+      {header(action)}
       <main className="main chat-main">
         <div className="course-head">
           <h1>{outline.title || detail.course.title}</h1>
-          <p className="muted small">{statusLine(detail)}</p>
+          <p className="meta">
+            {t("gv.outlineSummary", { chapters: outline.chapters.length, lessons: lessonCount(outline) })}
+            {showBuild && building && " · " + t("gv.composeProgress", { done, total: detail.build.lessons.length })}
+          </p>
         </div>
 
-        <section className="thread" aria-label={t("gv.threadLabel")} data-guide="gv-thread" data-guide-label={t("gv.threadLabel")}>
-          {thread.map((i) => (
-            <div key={i.key} className="thread-item">
-              {i.node}
-            </div>
-          ))}
-          {detail.status === "review" || detail.status === "published" || detail.status === "revising" ? (
-            <div className="msg">
-              <div className="who">
-                <span className="logo-mark">M</span>Mentor
-              </div>
-              <div className="bubble ready">
-                <p>{t("gv.readyToReview")}</p>
-                <Link className="btn btn-primary" to={`/khoa/${encodeURIComponent(id)}/duyet?v=${detail.course.latest_version || 1}`}>
-                  <span>{t("gv.openReview")}</span>
-                  <Icon name="next" />
-                </Link>
-              </div>
-            </div>
-          ) : null}
-          {building && done < detail.build.lessons.length ? <p className="muted small thread-note">{t("gv.buildTime")}</p> : null}
-          <div ref={end} />
-        </section>
+        {detail.retake.length > 0 && <RetakeRows id={id} items={detail.retake} onDone={() => void load()} onError={setError} />}
+
+        <OutlineEditor meta={meta} outline={outline} editable={editable} states={showBuild ? states : undefined} onOps={onOps} onAdd={onAdd} />
 
         {error && (
           <div className="alert" role="alert">
@@ -248,92 +229,21 @@ export function CourseChat() {
             data-guide-label={t("gv.composerLabel")}
           >
             <div className="box">
-              <textarea
-                rows={1}
-                value={text}
-                aria-label={t("gv.composerLabel")}
-                placeholder={t("gv.composerPlaceholder")}
-                onChange={(e) => {
-                  setText(e.target.value);
-                  e.target.style.height = "auto";
-                  e.target.style.height = `${e.target.scrollHeight}px`;
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    void say();
-                  }
-                }}
-              />
+              <input type="text" value={text} aria-label={t("gv.composerLabel")} placeholder={t("gv.composerPlaceholder")} autoComplete="off" onChange={(e) => setText(e.target.value)} />
               <button className="send" type="submit" aria-label={t("gv.send")} disabled={busy || !text.trim()}>
                 <Icon name="send" />
               </button>
             </div>
-            <div className="row">
-              <span className="muted small">{t("gv.notPublished")}</span>
-              <button type="button" className="btn btn-primary" onClick={() => void compose()} disabled={starting}>
-                <span>{t("gv.composeBtn")}</span>
-              </button>
-            </div>
           </form>
         )}
-        {!editable && !detail.outline && (
-          <button className="btn btn-ghost" type="button" onClick={() => nav("/")}>
-            {t("gv.back")}
-          </button>
-        )}
       </main>
-    </div>
-  );
-
-  function statusLine(d: TeacherCourseDetail) {
-    return t(`gv.line.${d.status}`);
-  }
-}
-
-function ReadingNote({ title }: { title: string }) {
-  const { t } = useTranslation();
-  return (
-    <div className="msg">
-      <div className="who">
-        <span className="logo-mark">M</span>Mentor
-      </div>
-      <div className="bubble">
-        <b>{title}</b>
-        <p>{t("gv.readingLong")}</p>
-      </div>
-    </div>
-  );
-}
-
-function TeacherBubble({ text }: { text: string }) {
-  return (
-    <div className="msg me">
-      <div className="bubble">{text}</div>
-    </div>
-  );
-}
-
-function AgentBubble({ text, children, bare }: { text?: string | null; children?: React.ReactNode; bare?: boolean }) {
-  return (
-    <div className="msg">
-      <div className="who">
-        <span className="logo-mark">M</span>Mentor
-      </div>
-      {bare ? (
-        children
-      ) : (
-        <div className="bubble">
-          {text && <p>{text}</p>}
-          {children}
-        </div>
-      )}
+      {toast.node}
     </div>
   );
 }
 
 // ---------------------------------------------------------------- unreadable pages
-function RetakeCards({ id, items, onDone, onError }: { id: string; items: RetakeItem[]; onDone(): void; onError(m: string): void }) {
+function RetakeRows({ id, items, onDone, onError }: { id: string; items: RetakeItem[]; onDone(): void; onError(m: string): void }) {
   const { t } = useTranslation();
   const lt = useLangText();
   const { token } = useAuth();
@@ -355,7 +265,7 @@ function RetakeCards({ id, items, onDone, onError }: { id: string; items: Retake
   };
 
   return (
-    <div className="bad-pages" data-guide="gv-retake" data-guide-label={t("gv.retakeTitle")}>
+    <div className="bads" data-guide="gv-retake" data-guide-label={t("gv.retakeTitle")}>
       <input
         ref={pickRef}
         className="sr"
@@ -371,56 +281,33 @@ function RetakeCards({ id, items, onDone, onError }: { id: string; items: Retake
       />
       {items.map((r) => (
         <div className="bad" key={r.ref}>
-          {r.thumb_url ? <img src={teacherApi.thumbSrc(token ?? "", r.thumb_url)} alt="" onError={onMediaError} /> : <span className="bad-ph" aria-hidden="true" />}
-          <div>
-            <b>{t("gv.pageN", { n: r.page })}</b>
-            <p className="reason">{lt(r.message_vi, r.message_en)}</p>
-            <div className="bad-acts">
-              {busy === r.ref ? (
-                <span className="muted small" role="status">
-                  {t("gv.sendingPage")}
-                </span>
-              ) : (
-                <>
-                  <CameraButton single label={t("gv.retakePage", { n: r.page })} onFiles={(f) => void send(r, f)} className="btn retake-btn" />
-                  <button
-                    type="button"
-                    className="link-btn"
-                    onClick={() => {
-                      target.current = r;
-                      pickRef.current?.click();
-                    }}
-                  >
-                    {t("gv.pickPage")}
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
+          <Icon name="flag" />
+          <span>
+            <b>{t("gv.pageN", { n: r.page })}</b> <span className="reason">· {lt(r.message_vi, r.message_en)}</span>
+          </span>
+          <span className="bad-acts">
+            {busy === r.ref ? (
+              <span className="muted small" role="status">
+                {t("gv.sendingPage")}
+              </span>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="link-btn"
+                  onClick={() => {
+                    target.current = r;
+                    pickRef.current?.click();
+                  }}
+                >
+                  {t("gv.pickPage")}
+                </button>
+                <CameraButton single label={t("gv.retakeBtn")} ariaLabel={t("gv.retakePage", { n: r.page })} onFiles={(f) => void send(r, f)} className="btn retake-btn" />
+              </>
+            )}
+          </span>
         </div>
       ))}
     </div>
-  );
-}
-
-// ---------------------------------------------------------------- build progress
-export function BuildProgress({ lessons }: { lessons: BuildLesson[] }) {
-  const { t } = useTranslation();
-  return (
-    <ul className="prog" data-guide="gv-build" data-guide-label={t("gv.buildTitle")}>
-      {lessons.map((l, i) => {
-        const s = buildStateInfo(l.state);
-        return (
-          <li key={l.id}>
-            <span className={`dot ${s.tone}`} aria-hidden="true" />
-            <span>
-              {t("gv.lessonN", { n: i + 1 })}. {l.title}
-              {l.note && <span className="muted small"> {l.note}</span>}
-            </span>
-            <span className={`st ${s.tone}`}>{t(s.key)}</span>
-          </li>
-        );
-      })}
-    </ul>
   );
 }

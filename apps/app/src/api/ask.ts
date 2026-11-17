@@ -1,7 +1,7 @@
 import { API_BASE } from "./http";
 import type { Lang } from "./types";
 import type { Media, TreeChapter } from "./course";
-import { mockAskStream } from "./mock-ask";
+import { mockAskStream, mockNotes } from "./mock-ask";
 
 /** Hỏi đáp (CONTRACTS.md section 13): POST /ask answers as a Server-Sent Events stream, POST /guide is Mực's chat. */
 
@@ -242,3 +242,30 @@ export async function postGuide(token: string, body: { question: string; lang: L
   return j.answer;
 }
 
+
+/** "Chụp vở" (CONTRACTS 16.4): 1-6 photos of the learner's own notes become review questions, scheduled by Mentor. */
+export interface NotesResult {
+  notes_id: string;
+  title: string;
+  pages: number;
+  /** review questions made (4-8) */
+  items: number;
+  /** ISO time of the first review reminder, then again after about 3 days */
+  first_review_at: string;
+  next_review_at: string;
+}
+
+/** POST /ask/notes (multipart `images[]`). Rejects with `AskError`: 422 `unreadable` (retake), 403 for the little ones, `network`. */
+export async function postNotes(token: string, images: Blob[]): Promise<NotesResult> {
+  if (isMock()) return mockNotes(images);
+  const f = new FormData();
+  images.forEach((b, i) => f.append("images[]", b, `notes-${i + 1}.jpg`));
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}/ask/notes`, { method: "POST", headers: { Authorization: `Bearer ${token}` }, body: f });
+  } catch {
+    throw new AskError(0, "network");
+  }
+  if (!res.ok) throw new AskError(res.status, await errorCode(res));
+  return (await res.json()) as NotesResult;
+}

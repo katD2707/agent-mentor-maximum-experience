@@ -29,6 +29,11 @@ export function resolveDeepLink(link: string | null | undefined): DeepTarget {
   const reminderRaw = url.searchParams.get("reminder");
   const reminderId = reminderRaw && ID.test(reminderRaw) ? reminderRaw : null;
   const path = url.pathname.replace(/\/+$/, "") || "/";
+  if (path === "/luyen-tap") {
+    // a notes review reminder (CONTRACTS 16.4): the practice screen starts that session
+    const notes = url.searchParams.get("notes");
+    return { to: notes && ID.test(notes) ? `/luyen-tap?notes=${encodeURIComponent(notes)}` : path, reminderId };
+  }
   if (FIXED.has(path)) return { to: path, reminderId };
   const paper = /^\/nghien-cuu\/paper\/([^/]+)$/.exec(path);
   if (paper) {

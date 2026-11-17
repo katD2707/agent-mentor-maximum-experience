@@ -1,5 +1,5 @@
 /** Teacher authoring contract (prefix /api/teacher). Names follow the gateway; see lib/teacher/outline.ts for the ops. */
-import type { CoursePack } from "./course";
+import type { Block, CoursePack } from "./course";
 
 export type CourseStatus = "reading" | "needs_retake" | "outline_ready" | "building" | "review" | "published" | "revising";
 
@@ -84,8 +84,6 @@ export interface TeacherCourseDetail {
   retake: RetakeItem[];
   build: { lessons: BuildLesson[] };
   chat: ChatMessage[];
-  /** Newest app version students can have (gateway RELEASED_APP_VERSION); a draft needing more gets a notice in review. */
-  released_app_version?: string;
 }
 
 /** Exactly the shapes of services/course-builder outline.py apply_outline_edits. */
@@ -122,6 +120,22 @@ export interface CommentInput {
   body: string;
 }
 
+/** A step Mentor is not sure about (GET .../review): shown as a dot in the outline and the step list. */
+export interface UnsureStep {
+  block_id: string;
+  item_id?: string | null;
+  reason_vi: string;
+  reason_en: string;
+}
+
+/** A test card of a course ("Kiểm tra"): the size the teacher can change. */
+export interface TeacherTest {
+  profile_id: string;
+  title: string;
+  items: number;
+  minutes: number;
+}
+
 export type UploadProgress = (done: number, total: number) => void;
 
 export interface TeacherApi {
@@ -140,6 +154,20 @@ export interface TeacherApi {
   setLevel(token: string, courseId: string, version: number, level: CourseLevel): Promise<{ version: number; new_version: boolean }>;
   /** POST /courses/{id}/versions: a new draft v+1 of a published course. Returns its number. */
   newVersion(token: string, courseId: string): Promise<number>;
+  /** PATCH .../blocks/{block_id}: the fields to change (a quiz block: `items: [{id, ...fields}]`). Drafts only: published -> 409, bad content -> 422. */
+  patchBlock(token: string, courseId: string, version: number, blockId: string, patch: Record<string, unknown>): Promise<Block>;
+  /** PUT .../chapters/{chapter_id}/recap: the recap script; its audio is made again in the background. */
+  putRecap(token: string, courseId: string, version: number, chapterId: string, script: string[]): Promise<{ job_id: string }>;
+  /** PUT .../gloss: how much of an English course is offered in Vietnamese at the start (0-100). */
+  putGloss(token: string, courseId: string, version: number, glossStart: number): Promise<void>;
+  /** GET .../review: the steps Mentor is unsure about. */
+  getReview(token: string, courseId: string, version: number): Promise<UnsureStep[]>;
+  /** POST .../review/{block_id}/seen: clears one. */
+  markSeen(token: string, courseId: string, version: number, blockId: string): Promise<void>;
+  /** The course's tests (from GET /practice/courses/{id}/levels `mocks`). */
+  listTests(token: string, courseId: string): Promise<TeacherTest[]>;
+  /** PUT /courses/{id}/tests/{profile_id}: the size of one test for this course. */
+  putTest(token: string, courseId: string, profileId: string, body: { items: number; minutes: number }): Promise<void>;
   /** Retake thumbnail as an <img> src. */
   thumbSrc(token: string, url: string | null | undefined): string;
 }

@@ -64,9 +64,9 @@ const progress = (over: Partial<Progress> = {}): Progress => ({ lesson_id: "l2",
 describe("progress and resume", () => {
   it("progress percent is completed blocks over all blocks in the pinned pack", () => {
     const all = allBlockIds(dienPack);
-    expect(all).toHaveLength(2 + 8 + 1);
+    expect(all).toHaveLength(2 + 8 + 1 + 4);
     expect(progressPercent(dienPack, null)).toBe(0);
-    expect(progressPercent(dienPack, progress({ completed_block_ids: ["l1-b1", "l1-b2"] }))).toBe(18);
+    expect(progressPercent(dienPack, progress({ completed_block_ids: ["l1-b1", "l1-b2"] }))).toBe(13);
     expect(progressPercent(dienPack, progress({ completed_block_ids: [...all, "gone-block"] }))).toBe(100); // ids not in the pack are ignored
   });
 

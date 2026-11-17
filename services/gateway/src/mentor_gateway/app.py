@@ -23,6 +23,7 @@ from mentor_gateway.content.store import ContentError
 from mentor_gateway.context import build_gateway
 from mentor_gateway.jobs import JobExecutor
 from mentor_gateway.practice import PracticeError
+from mentor_gateway.teacher import steps as teacher_steps
 from mentor_gateway.research.service import ResearchService
 from mentor_gateway.settings import Clock, Settings, utc_now
 from mentor_gateway.teacher import BuilderService
@@ -69,6 +70,7 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     app.state.builder = BuilderService(settings, app.state.content, gw.db, clock, gw.hub)  # /api/teacher stages
     gw.planner.content = gw.practice.content = app.state.content  # course quiz items for Luyện tập
     gw.practice.planner = gw.planner
+    gw.practice.course_tests = lambda cid: teacher_steps.course_tests(app.state.builder, cid)
     app.state.research = ResearchService(gw, app.state.content, ask.build_llm(gw))  # /api/research (uni band)
     gw.scheduler.research = app.state.research.tick  # Monday discovery, agenda drafts
     app.add_exception_handler(ContentError, lambda _req, exc: courses.content_error_response(exc))

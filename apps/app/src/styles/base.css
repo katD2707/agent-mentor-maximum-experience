@@ -154,8 +154,10 @@ p { margin: 0; }
 
 /* Mực at phone width (<= 480px): he lives in a 60px strip at the bottom, content ends above it. Nothing scrolls under him. */
 .mascot-bar, .mascot-dock { display: none; }
+:root[data-no-mascot] mentor-mascot { display: none; } /* Today, and while a recap plays where Mực docks */
 @media (max-width: 480px) {
   :root { --dock-h: 60px; }
+  :root[data-no-mascot] { --dock-h: 0px; } /* Today: Mực lives in the conversation, no strip for him */
   mentor-mascot { --mascot-size: 40px; }
   .app { padding-bottom: var(--dock-h); }
   .mascot-bar { display: block; position: fixed; left: 0; right: 0; bottom: 0; height: var(--dock-h); z-index: 25; background: var(--paper); border-top: 1px solid var(--rule); pointer-events: none; }

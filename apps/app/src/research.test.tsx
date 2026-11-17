@@ -39,20 +39,18 @@ beforeEach(async () => {
   researchPoll.ms = 20;
 });
 
-describe("band guard and hub tile", () => {
-  it("shows the fifth tile to the university band only", async () => {
+describe("band guard and the research entry on Today", () => {
+  it("shows the research topic in the course strip to the university band only", async () => {
     seed(UNI);
     open("/");
-    const link = await screen.findByRole("link", { name: /Nghiên cứu/ });
+    const link = await screen.findByRole("link", { name: /Đề tài của bạn/ });
     expect(link).toHaveAttribute("href", "/nghien-cuu");
-    expect(document.querySelectorAll(".grid4 .cell")).toHaveLength(5);
   });
-  it("shows four tiles to everyone else and sends them back from the research routes", async () => {
+  it("hides it from everyone else and sends them back to Today from the research routes", async () => {
     seed(2010);
     open("/nghien-cuu");
-    expect(await screen.findByRole("heading", { name: "Chào Lan" })).toBeInTheDocument();
-    expect(document.querySelectorAll(".grid4 .cell")).toHaveLength(4);
-    expect(screen.queryByRole("link", { name: /Nghiên cứu/ })).toBeNull();
+    expect(await screen.findByRole("log", { name: "Trò chuyện với Mực" })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /Đề tài của bạn/ })).toBeNull();
   });
   it("opens a paper by its deep link for the university band", async () => {
     seed(UNI);
@@ -66,12 +64,12 @@ describe("home states", () => {
     seed(UNI, "empty");
     const ui = userEvent.setup();
     open("/nghien-cuu");
-    expect(await screen.findByRole("heading", { name: "Đề tài của bạn là gì?" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Đề tài của bạn?" })).toBeInTheDocument();
     expect(screen.queryByRole("search")).toBeNull();
     await ui.type(screen.getByLabelText("Đề tài"), "mạng nơ-ron đồ thị cho vật liệu");
     await ui.click(screen.getByRole("button", { name: "Bắt đầu" }));
     expect(await screen.findByRole("heading", { name: "Đã ghi đề tài" })).toBeInTheDocument();
-    expect(screen.getByText(/Mentor đang tìm những paper đầu tiên/)).toBeInTheDocument();
+    expect(screen.getByText(/Đang tìm paper đầu tiên/)).toBeInTheDocument();
   });
   it("full: four chapters in tabs; Reading first, dots on the tabs, arrow keys, the tab is remembered", async () => {
     seed(UNI);
@@ -102,7 +100,7 @@ describe("home states", () => {
   it("searching: the banner shows above the board, with skeleton cards", async () => {
     seed(UNI, "searching");
     open("/nghien-cuu");
-    expect(await screen.findByText(/Mentor đang xem paper mới của tuần này/)).toBeInTheDocument();
+    expect(await screen.findByText(/Mentor đang tìm/)).toBeInTheDocument();
     expect(document.querySelectorAll(".rs-skel").length).toBe(2);
     expect(screen.getByRole("link", { name: "Đọc tiếp" })).toBeInTheDocument();
   });
@@ -192,6 +190,14 @@ describe("search", () => {
     expect(screen.getAllByText("TL;DR · Semantic Scholar").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Đoạn trích toàn văn · Asta").length).toBeGreaterThan(0);
     expect(screen.getByText("Chỉ có abstract")).toBeInTheDocument();
+    // the TL;DR sits behind a chevron
+    const more = screen.getAllByRole("button", { name: "Xem tóm tắt" })[0];
+    expect(more).toHaveAttribute("aria-expanded", "false");
+    const body = document.getElementById(more.getAttribute("aria-controls")!)!;
+    expect(body).toHaveAttribute("hidden");
+    await ui.click(more);
+    expect(more).toHaveAttribute("aria-expanded", "true");
+    expect(body).not.toHaveAttribute("hidden");
   });
   it("depth picker: starts at the deepest level with a key, a lower level leaves the source out, keyboard works", async () => {
     seed(UNI, "full", { s2: true });
@@ -322,19 +328,19 @@ describe("paper reader", () => {
     const ui = userEvent.setup();
     open("/nghien-cuu/paper/p-2601.08832");
     await screen.findByRole("heading", { name: /Equivariant Message Passing/ });
-    expect(screen.queryByText("Góp ý của Mentor")).toBeNull();
+    expect(screen.queryByText("Góp ý")).toBeNull();
     const go = screen.getByRole("button", { name: "Xem góp ý" });
     expect(go).toHaveAttribute("aria-disabled", "true");
     await ui.click(go);
-    expect(screen.queryByText("Góp ý của Mentor")).toBeNull();
+    expect(screen.queryByText("Góp ý")).toBeNull();
     await ui.type(screen.getByLabelText("Tóm tắt của bạn"), "Bài đề xuất một mạng truyền thông điệp để dự đoán năng lượng hình thành.");
     expect(go).toHaveAttribute("aria-disabled", "false");
     await ui.click(go);
-    const fb = await screen.findByRole("region", { name: /Góp ý của Mentor/ });
-    expect(within(fb).getByText("Bạn nắm đúng.")).toBeInTheDocument();
+    const fb = await screen.findByRole("region", { name: /^Góp ý$/ });
+    expect(within(fb).getByText("Đúng.")).toBeInTheDocument();
     expect(within(fb).getByText("Chưa chính xác.")).toBeInTheDocument();
     expect(within(fb).getByText("Còn thiếu.")).toBeInTheDocument();
-    expect(within(fb).getByText("Với luận văn của bạn:")).toBeInTheDocument();
+    expect(within(fb).getByText("Luận văn:")).toBeInTheDocument();
     // the summary is above the feedback in the page
     const summary = screen.getByText(/Bài đề xuất một mạng truyền thông điệp/);
     expect(summary.compareDocumentPosition(fb) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();

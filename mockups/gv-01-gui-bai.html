@@ -10,33 +10,39 @@
 <script src="shared.js"></script>
 <link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
 <style>
-  .role { font-size: .85em; color: var(--ink-2); padding: 4px 12px; border-radius: 99px; background: var(--tim-soft); }
-  .main { max-width: 920px; }
+  /* same on gv-01..03: header with step indicator */
+  .steps { display: flex; gap: 4px; align-items: center; margin-left: 6px; }
+  .steps a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 10px 0 6px; border-radius: 99px; color: var(--ink-2); text-decoration: none; font-size: .88em; font-weight: 500; }
+  .steps a:hover { background: var(--tim-soft); }
+  .steps .n { width: 22px; height: 22px; border-radius: 99px; border: 1.5px solid var(--rule-strong); display: grid; place-items: center; font-size: .8em; font-weight: 600; }
+  .steps a[aria-current] { color: var(--tim-ink); background: var(--tim-soft); font-weight: 600; }
+  .steps a[aria-current] .n { background: var(--tim); color: var(--on-tim); border-color: transparent; }
+  @media (max-width: 640px) { .steps .l { display: none; } .steps a { padding: 0 4px; } .topbar > a.icon-btn { display: none; } .topbar .logo .nm { display: none; } }
 
+  .main { max-width: 760px; }
   .drop {
-    position: relative; display: grid; justify-items: center; text-align: center; gap: 18px;
-    padding: clamp(40px, 8vw, 88px) clamp(20px, 5vw, 56px) clamp(36px, 6vw, 64px) 72px;
+    position: relative; display: grid; justify-items: center; text-align: center; gap: 16px;
+    padding: clamp(36px, 7vw, 64px) clamp(20px, 5vw, 48px) clamp(32px, 6vw, 52px) 72px;
     border-radius: var(--r-lg); border: 2.5px dashed var(--rule-strong);
     transition: border-color .15s, transform .15s;
   }
   .drop.is-over { border-color: var(--tim); border-style: solid; transform: scale(1.01); }
   .drop.is-over .drop-icon { background: var(--tim); color: var(--on-tim); }
-  .drop-icon { width: 76px; height: 76px; border-radius: 999px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; transition: background .15s, color .15s; }
-  .drop-icon svg { width: 36px; height: 36px; }
-  .drop h1 { font-size: clamp(1.6em, 4vw, 2.3em); }
-  .kinds { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; color: var(--ink-2); font-size: .92em; }
+  .drop-icon { width: 64px; height: 64px; border-radius: 999px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; transition: background .15s, color .15s; }
+  .drop-icon svg { width: 30px; height: 30px; }
+  .drop h1 { font-size: clamp(1.5em, 4vw, 2em); }
+  .kinds { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; color: var(--ink-2); font-size: .88em; }
   .kinds span { display: inline-flex; align-items: center; gap: 6px; }
   .kinds svg { width: 18px; height: 18px; }
   .drop .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-  .promise { color: var(--ink-2); max-width: 46ch; }
   label.btn:focus-within { outline: 3px solid var(--tim); outline-offset: 3px; }
   .cam-only { display: none; }
-  @media (max-width: 720px) { .cam-only { display: inline-flex; } .drop-hint { display: none; } }
+  @media (max-width: 720px) { .cam-only { display: inline-flex; } .drop { padding-left: 52px; } }
 
-  /* sending */
-  .sending { margin-top: 20px; padding: 20px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--rule-strong); display: grid; gap: 14px; }
+  /* upload in progress: a thumbnail strip, no card */
+  .sending { margin-top: 20px; display: grid; gap: 10px; }
   .sending-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
-  .sending-top h2 { font-size: 1.05em; }
+  .sending-top h2 { font-size: 1em; }
   .thumbs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
   .th { position: relative; flex: none; width: 54px; height: 72px; border-radius: 6px; background: #F3F1FA; border: 1px solid var(--rule-strong); overflow: hidden; }
   .th::before { content: ""; position: absolute; inset: 10px 8px auto; height: 34px; background: repeating-linear-gradient(#C9C4E3 0 2px, transparent 2px 7px); }
@@ -44,41 +50,41 @@
   .th .ok svg { width: 12px; height: 12px; stroke-width: 3; }
   .th.up { opacity: .55; }
   .th.up .ok { display: none; }
-  .close-ok { display: flex; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 10px; background: var(--xanh-soft); color: var(--xanh); font-weight: 500; }
 
-  /* list */
+  /* uploads: one row each, state on the right */
   .list { list-style: none; margin: 0; padding: 0; display: grid; }
-  .row { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto auto; gap: 8px 16px; align-items: center; padding: 16px 8px; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
+  .row { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 14px; align-items: center; min-height: 64px; padding: 10px 8px; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; }
   a.row:hover { background: var(--surface); }
   .row h3 { font-size: 1em; font-weight: 600; }
-  .row .sub { color: var(--ink-2); font-size: .85em; margin-top: 3px; }
-  .row .go { color: var(--ink-3); }
-  .row .media { width: 64px; height: 64px; border-radius: 14px; overflow: hidden; background: #FBF6EA; }
+  .row .sub { color: var(--ink-2); font-size: .82em; margin-top: 2px; display: flex; align-items: center; gap: 8px; }
+  .row .media { width: 48px; height: 48px; border-radius: 12px; overflow: hidden; background: #FBF6EA; }
   .row .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .row .media.pending { display: grid; place-items: center; background: var(--cam-soft); color: var(--cam); }
-  .row .media.pending svg { width: 26px; height: 26px; }
-  .lvtag { display: inline-flex; align-items: center; gap: 6px; font-size: .85em; font-weight: 500; color: var(--tim-ink); margin-right: 8px; }
+  .row .media.pending svg { width: 22px; height: 22px; }
   .lvbars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
   .lvbars i { display: block; width: 3px; border-radius: 1px; background: var(--rule-strong); }
   .lvbars i:nth-child(1) { height: 5px; } .lvbars i:nth-child(2) { height: 8px; } .lvbars i:nth-child(3) { height: 12px; }
   .lvbars i.on { background: var(--tim); }
-  @media (max-width: 560px) { .row { grid-template-columns: 56px minmax(0, 1fr) auto; } .row .media { width: 56px; height: 56px; grid-row: 1 / span 2; } .row .tag { grid-column: 2; justify-self: start; } .row .go { grid-row: 1 / span 2; grid-column: 3; } }
 </style>
 </head>
 <body>
 <div class="mock-bar">
   <a href="index.html">← Tất cả màn hình</a>
-  <span class="mock-title">Giáo viên: Gửi bài giảng (màn duy nhất)</span>
+  <span class="mock-title">Giáo viên: Gửi bài</span>
   <span class="mock-seg"><span>Trạng thái</span><button data-set="state:trong">Lần đầu</button><button data-set="state:dang-gui">Vừa thả 24 ảnh</button><button data-set="state:co-khoa">Đã có khóa</button></span>
   <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
   <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
-  <span class="mock-note">Thử kéo một tệp bất kỳ vào khung.</span>
+  <span class="mock-note">Thử kéo một tệp vào khung.</span>
 </div>
 
 <div class="app">
   <header class="topbar">
-    <a class="logo" href="gv-01-gui-bai.html"><span class="logo-mark">M</span><span>Mentor</span></a>
-    <span class="role" data-en="Teacher">Giáo viên</span>
+    <a class="logo" href="gv-01-gui-bai.html?state=co-khoa"><span class="logo-mark">M</span><span class="nm">Mentor</span></a>
+    <nav class="steps" aria-label="Các bước">
+      <a href="gv-01-gui-bai.html?state=co-khoa" aria-current="step"><span class="n">1</span><span class="l" data-en="Upload">Gửi</span></a>
+      <a href="gv-02-cau-truc.html?state=xem"><span class="n">2</span><span class="l" data-en="Outline">Cấu trúc</span></a>
+      <a href="gv-03-duyet-noi-dung.html?state=duyet"><span class="n">3</span><span class="l" data-en="Review">Duyệt</span></a>
+    </nav>
     <span class="grow"></span>
     <button class="icon-btn" type="button" data-settings="teacher" aria-label="Cài đặt"><i data-i="gear"></i></button>
   </header>
@@ -86,62 +92,61 @@
   <main class="main">
     <section class="drop oli" id="drop" aria-labelledby="drop-h">
       <span class="drop-icon"><i data-i="upload"></i></span>
-      <h1 id="drop-h" data-en="Drop your lesson here">Thả bài giảng vào đây</h1>
+      <h1 id="drop-h" data-en="Drop your lesson">Thả bài vào đây</h1>
       <div class="kinds">
-        <span><i data-i="camera"></i><span data-en="Book photos">Ảnh chụp sách</span></span>
+        <span><i data-i="camera"></i><span data-en="Photos">Ảnh</span></span>
         <span><i data-i="file"></i>PDF, Word</span>
         <span><i data-i="layers"></i>Slide</span>
         <span><i data-i="video"></i>Video</span>
-        <span><i data-i="volume"></i><span data-en="Recordings">Ghi âm</span></span>
+        <span><i data-i="volume"></i><span data-en="Audio">Ghi âm</span></span>
       </div>
       <div class="actions">
         <label class="btn btn-primary"><i data-i="plus"></i><span data-en="Choose files">Chọn tệp</span><input type="file" multiple class="sr" id="pick"></label>
         <button class="btn btn-ghost cam-only"><i data-i="camera"></i><span data-en="Take photos">Chụp ảnh</span></button>
       </div>
-      <p class="promise" data-en="Once it's sent you can close the app. The finished course will show up here.">Gửi xong là có thể đóng app. Khóa học soạn xong sẽ tự hiện ở đây.</p>
     </section>
 
     <section class="sending" data-when="state=dang-gui" aria-live="polite">
       <div class="sending-top">
-        <h2 data-en="24 photos received">Đã nhận 24 ảnh</h2>
-        <span class="muted small" id="up-count">Đang tải lên 20/24</span>
+        <h2 data-en="24 photos">24 ảnh</h2>
+        <span class="muted small" id="up-count">20/24</span>
+        <span class="muted small" data-en="You can close the app.">Có thể đóng app.</span>
       </div>
       <div class="thumbs" id="thumbs"></div>
-      <div class="close-ok"><i data-i="check"></i><span data-en="You can close the app. Mentor reads the photos and shows you a course outline when it's ready.">Bạn có thể đóng app. Mentor đọc xong sẽ gửi cấu trúc khóa học để bạn xem.</span></div>
     </section>
 
     <div data-when="state=dang-gui|co-khoa">
-      <div class="head"><h2 data-en="Your courses">Khóa học của bạn</h2></div>
+      <div class="head"><h2 data-en="Courses">Khóa học</h2></div>
       <ul class="list">
         <li data-when="state=dang-gui"><div class="row">
           <span class="media pending" aria-hidden="true"><i data-i="clock"></i></span>
-          <span><h3 data-en="New course from 24 photos">Khóa mới từ 24 ảnh</h3><span class="sub" data-en="Reading the photos, usually takes 5–10 minutes">Đang đọc ảnh, thường mất 5–10 phút</span></span>
-          <span class="tag wait" data-en="Reading">Đang đọc tài liệu</span><span></span>
+          <span><h3 data-en="New course">Khóa mới</h3><span class="sub" data-en="24 photos · 5–10 min">24 ảnh · 5–10 phút</span></span>
+          <span class="tag wait" data-en="Reading">Đang đọc</span>
         </div></li>
         <li data-when="state=co-khoa"><div class="row">
           <span class="media pending" aria-hidden="true"><i data-i="clock"></i></span>
-          <span><h3 data-en="Chemistry 10: Chemical bonds">Hóa 10: Liên kết hóa học</h3><span class="sub" data-en="Slides, 32 pages, sent 4 minutes ago">Slide 32 trang, gửi 4 phút trước</span></span>
-          <span class="tag wait" data-en="Reading">Đang đọc tài liệu</span><span></span>
+          <span><h3 data-en="Chemistry 10: Chemical bonds">Hóa 10: Liên kết hóa học</h3><span class="sub" data-en="Slides · 32 pages · 4 min ago">Slide · 32 trang · 4 phút trước</span></span>
+          <span class="tag wait" data-en="Reading">Đang đọc</span>
         </div></li>
         <li data-when="state=dang-gui"><a class="row" href="gv-02-cau-truc.html?state=xem">
           <span class="media" aria-hidden="true"><img src="assets/courses/dien-truong.jpg" alt=""></span>
-          <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3><span class="sub" data-en="7 lessons proposed from 24 photos">Đề xuất 7 bài từ 24 ảnh sách</span></span>
-          <span class="tag" data-en="Check the outline">Cần bạn xem cấu trúc</span><i data-i="next" class="go"></i>
+          <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3><span class="sub" data-en="7 lessons">7 bài</span></span>
+          <span class="tag" data-en="Outline">Cấu trúc</span>
         </a></li>
         <li data-when="state=co-khoa"><a class="row" href="gv-02-cau-truc.html?state=loi">
           <span class="media" aria-hidden="true"><img src="assets/courses/dien-truong.jpg" alt=""></span>
-          <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3><span class="sub" data-en="Outline of 7 lessons is ready, pages 3 and 7 are unreadable">Cấu trúc 7 bài đã xong, trang 3 và 7 chưa đọc được</span></span>
-          <span class="tag err" data-en="Retake 2 pages">Cần chụp lại 2 trang</span><i data-i="next" class="go"></i>
+          <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3><span class="sub" data-en="7 lessons · 2 pages unread">7 bài · 2 trang lỗi</span></span>
+          <span class="tag err" data-en="Retake">Chụp lại</span>
         </a></li>
         <li data-when="state=co-khoa"><a class="row" href="gv-03-duyet-noi-dung.html?state=duyet">
           <span class="media" aria-hidden="true"><img src="assets/courses/so-den-10.jpg" alt=""></span>
-          <span><h3 data-en="Math 1: Numbers to 10">Toán 1: Các số đến 10</h3><span class="sub"><span class="lvtag"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span data-en="Basic">Cơ bản</span></span><span data-en="5 lessons ready for your review">5 bài đã soạn xong, chờ bạn xem lại</span></span></span>
-          <span class="tag" data-en="Ready to review">Chờ duyệt</span><i data-i="next" class="go"></i>
+          <span><h3 data-en="Math 1: Numbers to 10">Toán 1: Các số đến 10</h3><span class="sub"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span data-en="Basic · 5 lessons">Cơ bản · 5 bài</span></span></span>
+          <span class="tag" data-en="Review">Duyệt</span>
         </a></li>
         <li data-when="state=co-khoa"><a class="row" href="gv-03-duyet-noi-dung.html?state=da-xuat-ban">
           <span class="media" aria-hidden="true"><img src="assets/courses/bayes.jpg" alt=""></span>
-          <span><h3 data-en="Probability: Bayesian inference">Xác suất thống kê: Suy luận Bayes</h3><span class="sub"><span class="lvtag"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span data-en="Advanced">Nâng cao</span></span><span data-en="6 chapters, version 1">6 chương, bản 1</span></span></span>
-          <span class="tag ok" data-en="Published, 38 students">Đã xuất bản, 38 học sinh</span><i data-i="next" class="go"></i>
+          <span><h3 data-en="Probability: Bayesian inference">Xác suất thống kê: Suy luận Bayes</h3><span class="sub"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span data-en="6 chapters · v1 · 38 students">6 chương · bản 1 · 38 học sinh</span></span></span>
+          <span class="tag ok" data-en="Published">Đã xuất bản</span>
         </a></li>
       </ul>
     </div>
@@ -182,7 +187,7 @@
       strip.appendChild(d);
     }
     const tick = () => {
-      count.textContent = done >= 24 ? "Đã tải lên đủ 24/24" : "Đang tải lên " + done + "/24";
+      count.textContent = done + "/24";
       if (done >= 24) return clearInterval(timer);
       strip.children[done].classList.remove("up");
       done++;

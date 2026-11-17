@@ -8,7 +8,7 @@ import { DEPTHS, DEPTH_NEEDS, SOURCE_NAMES, useSourceKeys } from "./Sources";
 import { ReviewPanel, useReview } from "./Review";
 import { byline, errCode, extProps, pk } from "./util";
 
-/** The search bar of hs-11: suggestions from the topic, and the search depth picker. */
+/** The search bar of hs-09: suggestions from the topic, and the search depth picker. */
 export function SearchBar({ keywords, value, onSearch }: { keywords: string[]; value: string; onSearch(q: string): void }) {
   const { t } = useTranslation();
   const [text, setText] = useState(value);
@@ -311,6 +311,7 @@ export function Results({ query, onClear, onSearch, onChanged }: { query: string
 /** One result. arXiv gives title, authors, year and the abstract's start only: no citations, no TL;DR. */
 export function ResultCard({ card: c, added, busy, onToggle }: { card: PaperCard; added: boolean; busy: boolean; onToggle(): void }) {
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
   const src = c.source === "asta" ? SOURCE_NAMES.asta : c.source === "s2" ? SOURCE_NAMES.s2 : "arXiv";
   const by = `${byline(c)}${c.source === "arxiv" ? " · arXiv" : c.venue ? ` · ${c.venue}` : ""}`;
   let line: { cls: string; label: string; text: string };
@@ -327,7 +328,10 @@ export function ResultCard({ card: c, added, busy, onToggle }: { card: PaperCard
         {c.citation_count !== null && <span>{t(pk("research.card.cited", c.citation_count), { count: c.citation_count })}</span>}
         {c.has_pdf ? <span className="tag ok">{t("research.card.pdf")}</span> : <span className="tag">{t("research.card.abstractOnly")}</span>}
       </span>
-      <p className={line.cls}>
+      <button className="rs-ib rs-more" type="button" aria-expanded={open} aria-controls={`tl-${c.key}`} aria-label={t("research.card.more")} onClick={() => setOpen((o) => !o)}>
+        <Icon name="chev" />
+      </button>
+      <p className={line.cls} id={`tl-${c.key}`} hidden={!open}>
         <b>{line.label}</b>
         <span lang="en">{line.text}</span>
       </p>

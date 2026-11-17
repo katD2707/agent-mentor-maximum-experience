@@ -2,7 +2,7 @@ import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Icon, type IconName } from "../../components/Icon";
 
-/** hs-11: the research space split into chapters, one tab each, like files open in an editor. */
+/** hs-09: the research space split into chapters, one tab each, like files open in an editor. */
 export const CHAPTERS = ["read", "schedule", "experiments", "topic"] as const;
 export type Chapter = (typeof CHAPTERS)[number];
 const ICONS: Record<Chapter, IconName> = { read: "book", schedule: "clock", experiments: "chart", topic: "target" };

@@ -1,4 +1,5 @@
-import type { AskCard, AskEvent, AskRequest } from "./ask";
+import type { AskCard, AskEvent, AskRequest, NotesResult } from "./ask";
+import { AskError } from "./ask";
 import { FIXTURES, treeOf } from "./mock-courses";
 import { fold } from "../lib/text";
 
@@ -182,4 +183,21 @@ async function learn(emit: Emit, signal?: AbortSignal) {
     event: "courses",
     data: { items, suggested_all_ages: false, start_with: items[0].first_lesson ? { course_id: items[0].course_id, ...items[0].first_lesson } : null },
   });
+}
+
+/** Scripted POST /ask/notes: "Điện trường" notes turned into 6 questions; localStorage `mentor.mock.badphoto` = "1" makes them unreadable. */
+export async function mockNotes(images: Blob[]): Promise<NotesResult> {
+  await sleep(250);
+  let bad = false;
+  try {
+    bad = localStorage.getItem("mentor.mock.badphoto") === "1";
+  } catch {
+    /* no storage: not bad */
+  }
+  if (bad || images.length === 0) throw new AskError(422, "unreadable");
+  const first = new Date();
+  first.setHours(20, 0, 0, 0);
+  if (first.getTime() < Date.now() + 30 * 60000) first.setDate(first.getDate() + 1);
+  const next = new Date(first.getTime() + 3 * 86400000);
+  return { notes_id: "n-1", title: "Điện trường", pages: Math.min(6, images.length), items: 6, first_review_at: first.toISOString(), next_review_at: next.toISOString() };
 }

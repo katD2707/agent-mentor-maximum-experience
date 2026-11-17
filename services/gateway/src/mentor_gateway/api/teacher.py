@@ -17,6 +17,7 @@ from mentor_gateway.api.courses import IMMUTABLE, MIME_FIX, _cached, media_user
 from mentor_gateway.api.deps import current_user
 from mentor_gateway.content.store import ContentError, Immutable, NotFound, sha256_bytes
 from mentor_gateway.db import User
+from mentor_gateway.teacher import steps
 from mentor_gateway.teacher.service import Busy, BuilderService, Forbidden
 
 router = APIRouter(prefix="/teacher", tags=["teacher"])
@@ -407,3 +408,73 @@ async def events(request: Request, limit: int | None = Query(default=None, ge=1,
 
     return StreamingResponse(gen(), media_type="text/event-stream",
                              headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
+# ---------------------------------------------------------------- review by step (CONTRACTS 16.5)
+class BlockPatch(BaseModel):
+    model_config = {"extra": "allow"}
+
+
+@router.patch("/courses/{course_id}/versions/{version}/blocks/{block_id}")
+async def patch_block(course_id: str, version: int, block_id: str, body: BlockPatch, user: User = Depends(teacher_only),
+                      svc: BuilderService = Depends(builder)) -> dict:
+    """Changes some fields of one block of a draft (for a quiz: `items: [{id, ...}]`); the pack is validated again."""
+    st = _version(svc, user, course_id, version)
+    block = await asyncio.to_thread(steps.patch_block, svc, st, version, block_id, dict(body.model_extra or {}))
+    svc.kick()  # a redone read-aloud was queued from the worker thread
+    return {"block": block}
+
+
+class RecapBody(BaseModel):
+    script: list[str] = Field(min_length=1, max_length=40)
+
+
+@router.put("/courses/{course_id}/versions/{version}/chapters/{chapter_id}/recap")
+async def put_recap(course_id: str, version: int, chapter_id: str, body: RecapBody, user: User = Depends(teacher_only),
+                    svc: BuilderService = Depends(builder)) -> dict:
+    st = _version(svc, user, course_id, version)
+    out = await asyncio.to_thread(steps.put_recap, svc, st, version, chapter_id, body.script)
+    svc.kick()
+    return out
+
+
+class GlossBody(BaseModel):
+    gloss_start: int = Field(ge=0, le=100)
+
+
+@router.put("/courses/{course_id}/versions/{version}/gloss")
+async def put_gloss(course_id: str, version: int, body: GlossBody, user: User = Depends(teacher_only),
+                    svc: BuilderService = Depends(builder)) -> dict:
+    st = _version(svc, user, course_id, version)
+    return await asyncio.to_thread(steps.put_gloss, svc, st, version, body.gloss_start)
+
+
+@router.get("/courses/{course_id}/versions/{version}/review")
+async def get_review(course_id: str, version: int, user: User = Depends(teacher_only),
+                     svc: BuilderService = Depends(builder)) -> dict:
+    """Steps Mentor is not sure about (from the build's checks); `{unsure: [{block_id, item_id?, reason_vi, reason_en}]}`."""
+    _version(svc, user, course_id, version)
+    return steps.review_list(svc, course_id, version)
+
+
+@router.post("/courses/{course_id}/versions/{version}/review/{block_id}/seen")
+async def review_seen(course_id: str, version: int, block_id: str, user: User = Depends(teacher_only),
+                      svc: BuilderService = Depends(builder)) -> dict:
+    _version(svc, user, course_id, version)
+    return steps.mark_seen(svc, course_id, version, block_id)
+
+
+class TestBody(BaseModel):
+    items: int = Field(ge=3, le=200)
+    minutes: int = Field(ge=5, le=240)
+
+
+@router.put("/courses/{course_id}/tests/{profile_id}")
+async def put_test(course_id: str, profile_id: str, body: TestBody, request: Request, user: User = Depends(teacher_only),
+                   svc: BuilderService = Depends(builder)) -> dict:
+    """Overrides the size of one mock/test card for this course (`GET /practice/courses/{id}/levels` reflects it)."""
+    svc.owned(user, course_id)
+    bank = request.app.state.gw.practice.bank
+    if profile_id not in bank.profiles:
+        raise HTTPException(404, {"error": "unknown_profile"})
+    return steps.put_test(svc, course_id, profile_id, body.items, body.minutes)

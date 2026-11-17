@@ -6,9 +6,9 @@ import { useAuth } from "../../state/auth";
 import { Icon } from "../../components/Icon";
 import { onMediaError } from "../../lib/mediaRetry";
 import { shownLevel } from "../../lib/teacher/level";
-import { courseRoute, statusTag } from "../../lib/teacher/status";
+import { courseRoute, latestPublished, statusTag } from "../../lib/teacher/status";
 import { LevelTag } from "./LevelPicker";
-import { CameraButton, TeacherTop, useLangText } from "./common";
+import { CameraButton, TeacherTop } from "./common";
 import { useTeacherCourses } from "./live";
 
 interface Sending {
@@ -102,7 +102,7 @@ export function TeacherHome() {
 
   return (
     <div className="app">
-      <TeacherTop />
+      <TeacherTop step={1} />
       <main className="main teacher-main">
         <section className={`drop oli${over ? " is-over" : ""}`} aria-labelledby="drop-h" data-guide="drop" data-guide-label={t("teacher.dropTitle")}>
           <span className="drop-icon">
@@ -132,8 +132,7 @@ export function TeacherHome() {
             </span>
           </div>
           <div className="note-field" data-guide="gv-note" data-guide-label={t("gv.noteLabel")}>
-            <label htmlFor="gv-note">{t("gv.noteLabel")}</label>
-            <input id="gv-note" type="text" value={note} maxLength={300} onChange={(e) => setNote(e.target.value)} placeholder={t("gv.notePlaceholder")} autoComplete="off" />
+            <input id="gv-note" type="text" value={note} maxLength={300} onChange={(e) => setNote(e.target.value)} aria-label={t("gv.noteLabel")} placeholder={t("gv.noteLabel")} autoComplete="off" />
           </div>
           <div className="actions">
             <label className="btn btn-primary">
@@ -154,7 +153,6 @@ export function TeacherHome() {
             </label>
             <CameraButton label={t("gv.takePhotos")} onFiles={(f) => void send(f)} />
           </div>
-          <p className="promise">{t("teacher.promise")}</p>
         </section>
 
         {sending && (
@@ -164,11 +162,9 @@ export function TeacherHome() {
               <span className="muted small">
                 {sending.phase === "sent" ? t("gv.uploadedAll", { files: sending.files }) : sending.phase === "error" ? t("gv.uploadFailed") : t("gv.uploading", { done: sent, total: sending.files })}
               </span>
+              {sending.phase !== "error" && <span className="muted small">{t("gv.closeOk")}</span>}
             </div>
-            <div className="gv-bar" role="progressbar" aria-label={t("gv.sending")} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(sending.frac * 100)}>
-              <i style={{ width: `${Math.round(sending.frac * 100)}%` }} />
-            </div>
-            <div className="thumbs" aria-hidden="true">
+            <div className="thumbs" role="progressbar" aria-label={t("gv.sending")} aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(sending.frac * 100)}>
               {Array.from({ length: Math.min(sending.files, 40) }, (_, i) => (
                 <span key={i} className={`th${i < (sending.files <= 40 ? sent : Math.floor((sent / sending.files) * 40)) ? "" : " up"}`}>
                   <span className="ok">
@@ -177,17 +173,12 @@ export function TeacherHome() {
                 </span>
               ))}
             </div>
-            {sending.phase === "error" ? (
+            {sending.phase === "error" && (
               <div className="alert">
                 <span>{t("gv.uploadFailedLong")}</span>
                 <button className="btn btn-ghost" type="button" onClick={() => void send(lastFiles.current)}>
                   {t("gv.retry")}
                 </button>
-              </div>
-            ) : (
-              <div className="close-ok">
-                <Icon name="check" />
-                <span>{t("gv.closeOk")}</span>
               </div>
             )}
           </section>
@@ -220,13 +211,12 @@ export function TeacherHome() {
 
 function CourseRow({ c }: { c: TeacherCourseSummary }) {
   const { t } = useTranslation();
-  const lt = useLangText();
   const { token } = useAuth();
   const tag = statusTag(c);
   const to = courseRoute(c);
   const tagText = t(tag.key, tag.params);
-  const line = lt(c.status_line_vi, c.status_line_en);
   const level = c.versions.length ? shownLevel(c) : null; // a level exists once the course has been composed
+  const pub = c.status === "published" ? latestPublished(c) : null;
   const cover = c.cover_url || (c.cover_sha256 && token ? coverUrl(token, c.id) : "");
   const inner = (
     <>
@@ -237,11 +227,10 @@ function CourseRow({ c }: { c: TeacherCourseSummary }) {
         <h3>{c.title}</h3>
         <span className="sub">
           {level && <LevelTag level={level} />}
-          {line !== tagText && line}
+          {pub && <span>{t("gv.subPublished", { version: pub.version, students: pub.students })}</span>}
         </span>
       </span>
       <span className={`tag ${tag.tone}`}>{tagText}</span>
-      {to ? <Icon name="next" className="go" /> : <span />}
     </>
   );
   return <li>{to ? <Link className="row" to={to}>{inner}</Link> : <div className="row">{inner}</div>}</li>;

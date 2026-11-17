@@ -4,7 +4,7 @@ import type { DiagramSpec } from "../lib/diagram/types";
 
 /** Luyện tập (CONTRACTS.md section 10, 10.12). The server holds the keys: items never carry an answer. */
 
-export type PItemType = "SINGLE_CHOICE" | "PICTURE_CHOICE" | "TAP_COUNT" | "TRUE_FALSE_GROUP" | "SHORT_ANSWER";
+export type PItemType = "SINGLE_CHOICE" | "PICTURE_CHOICE" | "TAP_COUNT" | "TRUE_FALSE_GROUP" | "SHORT_ANSWER" | "FILL_TILES" | "MATCH_PAIRS" | "ORDER_STEPS";
 export type PKind = "practice" | "mock" | "diagnostic";
 
 export interface PMedia {
@@ -35,6 +35,8 @@ export interface PItem {
   statements?: { id: string; text: string; truth?: boolean; explanation?: string | null }[];
   short_answer?: { max_chars?: number | null; unit?: string | null; decimals?: number | null } | null;
   tap?: { image?: PMedia | null; total: number } | null;
+  /** FILL_TILES (the tile bank), MATCH_PAIRS (left/right sides), ORDER_STEPS. Answers are JSON: {gaps: [...]}, {pairs: {...}}, {order: [...]} */
+  parts?: { id: string; text: string; side?: "left" | "right" | null }[];
   assets?: PAsset[];
   source?: { course_id: string; version: number; course_title: string; lesson_id: string; lesson_title: string; item_id: string } | null;
   topic: string;
@@ -110,6 +112,18 @@ export interface PReport {
   disclaimer?: string | null;
   takeaway?: Line | null;
   redo?: Line | null;
+  /** the items answered wrong, with the learner's first answer (CONTRACTS 16.3) */
+  wrong?: { position: number; item_id: string; type: PItemType; chosen?: string | null }[];
+}
+
+/** POST /practice/sessions/{id}/fix: one more try at a wrong item. Wrong again: the right answer and why. */
+export interface PFix {
+  correct: boolean;
+  explanation?: string;
+  /** the right answer in the report's display shape (an option id, a number, or the JSON of a tiles/pairs/order key) */
+  right?: string;
+  /** the note for the option the learner chose */
+  note?: string;
 }
 
 export interface PReviewItem extends PItem {
@@ -133,7 +147,29 @@ export interface PHome {
   by_course: { course_id: string; title: string; cover_sha256?: string | null; lessons_range: string; lessons_from: number; lessons_to: number; items: number }[];
 }
 
-export type StartSource = "quick" | `course:${string}` | `mock:${string}`;
+export type StartSource = "quick" | `course:${string}` | `mock:${string}` | `notes:${string}`;
+
+/** One rung of a course's level ladder (CONTRACTS 10.13): level 1 easiest .. 4 hardest. */
+export interface PLevel {
+  level: number;
+  /** quiz items of this level in the course */
+  items: number;
+  /** of those, in the lessons studied so far */
+  studied: number;
+  answered: number;
+  correct: number;
+  solid: boolean;
+}
+export interface PCourseLevels {
+  course_id: string;
+  title: string;
+  /** a level needs this many studied items before it can be practised */
+  min_items: number;
+  levels: PLevel[];
+  /** where Mentor starts; null while no level has enough studied items */
+  suggested: number | null;
+  mocks: PHome["mocks"];
+}
 
 /** A failed practice call: the gateway's `{detail, code | error, ...}` body is kept. */
 export class PracticeError extends Error {
@@ -150,7 +186,9 @@ export class PracticeError extends Error {
 
 export interface PracticeApi {
   home(token: string, seed?: string): Promise<PHome>;
-  start(token: string, body: { source: StartSource; seed?: string | number }): Promise<PSession>;
+  start(token: string, body: { source: StartSource; seed?: string | number; level?: number }): Promise<PSession>;
+  /** practice of one course by level, for the course page */
+  courseLevels(token: string, courseId: string): Promise<PCourseLevels>;
   active(token: string): Promise<PSession | null>;
   get(token: string, id: string): Promise<PSession>;
   answer(token: string, id: string, body: { position: number; answer: string; time_spent_sec: number }): Promise<PResult>;
@@ -160,6 +198,8 @@ export interface PracticeApi {
   tick(token: string, id: string, position: number, elapsed: number): Promise<{ remaining_sec?: number | null; expired?: boolean }>;
   finish(token: string, id: string): Promise<PReport>;
   review(token: string, id: string): Promise<{ items: PReviewItem[] } | PReviewItem[]>;
+  /** fix a wrong item after the session ended (each item once; 409 already_fixed) */
+  fix(token: string, id: string, body: { item_id: string; answer: string }): Promise<PFix>;
 }
 
 async function req<T>(token: string, method: string, path: string, body?: unknown): Promise<T> {
@@ -191,6 +231,7 @@ const enc = encodeURIComponent;
 export const httpPractice: PracticeApi = {
   home: (t, seed) => req(t, "GET", "/home" + (seed ? `?seed=${enc(seed)}` : "")),
   start: (t, body) => req(t, "POST", "/sessions", body),
+  courseLevels: (t, id) => req(t, "GET", `/courses/${enc(id)}/levels`),
   active: (t) => req(t, "GET", "/sessions/active"),
   get: (t, i) => req(t, "GET", `/sessions/${enc(i)}`),
   answer: (t, i, b) => req(t, "POST", `/sessions/${enc(i)}/answer`, b),
@@ -200,6 +241,7 @@ export const httpPractice: PracticeApi = {
   tick: (t, i, position, elapsed_sec) => req(t, "POST", `/sessions/${enc(i)}/tick`, { position, elapsed_sec }),
   finish: (t, i) => req(t, "POST", `/sessions/${enc(i)}/finish`),
   review: (t, i) => req(t, "GET", `/sessions/${enc(i)}/review`),
+  fix: (t, i, b) => req(t, "POST", `/sessions/${enc(i)}/fix`, b),
 };
 
 /** The API the screens use; the mock build and tests swap it. */

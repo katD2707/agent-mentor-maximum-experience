@@ -386,6 +386,13 @@ describe("course card + Thêm", () => {
     await waitFor(() => expect(screen.getByRole("button", { name: /Đã thêm: / })).toBeDisabled());
   });
 
+  it("shows rows with a count line and a link to more courses", async () => {
+    await i18n.changeLanguage("vi");
+    render(<Harness items={[card(), card({ course_id: "c2", title: "Hai" })]} onAdded={vi.fn()} onFailed={vi.fn()} />);
+    expect(screen.getByText("2 khóa hợp với em")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Xem thêm khóa" })).toHaveAttribute("href", "/khoa-hoc/tim-kiem");
+  });
+
   it("marks the suggested starting course", async () => {
     await i18n.changeLanguage("vi");
     render(<Harness items={[card()]} onAdded={vi.fn()} onFailed={vi.fn()} />);

@@ -1,5 +1,5 @@
 import type { Catalog, CatalogPage, CatalogQuery, CourseDetail, Enrollment, ProgressBody, SearchResult, Suggestions } from "./course";
-import type { BehaviourEvent, EventsResult, Goal, GoalInput, GoalPatch, PushSubscriptionJson, ReminderOutcome, RemindersResponse, Today, WeekPlan } from "./planner";
+import type { BehaviourEvent, EventsResult, Goal, GoalInput, GoalPatch, PushSubscriptionJson, Reminder, ReminderOutcome, RemindersResponse, Today, WeekPlan } from "./planner";
 
 export type Role = "student" | "teacher";
 export type AgeBand = "g1_5" | "g6_9" | "g10_12" | "uni";
@@ -63,13 +63,15 @@ export interface Api {
   deleteGoal(token: string, id: string): Promise<void>;
   getReminders(token: string, since?: string): Promise<RemindersResponse>;
   reminderOutcome(token: string, id: string, outcome: ReminderOutcome): Promise<void>;
+  /** "remind me at ..." (CONTRACTS 12.1); ApiError bad_time / bedtime / quiet */
+  remindLater(token: string, body: { at: string; title_vi?: string; title_en?: string; deep_link?: string }): Promise<Reminder>;
   postEvents(token: string, events: BehaviourEvent[]): Promise<EventsResult>;
   // ---- Web Push (CONTRACTS.md section 5)
   vapidPublicKey(token: string): Promise<{ enabled: boolean; public_key: string | null }>;
   pushSubscribe(token: string, subscription: PushSubscriptionJson): Promise<void>;
 }
 
-export type ApiErrorCode = "invalid_credentials" | "role_mismatch" | "unauthorized" | "not_found" | "coming_soon" | "birth_year_locked" | "bad_request" | "network" | "unknown";
+export type ApiErrorCode = "invalid_credentials" | "role_mismatch" | "unauthorized" | "not_found" | "coming_soon" | "birth_year_locked" | "bad_request" | "bad_time" | "bedtime" | "quiet" | "network" | "unknown";
 
 export class ApiError extends Error {
   constructor(

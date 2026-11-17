@@ -4,6 +4,7 @@ Handlers are plain `def`: the engine reads git and SQLite, so FastAPI runs them 
 `{detail, code, ...}` (`PracticeError`); teachers get 403.
 """
 
+import json
 from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query
@@ -49,6 +50,7 @@ class StartBody(PreviewBody):
     kind: Literal["practice", "mock", "diagnostic"] | None = None
     profile_id: str | None = None
     source: str | None = Field(default=None, max_length=100)
+    level: int | None = Field(default=None, ge=1, le=4)  # with `course:<id>` only: practise just this level
 
 
 class SubjectBody(BaseModel):
@@ -57,8 +59,13 @@ class SubjectBody(BaseModel):
 
 class AnswerBody(BaseModel):
     position: int = Field(ge=0)
-    answer: str | None = Field(default=None, max_length=200)
+    answer: str | dict | None = Field(default=None)
     time_spent_sec: int = Field(default=0, ge=0)
+
+
+class FixBody(BaseModel):
+    item_id: str
+    answer: str | dict | list | None = None
 
 
 class PositionBody(BaseModel):
@@ -99,6 +106,12 @@ def preview(body: PreviewBody, user: User = Depends(student_user), p: PracticeSe
     return p.preview(user.id, body.subject, body.minutes, body.goal, body.topics, body.seed, body.include_above_grade)
 
 
+@router.get("/courses/{course_id}/levels")
+def course_levels(course_id: str, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
+    """Practice of one course by level, for the course page (CONTRACTS 10.13)."""
+    return p.course_levels(user.id, course_id)
+
+
 @router.post("/sessions")
 def start(body: StartBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.start(user.id, body.model_dump())
@@ -128,7 +141,10 @@ def get_session(sid: str, user: User = Depends(student_user), p: PracticeService
 
 @router.post("/sessions/{sid}/answer")
 def answer(sid: str, body: AnswerBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
-    return p.answer(user.id, sid, body.position, body.answer, body.time_spent_sec)
+    given = json.dumps(body.answer, ensure_ascii=False) if isinstance(body.answer, dict) else body.answer
+    if given is not None and len(given) > 600:
+        raise HTTPException(422, "answer too long")
+    return p.answer(user.id, sid, body.position, given, body.time_spent_sec)
 
 
 @router.post("/sessions/{sid}/hint")
@@ -154,6 +170,11 @@ def tick(sid: str, body: TickBody, user: User = Depends(student_user), p: Practi
 @router.post("/sessions/{sid}/finish")
 def finish(sid: str, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
     return p.finish(user.id, sid)
+
+
+@router.post("/sessions/{sid}/fix")
+def fix(sid: str, body: FixBody, user: User = Depends(student_user), p: PracticeService = Depends(svc)) -> dict:
+    return p.fix(user.id, sid, body.item_id, body.answer)
 
 
 @router.get("/sessions/{sid}/review")

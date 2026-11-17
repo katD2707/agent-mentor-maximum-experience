@@ -328,9 +328,9 @@ def test_build_course_prefetches_deeptutor_quiz_and_tags_skills():
     res = build_course(intake, o, client, dt=dt, only_lessons=[ol.id], quiz_items=3, workers=1, on_draft=lambda d: got.append(d.lesson.id))
     assert dt.asked == [(ol.title, 2)] and len(dt.kb_made) == 1  # one KB for the course, one quiz call, started by the pipeline
     assert got == [ol.id]  # the media stage is told as soon as the lesson is final
-    quiz = next(b for b in res.drafts[0].lesson.blocks if isinstance(b, QuizBlock))
-    assert sum(1 for q in quiz.items if q.type == "SINGLE_CHOICE" and q.stem == "Q?") == 2
-    assert all(q.skill_ids == ["duong-suc-dien"] for q in quiz.items)
+    items = [q for b in res.drafts[0].lesson.blocks if isinstance(b, QuizBlock) for q in b.items]
+    assert sum(1 for q in items if q.type == "SINGLE_CHOICE" and q.stem == "Q?") == 2
+    assert all(q.skill_ids == ["duong-suc-dien"] for q in items)
     assert any("mastery path" in n and "tagged" in n for n in res.notes) and any("knowledge base" in n for n in res.notes)
 
 

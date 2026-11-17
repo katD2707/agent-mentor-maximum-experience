@@ -468,6 +468,20 @@ band. Code: `practice/sources.py` (QuizItem -> engine item), `practice/mixed.py`
   `<course_id>.<lesson_id>`), BKT as for the bank. Planner: the answers appear as `quiz_answer {item: <quiz item id>, course_id}` (from
   `PracticeAnswer`, `planner/events.derived`; bank items stay `p:<id>`), so FSRS due dates and the lesson link work; nothing else of
   the planner changed.
+
+### 10.13 Practice by level inside a course (2026-11-10)
+
+The student app has no Luyện tập screen of its own any more: practice lives on each course page, as a ladder of levels (item `level`
+1..4 = the quiz item's `difficulty`; the app names them Nhận biết / Thông hiểu / Vận dụng / Vận dụng cao, 1-3 stars for g1_5). No plan
+gating yet: every level and mock is open to everyone.
+- **`GET /api/practice/courses/{course_id}/levels`** -> `{course_id, title, min_items: 3, levels: [{level, items, studied, answered,
+  correct, solid}], suggested: 1..4 | null, mocks: [same cards as /home, only the course's subject]}`. `items` = quiz items of that level in
+  the course, `studied` = those in lessons studied so far, `answered` / `correct` = studied items with a `quiz_answer` event / last
+  answered right, `solid` = `correct >= 0.8 * studied`. `suggested` = the easiest level with >= `min_items` studied items that is not
+  solid, else the hardest such level; null when no level has enough. 404 `course_not_found` when not enrolled.
+- **`POST /sessions {source: "course:<id>", level}`**: practise only that level's studied items (same size and scoring as `course:`).
+  `level` (1..4) is 422 `bad_level` with any other source; fewer than 3 items of the level -> 422 `insufficient_content`.
+  `params.level` records it. Without `level` Mentor mixes levels as before.
 - **Report** (practice only) gains `takeaway: {line_vi, line_en} | null` (one line, from the most-missed lesson/topic) and `redo:
   {line_vi, line_en} | null` ("Mentor sẽ cho em làm lại 2 câu sai vào thứ Năm, giờ em hay học."; only when something was wrong and the
   stored plan has a `review` item; the plan is never generated at answer time). `recommendations` is `[]` for quick/course sessions.
@@ -535,7 +549,7 @@ est_minutes}]}]` in `course.json`, plus `cover.webp`. It has no versions and no 
 - Apps: show "Sắp có / Coming soon" instead of the Start button; do not offer them for Add or as goals. Ask course cards also carry them
   (`enrolled: false`), so a client must check the catalog `status` before offering "Thêm".
 
-**Catalog query and autocomplete (hs-03, 2026-11-07).** The course screen (Shopee-style catalog) asks the gateway for one page at a time.
+**Catalog query and autocomplete (hs-07, 2026-11-07).** The course screen (Shopee-style catalog) asks the gateway for one page at a time.
 Any bearer user; `/search` is unchanged for Ask (same hybrid relevance, plus `students` in each result).
 
 | Method | Path | Notes |
@@ -657,6 +671,23 @@ Cold start (< 3 sessions): g1_5 18:00 x 10, g6_9 and g10_12 19:30 x 20, uni 20:0
 
 Research additions for the `uni` band (item and reminder kind `research`, `Goal.source` and `milestones`, `hub.research`, four server-recorded events, two replan triggers): section 15.8 and 15.9.
 
+### 12.1 Engagement: streak, Mực's voice, streak saver, remind me later, backing off (2026-11-10)
+
+Modelled on how Duolingo keeps learners coming back; code `planner/engage.py`, no model.
+- **Streak**: consecutive local days with a study session (`sessions()` of the behaviour events), counted up to today, or up to
+  yesterday while today has nothing yet. `GET /today` gains `streak: {days, today_done}` and `reminders_backoff: bool`.
+- **Mực's voice**: the fallback's study reminders pick one of a few lines per (date, slot) so they do not repeat word for word, and
+  name the lesson, the minutes and, from 2 days, the streak ("Chuỗi 5 ngày của em vẫn đang giữ. 15 phút Điện trường nhé?").
+- **Streak saver** (reminder kind `streak`): from a 2-day streak with nothing studied today, the planner tick adds one reminder at
+  the band's bedtime minus 60 min (g10_12 21:30), at most 3 reminders that day, one saver per day. Cancelled once the learner studies.
+- **Remind me later** (kind `later`): **`POST /reminders {at, title_vi?, title_en?, deep_link?}`** -> 201 reminder (same shape as in
+  `GET /reminders`). 422 `{error}`: `bad_time` (not 5 min .. 48 h ahead), `bedtime` (at/after the band's bedtime or before 06:30),
+  `quiet` (before `quiet_until`). At most 2 waiting: a third replaces the oldest. Delivered like the plan's reminders (device
+  scheduling, Web Push); a later study session that day cancels it.
+- Kinds `later` and `streak` are **never cancelled by a replan** (only the plan's own kinds are replaced).
+- **Backing off**: 4 reminders in a row answered `ignored` since the last study session -> `reminders_backoff: true`, and a new plan
+  keeps a reminder on every other day only (the first per day). Studying again ends it.
+
 ## 13. Q&A and guide (P5-B backend, 2026-11-07; gateway serves under `/api`)
 
 Design: REQUIREMENTS-PLAN 3.5 (Hỏi đáp) and 3.9 (Mực). Package `mentor_gateway/ask/` (`service.py` flow, `llm.py` router client, `photo.py`
@@ -721,7 +752,7 @@ that dir (`state.json` = chat + jobs + comments, `intake/pages.json|checks.json`
 `versions/<v>/media.json` + `media/` editable sources, `uploads/`, `jobs/*.log`). One job at a time per course, `BUILDER_WORKERS` (default 1)
 stages overall; a gateway restart sets `running` jobs back to `queued` and the stage runs again (stages are idempotent), so the teacher can
 close the app at any time. Kinds: `intake` (intake + merge + outline), `outline_chat`, `build`, `revise_text`, `revise_media`, `revise_all`.
-Env: `BUILDER_WORKERS`, `BUILDER_PYTHON`, `BUILDER_JOB_TIMEOUT_S` (3600), `BUILDER_MEDIA_KINDS` (`tts,video,diagram,illustration,picture,cover`;
+Env: `BUILDER_WORKERS`, `BUILDER_PYTHON`, `BUILDER_JOB_TIMEOUT_S` (3600), `BUILDER_MEDIA_KINDS` (`tts,video,diagram,illustration,picture,cover,recap`;
 drop kinds to skip them), `BUILDER_DEEPTUTOR=1`, `BUILDER_CHAT_WAIT_S` (20). TTS order edge -> gemini is the media stage default.
 
 **Verify-and-refine gate (build, then publish).** The `build` stage ends with `mentor_course_builder.refine`: every outline lesson present, a quiz in every lesson, pack validates, asset files exist with matching size and sha256, no empty or placeholder block, every formula parses in KaTeX (node + the `katex` package; regex fallback), quiz keys consistent and independently re-solved (items the pipeline already verified are not solved twice), no lesson repeating its neighbour, no duplicate question, humanize-linter tells. Each problem has an automatic repair (rewrite the lesson, regenerate quiz or item, re-ask the model with the KaTeX error, re-render media, second humanize pass), up to 3 rounds. What is left is `hard` (lesson/quiz missing, pack, asset, KaTeX, quiz key, wrong answer, empty block: **blocks publishing**) or `soft` (media left out, writing tells, repetition). The `build` result gains `issues: [{code, severity, lesson_id, block_id, detail, fixed, vi, en}]`, `blocked: bool`, `fixed: int`, `profile: {content_s, media_done_s, verify_s, total_s}`; `message_vi/en` lists the issues in plain words (shown as the chat `build` message). The report is stored as `versions/<v>/verify.json` (`{rounds, katex, blocked, hard, soft, fixed, checked_at}`). Build args add `refine_rounds` (3), `tts_workers` (6), `plan_media` (true: media per lesson chosen by content and age band, `mediaplan.py`). `ImageBlock.attribution` (optional `{provider, title, author, license, license_url, source_url}`) carries the credit of a picture taken from the web.
@@ -762,7 +793,7 @@ get a new version and text comments; media comments need the builder's `versions
 
 ## 15. Nghiên cứu / Research (P5N, contract 2026-11-07; gateway serves under `/api/research`; students of the `uni` band only)
 
-Design: REQUIREMENTS-PLAN 3.11, mockups `hs-11-nghien-cuu`, `hs-12-doc-paper`, `shared.js` (`mockSources`), hub `hs-02`. Shapes:
+Design: REQUIREMENTS-PLAN 3.11, mockups `hs-09-nghien-cuu`, `hs-10-doc-paper`, `shared.js` (`mockSources`), hub `hs-02`. Shapes:
 `packages/mentor-schemas/src/mentor_schemas/research.py` (import `mentor_schemas.research`; not re-exported from `__init__`, like `course.py`) and
 `apps/app/src/api/research-types.ts`; names are identical in both and here. Library: `mentor_gateway/research/papers.py` (`search_arxiv`,
 `discover_frontier`, `literature_pass`; `Paper` -> `PaperCard`, `SearchRun` reused as is, `MatrixRow` replaced by `ReviewRow`) plus the S2 and Asta clients restored
@@ -780,7 +811,7 @@ Per-user rate limits: search 30/min, key validation 5/min, review 10/hour, disco
 
 | Method | Path | Request -> response; errors; systems touched |
 |---|---|---|
-| GET | `/research` | -> `ResearchOverview`: profile, `status_line`, `hero`, `upcoming`, `reading_list`, featured `suggestions`, thesis `milestones`, `goal_id`, last 5 `experiments`, `discovery`. One call paints hs-11. Reads planner goals and plan items |
+| GET | `/research` | -> `ResearchOverview`: profile, `status_line`, `hero`, `upcoming`, `reading_list`, featured `suggestions`, thesis `milestones`, `goal_id`, last 5 `experiments`, `discovery`. One call paints hs-09. Reads planner goals and plan items |
 | GET | `/research/profile` | -> `ResearchProfile` (`title: ""` when nothing is set; `asta_connected`, `s2_connected`; keys are never returned) |
 | PUT | `/research/profile` | `ResearchProfileInput` (present fields change; `keywords` replaces the list, 1-8 items) -> `ResearchProfile`. `title` alone: Mentor derives `question` and 3-5 English `keywords` (one `mentor-chat` call; no model: keywords from the title words) and queues a discovery job. 422 `empty_title`, `bad_keywords` |
 | GET | `/research/source-keys` | -> `SourceKeysStatus` (settings row "Nguồn tìm paper") |
@@ -821,7 +852,7 @@ Per-user rate limits: search 30/min, key validation 5/min, review 10/hour, disco
 | PATCH | `/research/deadlines/{id}` | `MilestonePatch` -> `Milestone`. 404 `deadline_not_found` |
 | DELETE | `/research/deadlines/{id}` | -> 204. 404 `deadline_not_found` |
 
-### 15.2 Search (hs-11)
+### 15.2 Search (hs-09)
 
 `results` order: Asta results, then S2 results not seen yet, then arXiv results not seen yet; inside each source its own relevance order. Dedupe by `arxiv:<id>`
 (version stripped), else `doi:<doi>` (lower case), else `s2:<paperId>`; the **earlier source's card wins**, and `source` is the source of the card shown. A source with no key
@@ -839,7 +870,7 @@ S2 adds `citation_count`, `tldr` (English, when the paper has one), `venue`, `do
  "tldr": null, "snippet": null, "citation_count": null, "has_pdf": true, "in_reading_list": false, "paper_id": null}
 ```
 
-### 15.3 Related papers (hs-12)
+### 15.3 Related papers (hs-10)
 
 `GET /research/papers/{id}/related` for a stored paper. With S2 connected: `citing` from S2 `citations`, `cited` from S2 `references`; with Asta connected: Asta `get_citations` adds to `citing`.
 Merged and deduped like search, <= 20 items each, `count` = the source's total ("Trích dẫn bài này (14)", "Bài này trích dẫn (38)"), `sources` = the ones used. With no key at all:
@@ -941,3 +972,62 @@ SQLite ops DB (next to `ask_threads`; Postgres later without an API change), eve
 Reused: `users` (band, language), `study_goals` (+ `source` and `milestones` JSON columns), study plans and items (+ kind `research`), `study_reminders` (+ kind `research`), `behaviour_events` (+ 4 kinds), `jobs` and `scheduler`
 (job kind `literature_watch`, agenda drafts), `uploads` and `inbox` (PDFs and photos), `crypto.py` and `datakeys.py` (keys), the Hỏi đáp router client (`ask/llm.py`), course search (section 11) for `course_hint`. Not stored: review
 results, related lists (24 h cache), search results. Not in this contract: the markdown export folder of REQUIREMENTS-PLAN 3.11 and the layout of the settings dialog (it uses the `source-keys` endpoints).
+
+## 16. Stepped lessons and the new learning features (contract 2026-11-17)
+
+Approved mockups: hs-03 (Hôm nay: "Chụp vở"), hs-04 (course tree, "Nghe tóm tắt"), hs-05 (stepped lesson: tiles, pairs, order,
+drag diagram, recall, bilingual), hs-06 (tests: fix wrong answers before the solution), gv-02 (teacher tree), gv-03 (teacher reviews
+step by step). Product rule: learners and teachers never deal with how this works inside (no model, pipeline, schema or app-version talk
+in the UI); the app does it and shows only what a person acts on.
+
+### 16.1 Content (`mentor_schemas.course`, TS mirror `apps/app/src/api/course.ts`)
+- Quiz types `FILL_TILES` (stem holds one `{{gap}}` per `answer_key.gaps` entry; `parts` = the tile bank), `MATCH_PAIRS` (`parts`
+  with `side` left/right, `answer_key.pairs` left->right), `ORDER_STEPS` (`parts`, `answer_key.order`). `QuizPart {id, text, side?}`.
+- Block `interactive` ("Kéo sơ đồ"): `prompt`, axes `x`/`y` `{symbol,label,unit}`, `expr` (y in x, the app's expression parser),
+  `x_min`, `x_max`, `x_step`, `x_start`, `target_y`, `tolerance`, `praise`, `audio?`. Drawn as a function plot with a draggable point.
+- Block `recall` ("Nhớ lại"): `items[1..4] {prompt, answer, image?}`; usually from `Lesson.key_ideas`.
+- `TextBlock.gloss` (Vietnamese of an English-course explanation) and `CoursePack.gloss_start` (0-100, % offered in Vietnamese at the
+  start; the app offers less as the learner gets questions right; default 30 for English courses, null otherwise).
+- `Chapter.recap {script[], audio?, duration_s}` ("Nghe tóm tắt", 3-5 min, offline with the pack).
+- These kinds need app 0.2.0 (`APP_VERSION_FOR`); packs using them get `min_app_version` 0.2.0 automatically at assembly.
+
+### 16.2 Builder output (course-builder `build`)
+A lesson is a sequence of one-task steps: 8-14 blocks, 4-8 minutes. Explanation blocks are short (1-2 sentences, optionally with one
+image or formula). At least one question every 2-3 steps; use FILL_TILES / MATCH_PAIRS / ORDER_STEPS where the content fits (formulas,
+units/definitions, procedures); an `interactive` block when the lesson has a numeric relation (bands g6_9 and up); a `recall` block
+near the end (2-3 items from `key_ideas`). Every wrong option of a choice item has `option_feedback`; `explanation` is 1-2 lines.
+Quiz difficulty spreads over 1..4 across the course so each practice level has items (10.13). English courses: `gloss` on every
+explanation and `gloss_start` 30. Every chapter gets a `recap` (script + TTS audio). g1_5: pictures and read-aloud as before.
+
+### 16.3 Fix wrong answers first (practice, hs-06)
+- `POST /api/practice/sessions/{id}/fix {item_id, answer}` (after the session is finished; only items answered wrong) ->
+  `{correct, explanation?, right?, note?}`: right -> `{correct: true}`; wrong again -> `correct: false` plus the right answer (`right`, the
+  same display shape the report uses), `explanation` and the `option_feedback` line for the chosen option (`note`). Each item can be fixed
+  once (409 `already_fixed`). Items still wrong stay in review (FSRS), as today. The report's wrong items carry `chosen` (the learner's
+  first answer) so the app can show "Em đã chọn".
+- New quiz types are graded by the practice engine too (answers: `{gaps: [...]}`, `{pairs: {...}}`, `{order: [...]}`; sent as a JSON object or
+  a JSON string in `answer`; `right`/`correct_answer` use the same JSON string; session items carry `parts`). The report's `wrong` is
+  `[{position, item_id, type, chosen}]` (`chosen` as the answer was sent). Fix results are kept in `report.fixed`; `fix` writes no evidence.
+
+### 16.4 Class notes to review ("Chụp vở", hs-03; bands g6_9 and up)
+- `POST /api/ask/notes` multipart `images[]` (1-6 photos of the learner's own notes) -> `{notes_id, title, pages, items, first_review_at,
+  next_review_at}`; Mực's line is built from these. Mentor reads the pages, writes `items` (4-8) review questions in the existing quiz
+  types and schedules them (reminder at `first_review_at`, again after ~3 days). `items` is the number of questions (4-8). Reminders are kind `later`
+  with deep link `/luyen-tap?notes=<notes_id>`; `first_review_at` is the learner's usual study time today if still 30+ minutes ahead, else tomorrow.
+  g1_5 gets 403 `band_mismatch`. Questions are stored in table `ask_notes`. Unreadable photos -> 422 `unreadable`; g1_5 -> 403.
+- The questions are practised with `POST /api/practice/sessions {source: "notes:<notes_id>"}`.
+
+### 16.5 Teacher review by step (gv-02, gv-03; under `/api/teacher`, drafts only, published -> 409 `version_published`)
+- `PATCH /courses/{id}/versions/{v}/blocks/{block_id}` body = the block's fields to change (for a quiz block: `items: [{id, ...fields}]`)
+  -> `{block}`; the pack is re-validated (422 `invalid_block` with a reason). No model call: the teacher's words are kept as written.
+  Changing a text with audio (kids, read-aloud) redoes that audio in the background.
+- `PUT /courses/{id}/versions/{v}/chapters/{chapter_id}/recap {script: [...]}` -> `{job_id}` (the recap audio is redone).
+- `PUT /courses/{id}/versions/{v}/gloss {gloss_start}` (English courses).
+- `GET /courses/{id}/versions/{v}/review` -> `{unsure: [{block_id, item_id?, reason_vi, reason_en}]}`: steps Mentor is not sure about
+  (from the build's checks), shown as a dot in gv-02/gv-03; `POST .../review/{block_id}/seen` clears one.
+- Tests per course ("Kiểm tra" in gv-03): `PUT /courses/{id}/tests/{profile_id} {items, minutes}` overrides a mock/test card's size for
+  that course (stored by the gateway; `GET /practice/courses/{id}/levels` `mocks` reflect it).
+- Builder jobs queued: `retts_block` and `recap` get `{course_id, store, teacher_id, version, block_id}` / `{..., version, chapter_id, script}`.
+  Unsure-list "seen" marks live in `versions/<v>/review.seen.json` (the builder's `review.json` is never changed). Test sizes live in
+  `<builder dir>/<course>/tests.json`; `PUT .../tests/{profile_id}` needs a known profile (404 `unknown_profile`), items 3-200, minutes 5-240.
+- Comments (section 14) keep working for anything else ("Nhận xét cho Mentor").

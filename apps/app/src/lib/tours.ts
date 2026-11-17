@@ -19,35 +19,35 @@ const HELLO = "hello";
 /** Areas each screen walks through, in order. Areas not on screen right now are skipped. */
 const TOURS: Record<string, string[]> = {
   login: ["login-role"],
-  hub: [HELLO, "courses", "settings"],
-  courses: ["my-courses", "course-search", "more-courses"],
   "course-search": ["course-search"],
-  course: ["course-tree"],
+  course: ["course-next", "course-tree", "course-practice"],
   player: ["player-progress"],
   practice: ["practice-resume", "practice-quick", "practice-mock", "practice-courses"],
-  "practice-run": ["practice-progress", "practice-clock", "practice-hint", "practice-flag"],
+  "practice-run": ["practice-answer", "practice-clock", "practice-hint", "practice-progress"],
   ask: ["ask-composer"],
   progress: ["progress-goals", "progress-week", "progress-courses"],
   research: ["research-tabs", "research-search", "research-hero", "research-reading"],
   "research-paper": ["research-summary", "research-ask", "research-related"],
   "gv-home": [HELLO, "drop", "teacher-courses"],
-  "gv-course": ["gv-thread", "gv-outline", "gv-compose"],
+  "gv-course": ["gv-outline", "gv-retake", "gv-go"],
   "gv-review": ["gv-review", "gv-comments", "gv-publish"],
 };
 
 const TITLES: Record<string, Text> = {
   "login-role": T("Chọn vai trò", "Pick your role"),
-  courses: T("Khóa học", "Courses"),
   settings: T("Cài đặt", "Settings"),
   "my-courses": T("Khóa của em", "Your courses"),
   "course-search": T("Tìm khóa học", "Find courses"),
   "more-courses": T("Khóa học khác", "Other courses"),
-  "course-tree": T("Nội dung khóa", "What's inside"),
+  "course-next": T("Tiếp tục", "Continue"),
+  "course-tree": T("Bài học", "Lessons"),
+  "course-practice": T("Luyện tập", "Practice"),
   "player-progress": T("Tiến độ bài", "Lesson progress"),
   "practice-resume": T("Bài làm dở", "Left half done"),
   "practice-quick": T("Luyện nhanh", "Quick practice"),
   "practice-mock": T("Thi thử", "Mock exam"),
-  "practice-courses": T("Luyện theo khóa", "By course"),
+  "practice-courses": T("Kiểm tra", "Tests"),
+  "practice-answer": T("Chọn đáp án", "Pick an answer"),
   "practice-progress": T("Số câu đã làm", "Questions done"),
   "practice-clock": T("Đồng hồ", "Clock"),
   "practice-hint": T("Gợi ý", "Hint"),
@@ -63,12 +63,13 @@ const TITLES: Record<string, Text> = {
   "research-summary": T("Tóm tắt của bạn", "Your summary"),
   "research-ask": T("Hỏi về paper", "Ask about the paper"),
   "research-related": T("Bài liên quan", "Related papers"),
-  drop: T("Gửi bài giảng", "Send a lesson"),
+  drop: T("Thả tài liệu", "Drop your material"),
   "teacher-courses": T("Khóa của bạn", "Your courses"),
-  "gv-thread": T("Trao đổi với Mentor", "Talk with Mentor"),
-  "gv-outline": T("Cấu trúc khóa", "Course outline"),
-  "gv-compose": T("Soạn bài", "Compose"),
-  "gv-review": T("Bài như học sinh thấy", "As students see it"),
+  "gv-outline": T("Cấu trúc khóa", "Course structure"),
+  "gv-retake": T("Trang chưa đọc được", "Unreadable page"),
+  "gv-go": T("Soạn nội dung", "Write the lessons"),
+  "gv-compose": T("Nhắn Mentor", "Message Mentor"),
+  "gv-review": T("Nội dung bài", "Lesson text"),
   "gv-comments": T("Nhận xét của bạn", "Your comments"),
   "gv-publish": T("Xuất bản", "Publish"),
 };
@@ -104,11 +105,10 @@ export function tourScreen(pathname: string, role: Role | null): string | undefi
     if (/^\/khoa\/[^/]+/.test(pathname)) return "gv-course";
     return pathname === "/" ? "gv-home" : undefined;
   }
-  if (pathname === "/") return "hub";
+  if (pathname === "/") return undefined; // Today: Mực introduces himself in the conversation instead
   if (pathname.startsWith("/khoa-hoc/tim-kiem")) return "course-search";
   if (/^\/khoa-hoc\/[^/]+\/hoc/.test(pathname)) return "player";
   if (/^\/khoa-hoc\/[^/]+/.test(pathname)) return "course";
-  if (pathname.startsWith("/khoa-hoc")) return "courses";
   if (/^\/luyen-tap\/.+/.test(pathname)) return "practice-run";
   if (pathname.startsWith("/luyen-tap")) return "practice";
   if (pathname.startsWith("/hoi-dap")) return "ask";

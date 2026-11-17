@@ -78,7 +78,7 @@ function SolveWait({ stage }: { stage: "reading" | "solving" }) {
 
 const ERR_KEYS = new Set(["model_unavailable", "network", "role_mismatch", "file_too_large"]);
 
-/** One answer of Mực: every state of the solve / learn flows (hs-08). `latest` turns keep their follow-up buttons. */
+/** One answer of Mực: every state of the solve / learn flows (hs-11). `latest` turns keep their follow-up buttons. */
 export function AiBubble({ turn, latest, busy, lang, h }: { turn: AiTurn; latest: boolean; busy: boolean; lang: "vi" | "en"; h: AiHandlers }) {
   const { t } = useTranslation();
   const idle = latest && !busy && !turn.open;

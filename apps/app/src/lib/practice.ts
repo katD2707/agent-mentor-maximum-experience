@@ -1,3 +1,4 @@
+import { plainText } from "./text";
 import type { PAnswerState, PItem, PResult, PSession, StatementResult } from "../api/practice";
 
 /** Pure rules of the practice screens: answer encoding (CONTRACTS 10.9), result wording, the mock clock, resume. */
@@ -19,10 +20,51 @@ export function tfDecode(item: PItem, value: string | null | undefined): Record<
   return out;
 }
 
+/** FILL_TILES / MATCH_PAIRS / ORDER_STEPS answers travel as JSON: {"gaps": [...]}, {"pairs": {...}}, {"order": [...]}. */
+export interface StepAnswer {
+  gaps?: (string | null)[];
+  pairs?: Record<string, string>;
+  order?: string[];
+}
+export const isStepType = (type: string) => type === "FILL_TILES" || type === "MATCH_PAIRS" || type === "ORDER_STEPS";
+
+export function stepDecode(value: string | null | undefined): StepAnswer {
+  try {
+    const j = JSON.parse(value ?? "") as StepAnswer | null;
+    return j && typeof j === "object" ? j : {};
+  } catch {
+    return {};
+  }
+}
+
+/** "" when nothing is chosen yet (an empty answer is a blank one). */
+export function stepEncode(item: Pick<PItem, "type">, a: StepAnswer): string {
+  if (item.type === "FILL_TILES") return a.gaps?.some(Boolean) ? JSON.stringify({ gaps: a.gaps.map((x) => x ?? "") }) : "";
+  if (item.type === "MATCH_PAIRS") return a.pairs && Object.keys(a.pairs).length ? JSON.stringify({ pairs: a.pairs }) : "";
+  return a.order?.length ? JSON.stringify({ order: a.order }) : "";
+}
+
+/** An encoded tiles / pairs / order answer (or key) as a line a person can read. */
+export function stepText(item: Pick<PItem, "parts">, value: string | null | undefined): string {
+  const byId = new Map((item.parts ?? []).map((p) => [p.id, plainText(p.text)]));
+  const name = (id: string) => byId.get(id) ?? id;
+  const a = stepDecode(value);
+  if (a.gaps) return a.gaps.map((g) => (g ? name(g) : "…")).join(", ");
+  if (a.order) return a.order.map(name).join(" → ");
+  if (a.pairs) return Object.entries(a.pairs).map(([l, r]) => `${name(l)} – ${name(r)}`).join("; ");
+  return "";
+}
+
 /** Can the learner press "Kiểm tra" (practice)? Statements all answered, some text, a tap, a chosen option. */
 export function canCheck(item: PItem, value: string | null | undefined): boolean {
   const v = (value ?? "").trim();
   if (!v) return false;
+  if (item.type === "FILL_TILES") {
+    const gaps = stepDecode(v).gaps ?? [];
+    return gaps.length > 0 && gaps.every(Boolean);
+  }
+  if (item.type === "MATCH_PAIRS") return Object.keys(stepDecode(v).pairs ?? {}).length >= (item.parts ?? []).filter((p) => p.side === "left").length;
+  if (item.type === "ORDER_STEPS") return (stepDecode(v).order?.length ?? 0) >= (item.parts ?? []).length;
   if (item.type === "TRUE_FALSE_GROUP") return !v.includes("-") && v.length === (item.statements ?? []).length;
   if (item.type === "TAP_COUNT") return Number(v) > 0;
   return true;

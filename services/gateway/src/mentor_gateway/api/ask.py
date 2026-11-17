@@ -10,6 +10,7 @@ from fastapi.responses import StreamingResponse
 
 from mentor_gateway.api.deps import get_gw, student_user
 from mentor_gateway.ask.llm import RouterChatLLM
+from mentor_gateway.ask import notes as notes_mod
 from mentor_gateway.ask.service import AskInput, AskService
 from mentor_gateway.context import Gateway
 from mentor_gateway.db import User
@@ -101,3 +102,23 @@ async def ask(request: Request, user: User = Depends(student_user), gw: Gateway 
 
     return StreamingResponse(gen(), media_type="text/event-stream",
                              headers={"Cache-Control": "no-store", "X-Accel-Buffering": "no"})
+
+
+@router.post("/ask/notes")
+async def ask_notes(request: Request, user: User = Depends(student_user), gw: Gateway = Depends(get_gw),
+                    svc: AskService = Depends(ask_service)) -> dict[str, Any]:
+    """Photos of the learner's class notes -> review questions and a review reminder (CONTRACTS 16.4)."""
+    if user.age_band == "g1_5":
+        raise HTTPException(403, {"error": "band_mismatch"})
+    form = await request.form()
+    images: list[bytes] = []
+    for f in form.getlist("images"):
+        if hasattr(f, "read"):
+            data = await f.read(MAX_IMAGE_BYTES + 1)
+            if len(data) > MAX_IMAGE_BYTES:
+                raise HTTPException(413, {"error": "file_too_large"})
+            images.append(data)
+    try:
+        return await notes_mod.make_notes(svc, gw.planner, user, images, user.language or "vi")
+    except notes_mod.NotesError as e:
+        raise HTTPException(e.status, {"error": e.code, "detail": e.detail}) from None

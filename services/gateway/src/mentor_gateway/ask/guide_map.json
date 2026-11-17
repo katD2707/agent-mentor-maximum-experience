@@ -4,8 +4,8 @@
   "en": "Tap the student or teacher picture. Your account has to match the role you pick."
  },
  "courses": {
-  "vi": "Khóa học: bài hôm nay Mentor đã xếp sẵn, các khóa em đang học và ô tìm khóa mới.",
-  "en": "Courses: today's lesson, already planned for you, your courses, and search for new ones."
+  "vi": "Khóa của em: chạm một khóa để học tiếp và luyện tập theo mức. Ô cuối dải để tìm khóa mới.",
+  "en": "Your courses: tap one to carry on and practise by level. The last tile finds a new course."
  },
  "course-today": {
   "vi": "Bài hôm nay do Mentor xếp sẵn. Chỉ cần nhấn nút lớn để học tiếp đúng chỗ em đang dừng.",
@@ -20,36 +20,48 @@
   "en": "Other courses for your grade. Press See all to find more."
  },
  "course-search": {
-  "vi": "Gõ tên khóa hoặc điều em muốn học. Mặc định chỉ hiện khóa hợp lớp em, có nút xem mọi lứa tuổi.",
-  "en": "Type a course name or something you want to learn. It shows courses for your grade; there's a button for all ages."
+  "vi": "Gõ tên môn hoặc chủ đề, ví dụ “điện trường”, để tìm khóa hợp với lớp của em.",
+  "en": "Type a subject or topic, like “electric field”, to find courses for your grade."
  },
  "course-tree": {
-  "vi": "Cây nội dung: chương, bài và các ý chính của khóa. Đọc qua trước khi nhấn Bắt đầu học.",
-  "en": "The course tree: chapters, lessons and key ideas. Skim it, then press Start learning."
+  "vi": "Chạm một nhóm để gập hoặc mở. Dấu tích là xong.",
+  "en": "Tap a group to fold or open it. A tick means done."
+ },
+ "course-next": {
+  "vi": "Mentor đưa em tới đúng chỗ nên học bây giờ.",
+  "en": "Mentor takes you to what to do now."
  },
  "player-progress": {
   "vi": "Thanh này cho biết em học được bao nhiêu của bài. Nút X để dừng, Mentor nhớ chỗ em dừng.",
   "en": "This bar shows how much of the lesson you've done. The X stops here; Mentor remembers your place."
  },
  "practice": {
-  "vi": "Luyện tập: làm vài câu Mentor chọn từ bài em đang học, hoặc thi thử như đề thật.",
-  "en": "Practice: a few questions picked from what you're learning, or a full mock exam."
+  "vi": "Luyện tập nằm trong từng khóa: mở khóa ở dải Khóa của em, xem mục Luyện tập theo mức. Hoặc nhắn Mực “cho em luyện tập”.",
+  "en": "Practice lives in each course: open one from Your courses and see Practice by level. Or tell Mực “let me practise”."
+ },
+ "course-practice": {
+  "vi": "Mức từ dễ tới khó. Ổ khóa là mức của gói khác.",
+  "en": "Levels from easy to hard. A lock means another plan."
  },
  "practice-quick": {
-  "vi": "Bộ câu hỏi Mentor chọn sẵn từ bài em đang học và những câu lần trước em sai. Nhấn Bắt đầu là làm được ngay.",
-  "en": "A set Mentor picked from what you're learning and what you got wrong last time. Press Start and go."
+  "vi": "Mentor chọn sẵn câu hỏi cho hôm nay. Bấm Bắt đầu là làm.",
+  "en": "Mentor picked today's questions. Press Start."
  },
  "practice-resume": {
   "vi": "Em còn một bài làm dở. Nhấn Làm tiếp để vào đúng câu em dừng.",
   "en": "You have a session left half done. Press Continue to return to the question where you stopped."
  },
  "practice-mock": {
-  "vi": "Thi thử có đồng hồ và đáp án chỉ hiện sau khi nộp. Đề chỉ để luyện, không phải đề thật.",
-  "en": "A mock exam has a clock, and answers only show after you hand in. It is practice, not the real exam."
+  "vi": "Đề thi thử có đồng hồ. Đáp án hiện sau khi nộp; đề chỉ để luyện.",
+  "en": "Mock exams have a clock. Answers show after you submit; just for practice."
  },
  "practice-courses": {
-  "vi": "Luyện riêng từng khóa, chỉ gồm những bài em đã học tới.",
-  "en": "Practise one course at a time, using only the lessons you've reached."
+  "vi": "Bài kiểm tra của từng khóa, chỉ gồm những bài em đã học tới.",
+  "en": "Each course's tests, using only the lessons you've reached."
+ },
+ "practice-answer": {
+  "vi": "Bấm vào đáp án em chọn. Sai thì Mentor chỉ ra chỗ nhầm ngay.",
+  "en": "Tap your answer. If it's wrong, Mentor shows the slip right away."
  },
  "practice-progress": {
   "vi": "Thanh này cho biết em đã làm bao nhiêu câu. Nút X lưu bài lại, em quay lại làm tiếp được.",
@@ -72,16 +84,16 @@
   "en": "Flag a question you're unsure about to return to it. The All questions grid shows what's answered or flagged."
  },
  "practice-result": {
-  "vi": "Điểm của bài, một dòng nhận xét và lời hẹn làm lại các câu sai do Mentor xếp.",
-  "en": "Your score, one line of feedback, and when Mentor will bring the missed questions back."
+  "vi": "Điểm của lần luyện này. Câu sai sẽ được làm lại vào buổi sau.",
+  "en": "Your score. Missed questions come back next session."
  },
  "practice-review": {
   "vi": "Xem lại từng câu: em chọn gì, đáp án đúng và lời giải.",
   "en": "Go through each question: what you chose, the right answer and the solution."
  },
  "ask": {
-  "vi": "Hỏi đáp: chụp bài, gõ hoặc nói. Mentor giải bài hoặc gợi ý khóa học hợp với em.",
-  "en": "Ask: snap a photo, type or talk. Mentor solves it or suggests a course for you."
+  "vi": "Trò chuyện với Mực: Mực gợi ý việc nên làm. Ở ô bên dưới em chụp bài, gõ hoặc nói để hỏi bài, tìm khóa, xin luyện tập hay thêm mục tiêu.",
+  "en": "Talking with Mực: Mực suggests what to do. In the box below, snap, type or talk to ask about homework, find a course, practise or add a goal."
  },
  "ask-composer": {
   "vi": "Gõ câu hỏi vào ô, hoặc nhấn máy ảnh để chụp bài, nút ảnh để chọn ảnh có sẵn, micro để nói. Nhấn nút tím để gửi.",
@@ -104,20 +116,20 @@
   "en": "A step-by-step solution. Mentor keeps the last step for you to try, then press Show last step to check."
  },
  "progress": {
-  "vi": "Tiến độ: các mục tiêu của em và lịch học tuần này. Lịch do Mentor tự xếp.",
-  "en": "Progress: your goals and this week's plan. Mentor builds the plan for you."
+  "vi": "Vòng này cho biết tuần này em học được bao nhiêu buổi. Chạm để xem lịch tuần và mục tiêu.",
+  "en": "This ring shows how many sessions you have done this week. Tap it for the week and your goals."
  },
  "progress-goals": {
-  "vi": "Các mục tiêu của em. Mentor tự đoán từ khóa em học, em cũng thêm được mục tiêu riêng, có hạn hoặc không.",
-  "en": "Your goals. Mentor guesses some from your courses, and you can add your own, with a deadline or without."
+  "vi": "Thanh tím là phần đã xong. Nhãn bên phải cho biết em đang đúng nhịp hay hơi chậm, Mentor tự thêm buổi khi cần.",
+  "en": "The purple bar is what is done. The tag says if you are on track; Mentor adds sessions when needed."
  },
  "progress-week": {
-  "vi": "Lịch học 7 ngày do Mentor xếp, mỗi buổi có một dòng lý do. Chạm vào buổi học để vào học luôn.",
-  "en": "The 7-day plan Mentor made, with one line of reasoning per session. Tap a session to start it."
+  "vi": "Mentor tự xếp và tự dời lịch khi em bỏ buổi. Ô viền tím là hôm nay. Chạm một ô để vào học luôn.",
+  "en": "Mentor plans the week and moves sessions you miss. The purple box is today. Tap a box to start."
  },
  "progress-courses": {
-  "vi": "Từng khóa em học: đã được bao nhiêu phần trăm, phần nào vững và phần nào cần để ý thêm.",
-  "en": "Each course you study: how far you are, what is strong and what needs a little more care."
+  "vi": "Từng khóa em học và đã được bao nhiêu phần trăm. Chạm tên khóa để mở.",
+  "en": "Each course you study and how far you are. Tap a name to open it."
  },
  "research": {
   "vi": "Nghiên cứu: đề tài của bạn, việc sắp tới, paper cần đọc và nhật ký thí nghiệm. Mentor tìm paper mới mỗi thứ Hai.",
@@ -184,16 +196,16 @@
   "en": "Settings: change grade, language, theme, and pause reminders when you need quiet."
  },
  "back": {
-  "vi": "Nút này đưa em về màn chính có 4 ô.",
-  "en": "This takes you back to the home screen with the four squares."
+  "vi": "Nút này đưa em về màn Hôm nay, nơi Mực gợi ý việc nên làm.",
+  "en": "This takes you back to Today, where Mực suggests what to do."
  },
  "drop": {
-  "vi": "Thả ảnh sách, PDF, slide, video hay ghi âm vào đây. Gửi xong là đóng app được, khóa học soạn xong sẽ tự hiện.",
-  "en": "Drop book photos, PDFs, slides, videos or recordings here. You can close the app; the course shows up when it's ready."
+  "vi": "Kéo ảnh chụp sách, PDF, slide hay video vào đây. Gửi xong có thể đóng app, khóa soạn xong sẽ tự hiện.",
+  "en": "Drag book photos, PDFs, slides or videos here. You can close the app; the course appears when it's ready."
  },
  "teacher-courses": {
-  "vi": "Các khóa của bạn và việc Mentor đang làm với từng khóa: đang đọc, chờ bạn xem, hay đã xuất bản.",
-  "en": "Your courses and what Mentor is doing with each: reading, waiting for your review, or published."
+  "vi": "Nhãn màu cho biết khóa đang được soạn, cần bạn xem hay đã xuất bản.",
+  "en": "The coloured tag shows if a course is being prepared, needs you, or is published."
  },
  "gv-back": {
   "vi": "Nút nhỏ này đưa bạn về màn gửi bài giảng và danh sách khóa học.",
@@ -207,56 +219,52 @@
   "vi": "Tiến độ tải tệp lên. Khi đủ rồi bạn đóng app được, Mentor đọc tiếp ở phía máy chủ.",
   "en": "Upload progress. Once it's complete you can close the app; Mentor keeps reading on the server."
  },
- "gv-thread": {
-  "vi": "Trao đổi với Mentor về khóa này: cấu trúc, trang cần chụp lại và tiến độ soạn từng bài.",
-  "en": "Your conversation with Mentor about this course: the outline, pages to retake and the progress of each lesson."
- },
  "gv-outline": {
-  "vi": "Cấu trúc khóa học. Bấm vào tên để sửa, kéo nút bên trái để đổi thứ tự, thùng rác để xóa, Thêm bài để thêm.",
-  "en": "The course outline. Click a name to rename it, drag the left handle to reorder, the bin deletes, Add lesson adds one."
+  "vi": "Sửa thẳng ở đây: đổi tên, kéo để đổi thứ tự, xóa hoặc thêm bài.",
+  "en": "Edit right here: rename, drag to reorder, delete or add lessons."
  },
  "gv-retake": {
-  "vi": "Những trang Mentor chưa đọc được. Bấm Chụp lại trang đó, các trang còn lại vẫn được dùng.",
-  "en": "Pages Mentor could not read. Press Retake for that page; the other pages are still used."
+  "vi": "Ảnh này mờ hoặc tối. Bấm Chụp lại để gửi lại đúng trang đó.",
+  "en": "This photo is blurry or dark. Tap Retake to resend that page."
  },
  "gv-level": {
   "vi": "Mức độ của khóa, để Mentor soạn bài vừa sức học sinh. Cần xác nhận mức độ trước khi xuất bản.",
   "en": "The course level, so Mentor writes at the right difficulty. Confirm it before you publish."
  },
  "gv-compose": {
-  "vi": "Gõ yêu cầu bằng lời, ví dụ gộp bài 5 và 6. Khi ưng cấu trúc, bấm Soạn để Mentor soạn từng bài.",
-  "en": "Type a change in your own words, like merge lessons 5 and 6. When the outline looks right, press Compose."
+  "vi": "Gõ điều cần sửa rồi gửi. Mentor làm theo luôn, không hỏi lại.",
+  "en": "Type what to change. Mentor just does it."
  },
- "gv-build": {
-  "vi": "Mentor đang soạn từng bài: viết, làm hình, dựng video. Bạn có thể đóng app, xong sẽ có thông báo.",
-  "en": "Mentor is composing each lesson: writing, pictures, video. You can close the app; you'll get a notification."
+ "gv-go": {
+  "vi": "Bấm khi đã ưng cấu trúc. Mentor soạn xong sẽ báo bạn.",
+  "en": "Press when the structure looks right. Mentor tells you when it's done."
  },
  "gv-review": {
-  "vi": "Bài học đúng như học sinh sẽ thấy. Bôi đen chữ, chạm vào hình hoặc dừng video để nhận xét.",
-  "en": "The lesson exactly as students see it. Highlight text, tap a picture or pause the video to comment."
+  "vi": "Bôi đen câu chưa ưng rồi bấm Nhận xét. Mentor sửa luôn.",
+  "en": "Select a sentence you don't like and comment. Mentor fixes it."
  },
  "gv-text-comment": {
   "vi": "Bôi đen một đoạn chữ rồi bấm Nhận xét. Mentor sẽ sửa đúng đoạn đó.",
   "en": "Highlight some text, then press Comment. Mentor fixes exactly that part."
  },
  "gv-video-comment": {
-  "vi": "Dừng video ở giây cần sửa rồi bấm Nhận xét tại giây đó. Mentor dựng lại đúng đoạn này.",
-  "en": "Pause the video at the second that needs work and press Comment at that time. Mentor redoes just that part."
+  "vi": "Tua tới đoạn cần sửa rồi bấm Nhận xét tại giây đó.",
+  "en": "Scrub to the part to fix, then comment at that second."
  },
  "gv-image-pin": {
-  "vi": "Chạm vào chỗ chưa ưng trên hình để ghim một nhận xét vào đúng vị trí đó.",
-  "en": "Tap the spot that needs work on the picture to pin a comment right there."
+  "vi": "Bấm vào chỗ chưa đúng trên hình để cắm ghim và ghi nhận xét.",
+  "en": "Click the wrong spot on the figure to pin a comment."
  },
  "gv-comment-box": {
   "vi": "Viết bạn muốn sửa thế nào rồi bấm Gửi. Mentor sửa luôn, không hỏi lại.",
   "en": "Write what should change and press Send. Mentor fixes it straight away, no questions back."
  },
  "gv-comments": {
-  "vi": "Các nhận xét của bạn viết bằng bút đỏ, mỗi cái có trạng thái đang sửa hoặc đã sửa. Bấm vào để tới đúng chỗ.",
-  "en": "Your comments in red pen, each marked fixing or fixed. Click one to jump to its spot."
+  "vi": "Mentor sửa theo từng nhận xét. Xong thì nhãn đổi thành Đã sửa.",
+  "en": "Mentor fixes each one; the tag turns to Fixed."
  },
  "gv-publish": {
-  "vi": "Xuất bản để học sinh thấy khóa. Khóa đã xuất bản muốn sửa thì tạo bản mới, học sinh đang học vẫn giữ bản cũ.",
-  "en": "Publish so students see the course. To change a published course you make a new version; current students keep theirs."
+  "vi": "Đưa bản này tới học sinh. Ai đang học bản cũ vẫn giữ tiến độ.",
+  "en": "Sends this version to students. Anyone mid-course keeps their progress."
  }
 }

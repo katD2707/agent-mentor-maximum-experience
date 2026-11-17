@@ -138,12 +138,64 @@ const BANKS: Record<string, (say: Say) => BankSet> = {
 };
 BANKS.uni = BANKS.g10_12;
 
+/** Three step items (tiles, pairs, order), appended to the bank with `createMockPractice({ steps: true })`. */
+function stepEntries(say: Say): Entry[] {
+  const topic = { topic: "t", topic_title: say("Điện trường", "Electric fields") };
+  return [
+    {
+      item: {
+        id: "s:1",
+        type: "FILL_TILES",
+        stem: "E = k · |q| / {{gap}}",
+        parts: [{ id: "a", text: "r" }, { id: "b", text: "q" }, { id: "c", text: "r²" }, { id: "d", text: "k" }],
+        ...topic,
+      },
+      key: { correct: JSON.stringify({ gaps: ["c"] }), explanation: say("E tỉ lệ nghịch với bình phương khoảng cách.", "E falls with the square of the distance.") },
+    },
+    {
+      item: {
+        id: "s:2",
+        type: "MATCH_PAIRS",
+        stem: say("Nối đại lượng với đơn vị", "Match each quantity with its unit"),
+        parts: [
+          { id: "l1", text: say("Cường độ E", "Field E"), side: "left" },
+          { id: "l2", text: say("Lực điện F", "Force F"), side: "left" },
+          { id: "r1", text: "V/m", side: "right" },
+          { id: "r2", text: "N", side: "right" },
+        ],
+        ...topic,
+      },
+      key: { correct: JSON.stringify({ pairs: { l1: "r1", l2: "r2" } }), explanation: say("E đo bằng V/m, lực bằng N.", "E is in V/m, force in N.") },
+    },
+    {
+      item: {
+        id: "s:3",
+        type: "ORDER_STEPS",
+        stem: say("Xếp các bước giải bài", "Put the steps of a solution in order"),
+        parts: [{ id: "a", text: say("Đọc đề", "Read the problem") }, { id: "b", text: say("Chọn công thức", "Pick the formula") }, { id: "c", text: say("Thay số", "Plug in numbers") }, { id: "d", text: say("Ra kết quả", "Get the result") }],
+        ...topic,
+      },
+      key: { correct: JSON.stringify({ order: ["a", "b", "c", "d"] }), explanation: say("Đọc, chọn công thức, thay số, rồi tính.", "Read, pick the formula, plug in, then work it out.") },
+    },
+  ];
+}
+
+const norm = (v: unknown): unknown => (Array.isArray(v) ? v.map(norm) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b)).map(([k, x]) => [k, norm(x)])) : v);
+function sameJson(a: string, b: string): boolean {
+  try {
+    return JSON.stringify(norm(JSON.parse(a))) === JSON.stringify(norm(JSON.parse(b)));
+  } catch {
+    return false;
+  }
+}
+
 interface Rec {
   s: PSession;
   bank: BankSet;
   keys: Key[];
   results: Record<number, PResult>;
   finished?: PReport;
+  fixed: Set<string>;
 }
 
 function grade(item: PItem, key: Key, given: string): PResult {
@@ -155,6 +207,10 @@ function grade(item: PItem, key: Key, given: string): PResult {
     const right = rs.filter((r) => r.correct).length;
     return { correct: right === ids.length, points: right / ids.length, max_points: 1, correct_answer: key.correct, statement_results: rs };
   }
+  if (item.type === "FILL_TILES" || item.type === "MATCH_PAIRS" || item.type === "ORDER_STEPS") {
+    const same = sameJson(v, key.correct);
+    return { correct: same, points: same ? 1 : 0, max_points: 1, correct_answer: key.correct };
+  }
   const ok = item.type === "SHORT_ANSWER" ? checkShortAnswer(v, [key.correct]) : v === key.correct;
   return { correct: ok, points: ok ? 1 : 0, max_points: 1, correct_answer: key.correct, option_feedback: key.feedback ?? null };
 }
@@ -162,13 +218,15 @@ function grade(item: PItem, key: Key, given: string): PResult {
 /** Who is practising: picks the bank (age band) and its language. Without it: the counting bank, in Vietnamese. */
 export type Learner = (token: string) => { age_band: string | null; language: string | null };
 
-export function createMockPractice(opts: { mockMinutes?: number; enough?: boolean; learner?: Learner } = {}): PracticeApi {
+export function createMockPractice(opts: { mockMinutes?: number; enough?: boolean; learner?: Learner; steps?: boolean } = {}): PracticeApi {
   const sessions = new Map<string, Rec>();
   let n = 0;
   const enough = opts.enough ?? true;
   const bankFor = (token: string): BankSet => {
     const u = opts.learner?.(token) ?? { age_band: "g1_5", language: "vi" };
-    return (BANKS[u.age_band ?? "g10_12"] ?? BANKS.g10_12)((vi, en) => (u.language === "en" ? en : vi));
+    const say: Say = (vi, en) => (u.language === "en" ? en : vi);
+    const bank = (BANKS[u.age_band ?? "g10_12"] ?? BANKS.g10_12)(say);
+    return opts.steps ? { ...bank, entries: [...bank.entries, ...stepEntries(say)] } : bank;
   };
 
   const rec = (id: string) => {
@@ -210,6 +268,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       hints: 0,
       per_topic: [{ topic: "t", title: r.s.items[0]?.topic_title ?? "", right: correct, total: mock ? r.s.items.length : answered, label: "Đang tiến bộ" }],
       takeaway: correct < answered ? { line_vi: r.bank.takeaway.vi, line_en: r.bank.takeaway.en } : null,
+      wrong: r.s.items.flatMap((it, i) => (r.results[i]?.correct === false ? [{ position: i, item_id: it.id, type: it.type, chosen: (r.s.answers[String(i)]?.answer ?? null) as string | null }] : [])),
       redo: correct < answered ? { line_vi: "Mentor sẽ cho em làm lại câu sai vào thứ Năm, giờ em hay học.", line_en: "Mentor will bring back the ones you missed on Thursday." } : null,
     };
     return r.finished;
@@ -224,6 +283,21 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
         by_course: [{ course_id: course.id, title: course.title, cover_sha256: null, lessons_range: "Bài 1–2", lessons_from: 1, lessons_to: 2, items: 5 }],
       };
       return home;
+    },
+    async courseLevels(_token, courseId) {
+      return {
+        course_id: courseId,
+        title: "",
+        min_items: 3,
+        levels: [
+          { level: 1, items: 6, studied: 6, answered: 6, correct: 6, solid: true },
+          { level: 2, items: 6, studied: 6, answered: 3, correct: 2, solid: false },
+          { level: 3, items: 4, studied: 2, answered: 0, correct: 0, solid: false },
+          { level: 4, items: 2, studied: 0, answered: 0, correct: 0, solid: false },
+        ],
+        suggested: 2,
+        mocks: [{ profile_id: "demo", title: "Thi thử mẫu", subject: "toan", minutes: opts.mockMinutes ?? 20, items: 5, last_score: null }],
+      };
     },
     async start(token, body) {
       if (body.source === "quick" && !enough) throw new PracticeError(422, "insufficient_content", "Chưa đủ câu hỏi.", {});
@@ -245,7 +319,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
         answers: {},
         disclaimer: mock ? "Đề thi thử để luyện, không phải đề thật." : null,
       };
-      sessions.set(id, { s, bank, keys: bank.entries.map((x) => x.key), results: {} });
+      sessions.set(id, { s, bank, keys: bank.entries.map((x) => x.key), results: {}, fixed: new Set() });
       return view(sessions.get(id)!);
     },
     async active() {
@@ -299,6 +373,17 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
     },
     async finish(_t, id) {
       return finishRec(rec(id));
+    },
+    async fix(_t, id, b) {
+      const r = rec(id);
+      if (r.s.status === "active") throw new PracticeError(409, "not_finished");
+      const i = r.s.items.findIndex((it) => it.id === b.item_id);
+      if (i < 0 || r.results[i]?.correct !== false) throw new PracticeError(422, "not_wrong");
+      if (r.fixed.has(b.item_id)) throw new PracticeError(409, "already_fixed");
+      r.fixed.add(b.item_id);
+      const res = grade(r.s.items[i], r.keys[i], b.answer);
+      if (res.correct) return { correct: true };
+      return { correct: false, right: r.keys[i].correct, explanation: r.keys[i].explanation, ...(r.keys[i].feedback?.[b.answer] ? { note: r.keys[i].feedback![b.answer] } : {}) };
     },
     async review(_t, id) {
       const r = rec(id);

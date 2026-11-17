@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="ket-qua">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tìm khóa học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="assets/soon/pager.css">
+<link rel="stylesheet" href="assets/soon/catalog.css">
+<script src="shared.js"></script>
+<script src="assets/soon/courses.js"></script><script src="assets/soon/pager.js"></script>
+<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<style>
+  /* course intro: same outline as the course page (hs-04) */
+  .intro { max-width: 720px; margin-inline: auto; display: grid; gap: 22px; padding-bottom: 80px; align-content: start; }
+  .hero { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; align-items: center; }
+  .hero img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; border: 1px solid var(--rule); }
+  .hero h1 { font-size: clamp(1.25em, 3.4vw, 1.6em); }
+  .hero .meta { color: var(--ink-2); font-size: .85em; margin-top: 6px; }
+  .side { justify-self: start; }
+  .tree { display: grid; gap: 2px; }
+  .grp > summary { list-style: none; }
+  .grp > summary::-webkit-details-marker { display: none; }
+  .node { display: grid; grid-template-columns: 22px 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; min-height: 44px; padding: 0 10px 0 6px; border-radius: 10px; color: var(--ink); cursor: pointer; font: inherit; }
+  summary.node:hover { background: var(--tim-soft); }
+  .node:focus-visible { outline: 2px solid var(--tim); outline-offset: -2px; }
+  .node > .chev svg { width: 16px; height: 16px; color: var(--ink-3); transform: rotate(-90deg); transition: transform .15s; }
+  .grp[open] > summary .chev svg { transform: none; }
+  .node > .ic svg { width: 19px; height: 19px; color: var(--ink-2); }
+  .node .t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .grp > summary .t { font-weight: 600; }
+  .node .end { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-3); font-size: .82em; }
+  .node .end svg { width: 16px; height: 16px; }
+  .kids { display: grid; gap: 2px; padding-left: 30px; }
+  .kids .node { grid-template-columns: minmax(22px, auto) minmax(0, 1fr) auto; cursor: default; }
+  .kids .no { width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center; font-size: .75em; font-weight: 600; color: var(--ink-2); border: 1px solid var(--rule-strong); }
+  .kids .out { grid-template-columns: minmax(0, 1fr); padding: 6px 10px; color: var(--ink-2); }
+  .kids .out .t { white-space: normal; }
+  @media (max-width: 640px) { .kids { padding-left: 18px; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Học sinh: Tìm khóa học</span>
+  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:ket-qua">Danh mục</button><button data-set="state:trong">Không có kết quả</button><button data-set="state:chi-tiet">Mở 1 khóa</button></span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Tìm, lọc, sắp xếp thật; 10 khóa một trang.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="hs-03-hom-nay.html" aria-label="Hôm nay"><i data-i="back"></i></a>
+    <h1 class="page-title" data-en="Find courses">Tìm khóa học</h1>
+    <span class="grow"></span>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <!-- ===== catalog: search, sort, filters, results (built by assets/soon/catalog.js) ===== -->
+    <div data-when="state=ket-qua|trong"><div id="cat"></div></div>
+
+    <!-- ===== course intro: the same outline as the course page ===== -->
+    <div data-when="state=chi-tiet" class="intro">
+      <p><a class="btn btn-quiet" href="#" data-set="state:ket-qua" style="padding-left:0"><i data-i="back"></i><span data-en="Results">Kết quả</span></a></p>
+      <section class="hero">
+        <img src="assets/courses/dien-truong.jpg" alt="">
+        <div>
+          <h1 data-en="Physics 11: electric fields">Vật lí 11: Điện trường</h1>
+          <div class="meta" data-en="Teacher Minh · 7 lessons · 2 h">Thầy Minh · 7 bài · 2 giờ</div>
+        </div>
+      </section>
+      <div class="side"><a class="btn btn-primary btn-big" href="hs-05-bai-hoc-tung-buoc.html"><i data-i="play"></i><span data-en="Start">Bắt đầu</span></a></div>
+      <nav class="tree" aria-label="Nội dung khóa">
+        <details class="grp" open>
+          <summary class="node"><span class="chev"><i data-i="chev"></i></span><span class="ic"><i data-i="book"></i></span><span class="t" data-en="Lessons">Bài học</span><span class="end">7</span></summary>
+          <div class="kids lessons">
+            <div class="node"><span class="no">1</span><span class="t" data-en="Electric charge, Coulomb's law">Điện tích, định luật Cu-lông</span><span class="end"><i data-i="video"></i><i data-i="quiz"></i></span></div>
+            <div class="node"><span class="no">2</span><span class="t" data-en="Field strength">Cường độ điện trường</span><span class="end"><i data-i="text"></i><i data-i="quiz"></i></span></div>
+            <div class="node"><span class="no">3</span><span class="t" data-en="Field lines">Đường sức điện</span><span class="end"><i data-i="video"></i><i data-i="text"></i><i data-i="quiz"></i></span></div>
+            <div class="node"><span class="no">4</span><span class="t" data-en="Uniform field">Điện trường đều</span><span class="end"><i data-i="text"></i><i data-i="quiz"></i></span></div>
+            <div class="node"><span class="no">5</span><span class="t" data-en="Work of the electric force">Công của lực điện</span><span class="end"><i data-i="text"></i><i data-i="quiz"></i></span></div>
+            <div class="node"><span class="no">6</span><span class="t" data-en="Electric potential, voltage">Điện thế, hiệu điện thế</span><span class="end"><i data-i="video"></i><i data-i="quiz"></i></span></div>
+            <div class="node"><span class="no">7</span><span class="t" data-en="Capacitors">Tụ điện</span><span class="end"><i data-i="video"></i><i data-i="text"></i></span></div>
+          </div>
+        </details>
+        <details class="grp">
+          <summary class="node"><span class="chev"><i data-i="chev"></i></span><span class="ic"><i data-i="target"></i></span><span class="t" data-en="After this you can">Học xong em sẽ</span><span class="end"></span></summary>
+          <div class="kids">
+            <div class="node out"><span class="t" data-en="Explain why charges push and pull without touching">Giải thích được vì sao điện tích hút, đẩy nhau mà không cần chạm</span></div>
+            <div class="node out"><span class="t" data-en="Draw field lines around one or two charges">Vẽ được đường sức quanh một hoặc hai điện tích</span></div>
+            <div class="node out"><span class="t" data-en="Solve field-strength problems in the exam format">Giải bài cường độ điện trường theo dạng đề thi</span></div>
+          </div>
+        </details>
+      </nav>
+    </div>
+  </main>
+</div>
+<script src="assets/soon/catalog.js"></script>
+</body>
+</html>

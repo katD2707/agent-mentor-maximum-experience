@@ -42,23 +42,16 @@ interface Props {
   rowRef?: Ref<HTMLDivElement>;
 }
 
-/** gv-03: three options, one tap confirms. Mentor only suggests. */
+/** gv-03: one flat row: label, three options, Confirm. Mentor only suggests. */
 export function LevelPicker({ value, suggested, confirmed, nudged, nextVersion, busy, onPick, onConfirm, rowRef }: Props) {
   const { t } = useTranslation();
   const need = !confirmed && nudged;
   const note = nextVersion ? t("gv.levelNext", { version: nextVersion }) : need ? t("gv.levelNeed") : null;
   return (
     <div ref={rowRef} className={`lvx-row${need ? " need" : ""}`} id="levelrow" data-guide="gv-level" data-guide-label={t("gv.levelLabel")}>
-      <div className="lvx-top">
-        <span className="lvx-label" id="lvx-l">
-          {t("gv.levelLabel")}
-        </span>
-        {!confirmed && value && (
-          <button type="button" className="btn btn-primary lvx-ok" disabled={busy} onClick={onConfirm}>
-            <span>{t("gv.levelConfirm")}</span>
-          </button>
-        )}
-      </div>
+      <span className="lvx-label" id="lvx-l">
+        {t("gv.levelLabel")}
+      </span>
       <div className="lvx-seg" role="radiogroup" aria-labelledby="lvx-l">
         {LEVELS.map((l) => (
           <button key={l} type="button" className="lvx-opt" role="radio" aria-checked={value === l} disabled={busy} data-level={l} onClick={() => onPick(l)}>
@@ -68,10 +61,15 @@ export function LevelPicker({ value, suggested, confirmed, nudged, nextVersion, 
           </button>
         ))}
       </div>
+      {!confirmed && value && (
+        <button type="button" className="btn btn-primary lvx-ok" disabled={busy} onClick={onConfirm}>
+          <span>{t("gv.levelConfirm")}</span>
+        </button>
+      )}
       {note && (
-        <p className="lvx-note" role="status">
+        <span className="lvx-note" role="status">
           {note}
-        </p>
+        </span>
       )}
     </div>
   );

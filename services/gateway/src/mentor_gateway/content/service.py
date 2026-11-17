@@ -135,7 +135,7 @@ class ContentService:
             "suggested_all_ages": bool(scored) and not inband,
         }
 
-    # ------------------------------------------------------------ catalog query (hs-03)
+    # ------------------------------------------------------------ catalog query (hs-07)
     def student_counts(self) -> dict[str, int]:
         """Active learners per course: enrolled students whose enrollment moved (opened, progressed, answered) in the last
         `ACTIVE_LEARNER_DAYS` days. Feeds the "x học sinh đang học" number and the Phổ biến sort, so students who stopped

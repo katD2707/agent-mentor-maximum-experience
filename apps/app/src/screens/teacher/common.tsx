@@ -1,17 +1,41 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Settings } from "../../components/Settings";
 import { Icon } from "../../components/Icon";
+import { courseRoute } from "../../lib/teacher/status";
+import { useTeacherCourses } from "./live";
 import "../../styles/teacher.css";
 
-/** Top bar of every teacher screen. Only the home screen has no back button. */
-export function TeacherTop({ back, children }: { back?: boolean; children?: ReactNode }) {
+const ENC = encodeURIComponent;
+
+/**
+ * Header of the three teacher screens (gv-01..03): logo, steps 1-3 as links with the current one marked, the screen's one
+ * primary action on the right (`children`), then the gear. `courseId` says which course steps 2 and 3 open; on the home
+ * screen the first course that is ready for that step is used. A step with nothing to open yet is dimmed, not a link.
+ */
+export function TeacherTop({ step, courseId, backTo, children }: { step: 1 | 2 | 3; courseId?: string; backTo?: string; children?: ReactNode }) {
   const { t } = useTranslation();
+  const { courses } = useTeacherCourses();
+  const own = courseId ? courses?.find((c) => c.id === courseId) : undefined;
+  const to2 = (() => {
+    if (courseId) return !courses || (own && own.status !== "reading") ? `/khoa/${ENC(courseId)}` : null;
+    const c = courses?.find((x) => courseRoute(x)?.startsWith("/khoa/") && !courseRoute(x)?.includes("/duyet")) ?? courses?.find((x) => courseRoute(x));
+    return c ? `/khoa/${ENC(c.id)}` : null;
+  })();
+  const to3 = (() => {
+    const c = courseId ? own : courses?.find((x) => courseRoute(x)?.includes("/duyet"));
+    return c && courseRoute(c)?.includes("/duyet") ? `/khoa/${ENC(c.id)}/duyet?v=${c.latest_version || 1}` : null;
+  })();
+  const items: { n: 1 | 2 | 3; to: string | null }[] = [
+    { n: 1, to: "/" },
+    { n: 2, to: to2 },
+    { n: 3, to: to3 },
+  ];
   return (
     <header className="topbar">
-      {back && (
-        <Link className="icon-btn" to="/" aria-label={t("gv.back")} data-guide="gv-back" data-guide-label={t("gv.back")}>
+      {backTo && (
+        <Link className="icon-btn" to={backTo} aria-label={t("gv.back")}>
           <Icon name="back" />
         </Link>
       )}
@@ -19,12 +43,58 @@ export function TeacherTop({ back, children }: { back?: boolean; children?: Reac
         <span className="logo-mark">M</span>
         <span className="logo-word">Mentor</span>
       </Link>
-      <span className="role-tag">{t("teacher.role")}</span>
+      <nav className="steps" aria-label={t("teacher.steps")}>
+        {items.map(({ n, to }) => {
+          const label = t(`teacher.step${n}`);
+          const inner = (
+            <>
+              <span className="n">{n}</span>
+              <span className="l">{label}</span>
+            </>
+          );
+          if (n === step)
+            return (
+              <Link key={n} to={to ?? "/"} aria-current="step" aria-label={label}>
+                {inner}
+              </Link>
+            );
+          return to ? (
+            <Link key={n} to={to} aria-label={label}>
+              {inner}
+            </Link>
+          ) : (
+            <span key={n} className="off" aria-disabled="true" aria-label={label}>
+              {inner}
+            </span>
+          );
+        })}
+      </nav>
       <span className="grow" />
       {children}
       <Settings />
     </header>
   );
+}
+
+/** A short line at the bottom of the screen that goes away on its own ("Đã sửa."). */
+export function useToast(ms = 2600) {
+  const [text, setText] = useState<string | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const show = useCallback(
+    (s: string) => {
+      setText(s);
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setText(null), ms);
+    },
+    [ms],
+  );
+  useEffect(() => () => clearTimeout(timer.current), []);
+  const node = text ? (
+    <div className="gv-toast" role="status">
+      {text}
+    </div>
+  ) : null;
+  return { show, node };
 }
 
 const coarse = () => typeof window !== "undefined" && typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches;
@@ -34,7 +104,7 @@ const coarse = () => typeof window !== "undefined" && typeof window.matchMedia =
  * (getUserMedia) with a small viewfinder where several pictures can be taken in a row; no camera means the plain file
  * chooser instead.
  */
-export function CameraButton({ onFiles, label, className = "btn btn-ghost", single }: { onFiles(files: File[]): void; label: string; className?: string; single?: boolean }) {
+export function CameraButton({ onFiles, label, ariaLabel, className = "btn btn-ghost", single }: { onFiles(files: File[]): void; label: string; ariaLabel?: string; className?: string; single?: boolean }) {
   const { t } = useTranslation();
   const input = useRef<HTMLInputElement>(null);
   const [live, setLive] = useState(false);
@@ -53,7 +123,7 @@ export function CameraButton({ onFiles, label, className = "btn btn-ghost", sing
   };
   return (
     <>
-      <button className={className} type="button" onClick={() => void click()}>
+      <button className={className} type="button" aria-label={ariaLabel} onClick={() => void click()}>
         <Icon name="camera" />
         <span>{label}</span>
       </button>

@@ -1,41 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { coverUrl, type CatalogEntry, type CatalogItem, type FacetKey, type Level } from "../../api";
+import { coverUrl, type CatalogEntry, type CatalogItem, type FacetKey } from "../../api";
 import { onMediaError } from "../../lib/mediaRetry";
 import { subjectName } from "../../lib/subjectNames";
 import { useAuth } from "../../state/auth";
 import { formatMinutes, Highlight } from "./common";
-
-const BARS: Record<Level, number> = { basic: 1, intermediate: 2, advanced: 3 };
-
-/** Subject, teaching language (EN badge for English courses) and difficulty (1 to 3 bars plus the word). Kids get subject and level. */
-export function CourseTags({ course, kid = false }: { course: Pick<CatalogEntry, "subject" | "language" | "level">; kid?: boolean }) {
-  const { t, i18n } = useTranslation();
-  const lv = course.level ? BARS[course.level] : 0;
-  return (
-    <span className="ctags" data-testid="course-tags">
-      <span className="ct ct-sub">{subjectName(course.subject, i18n.language)}</span>
-      {!kid &&
-        (course.language === "en" ? (
-          <span className="ct ct-lang ct-en" lang="en">
-            <b>EN</b> English
-          </span>
-        ) : (
-          <span className="ct ct-lang">{t("courses.catalog.langName.vi")}</span>
-        ))}
-      {course.level && (
-        <span className="ct ct-lv" data-level={course.level}>
-          <span className="bars" aria-hidden="true">
-            <i className="on" />
-            <i className={lv > 1 ? "on" : undefined} />
-            <i className={lv > 2 ? "on" : undefined} />
-          </span>
-          {t(`courses.catalog.level.${course.level}`)}
-        </span>
-      )}
-    </span>
-  );
-}
 
 /** A cover from the media URL (`?v=` makes it cacheable). Lists use plain <img>, not the offline cover store, so 10 cards stay cheap. */
 export function ListCover({ course, className }: { course: Pick<CatalogEntry, "id" | "cover_sha256">; className?: string }) {
@@ -44,7 +13,7 @@ export function ListCover({ course, className }: { course: Pick<CatalogEntry, "i
   return <img className={className} src={url ? `${url}${url.includes("?") ? "&" : "?"}v=${course.cover_sha256}` : undefined} alt="" loading="lazy" onError={onMediaError} />;
 }
 
-/** Product-style card (hs-03): cover, two-line title, teacher, tags, lessons and duration, learners or "Sắp có". */
+/** Result card (hs-07): cover (with "Sắp có" on it), the title and one meta line: teacher, lessons, duration. Kids get the title only. */
 export function CourseCard({ c, words, kid, from }: { c: CatalogItem; words: string[]; kid: boolean; from: string }) {
   const { t } = useTranslation();
   const soon = c.status === "coming_soon";
@@ -53,23 +22,17 @@ export function CourseCard({ c, words, kid, from }: { c: CatalogItem; words: str
       <Link to={`/khoa-hoc/${c.id}`} state={{ from }}>
         <span className="pimg">
           <ListCover course={c} />
+          {soon && <span className="tag">{t("courses.soon")}</span>}
         </span>
         <span className="pbody">
           <h3>
             <Highlight text={c.title} words={words} />
           </h3>
           {!kid && (
-            <span className="pt">
-              <Highlight text={c.teacher_name} words={words} />
-            </span>
-          )}
-          <CourseTags course={c} kid={kid} />
-          {!kid && (
             <span className="pm">
-              {t("courses.lessons", { count: c.lessons_count })}, {formatMinutes(t, c.est_minutes)}
+              <Highlight text={c.teacher_name} words={words} /> · {t("courses.lessons", { count: c.lessons_count })} · {formatMinutes(t, c.est_minutes)}
             </span>
           )}
-          <span className="pf">{soon ? <span className="tag">{t("courses.soon")}</span> : <span>{t(c.students === 1 ? "courses.catalog.studentsOne" : "courses.catalog.students", { count: c.students })}</span>}</span>
         </span>
       </Link>
     </li>

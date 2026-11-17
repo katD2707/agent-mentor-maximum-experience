@@ -11,6 +11,7 @@ Answer encodings (what `POST /answer` receives):
 - short answer: the number as typed (`"-0,5"`, `"1.25"`, `"119 triệu đồng"` with the unit).
 """
 
+import json
 import re
 from dataclasses import dataclass, field
 from decimal import Decimal, InvalidOperation
@@ -171,10 +172,50 @@ def course_short_answer_matches(text: str | None, accepted: list[str], tolerance
     return False
 
 
+STEP_TYPES = ("FILL_TILES", "MATCH_PAIRS", "ORDER_STEPS")
+_STEP_KEY = {"FILL_TILES": "gaps", "MATCH_PAIRS": "pairs", "ORDER_STEPS": "order"}
+
+
+def parse_step_answer(doc: dict[str, Any], answer: Any) -> Any:
+    """The learner's answer of a tiles/pairs/order item: `{gaps: [...]}`, `{pairs: {...}}` or `{order: [...]}` (a JSON
+    string or an object); the bare list/map is taken too. Anything unreadable gives None."""
+    field = _STEP_KEY[doc["type"]]
+    val = answer
+    if isinstance(val, str):
+        try:
+            val = json.loads(val)
+        except ValueError:
+            return None
+    if isinstance(val, dict):
+        val = val.get(field)
+    want = dict if field == "pairs" else list
+    return val if isinstance(val, want) else None
+
+
+def step_matches(doc: dict[str, Any], answer: Any) -> bool:
+    given = parse_step_answer(doc, answer)
+    key = doc["answer_key"][_STEP_KEY[doc["type"]]]
+    if given is None:
+        return False
+    if isinstance(key, dict):
+        return {str(k): str(v) for k, v in given.items()} == {str(k): str(v) for k, v in key.items()}
+    return [str(x) for x in given] == [str(x) for x in key]
+
+
+def _step_blank(doc: dict[str, Any], answer: Any) -> bool:
+    given = parse_step_answer(doc, answer)
+    return not given or (doc["type"] == "FILL_TILES" and not any(given))
+
+
 def score_item(doc: dict[str, Any], answer: str | None, max_points: float = 1.0) -> ItemScore:
     """Score one answer against the question document (the key never leaves the gateway)."""
-    blank = answer is None or not str(answer).strip()
     t = doc["type"]
+    if t in STEP_TYPES:
+        if answer is None or _step_blank(doc, answer):
+            return ItemScore(None, 0.0, max_points) if (answer is None or not str(answer).strip()) else ItemScore(False, 0.0, max_points)
+        ok = step_matches(doc, answer)
+        return ItemScore(ok, max_points if ok else 0.0, max_points)
+    blank = answer is None or not str(answer).strip()
     if t == "TRUE_FALSE_GROUP":
         return score_true_false(answer, [bool(s["truth"]) for s in doc["statements"]], max_points)
     if blank:
@@ -206,6 +247,9 @@ def correct_answer_text(doc: dict[str, Any]) -> str:
         return str(sa["answer"]) + (f" {sa['unit']}" if sa.get("unit") else "")
     if t == "TAP_COUNT":
         return str(doc["answer_key"]["count"])
+    if t in STEP_TYPES:
+        field = _STEP_KEY[t]
+        return json.dumps({field: doc["answer_key"][field]}, ensure_ascii=False)
     return str(doc["answer_key"]["correct_option_id"])
 
 

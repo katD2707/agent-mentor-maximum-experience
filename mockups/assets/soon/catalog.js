@@ -1,4 +1,4 @@
-// Mock-only catalog for hs-03: real filtering, sorting, paging over the sample courses.
+// Mock-only catalog for hs-07: real filtering, sorting, paging over the sample courses.
 (function () {
   var root = document.documentElement, host = document.getElementById("cat");
   if (!host) return;
@@ -41,14 +41,14 @@
 
   // ---- data: 3 live courses + every placeholder ----
   var ALL = [
-    { k: "live-toan1", t: "Toán 1: Các số đến 10", s: "Toán", te: "Cô Mai", l: "vi", n: 6, m: 45, lv: 1, band: "tieu-hoc", med: ["video", "interactive", "quiz"], img: "assets/courses/so-den-10.jpg", href: "hs-04-khoa-hoc-tieu-hoc.html", st: 412, d: 1003 },
-    { k: "live-vatli11", t: "Vật lí 11: Điện trường", s: "Vật lí", te: "Thầy Minh", l: "vi", n: 7, m: 120, lv: 2, band: "thpt", med: ["video", "reading", "quiz"], img: "assets/courses/dien-truong.jpg", href: "hs-05-khoa-hoc-thpt.html", st: 286, d: 1002 },
-    { k: "live-bayes", t: "Xác suất thống kê: Suy luận Bayes", s: "Xác suất thống kê", te: "TS. Quang", l: "vi", n: 6, m: 300, lv: 3, band: "dai-hoc", med: ["reading", "quiz"], img: "assets/courses/bayes.jpg", href: "hs-06-khoa-hoc-dai-hoc.html", st: 94, d: 1001 }
+    { k: "live-toan1", t: "Toán 1: Các số đến 10", s: "Toán", te: "Cô Mai", l: "vi", n: 6, m: 45, lv: 1, band: "tieu-hoc", med: ["video", "interactive", "quiz"], img: "assets/courses/so-den-10.jpg", href: "hs-04-khoa-hoc.html", st: 412, d: 1003 },
+    { k: "live-vatli11", t: "Vật lí 11: Điện trường", s: "Vật lí", te: "Thầy Minh", l: "vi", n: 7, m: 120, lv: 2, band: "thpt", med: ["video", "reading", "quiz"], img: "assets/courses/dien-truong.jpg", href: "hs-04-khoa-hoc.html", st: 286, d: 1002 },
+    { k: "live-bayes", t: "Xác suất thống kê: Suy luận Bayes", s: "Xác suất thống kê", te: "TS. Quang", l: "vi", n: 6, m: 300, lv: 3, band: "dai-hoc", med: ["reading", "quiz"], img: "assets/courses/bayes.jpg", href: "hs-04-khoa-hoc.html", st: 94, d: 1001 }
   ];
   var i0 = 0;
   BANDS.forEach(function (b) {
     window.SOON_LIST[b[0]].forEach(function (c) {
-      ALL.push({ k: c.k, t: c.t, s: c.s, te: c.te, l: c.l, n: c.n, m: c.m, lv: c.lv, band: b[0], soon: true, med: window.SOON_DETAIL[c.k].med, img: "assets/soon/" + c.k + ".webp", href: "hs-02c-khoa-sap-co.html?c=" + c.k, st: 0, d: 500 - i0++ });
+      ALL.push({ k: c.k, t: c.t, s: c.s, te: c.te, l: c.l, n: c.n, m: c.m, lv: c.lv, band: b[0], soon: true, med: window.SOON_DETAIL[c.k].med, img: "assets/soon/" + c.k + ".webp", href: "hs-08-khoa-sap-co.html?c=" + c.k, st: 0, d: 500 - i0++ });
     });
   });
   var VOCAB = {};
@@ -146,8 +146,8 @@
       default: return v;
     }
   }
-  var FTITLE = { band: ["Cấp học", "Level"], subj: ["Môn học", "Subject"], lang: ["Ngôn ngữ dạy", "Teaching language"], lv: ["Độ khó", "Difficulty"], dur: ["Thời lượng", "Duration"], media: ["Hình thức", "Format"], status: ["Trạng thái", "Status"], teacher: ["Giáo viên", "Teacher"] };
-  var ORDER = ["subj", "band", "lang", "lv", "dur", "media", "status", "teacher"];
+  var FTITLE = { band: ["Cấp", "Level"], subj: ["Môn", "Subject"], lang: ["Ngôn ngữ", "Language"], lv: ["Độ khó", "Difficulty"], dur: ["Thời lượng", "Duration"], media: ["Hình thức", "Format"], status: ["Trạng thái", "Status"], teacher: ["Giáo viên", "Teacher"] };
+  var ORDER = ["subj", "band", "lang", "lv", "dur"];
 
   // ---- recents ----
   function recents() { try { var r = JSON.parse(localStorage.getItem("mentor-mock-recent") || "null"); if (r) return r; } catch (e) {} return ["vật lí 12", "python"]; }
@@ -203,7 +203,7 @@
   function renderFilters(total) {
     var h = '<div class="fh"><h2>' + L("Bộ lọc", "Filters") + '</h2><button type="button" class="reset" data-act="reset">' + L("Đặt lại", "Reset") + '</button><button type="button" class="x" data-act="close" aria-label="' + L("Đóng", "Close") + '">×</button></div><div class="fbody">';
     ORDER.forEach(function (k) {
-      var opts = facetOpts(k), lim = k === "subj" || k === "teacher" ? 6 : 99, shown = [];
+      var opts = facetOpts(k), lim = k === "subj" ? 5 : 99, shown = [];
       if (k === "teacher" || k === "subj") opts = opts.filter(function (o) { return o.n > 0 || S.F[k][o.v]; });
       var all = !!S.exp[k];
       opts.forEach(function (o, i) { if (all || i < lim || S.F[k][o.v]) shown.push(o); });
@@ -212,18 +212,16 @@
         h += '<label class="fo' + (o.n === 0 && !S.F[k][o.v] ? " zero" : "") + '"><input type="checkbox" data-f="' + k + '" data-v="' + esc(o.v) + '"' + (S.F[k][o.v] ? " checked" : "") + '><span class="fl">' + esc(label(k, o.v)) + '</span><span class="fn">' + o.n + "</span></label>";
       });
       h += (k === "teacher" && all ? "</div>" : "");
-      if (opts.length > lim) h += '<button type="button" class="more" data-act="more" data-k="' + k + '">' + (all ? L("Thu gọn", "Show less") : L("Xem thêm", "Show more") + " (" + (opts.length - shown.length) + ")") + "</button>";
+      if (opts.length > lim) h += '<button type="button" class="more" data-act="more" data-k="' + k + '">' + (all ? L("Bớt", "Less") : L("Thêm", "More") + " (" + (opts.length - shown.length) + ")") + "</button>";
       h += "</section>";
     });
-    h += '</div><div class="ff"><button type="button" class="btn btn-primary" data-act="close">' + L("Áp dụng", "Apply") + " (" + total + " " + L("kết quả", "results") + ")</button></div>";
+    h += '</div><div class="ff"><button type="button" class="btn btn-primary" data-act="close">' + L("Xem", "Show") + " " + total + " " + L("khóa", "courses") + "</button></div>";
     $("filters").innerHTML = h;
   }
   function card(c, kid) {
-    var tags = window.SoonPager.tags(c, kid);
-    var foot = c.soon ? '<span class="tag">' + L("Sắp có", "Coming soon") + "</span>" : "<span>" + c.st + " " + L("học sinh đang học", "students learning") + "</span>";
-    return '<li class="pc" tabindex="-1"><a href="' + c.href + '"><span class="pimg"><img src="' + c.img + '" alt="" loading="lazy"></span><span class="pbody">' +
-      "<h3>" + hl(c.t, S.q) + "</h3>" + (kid ? "" : '<span class="pt">' + hl(c.te, S.q) + "</span>") + tags +
-      (kid ? "" : '<span class="pm">' + c.n + " " + L("bài", "lessons") + ", " + durText(c.m) + "</span>") + '<span class="pf">' + foot + "</span></span></a></li>";
+    var meta = kid ? "" : '<span class="pm">' + hl(c.te, S.q) + " · " + c.n + " " + L("bài", "lessons") + " · " + durText(c.m) + "</span>";
+    return '<li class="pc" tabindex="-1"><a href="' + c.href + '"><span class="pimg"><img src="' + c.img + '" alt="" loading="lazy">' + (c.soon ? '<span class="tag">' + L("Sắp có", "Soon") + "</span>" : "") + '</span><span class="pbody">' +
+      "<h3>" + hl(c.t, S.q) + "</h3>" + meta + "</span></a></li>";
   }
   function chip(act, attrs, text) { return '<button type="button" class="chip" data-act="' + act + '" ' + attrs + ">" + text + "</button>"; }
   function renderEmpty(res) {
@@ -243,18 +241,17 @@
     });
     gains.sort(function (a, b) { return b.g - a.g; });
     h += '<div class="none">';
-    if (!res.length) h += "<h2>" + L("Không có khóa nào khớp", "No course matches") + "</h2>";
-    else h += "<h4>" + L("Chỉ có vài khóa khớp", "Only a few courses match") + "</h4>";
-    if (hint) h += '<p class="hint">' + L("Có phải bạn muốn tìm: ", "Did you mean: ") + '<button type="button" data-act="q" data-q="' + esc(hint) + '">' + esc(hint) + "</button>?</p>";
+    if (!res.length) h += "<h2>" + L("Không thấy khóa nào", "No courses found") + "</h2>";
+    if (hint) h += '<p class="hint">' + L("Ý bạn là ", "Did you mean ") + '<button type="button" data-act="q" data-q="' + esc(hint) + '">' + esc(hint) + "</button>?</p>";
     if (gains.length) {
       h += '<div class="chipset">';
-      gains.slice(0, 4).forEach(function (g) { h += chip("rm", 'data-f="' + g.k + '" data-v="' + esc(g.v) + '"', L("Bỏ lọc ", "Remove ") + esc(label(g.k, g.v)) + " (+" + g.g + ")"); });
+      gains.slice(0, 4).forEach(function (g) { h += chip("rm", 'data-f="' + g.k + '" data-v="' + esc(g.v) + '"', L("Bỏ ", "Drop ") + esc(label(g.k, g.v)) + " (+" + g.g + ")"); });
       h += "</div>";
     }
     var subs = {};
     ALL.forEach(function (c) { if (!has("band") || S.F.band[c.band]) subs[c.s] = (subs[c.s] || 0) + 1; });
     var top = Object.keys(subs).filter(function (s) { return !S.F.subj[s]; }).sort(function (a, b) { return subs[b] - subs[a]; }).slice(0, 5);
-    h += "<h4>" + L("Môn học liên quan", "Related subjects") + '</h4><div class="chipset">';
+    h += '<div class="chipset">';
     top.forEach(function (s) { h += chip("subj", 'data-v="' + esc(s) + '"', esc(subjName(s))); });
     h += "</div></div>";
     el.innerHTML = h;
@@ -269,7 +266,7 @@
   function render() {
     var kid = isKid();
     grid.classList.toggle("kid", kid); host.classList.toggle("kid", kid);
-    q.placeholder = kid ? L("Tìm khóa học", "Search") : L("Tìm khóa học, môn học, giáo viên", "Search courses, subjects, teachers");
+    q.placeholder = L("Tìm khóa học", "Search courses");
     q.setAttribute("aria-label", L("Tìm khóa học", "Search courses"));
     if (document.activeElement !== q) q.value = S.q;
     $("fbl").textContent = L("Bộ lọc", "Filters");
@@ -287,8 +284,8 @@
       h += '</div><div class="sbtm"><span class="count" aria-live="polite">' + res.length + " " + L("khóa", res.length === 1 ? "course" : "courses") + '</span><span class="vt"><button type="button" data-view="grid" aria-pressed="' + (S.view === "grid") + '" aria-label="' + L("Dạng lưới", "Grid") + '">' + svgGrid + '</button><button type="button" data-view="list" aria-pressed="' + (S.view === "list") + '" aria-label="' + L("Dạng danh sách", "List") + '">' + svgList + "</button></span></div>";
       $("sortbar").innerHTML = h;
       var c = "", any = 0;
-      KEYS.forEach(function (k) { Object.keys(S.F[k]).forEach(function (v) { any++; c += '<button type="button" class="chip" data-act="rm" data-f="' + k + '" data-v="' + esc(v) + '" aria-label="' + L("Bỏ lọc ", "Remove ") + esc(label(k, v)) + '">' + L(FTITLE[k][0], FTITLE[k][1]) + ": " + esc(label(k, v)) + ' <span class="x" aria-hidden="true">×</span></button>'; }); });
-      if (any > 1) c += '<button type="button" class="chip clear" data-act="clear">' + L("Xóa tất cả", "Clear all") + "</button>";
+      KEYS.forEach(function (k) { Object.keys(S.F[k]).forEach(function (v) { any++; c += '<button type="button" class="chip" data-act="rm" data-f="' + k + '" data-v="' + esc(v) + '" aria-label="' + L("Bỏ lọc ", "Remove ") + esc(label(k, v)) + '">' + esc(label(k, v)) + ' <span class="x" aria-hidden="true">×</span></button>'; }); });
+      if (any > 1) c += '<button type="button" class="chip clear" data-act="clear">' + L("Xóa hết", "Clear") + "</button>";
       $("chips").innerHTML = c;
       $("kidsubj").innerHTML = "";
     } else {
@@ -313,10 +310,10 @@
     if (!v) {
       var r = recents();
       if (r.length) {
-        h += "<h4>" + L("Tìm gần đây", "Recent searches") + "</h4>";
+        h += "<h4>" + L("Gần đây", "Recent") + "</h4>";
         r.forEach(function (x) { h += '<div class="row"><button type="button" class="it" data-act="q" data-q="' + esc(x) + '"><span>' + esc(x) + '</span></button><button type="button" class="it x" style="flex:none;width:44px;justify-content:center" data-act="delrecent" data-q="' + esc(x) + '" aria-label="' + L("Xóa", "Remove") + " " + esc(x) + '">×</button></div>'; });
       }
-      h += "<h4>" + L("Tìm nhiều", "Popular searches") + '</h4><div class="chipset">';
+      h += "<h4>" + L("Hay tìm", "Popular") + '</h4><div class="chipset">';
       POPULAR.forEach(function (x) { h += chip("q", 'data-q="' + esc(x) + '"', esc(x)); });
       h += "</div>";
     } else {
@@ -325,12 +322,12 @@
       var cs = ALL.filter(function (c) { return m(c.t); }).slice(0, 4);
       var sj = [], te = [];
       ALL.forEach(function (c) { if (sj.indexOf(c.s) < 0 && m(c.s)) sj.push(c.s); if (te.indexOf(c.te) < 0 && m(c.te)) te.push(c.te); });
-      if (cs.length) { h += "<h4>" + L("Khóa học", "Courses") + "</h4>"; cs.forEach(function (c) { h += '<button type="button" class="it" data-act="q" data-q="' + esc(c.t) + '"><span>' + bold(c.t, v) + "</span></button>"; }); }
-      if (sj.length) { h += "<h4>" + L("Môn học", "Subjects") + "</h4>"; sj.slice(0, 3).forEach(function (s) { h += '<button type="button" class="it" data-act="subj" data-v="' + esc(s) + '"><span>' + bold(subjName(s), v) + "</span></button>"; }); }
+      if (cs.length) { h += "<h4>" + L("Khóa", "Courses") + "</h4>"; cs.forEach(function (c) { h += '<button type="button" class="it" data-act="q" data-q="' + esc(c.t) + '"><span>' + bold(c.t, v) + "</span></button>"; }); }
+      if (sj.length) { h += "<h4>" + L("Môn", "Subjects") + "</h4>"; sj.slice(0, 3).forEach(function (s) { h += '<button type="button" class="it" data-act="subj" data-v="' + esc(s) + '"><span>' + bold(subjName(s), v) + "</span></button>"; }); }
       if (te.length) { h += "<h4>" + L("Giáo viên", "Teachers") + "</h4>"; te.slice(0, 3).forEach(function (t) { h += '<button type="button" class="it" data-act="teacher" data-v="' + esc(t) + '"><span>' + bold(t, v) + "</span></button>"; }); }
       if (!cs.length && !sj.length && !te.length) {
         var hint = suggest(v);
-        h += '<p class="hint">' + L("Không có gợi ý nào.", "No suggestions.") + (hint ? " " + L("Có phải bạn muốn tìm: ", "Did you mean: ") + '<button type="button" data-act="q" data-q="' + esc(hint) + '">' + esc(hint) + "</button>?" : "") + "</p>";
+        h += '<p class="hint">' + L("Không có gợi ý.", "No suggestions.") + (hint ? " " + L("Ý bạn là ", "Did you mean ") + '<button type="button" data-act="q" data-q="' + esc(hint) + '">' + esc(hint) + "</button>?" : "") + "</p>";
       }
     }
     ac.innerHTML = h;

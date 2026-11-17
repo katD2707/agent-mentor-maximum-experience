@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from mentor_schemas import ModelAlias
-from mentor_schemas.course import AssetRef, QuizItem, QuizOption, TapTarget, TrueFalseStatement
+from mentor_schemas.course import GAP, AssetRef, QuizItem, QuizOption, QuizPart, TapTarget, TrueFalseStatement
 
 from mentor_course_builder.contracts import MediaRequest
 from mentor_course_builder.deeptutor import DeepTutor, DeepTutorError, RawQuestion
@@ -103,14 +103,23 @@ def _strip_letter(s: str) -> str:
     return re.sub(r"^\s*[A-H][.)]\s+", "", s).strip()
 
 
+def with_feedback(item: QuizItem) -> QuizItem:
+    """Every wrong option of a choice item gets a feedback line (the model's, else the item's explanation)."""
+    if item.type not in ("SINGLE_CHOICE", "PICTURE_CHOICE"):
+        return item
+    right = item.answer_key.get("correct_option_id")
+    fb = {o.id: item.option_feedback.get(o.id) or item.explanation for o in item.options if o.id != right}
+    return item.model_copy(update={"option_feedback": fb})
+
+
 def map_raw_choice(raw: RawQuestion, item_id: str, *, skill_ids: list[str] | None = None) -> QuizItem:
     expl, fb = split_explanation(raw.explanation, raw.correct, raw.options)
     diff = {"easy": 1, "medium": 2, "hard": 3}.get(raw.difficulty.lower(), 2)
-    return QuizItem(
+    return with_feedback(QuizItem(
         id=item_id, type="SINGLE_CHOICE", stem=_clean_md(raw.stem),
         options=[QuizOption(id=k, text=_strip_letter(_clean_md(v))) for k, v in sorted(raw.options.items())],
         answer_key={"correct_option_id": raw.correct}, explanation=expl or "Đáp án đúng khớp với nội dung bài.",
-        option_feedback=fb, difficulty=diff, skill_ids=skill_ids or [])
+        option_feedback=fb, difficulty=diff, skill_ids=skill_ids or []))
 
 
 # ---------------------------------------------------------------- own prompt -> QuizItem
@@ -187,16 +196,66 @@ def quiz_from_dict(d: dict[str, Any], item_id: str, ctx_course: str, age_band: s
         media.append(req(f"{item_id}.tap", "picture", {"description": desc, "count": 1}, lesson_id))
         item = QuizItem(type=t, tap=TapTarget(image=pending_ref(f"{item_id}.tap", "image/png"), total=total),
                         answer_key={"count": count}, **common)
+    elif t == "FILL_TILES":
+        item = _fill_tiles(d, common)
+    elif t == "MATCH_PAIRS":
+        item = _match_pairs(d, common)
+    elif t == "ORDER_STEPS":
+        item = _order_steps(d, common)
     else:
         raise ValueError(f"unknown type {t}")
-    return item, media
+    return with_feedback(item), media
+
+
+def _tile_text(x: Any) -> str:
+    t = str(x.get("text") if isinstance(x, dict) else x).strip()
+    if not t:
+        raise ValueError("empty tile")
+    return t
+
+
+def _fill_tiles(d: dict[str, Any], common: dict[str, Any]) -> QuizItem:
+    """stem with {{gap}} marks, `answers` = the text of the tile for each gap in order, `distractors` = wrong tiles."""
+    answers = [_tile_text(a) for a in d.get("answers") or []]
+    wrong = [_tile_text(a) for a in d.get("distractors") or []]
+    stem = common["stem"]
+    if not answers or stem.count(GAP) != len(answers) or not wrong:
+        raise ValueError("fill tiles: needs one answer per {{gap}} and at least one wrong tile")
+    texts = answers + [w for w in wrong if w not in answers]
+    parts = [QuizPart(id=f"t{i + 1}", text=t) for i, t in enumerate(texts)]
+    ids = {}
+    for p in parts:
+        ids.setdefault(p.text, p.id)
+    return QuizItem(type="FILL_TILES", parts=parts, answer_key={"gaps": [ids[a] for a in answers]}, **common)
+
+
+def _match_pairs(d: dict[str, Any], common: dict[str, Any]) -> QuizItem:
+    """`pairs` = [{"left", "right"}] (3-5 pairs)."""
+    pairs = d.get("pairs") or []
+    if not 2 <= len(pairs) <= 6:
+        raise ValueError("match pairs: 2-6 pairs")
+    parts, key = [], {}
+    for i, p in enumerate(pairs, 1):
+        parts += [QuizPart(id=f"l{i}", text=_tile_text(p["left"]), side="left"),
+                  QuizPart(id=f"r{i}", text=_tile_text(p["right"]), side="right")]
+        key[f"l{i}"] = f"r{i}"
+    return QuizItem(type="MATCH_PAIRS", parts=parts, answer_key={"pairs": key}, **common)
+
+
+def _order_steps(d: dict[str, Any], common: dict[str, Any]) -> QuizItem:
+    """`steps` = the steps in the RIGHT order (3-6); the app shuffles them."""
+    steps = [_tile_text(x) for x in d.get("steps") or []]
+    if not 3 <= len(steps) <= 6:
+        raise ValueError("order steps: 3-6 steps")
+    parts = [QuizPart(id=f"s{i + 1}", text=t) for i, t in enumerate(steps)]
+    return QuizItem(type="ORDER_STEPS", parts=parts, answer_key={"order": [p.id for p in parts]}, **common)
 
 
 QUIZ_SYSTEM = """You write quiz items for a lesson. Reply with ONE JSON object {"items": [...]}. Use ONLY facts in the
 LESSON TEXT (and ordinary common knowledge when the lesson says it is general knowledge). Language: {lang}. Level: {band}.
 
 Item shapes (all: "stem", "explanation" (one or two SHORT sentences: why the right answer is right), "hint" (optional),
-"difficulty" 1-4):
+"difficulty" 1-4). Every WRONG option of a choice item needs a one-sentence "feedback" naming the slip:
 {"type":"SINGLE_CHOICE","options":[{"text","feedback" (one sentence for a WRONG option, omit on the right one)}] (3-4),
    "correct":"A".."D"}
 {"type":"TRUE_FALSE_GROUP","statements":[{"text","answer":true|false}] (3-4; mix true and false)}
@@ -204,7 +263,12 @@ Item shapes (all: "stem", "explanation" (one or two SHORT sentences: why the rig
    "tolerance": 0.01 (optional, relative, numeric answers only)}
 {"type":"PICTURE_CHOICE","options":[{"picture":"plain description of a simple object picture"}] (2-3),"correct":"A".."C"}
 {"type":"TAP_COUNT","picture":"one small object, e.g. a red apple","total":int<=10,"count":int<=total}
-Math in LaTeX between $...$. No HTML. The correct option must not be longer or more detailed than the others. Do not
+{"type":"FILL_TILES","stem":"a sentence or formula with one {{gap}} per answer, e.g. \"$F = {{gap}} \cdot a$\"",
+   "answers":["m"] (tile text for each {{gap}}, in order),"distractors":["v","t"] (1-3 wrong tiles, short)}
+{"type":"MATCH_PAIRS","pairs":[{"left":"term or symbol","right":"its meaning or unit"}] (3-4 pairs, short texts)}
+{"type":"ORDER_STEPS","steps":["first step","second step", ...] (3-5 short steps IN THE RIGHT ORDER; the app shuffles them)}
+For FILL_TILES, MATCH_PAIRS and ORDER_STEPS "stem" is the instruction (FILL_TILES: the text with {{gap}}).
+Every item has a "feedback"-style "explanation" of at most two short sentences. Math in LaTeX between $...$. No HTML. The correct option must not be longer or more detailed than the others. Do not
 reveal the answer in the stem. Write what a good teacher would ask, not trivia."""
 
 
@@ -213,11 +277,12 @@ def plan_types(age_band: str, n: int, have: int = 0) -> list[str]:
     if age_band == "g1_5":
         base = ["PICTURE_CHOICE", "TAP_COUNT", "SINGLE_CHOICE"]
     elif age_band == "g6_9":
-        base = ["SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SINGLE_CHOICE"]
+        base = ["SINGLE_CHOICE", "FILL_TILES", "TRUE_FALSE_GROUP", "MATCH_PAIRS", "ORDER_STEPS"]
     elif age_band == "g10_12":
-        base = ["SINGLE_CHOICE", "SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SHORT_ANSWER", "SINGLE_CHOICE"]
+        base = ["SINGLE_CHOICE", "SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SHORT_ANSWER", "FILL_TILES", "MATCH_PAIRS",
+                "ORDER_STEPS"]
     else:
-        base = ["SINGLE_CHOICE", "SHORT_ANSWER", "TRUE_FALSE_GROUP", "SINGLE_CHOICE"]
+        base = ["SINGLE_CHOICE", "FILL_TILES", "SHORT_ANSWER", "MATCH_PAIRS", "TRUE_FALSE_GROUP", "ORDER_STEPS"]
     wanted = base[:n]
     out = []
     for t in wanted:
@@ -240,7 +305,7 @@ def _own_items(ctx: LessonContext, types: list[str], start: int, client: ModelCl
         user += "\nVery short stems (one short sentence). Options are single words or very short phrases."
     if ctx.age_band == "g10_12":
         user += "\nExam style: numbers and units where the lesson has them."
-    data = ask_json(client, system, user, max_tokens=4000, temperature=0.4)
+    data = ask_json(client, system, user, max_tokens=10000, temperature=0.4, retries=2)
     for d in data.get("items") or []:
         iid = f"{ctx.lesson_id}-q{start + len(res.items) + 1}"
         try:

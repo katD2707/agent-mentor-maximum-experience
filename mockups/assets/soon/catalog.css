@@ -1,4 +1,4 @@
-/* Course catalog (hs-03): sticky search, sort bar, facets, product-style cards. */
+/* Course catalog (hs-07): sticky search, sort bar, facets, product-style cards. */
 #cat { min-width: 0; }
 .sbar { position: sticky; top: var(--stick, 0px); z-index: 30; display: flex; gap: 10px; align-items: center; padding: 10px 0; background: var(--paper); }
 .sbar .search { flex: 1; min-width: 0; margin: 0; }
@@ -72,7 +72,8 @@
 .pc:hover { box-shadow: var(--shadow); border-color: var(--rule-strong); }
 .pc:focus-visible { outline: 3px solid var(--tim); outline-offset: 2px; }
 .pc > a { display: grid; grid-template-columns: minmax(0, 1fr); height: 100%; color: inherit; text-decoration: none; align-content: start; }
-.pc .pimg { display: block; aspect-ratio: 16 / 10; background: #FBF5E8; }
+.pc .pimg { position: relative; display: block; aspect-ratio: 16 / 10; background: #FBF5E8; }
+.pc .pimg .tag { position: absolute; top: 8px; left: 8px; background: var(--paper); color: var(--tim-ink); box-shadow: 0 1px 4px rgba(0,0,0,.18); }
 .pc .pimg img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pc .pbody { display: grid; gap: 6px; padding: 12px; align-content: start; min-width: 0; }
 .pc h3 { font-size: .98rem; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
@@ -90,7 +91,7 @@ mark { background: var(--vang-soft); color: inherit; border-radius: 3px; padding
 .kidsubj .chip.all { padding-left: 18px; }
 .cat.kid .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .cat.kid .pc { border-width: 2px; border-radius: 22px; }
-.cat.kid .pc h3 { font-size: 1.05rem; -webkit-line-clamp: 3; }
+.cat.kid .pc h3 { font-size: 1.15rem; -webkit-line-clamp: 3; }
 .cat.kid .pc .pbody { padding: 12px 14px 16px; }
 
 .none { display: grid; gap: 12px; padding: 28px 0; max-width: 54ch; }

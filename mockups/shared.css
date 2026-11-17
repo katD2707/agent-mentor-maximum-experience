@@ -383,7 +383,7 @@ p { margin: 0; }
    .mascot-dock (invisible, listed in mascot.js AVOID) keeps his free-spot search inside the strip. Same rule as apps/app base.css. */
 .mascot-bar, .mascot-dock { display: none; }
 @media (max-width: 480px) {
-  html:root { --dock-h: 60px; --m-h: 40px; }
+  html:root, html:root[data-age] { --dock-h: 60px; --m-h: 40px; }
   .app { padding-bottom: var(--dock-h); }
   .mascot-bar { display: block; position: fixed; left: 0; right: 0; bottom: 0; height: var(--dock-h); z-index: 25; background: var(--paper); border-top: 1px solid var(--rule); pointer-events: none; }
   .mascot-dock { display: block; position: fixed; inset: 0 0 var(--dock-h) 0; opacity: 0; pointer-events: none; }

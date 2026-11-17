@@ -11,6 +11,7 @@ from mentor_gateway.api.deps import get_gw, student_user
 from mentor_gateway.context import Gateway
 from mentor_gateway.db import User
 from mentor_gateway.planner import events as ev
+from mentor_gateway.planner.engage import EngageError
 
 router = APIRouter(tags=["planner"])
 
@@ -46,6 +47,22 @@ async def plan_week(user: User = Depends(student_user), gw: Gateway = Depends(ge
 async def reminders(since: datetime | None = Query(None), user: User = Depends(student_user),
                     gw: Gateway = Depends(get_gw)) -> dict:
     return await asyncio.to_thread(gw.planner.reminders_view, user, since)
+
+
+class LaterBody(BaseModel):
+    """The learner's "remind me at ...": `at` within 2 days, not at bedtime, not in quiet mode (CONTRACTS 12.1)."""
+    at: datetime
+    title_vi: str = Field("", max_length=120)
+    title_en: str = Field("", max_length=120)
+    deep_link: str = Field("/", max_length=300)
+
+
+@router.post("/reminders", status_code=201)
+async def remind_later(body: LaterBody, user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> dict:
+    try:
+        return await asyncio.to_thread(gw.planner.remind_later, user, body.at, body.title_vi, body.title_en, body.deep_link)
+    except EngageError as exc:
+        raise HTTPException(422, {"error": exc.code, "detail": exc.detail}) from None
 
 
 class OutcomeBody(BaseModel):

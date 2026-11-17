@@ -30,7 +30,8 @@ from pathlib import Path
 from typing import Any, Callable
 
 from mentor_schemas import ModelAlias
-from mentor_schemas.course import AssetRef, CalloutBlock, CoursePack, ImageBlock, QuizBlock, QuizItem, TextBlock, VideoBlock
+from mentor_schemas.course import (AssetRef, CalloutBlock, ChapterRecap, CoursePack, ImageBlock, InteractiveBlock, QuizBlock,
+                                   QuizItem, TextBlock, VideoBlock)
 
 from mentor_course_builder import humanize, verify
 from mentor_course_builder.contracts import MediaFile, MediaRequest, MediaResult
@@ -40,6 +41,8 @@ from mentor_course_builder.llm import ModelClient, ModelError
 from mentor_course_builder.models import KIND_IMAGE, Material
 from mentor_course_builder.outline import CourseOutline, build_outline, outline_to_json, revise_outline
 from mentor_course_builder.quality import build_messages
+from mentor_course_builder.recap import recap_request, write_recaps
+from mentor_course_builder.refine import review_rows
 
 log = logging.getLogger("mentor_course_builder")
 
@@ -220,7 +223,7 @@ def job_outline_chat(base: Path, args: dict, client: ModelClient | None) -> dict
 
 
 # ---------------------------------------------------------------- stage: build
-MEDIA_ORDER = {"tts": 0, "picture": 0, "illustration": 1, "diagram": 1, "video": 2, "cover": 3}
+MEDIA_ORDER = {"tts": 0, "recap": 0, "picture": 0, "illustration": 1, "diagram": 1, "video": 2, "cover": 3}
 
 
 def _fallback_cover(title: str, dest: Path) -> None:
@@ -287,6 +290,25 @@ def _move_tree(src: Path, dst: Path) -> None:
     shutil.copytree(src, dst, dirs_exist_ok=True)
     shutil.rmtree(src, ignore_errors=True)
 
+def unsure_rows(pack: CoursePack, issues: list, drafts: dict) -> list[dict]:
+    """versions/<v>/review.json `unsure`: what the checks left open, plus questions Mentor could not solve again itself."""
+    rows = review_rows(pack, issues)
+    seen = {(r["block_id"], r.get("item_id")) for r in rows}
+    for ch in pack.chapters:
+        for ls in ch.lessons:
+            d = drafts.get(ls.id)
+            for b in ls.blocks:
+                if not isinstance(b, QuizBlock):
+                    continue
+                for q in b.items:
+                    if q.type in ("SINGLE_CHOICE", "TRUE_FALSE_GROUP", "SHORT_ANSWER") and d is not None \
+                            and verify.item_hash(q) not in d.verified and (b.id, q.id) not in seen:
+                        rows.append({"block_id": b.id, "item_id": q.id,
+                                     "reason_vi": "Mình chưa tự giải lại được câu này để đối chiếu đáp án. Bạn xem giúp nhé.",
+                                     "reason_en": "I could not solve this question again to double-check the answer. Please take a look."})
+    return rows
+
+
 def _issue_lines(issues: list[dict], lang: str, limit: int = 8) -> str:
     return "\n".join("• " + (i["vi"] if lang == "vi" else i["en"]) for i in issues[:limit]) + \
         (f"\n• … +{len(issues) - limit}" if len(issues) > limit else "")
@@ -313,7 +335,7 @@ def job_build(base: Path, args: dict, client: ModelClient | None) -> dict:
     outline = _outline(base)
     intake_res = load_intake(base / "intake") if (base / "intake" / "pages.json").is_file() else IntakeResult()
     store = ContentStore(Path(args["store"]))
-    kinds = set(args.get("media_kinds") or ["tts", "video", "diagram", "illustration", "picture", "cover"])
+    kinds = set(args.get("media_kinds") or ["tts", "video", "diagram", "illustration", "picture", "cover", "recap"])
     prog = Progress(base / "build" / "progress.json", [(ls.id, ls.title) for ls in outline.lessons()])
     media_dir = base / "build" / "media"
     shutil.rmtree(media_dir, ignore_errors=True)
@@ -397,6 +419,12 @@ def job_build(base: Path, args: dict, client: ModelClient | None) -> dict:
             raise JobError("no lesson could be written: " + "; ".join(f"{k}: {v}" for k, v in failed.items())[:400])
         stamps["content"] = time.time()
         prog.stage("media")
+        # chapter recaps ("Nghe tóm tắt"): script from the written lessons, then the voice next to the other media
+        recaps = write_recaps(outline, res.drafts, client, log_fn=lambda s: log.warning("%s", s))
+        for cid, script in recaps.items():
+            req = recap_request(outline, cid, script)
+            futures.append(fast.submit(render, req))
+            rows.setdefault(req.id, {"request": req.model_dump(), "files": [], "source_dir": None})
         for f in futures:
             f.result()
         prog.set(None, "done")
@@ -408,6 +436,7 @@ def job_build(base: Path, args: dict, client: ModelClient | None) -> dict:
                                  kinds=kinds, max_rounds=int(args.get("refine_rounds") or 3),
                                  teacher_id=args.get("teacher_id") or "teacher", teacher_name=args.get("teacher_name") or "Giáo viên",
                                  log_fn=lambda s: log.warning("%s", s))
+        refiner.recaps = recaps
         gate = refiner.run()
         stamps["verify"] = time.time()
     finally:
@@ -446,6 +475,7 @@ def job_build(base: Path, args: dict, client: ModelClient | None) -> dict:
     _write_json(vdir / "media.json", rows)
     report = gate.report()
     _write_json(vdir / "verify.json", {**report, "checked_at": time.strftime("%Y-%m-%dT%H:%M:%S")})
+    _write_json(vdir / "review.json", {"unsure": unsure_rows(asm.pack, gate.issues, refiner.drafts)})
     prog.stage("done")
     seconds = round(time.time() - t0)
     n_ok, n_all = len(drafts), len(outline.lessons())
@@ -660,9 +690,62 @@ def job_revise_media(base: Path, args: dict, client: ModelClient | None) -> dict
     return _msg("Đã sửa phần được nhận xét.", "Fixed the commented part.", note="; ".join(out.notes)[:200], block_id=bid)
 
 
+def _ids(base: Path, args: dict) -> dict:
+    """The gateway passes store (+ course_id); the course id falls back to the builder directory's outline."""
+    if "course_id" in args:
+        return args
+    return {**args, "course_id": _outline(base).course_id}
+
+
+def job_recap(base: Path, args: dict, client: ModelClient | None) -> dict:
+    """Teacher edited a chapter's recap script: keep the words as written and make the voice again. -> {ok, duration_s}"""
+    from mentor_course_builder.assemble import _ref
+    from mentor_course_builder.render_media import render_media
+
+    args = _ids(base, args)
+    store, version, pack, _ = _pack_io(args)
+    script = [str(p).strip() for p in args.get("script") or [] if str(p).strip()]
+    if not script:
+        raise JobError("the recap is empty")
+    chapter = next((c for c in pack.chapters if c.id == args["chapter_id"]), None)
+    if chapter is None:
+        raise JobError(f"chapter {args['chapter_id']} not found")
+    req = MediaRequest(id=f"recap-{chapter.id}", kind="recap", course_id=pack.course_id, age_band=pack.age_band,
+                       language=pack.language, spec={"script": script})
+    out_dir = base / "versions" / str(version) / "media"
+    out = render_media(req, out_dir, tts=None)
+    main = next(f for f in out.files if f.role == "main")
+    recap = ChapterRecap(script=script, audio=_ref(main), duration_s=float(out.duration_s or 0))
+    new = pack.model_copy(deep=True)
+    next(c for c in new.chapters if c.id == chapter.id).recap = recap
+    store.write_pack(pack.course_id, version, new, assets={main.path: Path(main.file)})
+    vdir = base / "versions" / str(version)
+    rows = _read_json(vdir / "media.json", {})
+    rows[req.id] = _result_dict(req, out, out_dir)
+    _write_json(vdir / "media.json", rows)
+    return _msg("Đã cập nhật phần tóm tắt.", "Recap updated.", duration_s=recap.duration_s)
+
+
+def job_retts_block(base: Path, args: dict, client: ModelClient | None) -> dict:
+    """Read-aloud of one text/callout/interactive block again after the teacher changed its words. -> {ok}"""
+    args = _ids(base, args)
+    store, version, pack, assets_dir = _pack_io(args)
+    _, _, b = _find_block(pack, args["block_id"])
+    if not isinstance(b, (TextBlock, CalloutBlock, InteractiveBlock)):
+        raise JobError(f"block {args['block_id']} has no read-aloud")
+    if b.audio is None:
+        return _msg("Khối này không có giọng đọc.", "This block has no read-aloud.")
+    text = (b.prompt if isinstance(b, InteractiveBlock)
+            else (b.title + ". " if isinstance(b, CalloutBlock) and b.title else "") + b.md)
+    ref, path = _retts(text, assets_dir / b.audio.path, pack, b.audio.path)
+    store.write_pack(pack.course_id, version, _replace_block(pack, b.id, b.model_copy(update={"audio": ref})),
+                     assets={b.audio.path: path})
+    return _msg("Đã đọc lại khối.", "Read-aloud redone.")
+
+
 JOBS: dict[str, Callable[[Path, dict, ModelClient | None], dict]] = {
     "intake": job_intake, "outline_chat": job_outline_chat, "build": job_build, "revise_text": job_revise_text,
-    "revise_media": job_revise_media, "revise_all": job_revise_all,
+    "revise_media": job_revise_media, "revise_all": job_revise_all, "recap": job_recap, "retts_block": job_retts_block,
 }
 
 

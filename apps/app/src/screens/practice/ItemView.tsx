@@ -5,8 +5,9 @@ import { Icon } from "../../components/Icon";
 import { Diagram } from "../../components/Diagram";
 import { plainText } from "../../lib/text";
 import { onMediaError } from "../../lib/mediaRetry";
-import { tfDecode, tfEncode } from "../../lib/practice";
+import { stepDecode, stepEncode, tfDecode, tfEncode } from "../../lib/practice";
 import { Md, SpeakButton } from "../courses/blocks";
+import { OrderInput, PairsInput, TilesInput } from "../courses/StepInputs";
 
 export interface ItemViewProps {
   item: PItem;
@@ -23,13 +24,15 @@ export interface ItemViewProps {
   kid?: boolean;
   /** number shown before the stem */
   n?: number;
+  /** fixing a wrong answer: the option the learner chose first ("Em đã chọn"); it cannot be chosen again */
+  was?: string;
 }
 
 /**
  * One practice item. Same markup and classes as the lesson quiz (`QuizItemView`) so both look alike; the verdict comes
  * from the server (the key never reaches the app), not from `lib/quiz.ts`.
  */
-export function ItemView({ item, token, lang, value, onChange, locked, result, kid, n }: ItemViewProps) {
+export function ItemView({ item, token, lang, value, onChange, locked, result, kid, n, was }: ItemViewProps) {
   const { t } = useTranslation();
   const url = (m: Parameters<typeof practiceMediaUrl>[1]) => practiceMediaUrl(token, m);
   const right = result?.correct_answer ?? "";
@@ -37,9 +40,9 @@ export function ItemView({ item, token, lang, value, onChange, locked, result, k
 
   return (
     <section className={`q q-${item.type.toLowerCase().replace(/_/g, "-")}`} data-item={item.id} aria-label={t("practice.question")}>
-      <div className="q-stem">
+      <div className={`q-stem ${item.type === "FILL_TILES" ? "ask" : ""}`}>
         {n !== undefined && <span className="qn">{t("courses.player.questionN", { n })}</span>}
-        <Md md={item.stem} className="inline" />
+        {item.type === "FILL_TILES" ? t("lesson.fillAsk") : <Md md={item.stem} className="inline" />}
         {(kid || item.stem_audio) && <SpeakButton text={item.stem} audioUrl={url(item.stem_audio)} lang={lang} />}
       </div>
       {stemImg && <img className="q-img" src={stemImg} alt="" onError={onMediaError} />}
@@ -86,11 +89,14 @@ export function ItemView({ item, token, lang, value, onChange, locked, result, k
                 className={`opt ${pic ? "pic" : ""} ${isRight ? "right" : ""} ${isWrong ? "wrong" : ""} ${value === o.id && !locked ? "picked" : ""}`}
                 aria-pressed={value === o.id}
                 aria-label={pic ? label : undefined}
-                disabled={locked}
+                disabled={locked || was === o.id}
                 onClick={() => onChange(o.id)}
               >
                 {pic ? (
-                  img ? <img src={img} alt="" onError={onMediaError} /> : <span className="k">{o.text ? plainText(o.text) : o.id}</span>
+                  <>
+                    {img ? <img src={img} alt="" onError={onMediaError} /> : <span className="k">{o.text ? plainText(o.text) : o.id}</span>}
+                    {was === o.id && <span className="was muted">{t("practice.chose")}</span>}
+                  </>
                 ) : (
                   <>
                     <span className="k">{o.id}</span>
@@ -100,6 +106,7 @@ export function ItemView({ item, token, lang, value, onChange, locked, result, k
                     </span>
                     {isRight && <Icon name="check" />}
                     {isWrong && mark && <Icon name="x" />}
+                    {was === o.id && <span className="was muted">{t("practice.chose")}</span>}
                   </>
                 )}
               </button>
@@ -126,6 +133,26 @@ export function ItemView({ item, token, lang, value, onChange, locked, result, k
           />
           {item.short_answer?.unit && <span className="muted">{item.short_answer.unit}</span>}
         </div>
+      )}
+
+      {item.type === "FILL_TILES" && (
+        <TilesInput stem={item.stem} parts={item.parts ?? []} seed={item.id} value={stepDecode(value).gaps ?? []} onChange={(gaps) => onChange(stepEncode(item, { gaps }))} locked={locked} tone={locked && result ? (result.correct ? "right" : "wrong") : null} />
+      )}
+      {item.type === "ORDER_STEPS" && (
+        <OrderInput parts={item.parts ?? []} seed={item.id} value={stepDecode(value).order ?? []} onChange={(order) => onChange(stepEncode(item, { order }))} locked={locked} tone={locked && result ? (result.correct ? "right" : "wrong") : null} />
+      )}
+      {item.type === "MATCH_PAIRS" && (
+        <PairsInput
+          parts={item.parts ?? []}
+          seed={item.id}
+          map={stepDecode(value).pairs ?? {}}
+          locked={locked}
+          onPair={(l, r) => onChange(stepEncode(item, { pairs: { ...(stepDecode(value).pairs ?? {}), [l]: r } }))}
+          onUnpair={(l) => {
+            const { [l]: _gone, ...rest } = stepDecode(value).pairs ?? {};
+            onChange(stepEncode(item, { pairs: rest }));
+          }}
+        />
       )}
 
       {item.type === "TAP_COUNT" && item.tap && <Tap item={item} token={token} value={value} onChange={onChange} locked={locked} />}

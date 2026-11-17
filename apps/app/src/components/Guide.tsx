@@ -52,6 +52,12 @@ export function Guide() {
   const screen = user && user.role === "student" && needsFirstRun(user) ? undefined : tourScreen(pathname, user?.role ?? null);
   const tourNow = useRef<{ screen?: string; uid: string | null; adult: boolean }>({ uid, adult });
   tourNow.current = { screen, uid, adult };
+  // the Today screen has Mực inside its conversation: no second, floating Mực there (and no strip kept for him on phones)
+  const onToday = !!user && user.role === "student" && pathname === "/" && !needsFirstRun(user);
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-no-mascot", onToday);
+    if (onToday) ref.current?.closeChat();
+  }, [onToday]);
 
   useEffect(() => {
     const m = ref.current;
@@ -126,9 +132,9 @@ export function Guide() {
     <>
       {/* Phone widths: a slim strip at the bottom is Mực's home (CSS shows it only there). `.mascot-dock` is the invisible
           "keep out" zone above the strip that the mascot's free-spot search avoids, so it never rests on content. */}
-      <div className="mascot-bar" aria-hidden="true" />
-      <div className="mascot-dock" data-mascot-avoid aria-hidden="true" />
-      <mentor-mascot ref={ref} lang={lang} />
+      {!onToday && <div className="mascot-bar" aria-hidden="true" />}
+      {!onToday && <div className="mascot-dock" data-mascot-avoid aria-hidden="true" />}
+      <mentor-mascot ref={ref} lang={lang} hidden={onToday} />
     </>
   );
 }

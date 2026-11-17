@@ -1,5 +1,5 @@
-/* hs-03 course catalog: sticky search, sort bar, facets, product cards, pager. Ported from mockups/assets/soon/catalog.css + pager.css. */
-/* Course catalog (hs-03): sticky search, sort bar, facets, product-style cards. */
+/* hs-07 course catalog: sticky search, sort bar, facets, product cards, pager. Ported from mockups/assets/soon/catalog.css + pager.css. */
+/* Course catalog (hs-07): sticky search, sort bar, facets, product-style cards. */
 #cat { min-width: 0; }
 #cat .sbar { position: sticky; top: 0; z-index: 30; display: flex; gap: 10px; align-items: center; padding: 10px 0; background: var(--paper); }
 #cat .search-wrap { position: relative; flex: 1; min-width: 0; }
@@ -79,13 +79,12 @@
 #cat .pc:hover { box-shadow: var(--shadow); border-color: var(--rule-strong); }
 #cat .pc:focus-visible { outline: 3px solid var(--tim); outline-offset: 2px; }
 #cat .pc > a { display: grid; grid-template-columns: minmax(0, 1fr); height: 100%; color: inherit; text-decoration: none; align-content: start; }
-#cat .pc .pimg { display: block; aspect-ratio: 16 / 10; background: #FBF5E8; }
+#cat .pc .pimg { position: relative; display: block; aspect-ratio: 16 / 10; background: #FBF5E8; }
 #cat .pc .pimg img { display: block; width: 100%; height: 100%; object-fit: cover; }
 #cat .pc .pbody { display: grid; gap: 6px; padding: 12px; align-content: start; min-width: 0; }
 #cat .pc h3 { font-size: .98rem; font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
-#cat .pc .pt, #cat .pc .pm { color: var(--ink-2); font-size: .84rem; }
-#cat .pc .ctags { margin-top: 0; }
-#cat .pc .pf { margin-top: 2px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: .84rem; color: var(--ink-2); }
+#cat .pc .pm { color: var(--ink-2); font-size: .84rem; }
+#cat .pc .pimg .tag { position: absolute; top: 8px; left: 8px; background: var(--paper); color: var(--tim-ink); box-shadow: 0 1px 4px rgba(0,0,0,.18); }
 #cat mark { background: var(--vang-soft); color: inherit; border-radius: 3px; padding: 0 1px; }
 #cat .grid.list { grid-template-columns: minmax(0, 1fr); gap: 10px; }
 #cat .grid.list .pc > a { grid-template-columns: 132px minmax(0, 1fr); }
@@ -137,32 +136,14 @@ body.cat-sheet mentor-mascot, body.cat-sheet .mascot, body.cat-sheet .m-bubble, 
 #cat .pager svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 #cat .pager-list > :focus { outline: none; }
 #cat .pager-list > :focus-visible { outline: 3px solid var(--tim); outline-offset: 2px; border-radius: 12px; }
-.ctags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; font-size: .78rem; font-weight: 500; line-height: 1.2; }
-.ct { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; color: var(--ink-2); white-space: nowrap; }
-.ct-sub { background: var(--rule); color: var(--ink); }
-.ct-lang { border: 1px solid var(--rule-strong); }
-.ct-en { color: var(--ink); font-weight: 600; }
-.ct-en b { padding: 1px 5px; border-radius: 4px; background: var(--ink); color: var(--paper); font-size: .9em; }
-.ct-lv { padding-left: 0; padding-right: 2px; }
-.ct-lv .bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
-.ct-lv .bars i { width: 4px; border-radius: 1px; background: var(--rule-strong); }
-.ct-lv .bars i:nth-child(1) { height: 5px; } .ct-lv .bars i:nth-child(2) { height: 8px; } .ct-lv .bars i:nth-child(3) { height: 12px; }
-.ct-lv .bars i.on { background: var(--ink-2); }
-.kid-tile .ctags { font-size: .8rem; margin-top: 0; }
-.kid-tile .ct { padding: 2px 6px; }
-
 .head > .grow { flex: 1; }
 /* app layout: a little wider than other course screens, the sidebar needs room */
 .catalog-main { max-width: 1240px; }
-#cat .pc .ctags { margin-top: 0; }
 #cat .none .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 #cat .tag { white-space: nowrap; }
 @media (max-width: 860px) { .catalog-main { padding-top: 8px; } }
-.cover .ctags { margin-top: 0; font-size: .85rem; }
 /* long subject names and narrow two-column cards: wrap inside the card instead of pushing it wider */
 #cat .pc .pbody { grid-template-columns: minmax(0, 1fr); }
-.ct { min-width: 0; max-width: 100%; }
-.ct-sub { white-space: normal; overflow-wrap: anywhere; }
 /* kids on a phone: one scrolling row of subject pictures instead of a tall wall of chips */
 @media (max-width: 600px) {
   #cat .kidsubj { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px; scrollbar-width: none; }

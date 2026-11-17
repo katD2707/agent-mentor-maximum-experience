@@ -1,4 +1,4 @@
-"""GET /research: everything hs-11 shows in one call (CONTRACTS 15.1, 15.8)."""
+"""GET /research: everything hs-09 shows in one call (CONTRACTS 15.1, 15.8)."""
 
 from __future__ import annotations
 

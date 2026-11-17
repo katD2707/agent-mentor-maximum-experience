@@ -1,4 +1,4 @@
-"""Catalog query (hs-03): filters with live facet counts, sort, paging, autocomplete and "did you mean".
+"""Catalog query (hs-07): filters with live facet counts, sort, paging, autocomplete and "did you mean".
 
 Pure functions over `CatalogEntry` lists. Relevance for a text query comes from `CourseSearch` (hybrid embeddings plus
 lexical, see search.py) and from a plain accent-insensitive match on title, subject and teacher, so a half-typed word

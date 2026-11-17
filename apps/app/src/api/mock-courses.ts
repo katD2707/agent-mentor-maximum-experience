@@ -13,7 +13,29 @@ import type { AssetRef, Block, CourseMeta, CoursePack, QuizItem, TreeChapter } f
 const ZERO = "0".repeat(64);
 
 /** Where each fixture asset lives in the bundle. Missing entries (the videos) simulate files that are not there. */
+/** A tenth of a second of silence: stands in for a chapter recap's voice file. */
+function silentWav(): string {
+  const n = 800;
+  const b = new Uint8Array(44 + n).fill(0x80);
+  const dv = new DataView(b.buffer);
+  const w = (o: number, t: string) => [...t].forEach((c, i) => (b[o + i] = c.charCodeAt(0)));
+  w(0, "RIFF");
+  dv.setUint32(4, 36 + n, true);
+  w(8, "WAVEfmt ");
+  dv.setUint32(16, 16, true);
+  dv.setUint16(20, 1, true);
+  dv.setUint16(22, 1, true);
+  dv.setUint32(24, 8000, true);
+  dv.setUint32(28, 8000, true);
+  dv.setUint16(32, 1, true);
+  dv.setUint16(34, 8, true);
+  w(36, "data");
+  dv.setUint32(40, n, true);
+  return `data:audio/wav;base64,${btoa(String.fromCharCode(...b))}`;
+}
+
 const FILES: Record<string, string> = {
+  "audio/recap-ch1.wav": silentWav(),
   "images/field-lines.svg": imgField,
   "images/apple.svg": imgApple,
   "images/basket-5.svg": imgBasket5,
@@ -129,7 +151,7 @@ export const dienPack: CoursePack = {
   schema_version: 1,
   course_id: DIEN,
   version: 1,
-  min_app_version: "0.1.0",
+  min_app_version: "0.2.0",
   language: "vi",
   age_band: "g10_12",
   title: "Vật lí 11: Điện trường",
@@ -137,6 +159,11 @@ export const dienPack: CoursePack = {
     {
       id: "ch1",
       title: "Điện trường",
+      recap: {
+        script: ["Điện tích tạo ra điện trường quanh nó.", "Đường sức đi ra từ điện tích dương và đi vào điện tích âm.", "Xa gấp đôi thì cường độ điện trường còn một phần tư."],
+        audio: ref("audio/recap-ch1.wav", "audio/wav"),
+        duration_s: 240,
+      },
       lessons: [
         {
           id: "l1",
@@ -178,6 +205,76 @@ export const dienPack: CoursePack = {
           key_ideas: ["Cường độ như nhau tại mọi điểm", "Hiệu điện thế U = E·d"],
           blocks: [
             { id: "l3-b1", kind: "text", md: "Trong điện trường đều, vectơ cường độ điện trường tại mọi điểm giống nhau về hướng và độ lớn. Giữa hai bản kim loại phẳng song song tích điện trái dấu, ta có $U = E\\,d$." },
+          ],
+        },
+        {
+          id: "l4",
+          title: "Tự tay thử: E theo khoảng cách",
+          est_minutes: 6,
+          summary: "Ghép công thức, nối đơn vị, xếp bước giải, kéo điểm trên đồ thị và nhớ lại.",
+          key_ideas: ["Quanh điện tích có điện trường", "E = k·|q| / r²", "Xa gấp đôi, E còn 1/4"],
+          blocks: [
+            { id: "l4-b1", kind: "text", md: "Quanh điện tích có **điện trường**. Càng xa, lực càng yếu." },
+            {
+              id: "l4-b2",
+              kind: "quiz",
+              items: [
+                item({
+                  id: "l4-q1",
+                  type: "FILL_TILES",
+                  stem: "$E = k \\cdot |q| /$ {{gap}}",
+                  parts: [{ id: "a", text: "r" }, { id: "b", text: "q" }, { id: "c", text: "r²" }, { id: "d", text: "k" }],
+                  answer_key: { gaps: ["c"] },
+                  explanation: "E tỉ lệ nghịch với bình phương khoảng cách.",
+                }),
+                item({
+                  id: "l4-q2",
+                  type: "MATCH_PAIRS",
+                  stem: "Nối đơn vị",
+                  parts: [
+                    { id: "l1", text: "Cường độ E", side: "left" },
+                    { id: "l2", text: "Lực điện F", side: "left" },
+                    { id: "l3", text: "Điện tích q", side: "left" },
+                    { id: "r1", text: "V/m", side: "right" },
+                    { id: "r2", text: "N", side: "right" },
+                    { id: "r3", text: "C", side: "right" },
+                  ],
+                  answer_key: { pairs: { l1: "r1", l2: "r2", l3: "r3" } },
+                  explanation: "E đo bằng V/m, lực bằng N, điện tích bằng C.",
+                }),
+                item({
+                  id: "l4-q3",
+                  type: "ORDER_STEPS",
+                  stem: "Xếp thứ tự các bước giải",
+                  parts: [{ id: "a", text: "Đọc đề" }, { id: "b", text: "Chọn công thức" }, { id: "c", text: "Thay số" }, { id: "d", text: "Ra kết quả" }],
+                  answer_key: { order: ["a", "b", "c", "d"] },
+                  explanation: "Đọc đề, chọn công thức, thay số, rồi tính.",
+                }),
+              ],
+            },
+            {
+              id: "l4-b3",
+              kind: "interactive",
+              prompt: "Kéo để E còn 1/4",
+              x: { symbol: "r", label: "Khoảng cách", unit: "m" },
+              y: { symbol: "E", label: "Cường độ điện trường", unit: "V/m" },
+              expr: "18000*(0.1/x)^2",
+              x_min: 0.1,
+              x_max: 0.4,
+              x_step: 0.05,
+              x_start: 0.1,
+              target_y: 4500,
+              tolerance: 100,
+              praise: "Đúng! Xa gấp đôi thì E còn 1/4.",
+            },
+            {
+              id: "l4-b4",
+              kind: "recall",
+              items: [
+                { prompt: "Nhớ lại: quanh điện tích có gì?", answer: "Điện trường" },
+                { prompt: "Xa gấp đôi, E thế nào?", answer: "Còn 1/4" },
+              ],
+            },
           ],
         },
       ],
@@ -323,7 +420,7 @@ export const bayesPack: CoursePack = {
 function kindsOf(pack: CoursePack): CourseMeta["media"] {
   const m = new Set<string>();
   for (const ch of pack.chapters)
-    for (const ls of ch.lessons) for (const b of ls.blocks) m.add(b.kind === "text" || b.kind === "callout" || b.kind === "image" ? "reading" : b.kind);
+    for (const ls of ch.lessons) for (const b of ls.blocks) m.add(b.kind === "text" || b.kind === "callout" || b.kind === "image" || b.kind === "recall" ? "reading" : b.kind);
   return [...m] as CourseMeta["media"];
 }
 const lessonsOf = (pack: CoursePack) => pack.chapters.flatMap((c) => c.lessons);

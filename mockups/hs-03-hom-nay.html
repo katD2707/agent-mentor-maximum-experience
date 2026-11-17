@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-next="lesson" data-first="no" data-sheet="none">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hôm nay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  /* One screen, run like an assistant: Mực (Mentor) speaks first with what to do now and quick replies; the box at the
+     bottom continues the same conversation. Courses stay one tap away in a strip; progress opens from the ring. */
+  .main { max-width: 760px; padding-bottom: 150px; display: grid; gap: 18px; align-content: start; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--tim); color: var(--on-tim); display: grid; place-items: center; font-weight: 700; }
+
+  /* week ring in the top bar: progress lives here, a tap opens the details */
+  .ring { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 6px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: .85em; font-weight: 600; cursor: pointer; }
+  .ring:hover { border-color: var(--tim); }
+  .ring svg { width: 32px; height: 32px; transform: rotate(-90deg); }
+  .ring .trk { stroke: var(--rule-strong); } .ring .val { stroke: var(--tim); stroke-linecap: round; }
+  :root[data-age="tieu-hoc"] .ring { font-size: 1em; min-height: 56px; }
+
+  /* courses: a compact strip at the top, one tap from anywhere in the conversation */
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .strip { display: flex; gap: 10px; overflow-x: auto; padding: 2px 2px 8px; margin: -2px -2px 0; scrollbar-width: thin; }
+  .crs { flex: none; width: 112px; display: grid; gap: 6px; text-decoration: none; color: inherit; font-size: .8em; font-weight: 500; border: 0; background: none; padding: 0; font-family: inherit; text-align: left; cursor: pointer; }
+  .crs img, .crs .ph { width: 112px; height: 72px; border-radius: var(--r-md); object-fit: cover; border: 1px solid var(--rule); background: var(--vang-soft); }
+  .crs .ph { display: grid; place-items: center; color: var(--tim-ink); background: var(--tim-soft); border-style: dashed; border-color: var(--tim); }
+  .crs .ph svg { width: 26px; height: 26px; }
+  .crs .bar { height: 5px; }
+  .crs:hover img, .crs:hover .ph { border-color: var(--tim); }
+  :root[data-age="tieu-hoc"] .crs { width: 150px; font-size: .95em; }
+  :root[data-age="tieu-hoc"] .crs img, :root[data-age="tieu-hoc"] .crs .ph { width: 150px; height: 104px; }
+
+  /* primary school: Mực's message and its big Start come first, the picture strip after */
+  .strip-sec { display: grid; min-width: 0; }
+  :root[data-age="tieu-hoc"] .strip-sec { order: 1; }
+
+  /* the conversation */
+  .thread { display: grid; gap: 14px; }
+  .msg { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 10px; align-items: start; animation: in .26s ease-out both; }
+  @keyframes in { from { opacity: 0; transform: translateY(8px); } }
+  .ava { width: 40px; height: 40px; border-radius: 14px; background: var(--tim-soft); display: grid; place-items: center; }
+  .ava svg { width: 26px; height: 32px; }
+  .msg.mentor + .msg.mentor .ava { visibility: hidden; } /* consecutive messages from Mực share one face */
+  .body { display: grid; gap: 10px; justify-items: start; min-width: 0; }
+  .bub { max-width: min(560px, 100%); padding: 12px 16px; border-radius: 6px 20px 20px 20px; background: var(--surface); border: 1px solid var(--rule); line-height: 1.5; }
+  .bub b { font-weight: 600; }
+  :root[data-age="dai-hoc"] .bub b.title { font-family: var(--font-read); }
+  :root[data-age="tieu-hoc"] .bub { font-size: 1.15em; }
+  .msg.me { grid-template-columns: minmax(0, 1fr); justify-items: end; }
+  .msg.me .bub { background: var(--tim); color: var(--on-tim); border-color: transparent; border-radius: 20px 6px 20px 20px; display: inline-flex; align-items: center; gap: 10px; }
+  .shot { width: 52px; height: 40px; border-radius: 8px; background: #FBF5E8; display: grid; place-items: center; flex: none; }
+  .typing { display: inline-flex; gap: 5px; padding: 16px 18px; }
+  .typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--tim); animation: dot 1s infinite ease-in-out; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes dot { 0%, 80%, 100% { opacity: .35; transform: none; } 40% { opacity: 1; transform: translateY(-3px); } }
+
+  /* quick replies under Mực's message: the first one is the main action */
+  .replies { display: flex; flex-wrap: wrap; gap: 8px; }
+  .reply { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-weight: 500; font-size: .95em; cursor: pointer; text-decoration: none; }
+  .reply:hover { border-color: var(--tim); }
+  .reply svg { width: 18px; height: 18px; }
+  .reply.p { background: var(--tim); color: var(--on-tim); border-color: transparent; font-weight: 600; box-shadow: inset 0 -3px 0 rgba(0,0,0,.2); min-height: 50px; padding: 0 22px; }
+  .reply.p:hover { background: var(--tim-ink); }
+  .reply .dur { font-weight: 500; opacity: .78; }
+  :root[data-age="tieu-hoc"] .reply { min-height: 60px; font-size: 1.05em; padding: 0 22px; }
+  :root[data-age="tieu-hoc"] .reply.p { min-height: 68px; padding: 0 30px; }
+  .replies.used { display: none; }
+
+  /* rich content inside a message */
+  .rich { width: min(560px, 100%); }
+  .path { width: 100%; height: auto; display: block; overflow: visible; }
+  .path .road { fill: none; stroke: var(--rule-strong); stroke-width: 14; stroke-linecap: round; stroke-dasharray: 0 26; }
+  .path .done circle { fill: var(--xanh); } .path .done path { stroke: #fff; }
+  .path .todo circle { fill: var(--surface); stroke: var(--rule-strong); stroke-width: 4; }
+  .path .now circle.halo { fill: var(--tim-soft); }
+  .path .now circle.dot { fill: var(--tim); }
+  .path .now path { fill: var(--on-tim); }
+  .pathbox { padding: 6px 10px; border-radius: var(--r-lg); border: 1px solid var(--rule-strong); }
+  .steps { margin: 0; padding: 12px 16px; list-style: none; display: grid; gap: 10px; counter-reset: s; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--rule); }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 9px; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; font-weight: 600; font-size: .85em; }
+  .steps .last { color: var(--ink-2); border: 1.5px dashed var(--rule-strong); border-radius: 10px; padding: 6px 10px; }
+  .math { font-family: var(--font-read); }
+  .sugs { display: grid; gap: 8px; }
+  .sug { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px; border-radius: var(--r-md); background: var(--surface); border: 1px solid var(--rule); }
+  .sug img { width: 72px; height: 54px; border-radius: 10px; object-fit: cover; }
+  .sug h3 { font-size: .95em; font-weight: 600; }
+  .sug p { color: var(--ink-2); font-size: .82em; margin-top: 3px; }
+  .add { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim); font: inherit; font-weight: 600; font-size: .9em; cursor: pointer; }
+  .add[aria-pressed="true"] { background: var(--xanh-soft); color: var(--xanh); }
+
+  /* the box: continues the conversation */
+  .composer-wrap { position: fixed; left: 0; right: 0; bottom: var(--dock-h, 0px); z-index: 30; padding: 18px 16px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(to bottom, transparent, var(--paper) 28%); }
+  .composer-in { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .composer-in > div { min-width: 0; }
+  .suggest { display: grid; gap: 2px; padding: 6px; border-radius: 20px; background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); animation: in .18s ease-out both; }
+  .suggest[hidden], .suggest [hidden] { display: none; }
+  .suggest button { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 0 12px; border: 0; border-radius: 14px; background: none; color: var(--ink); font: inherit; font-size: .92em; text-align: left; cursor: pointer; }
+  .suggest button:hover, .suggest button:focus-visible { background: var(--tim-soft); }
+  .suggest svg { width: 18px; height: 18px; flex: none; color: var(--tim-ink); }
+  .composer { display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 28px; background: var(--surface); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); }
+  .composer:focus-within { border-color: var(--tim); }
+  .c-btn { width: 44px; height: 44px; flex: none; border-radius: 999px; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer; color: var(--ink-2); }
+  .c-btn:hover { background: var(--tim-soft); color: var(--ink); }
+  .c-btn svg { width: 22px; height: 22px; }
+  .c-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 10px 6px; font: inherit; color: var(--ink); }
+  .c-input::placeholder { color: var(--ink-2); }
+  .c-send { background: var(--tim); color: var(--on-tim); }
+  .c-send:hover { background: var(--tim-ink); color: var(--on-tim); }
+  .kid-ask { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .kid-ask button { min-height: 68px; border-radius: 999px; border: 0; background: var(--tim); color: var(--on-tim); font: inherit; font-weight: 600; font-size: 1em; display: inline-flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; box-shadow: inset 0 -3px 0 rgba(0,0,0,.2); }
+  .kid-ask button.alt { background: var(--surface); color: var(--tim-ink); border: 2px solid var(--rule-strong); box-shadow: none; }
+  .kid-ask svg { width: 28px; height: 28px; }
+
+  /* progress: still a sheet from the ring */
+  .scrim { position: fixed; inset: 0; z-index: 60; background: rgba(18, 14, 38, .38); }
+  .sheet { position: fixed; z-index: 61; left: 50%; bottom: 0; transform: translateX(-50%); width: min(760px, 100%); max-height: min(84vh, 760px); overflow: auto; overscroll-behavior: contain; background: var(--paper); border-radius: 24px 24px 0 0; box-shadow: 0 -18px 40px -20px rgba(0,0,0,.4); padding: 10px clamp(18px, 4vw, 32px) calc(24px + env(safe-area-inset-bottom)); display: grid; gap: 16px; align-content: start; animation: up .28s cubic-bezier(.2,.9,.3,1) both; }
+  @keyframes up { from { transform: translate(-50%, 40px); opacity: 0; } }
+  .grab { justify-self: center; width: 44px; height: 5px; border-radius: 99px; background: var(--rule-strong); }
+  .sheet-h { display: flex; align-items: center; gap: 12px; }
+  .sheet-h h2 { font-size: 1.2em; flex: 1; }
+  .goal { display: grid; gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .goal-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .goal-top b { font-weight: 600; flex: 1; }
+  .days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+  .day { display: grid; justify-items: center; gap: 4px; padding: 8px; border-radius: 12px; background: var(--surface); border: 1px solid var(--rule); text-align: center; font-size: .78em; }
+  .day b { font-weight: 600; }
+  .day.ok { border-color: var(--xanh); } .day.ok svg { color: var(--xanh); width: 16px; height: 16px; justify-self: center; }
+  .day.now { border: 2px solid var(--tim); }
+  .day span { color: var(--ink-2); overflow-wrap: anywhere; }
+  .soon { display: grid; gap: 8px; }
+  .soon p { display: flex; align-items: center; gap: 10px; }
+  .soon svg { width: 18px; height: 18px; color: var(--cam); flex: none; }
+
+  @media (prefers-reduced-motion: reduce) { .msg, .suggest, .sheet { animation: none; } .typing i { animation: none; opacity: .6; } }
+  @media (max-width: 560px) {
+    .msg { grid-template-columns: 32px minmax(0, 1fr); gap: 8px; }
+    .ava { width: 32px; height: 32px; border-radius: 11px; } .ava svg { width: 20px; height: 26px; }
+    .sug { grid-template-columns: 56px minmax(0, 1fr); } .sug img { width: 56px; height: 44px; } .sug .add { grid-column: 1 / -1; justify-self: start; }
+    .day { font-size: .7em; padding: 6px 2px; }
+  }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đề xuất: một màn Hôm nay (kiểu trợ lý)</span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg" data-when="age=thcs|thpt|dai-hoc"><span>Mực gợi ý</span><button data-set="next:lesson">Bài học</button><button data-set="next:practice">Luyện tập</button><button data-set="next:mock">Thi thử</button><button data-set="next:paper" data-when="age=dai-hoc">Đọc paper</button></span>
+  <span class="mock-seg"><span>Lần đầu mở app</span><button data-set="first:no">Không</button><button data-set="first:yes">Có</button></span>
+  <span class="mock-seg" data-when="age=thcs|thpt|dai-hoc"><span>Thử hỏi</span><button data-try="photo">Chụp bài</button><button data-try="notes">Chụp vở</button><button data-try="learn">Tìm khóa</button><button data-try="help">Hỏi cách dùng</button><button data-try="goal">Thêm mục tiêu</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Mực nói trước một việc; trả lời bằng nút hoặc nhắn ở ô dưới.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <span class="logo"><span class="logo-mark">M</span><span>Mentor</span></span>
+    <span class="grow"></span>
+    <button class="ring" type="button" data-open="progress" aria-label="Tiến độ tuần này">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="trk" cx="18" cy="18" r="14" fill="none" stroke-width="5"/><circle class="val" cx="18" cy="18" r="14" fill="none" stroke-width="5" stroke-dasharray="52.8 88"/></svg>
+      <span data-when="age=tieu-hoc" data-en="12 stars">12 sao</span>
+      <span data-when="age=thcs|thpt" data-en="3 of 5 sessions">3/5 buổi</span>
+      <span data-when="age=dai-hoc" data-en="5h 10m">5 giờ 10'</span>
+    </button>
+    <button class="icon-btn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <!-- your courses, compact, always at the top -->
+    <section class="strip-sec" aria-label="Khóa của em">
+      <div class="strip">
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=tieu-hoc"><img src="assets/courses/so-den-10.jpg" alt=""><span data-en="Numbers to 10">Các số đến 10</span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=tieu-hoc"><img src="assets/courses/chu-cai.jpg" alt=""><span data-en="The alphabet">Chữ cái</span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=tieu-hoc"><img src="assets/courses/hinh-quanh-em.jpg" alt=""><span data-en="Shapes around me">Hình quanh em</span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=thcs|thpt"><img src="assets/courses/dien-truong.jpg" alt=""><span data-en="Physics 11: fields">Vật lí 11: Điện trường</span><span class="bar"><i style="width:42%"></i></span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=thcs|thpt"><img src="assets/courses/cap-so-cong.jpg" alt=""><span data-en="Maths 11: sequences">Toán 11: Cấp số cộng</span><span class="bar"><i style="width:68%"></i></span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=thcs|thpt"><img src="assets/courses/tieng-anh-unit4.jpg" alt=""><span data-en="English: unit 4">Tiếng Anh: Unit 4</span><span class="bar"><i style="width:15%"></i></span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=dai-hoc"><img src="assets/courses/bayes.jpg" alt=""><span data-en="Bayesian inference">Suy luận Bayes</span><span class="bar"><i style="width:55%"></i></span></a>
+        <a class="crs" href="hs-04-khoa-hoc.html" data-when="age=dai-hoc"><img src="assets/courses/hoc-may.jpg" alt=""><span data-en="Machine learning">Học máy</span><span class="bar"><i style="width:30%"></i></span></a>
+        <a class="crs" href="hs-09-nghien-cuu.html" data-when="age=dai-hoc"><span class="ph"><i data-i="file"></i></span><span data-en="Your research topic">Đề tài của bạn</span></a>
+        <button class="crs" type="button" data-try="learn"><span class="ph"><i data-i="plus"></i></span><span data-en="Find a course">Tìm khóa</span></button>
+      </div>
+    </section>
+
+    <!-- the conversation with Mực -->
+    <section class="thread" id="thread" role="log" aria-live="polite" aria-label="Trò chuyện với Mực"></section>
+  </main>
+
+  <div class="composer-wrap">
+    <div class="composer-in">
+      <div class="kid-ask" data-when="age=tieu-hoc">
+        <button type="button" data-try="photo"><i data-i="camera"></i><span data-en="Snap homework">Chụp bài</span></button>
+        <button type="button" class="alt" data-try="talk"><i data-i="mic"></i><span data-en="Talk to Mực">Nói với Mực</span></button>
+      </div>
+      <div data-when="age=thcs|thpt|dai-hoc" style="display:grid; grid-template-columns:minmax(0,1fr); gap:8px">
+        <div class="suggest" id="suggest" role="group" aria-label="Gợi ý" hidden>
+          <button type="button" data-try="photo"><i data-i="camera"></i><span data-en="Snap homework">Chụp bài</span></button>
+          <button type="button" data-try="learn"><i data-i="search"></i><span data-en="Find a course">Tìm khóa</span></button>
+          <button type="button" data-try="mock" data-when="next=lesson|practice|paper"><i data-i="clock"></i><span data-en="Mock exam">Thi thử</span></button>
+          <button type="button" data-try="practice" data-when="next=mock"><i data-i="quiz"></i><span data-en="Review mistakes">Ôn câu sai</span></button>
+        </div>
+        <form class="composer" id="ask" onsubmit="return false">
+          <button class="c-btn" type="button" data-try="photo" aria-label="Chụp bài"><i data-i="camera"></i></button>
+          <input class="c-input" id="q" type="text" autocomplete="off" placeholder="Nhắn cho Mực" data-en-ph="Message Mực" aria-label="Nhắn cho Mực">
+          <button class="c-btn" type="button" aria-label="Nói"><i data-i="mic"></i></button>
+          <button class="c-btn c-send" type="submit" aria-label="Gửi"><i data-i="send"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- progress: from the ring -->
+<div class="scrim" data-when="sheet=progress" data-close></div>
+<section class="sheet" role="dialog" aria-modal="true" aria-labelledby="s-prog" data-when="sheet=progress">
+  <span class="grab" aria-hidden="true"></span>
+  <div class="sheet-h"><h2 id="s-prog" data-en="This week">Tuần này</h2><button class="icon-btn" type="button" data-close aria-label="Đóng"><i data-i="x"></i></button></div>
+  <div class="days" aria-label="Lịch 7 ngày do Mentor xếp">
+    <div class="day ok"><b>T2</b><i data-i="check"></i><span class="vh" data-en="done">đã học</span></div>
+    <div class="day ok"><b>T3</b><i data-i="check"></i><span class="vh" data-en="done">đã học</span></div>
+    <div class="day rest"><b>T4</b><span data-en="Rest">Nghỉ</span></div>
+    <div class="day ok"><b>T5</b><i data-i="check"></i><span class="vh" data-en="done">đã học</span></div>
+    <div class="day now"><b>T6</b><span data-en="Lesson 3">Bài 3</span></div>
+    <div class="day"><b>T7</b><span data-en="Mock">Thi thử</span></div>
+    <div class="day rest"><b>CN</b><span data-en="Rest">Nghỉ</span></div>
+  </div>
+  <div class="soon" data-when="age=dai-hoc">
+    <p><i data-i="flag"></i><span data-en="Full paper · 9 days">Full paper · còn 9 ngày</span></p>
+    <p><i data-i="user"></i><span data-en="Advisor · Thu 14:00">Họp GVHD · T5 14:00</span></p>
+  </div>
+  <div>
+    <div class="goal"><div class="goal-top"><b data-en="Electric fields · 20/12">Điện trường · 20/12</b><span class="tag ok" data-en="On track">Đúng nhịp</span></div><span class="bar"><i style="width:60%"></i></span></div>
+    <div class="goal"><div class="goal-top"><b data-en="Maths exam · June">Thi Toán · tháng 6</b><span class="tag wait" data-en="+1 on Sat">+1 buổi T7</span></div><span class="bar"><i style="width:25%"></i></span></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const thread = document.getElementById("thread");
+  const RM = matchMedia("(prefers-reduced-motion: reduce)");
+  const en = () => root.lang === "en";
+  const t = (vi, e) => (en() ? e : vi);
+  const age = () => root.dataset.age;
+  const uni = () => age() === "dai-hoc";
+  const you = () => t(uni() ? "bạn" : "em", "you");
+  const AVA = '<svg viewBox="0 0 80 100" aria-hidden="true"><path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="var(--tim)"/><ellipse cx="31" cy="52" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="52" rx="7" ry="8" fill="#fff"/><circle cx="32" cy="53" r="4" fill="#1F1B3A"/><circle cx="50" cy="53" r="4" fill="#1F1B3A"/></svg>';
+
+  // ---- what Mực suggests (one per kind), worded for the age band
+  function plan(kind) {
+    const u = uni();
+    const P = {
+      lesson: u
+        ? { say: t("Đọc tiếp <b class=title>Bayes, phần 3</b>? Còn 9 ngày thi.", "Keep reading <b class=title>Bayes, part 3</b>? Exam in 9 days."), go: t("Đọc tiếp", "Keep reading"), min: 35, url: "hs-05-bai-hoc-tung-buoc.html", label: t("Đọc Bayes phần 3", "Read Bayes part 3") }
+        : { say: t("Học tiếp <b>Điện trường, bài 3</b> nhé?", "Carry on with <b>Electric fields, lesson 3</b>?"), go: t("Học tiếp", "Continue"), min: 15, url: "hs-05-bai-hoc-tung-buoc.html", label: t("Học tiếp bài 3", "Lesson 3") },
+      practice: u
+        ? { say: t("Làm <b>8 bài tập Bayes</b> khi còn nhớ nhé?", "<b>8 Bayes exercises</b> while it's fresh?"), go: t("Bắt đầu", "Start"), min: 20, url: "hs-05-bai-hoc-tung-buoc.html?mode=practice", label: t("8 bài tập Bayes", "8 Bayes exercises") }
+        : { say: t("Ôn <b>10 câu Điện trường</b> nhé? Có 4 câu em sai.", "<b>10 electric field questions</b>? Includes 4 you missed."), go: t("Bắt đầu", "Start"), min: 12, url: "hs-05-bai-hoc-tung-buoc.html?mode=practice", label: t("10 câu ôn", "10 questions") },
+      mock: u
+        ? { say: t("Còn 9 ngày thi. Làm <b>thi thử Bayes</b> nhé?", "Exam in 9 days. A <b>Bayes mock exam</b>?"), go: t("Vào thi", "Start"), min: 60, url: "hs-06-luyen-tap.html", label: t("Thi thử Bayes", "Bayes mock exam") }
+        : { say: t("Còn 9 ngày thi. Làm <b>thi thử Vật lí</b> nhé?", "Exam in 9 days. A <b>physics mock exam</b>?"), go: t("Vào thi", "Start"), min: 50, url: "hs-06-luyen-tap.html", label: t("Thi thử Vật lí", "Physics mock exam") },
+      paper: { say: t("Đọc tiếp <b class=title>Equivariant Message Passing</b>, mục 3?", "Back to <b class=title>Equivariant Message Passing</b>, section 3?"), go: t("Đọc tiếp", "Keep reading"), min: 25, url: "hs-10-doc-paper.html", label: t("Đọc paper", "Read the paper") },
+    };
+    return P[kind] || P.lesson;
+  }
+  const kinds = () => (uni() ? ["lesson", "paper", "practice", "mock"] : ["lesson", "practice", "mock"]);
+  const mins = (m) => t(`${m} phút`, `${m} min`);
+  const go = (p) => ({ primary: true, label: p.go, dur: mins(p.min), href: p.url });
+  const suggest = (kind) => { const p = plan(kind); return { html: p.say, replies: [go(p), { label: t("Để sau", "Later"), act: "later" }, { label: t("Việc khác", "Something else"), act: "other" }] }; };
+
+  // ---- the conversation
+  let queue = Promise.resolve(), gen = 0, acted = false; // no scrolling until the person has said something
+  const wait = (ms) => new Promise((r) => setTimeout(r, RM.matches ? 0 : ms));
+  function bubbleRow(cls, inner) {
+    const row = document.createElement("div");
+    row.className = "msg " + cls;
+    row.innerHTML = (cls === "mentor" ? `<span class="ava">${AVA}</span>` : "") + `<div class="body">${inner}</div>`;
+    thread.append(row);
+    if (window.mockPaint) window.mockPaint(row);
+    // the newest message sits just above the pinned box (the page keeps room for it at the bottom)
+    if (acted) window.scrollTo({ top: document.documentElement.scrollHeight, behavior: RM.matches ? "auto" : "smooth" });
+    return row;
+  }
+  function me(html) { acted = true; bubbleRow("me", `<div class="bub">${html}</div>`); }
+  function say(m) {
+    const g = gen;
+    queue = queue.then(async () => {
+      if (g !== gen) return;
+      const typing = bubbleRow("mentor", '<div class="bub typing" aria-label="Mực đang gõ"><i></i><i></i><i></i></div>');
+      await wait(550);
+      typing.remove();
+      if (g !== gen) return;
+      let inner = `<div class="bub">${m.html}</div>`;
+      if (m.rich) inner += `<div class="rich">${m.rich}</div>`;
+      if (m.replies) inner += '<div class="replies">' + m.replies.map((r, i) => r.href
+        ? `<a class="reply${r.primary ? " p" : ""}" href="${r.href}">${r.primary ? '<i data-i="play"></i>' : ""}<span>${r.label}</span>${r.dur ? `<span class="dur">· ${r.dur}</span>` : ""}</a>`
+        : `<button class="reply${r.primary ? " p" : ""}" type="button" data-r="${i}">${r.icon ? `<i data-i="${r.icon}"></i>` : ""}<span>${r.label}</span>${r.dur ? `<span class="dur">· ${r.dur}</span>` : ""}</button>`).join("") + "</div>";
+      const row = bubbleRow("mentor", inner);
+      row._replies = m.replies || [];
+      await wait(120);
+    });
+  }
+  thread.addEventListener("click", (e) => {
+    const b = e.target.closest(".reply[data-r]");
+    if (b) {
+      const row = b.closest(".msg"), r = row._replies[Number(b.dataset.r)];
+      row.querySelector(".replies").classList.add("used");
+      me(r.label);
+      act(r.act, r);
+      return;
+    }
+    const a = e.target.closest(".add");
+    if (a) {
+      const on = a.getAttribute("aria-pressed") !== "true";
+      a.setAttribute("aria-pressed", String(on));
+      a.textContent = on ? t("Đã thêm", "Added") : t("Thêm", "Add");
+      if (on) say({ html: t("Đã thêm. Mình tự xếp giờ học.", "Added. I'll find the time.") });
+    }
+  });
+
+  function act(kind, r) {
+    switch (kind) {
+      case "later":
+        return say({ html: t("Nhắc " + you() + " lúc nào?", "When should I remind you?"), replies: [
+          { label: t("Sau 1 tiếng", "In 1 hour"), act: "remind", at: t("sau 1 tiếng", "in 1 hour") },
+          { label: t("Tối nay 20:00", "Tonight 20:00"), act: "remind", at: t("20:00 tối nay", "20:00 tonight") },
+          { label: t("Mai 19:30", "Tomorrow 19:30"), act: "remind", at: t("19:30 mai", "19:30 tomorrow") }] });
+      case "remind":
+        return say({ html: t("Đã hẹn " + r.at + ". Tới giờ mình báo, kể cả khi tắt app.", "Set for " + r.at + ". I'll notify you even if the app is closed.") });
+      case "other": {
+        const cur = root.dataset.next;
+        const opts = kinds().filter((k) => k !== cur).map((k) => { const p = plan(k); return { label: p.label, dur: mins(p.min), act: "pick", kind: k }; });
+        opts.push({ label: t("Nghe tóm tắt", "Listen to a recap"), dur: mins(4), act: "listen" });
+        return say({ html: t("Hôm nay còn:", "Also today:"), replies: opts });
+      }
+      case "listen":
+        return say({ html: t("Tóm tắt Điện trường, 4 phút. Tải về nghe không cần mạng.", "Electric fields recap, 4 min. Download it to play offline."), replies: [{ primary: true, label: t("Nghe", "Listen"), dur: mins(4), href: "hs-04-khoa-hoc.html?nghe=1" }] });
+      case "mkreview":
+        return say({ html: t("Đã tạo 6 câu. Ôn lần đầu tối nay 20:00, lần sau sau 3 ngày.", "6 questions ready. First review tonight 20:00, next in 3 days."), replies: [{ primary: true, label: t("Ôn ngay", "Review now"), dur: mins(5), href: "hs-05-bai-hoc-tung-buoc.html?mode=practice" }] });
+      case "pick":
+        root.dataset.next = r.kind;
+        if (window.mockSet) mockSet("next", r.kind);
+        return;
+      case "agenda":
+        return say({ html: t("Xong agenda: 3 mục.", "Agenda ready: 3 items."), replies: [{ label: t("Mở agenda", "Open the agenda"), href: "hs-09-nghien-cuu.html" }] });
+      case "nothanks":
+        return say({ html: t("Được.", "Sure.") });
+      case "last":
+        return say({ html: t("E = 9·10⁹ · 4·10⁻⁸ / 0,2² = <b>9 000 V/m</b>. Giống em không?", "E = 9·10⁹ · 4·10⁻⁸ / 0.2² = <b>9,000 V/m</b>. Same as yours?") });
+      case "similar":
+        return say(suggest("practice"));
+      case "week":
+        return mockSet("sheet", "progress");
+      case "mockpick":
+        return mockSet("next", "mock");
+    }
+  }
+
+  // ---- the box: whatever is typed continues the conversation
+  function handle(text) {
+    const v = text.toLowerCase();
+    if (/ở đâu|làm sao|thế nào|where|how do/.test(v)) return tryIt("help", true); // a question about the app comes first
+    if (/vở|notes?/.test(v)) return tryIt("notes", true);
+    if (/thi thử|mock/.test(v)) return tryIt("mock", true);
+    if (/luyện|ôn|practi|review/.test(v)) return tryIt("practice", true);
+    if (/muốn (được|đạt)|điểm|goal/.test(v)) return tryIt("goal", true);
+    if (/muốn học|khóa|learn|course/.test(v)) return tryIt("learn", true);
+    return tryIt("photo", true, text);
+  }
+  function tryIt(kind, typed, text) {
+    if (kind === "photo") {
+      if (!typed) me(`<span class="shot" aria-hidden="true"><svg viewBox="0 0 52 40" width="44" height="34"><g stroke="#6B5E4A" stroke-width="2" stroke-linecap="round"><path d="M8 12h28M8 20h36M8 28h20"/></g></svg></span><span>${t("Ảnh bài tập", "Photo of an exercise")}</span>`);
+      if (age() === "tieu-hoc") return say({ html: t("3 táo thêm 4 táo là mấy?", "3 apples and 4 more?"), replies: [{ primary: true, label: t("Đếm cùng Mực", "Count with me"), act: "nothanks" }] });
+      return say({ html: t("Giải từng bước, bước cuối " + you() + " tự làm:", "Step by step; the last one is yours:"),
+        rich: `<ol class="steps"><li><span>${t("q = 4·10⁻⁸ C, r = 0,2 m.", "q = 4·10⁻⁸ C, r = 0.2 m.")}</span></li><li><span><span class="math">E = k·|q| / r²</span>, k = 9·10⁹</span></li><li><span class="last">${t("Tính E?", "Work out E?")}</span></li></ol>`,
+        replies: [{ primary: true, label: t("Xem đáp án", "Show answer"), act: "last" }, { label: t("Bài tương tự", "Similar"), act: "similar" }] });
+    }
+    if (kind === "notes") {
+      if (!typed) me(`<span class="shot" aria-hidden="true"><svg viewBox="0 0 52 40" width="44" height="34"><g stroke="#6B5E4A" stroke-width="2" stroke-linecap="round"><path d="M8 10h30M8 18h36M8 26h24M8 33h30"/></g></svg></span><span>${t("Ảnh vở ghi", "Photo of notes")}</span>`);
+      return say({ html: t("Vở ghi <b>Điện trường</b>, 2 trang. Mình tạo 6 câu ôn nhé?", "<b>Electric fields</b> notes, 2 pages. Make 6 review questions?"), replies: [{ primary: true, label: t("Tạo câu ôn", "Make them"), act: "mkreview" }, { label: t("Thôi", "No"), act: "nothanks" }] });
+    }
+    if (kind === "learn") {
+      if (!typed) me(t("Em muốn học hóa hữu cơ", "I want to learn organic chemistry"));
+      return say({ html: t("2 khóa hợp với " + you() + ":", "Two fit you:"),
+        rich: `<div class="sugs"><div class="sug"><img src="assets/courses/hoa-lien-ket.jpg" alt=""><div><h3>${t("Hóa 11: Hữu cơ", "Chemistry 11: organic")}</h3><p>${t("8 chương", "8 chapters")}</p></div><button class="add" type="button" aria-pressed="false">${t("Thêm", "Add")}</button></div><div class="sug"><img src="assets/courses/tu-dien.jpg" alt=""><div><h3>${t("Từ vựng hóa (EN)", "Chemistry words")}</h3><p>${t("12 bài", "12 lessons")}</p></div><button class="add" type="button" aria-pressed="false">${t("Thêm", "Add")}</button></div></div>`, replies: [{ label: t("Xem thêm khóa", "More courses"), href: "hs-07-tim-khoa-hoc.html" }] });
+    }
+    if (kind === "help") {
+      if (!typed) me(t("Thi thử ở đâu?", "Where is the mock exam?"));
+      return say({ html: t("Mỗi khóa có thi thử riêng, hoặc cứ nhắn mình. Làm luôn nhé?", "Each course has one, or just ask me. Start now?"), replies: [{ primary: true, label: t("Thi thử", "Mock exam"), act: "mockpick" }] });
+    }
+    if (kind === "goal") {
+      if (!typed) me(t("Em muốn được 8 điểm Lí học kỳ này", "I want an 8 in physics this term"));
+      return say({ html: t("Đã thêm <b>8 điểm Lí</b>, +1 buổi mỗi tuần.", "Added <b>an 8 in physics</b>, +1 session a week."), replies: [{ label: t("Xem tuần", "See week"), act: "week" }] });
+    }
+    if (kind === "talk") {
+      return say({ html: t("Mực đang nghe!", "I'm listening!"), replies: [{ primary: true, label: t("Xong", "Done"), act: "nothanks" }] });
+    }
+    if (kind === "mock") { if (!typed) me(t("Thi thử", "Mock exam")); return say(suggest("mock")); }
+    if (kind === "practice") { if (!typed) me(t("Ôn câu sai", "Review mistakes")); return say(suggest("practice")); }
+  }
+
+  // ---- open the day: Mực speaks first
+  function open() {
+    gen++;
+    acted = false;
+    queue = Promise.resolve();
+    window.scrollTo(0, 0);
+    thread.replaceChildren();
+    const a = age(), first = root.dataset.first === "yes";
+    if (first) say({ html: t(`Chào Lan, mình là <b>Mực</b>! Mỗi ngày mình gợi ý một việc.`, `Hi Lan, I'm <b>Mực</b>! One thing a day.`) });
+    if (a === "tieu-hoc") {
+      say({ html: t("Cùng đếm đến 10 nhé?", "Count to 10?"),
+        rich: `<div class="pathbox"><svg class="path" viewBox="0 0 300 130" role="img" aria-label="${t("Đã xong 2 chặng, chặng 3 đang chờ", "2 steps done, step 3 is next")}"><path class="road" d="M30 96 C70 30, 110 30, 140 64 S 210 112, 266 46"/><g class="done"><circle cx="30" cy="96" r="20"/><path d="M21 96 l6 6 11-12" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g><g class="now"><circle class="halo" cx="140" cy="64" r="36"/><circle class="dot" cx="140" cy="64" r="28"/><path d="M132 51 L153 64 L132 77 Z"/></g><g class="todo"><circle cx="212" cy="104" r="17"/></g><g transform="translate(268 44)"><circle r="24" fill="var(--vang-soft)" stroke="var(--vang)" stroke-width="4"/><path d="M0 -13 L4 -4 L14 -3 L7 4 L9 13 L0 8 L-9 13 L-7 4 L-14 -3 L-4 -4 Z" fill="var(--vang)"/></g></svg></div>`,
+        replies: [{ primary: true, label: t("Bắt đầu", "Start"), href: "hs-05-bai-hoc-tung-buoc.html" }, { label: t("Nghe lại", "Listen again"), icon: "volume", act: "nothanks" }] });
+      return;
+    }
+    const s = suggest(root.dataset.next || "lesson");
+    if (!first) s.html = t("Chào Lan! ", "Hi Lan! ") + s.html;
+    say(s);
+    if (a === "dai-hoc") say({ html: t("T5 họp GVHD. Soạn agenda nhé?", "Advisor on Thu. Draft the agenda?"), replies: [{ label: t("Soạn", "Draft"), act: "agenda" }, { label: t("Thôi", "No"), act: "nothanks" }] });
+  }
+  // when the reviewer (or a quick reply) changes the suggestion, Mực says the new one
+  document.addEventListener("mock:change", (e) => {
+    const k = e.detail && e.detail.key;
+    if (k === "age" || k === "lang" || k === "first") open();
+    else if (k === "next" && !e.detail.silent) say(suggest(e.detail.value));
+  });
+
+  // ---- clicks outside the thread
+  document.addEventListener("click", (e) => {
+    const tr = e.target.closest("[data-try]");
+    if (tr) { document.getElementById("suggest").hidden = true; tryIt(tr.dataset.try); return; }
+    const o = e.target.closest("[data-open]");
+    if (o) return mockSet("sheet", o.dataset.open);
+    if (e.target.closest("[data-close]")) return mockSet("sheet", "none");
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") { mockSet("sheet", "none"); document.getElementById("suggest").hidden = true; } });
+  document.getElementById("ask").addEventListener("submit", () => {
+    const q = document.getElementById("q"), v = q.value.trim();
+    if (!v) return;
+    q.value = "";
+    document.getElementById("suggest").hidden = true;
+    me(v);
+    handle(v);
+  });
+
+  // the box's hint and ideas, as before
+  const q = document.getElementById("q"), sug = document.getElementById("suggest");
+  const HINTS = { vi: ["Nhắn cho Mực", "Chụp bài để Mực giải", "Em muốn học hóa hữu cơ", "Cho em thi thử Toán"], en: ["Message Mực", "Snap an exercise for Mực", "I want to learn organic chemistry", "Give me a maths mock exam"] };
+  let hint = 0;
+  setInterval(() => {
+    if (RM.matches || document.activeElement === q || q.value) return;
+    const list = HINTS[en() ? "en" : "vi"];
+    hint = (hint + 1) % list.length;
+    q.placeholder = list[hint];
+  }, 3200);
+  const showSug = () => { sug.hidden = !!q.value.trim() || root.dataset.sheet !== "none"; };
+  q.addEventListener("focus", showSug);
+  q.addEventListener("click", showSug);
+  q.addEventListener("input", showSug);
+  q.addEventListener("blur", () => setTimeout(() => { if (!sug.contains(document.activeElement)) sug.hidden = true; }, 120));
+  sug.addEventListener("pointerdown", (e) => e.preventDefault());
+
+  mockSet("sheet", "none");
+  mockSet("next", root.dataset.next || "lesson");
+  mockSet("first", root.dataset.first || "no");
+  open();
+})();
+</script>
+</body>
+</html>

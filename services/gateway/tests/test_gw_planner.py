@@ -478,3 +478,109 @@ def test_weekly_review_runs_on_monday(client, enrolled, clock):
         clock.advance(days=1)
     ran = asyncio.run(gw.planner.tick(force=True))
     assert ran and ran[0][1] == "weekly_review"
+
+
+# ---------------------------------------------------------------- engagement (CONTRACTS 12.1): streak, Mực's voice,
+# streak saver, remind me later, backing off
+from datetime import date as _date
+
+from mentor_gateway.planner import engage
+from mentor_gateway.planner.tables import Reminder
+
+
+def _studied(client, days: list[_date], hhmm: str = "19:30", tag: str = "e") -> None:
+    events = []
+    for i, d in enumerate(days):
+        begin = local_dt(d, hhmm)
+        sess = {"session": f"{tag}{i}"}
+        events += [{"id": f"{tag}{i}a", "kind": "session_start", "ts": begin.isoformat(), "data": sess},
+                   {"id": f"{tag}{i}b", "kind": "focus_tick", "ts": (begin + timedelta(minutes=5)).isoformat(),
+                    "data": {**sess, "seconds": 300}},
+                   {"id": f"{tag}{i}c", "kind": "session_end", "ts": (begin + timedelta(minutes=20)).isoformat(),
+                    "data": {**sess, "seconds": 1200}}]
+    assert client.post("/api/events", json={"events": events}).json()["accepted"] == len(events)
+
+
+def test_streak_counts_days_in_a_row_up_to_today_or_yesterday():
+    d = _date(2026, 10, 28)
+    assert engage.streak(set(), d) == (0, False)
+    assert engage.streak({d - timedelta(days=1), d - timedelta(days=2)}, d) == (2, False)  # today still open
+    assert engage.streak({d, d - timedelta(days=1)}, d) == (2, True)
+    assert engage.streak({d - timedelta(days=2)}, d) == (0, False)  # a gap breaks it
+
+
+def test_reminder_lines_are_in_mucs_voice_vary_and_thin_out():
+    seen = {engage.study_text("Điện trường", "Electric fields", 15, 0, f"2026-10-{n}19:30", "g10_12")[0] for n in range(10, 30)}
+    assert len(seen) >= 2 and all("Điện trường" in t and "15" in t for t in seen)
+    vi, en = engage.study_text("Bayes", "Bayes", 30, 5, "k", "uni")
+    assert ("5 ngày" in vi and "bạn" in vi and "5-day" in en) or ("thứ 6" in vi and "Day 6" in en)
+    assert all(not t.lower().startswith(("hãy", "đừng quên")) for t in seen)
+    sv, _ = engage.saver_text(4, "2026-10-28", "g6_9")
+    assert "4 ngày" in sv
+    rs = [{"at": f"2026-10-{d}T19:30:00+07:00"} for d in (28, 28, 29, 30, 31, 31)]
+    assert [r["at"][:10] for r in engage.thin(rs)] == ["2026-10-28", "2026-10-30"]
+
+
+def test_remind_me_later_is_kept_by_replans_and_checked(client, enrolled, clock):
+    gw = client.app.state.gw
+    at = (clock() + timedelta(hours=2)).astimezone(TZ)  # 12:00 local
+    r = client.post("/api/reminders", json={"at": at.isoformat(), "title_vi": "Điện trường: bài 3",
+                                            "title_en": "Electric fields, lesson 3", "deep_link": "/khoa-hoc/dien-truong"})
+    assert r.status_code == 201, r.text
+    later = r.json()
+    assert later["kind"] == "later" and "Điện trường: bài 3" in later["text_vi"] and later["deep_link"] == "/khoa-hoc/dien-truong"
+    gw.planner.generate_now(gw.users.get(enrolled["id"]), "test")  # a replan replaces only the plan's own reminders
+    listed = {x["id"]: x for x in client.get("/api/reminders").json()["reminders"]}
+    assert listed[later["id"]]["status"] == "scheduled"
+
+    bed = at.replace(hour=22, minute=45)  # g10_12 bedtime is 22:30
+    r = client.post("/api/reminders", json={"at": bed.isoformat()})
+    assert r.status_code == 422 and r.json()["error"] == "bedtime"
+    r = client.post("/api/reminders", json={"at": (clock() + timedelta(days=3)).isoformat()})
+    assert r.status_code == 422 and r.json()["error"] == "bad_time"
+    for h in (3, 4):  # at most 2 waiting: the newest ask replaces the oldest
+        assert client.post("/api/reminders", json={"at": (clock() + timedelta(hours=h)).isoformat()}).status_code == 201
+    rows = client.get("/api/reminders").json()["reminders"]
+    assert sum(1 for x in rows if x["kind"] == "later" and x["status"] == "scheduled") == 2
+    assert next(x for x in rows if x["id"] == later["id"])["status"] == "cancelled"
+
+
+def test_streak_saver_tonight_and_gone_once_the_learner_studies(client, enrolled, clock):
+    gw = client.app.state.gw
+    user = gw.users.get(enrolled["id"])
+    today = clock().astimezone(TZ).date()
+    _studied(client, [today - timedelta(days=1), today - timedelta(days=2)])
+    t = client.get("/api/today").json()
+    assert t["streak"] == {"days": 2, "today_done": False} and t["reminders_backoff"] is False
+    engage.maintain(gw.db, user, clock())
+    saver = [x for x in client.get("/api/reminders").json()["reminders"] if x["kind"] == "streak"]
+    assert len(saver) == 1 and saver[0]["at"].startswith(f"{today.isoformat()}T21:30") and "2 ngày" in saver[0]["text_vi"]
+    engage.maintain(gw.db, user, clock())  # idempotent: one saver a day
+    assert sum(1 for x in client.get("/api/reminders").json()["reminders"] if x["kind"] == "streak") == 1
+
+    clock.now = clock() + timedelta(hours=1)
+    _studied(client, [today], hhmm=clock().astimezone(TZ).strftime("%H:%M"), tag="t")
+    clock.now = clock() + timedelta(minutes=30)
+    engage.maintain(gw.db, user, clock())
+    saver = [x for x in client.get("/api/reminders").json()["reminders"] if x["kind"] == "streak"]
+    assert saver[0]["status"] == "cancelled"
+    assert client.get("/api/today").json()["streak"] == {"days": 3, "today_done": True}
+
+
+def test_backing_off_after_ignored_reminders_until_the_learner_studies(client, enrolled, clock):
+    gw = client.app.state.gw
+    user = gw.users.get(enrolled["id"])
+    now = clock()
+    with gw.db.session() as s:
+        for i in range(engage.BACKOFF_AFTER):
+            s.add(Reminder(id=f"r-ign{i}", user_id=user.id, at=now - timedelta(hours=6 * (i + 1)), kind="study",
+                           text_vi="x", text_en="x", status="pushed", outcome="ignored", created_at=now, updated_at=now))
+    assert client.get("/api/today").json()["reminders_backoff"] is True
+    gw.planner.generate_now(user, "test")
+    days = [x["at"][:10] for x in client.get("/api/reminders").json()["reminders"]
+            if x["status"] == "scheduled" and x["kind"] == "study"]
+    assert len(days) == len(set(days))  # at most one a day ...
+    assert all((_date.fromisoformat(d) - _date.fromisoformat(days[0])).days % 2 == 0 for d in days)  # ... every other day
+    _studied(client, [now.astimezone(TZ).date()], hhmm=(now + timedelta(minutes=1)).astimezone(TZ).strftime("%H:%M"), tag="b")
+    clock.now = now + timedelta(minutes=30)
+    assert client.get("/api/today").json()["reminders_backoff"] is False

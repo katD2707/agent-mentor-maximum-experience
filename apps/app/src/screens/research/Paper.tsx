@@ -14,7 +14,7 @@ type Load<T> = { status: "loading" } | { status: "error"; code: string } | { sta
 
 const FB_ICON: Record<FeedbackKind, "check" | "x" | "edit"> = { right: "check", inaccurate: "x", missing: "edit" };
 
-/** hs-12: one paper. You write your own summary first; only then Mentor's feedback. Questions and related papers follow. */
+/** hs-10: one paper. You write your own summary first; only then Mentor's feedback. Questions and related papers follow. */
 export default function Paper() {
   const { t } = useTranslation();
   const { id = "" } = useParams();
@@ -126,10 +126,9 @@ function PaperBody({ id, detail }: { id: string; detail: PaperDetail }) {
           </p>
         )}
 
-        <section className="rs-abstract">
-          <span className="rs-eyebrow">Abstract</span>
-          <p lang="en">{detail.abstract}</p>
-        </section>
+        <p className="rs-abs" lang="en">
+          {detail.abstract}
+        </p>
 
         {/* 1. the learner writes first */}
         <section className="rs-mine oli" data-guide="research-summary" data-guide-label={t("research.paper.mySummary")}>
@@ -198,10 +197,7 @@ function FeedbackCard({ fb, read, onStatus }: { fb: PaperFeedback; read: boolean
   const { t } = useTranslation();
   return (
     <section className="rs-fb" aria-labelledby="rs-fb-h">
-      <h3 id="rs-fb-h">
-        <span className="logo-mark">M</span>
-        <span>{t("research.paper.feedbackTitle")}</span>
-      </h3>
+      <h3 id="rs-fb-h">{t("research.paper.feedbackTitle")}</h3>
       {fb.rows.map((r, i) => (
         <div key={i} className={`rs-fr ${r.kind}`}>
           <span className="rs-ic">

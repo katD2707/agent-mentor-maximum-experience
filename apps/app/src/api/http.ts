@@ -21,7 +21,7 @@ export async function request<T>(method: string, path: string, opts: { token?: s
     let code: ApiErrorCode = res.status === 401 ? "unauthorized" : res.status === 404 ? "not_found" : "unknown";
     try {
       const j = (await res.json()) as { error?: string };
-      if (j.error === "invalid_credentials" || j.error === "role_mismatch" || j.error === "birth_year_locked" || j.error === "bad_request") code = j.error;
+      if (j.error === "invalid_credentials" || j.error === "role_mismatch" || j.error === "birth_year_locked" || j.error === "bad_request" || j.error === "bad_time" || j.error === "bedtime" || j.error === "quiet") code = j.error;
     } catch {
       /* no JSON body */
     }
@@ -108,6 +108,7 @@ export const httpApi: Api = {
   async reminderOutcome(token, id, outcome) {
     await request("POST", `/reminders/${encodeURIComponent(id)}/outcome`, { token, body: { outcome } });
   },
+  remindLater: (token, body) => request("POST", "/reminders", { token, body }),
   postEvents: (token, events) => request("POST", "/events", { token, body: { events } }),
   vapidPublicKey: (token) => request("GET", "/push/vapid-public-key", { token }),
   async pushSubscribe(token, subscription) {
