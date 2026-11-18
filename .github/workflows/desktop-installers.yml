@@ -109,7 +109,7 @@ jobs:
           | Windows 10, 11 | `Mentor_..._x64-setup.exe` | Bấm đúp rồi làm theo trình cài. Nếu hiện "Windows protected your PC", bấm **More info**, rồi **Run anyway** (bản thử chưa có chữ ký số). |
           | Ubuntu, Linux Mint, Debian | `Mentor_..._amd64.deb` | Bấm đúp, cửa sổ Software hiện ra, bấm **Install**. |
           | Linux khác | `Mentor_..._amd64.AppImage` | Chuột phải, **Properties**, **Permissions**, bật **Allow executing file as program**, rồi bấm đúp. |
-          | macOS | `Mentor_..._universal.dmg` | Mở file, kéo Mentor vào Applications. Lần đầu mở: **System Settings**, **Privacy & Security**, **Open Anyway**. |
+          | macOS | `Mentor_..._universal.dmg` (khi có) | Mở file, kéo Mentor vào Applications. Lần đầu mở: **System Settings**, **Privacy & Security**, **Open Anyway**. |
 
           Mở app và đăng nhập bằng tài khoản người phụ trách gửi cho bạn. App cần Internet.
           EOF
@@ -117,4 +117,9 @@ jobs:
         with:
           name: Mentor ${{ github.ref_name }}
           body_path: notes.md
-          files: dist/*
+          # artifacts keep their bundle subfolders (deb/, appimage/): match at any depth
+          files: |
+            dist/**/*.exe
+            dist/**/*.deb
+            dist/**/*.AppImage
+            dist/**/*.dmg
