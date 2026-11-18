@@ -1,0 +1,9 @@
+# Fixed public address of a Mentor server behind a quick tunnel (README.md). Deployed by share-up.ps1.
+name = "app"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "MENTOR"
+id = "7a4692e3ff174ae09a1c37b8af8f6d1f"

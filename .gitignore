@@ -23,3 +23,6 @@ docs/de-xuat-ngan-sach-openai-dev.md
 /Mentor_*.dmg
 /Mentor_*.deb
 /Mentor_*.AppImage
+
+# Cloudflare wrangler cache (infra/share)
+.wrangler/

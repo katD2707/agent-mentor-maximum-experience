@@ -1,6 +1,9 @@
 # Installers of the desktop app for Windows, macOS and Linux, built on GitHub's machines (macOS can only be built on a Mac).
-# Run it by hand: Actions > "Desktop installers" > Run workflow, and give the server address the app should use.
-# The installers are attached to the run as artifacts (Mentor-windows, Mentor-macos, Mentor-linux).
+# Release: push a tag that matches the app version (git tag v0.2.0 && git push origin v0.2.0); the installers are then
+# published on the repository's Releases page with the install steps. By hand: Actions > "Desktop installers" >
+# Run workflow (artifacts only, no release).
+# Server address compiled into the app: the run input, else the repository variable MENTOR_API_BASE, else the shared
+# trial server (infra/share: the PC that runs share-up.ps1).
 #
 # macOS: without Apple secrets the app is ad-hoc signed, so the first open needs System Settings > Privacy & Security >
 # "Open Anyway". With these repository secrets set it is signed with a Developer ID and notarized, and opens with no
@@ -9,11 +12,13 @@
 name: Desktop installers
 
 on:
+  push:
+    tags: ["v*"]
   workflow_dispatch:
     inputs:
       api_base:
-        description: "Server address compiled into the app, e.g. https://mentor.example.vn/api"
-        required: true
+        description: "Server address compiled into the app, e.g. https://mentor.example.vn/api (empty: the default)"
+        required: false
 
 permissions:
   contents: read
@@ -40,7 +45,7 @@ jobs:
               apps/app/src-tauri/target/release/bundle/appimage/*.AppImage
     runs-on: ${{ matrix.os }}
     env:
-      VITE_API_BASE: ${{ inputs.api_base }}
+      VITE_API_BASE: ${{ inputs.api_base || vars.MENTOR_API_BASE || 'https://app.mentor-hoc.workers.dev/api' }}
       VITE_API_MOCK: ""
       APPIMAGE_EXTRACT_AND_RUN: "1"
       NO_STRIP: "true"
@@ -79,3 +84,36 @@ jobs:
           name: Mentor-${{ matrix.name }}
           path: ${{ matrix.files }}
           if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Install steps
+        run: |
+          cat > notes.md <<'EOF'
+          ## Cài Mentor
+
+          Tải đúng file cho máy của bạn ở mục **Assets** bên dưới, rồi:
+
+          | Máy | File | Cách cài |
+          |---|---|---|
+          | Windows 10, 11 | `Mentor_..._x64-setup.exe` | Bấm đúp rồi làm theo trình cài. Nếu hiện "Windows protected your PC", bấm **More info**, rồi **Run anyway** (bản thử chưa có chữ ký số). |
+          | Ubuntu, Linux Mint, Debian | `Mentor_..._amd64.deb` | Bấm đúp, cửa sổ Software hiện ra, bấm **Install**. |
+          | Linux khác | `Mentor_..._amd64.AppImage` | Chuột phải, **Properties**, **Permissions**, bật **Allow executing file as program**, rồi bấm đúp. |
+          | macOS | `Mentor_..._universal.dmg` | Mở file, kéo Mentor vào Applications. Lần đầu mở: **System Settings**, **Privacy & Security**, **Open Anyway**. |
+
+          Mở app và đăng nhập bằng tài khoản người phụ trách gửi cho bạn. App cần Internet.
+          EOF
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: Mentor ${{ github.ref_name }}
+          body_path: notes.md
+          files: dist/*
