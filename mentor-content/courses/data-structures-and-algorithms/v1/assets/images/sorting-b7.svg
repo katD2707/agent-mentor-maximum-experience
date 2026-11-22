@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<line x1="520.0" y1="120.0" x2="350.0" y2="255.0" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="520.0" y1="120.0" x2="690.0" y2="255.0" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="350.0" y1="255.0" x2="250.0" y2="400.0" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="350.0" y1="255.0" x2="450.0" y2="400.0" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="690.0" y1="255.0" x2="590.0" y2="400.0" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="690.0" y1="255.0" x2="790.0" y2="400.0" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="150.0" y1="120.0" x2="150.0" y2="400.0" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="150,112 142,128 158,128" fill="#5A4BC0"/>
+<polygon points="150,408 142,392 158,392" fill="#5A4BC0"/>
+<line x1="138.0" y1="120.0" x2="162.0" y2="120.0" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="138.0" y1="255.0" x2="162.0" y2="255.0" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="138.0" y1="400.0" x2="162.0" y2="400.0" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<polygon points="520,94 546,120 520,146 494,120" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+<polyline points="528.8,110.6 514.8,120 528.8,129.4" fill="none" stroke="#2B283F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="350,229 376,255 350,281 324,255" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+<polyline points="358.8,245.6 344.8,255 358.8,264.4" fill="none" stroke="#2B283F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="690,229 716,255 690,281 664,255" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+<polyline points="698.8,245.6 684.8,255 698.8,264.4" fill="none" stroke="#2B283F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="204.0" y="376.0" width="92" height="48" rx="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="229" y1="389" x2="271" y2="389" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="229" y1="400" x2="259" y2="400" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="229" y1="411" x2="247" y2="411" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<rect x="404.0" y="376.0" width="92" height="48" rx="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="429" y1="389" x2="471" y2="389" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="429" y1="400" x2="459" y2="400" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="429" y1="411" x2="447" y2="411" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<rect x="544.0" y="376.0" width="92" height="48" rx="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="569" y1="389" x2="611" y2="389" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="569" y1="400" x2="599" y2="400" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="569" y1="411" x2="587" y2="411" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<rect x="744.0" y="376.0" width="92" height="48" rx="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="769" y1="389" x2="811" y2="389" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="769" y1="400" x2="799" y2="400" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="769" y1="411" x2="787" y2="411" stroke="#5A4BC0" stroke-width="3.2" stroke-linecap="round"/>
+<circle cx="506" cy="400" r="3.6" fill="#5A4BC0"/>
+<circle cx="520" cy="400" r="3.6" fill="#5A4BC0"/>
+<circle cx="534" cy="400" r="3.6" fill="#5A4BC0"/>
+<line x1="520.0" y1="68.0" x2="520.0" y2="92.0" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<text x="520" y="56" text-anchor="middle" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">comparison</text>
+<line x1="700.0" y1="528.0" x2="775.0" y2="432.0" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<text x="540" y="545" text-anchor="middle" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">leaf = one permutation</text>
+<text x="105" y="260" text-anchor="middle" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" transform="rotate(-90 105 260)">height &#8805; log&#8322;(n!)</text>
+<text x="60" y="660" text-anchor="start" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">log&#8322;(n!) = &#920;(n log n)</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

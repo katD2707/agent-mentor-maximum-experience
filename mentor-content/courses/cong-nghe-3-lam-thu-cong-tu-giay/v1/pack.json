@@ -1,0 +1,1519 @@
+{
+  "schema_version": 1,
+  "course_id": "cong-nghe-3-lam-thu-cong-tu-giay",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "g1_5",
+  "title": "Công nghệ 3: Làm thủ công từ giấy và bìa",
+  "chapters": [
+    {
+      "id": "ch-chuan-bi",
+      "title": "Chuẩn bị",
+      "lessons": [
+        {
+          "id": "dung-cu-va-vat-lieu",
+          "title": "Dụng cụ và vật liệu",
+          "est_minutes": 15,
+          "summary": "Nhận biết giấy, bìa, dụng cụ và thực hành quy tắc đo – kẻ – cắt qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Giấy A4 mỏng, dễ gấp, dễ cắt; bìa cứng dày, đứng thẳng được.",
+            "Dụng cụ: kéo mũi tròn, hồ dán, thước 20 cm, bút chì, tẩy, khăn giấy.",
+            "Ba quy tắc: đặt vạch 0 vào mép giấy, kẻ nhạt rồi cắt, mắt nhìn theo lưỡi kéo.",
+            "Lỗi thường gặp: đặt vạch 1 cm vào mép giấy làm thiếu 1 cm.",
+            "Bài tập tính chiều dài còn lại, số tờ giấy và chia đoạn."
+          ],
+          "blocks": [
+            {
+              "id": "dung-cu-va-vat-lieu-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/dung-cu-va-vat-lieu-b1.webp",
+                "mime": "image/webp",
+                "sha256": "a2ada720470c7a4978c366d14afd90b42018ca093fd9d60ea1d9416dc28ab518",
+                "bytes": 12254
+              },
+              "alt": "Giấy A4 mỏng và bìa cứng dày.",
+              "caption": "Giấy A4 và bìa cứng.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d8557f0cfd579eff65483e654b99c25992f44dd3cfdd81fbd08568336b062248",
+                "bytes": 18380
+              },
+              "attribution": null
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-b2",
+              "kind": "text",
+              "md": "Giấy A4 mỏng, dễ gấp, dễ cắt. Bìa cứng dày, đứng thẳng được.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "02da304d07510914674b1e6c87ab69bda3d971fa6c51916454aac1def4799934",
+                "bytes": 47612
+              },
+              "gloss": null
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/dung-cu-va-vat-lieu-b3.webp",
+                "mime": "image/webp",
+                "sha256": "68e8870d6335d160e8a7a0587c3cf1d5ca6ed78ff5b3a7411cebe9a8943ce991",
+                "bytes": 27290
+              },
+              "alt": "Các dụng cụ thủ công: kéo, hồ dán, thước, bút chì, tẩy, khăn giấy.",
+              "caption": "Dụng cụ thủ công.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "9bada76bc50d45583e64bee98dd968914cd1ccf4e40af660491c43cfb5126d32",
+                "bytes": 14924
+              },
+              "attribution": null
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-cu-va-vat-lieu-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Vật nào dày và đứng thẳng được?",
+                  "stem_audio": {
+                    "path": "audio/dung-cu-va-vat-lieu-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "1d829dc37ae8dc12d59d5d0cddae4bf858d5ddf7ed58232adfe00d740b1941da",
+                    "bytes": 19388
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/dung-cu-va-vat-lieu-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "dfa81b6f4cc80f67b61db0b2cea88f64914549e024b1c915cceb2374ac743ade",
+                        "bytes": 2155
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/dung-cu-va-vat-lieu-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "e251b213eb0d00a99d951c7519c1dbcaffce2bd5220b578004b61bd466065d2a",
+                        "bytes": 1990
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/dung-cu-va-vat-lieu-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "9a0b496ab4af412c3c8927bfb885f9a6d8c1abf3d5750fdb63a2c62cf1f42b2b",
+                        "bytes": 1556
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nhớ lại vật liệu làm hộp, thiệp.",
+                  "explanation": "Bìa cứng dày, cứng và đứng thẳng được.",
+                  "option_feedback": {
+                    "B": "Giấy A4 mỏng, dễ gấp nên không đứng thẳng được.",
+                    "C": "Giấy màu mỏng, dùng để trang trí, không dày như bìa."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-b4",
+              "kind": "text",
+              "md": "Có kéo mũi tròn, hồ dán, thước 20 cm, bút chì, tẩy và khăn giấy.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d89d33f0cd943ebd0b2be0601ce6f40153f27d75b20ee85a23cd048744559135",
+                "bytes": 44588
+              },
+              "gloss": null
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/dung-cu-va-vat-lieu-b5.webp",
+                "mime": "image/webp",
+                "sha256": "545a5874116875747e0db25d177e98c71b967655d735768bc5f28de033d73d14",
+                "bytes": 19244
+              },
+              "alt": "Đặt vạch 0 vào mép giấy, kẻ nhạt rồi cắt, mắt nhìn theo lưỡi kéo.",
+              "caption": "Ba quy tắc đo – kẻ – cắt.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "31148c452d2e5fbcad5ea18d519df3d25a20a7b202291886c9deb7061fd0cb4c",
+                "bytes": 18380
+              },
+              "attribution": null
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-cu-va-vat-lieu-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm vào 2 tờ giấy màu.",
+                  "stem_audio": {
+                    "path": "audio/dung-cu-va-vat-lieu-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "e6516b004c5bbae0320fb860561606df8257b70831694aae6e314ba7a9c9ab4c",
+                    "bytes": 18524
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/dung-cu-va-vat-lieu-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "a3b0d8395046d2b76c58276939d69209e04572e873414392a512f9de53e3bbc5",
+                      "bytes": 1287
+                    },
+                    "total": 6
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 2
+                  },
+                  "hint": null,
+                  "explanation": "Cần chạm đúng 2 tờ giấy màu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-b6",
+              "kind": "text",
+              "md": "Đặt vạch 0 vào mép giấy. Kẻ nhẹ rồi cắt. Mắt nhìn theo lưỡi kéo. Đừng đặt vạch 1 cm.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "6bfdbe4a5dabd251272b820c398c7e5bf2286800c19d130686c1946ee583f90d",
+                "bytes": 65180
+              },
+              "gloss": null
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Đặt vạch 0 đúng mép giấy khi đo.",
+              "audio": {
+                "path": "audio/dung-cu-va-vat-lieu-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e3b80b706b5c8caa3efca5bb93fb15c35e743fc047b22aeb76e8fc63bf340a59",
+                "bytes": 20396
+              }
+            },
+            {
+              "id": "dung-cu-va-vat-lieu-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-cu-va-vat-lieu-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đặt vạch nào của thước vào mép giấy?",
+                  "stem_audio": {
+                    "path": "audio/dung-cu-va-vat-lieu-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "6997bd59288555c1e8a3678af2f60ea4355cdce1e97088f01918424fd32dac9d",
+                    "bytes": 20972
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vạch 0",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dung-cu-va-vat-lieu-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "171fe6a89e48da64de80d7c15483127b62d4d42266e4950f061064c3bba2dfe4",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vạch 1 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dung-cu-va-vat-lieu-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "44a9b57194425108146c7d039ddf825ec976199bfb2e2b4310abc2e7cf35fbf1",
+                        "bytes": 21692
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vạch 5 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/dung-cu-va-vat-lieu-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "338bef6b0bc402cbaa11d832f7845c91d9ee629fec48fecfcecbad3db1028164",
+                        "bytes": 15788
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Xem lại ba quy tắc đo – kẻ – cắt.",
+                  "explanation": "Phải đặt vạch 0 đúng vào mép giấy để đo đủ chiều dài.",
+                  "option_feedback": {
+                    "B": "Đặt vạch 1 cm sẽ làm băng giấy thiếu 1 cm.",
+                    "C": "Đặt vạch 5 cm sẽ làm thiếu 5 cm ở đầu."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "an-toan-khi-lam-thu-cong",
+          "title": "An toàn khi làm thủ công",
+          "est_minutes": 15,
+          "summary": "Thực hành quy tắc an toàn với kéo, hồ dán và giữ bàn gọn qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Quy tắc '3 không' với kéo: không vung, không chạy, không chĩa mũi kéo vào mặt.",
+            "Cầm kéo ở phần cán; khi đưa cho bạn thì đóng kéo, giữ lưỡi, đưa cán.",
+            "Không nếm, không ngửi hồ; dán nơi thoáng; dây hồ thì lau và rửa tay.",
+            "Giữ bàn gọn: giấy vụn vào hộp, kéo cách mép bàn ít nhất 10 cm.",
+            "Bài tập tính số đo bàn và xử lý khi hồ dây ra tay."
+          ],
+          "blocks": [
+            {
+              "id": "an-toan-khi-lam-thu-cong-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/an-toan-khi-lam-thu-cong-b1.webp",
+                "mime": "image/webp",
+                "sha256": "9567e49406446f3dc9f4a7df383f962d87ec21055aae3ad4fffb4ee7b1765708",
+                "bytes": 18530
+              },
+              "alt": "Bàn làm thủ công gọn gàng, có hộp giấy vụn, kéo đóng và khăn giấy.",
+              "caption": "Bàn gọn, an toàn",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "4a8391ec282c7f98d249fd5c85051bdd8923a3ed0df77acfb0d1e2c5f2ab043d",
+                "bytes": 17516
+              },
+              "attribution": null
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-b2",
+              "kind": "text",
+              "md": "Bỏ giấy vụn vào hộp. Để kéo cách mép bàn ít nhất 10 cm.",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "15650bd8d9349a193b403dd12fdc71d2c00a2d36ecb1f4baa83807e53f190821",
+                "bytes": 39116
+              },
+              "gloss": null
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/an-toan-khi-lam-thu-cong-b3.webp",
+                "mime": "image/webp",
+                "sha256": "f129ac8080e5ee0185a4be53a1f41b8ab38088c00bbde01fcbd2f110f8f4b6ba",
+                "bytes": 22868
+              },
+              "alt": "Các quy tắc an toàn với kéo: không vung, không chạy, không chĩa mũi kéo vào mặt; đưa cán kéo cho bạn.",
+              "caption": "An toàn với kéo",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "73294e4492c6c74834cc1296adb5f85a2c95513e0bb6f11af26dfdb4406221c0",
+                "bytes": 20540
+              },
+              "attribution": null
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-b4",
+              "kind": "text",
+              "md": "Cầm kéo ở phần cán. Không vung, không chạy, không chĩa mũi kéo vào mặt. Khi đưa kéo: đóng kéo, giữ lưỡi, đưa cán.",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e8b1fc4c8f94e666ffe30ebbc102944f4f09ad45916e05531f0a2973bfdb5bdc",
+                "bytes": 86204
+              },
+              "gloss": null
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-toan-khi-lam-thu-cong-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Vật nào dùng để cắt giấy?",
+                  "stem_audio": {
+                    "path": "audio/an-toan-khi-lam-thu-cong-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "4dae98bc60f94c5f6c09c1429a8317d689159fb765e2cc8d733bac96aec857c6",
+                    "bytes": 17804
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/an-toan-khi-lam-thu-cong-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "0d68f967c7b7fec94d5f45759168c4784e495c99b05ff70bb34b4a11e32ae746",
+                        "bytes": 2077
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/an-toan-khi-lam-thu-cong-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "37fe850250da214c4b4b897910104fb23591f6b11b3dc03d218a6f36c94e4eb9",
+                        "bytes": 1678
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/an-toan-khi-lam-thu-cong-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "cb0270e0d6cc3c81bb1e361400618393d0c38203903f72786190352cd7c56625",
+                        "bytes": 2205
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Em nhớ dụng cụ có hai lưỡi kẹp vào nhau.",
+                  "explanation": "Kéo là dụng cụ dùng để cắt giấy khi làm thủ công.",
+                  "option_feedback": {
+                    "B": "Hồ dán dùng để dán, không dùng để cắt giấy.",
+                    "C": "Thước kẻ dùng để đo và kẻ, không dùng để cắt giấy."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/an-toan-khi-lam-thu-cong-b5.webp",
+                "mime": "image/webp",
+                "sha256": "fb660c8694ecb8bf865626dd2e809b5dd5bd4827f3c02a3fb3df13e8b86d80d0",
+                "bytes": 21296
+              },
+              "alt": "Bạn nhỏ dùng hồ dán an toàn, lau tay và rửa tay khi hồ dây ra.",
+              "caption": "An toàn với hồ dán",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "37ea85731c2bf860e2cbc93dc3062c8376cab7cd65fdb09b88069e85a5541013",
+                "bytes": 16652
+              },
+              "attribution": null
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-b6",
+              "kind": "text",
+              "md": "Không nếm, không ngửi hồ. Dán ở nơi thoáng. Hồ dây ra tay thì lau rồi rửa tay.",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "2482a75242cee61c511b70c0408af461ce26a608a7cc0f562c1167fdde980cdc",
+                "bytes": 53516
+              },
+              "gloss": null
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Nhớ nhé",
+              "md": "Đóng kéo khi không dùng. Hồ dây ra tay thì rửa tay.",
+              "audio": {
+                "path": "audio/an-toan-khi-lam-thu-cong-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e750f04ad1b72e02330c5483af16b089f81db640d885de7ec28646142d585264",
+                "bytes": 44876
+              }
+            },
+            {
+              "id": "an-toan-khi-lam-thu-cong-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-toan-khi-lam-thu-cong-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi đưa kéo cho bạn, em đưa phần nào?",
+                  "stem_audio": {
+                    "path": "audio/an-toan-khi-lam-thu-cong-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "620001707bd8ecc7a9dca87094ec5f24d4791f04acd8e8092f1c5282d01dacc9",
+                    "bytes": 23852
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "cán kéo",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/an-toan-khi-lam-thu-cong-q2.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "d88def8e5d7ba7b7e419c0aed9ecab75422a7ec06fdbdbf4eb635e6077f92097",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "mũi kéo",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/an-toan-khi-lam-thu-cong-q2.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "d12732ca93fbac1b5e43d1e735e90b1ae9f497284db8972720b7c032b05725a2",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "lưỡi kéo",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/an-toan-khi-lam-thu-cong-q2.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "f2930a3707012072996c625c156c19981c24c24bb04f789c86998c6f9b9e70a9",
+                        "bytes": 12332
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Em nhớ quy tắc: đóng kéo, giữ lưỡi, đưa cán.",
+                  "explanation": "Đưa cán kéo để bạn cầm an toàn, không chạm vào lưỡi.",
+                  "option_feedback": {
+                    "B": "Mũi kéo nhọn, chĩa vào bạn rất nguy hiểm.",
+                    "C": "Lưỡi kéo sắc, đưa cho bạn cầm sẽ dễ bị đứt tay."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này tên là Chuẩn bị, gồm hai bài: dụng cụ và vật liệu, rồi đến an toàn khi làm thủ công. Học xong, em biết chọn đúng giấy, dùng kéo và thước cho đúng, và giữ an toàn cho mình và cho bạn ngồi cạnh.",
+          "Bài đầu nói về giấy và vật liệu. Giấy A4 thì mỏng, dễ gấp, dễ cắt, nên hay dùng khi gấp hình. Bìa cứng thì dày hơn, đứng thẳng được, nên dùng khi cần một tấm đứng vững. Em chọn loại giấy theo việc mình định làm, việc nào cần mềm thì dùng giấy A4, việc nào cần cứng thì dùng bìa.",
+          "Dụng cụ cần có là kéo mũi tròn, hồ dán, thước 20 cm, bút chì, tẩy và khăn giấy. Kéo mũi tròn an toàn hơn kéo mũi nhọn. Thước 20 cm đo được những đoạn ngắn trong bài. Khăn giấy để lau tay và lau chỗ hồ bị dây ra.",
+          "Bài học cho ba quy tắc khi đo và cắt. Thứ nhất, đặt vạch 0 vào mép giấy. Thứ hai, kẻ một đường thật nhẹ bằng bút chì rồi mới cắt. Thứ ba, khi cắt thì mắt nhìn theo lưỡi kéo. Làm đúng ba điều này thì đường cắt thẳng và đúng số đo.",
+          "Lỗi hay gặp nhất là đặt vạch 1 cm vào mép giấy, thế là thiếu mất 1 cm. Ví dụ em cần đoạn dài 8 cm, nhưng đặt vạch 1 cm ở mép giấy thì chỉ đo được có 7 cm thôi. Vậy nhớ cho kỹ: vạch 0 phải đặt đúng mép giấy.",
+          "Bài tập của bài này có tính chiều dài còn lại, tính số tờ giấy và chia đoạn. Ví dụ băng giấy dài 20 cm, cắt đi 6 cm thì còn lại 14 cm. Em làm từng bước một và ghi phép tính ra giấy cho rõ ràng.",
+          "Bài thứ hai nói về an toàn khi làm thủ công. Với kéo có ba không: không vung kéo, không chạy khi cầm kéo, không chĩa mũi kéo vào mặt người khác. Em cầm kéo ở phần cán. Khi đưa kéo cho bạn thì đóng kéo lại, giữ phần lưỡi và đưa phần cán về phía bạn.",
+          "Với hồ dán, em không nếm và không ngửi hồ. Dán ở nơi thoáng khí. Nếu hồ dây ra tay thì lau rồi rửa tay cho sạch. Giữ bàn gọn gàng: giấy vụn bỏ vào hộp, không để rơi xuống sàn.",
+          "Kéo không dùng thì đóng lại cho gọn. Để kéo cách mép bàn ít nhất 10 cm để kéo không bị rơi xuống. Bài tập của bài này có tính số đo của bàn và cách xử lý khi hồ dây ra tay.",
+          "Ba điều cần nhớ. Một: khi đo, đặt vạch 0 vào mép giấy. Hai: ba không với kéo, gồm không vung, không chạy, không chĩa mũi kéo vào mặt. Ba: giữ bàn gọn, đóng kéo khi không dùng, và rửa tay khi hồ dây ra tay."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-san-pham",
+      "title": "Sản phẩm",
+      "lessons": [
+        {
+          "id": "hop-dung-but",
+          "title": "Hộp đựng bút",
+          "est_minutes": 15,
+          "summary": "Làm hộp đựng bút từ bìa cứng theo sơ đồ, số đo, tiêu chí đánh giá, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Hộp có 4 mặt bên liền nhau và 1 mặt đáy hình vuông cạnh 6 cm.",
+            "Mỗi mặt bên rộng 6 cm, cao 8 cm; tai dán rộng 1 cm.",
+            "Chiều dài tấm bìa: 6 × 4 + 1 = 25 cm.",
+            "Gấp 4 đường dọc, dán tai, dán đáy và trang trí bằng giấy màu.",
+            "Lỗi thường gặp: cắt rời 4 mặt bên làm hộp méo và lem hồ."
+          ],
+          "blocks": [
+            {
+              "id": "hop-dung-but-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/hop-dung-but-b1.webp",
+                "mime": "image/webp",
+                "sha256": "cb57fdbca029bcbb2868350f137230bdb0d0e68f5ef52deeb87707e4ec7264df",
+                "bytes": 20554
+              },
+              "alt": "Hộp đựng bút bằng bìa cứng",
+              "caption": null,
+              "audio": {
+                "path": "audio/hop-dung-but-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d98a7e7a330e0752fe3a08e9ad98a3c87d00b886b53b5227696491eafbba4679",
+                "bytes": 17372
+              },
+              "attribution": null
+            },
+            {
+              "id": "hop-dung-but-b2",
+              "kind": "text",
+              "md": "Hộp có 4 mặt bên liền nhau. Đáy là hình vuông cạnh 6 cm.",
+              "audio": {
+                "path": "audio/hop-dung-but-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "f402b3132dbc426d6b130290cde23fbae5dd90a55fc4dcdec64f14bb6628ae9f",
+                "bytes": 39116
+              },
+              "gloss": null
+            },
+            {
+              "id": "hop-dung-but-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/hop-dung-but-b3.webp",
+                "mime": "image/webp",
+                "sha256": "c480cb072d2a448cdd725d6d797f7c0a39e7f42e1399ed5be971c099904f044e",
+                "bytes": 15906
+              },
+              "alt": "Tấm bìa chia bốn ô và tai dán",
+              "caption": null,
+              "audio": {
+                "path": "audio/hop-dung-but-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "c7145b1cbc73e1c88acdff0b861cffff4be5093688680d54561cb904dc7eb130",
+                "bytes": 21548
+              },
+              "attribution": null
+            },
+            {
+              "id": "hop-dung-but-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hop-dung-but-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Chọn hình hộp đựng bút.",
+                  "stem_audio": {
+                    "path": "audio/hop-dung-but-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "9685bb330ab728211b2ffc55d6ed8f07a0d3fdcb8c9c980c00ab37ec80da8ec9",
+                    "bytes": 15500
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/hop-dung-but-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "be34b5d9554b8278066b08eff04550a1057f76db8b806ceedd4e7f4d9159a5dc",
+                        "bytes": 1902
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/hop-dung-but-q1.pic-B.webp",
+                        "mime": "image/webp",
+                        "sha256": "4861c6f19bedff22c76fcf398e63527616593d2d79baf9d8370a700401fe0e7f",
+                        "bytes": 44674
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/hop-dung-but-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "2bdd58d87c74c96f0bac07b2499a92ebc0e9ee3e3b7983d0426641625fe71c07",
+                        "bytes": 1628
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Sản phẩm trong bài là hộp đựng bút bằng giấy.",
+                  "option_feedback": {
+                    "B": "Sản phẩm trong bài là hộp đựng bút bằng giấy.",
+                    "C": "Sản phẩm trong bài là hộp đựng bút bằng giấy."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "hop-dung-but-b4",
+              "kind": "text",
+              "md": "Mỗi mặt rộng 6 cm, cao 8 cm. Tai dán rộng 1 cm. Bốn mặt dài 24 cm, thêm tai 1 cm thành 25 cm.",
+              "audio": {
+                "path": "audio/hop-dung-but-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "9c6a33e973d2e479acedbb41a86e37fefbca5104e915aae1b9e28e4347db78f5",
+                "bytes": 108380
+              },
+              "gloss": null
+            },
+            {
+              "id": "hop-dung-but-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/hop-dung-but-b5.webp",
+                "mime": "image/webp",
+                "sha256": "c1e3d90ef904f07e30ab3c307c047d0fd658c5cda1ed5ff51ad1ea66e8208ac8",
+                "bytes": 26840
+              },
+              "alt": "Gấp, dán và trang trí hộp",
+              "caption": null,
+              "audio": {
+                "path": "audio/hop-dung-but-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "207e8314858aee4a0a03dd8d03e3d289c76cbc27c7209d2a2eab46b70d4ce1bd",
+                "bytes": 19244
+              },
+              "attribution": null
+            },
+            {
+              "id": "hop-dung-but-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hop-dung-but-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm đủ số mặt bên.",
+                  "stem_audio": {
+                    "path": "audio/hop-dung-but-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "e448ec69c559a9833a39044d6e473be7520bf849d8223e7e68c78a33cf611c26",
+                    "bytes": 16508
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/hop-dung-but-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "aebc609df73eb6fb30f50b14bd1ee3019b567c4c2e405527e5349aa12e6e38c5",
+                      "bytes": 1412
+                    },
+                    "total": 6
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 4
+                  },
+                  "hint": null,
+                  "explanation": "Hộp đựng bút có 4 mặt bên.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "hop-dung-but-b6",
+              "kind": "text",
+              "md": "Gấp 4 đường dọc. Dán tai, dán đáy. Trang trí bằng giấy màu.",
+              "audio": {
+                "path": "audio/hop-dung-but-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d3e5b4dd0019db41b71a85206c73268d988a347d0701e575a970bf3c4d0817ab",
+                "bytes": 45740
+              },
+              "gloss": null
+            },
+            {
+              "id": "hop-dung-but-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Không cắt rời bốn mặt.",
+              "audio": {
+                "path": "audio/hop-dung-but-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "5f868bef04180958318d6540b87500cec5c46c37c9736737b335d479a78ca420",
+                "bytes": 15932
+              }
+            },
+            {
+              "id": "hop-dung-but-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hop-dung-but-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Chiều dài tấm bìa là bao nhiêu?",
+                  "stem_audio": {
+                    "path": "audio/hop-dung-but-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "e2d454350747de706b5fc4b0bccf7971cbe7ee2beda420d83ed009520c69be2b",
+                    "bytes": 23132
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "24 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/hop-dung-but-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "185bf43352c6aec675f5bf9f5ed65480fc9ba7169437c3d3306327345fb09639",
+                        "bytes": 16796
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "25 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/hop-dung-but-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "594ab9a1dc0e2a678164179dbf2b18f108ba748fd614a75e4fdb23213f005a69",
+                        "bytes": 16796
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "26 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/hop-dung-but-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "7b0b79cf25754c055b3d0f85ae6b233fe9992478e1e085819c75865087110fcf",
+                        "bytes": 17228
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "32 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/hop-dung-but-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "510a3bc4ca4f3738bec235135e8ad32aefd132aa3881492fd99e3594472f610f",
+                        "bytes": 16796
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Bốn mặt dài 6 × 4 = 24 cm, thêm tai dán 1 cm thành 25 cm.",
+                  "option_feedback": {
+                    "A": "24 cm là chỉ tính 4 mặt bên, quên tai dán 1 cm.",
+                    "C": "26 cm là cộng thừa 1 cm.",
+                    "D": "32 cm là lấy 8 × 4, không đúng cách tính chiều dài."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "thiep-chuc-mung",
+          "title": "Thiệp chúc mừng",
+          "est_minutes": 15,
+          "summary": "Làm thiệp chúc mừng gấp đôi từ bìa theo số đo, tiêu chí, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Thiệp là tấm bìa gấp đôi: mặt ngoài trang trí, mặt trong viết lời chúc.",
+            "Bìa 20 cm × 15 cm gấp đôi theo chiều dài được thiệp 10 cm × 15 cm.",
+            "Miếng giấy trắng 8 cm × 12 cm dán vào mặt trong bên phải.",
+            "Bôi hồ thật mỏng, xếp thử hình rồi mới dán; ép nhẹ cho phẳng.",
+            "Lỗi thường gặp: hồ dày làm giấy quăn, nhăn và bong."
+          ],
+          "blocks": [
+            {
+              "id": "thiep-chuc-mung-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/thiep-chuc-mung-b1.webp",
+                "mime": "image/webp",
+                "sha256": "587a8e68e7f3a908279b87b819c1841fc10aa51c1e16a1e2e4b5783bc7477322",
+                "bytes": 11894
+              },
+              "alt": "Tấm bìa và thiệp gấp đôi",
+              "caption": "Bìa 20 cm × 15 cm gấp đôi được 10 cm × 15 cm.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "cb07f291e34ce81a2ac13b857a16813570e85e9482e9f5e246203b1c47bd85a4",
+                "bytes": 39404
+              },
+              "attribution": null
+            },
+            {
+              "id": "thiep-chuc-mung-b2",
+              "kind": "text",
+              "md": "Thiệp là tấm bìa gấp đôi.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "0cc6c55b29970343b9a6f72ba7c135cb75d2545b8d600d6dbf92ddb76b37110b",
+                "bytes": 17948
+              },
+              "gloss": null
+            },
+            {
+              "id": "thiep-chuc-mung-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/thiep-chuc-mung-b3.webp",
+                "mime": "image/webp",
+                "sha256": "c30bf51039bfd7e5c5fe1cb301789d435637c9141b180ab05cc8f1294862afcf",
+                "bytes": 20250
+              },
+              "alt": "Dán giấy trắng vào mặt trong thiệp",
+              "caption": "Giấy trắng 8 cm × 12 cm dán vào mặt trong bên phải.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "aad6b5e7f0f32b34d788d3d6510c1224bfd8c59fbe4c9c8b25713a05ce302c39",
+                "bytes": 33788
+              },
+              "attribution": null
+            },
+            {
+              "id": "thiep-chuc-mung-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thiep-chuc-mung-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Đâu là thiệp chúc mừng?",
+                  "stem_audio": {
+                    "path": "audio/thiep-chuc-mung-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "045cefd871f431a4e6bc3589bf726c50a5d69a0d3943beb7218556addebf176b",
+                    "bytes": 16076
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/thiep-chuc-mung-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "282c486d0ffb2873d5b4ab6ec65bca533b5933ee10b983eb3709d40c23d68005",
+                        "bytes": 2819
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/thiep-chuc-mung-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "98fae62a698552ba5616da92c8dd640c01310c7fae2ff3bc601555a0a714bcb5",
+                        "bytes": 1360
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/thiep-chuc-mung-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "93f9dcc4bec3ef687ccfb2d030f353fe0004c1e5b79d75d16387f3c2d2b83666",
+                        "bytes": 1387
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Thiệp là tấm bìa gấp đôi: mặt ngoài trang trí, mặt trong viết lời chúc.",
+                  "option_feedback": {
+                    "B": "Thiệp là tấm bìa gấp đôi: mặt ngoài trang trí, mặt trong viết lời chúc.",
+                    "C": "Thiệp là tấm bìa gấp đôi: mặt ngoài trang trí, mặt trong viết lời chúc."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "thiep-chuc-mung-b4",
+              "kind": "text",
+              "md": "Dán giấy trắng vào mặt trong bên phải.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "9da19af8625b13c679ed85c4f97fde69b272d3d2b42a996f71797cea351581cb",
+                "bytes": 20972
+              },
+              "gloss": null
+            },
+            {
+              "id": "thiep-chuc-mung-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/thiep-chuc-mung-b5.webp",
+                "mime": "image/webp",
+                "sha256": "e409716757ccdbb7a39d3ef93d3a2dfb6ed5817b06ad0ff5590c26b5ebf6c43a",
+                "bytes": 24050
+              },
+              "alt": "Trang trí mặt ngoài và viết lời chúc mặt trong",
+              "caption": "Mặt ngoài trang trí, mặt trong viết lời chúc.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "a6f7ec558e846ce7b26c1afbe506e811c792585f83858c970f1ea2327810b220",
+                "bytes": 25868
+              },
+              "attribution": null
+            },
+            {
+              "id": "thiep-chuc-mung-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thiep-chuc-mung-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm 2 bông hoa.",
+                  "stem_audio": {
+                    "path": "audio/thiep-chuc-mung-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "1d0be9221835fb51275f68e1797fc729c5ed55e52b297c1df2d32690e5b72c51",
+                    "bytes": 15356
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/thiep-chuc-mung-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "8db81813fe3cca9297deec7eaf23f6d01a3ab329c3ba7e9a5a14cf44ad76358a",
+                      "bytes": 4560
+                    },
+                    "total": 5
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 2
+                  },
+                  "hint": null,
+                  "explanation": "Cần chạm đúng 2 bông hoa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "thiep-chuc-mung-b6",
+              "kind": "text",
+              "md": "Bôi hồ thật mỏng. Ép nhẹ cho thiệp phẳng.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "6e968049fce3212267f2ef36a011576ce141475d8ace0d272cf44b280ae7c87e",
+                "bytes": 30764
+              },
+              "gloss": null
+            },
+            {
+              "id": "thiep-chuc-mung-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Hồ dày làm giấy quăn, nhăn và bong.",
+              "audio": {
+                "path": "audio/thiep-chuc-mung-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "964a4e37bc1d5a72ffb3320ec7477f29b79601c554faa5239e685800f94b448d",
+                "bytes": 23996
+              }
+            },
+            {
+              "id": "thiep-chuc-mung-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thiep-chuc-mung-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Bôi hồ thế nào cho đúng?",
+                  "stem_audio": {
+                    "path": "audio/thiep-chuc-mung-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "c1375737684fb4b3447e3f40df705ead3967612d223ca2a54d9c0d020fe303e5",
+                    "bytes": 17372
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Thật mỏng",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/thiep-chuc-mung-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "e479c80e5a9487a673a951016bf047271f00a81103cc5851164b4079f7967e16",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Thật dày",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/thiep-chuc-mung-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "308b5eecfaa72fe3323a8f6b161cbe461b170e06c574335e5c7d273c7eaa5eec",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Không hồ",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/thiep-chuc-mung-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "f9ee77871d4ce96d2c35c1d2bcd39a0e5248f8d6109ee931ea9bb41cd9c9055a",
+                        "bytes": 11756
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Chỉ cần bôi một lớp hồ mỏng, đều.",
+                  "option_feedback": {
+                    "B": "Hồ dày làm giấy quăn, nhăn và bong.",
+                    "C": "Không có hồ thì hình dán không dính."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "do-choi-gap-giay",
+          "title": "Đồ chơi gấp giấy",
+          "est_minutes": 15,
+          "summary": "Gấp máy bay giấy chỉ bằng nếp gấp, kiểm tra hai cánh bằng nhau qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Đồ chơi gấp giấy chỉ gấp, không cắt; nếp gấp phải thẳng và miết kỹ.",
+            "Hai cánh bằng nhau và nếp giữa thẳng giúp máy bay bay thẳng.",
+            "Tờ giấy rộng 20 cm gấp đôi thì mỗi nửa rộng 10 cm.",
+            "Lỗi thường gặp: gấp cánh thứ hai theo ước lượng làm hai cánh lệch.",
+            "Bài tập tính nửa chiều rộng và số tờ giấy cho nhóm."
+          ],
+          "blocks": [
+            {
+              "id": "do-choi-gap-giay-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/do-choi-gap-giay-b1.webp",
+                "mime": "image/webp",
+                "sha256": "4bf91cc3b107162cbeddf135a8572c6f79b3c53c2df37db4aa934056af8f35c6",
+                "bytes": 22686
+              },
+              "alt": "Bạn nhỏ gấp máy bay giấy bằng tay",
+              "caption": "Chỉ gấp, không cắt.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "fed4146aafa9328509fdfd463616d8bb8adb8880bca01f8ea843e84248c41e07",
+                "bytes": 15068
+              },
+              "attribution": null
+            },
+            {
+              "id": "do-choi-gap-giay-b2",
+              "kind": "text",
+              "md": "Đồ chơi gấp giấy chỉ gấp, không cắt. Không cần kéo và hồ dán.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "1ee1cb9a5e954d2e44b939a1709b9599286b10774d6abb110067a940ef78f887",
+                "bytes": 39980
+              },
+              "gloss": null
+            },
+            {
+              "id": "do-choi-gap-giay-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/do-choi-gap-giay-b3.webp",
+                "mime": "image/webp",
+                "sha256": "d54456a6df63954a8c5491040b8a9a695c7b7eec5704b861fc5972408d8f6614",
+                "bytes": 18936
+              },
+              "alt": "Hai tay miết nếp gấp giấy",
+              "caption": "Nếp gấp thẳng, miết kỹ.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "685492b80fc1a59f4b12ec47a872c4c28ad75d9d8663a98070dbcb185117d5de",
+                "bytes": 25580
+              },
+              "attribution": null
+            },
+            {
+              "id": "do-choi-gap-giay-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-choi-gap-giay-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Đồ chơi gấp giấy cần vật gì?",
+                  "stem_audio": {
+                    "path": "audio/do-choi-gap-giay-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "77e3c20a02b9570412dd409c77fa6e13d283ad5e76d7867cddf26da411e28ffa",
+                    "bytes": 19532
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/do-choi-gap-giay-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "a499e1a3b76af4dc2d90b2d3742c7957bd46a5e6cc87ef3428ab3e0ecf1f9990",
+                        "bytes": 1801
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/do-choi-gap-giay-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "742cc12517b0a4b62a1d3f4a6384c6704cd05142cfd26bb101d7e54f7fe34b46",
+                        "bytes": 1995
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/do-choi-gap-giay-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "1acb79b2611d2ddda89e3ee790b7d643a3fd2bb96ab2752594cfcc33895dcb5f",
+                        "bytes": 2128
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Đồ chơi gấp giấy chỉ cần giấy để gấp, không dùng kéo và hồ dán.",
+                  "option_feedback": {
+                    "B": "Kéo dùng để cắt, nhưng đồ chơi gấp giấy không cắt.",
+                    "C": "Hồ dán dùng để dán, không cần cho gấp giấy."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "do-choi-gap-giay-b4",
+              "kind": "text",
+              "md": "Mỗi nếp gấp phải thẳng. Miết kỹ để giấy phẳng.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "43a9b8efb653e6e34440a4c5a0f57f31bd99bf60d01ddf8b4ead43ce0f6636d3",
+                "bytes": 32060
+              },
+              "gloss": null
+            },
+            {
+              "id": "do-choi-gap-giay-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/do-choi-gap-giay-b5.webp",
+                "mime": "image/webp",
+                "sha256": "d678b14d6bd2a57eaeaa3849eaf84424d7146e65ae1e1141fd9ed1460e6fff16",
+                "bytes": 20128
+              },
+              "alt": "Máy bay giấy có hai cánh bằng nhau",
+              "caption": "Hai cánh bằng nhau.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e81d0dd4d64bc48104bbd5c0bcc2de32dd33a9fb3212586e205298a8699708ca",
+                "bytes": 15212
+              },
+              "attribution": null
+            },
+            {
+              "id": "do-choi-gap-giay-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-choi-gap-giay-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Đếm các máy bay giấy trong hình.",
+                  "stem_audio": {
+                    "path": "audio/do-choi-gap-giay-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "46c38ca692c99a0a249ae3dc564af7bdf79b3077e3f74ada63034715ba474aee",
+                    "bytes": 19532
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/do-choi-gap-giay-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "d9eb5c2e9587ed5f5dc95e3addc863a4195fc142f41fff19b423dccc19cac575",
+                      "bytes": 1293
+                    },
+                    "total": 6
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 6
+                  },
+                  "hint": null,
+                  "explanation": "Trong hình có tất cả 6 chiếc máy bay giấy.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "do-choi-gap-giay-b6",
+              "kind": "text",
+              "md": "Tờ giấy rộng 20 cm. Gấp đôi, mỗi nửa rộng 10 cm. Hai cánh bằng nhau giúp bay thẳng. Nhóm 4 bạn, mỗi bạn 2 máy bay. Cần 8 tờ giấy.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "dec90a715144094a5de68116218f12244df87ff3b6a823ec8c5ad8a9637e6d17",
+                "bytes": 97292
+              },
+              "gloss": null
+            },
+            {
+              "id": "do-choi-gap-giay-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Nhớ nhé",
+              "md": "Đo cánh thứ hai bằng cánh thứ nhất.",
+              "audio": {
+                "path": "audio/do-choi-gap-giay-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "31d1f41312efff199d8b671377451b6811eea9342f73051d6d686ad87b58a36c",
+                "bytes": 30764
+              }
+            },
+            {
+              "id": "do-choi-gap-giay-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-choi-gap-giay-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Tờ giấy rộng 24 cm, gấp đôi thì mỗi nửa rộng bao nhiêu?",
+                  "stem_audio": {
+                    "path": "audio/do-choi-gap-giay-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "59dabf2b9064c0b6c1811c9bf3e2dbcb01febd7c430b6882e3bbc454404a927a",
+                    "bytes": 34364
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "12 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/do-choi-gap-giay-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "cb0783aa114e37a844eb65c7eace171455cf255363ec841df3246bd0219889ae",
+                        "bytes": 15932
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "48 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/do-choi-gap-giay-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "002bb02d3bc6972333bb7d8367761d6151e76320e527367d40a477c45357263a",
+                        "bytes": 17228
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "6 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/do-choi-gap-giay-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "f9d637de1c3bd5cb1c3f7dca334f13e7cc50a33d51d96a7d5ac09c35eaffc86f",
+                        "bytes": 14492
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "24 cm",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/do-choi-gap-giay-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "185bf43352c6aec675f5bf9f5ed65480fc9ba7169437c3d3306327345fb09639",
+                        "bytes": 16796
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Gấp đôi là chia 2: $24 : 2 = 12$ cm.",
+                  "option_feedback": {
+                    "B": "48 cm là lấy 24 nhân 2, không phải gấp đôi.",
+                    "C": "6 cm là lấy 24 chia 4, không phải chia 2.",
+                    "D": "24 cm là chiều rộng cả tờ giấy, chưa gấp đôi."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương Sản phẩm hướng dẫn chúng ta làm ba sản phẩm thủ công: hộp đựng bút, thiệp chúc mừng và đồ chơi gấp giấy. Mỗi bài đều có kích thước, cách làm và lỗi thường gặp cần tránh.",
+          "Với hộp đựng bút, hộp có bốn mặt bên liền nhau và một mặt đáy hình vuông cạnh sáu xăng-ti-mét. Mỗi mặt bên rộng sáu xăng-ti-mét và cao tám xăng-ti-mét. Tai dán rộng một xăng-ti-mét. Vì bốn mặt dài hai mươi tư xăng-ti-mét, thêm tai dán một xăng-ti-mét nên chiều dài tấm bìa là hai mươi lăm xăng-ti-mét.",
+          "Cách làm là gấp bốn đường dọc, rồi dán tai, dán đáy và trang trí bằng giấy màu. Khi làm, các em nhớ giữ bốn mặt bên liền nhau. Nếu cắt rời bốn mặt bên, hộp sẽ bị méo. Cắt rời cũng dễ làm hồ lem ra ngoài.",
+          "Với thiệp chúc mừng, thiệp là tấm bìa gấp đôi: mặt ngoài trang trí, mặt trong viết lời chúc. Tấm bìa rộng hai mươi xăng-ti-mét và dài mười lăm xăng-ti-mét, gấp đôi theo chiều dài được thiệp rộng mười xăng-ti-mét và dài mười lăm xăng-ti-mét. Miếng giấy trắng rộng tám xăng-ti-mét và dài mười hai xăng-ti-mét được dán vào mặt trong bên phải.",
+          "Khi dán, các em bôi hồ thật mỏng. Xếp thử hình rồi mới dán, sau đó ép nhẹ cho thiệp phẳng. Hồ dày sẽ làm giấy quăn, nhăn và bong.",
+          "Với đồ chơi gấp giấy, các em chỉ gấp, không cắt, nên không cần kéo và hồ dán. Mỗi nếp gấp phải thẳng và được miết kỹ để giấy phẳng. Hai cánh bằng nhau và nếp giữa thẳng giúp máy bay bay thẳng. Tờ giấy rộng hai mươi xăng-ti-mét, gấp đôi thì mỗi nửa rộng mười xăng-ti-mét.",
+          "Lỗi thường gặp là gấp cánh thứ hai theo ước lượng nên hai cánh bị lệch. Các em nên đo cánh thứ hai bằng cánh thứ nhất. Bài tập trong bài là tính nửa chiều rộng và tính số tờ giấy cho nhóm. Ví dụ nhóm bốn bạn, mỗi bạn hai máy bay thì cần tám tờ giấy.",
+          "Ba điều cần nhớ là thế này. Làm hộp đựng bút phải giữ bốn mặt bên liền nhau và dán đủ tai, đáy. Làm thiệp phải bôi hồ thật mỏng rồi ép nhẹ cho phẳng. Làm đồ chơi gấp giấy chỉ gấp không cắt, nếp gấp thẳng và hai cánh bằng nhau."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

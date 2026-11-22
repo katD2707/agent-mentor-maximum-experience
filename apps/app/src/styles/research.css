@@ -29,12 +29,12 @@
 .rs-card { display: grid; align-content: start; gap: 12px; min-width: 0; padding: 18px 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); box-shadow: var(--shadow); }
 
 /* board: bento grid on wide screens */
-.rs-board { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; min-width: 0; }
-.rs-board > .full { grid-column: 1 / -1; }
-.rs-board > .rs-topic:first-child { grid-column: 1 / -1; }
+
+
+
 .rs-hero { grid-column: span 2; }
 .rs-events { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.rs-readrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; min-width: 0; }
+
 .rs-papers-col { grid-column: span 2; display: grid; gap: 12px; min-width: 0; }
 .rs-papers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .rs-papers > li:last-child:nth-child(odd) { grid-column: 1 / -1; }
@@ -307,7 +307,7 @@ a.rs-t:hover, .rs-t a:hover { text-decoration: underline; }
 
 /* narrow screens: cards stack; event, paper and milestone cards swipe sideways */
 @media (max-width: 859px) {
-  .rs-board, .rs-readrow { grid-template-columns: minmax(0, 1fr); }
+  
   .rs-hero, .rs-papers-col { grid-column: auto; }
   .rs-scroller { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(-1 * clamp(16px, 4vw, 40px)); padding: 4px clamp(16px, 4vw, 40px) 12px; scrollbar-width: none; scroll-padding: 0 clamp(16px, 4vw, 40px); }
   .rs-scroller::-webkit-scrollbar { display: none; }
@@ -327,8 +327,8 @@ a.rs-t:hover, .rs-t a:hover { text-decoration: underline; }
 .rs-head-p h2 { font-family: var(--font-read); font-weight: 600; font-size: clamp(1.35em, 3.4vw, 1.7em); line-height: 1.3; letter-spacing: -.005em; overflow-wrap: anywhere; }
 .rs-by-l { color: var(--ink-2); font-size: .92em; overflow-wrap: anywhere; }
 .rs-meta-row { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
-.rs-abstract { font-family: var(--font-read); line-height: 1.72; display: grid; gap: 8px; padding: 16px 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--rule-strong); }
-.rs-abstract .rs-eyebrow { font-family: var(--font-ui); }
+
+
 .rs-why-p { display: flex; gap: 10px; align-items: flex-start; margin: 0; padding: 10px 14px; border-radius: var(--r-md); background: var(--tim-soft); color: var(--tim-ink); font-size: .9em; }
 .rs-why-p svg { width: 18px; height: 18px; flex: none; margin-top: 2px; }
 .rs-mine { display: grid; gap: 12px; padding: 20px 22px 20px 64px; border-radius: var(--r-lg); border: 1.5px solid var(--rule-strong); box-shadow: var(--shadow); min-width: 0; }
@@ -435,21 +435,16 @@ a.rs-t:hover, .rs-t a:hover { text-decoration: underline; }
 .set-srcs .set-src > span { min-width: 0; overflow-wrap: anywhere; }
 
 /* ---------- hub: the fifth square (university band) ---------- */
-.cell.fifth { grid-column: 1 / -1; justify-self: center; width: calc((100% - clamp(12px, 2.5vw, 20px)) / 2); }
+
 .cell:nth-child(5) .label, .cell:nth-child(5) .label > * { animation-delay: .37s; }
-@media (min-width: 760px) {
-  :root[data-age="uni"] .grid4 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-  :root[data-age="uni"] .grid4 > .cell { grid-column: span 2; }
-  :root[data-age="uni"] .grid4 > .cell:nth-child(4) { grid-column: 2 / span 2; }
-  :root[data-age="uni"] .grid4 > .cell.fifth { grid-column: 4 / span 2; justify-self: stretch; width: auto; }
-}
+
 
 /* ---------- Progress: the thesis goal ---------- */
-.pg-ms { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: .9em; }
-.pg-ms li { display: flex; align-items: baseline; gap: 10px; color: var(--ink); }
-.pg-ms li.done { color: var(--ink-2); }
-.pg-ms li svg { width: 14px; height: 14px; color: var(--xanh); align-self: center; flex: none; }
-.pg-ms-d { color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 3em; }
+
+
+
+
+
 
 /* ---------- approved mockups hs-09 / hs-10: plain rows and outlines, no cards ---------- */
 .rs-page .rs-card { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }

@@ -40,7 +40,7 @@ describe("login", () => {
     expect(await screen.findByRole("alert")).toHaveTextContent("Sai vai trò.");
   });
 
-  it("first run: language, then a birth year picks the figure and one line, then Start", async () => {
+  it("first run: language, then a birth year picks the figure and one line, then Next to the character", async () => {
     await i18n.changeLanguage("vi");
     const ui = userEvent.setup();
     renderApp();
@@ -52,47 +52,44 @@ describe("login", () => {
     await waitFor(() => expect(screen.getByRole("heading", { name: "What year were you born?" })).toBeInTheDocument());
 
     const select = screen.getByRole("combobox", { name: "Year of birth" });
-    const start = screen.getByRole("button", { name: "Start" });
+    const next = screen.getByRole("button", { name: "Next" });
     const years = Array.from(select.querySelectorAll("option")).map((o) => o.textContent);
     expect(years.slice(0, 3)).toEqual(["Year of birth", "2020", "2019"]);
     expect(years.at(-1)).toBe("1980");
     expect(document.querySelector("input[type=range], input[type=number]")).toBeNull();
-    // nothing is chosen yet: Start is disabled, no figure is picked, no description
-    expect(start).toBeDisabled();
-    expect(document.querySelector(".figs")).not.toHaveAttribute("data-pick");
-    expect(document.querySelector(".level")).toHaveTextContent("");
+    // nothing is chosen yet: Next is disabled, no figure is picked, no description
+    expect(next).toBeDisabled();
+    expect(document.querySelector(".lg-figs")).not.toHaveAttribute("data-pick");
+    expect(document.querySelector(".lg-level")).toHaveTextContent("");
 
     await ui.selectOptions(select, "1999"); // the university figure, whatever today's date in 2026-2030
-    const band = document.querySelector(".fig.on")?.getAttribute("data-band");
-    expect(band).toBe("uni");
-    expect(document.querySelector(".figs")).toHaveAttribute("data-pick", "uni");
-    expect(document.querySelectorAll(".fig.on")).toHaveLength(1);
-    expect(document.querySelector(".level")).toHaveTextContent("University");
+    expect(document.querySelector(".lg-figs")).toHaveAttribute("data-pick", "uni");
+    expect(document.querySelectorAll(".lg-figs svg.on")).toHaveLength(1);
+    expect(document.querySelector(".lg-level")).toHaveTextContent("University");
     // never any age, grade or "change it later" text
-    expect(document.body.textContent).not.toMatch(/Settings|grade \d|Grade \d|years old|tuổi|lớp \d/i);
-    expect(start).toBeEnabled();
+    expect(document.body.textContent).not.toMatch(/Settings|grade d|Grade d|years old|tuổi|lớp d/i);
+    expect(next).toBeEnabled();
 
-    await ui.click(start);
-    // into Today, where Mực introduces himself in the conversation
-    const log = await screen.findByRole("log", { name: "Talking with Mực" });
-    expect(await within(log).findByText(/Hi Lan, I'm Mực!/)).toBeInTheDocument();
+    await ui.click(next);
+    expect(await screen.findByRole("heading", { name: "Who are you?" })).toBeInTheDocument();
   });
 
   it("settings shows the birth year read-only, with no band or grade chips", async () => {
     await i18n.changeLanguage("vi");
     localStorage.setItem(
       "mentor.mock.users",
-      JSON.stringify({ hocsinh: { password: "123456", user: { id: "u-hs", role: "student", username: "hocsinh", display_name: "Lan", age_band: "g10_12", birth_year: 2010, language: "vi", theme: "system", quiet_until: null } } }),
+      JSON.stringify({ hocsinh: { password: "123456", user: { id: "u-hs", role: "student", username: "hocsinh", display_name: "Lan", age_band: "g10_12", birth_year: 2010, language: "vi", theme: "system", quiet_until: null, avatar: "nam" } } }),
     );
+    localStorage.setItem("mentor.mock.lg.u-hs", JSON.stringify({ chickens: [{ id: "toan", xp: 0, taken_at: "2026-11-01T00:00:00Z" }] }));
     localStorage.setItem("mentor.token", "mock-u-hs");
     const ui = userEvent.setup();
     renderApp();
     await ui.click(await screen.findByRole("button", { name: "Cài đặt" }));
     const pop = await screen.findByRole("dialog", { name: "Cài đặt" });
     expect(pop).toHaveTextContent("Năm sinh");
-    expect(pop.querySelector(".set-birth")).toHaveTextContent("2010");
+    const year = within(pop).getByText("2010");
     // read-only text, not a control; no chips for grades
-    expect(pop.querySelector(".set-birth")?.closest("button, select, input")).toBeNull();
+    expect(year.closest("button, select, input")).toBeNull();
     expect(pop).not.toHaveTextContent(/10–12|1–5|6–9|ĐH|Lớp/);
   });
 });

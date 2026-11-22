@@ -1,0 +1,809 @@
+{
+ "id": "thpt-ly-2025-mau",
+ "kind": "thpt",
+ "band": "g10_12",
+ "chicken": "li",
+ "title_vi": "Đề mẫu Vật lí THPT, cấu trúc 2025 (rút gọn: 2 câu Đúng/Sai, 2 câu trả lời ngắn)",
+ "title_en": "Sample physics paper, 2025 structure (shortened: 2 true/false, 2 short answer)",
+ "year": 2025,
+ "minutes": 50,
+ "parts": [
+  {
+   "id": "p1",
+   "title_vi": "Phần I. Trắc nghiệm nhiều lựa chọn",
+   "title_en": "Part I. Multiple choice",
+   "type": "SINGLE_CHOICE",
+   "items": [
+    {
+     "id": "phys.thermal.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Theo mô hình động học phân tử, ở thể rắn các phân tử (nguyên tử)",
+     "hint": "Hãy nghĩ vì sao một vật rắn giữ được hình dạng và thể tích riêng của nó.",
+     "explanation": "Ở thể rắn, khoảng cách giữa các phân tử rất nhỏ và lực tương tác giữa chúng rất mạnh, nên mỗi phân tử chỉ dao động quanh một vị trí cân bằng xác định. Nhờ vậy vật rắn có hình dạng và thể tích riêng. Các phân tử không bao giờ đứng yên hoàn toàn; chuyển động tự do và lực tương tác yếu là đặc điểm của chất khí. Chọn B.",
+     "skill_ids": [
+      "physics.thermal.molecular_model"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "chuyển động hỗn loạn và có thể di chuyển tự do trong toàn bộ thể tích bình chứa."
+      },
+      {
+       "id": "B",
+       "text": "dao động quanh các vị trí cân bằng xác định."
+      },
+      {
+       "id": "C",
+       "text": "đứng yên hoàn toàn tại các vị trí cố định."
+      },
+      {
+       "id": "D",
+       "text": "ở rất xa nhau nên lực tương tác giữa chúng không đáng kể."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Đây là đặc điểm của các phân tử chất khí.",
+      "C": "Các phân tử luôn chuyển động nhiệt không ngừng; ở thể rắn chúng vẫn dao động."
+     }
+    },
+    {
+     "id": "phys.thermal.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Nội năng của một vật là",
+     "hint": "Phân biệt nội năng (năng lượng vật có) với nhiệt lượng (năng lượng truyền đi).",
+     "explanation": "Nội năng của vật là tổng động năng (do chuyển động nhiệt) và thế năng tương tác của các phân tử cấu tạo nên vật. Nó phụ thuộc vào nhiệt độ và thể tích của vật. Nhiệt lượng chỉ là phần nội năng được truyền đi trong quá trình truyền nhiệt; động năng và thế năng hấp dẫn của cả vật là cơ năng. Chọn A.",
+     "skill_ids": [
+      "physics.thermal.internal_energy"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "tổng động năng và thế năng tương tác của các phân tử cấu tạo nên vật."
+      },
+      {
+       "id": "B",
+       "text": "nhiệt lượng mà vật nhận được trong quá trình truyền nhiệt."
+      },
+      {
+       "id": "C",
+       "text": "động năng của vật do chuyển động có hướng của cả vật."
+      },
+      {
+       "id": "D",
+       "text": "thế năng hấp dẫn của vật trong trọng trường."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Nhiệt lượng là số đo phần nội năng truyền đi, là đại lượng của quá trình chứ không phải năng lượng vật có.",
+      "C": "Động năng của cả vật thuộc về cơ năng, không phải nội năng."
+     }
+    },
+    {
+     "id": "phys.thermal.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cần cung cấp nhiệt lượng bao nhiêu để đun nóng 2 kg nước từ 20 °C lên 70 °C? Cho nhiệt dung riêng của nước $c = 4200\\ \\text{J/(kg.K)}$, bỏ qua hao phí nhiệt.",
+     "hint": "Dùng $Q = mc\\Delta t$ với $\\Delta t$ là độ tăng nhiệt độ.",
+     "explanation": "$Q = mc\\Delta t = 2\\cdot 4200\\cdot (70 - 20) = 420000\\ \\text{J} = 420\\ \\text{kJ}$. Chọn A.",
+     "skill_ids": [
+      "physics.thermal.specific_heat"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$420\\ \\text{kJ}$"
+      },
+      {
+       "id": "B",
+       "text": "$588\\ \\text{kJ}$"
+      },
+      {
+       "id": "C",
+       "text": "$168\\ \\text{kJ}$"
+      },
+      {
+       "id": "D",
+       "text": "$210\\ \\text{kJ}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đã dùng nhiệt độ cuối 70 °C thay cho độ tăng nhiệt độ $\\Delta t = 50$ °C.",
+      "D": "Quên nhân với khối lượng 2 kg."
+     }
+    },
+    {
+     "id": "phys.thermal.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một cục nước đá khối lượng 200 g ở −10 °C được đun nóng cho đến khi chuyển hoàn toàn thành nước ở 20 °C. Cho nhiệt dung riêng của nước đá $2100\\ \\text{J/(kg.K)}$, của nước $4200\\ \\text{J/(kg.K)}$; nhiệt nóng chảy riêng của nước đá $3{,}34\\cdot 10^{5}\\ \\text{J/kg}$. Bỏ qua hao phí. Nhiệt lượng cần cung cấp là",
+     "hint": "Chia quá trình thành ba giai đoạn: làm nóng nước đá đến 0 °C, nóng chảy ở 0 °C, làm nóng nước từ 0 °C đến 20 °C.",
+     "explanation": "Làm nóng nước đá từ −10 °C đến 0 °C: $Q_1 = 0{,}2\\cdot 2100\\cdot 10 = 4200\\ \\text{J}$. Nóng chảy ở 0 °C: $Q_2 = 0{,}2\\cdot 3{,}34\\cdot 10^{5} = 66800\\ \\text{J}$. Làm nóng nước từ 0 °C đến 20 °C: $Q_3 = 0{,}2\\cdot 4200\\cdot 20 = 16800\\ \\text{J}$. Tổng: $Q = 4200 + 66800 + 16800 = 87800\\ \\text{J} = 87{,}8\\ \\text{kJ}$. Chọn D.",
+     "skill_ids": [
+      "physics.thermal.specific_heat",
+      "physics.thermal.latent_heat"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$83{,}6\\ \\text{kJ}$"
+      },
+      {
+       "id": "B",
+       "text": "$92{,}0\\ \\text{kJ}$"
+      },
+      {
+       "id": "C",
+       "text": "$21{,}0\\ \\text{kJ}$"
+      },
+      {
+       "id": "D",
+       "text": "$87{,}8\\ \\text{kJ}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Đã bỏ sót giai đoạn làm nóng nước đá từ −10 °C lên 0 °C.",
+      "B": "Đã dùng nhiệt dung riêng của nước cho giai đoạn nước đá.",
+      "C": "Đã quên nhiệt lượng nóng chảy ở 0 °C."
+     }
+    },
+    {
+     "id": "phys.gas.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Theo mô hình động học phân tử, chất khí lí tưởng có đặc điểm nào sau đây?",
+     "hint": "Nhớ lại các giả thuyết đơn giản hóa của mô hình khí lí tưởng về kích thước phân tử và lực tương tác.",
+     "explanation": "Trong mô hình khí lí tưởng, kích thước phân tử rất nhỏ so với khoảng cách giữa chúng nên coi là chất điểm; các phân tử chuyển động hỗn loạn không ngừng và chỉ tương tác với nhau khi va chạm. Khí không có thể tích riêng, phân tử không chuyển động có hướng và không bao giờ đứng yên. Chọn C.",
+     "skill_ids": [
+      "physics.gas.kinetic_model"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "Các phân tử hút nhau rất mạnh nên khí luôn có thể tích xác định."
+      },
+      {
+       "id": "B",
+       "text": "Các phân tử chuyển động theo cùng một hướng với cùng một tốc độ."
+      },
+      {
+       "id": "C",
+       "text": "Các phân tử được coi là chất điểm, chỉ tương tác với nhau khi va chạm."
+      },
+      {
+       "id": "D",
+       "text": "Các phân tử đứng yên khi nhiệt độ của khí không đổi."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Lực tương tác giữa các phân tử khí rất yếu; khí chiếm toàn bộ thể tích bình chứa.",
+      "B": "Chuyển động phân tử khí là hỗn loạn, không có hướng ưu tiên."
+     }
+    },
+    {
+     "id": "phys.gas.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Theo thuyết động học phân tử chất khí, động năng tịnh tiến trung bình của một phân tử khí lí tưởng",
+     "hint": "Nhiệt độ là số đo mức độ chuyển động nhiệt của các phân tử.",
+     "explanation": "Động năng tịnh tiến trung bình của phân tử khí: $W_{d} = \\frac{3}{2}k_{B}T$, với $T$ là nhiệt độ tuyệt đối (K). Vậy nó tỉ lệ thuận với nhiệt độ tuyệt đối. Chọn A.",
+     "skill_ids": [
+      "physics.gas.kinetic_energy_temperature"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "tỉ lệ thuận với nhiệt độ tuyệt đối của khí."
+      },
+      {
+       "id": "B",
+       "text": "tỉ lệ thuận với nhiệt độ Celsius của khí."
+      },
+      {
+       "id": "C",
+       "text": "tỉ lệ nghịch với nhiệt độ tuyệt đối của khí."
+      },
+      {
+       "id": "D",
+       "text": "không phụ thuộc vào nhiệt độ của khí."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Ở 0 °C các phân tử vẫn chuyển động; tỉ lệ thuận chỉ đúng với nhiệt độ tuyệt đối.",
+      "C": "Nhiệt độ càng cao, phân tử chuyển động càng nhanh nên động năng phải tăng."
+     }
+    },
+    {
+     "id": "phys.gas.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một lốp xe chứa khí ở áp suất $2{,}0\\cdot 10^{5}\\ \\text{Pa}$ khi nhiệt độ là 17 °C. Sau khi xe chạy một thời gian, nhiệt độ khí trong lốp tăng lên 46 °C. Coi thể tích lốp không đổi. Áp suất khí trong lốp lúc này là",
+     "hint": "Thể tích không đổi: áp suất tỉ lệ thuận với nhiệt độ tuyệt đối.",
+     "explanation": "$T_1 = 17 + 273 = 290\\ \\text{K}$, $T_2 = 46 + 273 = 319\\ \\text{K}$. Đẳng tích: $\\frac{p_1}{T_1} = \\frac{p_2}{T_2} \\Rightarrow p_2 = 2{,}0\\cdot 10^{5}\\cdot\\frac{319}{290} = 2{,}2\\cdot 10^{5}\\ \\text{Pa}$. Chọn A.",
+     "skill_ids": [
+      "physics.gas.laws"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$2{,}2\\cdot 10^{5}\\ \\text{Pa}$"
+      },
+      {
+       "id": "B",
+       "text": "$5{,}4\\cdot 10^{5}\\ \\text{Pa}$"
+      },
+      {
+       "id": "C",
+       "text": "$1{,}8\\cdot 10^{5}\\ \\text{Pa}$"
+      },
+      {
+       "id": "D",
+       "text": "$2{,}0\\cdot 10^{5}\\ \\text{Pa}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đã dùng nhiệt độ Celsius thay cho nhiệt độ tuyệt đối.",
+      "C": "Đã đảo tỉ số nhiệt độ; khi khí nóng lên đẳng tích áp suất phải tăng.",
+      "D": "Thể tích không đổi nhưng nhiệt độ thay đổi nên áp suất vẫn thay đổi."
+     }
+    },
+    {
+     "id": "phys.gas.008",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một bình có thể tích không đổi, có gắn van, chứa khí lí tưởng. Người ta làm nóng khí sao cho động năng tịnh tiến trung bình của các phân tử khí tăng gấp 3 lần, đồng thời mở van cho $\\frac{1}{3}$ số phân tử khí thoát ra ngoài. So với lúc đầu, áp suất khí trong bình",
+     "hint": "Áp suất khí phụ thuộc vào mật độ phân tử và động năng tịnh tiến trung bình của phân tử. Hãy xem mỗi đại lượng thay đổi bao nhiêu lần.",
+     "explanation": "Hệ thức giữa áp suất và động năng phân tử: $p = \\frac{2}{3}\\cdot\\frac{N}{V}\\cdot W_{d}$. Thể tích không đổi; số phân tử còn lại $N' = N - \\frac{N}{3} = \\frac{2}{3}N$; động năng $W_{d}' = 3W_{d}$. Do đó $\\frac{p'}{p} = \\frac{2}{3}\\cdot 3 = 2$: áp suất tăng 2 lần. Chọn D.",
+     "skill_ids": [
+      "physics.gas.kinetic_energy_temperature",
+      "physics.gas.laws"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "không đổi."
+      },
+      {
+       "id": "B",
+       "text": "tăng 3 lần."
+      },
+      {
+       "id": "C",
+       "text": "tăng 4,5 lần."
+      },
+      {
+       "id": "D",
+       "text": "tăng 2 lần."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Đã nhân 3 với $\\frac{1}{3}$ (phần khí thoát ra) thay vì $\\frac{2}{3}$ (phần khí còn lại).",
+      "B": "Đã bỏ qua việc số phân tử khí trong bình giảm.",
+      "C": "Đã chia cho $\\frac{2}{3}$ thay vì nhân, tức coi áp suất tỉ lệ nghịch với số phân tử."
+     }
+    },
+    {
+     "id": "phys.electromagnetism.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong hệ SI, đơn vị của cảm ứng từ $B$ là",
+     "hint": "Nhớ lại công thức lực từ $F = BIl\\sin\\alpha$ và suy ra đơn vị của $B$ từ đơn vị của $F$, $I$, $l$.",
+     "explanation": "Từ $F = BIl\\sin\\alpha$ suy ra $B = \\dfrac{F}{Il\\sin\\alpha}$, đơn vị là $\\text{N/(A m)}$, được đặt tên là tesla (T). Vêbe (Wb) là đơn vị của từ thông, henry (H) là đơn vị của độ tự cảm, vôn (V) là đơn vị của điện áp. Chọn B.",
+     "skill_ids": [
+      "physics.em.magnetic_force"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "vêbe (Wb)."
+      },
+      {
+       "id": "B",
+       "text": "tesla (T)."
+      },
+      {
+       "id": "C",
+       "text": "henry (H)."
+      },
+      {
+       "id": "D",
+       "text": "vôn (V)."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Vêbe (Wb) là đơn vị của từ thông, không phải của cảm ứng từ."
+     }
+    },
+    {
+     "id": "phys.electromagnetism.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Điện áp xoay chiều giữa hai đầu một đoạn mạch có biểu thức $u = 220\\sqrt{2}\\cos(100\\pi t)$ (V). Điện áp hiệu dụng giữa hai đầu đoạn mạch là",
+     "hint": "Hệ số đứng trước hàm cos là giá trị cực đại. Giá trị hiệu dụng liên hệ với giá trị cực đại như thế nào?",
+     "explanation": "Từ biểu thức, điện áp cực đại $U_0 = 220\\sqrt{2}\\ \\text{V}$. Điện áp hiệu dụng $U = \\dfrac{U_0}{\\sqrt{2}} = \\dfrac{220\\sqrt{2}}{\\sqrt{2}} = 220\\ \\text{V}$. Chọn A.",
+     "skill_ids": [
+      "physics.em.ac_basics"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$220\\ \\text{V}$"
+      },
+      {
+       "id": "B",
+       "text": "$220\\sqrt{2}\\ \\text{V}$"
+      },
+      {
+       "id": "C",
+       "text": "$110\\sqrt{2}\\ \\text{V}$"
+      },
+      {
+       "id": "D",
+       "text": "$440\\ \\text{V}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đây là điện áp cực đại $U_0$, không phải điện áp hiệu dụng.",
+      "C": "Đã chia $U_0$ cho 2 thay vì cho $\\sqrt{2}$ ($\\dfrac{220\\sqrt{2}}{2} = 110\\sqrt{2}$)."
+     }
+    },
+    {
+     "id": "phys.electromagnetism.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một khung dây dẫn phẳng hình vuông cạnh 10 cm đặt trong từ trường đều có cảm ứng từ 0,2 T. Các đường sức từ hợp với mặt phẳng khung dây một góc 30°. Từ thông qua khung dây có độ lớn là",
+     "hint": "Trong công thức $\\Phi = BS\\cos\\alpha$, góc $\\alpha$ là góc giữa $\\vec{B}$ và pháp tuyến của mặt khung, không phải góc với mặt phẳng khung.",
+     "explanation": "Diện tích khung: $S = 0{,}1^2 = 0{,}01\\ \\text{m}^2$. Đường sức hợp với mặt phẳng khung góc $30^\\circ$ nên hợp với pháp tuyến góc $\\alpha = 90^\\circ - 30^\\circ = 60^\\circ$. Từ thông: $\\Phi = BS\\cos\\alpha = 0{,}2 \\cdot 0{,}01 \\cdot \\cos 60^\\circ = 1{,}0 \\cdot 10^{-3}\\ \\text{Wb}$. Chọn B.",
+     "skill_ids": [
+      "physics.em.flux"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$1{,}73 \\cdot 10^{-3}\\ \\text{Wb}$"
+      },
+      {
+       "id": "B",
+       "text": "$1{,}0 \\cdot 10^{-3}\\ \\text{Wb}$"
+      },
+      {
+       "id": "C",
+       "text": "$2{,}0 \\cdot 10^{-3}\\ \\text{Wb}$"
+      },
+      {
+       "id": "D",
+       "text": "$10\\ \\text{Wb}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Đã lấy $\\alpha = 30^\\circ$ (góc với mặt phẳng khung) thay cho góc với pháp tuyến.",
+      "D": "Quên đổi diện tích $100\\ \\text{cm}^2$ sang $\\text{m}^2$."
+     }
+    },
+    {
+     "id": "phys.electromagnetism.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một cuộn dây phẳng gồm 100 vòng, mỗi vòng có diện tích 50 cm², hai đầu cuộn dây được nối kín; điện trở tổng cộng của cuộn dây là 2 Ω. Cuộn dây đặt trong từ trường đều có đường sức từ vuông góc với mặt phẳng các vòng dây. Trong khoảng thời gian 0,02 s, cảm ứng từ giảm đều từ 0,5 T xuống 0,1 T. Cường độ dòng điện cảm ứng chạy trong cuộn dây có độ lớn là",
+     "hint": "Tính độ biến thiên từ thông qua cả cuộn dây (nhớ số vòng N), suy ra suất điện động cảm ứng rồi áp dụng định luật Ohm.",
+     "explanation": "Diện tích $S = 50\\ \\text{cm}^2 = 5 \\cdot 10^{-3}\\ \\text{m}^2$. Độ biến thiên cảm ứng từ $|\\Delta B| = 0{,}5 - 0{,}1 = 0{,}4\\ \\text{T}$. Suất điện động cảm ứng: $|e| = N\\dfrac{|\\Delta B| S}{\\Delta t} = 100 \\cdot \\dfrac{0{,}4 \\cdot 5 \\cdot 10^{-3}}{0{,}02} = 10\\ \\text{V}$. Cường độ dòng điện cảm ứng: $I = \\dfrac{|e|}{R} = \\dfrac{10}{2} = 5\\ \\text{A}$. Chọn A.",
+     "skill_ids": [
+      "physics.em.induced_emf",
+      "physics.em.flux"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$5\\ \\text{A}$"
+      },
+      {
+       "id": "B",
+       "text": "$7{,}5\\ \\text{A}$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}05\\ \\text{A}$"
+      },
+      {
+       "id": "D",
+       "text": "$10\\ \\text{A}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "C": "Quên nhân với số vòng dây N = 100.",
+      "B": "Đã lấy độ biến thiên cảm ứng từ là 0,5 + 0,1 = 0,6 T thay vì hiệu 0,5 − 0,1.",
+      "D": "Đây là suất điện động cảm ứng (10 V), chưa chia cho điện trở."
+     }
+    },
+    {
+     "id": "phys.nuclear.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Hạt nhân ${}^{235}_{92}\\text{U}$ có",
+     "hint": "Nhớ lại ý nghĩa của hai con số viết phía trên và phía dưới kí hiệu hạt nhân, rồi tính số neutron.",
+     "explanation": "Với ${}^{235}_{92}\\text{U}$: số proton $Z = 92$, số nucleon $A = 235$, nên số neutron $N = A - Z = 235 - 92 = 143$. Chọn C.",
+     "skill_ids": [
+      "physics.nuclear.structure"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "92 proton và 235 neutron."
+      },
+      {
+       "id": "B",
+       "text": "143 proton và 92 neutron."
+      },
+      {
+       "id": "C",
+       "text": "92 proton và 143 neutron."
+      },
+      {
+       "id": "D",
+       "text": "235 proton và 92 neutron."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "235 là số khối, tức tổng số proton và neutron, không phải số neutron.",
+      "B": "Đã đảo vai trò của proton và neutron."
+     }
+    },
+    {
+     "id": "phys.nuclear.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Phát biểu nào sau đây về hiện tượng phóng xạ là đúng?",
+     "hint": "Nhớ lại định nghĩa phóng xạ: quá trình này xảy ra ở đâu và có cần tác nhân bên ngoài kích thích hay không?",
+     "explanation": "Phóng xạ là quá trình hạt nhân không bền tự phát phân rã, phát ra tia phóng xạ. Quá trình này mang tính tự phát và ngẫu nhiên, không phụ thuộc vào các tác động bên ngoài như nhiệt độ, áp suất; chu kì bán rã chỉ phụ thuộc bản chất của hạt nhân phóng xạ. Chọn B.",
+     "skill_ids": [
+      "physics.nuclear.radioactive_decay"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "Tốc độ phân rã của một mẫu phóng xạ tăng mạnh khi tăng áp suất đặt lên mẫu."
+      },
+      {
+       "id": "B",
+       "text": "Phóng xạ là quá trình tự phát, không chịu ảnh hưởng của các yếu tố bên ngoài như nhiệt độ, áp suất."
+      },
+      {
+       "id": "C",
+       "text": "Nung nóng mẫu chất phóng xạ làm chu kì bán rã của nó giảm đi."
+      },
+      {
+       "id": "D",
+       "text": "Phóng xạ chỉ xảy ra khi có bức xạ từ bên ngoài chiếu vào mẫu."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "C": "Chu kì bán rã chỉ phụ thuộc bản chất hạt nhân, không phụ thuộc nhiệt độ.",
+      "D": "Phóng xạ là quá trình tự phát, không cần tác nhân bên ngoài."
+     }
+    },
+    {
+     "id": "phys.nuclear.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho khối lượng của hạt nhân ${}^{4}_{2}\\text{He}$ là 4,0015 u; của proton là 1,0073 u; của neutron là 1,0087 u; $1\\ \\text{u} = 931{,}5\\ \\text{MeV/c}^2$. Năng lượng liên kết của hạt nhân ${}^{4}_{2}\\text{He}$ xấp xỉ bằng",
+     "hint": "Tính độ hụt khối bằng tổng khối lượng các nucleon riêng lẻ trừ khối lượng hạt nhân, rồi đổi sang năng lượng.",
+     "explanation": "Độ hụt khối: $\\Delta m = 2\\cdot 1{,}0073 + 2\\cdot 1{,}0087 - 4{,}0015 = 4{,}0320 - 4{,}0015 = 0{,}0305\\ \\text{u}$. Năng lượng liên kết: $W_{lk} = \\Delta m c^2 = 0{,}0305\\cdot 931{,}5 \\approx 28{,}4\\ \\text{MeV}$. Chọn D.",
+     "skill_ids": [
+      "physics.nuclear.binding_energy"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$7{,}1\\ \\text{MeV}$"
+      },
+      {
+       "id": "B",
+       "text": "$3727{,}4\\ \\text{MeV}$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}0305\\ \\text{MeV}$"
+      },
+      {
+       "id": "D",
+       "text": "$28{,}4\\ \\text{MeV}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Đây là năng lượng liên kết riêng (đã chia cho 4 nucleon), không phải năng lượng liên kết.",
+      "B": "Đây là năng lượng nghỉ của cả hạt nhân, không phải năng lượng ứng với độ hụt khối.",
+      "C": "Đã quên đổi độ hụt khối từ u sang MeV."
+     }
+    },
+    {
+     "id": "phys.nuclear.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho phản ứng nhiệt hạch ${}^{2}_{1}\\text{H} + {}^{3}_{1}\\text{H} \\to {}^{4}_{2}\\text{He} + {}^{1}_{0}\\text{n}$. Biết khối lượng các hạt: $m_{H2} = 2{,}0136\\ \\text{u}$, $m_{H3} = 3{,}0155\\ \\text{u}$, $m_{He} = 4{,}0015\\ \\text{u}$, $m_{n} = 1{,}0087\\ \\text{u}$; $1\\ \\text{u} = 931{,}5\\ \\text{MeV/c}^2$. Phản ứng này",
+     "hint": "So sánh tổng khối lượng các hạt trước và sau phản ứng; nếu khối lượng giảm thì phản ứng tỏa năng lượng.",
+     "explanation": "Tổng khối lượng trước: $m_t = 2{,}0136 + 3{,}0155 = 5{,}0291\\ \\text{u}$. Tổng khối lượng sau: $m_s = 4{,}0015 + 1{,}0087 = 5{,}0102\\ \\text{u}$. Vì $m_t > m_s$ nên phản ứng tỏa năng lượng: $E = (m_t - m_s)c^2 = 0{,}0189\\cdot 931{,}5 \\approx 17{,}6\\ \\text{MeV}$. Chọn B.",
+     "skill_ids": [
+      "physics.nuclear.reactions"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "thu năng lượng 17,6 MeV."
+      },
+      {
+       "id": "B",
+       "text": "tỏa năng lượng 17,6 MeV."
+      },
+      {
+       "id": "C",
+       "text": "tỏa năng lượng 957,2 MeV."
+      },
+      {
+       "id": "D",
+       "text": "thu năng lượng 957,2 MeV."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Tổng khối lượng sau phản ứng nhỏ hơn trước nên phản ứng tỏa chứ không thu năng lượng.",
+      "C": "Đã quên khối lượng của neutron ở vế sau khi tính độ chênh lệch khối lượng."
+     }
+    },
+    {
+     "id": "phys.waves-optics.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Bước sóng của một sóng cơ là",
+     "hint": "Bước sóng cũng là quãng đường sóng truyền được trong một chu kì. Hai điểm cách nhau đúng một quãng như vậy dao động thế nào với nhau?",
+     "explanation": "Bước sóng $\\lambda$ là khoảng cách giữa hai điểm gần nhau nhất trên cùng một phương truyền sóng dao động cùng pha; đó cũng là quãng đường sóng truyền được trong một chu kì, $\\lambda = vT = \\dfrac{v}{f}$. Quãng đường truyền trong 1 s là tốc độ truyền sóng. Hai điểm gần nhất dao động ngược pha cách nhau $\\dfrac{\\lambda}{2}$. Chọn C.",
+     "skill_ids": [
+      "physics.waves.basics"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "quãng đường sóng truyền được trong 1 s."
+      },
+      {
+       "id": "B",
+       "text": "khoảng cách giữa hai điểm gần nhau nhất trên cùng một phương truyền sóng mà dao động tại hai điểm đó ngược pha."
+      },
+      {
+       "id": "C",
+       "text": "khoảng cách giữa hai điểm gần nhau nhất trên cùng một phương truyền sóng mà dao động tại hai điểm đó cùng pha."
+      },
+      {
+       "id": "D",
+       "text": "khoảng cách giữa hai điểm bất kì trên cùng một phương truyền sóng mà dao động tại hai điểm đó cùng pha."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "B": "Hai điểm gần nhất dao động ngược pha cách nhau nửa bước sóng $\\dfrac{\\lambda}{2}$.",
+      "D": "Thiếu điều kiện “gần nhau nhất”: hai điểm cùng pha có thể cách nhau $2\\lambda$, $3\\lambda$, ..."
+     }
+    },
+    {
+     "id": "phys.waves-optics.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Khi có sóng dừng trên một sợi dây đàn hồi, khoảng cách giữa hai nút sóng liên tiếp bằng",
+     "hint": "Một \"bó sóng\" trên dây nằm giữa hai nút liên tiếp. Bó sóng đó dài bao nhiêu phần của bước sóng?",
+     "explanation": "Trong sóng dừng, khoảng cách giữa hai nút liên tiếp (hoặc hai bụng liên tiếp) bằng $\\dfrac{\\lambda}{2}$; khoảng cách giữa một nút và bụng gần nhất bằng $\\dfrac{\\lambda}{4}$. Chọn D.",
+     "skill_ids": [
+      "physics.waves.standing"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "một bước sóng."
+      },
+      {
+       "id": "B",
+       "text": "hai bước sóng."
+      },
+      {
+       "id": "C",
+       "text": "một phần tư bước sóng."
+      },
+      {
+       "id": "D",
+       "text": "nửa bước sóng."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "C": "Một phần tư bước sóng là khoảng cách từ một nút đến bụng gần nhất."
+     }
+    }
+   ],
+   "points_each": 0.25
+  },
+  {
+   "id": "p2",
+   "title_vi": "Phần II. Đúng/Sai",
+   "title_en": "Part II. True/False",
+   "type": "TRUE_FALSE_GROUP",
+   "items": [
+    {
+     "id": "phys.gas.011",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Một khối khí lí tưởng có thể tích $V_1 = 6$ lít, áp suất $p_1 = 2 \\cdot 10^5\\ \\text{Pa}$ và nhiệt độ $T_1 = 300\\ \\text{K}$. Mỗi ý dưới đây xét độc lập, xuất phát từ trạng thái ban đầu trên.",
+     "hint": "Dùng các định luật Boyle, Charles và phương trình trạng thái $pV = nRT$ (đổi lít sang $\\text{m}^3$).",
+     "explanation": "Đẳng nhiệt: $p_2 = 4 \\cdot 10^5\\ \\text{Pa}$. Đẳng tích: $p_2 = 3 \\cdot 10^5\\ \\text{Pa}$. Đẳng áp: $V_2 = 8$ lít. $n = \\frac{pV}{RT} \\approx 0{,}48\\ \\text{mol}$. Vậy a) Đúng, b) Đúng, c) Đúng, d) Sai.",
+     "skill_ids": [
+      "physics.gas.laws",
+      "physics.gas.state_equation"
+     ],
+     "difficulty": 3,
+     "statements": [
+      {
+       "id": "a",
+       "text": "Nén đẳng nhiệt khối khí đến thể tích $3$ lít thì áp suất của khí là $4 \\cdot 10^5\\ \\text{Pa}$."
+      },
+      {
+       "id": "b",
+       "text": "Đun nóng đẳng tích khối khí đến $T_2 = 450\\ \\text{K}$ thì áp suất của khí là $3 \\cdot 10^5\\ \\text{Pa}$."
+      },
+      {
+       "id": "c",
+       "text": "Đun nóng đẳng áp khối khí từ $300\\ \\text{K}$ đến $400\\ \\text{K}$ thì thể tích khí tăng thêm $2$ lít."
+      },
+      {
+       "id": "d",
+       "text": "Số mol khí xấp xỉ $0{,}24\\ \\text{mol}$ (lấy $R = 8{,}31\\ \\text{J/(mol.K)}$)."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": true,
+       "c": true,
+       "d": false
+      }
+     }
+    },
+    {
+     "id": "phys.nuclear.011",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Hạt nhân $^{226}_{88}\\text{Ra}$ phóng xạ $\\alpha$ và biến đổi thành hạt nhân X. Chu kì bán rã của $^{226}_{88}\\text{Ra}$ là $1600$ năm. Ban đầu có một mẫu $^{226}_{88}\\text{Ra}$ nguyên chất; coi hạt nhân X bền.",
+     "hint": "Bảo toàn số khối và điện tích; sau $k$ chu kì bán rã số hạt còn lại là $\\frac{N_0}{2^k}$.",
+     "explanation": "$^{226}_{88}\\text{Ra} \\to {}^4_2\\text{He} + {}^{222}_{86}\\text{X}$. Sau $2T$ còn $\\frac{N_0}{4}$, đã phân rã $\\frac{3N_0}{4}$. Sau $3T$ còn $\\frac{N_0}{8}$, số hạt X tạo thành $\\frac{7N_0}{8}$, tỉ số $7$. Vậy a) Đúng, b) Đúng, c) Sai, d) Sai.",
+     "skill_ids": [
+      "physics.nuclear.radioactive_decay",
+      "physics.nuclear.reactions"
+     ],
+     "difficulty": 3,
+     "statements": [
+      {
+       "id": "a",
+       "text": "Hạt nhân X có số khối là $222$."
+      },
+      {
+       "id": "b",
+       "text": "Hạt nhân X có $86$ proton."
+      },
+      {
+       "id": "c",
+       "text": "Sau $3200$ năm, số hạt nhân Ra đã bị phân rã bằng $\\frac{1}{4}$ số hạt nhân Ra ban đầu."
+      },
+      {
+       "id": "d",
+       "text": "Sau $4800$ năm, tỉ số giữa số hạt nhân X tạo thành và số hạt nhân Ra còn lại là $8$."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": true,
+       "c": false,
+       "d": false
+      }
+     }
+    }
+   ],
+   "points_each": 1.0
+  },
+  {
+   "id": "p3",
+   "title_vi": "Phần III. Trả lời ngắn",
+   "title_en": "Part III. Short answer",
+   "type": "SHORT_ANSWER",
+   "items": [
+    {
+     "id": "phys.electromagnetism.011",
+     "type": "SHORT_ANSWER",
+     "stem": "Một khung dây phẳng gồm $100$ vòng, mỗi vòng có diện tích $0{,}02\\ \\text{m}^2$, đặt trong từ trường đều sao cho mặt khung vuông góc với các đường sức từ. Cảm ứng từ giảm đều từ $0{,}5\\ \\text{T}$ về $0$ trong thời gian $0{,}1\\ \\text{s}$. Tính độ lớn suất điện động cảm ứng xuất hiện trong khung dây (đơn vị: V).",
+     "hint": "$|e_c| = N\\frac{|\\Delta \\Phi|}{\\Delta t}$ với $\\Phi = BS$ khi mặt khung vuông góc với đường sức.",
+     "explanation": "$|\\Delta \\Phi| = S \\cdot |\\Delta B| = 0{,}02 \\cdot 0{,}5 = 0{,}01\\ \\text{Wb}$; $|e_c| = 100 \\cdot \\frac{0{,}01}{0{,}1} = 10\\ \\text{V}$.",
+     "skill_ids": [
+      "physics.em.flux",
+      "physics.em.induced_emf"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "10"
+      ]
+     }
+    },
+    {
+     "id": "phys.thermal.011",
+     "type": "SHORT_ANSWER",
+     "stem": "Cần cung cấp bao nhiêu kJ nhiệt lượng để đun nóng $2\\ \\text{kg}$ nước từ $20\\,^\\circ\\text{C}$ lên $80\\,^\\circ\\text{C}$? Biết nhiệt dung riêng của nước là $4200\\ \\text{J/(kg.K)}$ và bỏ qua mọi hao phí.",
+     "hint": "$Q = mc\\Delta t$, rồi đổi J sang kJ.",
+     "explanation": "$Q = mc\\Delta t = 2 \\cdot 4200 \\cdot 60 = 504\\,000\\ \\text{J} = 504\\ \\text{kJ}$.",
+     "skill_ids": [
+      "physics.thermal.specific_heat"
+     ],
+     "difficulty": 1,
+     "answer_key": {
+      "accepted": [
+       "504"
+      ]
+     }
+    }
+   ],
+   "points_each": 0.5
+  }
+ ],
+ "source": {
+  "name": "Mentor (đề mẫu từ ngân hàng câu hỏi)",
+  "url": ""
+ },
+ "placeholder": true,
+ "note_vi": "Ngân hàng chỉ có 2 câu Đúng/Sai và 2 câu trả lời ngắn nên hai phần này được rút gọn (đề thật: 18 + 4 + 6 câu).",
+ "note_en": "The bank has only 2 true/false and 2 short-answer physics items, so those parts are shortened (real: 18 + 4 + 6)."
+}

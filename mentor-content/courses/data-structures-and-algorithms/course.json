@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "data-structures-and-algorithms",
+  "title": "Data Structures and Algorithms",
+  "subject": "Computer Science",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "u0033182f28e31231",
+  "teacher_name": "Dr. Lan Nguyen",
+  "description_short": "This course covers arrays, lists, stacks, queues, hash tables, binary trees, heaps, graph search, sorting, recursion and dynamic programming with rigorous worked examples and analysis. It is for university students building a foundation in data structures and algorithms.",
+  "outcomes": [
+    "analyse the time and space complexity of core data structures and algorithms",
+    "implement arrays, stacks, queues, hash tables, heaps, binary search trees and graph traversals",
+    "choose appropriate data structures and algorithms for a given problem",
+    "derive recurrences and apply dynamic programming to optimisation and counting problems",
+    "recognise common implementation mistakes and correct them"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 9,
+  "est_minutes": 135,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:29:28.159959Z",
+      "published_at": "2026-11-17T07:29:48.077891Z",
+      "pack_sha256": "62e13e8dcd62d7c7f78d12e259149abbf1f3ce850dad56a3ef239cec7ea1c34d",
+      "pack_bytes": 4592176,
+      "note": "draft by course-builder",
+      "level_suggested": "advanced",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

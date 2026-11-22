@@ -3,25 +3,28 @@ import { Navigate, Route, Routes, useLocation, useNavigate, useParams, useSearch
 import { useTranslation } from "react-i18next";
 import { useAuth } from "./state/auth";
 import { needsFirstRun } from "./lib/gate";
-import { Login } from "./screens/Login";
-import { FirstRun } from "./screens/FirstRun";
-import { Today } from "./screens/today/Today";
-import { Progress } from "./screens/Progress";
+import { LgLogin } from "./lang/screens/Login";
+import { LgFirstRun } from "./lang/screens/FirstRun";
+import { Village } from "./lang/screens/Village";
 import { resolveDeepLink } from "./lib/deeplink";
 import { startBackground, type Background } from "./lib/behaviour";
-import { CourseSearch } from "./screens/courses/CourseSearch";
-import { CourseIntro } from "./screens/courses/CourseIntro";
+import { ToChuong, ToFind } from "./lang/screens/chuong/redirects";
 
 // the player pulls in Markdown + KaTeX, so it loads on demand
-const Player = lazy(() => import("./screens/courses/Player"));
-const Ask = lazy(() => import("./screens/ask/Ask"));
-import { Practice } from "./screens/practice/Practice";
-const PracticeRun = lazy(() => import("./screens/practice/Run"));
-const TeacherApp = lazy(() => import("./screens/teacher/TeacherApp"));
-const Research = lazy(() => import("./screens/research/Research"));
-const ResearchPaper = lazy(() => import("./screens/research/Paper"));
-import { SourceKeysProvider } from "./screens/research/Sources";
-import { Guide } from "./components/Guide";
+const Lesson = lazy(() => import("./lang/screens/lesson/Lesson"));
+import { PracticeEntry } from "./lang/screens/arena/Legacy";
+const TienDo = lazy(() => import("./lang/screens/progress/Progress").then((m) => ({ default: m.TienDo })));
+const StudyRoom = lazy(() => import("./lang/screens/study/StudyRoom").then((m) => ({ default: m.StudyRoom })));
+const Chuong = lazy(() => import("./lang/screens/chuong/Chuong").then((m) => ({ default: m.Chuong })));
+const Arena = lazy(() => import("./lang/screens/arena/Arena").then((m) => ({ default: m.Arena })));
+const CourseTests = lazy(() => import("./lang/screens/arena/CourseTests").then((m) => ({ default: m.CourseTests })));
+const PracticeRun = lazy(() => import("./lang/screens/practice/Run"));
+const TeacherApp = lazy(() => import("./lang/teacher/TeacherApp"));
+const Library = lazy(() => import("./lang/screens/library/Library").then((m) => ({ default: m.Library })));
+const LibraryPaper = lazy(() => import("./lang/screens/library/Library").then((m) => ({ default: m.LibraryPaper })));
+import { SourceKeysProvider } from "./lang/screens/library/research/Sources";
+import { RouteGuide } from "./lang/guide/RouteGuide";
+import { ScrollTop } from "./lang/kit/ScrollTop";
 import { UpdateNotice } from "./components/UpdateNotice";
 
 /** `/khoa-hoc/<id>?lesson=<lesson>` (what the planner and reminders link to) opens the player at that lesson. */
@@ -30,13 +33,13 @@ function CourseRoute() {
   const [params] = useSearchParams();
   const lesson = params.get("lesson");
   if (lesson) return <Navigate replace to={`/khoa-hoc/${encodeURIComponent(id)}/hoc?lesson=${encodeURIComponent(lesson)}`} />;
-  return <CourseIntro />;
+  return <ToChuong />;
 }
 
-/** The research screens are for the university band only; anyone else lands on the hub. */
-function UniOnly({ children }: { children: ReactNode }) {
-  const { user } = useAuth();
-  return user?.age_band === "uni" ? <>{children}</> : <Navigate to="/" replace />;
+/** The old research address of a paper lands on its Library page. */
+function ToLibraryPaper() {
+  const { id = "" } = useParams();
+  return <Navigate to={`/thu-vien/paper/${encodeURIComponent(id)}`} replace />;
 }
 
 /**
@@ -98,31 +101,38 @@ export function App() {
 
   let body;
   if (status === "loading") body = <div className="boot" />;
-  else if (!user) body = <Login />;
+  else if (!user) body = <LgLogin />;
   else if (user.role === "teacher") body = (
       <Suspense fallback={<div className="boot" />}>
         <TeacherApp />
       </Suspense>
     );
-  else if (needsFirstRun(user)) body = <FirstRun />;
+  else if (needsFirstRun(user)) body = <LgFirstRun />;
   else
     body = (
       <SourceKeysGate>
       <BackgroundWork />
+      <Suspense fallback={<div className="boot" />}>
       <Routes>
-        <Route path="/" element={<Today />} />
+        <Route path="/" element={<Village />} />
+        <Route path="/chon-ga" element={<LgFirstRun />} />
+        <Route path="/hoi-dap" element={<Navigate to="/" replace />} />
         <Route path="/khoa-hoc" element={<Navigate to="/" replace />} />
-        <Route path="/khoa-hoc/tim-kiem" element={<CourseSearch />} />
+        <Route path="/chuong/:chicken" element={<Chuong />} />
+        <Route path="/khoa-hoc/tim-kiem" element={<ToFind />} />
         <Route path="/khoa-hoc/:id" element={<CourseRoute />} />
         <Route
           path="/khoa-hoc/:id/hoc"
           element={
             <Suspense fallback={<div className="boot" />}>
-              <Player />
+              <Lesson />
             </Suspense>
           }
         />
-        <Route path="/luyen-tap" element={<Practice />} />
+        <Route path="/dau-truong" element={<Arena />} />
+        <Route path="/dau-truong/:paper" element={<Arena />} />
+        <Route path="/kiem-tra/:courseId" element={<CourseTests />} />
+        <Route path="/luyen-tap" element={<PracticeEntry />} />
         <Route
           path="/luyen-tap/:id/*"
           element={
@@ -131,44 +141,37 @@ export function App() {
             </Suspense>
           }
         />
+        <Route path="/tien-do" element={<TienDo />} />
+        <Route path="/phong-tu-hoc" element={<StudyRoom />} />
         <Route
-          path="/hoi-dap"
+          path="/thu-vien"
           element={
             <Suspense fallback={<div className="boot" />}>
-              <Ask />
+              <Library />
             </Suspense>
           }
         />
-        <Route path="/tien-do" element={<Progress />} />
         <Route
-          path="/nghien-cuu"
+          path="/thu-vien/paper/:id"
           element={
-            <UniOnly>
-              <Suspense fallback={<div className="boot" />}>
-                <Research />
-              </Suspense>
-            </UniOnly>
+            <Suspense fallback={<div className="boot" />}>
+              <LibraryPaper />
+            </Suspense>
           }
         />
-        <Route
-          path="/nghien-cuu/paper/:id"
-          element={
-            <UniOnly>
-              <Suspense fallback={<div className="boot" />}>
-                <ResearchPaper />
-              </Suspense>
-            </UniOnly>
-          }
-        />
+        <Route path="/nghien-cuu" element={<Navigate to="/thu-vien" replace />} />
+        <Route path="/nghien-cuu/paper/:id" element={<ToLibraryPaper />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </Suspense>
       </SourceKeysGate>
     );
 
   return (
     <>
       {body}
-      <Guide />
+      <ScrollTop />
+      <RouteGuide />
       <UpdateNotice />
     </>
   );

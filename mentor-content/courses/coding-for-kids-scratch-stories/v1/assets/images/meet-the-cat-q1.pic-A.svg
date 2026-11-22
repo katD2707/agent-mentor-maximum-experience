@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- tail -->
+  <path d="M283 330 C 340 330 348 292 322 274 C 306 262 290 272 292 288"
+        fill="none" stroke="#5A4BC0" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- body -->
+  <path d="M200 210 C 262 210 292 258 292 312 C 292 340 270 352 200 352
+           C 130 352 108 340 108 312 C 108 258 138 210 200 210 Z"
+        fill="#5A4BC0"/>
+  <!-- belly -->
+  <path d="M200 250 C 240 250 258 282 258 314 C 258 334 234 342 200 342
+           C 166 342 142 334 142 314 C 142 282 160 250 200 250 Z"
+        fill="#E9E5F6"/>
+  <!-- front paws -->
+  <ellipse cx="168" cy="336" rx="26" ry="15" fill="#E9E5F6"/>
+  <ellipse cx="232" cy="336" rx="26" ry="15" fill="#E9E5F6"/>
+  <path d="M160 330 v10 M172 330 v10 M224 330 v10 M236 330 v10"
+        stroke="#2B283F" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+  <!-- ears -->
+  <path d="M136 132 L 128 68 L 186 104 Z" fill="#5A4BC0" stroke="#5A4BC0"
+        stroke-width="12" stroke-linejoin="round"/>
+  <path d="M264 132 L 272 68 L 214 104 Z" fill="#5A4BC0" stroke="#5A4BC0"
+        stroke-width="12" stroke-linejoin="round"/>
+  <path d="M146 118 L 142 88 L 172 106 Z" fill="#E8806A"/>
+  <path d="M254 118 L 258 88 L 228 106 Z" fill="#E8806A"/>
+  <!-- head -->
+  <path d="M200 96 C 258 96 288 132 288 176 C 288 218 254 240 200 240
+           C 146 240 112 218 112 176 C 112 132 142 96 200 96 Z"
+        fill="#5A4BC0"/>
+  <!-- muzzle patch -->
+  <ellipse cx="200" cy="196" rx="50" ry="34" fill="#E9E5F6"/>
+  <!-- eyes -->
+  <ellipse cx="166" cy="164" rx="17" ry="19" fill="#F7F1E3"/>
+  <ellipse cx="234" cy="164" rx="17" ry="19" fill="#F7F1E3"/>
+  <ellipse cx="168" cy="166" rx="9" ry="11" fill="#2B283F"/>
+  <ellipse cx="236" cy="166" rx="9" ry="11" fill="#2B283F"/>
+  <circle cx="164" cy="160" r="3.5" fill="#F7F1E3"/>
+  <circle cx="232" cy="160" r="3.5" fill="#F7F1E3"/>
+  <!-- nose -->
+  <path d="M192 188 L 208 188 L 200 198 Z" fill="#E8806A"
+        stroke="#E8806A" stroke-width="4" stroke-linejoin="round"/>
+  <!-- mouth -->
+  <path d="M200 198 v8 M200 206 q -10 10 -20 2 M200 206 q 10 10 20 2"
+        fill="none" stroke="#2B283F" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+  <!-- whiskers -->
+  <path d="M144 186 L 108 178 M144 196 L 106 198 M144 206 L 110 216"
+        stroke="#2B283F" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  <path d="M256 186 L 292 178 M256 196 L 294 198 M256 206 L 290 216"
+        stroke="#2B283F" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+  <!-- collar -->
+  <path d="M132 216 Q 200 254 268 216" fill="none" stroke="#F0D76E"
+        stroke-width="14" stroke-linecap="round"/>
+  <!-- tag -->
+  <circle cx="200" cy="242" r="15" fill="#9FD8BF" stroke="#F0D76E" stroke-width="4"/>
+  <circle cx="195" cy="237" r="3.5" fill="#F7F1E3" opacity="0.8"/>
+  <!-- grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+</svg>

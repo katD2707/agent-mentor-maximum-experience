@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- stem -->
+  <path d="M200 196 C 197 246, 204 292, 200 338"
+        fill="none" stroke="#5A4BC0" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- leaves -->
+  <path d="M200 272 Q 152 272 126 226 Q 178 220 200 272 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M200 300 Q 248 304 276 262 Q 224 252 200 300 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M200 272 Q 168 254 148 234" fill="none" stroke="#5A4BC0" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+  <path d="M200 300 Q 230 288 252 270" fill="none" stroke="#5A4BC0" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- petals -->
+  <g transform="translate(200 158)" fill="#E8806A" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round">
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(45)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(90)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(135)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(225)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(270)"/>
+    <ellipse cx="0" cy="-52" rx="33" ry="44" transform="rotate(315)"/>
+  </g>
+
+  <!-- yellow heart -->
+  <circle cx="200" cy="158" r="37" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3.5"/>
+
+  <!-- seeds -->
+  <g fill="#5A4BC0">
+    <circle cx="200" cy="140" r="3.6"/>
+    <circle cx="216" cy="150" r="3.6"/>
+    <circle cx="210" cy="169" r="3.6"/>
+    <circle cx="190" cy="169" r="3.6"/>
+    <circle cx="184" cy="150" r="3.6"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

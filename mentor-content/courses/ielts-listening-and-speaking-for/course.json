@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "ielts-listening-and-speaking-for",
+  "title": "IELTS Listening and Speaking for Beginners",
+  "subject": "English",
+  "age_band": "g10_12",
+  "language": "en",
+  "teacher_id": "ua3ab4d403d34fd04",
+  "teacher_name": "Ms. Mai Dang",
+  "description_short": "This beginner course covers IELTS Listening Part 1 skills such as numbers, spelling, maps and short conversations, and IELTS Speaking Part 1 skills such as talking about yourself, describing places and giving a one-minute talk. It is for upper secondary students who are starting IELTS Listening and Speaking.",
+  "outcomes": [
+    "take notes on numbers, spelling, maps and short conversations in IELTS Listening Part 1",
+    "recognise common Listening traps such as 13/30 and corrected answers",
+    "answer IELTS Speaking Part 1 questions in 2–3 sentences using simple patterns",
+    "describe places accurately with There is/There are and It has",
+    "give a structured one-minute talk using short notes and signposts"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 8,
+  "est_minutes": 94,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:40:44.202995Z",
+      "published_at": "2026-11-17T08:51:02.565299Z",
+      "pack_sha256": "ed3fb0b03836972df3aef0aae42653842271074ba1a67c8b127588dfae3cfd28",
+      "pack_bytes": 3116002,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": "basic",
+  "status": "live",
+  "outline": []
+}

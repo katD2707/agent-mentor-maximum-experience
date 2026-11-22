@@ -480,7 +480,7 @@ def test_weekly_review_runs_on_monday(client, enrolled, clock):
     assert ran and ran[0][1] == "weekly_review"
 
 
-# ---------------------------------------------------------------- engagement (CONTRACTS 12.1): streak, Mực's voice,
+# ---------------------------------------------------------------- engagement (CONTRACTS 12.1): streak, the chicken's voice,
 # streak saver, remind me later, backing off
 from datetime import date as _date
 
@@ -509,7 +509,7 @@ def test_streak_counts_days_in_a_row_up_to_today_or_yesterday():
     assert engage.streak({d - timedelta(days=2)}, d) == (0, False)  # a gap breaks it
 
 
-def test_reminder_lines_are_in_mucs_voice_vary_and_thin_out():
+def test_reminder_lines_are_in_the_chickens_voice_vary_and_thin_out():
     seen = {engage.study_text("Điện trường", "Electric fields", 15, 0, f"2026-10-{n}19:30", "g10_12")[0] for n in range(10, 30)}
     assert len(seen) >= 2 and all("Điện trường" in t and "15" in t for t in seen)
     vi, en = engage.study_text("Bayes", "Bayes", 30, 5, "k", "uni")
@@ -517,6 +517,10 @@ def test_reminder_lines_are_in_mucs_voice_vary_and_thin_out():
     assert all(not t.lower().startswith(("hãy", "đừng quên")) for t in seen)
     sv, _ = engage.saver_text(4, "2026-10-28", "g6_9")
     assert "4 ngày" in sv
+    chick = [engage.study_text("Cấp số cộng", "Sequences", 15, 0, f"k{n}", "g10_12", "Gà Toán", "Math chicken") for n in range(12)]
+    assert any("Gà Toán" in v for v, _ in chick) and any("Math chicken" in e for _, e in chick) and not any("Mực" in v for v, _ in chick)
+    neutral = [engage.study_text("x", "x", 15, 0, f"k{n}", "g10_12")[0] for n in range(12)]
+    assert all("Mực" not in t for t in neutral) and any("Gà" in t for t in neutral)
     rs = [{"at": f"2026-10-{d}T19:30:00+07:00"} for d in (28, 28, 29, 30, 31, 31)]
     assert [r["at"][:10] for r in engage.thin(rs)] == ["2026-10-28", "2026-10-30"]
 

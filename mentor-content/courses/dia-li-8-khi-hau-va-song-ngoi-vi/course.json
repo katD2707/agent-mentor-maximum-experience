@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "dia-li-8-khi-hau-va-song-ngoi-vi",
+  "title": "Địa lí 8: Khí hậu và sông ngòi Việt Nam",
+  "subject": "Địa lí",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "u9ec92b8b7d40a3aa",
+  "teacher_name": "Cô Hương",
+  "description_short": "Khóa học trình bày khí hậu nhiệt đới gió mùa và sông ngòi Việt Nam qua các bài về gió mùa, nhiệt độ – lượng mưa, thiên tai, hệ thống sông, chế độ nước và sử dụng nguồn nước. Dành cho học sinh lớp 8 đang học Địa lí, cần đọc biểu đồ, tính toán cơ bản và giải thích các hiện tượng thực tế.",
+  "outcomes": [
+    "Trình bày được hướng, tính chất và tác động của gió mùa mùa đông và mùa hạ ở nước ta.",
+    "Đọc và tính được nhiệt độ trung bình năm, biên độ nhiệt, tổng lượng mưa, mùa mưa từ bảng số liệu và biểu đồ.",
+    "Phân biệt được các hệ thống sông lớn, hướng chảy và chế độ nước theo mùa của sông ngòi Việt Nam.",
+    "Giải thích được một số thiên tai thường gặp và nêu biện pháp phòng chống, sử dụng hợp lí nguồn nước."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:42:11.339508Z",
+      "published_at": "2026-11-17T07:42:18.449038Z",
+      "pack_sha256": "81be1bed438c2d58d1daa6649e622361026c12c00ab612cb818c1ae516336fea",
+      "pack_bytes": 1541869,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

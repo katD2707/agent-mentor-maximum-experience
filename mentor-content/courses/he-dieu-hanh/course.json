@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "he-dieu-hanh",
+  "title": "Hệ điều hành",
+  "subject": "Hệ điều hành",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "u3b05d350345b986e",
+  "teacher_name": "ThS. Hà Văn Quân",
+  "description_short": "Khóa học bao quát tiến trình, lập lịch CPU, đồng bộ hóa, bộ nhớ ảo, phân trang và hệ tệp trong hệ điều hành. Nội dung dành cho sinh viên đại học đã có kiến thức cơ bản về lập trình và cấu trúc máy tính.",
+  "outcomes": [
+    "Phân biệt tiến trình và luồng, mô tả PCB, trạng thái tiến trình và chuyển ngữ cảnh.",
+    "Tính số tiến trình sau fork và giải thích kết quả khác nhau giữa fork và luồng.",
+    "Áp dụng công thức lập lịch FCFS, SJF, SRTF, Round Robin để tính thời gian chờ và lưu lại.",
+    "Dùng mutex và semaphore để nhận diện, sửa tranh chấp dữ liệu và deadlock.",
+    "Tính EAT, dịch địa chỉ phân trang và phân tích inode, hard link, symlink."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 16,
+  "est_minutes": 207,
+  "latest_published": null,
+  "versions": [
+    {
+      "version": 1,
+      "status": "review",
+      "created_at": "2026-11-17T08:41:45.357363Z",
+      "published_at": null,
+      "pack_sha256": null,
+      "pack_bytes": null,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": null,
+  "status": "live",
+  "outline": []
+}

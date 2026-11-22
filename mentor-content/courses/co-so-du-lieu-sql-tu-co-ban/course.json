@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "co-so-du-lieu-sql-tu-co-ban",
+  "title": "Cơ sở dữ liệu: SQL từ cơ bản",
+  "subject": "Cơ sở dữ liệu",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "u44d2bb88bdab57c7",
+  "teacher_name": "TS. Bùi Anh Kiệt",
+  "description_short": "Khóa học trình bày mô hình quan hệ, chuẩn hóa và SQL từ truy vấn cơ bản đến nối bảng, nhóm và truy vấn con. Dành cho sinh viên đại học bắt đầu học cơ sở dữ liệu.",
+  "outcomes": [
+    "Trình bày được mô hình quan hệ, khóa và các ràng buộc toàn vẹn, phân biệt quan hệ với bảng trong SQL.",
+    "Viết được truy vấn SQL cơ bản với SELECT, WHERE, ORDER BY, LIMIT và DISTINCT.",
+    "Nối bảng bằng INNER/LEFT/RIGHT/FULL/CROSS JOIN và nhận biết lỗi tích Descartes.",
+    "Sử dụng hàm tổng hợp, GROUP BY, HAVING và truy vấn con để trả lời câu hỏi dữ liệu.",
+    "Xác định phụ thuộc hàm, khóa, dạng chuẩn và phân rã lược đồ về 3NF/BCNF."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 75,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:32:14.745145Z",
+      "published_at": "2026-11-18T03:31:53.510945Z",
+      "pack_sha256": "fbc220b7535a511f1b97a772656d1b0234ef0c52260b7725af5454016a835f70",
+      "pack_bytes": 89468,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

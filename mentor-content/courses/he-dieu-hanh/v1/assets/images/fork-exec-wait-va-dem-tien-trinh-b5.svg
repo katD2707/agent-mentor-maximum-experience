@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><marker id="arw" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto"><path d="M1,1 L12,7 L1,13 z" fill="#5A4BC0"/></marker>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<line x1="562.3" y1="123.0" x2="440.0" y2="225.0" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="617.7" y1="123.0" x2="740.0" y2="225.0" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="393.5" y1="277.4" x2="339.0" y2="368.3" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="426.5" y1="277.4" x2="481.0" y2="368.3" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="753.5" y1="277.4" x2="699.0" y2="368.3" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="786.5" y1="277.4" x2="841.0" y2="368.3" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="311.1" y1="428.7" x2="284.8" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="328.9" y1="428.7" x2="355.2" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="491.1" y1="428.7" x2="464.8" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="508.9" y1="428.7" x2="535.2" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="671.1" y1="428.7" x2="644.8" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="688.9" y1="428.7" x2="715.2" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="851.1" y1="428.7" x2="824.8" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="868.9" y1="428.7" x2="895.2" y2="513.5" stroke="#5A4BC0" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arw)"/>
+<circle cx="590" cy="100" r="30" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="410" cy="250" r="26" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="770" cy="250" r="26" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="320" cy="400" r="24" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="500" cy="400" r="24" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="680" cy="400" r="24" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="860" cy="400" r="24" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="275" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="365" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="455" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="545" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="635" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="725" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="815" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="905" cy="545" r="20" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<text x="40" y="112" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">P (g&#7889;c)</text>
+<text x="40" y="262" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">2 ti&#7871;n tr&#236;nh</text>
+<text x="40" y="412" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">4 ti&#7871;n tr&#236;nh</text>
+<text x="40" y="557" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">8 ti&#7871;n tr&#236;nh</text>
+<text x="590" y="200" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">fork 1</text>
+<text x="590" y="345" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">fork 2</text>
+<text x="590" y="490" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">fork 3</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

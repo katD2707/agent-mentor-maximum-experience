@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="thi" data-ga="toan">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra khóa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="ga-guide.css">
+<script src="shared.js"></script>
+<script src="ga-guide.js" defer></script>
+<style>
+  /* Kiểm tra khóa: the course mock exam (and the practice sets of the course tree). Every question stays inside
+     one course. Free; no PvP, no ranking.
+     Real exam papers live in the Arena (lg-05), not here. */
+  :root { --board: #fff7e6; --board-edge: #c98a45; --board-dark: #7d4c22; --ink-g: #3a2010; --muted-g: #6b4a2e; --sel: #ffcf3d; --line-g: #e7cfa8;
+          --ok: #1f7a43; --ok-soft: #dff3e4; --bad: #b3261e; --bad-soft: #fde4df; --H: clamp(230px, 33vw, 340px); }
+  body { min-height: 100vh; background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; font-family: "Lexend", system-ui, sans-serif; color: var(--ink-g); }
+  body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .42); backdrop-filter: blur(6px); pointer-events: none; }
+  .mascot-bar, .mascot-dock { display: none !important; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 3px solid #1a47c8; outline-offset: 2px; box-shadow: 0 0 0 5px #fff; border-radius: 12px; }
+  .wrap { position: relative; max-width: 980px; margin: 0 auto; padding: 56px 16px 60px; }
+  .board { background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 40px clamp(14px, 3.5vw, 32px) 28px; position: relative; margin-bottom: 36px; }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 26px; border-radius: 16px; background: linear-gradient(#c8452a, #b0361f); color: #fff; font-size: clamp(1.05em, 3vw, 1.4em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #8f2d1c; margin: 0; max-width: calc(100% - 32px); overflow: hidden; text-overflow: ellipsis; }
+  .board h2 { font-size: 1.15em; font-weight: 800; margin: 26px 0 10px; }
+  .muted { color: var(--muted-g); }
+  .stack { display: grid; gap: 16px; }
+
+  /* buttons */
+  .gbtn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 16px; border: 3px solid #fff; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; background: linear-gradient(#1f7d44, #176a37); color: #fff; box-shadow: 0 5px 0 #165c32; }
+  .gbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #165c32; }
+  .gbtn.big { min-height: 58px; padding: 0 30px; font-size: 1.08em; font-weight: 800; }
+  .gbtn.wood { background: #f3e2c0; color: var(--ink-g); border-color: var(--board-edge); box-shadow: 0 5px 0 #b8884d; }
+  .gbtn.red { background: linear-gradient(#c8452a, #b0361f); box-shadow: 0 5px 0 #8f2d1c; }
+  .gbtn.quiet { background: transparent; color: var(--ink-g); border: 2px solid var(--line-g); box-shadow: none; min-height: 42px; padding: 0 16px; }
+  .gbtn svg { width: 20px; height: 20px; }
+  .xbtn { width: 46px; height: 46px; border-radius: 14px; border: 3px solid var(--board-edge); background: #f3e2c0; color: var(--ink-g); display: grid; place-items: center; cursor: pointer; flex: none; box-shadow: 0 4px 0 #b8884d; text-decoration: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 99px; font-size: .82em; font-weight: 700; background: #f3e2c0; color: #5a3b1a; border: 2px solid var(--line-g); }
+  .chip.lv { background: var(--sel); color: #4a3200; border-color: #c99a10; }
+  .bar { height: 14px; border-radius: 99px; background: #ecd9b4; overflow: hidden; border: 2px solid var(--line-g); flex: 1; }
+  .bar > i { background: linear-gradient(#4cc27a, #23874a); }
+
+  /* chicken crops (the sprite frame is 512 square with room above for the jump) */
+  .cro { position: relative; overflow: hidden; flex: none; background: radial-gradient(ellipse 45% 9% at 50% 87%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); }
+  .cro img { position: absolute; max-width: none; }
+  .cro.body { width: 150px; height: 150px; border-radius: 22px; border: 3px solid var(--line-g); }
+  .cro.body img { width: 165%; left: -35%; top: -46%; }
+  .cro.head { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--sel); }
+  .cro.head img { width: 300%; left: -104%; top: -89%; }
+  .cro.head.lg { width: 96px; height: 96px; }
+
+  .qtext { font-size: 1.15em; line-height: 1.55; margin: 0; font-weight: 500; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .ans { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: center; min-height: 56px; padding: 8px 14px 8px 8px; border-radius: 16px; border: 3px solid var(--line-g); background: #fff; cursor: pointer; text-align: left; font: inherit; color: var(--ink-g); box-shadow: 0 3px 0 #e0c294; }
+  .ans:hover { border-color: var(--board-edge); }
+  .ans .k { width: 36px; height: 36px; border-radius: 10px; background: #f3e2c0; color: #5a3b1a; display: grid; place-items: center; font-weight: 800; }
+  .ans[aria-pressed="true"] { border-color: #1a47c8; background: #e8eefc; }
+  .ans[aria-pressed="true"] .k { background: #1a47c8; color: #fff; }
+  .ans.is-right { border-color: var(--ok); background: var(--ok-soft); }
+  .ans.is-right .k { background: var(--ok); color: #fff; }
+  .ans.is-wrong { border-color: var(--bad); background: var(--bad-soft); }
+  .ans.is-wrong .k { background: var(--bad); color: #fff; }
+  .ans[disabled] { cursor: default; }
+  .ans .was { display: none; }
+  .ans.was-pick { background: #efe3cc; border-style: dashed; }
+  /* ===== practice / mock exam ===== */
+  .player { display: grid; gap: 18px; max-width: 760px; margin: 0 auto; }
+  .ptop { display: flex; align-items: center; gap: 12px; }
+  .timer { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-variant-numeric: tabular-nums; background: rgba(34,28,58,.86); color: #fff; padding: 6px 12px; border-radius: 99px; }
+  .timer svg { width: 18px; height: 18px; }
+  .qtype { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .tip { border-radius: 18px; border: 3px solid #d9a21a; background: #fff3c4; padding: 14px 18px; display: grid; gap: 10px; }
+  .tip h3 { margin: 0; font-size: .98em; }
+  .tip ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+  .tip .trap { color: var(--bad); font-weight: 700; }
+  .tip small { color: var(--muted-g); }
+  .tip p { margin: 0; }
+  .feedback { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; padding: 12px 16px; background: var(--bad-soft); border: 2px solid var(--bad); border-radius: 18px; }
+  .feedback p, .praise p { margin: 0; }
+  .feedback b { color: var(--bad); }
+  .praise { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; padding: 12px 16px; background: var(--ok-soft); border: 2px solid var(--ok); border-radius: 18px; }
+  .praise b { color: var(--ok); }
+  .qmap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .qn { width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--line-g); background: #fff; color: #5a3b1a; font: inherit; font-weight: 600; cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .qn.done { background: #f3e2c0; border-color: var(--board-edge); }
+  .qn[aria-current="true"] { border-color: #1a47c8; color: #1a47c8; background: #e8eefc; }
+  .qn.wrong { border-color: var(--bad); color: var(--bad); background: var(--bad-soft); }
+  .qn.fixed { border-color: var(--ok); color: var(--ok); background: var(--ok-soft); }
+  .pfoot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .graph { width: 100%; max-width: 360px; border-radius: 14px; background: #fff; border: 2px solid var(--line-g); }
+
+  /* ===== results ===== */
+  .res { display: grid; gap: 18px; max-width: 680px; margin: 0 auto; justify-items: start; }
+  .res-top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; width: 100%; }
+  .bigscore { font-size: clamp(3.2em, 9vw, 4.8em); font-weight: 800; line-height: 1; color: #c2402a; margin: 0; }
+  .bigscore small { font-size: 24px; color: var(--muted-g); font-weight: 600; }
+  .res h1 { font-size: 1.4em; font-weight: 800; margin: 0; }
+  .res p { margin: 0; }
+  .xp { display: grid; gap: 8px; width: 100%; padding: 14px 16px; border-radius: 18px; background: #fffdf7; border: 3px solid var(--line-g); }
+  .xp .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .xp b { font-size: 1.1em; }
+  .xpparts { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .xpparts li { display: flex; justify-content: space-between; gap: 12px; max-width: 320px; font-size: .95em; }
+  .xpparts b { color: var(--ok); font-size: 1em; font-variant-numeric: tabular-nums; }
+  .xpgain { color: #1f7a43; font-weight: 800; font-size: 1.15em; }
+  .bytype { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 12px; }
+  .bytype li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; }
+  .bytype .nm { font-weight: 500; }
+  .bytype .ct { font-variant-numeric: tabular-nums; color: var(--muted-g); font-size: .9em; }
+  .bytype .tr { grid-column: 1 / -1; height: 12px; border-radius: 99px; background: #ecd9b4; overflow: hidden; }
+  .bytype .tr i { display: block; height: 100%; border-radius: inherit; background: #23874a; }
+  .bytype li.weak .tr i { background: #c2402a; }
+  .bytype li.weak .nm { color: var(--bad); font-weight: 700; }
+  .advice { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 16px; border-radius: 20px; border: 3px solid var(--board-edge); background: #fffdf7; }
+  .advice .body { display: grid; gap: 10px; }
+  .advice ol { margin: 0; padding-left: 1.3em; display: grid; gap: 4px; }
+  .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .review { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 8px; }
+  .review li { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 14px; border-radius: 14px; background: #fff; border: 2px solid var(--line-g); }
+  .review b { color: var(--bad); }
+  .sub { font-size: 1.05em; font-weight: 800; margin: 0; }
+
+  .mock-seg { flex-wrap: wrap; }
+  .ptop { flex-wrap: wrap; }
+  #scope-chip { white-space: nowrap; }
+  @media (max-width: 560px) {
+    .opts { grid-template-columns: 1fr; }
+    #scope-chip { order: 9; flex: 1 1 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gbtn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Kiểm tra khóa</span>
+  <span class="mock-seg"><span>Màn</span><button data-set="state:thi">Thi thử khóa</button><button data-set="state:luyen">Luyện 10 câu (có mẹo)</button><button data-set="state:ket-qua-thi">Kết quả thi thử khóa</button><button data-set="state:ket-qua">Kết quả luyện</button><button data-set="state:sua-sai">Sửa câu sai</button></span>
+  <span class="mock-seg"><span>Khóa của gà</span><button data-set="ga:toan">Toán</button><button data-set="ga:van">Văn</button><button data-set="ga:anh">Anh</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-note">URL: ?state=thi&amp;ga=van&amp;from=chuong</span>
+</div>
+
+<main class="wrap">
+
+<!-- ===================== PRACTICE / MOCK EXAM ===================== -->
+<section class="board" data-when="state=luyen|thi" aria-labelledby="t-play">
+  <h1 class="ribbon" id="t-play"><span data-when="state=luyen" data-en="10 questions">Luyện 10 câu</span><span data-when="state=thi" data-en="Course mock exam">Thi thử khóa</span></h1>
+  <div class="player">
+    <div class="ptop">
+      <a class="xbtn finish" href="lg-03-chuong-ga.html?mon=toan&amp;ga=toan" aria-label="Lưu và thoát"><i data-i="x"></i></a>
+      <span class="cro head" data-when="state=luyen"><img src="assets/ga/toan.png" alt=""></span>
+      <div class="bar" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="10" data-when="state=luyen"><i style="width:30%"></i></div>
+      <span class="chip" data-when="state=luyen" data-en="Q 3/10">Câu 3/10</span>
+      <span class="timer" role="timer" aria-label="Thời gian" data-when="state=luyen"><i data-i="clock"></i>08:42</span>
+      <span class="chip" data-when="state=thi" data-en="Q 6/22">Câu 6/22</span>
+      <span class="chip lv" data-when="state=thi" id="scope-chip">Trong khóa: Cấp số cộng</span>
+      <span style="flex:1" data-when="state=thi"></span>
+      <span class="timer" role="timer" aria-label="Còn lại" data-when="state=thi"><i data-i="clock"></i>31:20</span>
+    </div>
+
+    <div class="qtype" data-when="state=luyen">
+      <span class="chip" id="nb-chip" hidden>Ôn từ vở của em</span>
+      <span class="chip" data-en="Type: find the common difference">Dạng: tìm công sai</span>
+      <button class="gbtn wood" type="button" id="tipb" aria-expanded="false" aria-controls="tip" style="min-height:42px;padding:0 16px"><i data-i="flag"></i><span data-en="Tips for this type">Mẹo dạng này</span></button>
+    </div>
+    <div class="tip" id="tip" data-when="state=luyen">
+      <h3 data-en="Steps">Các bước</h3>
+      <ol>
+        <li>Viết uₙ = u₁ + (n − 1)d cho số hạng đã biết.</li>
+        <li>Thay u₁ và uₙ vào, giải ra d.</li>
+        <li>Thử lại bằng cách liệt kê vài số hạng.</li>
+      </ol>
+      <p><span class="trap" data-en="Trap:">Bẫy:</span> <span data-en="dividing by n instead of n − 1 gives the wrong d.">chia cho n thay vì n − 1, ra d lệch.</span></p>
+      <small data-en="Mentor wrote this from the exam questions of this type.">Mentor soạn từ các câu dạng này trong đề thi.</small>
+    </div>
+
+    <div data-when="state=thi" class="stack">
+      <p class="qtext" id="tq">Cấp số cộng (uₙ) có u₁ = 2 và công sai d = 3. Số hạng u₇ bằng bao nhiêu?</p>
+    </div>
+    <p class="qtext" data-when="state=luyen" id="lq">Cấp số cộng có u₁ = 5 và u₄ = 14. Tìm công sai d.</p>
+
+    <div class="opts" id="opts" role="group" aria-label="Đáp án">
+      <button class="ans" type="button" data-ok="1"><span class="k">A</span><span data-when="state=luyen">3</span><span data-when="state=thi">20</span></button>
+      <button class="ans" type="button" data-ok="0"><span class="k">B</span><span data-when="state=luyen">4</span><span data-when="state=thi">23</span></button>
+      <button class="ans" type="button" data-ok="0"><span class="k">C</span><span data-when="state=luyen">2</span><span data-when="state=thi">17</span></button>
+      <button class="ans" type="button" data-ok="0"><span class="k">D</span><span data-when="state=luyen">9</span><span data-when="state=thi">21</span></button>
+    </div>
+    <div class="feedback" id="fb" hidden data-when="state=luyen">
+      <span class="cro head"><img src="assets/ga/toan-buon.png" alt=""></span>
+      <p><b data-en="Not quite.">Chưa đúng.</b> <span>u₄ = u₁ + 3d, nên 14 = 5 + 3d, d = 3. Nhân với n − 1 = 3, không phải 4.</span></p>
+    </div>
+    <div class="praise" id="ok" hidden data-when="state=luyen">
+      <span class="cro head"><img src="assets/ga/toan-vui.png" alt=""></span>
+      <p><b data-en="Right!">Đúng rồi!</b> <span data-en="Gà Toán jumps for joy. +2 XP.">Gà Toán nhảy cẫng lên. +2 kinh nghiệm.</span></p>
+    </div>
+
+    <div class="qmap" id="qmap" role="group" aria-label="Bản đồ câu"></div>
+    <div class="pfoot">
+      <button class="gbtn quiet" type="button" data-when="state=luyen" data-en="Hint">Gợi ý</button>
+      <a class="gbtn wood" href="#" data-set="state:ket-qua" data-when="state=luyen" data-en="Submit">Nộp bài</a>
+      <a class="gbtn wood" href="#" data-set="state:ket-qua-thi" data-when="state=thi" data-en="Submit">Nộp bài</a>
+      <a class="gbtn" href="#" data-en="Next">Câu tiếp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRACTICE RESULT ===================== -->
+<section class="board" data-when="state=ket-qua" aria-labelledby="t-kq">
+  <h1 class="ribbon" id="t-kq" data-en="Done: 10 questions">Xong 10 câu</h1>
+  <div class="res">
+    <div class="res-top">
+      <span class="cro body"><img src="assets/ga/toan-vui.png" alt=""></span>
+      <div><p class="bigscore">8<small>/10</small></p><p class="xpgain" data-en="Gà Toán +16 XP">Gà Toán +16 kinh nghiệm</p><p class="muted" data-en="8 right answers × 2">8 câu đúng × 2</p></div>
+    </div>
+    <h1 data-en="Slip: counting one gap too many (n − 1)">Sai: đếm thiếu một khoảng (n − 1)</h1>
+    <p class="muted"><i data-i="clock"></i> <span data-en="2 wrong ones return Thursday evening. Fix them now for +3 XP each.">2 câu sai: ôn lại tối thứ Năm. Sửa ngay được +3 kinh nghiệm mỗi câu.</span></p>
+    <div class="acts">
+      <a class="gbtn" href="#" data-set="state:sua-sai" data-en="Fix 2 wrong">Sửa 2 câu sai</a>
+      <a class="gbtn quiet finish" href="lg-03-chuong-ga.html?mon=toan&amp;ga=toan" data-en="Done">Xong</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MOCK EXAM RESULT ===================== -->
+<section class="board" data-when="state=ket-qua-thi" aria-labelledby="t-kqt">
+  <h1 class="ribbon" id="t-kqt" data-en="Course mock exam result">Kết quả thi thử khóa</h1>
+  <div class="res">
+    <div class="res-top">
+      <span class="cro body"><img src="assets/ga/toan.png" alt=""></span>
+      <div><p class="bigscore">6,4<small>/10</small></p><p class="muted" id="kqt-sub">Cấp số cộng · 22 câu · 38 phút</p><p class="xpgain" data-en="Gà Toán +40 XP for submitting">Gà Toán +40 kinh nghiệm khi nộp bài</p></div>
+    </div>
+    <h2 class="sub" data-en="By question type">Theo dạng câu</h2>
+    <ul class="bytype">
+      <li><span class="nm">Tìm số hạng thứ n</span><span class="ct">5/6</span><span class="tr"><i style="width:83%"></i></span></li>
+      <li><span class="nm">Tổng n số hạng đầu</span><span class="ct">4/5</span><span class="tr"><i style="width:80%"></i></span></li>
+      <li><span class="nm">Đúng/sai từng ý</span><span class="ct">4/7</span><span class="tr"><i style="width:57%"></i></span></li>
+      <li class="weak"><span class="nm">Tìm công sai từ hai số hạng</span><span class="ct">1/4</span><span class="tr"><i style="width:25%"></i></span></li>
+    </ul>
+    <div class="advice">
+      <span class="cro head lg"><img src="assets/ga/toan-ngac.png" alt=""></span>
+      <div class="body">
+        <p><b data-en="Gà Toán: finding d from two terms 1/4, your weakest type.">Gà Toán: tìm công sai từ hai số hạng đúng 1/4, thấp nhất bài.</b></p>
+        <ol>
+          <li>Viết hai số hạng đã biết theo u₁ và d.</li>
+          <li>Trừ hai vế để mất u₁, tìm d.</li>
+          <li>Thế d vào, tìm số hạng cần hỏi.</li>
+        </ol>
+        <p><span style="color:var(--bad);font-weight:700" data-en="Trap:">Bẫy:</span> <span data-en="dividing by n instead of n − 1 when finding d.">chia cho n thay vì n − 1 khi tìm d.</span></p>
+        <div class="acts">
+          <a class="gbtn" href="#" data-set="state:luyen" data-en="Practise 10 questions on d">Luyện 10 câu tìm công sai</a>
+          <a class="gbtn wood" href="#" data-set="state:sua-sai" data-en="Review the exam">Xem lại bài thi</a>
+        </div>
+      </div>
+    </div>
+    <a class="gbtn quiet finish" href="lg-03-chuong-ga.html?mon=toan&amp;ga=toan" data-en="Done">Xong</a>
+  </div>
+</section>
+
+<!-- ===================== FIX WRONG ===================== -->
+<section class="board" data-when="state=sua-sai" aria-labelledby="t-fx">
+  <h1 class="ribbon" id="t-fx" data-en="Fix the wrong ones">Sửa câu sai</h1>
+  <div class="player">
+    <div id="fx-q" class="stack" style="gap:18px">
+      <div class="ptop">
+        <a class="xbtn" href="#" data-set="state:ket-qua" aria-label="Quay lại kết quả"><i data-i="x"></i></a>
+        <span class="chip" id="fx-count">Câu sai 1/2</span>
+        <span style="flex:1"></span>
+        <div class="qmap" id="fx-map" role="group" aria-label="Câu sai"></div>
+      </div>
+      <p class="qtext" id="fx-text"></p>
+      <p class="muted" id="fx-hint" data-en="Try again before the answer. Each one you fix: +3 XP.">Thử lại trước khi xem lời giải. Mỗi câu tự sửa được: +3 kinh nghiệm.</p>
+      <div class="opts" id="fx-opts"></div>
+      <div class="praise" id="fx-ok" hidden><span class="cro head"><img src="assets/ga/toan-vui.png" alt=""></span><p><b data-en="Right!">Đúng rồi!</b> <span data-en="You fixed it yourself. +3 XP.">Em tự sửa được rồi. +3 kinh nghiệm.</span></p></div>
+      <div class="feedback" id="fx-no" hidden><span class="cro head"><img src="assets/ga/toan-buon.png" alt=""></span><p><b>Gà Toán:</b> <span id="fx-why"></span></p></div>
+      <p id="fx-nextwrap" hidden style="margin:0"><button class="gbtn" type="button" id="fx-next">Câu sai tiếp</button></p>
+    </div>
+    <div class="res" id="fx-sum" hidden>
+      <div class="res-top"><span class="cro body"><img src="assets/ga/toan-vui.png" alt=""></span><div><p class="bigscore" id="fx-score"></p><p class="xpgain" id="fx-xp"></p></div></div>
+      <p class="muted"><i data-i="clock"></i> <span id="fx-line"></span></p>
+      <a class="gbtn finish" href="lg-03-chuong-ga.html?mon=toan&amp;ga=toan">Xong</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  const root = document.documentElement, $ = (id) => document.getElementById(id);
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const q = new URLSearchParams(location.search);
+
+  // the course mock exam only covers this course
+  const COURSE = { toan: ["Cấp số cộng", "Arithmetic sequences"], van: ["Thơ mới", "Thơ mới poetry"], anh: ["Câu điều kiện", "Conditionals"] };
+  const COURSEQ = { toan: ["Cấp số cộng (uₙ) có u₁ = 2 và công sai d = 3. Số hạng u₇ bằng bao nhiêu?", ["20", "23", "17", "21"]],
+    van: ["Trong Vội vàng, “Của ong bướm này đây tuần tháng mật” dùng biện pháp tu từ nào là chính?", ["Liệt kê", "So sánh", "Nhân hóa", "Ẩn dụ"]],
+    anh: ["If it ____ tomorrow, we will stay at home.", ["rains", "rained", "will rain", "would rain"]] };
+  function paintScope() {
+    const c = COURSE[bk()];
+    $("scope-chip").textContent = T("Trong khóa: ", "In this course: ") + T(c[0], c[1]);
+    const Z = COURSEQ[bk()], tq = $("tq");
+    tq.textContent = Z[0];
+    document.querySelectorAll('#opts .ans span[data-when="state=thi"]').forEach((o, i) => { o.textContent = Z[1][i]; });
+    $("kqt-sub").textContent = T(c[0] + " · 22 câu · 38 phút", c[1] + " · 22 questions · 38 min");
+  }
+  const en =() => root.lang === "en";
+  const T = (vi, e) => (en() ? e : vi);
+  // experience: 100 per level, same as everywhere
+  const bank = (lv, xp, gain) => { xp += gain; while (xp >= 100) { xp -= 100; lv++; } return { lv, xp }; };
+  const bk = () => (COURSE[root.dataset.ga] ? root.dataset.ga : "toan");
+  const L = "ABCD";
+  // ---------- the reviewer bar: language, state, course ----------
+  document.addEventListener("mock:change", (e) => {
+    const k = e.detail.key, st = root.dataset.state;
+    if (k === "lang") { paintScope(); return; }
+    if (k === "state" || k === "ga") {
+      paintScope(); setExit();
+      if (k === "state") {
+        $("tip").hidden = true; $("tipb").setAttribute("aria-expanded", "false");
+        document.querySelectorAll("#opts .ans").forEach((o) => { o.classList.remove("is-right", "is-wrong"); o.removeAttribute("aria-pressed"); });
+        $("fb").hidden = $("ok").hidden = true;
+        paintMap();
+        if (st === "sua-sai") fxStart();
+        window.scrollTo(0, 0);
+      }
+    }
+  });
+
+  // ---------- practice / mock exam ----------
+  $("tipb").addEventListener("click", () => { const t = $("tip"); t.hidden = !t.hidden; $("tipb").setAttribute("aria-expanded", String(!t.hidden)); });
+  function paintMap() {
+    const thi = root.dataset.state === "thi", total = thi ? 22 : 10, cur = thi ? 6 : 3;
+    $("qmap").innerHTML = Array.from({ length: total }, (_, i) => `<button class="qn${i + 1 < cur || (thi && [7, 9].includes(i + 1)) ? " done" : ""}" type="button" aria-label="Câu ${i + 1}" ${i + 1 === cur ? 'aria-current="true"' : ""}>${i + 1}</button>`).join("");
+  }
+  $("opts").addEventListener("click", (e) => {
+    const b = e.target.closest(".ans"); if (!b) return;
+    if (root.dataset.state === "thi") {   // a mock exam only records the choice: no right/wrong until it is submitted
+      document.querySelectorAll("#opts .ans").forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+      document.querySelector('#qmap [aria-current="true"]').classList.add("done"); return;
+    }
+    document.querySelectorAll("#opts .ans").forEach((o) => o.classList.remove("is-right", "is-wrong"));
+    const ok = b.dataset.ok === "1";
+    b.classList.add(ok ? "is-right" : "is-wrong");
+    if (!ok) document.querySelector('#opts .ans[data-ok="1"]').classList.add("is-right");
+    $("fb").hidden = ok; $("ok").hidden = !ok;
+    document.querySelector('#qmap [aria-current="true"]').classList.add("done");
+  });
+
+  // ---------- fix wrong: retry first, reveal only after a second miss ----------
+  const FX = [
+    { n: 3, t: "Cấp số cộng có u₁ = 5 và u₄ = 14. Tìm công sai d.", o: ["3", "4", "2", "9"], ok: 0, was: 1, why: "u₄ = u₁ + 3d, nên 14 = 5 + 3d, d = 3. Nhân với n − 1 = 3, không phải 4." },
+    { n: 7, t: "Cấp số cộng có u₁ = 3, d = 2. Tìm u₁₀.", o: ["21", "23", "19", "25"], ok: 0, was: 1, why: "u₁₀ = u₁ + 9d = 3 + 18 = 21. Cộng 9 lần d, không phải 10." },
+  ];
+  let fi = 0, fixedN = 0;
+  function fxMap() { $("fx-map").innerHTML = FX.map((x, i) => `<span class="qn ${x.done === 1 ? "fixed" : "wrong"}" ${i === fi ? 'aria-current="true"' : ""}>${x.n}</span>`).join(""); }
+  function fxShow() {
+    const x = FX[fi];
+    $("fx-count").textContent = T(`Câu sai ${fi + 1}/${FX.length}`, `Wrong ${fi + 1}/${FX.length}`);
+    $("fx-text").textContent = x.t;
+    $("fx-opts").innerHTML = x.o.map((t, i) => `<button class="ans" type="button" data-i="${i}"><span class="k">${L[i]}</span><span>${t}${i === x.was ? ` <small class="muted">(${T("em đã chọn", "you chose")})</small>` : ""}</span></button>`).join("");
+    const w = $("fx-opts").children[x.was]; w.disabled = true; w.classList.add("was-pick");
+    $("fx-hint").hidden = false; $("fx-ok").hidden = $("fx-no").hidden = $("fx-nextwrap").hidden = true;
+    $("fx-next").textContent = fi === FX.length - 1 ? T("Xong phần sửa", "Finish") : T("Câu sai tiếp", "Next wrong one");
+    fxMap();
+  }
+  function fxStart() { FX.forEach((x) => delete x.done); fi = 0; fixedN = 0; $("fx-q").hidden = false; $("fx-sum").hidden = true; fxShow(); }
+  $("fx-opts").addEventListener("click", (e) => {
+    const b = e.target.closest(".ans"); if (!b || b.disabled) return;
+    const x = FX[fi], i = +b.dataset.i, ok = i === x.ok;
+    [...$("fx-opts").children].forEach((o) => { o.disabled = true; });
+    $("fx-hint").hidden = true;
+    if (ok) { b.classList.add("is-right"); x.done = 1; fixedN++; $("fx-ok").hidden = false; }
+    else { b.classList.add("is-wrong"); $("fx-opts").children[x.ok].classList.add("is-right"); $("fx-why").textContent = x.why; $("fx-no").hidden = false; }
+    $("fx-nextwrap").hidden = false; fxMap();
+  });
+  $("fx-next").addEventListener("click", () => {
+    if (fi < FX.length - 1) { fi++; fxShow(); return; }
+    $("fx-q").hidden = true; $("fx-sum").hidden = false;
+    $("fx-score").innerHTML = `${fixedN}<small>/${FX.length}</small>`;
+    $("fx-xp").textContent = T(`Gà Toán +${fixedN * 3} kinh nghiệm`, `Gà Toán +${fixedN * 3} XP`);
+    $("fx-line").textContent = fixedN === FX.length ? T("Sửa hết rồi.", "All fixed.") : T(`Sửa được ${fixedN}/${FX.length}. Câu còn lại ôn lại tối thứ Năm.`, `Fixed ${fixedN}/${FX.length}. The rest return Thursday evening.`);
+  });
+  // every exit goes back to the chicken's coop (the course the test belongs to)
+  const setExit = () => document.querySelectorAll(".finish").forEach((fin) => { fin.href = "lg-03-chuong-ga.html?mon=" + bk() + "&ga=" + bk(); });
+  document.querySelectorAll(".finish").forEach((fin) => fin.addEventListener("click", (e) => { e.preventDefault(); mockReturn(fin.getAttribute("href")); }));
+
+  window.addEventListener("DOMContentLoaded", () => {
+    paintMap(); fxStart(); setExit(); paintScope();
+    // links from the village: ?mon=toan&tab=luyen-tap|thi-thu[&on=ghi-chep]
+    const gaP = q.get("ga") || q.get("mon");
+    if (gaP && COURSE[gaP]) mockSet("ga", gaP);
+    const TAB = { "luyen-tap": "luyen", "thi-thu": "thi" };
+    if (!q.get("state") && TAB[q.get("tab")]) mockSet("state", TAB[q.get("tab")]);
+    if (q.get("on") === "ghi-chep") {
+      $("nb-chip").hidden = false;
+      const r = document.querySelector('#t-play [data-when="state=luyen"]'); r.textContent = "Ôn từ vở của em"; r.removeAttribute("data-en");
+    }
+    if (reduce) document.querySelectorAll("img.sp").forEach((i) => { i.src = "assets/ga/toan.png"; });
+    // re-run after shared.js applied ?state=
+    const st = root.dataset.state;
+    $("tip").hidden = true; $("tipb").setAttribute("aria-expanded", "false"); paintMap(); if (st === "sua-sai") fxStart();
+  });
+})();
+</script>
+</body>
+</html>

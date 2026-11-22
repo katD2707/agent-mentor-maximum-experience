@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<rect x="25" y="150" width="300" height="300" rx="24" fill="#E9E5F6"/>
+<rect x="350" y="150" width="300" height="300" rx="24" fill="#E9E5F6"/>
+<rect x="675" y="150" width="300" height="300" rx="24" fill="#E9E5F6"/>
+<line x1="175.0" y1="320.0" x2="85.0" y2="320.0" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<line x1="175.0" y1="320.0" x2="265.0" y2="320.0" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<circle cx="85.0" cy="320.0" r="26" fill="#E8806A" stroke="#2B283F" stroke-width="2"/>
+<circle cx="265.0" cy="320.0" r="26" fill="#E8806A" stroke="#2B283F" stroke-width="2"/>
+<circle cx="175.0" cy="320.0" r="34" fill="#5A4BC0" stroke="#2B283F" stroke-width="2"/>
+<line x1="500.0" y1="300.0" x2="424.9" y2="358.2" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<line x1="500.0" y1="300.0" x2="575.1" y2="358.2" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<circle cx="424.9" cy="358.2" r="20" fill="#9FD8BF" stroke="#2B283F" stroke-width="2"/>
+<circle cx="575.1" cy="358.2" r="20" fill="#9FD8BF" stroke="#2B283F" stroke-width="2"/>
+<circle cx="500.0" cy="300.0" r="30" fill="#E8806A" stroke="#2B283F" stroke-width="2"/>
+<line x1="825.0" y1="320.0" x2="825.0" y2="213.4" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<circle cx="825.0" cy="213.4" r="19" fill="#9FD8BF" stroke="#2B283F" stroke-width="2"/>
+<line x1="825.0" y1="320.0" x2="865.4" y2="413.4" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<circle cx="865.4" cy="413.4" r="19" fill="#9FD8BF" stroke="#2B283F" stroke-width="2"/>
+<line x1="825.0" y1="320.0" x2="900.7" y2="308.3" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<circle cx="900.7" cy="308.3" r="19" fill="#9FD8BF" stroke="#2B283F" stroke-width="2"/>
+<line x1="825.0" y1="320.0" x2="708.9" y2="344.9" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<circle cx="708.9" cy="344.9" r="19" fill="#9FD8BF" stroke="#2B283F" stroke-width="2"/>
+<circle cx="825.0" cy="320.0" r="32" fill="#5A4BC0" stroke="#2B283F" stroke-width="2"/>
+<text x="175" y="530" font-family="Lexend, sans-serif" font-size="32" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">CO&#8322;: th&#7859;ng</text>
+<text x="500" y="530" font-family="Lexend, sans-serif" font-size="32" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">H&#8322;O: g&#7845;p kh&#250;c</text>
+<text x="825" y="530" font-family="Lexend, sans-serif" font-size="32" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">CH&#8324;: t&#7913; di&#7879;n</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

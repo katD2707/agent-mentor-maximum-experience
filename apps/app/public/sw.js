@@ -49,7 +49,7 @@ self.addEventListener("fetch", (e) => {
 // an app path only: "/khoa-hoc/<id>?lesson=<id>", "/luyen-tap", ... Anything else (an old "/chat?..." link) is the hub.
 function route(link) {
   if (typeof link !== "string" || !link.startsWith("/") || link.startsWith("//")) return "/";
-  if (/^\/(khoa-hoc|khoa|luyen-tap|hoi-dap|tien-do)(\/|\?|$)/.test(link)) return link;
+  if (/^\/(khoa-hoc|khoa|luyen-tap|hoi-dap|tien-do|chuong|kiem-tra|dau-truong|phong-tu-hoc|thu-vien)(\/|\?|$)/.test(link)) return link;
   return "/";
 }
 

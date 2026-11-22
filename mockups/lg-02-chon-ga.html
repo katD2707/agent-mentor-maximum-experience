@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-kid="nam" data-step="ngon-ngu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chọn gà</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  /* First run only: language, birth year (age band worked out once), boy or girl, then exactly 3 chickens.
+     More chickens later come from the Chợ gà box in the village (lg-01-lang.html?cho=1), not from this file. */
+  :root { --board: #fff7e6; --board-edge: #c98a45; --board-dark: #7d4c22; --ink-g: #3a2010; --sel: #ffcf3d; }
+  body { min-height: 100vh; background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; }
+  body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .38); backdrop-filter: blur(6px); }
+  .wrap { position: relative; max-width: 980px; margin: 0 auto; padding: 40px 16px 150px; }
+  .board { background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 34px clamp(16px, 4vw, 36px) 28px; position: relative; color: var(--ink-g); margin-top: 24px; }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 28px; border-radius: 16px; background: linear-gradient(#c4432a, #a83a24); color: #fff; font-size: clamp(1.1em, 3vw, 1.45em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #86301d; }
+  .lead { text-align: center; color: #6b4a2e; margin: 6px 0 20px; font-weight: 500; }
+  :focus-visible { outline: 3px solid #1d4fb8; outline-offset: 3px; }
+
+  /* step 1: language (picked once, moves on by itself) */
+  .langs { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); justify-content: center; gap: 20px; }
+  .lang { display: grid; gap: 4px; justify-items: center; padding: 26px 16px 22px; border-radius: 22px; border: 3px solid #b27a3d; background: linear-gradient(#f2c68c, #d6a060); color: #3a2010; font: inherit; cursor: pointer; box-shadow: 0 6px 0 #8a5a2b; transition: transform .15s ease; }
+  .lang:hover { transform: translateY(-3px); }
+  .lang:active { transform: translateY(3px); box-shadow: 0 2px 0 #8a5a2b; }
+  .lang .hello { font-size: 2em; font-weight: 800; }
+  .lang .name { font-weight: 600; }
+
+  /* step 2: birth year. The matching picture stands out; the line below names the level */
+  .q { display: flex; justify-content: center; margin: -8px 0 14px; }
+  .speak { min-height: 48px; padding: 0 18px 0 14px; display: inline-flex; align-items: center; gap: 8px; border-radius: 14px; border: 3px solid #b27a3d; background: linear-gradient(#f2c68c, #d6a060); color: #3a2010; font: inherit; font-weight: 700; cursor: pointer; box-shadow: 0 4px 0 #8a5a2b; }
+  .speak svg { width: 24px; height: 24px; }
+  .figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(8px, 2vw, 20px); align-items: end; max-width: 560px; margin: 0 auto 18px; padding: 14px 14px 6px; border-radius: 22px; background: radial-gradient(ellipse 80% 9% at 50% 97%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 80%, #b6e39a 80%); border: 3px solid #e7cfa8; }
+  .figs svg { width: 100%; height: auto; opacity: .75; transform-origin: 50% 100%; transition: opacity .25s ease, transform .3s cubic-bezier(.2,.8,.2,1.2), filter .25s ease; }
+  .figs[data-pick] svg { opacity: .4; filter: grayscale(1); transform: scale(.88); }
+  .figs[data-pick] svg.on { opacity: 1; filter: none; transform: scale(1.1); }
+  .pickyear { display: flex; justify-content: center; }
+  .year { min-width: 220px; min-height: 56px; padding: 0 44px 0 20px; border-radius: 16px; border: 3px solid #b27a3d; background: #fffdf7; color: #3a2010; font: inherit; font-size: 1.25em; font-weight: 700; font-variant-numeric: tabular-nums; cursor: pointer; box-shadow: 0 4px 0 #8a5a2b; }
+  .level { margin: 14px 0 0; min-height: 1.5em; text-align: center; font-size: 1.15em; font-weight: 800; color: #8a2c14; }
+
+  /* step 3: who are you */
+  .who { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); justify-content: center; gap: 20px; }
+  .pick { position: relative; display: grid; justify-items: center; gap: 6px; padding: 10px 10px 14px; border-radius: 22px; border: 3px solid #e7cfa8; background: radial-gradient(ellipse 60% 10% at 50% 86%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 55%, #b6e39a 55%); cursor: pointer; font: inherit; color: var(--ink-g); box-shadow: 0 5px 0 #e0c294; transition: transform .15s ease; }
+  .pick img { width: 100%; max-width: 200px; aspect-ratio: 1; object-fit: cover; }
+  .pick b { font-size: 1.15em; }
+  .pick[aria-pressed="true"] { border-color: var(--sel); box-shadow: 0 5px 0 #c99a10, 0 0 0 4px rgba(255, 207, 61, .45); transform: translateY(-3px); }
+  .pick .chk { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: var(--sel); color: #5a3b00; display: none; place-items: center; border: 2px solid #fff; }
+  .pick .chk svg { width: 20px; height: 20px; }
+  .pick[aria-pressed="true"] .chk { display: grid; }
+
+  /* step 4: three perches, then the grid */
+  .perches { display: grid; grid-template-columns: repeat(3, minmax(0, 150px)); justify-content: center; gap: 14px; margin-bottom: 22px; }
+  .perch { position: relative; aspect-ratio: 1; border-radius: 22px; border: 3px dashed #d9b882; background: #fbecd0; display: grid; place-items: center; overflow: hidden; }
+  .perch span { font-size: 2.2em; font-weight: 800; color: #8a6428; }
+  .perch img { position: absolute; inset: -18% -18% -4%; width: 136%; height: auto; object-fit: contain; }
+  .perch.on { border-style: solid; border-color: var(--sel); background: radial-gradient(ellipse 55% 12% at 50% 84%, #8fc66d 98%, transparent 100%), #d8f0fb; }
+  .perch small { position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); font-weight: 700; background: rgba(34, 28, 58, .84); color: #fff; padding: 1px 8px; border-radius: 99px; font-size: .8em; white-space: nowrap; }
+  .count { text-align: center; font-weight: 700; margin: -8px 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+  .ga { position: relative; display: grid; justify-items: center; gap: 2px; padding: 0 8px 12px; border-radius: 20px; border: 3px solid #e7cfa8; background: #fffdf7; cursor: pointer; font: inherit; color: var(--ink-g); box-shadow: 0 4px 0 #e0c294; overflow: hidden; transition: transform .15s ease, opacity .2s ease; }
+  .ga .pic { width: calc(100% + 16px); aspect-ratio: 1.15; position: relative; background: radial-gradient(ellipse 40% 9% at 50% 88%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); margin: 0 -8px 6px; overflow: hidden; }
+  /* the sprite frame leaves room above for the jump: blow it up so the chicken fills the tile, feet on the grass */
+  .ga .pic img { position: absolute; left: 50%; top: -50%; width: 145%; max-width: none; transform: translateX(-50%); }
+  .ga .pic img.st2 { top: -84%; width: 178%; }  /* Văn and Anh are drawn as gà choai: shorter, so zoom in more */
+  .ga b { font-size: 1.02em; }
+  .ga small { color: #6b4a2e; font-weight: 500; }
+  .ga[aria-pressed="true"] { border-color: var(--sel); box-shadow: 0 4px 0 #c99a10, 0 0 0 4px rgba(255, 207, 61, .45); transform: translateY(-3px); }
+  .ga .chk { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%; background: var(--sel); color: #5a3b00; display: none; place-items: center; border: 2px solid #fff; }
+  .ga .chk svg { width: 18px; height: 18px; }
+  .ga[aria-pressed="true"] .chk { display: grid; }
+  .ga.soon .pic img { filter: brightness(0) opacity(.16); }
+  .ga .tagd { position: absolute; top: 8px; left: 8px; font-size: .72em; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: rgba(34, 28, 58, .84); color: #fff; }
+  .grid.full .ga:not([aria-pressed="true"]) { opacity: .6; }
+
+  /* the big button at the bottom */
+  .foot { position: fixed; left: 0; right: 0; bottom: 0; padding: 14px 16px calc(16px + env(safe-area-inset-bottom)); display: grid; justify-items: center; gap: 8px; background: linear-gradient(transparent, rgba(20, 28, 20, .7) 40%); }
+  .row { display: flex; gap: 12px; align-items: center; justify-content: center; width: 100%; }
+  .cta { min-width: min(320px, 100%); min-height: 60px; padding: 0 28px; border-radius: 20px; border: 3px solid #fff; background: linear-gradient(#36a862, #23874a); color: #fff; font: inherit; font-size: 1.15em; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 #165c32; letter-spacing: .01em; text-shadow: 0 1px 1px rgba(0,0,0,.35); }
+  .cta:active { transform: translateY(4px); box-shadow: 0 2px 0 #23874a; }
+  .cta[disabled] { background: #6f685d; box-shadow: 0 6px 0 #4d483f; cursor: default; }
+  .back { min-height: 60px; padding: 0 20px; border-radius: 20px; border: 3px solid #b27a3d; background: linear-gradient(#f2c68c, #d6a060); color: #3a2010; font: inherit; font-weight: 700; cursor: pointer; box-shadow: 0 6px 0 #8a5a2b; }
+  .foot p { color: #fff; font-size: .9em; text-shadow: 0 1px 2px rgba(0,0,0,.7); }
+  @media (max-width: 520px) { .grid { grid-template-columns: repeat(2, 1fr); } .perches { gap: 8px; } .langs, .who { gap: 12px; } .ribbon { white-space: normal; text-align: center; width: max-content; max-width: 88%; } }
+  @media (prefers-reduced-motion: reduce) { .pick, .ga, .lang, .figs svg { transition: none; } }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Lần đầu · chọn gà</span>
+  <span class="mock-seg"><span>Bước</span><button data-set="step:ngon-ngu">1 Ngôn ngữ</button><button data-set="step:tuoi">2 Năm sinh</button><button data-set="step:ai">3 Em là ai</button><button data-set="step:ga">4 Chọn 3 gà</button></span>
+  <span class="mock-seg"><span>Cấp (tính từ năm sinh)</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg"><span>Xem trước năm</span><button data-set="year:now">Nay</button><button data-set="year:2028">2028</button><button data-set="year:2030">2030</button></span>
+  <span class="mock-note">Mỗi môn một chú gà, cầm món đồ riêng.</span>
+</div>
+
+<main class="wrap">
+  <!-- step 1: language -->
+  <section class="board" data-when="step=ngon-ngu" aria-labelledby="t0">
+    <h1 class="ribbon" id="t0">Xin chào · Hello</h1>
+    <p class="lead">Chọn ngôn ngữ · Pick a language</p>
+    <div class="langs">
+      <button class="lang" type="button" data-set="lang:vi" onclick="mockSet('step','tuoi')"><span class="hello">Xin chào</span><span class="name">Tiếng Việt</span></button>
+      <button class="lang" type="button" data-set="lang:en" onclick="mockSet('step','tuoi')"><span class="hello">Hello</span><span class="name">English</span></button>
+    </div>
+  </section>
+
+  <!-- step 2: birth year, asked once; the app works out the level in the background -->
+  <section class="board" data-when="step=tuoi" aria-labelledby="t3">
+    <h1 class="ribbon" id="t3" data-en="What year were you born?">Em sinh năm nào?</h1>
+    <p class="lead" data-en="Pick it once. Mentor sets your level by itself.">Chọn một lần thôi. Mentor tự chọn cấp học cho em.</p>
+    <div class="q"><button class="speak" type="button" id="speak"><i data-i="volume"></i><span data-en="Read aloud">Đọc to</span></button></div>
+    <div class="figs" id="figs" aria-hidden="true">
+      <!-- small child, red scarf, backpack -->
+      <svg viewBox="0 0 120 170" data-band="tieu-hoc">
+        <ellipse cx="60" cy="162" rx="34" ry="5" fill="#5f8f45" opacity=".5"/>
+        <rect x="30" y="92" width="20" height="34" rx="6" fill="#2F6FB5"/>
+        <rect x="47" y="128" width="10" height="30" rx="4" fill="#25305C"/><rect x="63" y="128" width="10" height="30" rx="4" fill="#25305C"/>
+        <rect x="42" y="88" width="36" height="44" rx="10" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+        <path d="M50 90 L60 108 L70 90 Z" fill="#E5484D"/>
+        <circle cx="60" cy="68" r="20" fill="#F4C9A1"/>
+        <path d="M40 66 C40 48 80 46 80 64 C72 58 52 58 40 66 Z" fill="#2B2321"/>
+        <circle cx="53" cy="70" r="2.4" fill="#2B2321"/><circle cx="67" cy="70" r="2.4" fill="#2B2321"/>
+        <path d="M54 78 Q60 83 66 78" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <!-- middle schooler, white shirt, book -->
+      <svg viewBox="0 0 120 170" data-band="thcs">
+        <ellipse cx="60" cy="162" rx="34" ry="5" fill="#5f8f45" opacity=".5"/>
+        <rect x="46" y="112" width="12" height="46" rx="4" fill="#25305C"/><rect x="62" y="112" width="12" height="46" rx="4" fill="#25305C"/>
+        <rect x="40" y="64" width="40" height="54" rx="10" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+        <path d="M52 66 L60 78 L68 66" stroke="#CFCAEB" stroke-width="2" fill="none"/>
+        <rect x="70" y="86" width="22" height="28" rx="3" fill="#FFB020" transform="rotate(-8 81 100)"/>
+        <circle cx="60" cy="44" r="18" fill="#E9B98E"/>
+        <path d="M42 42 C42 24 78 22 78 42 L74 36 C66 32 52 32 44 38 Z" fill="#2B2321"/>
+        <circle cx="54" cy="46" r="2.2" fill="#2B2321"/><circle cx="66" cy="46" r="2.2" fill="#2B2321"/>
+        <path d="M55 53 Q60 57 65 53" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <!-- high schooler in white áo dài -->
+      <svg viewBox="0 0 120 170" data-band="thpt">
+        <ellipse cx="60" cy="162" rx="34" ry="5" fill="#5f8f45" opacity=".5"/>
+        <path d="M44 100 L40 158 L80 158 L76 100 Z" fill="#F3F1FA" stroke="#CFCAEB" stroke-width="2"/>
+        <path d="M44 52 C40 80 40 120 46 150 L74 150 C80 120 80 80 76 52 Z" fill="#fff" stroke="#CFCAEB" stroke-width="2"/>
+        <path d="M60 52 L60 150" stroke="#E6E3F4" stroke-width="2"/>
+        <path d="M40 34 C38 60 40 84 44 96 L50 60 Z" fill="#2B2321"/><path d="M80 34 C82 60 80 84 76 96 L70 60 Z" fill="#2B2321"/>
+        <circle cx="60" cy="34" r="17" fill="#F2C49B"/>
+        <path d="M42 34 C42 14 78 14 78 34 C70 26 50 26 42 34 Z" fill="#2B2321"/>
+        <circle cx="54" cy="36" r="2.2" fill="#2B2321"/><circle cx="66" cy="36" r="2.2" fill="#2B2321"/>
+        <path d="M55 43 Q60 47 65 43" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <!-- university student, hoodie, laptop -->
+      <svg viewBox="0 0 120 170" data-band="dai-hoc">
+        <ellipse cx="60" cy="162" rx="34" ry="5" fill="#5f8f45" opacity=".5"/>
+        <rect x="45" y="106" width="13" height="52" rx="4" fill="#3B3F4A"/><rect x="62" y="106" width="13" height="52" rx="4" fill="#3B3F4A"/>
+        <rect x="36" y="50" width="48" height="62" rx="14" fill="#4B2EBF"/>
+        <path d="M48 52 Q60 64 72 52" stroke="#3A2299" stroke-width="3" fill="none"/>
+        <rect x="30" y="84" width="40" height="26" rx="3" fill="#C9CCD6"/><rect x="33" y="87" width="34" height="18" rx="2" fill="#E9EDF5"/>
+        <circle cx="60" cy="30" r="17" fill="#D9A47C"/>
+        <path d="M43 28 C44 10 78 10 77 28 L72 22 C64 18 52 19 46 24 Z" fill="#2B2321"/>
+        <rect x="49" y="28" width="9" height="6" rx="2" fill="none" stroke="#2B2321" stroke-width="1.6"/><rect x="62" y="28" width="9" height="6" rx="2" fill="none" stroke="#2B2321" stroke-width="1.6"/>
+        <path d="M58 31 h4" stroke="#2B2321" stroke-width="1.6"/>
+        <path d="M55 40 Q60 43 65 40" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="pickyear">
+      <select class="year" id="year" aria-label="Năm sinh">
+        <option value="" disabled selected>Năm sinh</option>
+      </select>
+    </div>
+    <p class="level" id="level" aria-live="polite"></p>
+  </section>
+
+  <!-- step 3: boy or girl -->
+  <section class="board" data-when="step=ai" aria-labelledby="t1">
+    <h1 class="ribbon" id="t1" data-en="Who are you?">Em là ai?</h1>
+    <p class="lead" data-en="Pick who stands in the village with the chickens.">Chọn bạn sẽ đứng trong làng cùng các chú gà.</p>
+    <div class="who">
+      <button class="pick" type="button" data-kid="nam" aria-pressed="true"><img src="assets/ga/hs-nam.webp" alt=""><b data-en="Boy">Bạn nam</b><span class="chk"><i data-i="check"></i></span></button>
+      <button class="pick" type="button" data-kid="nu" aria-pressed="false"><img src="assets/ga/hs-nu.webp" alt=""><b data-en="Girl">Bạn nữ</b><span class="chk"><i data-i="check"></i></span></button>
+    </div>
+  </section>
+
+  <!-- step 4: exactly 3 chickens -->
+  <section class="board" data-when="step=ga" id="b2" aria-labelledby="t2">
+    <h1 class="ribbon" id="t2" data-en="Pick 3 chickens">Chọn 3 chú gà</h1>
+    <p class="lead" data-en="Each chicken is one subject. It grows as you study it.">Mỗi chú gà là một môn. Gà lớn dần khi em học môn đó.</p>
+    <div class="perches" id="perches"></div>
+    <p class="count" id="count">Đã chọn 0/3</p>
+    <div class="grid" id="grid"></div>
+  </section>
+</main>
+
+<div class="foot" data-when="step=tuoi|ai|ga">
+  <div class="row"><button class="back" type="button" id="back" data-en="Back">Quay lại</button><button class="cta" type="button" id="cta">Tiếp</button></div>
+  <p id="hint" data-when="step=ga" data-en="You can take more chickens any time at the Chợ gà in the village.">Thêm gà lúc nào cũng được, ở Chợ gà trong làng.</p>
+</div>
+
+<script>
+  (function () {
+    const root = document.documentElement, $ = (id) => document.getElementById(id);
+    const en = () => root.lang === "en";
+    const t = (vi, e) => (en() ? e : vi);
+    const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+    // [id, name, courses, art] (art = file name in assets/ga; an entry without one shows a shadow + "Đang vẽ")
+    const CORE = [["toan", "Gà Toán", 14, "toan"], ["van", "Gà Văn", 9, "van"], ["anh", "Gà Anh", 11, "anh"]];
+    const REST = [["su", "Gà Sử", 3, "su"], ["dia", "Gà Địa", 3, "dia"], ["cd", "Gà Công dân", 2, "cd"], ["tin", "Gà Tin", 5, "tin"], ["cn", "Gà Công nghệ", 3, "cn"],
+      ["nt", "Gà Nghệ thuật", 2, "nghethuat"], ["kn", "Gà Kỹ năng", 2, "kynang"]];
+    const LOWER = CORE.concat([["kh", "Gà Khoa học", 6, "khoahoc"]], REST);                                                    // lớp 1-9
+    const UPPER = CORE.concat([["li", "Gà Lí", 6, "li"], ["hoa", "Gà Hóa", 5, "hoa"], ["sinh", "Gà Sinh", 4, "sinh"]], REST); // lớp 10-12
+    const UNI = [["khmt", "Gà Khoa học máy tính", 5, "khmt"], ["ktmt", "Gà Kỹ thuật máy tính", 3, "ktmt"], ["httt", "Gà Hệ thống thông tin", 1, "httt"],
+      ["khdl", "Gà Khoa học dữ liệu", 1, "khdl"], ["toanhoc", "Gà Toán học", 8, "toan"], ["vatli", "Gà Vật lí", 1, "vatli"], ["hoahoc", "Gà Hóa học", 1, "hoahoc"],
+      ["kinhte", "Gà Kinh tế", 3, "kinhte"], ["ketoan", "Gà Kế toán", 1, "ketoan"], ["nna", "Gà Ngôn ngữ Anh", 5, "anh"], ["daicuong", "Gà Đại cương", 3, "daicuong"]];
+    const GA = { "tieu-hoc": LOWER, thcs: LOWER, thpt: UPPER, "dai-hoc": UNI };
+    const LEVEL = { "tieu-hoc": ["Tiểu học", "Primary"], thcs: ["THCS", "Lower secondary"], thpt: ["THPT", "Upper secondary"], "dai-hoc": ["Đại học", "University"] };
+    const ORDER = ["ngon-ngu", "tuoi", "ai", "ga"];
+    let picked = [];
+    const list = () => GA[root.dataset.age] || UPPER;
+    const art = (g) => g[3] || "van";
+
+    function renderGrid() {
+      $("grid").innerHTML = list().map((g) => {
+        const soon = !g[3], on = picked.includes(g[0]);
+        return `<button class="ga${soon ? " soon" : ""}" type="button" data-id="${g[0]}" aria-pressed="${on}">
+          <span class="pic"><img src="assets/ga/${art(g)}.png" alt=""${art(g) === "van" || art(g) === "anh" ? ' class="st2"' : ""}></span>${soon ? `<span class="tagd">${t("Đang vẽ", "Drawing")}</span>` : ""}
+          <b>${g[1]}</b><small>${g[2]} ${t("khóa", "courses")}</small><span class="chk">${CHECK}</span></button>`;
+      }).join("");
+      $("grid").classList.toggle("full", picked.length === 3);
+    }
+    function renderPerches() {
+      $("perches").innerHTML = [0, 1, 2].map((k) => {
+        const g = list().find((x) => x[0] === picked[k]);
+        return g ? `<div class="perch on"><img src="assets/ga/${g[3] ? g[3] + "-nhay.webp?" + k + Date.now() : "van.png"}" alt="" ${g[3] ? "" : 'style="filter:brightness(0) opacity(.16)"'}><small>${g[1]}</small></div>`
+                 : `<div class="perch"><span>${k + 1}</span></div>`;
+      }).join("");
+      $("count").textContent = t(`Đã chọn ${picked.length}/3`, `Picked ${picked.length}/3`);
+      paintCta();
+    }
+    function paintCta() {
+      const step = root.dataset.step, cta = $("cta");
+      if (step === "tuoi") { cta.textContent = t("Tiếp", "Next"); cta.disabled = !Number($("year").value); return; }
+      if (step === "ai") { cta.textContent = t("Tiếp", "Next"); cta.disabled = false; return; }
+      if (step === "ga") {
+        const left = 3 - picked.length;
+        cta.textContent = left === 0 ? t("Vào làng", "Enter the village") : t(`Chọn thêm ${left} gà`, `Pick ${left} more`);
+        cta.disabled = left !== 0;
+      }
+    }
+
+    // birth year (1980-2020) -> band through mentorAge in shared.js; age and grade stay hidden, only the level name shows
+    const year = $("year"), figs = $("figs");
+    for (let y = 2020; y >= 1980; y--) year.add(new Option(String(y), String(y)));
+    function showBand() {
+      const y = Number(year.value);
+      if (!y) { delete figs.dataset.pick; $("level").textContent = ""; paintCta(); return; }
+      const band = mentorAge(y).band;
+      figs.dataset.pick = band;
+      figs.querySelectorAll("svg").forEach((s) => s.classList.toggle("on", s.dataset.band === band));
+      $("level").textContent = LEVEL[band][en() ? 1 : 0];
+      paintCta();
+    }
+    year.addEventListener("change", showBand);
+
+    $("speak").addEventListener("click", () => {
+      if (!window.speechSynthesis) return;
+      const u = new SpeechSynthesisUtterance(t("Em sinh năm nào?", "What year were you born?"));
+      u.lang = en() ? "en-US" : "vi-VN";
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
+    });
+
+    document.addEventListener("click", (e) => {
+      const k = e.target.closest(".pick");
+      if (k) { document.querySelectorAll(".pick").forEach((p) => p.setAttribute("aria-pressed", String(p === k))); root.dataset.kid = k.dataset.kid; return; }
+      const g = e.target.closest(".ga");
+      if (g) {
+        const id = g.dataset.id;
+        if (picked.includes(id)) picked = picked.filter((x) => x !== id);
+        else if (picked.length < 3) picked.push(id);
+        renderGrid(); renderPerches();
+      }
+    });
+    $("cta").addEventListener("click", () => {
+      const step = root.dataset.step;
+      if (step === "tuoi") { if (!Number(year.value)) return; mentorAge.save(Number(year.value)); mockSet("step", "ai"); window.scrollTo(0, 0); return; }
+      if (step === "ai") { mockSet("step", "ga"); window.scrollTo(0, 0); return; }
+      if (step === "ga" && picked.length === 3) location.href = "lg-01-lang.html";
+    });
+    $("back").addEventListener("click", () => {
+      const i = ORDER.indexOf(root.dataset.step);
+      if (i > 0) { mockSet("step", ORDER[i - 1]); window.scrollTo(0, 0); }
+    });
+    document.addEventListener("mock:change", (e) => {
+      const k = e.detail.key;
+      if (k === "age") { picked = []; renderGrid(); renderPerches(); }
+      if (k === "lang") { year.setAttribute("aria-label", en() ? "Year of birth" : "Năm sinh"); year.options[0].textContent = en() ? "Year of birth" : "Năm sinh"; showBand(); renderGrid(); renderPerches(); }
+      if (k === "step") paintCta();
+      if (k === "year") showBand();
+    });
+    window.addEventListener("DOMContentLoaded", () => {
+      const q = new URLSearchParams(location.search);
+      const saved = mentorAge.saved();
+      if (saved >= 1980 && saved <= 2020) year.value = String(saved);
+      mockSet("step", ORDER.includes(q.get("step")) ? q.get("step") : root.dataset.step);
+      showBand(); renderGrid(); renderPerches();
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "cong-nghe-7-trong-trot-va-chan-n",
+  "title": "Công nghệ 7: Trồng trọt và chăn nuôi",
+  "subject": "Công nghệ",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "u4df53409d786931e",
+  "teacher_name": "Cô Tâm",
+  "description_short": "Khóa học cung cấp kiến thức cơ bản về đất trồng, giống và gieo hạt, chăm sóc cây, nuôi gà, nuôi cá và phòng bệnh cho vật nuôi. Nội dung dành cho học sinh lớp 7 trung học cơ sở, gắn lý thuyết với ví dụ, lỗi thường gặp và bài tập tính toán thực tế.",
+  "outcomes": [
+    "Trình bày được thành phần, tính chất của đất trồng và cách chọn, cải tạo đất phù hợp.",
+    "Thực hiện được các bước chọn, xử lý, gieo hạt và chăm sóc cây; tính được tỉ lệ nảy mầm, số cây, lượng nước và phân bón.",
+    "Mô tả được kỹ thuật nuôi gà, nuôi cá và biện pháp phòng bệnh cho vật nuôi.",
+    "Vận dụng được công thức tính lượng thức ăn, nhiệt độ úm gà, pha thuốc sát trùng và xử lý các lỗi thường gặp."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:22:33.921401Z",
+      "published_at": "2026-11-17T07:22:39.917575Z",
+      "pack_sha256": "9c0824b666f3e5fc32013b5b71efe149c879248c02efa422f7f454cdab6f8e14",
+      "pack_bytes": 135983,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-kid="nam" data-state="chon" data-speed="nhanh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phòng tự học</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="ga-guide.css">
+<script src="shared.js"></script>
+<script src="ga-guide.js" defer></script>
+<style>
+  /* Phòng tự học: a solo warm pond in the village. Pick a chicken + minutes, study while the countdown runs, the chicken
+     earns experience. Calm on purpose: no confetti, no loud motion while studying. Mock bar: ?state=chon|hoc|tam-dung|dung-som|xong */
+  :root { --board: #fff7e6; --board-edge: #c98a45; --board-dark: #7d4c22; --ink-g: #3a2010; --ink-soft: #6b4a2e; --sel: #ffcf3d; --plate: rgba(34, 28, 58, .84); --green: #1f7d44; --green-dark: #14562d; }
+  body { min-height: 100vh; background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; font-family: "Lexend", system-ui, sans-serif; }
+  body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .38); backdrop-filter: blur(6px); pointer-events: none; }
+  .wrap { position: relative; max-width: 1040px; margin: 0 auto; padding: 56px 16px 48px; }
+  .board { background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 40px clamp(14px, 3vw, 32px) 28px; position: relative; color: var(--ink-g); }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 28px; border-radius: 16px; background: linear-gradient(#c8452a, #b0361f); color: #fff; font-size: clamp(1.1em, 3vw, 1.45em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #8f2d1c; }
+  .back { position: absolute; left: 16px; top: 14px; display: inline-flex; align-items: center; gap: 4px; min-height: 40px; padding: 0 14px 0 8px; border-radius: 12px; background: #fbecd0; color: var(--ink-g); text-decoration: none; font-weight: 700; font-size: .95em; box-shadow: 0 3px 0 #e0c294; }
+  .back svg { width: 20px; height: 20px; }
+  .stage { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(16px, 3vw, 32px); align-items: center; margin-top: 12px; }
+  :focus-visible { outline: 3px solid #1747c9; outline-offset: 3px; }
+
+  /* ---------- the pond scene (one element for every state) ---------- */
+  .scene { position: relative; width: 100%; aspect-ratio: 2 / 1; margin-top: 74px; margin-bottom: 20px; }
+  .scene > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .scene .bgclip { position: absolute; inset: 0; border-radius: 24px; overflow: hidden; border: 3px solid #e7cfa8; box-shadow: 0 5px 0 #e0c294; }
+  .scene .bgclip svg { width: 100%; height: 100%; display: block; }
+  .scene .front { pointer-events: none; z-index: 3; }
+  /* sprite frame is square, drawing ends at 85% (feet): the feet sit at 65.5% of the scene, under the water line */
+  .chick { position: absolute; z-index: 2; left: 50%; top: -19.5%; width: 50%; transform: translateX(-51.5%); display: block; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+  .scene .tag { position: absolute; z-index: 4; left: 50%; bottom: -16px; transform: translateX(-50%); white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px 4px 4px; border-radius: 999px; background: var(--plate); color: #fff; font-weight: 700; font-size: clamp(12px, 1.5vw, 15px); }
+  .tag .lv { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px; background: #ffcf3d; color: #5a3b00; font-weight: 800; }
+  .tag small { color: #ffe3a3; font-weight: 500; font-size: .9em; }
+  .say { position: absolute; z-index: 4; left: 50%; bottom: calc(100% + 4px); transform: translateX(-50%); width: max-content; max-width: 90%; text-align: center; padding: 9px 13px; border-radius: 16px; background: #fff; color: #2b283f; border: 2px solid #3a2418; box-shadow: 0 3px 0 rgba(58, 36, 24, .35); font-weight: 600; font-size: clamp(12.5px, 1.5vw, 15px); line-height: 1.4; }
+  .say::after { content: ""; position: absolute; left: calc(50% - 7px); bottom: -9px; width: 14px; height: 14px; background: #fff; border-right: 2px solid #3a2418; border-bottom: 2px solid #3a2418; transform: rotate(45deg); }
+  .steam { position: absolute; z-index: 3; left: 0; right: 0; top: 18%; height: 40%; pointer-events: none; }
+  .steam i { position: absolute; bottom: 0; width: 7%; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, .55); filter: blur(5px); animation: steam 5.5s ease-out infinite; opacity: 0; }
+  @keyframes steam { from { transform: translateY(0) scale(.7); opacity: 0; } 30% { opacity: .55; } to { transform: translateY(-140%) scale(1.5); opacity: 0; } }
+  @keyframes ripple { 50% { opacity: .15; transform: scale(1.03); } }
+  .rip { transform-origin: 400px 250px; animation: ripple 6s ease-in-out infinite; }
+  :root[data-state="tam-dung"] .steam i, :root[data-state="dung-som"] .steam i { animation-play-state: paused; }
+
+  /* ---------- panels ---------- */
+  .panel { display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .panel h2 { font-size: 1.1em; font-weight: 800; margin-bottom: 6px; }
+  .opts { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+  .opts legend { font-weight: 800; font-size: 1.02em; padding: 0; margin-bottom: 8px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .card { display: flex; align-items: center; gap: 12px; padding: 8px 12px 8px 8px; border-radius: 18px; border: 3px solid #e7cfa8; background: #fffdf7; cursor: pointer; box-shadow: 0 4px 0 #e0c294; position: relative; transition: transform .15s ease; }
+  .card .th { flex: none; width: 64px; height: 70px; border-radius: 12px; position: relative; overflow: hidden; background: radial-gradient(ellipse 45% 9% at 50% 90%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); }
+  .card .th img { position: absolute; left: 50%; top: -58%; width: 192%; max-width: none; transform: translateX(-50%); }
+  .card b { display: block; }
+  .card small { color: var(--ink-soft); font-weight: 500; }
+  .card .chk { margin-left: auto; width: 28px; height: 28px; border-radius: 50%; background: var(--sel); color: #5a3b00; display: none; place-items: center; border: 2px solid #fff; flex: none; }
+  .card .chk svg { width: 17px; height: 17px; }
+  input:checked + .card { border-color: var(--sel); box-shadow: 0 4px 0 #c99a10, 0 0 0 4px rgba(255, 207, 61, .45); transform: translateY(-2px); }
+  input:checked + .card .chk { display: grid; }
+  input:focus-visible + .card { outline: 3px solid #1747c9; outline-offset: 3px; }
+  .cards3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cards3 .card { flex-direction: column; text-align: center; padding: 8px 6px 10px; gap: 4px; }
+  .cards3 .card .th { width: 100%; height: 84px; }
+  .cards3 .card .th img { width: 150%; top: -48%; }
+  .cards3 .card .chk { position: absolute; top: 6px; right: 6px; margin: 0; }
+  .durs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .durs .card { justify-content: center; padding: 10px; min-height: 58px; font-size: 1.15em; }
+  .durs .card b { display: inline; font-size: 1.15em; }
+  .durs .card .chk { display: none !important; }
+  .topic .card { padding: 10px 14px; min-height: 56px; }
+  .topic .card > i { color: var(--ink-soft); flex: none; }
+  .topic .card svg { width: 22px; height: 22px; }
+  .rule { display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; border-radius: 14px; background: #fbecd0; color: var(--ink-g); font-size: .95em; line-height: 1.45; }
+  .rule svg { flex: none; width: 22px; height: 22px; color: #b7580a; margin-top: 1px; }
+
+  /* chunky buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 22px; border-radius: 16px; border: 3px solid #fff; font: inherit; font-weight: 800; font-size: 1.05em; cursor: pointer; text-decoration: none; transition: transform .1s ease; }
+  .btn svg { width: 22px; height: 22px; }
+  .btn:active { transform: translateY(4px); }
+  .btn.go { background: linear-gradient(var(--green), #176a37); color: #fff; box-shadow: 0 6px 0 var(--green-dark); }
+  .btn.go:active { box-shadow: 0 2px 0 var(--green-dark); }
+  .btn.big { min-height: 62px; font-size: 1.2em; width: 100%; }
+  .btn.alt { background: #fbecd0; color: var(--ink-g); border-color: #e7cfa8; box-shadow: 0 5px 0 #d4b27a; }
+  .btn.alt:active { box-shadow: 0 1px 0 #d4b27a; }
+  .btn.sun { background: linear-gradient(#ffd86b, #f5a623); color: #3f2600; box-shadow: 0 6px 0 #b86f00; }
+  .btn.sun:active { box-shadow: 0 2px 0 #b86f00; }
+  .btns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .btns.one { grid-template-columns: 1fr; }
+
+  /* timer card */
+  .timer { display: grid; justify-items: center; gap: 8px; text-align: center; }
+  .ringbox { position: relative; width: min(230px, 62vw); aspect-ratio: 1; display: grid; place-items: center; }
+  .ringbox svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+  .ringbox .trk { fill: none; stroke: #ecd9b4; stroke-width: 9; }
+  .ringbox .bar { fill: none; stroke: #1f7d44; stroke-width: 9; stroke-linecap: round; transition: stroke-dashoffset .4s linear; }
+  :root[data-state="tam-dung"] .ringbox .bar { stroke: #8f877a; }
+  .time { font-size: clamp(2.4em, 7vw, 3.4em); font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: .01em; line-height: 1; }
+  .ringbox small { display: block; margin-top: 6px; color: var(--ink-soft); font-weight: 600; }
+  .study { font-weight: 700; }
+  .study small { display: block; color: var(--ink-soft); font-weight: 500; }
+  .xpline { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; background: var(--plate); color: #fff; font-weight: 700; }
+  .xpline b { color: #ffcf3d; font-size: 1.15em; font-variant-numeric: tabular-nums; }
+  .quiet { color: var(--ink-soft); font-size: .92em; }
+  .lesson-link { display: inline-block; margin-top: 6px; color: #1747c9; font-weight: 700; }
+
+  /* kind messages (pause / stopped early) */
+  .note { padding: 14px 16px; border-radius: 16px; background: #fbecd0; line-height: 1.5; display: grid; gap: 4px; }
+  .note b { font-size: 1.08em; }
+  .note.pause { background: #e6f2fb; }
+
+  /* result */
+  .gain { justify-self: center; display: inline-flex; align-items: baseline; gap: 10px; padding: 8px 26px; border-radius: 999px; background: linear-gradient(#ffd86b, #f5a623); color: #3f2600; border: 3px solid #fff; box-shadow: 0 5px 0 #b86f00; font-weight: 800; }
+  .gain b { font-size: clamp(1.8em, 5vw, 2.4em); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .why { text-align: center; color: var(--ink-soft); font-weight: 500; margin-top: -4px; }
+  .grow { display: grid; gap: 6px; padding: 12px 14px; border-radius: 16px; background: #fffdf7; border: 3px solid #e7cfa8; }
+  .grow .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-weight: 700; flex-wrap: wrap; }
+  .grow .lvl { display: inline-grid; place-items: center; min-width: 30px; height: 28px; padding: 0 8px; border-radius: 999px; background: #ffcf3d; color: #5a3b00; font-weight: 800; }
+  .meter { height: 18px; border-radius: 999px; background: #ecd9b4; overflow: hidden; border: 2px solid #d4b27a; }
+  .meter i { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(#5ed388, #23a35b); transition: width .9s ease; }
+  .grow small { color: var(--ink-soft); font-weight: 500; }
+  .streak { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 16px; background: #fff0dc; font-weight: 600; }
+  .streak svg { width: 26px; height: 26px; color: #d9640b; flex: none; }
+  .up { color: #a8350f; font-weight: 800; }
+
+  .mock-bar .speed-note { color: #A9A3C6; }
+  [hidden] { display: none !important; }
+  @media (max-width: 860px) { .stage { grid-template-columns: minmax(0, 1fr); } .scene { margin-top: 74px; } }
+  @media (max-width: 520px) { .cards3 .card small { display: none; } .cards3 .card .th { height: 70px; } .btns { grid-template-columns: 1fr; } .back span { display: none; } .back { padding: 0 10px 0 8px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .steam i { animation: none; opacity: .3; } .rip { animation: none; }
+    .card, .btn, .ringbox .bar, .meter i { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Phòng tự học</span>
+  <span class="mock-seg"><span>Màn</span><button data-set="state:chon">Chọn</button><button data-set="state:hoc">Đang học</button><button data-set="state:tam-dung">Tạm dừng</button><button data-set="state:dung-som">Dừng sớm</button><button data-set="state:xong">Xong</button></span>
+  <span class="mock-seg"><span>Đồng hồ</span><button data-set="speed:thuong">Thật</button><button data-set="speed:nhanh">Nhanh (1 giây = 1 phút)</button></span>
+  <span class="mock-note">Chỉ một mình em trong phòng, không có bạn khác.</span>
+</div>
+
+<main class="wrap">
+  <section class="board" aria-labelledby="t">
+    <h1 class="ribbon" id="t">Phòng tự học</h1>
+    <a class="back" href="lg-01-lang.html" data-when="state=chon"><i data-i="back"></i><span>Về làng</span></a>
+
+    <div class="stage">
+      <!-- the pond: same picture in every state -->
+      <div class="scene" id="scene" role="img" aria-label="Ao nước ấm trong làng, gà ngồi ngâm trong nước">
+        <div class="bgclip"><svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6fa"/><stop offset="1" stop-color="#e6f6d6"/></linearGradient>
+            <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a6d97f"/><stop offset="1" stop-color="#79b857"/></linearGradient>
+          </defs>
+          <rect width="800" height="400" fill="url(#sky)"/>
+          <ellipse cx="170" cy="150" rx="260" ry="70" fill="#9ccf78"/><ellipse cx="640" cy="160" rx="300" ry="80" fill="#8cc468"/>
+          <rect y="150" width="800" height="250" fill="url(#grass)"/>
+          <g fill="#6aa94b" opacity=".5"><ellipse cx="60" cy="350" rx="40" ry="10"/><ellipse cx="740" cy="340" rx="46" ry="11"/><ellipse cx="120" cy="190" rx="30" ry="7"/><ellipse cx="700" cy="200" rx="34" ry="8"/></g>
+          <ellipse cx="400" cy="262" rx="338" ry="136" fill="#5d9141" opacity=".45"/>
+          <ellipse cx="400" cy="250" rx="326" ry="126" fill="#9097a4"/>
+          <ellipse cx="400" cy="250" rx="300" ry="110" fill="#49a6e6"/>
+          <ellipse cx="400" cy="250" rx="300" ry="110" fill="#7fd0ff" opacity=".35" transform="translate(0 -14) scale(1 .78)" style="transform-origin:400px 250px"/>
+          <g class="rip" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2"><ellipse cx="400" cy="262" rx="190" ry="52"/><ellipse cx="400" cy="262" rx="250" ry="76" stroke-opacity=".3"/></g>
+          <g id="rocksBack"></g>
+        </svg></div>
+        <!-- chicken is drawn between the two svg layers -->
+        <img class="chick" id="chick" src="assets/ga/toan-dung.webp" alt="">
+        <svg class="front" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path d="M101 240 Q150 234 200 240 T300 240 T400 240 T500 240 T600 240 T699 240 A300 110 0 1 1 101 240 Z" fill="#3f9be0" fill-opacity=".62"/>
+          <path d="M101 240 Q150 234 200 240 T300 240 T400 240 T500 240 T600 240 T699 240" fill="none" stroke="#d9f0ff" stroke-opacity=".75" stroke-width="3" stroke-linecap="round"/>
+          <g id="rocksFront"></g>
+        </svg>
+        <div class="steam" aria-hidden="true"><i style="left:22%;animation-delay:0s"></i><i style="left:36%;animation-delay:1.8s"></i><i style="left:50%;animation-delay:3.4s"></i><i style="left:64%;animation-delay:.9s"></i><i style="left:76%;animation-delay:2.6s"></i></div>
+        <span class="tag"><span class="lv" id="tagLv">7</span><span id="tagName">Gà Toán</span><small id="tagStage">Trưởng thành</small></span>
+        <p class="say" id="say">Hôm nay mình học cùng nhau nhé?</p>
+      </div>
+
+      <!-- 1. choose -->
+      <div class="panel" data-when="state=chon">
+        <fieldset class="opts cards3">
+          <legend>Ai đi cùng em?</legend>
+          <span id="gaList" style="display:contents"></span>
+        </fieldset>
+        <fieldset class="opts durs">
+          <legend>Học bao lâu?</legend>
+          <span id="durList" style="display:contents"></span>
+        </fieldset>
+        <fieldset class="opts topic">
+          <legend>Học gì? <span style="font-weight:500;color:var(--ink-soft)">(không chọn cũng được)</span></legend>
+          <span id="topicList" style="display:contents"></span>
+        </fieldset>
+        <p class="rule"><i data-i="flame"></i><span>Mỗi phút em học, gà được <b>+1 điểm</b> kinh nghiệm. Học trọn vẹn đến hết giờ, em được thưởng thêm <b>+5 điểm</b>. Học đủ 10 phút là giữ được chuỗi ngày.</span></p>
+        <button class="btn go big" type="button" id="start"><i data-i="play"></i><span id="startTxt">Bắt đầu</span></button>
+      </div>
+
+      <!-- 2. studying -->
+      <div class="panel timer" data-when="state=hoc|tam-dung">
+        <p class="study"><span id="studyWho">Đang học cùng Gà Toán</span><small id="studyWhat">Tổng n số hạng đầu, bài 3</small><a class="lesson-link" id="lessonLink" href="lg-04-bai-hoc.html?ga=toan">Mở bài học</a></p>
+        <div class="ringbox" role="timer" id="timerBox" aria-label="Thời gian còn lại">
+          <svg viewBox="0 0 220 220" aria-hidden="true"><circle class="trk" cx="110" cy="110" r="100"/><circle class="bar" id="ring" cx="110" cy="110" r="100"/></svg>
+          <div><div class="time" id="time">25:00</div><small id="timeSub">còn lại</small></div>
+        </div>
+        <p class="xpline">Kinh nghiệm <b id="xpNow">+0</b></p>
+        <p class="note pause" data-when="state=tam-dung" style="text-align:left"><b>Đang tạm dừng</b><span>Đồng hồ đứng yên. Em nghỉ xong thì học tiếp, gà đợi em.</span></p>
+        <div class="btns" data-when="state=hoc">
+          <button class="btn alt" type="button" id="pauseBtn"><i data-i="clock"></i>Tạm dừng</button>
+          <button class="btn alt" type="button" id="stopBtn"><i data-i="x"></i>Dừng</button>
+        </div>
+        <div class="btns" data-when="state=tam-dung">
+          <button class="btn go" type="button" id="resumeBtn"><i data-i="play"></i>Học tiếp</button>
+          <button class="btn alt" type="button" id="stopBtn2"><i data-i="x"></i>Dừng ở đây</button>
+        </div>
+        <p class="quiet" data-when="state=hoc">Em cứ để màn hình này mở và học nhé.</p>
+      </div>
+
+      <!-- 3. stopped early -->
+      <div class="panel" data-when="state=dung-som">
+        <div class="note"><b id="stopTitle">Em đã học 7 phút</b><span id="stopBody">Mình giữ 7 điểm kinh nghiệm cho em. Dừng lúc nào cũng được, không sao đâu.</span></div>
+        <p class="gain"><span>Giữ lại</span><b id="stopGain">+7</b><span>điểm</span></p>
+        <div class="grow">
+          <div class="row"><span id="stopGa">Gà Toán</span><span><span class="lvl" id="stopLv">Lv 7</span></span></div>
+          <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="stopMeter" aria-label="Kinh nghiệm lên cấp tiếp theo"><i id="stopFill"></i></div>
+          <small id="stopNeed">Còn 22 điểm nữa lên Lv 8</small>
+        </div>
+        <p class="streak"><i data-i="flame"></i><span id="stopStreak">Học đủ 10 phút hoặc xong 1 bài là giữ được chuỗi ngày.</span></p>
+        <div class="btns">
+          <button class="btn go" type="button" id="againBtn"><i data-i="play"></i>Học tiếp</button>
+          <a class="btn alt" href="lg-01-lang.html"><i data-i="back"></i>Về làng</a>
+        </div>
+      </div>
+
+      <!-- 4. done -->
+      <div class="panel" data-when="state=xong">
+        <p class="gain"><b id="gainNum">+30</b><span>kinh nghiệm</span></p>
+        <p class="why" id="gainWhy">25 phút học + 5 điểm thưởng vì em học trọn vẹn</p>
+        <div class="grow">
+          <div class="row"><span id="gGa">Gà Toán</span><span id="gLvs"><span class="lvl">Lv 7</span></span></div>
+          <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="gMeter" aria-label="Kinh nghiệm lên cấp tiếp theo"><i id="gFill"></i></div>
+          <small id="gNeed"></small>
+        </div>
+        <p class="streak"><i data-i="flame"></i><span id="doneStreak">Chuỗi 5 ngày. Hôm nay em đã giữ chuỗi.</span></p>
+        <div class="btns">
+          <a class="btn go" href="lg-01-lang.html"><i data-i="back"></i>Về làng</a>
+          <button class="btn sun" type="button" id="more"><i data-i="plus"></i>Học thêm 15 phút</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <p class="sr" role="status" id="live"></p>
+</main>
+
+<script>
+(function () {
+  const root = document.documentElement, $ = (id) => document.getElementById(id);
+  const reduce = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+  const need = () => 100;   // 100 KN per level
+  const stage = (lv) => lv >= 10 ? "Cao thủ" : lv >= 5 ? "Trưởng thành" : lv >= 2 ? "Gà choai" : "Gà con";
+  const G = {
+    toan: { name: "Gà Toán", lv: 7, xp: 78, lesson: "Toán 11: Tổng n số hạng đầu, bài 3" },
+    van:  { name: "Gà Văn",  lv: 3, xp: 40, lesson: "Ngữ văn 11: Vội vàng, bài 2" },
+    anh:  { name: "Gà Anh",  lv: 2, xp: 15, lesson: "Tiếng Anh 11: Câu ước, bài 3" },
+  };
+  const S = { ga: "toan", dur: 25, topic: "goiy", elapsed: 0, running: false, streak: 4 };
+  const bank = (g, gain) => { let xp = g.xp + gain, lv = g.lv; while (xp >= need(lv)) { xp -= need(lv); lv++; } return { lv, xp }; };
+  const mins = () => Math.floor(S.elapsed / 60);
+  const FULL = 5;   // +5 for finishing the whole session
+  const gainNow = () => mins() + (S.elapsed >= S.dur * 60 ? FULL : 0);
+  const mm = (s) => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+
+  // rocks around the pond (deterministic): back half behind the chicken, front half in front
+  function rocks(el, from, to, n, seed) {
+    let r = seed, out = "";
+    const rnd = () => (r = (r * 9301 + 49297) % 233280) / 233280;
+    const fills = ["#a3a9b5", "#8a909d", "#b8bdc8", "#7d8391"];
+    for (let i = 0; i < n; i++) {
+      const a = (from + (to - from) * (i + .5) / n) * Math.PI / 180;
+      const cx = 400 + 318 * Math.cos(a), cy = 250 + 118 * Math.sin(a);
+      const rx = 22 + rnd() * 16, ry = rx * (.62 + rnd() * .2);
+      out += `<ellipse cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" fill="${fills[i % 4]}" stroke="#5d6371" stroke-width="2"/>` +
+             `<ellipse cx="${(cx - rx * .25).toFixed(1)}" cy="${(cy - ry * .35).toFixed(1)}" rx="${(rx * .5).toFixed(1)}" ry="${(ry * .3).toFixed(1)}" fill="#fff" opacity=".28"/>`;
+    }
+    el.innerHTML = out;
+  }
+  rocks($("rocksBack"), 180, 360, 15, 7);
+  rocks($("rocksFront"), 0, 180, 15, 3);
+
+  // ---- choose panel ----
+  function renderChoose() {
+    $("gaList").innerHTML = Object.entries(G).map(([k, g]) =>
+      `<span style="display:contents"><input class="sr" type="radio" name="ga" id="ga-${k}" value="${k}" ${S.ga === k ? "checked" : ""}>
+       <label class="card" for="ga-${k}"><span class="th"><img src="assets/ga/${k}.png" alt=""></span><span><b>${g.name}</b><small>Lv ${g.lv}</small></span><span class="chk">${CHECK}</span></label></span>`).join("");
+    $("durList").innerHTML = [15, 25, 45].map((d) =>
+      `<span style="display:contents"><input class="sr" type="radio" name="dur" id="d${d}" value="${d}" ${S.dur === d ? "checked" : ""}>
+       <label class="card" for="d${d}"><span><b>${d}</b> phút</span></label></span>`).join("");
+    const g = G[S.ga];
+    $("topicList").innerHTML =
+      `<span style="display:contents"><input class="sr" type="radio" name="topic" id="tp-goiy" value="goiy" ${S.topic === "goiy" ? "checked" : ""}>
+       <label class="card" for="tp-goiy"><i data-i="target"></i><span><b>Bài gợi ý cho ${g.name}</b><small>${g.lesson}</small></span><span class="chk">${CHECK}</span></label></span>
+       <span style="display:contents"><input class="sr" type="radio" name="topic" id="tp-sach" value="sach" ${S.topic === "sach" ? "checked" : ""}>
+       <label class="card" for="tp-sach"><i data-i="book"></i><span><b>Sách vở của em</b><small>Tự học với sách, vở em mang theo</small></span><span class="chk">${CHECK}</span></label></span>`;
+    mockPaint($("topicList"));
+    $("startTxt").textContent = `Bắt đầu ${S.dur} phút`;
+  }
+  const topicText = () => S.topic === "sach" ? "Sách vở của em" : G[S.ga].lesson;
+
+  // ---- chicken sprite + speech ----
+  let jumpTimer = 0;
+  function sprite(mode) {
+    const k = S.ga, img = $("chick"); clearTimeout(jumpTimer);
+    if (mode === "jump" && !reduce()) {
+      img.src = `assets/ga/${k}-nhay.webp?${Date.now()}`;
+      jumpTimer = setTimeout(() => { img.src = `assets/ga/${k}-vui.png`; }, 2000);
+    } else if (mode === "jump") img.src = `assets/ga/${k}-vui.png`;
+    else if (mode === "idle" && !reduce()) img.src = `assets/ga/${k}-dung.webp`;
+    else img.src = `assets/ga/${k}.png`;
+  }
+  function says(t) { $("say").textContent = t; }
+  function tag(lv) { const g = G[S.ga]; $("tagLv").textContent = lv; $("tagName").textContent = g.name; $("tagStage").textContent = stage(lv); }
+
+  // ---- paint per state ----
+  function paint() {
+    const st = root.dataset.state, g = G[S.ga], total = S.dur * 60, left = Math.max(0, total - S.elapsed);
+    if (st === "chon") { tag(g.lv); says("Hôm nay mình học cùng nhau nhé?"); }
+    if (st === "hoc" || st === "tam-dung") {
+      tag(g.lv);
+      $("studyWho").textContent = `Đang học cùng ${g.name}`; $("studyWhat").textContent = topicText();
+      $("lessonLink").href = `lg-04-bai-hoc.html?ga=${S.ga}`; $("lessonLink").hidden = S.topic === "sach";
+      $("time").textContent = mm(Math.ceil(left));
+      $("timeSub").textContent = st === "tam-dung" ? "đang dừng" : "còn lại";
+      const C = 2 * Math.PI * 100, ring = $("ring");
+      ring.style.strokeDasharray = C; ring.style.strokeDashoffset = C * (1 - Math.min(1, S.elapsed / total));
+      $("xpNow").textContent = "+" + gainNow();
+      $("timerBox").setAttribute("aria-label", `Còn ${Math.ceil(left / 60)} phút`);
+      if (st === "hoc") says("Nước ấm quá. Em cứ học, gà ngồi đây với em.");
+      else says("Nghỉ một chút cũng được. Gà đợi em.");
+    }
+    if (st === "dung-som") {
+      const m = mins(), gain = gainNow(), nx = bank(g, gain);
+      tag(g.lv);
+      $("stopTitle").textContent = m < 1 ? "Em mới ngồi xuống thôi" : `Em đã học ${m} phút`;
+      $("stopBody").textContent = m < 1 ? "Chưa đủ 1 phút nên chưa có điểm. Không sao, lúc nào em sẵn sàng thì mình học." : `Mình giữ ${gain} điểm kinh nghiệm cho em. Dừng lúc nào cũng được, không sao đâu.`;
+      $("stopGain").textContent = "+" + gain;
+      $("stopGa").textContent = g.name + (nx.lv > g.lv ? "  lên cấp!" : ""); $("stopLv").textContent = "Lv " + nx.lv;
+      $("stopFill").style.width = (nx.xp / need(nx.lv) * 100) + "%"; $("stopMeter").setAttribute("aria-valuenow", Math.round(nx.xp / need(nx.lv) * 100));
+      $("stopNeed").textContent = `Còn ${need(nx.lv) - nx.xp} điểm nữa lên Lv ${nx.lv + 1}`;
+      $("stopStreak").textContent = m >= 10 ? `Chuỗi ${S.streak + 1} ngày. Hôm nay em đã giữ chuỗi.` : "Học đủ 10 phút hoặc xong 1 bài là giữ được chuỗi ngày. Hôm nay em vẫn còn thời gian.";
+      says(m < 1 ? "Lần sau mình học nhé." : `${m} phút cũng là học rồi, em giỏi lắm.`);
+    }
+    if (st === "xong") paintDone();
+  }
+  let lvTimer = 0;
+  function paintDone() {
+    const g = G[S.ga], m = mins(), bonus = S.elapsed >= S.dur * 60 ? FULL : 0, gain = m + bonus, nx = bank(g, gain), up = nx.lv > g.lv;
+    $("gainNum").textContent = "+" + gain;
+    $("gainWhy").textContent = bonus ? `${m} phút học + ${bonus} điểm thưởng vì em học trọn buổi` : `${m} phút học`;
+    $("gGa").textContent = g.name;
+    $("gMeter").setAttribute("aria-valuenow", Math.round(nx.xp / need(nx.lv) * 100));
+    $("doneStreak").textContent = `Chuỗi ${S.streak + 1} ngày. Hôm nay em đã giữ chuỗi.`;
+    $("more").lastChild.textContent = "Học thêm 15 phút";
+    tag(g.lv); says(`Giỏi quá! Em học trọn ${S.dur} phút.`);
+    const fill = $("gFill"); clearTimeout(lvTimer);
+    const final = () => {
+      $("gLvs").innerHTML = up ? `<span class="lvl">Lv ${g.lv}</span> → <span class="lvl">Lv ${nx.lv}</span> <span class="up">Lên cấp!</span>` : `<span class="lvl">Lv ${nx.lv}</span>`;
+      fill.style.width = (nx.xp / need(nx.lv) * 100) + "%"; tag(nx.lv);
+      $("gNeed").textContent = `${nx.xp}/100 · Còn ${need(nx.lv) - nx.xp} điểm nữa lên Lv ${nx.lv + 1}`;
+    };
+    $("gLvs").innerHTML = `<span class="lvl">Lv ${g.lv}</span>`;
+    $("gNeed").textContent = `${g.xp}/100 · Còn ${need(g.lv) - g.xp} điểm nữa lên Lv ${g.lv + 1}`;
+    fill.style.transition = "none"; fill.style.width = (g.xp / need(g.lv) * 100) + "%"; void fill.offsetWidth; fill.style.transition = "";
+    if (reduce()) { final(); return; }
+    if (up) { fill.style.width = "100%"; lvTimer = setTimeout(() => { fill.style.transition = "none"; fill.style.width = "0"; void fill.offsetWidth; fill.style.transition = ""; final(); }, 1000); }
+    else setTimeout(final, 120);
+  }
+
+  // ---- state machine ----
+  // seed: values used when the mock bar / ?state= jumps straight to a screen
+  function seed(st) {
+    if (st === "hoc") { S.elapsed = Math.min(7 * 60 + 12, S.dur * 60 - 60); S.running = true; }
+    else if (st === "tam-dung") { S.elapsed = Math.min(12 * 60 + 30, S.dur * 60 - 60); S.running = false; }
+    else if (st === "dung-som") { S.elapsed = Math.min(7 * 60 + 12, S.dur * 60 - 60); S.running = false; }
+    else if (st === "xong") { S.elapsed = S.dur * 60; S.running = false; }
+    else { S.elapsed = 0; S.running = false; }
+  }
+  let internal = false;
+  function go(st) { internal = true; mockSet("state", st); internal = false; }
+  function enter(st) {
+    S.running = st === "hoc";
+    if (st === "chon") renderChoose();
+    paint();
+    if (st === "hoc") sprite("idle");
+    else if (st === "xong") sprite("jump");
+    else sprite("still");
+    $("live").textContent = { chon: "", hoc: "Bắt đầu học", "tam-dung": "Đã tạm dừng", "dung-som": "Đã dừng", xong: "Học xong rồi" }[st];
+    if (st === "xong") window.scrollTo(0, 0);
+  }
+  document.addEventListener("mock:change", (e) => {
+    const { key, value } = e.detail;
+    if (key === "state") { if (!internal) seed(value); enter(value); }
+  });
+
+  // ---- clock ----
+  let last = performance.now();
+  setInterval(() => {
+    const now = performance.now(), dt = (now - last) / 1000; last = now;
+    if (!S.running || root.dataset.state !== "hoc") return;
+    S.elapsed += dt * (root.dataset.speed === "nhanh" ? 60 : 1);
+    if (S.elapsed >= S.dur * 60) { S.elapsed = S.dur * 60; go("xong"); return; }
+    paint();
+  }, 250);
+
+  // ---- events ----
+  document.addEventListener("change", (e) => {
+    const t = e.target;
+    if (t.name === "ga") { S.ga = t.value; $("chick").src = `assets/ga/${S.ga}-dung.webp`; renderChoose(); paint(); $("ga-" + S.ga).focus(); }
+    if (t.name === "dur") { S.dur = Number(t.value); $("startTxt").textContent = `Bắt đầu ${S.dur} phút`; }
+    if (t.name === "topic") S.topic = t.value;
+  });
+  $("start").addEventListener("click", () => { S.elapsed = 0; go("hoc"); });
+  $("pauseBtn").addEventListener("click", () => go("tam-dung"));
+  $("resumeBtn").addEventListener("click", () => go("hoc"));
+  $("stopBtn").addEventListener("click", () => go("dung-som"));
+  $("stopBtn2").addEventListener("click", () => go("dung-som"));
+  $("againBtn").addEventListener("click", () => go("hoc"));
+  $("more").addEventListener("click", () => {
+    const nx = bank(G[S.ga], gainNow());
+    G[S.ga].lv = nx.lv; G[S.ga].xp = nx.xp; S.streak += 1;
+    S.dur = 15; S.elapsed = 0; go("hoc");
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const q = new URLSearchParams(location.search), st = q.get("state") || "chon";
+    if (G[q.get("ga")]) S.ga = q.get("ga");
+    renderChoose();
+    $("chick").src = `assets/ga/${S.ga}-dung.webp`;
+    mockSet("speed", q.get("speed") || "nhanh");
+    seed(st);
+    mockSet("state", st);
+  });
+})();
+</script>
+</body>
+</html>

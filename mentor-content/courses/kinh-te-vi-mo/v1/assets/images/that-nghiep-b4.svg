@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" fill="none">
+<path d="M90,350 L890,350"/>
+<path d="M350,630 L350,168"/>
+</g>
+<path d="M902,350 L884,343 L884,357 Z" fill="#2B283F"/>
+<path d="M350,156 L343,174 L357,174 Z" fill="#2B283F"/>
+<path d="M110.0,242.0 L830.0,566.0" stroke="#5A4BC0" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+<path d="M530.0,431.0 L650.0,431.0 L650.0,485.0 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="852.0" y="312.0" font-family="Lexend, sans-serif" font-size="32" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">g-g^*</text>
+<text x="350.0" y="132.0" font-family="Lexend, sans-serif" font-size="32" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#916;u</text>
+<text x="322.0" y="390.0" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">0</text>
+<text x="668.0" y="476.0" font-family="Lexend, sans-serif" font-size="32" fill="#2B283F" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">-&#946;</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

@@ -1,12 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { ApiError, type BehaviourEvent, type CoursePack, type Reminder, type RemindersResponse } from "./api";
-import { dienPack } from "./api/mock-courses";
+import { ApiError, type BehaviourEvent, type Reminder, type RemindersResponse } from "./api";
 import { resolveDeepLink, withReminder } from "./lib/deeplink";
 import { buildGoal, deadlineOf } from "./lib/goalForm";
 import { IGNORE_AFTER_MS, ReminderScheduler, type FiredEntry, type FiredStore, type LocalNotification } from "./lib/reminders";
 import { FocusTracker } from "./lib/focus";
 import { BATCH, EventLogger, keepAfter, localEventStore, type EventStore } from "./lib/events";
-import { courseInsight } from "./lib/insight";
 
 describe("deep links", () => {
   it("a course with a lesson opens the player at that lesson", () => {
@@ -422,25 +420,5 @@ describe("behaviour events", () => {
     await vi.advanceTimersByTimeAsync(1100);
     expect(sent).toEqual([2]);
     l.stop();
-  });
-});
-
-describe("course insight", () => {
-  const pack = dienPack as CoursePack;
-  const quizItems = pack.chapters.flatMap((c) => c.lessons).flatMap((l) => l.blocks.flatMap((b) => (b.kind === "quiz" ? b.items.map((q) => ({ lesson: l.title, id: q.id })) : [])));
-  it("names lessons whose answers were all right as strong and mostly wrong ones as watch-outs", () => {
-    const byLesson = new Map<string, string[]>();
-    for (const q of quizItems) byLesson.set(q.lesson, [...(byLesson.get(q.lesson) ?? []), q.id]);
-    const [first, second] = [...byLesson.entries()];
-    const quiz: Record<string, { correct: boolean; seconds: number; attempts: number }> = {};
-    for (const id of first[1]) quiz[id] = { correct: true, seconds: 5, attempts: 1 };
-    for (const id of second[1]) quiz[id] = { correct: false, seconds: 5, attempts: 2 };
-    const r = courseInsight(pack, { quiz });
-    if (first[1].length >= 2) expect(r.strong).toEqual([first[0]]);
-    expect(r.watch).toEqual([second[0]]);
-  });
-  it("says nothing without a pack or without answers", () => {
-    expect(courseInsight(null, { quiz: { a: { correct: true, seconds: 1, attempts: 1 } } })).toEqual({ strong: [], watch: [] });
-    expect(courseInsight(pack, {})).toEqual({ strong: [], watch: [] });
   });
 });

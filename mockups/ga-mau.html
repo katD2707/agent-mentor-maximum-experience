@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="vi" data-age="thpt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gà mẫu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  /* first chicken, built in Blender (assets/ga/src/chicken.py): look, growth stages, moods, motion */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 24px 20px 64px; display: grid; gap: 36px; }
+  h1 { font-size: clamp(1.6em, 4vw, 2.2em); }
+  h2 { font-size: 1.2em; margin-bottom: 10px; }
+  .strip { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--rule-strong); }
+  .strip img { display: block; width: 100%; height: auto; }
+  .labels { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; margin-top: 8px; color: var(--ink-2); font-weight: 600; }
+  .stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; }
+  .yard { position: relative; aspect-ratio: 1; max-width: 460px; width: 100%; border-radius: var(--r-lg); background: radial-gradient(ellipse 24% 5% at 51% 86%, #7fb85c 98%, transparent 100%), linear-gradient(#cfeaf7 0 46%, #9fd67a 46%); overflow: hidden; border: 1px solid var(--rule-strong); cursor: pointer; }
+  .yard img { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .yard .tag { position: absolute; left: 50%; top: 10%; transform: translateX(-50%); background: rgba(43, 40, 63, .82); color: #fff; font-size: .9em; padding: 4px 12px; }
+  .yard .tag b { color: #ffd84d; margin-right: 6px; }
+  .note { color: var(--ink-2); line-height: 1.6; }
+  .note li { margin-bottom: 6px; }
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .ba figure { margin: 0; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--rule-strong); background: #a9dc86; }
+  .ba img { display: block; width: 100%; height: auto; }
+  .ba figcaption { padding: 6px 12px; font-weight: 600; background: var(--surface); color: var(--ink); }
+  .seg { display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 12px; border-radius: 99px; background: var(--rule); }
+  .seg button { border: 0; border-radius: 99px; padding: 6px 14px; font: inherit; font-weight: 600; background: transparent; color: var(--ink-2); cursor: pointer; }
+  .seg button[aria-checked="true"] { background: var(--surface); color: var(--ink); }
+  /* the tiles are always a light painted yard, so their labels use fixed colours in both themes */
+  .flock { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .flock button { position: relative; display: grid; justify-items: center; padding: 0 0 10px; border: 2px solid #e7cfa8; border-radius: var(--r-lg); background: linear-gradient(#d8f0fb 0 50%, #b6e39a 50%); cursor: pointer; overflow: hidden; font: inherit; }
+  .flock img { width: 150%; max-width: none; aspect-ratio: 1; margin: -48% 0 -21%; pointer-events: none; }
+  .flock b { background: #fff7e6; color: #3a2418; border: 2px solid #c98a45; padding: 1px 10px; border-radius: 99px; font-size: .86em; text-align: center; }
+  .flock small { color: #24421a; font-size: .76em; font-weight: 600; margin-top: 3px; text-align: center; padding: 0 6px; }
+  @media (max-width: 720px) { .stage, .ba { grid-template-columns: 1fr; } .labels { font-size: .8em; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Gà mẫu: cả đàn (dựng bằng Blender)</span>
+  <span class="mock-note">Bấm gà để gà nhảy. Đổi giai đoạn ở nút trên lưới.</span>
+</div>
+<main class="wrap">
+  <div>
+    <h1>Đàn gà</h1>
+    <p class="note">Một thân gà chung cho mọi môn; mỗi môn đổi mào, món đồ cầm và màu khăn. Gà Toán dùng làm mẫu cho giai đoạn và nét mặt.</p>
+  </div>
+
+  <section>
+    <h2>Cả đàn</h2>
+    <p class="note">Mỗi môn một chú gà: mào, món đồ cầm và màu khăn riêng. Bấm để gà nhảy. Gà Toán, Văn, Anh tạm giữ một dáng.</p>
+    <div class="seg" role="radiogroup" aria-label="Giai đoạn" id="seg">
+      <button type="button" role="radio" aria-checked="false" data-st="1">Gà con</button><button type="button" role="radio" aria-checked="false" data-st="2">Gà choai</button><button type="button" role="radio" aria-checked="true" data-st="3">Trưởng thành</button>
+    </div>
+    <div class="flock" id="flock"></div>
+  </section>
+
+  <section>
+    <h2>Trước / sau lượt chi tiết</h2>
+    <p class="note">Tô bóng mềm như tô màu, viền sáng ấm; mắt có tròng và mi; khăn quàng theo màu môn; túm lông má; cánh nhiều lớp. Làng: đồi núi phía xa, tre, đèn lồng, đá lát đường, sen trên hồ, cỏ đậm nhạt.</p>
+    <div class="ba">
+      <figure><img src="assets/ga/so-sanh/ga-truoc.webp" alt="Ba gà trước lượt chi tiết"><figcaption>Gà · trước</figcaption></figure>
+      <figure><img src="assets/ga/so-sanh/ga-sau.webp" alt="Ba gà sau lượt chi tiết"><figcaption>Gà · sau</figcaption></figure>
+      <figure><img src="assets/ga/so-sanh/lang-truoc.webp" alt="Làng trước lượt chi tiết"><figcaption>Làng · trước</figcaption></figure>
+      <figure><img src="assets/ga/so-sanh/lang-3d.webp" alt="Làng sau lượt chi tiết trong Blender"><figcaption>Làng · Blender chi tiết hơn</figcaption></figure>
+      <figure style="grid-column: 1 / -1"><img src="assets/ga/lang.webp" alt="Làng vẽ lại bằng AI từ bản Blender, giữ nguyên bố cục"><figcaption>Làng · vẽ lại bằng AI (FLUX.2 klein 4B, Apache 2.0, qua Cloudflare Workers AI miễn phí)</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>4 giai đoạn lớn</h2>
+    <div class="strip"><img src="assets/ga/toan-giai-doan.png" alt="Gà Toán qua 4 giai đoạn: gà con, gà choai, trưởng thành, cao thủ"></div>
+    <div class="labels"><span>Gà con</span><span>Gà choai</span><span>Trưởng thành</span><span>Cao thủ</span></div>
+  </section>
+
+  <section>
+    <h2>Nét mặt</h2>
+    <div class="strip"><img src="assets/ga/toan-net-mat.png" alt="Bốn nét mặt: bình thường, vui, ngạc nhiên, buồn"></div>
+    <div class="labels"><span>Bình thường</span><span>Vui (em làm đúng)</span><span>Ngạc nhiên</span><span>Buồn (em nghỉ học lâu)</span></div>
+  </section>
+
+  <section class="stage">
+    <div class="yard" id="yard" role="button" tabindex="0" aria-label="Bấm để Gà Toán nhảy mừng">
+      <img id="ga" src="assets/ga/toan-dung.webp" alt="Gà Toán đứng thở, chớp mắt">
+      <span class="tag"><b>Lv 7</b>Gà Toán</span>
+    </div>
+    <div>
+      <h2>Chuyển động</h2>
+      <ul class="note">
+        <li>Đứng yên: thở, nghiêng đầu, khẽ vỗ cánh, thỉnh thoảng chớp mắt.</li>
+        <li>Nhảy mừng: lấy đà, bật lên vỗ cánh, mặt cười, đáp xuống nhún. Dùng khi em làm đúng hoặc gà lên cấp.</li>
+        <li>Mỗi đoạn 24 khung hình, khoảng 190 KB.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script>
+  const ga = document.getElementById("ga"), yard = document.getElementById("yard");
+  let busy = false;
+  function jump() {
+    if (busy) return; busy = true;
+    ga.src = "assets/ga/toan-nhay.webp?" + Date.now();
+    setTimeout(() => { ga.src = "assets/ga/toan-dung.webp"; busy = false; }, 2000);
+  }
+  yard.addEventListener("click", jump);
+  // the whole flock: [file, name, what it holds]
+  const FLOCK = [["toan", "Toán", "thước eke"], ["van", "Văn", "bút lông"], ["anh", "Anh", "bong bóng Hi!"], ["li", "Lí", "nam châm"], ["hoa", "Hóa", "bình cầu"],
+    ["sinh", "Sinh", "chuỗi ADN"], ["su", "Sử", "cuộn thư, mũ giáp"], ["dia", "Địa", "quả địa cầu"], ["cd", "Công dân", "cái cân"], ["tin", "Tin", "máy tính, kính pixel"],
+    ["cn", "Công nghệ", "bánh răng"], ["khoahoc", "Khoa học", "kính lúp"], ["nghethuat", "Nghệ thuật", "bảng màu, mũ nồi"], ["kynang", "Kỹ năng", "đồng hồ cát"],
+    ["khmt", "Khoa học máy tính", "máy tính, mào { }"], ["ktmt", "Kỹ thuật máy tính", "con chip"], ["httt", "Hệ thống thông tin", "cơ sở dữ liệu"],
+    ["khdl", "Khoa học dữ liệu", "biểu đồ cột"], ["vatli", "Vật lí", "nguyên tử"], ["hoahoc", "Hóa học", "ống nghiệm, kính bảo hộ"], ["kinhte", "Kinh tế", "đồ thị cung cầu"],
+    ["ketoan", "Kế toán", "máy tính bỏ túi"], ["daicuong", "Đại cương", "sách, mũ tốt nghiệp"]];
+  // Toán, Văn, Anh have a single drawing; the others are drawn as gà con (-1), gà choai (-2) and adult
+  const FIXED = { toan: 1, van: 1, anh: 1 }, flock = document.getElementById("flock");
+  let st = "3";
+  const file = (k) => (FIXED[k] || st === "3" ? k : k + "-" + st);
+  function paintFlock() {
+    flock.innerHTML = FLOCK.map(([k, n, p]) => `<button type="button" data-k="${k}" aria-label="Gà ${n}: bấm để nhảy"><img src="assets/ga/${file(k)}-dung.webp" alt=""><b>Gà ${n}</b><small>${p}</small></button>`).join("");
+  }
+  paintFlock();
+  document.getElementById("seg").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    st = b.dataset.st; document.querySelectorAll("#seg button").forEach((x) => x.setAttribute("aria-checked", String(x === b))); paintFlock();
+  });
+  flock.addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b || b.dataset.busy) return;
+    const im = b.querySelector("img"), k = file(b.dataset.k); b.dataset.busy = 1;
+    im.src = `assets/ga/${k}-nhay.webp?${Date.now()}`;
+    setTimeout(() => { im.src = `assets/ga/${k}-dung.webp`; delete b.dataset.busy; }, 2000);
+  });
+  yard.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); jump(); } });
+</script>
+</body>
+</html>

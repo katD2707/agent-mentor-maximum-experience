@@ -24,7 +24,7 @@ Các file cài đặt (`Mentor_0.1.0_...`) nằm ngay trong thư mục `mentor` 
 | Linux khác | `Mentor_0.1.0_amd64.AppImage` | Chuột phải, chọn **Properties**, rồi **Permissions**; bật **Allow executing file as program**, sau đó bấm đúp. |
 | macOS | chưa có sẵn | Dùng bản web ở bước 2, hoặc nhờ người phụ trách build trên GitHub (**Actions**, chọn **Desktop installers**, rồi **Run workflow**). Lần đầu mở app: vào **System Settings**, chọn **Privacy & Security**, bấm **Open Anyway**. |
 
-Sau khi cài, app tự mở cùng máy và nằm ở khay hệ thống (góc dưới bên phải) để nhắc giờ học. Muốn thoát hẳn: chuột phải vào biểu tượng Mực ở khay, chọn **Thoát Mentor**.
+Sau khi cài, app tự mở cùng máy và nằm ở khay hệ thống (góc dưới bên phải) để nhắc giờ học. Muốn thoát hẳn: chuột phải vào biểu tượng Mentor ở khay, chọn **Thoát Mentor**.
 
 ### Bước 2. Bật máy chủ
 
@@ -69,7 +69,7 @@ Thiếu `FPT_API_KEY` thì máy chủ không bật. Thiếu các key tùy chọn
 | Học sinh | `hocsinh` | `123456` |
 | Giáo viên | `giaovien` | `123456` |
 
-Chạm vào hình học sinh hoặc giáo viên trước, rồi mới điền tài khoản. Lần đầu, học sinh chọn ngôn ngữ và năm sinh; năm sinh quyết định giao diện. Ví dụ trong năm học 2026–2027: sinh năm 2018 là tiểu học, 2013 là THCS, 2010 là THPT, từ 2008 trở về trước là đại học (có thêm phần **Nghiên cứu**). Lần đầu mở mỗi trang, Mực sẽ chỉ nhanh các phần chính.
+Chạm vào hình học sinh hoặc giáo viên trước, rồi mới điền tài khoản. Lần đầu, học sinh chọn ngôn ngữ và năm sinh; năm sinh quyết định giao diện. Ví dụ trong năm học 2026–2027: sinh năm 2018 là tiểu học, 2013 là THCS, 2010 là THPT, từ 2008 trở về trước là đại học (có thêm **Thư viện** nghiên cứu). Học sinh vào **Làng gà**: mỗi môn là một chú gà, học thì gà lớn. Lần đầu mở mỗi trang, chú gà hướng dẫn sẽ chỉ nhanh các phần chính.
 
 ### Khi có lỗi
 
@@ -81,9 +81,8 @@ Chạm vào hình học sinh hoặc giáo viên trước, rồi mới điền t�
 
 | Path | What |
 |---|---|
-| `apps/app` | The app: Vite + React 19 + TypeScript, packaged with Tauri 2 for desktop; also the web/PWA build |
+| `apps/app` | The app: Vite + React 19 + TypeScript, packaged with Tauri 2 for desktop; also the web/PWA build. The student home is the Làng gà village (`src/lang`): one chicken per subject, no hub of squares |
 | `packages/mentor-schemas` | Shared pydantic contracts (course packs, practice, planner, events, notifications) |
-| `packages/mentor-mascot` | The mascot "Mực" as a framework-free custom element |
 | `services/gateway` | FastAPI backend: login, ops DB, catalog and course packs, practice, Ask, planner, reminders, teacher authoring |
 | `services/course-builder` | Course-builder agent (`mcb`): intake, outline, lessons, quizzes, media. The gateway runs it as subprocesses |
 | `services/model-router` | LiteLLM config that maps model aliases to the FPT endpoint |

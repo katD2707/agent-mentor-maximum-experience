@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper ground -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="rotate(-7 200 200)">
+    <!-- soft shadow -->
+    <path d="M 117 78
+             L 283 78
+             C 288 78 292 82 292 87
+             L 292 273
+             L 243 322
+             L 117 322
+             C 112 322 108 318 108 313
+             L 108 87
+             C 108 82 112 78 117 78 Z"
+          transform="translate(9,13)"
+          fill="#E9E5F6"/>
+
+    <!-- sheet of coloured paper -->
+    <path d="M 117 78
+             L 283 78
+             C 288 78 292 82 292 87
+             L 292 273
+             L 243 322
+             L 117 322
+             C 112 322 108 318 108 313
+             L 108 87
+             C 108 82 112 78 117 78 Z"
+          fill="#E8806A"
+          stroke="#5A4BC0"
+          stroke-width="6"
+          stroke-linejoin="round"
+          stroke-linecap="round"/>
+
+    <!-- dog-eared corner, underside -->
+    <path d="M 292 273 L 243 322 L 243 273 Z"
+          fill="#F0D76E"
+          stroke="#5A4BC0"
+          stroke-width="6"
+          stroke-linejoin="round"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

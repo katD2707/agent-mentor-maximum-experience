@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft offset shadow of the star -->
+  <path d="M200 80 L232.9 154.7 L314.1 162.9 L253.3 217.3 L270.5 297.1 L200 256 L129.5 297.1 L146.7 217.3 L85.9 162.9 L167.1 154.7 Z"
+        transform="translate(9,11)" fill="#E9E5F6"/>
+
+  <!-- the star -->
+  <path d="M200 80 L232.9 154.7 L314.1 162.9 L253.3 217.3 L270.5 297.1 L200 256 L129.5 297.1 L146.7 217.3 L85.9 162.9 L167.1 154.7 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- sparkle accents -->
+  <path d="M105 86 Q105 100 119 100 Q105 100 105 114 Q105 100 91 100 Q105 100 105 86 Z" fill="#E8806A"/>
+  <path d="M313 296 Q313 308 325 308 Q313 308 313 320 Q313 308 301 308 Q313 308 313 296 Z" fill="#5A4BC0"/>
+  <circle cx="326" cy="118" r="7" fill="#9FD8BF"/>
+  <circle cx="88" cy="288" r="5" fill="#E8806A"/>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+</svg>

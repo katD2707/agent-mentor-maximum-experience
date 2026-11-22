@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft halo -->
+  <circle cx="190" cy="205" r="150" fill="#E9E5F6"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- legs -->
+    <rect x="149" y="296" width="26" height="46" rx="13" fill="#5A4BC0"/>
+    <rect x="195" y="296" width="26" height="46" rx="13" fill="#5A4BC0"/>
+
+    <!-- shoes -->
+    <rect x="141" y="334" width="42" height="22" rx="11" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <rect x="187" y="334" width="42" height="22" rx="11" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+
+    <!-- neck -->
+    <rect x="172" y="172" width="26" height="40" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+
+    <!-- raised arm (behind torso) -->
+    <path d="M 240 226 C 258 200 262 160 278 128" fill="none" stroke="#5A4BC0" stroke-width="30"/>
+    <path d="M 240 226 C 258 200 262 160 278 128" fill="none" stroke="#9FD8BF" stroke-width="18"/>
+
+    <!-- resting arm (behind torso) -->
+    <path d="M 128 222 C 120 246 114 266 112 286" fill="none" stroke="#5A4BC0" stroke-width="30"/>
+    <path d="M 128 222 C 120 246 114 266 112 286" fill="none" stroke="#9FD8BF" stroke-width="18"/>
+
+    <!-- shirt -->
+    <path d="M 124 250 C 124 224 138 208 162 204 L 208 204 C 232 208 246 224 246 250
+             L 246 296 C 246 306 240 312 230 312 L 140 312 C 130 312 124 306 124 296 Z"
+          fill="#9FD8BF" stroke="#5A4BC0" stroke-width="6"/>
+
+    <!-- little badge star on the shirt -->
+    <path d="M 185 240 L 188 247 L 195 250 L 188 253 L 185 260 L 182 253 L 175 250 L 182 247 Z"
+          fill="#F0D76E"/>
+
+    <!-- hands -->
+    <circle cx="285" cy="113" r="17" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="6"/>
+    <circle cx="108" cy="299" r="14" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="6"/>
+
+    <!-- ears -->
+    <circle cx="139" cy="150" r="11" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+    <circle cx="231" cy="150" r="11" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+
+    <!-- head -->
+    <circle cx="185" cy="140" r="48" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="6"/>
+
+    <!-- hair -->
+    <path d="M 129 141 A 56 56 0 0 1 241 141
+             C 236 130 228 124 214 121
+             C 208 131 197 135 185 135
+             C 173 135 162 131 156 121
+             C 142 124 134 130 129 141 Z"
+          fill="#5A4BC0"/>
+
+    <!-- eyes -->
+    <ellipse cx="168" cy="158" rx="6" ry="7.5" fill="#2B283F"/>
+    <ellipse cx="202" cy="158" rx="6" ry="7.5" fill="#2B283F"/>
+    <circle cx="170" cy="155" r="2" fill="#F7F1E3"/>
+    <circle cx="204" cy="155" r="2" fill="#F7F1E3"/>
+
+    <!-- cheeks -->
+    <circle cx="159" cy="172" r="8" fill="#E8806A"/>
+    <circle cx="211" cy="172" r="8" fill="#E8806A"/>
+
+    <!-- smile -->
+    <path d="M 173 170 Q 185 180 197 170" fill="none" stroke="#2B283F" stroke-width="4"/>
+
+    <!-- sparkles by the raised hand -->
+    <path d="M 325 75 L 328.5 84.5 L 338 88 L 328.5 91.5 L 325 101 L 321.5 91.5 L 312 88 L 321.5 84.5 Z"
+          fill="#F0D76E"/>
+    <path d="M 344 132 L 346 138 L 352 140 L 346 142 L 344 148 L 342 142 L 336 140 L 342 138 Z"
+          fill="#F0D76E"/>
+    <circle cx="256" cy="80" r="5" fill="#F0D76E"/>
+
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

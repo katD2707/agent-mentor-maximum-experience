@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="100" y="120" width="280" height="360" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<ellipse cx="160" cy="180" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 160 180)"/>
+<ellipse cx="160" cy="260" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 160 260)"/>
+<ellipse cx="160" cy="340" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 160 340)"/>
+<ellipse cx="160" cy="420" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 160 420)"/>
+<ellipse cx="300" cy="180" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 300 180)"/>
+<ellipse cx="300" cy="260" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 300 260)"/>
+<ellipse cx="300" cy="340" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 300 340)"/>
+<ellipse cx="300" cy="420" rx="9" ry="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="1.5" transform="rotate(-15 300 420)"/>
+<line x1="300" y1="180" x2="410" y2="180" stroke="#2B283F" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="300" y1="260" x2="410" y2="260" stroke="#2B283F" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="410" y1="180" x2="410" y2="260" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/><polygon points="410,260 403.4,249.0 416.6,249.0" fill="#5A4BC0"/><polygon points="410,180 403.4,191.0 416.6,191.0" fill="#5A4BC0"/>
+<line x1="160" y1="480" x2="160" y2="510" stroke="#2B283F" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="300" y1="480" x2="300" y2="510" stroke="#2B283F" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="160" y1="500" x2="300" y2="500" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/><polygon points="300,500 289.0,506.6 289.0,493.4" fill="#5A4BC0"/><polygon points="160,500 171.0,506.6 171.0,493.4" fill="#5A4BC0"/>
+<rect x="660" y="300" width="280" height="300" fill="#E9E5F6"/>
+<line x1="660" y1="300" x2="940" y2="300" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="820" cy="350" rx="14" ry="9" fill="#E8806A" stroke="#5A4BC0" stroke-width="2" transform="rotate(-10 820 350)"/>
+<line x1="710" y1="300" x2="730" y2="300" stroke="#2B283F" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="710" y1="350" x2="730" y2="350" stroke="#2B283F" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="720" y1="300" x2="720" y2="350" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/><polygon points="720,350 713.4,339.0 726.6,339.0" fill="#5A4BC0"/><polygon points="720,300 713.4,311.0 726.6,311.0" fill="#5A4BC0"/>
+<rect x="840" y="135" width="65" height="55" rx="12" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<path d="M 840 170 L 800 150 L 790 162" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 905 150 C 930 145, 930 185, 905 185" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<circle cx="780" cy="180" r="3" fill="#9FD8BF"/>
+<circle cx="770" cy="200" r="3" fill="#9FD8BF"/>
+<circle cx="790" cy="210" r="3" fill="#9FD8BF"/>
+<circle cx="760" cy="230" r="3" fill="#9FD8BF"/>
+<circle cx="785" cy="240" r="3" fill="#9FD8BF"/>
+<circle cx="775" cy="260" r="3" fill="#9FD8BF"/>
+<circle cx="795" cy="270" r="3" fill="#9FD8BF"/>
+<circle cx="765" cy="285" r="3" fill="#9FD8BF"/>
+<circle cx="800" cy="290" r="3" fill="#9FD8BF"/>
+<circle cx="785" cy="295" r="3" fill="#9FD8BF"/>
+<text x="230" y="85" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">h&#x1EA1;t gi&#x1ED1;ng</text>
+<text x="425" y="225" text-anchor="start" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">kho&#x1EA3;ng c&#xE1;ch c&#xE2;y</text>
+<text x="230" y="550" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">kho&#x1EA3;ng c&#xE1;ch h&#xE0;ng</text>
+<text x="650" y="330" text-anchor="end" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#x111;&#x1ED9; s&#xE2;u 1&#x2013;2 cm</text>
+<text x="870" y="110" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">t&#x1B0;&#x1EDB;i &#x1EA9;m nh&#x1EB9;</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

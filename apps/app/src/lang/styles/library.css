@@ -1,0 +1,62 @@
+/* Thư viện (lg-10): the game look only frames the page (board, ribbon, chicken corner, wooden tabs); everything you read sits on calm
+   cream paper inside the board. The old research parts (.rs-*) keep their layout; the board re-points their colour tokens to warm paper.
+   Ported from mockups/lg-10-thu-vien.html, scoped under .lg-lib. */
+
+.lg-lib-wrap { position: relative; max-width: 940px; margin: 0 auto; padding: 16px 16px 60px; }
+.lg-lib-hud { display: flex; align-items: center; gap: 10px; margin-bottom: 42px; }
+.lg-lib-grow { flex: 1; }
+.lg-lib-rb { width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,.75); background: var(--plate); color: #fff; display: grid; place-items: center; cursor: pointer; text-decoration: none; box-shadow: 0 3px 0 rgba(0,0,0,.3); padding: 0; }
+.lg-lib-rb svg { width: 24px; height: 24px; }
+
+.lg-lib-board { --paper: #fbf1dc; --surface: #fffdf7; --ink: #3a2010; --ink-2: #6b4a2e; --ink-3: #7d5c3f; --rule: #eedcb8; --rule-strong: #d6b684;
+  --tim: #23874a; --tim-ink: #17653a; --tim-soft: #e4f2d8; --on-tim: #fff; --xanh: #1d7052; --xanh-soft: #dcefe3; --cam: #8a4e06; --cam-soft: #f8e9cf; --do: #a63030; --do-soft: #f6e4e0;
+  --vang: #ffcf3d; --vang-soft: #fbf1c9; --shadow: 0 1px 0 rgba(0,0,0,.04);
+  position: relative; background: var(--board); border: 4px solid var(--edge); border-radius: 28px; box-shadow: 0 8px 0 var(--wood-dark), 0 24px 60px rgba(0,0,0,.35); padding: 34px clamp(12px, 3vw, 28px) 26px; color: var(--ink); font-size: 16px; }
+.lg-lib-ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); margin: 0; padding: 10px 28px; border-radius: 16px; background: linear-gradient(#c4432a, #a83a24); color: #fff; font-size: clamp(1.1rem, 3vw, 1.45rem); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #86301d; }
+.lg-lib-board a { color: var(--tim-ink); }
+.lg-lib-board a.btn-primary { color: #fff; }
+.lg-lib-board .btn { border-radius: 14px; }
+.lg-lib-board .btn-primary { box-shadow: 0 4px 0 #165c32; }
+.lg-lib-board .btn-primary:active { transform: translateY(2px); box-shadow: 0 2px 0 #165c32; }
+.lg-lib-board .btn-ghost { background: var(--surface); }
+.lg-lib-board .search { border-radius: 14px; }
+.lg-lib-board .depth-btn { border-radius: 14px; background: var(--surface); }
+.lg-lib-board .depth-pop { background: var(--surface); }
+.lg-lib-board :focus-visible { outline-color: #1a6b3a; }
+.lg-lib-board .rs-wrap { gap: 18px; }
+
+/* the chicken corner: the student's university chicken talks; Mentor's comments are its comments */
+.lg-lib-corner { display: flex; align-items: flex-end; gap: 6px; margin-bottom: 14px; min-width: 0; }
+.lg-lib .gaf { position: relative; flex: none; width: 124px; height: 140px; overflow: hidden; border-radius: 18px; background: radial-gradient(ellipse 44% 7% at 50% 91%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 62%, #b6e39a 62%); border: 3px solid #e7cfa8; }
+.lg-lib .gaf img { position: absolute; width: 240px; max-width: none; left: -74px; top: -78px; }
+.lg-lib .gaf .nm { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 6px; background: var(--plate); color: #fff; font-size: .78rem; font-weight: 700; text-align: center; line-height: 1.15; }
+.lg-lib .bubble { position: relative; align-self: center; min-width: 0; max-width: 520px; padding: 10px 14px; border-radius: 16px; background: #fff; color: #2b283f; border: 2px solid #3a2418; box-shadow: 0 4px 0 rgba(58, 36, 24, .2); font-size: .95rem; font-weight: 500; line-height: 1.4; margin-left: 10px; }
+.lg-lib .bubble::before { content: ""; position: absolute; left: -9px; top: 50%; width: 14px; height: 14px; margin-top: -7px; background: #fff; border-left: 2px solid #3a2418; border-bottom: 2px solid #3a2418; transform: rotate(45deg); }
+.lg-lib .bubble p { margin: 0; }
+
+/* tabs: small wooden signs; the open one joins the sheet */
+.lg-lib .rs-tabs { gap: 6px; padding: 4px 6px 0; border-bottom: 0; }
+.lg-lib .rs-tab { min-height: 48px; margin-bottom: 0; padding: 0 20px; border: 2px solid var(--wood-dark); border-bottom: 0; border-radius: 12px 12px 0 0; background: linear-gradient(#f2c68c, #d6a060); color: #3a2010; font-size: .95rem; font-weight: 700; }
+.lg-lib .rs-tab + .rs-tab::before { display: none; }
+.lg-lib .rs-tab:hover { background: linear-gradient(#fff0d0, #e7b06c); color: #3a2010; }
+.lg-lib .rs-tab[aria-selected="true"] { background: var(--surface); margin-bottom: -2px; padding-bottom: 2px; z-index: 1; box-shadow: inset 0 4px 0 #ffcf3d; border-color: var(--wood-dark); }
+.lg-lib .rs-tab:focus-visible { outline: 3px solid #1a6b3a; outline-offset: -4px; }
+.lg-lib .rs-tdot { width: 9px; height: 9px; background: #23874a; }
+.lg-lib .rs-tdot.hot { background: #c2402a; }
+.lg-lib .rs-panel { background: var(--surface); border: 2px solid var(--wood-dark); border-radius: 18px; border-top-left-radius: 0; padding: 20px clamp(14px, 3vw, 28px) 24px; gap: 18px; }
+
+/* a research part that is not in tabs (first use, topic saved) sits on the same sheet */
+.lg-lib .rs-wrap > .rs-narrow, .lg-lib .rs-wrap > .rs-ask-topic { background: var(--surface); border: 2px solid var(--wood-dark); border-radius: 18px; padding: 20px clamp(14px, 3vw, 28px) 24px; }
+
+/* the reader: the paper is plain text on a sheet */
+.lg-lib .rs-paper { background: var(--surface); border: 2px solid var(--wood-dark); border-radius: 18px; padding: 20px clamp(14px, 3vw, 28px) 24px; }
+
+@media (max-width: 520px) {
+  .lg-lib .rs-tabs { gap: 3px; padding: 4px 0 0; }
+  .lg-lib .rs-tab { flex: 1 1 auto; justify-content: center; padding: 0 7px; gap: 4px; font-size: .8rem; white-space: nowrap; }
+  .lg-lib .rs-tab svg { display: none; }
+  .lg-lib .gaf { width: 92px; height: 112px; }
+  .lg-lib .gaf img { width: 200px; left: -56px; top: -60px; }
+  .lg-lib .bubble { font-size: .88rem; }
+  .lg-lib-ribbon { padding: 8px 20px; }
+}

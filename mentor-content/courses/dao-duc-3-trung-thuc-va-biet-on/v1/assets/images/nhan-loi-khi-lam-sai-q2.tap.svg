@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="rotate(-14 200 200)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- chalk body -->
+    <rect x="88" y="168" width="224" height="64" rx="32" fill="#E9E5F6"/>
+    <!-- soft highlight along the top of the stick -->
+    <rect x="112" y="181" width="114" height="13" rx="6.5" fill="#F7F1E3"/>
+    <!-- yellow wrap band -->
+    <rect x="236" y="168" width="38" height="64" fill="#F0D76E"/>
+    <!-- purple ink outline -->
+    <rect x="88" y="168" width="224" height="64" rx="32" fill="none" stroke="#5A4BC0" stroke-width="7"/>
+    <!-- little dust puff at the tip -->
+    <circle cx="326" cy="190" r="11" fill="#9FD8BF"/>
+    <circle cx="342" cy="212" r="7" fill="#F0D76E"/>
+    <circle cx="330" cy="230" r="5" fill="#E8806A"/>
+  </g>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

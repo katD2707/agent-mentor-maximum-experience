@@ -4,6 +4,7 @@ import type {
   BuildLesson,
   ChatMessage,
   CommentStatus,
+  CourseLabelsInfo,
   CourseLevel,
   CourseStatus,
   Outline,
@@ -222,7 +223,7 @@ export function load(): DB {
   }
   return (mem = seed(Date.now()));
 }
-function save(db: DB) {
+export function save(db: DB) {
   try {
     localStorage.setItem(KEY, JSON.stringify(db));
   } catch {
@@ -341,6 +342,13 @@ function levelOf(c: MCourse) {
   return { level: c.level ?? null, level_suggested: w?.level_suggested ?? null, level_confirmed: w?.level_confirmed ?? (w?.status === "published" ? (c.level ?? null) : null) };
 }
 
+/** The goals, language and topics of the working version (what the teacher saved), with Mentor's suggestion beside them. */
+function labelsInfo(c: MCourse): CourseLabelsInfo {
+  const l = workingVersion(c)?.labels;
+  const suggested = { goals: [] as string[], language: "vi" as const, topics: [] as string[] };
+  return { goals: l?.goals ?? suggested.goals, language: l?.language ?? suggested.language, topics: l?.topics ?? suggested.topics, suggested };
+}
+
 function summary(c: MCourse): TeacherCourseSummary {
   const total = c.build.length;
   const lineVi = c.status === "needs_retake" ? `Cấu trúc ${lessonCount(c.outline!)} bài đã xong, ${c.retake.length} trang chưa đọc được` : LINE[c.status][0];
@@ -357,11 +365,12 @@ function summary(c: MCourse): TeacherCourseSummary {
     latest_version: c.versions.reduce((m, v) => Math.max(m, v.version), 0),
     versions: c.versions.map((v) => ({ ...v })),
     ...levelOf(c),
+    labels: labelsInfo(c),
     build: c.status === "building" || total ? { done: c.build.filter((l) => l.state === "done").length, total } : null,
   };
 }
 
-function get(db: DB, id: string): MCourse {
+export function get(db: DB, id: string): MCourse {
   const c = db.courses.find((x) => x.id === id);
   if (!c) throw new ApiError(404, "not_found");
   return c;

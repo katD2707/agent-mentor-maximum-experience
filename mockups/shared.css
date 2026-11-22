@@ -379,8 +379,8 @@ p { margin: 0; }
 .set-srcs { gap: 4px; }
 .set-srcs .set-src > span { min-width: 0; overflow-wrap: anywhere; }
 
-/* Mực at phone width (<= 480px): he lives in a 60px strip at the bottom; content ends above it and nothing scrolls under him.
-   .mascot-dock (invisible, listed in mascot.js AVOID) keeps his free-spot search inside the strip. Same rule as apps/app base.css. */
+/* The guide chicken at phone width (<= 480px): it lives in a 60px strip at the bottom; content ends above it and nothing
+   scrolls under it. .mascot-dock (invisible, listed in ga-guide.js AVOID) keeps its free-spot search inside the strip. Same rule as apps/app base.css. */
 .mascot-bar, .mascot-dock { display: none; }
 @media (max-width: 480px) {
   html:root, html:root[data-age] { --dock-h: 60px; --m-h: 40px; }

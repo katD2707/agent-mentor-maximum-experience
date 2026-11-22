@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g stroke-linecap="round" stroke-linejoin="round">
+<rect x="300" y="210" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="345.0" y="255.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="390" y="210" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="435.0" y="255.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="480" y="210" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="525.0" y="255.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="570" y="210" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="615.0" y="255.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="660" y="210" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="705.0" y="255.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="750" y="210" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="795.0" y="255.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="300" y="300" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="345.0" y="345.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="390" y="300" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="435.0" y="345.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="480" y="300" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="525.0" y="345.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="570" y="300" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="615.0" y="345.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="660" y="300" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="705.0" y="345.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="750" y="300" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="795.0" y="345.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="300" y="390" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="345.0" y="435.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="390" y="390" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="435.0" y="435.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="480" y="390" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="525.0" y="435.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="570" y="390" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="615.0" y="435.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">4</text>
+<rect x="660" y="390" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="705.0" y="435.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">4</text>
+<rect x="750" y="390" width="90" height="90" rx="12" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<text x="795.0" y="435.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">7</text>
+<rect x="300" y="480" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="345.0" y="525.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="390" y="480" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="435.0" y="525.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="480" y="480" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="525.0" y="525.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="570" y="480" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="615.0" y="525.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">4</text>
+<rect x="660" y="480" width="90" height="90" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="705.0" y="525.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">5</text>
+<rect x="750" y="480" width="90" height="90" rx="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<text x="795.0" y="525.0" font-family="Lexend, sans-serif" font-size="36" fill="#2B283F" text-anchor="middle" dominant-baseline="central">7</text>
+<text x="345.0" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c=0</text>
+<text x="435.0" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c=1</text>
+<text x="525.0" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c=2</text>
+<text x="615.0" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c=3</text>
+<text x="705.0" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c=4</text>
+<text x="795.0" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c=5</text>
+<text x="274" y="255.0" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="end" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">i=0</text>
+<text x="274" y="345.0" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="end" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">i=1</text>
+<text x="274" y="435.0" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="end" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">i=2</text>
+<text x="274" y="525.0" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="end" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">i=3</text>
+<line x1="795.0" y1="480" x2="795.0" y2="480" stroke="#E8806A" stroke-width="4"/>
+</g>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

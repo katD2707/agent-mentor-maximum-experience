@@ -1,0 +1,1776 @@
+{
+  "schema_version": 1,
+  "course_id": "coding-for-kids-scratch-stories",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "en",
+  "age_band": "g1_5",
+  "title": "Coding for Kids: Scratch Stories",
+  "chapters": [
+    {
+      "id": "ch-first-steps",
+      "title": "First steps",
+      "lessons": [
+        {
+          "id": "meet-the-cat",
+          "title": "Meet the cat",
+          "est_minutes": 10,
+          "summary": "Learn the main parts of Scratch and build a script that moves the cat 10 steps when the green flag is clicked.",
+          "key_ideas": [
+            "Scratch builds stories with blocks",
+            "The Stage, sprite, Blocks palette, and Code area",
+            "A script is a stack of blocks",
+            "The green flag starts and the red stop sign stops a script"
+          ],
+          "blocks": [
+            {
+              "id": "meet-the-cat-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/meet-the-cat-b1.webp",
+                "mime": "image/webp",
+                "sha256": "8ea1502fb52e992f7d8d71cd22c9afc5b0a8a49f159d893205998f1db6fd4c22",
+                "bytes": 26588
+              },
+              "alt": "Scratch screen with a blocks box, a stage, and a code area",
+              "caption": "Scratch has four main parts.",
+              "audio": {
+                "path": "audio/meet-the-cat-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e6444057116562fe6beac45b2776af5f10e2c9956c57dad92045e9e51275c63a",
+                "bytes": 20252
+              },
+              "attribution": null
+            },
+            {
+              "id": "meet-the-cat-b2",
+              "kind": "text",
+              "md": "Scratch is a place where you build stories with blocks. Blocks snap together like LEGO bricks.",
+              "audio": {
+                "path": "audio/meet-the-cat-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "ab6c7f4fb2844c51d782f3c798bbfc7e0a5838c241fb273395506b4cdd58dedd",
+                "bytes": 49052
+              },
+              "gloss": "Scratch là nơi em xây dựng câu chuyện bằng các khối. Các khối ghép lại với nhau như gạch LEGO."
+            },
+            {
+              "id": "meet-the-cat-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/meet-the-cat-b3.webp",
+                "mime": "image/webp",
+                "sha256": "d63f5d47dc6d22b817eba629c42a44cb710a75ffeae52e1a46cfb063bf0941f2",
+                "bytes": 26604
+              },
+              "alt": "The cat sprite standing on the Stage",
+              "caption": "The cat is a sprite.",
+              "audio": {
+                "path": "audio/meet-the-cat-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "a5543357c6c3dc9153ba3e725e6baf6dadfdb6e04f6519a4465e0e0a7c2182b6",
+                "bytes": 16220
+              },
+              "attribution": null
+            },
+            {
+              "id": "meet-the-cat-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "meet-the-cat-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Which picture shows the Stage?",
+                  "stem_audio": {
+                    "path": "audio/meet-the-cat-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "7393546e993d41b66a5bb486d56d83264c89bf5fef41b777efc45d4da8a1157c",
+                    "bytes": 19676
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/meet-the-cat-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "8931f3844b12929402aaf423cae6d6938e1151333014b643375854d0ca3ae333",
+                        "bytes": 3209
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/meet-the-cat-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "aed52e2ecc78ea8f46bb55cb5b439aab8f261df8f6c7d3b93098848df8616ce9",
+                        "bytes": 1838
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/meet-the-cat-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "715931c5e3ddbbb9bf0984ffa56051e85652f5c33b6322290e96261de21815dc",
+                        "bytes": 1474
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The Stage is the picture area where the story happens.",
+                  "option_feedback": {
+                    "B": "The Stage is the picture area where the story happens.",
+                    "C": "The Stage is the picture area where the story happens."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "meet-the-cat-b4",
+              "kind": "text",
+              "md": "The Stage is the picture area. The cat is a sprite, a character. Blocks live in the Blocks palette.",
+              "audio": {
+                "path": "audio/meet-the-cat-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "c5768e27922fd4064a5296a16344aa83139308e07c6dee325415c69a5f457e74",
+                "bytes": 59708
+              },
+              "gloss": "Sân khấu là vùng hình ảnh. Chú mèo là một sprite, một nhân vật. Các khối nằm trong bảng Khối."
+            },
+            {
+              "id": "meet-the-cat-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/meet-the-cat-b5.webp",
+                "mime": "image/webp",
+                "sha256": "4452d3dee0657ce60bc11f1675b1315488b6f75306b81add13616f516c200276",
+                "bytes": 7402
+              },
+              "alt": "A script with a green flag block on top and a move block under it",
+              "caption": "A script is a stack of blocks.",
+              "audio": {
+                "path": "audio/meet-the-cat-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "dbc1bc52be02f4010bff80cc6b48ab1ed2dbf1637e5cb7788246793e4801750f",
+                "bytes": 19964
+              },
+              "attribution": null
+            },
+            {
+              "id": "meet-the-cat-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "meet-the-cat-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Tap 3 blocks.",
+                  "stem_audio": {
+                    "path": "audio/meet-the-cat-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "5d3ad5fd49b0beab32a7c5952ba0bc14904d8999f1da35341945359781d938ca",
+                    "bytes": 15644
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/meet-the-cat-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "cddd00b7d56233908a9baac5bcdff514d379d54d55aa3f63e4733232616c8568",
+                      "bytes": 2368
+                    },
+                    "total": 5
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 3
+                  },
+                  "hint": null,
+                  "explanation": "Tap three of the five blocks shown.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "meet-the-cat-b6",
+              "kind": "text",
+              "md": "Drag when green flag clicked into the Code area. Snap move 10 steps under it. The cat moves 10 steps.",
+              "audio": {
+                "path": "audio/meet-the-cat-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "cd7c1b319b4bbe947101ce7d1f98905c96b0642203d3aed0cf6f69e2fd2d4770",
+                "bytes": 64460
+              },
+              "gloss": "Kéo khối khi bấm cờ xanh vào vùng Code. Ghép khối di chuyển 10 bước bên dưới. Chú mèo di chuyển 10 bước."
+            },
+            {
+              "id": "meet-the-cat-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "The green flag starts. The red stop sign stops.",
+              "audio": {
+                "path": "audio/meet-the-cat-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "46390eb81c9845f4d9167f13428b16ac32ea387ddb57a3dae6e01ef82e58a494",
+                "bytes": 36812
+              }
+            },
+            {
+              "id": "meet-the-cat-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "meet-the-cat-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which button starts a script?",
+                  "stem_audio": {
+                    "path": "audio/meet-the-cat-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "d3654816e62fd0ba457222a88361945e5bf02c9abda597daa149df25362dc569",
+                    "bytes": 18668
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "green flag",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/meet-the-cat-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "3723d9699eb467f4f1268a42d538d89dd03a29d1e73276b653ba56818ed3bf94",
+                        "bytes": 13628
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "red stop sign",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/meet-the-cat-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "8f3ea91ec03634d7ebdf1147dc0b20e68d3e1c632181abb44d03bd666cada24e",
+                        "bytes": 16220
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Blocks palette",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/meet-the-cat-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "d43a3f385305bd5fee2763448d8960c5b7ecb0ca785c732dd800b57b4c4fe083",
+                        "bytes": 14492
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The green flag starts the script in the Code area.",
+                  "option_feedback": {
+                    "B": "The red stop sign stops the script, not starts it.",
+                    "C": "The Blocks palette holds blocks; it does not start scripts."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "moving-and-talking",
+          "title": "Moving and talking",
+          "est_minutes": 10,
+          "summary": "Use move and say blocks in order to make the cat move, talk, and move again.",
+          "key_ideas": [
+            "move 10 steps moves the sprite 10 steps",
+            "say [Hello!] for 2 seconds shows a speech bubble",
+            "Blocks run from top to bottom",
+            "Steps are distance, seconds are time"
+          ],
+          "blocks": [
+            {
+              "id": "moving-and-talking-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/moving-and-talking-b1.webp",
+                "mime": "image/webp",
+                "sha256": "6ffe70f02b15e860a1551df5436372f4eae2b8ffaddc317069c0e071492eb733",
+                "bytes": 21024
+              },
+              "alt": "A cat moving 10 steps after the green flag is clicked.",
+              "caption": "Move 10 steps.",
+              "audio": {
+                "path": "audio/moving-and-talking-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "38cfb3fdd4e0b52104af522459b8ef1ac3fea4c0201802910e1bfc876cd33372",
+                "bytes": 16220
+              },
+              "attribution": null
+            },
+            {
+              "id": "moving-and-talking-b2",
+              "kind": "text",
+              "md": "Click the green flag. `move 10 steps` moves the cat 10 steps.",
+              "audio": {
+                "path": "audio/moving-and-talking-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "82216e8ed65f6c81457d0df9808fd1eaf519fa2b0c7202ace20021114b52b9f4",
+                "bytes": 40412
+              },
+              "gloss": "Bấm lá cờ xanh. `move 10 steps` làm chú mèo di chuyển 10 bước."
+            },
+            {
+              "id": "moving-and-talking-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/moving-and-talking-b3.webp",
+                "mime": "image/webp",
+                "sha256": "b859490fa3c947d7ffd9026439a8167ca4f1c58d3f238a18301eec0fbff7f4ed",
+                "bytes": 21108
+              },
+              "alt": "A cat with an empty speech bubble.",
+              "caption": "Say Hello! for 2 seconds.",
+              "audio": {
+                "path": "audio/moving-and-talking-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "0b8669bca20741251915f33d1225260da75f35169eba5f309255632f90f87a27",
+                "bytes": 27884
+              },
+              "attribution": null
+            },
+            {
+              "id": "moving-and-talking-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "moving-and-talking-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Which one is a sprite?",
+                  "stem_audio": {
+                    "path": "audio/moving-and-talking-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "292d1f47063399ad001f7093e80795c431029d2bc3ea2656bf575eee6831166f",
+                    "bytes": 16076
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/moving-and-talking-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "684e91c34a7ac30092c68f592c408a443dddc0e15f5de531afbf7e17e2987468",
+                        "bytes": 3490
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/moving-and-talking-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "efa2b996743755a88718cd7506fe99dfe316262da5a2e3bdb41b190ee34edf7f",
+                        "bytes": 1387
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/moving-and-talking-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "7a6db5f37e369a31f4c1b44d10be841f27e9b1c9b5370b5b0fd7f1e1a5ea9b92",
+                        "bytes": 1986
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "A sprite is a character, and the cat is a sprite.",
+                  "option_feedback": {
+                    "B": "The green flag starts the script; it is not a sprite.",
+                    "C": "A stack of blocks is a script, not a character."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "moving-and-talking-b4",
+              "kind": "text",
+              "md": "`say [Hello!] for 2 seconds` shows a speech bubble. The cat says Hello! for 2 seconds.",
+              "audio": {
+                "path": "audio/moving-and-talking-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e4cf16bf73af9387263b61b959edb3ecda4e6ab1bdbf98da15390116f9070412",
+                "bytes": 58556
+              },
+              "gloss": "`say [Hello!] for 2 seconds` hiện bong bóng nói. Chú mèo nói Hello! trong 2 giây."
+            },
+            {
+              "id": "moving-and-talking-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/moving-and-talking-b5.webp",
+                "mime": "image/webp",
+                "sha256": "99e40841a28fc5ef2c66cf8cc8055a5a0bb4aa65557ecdbd5a958ac1d14a2b19",
+                "bytes": 23636
+              },
+              "alt": "Three blocks stacked top to bottom, making the cat move, talk, then move.",
+              "caption": "Move, talk, move.",
+              "audio": {
+                "path": "audio/moving-and-talking-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "deac2d2aa41646471022fbe1aceecc075adbbb4addac8b0cfd94f6a44d58ac17",
+                "bytes": 19676
+              },
+              "attribution": null
+            },
+            {
+              "id": "moving-and-talking-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "moving-and-talking-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Tap 5 stars.",
+                  "stem_audio": {
+                    "path": "audio/moving-and-talking-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "4f70aff984b4e0c3f5fb80acc218e8153860aba0ab27b1ade28d122817c8640f",
+                    "bytes": 16364
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/moving-and-talking-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "73183151908b0e00ce9ee242e72d69535109f31af7d7eccf95e52f1707b47ca2",
+                      "bytes": 1406
+                    },
+                    "total": 8
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 5
+                  },
+                  "hint": null,
+                  "explanation": "The task asks you to tap 5 of the 8 stars.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "moving-and-talking-b6",
+              "kind": "text",
+              "md": "Blocks run from top to bottom. First move 10 steps. Then say Hello! for 2 seconds. Then move 10 more steps. Total: 20 steps.",
+              "audio": {
+                "path": "audio/moving-and-talking-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "bb178a9a6391f365705ad941a06e98604cccdf89c6f3317700599caeca2ac784",
+                "bytes": 99884
+              },
+              "gloss": "Các khối chạy từ trên xuống dưới. Đầu tiên di chuyển 10 bước. Sau đó nói Hello! trong 2 giây. Rồi di chuyển thêm 10 bước. Tổng cộng: 20 bước."
+            },
+            {
+              "id": "moving-and-talking-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Steps are distance, seconds are time.",
+              "audio": {
+                "path": "audio/moving-and-talking-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "2d806046316b951247d462053020a9ab33c267c70b160da201cbcd154fa5e4a1",
+                "bytes": 22844
+              }
+            },
+            {
+              "id": "moving-and-talking-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "moving-and-talking-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which block shows words?",
+                  "stem_audio": {
+                    "path": "audio/moving-and-talking-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "3e34b36db96b240472f4c7ea736ea9ba737844486ebb2704394d61a6baebafe7",
+                    "bytes": 17804
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "say",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/moving-and-talking-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "22055f9e2acebef3a693b2181ecc295a9494091e137339839b9abbb60b3cb429",
+                        "bytes": 12044
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "move",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/moving-and-talking-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "e59623b8b239fa63f5089e0e8f8399b5b092592b6da50224a92f19ff81b02f64",
+                        "bytes": 12044
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "wait",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/moving-and-talking-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "ac175ccb4db5bce0c41f88a8b20f8266919ea6023566d612c16fa2fc013f6a33",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "stop",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/moving-and-talking-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "7358e421a7c1a821e5b23e7136e8b88fe886c5fd5926c08e59ac08f4aa6c115c",
+                        "bytes": 12044
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The say block shows a speech bubble with words.",
+                  "option_feedback": {
+                    "B": "The move block changes position; it does not show words.",
+                    "C": "The wait block makes a pause; it does not show words.",
+                    "D": "The stop block ends the script; it does not show words."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "changing-costumes",
+          "title": "Changing costumes",
+          "est_minutes": 10,
+          "summary": "Change a sprite's costume with waits to create a simple animation.",
+          "key_ideas": [
+            "A costume is a picture of a sprite",
+            "next costume goes to the next picture",
+            "switch costume to picks an exact picture",
+            "wait makes a short pause for visible animation"
+          ],
+          "blocks": [
+            {
+              "id": "changing-costumes-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/changing-costumes-b1.webp",
+                "mime": "image/webp",
+                "sha256": "38e47f9c7f34b0993dd159517ac030f785058e133ae1ddf972dd3a1390b8ee4b",
+                "bytes": 25014
+              },
+              "alt": "A cat with two costume pictures.",
+              "caption": "One cat, two costumes.",
+              "audio": {
+                "path": "audio/changing-costumes-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "bf0273f563e4e90dff504b88a50b7957ca8316e4cf08d28eb7480df0ac7232a5",
+                "bytes": 20684
+              },
+              "attribution": null
+            },
+            {
+              "id": "changing-costumes-b2",
+              "kind": "text",
+              "md": "A costume is a picture of a sprite. One sprite can have many costumes.",
+              "audio": {
+                "path": "audio/changing-costumes-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "c42187b4c8c9e67a141256a6c04e85241b1e7cfeff5139239b8d4155b2fdcc94",
+                "bytes": 42428
+              },
+              "gloss": "Một bộ trang phục là một hình của nhân vật. Một nhân vật có thể có nhiều bộ trang phục."
+            },
+            {
+              "id": "changing-costumes-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/changing-costumes-b3.webp",
+                "mime": "image/webp",
+                "sha256": "32ea33590f149291fa89a231cfc0b816a7184bfe18e3576828c95eb6221365ea",
+                "bytes": 21884
+              },
+              "alt": "An arrow from one cat picture to the next.",
+              "caption": "Next costume changes the picture.",
+              "audio": {
+                "path": "audio/changing-costumes-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "67d3be15e164b534a138f0f8eb86ca8f1d0c009d3f38335439161c1a068dd13f",
+                "bytes": 21692
+              },
+              "attribution": null
+            },
+            {
+              "id": "changing-costumes-b4",
+              "kind": "text",
+              "md": "`next costume` goes to the next picture. `switch costume to` picks an exact picture.",
+              "audio": {
+                "path": "audio/changing-costumes-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "6da1352f8599a274441621a658e3b0215925ee0e87fb435f3571fb58f7501fc6",
+                "bytes": 46172
+              },
+              "gloss": "`next costume` đi đến hình tiếp theo. `switch costume to` chọn đúng một hình."
+            },
+            {
+              "id": "changing-costumes-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "changing-costumes-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Which picture shows a sprite?",
+                  "stem_audio": {
+                    "path": "audio/changing-costumes-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "dffc3ef4756911b905f636dad4e606122e7c04eecec4277ac77c764c104185f5",
+                    "bytes": 18668
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/changing-costumes-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "6d2302dd38bd4d510252e5a013d3f24489e9bf650de74857343daa86ef8488e1",
+                        "bytes": 3091
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/changing-costumes-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "a90cc9be33549d1f616b74cb3e9902ae7c00214d9c9be493230fcc88bbe5d19f",
+                        "bytes": 1352
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/changing-costumes-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "74ddecd79297c7688d88471552aedf0ca1678f08e79459696f66fbda1b4e5e79",
+                        "bytes": 1549
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "A sprite is a character that acts in the story.",
+                  "explanation": "A sprite is a character in Scratch, and the cat is a sprite.",
+                  "option_feedback": {
+                    "B": "A sprite is a character in Scratch, and the cat is a sprite.",
+                    "C": "A sprite is a character in Scratch, and the cat is a sprite."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "changing-costumes-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/changing-costumes-b5.webp",
+                "mime": "image/webp",
+                "sha256": "ace17f25dd63dae8aa16e2dab6d5553314d18634c2cd847df3c21c1e0fa61778",
+                "bytes": 26156
+              },
+              "alt": "A small clock between two cat pictures.",
+              "caption": "A short pause.",
+              "audio": {
+                "path": "audio/changing-costumes-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "acd9e08d58fb239b8e1ff75b12a0a24903b0c641f6d86e400dda050321cc6417",
+                "bytes": 14780
+              },
+              "attribution": null
+            },
+            {
+              "id": "changing-costumes-b6",
+              "kind": "text",
+              "md": "The cat has 2 costumes. `next costume` changes the picture. `wait 0.5 seconds` makes a short pause.",
+              "audio": {
+                "path": "audio/changing-costumes-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "33f5291a9011c23165ce45997505795b977e49dc7439c07ac79445b2ca118baf",
+                "bytes": 66332
+              },
+              "gloss": "Chú mèo có 2 bộ trang phục. `next costume` đổi hình. `wait 0.5 seconds` tạo một khoảng dừng ngắn."
+            },
+            {
+              "id": "changing-costumes-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Remember",
+              "md": "Small waits make the change easy to see.",
+              "audio": {
+                "path": "audio/changing-costumes-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "0af962c7b9f75dbfcf25bc2ffc9feafb24b38c0378cd89cbfe0ab789bfc94cec",
+                "bytes": 35084
+              }
+            },
+            {
+              "id": "changing-costumes-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "changing-costumes-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which block makes a short pause?",
+                  "stem_audio": {
+                    "path": "audio/changing-costumes-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "c9741afaa2a174f6ca9a5328927e8b71e89dbe76f00d36c156236c364a77bcf6",
+                    "bytes": 19964
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "wait 0.5 seconds",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/changing-costumes-q2.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "93216b60d9a843fbd9ca2d7ac4815a4fa28243dbcd62f03a5e0647082f3644a3",
+                        "bytes": 20828
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "next costume",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/changing-costumes-q2.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "b7190163b731d68c9ad575a70737d1ac1d8d80c4f2cd9a01114808d395a2e9ee",
+                        "bytes": 14924
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "switch costume to",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/changing-costumes-q2.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "a6714e7003016476f3a231cfd5493e6470e51bd78f159eabbef23d6100fa02ff",
+                        "bytes": 16220
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "move 10 steps",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/changing-costumes-q2.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "ce98789dfffaa6526392c790c419ebab74eee3ddc6fb0291d96df55919788ec2",
+                        "bytes": 16220
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "It is about time, not about pictures.",
+                  "explanation": "The wait block stops the script for a short time, so the change is easy to see.",
+                  "option_feedback": {
+                    "B": "next costume changes the picture, not the time.",
+                    "C": "switch costume to picks an exact picture; it does not pause.",
+                    "D": "move 10 steps changes the cat's place, not the time."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about your first steps in Scratch, a place where you build stories with blocks that snap together like LEGO bricks. In these lessons you meet the cat, learn to move and talk, and learn to change costumes. Each lesson adds a new block or idea to your script, so you build your story step by step.",
+          "The Stage is the picture area where your story happens. The cat is a sprite, which is a character in your story. The Stage, the sprite, the Blocks palette, and the Code area are the parts you use in Scratch. You see the cat on the Stage, and you find blocks in the Blocks palette to drag into the Code area.",
+          "Blocks live in the Blocks palette, and you drag them into the Code area to build a script. A script is a stack of blocks in the Code area. You build a script by snapping blocks together, one under another. The blocks snap together like LEGO bricks, so they stay in order.",
+          "The green flag starts a script, and the red stop sign stops it. For example, drag when green flag clicked into the Code area. Snap move ten steps under it, so the script has two blocks. When you click the green flag, the cat moves ten steps, and the red stop sign stops the script.",
+          "In the next lesson, you learn to move and talk. The block move ten steps moves the sprite ten steps. The block say Hello for two seconds shows a speech bubble with the words Hello. The cat says Hello for two seconds, and then the speech bubble goes away.",
+          "Blocks run from top to bottom in a script. For example, first move ten steps, then say Hello for two seconds, then move ten more steps. The cat moves, then talks, then moves again, so the total is twenty steps. Steps are distance, and seconds are time, so ten steps is a distance and two seconds is a time.",
+          "A costume is a picture of a sprite. One sprite can have many costumes, and the cat has two costumes. The block next costume goes to the next picture. The block switch costume to picks an exact picture, so you can choose which costume to show.",
+          "The cat has two costumes, so next costume changes the picture from one to the other. The block wait zero point five seconds makes a short pause. Small waits make the change easy to see, because the new picture stays for a moment. This helps when you want a visible animation, so the change is not too fast.",
+          "Remember three things. First, blocks snap into scripts, and the green flag starts a script while the red stop sign stops it. Second, move ten steps moves the sprite ten steps, say Hello for two seconds shows a speech bubble, and steps are distance while seconds are time. Third, a costume is a picture, next costume changes to the next picture, switch costume to picks an exact picture, and a small wait makes the change easy to see."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-first-steps.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "9ebbb7fb1ab1df74f3291ce49900b57ac31016d13ec701426ac0ebbdd8a5fb6f",
+          "bytes": 1306044
+        },
+        "duration_s": 216.88
+      }
+    },
+    {
+      "id": "ch-make-a-story",
+      "title": "Make a story",
+      "lessons": [
+        {
+          "id": "scenes-and-backdrops",
+          "title": "Scenes and backdrops",
+          "est_minutes": 8,
+          "summary": "Use backdrops and waits to make a story with two scenes, Park then Beach.",
+          "key_ideas": [
+            "A backdrop is the Stage background",
+            "A scene has a backdrop, sprites, and words or actions",
+            "switch backdrop changes the background",
+            "wait holds a scene for a set time"
+          ],
+          "blocks": [
+            {
+              "id": "scenes-and-backdrops-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/scenes-and-backdrops-b1.webp",
+                "mime": "image/webp",
+                "sha256": "7f9be58cf9ff4d129d80a2cc6d61642d22bf98d309c02172a03f727991b4a297",
+                "bytes": 21288
+              },
+              "alt": "Scratch Stage with a park backdrop and a cat sprite.",
+              "caption": "The Stage has a backdrop.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "742b75f929d74da6db795b994d927e7c0147a09c57360a2ca64fb49ac44e456e",
+                "bytes": 18380
+              },
+              "attribution": null
+            },
+            {
+              "id": "scenes-and-backdrops-b2",
+              "kind": "text",
+              "md": "A backdrop is the background picture on the Stage.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "9c5af4e0faf1f86bdd8e14449360b32ae84f4c67f960ed17381c5a5bb3c00038",
+                "bytes": 26156
+              },
+              "gloss": "Backdrop là hình nền trên Sân khấu."
+            },
+            {
+              "id": "scenes-and-backdrops-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/scenes-and-backdrops-b3.webp",
+                "mime": "image/webp",
+                "sha256": "488ff85e0afe51791813eb448f2a6c3648856d10111593e2e842863c36455437",
+                "bytes": 19386
+              },
+              "alt": "A park scene with a backdrop, a sprite, and a speech bubble.",
+              "caption": "A scene has parts.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "ec2abb0703f1be8f9823bad56ef900a9907e016cc1a82279084bef73a8ace83d",
+                "bytes": 16220
+              },
+              "attribution": null
+            },
+            {
+              "id": "scenes-and-backdrops-b4",
+              "kind": "text",
+              "md": "A scene is one part of a story. It has a backdrop, sprites, and words or actions.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "eee9c00ebe949ed3e856b24e6ce5f939c1ed124c4cdada35bb1840ed132f2b2c",
+                "bytes": 49484
+              },
+              "gloss": "Một cảnh là một phần của câu chuyện. Cảnh có hình nền, nhân vật, và lời nói hoặc hành động."
+            },
+            {
+              "id": "scenes-and-backdrops-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "scenes-and-backdrops-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Which picture shows a backdrop?",
+                  "stem_audio": {
+                    "path": "audio/scenes-and-backdrops-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "66bb75631598fe8990536de7833fcbbbbf7b55b934ca2c97869f36558584f6d6",
+                    "bytes": 19676
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/scenes-and-backdrops-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "e9edc3fcbda63d55fa460bc4f97777c3e5a347fb4441d31e084909043278586c",
+                        "bytes": 1998
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/scenes-and-backdrops-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "6c7d4c94521f33830fa0de47c77166012516b7ebd6c1d3a5489a252412f9ae03",
+                        "bytes": 3467
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/scenes-and-backdrops-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "8df67f4f179d9956ad1bdbe816d2394753c8897a5825bca72dbaaafc2a3b336d",
+                        "bytes": 2614
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Think about the picture behind the sprites.",
+                  "explanation": "A backdrop is the background picture on the Stage.",
+                  "option_feedback": {
+                    "B": "A backdrop is the background picture on the Stage.",
+                    "C": "A backdrop is the background picture on the Stage."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "scenes-and-backdrops-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/scenes-and-backdrops-b5.webp",
+                "mime": "image/webp",
+                "sha256": "747017da9f900240c69d363b0eff1e0f3dd5a3439e8d640a100f3931edfa6537",
+                "bytes": 30190
+              },
+              "alt": "Two backdrops: Park first, then Beach, with a clock between them.",
+              "caption": "Park, wait, then Beach.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "f29af2bcd7454ea4c63ea6f415e2fe4eeab21a7f27b038d2f0d8f2acb3ce516f",
+                "bytes": 19964
+              },
+              "attribution": null
+            },
+            {
+              "id": "scenes-and-backdrops-b6",
+              "kind": "text",
+              "md": "Use switch backdrop to change the background. Use wait 3 seconds to hold the Park scene. Then switch to Beach. The story has 2 scenes.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "e0788de860359bb72997696e67fb340dd8f97ef2f62e4c9995ed427478d842c3",
+                "bytes": 81596
+              },
+              "gloss": "Dùng switch backdrop để đổi hình nền. Đợi 3 giây giữ cảnh Công viên. Rồi chuyển sang Bãi biển. Câu chuyện có 2 cảnh."
+            },
+            {
+              "id": "scenes-and-backdrops-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Remember",
+              "md": "Use switch backdrop to change the background, not switch costume.",
+              "audio": {
+                "path": "audio/scenes-and-backdrops-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "8a5eb9c22c4cf9d6c0578c4cf4005bf383b9d6c00cacc238fb2553329b046fbe",
+                "bytes": 45020
+              }
+            },
+            {
+              "id": "scenes-and-backdrops-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "scenes-and-backdrops-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which block changes the background?",
+                  "stem_audio": {
+                    "path": "audio/scenes-and-backdrops-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "54ddf87285d811d1f658643668c5afb1ab8d350a82490e38fb21dfd263f20a47",
+                    "bytes": 20540
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "switch backdrop to",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/scenes-and-backdrops-q2.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "13791580f7e5200c7535c7b2e9aae45d57c6bc953736b1c36a71bdff6a8bc730",
+                        "bytes": 16940
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "switch costume",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/scenes-and-backdrops-q2.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "2304ba07f8b375a1469a092fb68087f84895e78a7de6170b7312f7f873a93bfe",
+                        "bytes": 15068
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "wait 3 seconds",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/scenes-and-backdrops-q2.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "0d3f2c9e2942d94d95a7284f53cf32b2b8e6dab6c378c530cb15803f9bdff94c",
+                        "bytes": 15932
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "move 5 steps",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/scenes-and-backdrops-q2.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "68404f2f109bbdd99c165e4d5166d497c875ea53f04515e7f7079e47d06a2727",
+                        "bytes": 16364
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "switch backdrop to changes the Stage background. switch costume changes only the sprite.",
+                  "option_feedback": {
+                    "B": "That changes the sprite's picture, not the Stage background.",
+                    "C": "That only holds the scene for a time; it does not change the picture.",
+                    "D": "That moves a sprite; it does not change the background."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "repeat-with-loops",
+          "title": "Repeat with loops",
+          "est_minutes": 10,
+          "summary": "Use repeat blocks to run actions multiple times and calculate total steps and waits.",
+          "key_ideas": [
+            "A loop repeats blocks inside it",
+            "repeat (5) runs the inside blocks 5 times",
+            "Loops save space",
+            "Only blocks inside the loop repeat"
+          ],
+          "blocks": [
+            {
+              "id": "repeat-with-loops-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/repeat-with-loops-b1.webp",
+                "mime": "image/webp",
+                "sha256": "3315214aa69b18dc96b2226bceb0850a6e9c8686e03cfaab92ddd3ecbf43a1bc",
+                "bytes": 16404
+              },
+              "alt": "A cartoon cat points to blocks inside a loop block.",
+              "caption": "Blocks can go inside a loop.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "276338dcebbd003c7d17b9c51ac79e7e8b75e45c5b7f5047c0aa528ae3a33f11",
+                "bytes": 19532
+              },
+              "attribution": null
+            },
+            {
+              "id": "repeat-with-loops-b2",
+              "kind": "text",
+              "md": "A loop repeats the blocks inside it. Loops save space.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "300d13c3a3e153d14de45c66d4448a739abbc5927ca11dbf4eda90bf555fe010",
+                "bytes": 37532
+              },
+              "gloss": "Một vòng lặp lặp lại các khối bên trong nó. Vòng lặp giúp tiết kiệm chỗ."
+            },
+            {
+              "id": "repeat-with-loops-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/repeat-with-loops-b3.webp",
+                "mime": "image/webp",
+                "sha256": "ecbc86a6eb8e755124879c95151a47c139bf80d437e9e57935a6a371e16dce66",
+                "bytes": 14080
+              },
+              "alt": "A loop block with five dots and two blocks inside.",
+              "caption": "Repeat five times.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "1e61552fd34abb45d223a2ddfd8ec431233c829456c0c956bd1ab2ef93f6feb3",
+                "bytes": 17084
+              },
+              "attribution": null
+            },
+            {
+              "id": "repeat-with-loops-b4",
+              "kind": "text",
+              "md": "Repeat (5) runs the inside blocks five times. It counts 1, 2, 3, 4, 5, then stops.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "9c22b1487b4c8974b792752f28688465a0869faaffa6948297f73a34e457cd99",
+                "bytes": 68348
+              },
+              "gloss": "Khối repeat (5) chạy các khối bên trong năm lần. Nó đếm 1, 2, 3, 4, 5, rồi dừng."
+            },
+            {
+              "id": "repeat-with-loops-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "repeat-with-loops-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Which picture shows a loop block?",
+                  "stem_audio": {
+                    "path": "audio/repeat-with-loops-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "905dff3c443d9d8c743f151a793e3574d4d7c4405444af53e20cb14e222e4100",
+                    "bytes": 19964
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/repeat-with-loops-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "272ba3b1a018bc8fb4a6cc70beff7e4a25e0cacb813d0509cbff8f8abca94929",
+                        "bytes": 1383
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/repeat-with-loops-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "2a64bbcd12a5cb2040abf086bfe652e73ec07b5f7d93ecc1c8ceb41ae77f45d0",
+                        "bytes": 1722
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/repeat-with-loops-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "d0fb1cb0981ef3df8053d7fb894a83bd2cc48737e429cb594b92322bbfd726ba",
+                        "bytes": 2268
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Look for the word repeat.",
+                  "explanation": "The repeat block is the loop, so it repeats the blocks inside it.",
+                  "option_feedback": {
+                    "B": "The repeat block is the loop, so it repeats the blocks inside it.",
+                    "C": "The repeat block is the loop, so it repeats the blocks inside it."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "repeat-with-loops-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/repeat-with-loops-b5.webp",
+                "mime": "image/webp",
+                "sha256": "eab600647382992d84167107c2c65f176b4d9c180c5da8b1ab39c29774e0e935",
+                "bytes": 30242
+              },
+              "alt": "A cat jumps four times with five footprints each and a small clock.",
+              "caption": "Move and wait, again and again.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "19ed71ffa2e1ebfdf9c0e696c239d48a62517d2a30e7f37adebe675987b78b86",
+                "bytes": 20684
+              },
+              "attribution": null
+            },
+            {
+              "id": "repeat-with-loops-b6",
+              "kind": "text",
+              "md": "The cat moves 5 steps 4 times. That is 20 steps in all. It waits 0.5 seconds 4 times. That is 2 seconds.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "294d4db66b7c122a47d8d563b0c636c4fc2dbb89fe597a6f47749f3a263c62bc",
+                "bytes": 81164
+              },
+              "gloss": "Con mèo di chuyển 5 bước 4 lần. Tổng cộng là 20 bước. Nó chờ 0,5 giây 4 lần. Đó là 2 giây."
+            },
+            {
+              "id": "repeat-with-loops-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Only blocks inside the loop repeat.",
+              "audio": {
+                "path": "audio/repeat-with-loops-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "ddb870efad2ac576d7cd0cf3fbd6e51a6153741a09778665baa09eb7c3c110a5",
+                "bytes": 22124
+              }
+            },
+            {
+              "id": "repeat-with-loops-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "repeat-with-loops-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Repeat (4) runs the inside blocks how many times?",
+                  "stem_audio": {
+                    "path": "audio/repeat-with-loops-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "1b34cc17431107b7ba5a2c29b2320d4f2103d185d7e01e3736f1aaaf0efa4168",
+                    "bytes": 31916
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "4 times",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/repeat-with-loops-q2.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "6704fc438d3834aa94079919def97e442729d0c73500bfb596d17488a746b0aa",
+                        "bytes": 14060
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "3 times",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/repeat-with-loops-q2.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "aa0a59c51d610e463b78683a3c6da65590883bce58ac4a0f8cd86fffa68311fb",
+                        "bytes": 13916
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "1 time",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/repeat-with-loops-q2.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "4d23f02a593e500b793321ee44d74da8ca71e26d2eb7473de975ebc7bc73099c",
+                        "bytes": 13052
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "5 times",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/repeat-with-loops-q2.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "5092c64a6b6978e37482f7597b2bc42ca3baca838dffaeeddb51479b47932569",
+                        "bytes": 14348
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "The number in repeat tells how many times.",
+                  "explanation": "Repeat (4) runs the inside blocks exactly 4 times.",
+                  "option_feedback": {
+                    "B": "You counted one too few.",
+                    "C": "A loop repeats more than once.",
+                    "D": "You counted one too many."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "add-a-score",
+          "title": "Add a score",
+          "est_minutes": 10,
+          "summary": "Use a score variable with set and change blocks to add points when the cat is clicked.",
+          "key_ideas": [
+            "A variable is a box that holds a number",
+            "set [score] to (0) starts the score",
+            "change [score] by (1) adds one point",
+            "new score = old score + 1"
+          ],
+          "blocks": [
+            {
+              "id": "add-a-score-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/add-a-score-b1.webp",
+                "mime": "image/webp",
+                "sha256": "06ae69a6d28e08c53d127e044da2e8310584c0ad66adbdebfaae1880b96f345b",
+                "bytes": 18094
+              },
+              "alt": "A box holding a number, like a variable.",
+              "caption": "A variable is like a box.",
+              "audio": {
+                "path": "audio/add-a-score-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d045079dc35df832ee69282013d7ca10c8acd0d92e8a4da3df6789543d2b0ec4",
+                "bytes": 19244
+              },
+              "attribution": null
+            },
+            {
+              "id": "add-a-score-b2",
+              "kind": "text",
+              "md": "A variable is a box. It holds a number. The number can change.",
+              "audio": {
+                "path": "audio/add-a-score-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "b3c087c917276b50d21b44a817908b23e5a812293de8b2341465556278c403b7",
+                "bytes": 46316
+              },
+              "gloss": "Biến là một cái hộp. Nó giữ một con số. Con số có thể thay đổi."
+            },
+            {
+              "id": "add-a-score-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/add-a-score-b3.webp",
+                "mime": "image/webp",
+                "sha256": "2f2f25c21439066f14c83047f24b745ce1d34c4fcd0bf4035a3ac3a02c10301b",
+                "bytes": 24134
+              },
+              "alt": "Green flag and score at zero.",
+              "caption": "Start the score at 0.",
+              "audio": {
+                "path": "audio/add-a-score-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "7784823f3c4dcb8ddef3705e6794f7295ead3e0f8b83edf60a412f4af73c7856",
+                "bytes": 17660
+              },
+              "attribution": null
+            },
+            {
+              "id": "add-a-score-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "add-a-score-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Which one is a variable?",
+                  "stem_audio": {
+                    "path": "audio/add-a-score-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "681362f2127c59cd5eb92e63d4d665fd739d5d07a204597d04be73e6391469ee",
+                    "bytes": 16652
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/add-a-score-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "53879dcb9dae0c55c10694a70e422e78ad86df85770dd00e4400efd0373ee858",
+                        "bytes": 1440
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/add-a-score-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "b845bfea664fddb2b3e4f4120505774dcb2785d7456192ef6a28bc9de4ca1189",
+                        "bytes": 3064
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/add-a-score-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "3cc08dc9bf1a8b4b88dba135e08c549766a7382b8ee45d4be6df9bbc560ec4d4",
+                        "bytes": 2367
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "A variable is a box that holds a number, like the score.",
+                  "option_feedback": {
+                    "B": "A cat is a sprite, not a variable box.",
+                    "C": "A backdrop is a background picture, not a variable."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "add-a-score-b4",
+              "kind": "text",
+              "md": "Click the green flag. Use `set [score] to (0)`. The score starts at 0.",
+              "audio": {
+                "path": "audio/add-a-score-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "560a58e0527f792e54fdf0a2ee803703b69ee355628110c5b44909c9dd484d9a",
+                "bytes": 56396
+              },
+              "gloss": "Bấm lá cờ xanh. Dùng `set [score] to (0)`. Điểm bắt đầu từ 0."
+            },
+            {
+              "id": "add-a-score-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/add-a-score-b5.webp",
+                "mime": "image/webp",
+                "sha256": "0aca7e866d9a7ab5d8ad1790ced08bf3c837a62143a11e1c9e4cecd9286ce37a",
+                "bytes": 27364
+              },
+              "alt": "Cat clicked, score goes up by one.",
+              "caption": "Click the cat to add a point.",
+              "audio": {
+                "path": "audio/add-a-score-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "5d2edd8601c993aeb50f0c990fc46a2815f4632e11cf44a3d6fb3d0e4c106a2c",
+                "bytes": 18668
+              },
+              "attribution": null
+            },
+            {
+              "id": "add-a-score-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "add-a-score-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Tap 3 stars.",
+                  "stem_audio": {
+                    "path": "audio/add-a-score-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "34a4ceca9c1335763da5855270c7d9ad0eef347b3f20ad898044a4a0e9e5248d",
+                    "bytes": 16076
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/add-a-score-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "9d4ba97e01fb9a094df01366e869e838da0d967bbf5d6ca447b4c0fe464e260d",
+                      "bytes": 1230
+                    },
+                    "total": 5
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 3
+                  },
+                  "hint": null,
+                  "explanation": "Each tap adds one point; three taps make 3 points.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "add-a-score-b6",
+              "kind": "text",
+              "md": "Click the cat. Use `change [score] by (1)`. Each click adds one point. The new score is the old score plus one.",
+              "audio": {
+                "path": "audio/add-a-score-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "7d32c9b4b7e0dd93c754981d450f995497717ce2765394700b3b6086ec03dc80",
+                "bytes": 75836
+              },
+              "gloss": "Bấm vào mèo. Dùng `change [score] by (1)`. Mỗi lần bấm thêm một điểm. Điểm mới là điểm cũ cộng một."
+            },
+            {
+              "id": "add-a-score-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Use `change`, not `set`, to add points.",
+              "audio": {
+                "path": "audio/add-a-score-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "1470711ea23430dca30637ef39696042c921a1ba70183fd7b878dd63d87e9b57",
+                "bytes": 26732
+              }
+            },
+            {
+              "id": "add-a-score-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "add-a-score-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which block adds one point?",
+                  "stem_audio": {
+                    "path": "audio/add-a-score-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "99104c522bb5ca96305c30670a36f6a373a504a6067e31f4fb5739a40fc2ce5d",
+                    "bytes": 18380
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "change score by 1",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/add-a-score-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "a455b4bffca9d3d93064a021845d29c3f331400a6972994184177bbd442f9627",
+                        "bytes": 17228
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "set score to 0",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/add-a-score-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "48838fde3ac7f9ccd4740840a0d0763c610a057d28d3de1532d993bf1d2358c8",
+                        "bytes": 16652
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "set score to 1",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/add-a-score-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "12a436e4fddb72356dfa1c8e73c5fab2db4847d78e7038f0dc3daa7ad04362d6",
+                        "bytes": 15932
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "show score",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/add-a-score-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "4a99e8bc357e3932eb44d3690efaed4f6d389dd57261b29bcfecf87a743665e4",
+                        "bytes": 13628
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The change block adds 1 to the old score, so the new score is old score + 1.",
+                  "option_feedback": {
+                    "B": "This sets the score back to 0; it does not add a point.",
+                    "C": "This always makes the score 1; it does not add to the old score.",
+                    "D": "This only shows the score on the Stage; it does not change it."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about making a story in Scratch, and you learn three big ideas that help your story work. You learn how scenes and backdrops work, how loops repeat actions, and how to add a score. Each lesson gives you a small piece, and each piece helps your story run the way you plan.",
+          "First, scenes and backdrops. A backdrop is the background picture on the Stage, and a scene is one part of a story. A scene has a backdrop, sprites, and words or actions, so the backdrop is the picture behind everything and the sprites and words or actions are the parts that happen in that place. For example, the Park scene uses the Park backdrop, and the Beach scene uses the Beach backdrop.",
+          "Use switch backdrop to change the background. Use wait three seconds to hold the Park scene, which keeps the Park backdrop on the Stage for three seconds, then switch to Beach. The story has two scenes, so you change from the Park backdrop to the Beach backdrop, and you use switch backdrop to change the background, not switch costume.",
+          "Next, repeat with loops. A loop repeats the blocks inside it, and loops save space because you do not need to copy the same blocks many times. Repeat five runs the inside blocks five times, and it counts one, two, three, four, five, then stops. Only the blocks inside the loop repeat, so if a block is outside the loop, it does not repeat with the loop.",
+          "Here is a tiny example. The cat moves five steps four times, and that is twenty steps in all because five and five and five and five make twenty. The cat waits half a second four times, and that is two seconds in all. The loop does the inside blocks again and again, and then it stops after the set number of times.",
+          "Now add a score. A variable is a box that holds a number, and the number can change while the story runs. Click the green flag, then use set score to zero, so the score starts at zero. That means the score begins at zero each time you start the story, and starting at zero helps you count points from the beginning.",
+          "Click the cat, then use change score by one, and each click adds one point. The new score is the old score plus one, so use change, not set, to add points. Change keeps the old score and adds one, so each click makes the score one bigger and the score counts up as you click.",
+          "Here are the three things to remember. First, a scene has a backdrop, sprites, and words or actions, and you change the background with switch backdrop. Second, a loop repeats only the blocks inside it, and loops save space. Third, a score variable starts at zero, and change score by one adds a point, because the new score is the old score plus one."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-make-a-story.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "487eb3ea9c68adc098a55e0224a417a3e1de4eb078483fcc8f7a8af7f2efb854",
+          "bytes": 1240432
+        },
+        "duration_s": 206.04
+      }
+    }
+  ],
+  "gloss_start": 30
+}

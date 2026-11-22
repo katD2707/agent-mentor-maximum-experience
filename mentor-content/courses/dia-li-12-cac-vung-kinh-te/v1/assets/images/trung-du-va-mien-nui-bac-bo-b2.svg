@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<polygon points="630,472 740,460 820,418 930,400 1000,400 1000,700 630,700" fill="#9FD8BF"/>
+<path d="M 690,505 q 14,-9 28,0 q 14,9 28,0" fill="none" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<path d="M 810,535 q 14,-9 28,0 q 14,9 28,0" fill="none" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<path d="M 910,488 q 14,-9 28,0 q 14,9 28,0" fill="none" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<polygon points="270,185 380,115 560,95 680,100 715,215 700,320 730,420 700,464 630,472 500,468 380,445 270,395 250,300" fill="#E9E5F6"/>
+<polygon points="680,100 780,110 880,150 900,250 885,350 820,418 740,460 700,464 730,420 700,320 715,215" fill="#E9E5F6"/>
+<polyline points="270,185 380,115 560,95 680,100 780,110 880,150" fill="none" stroke="#F0D76E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="270,185 380,115 560,95 680,100 780,110 880,150 900,250 885,350 820,418 740,460 630,472 500,468 380,445 270,395 250,300" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="680,100 715,215 700,320 730,420 700,464" fill="none" stroke="#2B283F" stroke-width="2" stroke-dasharray="8 7" stroke-linecap="round"/>
+<polyline points="355,175 343,225 350,265 336,315 330,365 332,415" fill="none" stroke="#E8806A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="340,286 332,306 348,306" fill="#E8806A" stroke="#5A4BC0" stroke-width="2" stroke-linejoin="round"/>
+<path d="M 720,150 Q 765,212 725,275" fill="none" stroke="#E8806A" stroke-width="3" stroke-linecap="round"/>
+<path d="M 755,158 Q 800,215 760,282" fill="none" stroke="#E8806A" stroke-width="3" stroke-linecap="round"/>
+<path d="M 790,172 Q 832,226 795,290" fill="none" stroke="#E8806A" stroke-width="3" stroke-linecap="round"/>
+<polyline points="630,472 740,460 820,418" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<text x="340" y="68" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" >Gi&#225;p Trung Qu&#7889;c</text>
+<text x="85" y="310" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" >Gi&#225;p L&#224;o</text>
+<text x="520" y="215" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" >T&#226;y B&#7855;c</text>
+<text x="800" y="350" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" >&#272;&#244;ng B&#7855;c</text>
+<text x="375" y="340" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" >Phan-xi-p&#259;ng 3143 m</text>
+<text x="0" y="0" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" transform="translate(315,375) rotate(-86)">Ho&#224;ng Li&#234;n S&#417;n</text>
+<text x="650" y="620" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" >Bi&#7875;n &#272;&#244;ng (Qu&#7843;ng Ninh)</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

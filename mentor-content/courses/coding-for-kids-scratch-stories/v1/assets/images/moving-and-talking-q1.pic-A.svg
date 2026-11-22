@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="200" cy="348" rx="98" ry="12" fill="#E9E5F6"/>
+
+  <!-- tail -->
+  <path d="M 272 302 C 328 306 344 254 318 236" fill="none" stroke="#5A4BC0" stroke-width="20" stroke-linecap="round"/>
+  <circle cx="318" cy="236" r="10" fill="#F0D76E"/>
+
+  <!-- body -->
+  <ellipse cx="200" cy="272" rx="84" ry="70" fill="#5A4BC0"/>
+  <ellipse cx="200" cy="288" rx="44" ry="44" fill="#E9E5F6"/>
+
+  <!-- front paws -->
+  <ellipse cx="162" cy="330" rx="25" ry="15" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+  <ellipse cx="238" cy="330" rx="25" ry="15" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+
+  <!-- ears -->
+  <polygon points="150,104 136,48 198,76" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+  <polygon points="250,104 264,48 202,76" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+  <polygon points="155,98 145,62 188,80" fill="#E8806A" stroke="#E8806A" stroke-width="5" stroke-linejoin="round"/>
+  <polygon points="245,98 255,62 212,80" fill="#E8806A" stroke="#E8806A" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- head -->
+  <circle cx="200" cy="140" r="70" fill="#5A4BC0"/>
+
+  <!-- collar + bell -->
+  <path d="M 150 198 Q 200 230 250 198" fill="none" stroke="#F0D76E" stroke-width="13" stroke-linecap="round"/>
+  <circle cx="200" cy="226" r="10" fill="#E8806A"/>
+
+  <!-- eyes -->
+  <ellipse cx="172" cy="130" rx="17" ry="21" fill="#9FD8BF"/>
+  <ellipse cx="228" cy="130" rx="17" ry="21" fill="#9FD8BF"/>
+  <ellipse cx="172" cy="133" rx="7.5" ry="11" fill="#2B283F"/>
+  <ellipse cx="228" cy="133" rx="7.5" ry="11" fill="#2B283F"/>
+  <circle cx="165" cy="122" r="5" fill="#F7F1E3"/>
+  <circle cx="221" cy="122" r="5" fill="#F7F1E3"/>
+
+  <!-- blush -->
+  <ellipse cx="150" cy="180" rx="12" ry="8" fill="#E8806A"/>
+  <ellipse cx="250" cy="180" rx="12" ry="8" fill="#E8806A"/>
+
+  <!-- muzzle -->
+  <ellipse cx="186" cy="166" rx="19" ry="14" fill="#E9E5F6"/>
+  <ellipse cx="214" cy="166" rx="19" ry="14" fill="#E9E5F6"/>
+
+  <!-- nose -->
+  <polygon points="191,157 209,157 200,170" fill="#E8806A" stroke="#E8806A" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- mouth -->
+  <path d="M 200 170 L 200 176" fill="none" stroke="#2B283F" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 200 176 Q 191 185 183 178" fill="none" stroke="#2B283F" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 200 176 Q 209 185 217 178" fill="none" stroke="#2B283F" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- whiskers -->
+  <path d="M 170 158 Q 148 152 130 146" fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 170 168 Q 146 168 128 170" fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 230 158 Q 252 152 270 146" fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 230 168 Q 254 168 272 170" fill="none" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

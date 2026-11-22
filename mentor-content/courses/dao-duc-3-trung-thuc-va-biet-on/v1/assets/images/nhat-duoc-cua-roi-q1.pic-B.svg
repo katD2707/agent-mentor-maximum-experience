@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="rotate(-8 200 200)">
+    <!-- lower prong -->
+    <rect x="96" y="200" width="208" height="58" rx="29" fill="#5A4BC0"/>
+
+    <!-- wavy metal hint on the lower prong -->
+    <path d="M116 233 q14 -11 28 0 t28 0 t28 0 t28 0 t28 0 t28 0"
+          fill="none" stroke="#E9E5F6" stroke-width="5" opacity="0.85"/>
+
+    <!-- upper jaw -->
+    <rect x="88" y="142" width="224" height="66" rx="33"
+          fill="#E9E5F6" stroke="#5A4BC0" stroke-width="6"/>
+
+    <!-- gloss highlight -->
+    <rect x="180" y="152" width="100" height="11" rx="5.5" fill="#F7F1E3"/>
+
+    <!-- flower decoration -->
+    <circle cx="146" cy="161" r="10" fill="#F0D76E"/>
+    <circle cx="132.7" cy="179.3" r="10" fill="#F0D76E"/>
+    <circle cx="137.8" cy="163.7" r="10" fill="#F0D76E"/>
+    <circle cx="154.2" cy="163.7" r="10" fill="#F0D76E"/>
+    <circle cx="159.3" cy="179.3" r="10" fill="#F0D76E"/>
+    <circle cx="146" cy="175" r="7" fill="#E8806A" stroke="#5A4BC0" stroke-width="2.5"/>
+
+    <!-- mint dot accent -->
+    <circle cx="250" cy="176" r="8" fill="#9FD8BF"/>
+
+    <!-- hinge -->
+    <circle cx="294" cy="200" r="15" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <circle cx="294" cy="200" r="5" fill="#2B283F"/>
+  </g>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+</svg>

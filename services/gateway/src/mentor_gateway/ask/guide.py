@@ -1,7 +1,7 @@
-"""Mực's guide chat (REQUIREMENTS-PLAN 3.9): CHAT alias with the guide map (apps/app/src/lib/guides.ts) as context.
+"""The guide chicken's app-help chat (REQUIREMENTS-PLAN 3.9): CHAT alias with the guide map as context.
 
-`guide_map.json` is a server copy of GUIDES from guides.ts; tests/test_gw_ask.py fails when the two drift apart
-(regenerate the JSON from guides.ts when it does).
+`guide_map.json` is built from the chicken guide texts (apps/app/src/lang/guide/data.ts) by `pnpm run guides:export`
+(keys: "app", "<screen>.<part>" or a data-guide name); tests/test_gw_ask.py fails when the two drift apart.
 """
 
 import json
@@ -33,7 +33,8 @@ def fallback_answer(question: str, lang: str, screen: str | None, visible: list[
     gm = guide_map()
     q = set(re.findall(r"[a-z0-9]+", unaccent(question)))
     best, score = None, 0
-    for key in [*visible, *([screen] if screen else [])]:
+    on_screen = [k for k in gm if screen and k.startswith(f"{screen}.")]
+    for key in [*visible, *on_screen]:
         if key in gm:
             s = len(q & set(re.findall(r"[a-z0-9]+", unaccent(gm[key]["vi"] + " " + gm[key]["en"] + " " + key))))
             if s > score:

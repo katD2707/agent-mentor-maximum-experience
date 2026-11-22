@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M430 120 L340 195"/><path d="M570 120 L820 200"/>
+<path d="M340 275 L340 315"/><path d="M92.5 315 L587.5 315"/>
+<path d="M92.5 315 L92.5 350"/><path d="M257.5 315 L257.5 350"/><path d="M422.5 315 L422.5 350"/><path d="M587.5 315 L587.5 350"/>
+</g>
+<path d="M930 200 C1000 200 1000 85 620 85" fill="none" stroke="#E8806A" stroke-width="3.5" stroke-dasharray="11 9" stroke-linecap="round"/>
+<rect x="380" y="50" width="240" height="70" rx="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="70" y="195" width="540" height="80" rx="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="680" y="200" width="280" height="80" rx="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="15.0" y="350" width="155" height="62" rx="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="180.0" y="350" width="155" height="62" rx="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="345.0" y="350" width="155" height="62" rx="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="510.0" y="350" width="155" height="62" rx="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<text x="500" y="85" font-family="Lexend, sans-serif" font-size="40" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Revision</text>
+<text x="340" y="235" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Global revision</text>
+<text x="820" y="240" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Proofreading</text>
+<text x="92.5" y="381" font-family="Lexend, sans-serif" font-size="26" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Thesis</text>
+<text x="257.5" y="381" font-family="Lexend, sans-serif" font-size="26" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Evidence</text>
+<text x="422.5" y="381" font-family="Lexend, sans-serif" font-size="26" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Structure</text>
+<text x="587.5" y="381" font-family="Lexend, sans-serif" font-size="26" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Sources</text>
+<text x="760" y="58" font-family="Lexend, sans-serif" font-size="28" font-weight="600" fill="#2B283F" text-anchor="middle" dominant-baseline="central" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">not the whole</text>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

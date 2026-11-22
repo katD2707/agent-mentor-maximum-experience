@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper background -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- soft ground shadow -->
+    <ellipse cx="200" cy="311" rx="106" ry="14" fill="#E9E5F6"/>
+
+    <!-- case body -->
+    <rect x="88" y="128" width="224" height="170" rx="22" fill="#5A4BC0"/>
+
+    <!-- folded paper corners at the base -->
+    <path d="M118 298 L118 268 L150 298 Z" fill="#E9E5F6"/>
+    <path d="M282 298 L282 268 L250 298 Z" fill="#E9E5F6"/>
+
+    <!-- front card panel -->
+    <rect x="112" y="186" width="176" height="98" rx="16" fill="#E9E5F6"/>
+
+    <!-- little pencil badge -->
+    <rect x="134" y="223" width="20" height="24" rx="8" fill="#E8806A"/>
+    <rect x="152" y="223" width="78" height="24" rx="4" fill="#9FD8BF"/>
+    <path d="M230 223 L266 235 L230 247 Z" fill="#F0D76E"/>
+    <path d="M254 231 L266 235 L254 239 Z" fill="#2B283F"/>
+
+    <!-- folded lid -->
+    <rect x="80" y="102" width="240" height="54" rx="26" fill="#F0D76E"/>
+    <path d="M112 150 L288 150" fill="none" stroke="#2B283F" stroke-width="2.4"/>
+
+    <!-- clasp -->
+    <rect x="182" y="142" width="36" height="52" rx="17" fill="#E8806A"/>
+    <circle cx="200" cy="172" r="5" fill="#2B283F"/>
+
+    <!-- thin lid crease details -->
+    <path d="M104 126 L138 126" fill="none" stroke="#5A4BC0" stroke-width="2.4"/>
+    <path d="M262 126 L296 126" fill="none" stroke="#5A4BC0" stroke-width="2.4"/>
+
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

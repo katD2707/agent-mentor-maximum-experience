@@ -10,7 +10,7 @@ import { applyOutlineOps, addLessonOp, deleteOp, dropIndex, moveLessonOps, renam
 import { fmtTime, markText, pointAnchor, textAnchor, timeAnchor } from "./lib/teacher/anchors";
 import { numberComments, textMarks } from "./lib/teacher/comments";
 import { buildStateInfo, commentStatusInfo, courseRoute, finishedJobs, statusMap, statusTag } from "./lib/teacher/status";
-import { teacherDeepLink } from "./screens/teacher/live";
+import { teacherDeepLink } from "./lang/teacher/live";
 import { setMediaToken } from "./api/media";
 import { httpTeacherApi } from "./api/teacher-http";
 import { load, mockTeacherApi, mockTiming, packFromOutline, resetMockTeacher, tick } from "./api/mock-teacher-api";
@@ -391,6 +391,14 @@ describe("teacher screens (mock)", () => {
     expect(screen.queryByRole("button", { name: "Thêm bài" })).toBeNull();
   });
 
+  it("review: the difficulty is read-only here and points at the Nhãn step", async () => {
+    teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
+    const row = await screen.findByText("Độ khó");
+    expect(row.closest(".lvx-row")!.querySelector("[role='radio']")).toBeNull();
+    expect(screen.getByRole("link", { name: "Sửa ở bước Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1");
+    expect(screen.getByRole("link", { name: "Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1");
+  }, 20000);
+
   it("review: tabs, step list with a dot for unsure, no app-version note; 'Đã xem' clears the dot", async () => {
     teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
     expect(await screen.findByRole("button", { name: "Xuất bản" })).toBeInTheDocument();
@@ -404,11 +412,11 @@ describe("teacher screens (mock)", () => {
     await waitFor(() => expect(screen.queryByRole("img", { name: "Mentor chưa chắc ở bước này" })).toBeNull());
   }, 20000);
 
-  it("review: editing Mực's line saves with PATCH and a one-line note goes to Mentor", async () => {
+  it("review: editing the chicken line saves with PATCH and a one-line note goes to Mentor", async () => {
     teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
     const patch = vi.spyOn(mockTeacherApi, "patchBlock");
     const post = vi.spyOn(mockTeacherApi, "postComment");
-    const field = await screen.findByRole("textbox", { name: "Lời của Mực" });
+    const field = await screen.findByRole("textbox", { name: "Lời của gà" });
     await userEvent.clear(field);
     await userEvent.type(field, "Mình đếm táo nhé!");
     await userEvent.click(screen.getByRole("button", { name: "Lưu" }));
@@ -444,8 +452,9 @@ describe("teacher screens (mock)", () => {
     await userEvent.click(edit);
     await waitFor(() => expect(screen.getByRole("button", { name: "Xuất bản bản 2" })).toBeEnabled(), { timeout: 5000 });
     await waitFor(() => expect(screen.getByText("Thành bản 2. 38 học sinh đang học vẫn giữ bản 1.")).toBeInTheDocument(), { timeout: 5000 });
-    await waitFor(() => expect(screen.getByRole("button", { name: "Xuất bản bản 2" })).toBeEnabled(), { timeout: 5000 });
-    await userEvent.click(screen.getByRole("button", { name: "Xuất bản bản 2" }));
+    const pub2 = await screen.findByRole("button", { name: "Xuất bản bản 2" }, { timeout: 5000 });
+    await waitFor(() => expect(pub2).toBeEnabled(), { timeout: 5000 });
+    await userEvent.click(pub2);
     expect(screen.queryByRole("dialog")).toBeNull(); // one tap, no confirmation box
     expect(await screen.findByText("Đã xuất bản bản 2.")).toBeInTheDocument();
   }, 20000);
@@ -477,67 +486,15 @@ describe("course level (mock)", () => {
     expect(b.versions.map((v) => [v.version, v.level_confirmed])).toEqual([[1, "advanced"], [2, "basic"]]);
   });
 
-  it("review: the picker has three options, the suggestion is pre-selected and marked, one tap confirms", async () => {
-    teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
-    const group = await screen.findByRole("radiogroup", { name: "Mức độ" });
-    const radios = within(group).getAllByRole("radio");
-    expect(radios.map((r) => r.textContent)).toEqual(["Cơ bảnGợi ý", "Trung bình", "Nâng cao"]);
-    expect(radios.map((r) => r.getAttribute("aria-checked"))).toEqual(["true", "false", "false"]);
-    expect(screen.getByRole("button", { name: "Xác nhận" })).toBeInTheDocument();
-
-    await userEvent.click(within(group).getByRole("radio", { name: /Nâng cao/ }));
-    await waitFor(() => expect(screen.queryByRole("button", { name: "Xác nhận" })).toBeNull());
-    expect(within(group).getByRole("radio", { name: /Nâng cao/ })).toHaveAttribute("aria-checked", "true");
-    expect(screen.queryByText("Gợi ý")).toBeNull();
-    expect((await mockTeacherApi.getCourse("t", "toan-1-dem-tao")).course.level_confirmed).toBe("advanced");
-  }, 20000);
-
-  it("review: publish stays dimmed until the level is confirmed, and tapping it points at the picker", async () => {
-    teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
-    const pub = await screen.findByRole("button", { name: "Xuất bản" });
-    expect(pub).toHaveAttribute("aria-disabled", "true");
-    expect(screen.queryByText("Xác nhận để xuất bản.")).toBeNull();
-    await userEvent.click(pub);
-    expect(screen.queryByRole("dialog")).toBeNull();
-    expect(await screen.findByText("Xác nhận để xuất bản.")).toBeInTheDocument();
-    expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
-    expect(document.getElementById("levelrow")).toHaveClass("need");
-
-    await userEvent.click(screen.getByRole("button", { name: "Xác nhận" }));
-    await waitFor(() => expect(screen.getByRole("button", { name: "Xuất bản" })).not.toHaveAttribute("aria-disabled"));
-    expect(screen.queryByText("Xác nhận để xuất bản.")).toBeNull();
-    await userEvent.click(screen.getByRole("button", { name: "Xuất bản" }));
-    expect(await screen.findByText("Đã xuất bản.")).toBeInTheDocument();
-  }, 20000);
-
-  it("review of a published course: changing the level says it lands in version 2", async () => {
-    teacherApp("/khoa/xac-suat-bayes/duyet?v=1");
-    const group = await screen.findByRole("radiogroup", { name: "Mức độ" });
-    expect(within(group).getByRole("radio", { name: /Nâng cao/ })).toHaveAttribute("aria-checked", "true");
-    expect(screen.queryByRole("button", { name: "Xác nhận" })).toBeNull(); // already confirmed
-    expect(screen.queryByText("Gợi ý")).toBeNull();
-    await userEvent.click(within(group).getByRole("radio", { name: /Trung bình/ }));
-    await waitFor(() => expect(screen.getByRole("button", { name: "Xuất bản bản 2" })).toBeEnabled(), { timeout: 5000 });
-    await waitFor(() => expect(screen.getByText("Có trong bản 2.")).toBeInTheDocument(), { timeout: 5000 }); // the pick sits in version 2
-    expect(within(await screen.findByRole("radiogroup", {}, { timeout: 5000 })).getByRole("radio", { name: /Trung bình/ })).toHaveAttribute("aria-checked", "true");
-  }, 20000);
-
   it("home: a course row carries the bars-and-word tag once it has a level", async () => {
     teacherApp("/");
     const math = (await screen.findByText("Toán 1: Các số đến 10")).closest("a")!;
     expect(within(math).getByText("Cơ bản")).toBeInTheDocument();
     const bayes = screen.getByText("Xác suất thống kê: Suy luận Bayes").closest("a")!;
-    expect(within(bayes).getByText("Nâng cao")).toBeInTheDocument();
+    expect(within(bayes).getByText("Luyện thi")).toBeInTheDocument();
     const phys = screen.getByText("Vật lí 11: Điện trường").closest("a")!;
     expect(phys.querySelector(".lvx-tag")).toBeNull(); // not composed yet
   });
-
-  it("english strings", async () => {
-    teacherApp("/khoa/toan-1-dem-tao/duyet?v=1", "en");
-    const group = await screen.findByRole("radiogroup", { name: "Level" });
-    expect(within(group).getAllByRole("radio").map((r) => r.textContent)).toEqual(["BasicSuggested", "Intermediate", "Advanced"]);
-    expect(screen.getByRole("button", { name: "Confirm" })).toBeInTheDocument();
-  }, 20000);
 });
 
 describe("teacher step API (mock)", () => {

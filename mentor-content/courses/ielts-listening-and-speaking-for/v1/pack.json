@@ -1,0 +1,3144 @@
+{
+  "schema_version": 1,
+  "course_id": "ielts-listening-and-speaking-for",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "en",
+  "age_band": "g10_12",
+  "title": "IELTS Listening and Speaking for Beginners",
+  "chapters": [
+    {
+      "id": "ch-listening",
+      "title": "Listening",
+      "lessons": [
+        {
+          "id": "numbers-and-spelling",
+          "title": "Numbers and spelling",
+          "est_minutes": 10,
+          "summary": "Listen for numbers, dates, times, prices, phone numbers and addresses, and spell names accurately.",
+          "key_ideas": [
+            "Teen numbers vs tens: stress helps distinguish 13 and 30",
+            "British English uses 'and' in hundreds; phone numbers are said digit by digit; 'double' means a repeated digit",
+            "Spell names letter by letter and watch similar sounds such as B/V, G/J, M/N",
+            "Worked example: Sofia spelled S-O-F-I-A; phone 0786 245 913",
+            "Common mistake: writing 30 for 13; practise date/time, spelling and phone-number exercises"
+          ],
+          "blocks": [
+            {
+              "id": "numbers-and-spelling-b1",
+              "kind": "text",
+              "md": "In English, stress separates the teen numbers from the tens: thir**TEEN** has the strong beat at the end, **THIR**ty at the start. The same pattern works for 14/40, 15/50, 16/60, 17/70, 18/80 and 19/90.",
+              "audio": null,
+              "gloss": "Trong tiếng Anh, trọng âm phân biệt số từ 13 đến 19 với các số hàng chục: thir**TEEN** nhấn mạnh ở cuối, **THIR**ty nhấn mạnh ở đầu. Quy luật tương tự với 14/40, 15/50, 16/60, 17/70, 18/80 và 19/90."
+            },
+            {
+              "id": "numbers-and-spelling-b2",
+              "kind": "text",
+              "md": "Phone numbers are said digit by digit: 0786 245 913 = \"oh seven eight six, two four five, nine one three\". For a repeated digit, say **double**: 0777 = \"oh double seven seven\".",
+              "audio": null,
+              "gloss": "Số điện thoại được đọc từng chữ số: 0786 245 913 = \"oh seven eight six, two four five, nine one three\". Với chữ số lặp lại, dùng **double**: 0777 = \"oh double seven seven\"."
+            },
+            {
+              "id": "numbers-and-spelling-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "numbers-and-spelling-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "How does British English say the number 250?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "two hundred and fifty",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "two hundred fifty",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "two thousand and fifty",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "twenty-five hundred",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "British English keeps a small joining word in hundreds.",
+                  "explanation": "British English keeps 'and' between the hundred and the tens: two hundred and fifty.",
+                  "option_feedback": {
+                    "B": "This drops the 'and' that British English keeps in hundreds.",
+                    "C": "This makes the number 2050 instead of 250.",
+                    "D": "This reads the digits of 25 rather than the value 250."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "numbers-and-spelling-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Stress and 'and'",
+              "md": "**13** = thir**TEEN** (beat at the end). **30** = **THIR**ty (beat at the start).\n\nBritish English keeps **and** in hundreds: 250 = *two hundred **and** fifty*.",
+              "audio": null
+            },
+            {
+              "id": "numbers-and-spelling-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "numbers-and-spelling-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which number has the strong beat at the start of the word?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "thirty",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "thirteen",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "fourteen",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "eighteen",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Tens such as THIRty are stressed on the first syllable, while teens are stressed at the end.",
+                  "option_feedback": {
+                    "B": "Teen numbers carry the strong beat at the end, not the start.",
+                    "C": "Like all teens, this one is stressed on the final syllable.",
+                    "D": "This teen also takes its stress on the last syllable."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "numbers-and-spelling-b4",
+              "kind": "text",
+              "md": "Names are spelled out letter by letter: \"Sofia — S-O-F-I-A\". Watch the pairs that sound alike: **B** /biː/ and **V** /viː/, **G** /dʒiː/ and **J** /dʒeɪ/, **M** /em/ and **N** /en/.",
+              "audio": null,
+              "gloss": "Tên được đánh vần từng chữ cái: \"Sofia — S-O-F-I-A\". Chú ý các cặp chữ cái nghe giống nhau: **B** /biː/ và **V** /viː/, **G** /dʒiː/ và **J** /dʒeɪ/, **M** /em/ và **N** /en/."
+            },
+            {
+              "id": "numbers-and-spelling-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/numbers-and-spelling-b5.webp",
+                "mime": "image/webp",
+                "sha256": "528f63e51ed0195de900452df8a242a9584570288228eed628bf3b2258af3c10",
+                "bytes": 17668
+              },
+              "alt": "A hand pressing 7 on a phone keypad beside a notebook and pencil",
+              "caption": "Write digits in small groups and spell names letter by letter.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "numbers-and-spelling-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "numbers-and-spelling-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Write the number 'two hundred and fifty' in digits.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "250"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "British English says 'two hundred and fifty' for 250.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "numbers-and-spelling-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example",
+              "md": "Name: **Sofia** → S-O-F-I-A (pause after each letter; if unclear, \"F as in Freddie\").\n\nPhone: **0786 245 913** → \"oh seven eight six, two four five, nine one three\".\n\nCheck: six digits, no 30/13 confusion. The number said \"nine one three\", not \"nine hundred and thirteen\".",
+              "audio": null
+            },
+            {
+              "id": "numbers-and-spelling-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "numbers-and-spelling-q4",
+                  "type": "FILL_TILES",
+                  "stem": "In British English: 250 = two hundred {{gap}} fifty; 7:15 = {{gap}} past seven.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "and",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "quarter",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "plus",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "half",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "of",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "British English keeps 'and' in hundreds, and 7:15 is 'quarter past seven'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "numbers-and-spelling-b7",
+              "kind": "text",
+              "md": "Dates: 3 May = \"the third of May\" or \"May the third\". Times: 7:15 = \"quarter past seven\", 9:45 = \"quarter to ten\". Prices: £2.50 = \"two pounds fifty\", \\$3.75 = \"three dollars seventy-five\".",
+              "audio": null,
+              "gloss": "Ngày tháng: 3 May = \"the third of May\" hoặc \"May the third\". Giờ: 7:15 = \"quarter past seven\", 9:45 = \"quarter to ten\". Giá: £2.50 = \"two pounds fifty\", \\$3.75 = \"three dollars seventy-five\"."
+            },
+            {
+              "id": "numbers-and-spelling-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "numbers-and-spelling-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each item with the correct reading or description.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "13",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "thirTEEN — beat at the end",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "30",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "THIRty — beat at the start",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "9:45",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "quarter to ten",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "£2.50",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "two pounds fifty",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Stress separates 13 from 30, and times and prices have fixed spoken forms.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "numbers-and-spelling-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "How do you hear the difference between 13 and 30?",
+                  "answer": "Stress: thirTEEN has the beat at the end, THIRty at the start.",
+                  "image": null
+                },
+                {
+                  "prompt": "How do you say the phone number 0786 245 913?",
+                  "answer": "Digit by digit: oh seven eight six, two four five, nine one three.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does 'double' mean in a phone number?",
+                  "answer": "The same digit twice in a row, e.g. 'double seven' = 77.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "maps-and-directions",
+          "title": "Maps and directions",
+          "est_minutes": 10,
+          "summary": "Find 'You are here' and trace map routes using landmarks and direction phrases.",
+          "key_ideas": [
+            "Start at 'You are here' and trace the route in order",
+            "Use landmarks and direction phrases such as go past, turn right, opposite, next to",
+            "Worked example: the library is the second door on the left, opposite the toilets",
+            "Listen to the slow model first, then natural speed for connected speech",
+            "Common mistake: starting from the wrong place or confusing left/right; practise three direction questions"
+          ],
+          "blocks": [
+            {
+              "id": "maps-and-directions-b2",
+              "kind": "text",
+              "md": "Every listening map task starts at **'You are here'**. Put your finger there before the audio begins, so you do not begin from the wrong place.",
+              "audio": null,
+              "gloss": "Mọi bài nghe bản đồ đều bắt đầu từ 'You are here'. Đặt ngón tay ở đó trước khi audio bắt đầu, để bạn không khởi đầu sai chỗ."
+            },
+            {
+              "id": "maps-and-directions-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "maps-and-directions-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Where should you put your finger before a listening map task begins?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "On the 'You are here' marker",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "On the café shown on the map",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "On the library at the end of the route",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "On the toilets opposite the library",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "It is the marked starting point of the route.",
+                  "explanation": "Every listening map task starts at 'You are here', so find that marker first.",
+                  "option_feedback": {
+                    "B": "The café is a landmark you pass on the way, not the starting point.",
+                    "C": "That is the destination, so starting there would reverse the whole route.",
+                    "D": "The toilets are the reference point for the last position phrase, not the start."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "maps-and-directions-b3",
+              "kind": "text",
+              "md": "Trace the route in the same order as the speaker. Do not jump ahead: each new direction depends on the one before it.",
+              "audio": null,
+              "gloss": "Dò tuyến đường theo đúng thứ tự như người nói. Đừng nhảy vượt lên: mỗi hướng mới phụ thuộc vào hướng trước đó."
+            },
+            {
+              "id": "maps-and-directions-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "maps-and-directions-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "In the worked example, where exactly is the library?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "The second door on the left, opposite the toilets",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "The first door on the left, next to the café",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "The second door on the right, opposite the café",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Straight ahead, 50 m past the toilets",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The route ends with the landmark plus its position phrase: second door on the left, opposite the toilets.",
+                  "option_feedback": {
+                    "B": "This confuses the café landmark with the final position phrase.",
+                    "C": "This flips left to right and swaps the landmark.",
+                    "D": "50 m is the first straight stretch, not the library's position."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "maps-and-directions-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/maps-and-directions-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "93e7c1f12547475447b1d2d6ae13f4d642d09f032e75e2a0c04f99ec139dbd93",
+                "bytes": 2708
+              },
+              "alt": "Street map with a route from You are here past a café, turning left to a library opposite toilets.",
+              "caption": "Trace the route in order, not by guessing.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "maps-and-directions-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "maps-and-directions-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about map listening is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "You should trace the route in the same order as the speaker."
+                    },
+                    {
+                      "id": "b",
+                      "text": "It is helpful to jump ahead to the last direction before the audio says it."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Starting from anywhere except 'You are here' is a common mistake."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Each new direction depends on the one before it."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The directions build on each other in order, so tracing them in sequence from 'You are here' keeps you on the route.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "maps-and-directions-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Route formula",
+              "md": "Start at 'You are here' → follow the directions in order → finish at the landmark plus its position phrase: opposite, next to, on the left/right.",
+              "audio": null
+            },
+            {
+              "id": "maps-and-directions-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "maps-and-directions-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "In the worked example, how many metres do you walk straight at the start of the route?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "50",
+                      "50 m",
+                      "50m",
+                      "fifty",
+                      "fifty metres",
+                      "fifty meters"
+                    ]
+                  },
+                  "hint": "It is a round number of metres.",
+                  "explanation": "The speaker says to walk 50 m straight before going past the café.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "maps-and-directions-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example",
+              "md": "Start at 'You are here'. Walk **50 m** straight, go past the café, turn left. The library is the **second door on the left**, opposite the toilets.",
+              "audio": null
+            },
+            {
+              "id": "maps-and-directions-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "maps-and-directions-q5",
+                  "type": "FILL_TILES",
+                  "stem": "The library is the {{gap}} door on the {{gap}}, opposite the toilets.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "second",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "left",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "first",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "right",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The worked example ends with the library as the second door on the left, opposite the toilets.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "maps-and-directions-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Common mistake",
+              "md": "Do not start anywhere except 'You are here', and do not flip left and right. Check which way you are facing before you turn.",
+              "audio": null
+            },
+            {
+              "id": "maps-and-directions-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "maps-and-directions-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each direction or position phrase to its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "You are here",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "the starting point of the route",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "go past",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "continue beyond a landmark",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "opposite",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "facing across from something",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "next to",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "beside something",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These phrases tell you where to start and how each landmark relates to the next.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "maps-and-directions-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Where do you start a map task?",
+                  "answer": "At 'You are here'.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does 'go past' tell you?",
+                  "answer": "Continue beyond the landmark, not stop at it.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why listen to the slow model before natural speed?",
+                  "answer": "To catch each direction clearly before connected speech makes it faster.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "short-conversations",
+          "title": "Short conversations",
+          "est_minutes": 12,
+          "summary": "Answer Part 1 short conversations by reading questions first, predicting answer types and listening for corrected final answers.",
+          "key_ideas": [
+            "Read questions first and predict answer type: name, number, time, place, reason or price",
+            "Listen for question words and expect distractors such as 'Actually', 'Sorry' and 'Can we make it'",
+            "The final corrected answer is usually the answer; check spelling and word limits",
+            "Worked example: Tuesday rejected, Wednesday accepted; time corrected to 4:30; library",
+            "Common mistake: writing the first time or day you hear; practise train time, colour and room questions"
+          ],
+          "blocks": [
+            {
+              "id": "short-conversations-b1",
+              "kind": "text",
+              "md": "Part 1 is a short conversation between two speakers: a booking, an enquiry, a phone call. The questions are on the page before the audio starts. Use those seconds to read each gap and ask what kind of word fits there.",
+              "audio": null,
+              "gloss": "Part 1 là một đoạn hội thoại ngắn giữa hai người — đặt chỗ, hỏi thông tin, gọi điện. Câu hỏi đã có trên trang trước khi audio bắt đầu, nên hãy tận dụng vài giây đó: đọc từng chỗ trống và tự hỏi loại từ nào sẽ điền vào."
+            },
+            {
+              "id": "short-conversations-b2",
+              "kind": "text",
+              "md": "Each gap wants one type: a name, a number, a time, a place, a reason or a price. Write the type next to the gap (\"time?\", \"place?\") and check the word limit first, for example **NO MORE THAN TWO WORDS AND/OR A NUMBER**.",
+              "audio": null,
+              "gloss": "Mỗi chỗ trống cần một loại thông tin: tên, con số, thời gian, địa điểm, lý do hoặc giá. Viết loại đó bên cạnh chỗ trống (\"thời gian?\", \"địa điểm?\") và kiểm tra giới hạn số từ trước — ví dụ **KHÔNG QUÁ HAI TỪ VÀ/HOẶC MỘT CON SỐ**."
+            },
+            {
+              "id": "short-conversations-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "short-conversations-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "What should you do in the seconds before the recording starts?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Read each gap and predict the type of word needed",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Write possible answers for every gap",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Copy the question numbers neatly",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Spell-check words you have already written",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Predicting whether a gap needs a name, number, time, place, reason or price helps you listen for the right detail.",
+                  "option_feedback": {
+                    "B": "Guessing full answers before listening wastes preparation time and may fix wrong ideas.",
+                    "C": "Neat numbering does not help you predict what to listen for.",
+                    "D": "There is nothing to spell-check before you hear the audio; use the time to predict."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "short-conversations-b3",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Expect a correction",
+              "md": "Speakers often change their mind. *\"Tuesday?\" \"Actually, Wednesday is better.\"* *\"Sorry, can we make it 4:30?\"* Signals like **actually**, **sorry**, **can we make it**, **oh wait** mean the first detail is a distractor. The final corrected answer is the one you write.",
+              "audio": null
+            },
+            {
+              "id": "short-conversations-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "short-conversations-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "A speaker says 'Sorry, can we make it 4:30?' after first saying 'Three thirty?' What should you write?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "3:30",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "4:30",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Sorry",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Three thirty and 4:30",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "'Sorry' signals a correction, and the final corrected time is the answer.",
+                  "option_feedback": {
+                    "A": "This is the first time, which the signal 'sorry' marks as a distractor.",
+                    "C": "This is a signal word, not the time requested.",
+                    "D": "You should write the final corrected time only, not both times."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "short-conversations-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "short-conversations-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "The first day or time you hear is always the answer."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Words like 'actually' and 'oh wait' can warn you that a detail will be corrected."
+                    },
+                    {
+                      "id": "c",
+                      "text": "A misspelt day or place can still lose the mark."
+                    },
+                    {
+                      "id": "d",
+                      "text": "You should ignore the word limit if the answer is clearly correct."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Correction signals show that earlier details may be distractors, and spelling plus the word limit still decide the mark.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "short-conversations-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example",
+              "md": "Booking a study room. Caller: *\"Can I book a room for Tuesday?\"* Staff: *\"Tuesday's full. Actually, Wednesday works.\"* Caller: *\"Three thirty?\"* Staff: *\"Sorry, can we make it **4:30**?\"* Place: **library**.\n\nGap answers: Day **Wednesday** (not Tuesday), Time **4:30** (not 3:30), Place **library**. Three answers, within the word limit.",
+              "audio": null
+            },
+            {
+              "id": "short-conversations-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "short-conversations-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "In the worked example, what time was finally agreed?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "4:30",
+                      "4.30",
+                      "four thirty"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The staff first asked 'Three thirty?' but corrected it with 'Sorry, can we make it 4:30?'",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "short-conversations-b6",
+              "kind": "text",
+              "md": "Copy the final answer exactly and spell it correctly. A misspelt day or place loses the mark even when you heard it. Then re-check the word limit: **4:30** is one number, **Wednesday** is one word, **the library** is two words but **library** is safer.",
+              "audio": null,
+              "gloss": "Chép đúng đáp án cuối cùng và viết đúng chính tả — sai chính tả ngày hoặc địa điểm là mất điểm dù bạn đã nghe đúng. Sau đó kiểm tra lại giới hạn số từ: **4:30** là một con số, **Wednesday** là một từ, **the library** là hai từ nhưng **library** an toàn hơn."
+            },
+            {
+              "id": "short-conversations-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "short-conversations-q5",
+                  "type": "FILL_TILES",
+                  "stem": "In the worked example, the first day offered was Tuesday, but the final day is {{gap}}; the first time was 3:30, but the corrected time is {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Wednesday",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "4:30",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Tuesday",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "3:30",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The corrected details, not the first ones, are the answers to write.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "short-conversations-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Read the gap → predict the type → listen for the correction → write the **last** answer. Signals: **actually / sorry / can we make it / oh wait** = the earlier detail is a distractor. Spelling and word limit decide the mark.",
+              "audio": null
+            },
+            {
+              "id": "short-conversations-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "short-conversations-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each term to its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "actually",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "signal that the first detail may be wrong",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "4:30",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "corrected time in the example",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "library",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "place in the example",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "NO MORE THAN TWO WORDS",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "instruction about answer length",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These terms come from the lesson's advice on corrections, worked example and word limits.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "short-conversations-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What do you do in the seconds before a Part 1 recording starts?",
+                  "answer": "Read the questions and predict the type of answer each gap needs — name, number, time, place, reason, price.",
+                  "image": null
+                },
+                {
+                  "prompt": "You hear \"Tuesday\" and then \"Actually, Wednesday works.\" Which do you write?",
+                  "answer": "Wednesday — the final corrected answer, not the first detail you hear.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which two things cost marks even when your listening is correct?",
+                  "answer": "Spelling and breaking the word limit.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "unit-recording-task-listening",
+          "title": "Unit recording task (Listening)",
+          "est_minutes": 15,
+          "summary": "Apply listening skills to a library registration phone call and answer questions about surname, spelling, phone number, day, time and location.",
+          "key_ideas": [
+            "Listen once at slow speed, then once at natural speed",
+            "Answer questions on surname Okoye, spelling O-K-O-Y-E and phone 0774 239 815",
+            "Choose Tuesday and 10:30; registration is first floor, second door on right, opposite reading room",
+            "Check answers with the answer key"
+          ],
+          "blocks": [
+            {
+              "id": "unit-recording-task-listening-b2",
+              "kind": "text",
+              "md": "Play the recording twice: first at slow speed to get the shape of the form, then at natural speed to confirm. Write only what you actually hear, and keep listening even while you write.",
+              "audio": null,
+              "gloss": "Hãy nghe bản ghi hai lần: lần đầu ở tốc độ chậm để nắm dạng của biểu mẫu, lần sau ở tốc độ tự nhiên để xác nhận. Chỉ viết điều bạn thực sự nghe được, và tiếp tục nghe ngay cả khi đang viết."
+            },
+            {
+              "id": "unit-recording-task-listening-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-listening-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "The recording gives a phone number in three chunks. Which number should you write on the form?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "0774 239 815",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "0774 239 851",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "0770 239 815",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "0774 293 815",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "'Oh' stands for the digit 0, and chunking helps keep all 10 digits.",
+                  "explanation": "The speaker says 'oh-seven-seven-four, two-three-nine, eight-one-five', so the chunks are 0774 / 239 / 815.",
+                  "option_feedback": {
+                    "B": "The last two digits are reversed — 'eight-one-five' ends 815, not 851.",
+                    "C": "The first group is wrong — 'seven-seven-four' gives 774, not 770.",
+                    "D": "The middle chunk is 239, not 293 — the order 'two-three-nine' matters."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-listening-b3",
+              "kind": "text",
+              "md": "Names are always spelled out. The surname is **Okoye**: $\\text{O-K-O-Y-E}$, five letters, no double letters. Write each letter as it comes; never guess the whole name from the first sound.",
+              "audio": null,
+              "gloss": "Tên luôn được đánh vần. Họ là **Okoye**: O-K-O-Y-E, năm chữ cái, không có chữ cái nào lặp. Viết từng chữ cái khi nghe được; đừng bao giờ đoán cả tên từ âm đầu tiên."
+            },
+            {
+              "id": "unit-recording-task-listening-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-listening-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "How many digits are in the phone number the speaker gives?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "7",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "9",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "10",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "11",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Count the digits chunk by chunk.",
+                  "explanation": "The chunks 0774 / 239 / 815 give 4 + 3 + 3 = 10 digits.",
+                  "option_feedback": {
+                    "A": "That is only the first chunk plus part of the second; the number is longer.",
+                    "B": "You lost one digit somewhere in the middle chunk.",
+                    "D": "You added a digit; the three chunks hold 4 + 3 + 3."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-listening-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Writing the phone number",
+              "md": "Heard: \"oh-seven-seven-four, two-three-nine, eight-one-five.\"\n\nWrite it in the same three chunks: **0774 / 239 / 815** → `0774 239 815`.\n\n*oh* = the digit **0**, so the first group is 0-7-7-4, and the whole number has $4+3+3=10$ digits. Chunking keeps you from losing a digit in the middle.",
+              "audio": null
+            },
+            {
+              "id": "unit-recording-task-listening-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-listening-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about the recording task is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "The surname Okoye contains a double letter."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Okoye is spelled with five letters."
+                    },
+                    {
+                      "id": "c",
+                      "text": "You should guess the whole name from the first sound you hear."
+                    },
+                    {
+                      "id": "d",
+                      "text": "When a speaker corrects a day or time, you write the corrected version."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Names are spelled out letter by letter, and the repaired answer always wins.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-listening-b5",
+              "kind": "text",
+              "md": "Speakers often correct themselves: \"Monday, sorry, Tuesday\", \"ten fifteen… let's say ten thirty\". The repaired answer wins: **Tuesday, 10:30**. A time always needs both numbers, so never write just \"10\".",
+              "audio": null,
+              "gloss": "Người nói thường tự sửa: \"Monday — sorry, Tuesday\", \"ten fifteen… let's say ten thirty\". Câu trả lời sau khi sửa là đáp án đúng: **Tuesday, 10:30**. Giờ luôn cần cả hai con số, nên đừng bao giờ chỉ viết \"10\"."
+            },
+            {
+              "id": "unit-recording-task-listening-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/unit-recording-task-listening-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e978ab3a3070360d9736f215655efe4909c149e6d601ac12aa18011ceb824d52",
+                "bytes": 2623
+              },
+              "alt": "Floor plan of a library's first floor showing the second door on the right, opposite the reading room",
+              "caption": "The answer to 'where?' is a route, not a room name: first floor, second door on right, opposite the reading room.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "unit-recording-task-listening-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-listening-q5",
+                  "type": "FILL_TILES",
+                  "stem": "The interview is on {{gap}} at {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Tuesday",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "10:30",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Monday",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "10",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "10:15",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The speaker first said Monday and ten fifteen, then corrected to Tuesday at 10:30 — the repair wins.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-listening-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Answer checklist for this call",
+              "md": "- Surname: **Okoye**; spelling: **O-K-O-Y-E**\n- Phone: **0774 239 815** (three chunks, 10 digits)\n- Day: **Tuesday**; time: **10:30**\n- Location: **first floor, second door on right, opposite the reading room**\n\nRule: slow pass → catch the topic; natural pass → lock the details; then check against the answer key.",
+              "audio": null
+            },
+            {
+              "id": "unit-recording-task-listening-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-listening-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each item from the recording to what it tells you.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "oh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "the digit 0",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "0774 239 815",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "the phone number in three chunks",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "first floor, second door on right",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "where registration is",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Tuesday, 10:30",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "the corrected day and time",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Each detail on the form comes directly from what the speaker actually said, including the corrections.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-listening-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Why listen once slowly and then once at natural speed?",
+                  "answer": "The slow pass gives you the shape of the form; the natural pass confirms the exact details at real speed.",
+                  "image": null
+                },
+                {
+                  "prompt": "How should you write the phone number 0774 239 815 so you keep every digit?",
+                  "answer": "In the same three chunks the speaker used: 0774 / 239 / 815, remembering that 'oh' means 0.",
+                  "image": null
+                },
+                {
+                  "prompt": "The speaker says 'Monday — sorry, Tuesday' and 'ten fifteen… ten thirty'. Which answers go on the form?",
+                  "answer": "The corrected ones: Tuesday and 10:30.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about listening skills: working with numbers and spelling, following maps and directions, understanding short conversations, and completing a unit recording task. In every part, you listen carefully and write exactly what you hear.",
+          "In English, stress separates teen numbers from tens. The teen number has the strong beat at the end, like thirteen, and the tens number has it at the start, like thirty. The same pattern works for fourteen and forty, fifteen and fifty, and so on up to nineteen and ninety. A common mistake is writing thirty when you heard thirteen, so listen for that beat.",
+          "Phone numbers are said digit by digit, and double means a repeated digit. For example, oh seven eight six, two four five, nine one three is written as the digits zero seven eight six, two four five, nine one three, and oh double seven seven has two sevens after the zero. Spell names letter by letter and watch similar sounds such as B and V, G and J, M and N. Sofia is spelled S, O, F, I, A, and if a letter is unclear you can say F as in Freddie.",
+          "British English keeps and in hundreds, so two hundred and fifty. Dates, times and prices also need care: the third of May, quarter past seven, and two pounds fifty. For phone numbers, check the digits and avoid confusing thirteen with thirty, and remember that nine one three is not nine hundred and thirteen.",
+          "For map tasks, start at You are here and put your finger there before the audio begins. Trace the route in the same order as the speaker, using landmarks and direction phrases such as go past, turn right, opposite, and next to. For example, walk fifty metres straight, go past the cafe, turn left, and the library is the second door on the left, opposite the toilets. Do not start from the wrong place or flip left and right, and listen to the slow model first, then natural speed.",
+          "In short conversations, which can be a booking, an enquiry, or a phone call, read the questions before the audio starts and predict the answer type for each gap: a name, number, time, place, reason, or price. Check the word limit first, for example no more than two words and possibly a number. Listen for question words and expect distractors such as actually, sorry, and can we make it. The final corrected answer is usually the answer, so write the last detail you hear.",
+          "In the booking example, Tuesday is rejected and Wednesday is accepted, the time is corrected to four thirty, and the place is the library. Signals like actually, sorry, can we make it, and oh wait mean the earlier detail is a distractor. Copy the final answer exactly and check spelling and the word limit, because a misspelt day or place loses the mark.",
+          "In the unit recording task, listen once at slow speed to get the shape of the form, then once at natural speed to confirm the details. Write only what you actually hear, keep listening while you write, and write each letter as it comes. The surname is Okoye, spelled O, K, O, Y, E, five letters with no double letters. The phone number is oh seven seven four, two three nine, eight one five, written in three chunks and ten digits, and oh means zero.",
+          "Speakers often correct themselves, so the repaired answer wins: Tuesday and ten thirty, never just ten. The location is first floor, second door on right, opposite the reading room, and you check your answers with the answer key. Keep the three chunks of the phone number so you do not lose a digit in the middle.",
+          "Three things to remember. First, stress and careful spelling matter: teen numbers have the beat at the end, tens at the start, and names are spelled letter by letter. Second, in map tasks always start at You are here and trace the route in order. Third, in conversations and recordings the final corrected answer is the one to write, and you must check spelling and the word limit."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-listening.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "81e6aab10a6b82f2efb403c4f151578cfcb1844c7ba859cb3739edca8dc94b50",
+          "bytes": 1514936
+        },
+        "duration_s": 251.63
+      }
+    },
+    {
+      "id": "ch-speaking",
+      "title": "Speaking",
+      "lessons": [
+        {
+          "id": "talking-about-yourself",
+          "title": "Talking about yourself",
+          "est_minutes": 10,
+          "summary": "Answer Part 1 questions about home, family, study, hobbies and routines with a direct answer, detail and reason in 2–3 sentences.",
+          "key_ideas": [
+            "Answer in 2–3 sentences: direct answer, one detail, sometimes a reason or example",
+            "Use present simple for routines and frequency words: always, usually, sometimes, never",
+            "Link ideas with and, but, because, so",
+            "Worked example: 'I’m from Da Nang...' gives place, detail and personal detail",
+            "Common mistake: one-word answer; practise 'What do you do?', music and weekend questions"
+          ],
+          "blocks": [
+            {
+              "id": "talking-about-yourself-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/talking-about-yourself-b2.webp",
+                "mime": "image/webp",
+                "sha256": "665fa3b0eccf8ef123f2e20e3c7a5bf2b143c0a107fc9e98a3cbcc42f3cbf1c4",
+                "bytes": 11640
+              },
+              "alt": "Three rising blocks: answer, detail, reason",
+              "caption": "Answer, then detail, then a reason — three blocks, three sentences.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "talking-about-yourself-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "talking-about-yourself-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "A classmate asks, \"Where are you from?\" Which reply best follows the lesson's advice for a good answer?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "I'm from Da Nang. It's a coastal city, and I live ten minutes from the beach.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Da Nang.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "I'm from Da Nang, and it is a city, and I live near the beach, and the food is cheap, and the people are friendly.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Because the food is cheap and the people are friendly there.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Direct answer first, then one detail.",
+                  "explanation": "The lesson's model is a direct answer plus a detail, in two or three sentences. Option A does exactly that.",
+                  "option_feedback": {
+                    "B": "It is a one-word answer, which ends the conversation instead of adding a detail.",
+                    "C": "It strings everything together with 'and' instead of giving a direct answer plus one detail.",
+                    "D": "It gives a reason but never actually answers the question asked."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "talking-about-yourself-b3",
+              "kind": "text",
+              "md": "Routines use the present simple: *I usually study in the evening.* Put the frequency word **before** the main verb but **after** *be*: *I am always busy on Sundays.*",
+              "audio": null,
+              "gloss": "Thói quen dùng thì hiện tại đơn: *I usually study in the evening.* Trạng từ tần suất đứng **trước** động từ chính nhưng **sau** *be*: *I am always busy on Sundays.*"
+            },
+            {
+              "id": "talking-about-yourself-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "talking-about-yourself-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which sentence puts the frequency word in the correct place?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "I am always busy on Sundays.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "I always am busy on Sundays.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "I am busy always on Sundays.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Always I am busy on Sundays.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Frequency words go before the main verb but after 'be', so 'am always busy' is right.",
+                  "option_feedback": {
+                    "B": "It puts the frequency word before 'be', but after 'be' is the correct position.",
+                    "C": "It puts the frequency word at the end, where it does not belong in this pattern.",
+                    "D": "It puts the frequency word at the very start of the sentence, which is not the pattern taught."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "talking-about-yourself-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "The 3-part answer",
+              "md": "**Direct answer + one detail (+ a reason or example).** Two or three sentences, never one word.\n\nLink them with **and, but, because, so**.\n\nFrequency words: **always, usually, sometimes, never**. Before the main verb, after *be*.",
+              "audio": null
+            },
+            {
+              "id": "talking-about-yourself-b5",
+              "kind": "text",
+              "md": "Short linkers make your answer flow: *I like pop, **but** I don't like jazz.* *I walk to school **because** it's near.* *It was raining, **so** I stayed home.*",
+              "audio": null,
+              "gloss": "Các từ nối ngắn giúp câu trả lời trôi chảy: *I like pop, **but** I don't like jazz.* *I walk to school **because** it's near.* *It was raining, **so** I stayed home.*"
+            },
+            {
+              "id": "talking-about-yourself-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "talking-about-yourself-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "In the lesson's worked example, how many sentences does the answer about Da Nang have?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "3",
+                      "three",
+                      "three sentences",
+                      "3 sentences"
+                    ]
+                  },
+                  "hint": "Count place, detail, reason.",
+                  "explanation": "The example gives place, then a detail about the city, then a reason: three sentences in about ten seconds.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "talking-about-yourself-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example",
+              "md": "**Where are you from?**\n\n\"I'm from Da Nang. It's a coastal city in central Vietnam, and I live about ten minutes from the beach. I like it **because** the food is cheap and the people are friendly.\"\n\nPlace → detail → reason. Three sentences, about ten seconds.",
+              "audio": null
+            },
+            {
+              "id": "talking-about-yourself-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "talking-about-yourself-q4",
+                  "type": "FILL_TILES",
+                  "stem": "I like pop, {{gap}} I don't like jazz. I walk to school {{gap}} it's near. It was raining, {{gap}} I stayed home.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "but",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "because",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "so",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "and",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "always",
+                      "side": null
+                    },
+                    {
+                      "id": "t6",
+                      "text": "never",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "'But' contrasts two ideas, 'because' gives a reason, and 'so' gives a result.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "talking-about-yourself-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "The one-word answer",
+              "md": "**Do you work or are you a student?** — \"Student.\" ✗\n\nOne word ends the conversation. Fix it: \"I'm a student. I'm in my last year of school, **so** I'm studying for exams at the moment.\" ✓",
+              "audio": null
+            },
+            {
+              "id": "talking-about-yourself-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "talking-about-yourself-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each word with the job it does in a short answer.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "but",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "links two contrasting ideas",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "because",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "introduces a reason",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "so",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "introduces a result",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "always",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "frequency word meaning every time",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Short linkers like these make an answer flow, and frequency words show how often something happens.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "talking-about-yourself-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "How long should a Part 1 answer be, and what goes in it?",
+                  "answer": "Two or three sentences: a direct answer, one detail, and sometimes a reason or example.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which tense do you use for routines, and where does 'usually' go?",
+                  "answer": "The present simple; 'usually' goes before the main verb but after 'be'.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which four linking words should you use to join your ideas?",
+                  "answer": "and, but, because, so.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "describing-places",
+          "title": "Describing places",
+          "est_minutes": 10,
+          "summary": "Describe places using There is/There are, It has, common adjectives and location words in 2–3 sentences.",
+          "key_ideas": [
+            "Use There is with one thing and There are with many things",
+            "Use It has for features and adjectives such as busy, quiet, clean, modern, friendly",
+            "Use location words: near, next to, opposite, between, behind, in front of",
+            "Worked example describes a hometown with a beach, market and reason",
+            "Common mistake: 'It have many shops'; say 'It has' or 'There are'; practise school, park and favourite place"
+          ],
+          "blocks": [
+            {
+              "id": "describing-places-b1",
+              "kind": "text",
+              "md": "To describe a place in 2–3 sentences you need three tools: **There is / There are** to say what exists, **It has** to list features, and a few **adjectives** plus **location words** to make it real.",
+              "audio": null,
+              "gloss": "Để miêu tả một nơi trong 2–3 câu, bạn cần ba công cụ: **There is / There are** để nói có gì, **It has** để liệt kê đặc điểm, và vài **tính từ** cùng **từ chỉ vị trí** để câu văn sinh động."
+            },
+            {
+              "id": "describing-places-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "There is / There are",
+              "md": "**There is** + one thing: *There is a market near my house.*\n**There are** + many things: *There are two parks in my town.*\n\nNever *There is many shops*. Plural nouns take **are**.",
+              "audio": null
+            },
+            {
+              "id": "describing-places-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "describing-places-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which sentence is correct?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "There are two markets next to the bus station.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "There is two markets next to the bus station.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "It have two markets next to the bus station.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "There has two markets next to the bus station.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Two markets is plural, so we use 'There are'.",
+                  "option_feedback": {
+                    "B": "The plural noun 'markets' needs 'There are', not 'There is'.",
+                    "C": "'It' takes 'has', never 'have'.",
+                    "D": "'There has' is not used to say what exists in a place."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "describing-places-b3",
+              "kind": "text",
+              "md": "Use **It has** for the features of one place: *It has a big market and a long beach.*\n\nCommon mistake: *It have many shops.* Say **It has many shops**, or **There are many shops**.",
+              "audio": null,
+              "gloss": "Dùng **It has** cho đặc điểm của một địa điểm: *It has a big market and a long beach.*\n\nLỗi thường gặp: *It have many shops.* Hãy nói **It has many shops** — hoặc **There are many shops**."
+            },
+            {
+              "id": "describing-places-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "describing-places-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "A student writes: 'My town is nice. It have many shops.' Which correction is best?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "It has many shops.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "It have got many shops.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "There is many shops.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "It is many shops.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Use 'It has' for the features of one place. You could also say 'There are many shops'.",
+                  "option_feedback": {
+                    "B": "'It have got' keeps the same agreement mistake with 'it'.",
+                    "C": "'Shops' is plural, so 'There is' is the wrong form here.",
+                    "D": "'It is' does not express what the place has; the feature verb is missing."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "describing-places-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example: my hometown",
+              "md": "\"My hometown is **quiet** and **clean**. **There is** a long beach **near** the centre, and **there are** two markets **next to** the bus station. **It has** a small park **opposite** my school, so it is **friendly** and not too **busy**.\"\n\n3 sentences: what it is like → what exists → features + reason.",
+              "audio": null
+            },
+            {
+              "id": "describing-places-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "describing-places-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Are these statements about describing places true or false?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "We say 'There is many shops in my town'."
+                    },
+                    {
+                      "id": "b",
+                      "text": "'It has a big market' is correct because we describe the features of one place."
+                    },
+                    {
+                      "id": "c",
+                      "text": "'There are two parks in my town' is correct because 'parks' is plural."
+                    },
+                    {
+                      "id": "d",
+                      "text": "In 'a park opposite my school', the location word comes before the noun 'park'."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Plural nouns take 'There are', 'It' takes 'has', and location words come after the noun they describe.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "describing-places-b5",
+              "kind": "text",
+              "md": "Location words show where things are: **near**, **next to**, **opposite** (across the street), **between** (A and B), **behind**, **in front of**. They come after the noun: *a park opposite my school*.",
+              "audio": null,
+              "gloss": "Từ chỉ vị trí đặt sự vật lên bản đồ: **near**, **next to**, **opposite** (đối diện), **between** (ở giữa A và B), **behind** (phía sau), **in front of** (phía trước). Chúng đứng sau danh từ: *a park opposite my school*."
+            },
+            {
+              "id": "describing-places-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "describing-places-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Complete with the correct form of 'have': 'It ___ a long beach and a small park.'",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "has"
+                    ]
+                  },
+                  "hint": "The subject is 'It', not 'they'.",
+                  "explanation": "'It' is third person singular, so the verb is 'has'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "describing-places-b6",
+              "kind": "text",
+              "md": "Adjectives carry the feeling: **busy / quiet**, **clean / dirty**, **modern / old**, **friendly**, **crowded**, **green**. Choose two that fit the place. Then give one reason: *It is quiet because there are no cars in the centre.*",
+              "audio": null,
+              "gloss": "Tính từ tạo cảm nhận: **busy / quiet** (nhộn nhịp / yên tĩnh), **clean / dirty** (sạch / bẩn), **modern / old** (hiện đại / cũ), **friendly** (thân thiện), **crowded** (đông đúc), **green** (nhiều cây xanh). Chọn hai tính từ thật đúng với nơi đó — rồi nêu một lý do: *It is quiet because there are no cars in the centre.*"
+            },
+            {
+              "id": "describing-places-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "describing-places-q5",
+                  "type": "FILL_TILES",
+                  "stem": "In my town {{gap}} two markets next to the bus station, and {{gap}} a long beach near the centre. My town {{gap}} a small park opposite my school.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "there are",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "there is",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "has",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "have",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "is",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Plural 'two markets' takes 'there are'; singular 'a long beach' takes 'there is'; 'my town' takes 'has'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "describing-places-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/describing-places-b7.webp",
+                "mime": "image/webp",
+                "sha256": "445ed5fc1ee49dc053b91cd32904856212b8ac94e489dba4e85001a525c36475",
+                "bytes": 20106
+              },
+              "alt": "Simple street map with a park, a school, a market and a bus station on either side of one road",
+              "caption": "Describe this map: \"There is a park next to...\", \"The market is opposite...\"",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "describing-places-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "describing-places-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each location word with its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "next to",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "right beside something",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "opposite",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "across the street from",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "between",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "in the middle of two things",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "behind",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "at the back of something",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Location words place things on the map and come after the noun, as in 'a park opposite my school'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "describing-places-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "One thing or many things — which phrase do you use?",
+                  "answer": "There is + one thing; There are + many things.",
+                  "image": null
+                },
+                {
+                  "prompt": "How do you fix the sentence 'It have many shops'?",
+                  "answer": "Say 'It has many shops' or 'There are many shops'.",
+                  "image": null
+                },
+                {
+                  "prompt": "Give three location words you can use to place a building.",
+                  "answer": "near, next to, opposite, between, behind, in front of.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-one-minute-talk",
+          "title": "The one-minute talk",
+          "est_minutes": 12,
+          "summary": "Give a structured one-minute talk with introduction, two details and a feeling or opinion, using short notes and signposts.",
+          "key_ideas": [
+            "Structure: introduction, two details, and a feeling or opinion",
+            "Use 3–4 short notes, not a full script",
+            "Use signposts: First, Also, Finally, I like it because",
+            "Aim for about 80–100 words in one minute at natural speed",
+            "Common mistake: memorising a full answer and speaking too fast; practise place, person and hobby cue cards"
+          ],
+          "blocks": [
+            {
+              "id": "the-one-minute-talk-b1",
+              "kind": "text",
+              "md": "In Part 2 you get a cue card and one minute to talk. Use a simple shape: say what it is, add two details, then give a feeling or an opinion. Three parts, one minute. That is enough.",
+              "audio": null,
+              "gloss": "Trong Part 2, bạn nhận một cue card và có một phút để nói. Hãy dùng một khung đơn giản: nói đó là gì, thêm hai chi tiết, rồi nêu cảm nhận hoặc ý kiến. Ba phần, một phút — thế là đủ."
+            },
+            {
+              "id": "the-one-minute-talk-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/the-one-minute-talk-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "dac6f12e114dc908f37dde40ac665e31da6141f6b6f5e055fe46dc12139ee8e0",
+                "bytes": 2603
+              },
+              "alt": "Timeline of a one-minute talk: introduction, two details, then a feeling or opinion.",
+              "caption": "Four signposts, one minute.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "the-one-minute-talk-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-one-minute-talk-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "What simple shape should a one-minute Part 2 talk have?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Say what it is, add two details, then give a feeling or opinion.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Give four or five details, then repeat them all as a summary.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Introduce yourself, then tell a long story about your childhood.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Describe the place first, then ask the examiner a question.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The lesson's shape is: what it is, two details, and a feeling or opinion — three parts in one minute.",
+                  "option_feedback": {
+                    "B": "This adds far more detail than one minute allows and repeats it, instead of ending on a feeling.",
+                    "C": "This ignores the cue card's three-part shape and wastes the minute on the wrong content.",
+                    "D": "Asking the examiner a question is not part of a Part 2 talk, which you give alone."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "the-one-minute-talk-b3",
+              "kind": "text",
+              "md": "Do not write a full script. Write 3–4 short notes: single words like *park*, *football*, *relaxing*. Notes take seconds to read, so your eyes stay up and your voice sounds like talking, not reading.",
+              "audio": null,
+              "gloss": "Đừng viết cả bài. Hãy viết 3–4 ghi chú ngắn — từ đơn như *park*, *football*, *relaxing*. Ghi chú chỉ mất vài giây để đọc, nên mắt bạn vẫn ngẩng lên và giọng nói giống như đang nói, không phải đang đọc."
+            },
+            {
+              "id": "the-one-minute-talk-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-one-minute-talk-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Why is memorising a full answer and saying it fast a problem?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "You sound robotic and one forgotten word can stop you completely.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "You are not allowed to use any signposts in the exam.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "You will not understand what the cue card asks you to talk about.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "You cannot finish the talk in under two minutes.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Memorised answers sound robotic, finish in about 40 seconds, and a single forgotten word can stop you.",
+                  "option_feedback": {
+                    "B": "Signposts are encouraged; the problem with memorising is not a rule about signposts.",
+                    "C": "Understanding the card is not the issue — the risk is sounding read and getting stuck.",
+                    "D": "The opposite happens: a memorised answer said fast often finishes far too early."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "the-one-minute-talk-b4",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Signposts",
+              "md": "**First,** … **Also,** … **Finally,** … **I like it because** …\n\nSignposts tell the listener which part is coming, and they buy you a second to think.",
+              "audio": null
+            },
+            {
+              "id": "the-one-minute-talk-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-one-minute-talk-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about the one-minute talk is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Writing 3–4 short notes keeps your eyes up and makes your voice sound like talking, not reading."
+                    },
+                    {
+                      "id": "b",
+                      "text": "If you finish in 30 seconds, you should cut one detail."
+                    },
+                    {
+                      "id": "c",
+                      "text": "If you run out of time, cut the feeling or opinion rather than a detail."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Signposts such as 'Also' and 'Finally' buy you a second to think."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Short notes keep your eyes up, and signposts signal the next part while giving you thinking time. Running short means adding a detail; running long means cutting a detail, never the feeling.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "the-one-minute-talk-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Hobby cue card, about 80 words",
+              "md": "Notes: *piano / brother taught me / 30 minutes a day / relaxing*\n\n\"I'd like to talk about my hobby, which is playing the piano. **First,** I started about two years ago, when my brother taught me a few simple songs. **Also,** I try to practise for thirty minutes every evening after dinner. I usually play film music, because the songs are easy to remember. **Finally,** I like it because it helps me relax after a long day at school, and I feel proud when I finish a whole song.\"\n\nThat is roughly 80 words, about one minute.",
+              "audio": null
+            },
+            {
+              "id": "the-one-minute-talk-b6",
+              "kind": "text",
+              "md": "Natural English is about 1.5 words a second, so one minute is roughly 80–100 words. If you finish in 30 seconds, add one more detail; if you run out of time, cut a detail, never the feeling.",
+              "audio": null,
+              "gloss": "Tiếng Anh nói tự nhiên khoảng 1,5 từ mỗi giây, nên một phút là khoảng 80–100 từ. Nếu bạn nói xong trong 30 giây, thêm một chi tiết; nếu hết giờ, bỏ bớt một chi tiết — đừng bao giờ bỏ phần cảm nhận."
+            },
+            {
+              "id": "the-one-minute-talk-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-one-minute-talk-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Signposts: {{gap}} … {{gap}} … {{gap}} … I like it because …",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "First",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "Also",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Finally",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "Because",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "However",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson's signpost chain is First, Also, Finally, followed by 'I like it because' for the feeling or opinion.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "the-one-minute-talk-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "The memorised script",
+              "md": "Learning a full answer by heart and saying it fast: you sound robotic, you finish in 40 seconds, and one forgotten word can stop you completely. Practise the same notes on a **place**, a **person** and a **hobby** card instead.",
+              "audio": null
+            },
+            {
+              "id": "the-one-minute-talk-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-one-minute-talk-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each part of the talk with what it does.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "First",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "your opening detail",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Also",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "a second detail",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Finally",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "a feeling or an opinion",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "3–4 short notes",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "what you write instead of a script",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Each signpost marks one part of the three-part shape, and short notes replace a full script so your eyes stay up.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "the-one-minute-talk-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What three parts does a one-minute talk need?",
+                  "answer": "An introduction, two details, and a feeling or opinion.",
+                  "image": null
+                },
+                {
+                  "prompt": "What do you write on the note paper?",
+                  "answer": "Three or four short notes, not a full script.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which signposts can you use, and how many words should one minute hold?",
+                  "answer": "First, Also, Finally, I like it because — about 80–100 words.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "unit-recording-task-speaking",
+          "title": "Unit recording task (Speaking)",
+          "est_minutes": 15,
+          "summary": "Record a one-minute talk describing a place you like to visit and check length, Part 1 style, There is/There are and clarity.",
+          "key_ideas": [
+            "Use the plan: name the place, where and who with, what you do, why you like it",
+            "Record once slowly, then again at natural speed",
+            "Listen back and check one-minute length, 2–3 Part 1 style sentences, There is/There are and clarity",
+            "Use the checklist to review your recording"
+          ],
+          "blocks": [
+            {
+              "id": "unit-recording-task-speaking-b1",
+              "kind": "text",
+              "md": "Record a one-minute talk about a place you like to visit. A Speaking Part 1 answer is short. One minute is about four or five sentences, not a speech.",
+              "audio": null,
+              "gloss": "Nhiệm vụ của bạn: ghi âm bài nói một phút về một nơi bạn thích đến. Câu trả lời Speaking Part 1 rất ngắn — một phút chỉ khoảng bốn, năm câu, không phải một bài diễn văn."
+            },
+            {
+              "id": "unit-recording-task-speaking-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "The four-point plan",
+              "md": "1. **Name** the place.\n2. **Where** it is and **who** you go with.\n3. **What** you do there.\n4. **Why** you like it.\n\nFour points, roughly 15 seconds each = 60 seconds.",
+              "audio": null
+            },
+            {
+              "id": "unit-recording-task-speaking-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-speaking-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "The lesson plans a one-minute talk around four points (name the place, where and who with, what you do, why you like it). How should the 60 seconds be shared out?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "About 15 seconds for each of the four points, so all of them are covered.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "About 30 seconds for the first point and about 10 seconds for each of the other three.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "About 5 seconds for each point, leaving about 40 seconds for a conclusion.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "About 45 seconds on why you like the place and about 5 seconds for each of the rest.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Divide the 60 seconds by the four points.",
+                  "explanation": "Four points at roughly 15 seconds each add up to the 60-second target, so every point gets time.",
+                  "option_feedback": {
+                    "B": "This gives the first point half the minute and squeezes the rest, so the talk loses points 3 and 4.",
+                    "C": "This invents a long conclusion, which a short Part 1 answer does not need.",
+                    "D": "This turns the answer into an explanation of your feelings instead of covering all four points."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-speaking-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/unit-recording-task-speaking-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "8025cd9561b20aa378f3e04b48f9b71b58e7527c4e0fcda08495372c650fa8de",
+                "bytes": 2795
+              },
+              "alt": "A 60-second timeline split into four segments: name the place, where and who with, what you do, why you like it.",
+              "caption": "One minute, four points.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "unit-recording-task-speaking-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-speaking-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Why does the lesson tell you to record the first take slowly?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "So you can keep going without stopping to search for a word",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Because slow speech is what the examiner wants to hear",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "So you can read your script out word by word",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "So the second take will sound fast by comparison",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Speaking at about half speed lets you finish every sentence instead of pausing to hunt for words.",
+                  "option_feedback": {
+                    "B": "The lesson says slow is not the goal — it is only a way to keep talking.",
+                    "C": "The lesson warns against reading a script at all.",
+                    "D": "The second take is at natural speed anyway; speed is not the purpose."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-speaking-b4",
+              "kind": "text",
+              "md": "Record once **slowly**. Slow is not the goal. It is how you keep going without stopping to search for a word. Speak at about half your normal speed and finish every sentence, even a clumsy one.",
+              "audio": null,
+              "gloss": "Hãy ghi âm lần đầu **chậm**. Chậm không phải là mục tiêu — đó là cách để bạn nói liên tục mà không dừng lại tìm từ. Nói với tốc độ khoảng một nửa bình thường và nói hết mỗi câu, kể cả câu chưa mượt."
+            },
+            {
+              "id": "unit-recording-task-speaking-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-speaking-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Are these statements about the recording task true or false?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A one-minute Part 1 answer is about four or five sentences."
+                    },
+                    {
+                      "id": "b",
+                      "text": "The second recording should cover the same four points as the first."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Reading from a written script is the best way to make the second take sound natural."
+                    },
+                    {
+                      "id": "d",
+                      "text": "You should aim for about 200 words in the one-minute talk."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson sets four or five sentences and the same four points twice, without a script, aiming for 80–100 words.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-speaking-b5",
+              "kind": "text",
+              "md": "Then record again at **natural speed** with the same four points. Don't read a script: the second take should sound like talking, not reading.",
+              "audio": null,
+              "gloss": "Sau đó ghi âm lại ở **tốc độ tự nhiên** với cùng bốn ý. Đừng đọc kịch bản: bản thứ hai phải nghe như đang nói chuyện, không phải đang đọc."
+            },
+            {
+              "id": "unit-recording-task-speaking-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-speaking-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "The checklist accepts recordings a little longer or shorter than one minute. What is the highest acceptable length, in seconds?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "65",
+                      "65 s",
+                      "65 seconds",
+                      "65 sec"
+                    ]
+                  },
+                  "hint": "The acceptable range is given in the checklist line about length.",
+                  "explanation": "The checklist says 55–65 s is fine, so 65 s is the upper limit.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-speaking-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "A 60-second answer",
+              "md": "0–8 s: “I'd like to talk about Da Lat, a small city in the south of Vietnam.”\n8–18 s: “I usually go there with my two sisters, about once a year.”\n18–38 s: “There is a big lake in the centre, and there are lots of flower gardens. We walk round the market and drink coffee.”\n38–58 s: “I like it because the air is cool. About 15 °C in the evening. And everything is quiet.”\n\nThat is about 75 words ≈ 50–55 s. Aim for 80–100 words.",
+              "audio": null
+            },
+            {
+              "id": "unit-recording-task-speaking-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-speaking-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Complete the sentence from the Da Lat example: {{gap}} a big lake in the centre, and {{gap}} lots of flower gardens.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "There is",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "There are",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "There have",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "It is",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "'There is' goes with the singular 'a big lake', and 'There are' with the plural 'lots of flower gardens'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-speaking-b7",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Listen-back checklist",
+              "md": "Play your recording once and tick only these:\n- Length close to **60 s** (55–65 s is fine).\n- **2–3 short Part 1 sentences**: a direct answer plus one detail.\n- **There is** + singular noun, **There are** + plural noun.\n- Clear word endings: *places, gardens, sisters*.\n\nFix one thing, then record again.",
+              "audio": null
+            },
+            {
+              "id": "unit-recording-task-speaking-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "unit-recording-task-speaking-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each part of the plan to the time slot it gets in the lesson example.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "0–8 s",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "name the place",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "8–18 s",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "where it is and who you go with",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "18–38 s",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "what you do there",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "38–58 s",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "why you like it",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The example follows the four plan points in order, ending with the reason you like the place.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "unit-recording-task-speaking-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Which four points should your one-minute talk cover?",
+                  "answer": "Name the place, where it is and who you go with, what you do there, and why you like it.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why record twice?",
+                  "answer": "Once slowly to get the words out without stopping, then at natural speed so it sounds like real speech.",
+                  "image": null
+                },
+                {
+                  "prompt": "What do you check when you listen back?",
+                  "answer": "Length near 60 seconds, 2–3 short Part 1 sentences, correct There is/There are, and clear word endings.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about speaking in English: answering short questions about yourself, describing places, giving a one-minute talk, and checking your own recording. It gives simple patterns so you can keep talking without a script.",
+          "When someone asks about you, answer in two or three sentences. Give a direct answer, add one detail, and sometimes add a reason or example. For routines use the present simple, and put frequency words like always, usually, sometimes and never before the main verb but after be. Link ideas with and, but, because, so.",
+          "For example, say I'm from Da Nang. It's a coastal city in central Vietnam, and I live about ten minutes from the beach. I like it because the food is cheap and the people are friendly. That gives place, detail and reason in about ten seconds. A one-word answer like Student ends the conversation, so fix it with a detail. I'm a student. I'm in my last year of school, so I'm studying for exams at the moment.",
+          "To describe a place, use There is with one thing and There are with many things. Use It has for the features of one place, and add two adjectives such as busy, quiet, clean, modern or friendly. Use location words like near, next to, opposite, between, behind and in front of after the noun.",
+          "A common mistake is It have many shops. Say It has many shops, or There are many shops. For example, my hometown is quiet and clean. There is a long beach near the centre, and there are two markets next to the bus station. It has a small park opposite my school, so it is friendly and not too busy.",
+          "In a one-minute talk, use a simple shape: say what it is, add two details, then give a feeling or opinion. Write three or four short notes, not a full script, so your eyes stay up and you sound like you are talking. Use signposts like First, Also, Finally and I like it because. Aim for about eighty to one hundred words in one minute at natural speed.",
+          "For a hobby note, you could say I'd like to talk about my hobby, which is playing the piano. First, I started about two years ago, when my brother taught me a few simple songs. Also, I try to practise for thirty minutes every evening after dinner. Finally, I like it because it helps me relax after a long day at school. That is roughly eighty words, about one minute. Do not memorise a full answer and speak too fast, because you sound robotic and one forgotten word can stop you. If you run out of time, cut a detail, never the feeling.",
+          "For the recording task, talk about a place you like to visit. Name the place, say where it is and who you go with, say what you do there, and explain why you like it. Record once slowly to finish every sentence, then record again at natural speed with the same four points. Do not read a script; the second take should sound like talking.",
+          "Listen back and check that the talk is close to sixty seconds, with two or three short Part One style sentences and a direct answer plus one detail. Check There is with a singular noun and There are with a plural noun, and check clear word endings like places, gardens and sisters. Fix one thing, then record again.",
+          "Three things to remember. First, answer with a direct answer plus one detail, and use linkers and frequency words correctly. Second, describe places with There is, There are, It has, adjectives and location words. Third, plan a one-minute talk with notes and signposts, include a feeling, and keep it close to eighty to one hundred words."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-speaking.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "a6eda963f214a7ea7e6ea9d37609b32e25e6908c6a6defadf1dbc806048ab910",
+          "bytes": 1401320
+        },
+        "duration_s": 232.69
+      }
+    }
+  ],
+  "gloss_start": 30
+}

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-first="yes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đăng nhập</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  :root { --board: #fff7e6; --board-edge: #c98a45; --board-dark: #7d4c22; --ink-g: #3a2010; --sel: #ffcf3d; }
+  body { min-height: 100vh; background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; }
+  body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .38); backdrop-filter: blur(6px); }
+  :focus-visible { outline: 3px solid #1d4fb8; outline-offset: 3px; }
+  .stage { position: relative; min-height: calc(100vh - 44px); display: grid; place-items: center; padding: 80px 16px 48px; }
+  .lang-mini { position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px; background: linear-gradient(#f2c68c, #d6a060); border: 3px solid #b27a3d; box-shadow: 0 3px 0 #8a5a2b; }
+  .lang-mini button { min-height: 34px; min-width: 46px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: #3a2010; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
+  .lang-mini button[aria-pressed="true"] { background: #3a2010; color: #fff7e6; }
+
+  .board { position: relative; width: min(560px, 100%); display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 40px clamp(16px, 4vw, 32px) 28px; color: var(--ink-g); }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 28px; border-radius: 16px; background: linear-gradient(#c4432a, #a83a24); color: #fff; font-size: clamp(1.1em, 3vw, 1.45em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #86301d; }
+  .welcome { display: flex; align-items: center; gap: 14px; }
+  .hen { flex: none; width: 96px; height: 96px; overflow: hidden; position: relative; border-radius: 20px; background: radial-gradient(ellipse 40% 9% at 50% 88%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); border: 3px solid #e7cfa8; }
+  .hen img { position: absolute; width: 240%; max-width: none; left: -64%; top: -84%; }
+  .welcome p { margin: 0; font-weight: 600; color: #6b4a2e; }
+  .welcome b { display: block; color: #3a2010; font-size: 1.1em; }
+
+  /* role: two pictures, pick one */
+  .roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .role { position: relative; display: grid; justify-items: center; gap: 4px; padding: 10px 8px 12px; border-radius: 22px; border: 3px solid #e7cfa8; background: radial-gradient(ellipse 60% 10% at 50% 74%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 62%, #b6e39a 62%); cursor: pointer; font: inherit; color: var(--ink-g); box-shadow: 0 5px 0 #e0c294; transition: transform .15s ease; }
+  .role:hover { transform: translateY(-2px); }
+  .role img, .role svg { width: 100%; max-width: 150px; height: auto; aspect-ratio: 140 / 170; object-fit: contain; }
+  .role b { font-size: 1.1em; }
+  .role[aria-checked="true"] { border-color: var(--sel); box-shadow: 0 5px 0 #c99a10, 0 0 0 4px rgba(255, 207, 61, .45); transform: translateY(-3px); }
+  .role .tick { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: var(--sel); color: #5a3b00; border: 2px solid #fff; display: none; place-items: center; }
+  .role .tick svg { width: 20px; height: 20px; aspect-ratio: auto; }
+  .role[aria-checked="true"] .tick { display: grid; }
+  .roles.shake { animation: shake .4s ease-in-out; }
+  @keyframes shake { 0%, 100% { transform: translateX(0) } 20% { transform: translateX(-8px) } 40% { transform: translateX(7px) } 60% { transform: translateX(-5px) } 80% { transform: translateX(3px) } }
+
+  .fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-size: .95em; font-weight: 700; padding-left: 4px; }
+  .pill { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 8px 0 16px; border-radius: 16px; background: #fffdf7; border: 3px solid #d6b27a; box-shadow: inset 0 2px 0 rgba(125, 76, 34, .12); }
+  .pill:focus-within { border-color: #1d4fb8; }
+  .pill.bad { border-color: #c0301c; }
+  .pill > svg { width: 22px; height: 22px; color: #7d4c22; flex: none; }
+  .pill input { flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; min-height: 48px; font: inherit; color: #3a2010; }
+  .eye { width: 44px; height: 44px; border-radius: 12px; border: 0; background: transparent; color: #5a3a1c; display: grid; place-items: center; cursor: pointer; flex: none; }
+  .eye:hover { background: #f2c68c; }
+  .eye[aria-pressed="true"] { background: #3a2010; color: #fff7e6; }
+
+  .alert { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #fde4dc; border: 2px solid #c0301c; color: #3a2010; font-weight: 600; }
+  .alert svg { flex: none; width: 22px; height: 22px; color: #a82612; margin-top: 1px; }
+  .submit { min-height: 60px; padding: 0 28px; border-radius: 20px; border: 3px solid #fff; background: linear-gradient(#36a862, #23874a); color: #fff; font: inherit; font-size: 1.15em; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 #165c32; text-shadow: 0 1px 1px rgba(0,0,0,.35); }
+  .submit:active { transform: translateY(4px); box-shadow: 0 2px 0 #23874a; }
+  .demo { margin: 0; text-align: center; font-size: .9em; color: #6b4a2e; }
+  .demo code { font: inherit; font-weight: 700; color: #3a2010; }
+  @media (max-width: 520px) { .welcome .hen { width: 76px; height: 76px; } }
+  @media (prefers-reduced-motion: reduce) { .role { transition: none; } .roles.shake { animation: none; } }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đăng nhập</span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Học sinh vào</span><button data-set="first:yes">Lần đầu (chọn gà)</button><button data-set="first:no">Đã dùng (vào làng)</button></span>
+  <span class="mock-note">Thử: hocsinh hoặc giaovien, mật khẩu 123456.</span>
+</div>
+
+<div class="stage">
+  <div class="lang-mini" role="group" aria-label="Ngôn ngữ">
+    <button type="button" data-set="lang:vi" aria-pressed="true">VI</button>
+    <button type="button" data-set="lang:en" aria-pressed="false">EN</button>
+  </div>
+
+  <form class="board" id="login" novalidate>
+    <h1 class="ribbon" data-en="Log in">Đăng nhập</h1>
+    <div class="welcome">
+      <span class="hen" aria-hidden="true"><picture><source srcset="assets/ga/toan-dung.webp" media="(prefers-reduced-motion: no-preference)"><img src="assets/ga/toan.png" alt=""></picture></span>
+      <p><b data-en="Welcome to Mentor">Chào mừng đến Mentor</b><span data-en="Pick who you are, then log in.">Chọn em là ai, rồi đăng nhập.</span></p>
+    </div>
+
+    <div class="roles" id="roles" role="radiogroup" aria-label="Vai trò">
+      <button type="button" class="role" role="radio" aria-checked="false" data-role="hs" aria-label="Học sinh" data-en-label="Student">
+        <span class="tick" aria-hidden="true"><i data-i="check"></i></span>
+        <img src="assets/ga/hs-nam.png" alt="">
+        <b data-en="Student">Học sinh</b>
+      </button>
+      <button type="button" class="role" role="radio" aria-checked="false" data-role="gv" aria-label="Giáo viên" data-en-label="Teacher">
+        <span class="tick" aria-hidden="true"><i data-i="check"></i></span>
+        <!-- teacher: glasses, cardigan, book, small chalkboard -->
+        <svg viewBox="0 0 140 170" aria-hidden="true">
+          <rect x="84" y="30" width="48" height="36" rx="4" fill="#24453A" stroke="#8A5A2B" stroke-width="3"/>
+          <path d="M92 44 h8 M96 40 v8 M106 44 h8 M92 56 q6 -6 12 0 t12 0" stroke="#E9F2EC" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <rect x="49" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/><rect x="66" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/>
+          <rect x="40" y="62" width="48" height="58" rx="13" fill="#12825A"/>
+          <path d="M56 64 L64 80 L72 64" fill="#fff"/>
+          <rect x="30" y="86" width="26" height="20" rx="3" fill="#4B2EBF" transform="rotate(6 43 96)"/>
+          <path d="M88 82 L112 62" stroke="#8A5A2B" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="64" cy="40" r="18" fill="#E2AE85"/>
+          <path d="M46 40 C44 20 84 18 82 40 C80 30 74 26 64 26 C54 26 48 30 46 40 Z" fill="#4A3A35"/>
+          <rect x="53" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/><rect x="66" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/>
+          <path d="M63 41 h3" stroke="#2B2321" stroke-width="1.8"/>
+          <path d="M59 51 Q64 55 69 51" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <b data-en="Teacher">Giáo viên</b>
+      </button>
+    </div>
+
+    <div class="fields">
+      <div class="field">
+        <label for="acc" data-en="Account">Tài khoản</label>
+        <div class="pill" id="accPill"><i data-i="user"></i><input id="acc" name="acc" autocomplete="username" autocapitalize="off" spellcheck="false"></div>
+      </div>
+      <div class="field">
+        <label for="pw" data-en="Password">Mật khẩu</label>
+        <div class="pill" id="pwPill"><i data-i="lock"></i><input id="pw" name="pw" type="password" autocomplete="current-password">
+          <button type="button" class="eye" id="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div>
+      </div>
+    </div>
+
+    <div class="alert" id="alert" role="alert" hidden><i data-i="x"></i><span id="alertText"></span></div>
+
+    <button class="submit" type="submit" data-en="Log in">Đăng nhập</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  const ACCOUNTS = { hocsinh: { pw: "123456", role: "hs" }, giaovien: { pw: "123456", role: "gv" } };
+  const MSG = {
+    noRole: { vi: "Chọn vai trò.", en: "Pick a role." },
+    isTeacher: { vi: "Sai vai trò.", en: "Wrong role." },
+    isStudent: { vi: "Sai vai trò.", en: "Wrong role." },
+    wrong: { vi: "Sai tài khoản hoặc mật khẩu.", en: "Wrong account or password." },
+  };
+  const $ = (id) => document.getElementById(id);
+  const roles = $("roles"), alertBox = $("alert"), alertText = $("alertText");
+  let role = null, lastMsg = null;
+  const lang = () => (document.documentElement.lang === "en" ? "en" : "vi");
+
+  function show(key) { lastMsg = key; alertText.textContent = MSG[key][lang()]; alertBox.hidden = false; }
+  function clear() { alertBox.hidden = true; lastMsg = null; $("accPill").classList.remove("bad"); $("pwPill").classList.remove("bad"); }
+
+  roles.addEventListener("click", (e) => {
+    const b = e.target.closest(".role"); if (!b) return;
+    role = b.dataset.role;
+    roles.querySelectorAll(".role").forEach((r) => r.setAttribute("aria-checked", String(r === b)));
+    if (lastMsg === "noRole" || lastMsg === "isTeacher" || lastMsg === "isStudent") clear();
+  });
+  // arrow keys move between the two radios
+  roles.addEventListener("keydown", (e) => {
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) return;
+    e.preventDefault();
+    const list = [...roles.querySelectorAll(".role")];
+    const next = list[(list.indexOf(document.activeElement) + 1) % list.length];
+    next.focus(); next.click();
+  });
+
+  $("eye").addEventListener("click", function () {
+    const on = this.getAttribute("aria-pressed") !== "true";
+    this.setAttribute("aria-pressed", String(on));
+    this.setAttribute("aria-label", on ? "Ẩn mật khẩu" : "Hiện mật khẩu");
+    $("pw").type = on ? "text" : "password";
+  });
+  ["acc", "pw"].forEach((id) => $(id).addEventListener("input", () => { if (lastMsg === "wrong") clear(); }));
+
+  $("login").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!role) {
+      show("noRole");
+      roles.classList.remove("shake"); void roles.offsetWidth; roles.classList.add("shake");
+      roles.querySelector(".role").focus();
+      return;
+    }
+    const acc = ACCOUNTS[$("acc").value.trim().toLowerCase()];
+    if (!acc || acc.pw !== $("pw").value) {
+      show("wrong");
+      $("accPill").classList.add("bad"); $("pwPill").classList.add("bad");
+      return;
+    }
+    if (acc.role !== role) { show(acc.role === "gv" ? "isTeacher" : "isStudent"); return; }
+    // first login on this device: language, birth year, boy/girl, 3 chickens; afterwards straight to the village
+    location.href = role === "gv" ? "gv-01-gui-bai.html" : (document.documentElement.dataset.first === "yes" ? "lg-02-chon-ga.html" : "lg-01-lang.html");
+  });
+
+  // keep the page's own VI/EN switch, role labels and any open message in sync with the language
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key !== "lang") return;
+    document.querySelectorAll(".lang-mini button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.set === "lang:" + e.detail.value)));
+    document.querySelectorAll(".role").forEach((r) => {
+      if (!r.dataset.viLabel) r.dataset.viLabel = r.getAttribute("aria-label");
+      r.setAttribute("aria-label", e.detail.value === "en" ? r.dataset.enLabel : r.dataset.viLabel);
+    });
+    if (lastMsg) alertText.textContent = MSG[lastMsg][lang()];
+  });
+  window.addEventListener("DOMContentLoaded", () => {
+    const q = new URLSearchParams(location.search);
+    if (q.get("lan") === "da") mockSet("first", "no"); else mockSet("first", "yes");
+    // reviewer shortcuts: ?vaitro=hs|gv picks a role; ?loi=vaitro|sai|vaisai shows an error
+    const r = q.get("vaitro");
+    if (r) { const b = roles.querySelector('[data-role="' + r + '"]'); if (b) b.click(); }
+    const l = q.get("loi");
+    if (l === "vaitro") show("noRole");
+    if (l === "sai") { show("wrong"); $("accPill").classList.add("bad"); $("pwPill").classList.add("bad"); }
+    if (l === "vaisai") { show("isTeacher"); }
+  });
+})();
+</script>
+</body>
+</html>

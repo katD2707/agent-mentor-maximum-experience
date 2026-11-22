@@ -262,7 +262,7 @@ export function makeMockPlannerApi(userOf: (token: string) => User) {
         id: `mock-later-${Date.now()}`,
         at: at.toISOString(),
         kind: "later",
-        text_vi: `Tới giờ hẹn rồi: ${body.title_vi || "bài học"}. Mực để sẵn bài cho em.`,
+        text_vi: `Tới giờ hẹn rồi: ${body.title_vi || "bài học"}. Gà để sẵn bài cho em.`,
         text_en: `It's the time you picked: ${body.title_en || body.title_vi || "your lesson"}. Your lesson is ready.`,
         deep_link: body.deep_link || "/",
         status: "scheduled",

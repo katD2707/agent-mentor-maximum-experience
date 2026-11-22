@@ -28,11 +28,15 @@ export interface Background {
   opened(id: string): void;
   /** fetch /reminders again (after the plan may have changed) */
   refresh(): Promise<void>;
+  /** the study room countdown starts or stops */
+  hold(on: boolean): void;
 }
 
 let running: Background | null = null;
 /** For screens that change the plan (a new goal): ask the running background to re-read the reminders. */
 export const refreshReminders = (): Promise<void> => running?.refresh() ?? Promise.resolve();
+/** The study room countdown runs: its visible time is focus time (no double counting, the tracker stays the one clock). */
+export const holdFocus = (on: boolean): void => running?.hold(on);
 
 export function startBackground(opts: { token: string; user: User; lang: () => Lang; open: (o: OpenReminder) => void }): Background {
   const { token, user } = opts;
@@ -143,6 +147,7 @@ export function startBackground(opts: { token: string; user: User; lang: () => L
     },
     opened: (id) => scheduler.opened(id),
     refresh: pull,
+    hold: (on) => focus.hold(on),
   };
   running = bg;
   return bg;

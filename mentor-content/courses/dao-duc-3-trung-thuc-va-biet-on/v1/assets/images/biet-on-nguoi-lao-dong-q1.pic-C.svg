@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper cream background -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground pool -->
+  <ellipse cx="200" cy="302" rx="142" ry="38" fill="#E9E5F6"/>
+
+  <!-- grass tuft left -->
+  <path d="M76 304 C 68 290 64 282 60 272 C 70 280 80 290 86 302 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M88 306 C 88 290 90 280 94 270 C 97 282 96 296 94 306 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- grass tuft right -->
+  <path d="M318 298 C 314 284 314 276 312 266 C 320 274 326 286 328 296 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M330 302 C 334 290 338 282 342 272 C 342 284 340 296 336 302 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- the sheet of paper -->
+  <g transform="rotate(-7 200 196)">
+    <path d="M130 88
+             L266 88
+             Q282 88 282 104
+             L282 246
+             L230 298
+             L130 298
+             Q114 298 114 282
+             L114 104
+             Q114 88 130 88
+             Z"
+          fill="#F7F1E3" stroke="#5A4BC0" stroke-width="6"
+          stroke-linejoin="round" stroke-linecap="round"/>
+
+    <!-- folded corner -->
+    <path d="M282 246 L230 298 L230 246 Z"
+          fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"
+          stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

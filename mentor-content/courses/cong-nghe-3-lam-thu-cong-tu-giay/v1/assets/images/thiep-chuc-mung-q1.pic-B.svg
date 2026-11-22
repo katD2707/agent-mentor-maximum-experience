@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="rotate(-5 200 200)" stroke-linecap="round" stroke-linejoin="round">
+    <!-- offset shadow -->
+    <rect x="108" y="72" width="204" height="278" rx="18" fill="#F0D76E"/>
+
+    <!-- the sheet of paper -->
+    <rect x="98" y="62" width="204" height="278" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="6"/>
+
+    <!-- heading stroke -->
+    <line x1="128" y1="114" x2="198" y2="114" stroke="#E8806A" stroke-width="9"/>
+
+    <!-- ruled lines -->
+    <line x1="128" y1="156" x2="272" y2="156" stroke="#9FD8BF" stroke-width="6"/>
+    <line x1="128" y1="194" x2="272" y2="194" stroke="#9FD8BF" stroke-width="6"/>
+    <line x1="128" y1="232" x2="272" y2="232" stroke="#9FD8BF" stroke-width="6"/>
+    <line x1="128" y1="270" x2="216" y2="270" stroke="#9FD8BF" stroke-width="6"/>
+
+    <!-- small corner accent, thin ink detail -->
+    <path d="M232 292 h28" stroke="#2B283F" stroke-width="4" opacity="0.55"/>
+  </g>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+</svg>

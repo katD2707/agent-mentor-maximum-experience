@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="44" y="468" width="214" height="40" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="260" y="468" width="376" height="40" rx="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="692" y="468" width="268" height="40" rx="12" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2"/>
+<line x1="40" y1="430" x2="966" y2="430" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+<line x1="664" y1="406" x2="664" y2="572" stroke="#E8806A" stroke-width="4" stroke-linecap="round"/>
+<line x1="70" y1="444" x2="70" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="70" cy="430" r="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="70" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">K</text>
+<line x1="124" y1="444" x2="124" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="124" cy="430" r="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="124" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Na</text>
+<line x1="178" y1="444" x2="178" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="178" cy="430" r="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="178" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Ba</text>
+<line x1="232" y1="444" x2="232" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="232" cy="430" r="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="232" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Ca</text>
+<line x1="286" y1="444" x2="286" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="286" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="286" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Mg</text>
+<line x1="340" y1="444" x2="340" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="340" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="340" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Al</text>
+<line x1="394" y1="444" x2="394" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="394" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="394" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Zn</text>
+<line x1="448" y1="444" x2="448" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="448" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="448" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Fe</text>
+<line x1="502" y1="444" x2="502" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="502" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="502" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Ni</text>
+<line x1="556" y1="444" x2="556" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="556" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="556" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Sn</text>
+<line x1="610" y1="444" x2="610" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="610" cy="430" r="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="610" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Pb</text>
+<line x1="664" y1="444" x2="664" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="664" cy="430" r="14" fill="#E8806A" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="664" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">H</text>
+<line x1="718" y1="444" x2="718" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="718" cy="430" r="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="718" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Cu</text>
+<line x1="772" y1="444" x2="772" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="772" cy="430" r="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="772" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Hg</text>
+<line x1="826" y1="444" x2="826" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="826" cy="430" r="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="826" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Ag</text>
+<line x1="880" y1="444" x2="880" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="880" cy="430" r="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="880" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Pt</text>
+<line x1="934" y1="444" x2="934" y2="468" stroke="#2B283F" stroke-width="1.6" stroke-linecap="round"/>
+<circle cx="934" cy="430" r="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="934" y="380" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Au</text>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

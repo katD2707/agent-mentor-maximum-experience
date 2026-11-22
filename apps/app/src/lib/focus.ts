@@ -27,6 +27,7 @@ export class FocusTracker {
   private acc = 0;
   private sessionSeconds = 0;
   private streak = 0;
+  private held = false;
   session: string | null = null;
 
   constructor(private o: FocusOptions) {
@@ -47,8 +48,17 @@ export class FocusTracker {
     if (v) this.lastInput = this.now();
   }
 
+  /**
+   * The study room countdown is running: the student is studying even without touching the screen, so the visible time counts
+   * as active (the same clock keeps feeding focus ticks and the break reminder; the room adds no ticks of its own).
+   */
+  hold(on: boolean) {
+    this.held = on;
+    if (on) this.touch();
+  }
+
   isActive(): boolean {
-    return this.visible && this.now() - this.lastInput <= (this.o.idleMs ?? 60000);
+    return this.visible && (this.held || this.now() - this.lastInput <= (this.o.idleMs ?? 60000));
   }
 
   get continuousSeconds() {

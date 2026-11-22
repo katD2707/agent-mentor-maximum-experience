@@ -1,0 +1,2400 @@
+{
+  "schema_version": 1,
+  "course_id": "giao-duc-kinh-te-va-phap-luat-10",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g10_12",
+  "title": "Giáo dục kinh tế và pháp luật 10",
+  "chapters": [
+    {
+      "id": "ch-thi-truong",
+      "title": "Thị trường",
+      "lessons": [
+        {
+          "id": "cung-va-cau",
+          "title": "Cung và cầu",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu khái niệm thị trường, cung, cầu, luật cung cầu, cân bằng thị trường và cách giải bài tập tính giá, lượng cân bằng kèm ví dụ và lỗi thường gặp.",
+          "key_ideas": [
+            "Thị trường là nơi trao đổi, mua bán hàng hóa, dịch vụ.",
+            "Cầu gắn với khả năng thanh toán; nhu cầu thì không.",
+            "Luật cầu: giá tăng, lượng cầu giảm; luật cung: giá tăng, lượng cung tăng.",
+            "Cân bằng khi Q_s = Q_d; giá cao hơn gây dư thừa, thấp hơn gây thiếu hụt.",
+            "Lỗi thường gặp: đồng nhất nhu cầu với cầu."
+          ],
+          "blocks": [
+            {
+              "id": "cung-va-cau-b1",
+              "kind": "text",
+              "md": "Thị trường là nơi diễn ra trao đổi, mua bán hàng hóa, dịch vụ giữa người mua và người bán. Ở thị trường trà sữa quanh trường, người bán là các quán trà sữa; người mua là học sinh, phụ huynh, khách qua đường.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cung-va-cau-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Cầu, cung và nhu cầu",
+              "md": "Cầu là lượng hàng hóa, dịch vụ mà người mua sẵn sàng và có khả năng mua ở mỗi mức giá trong một thời gian nhất định. Cung là lượng hàng hóa, dịch vụ mà người bán sẵn sàng và có khả năng bán ở mỗi mức giá trong một thời gian nhất định. Nhu cầu chỉ là mong muốn tiêu dùng; cầu phải gắn với khả năng thanh toán. Ví dụ: muốn uống trà sữa nhưng chỉ có 10.000 đồng trong khi giá một ly là 25.000 đồng thì chỉ có nhu cầu, chưa có cầu.",
+              "audio": null
+            },
+            {
+              "id": "cung-va-cau-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cung-va-cau-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo bài học, cầu là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Lượng hàng hóa, dịch vụ người mua sẵn sàng và có khả năng mua ở mỗi mức giá.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Mong muốn tiêu dùng hàng hóa, dịch vụ của người mua ở mỗi mức giá.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Lượng hàng hóa, dịch vụ người bán sẵn sàng và có khả năng bán ở mỗi mức giá.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Tổng số tiền người mua đã chi để mua hàng hóa, dịch vụ.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Cầu gắn với khả năng thanh toán của người mua; nhu cầu chỉ là mong muốn tiêu dùng.",
+                  "option_feedback": {
+                    "B": "Đây là nhu cầu; cầu còn phải gắn với khả năng thanh toán.",
+                    "C": "Đó là khái niệm cung.",
+                    "D": "Cầu là lượng hàng hóa, dịch vụ, không phải tổng số tiền chi ra."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cung-va-cau-b3",
+              "kind": "text",
+              "md": "Luật cầu: khi giá tăng, lượng cầu giảm; khi giá giảm, lượng cầu tăng. Luật cung: khi giá tăng, lượng cung tăng; khi giá giảm, lượng cung giảm. Các quy luật này xét trong điều kiện các yếu tố khác không đổi.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cung-va-cau-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cung-va-cau-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho $Q_d = 150 - 3P$ và $Q_s = 30 + 3P$ ($P$ tính bằng nghìn đồng/ly). Giá cân bằng là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "20 nghìn đồng/ly",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "25 nghìn đồng/ly",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "30 nghìn đồng/ly",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "15 nghìn đồng/ly",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Giải $150-3P=30+3P$ được $P=20$ nghìn đồng/ly.",
+                  "option_feedback": {
+                    "B": "Thay $P=25$ thì $Q_d=75$, $Q_s=105$, không cân bằng.",
+                    "C": "Thay $P=30$ thì $Q_d=60$, $Q_s=120$, không cân bằng.",
+                    "D": "Thay $P=15$ thì $Q_d=105$, $Q_s=75$, không cân bằng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cung-va-cau-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Cân bằng thị trường",
+              "md": "Cân bằng thị trường xảy ra khi $Q_s = Q_d$; mức giá tương ứng là giá cân bằng. Nếu giá cao hơn giá cân bằng: $Q_s > Q_d$, gây dư thừa. Nếu giá thấp hơn giá cân bằng: $Q_d > Q_s$, gây",
+              "audio": null
+            },
+            {
+              "id": "cung-va-cau-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cung-va-cau-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Cầu là lượng hàng hóa, dịch vụ người mua sẵn sàng và có khả năng mua ở mỗi mức giá trong một thời gian nhất định."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nhu cầu tiêu dùng luôn được coi là cầu trong kinh tế."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Theo luật cung, khi giá tăng thì lượng cung tăng (các yếu tố khác không đổi)."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Khi giá thấp hơn giá cân bằng, thị trường xuất hiện dư thừa."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Cầu phải gắn với khả năng thanh toán; khi giá thấp hơn cân bằng thì thiếu hụt, không phải dư thừa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cung-va-cau-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tìm giá và lượng cân bằng",
+              "md": "Cho $Q_d = 120 - 2P$ và $Q_s = 20 + 2P$ ($P$ tính bằng nghìn đồng/ly; $Q$ tính bằng ly/ngày). Tại cân bằng: $120 - 2P = 20 + 2P$, suy ra $100 = 4P$, nên $P = 25$. Thay $P = 25$ vào $Q_d$: $Q = 120 - 2(25) = 70$. Vậy giá cân bằng là 25.000 đồng/ly; lượng cân bằng là 70 ly/ngày.",
+              "audio": null
+            },
+            {
+              "id": "cung-va-cau-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cung-va-cau-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tại mức giá 20.000 đồng/ly, lượng cầu là 100 ly và lượng cung là 40 ly. Thị trường thiếu hụt bao nhiêu ly?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "60"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Tính $Q_d - Q_s$ khi cầu lớn hơn cung.",
+                  "explanation": "Thiếu hụt = $Q_d - Q_s = 100 - 40 = 60$ ly.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cung-va-cau-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/cung-va-cau-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "216bb39548b9d217ee1392f9612a91948c05efae6ecdf47be8066e3a355223fe",
+                "bytes": 2657
+              },
+              "alt": "Đồ thị đường cầu dốc xuống và đường cung dốc lên cắt nhau tại điểm cân bằng E.",
+              "caption": "Đường cầu và đường cung cắt nhau tại điểm cân bằng.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "cung-va-cau-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cung-va-cau-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Theo luật cầu và luật cung: khi giá tăng, lượng cầu {{gap}}; khi giá tăng, lượng cung {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "giảm",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "tăng",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "không đổi",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "biến động",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Luật cầu: giá tăng thì lượng cầu giảm; luật cung: giá tăng thì lượng cung tăng (các yếu tố khác không đổi).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cung-va-cau-b7",
+              "kind": "interactive",
+              "prompt": "Kéo giá P để lượng cầu Q_d còn 70 ly/ngày.",
+              "x": {
+                "symbol": "P",
+                "label": "Giá",
+                "unit": "nghìn đồng/ly"
+              },
+              "y": {
+                "symbol": "Q_d",
+                "label": "Lượng cầu",
+                "unit": "ly/ngày"
+              },
+              "expr": "120-2*x",
+              "x_min": 10.0,
+              "x_max": 40.0,
+              "x_step": 1.0,
+              "x_start": 20.0,
+              "target_y": 70.0,
+              "tolerance": 0.5,
+              "praise": "Chính xác: tại giá 25 nghìn đồng/ly, lượng cầu là 70 ly/ngày.",
+              "audio": null
+            },
+            {
+              "id": "cung-va-cau-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cung-va-cau-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép khái niệm với nội dung tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Cầu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Lượng người mua sẵn sàng và có khả năng mua ở mỗi mức giá",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Cung",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Lượng người bán sẵn sàng và có khả năng bán ở mỗi mức giá",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Giá cân bằng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Mức giá tại đó $Q_s = Q_d$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Dư thừa",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Xảy ra khi giá cao hơn giá cân bằng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Cầu và cung gắn với khả năng mua/bán; cân bằng khi $Q_s=Q_d$, giá cao hơn gây dư thừa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cung-va-cau-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Cầu khác nhu cầu ở điểm nào?",
+                  "answer": "Cầu phải gắn với khả năng thanh toán; nhu cầu chỉ là mong muốn tiêu dùng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Luật cầu và luật cung nói gì khi giá tăng?",
+                  "answer": "Giá tăng thì lượng cầu giảm và lượng cung tăng, với điều kiện các yếu tố khác không đổi.",
+                  "image": null
+                },
+                {
+                  "prompt": "Thị trường cân bằng khi nào?",
+                  "answer": "Khi $Q_s = Q_d$, tại mức giá cân bằng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "canh-tranh",
+          "title": "Cạnh tranh",
+          "est_minutes": 12,
+          "summary": "Tìm hiểu khái niệm cạnh tranh, biểu hiện lành mạnh và không lành mạnh, vai trò của cạnh tranh và cách nhận xét tình huống kinh doanh kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Cạnh tranh là ganh đua giành lợi thế về khách hàng, thị phần, lợi nhuận.",
+            "Cạnh tranh lành mạnh: chất lượng, dịch vụ, đổi mới, khuyến mãi hợp lý.",
+            "Cạnh tranh không lành mạnh: hàng giả, tin sai, xâm phạm thương hiệu, bán phá giá.",
+            "Cạnh tranh thúc đẩy chất lượng, đa dạng sản phẩm, giá hợp lý hơn.",
+            "Lỗi thường gặp: cho rằng cạnh tranh chỉ là hạ giá."
+          ],
+          "blocks": [
+            {
+              "id": "canh-tranh-b1",
+              "kind": "text",
+              "md": "Cạnh tranh là sự ganh đua giữa các chủ thể kinh tế để giành lợi thế về khách hàng, thị phần, lợi nhuận. Quanh trường có nhiều quán trà sữa cùng bán, nên quán nào cũng phải tìm cách giành khách.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "canh-tranh-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/canh-tranh-b2.webp",
+                "mime": "image/webp",
+                "sha256": "633da9b95f446d50e1bbea2e314a09a2097b1bc9e73c194a7f549e622ea04f99",
+                "bytes": 34636
+              },
+              "alt": "Ba quán trà sữa cạnh tranh nhau trên cùng một con phố, khách hàng đứng chọn quán",
+              "caption": "Cùng một đoạn phố, ba quán trà sữa phải ganh đua để giành khách",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "canh-tranh-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "canh-tranh-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Quán trà sữa A giảm giá 5.000 đồng/ly; quán B tặng thêm topping cho khách. Nhận xét nào đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Quán A cạnh tranh bằng hàng giả.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Quán B cạnh tranh bằng chất lượng và dịch vụ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Cả hai quán đều đang bán phá giá.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Quán B đang xâm phạm thương hiệu quán A.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Tặng topping là tăng giá trị cho khách qua dịch vụ; giảm giá chỉ lành mạnh nếu không bán dưới giá thành.",
+                  "option_feedback": {
+                    "A": "Hàng giả là cạnh tranh không lành mạnh, không phải việc giảm giá.",
+                    "C": "Bán phá giá là bán dưới giá thành để triệt hạ đối thủ; đề bài không cho thấy điều đó.",
+                    "D": "Tặng topping không phải hành vi xâm phạm thương hiệu."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "canh-tranh-b3",
+              "kind": "text",
+              "md": "Cạnh tranh lành mạnh là nâng cao chất lượng sản phẩm, giảm chi phí hợp lý, khuyến mãi, cải thiện phục vụ, đổi mới sản phẩm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "canh-tranh-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "canh-tranh-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cạnh tranh trong kinh tế là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Sự ganh đua nhằm giành lợi thế về khách hàng, thị phần, lợi nhuận.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Việc người mua trả giá cao hơn để mua hàng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Việc nhà nước quy định giá bán cho doanh nghiệp.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Việc một quán bán hàng cho nhiều khách hàng.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Cạnh tranh là ganh đua giữa các chủ thể kinh tế để giành lợi thế về khách hàng, thị phần, lợi nhuận.",
+                  "option_feedback": {
+                    "B": "Đây chỉ là một hành vi mua bán, không phải sự ganh đua giành lợi thế.",
+                    "C": "Đây là can thiệp giá, không phải cạnh tranh giữa các chủ thể.",
+                    "D": "Bán cho nhiều khách chưa thể hiện sự ganh đua giành lợi thế."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "canh-tranh-b4",
+              "kind": "text",
+              "md": "Cạnh tranh không lành mạnh là làm hàng giả, tung tin sai về đối thủ, xâm phạm thương hiệu, bán phá giá để triệt hạ đối thủ. Những hành vi này vi phạm pháp luật.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "canh-tranh-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "canh-tranh-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai về cạnh tranh?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Cạnh tranh lành mạnh có thể làm sản phẩm đa dạng hơn và giá cả hợp lý hơn."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Cạnh tranh chỉ là việc các quán hạ giá bán để giành khách."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Tung tin sai về đối thủ là một hình thức cạnh tranh không lành mạnh."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Bán phá giá để triệt hạ đối thủ luôn được xem là cạnh tranh lành mạnh."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Cạnh tranh còn bằng chất lượng, dịch vụ, thương hiệu; hàng giả, tin sai, bán phá giá là không lành mạnh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "canh-tranh-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Hai quán, hai cách cạnh tranh",
+              "md": "Quán trà sữa A giảm giá mỗi ly 5.000 đồng; quán B tặng thêm topping cho khách.\n\n- A cạnh tranh bằng **giá**, B cạnh tranh bằng **chất lượng và dịch vụ**.\n- Cả hai đều là cạnh tranh lành mạnh, miễn là không bán dưới giá thành để triệt hạ đối thủ và không vi phạm quyền lợi của quán khác.\n- Người tiêu dùng có lợi: thêm lựa chọn, giá hợp lý hơn hoặc dịch vụ tốt hơn.",
+              "audio": null
+            },
+            {
+              "id": "canh-tranh-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "canh-tranh-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Một quán trà sữa bán mỗi ly dưới giá nguyên liệu để đẩy đối thủ ra khỏi thị trường. Hành vi này gọi là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "bán phá giá",
+                      "phá giá"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Bán dưới giá thành để triệt hạ đối thủ là bán phá giá, biểu hiện cạnh tranh không lành mạnh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "canh-tranh-b6",
+              "kind": "text",
+              "md": "Cạnh tranh thúc đẩy sản xuất, cải tiến chất lượng, đa dạng sản phẩm, giá cả hợp lý hơn. Nó cũng loại bỏ những chủ thể làm ăn kém hiệu quả. Cạnh tranh diễn ra giữa người bán với người bán, giữa người mua với người mua, và giữa người mua với người bán.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "canh-tranh-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "canh-tranh-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Cạnh tranh không lành mạnh gồm làm {{gap}}, tung tin sai về đối thủ, xâm phạm thương hiệu và {{gap}} để triệt hạ đối thủ.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "hàng giả",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "bán phá giá",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "hàng thật",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "tăng giá",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Hàng giả và bán phá giá là các biểu hiện cạnh tranh không lành mạnh được nêu trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "canh-tranh-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Cạnh tranh chỉ là hạ giá?",
+              "md": "Kh",
+              "audio": null
+            },
+            {
+              "id": "canh-tranh-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "canh-tranh-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với nội dung phù hợp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Cạnh tranh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Ganh đua giành lợi thế",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Cạnh tranh lành mạnh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Nâng cao chất lượng, dịch vụ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Cạnh tranh không lành mạnh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Hàng giả, tin sai, bán phá giá",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Người tiêu dùng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Có thêm lựa chọn, giá hợp lý hơn",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Cạnh tranh lành mạnh đem lại lợi ích cho người tiêu dùng; hành vi gian dối, bán phá giá là không lành mạnh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "canh-tranh-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Cạnh tranh là gì?",
+                  "answer": "Là sự ganh đua giữa các chủ thể kinh tế nhằm giành lợi thế về khách hàng, thị phần, lợi nhuận.",
+                  "image": null
+                },
+                {
+                  "prompt": "Phân biệt cạnh tranh lành mạnh và không lành mạnh.",
+                  "answer": "Lành mạnh: nâng chất lượng, cải thiện dịch vụ, khuyến mãi hợp lý, đổi mới sản phẩm; không lành mạnh: hàng giả, tung tin sai, xâm phạm thương hiệu, bán phá giá.",
+                  "image": null
+                },
+                {
+                  "prompt": "Cạnh tranh lành mạnh có lợi gì cho người tiêu dùng?",
+                  "answer": "Thúc đẩy nâng chất lượng, đa dạng sản phẩm, giá hợp lý và phục vụ tốt hơn, nên người tiêu dùng có nhiều lựa chọn hơn.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gia-ca",
+          "title": "Giá cả",
+          "est_minutes": 12,
+          "summary": "Tìm hiểu khái niệm giá cả, các yếu tố ảnh hưởng, chức năng của giá và cách xác định giá cân bằng qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Giá cả là biểu hiện bằng tiền của giá trị hàng hóa, dịch vụ.",
+            "Giá chịu tác động của cung cầu, chi phí sản xuất, cạnh tranh, thị hiếu.",
+            "Thiếu hụt đẩy giá tăng; dư thừa đẩy giá giảm.",
+            "Giá cân bằng hình thành khi Q_d = Q_s.",
+            "Lỗi thường gặp: nghĩ người bán muốn đặt giá bao nhiêu cũng được."
+          ],
+          "blocks": [
+            {
+              "id": "gia-ca-b1",
+              "kind": "text",
+              "md": "Giá cả là biểu hiện bằng tiền của giá trị hàng hóa, dịch vụ. Giá được hình thành trên thị trường, chịu tác động của cung cầu, chi phí sản xuất, cạnh tranh và thị hiếu người tiêu dùng. Vì thế giá thị trường có thể cao hơn hoặc thấp hơn giá trị hàng hóa.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "gia-ca-b2",
+              "kind": "text",
+              "md": "Giá có bốn chức năng: cung cấp thông tin cho người mua và người bán, phân bổ nguồn lực, kích thích sản xuất và tiêu dùng, điều tiết cung cầu. Khi cầu lớn hơn cung (thiếu hụt), giá có xu hướng tăng; khi cung lớn hơn cầu (dư thừa), giá có xu hướng giảm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "gia-ca-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gia-ca-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Giá cả thị trường có thể cao hơn hoặc thấp hơn giá trị hàng hóa. Điều này chủ yếu do yếu tố nào quyết định?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Quan hệ cung – cầu trên thị trường",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Chi phí sản xuất của người bán",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Thị hiếu của người tiêu dùng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Mong muốn đặt giá của người bán",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Giá thị trường lên xuống quanh giá trị chủ yếu do quan hệ cung – cầu quyết định; các yếu tố khác chỉ tác động thêm.",
+                  "option_feedback": {
+                    "B": "Chi phí sản xuất tác động đến giá nhưng không quyết định việc giá lệch khỏi giá trị.",
+                    "C": "Thị hiếu chỉ là một trong các yếu tố tác động, không phải yếu tố quyết định.",
+                    "D": "Người bán được định giá nhưng không thể tùy ý vì phải tính chi phí, cung cầu và cạnh tranh."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gia-ca-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Điều cần nhớ",
+              "md": "Giá cân bằng hình thành khi $Q_d = Q_s$. Tại mức giá này, người mua mua được lượng mong muốn và người bán bán được lượng mong muốn.",
+              "audio": null
+            },
+            {
+              "id": "gia-ca-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gia-ca-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho hàm cung $Q_s = 40 + 2P$ và hàm cầu $Q_d = 100 - 2P$ (Q: ly/ngày, P: nghìn đồng/ly). Mức giá và lượng cân bằng là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "15.000 đồng/ly và 70 ly/ngày",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "20.000 đồng/ly và 80 ly/ngày",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "15.000 đồng/ly và 60 ly/ngày",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "10.000 đồng/ly và 60 ly/ngày",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Cân bằng khi $40 + 2P = 100 - 2P$, suy ra $P = 15$ và $Q = 40 + 2 \\cdot 15 = 70$.",
+                  "option_feedback": {
+                    "B": "80 ly là lượng cung tại giá 20.000 đồng, khi đó cung vượt cầu 20 ly nên chưa cân bằng.",
+                    "C": "60 ly là lượng cầu tại giá 20.000 đồng, không phải lượng cân bằng tại $P = 15$.",
+                    "D": "Tại $P = 10$ thì $Q_d = 80$ còn $Q_s = 60$, cung cầu chưa gặp nhau."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gia-ca-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tính giá bán một ly trà sữa",
+              "md": "Chi phí nguyên liệu 12.000 đồng, nhân công và điện nước 5.000 đồng, hao hụt 1.000 đồng.\n\nTổng chi phí: $12.000 + 5.000 + 1.000 = 18.000$ đồng/ly. Đây là giá bán tối thiểu để không lỗ.\n\nMuốn lãi 7.000 đồng/ly: $18.000 + 7.000 = 25.000$ đồng/ly. Nhưng nếu cao hơn mặt bằng chung, lượng cầu có thể giảm.",
+              "audio": null
+            },
+            {
+              "id": "gia-ca-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gia-ca-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai về giá cả?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Giá cả là biểu hiện bằng tiền của giá trị hàng hóa, dịch vụ."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Khi cầu lớn hơn cung, giá có xu hướng tăng."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Khi cung lớn hơn cầu, giá có xu hướng tăng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Người bán có thể đặt giá tùy ý mà không cần quan tâm đến chi phí và cung cầu."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Thiếu hụt đẩy giá tăng, dư thừa đẩy giá giảm; người bán vẫn phải tính chi phí, cung cầu và cạnh tranh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "gia-ca-b5",
+              "kind": "interactive",
+              "prompt": "Kéo giá P sao cho lượng cầu bằng lượng cung, biết $Q_s = 40 + 2P$",
+              "x": {
+                "symbol": "P",
+                "label": "Giá bán",
+                "unit": "nghìn đồng/ly"
+              },
+              "y": {
+                "symbol": "Q_d",
+                "label": "Lượng cầu",
+                "unit": "ly/ngày"
+              },
+              "expr": "100 - 2*x",
+              "x_min": 5.0,
+              "x_max": 40.0,
+              "x_step": 1.0,
+              "x_start": 30.0,
+              "target_y": 70.0,
+              "tolerance": 1.0,
+              "praise": "Chính xác! Ở giá 15.000 đồng/ly, lượng cầu bằng lượng cung = 70 ly/ngày — đó là giá cân bằng.",
+              "audio": null
+            },
+            {
+              "id": "gia-ca-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gia-ca-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $Q_d = 90 - 3P$ và $Q_s = 10 + 2P$ (P: nghìn đồng/ly). Giá cân bằng là bao nhiêu nghìn đồng một ly? (chỉ nhập số)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "16"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Cân bằng khi $Q_d = Q_s$, tức $90 - 3P = 10 + 2P$.",
+                  "explanation": "$80 = 5P$ nên $P = 16$, tức 16.000 đồng/ly.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gia-ca-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Bán cao hơn giá cân bằng thì sao?",
+              "md": "Với $Q_s = 40 + 2P$ và $Q_d = 100 - 2P$, cân bằng tại $P = 15$ (nghìn đồng/ly), $Q = 70$ ly/ngày.\n\nNếu bán 20.000 đồng/ly: $Q_d = 100 - 2 \\cdot 20 = 60$ ly, $Q_s = 40 + 2 \\cdot 20 = 80$ ly. Cung lớn hơn cầu $80 - 60 = 20$ ly → dư thừa, giá có xu hướng giảm về 15.000 đồng/ly.",
+              "audio": null
+            },
+            {
+              "id": "gia-ca-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gia-ca-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Một ly trà sữa có chi phí nguyên liệu 12.000 đồng, nhân công và điện nước 5.000 đồng, hao hụt 1.000 đồng. Giá bán tối thiểu để không lỗ là {{gap}} đồng/ly; muốn lãi 7.000 đồng/ly thì giá bán là {{gap}} đồng/ly.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "18.000",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "25.000",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "17.000",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "30.000",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tổng chi phí là $12.000 + 5.000 + 1.000 = 18.000$ đồng; cộng thêm 7.000 đồng lãi mong muốn được 25.000 đồng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gia-ca-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Sai lầm thường gặp",
+              "md": "Nghĩ rằng người bán muốn đặt giá bao nhiêu cũng được, giá không liên quan đến cung cầu.\n\nThực tế, người bán được quyền định giá nhưng phải tính đến chi phí, cung cầu và cạnh tranh. Giá quá cao thì lượng cầu giảm, hàng dư thừa; giá quá thấp thì lỗ hoặc thiếu hàng.",
+              "audio": null
+            },
+            {
+              "id": "gia-ca-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gia-ca-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với nội dung đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Giá cả",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Biểu hiện bằng tiền của giá trị hàng hóa",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Thiếu hụt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Cầu lớn hơn cung, giá tăng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Dư thừa",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Cung lớn hơn cầu, giá giảm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Giá cân bằng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Mức giá tại đó $Q_d = Q_s$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Giá cân bằng xuất hiện khi lượng cung bằng lượng cầu; thiếu hụt và dư thừa là hai trạng thái lệch cân bằng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gia-ca-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Giá cả là gì và do những yếu tố nào tác động?",
+                  "answer": "Giá cả là biểu hiện bằng tiền của giá trị hàng hóa, dịch vụ; chịu tác động của cung cầu, chi phí sản xuất, cạnh tranh và thị hiếu.",
+                  "image": null
+                },
+                {
+                  "prompt": "Thiếu hụt và dư thừa đẩy giá theo hướng nào?",
+                  "answer": "Cầu lớn hơn cung (thiếu hụt) đẩy giá tăng; cung lớn hơn cầu (dư thừa) đẩy giá giảm.",
+                  "image": null
+                },
+                {
+                  "prompt": "Giá cân bằng hình thành khi nào?",
+                  "answer": "Khi $Q_d = Q_s$, tại đó người mua và người bán đều mua, bán được lượng mong muốn.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về thị trường, tập trung vào cung cầu, cạnh tranh và giá cả. Thị trường là nơi trao đổi, mua bán hàng hóa, dịch vụ giữa người mua và người bán. Ví dụ ở thị trường trà sữa quanh trường, người bán là các quán trà sữa, người mua là học sinh, phụ huynh, khách qua đường.",
+          "Trong phần cung và cầu, cầu là lượng hàng hóa, dịch vụ mà người mua sẵn sàng và có khả năng mua ở mỗi mức giá trong một thời gian nhất định. Cung là lượng hàng hóa, dịch vụ mà người bán sẵn sàng và có khả năng bán ở mỗi mức giá trong một thời gian nhất định. Nhu cầu chỉ là mong muốn tiêu dùng, còn cầu phải gắn với khả năng thanh toán; ví dụ muốn uống trà sữa nhưng chỉ có mười nghìn đồng trong khi giá một ly là hai mươi lăm nghìn đồng thì chỉ có nhu cầu, chưa có cầu.",
+          "Luật cầu nói khi giá tăng thì lượng cầu giảm, khi giá giảm thì lượng cầu tăng. Luật cung nói khi giá tăng thì lượng cung tăng, khi giá giảm thì lượng cung giảm; các quy luật này xét trong điều kiện các yếu tố khác không đổi. Thị trường cân bằng khi lượng cung bằng lượng cầu; giá cao hơn gây dư thừa, giá thấp hơn gây thiếu hụt. Ví dụ với lượng cầu là một trăm hai mươi trừ hai lần giá và lượng cung là hai mươi cộng hai lần giá, giá tính bằng nghìn đồng mỗi ly, giải ra giá cân bằng là hai mươi lăm nghìn đồng một ly và lượng cân bằng là bảy mươi ly mỗi ngày.",
+          "Sang phần cạnh tranh, cạnh tranh là sự ganh đua giữa các chủ thể kinh tế để giành lợi thế về khách hàng, thị phần, lợi nhuận. Cạnh tranh lành mạnh là nâng cao chất lượng sản phẩm, giảm chi phí hợp lý, khuyến mãi, cải thiện phục vụ, đổi mới sản phẩm. Cạnh tranh không lành mạnh là làm hàng giả, tung tin sai về đối thủ, xâm phạm thương hiệu, bán phá giá để triệt hạ đối thủ; những hành vi này vi phạm pháp luật. Cần tránh lỗi cho rằng cạnh tranh chỉ là hạ giá.",
+          "Quanh trường có nhiều quán trà sữa cùng bán nên quán nào cũng phải tìm cách giành khách; ví dụ quán A giảm giá mỗi ly năm nghìn đồng, quán B tặng thêm topping. Cả hai đều là cạnh tranh lành mạnh miễn là không bán dưới giá thành để triệt hạ đối thủ và không vi phạm quyền lợi của quán khác. Cạnh tranh diễn ra giữa người bán với người bán, giữa người mua với người mua và giữa người mua với người bán. Cạnh tranh thúc đẩy sản xuất, cải tiến chất lượng, đa dạng sản phẩm, giá cả hợp lý hơn, loại bỏ những chủ thể làm ăn kém hiệu quả, và người tiêu dùng có thêm lựa chọn.",
+          "Phần giá cả nói rằng giá cả là biểu hiện bằng tiền của giá trị hàng hóa, dịch vụ. Giá được hình thành trên thị trường, chịu tác động của cung cầu, chi phí sản xuất, cạnh tranh và thị hiếu người tiêu dùng, nên giá thị trường có thể cao hơn hoặc thấp hơn giá trị hàng hóa. Giá có bốn chức năng: cung cấp thông tin cho người mua và người bán, phân bổ nguồn lực, kích thích sản xuất và tiêu dùng, điều tiết cung cầu.",
+          "Khi cầu lớn hơn cung, tức thiếu hụt, giá có xu hướng tăng; khi cung lớn hơn cầu, tức dư thừa, giá có xu hướng giảm. Giá cân bằng hình thành khi lượng cung bằng lượng cầu; tại mức giá này người mua mua được lượng mong muốn và người bán bán được lượng mong muốn. Ví dụ chi phí nguyên liệu mười hai nghìn đồng, nhân công và điện nước năm nghìn đồng, hao hụt một nghìn đồng, tổng chi phí là mười tám nghìn đồng một ly, đây là giá bán tối thiểu để không lỗ; muốn lãi bảy nghìn đồng một ly thì giá là hai mươi lăm nghìn đồng, nhưng nếu cao hơn mặt bằng chung thì lượng cầu có thể giảm.",
+          "Với lượng cung là bốn mươi cộng hai lần giá và lượng cầu là một trăm trừ hai lần giá, cân bằng tại giá mười lăm nghìn đồng một ly và lượng bảy mươi ly mỗi ngày. Nếu bán hai mươi nghìn đồng một ly thì lượng cầu là sáu mươi ly, lượng cung là tám mươi ly, cung lớn hơn cầu hai mươi ly nên dư thừa và giá có xu hướng giảm về mười lăm nghìn đồng. Lỗi thường gặp là nghĩ người bán muốn đặt giá bao nhiêu cũng được; thực tế người bán được quyền định giá nhưng phải tính đến chi phí, cung cầu và cạnh tranh, vì giá quá cao thì lượng cầu giảm, hàng dư thừa, còn giá quá thấp thì lỗ hoặc thiếu hàng.",
+          "Điều thứ nhất cần nhớ là cầu phải gắn với khả năng thanh toán và thị trường cân bằng khi lượng cung bằng lượng cầu. Điều thứ hai là cạnh tranh lành mạnh dựa trên chất lượng, dịch vụ, đổi mới, khuyến mãi hợp lý, còn cạnh tranh không lành mạnh như hàng giả, tin sai, xâm phạm thương hiệu, bán phá giá là vi phạm pháp luật. Điều thứ ba là giá cả chịu tác động của cung cầu, chi phí sản xuất, cạnh tranh và thị hiếu; thiếu hụt đẩy giá tăng còn dư thừa đẩy giá giảm."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-tien-va-thue",
+      "title": "Tiền và thuế",
+      "lessons": [
+        {
+          "id": "chuc-nang-cua-tien",
+          "title": "Chức năng của tiền",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu khái niệm tiền, năm chức năng của tiền, hình thức của tiền và cách phân biệt trao đổi với thanh toán qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Tiền là vật ngang giá chung dùng để đo lường giá trị, trao đổi, thanh toán.",
+            "Năm chức năng: thước đo giá trị, phương tiện trao đổi, cất trữ, thanh toán, tiền tệ thế giới.",
+            "Phương tiện trao đổi khi tiền và hàng chuyển tay cùng lúc; thanh toán khi tách rời.",
+            "Cất trữ tiền mặt trong lạm phát làm tiền mất giá.",
+            "Lỗi thường gặp: đồng nhất trao đổi với thanh toán."
+          ],
+          "blocks": [
+            {
+              "id": "chuc-nang-cua-tien-b1",
+              "kind": "text",
+              "md": "Tiền là hàng hóa đặc biệt được tách ra khỏi thế giới hàng hóa để làm **vật ngang giá chung**, dùng để đo lường giá trị, trao đổi và thanh toán.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Năm chức năng của tiền",
+              "md": "1. Thước đo giá trị\n2. Phương tiện trao đổi\n3. Phương tiện cất trữ\n4. Phương tiện thanh toán\n5. Tiền tệ thế giới\n\nHình thức của tiền: tiền mặt (kim loại, tiền giấy), tiền ghi sổ (số dư tài khoản), tiền điện tử (ví điện tử, mã QR, thẻ).",
+              "audio": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuc-nang-cua-tien-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trường hợp nào sau đây tiền thực hiện chức năng phương tiện thanh toán?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "An trả tiền ngay khi nhận ly trà sữa từ tay người bán.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "An chuyển khoản trả 500.000 đồng tiền trân châu đã mua chịu tháng trước.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "An ghi giá một ly trà sữa là 30.000 đồng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "An để dành 2.000.000 đồng trong két để tháng sau mua máy xay.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Hỏi: hàng và tiền có chuyển tay cùng lúc không?",
+                  "explanation": "Thanh toán là khi tiền vận động tách rời khỏi hàng hóa: hàng đã nhận từ tháng trước, tiền trả sau.",
+                  "option_feedback": {
+                    "A": "Đây là tiền và hàng chuyển tay cùng lúc nên là phương tiện trao đổi, không phải thanh toán.",
+                    "C": "Đây là dùng tiền để biểu hiện giá trị hàng hóa, tức thước đo giá trị.",
+                    "D": "Tiền rời khỏi lưu thông để dùng sau nên là phương tiện cất trữ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chuc-nang-cua-tien-b3",
+              "kind": "text",
+              "md": "**Thước đo giá trị**: tiền biểu hiện giá trị của hàng hóa. Giá cả là biểu hiện bằng tiền của giá trị hàng hóa. Niêm yết “trà sữa trân châu 30.000 đồng/ly” là dùng tiền để đo giá trị ly trà sữ",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuc-nang-cua-tien-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "An có 5.000.000 đồng, gửi tiết kiệm với lãi suất 6%/năm, còn lạm phát là 4%/năm. Sau 1 năm, tiền lời thực của An là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "100.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "300.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "200.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "500.000 đồng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Lãi nhận được là 300.000 đồng, cần 200.000 đồng bù lạm phát nên lời thực là 100.000 đồng.",
+                  "option_feedback": {
+                    "B": "Đây chỉ là tiền lãi danh nghĩa, chưa trừ phần bù lạm phát 4%.",
+                    "C": "Đây là phần bù lạm phát, chưa phải phần lời thực.",
+                    "D": "Đã cộng lãi và lạm phát thay vì trừ đi."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "chuc-nang-cua-tien-b4",
+              "kind": "text",
+              "md": "**Phương tiện trao đổi**: tiền làm môi giới, hàng và tiền chuyển tay cùng lúc, theo sơ đồ Hàng - Tiền - Hàng. **Phương tiện thanh toán**: tiền vận động tách rời khỏi hàng hóa: trả nợ, trả trước, nộp thuế, trả lương, chuyển khoản.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuc-nang-cua-tien-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các nhận định sau về chức năng của tiền.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Tiền có năm chức năng cơ bản, trong đó có thước đo giá trị và phương tiện cất trữ."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Khi An để dành 2.000.000 đồng trong két để sang tháng mua máy xay sinh tố, tiền thực hiện chức năng phương tiện thanh toán."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Phương tiện trao đổi và phương tiện thanh toán là một, vì đều dùng tiền để mua bán."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Tiền tệ thế giới được dùng trong thanh toán ngoại thương và dự trữ ngoại hối."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": "Phân biệt trao đổi với thanh toán và nhớ các chức năng cơ bản của tiền.",
+                  "explanation": "Tiền có 5 chức năng; để dành tiền trong két là cất trữ. Trao đổi diễn ra khi tiền và hàng chuyển tay cùng lúc, còn thanh toán khi hai việc này tách rời.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chuc-nang-cua-tien-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Nhầm trao đổi với thanh toán",
+              "md": "Không phải cứ d",
+              "audio": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cất trữ tiền mặt khi giá tăng",
+              "md": "An để dành 2.500.000 đồng tiền mặt trong két để mua máy xay sinh tố giá 2.500.000 đồng. Giá máy tăng 5%/năm. Sau 1 năm, giá máy là $2\\,500\\,000 \\times (1 + 5\\%) = 2\\,625\\,000$ đồng, còn An vẫn chỉ có 2.500.000 đồng, thiếu $125\\,000$ đồng. Cất trữ tiền mặt khi lạm phát làm tiền mất giá.",
+              "audio": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuc-nang-cua-tien-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Chức năng {{gap}} dùng tiền để biểu hiện giá trị hàng hóa; chức năng {{gap}} dùng tiền khi việc giao hàng và việc trả tiền không diễn ra cùng lúc.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "thước đo giá trị",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "phương tiện thanh toán",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "phương tiện trao đổi",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "phương tiện cất trữ",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Niêm yết giá là thước đo giá trị; trả nợ, trả trước, nộp thuế là phương tiện thanh toán.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chuc-nang-cua-tien-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để số tiền tiết kiệm đạt 9.000.000 đồng",
+              "x": {
+                "symbol": "n",
+                "label": "Số ngày",
+                "unit": "ngày"
+              },
+              "y": {
+                "symbol": "S",
+                "label": "Tiền tiết kiệm",
+                "unit": "đồng"
+              },
+              "expr": "300000*x",
+              "x_min": 1.0,
+              "x_max": 40.0,
+              "x_step": 1.0,
+              "x_start": 5.0,
+              "target_y": 9000000.0,
+              "tolerance": 1000.0,
+              "praise": "Chuẩn! Mỗi ngày 300.000 đồng, sau 30 ngày An có 9.000.000 đồng.",
+              "audio": null
+            },
+            {
+              "id": "chuc-nang-cua-tien-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuc-nang-cua-tien-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi trường hợp với chức năng của tiền tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Niêm yết trà sữa 30.000 đồng/ly",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Thước đo giá trị",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Bán 10 ly thu 300.000 đồng rồi mua nguyên liệu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Phương tiện trao đổi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Để dành 2.000.000 đồng trong két",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Phương tiện cất trữ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Đổi sang USD để nhập máy trộn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Tiền tệ thế giới",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi chức năng gắn với một cách tiền vận động: đo giá trị, môi giới trao đổi, rời lưu thông, dùng trong quan hệ quốc tế.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "chuc-nang-cua-tien-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Tiền là gì?",
+                  "answer": "Hàng hóa đặc biệt làm vật ngang giá chung, dùng để đo lường giá trị, trao đổi và thanh toán.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào tiền là phương tiện thanh toán chứ không phải phương tiện trao đổi?",
+                  "answer": "Khi việc giao hàng và việc trả tiền không diễn ra cùng lúc: trả nợ, trả trước, nộp thuế, trả lương.",
+                  "image": null
+                },
+                {
+                  "prompt": "Cất trữ tiền mặt trong thời kì lạm phát có giữ được giá trị không?",
+                  "answer": "Không, tiền mất giá; gửi tiết kiệm với lãi suất cao hơn lạm phát sẽ hạn chế được điều này.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "thue",
+          "title": "Thuế",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu khái niệm thuế, đặc trưng, vai trò, phân loại thuế trực thu và gián thu, phân biệt phí, lệ phí với thuế qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Thuế là khoản nộp bắt buộc vào ngân sách nhà nước theo pháp luật.",
+            "Đặc trưng: bắt buộc, không hoàn trả trực tiếp, tính pháp lý cao.",
+            "Vai trò: nguồn thu ngân sách, điều tiết sản xuất tiêu dùng, phân phối lại thu nhập.",
+            "Thuế trực thu đánh vào thu nhập, tài sản; thuế gián thu nằm trong giá hàng hóa.",
+            "Lỗi thường gặp: coi thuế gián thu là thuế của người bán."
+          ],
+          "blocks": [
+            {
+              "id": "thue-b1",
+              "kind": "text",
+              "md": "Thuế là khoản nộp bắt buộc mà tổ chức, cá nhân phải nộp vào ngân sách nhà nước theo quy định của pháp luật. Không nộp là vi phạm pháp luật.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "thue-b2",
+              "kind": "text",
+              "md": "Ba đặc trưng: bắt buộc (cưỡng chế); không hoàn trả trực tiếp cho người nộp, lợi ích đến gián tiếp qua trường học, bệnh viện, đường sá; có tính pháp lý cao, chỉ thu loại thuế do luật quy định.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "thue-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thue-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đặc trưng nào sau đây đúng với thuế?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Bắt buộc và không hoàn trả trực tiếp",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Tự nguyện và hoàn trả trực tiếp",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Chỉ áp dụng cho doanh nghiệp",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Có thể thương lượng mức nộp",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Thuế là khoản nộp bắt buộc vào ngân sách nhà nước theo pháp luật, không hoàn trả trực tiếp.",
+                  "option_feedback": {
+                    "B": "Thuế là khoản nộp bắt buộc, không hoàn trả trực tiếp cho người nộp.",
+                    "C": "Cá nhân cũng có thể là người nộp thuế.",
+                    "D": "Mức nộp thuế do pháp luật quy định, không thương lượng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "thue-b3",
+              "kind": "text",
+              "md": "Thuế tạo nguồn thu chủ yếu cho ngân sách; điều tiết sản xuất, tiêu dùng (thuế tiêu thụ đặc biệt cao với bia, rượu, thuốc lá); phân phối lại thu nhập, góp phần giảm chênh lệch giàu nghèo (thuế thu nhập cá nhân lũy tiến).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "thue-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thue-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "An bán một ly trà sữa giá 33.000 đồng đã gồm thuế giá trị gia tăng 10%. Nhận định nào sau đây đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Người mua chịu thuế; người bán thu hộ và nộp",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Người bán chịu thuế vì trực tiếp nộp",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Đây là thuế trực thu đánh vào thu nhập",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Người mua được hoàn lại trực tiếp khoản thuế",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Phân biệt người nộp thuế và người chịu thuế.",
+                  "explanation": "Thuế giá trị gia tăng là thuế gián thu nằm trong giá bán; khách hàng chịu thuế, An thu hộ rồi nộp.",
+                  "option_feedback": {
+                    "B": "Người bán chỉ là người nộp thay, không phải người chịu thuế.",
+                    "C": "Thuế giá trị gia tăng là thuế gián thu nằm trong giá hàng hóa.",
+                    "D": "Thuế không hoàn trả trực tiếp cho người nộp."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "thue-b4",
+              "kind": "text",
+              "md": "Thuế trực thu đánh vào thu nhập, tài sản; người nộp cũng là người chịu thuế (thuế thu nhập cá nhân, thu nhập doanh nghiệp, sử dụng đất). Thuế gián thu đánh vào giá hàng hóa, dịch vụ; người nộp khác người chịu thuế (thuế giá trị gia tăng, tiêu thụ đặc biệt, xuất nhập khẩu). Phí, lệ phí không phải thuế vì có hoàn trả trực tiếp một phần (lệ phí làm căn cước, phí qua trạm).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "thue-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "Thuế trực thu: người nộp cũng là người chịu thuế. Thuế gián thu nằm trong giá hàng hóa: người mua chịu thuế,",
+              "audio": null
+            },
+            {
+              "id": "thue-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: thuế GTGT trong giá bán",
+              "md": "An bán 100 ly trà sữa giá $33{,}000$ đồng/ly (đã gồm thuế GTGT 10%). Tổng doanh thu: $100 \\times 33{,}000 = 3{,}300{,}000$ đồng. Giá chưa thuế: $3{,}300{,}000 : 1{,}1 = 3{,}000{,}000$ đồng. Thuế GTGT phải nộp: $3{,}300{,}000 - 3{,}000{,}000 = 300{,}000$ đồng. Khách hàng là người chịu thuế; An thu hộ và nộp.",
+              "audio": null
+            },
+            {
+              "id": "thue-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thue-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Với thuế giá trị gia tăng 10%, giá chưa có thuế bằng giá đã có thuế chia cho {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "1,1",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "0,1",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "1,2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": "$10\\% = 0{,}1$.",
+                  "explanation": "Giá đã có thuế bằng giá chưa thuế nhân với $1 + 10\\% = 1{,}1$, nên giá chưa thuế bằng giá đã có thuế chia cho 1,1.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "thue-b7",
+              "kind": "interactive",
+              "prompt": "Kéo doanh thu để tổng thuế phải nộp là 25,2 triệu đồng",
+              "x": {
+                "symbol": "R",
+                "label": "Doanh thu năm",
+                "unit": "triệu đồng"
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Tổng thuế",
+                "unit": "triệu đồng"
+              },
+              "expr": "0.07*x",
+              "x_min": 100.0,
+              "x_max": 500.0,
+              "x_step": 10.0,
+              "x_start": 200.0,
+              "target_y": 25.2,
+              "tolerance": 0.1,
+              "praise": "Đúng: 360 triệu đồng × 7% = 25,2 triệu đồng.",
+              "audio": null
+            },
+            {
+              "id": "thue-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thue-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với đặc điểm phù hợp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Thuế trực thu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Người nộp cũng là người chịu thuế",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Thuế gián thu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Người nộp khác người chịu thuế",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Thuế tiêu thụ đặc biệt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Hạn chế tiêu dùng bia, rượu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Phí, lệ phí",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Không phải là thuế",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Thuế trực thu đánh vào thu nhập, tài sản; thuế gián thu nằm trong giá hàng hóa; phí, lệ phí không phải thuế.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "thue-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Thuế là gì?",
+                  "answer": "Là khoản nộp bắt buộc vào ngân sách nhà nước theo pháp luật.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao nói thuế gián thu không phải “thuế của người bán”?",
+                  "answer": "Vì thuế nằm trong giá bán, người mua chịu thuế còn người bán chỉ thu hộ và nộp.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu một điểm khác nhau giữa thuế trực thu và thuế gián thu.",
+                  "answer": "Thuế trực thu đánh vào thu nhập/tài sản, người nộp cũng là người chịu; thuế gián thu đánh vào giá hàng hóa, người nộp khác người chịu.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tin-dung",
+          "title": "Tín dụng",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu khái niệm tín dụng, đặc điểm, lãi suất, công thức lãi đơn, các loại tín dụng và lưu ý khi vay qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Tín dụng là quan hệ cho vay có thời hạn, hoàn trả cả gốc và lãi, dựa trên tín nhiệm.",
+            "Lãi đơn: I = P × r × t.",
+            "Các loại: ngân hàng, thương mại, nhà nước, tiêu dùng; theo thời hạn ngắn, trung, dài.",
+            "Cần vay khi xác định được nguồn trả nợ, tránh tín dụng đen.",
+            "Lỗi thường gặp: so sánh lãi suất khác đơn vị thời gian."
+          ],
+          "blocks": [
+            {
+              "id": "tin-dung-b1",
+              "kind": "text",
+              "md": "Tín dụng là quan hệ kinh tế: người cho vay chuyển quyền sử dụng một lượng vốn (tiền hoặc hàng hóa) cho người vay trong một thời hạn nhất định; người vay phải hoàn trả cả vốn gốc và lãi.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tin-dung-b2",
+              "kind": "text",
+              "md": "Ba đặc điểm: có thời hạn (vay và trả theo kì hạn đã thỏa thuận); có hoàn trả (trả đủ gốc và thêm lãi); dựa trên sự tin tưởng (tín nhiệm) giữa hai bên.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tin-dung-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tin-dung-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "An vay 20.000.000 đồng trong 1 năm, tính lãi đơn. Phương án A: vay ngân hàng với lãi suất 12%/năm. Phương án B: vay nóng với lãi suất 3%/tháng. Tiền lãi phải trả ở phương án B nhiều hơn phương án A bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "4.800.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "2.400.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "7.200.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "1.200.000 đồng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Đổi lãi suất 3%/tháng về lãi suất năm trước khi tính.",
+                  "explanation": "Phương án B: 3%/tháng = 36%/năm nên lãi là 7.200.000 đồng; phương án A là 2.400.000 đồng. Chênh lệch là 7.200.000 − 2.400.000 = 4.800.000 đồng.",
+                  "option_feedback": {
+                    "B": "Đây chỉ là tiền lãi của phương án A, chưa so sánh với phương án B.",
+                    "C": "Đây là toàn bộ tiền lãi của phương án B, chưa trừ đi tiền lãi của phương án A.",
+                    "D": "Chỉ tính lãi vay nóng cho 2 tháng thay vì 12 tháng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tin-dung-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Lãi đơn",
+              "md": "Lãi suất là tỉ lệ phần trăm giữa số tiền lãi và số tiền vay trong một đơn vị thời gian. Với lãi đơn: $I = P \\times r \\times t$, trong đó $P$ là vốn vay, $r$ là lãi suất mỗi kì (dạng thập phân), $t$ là số kì.",
+              "audio": null
+            },
+            {
+              "id": "tin-dung-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tin-dung-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "An vay 15.000.000 đồng với lãi suất 0,8%/tháng, thời hạn 9 tháng, tính lãi đơn trên vốn gốc. Tiền lãi An phải trả là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "1.080.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "120.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "1.440.000 đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "16.080.000 đồng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "t là số kì, ở đây là 9 tháng.",
+                  "explanation": "Áp dụng I = P × r × t: 15.000.000 × 0,8% × 9 = 1.080.000 đồng.",
+                  "option_feedback": {
+                    "B": "Mới tính tiền lãi của một tháng (0,8% × 15.000.000).",
+                    "C": "Tính cho 12 tháng thay vì 9 tháng.",
+                    "D": "Đây là tổng số tiền phải trả, không phải riêng tiền lãi."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tin-dung-b4",
+              "kind": "text",
+              "md": "Các loại tín dụng: ngân hàng; thương mại (mua chịu, trả chậm); nhà nước (Chính phủ phát hành trái phiếu); tiêu dùng (mua trả góp). Theo thời hạn: ngắn hạn dưới 1 năm, trung hạn từ 1 đến 5 năm, dài hạn trên 5 năm. Chỉ vay khi xác định được nguồn trả nợ; tránh “tín dụng đen” vay nóng lãi cắt cổ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tin-dung-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tin-dung-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các nhận định sau về tín dụng và lãi đơn.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Tín dụng là quan hệ cho vay có thời hạn, người vay phải hoàn trả cả vốn gốc và lãi, dựa trên sự tín nhiệm giữa hai bên."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Vay 20.000.000 đồng với lãi đơn 12%/năm trong 1 năm thì tiền lãi phải trả là 2.400.000 đồng."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Lãi suất 1%/tháng thấp hơn lãi suất 12%/năm vì 1 nhỏ hơn 12."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Tín dụng tiêu dùng là hình thức Chính phủ phát hành trái phiếu để vay tiền của dân."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý đổi lãi suất về cùng một đơn vị thời gian trước khi so sánh.",
+                  "explanation": "Lãi đơn tính bằng I = P × r × t, và phải đổi lãi suất về cùng đơn vị thời gian: 1%/tháng = 12%/năm. Chính phủ phát hành trái phiếu là tín dụng nhà nước; tín dụng tiêu dùng là mua trả góp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tin-dung-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Vay 20 triệu đồng, lãi đơn 1 năm",
+              "md": "Phương án A: vay ngân hàng $12\\%$/năm, $I = 20\\,000\\,000 \\times 12\\% \\times 1 = 2\\,400\\,000$ đồng. Phương án B: vay nóng $3\\%$/tháng $= 36\\%$/năm, $I = 20\\,000\\,000 \\times 36\\% \\times 1 = 7\\,200\\,000$ đồng. Chênh lệch $4\\,800\\,000$ đồng; vay nóng đắt gấp 3 lần và tiềm ẩn rủi ro khi chậm trả.",
+              "audio": null
+            },
+            {
+              "id": "tin-dung-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "So sánh lãi suất khác đơn vị thời gian",
+              "md": "Thấy “$1\\%$/tháng” và cho là rẻ hơn nhiều so với “$12\\%$/năm” là sai. Vì $1\\%$/tháng $= 1\\% \\times 12 = 12\\%$/năm, hai mức này bằng nhau. Phải quy đổi về cùng kì hạn rồi mới so sánh, và tính cả tổng tiền lãi trong suốt thời hạn vay.",
+              "audio": null
+            },
+            {
+              "id": "tin-dung-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tin-dung-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Điền kí hiệu vào công thức lãi đơn: $I = {{gap}} \\times {{gap}} \\times {{gap}}$ (các kí hiệu lần lượt là vốn vay, lãi suất mỗi kì viết dạng thập phân và số kì).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "P",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "r",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "t",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "n",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "i",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Công thức lãi đơn là $I = P \\times r \\times t$. Trong đó r phải được viết dưới dạng thập phân.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tin-dung-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để tiền lãi vay 20 triệu đồng ở 1%/tháng đạt 2,4 triệu đồng",
+              "x": {
+                "symbol": "t",
+                "label": "Số tháng",
+                "unit": "tháng"
+              },
+              "y": {
+                "symbol": "I",
+                "label": "Tiền lãi",
+                "unit": "triệu đồng"
+              },
+              "expr": "20*0.01*x",
+              "x_min": 1.0,
+              "x_max": 24.0,
+              "x_step": 1.0,
+              "x_start": 6.0,
+              "target_y": 2.4,
+              "tolerance": 0.01,
+              "praise": "Đúng: 20 × 1% × 12 = 2,4 triệu đồng.",
+              "audio": null
+            },
+            {
+              "id": "tin-dung-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tin-dung-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi loại tín dụng với ví dụ tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Tín dụng ngân hàng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Vay vốn của ngân hàng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Tín dụng thương mại",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Mua chịu, trả chậm giữa các đơn vị kinh doanh",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Tín dụng nhà nước",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Chính phủ phát hành trái phiếu để vay dân",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Tín dụng tiêu dùng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Mua trả góp điện thoại, xe máy",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi loại tín dụng gắn với một chủ thể và hình thức vay khác nhau. Mua chịu giữa các đơn vị kinh doanh là tín dụng thương mại, còn trái phiếu Chính phủ là tín dụng nhà nước.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tin-dung-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Tín dụng là gì?",
+                  "answer": "Là quan hệ cho vay có thời hạn, người vay phải hoàn trả cả gốc và lãi, dựa trên tín nhiệm.",
+                  "image": null
+                },
+                {
+                  "prompt": "Công thức lãi đơn là gì?",
+                  "answer": "$I = P \\times r \\times t$, với r là lãi suất mỗi kì dạng thập phân, t là số kì.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi vay và so sánh lãi suất cần lưu ý gì?",
+                  "answer": "Chỉ vay khi xác định được nguồn trả nợ, tránh tín dụng đen; đổi lãi suất về cùng đơn vị thời gian rồi mới so sánh.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương Tiền và thuế gồm ba bài: chức năng của tiền, thuế và tín dụng. Nắm chắc ba phần này sẽ giúp em giải thích các hiện tượng tiền tệ, thuế và vay mượn trong đời sống.",
+          "Tiền là hàng hóa đặc biệt được tách ra để làm vật ngang giá chung, dùng để đo lường giá trị, trao đổi và thanh toán. Tiền có năm chức năng: thước đo giá trị, phương tiện trao đổi, phương tiện cất trữ, phương tiện thanh toán và tiền tệ thế giới. Hình thức của tiền gồm tiền mặt, tiền ghi sổ và tiền điện tử.",
+          "Thước đo giá trị là tiền biểu hiện giá trị hàng hóa, còn giá cả là biểu hiện bằng tiền của giá trị hàng hóa; niêm yết trà sữa trân châu ba mươi nghìn đồng một ly là dùng tiền để đo giá trị ly trà sữa. Phương tiện trao đổi là tiền làm môi giới, hàng và tiền chuyển tay cùng lúc. Phương tiện thanh toán là tiền vận động tách rời khỏi hàng hóa, như trả nợ, trả trước, nộp thuế, trả lương hay chuyển khoản. Lỗi thường gặp là thấy dùng tiền là gọi trao đổi; trả tiền ngay khi lấy ly trà sữa là trao đổi, còn mua chịu tháng này tháng sau mới trả là thanh toán.",
+          "Cất trữ tiền mặt trong lạm phát làm tiền mất giá. Ví dụ An để dành hai triệu năm trăm nghìn đồng tiền mặt trong két để mua máy xay sinh tố giá hai triệu năm trăm nghìn đồng; giá máy tăng năm phần trăm mỗi năm, sau một năm giá máy là hai triệu sáu trăm hai mươi lăm nghìn đồng, còn An vẫn chỉ có hai triệu năm trăm nghìn đồng, thiếu một trăm hai mươi lăm nghìn đồng.",
+          "Thuế là khoản nộp bắt buộc mà tổ chức, cá nhân phải nộp vào ngân sách nhà nước theo quy định của pháp luật; không nộp là vi phạm pháp luật. Thuế có ba đặc trưng: bắt buộc, không hoàn trả trực tiếp cho người nộp, và có tính pháp lý cao. Thuế tạo nguồn thu chủ yếu cho ngân sách, điều tiết sản xuất và tiêu dùng, đồng thời phân phối lại thu nhập để góp phần giảm chênh lệch giàu nghèo. Lợi ích của thuế đến gián tiếp qua trường học, bệnh viện, đường sá.",
+          "Thuế trực thu đánh vào thu nhập và tài sản, người nộp cũng là người chịu thuế, như thuế thu nhập cá nhân, thu nhập doanh nghiệp, sử dụng đất. Thuế gián thu đánh vào giá hàng hóa, dịch vụ, người nộp khác người chịu thuế, như thuế giá trị gia tăng, tiêu thụ đặc biệt, xuất nhập khẩu; phí và lệ phí không phải thuế vì có hoàn trả trực tiếp một phần. Lỗi thường gặp là coi thuế gián thu là thuế của người bán. Ví dụ An bán một trăm ly trà sữa giá ba mươi ba nghìn đồng một ly, đã gồm thuế giá trị gia tăng mười phần trăm; tổng doanh thu là ba triệu ba trăm nghìn đồng, giá chưa thuế là ba triệu đồng, thuế giá trị gia tăng phải nộp là ba trăm nghìn đồng, và khách hàng là người chịu thuế, còn An chỉ thu hộ và nộp.",
+          "Tín dụng là quan hệ kinh tế trong đó người cho vay chuyển quyền sử dụng một lượng vốn cho người vay trong một thời hạn nhất định, và người vay phải hoàn trả cả vốn gốc lẫn lãi. Tín dụng có ba đặc điểm: có thời hạn, có hoàn trả và dựa trên sự tin tưởng giữa hai bên. Lãi suất là tỉ lệ phần trăm giữa số tiền lãi và số tiền vay trong một đơn vị thời gian; với lãi đơn, tiền lãi bằng vốn vay nhân lãi suất mỗi kì nhân số kì.",
+          "Các loại tín dụng gồm tín dụng ngân hàng, tín dụng thương mại, tín dụng nhà nước và tín dụng tiêu dùng; theo thời hạn có ngắn hạn dưới một năm, trung hạn từ một đến năm năm, dài hạn trên năm năm. Chỉ nên vay khi xác định được nguồn trả nợ và tránh tín dụng đen. Ví dụ vay hai mươi triệu đồng: ngân hàng mười hai phần trăm một năm thì lãi là hai triệu bốn trăm nghìn đồng; vay nóng ba phần trăm một tháng, tức ba mươi sáu phần trăm một năm, thì lãi là bảy triệu hai trăm nghìn đồng, chênh lệch bốn triệu tám trăm nghìn đồng và đắt gấp ba lần.",
+          "Lỗi thường gặp là so sánh lãi suất khác đơn vị thời gian. Thấy một phần trăm một tháng và cho là rẻ hơn mười hai phần trăm một năm là sai, vì một phần trăm một tháng bằng mười hai phần trăm một năm. Phải quy đổi về cùng kì hạn rồi mới so sánh, và tính cả tổng tiền lãi trong suốt thời hạn vay.",
+          "Ba điều cần nhớ. Thứ nhất, tiền có năm chức năng và phải phân biệt trao đổi với thanh toán. Thứ hai, thuế là khoản nộp bắt buộc, không hoàn trả trực tiếp, có thuế trực thu và thuế gián thu. Thứ ba, tín dụng có thời hạn, phải hoàn trả cả gốc lẫn lãi, và phải quy đổi lãi suất về cùng đơn vị thời gian trước khi so sánh."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

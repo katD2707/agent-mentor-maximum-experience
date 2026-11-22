@@ -1,0 +1,69 @@
+/* The chicken guide (ported from mockups/ga-guide.css; replaces the old Mực). Classes are prefixed cg-. */
+:root { --cg-h: 72px; }
+:root[data-age="g1_5"] { --cg-h: 88px; }
+
+.cg { position: fixed; left: 0; top: 0; z-index: 9995; width: calc(var(--cg-h) * .78); height: var(--cg-h); padding: 0; margin: 0; border: 0; background: none; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+.cg:focus-visible { outline: none; }
+/* focus is moved here by script after a tour; the ring only shows for people using the keyboard */
+:root[data-input="kbd"] .cg:focus-visible { outline: 3px solid #1d4fb8; outline-offset: 6px; border-radius: 40%; }
+.cg.is-dragging { cursor: grabbing; }
+/* parked on every screen but the village: smaller, in the bottom-right corner, never over the content */
+.cg.parked { --cg-h: 56px; z-index: 40; }
+:root[data-age="g1_5"] .cg.parked { --cg-h: 64px; }
+body.cg-parked:not(:has([data-exam], .lp)) { padding-bottom: 84px; }
+body:has([data-exam], .lp) .cg.parked { display: none; }
+.cg-flip { display: block; width: 100%; height: 100%; transform-origin: 50% 50%; }
+.cg.face-left .cg-flip { transform: scaleX(-1); }
+.cg-fig { display: block; width: 100%; height: 100%; transform-origin: 50% 92%; transition: transform .2s cubic-bezier(.2, .8, .2, 1); }
+.cg:not(.is-dragging):not(.is-running):not(.is-hopping) .cg-fig { animation: cg-bob 3.2s ease-in-out infinite; }
+@keyframes cg-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px) scaleY(1.02); } }
+.cg.is-dragging .cg-fig { transform: scale(1.14, 1.06) rotate(-5deg); }
+.cg.is-running .cg-fig { transform: rotate(9deg) translateY(-2px); }
+.cg.is-waving .cg-fig { animation: cg-wave .5s ease-in-out infinite alternate; }
+@keyframes cg-wave { from { transform: rotate(-4deg); } to { transform: rotate(4deg) translateY(-3px); } }
+.cg-img { position: relative; display: block; width: 100%; height: 100%; filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .16)); }
+.cg-img img { position: absolute; left: 50%; bottom: calc(var(--cg-h) * -.29); width: calc(var(--cg-h) * 1.92); max-width: none; transform: translateX(-50%); pointer-events: none; user-select: none; -webkit-user-drag: none; }
+.cg.is-dragging .cg-img { filter: drop-shadow(0 16px 14px rgba(0, 0, 0, .28)); }
+
+.cg-dust { position: fixed; z-index: 9994; width: 10px; height: 10px; border-radius: 50%; background: #d6ba8c; pointer-events: none; animation: cg-dust .6s ease-out forwards; }
+@keyframes cg-dust { from { transform: scale(.4); opacity: .9; } to { transform: translate(var(--dx, 0), -9px) scale(1.7); opacity: 0; } }
+.cg-hint { outline: 2.5px dashed #c98a45 !important; outline-offset: 5px !important; border-radius: 14px; }
+.cg-catch { position: fixed; inset: 0; z-index: 9990; background: transparent; touch-action: none; overscroll-behavior: contain; }
+.cg-spot { position: fixed; z-index: 9991; pointer-events: none; border-radius: 18px; box-shadow: 0 0 0 200vmax rgba(40, 24, 12, .55); animation: cg-spot-in .3s ease-out both; }
+@keyframes cg-spot-in { from { box-shadow: 0 0 0 200vmax rgba(40, 24, 12, 0); } }
+
+.cg-bubble { position: fixed; z-index: 9996; left: 0; top: 0; width: max-content; max-width: min(320px, calc(100vw - 24px)); display: grid; gap: 10px; padding: 14px 16px; border-radius: 18px; color: #3a2010; background: #fff7e6; border: 3px solid #c98a45; box-shadow: 0 5px 0 #7d4c22, 0 14px 30px -14px rgba(0, 0, 0, .45); font: 600 15px/1.45 "Lexend", system-ui, sans-serif; animation: cg-pop .24s cubic-bezier(.2, .9, .3, 1.3) both; }
+:root[data-age="g1_5"] .cg-bubble { font-size: 18px; max-width: min(360px, calc(100vw - 24px)); }
+.cg-bubble.cg-nudge { animation: cg-nudge .42s ease-in-out; }
+@keyframes cg-nudge { 0%, 100% { transform: none; } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
+.cg-t { margin: 0; font-size: 1.07em; font-weight: 700; }
+.cg-d { margin: 0; font-weight: 500; }
+.cg-say { margin: 0; font-weight: 700; }
+.cg-n { margin-left: 8px; font-size: max(11px, .78em); font-weight: 600; opacity: .7; font-variant-numeric: tabular-nums; }
+.cg-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cg-chips button, .cg-ok { min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px; cursor: pointer; background: #23874a; color: #fff; box-shadow: 0 3px 0 #165c32; font: 600 13.5px/1 "Lexend", system-ui, sans-serif; transition: transform .12s, background .12s; }
+:root[data-age="g1_5"] .cg-chips button, :root[data-age="g1_5"] .cg-ok { min-height: 44px; font-size: 16px; }
+.cg-chips button:hover, .cg-ok:hover { background: #1d7a42; }
+.cg-chips button:active, .cg-ok:active { transform: scale(.96); }
+.cg-ok { justify-self: end; font-weight: 700; }
+.cg-acts { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.cg-skip { min-height: 36px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent; color: inherit; opacity: .82; font: inherit; font-size: .92em; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.cg-skip:hover { opacity: 1; }
+.cg-bubble button:focus-visible { outline: 3px solid #c98a45; outline-offset: 2px; }
+.cg-tail { position: fixed; z-index: 9996; left: 0; top: 0; width: 46px; height: 24px; display: flex; align-items: center; justify-content: center; gap: 4px; border-radius: 12px; background: #fff7e6; border: 2px solid #c98a45; box-shadow: 0 6px 14px -8px rgba(0, 0, 0, .45); animation: cg-pop .24s cubic-bezier(.2, .9, .3, 1.3) both; pointer-events: none; }
+.cg-tail i { width: 5px; height: 5px; border-radius: 50%; background: #c98a45; }
+@keyframes cg-pop { from { transform: scale(.85) translateY(6px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* phone widths: a 60px strip at the bottom is the guide's home; the village and its tray end above it */
+.cg-bar, .cg-dock { display: none; }
+@media (max-width: 480px) {
+  :root { --lg-dock: 60px; --cg-h: 40px; }
+  .cg-bar { display: block; position: fixed; left: 0; right: 0; bottom: 0; height: var(--lg-dock); z-index: 25; background: #fff7e6; border-top: 3px solid #c98a45; pointer-events: none; }
+  .cg-dock { display: block; position: fixed; inset: 0 0 var(--lg-dock) 0; opacity: 0; pointer-events: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cg-bubble.cg-nudge { animation: cg-nudge-still .6s ease-out; }
+  @keyframes cg-nudge-still { from { box-shadow: 0 0 0 4px #FFD84D; } }
+  .cg:not(.is-dragging):not(.is-running):not(.is-hopping) .cg-fig, .cg.is-waving .cg-fig { animation: none; }
+}
+@media (max-width: 480px) { .cg.parked { --cg-h: 48px; } }

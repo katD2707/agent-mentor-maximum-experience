@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="translate(173,188) rotate(-20) scale(1.08)" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- ============ ARM B : lower blade + upper mint handle ============ -->
+    <g transform="rotate(7)">
+      <!-- handle outline -->
+      <ellipse cx="-74" cy="-30" rx="24" ry="22" fill="none" stroke="#5A4BC0" stroke-width="19"/>
+      <line x1="-10" y1="-4" x2="-50" y2="-20" stroke="#5A4BC0" stroke-width="22"/>
+      <!-- handle fill -->
+      <ellipse cx="-74" cy="-30" rx="24" ry="22" fill="none" stroke="#9FD8BF" stroke-width="12"/>
+      <line x1="-10" y1="-4" x2="-50" y2="-20" stroke="#9FD8BF" stroke-width="14"/>
+      <!-- blade -->
+      <path d="M -10 14 L 84 13.5 C 116 12 140 7 152 0 L -10 -6 Z"
+            fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4.5"/>
+    </g>
+
+    <!-- ============ ARM A : upper blade + lower coral handle ============ -->
+    <g transform="rotate(-7)">
+      <!-- handle outline -->
+      <ellipse cx="-74" cy="30" rx="24" ry="22" fill="none" stroke="#5A4BC0" stroke-width="19"/>
+      <line x1="-10" y1="4" x2="-50" y2="20" stroke="#5A4BC0" stroke-width="22"/>
+      <!-- handle fill -->
+      <ellipse cx="-74" cy="30" rx="24" ry="22" fill="none" stroke="#E8806A" stroke-width="12"/>
+      <line x1="-10" y1="4" x2="-50" y2="20" stroke="#E8806A" stroke-width="14"/>
+      <!-- blade -->
+      <path d="M -10 -14 L 84 -13.5 C 116 -12 140 -7 152 0 L -10 6 Z"
+            fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4.5"/>
+    </g>
+
+    <!-- ============ pivot screw ============ -->
+    <circle cx="0" cy="0" r="13" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4.5"/>
+  </g>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

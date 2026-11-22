@@ -1,0 +1,2752 @@
+{
+  "schema_version": 1,
+  "course_id": "cau-truc-du-lieu-va-giai-thuat-2",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Cấu trúc dữ liệu và giải thuật",
+  "chapters": [
+    {
+      "id": "ch-cau-truc-tuyen-tinh",
+      "title": "Cấu trúc tuyến tính",
+      "lessons": [
+        {
+          "id": "mang-va-danh-sach",
+          "title": "Mảng và danh sách",
+          "est_minutes": 15,
+          "summary": "Bài học so sánh mảng/vector với danh sách liên kết đơn và đôi qua biểu diễn bộ nhớ, chi phí thao tác, ví dụ insertAt và insertAfter/eraseAfter, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Mảng lưu các phần tử liên tiếp và truy cập theo chỉ số trong O(1)",
+            "Chèn/xóa ở giữa mảng tốn O(n) do phải dời phần tử",
+            "Danh sách liên kết truy cập theo chỉ số O(n) nhưng chèn/xóa O(1) khi đã có con trỏ",
+            "Danh sách liên kết tốn thêm bộ nhớ con trỏ và kém thân thiện cache hơn mảng",
+            "Lỗi thường gặp: nói chèn/xóa trong danh sách liên kết luôn là O(1)"
+          ],
+          "blocks": [
+            {
+              "id": "mang-va-danh-sach-b1",
+              "kind": "text",
+              "md": "Mảng lưu $n$ phần tử cùng kiểu trong một vùng nhớ liên tiếp. Phần tử truy cập bằng chỉ số, thường bắt đầu từ $0$. Trong C++, mảng tĩnh viết là `T a[n]`; mảng động thường dùng `std::vector<T>`.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "mang-va-danh-sach-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Mảng (array)",
+              "md": "Các phần tử nằm liền nhau. Nếu `a` trỏ tới phần tử đầu thì địa chỉ theo byte của phần tử thứ $i$ là $addr(a[i]) = addr(a) + i \\cdot sizeof(T)$. Vì vậy truy cập hoặc cập nhật theo chỉ số tốn $O(1)$; tìm kiếm tuyến tính tốn $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "mang-va-danh-sach-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mang-va-danh-sach-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong danh sách liên kết đơn, nếu chỉ biết chỉ số $k$ và không có sẵn con trỏ tới nút liên quan, chi phí chèn một phần tử vào vị trí $k$ là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$O(1)$, vì chỉ cần đổi vài con trỏ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$O(k)$, xấu nhất $O(n)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$O(\\log n)$, vì tìm vị trí bằng cách chia đôi",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$O(n-k)$, vì phải dời các phần tử phía sau",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Tách riêng chi phí tìm vị trí và chi phí sửa con trỏ.",
+                  "explanation": "Phải duyệt từ head tới vị trí $k$ mất $O(k)$ rồi mới chèn $O(1)$, nên tổng là $O(k)$, xấu nhất $O(n)$.",
+                  "option_feedback": {
+                    "A": "Đây là lỗi thường gặp: $O(1)$ chỉ đúng khi đã có con trỏ tới nút cần thao tác hoặc nút đứng trước nó.",
+                    "C": "Danh sách liên kết không cho phép truy cập ngẫu nhiên; muốn tới vị trí $k$ phải duyệt tuần tự từ head.",
+                    "D": "Dời phần tử là chi phí của mảng, còn ở đây phải duyệt từ head tới vị trí $k$ nên tốn $k$ bước."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "mang-va-danh-sach-b3",
+              "kind": "interactive",
+              "prompt": "Kéo chỉ số $i$ để địa chỉ của `a[i]` lệch đúng 48 byte so với `a[0]`, biết `sizeof(int) = 4`.",
+              "x": {
+                "symbol": "i",
+                "label": "Chỉ số",
+                "unit": "phần tử"
+              },
+              "y": {
+                "symbol": "d",
+                "label": "Độ lệch địa chỉ",
+                "unit": "byte"
+              },
+              "expr": "4*x",
+              "x_min": 0.0,
+              "x_max": 20.0,
+              "x_step": 1.0,
+              "x_start": 3.0,
+              "target_y": 48.0,
+              "tolerance": 0.5,
+              "praise": "Chuẩn: mỗi bước chỉ số cộng thêm 4 byte, nên $i = 12$ cho độ lệch 48 byte.",
+              "audio": null
+            },
+            {
+              "id": "mang-va-danh-sach-b4",
+              "kind": "text",
+              "md": "Chèn hoặc xóa ở giữa mảng phải dời các phần tử phía sau, nên tốn $O(n)$. `push_back` vào cuối `vector` có chi phí trung bình khấu hao $O(1)$, nhưng trường hợp xấu nhất là $O(n)$ khi phải cấp phát lại.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "mang-va-danh-sach-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mang-va-danh-sach-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với mảng tĩnh `T a[n]` trong C++, địa chỉ theo byte của phần tử thứ $i$ là $addr(a[i]) = addr(a) + i \\cdot {{gap}}$, nhờ đó truy cập theo chỉ số có độ phức tạp {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "sizeof(T)",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$O(1)$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$O(n)$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "sizeof(a)",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi phần tử chiếm sizeof(T) byte và các phần tử nằm liền nhau, nên tính địa chỉ là một phép số học tốn $O(1)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "mang-va-danh-sach-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "insertAt: chèn $x$ vào chỉ số $k$",
+              "md": "Hàm `insertAt` gọi `push_back(0)` để tăng kích thước lên $n+1$, rồi dời các phần tử từ vị trí $k$ đến $n-1$ sang phải một ô, cuối cùng gán `a[k] = x`. Số phép gán là $n-k$, nên tổng chi phí $O(n-k+1)$, xấu nhất $O(n)$ khi $k=0$. Nếu $k=n$ thì không phải dời, chỉ còn chi phí `push_back`, khấu hao $O(1)$.",
+              "audio": null
+            },
+            {
+              "id": "mang-va-danh-sach-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Danh sách liên kết đơn và đôi",
+              "md": "Dãy phần tử lưu qua các nút rời rạc. Mỗi nút chứa dữ liệu và con trỏ liên kết. Danh sách liên kết đơn: mỗi nút có `next`, đi từ `head` theo một chiều. Danh sách liên kết đôi: mỗi nút có cả `next` và `prev`, đi được hai chiều. Muốn truy cập phần tử thứ $k$, phải duyệt từ đầu, tốn $O(k)$, xấu nhất $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "mang-va-danh-sach-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mang-va-danh-sach-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho `vector<int> a = {10, 20, 30, 40, 50}`. Xóa phần tử tại chỉ số $1$ bằng cách dời các phần tử phía sau sang trái rồi `pop_back()`. Có bao nhiêu phép gán để dời phần tử?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "3"
+                    ]
+                  },
+                  "hint": "Đếm số phần tử nằm sau vị trí bị xóa.",
+                  "explanation": "Ba phép gán: a[1]=a[2], a[2]=a[3], a[3]=a[4], ứng với $n-k-1 = 5-1-1 = 3$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "mang-va-danh-sach-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "insertAfter và eraseAfter",
+              "md": "`insertAfter(p, x)` tạo nút `q` mới, cho `q->next = p->next` rồi `p->next = q`. `eraseAfter(p)` lấy `q = p->next`, cho `p->next = q->next` rồi `delete q`. Cả hai chỉ thay vài con trỏ, không duyệt danh sách, nên $O(1)$ khi đã có `p`. Nếu cần xóa nút đầu hoặc xóa theo chỉ số, phải xử lý `head` hoặc duyệt tìm vị trí; chi phí có thể là $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "mang-va-danh-sach-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nói “chèn/xóa trong danh sách liên kết luôn là $O(1)$” là sai. $O(1)$ chỉ đúng khi đã có con trỏ tới nút cần thao tác, hoặc nút đứng trước nó. Nếu chỉ biết chỉ số $k$, phải duyệt từ `head` mất $O(k)$, nên tổng chi phí là $O(k)$, xấu nhất $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "mang-va-danh-sach-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mang-va-danh-sach-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi cấu trúc hay thao tác với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Mảng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "vùng nhớ liên tiếp, truy cập chỉ số $O(1)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Danh sách liên kết đơn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "các nút rời rạc, mỗi nút có `next`",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Danh sách liên kết đôi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "mỗi nút có cả `next` và `prev`",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "`push_back` trên `vector`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "khấu hao $O(1)$, xấu nhất $O(n)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mảng liên tiếp nên truy cập $O(1)$; danh sách liên kết dùng nút rời rạc với một hoặc hai con trỏ; `push_back` có thể phải cấp phát lại nên xấu nhất $O(n)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "mang-va-danh-sach-b10",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vì sao truy cập mảng theo chỉ số là $O(1)$?",
+                  "answer": "Vì các phần tử nằm liên tiếp nên địa chỉ tính trực tiếp bằng $addr(a) + i \\cdot sizeof(T)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào chèn/xóa trong danh sách liên kết đơn mới là $O(1)$?",
+                  "answer": "Khi đã có con trỏ tới nút cần thao tác hoặc nút đứng trước nó; nếu chỉ biết chỉ số thì phải duyệt nên tốn $O(k)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hai lý do nên chọn `vector` thay vì danh sách liên kết?",
+                  "answer": "Cần truy cập ngẫu nhiên theo chỉ số nhiều lần; và ít chèn/xóa ở giữa, cần bộ nhớ liên tiếp thân thiện cache.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ngan-xep-va-hang-doi",
+          "title": "Ngăn xếp và hàng đợi",
+          "est_minutes": 15,
+          "summary": "Bài học trình bày ngăn xếp LIFO, hàng đợi FIFO, cài đặt bằng mảng, kiểm tra ngoặc đúng, hàng đợi vòng, lỗi thường gặp và bài tập mô phỏng.",
+          "key_ideas": [
+            "Ngăn xếp hoạt động LIFO với push, pop, top, isEmpty",
+            "Hàng đợi hoạt động FIFO với push, pop, front, isEmpty",
+            "Hàng đợi vòng dùng head, tail và sz để tránh dời phần tử",
+            "Lỗi thường gặp: cho rằng head == tail luôn nghĩa là hàng đợi rỗng",
+            "Ví dụ kiểm tra xâu ngoặc đúng dùng ngăn xếp chạy O(n)"
+          ],
+          "blocks": [
+            {
+              "id": "ngan-xep-va-hang-doi-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ngăn xếp (stack)",
+              "md": "Ngăn xếp theo nguyên tắc **LIFO**: vào sau cùng, ra đầu tiên. Các thao tác cơ bản: `push(x)` đưa $x$ vào đỉnh; `pop()` lấy phần tử ở đỉnh ra; `top()` xem giá trị đỉnh; `isEmpty()` kiểm tra rỗng.",
+              "audio": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b2",
+              "kind": "text",
+              "md": "Cài đặt ngăn xếp bằng mảng: khởi tạo `topIndex = -1`. Khi `push(x)`, tăng `topIndex` rồi gán `a[topIndex] = x`. Khi `pop()`, giảm `topIndex`. Khi `top()`, trả về `a[topIndex]`. Mỗi thao tác $O(1)$. Với `std::stack`, `pop()` không trả về giá trị, muốn lấy thì gọi `top()` trước.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ngan-xep-va-hang-doi-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong ngăn xếp cài đặt bằng mảng với topIndex ban đầu bằng -1, thao tác push(x) đúng là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Tăng topIndex rồi gán a[topIndex] = x",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Gán a[topIndex] = x rồi giảm topIndex",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Giảm topIndex rồi trả về a[topIndex]",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Gán a[0] = x và tăng head",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Xem cài đặt Stack trong bài.",
+                  "explanation": "Push đưa x vào đỉnh nên phải tăng topIndex trước khi ghi vào mảng.",
+                  "option_feedback": {
+                    "B": "Đây là thao tác làm mất phần tử chứ không phải thêm vào đỉnh.",
+                    "C": "Đây là hướng của pop/top, không phải push.",
+                    "D": "Dùng head là của hàng đợi, không phải ngăn xếp."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Mô phỏng ngăn xếp",
+              "md": "Bắt đầu rỗng: `push(1)`, `push(2)` được $[1,2]$; `pop()` còn $[1]$; `push(3)` được $[1,3]$; `top()` trả về $3$; `pop()` còn $[1]$; `pop()` còn rỗng. Kết quả của lần `top()` là $3$.",
+              "audio": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hàng đợi (queue)",
+              "md": "Hàng đợi theo nguyên tắc **FIFO**: vào trước, ra trước. Các thao tác cơ bản: `push(x)` (enqueue), `pop()` (dequeue), `front()`, `isEmpty()`.",
+              "audio": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ngan-xep-va-hang-doi-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Ngăn xếp hoạt động theo nguyên tắc {{gap}}; hàng đợi hoạt động theo nguyên tắc {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "LIFO",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "FIFO",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "LILO",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "FILO",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Ngăn xếp là LIFO (vào sau ra trước), hàng đợi là FIFO (vào trước ra trước).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hàng đợi vòng",
+              "md": "Hàng đợi vòng cài bằng mảng: $head$ là chỉ số phần tử đầu, $tail$ là chỉ số ô trống kế tiếp, $sz$ là số phần tử. Khi push: gán $a[tail]=x$, rồi $tail=(tail+1)\\bmod MAXN$, tăng $sz$. Khi pop: $head=(head+1)\\bmod MAXN$, giảm $sz$. Mỗi thao tác $O(1)$ và không phải dời phần tử.",
+              "audio": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ngan-xep-va-hang-doi-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Mô phỏng hàng đợi vòng có MAXN = 5, ban đầu head = tail = 0, sz = 0. Sau các thao tác enqueue A, B, C, D; dequeue; enqueue E, F, giá trị sz bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "5"
+                    ]
+                  },
+                  "hint": "sz tăng khi enqueue và giảm khi dequeue.",
+                  "explanation": "Bốn lần enqueue làm sz = 4, một dequeue còn 3, thêm E và F thì sz = 5.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/ngan-xep-va-hang-doi-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "8b912b18f81f9bfe6769a809269d0be55d78d6913784eb9a7758c9f5d2d94359",
+                "bytes": 3126
+              },
+              "alt": "Hàng đợi vòng đầy với head và tail bằng nhau",
+              "caption": "head == tail nhưng hàng đợi đầy, không rỗng",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "head == tail không luôn là rỗng",
+              "md": "Với hàng đợi vòng, khi đầy thì $head$ và $tail$ cũng có thể bằng nhau. Cần dùng thêm biến đếm $sz$, cờ trạng thái, hoặc hy sinh một ô để phân biệt rỗng/đầy. Nếu nhầm, chương trình có thể enqueue khi đầy hoặc dequeue khi rỗng.",
+              "audio": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ngan-xep-va-hang-doi-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi cấu trúc/thao tác với mô tả đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Ngăn xếp",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "LIFO",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Hàng đợi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "FIFO",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Hàng đợi vòng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "dùng head, tail, sz",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "std::stack::pop()",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "trả về void",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các ghép nối theo định nghĩa LIFO/FIFO và cài đặt ngăn xếp, hàng đợi vòng trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Kiểm tra ngoặc đúng bằng ngăn xếp",
+              "md": "Duyệt từng ký tự: ngoặc mở thì `push`; ngoặc đóng phải khớp với `top()` rồi `pop()`. Nếu gặp ngoặc đóng khi ngăn xếp rỗng, hoặc cuối cùng ngăn xếp khác rỗng, thì xâu sai. Mỗi ký tự xử lý một lần nên thời gian $O(n)$; bộ nhớ $O(n)$ trong trường hợp xấu nhất.",
+              "audio": null
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ngan-xep-va-hang-doi-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các phát biểu sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong hàng đợi vòng, nếu chỉ kiểm tra head == tail thì có thể nhầm giữa hàng đợi rỗng và đầy."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Thao tác pop() của std::stack trả về giá trị phần tử vừa lấy ra."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Kiểm tra xâu ngoặc đúng bằng ngăn xếp có thời gian O(n)."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Hàng đợi hoạt động theo nguyên tắc vào sau ra trước."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Hàng đợi vòng có thể có head == tail khi đầy, nên cần sz hoặc cờ để phân biệt. std::stack::pop() trả về void và hàng đợi là FIFO.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ngan-xep-va-hang-doi-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Ngăn xếp hoạt động theo nguyên tắc nào?",
+                  "answer": "LIFO: vào sau ra trước, với push, pop, top, isEmpty.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hàng đợi vòng dùng head, tail và sz để làm gì?",
+                  "answer": "Tránh dời phần tử khi dequeue; sz giúp phân biệt rỗng/đầy vì head == tail có thể là đầy.",
+                  "image": null
+                },
+                {
+                  "prompt": "Kiểm tra xâu ngoặc đúng bằng ngăn xếp có độ phức tạp thời gian nào?",
+                  "answer": "O(n), bộ nhớ O(n) trong trường hợp xấu nhất.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về cấu trúc tuyến tính, gồm mảng và danh sách, rồi đến ngăn xếp và hàng đợi. Mục tiêu là nắm chi phí truy cập, chèn, xóa của từng cấu trúc và các lỗi thường gặp.",
+          "Mảng lưu n phần tử cùng kiểu trong một vùng nhớ liên tiếp. Phần tử truy cập bằng chỉ số, thường bắt đầu từ 0. Trong C plus plus, mảng tĩnh khai báo với kích thước cố định, còn mảng động thường dùng vector. Vì các phần tử nằm liền nhau, địa chỉ của phần tử thứ i bằng địa chỉ phần tử đầu cộng i nhân kích thước mỗi phần tử, nên truy cập hoặc cập nhật theo chỉ số tốn O một; tìm kiếm tuyến tính tốn O n.",
+          "Chèn hoặc xóa ở giữa mảng phải dời các phần tử phía sau, nên tốn O n. Hàm chèn tại vị trí k gọi push back để tăng kích thước lên n cộng một, dời các phần tử từ k đến n trừ một sang phải một ô, rồi gán giá trị x vào vị trí k. Số phép gán là n trừ k, nên tổng chi phí là O của n trừ k cộng một, xấu nhất O n khi k bằng 0. Nếu k bằng n thì không phải dời, chỉ còn chi phí push back, khấu hao O một; push back vào cuối vector có chi phí trung bình khấu hao O một nhưng xấu nhất O n khi phải cấp phát lại.",
+          "Danh sách liên kết lưu các phần tử qua các nút rời rạc, mỗi nút chứa dữ liệu và con trỏ liên kết. Danh sách liên kết đơn có next, đi từ head theo một chiều; danh sách liên kết đôi có cả next và prev, đi được hai chiều. Muốn truy cập phần tử thứ k phải duyệt từ đầu, tốn O k, xấu nhất O n. Khi đã có con trỏ p, hàm chèn sau tạo nút q mới, cho q trỏ tới nút sau p rồi cho p trỏ tới q; hàm xóa sau lấy nút sau p, cho p trỏ tới nút sau nút đó rồi xóa nút; cả hai chỉ thay vài con trỏ nên O một.",
+          "Danh sách liên kết tốn thêm bộ nhớ con trỏ và kém thân thiện cache hơn mảng. Lỗi thường gặp là nói chèn hoặc xóa trong danh sách liên kết luôn là O một; điều này chỉ đúng khi đã có con trỏ tới nút cần thao tác hoặc nút đứng trước nó. Nếu chỉ biết chỉ số k thì phải duyệt từ head mất O k, nên tổng chi phí là O k, xấu nhất O n. Nếu cần xóa nút đầu hoặc xóa theo chỉ số, phải xử lý head hoặc duyệt tìm vị trí, chi phí có thể là O n.",
+          "Ngăn xếp hoạt động theo nguyên tắc vào sau ra trước, với push, pop, top và kiểm tra rỗng. Cài bằng mảng thì khởi tạo top index bằng trừ một; push tăng top index rồi gán, pop giảm top index, top trả về phần tử ở top index, mỗi thao tác O một. Với stack trong thư viện, pop không trả về giá trị nên muốn lấy thì gọi top trước. Ví dụ bắt đầu rỗng, push 1 rồi push 2 được 1,2; pop còn 1; push 3 được 1,3; top trả về 3; pop rồi pop thì rỗng.",
+          "Hàng đợi hoạt động theo nguyên tắc vào trước ra trước, với push, pop, front và kiểm tra rỗng. Hàng đợi vòng cài bằng mảng dùng head là chỉ số phần tử đầu, tail là chỉ số ô trống kế tiếp, và sz là số phần tử. Khi push, gán a tại tail bằng x, rồi tail quay vòng theo modulo kích thước tối đa, tăng sz; khi pop, head quay vòng theo modulo kích thước tối đa, giảm sz; mỗi thao tác O một và không phải dời phần tử. Lỗi thường gặp là cho rằng head bằng tail luôn nghĩa là hàng đợi rỗng; khi đầy thì head và tail cũng có thể bằng nhau, nên cần thêm sz, cờ trạng thái, hoặc hy sinh một ô để phân biệt rỗng và đầy.",
+          "Ví dụ kiểm tra xâu ngoặc đúng dùng ngăn xếp: duyệt từng ký tự, ngoặc mở thì push. Ngoặc đóng phải khớp với top rồi pop; nếu gặp ngoặc đóng khi ngăn xếp rỗng, hoặc cuối cùng ngăn xếp khác rỗng, thì xâu sai. Mỗi ký tự xử lý một lần nên thời gian O n; bộ nhớ O n trong trường hợp xấu nhất.",
+          "Ba điều cần nhớ: thứ nhất, mảng truy cập theo chỉ số O một nhưng chèn xóa ở giữa tốn O n. Thứ hai, danh sách liên kết truy cập theo chỉ số O n nhưng chèn xóa O một chỉ khi đã có con trỏ tới nút hoặc nút trước nó. Thứ ba, ngăn xếp là vào sau ra trước, hàng đợi là vào trước ra trước, và với hàng đợi vòng phải dùng sz hoặc cách tương đương để phân biệt rỗng với đầy."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-cay-va-do-thi",
+      "title": "Cây và đồ thị",
+      "lessons": [
+        {
+          "id": "cay-nhi-phan",
+          "title": "Cây nhị phân",
+          "est_minutes": 15,
+          "summary": "Bài học định nghĩa cây nhị phân, các dạng cây, công thức liên hệ số nút và chiều cao, bốn cách duyệt, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Cây nhị phân là cấu trúc đệ quy với tối đa hai con trái/phải",
+            "Phân biệt cây đầy đủ, hoàn chỉnh và hoàn hảo",
+            "Chiều cao h thỏa log2 n ≤ h ≤ n-1",
+            "Bốn cách duyệt: preorder, inorder, postorder, level-order đều O(n)",
+            "Lỗi thường gặp: áp dụng L = I+1 cho mọi cây nhị phân"
+          ],
+          "blocks": [
+            {
+              "id": "cay-nhi-phan-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Cây nhị phân",
+              "md": "Cây nhị phân là cấu trúc đệ quy: hoặc là cây rỗng, hoặc gồm một nút gốc cùng hai cây con (trái và phải) cũng là cây nhị phân. Mỗi nút có tối đa hai con, và thứ tự trái/phải có ý nghĩa.",
+              "audio": null
+            },
+            {
+              "id": "cay-nhi-phan-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nút lá, mức, chiều cao, độ sâu",
+              "md": "Nút lá: không có con nào. Nút trong: có ít nhất một con. Mức: gốc ở mức $0$; con của nút mức $i$ ở mức $i+1$. Chiều cao của nút: số cạnh trên đường dài nhất từ nút đó xuống một lá; chiều cao của cây là chiều cao của gốc. Độ sâu: số cạnh từ gốc tới nút. Theo quy ước: cây rỗng cao $-1$, cây một nút cao $0$; gốc có độ sâu $0$.",
+              "audio": null
+            },
+            {
+              "id": "cay-nhi-phan-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-nhi-phan-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho cây nhị phân: gốc $1$ có con trái $2$ và con phải $3$; nút $2$ chỉ có con trái $4$. Cây này thuộc dạng nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Hoàn chỉnh nhưng không đầy đủ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đầy đủ nhưng không hoàn chỉnh",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vừa đầy đủ vừa hoàn hảo",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Đầy đủ nhưng không hoàn hảo",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Các mức $0$ và $1$ đầy, mức $2$ chỉ có nút $4$ lấp từ trái sang nên cây hoàn chỉnh; nhưng nút $2$ có một con nên cây không đầy đủ.",
+                  "option_feedback": {
+                    "B": "Nút $2$ chỉ có một con nên cây không thể là cây đầy đủ.",
+                    "C": "Nút $2$ chỉ có một con và các lá $3,4$ không cùng mức nên cây không hoàn hảo.",
+                    "D": "Nút $2$ có một con nên cây vi phạm điều kiện đầy đủ ngay từ đầu."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cay-nhi-phan-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/cay-nhi-phan-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "a4e8414ea203cee616b54caddfb81d6bfbe103685eca7fefbb0ea569fa7f75b7",
+                "bytes": 3734
+              },
+              "alt": "Cây nhị phân có gốc A, con trái B, con phải C; B có con D và E; E có con G; C có con phải F.",
+              "caption": "Cây dùng cho ví dụ: chiều cao $3$, có $3$ lá $D,G,F$.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "cay-nhi-phan-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ba dạng cây nhị phân",
+              "md": "- **Đầy đủ (full)**: mỗi nút có $0$ hoặc $2$ con.\n- **Hoàn chỉnh (complete)**: các mức $0,\\dots,h-1$ đầy đủ, mức $h$ được lấp từ trái sang phải không có chỗ trống.\n- **Hoàn hảo (perfect)**: mọi nút trong có đúng $2$ con và mọi lá cùng một mức.",
+              "audio": null
+            },
+            {
+              "id": "cay-nhi-phan-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-nhi-phan-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với cây nhị phân đầy đủ có $I$ nút trong: $L = $ {{gap}} và $n = $ {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$I+1$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$2I+1$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$I-1$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "$2I-1$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cây đầy đủ có $L = I+1$, và vì $n = I+L$ nên $n = 2I+1$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cay-nhi-phan-b5",
+              "kind": "text",
+              "md": "Với $n$ nút, chiều cao $h$, số lá $L$, số nút trong $I$: mức $i$ có tối đa $2^i$ nút; cây cao $h$ có tối đa $2^{h+1}-1$ nút và tối đa $2^h$ lá. Với cây có $n$ nút: $\\lfloor \\log_2 n \\rfloor \\le h \\le n-1$. Cây đầy đủ có $L=I+1$, $n=2I+1$, $L=\\dfrac{n+1}{2}$; cây hoàn chỉnh có $n$ nút thì $h=\\lfloor \\log_2 n \\rfloor$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cay-nhi-phan-b6",
+              "kind": "interactive",
+              "prompt": "Kéo chiều cao $h$ để số nút tối đa bằng $31$.",
+              "x": {
+                "symbol": "h",
+                "label": "Chiều cao",
+                "unit": "cạnh"
+              },
+              "y": {
+                "symbol": "n_{\\max}",
+                "label": "Số nút tối đa",
+                "unit": "nút"
+              },
+              "expr": "2^(x+1)-1",
+              "x_min": 0.0,
+              "x_max": 6.0,
+              "x_step": 1.0,
+              "x_start": 2.0,
+              "target_y": 31.0,
+              "tolerance": 0.5,
+              "praise": "Đúng: $h=4$ cho $2^{5}-1=31$ nút; cây hoàn hảo này có $2^4=16$ lá.",
+              "audio": null
+            },
+            {
+              "id": "cay-nhi-phan-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-nhi-phan-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Một cây nhị phân có chiều cao $h = 4$. Số nút tối đa của cây là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "31"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cây cao $h$ có tối đa $2^{h+1}-1 = 2^5-1 = 31$ nút, đạt được khi cây là cây hoàn hảo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cay-nhi-phan-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Bốn cách duyệt",
+              "md": "Mỗi nút được thăm đúng một lần, thời gian $O(n)$.\n- Preorder (Nút, Trái, Phải): sao chép cây, in cấu trúc.\n- Inorder (Trái, Nút, Phải).\n- Postorder (Trái, Phải, Nút): giải phóng bộ nhớ, tính giá trị biểu thức.\n- Level-order (theo mức): dùng hàng đợi.\nĐệ quy tốn $O(h)$ cho ngăn xếp gọi hàm; level-order tốn $O(w)$ với $w$ là bề rộng lớn nhất.",
+              "audio": null
+            },
+            {
+              "id": "cay-nhi-phan-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Duyệt cây trong hình",
+              "md": "Preorder: $A,B,D,E,G,C,F$. Inorder: $D,B,G,E,A,C,F$. Postorder: $D,G,E,B,F,C,A$. Level-order: $A,B,C,D,E,F,G$. Đường dài nhất $A\\to B\\to E\\to G$ có $3$ cạnh nên $h=3$; lá là $D,G,F$ nên $L=3$; nút trong là $A,B,C,E$ nên $I=4$. Cây **không đầy đủ** vì $C$ và $E$ chỉ có một con, nên đừng áp dụng $L=I+1$: ở đây $3\\ne4+1$.",
+              "audio": null
+            },
+            {
+              "id": "cay-nhi-phan-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-nhi-phan-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi kiểu duyệt với ứng dụng điển hình của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Preorder",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Sao chép cây, in cấu trúc",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Inorder",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Cho dãy khóa tăng dần trên BST",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Postorder",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Giải phóng bộ nhớ, tính biểu thức",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Level-order",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Duyệt theo mức bằng hàng đợi",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Preorder thăm nút trước nên hợp với sao chép/in cấu trúc; inorder trên BST cho dãy tăng dần; postorder xử lý nút sau cùng nên hợp với giải phóng bộ nhớ; level-order dùng hàng đợi.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cay-nhi-phan-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Cây nhị phân được định nghĩa đệ quy như thế nào?",
+                  "answer": "Hoặc rỗng, hoặc gồm một gốc và hai cây con trái/phải cũng là cây nhị phân; mỗi nút tối đa hai con và thứ tự trái/phải có ý nghĩa.",
+                  "image": null
+                },
+                {
+                  "prompt": "Bốn cách duyệt cây theo thứ tự nào?",
+                  "answer": "Preorder Nút–Trái–Phải, Inorder Trái–Nút–Phải, Postorder Trái–Phải–Nút, Level-order theo mức; đều $O(n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào mới dùng được $L=I+1$?",
+                  "answer": "Chỉ với cây nhị phân đầy đủ; nếu có nút chỉ một con thì công thức sai.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cay-tim-kiem",
+          "title": "Cây tìm kiếm",
+          "est_minutes": 15,
+          "summary": "Bài học trình bày cây tìm kiếm nhị phân, tính chất inorder tăng dần, các phép toán tìm/chèn/xóa, chi phí theo chiều cao, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "BST có khóa trái nhỏ hơn và khóa phải lớn hơn nút",
+            "Duyệt inorder BST cho dãy khóa tăng dần",
+            "Tìm, chèn, xóa đều có chi phí O(h)",
+            "Xóa nút hai con dùng nút thế mạng là min cây con phải hoặc max cây con trái",
+            "Lỗi thường gặp: khẳng định mọi phép toán BST là O(log n)"
+          ],
+          "blocks": [
+            {
+              "id": "cay-tim-kiem-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Cây tìm kiếm nhị phân (BST)",
+              "md": "Cây tìm kiếm nhị phân là cây nhị phân mà với mọi nút $x$: mọi khóa trong cây con trái của $x$ nhỏ hơn khóa của $x$, và mọi khóa trong cây con phải của $x$ lớn hơn khóa của $x$ (các khóa phân biệt).",
+              "audio": null
+            },
+            {
+              "id": "cay-tim-kiem-b2",
+              "kind": "text",
+              "md": "Duyệt inorder (Trái, Nút, Phải) trên BST cho dãy khóa tăng dần. Ngược lại, nếu inorder của một cây nhị phân tăng dần thì đó là BST. Với cây ở hình dưới, inorder là $20,30,40,50,60,70,80$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cay-tim-kiem-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-tim-kiem-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi xóa một nút có hai con trong cây tìm kiếm nhị phân, khóa của nút thế mạng được lấy như thế nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Khóa nhỏ nhất của cây con phải hoặc khóa lớn nhất của cây con trái",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Khóa nhỏ nhất của cây con trái hoặc khóa lớn nhất của cây con phải",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Khóa của một nút lá bất kỳ trong cây con phải",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Khóa của nút gốc cây con phải",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Nút thế mạng là max của cây con trái hoặc min của cây con phải; nút này có nhiều nhất một con nên xóa rất gọn.",
+                  "option_feedback": {
+                    "B": "Đây là cặp ngược: phải lấy min ở cây con phải và max ở cây con trái thì mới giữ được thứ tự BST.",
+                    "C": "Lá bất kỳ trong cây con phải chưa chắc nhỏ hơn mọi khóa còn lại bên phải.",
+                    "D": "Gốc cây con phải chưa phải phần tử nhỏ nhất nên thay vào sẽ phá vỡ thứ tự."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cay-tim-kiem-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/cay-tim-kiem-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "dfa400295fbf10afd079bc191d02700841472239ce9210916de45770123adca3",
+                "bytes": 3079
+              },
+              "alt": "Cây BST với gốc 50, các khóa 30, 70, 20, 40, 60, 80.",
+              "caption": "Cây sau khi chèn lần lượt $50,30,70,20,40,60,80$; chiều cao $h=2$.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "cay-tim-kiem-b4",
+              "kind": "text",
+              "md": "Tìm kiếm, chèn, xóa trên BST đều đi theo một đường từ gốc xuống lá nên chi phí là $O(h)$. Tìm: nhỏ hơn thì sang trái, lớn hơn sang phải. Chèn: tìm vị trí lá rồi gắn nút mới. Xóa có ba trường hợp: nút lá bỏ trực tiếp; nút một con thay bằng con đó; nút hai con thay bằng nút thế mạng rồi xóa nút thế mạng. Tìm $40$ trong cây trên cần $3$ phép so sánh ($50,30,40$).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cay-tim-kiem-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-tim-kiem-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Tìm, chèn và xóa trên BST đều chỉ đi theo một đường từ gốc xuống lá nên chi phí là $O({{gap}})$, với ${{gap}}$ là chiều cao của cây.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "h",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "h",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "n",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "\\log_2 n",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cả ba phép toán đều đi theo một đường gốc–lá, nên chi phí phụ thuộc chiều cao $h$. Chỉ với dữ liệu ngẫu nhiên mới có trung bình $O(\\log n)$; trường hợp xấu nhất là $O(n)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cay-tim-kiem-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nút thế mạng",
+              "md": "Với nút có hai con, nút thế mạng là nút có khóa lớn nhất trong cây con trái hoặc khóa",
+              "audio": null
+            },
+            {
+              "id": "cay-tim-kiem-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-tim-kiem-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Chèn lần lượt các khóa $50, 30, 70, 20, 40, 60, 80$ vào một BST rỗng. Chiều cao $h$ của cây thu được bằng bao nhiêu? (Theo quy ước cây một nút có chiều cao $0$.)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "2"
+                    ]
+                  },
+                  "hint": "Đếm số cạnh trên đường đi dài nhất từ gốc xuống một lá, không đếm số nút.",
+                  "explanation": "Cây có gốc $50$, hai mức con $30, 70$ và các lá $20, 40, 60, 80$; đường dài nhất từ gốc xuống lá có $2$ cạnh nên $h = 2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cay-tim-kiem-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Xóa nút hai con",
+              "md": "Xóa $30$ khỏi cây trên: $30$ có hai con. Khóa nhỏ nhất của cây con phải (cây con gốc $40$) là $40$. Thay khóa $30$ bằng $40$, rồi xóa nút $40$. Nút này là lá. Cây kết quả có inorder $20,40,50,60,70,80$, vẫn tăng dần.",
+              "audio": null
+            },
+            {
+              "id": "cay-tim-kiem-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Không phải mọi phép toán BST đều $O(\\log n)$",
+              "md": "Chi phí thực là $O(h)$, chỉ thành $O(\\log n)$ khi cây cân bằng. Chèn dãy $10,20,30,40,50$ cho cây lệch phải với $h=4=n-1$; tổng số so sánh khi chèn là $0+1+2+3+4=10=\\dfrac{n(n-1)}{2}$, và tìm kiếm sau đó là $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "cay-tim-kiem-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-tim-kiem-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm về cây nhị phân với giá trị hoặc công thức tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Chiều cao của cây rỗng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$-1$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Số nút tối đa ở mức $i$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$2^i$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Số lá tối đa của cây chiều cao $h$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$2^{h}$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Số nút tối đa của cây chiều cao $h$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$2^{h+1}-1$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mức $i$ có tối đa $2^i$ nút, nên tổng số nút tối đa là $1+2+\\dots+2^h = 2^{h+1}-1$. Cây rỗng được quy ước cao $-1$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cay-tim-kiem-b8",
+              "kind": "interactive",
+              "prompt": "Kéo $n$ để cây lệch phải đạt chiều cao $h=9$.",
+              "x": {
+                "symbol": "n",
+                "label": "Số nút",
+                "unit": "nút"
+              },
+              "y": {
+                "symbol": "h",
+                "label": "Chiều cao",
+                "unit": "cạnh"
+              },
+              "expr": "x - 1",
+              "x_min": 1.0,
+              "x_max": 12.0,
+              "x_step": 1.0,
+              "x_start": 5.0,
+              "target_y": 9.0,
+              "tolerance": 0.1,
+              "praise": "Đúng: cây lệch phải $n$ nút có chiều cao $n-1$, nên tìm kiếm tốn $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "cay-tim-kiem-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cay-tim-kiem-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu về cây tìm kiếm nhị phân (các khóa phân biệt).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Duyệt inorder một BST luôn cho dãy khóa tăng dần."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Tìm, chèn, xóa trên BST luôn có chi phí $O(\\log n)$ trong mọi trường hợp."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Trong BST, mọi khóa thuộc cây con trái của một nút đều nhỏ hơn khóa của nút đó."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Nút thế mạng dùng khi xóa nút có hai con luôn là một nút lá."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Chi phí các phép toán là $O(h)$; nếu chèn dãy đã sắp xếp thì cây suy biến với $h = n-1$ nên xấu nhất là $O(n)$. Nút thế mạng là min cây con phải hoặc max cây con trái, nó có nhiều nhất một con chứ không nhất thiết là lá.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cay-tim-kiem-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "BST là gì?",
+                  "answer": "Cây nhị phân mà mọi khóa cây con trái của một nút nhỏ hơn khóa nút, mọi khóa cây con phải lớn hơn khóa nút.",
+                  "image": null
+                },
+                {
+                  "prompt": "Duyệt inorder BST cho dãy khóa như thế nào?",
+                  "answer": "Dãy khóa tăng dần.",
+                  "image": null
+                },
+                {
+                  "prompt": "Chi phí tìm, chèn, xóa trên BST là bao nhiêu?",
+                  "answer": "$O(h)$; chỉ $O(\\log n)$ khi cây cân bằng, xấu nhất $O(n)$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "duyet-do-thi",
+          "title": "Duyệt đồ thị",
+          "est_minutes": 15,
+          "summary": "Bài học giới thiệu biểu diễn đồ thị bằng ma trận kề và danh sách kề, duyệt BFS bằng hàng đợi, ví dụ và bài tập liên quan.",
+          "key_ideas": [
+            "Ma trận kề tốn O(n^2) bộ nhớ và kiểm tra cạnh O(1)",
+            "Danh sách kề tốn O(n+m) bộ nhớ và liệt kê láng giềng theo bậc",
+            "BFS dùng hàng đợi và khám phá đỉnh theo khoảng cách tăng dần",
+            "Bài tập BFS trên đồ thị 1-2, 1-3, 2-4, 3-4 cho thứ tự 1, 2, 3, 4"
+          ],
+          "blocks": [
+            {
+              "id": "duyet-do-thi-b1",
+              "kind": "text",
+              "md": "Đồ thị $G=(V,E)$ có $n=|V|$ đỉnh và $m=|E|$ cạnh. Hai cách biểu diễn thông dụng là ma trận kề và danh sách kề.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "duyet-do-thi-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ma trận kề",
+              "md": "Ma trận kề là mảng $n \\times n$ với $a[u][v]=1$ nếu có cạnh giữa $u$ và $v$. Cách này tốn bộ nhớ $O(n^2)$, kiểm tra cạnh $O(1)$, liệt kê láng giềng $O(n)$; chỉ hợp lý khi đồ thị dày.",
+              "audio": null
+            },
+            {
+              "id": "duyet-do-thi-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyet-do-thi-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Phát biểu nào đúng khi so sánh hai cách biểu diễn đồ thị?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Ma trận kề tốn $O(n^2)$ bộ nhớ, kiểm tra cạnh $O(1)$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Ma trận kề tốn $O(n+m)$ bộ nhớ, kiểm tra cạnh $O(n)$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Danh sách kề tốn $O(n^2)$ bộ nhớ, liệt kê láng giềng $O(1)$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Danh sách kề kiểm tra cạnh $O(1)$ và tốn $O(n+m)$ bộ nhớ.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Ma trận kề là mảng $n \\times n$ nên tốn $O(n^2)$ bộ nhớ và kiểm tra cạnh trong $O(1)$.",
+                  "option_feedback": {
+                    "B": "Nhầm chi phí của ma trận kề với danh sách kề; ma trận kề là mảng $n \\times n$.",
+                    "C": "Đảo ngược chi phí: danh sách kề tốn $O(n+m)$ và liệt kê theo bậc.",
+                    "D": "Danh sách kề không kiểm tra cạnh trong $O(1)$; muốn vậy phải dùng ma trận kề."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "duyet-do-thi-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Danh sách kề",
+              "md": "Danh sách kề dùng `vector<vector<int>> adj(n)`, mỗi đỉnh lưu danh sách đỉnh kề. Cách này tốn bộ nhớ $O(n+m)$, liệt kê láng giềng $O(\\deg(v))$; dùng cho hầu hết bài toán.",
+              "audio": null
+            },
+            {
+              "id": "duyet-do-thi-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyet-do-thi-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với danh sách kề, bộ nhớ là $O({{gap}})$ và liệt kê láng giềng của đỉnh $v$ tốn $O({{gap}})$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "n+m",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\deg(v)",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "n^2",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "n",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Danh sách kề lưu mỗi đỉnh cùng các cạnh kề nên tốn $O(n+m)$; liệt kê láng giềng chỉ duyệt danh sách của $v$, tốn $O(\\deg(v))$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "duyet-do-thi-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/duyet-do-thi-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "d7ed2eb61602c8116875c697a32ef32ffce16dceed0868a2d2702e38a1fc999a",
+                "bytes": 1913
+              },
+              "alt": "Đồ thị 4 đỉnh với các cạnh 1-2, 1-3, 2-4, 3-4",
+              "caption": "Đồ thị dùng trong ví dụ BFS.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "duyet-do-thi-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Duyệt theo chiều rộng (BFS)",
+              "md": "BFS dùng hàng đợi, khám phá các đỉnh theo khoảng cách tăng dần tính bằng số cạnh.",
+              "audio": null
+            },
+            {
+              "id": "duyet-do-thi-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyet-do-thi-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Trong ví dụ BFS với danh sách kề $1:[2,3]$, $2:[1,4]$, $3:[1,4]$, $4:[2,3]$, khoảng cách BFS từ đỉnh 1 đến đỉnh 4 bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "BFS từ 1 thăm 2 và 3 ở khoảng cách 1, rồi thăm 4 ở khoảng cách 2.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "duyet-do-thi-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "BFS từ đỉnh 1",
+              "md": "Với danh sách kề $1:[2,3]$, $2:[1,4]$, $3:[1,4]$, $4:[2,3]$. Bắt đầu $dist[1]=0$, hàng đợi $[1]$. Lấy 1, đưa 2 và 3 vào hàng đợi: thứ tự $1,2,3$. Lấy 2, đưa 4 vào. Lấy 3, 4 đã thăm. Lấy 4. Thứ tự BFS là $1,2,3,4$, với khoảng cách $0,1,1,2$.",
+              "audio": null
+            },
+            {
+              "id": "duyet-do-thi-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyet-do-thi-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Ma trận kề",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Bộ nhớ $O(n^2)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Danh sách kề",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Bộ nhớ $O(n+m)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "BFS",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Dùng hàng đợi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Kiểm tra cạnh bằng ma trận kề",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$O(1)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ma trận kề là mảng $n\\times n$; danh sách kề lưu cạnh kề; BFS dùng hàng đợi để duyệt theo khoảng cách.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "duyet-do-thi-b7",
+              "kind": "interactive",
+              "prompt": "Kéo $n$ để số ô nhớ của ma trận kề bằng 64.",
+              "x": {
+                "symbol": "n",
+                "label": "Số đỉnh",
+                "unit": "đỉnh"
+              },
+              "y": {
+                "symbol": "M",
+                "label": "Số ô nhớ",
+                "unit": "ô"
+              },
+              "expr": "x^2",
+              "x_min": 2.0,
+              "x_max": 20.0,
+              "x_step": 1.0,
+              "x_start": 5.0,
+              "target_y": 64.0,
+              "tolerance": 0.5,
+              "praise": "Đúng: ma trận kề của đồ thị 8 đỉnh cần $8^2=64$ ô nhớ.",
+              "audio": null
+            },
+            {
+              "id": "duyet-do-thi-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyet-do-thi-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đánh dấu đúng/sai cho các phát biểu sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "BFS khám phá các đỉnh theo khoảng cách tăng dần tính bằng số cạnh."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Ma trận kề tốn bộ nhớ $O(n+m)$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Với danh sách kề, liệt kê láng giềng của đỉnh $v$ tốn $O(\\deg(v))$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Danh sách kề chỉ hợp lý khi đồ thị dày."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ma trận kề tốn $O(n^2)$ và hợp với đồ thị dày; danh sách kề tốn $O(n+m)$ và dùng cho hầu hết bài toán.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "duyet-do-thi-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Ma trận kề tốn bao nhiêu bộ nhớ và kiểm tra cạnh như thế nào?",
+                  "answer": "Tốn $O(n^2)$ bộ nhớ; kiểm tra cạnh $O(1)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Danh sách kề tốn bao nhiêu bộ nhớ và liệt kê láng giềng ra sao?",
+                  "answer": "Tốn $O(n+m)$ bộ nhớ; liệt kê láng giềng $O(\\deg(v))$.",
+                  "image": null
+                },
+                {
+                  "prompt": "BFS dùng cấu trúc gì và khám phá đỉnh theo thứ tự nào?",
+                  "answer": "Dùng hàng đợi; khám phá theo khoảng cách tăng dần.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về cây và đồ thị, gồm cây nhị phân, cây tìm kiếm nhị phân và duyệt đồ thị. Mình sẽ đi từ cấu trúc cây, sang cây tìm kiếm, rồi đến biểu diễn và duyệt đồ thị.",
+          "Cây nhị phân là cấu trúc đệ quy: hoặc rỗng, hoặc gồm một nút gốc và hai cây con trái phải cũng là cây nhị phân. Mỗi nút có tối đa hai con và thứ tự trái phải có ý nghĩa. Nút lá không có con, nút trong có ít nhất một con. Gốc ở mức không, con của nút mức i ở mức i cộng một; chiều cao là số cạnh trên đường dài nhất từ nút xuống lá, còn độ sâu là số cạnh từ gốc tới nút.",
+          "Cây đầy đủ là cây mà mỗi nút có không hoặc hai con. Cây hoàn chỉnh có các mức trước mức cuối đầy đủ, còn mức cuối lấp từ trái sang phải không có chỗ trống. Cây hoàn hảo thì mọi nút trong có đúng hai con và mọi lá cùng một mức. Với cây có n nút và chiều cao h, ta luôn có log cơ số 2 của n nhỏ hơn hoặc bằng h, và h nhỏ hơn hoặc bằng n trừ 1.",
+          "Bốn cách duyệt cây nhị phân là preorder theo thứ tự nút, trái, phải; inorder theo trái, nút, phải; postorder theo trái, phải, nút; và level-order theo mức dùng hàng đợi. Mỗi nút được thăm đúng một lần nên cả bốn cách đều tốn O lớn của n. Đệ quy tốn O lớn của h cho ngăn xếp gọi hàm, còn level-order tốn O lớn của w với w là bề rộng lớn nhất. Cần nhớ số lá bằng số nút trong cộng một chỉ đúng cho cây đầy đủ, đừng áp dụng cho mọi cây nhị phân.",
+          "Cây tìm kiếm nhị phân là cây nhị phân mà mọi khóa trong cây con trái của một nút đều nhỏ hơn khóa nút đó, và mọi khóa trong cây con phải đều lớn hơn. Duyệt inorder trên cây tìm kiếm cho dãy khóa tăng dần, và ngược lại nếu inorder tăng dần thì đó là cây tìm kiếm. Tìm kiếm, chèn và xóa đều đi theo một đường từ gốc xuống lá nên chi phí là O lớn của h. Ví dụ tìm khóa 40 cần ba phép so sánh với 50, rồi 30, rồi 40.",
+          "Xóa nút lá thì bỏ trực tiếp; xóa nút một con thì thay bằng con đó; xóa nút hai con thì thay bằng nút thế mạng là khóa lớn nhất cây con trái hoặc khóa nhỏ nhất cây con phải, rồi xóa nút thế mạng. Ví dụ xóa 30 có hai con: lấy 40 là khóa nhỏ nhất của cây con phải, thay vào 30 rồi xóa nút 40, cây vẫn có inorder tăng dần. Chi phí thực của các phép toán là O lớn của h, chỉ thành O lớn của log cơ số 2 của n khi cây cân bằng. Vì vậy đừng khẳng định mọi phép toán trên cây tìm kiếm đều là O lớn của log cơ số 2 của n.",
+          "Nếu chèn dãy 10, 20, 30, 40, 50 vào cây tìm kiếm, cây sẽ lệch phải với chiều cao h bằng 4, tức là n trừ 1. Tổng số so sánh khi chèn là 0 cộng 1 cộng 2 cộng 3 cộng 4 bằng 10, đúng bằng n nhân n trừ 1 chia 2. Khi đó tìm kiếm sau này là O lớn của n, không phải log cơ số 2 của n.",
+          "Đồ thị G gồm tập đỉnh V và tập cạnh E, với n đỉnh và m cạnh. Ma trận kề là mảng n nhân n, tốn bộ nhớ O lớn của n bình phương, kiểm tra cạnh O lớn của một, liệt kê láng giềng O lớn của n, nên chỉ hợp lý khi đồ thị dày. Danh sách kề tốn bộ nhớ O lớn của n cộng m, liệt kê láng giềng O lớn của bậc của đỉnh, và dùng cho hầu hết bài toán.",
+          "BFS dùng hàng đợi và khám phá các đỉnh theo khoảng cách tăng dần tính bằng số cạnh. Ví dụ với các cạnh nối 1 với 2, 1 với 3, 2 với 4, 3 với 4, bắt đầu từ 1 ta có thứ tự duyệt là 1, 2, 3, 4. Khoảng cách tương ứng là 0, 1, 1, 2.",
+          "Ba điều cần nhớ: thứ nhất, cây nhị phân có bốn cách duyệt đều O lớn của n, và số lá bằng số nút trong cộng một chỉ đúng cho cây đầy đủ. Thứ hai, cây tìm kiếm có inorder tăng dần, tìm chèn xóa tốn O lớn của h và chỉ thành O lớn của log cơ số 2 của n khi cây cân bằng. Thứ ba, chọn ma trận kề hay danh sách kề tùy mật độ đồ thị, còn BFS dùng hàng đợi để duyệt theo khoảng cách tăng dần."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-giai-thuat",
+      "title": "Giải thuật",
+      "lessons": [
+        {
+          "id": "sap-xep",
+          "title": "Sắp xếp",
+          "est_minutes": 15,
+          "summary": "Bài học nêu bài toán sắp xếp, khái niệm tại chỗ và ổn định, các thuật toán bậc hai, O(n log n), counting sort, bảng tổng kết, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Sắp xếp dựa trên so sánh có cận dưới Ω(n log n)",
+            "Selection, bubble, insertion sort có chi phí bậc hai",
+            "Merge, quick, heap sort đạt O(n log n) với đánh đổi khác nhau",
+            "Counting sort chạy O(n+k) khi khóa nguyên trong miền nhỏ",
+            "Lỗi thường gặp: cho rằng quick sort luôn nhanh hơn insertion sort"
+          ],
+          "blocks": [
+            {
+              "id": "sap-xep-b1",
+              "kind": "text",
+              "md": "Cho dãy $a_0, a_1, \\dots, a_{n-1}$. Sắp xếp là tìm một hoán vị $a'_0, a'_1, \\dots, a'_{n-1}$ của dãy sao cho $a'_0 \\le a'_1 \\le \\dots \\le a'_{n-1}$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "sap-xep-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Các khái niệm cơ sở",
+              "md": "- **Sắp xếp tại chỗ**: chỉ dùng $O(1)$ bộ nhớ phụ, ngoài mảng ban đầu.\n- **Sắp xếp ổn định**: các phần tử có khoá bằng nhau giữ nguyên thứ tự tương đối như trong dãy gốc.\n- **Sắp xếp dựa trên so sánh**: chỉ dùng phép so sánh để quyết định thứ tự; mọi thuật toán loại này cần $\\Omega(n\\log n)$ phép so sánh trong trường hợp xấu nhất.",
+              "audio": null
+            },
+            {
+              "id": "sap-xep-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sap-xep-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Phát biểu nào sau đây đúng về sắp xếp dựa trên so sánh?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Mọi thuật toán chỉ dùng phép so sánh đều cần $\\Omega(n\\log n)$ phép so sánh trong trường hợp xấu nhất.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Chỉ merge sort mới đạt được cận dưới $\\Omega(n\\log n)$ trong trường hợp xấu nhất.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Counting sort cho thấy cận dưới $\\Omega(n\\log n)$ sai vì nó cũng dùng phép so sánh.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Cận dưới $\\Omega(n\\log n)$ áp dụng cho mọi thuật toán sắp xếp, kể cả counting sort.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Mọi thuật toán sắp xếp chỉ dùng phép so sánh cần $\\Omega(n\\log n)$ phép so sánh trong trường hợp xấu nhất.",
+                  "option_feedback": {
+                    "B": "Cận dưới là cho cả lớp thuật toán dựa trên so sánh, không riêng merge sort.",
+                    "C": "Counting sort không dựa trên phép so sánh nên không mâu thuẫn với cận dưới.",
+                    "D": "Counting sort không dựa trên so sánh nên không bị ràng buộc bởi cận dưới này."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "sap-xep-b3",
+              "kind": "text",
+              "md": "Selection sort: với mỗi vị trí $i$, tìm phần tử nhỏ nhất trong $a[i..n-1]$ rồi đổi chỗ với $a[i]$. Số phép so sánh luôn là $\\frac{n(n-1)}{2}=\\Theta(n^2)$, số phép đổi chỗ nhiều nhất $n-1$. Bubble sort: lặp từng lượt, so sánh cặp kề và đổi chỗ nếu sai thứ tự. Sau lượt $k$, $k$ phần tử lớn nhất đã đúng vị trí cuối; có thể dừng sớm nếu một lượt không có đổi chỗ. Insertion sort: giữ tiền tố $a[0..i-1]$ đã sắp xếp, chèn $a[i]$ vào đúng vị trí bằng cách dịch các phần tử lớn hơn sang phải. Chi phí $O(n+I)$ với $I$ là số nghịch thế, nên $O(n)$ trên mảng gần sắp và $O(n^2)$ trong trường hợp xấu nhất.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "sap-xep-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: insertion sort trên $[5,2,4,6,1,3]$",
+              "md": "Mô phỏng insertion sort: mảng lần lượt thành $[2,5,4,6,1,3]$, $[2,4,5,6,1,3]$, $[2,4,5,6,1,3]$, $[1,2,4,5,6,3]$, rồi $[1,2,3,4,5,6]$. Tổng cộng 12 phép so sánh và 9 lần dịch chuyển. Số nghịch thế của mảng gốc đúng bằng 9, khớp với chi phí $O(n+I)$.",
+              "audio": null
+            },
+            {
+              "id": "sap-xep-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sap-xep-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với các khoá là số nguyên trong $[0,k]$, counting sort chạy trong $O({{gap}})$ và nhanh hơn cận dưới $\\Omega(n\\log n)$ vì không dùng {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "n+k",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "phép so sánh",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "n\\log n",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "đệ quy",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Counting sort đếm số lần xuất hiện của mỗi giá trị khoá rồi ghi lại, nên chi phí $O(n+k)$ và không dùng phép so sánh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "sap-xep-b5",
+              "kind": "text",
+              "md": "Merge sort chia đôi mảng, sắp xếp đệ quy hai nửa rồi trộn hai dãy đã sắp. Nó luôn đạt $O(n\\log n)$ trong mọi trường hợp, ổn định, nhưng cần $O(n)$ bộ nhớ phụ. Quick sort chọn một chốt, phân hoạch thành hai phần nhỏ hơn và lớn hơn chốt rồi đệ quy. Trung bình $O(n\\log n)$ với hằng số nhỏ nên thường nhanh nhất thực tế, nhưng xấu nhất là $O(n^2)$ khi phân hoạch luôn lệch. Heap sort dựng max-heap trong $O(n)$ rồi lấy phần tử lớn nhất ra $n$ lần; đạt $O(n\\log n)$ mọi trường hợp, tại chỗ, nhưng không ổn định.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "sap-xep-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Counting sort",
+              "md": "Nếu các khoá là số nguyên trong $[0,k]$, đếm số lần xuất hiện của mỗi giá trị rồi ghi lại theo thứ tự. Độ phức tạp $O(n+k)$; khi $k=O(n)$ thì đây là $O(n)$, nhanh hơn cận dưới $\\Omega(n\\log n)$ vì không dùng phép so sánh. Bản cài đặt dùng mảng cộng dồn (prefix sum) cho kết quả ổn định.",
+              "audio": null
+            },
+            {
+              "id": "sap-xep-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để chọn $k$ sao cho counting sort đạt $O(n)$ khi $n=1000$ — tức $k$ xấp xỉ $n$.",
+              "x": {
+                "symbol": "k",
+                "label": "Miền khoá",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Số phép toán xấp xỉ",
+                "unit": ""
+              },
+              "expr": "1000 + x",
+              "x_min": 0.0,
+              "x_max": 5000.0,
+              "x_step": 10.0,
+              "x_start": 300.0,
+              "target_y": 2000.0,
+              "tolerance": 15.0,
+              "praise": "Đúng: $k=n=1000$ cho $O(n+k)=O(n)$, nhanh hơn cận dưới $\\Omega(n\\log n)$ của sắp xếp dựa trên so sánh.",
+              "audio": null
+            },
+            {
+              "id": "sap-xep-b9",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Câu \"Quick sort là $O(n\\log n)$ nên luôn nhanh hơn insertion sort\" sai. $O(n\\log n)$ chỉ là chi phí trung bình của quick sort; xấu nhất là $O(n^2)$. Ký hiệu $O$ không nói gì về hằng số: với $n$ nhỏ (vài chục phần tử), insertion sort với hằng số nhỏ và truy cập tuần tự thường nhanh hơn. Vì vậy th",
+              "audio": null
+            },
+            {
+              "id": "sap-xep-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sap-xep-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi thuật toán với đặc điểm đúng theo bảng tổng kết.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Merge sort",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Ổn định, cần $O(n)$ bộ nhớ phụ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Quick sort",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Trung bình $O(n\\log n)$, xấu nhất $O(n^2)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Heap sort",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Tại chỗ, không ổn định, $O(n\\log n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Counting sort",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Ổn định, $O(n+k)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các đặc điểm này lấy từ bảng tổng kết: merge sort ổn định nhưng tốn $O(n)$ bộ nhớ phụ; quick sort xấu nhất $O(n^2)$; heap sort tại chỗ và không ổn định; counting sort ổn định với chi phí $O(n+k)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "sap-xep-b10",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vì sao counting sort có thể nhanh hơn $\\Omega(n\\log n)$?",
+                  "answer": "Vì nó không dùng phép so sánh, mà đếm trực tiếp khoá nguyên trong miền $[0,k]$, chi phí $O(n+k)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào quick sort suy biến về $O(n^2)$?",
+                  "answer": "Khi phân hoạch luôn lệch, ví dụ mảng đã sắp và chọn chốt là phần tử đầu/cuối.",
+                  "image": null
+                },
+                {
+                  "prompt": "Chi phí insertion sort phụ thuộc gì, và trên mảng gần sắp thì sao?",
+                  "answer": "Chi phí $O(n+I)$ với $I$ là số nghịch thế; trên mảng gần sắp $I$ nhỏ nên chạy $O(n)$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tim-kiem",
+          "title": "Tìm kiếm",
+          "est_minutes": 15,
+          "summary": "Bài học so sánh tìm kiếm tuần tự và nhị phân, lower_bound/upper_bound, nhị phân trên miền đáp án, bảng băm, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Tìm kiếm tuần tự không cần sắp xếp và có chi phí O(n)",
+            "Tìm kiếm nhị phân yêu cầu mảng đã sắp và chạy O(log n)",
+            "lower_bound và upper_bound đếm số lần xuất hiện trong O(log n)",
+            "Nhị phân trên miền đáp án áp dụng cho tính chất đơn điệu",
+            "Lỗi thường gặp: vòng lặp nhị phân sai gây vòng lặp vô hạn"
+          ],
+          "blocks": [
+            {
+              "id": "tim-kiem-b1",
+              "kind": "text",
+              "md": "Cho mảng $a$ cỡ $n$ và giá trị $x$. Bài toán tìm kiếm: tìm chỉ số $i$ sao cho $a_i=x$, hoặc khẳng định không tồn tại. Có hai cách cơ bản: duyệt tuần tự và chia đôi không gian tìm kiếm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tim-kiem-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tìm kiếm tuần tự",
+              "md": "**Tìm kiếm tuần tự** duyệt lần lượt $a_0,a_1,\\dots$ đến khi gặp $x$. Không đòi hỏi mảng có thứ tự. Chi phí: tốt nhất $O(1)$, xấu nhất và trung bình $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "tim-kiem-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tim-kiem-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi nào có thể áp dụng tìm kiếm nhị phân trên miền đáp án thay vì trên chỉ số của mảng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Khi tính chất cần kiểm tra là đơn điệu theo giá trị cần tìm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Khi mảng đã được sắp xếp tăng dần",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Khi miền giá trị có độ dài đúng bằng một lũy thừa của 2",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Khi mọi giá trị trong miền đáp án đôi một khác nhau",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Điều kiện nằm ở tính chất P, không nằm ở dữ liệu đầu vào.",
+                  "explanation": "Nhị phân trên miền đáp án chỉ cần P đơn điệu: đúng với mọi giá trị ≤ ngưỡng (hoặc sai với mọi giá trị ≤ ngưỡng). Khi đó chi phí là O(log(miền) · C) với C là chi phí kiểm tra P.",
+                  "option_feedback": {
+                    "B": "Nhầm điều kiện của tìm kiếm nhị phân trên chỉ số mảng với điều kiện của nhị phân trên miền đáp án.",
+                    "C": "Nhầm tưởng phải chia đôi miền chính xác, trong khi nhị phân vẫn chạy với miền bất kỳ.",
+                    "D": "Tính phân biệt của các giá trị không liên quan, cái cần là tính đơn điệu của P."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tim-kiem-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tìm kiếm nhị phân",
+              "md": "**Tìm kiếm nhị phân** yêu cầu mảng đã sắp xếp. Mỗi bước so sánh $x$ với phần tử giữa rồi loại một nửa: $T(n)=T(n/2)+O(1)$, suy ra $T(n)=O(\\log n)$. Số phép so sánh tối đa là $\\lfloor \\log_2 n\\rfloor+1$; với $n=10^9$ chỉ khoảng $30$.",
+              "audio": null
+            },
+            {
+              "id": "tim-kiem-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/tim-kiem-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e71f403213a88b86babfcc388891e1b6ef35cf774bd4879e0118d90e0f9b86c8",
+                "bytes": 9068
+              },
+              "alt": "Minh họa tìm kiếm nhị phân cho x=23 trong mảng đã sắp xếp",
+              "caption": "Ba bước: 16<23, 45>23, gặp 23 tại chỉ số 5.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "tim-kiem-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tim-kiem-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với mảng đã sắp xếp tăng dần, `lower_bound(x)` là chỉ số đầu tiên $i$ có $a_i \\ge$ {{gap}}, còn số phần tử bằng $x$ bằng `upper_bound(x)` {{gap}} `lower_bound(x)`.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "x",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "-",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": ">",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "+",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "`lower_bound(x)` tìm vị trí đầu tiên có $a_i \\ge x$, còn `upper_bound(x)` tìm vị trí đầu tiên có $a_i > x$, nên hiệu của chúng đếm đúng số phần tử bằng $x$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tim-kiem-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "lower_bound và upper_bound",
+              "md": "Với mảng đã sắp xếp, **lower_bound(x)** là chỉ số đầu tiên $i$ sao cho $a_i\\ge x$; **upper_bound(x)** là chỉ số đầu tiên $i$ sao cho $a_i>x$. Số phần tử bằng $x$ là `upper_bound(x) - lower_bound(x)`; $x$ có mặt khi `lower_bound(x) < n` và `a[lower_bound(x)] == x`.",
+              "audio": null
+            },
+            {
+              "id": "tim-kiem-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tim-kiem-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Với $n = 10^9$, tìm kiếm nhị phân cần tối đa bao nhiêu phép so sánh? (Nhập số.)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "30"
+                    ]
+                  },
+                  "hint": "Dùng công thức số phép so sánh tối đa của tìm kiếm nhị phân trong bài.",
+                  "explanation": "Số phép so sánh tối đa là $\\lfloor \\log_2 n \\rfloor + 1 = \\lfloor \\log_2 10^9 \\rfloor + 1 = 30$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tim-kiem-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Nhị phân trên miền đáp án",
+              "md": "Cắt ít nhất $k$ thanh gỗ cùng độ dài $m$ từ các thanh $L_i$. Số thanh cắt được là $f(m)=\\sum_i \\lfloor L_i/m\\rfloor$, đơn điệu không tăng theo $m$. Tìm $m$ lớn nhất với $f(m)\\ge k$ bằng nhị phân trên $[1,\\max L_i]$, chi phí $O(n\\log(\\max L))$.",
+              "audio": null
+            },
+            {
+              "id": "tim-kiem-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Vòng lặp nhị phân vô hạn",
+              "md": "Đoạn `while (lo < hi) { mid=(lo+hi)/2; if (ok(mid)) lo=mid; else hi=mid; }` có thể lặp vô hạn: khi $hi=lo+1$ thì $mid=lo$, nếu `ok(mid)` đúng thì `lo` không đổi. Sửa bằng `mid = lo + (hi - lo + 1) / 2` cho mẫu tìm giá trị lớn nhất, hoặc dùng `while (lo <= hi)` với biến `ans`.",
+              "audio": null
+            },
+            {
+              "id": "tim-kiem-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tim-kiem-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mô tả đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "`lower_bound(x)`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "chỉ số đầu tiên có $a_i \\ge x$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "`upper_bound(x)`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "chỉ số đầu tiên có $a_i > x$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Tìm kiếm tuần tự",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "không cần sắp xếp, chi phí $O(n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Tìm kiếm nhị phân",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "cần mảng đã sắp xếp, chi phí $O(\\log n)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Hai hàm bound chỉ khác nhau ở dấu $\\ge$ và $>$, còn hai thuật toán tìm kiếm khác nhau ở yêu cầu sắp xếp và chi phí.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tim-kiem-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để số phép so sánh tối đa của tìm kiếm nhị phân đạt 11",
+              "x": {
+                "symbol": "n",
+                "label": "Số phần tử",
+                "unit": "phần tử"
+              },
+              "y": {
+                "symbol": "C",
+                "label": "Số phép so sánh tối đa",
+                "unit": "phép"
+              },
+              "expr": "log(x)/log(2)+1",
+              "x_min": 1.0,
+              "x_max": 1024.0,
+              "x_step": 1.0,
+              "x_start": 1.0,
+              "target_y": 11.0,
+              "tolerance": 0.01,
+              "praise": "Đúng: với $n=1024$, $\\lfloor\\log_2 n\\rfloor+1=11$.",
+              "audio": null
+            },
+            {
+              "id": "tim-kiem-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tim-kiem-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đánh dấu đúng/sai cho các phát biểu sau về tìm kiếm.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Tìm kiếm tuần tự đòi hỏi mảng phải được sắp xếp trước."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Với $n = 10^9$, tìm kiếm nhị phân chỉ cần khoảng 30 phép so sánh."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Số phần tử bằng $x$ trong mảng đã sắp xếp là `upper_bound(x) - lower_bound(x)`."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Trong bài toán cắt thanh gỗ, hàm $f(m)$ là hàm đơn điệu không giảm theo $m$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Tìm kiếm tuần tự không cần thứ tự, còn $f(m) = \\sum \\lfloor L_i/m \\rfloor$ giảm (không tăng) khi $m$ tăng, nên tập $m$ thoả mãn là một đoạn $[1, m^*]$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tim-kiem-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Tìm kiếm tuần tự có cần mảng sắp xếp không và chi phí xấu nhất là bao nhiêu?",
+                  "answer": "Không cần; chi phí xấu nhất và trung bình $O(n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Tìm kiếm nhị phân yêu cầu gì và chạy thời gian bao nhiêu?",
+                  "answer": "Mảng đã sắp xếp; $O(\\log n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Làm sao đếm số lần xuất hiện của $x$ trong mảng đã sắp trong $O(\\log n)$?",
+                  "answer": "Dùng `upper_bound(x) - lower_bound(x)`.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "do-phuc-tap",
+          "title": "Độ phức tạp",
+          "est_minutes": 15,
+          "summary": "Bài học định nghĩa ký hiệu tiệm cận, quy tắc tính, phân tích vòng lặp và đệ quy bằng định lý master, ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "O là cận trên, Ω là cận dưới, Θ là cận chặt",
+            "Bỏ hằng số và giữ số hạng trội khi ước lượng tiệm cận",
+            "Vòng lặp nhân/chia biến chạy cho chi phí logarit",
+            "Định lý master giải T(n) = aT(n/b) + f(n) theo ba trường hợp",
+            "Lỗi thường gặp: thấy hai vòng for lồng nhau là kết luận ngay O(n^2)"
+          ],
+          "blocks": [
+            {
+              "id": "do-phuc-tap-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ký hiệu tiệm cận",
+              "md": "Cho $f,g:\\mathbb{N}\\to\\mathbb{R}^+$. $f(n)=O(g(n))$ nếu tồn tại hằng số $c>0$ và $n_0$ sao cho $f(n)\\le c\\,g(n)$ với mọi $n\\ge n_0$. Đây là cận trên. $f(n)=\\Omega(g(n))$ nếu $f(n)\\ge c\\,g(n)$ với mọi $n\\ge n_0$. Đây là cận dưới. $f(n)=\\Theta(g(n))$ nếu đồng thời $f=O(g)$ và $f=\\Omega(g)$, tức $c_1g(n)\\le f(n)\\le c_2g(n)$ với $n$ đủ lớn. Đây là cận chặt.",
+              "audio": null
+            },
+            {
+              "id": "do-phuc-tap-b2",
+              "kind": "text",
+              "md": "Khi ước lượng tiệm cận, bỏ hằng số và giữ số hạng trội: $O(3n^2)=O(n^2)$, $O(n^2+n\\log n+100)=O(n^2)$. Hai đoạn nối tiếp thì cộng chi phí: $O(f)+O(g)=O(\\max(f,g))$; hai vòng lồng nhau thì nhân: $O(f)\\cdot O(g)=O(f\\cdot g)$. Thứ bậc: $O(1)<O(\\log n)<O(\\sqrt n)<O(n)<O(n\\log n)<O(n^2)<O(n^3)<O(2^n)<O(n!)$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "do-phuc-tap-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-phuc-tap-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đoạn code sau có độ phức tạp thời gian là gì?\nfor (int i = 1; i <= n; i *= 2)\n    for (int j = 1; j <= n; j++)\n        cnt++;",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Θ(n log n)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Θ(n^2)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Θ(n)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Θ(log n)",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Vòng ngoài có ⌊log₂ n⌋+1 giá trị; vòng trong luôn chạy n lần, nên tổng là Θ(n log n).",
+                  "option_feedback": {
+                    "B": "Nhầm rằng vòng ngoài chạy n lần, nhưng i nhân đôi nên chỉ có khoảng log₂ n giá trị.",
+                    "C": "Chỉ tính vòng trong, bỏ qua vòng ngoài chạy log n lần.",
+                    "D": "Chỉ tính vòng ngoài, quên vòng trong chạy n lần."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "do-phuc-tap-b3",
+              "kind": "text",
+              "md": "Với vòng `for`, hãy viết tổng số lần thân vòng trong được thực hiện. Biến chạy cộng thêm hằng số cho số bước tỉ lệ số giá trị: `for (j = 1; j <= n; j++)` là $n$ bước, $O(n)$. Biến chạy nhân/chia cho hằng số cho $1,2,4,\\dots,2^k<n$, tức $k+1$ bước với $k=\\Theta(\\log n)$: `for (j = 1; j < n; j *= 2)` là $O(\\log n)$. Nếu vòng trong phụ thuộc vòng ngoài, lập tổng $\\sum_i(\\text{số bước theo } i)$ rồi ước lượng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "do-phuc-tap-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-phuc-tap-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với $T(n) = T(n/2) + O(1)$, định lý master cho kết quả $T(n) = \\Theta({{gap}})$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "\\log n",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "n",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "n \\log n",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "1",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "a=1, b=2 nên c=log₂1=0; f(n)=Θ(n^0) rơi vào trường hợp 2, cho T(n)=Θ(log n).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "do-phuc-tap-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Đếm bằng tổng, không đoán theo số vòng",
+              "md": "(a) `for (i=0;i<n;i++) for (j=i;j<n;j++) s+=a[j];` Vòng trong chạy $n-i$ lần, nên tổng là $\\sum_{i=0}^{n-1}(n-i)=n+(n-1)+\\dots+1=\\frac{n(n+1)}{2}=\\Theta(n^2)$.\n\n(b) `for (i=1;i<=n;i*=2) for (j=1;j<=n;j++) cnt++;` Vòng ngoài có $\\lfloor\\log_2 n\\rfloor+1$ giá trị, vòng trong luôn đúng $n$ lần và không phụ thuộc $i$. Tổng: $n\\,(\\lfloor\\log_2 n\\rfloor+1)=\\Theta(n\\log n)$.",
+              "audio": null
+            },
+            {
+              "id": "do-phuc-tap-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Định lý master",
+              "md": "Với đệ quy chia để trị, viết $T(n)=a\\,T(n/b)+f(n)$: $a$ là số lời gọi con, $n/b$ là cỡ bài con, $f(n)$ là chi phí chia và tổ hợp. Đặt $c=\\log_b a$ và so sánh $f(n)$ với $n^c$: (1) nếu $f(n)=O(n^{c-\\varepsilon})$ thì $T(n)=\\Theta(n^c)$. Chi phí bị chi phối bởi các lá; (2) nếu $f(n)=\\Theta(n^c)$ thì $T(n)=\\Theta(n^c\\log n)$. Chi phí chia đều ở mọi mức; (3) nếu $f(n)=\\Omega(n^{c+\\varepsilon})$ và $a\\,f(n/b)\\le k\\,f(n)$ với hằng $k<1$ thì $T(n)=\\Theta(f(n))$. Chi phí bị chi phối bởi nút gốc. Dạng giảm theo hiệu $T(n)=T(n-1)+f(n)$ không áp dụng định lý master; khai triển trực tiếp cho $T(n)=\\sum_{i=1}^{n} f(i)$.",
+              "audio": null
+            },
+            {
+              "id": "do-phuc-tap-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-phuc-tap-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Với $T(n) = 2T(n/2) + n^2$, định lý master cho $T(n) = \\Theta(n^k)$. Tìm $k$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "a=2, b=2 nên c=1 và f(n)=n² lớn hơn n^{1+ε}, rơi vào trường hợp 3: T(n)=Θ(n²).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "do-phuc-tap-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Luỹ thừa nhanh và chi phí chia lớn",
+              "md": "Hàm `power(x,n)` chỉ gọi đệ quy một lần cỡ $n/2$ và chi phí ngoài đệ quy là $O(1)$: $T(n)=T(n/2)+O(1)$. Có $a=1$, $b=2$, $c=\\log_2 1=0$ và $f(n)=\\Theta(n^0)$, rơi vào trường hợp 2, nên $T(n)=\\Theta(\\log n)$, khớp với $\\log_2 n+1$ mức đệ quy.\n\nVới $T(n)=2T(n/2)+n^2$, $T(1)=1$: $a=2$, $b=2$, $c=\\log_2 2=1$, $n^c=n$; vì $f(n)=n^2=\\Omega(n^{1+\\varepsilon})$ với $\\varepsilon=1$ và $2\\,(n/2)^2=n^2/2\\le \\frac12 n^2$, rơi vào trường hợp 3: $T(n)=\\Theta(n^2)$.",
+              "audio": null
+            },
+            {
+              "id": "do-phuc-tap-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Thấy hai vòng for lồng nhau là kết luận ngay $O(n^2)$",
+              "md": "Sai vì chi phí là tích số bước của hai vòng, không phải bình phương của $n$. Ở câu (b) của ví dụ trước, vòng ngoài chỉ chạy $\\lfloor\\log_2 n\\rfloor+1$ lần nên chi phí là $\\Theta(n\\log n)$, không phải $\\Theta(n^2)$. Tương tự, `for (i = 1; i*i <= n; i++)` chạy $\\lfloor\\sqrt n\\rfloor$ lần, tức $O(\\sqrt n)$. Nguyên tắc đúng: luôn viết ra tổng (hoặc tích) số bước rồi mới ước lượng tiệm cận.",
+              "audio": null
+            },
+            {
+              "id": "do-phuc-tap-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "do-phuc-tap-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu sau về độ phức tạp tiệm cận và phân tích chi phí.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu $f(n) = O(g(n))$ thì $g(n)$ được xem là cận trên tiệm cận của $f(n)$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Có thể áp dụng trực tiếp định lý master cho phương trình $T(n) = T(n-1) + n$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Thấy hai vòng for lồng nhau thì luôn kết luận ngay độ phức tạp là $O(n^2)$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Vòng lặp for (j = 1; j < n; j *= 2) có số bước tăng theo $\\Theta(\\log n)$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": "Đọc lại phần ký hiệu tiệm cận, định lý master và lỗi thường gặp khi phân tích vòng lặp.",
+                  "explanation": "$O$ là cận trên; định lý master chỉ áp dụng cho dạng chia theo thương, không áp dụng cho $T(n)=T(n-1)+f(n)$. Chi phí hai vòng lồng nhau là tích số bước của hai vòng, còn vòng nhân đôi biến chạy cho chi phí logarit.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "do-phuc-tap-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "O, Ω và Θ khác nhau ở chỗ nào?",
+                  "answer": "O là cận trên, Ω là cận dưới, Θ là cận chặt khi có cả hai.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vòng lặp có biến chạy nhân đôi mỗi bước tốn bao nhiêu?",
+                  "answer": "Khoảng logarit, vì số bước là $\\Theta(\\log n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Định lý master chia làm mấy trường hợp và dựa trên so sánh nào?",
+                  "answer": "Ba trường hợp, dựa trên so sánh $f(n)$ với $n^{\\log_b a}$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này ôn về giải thuật qua ba phần: sắp xếp, tìm kiếm và độ phức tạp. Mình sẽ đi theo đúng thứ tự đó, mỗi phần nêu ý chính và một ví dụ nhỏ, cuối cùng chốt ba điều cần nhớ.",
+          "Sắp xếp một dãy là tìm một hoán vị của dãy sao cho các phần tử không giảm. Sắp xếp tại chỗ chỉ dùng thêm bộ nhớ phụ hằng số; sắp xếp ổn định giữ nguyên thứ tự tương đối của các khóa bằng nhau. Sắp xếp dựa trên so sánh chỉ dùng phép so sánh, và mọi thuật toán loại này đều cần ít nhất ômêga của n lô-ga-rít n phép so sánh trong trường hợp xấu nhất.",
+          "Sắp xếp chọn tìm phần tử nhỏ nhất trong đoạn còn lại rồi đổi chỗ, luôn tốn n nhân với n trừ một, rồi chia hai phép so sánh, tức thê-ta của n bình phương. Sắp xếp nổi bọt so sánh các cặp kề và có thể dừng sớm nếu một lượt không có đổi chỗ. Sắp xếp chèn chèn từng phần tử vào tiền tố đã sắp, chi phí tỉ lệ với n cộng số nghịch thế, nên gần tuyến tính trên mảng gần sắp và bậc hai khi xấu nhất.",
+          "Sắp xếp trộn chia đôi, sắp xếp đệ quy rồi trộn, luôn đạt n lô-ga-rít n, ổn định nhưng cần bộ nhớ phụ tuyến tính. Sắp xếp nhanh chọn chốt và phân hoạch; trung bình đạt n lô-ga-rít n với hằng số nhỏ nên thường nhanh trong thực tế, nhưng xấu nhất là n bình phương. Sắp xếp vun đống dựng đống cực đại rồi lấy dần phần tử lớn nhất, đạt n lô-ga-rít n mọi trường hợp, tại chỗ nhưng không ổn định.",
+          "Sắp xếp đếm đếm số lần xuất hiện khi khóa là số nguyên trong miền nhỏ, chạy trong n cộng k, và khi k cùng cỡ n thì là tuyến tính. Nó nhanh hơn cận dưới vì không dùng phép so sánh; bản dùng mảng cộng dồn cho kết quả ổn định. Lỗi thường gặp là nói sắp xếp nhanh luôn nhanh hơn sắp xếp chèn: ô lớn chỉ là chi phí trung bình, xấu nhất của sắp xếp nhanh là n bình phương, còn với n nhỏ thì sắp xếp chèn thường nhanh hơn.",
+          "Tìm kiếm tuần tự duyệt lần lượt, không cần mảng có thứ tự, tốt nhất là hằng số, xấu nhất và trung bình là n. Tìm kiếm nhị phân cần mảng đã sắp, mỗi bước loại một nửa nên chi phí lô-ga-rít n; với một tỉ phần tử chỉ cần khoảng ba mươi phép so sánh. Hàm chặn dưới là vị trí đầu tiên có giá trị lớn hơn hoặc bằng x, hàm chặn trên là vị trí đầu tiên lớn hơn x, nên số phần tử bằng x là hiệu hai vị trí này.",
+          "Nhị phân trên miền đáp án dùng khi tính chất đơn điệu, ví dụ cắt gỗ: số thanh cắt được giảm khi độ dài m tăng, nên tìm m lớn nhất thỏa yêu cầu bằng nhị phân. Lỗi thường gặp là vòng lặp nhị phân bị vô hạn khi hi bằng lo cộng một mà mid bằng lo và điều kiện vẫn đúng, làm lo không đổi. Cách sửa là chọn mid làm tròn lên cho mẫu tìm giá trị lớn nhất, hoặc dùng vòng lặp với biến ans.",
+          "Độ phức tạp: ô lớn là cận trên, ômêga là cận dưới, thê-ta là cận chặt khi có cả hai. Khi ước lượng tiệm cận, bỏ hằng số và giữ số hạng trội; hai đoạn nối tiếp cộng chi phí lấy giá trị lớn hơn, hai vòng lồng nhau nhân chi phí. Vòng lặp có biến chạy nhân hoặc chia cho hằng số cho chi phí lô-ga-rít, còn biến chạy cộng hằng số cho chi phí tuyến tính.",
+          "Với đệ quy chia để trị, viết T của n bằng a lần T của n chia b cộng f của n, đặt c bằng lô-ga-rít cơ số b của a rồi so f với n mũ c: nhỏ hơn cho thê-ta n mũ c, bằng cho thê-ta n mũ c nhân lô-ga-rít n, lớn hơn và thỏa điều kiện thì cho thê-ta f của n. Ví dụ power gọi một lần cỡ n chia hai với chi phí hằng số, rơi trường hợp hai, nên là thê-ta lô-ga-rít n. Lỗi thường gặp là thấy hai vòng for lồng nhau là kết luận ngay n bình phương; thực ra vòng trong chạy từ i đến n cho n nhân n cộng một chia hai, vẫn là n bình phương, nhưng vòng ngoài nhân đôi còn vòng trong chạy đủ n lại cho n lô-ga-rít n.",
+          "Ba điều cần nhớ: thứ nhất, sắp xếp so sánh có cận dưới n lô-ga-rít n, còn sắp xếp đếm tuyến tính khi miền khóa nhỏ. Thứ hai, tìm kiếm nhị phân cần mảng đã sắp và phải giữ đúng bất biến vòng lặp để tránh vô hạn. Thứ ba, ô lớn, ômêga, thê-ta lần lượt là cận trên, cận dưới, cận chặt; ước lượng bằng cách bỏ hằng số, giữ số hạng trội và dùng định lý master cho đệ quy chia để trị."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" stroke-linecap="round" stroke-linejoin="round">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5A4BC0"/></marker><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="40" y="100" width="205" height="385" rx="20" fill="#E9E5F6"/>
+<rect x="270" y="100" width="220" height="385" rx="20" fill="#E9E5F6"/>
+<rect x="668" y="100" width="228" height="385" rx="20" fill="#E9E5F6"/>
+<rect x="55" y="125" width="175" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="285" y="125" width="190" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="380" y1="127" x2="380" y2="177" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="392" y="142" width="72" height="20" rx="5" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="683" y="125" width="198" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="55" y="197" width="175" height="54" rx="8" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="285" y="197" width="190" height="54" rx="8" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="380" y1="199" x2="380" y2="249" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="392" y="214" width="72" height="20" rx="5" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="683" y="197" width="198" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="55" y="269" width="175" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="285" y="269" width="190" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="380" y1="271" x2="380" y2="321" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="392" y="286" width="72" height="20" rx="5" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="683" y="269" width="198" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="55" y="341" width="175" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="285" y="341" width="190" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="380" y1="343" x2="380" y2="393" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="392" y="358" width="72" height="20" rx="5" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="683" y="341" width="198" height="54" rx="8" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="55" y="413" width="175" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="285" y="413" width="190" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="380" y1="415" x2="380" y2="465" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="392" y="430" width="72" height="20" rx="5" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="683" y="413" width="198" height="54" rx="8" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="525" y="200" width="110" height="170" rx="18" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="545" y1="262" x2="615" y2="262" stroke="#2B283F" stroke-width="3"/>
+<line x1="545" y1="308" x2="615" y2="308" stroke="#2B283F" stroke-width="3"/>
+<path d="M230,224 L281,224" fill="none" stroke="#5A4BC0" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M475,224 L521,224" fill="none" stroke="#5A4BC0" stroke-width="3" marker-end="url(#ar)"/>
+<path d="M635,330 L658,330 L658,368 L678,368" fill="none" stroke="#5A4BC0" stroke-width="3" marker-end="url(#ar)"/>
+<text x="50" y="82" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">Kh&#244;ng gian &#7843;o</text>
+<text x="280" y="82" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">B&#7843;ng trang</text>
+<text x="680" y="82" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">B&#7897; nh&#7899; v&#7853;t l&#253;</text>
+<text x="580" y="184" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="middle">MMU</text>
+<text x="908" y="378" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">frame</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

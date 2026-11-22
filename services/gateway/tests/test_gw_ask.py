@@ -1,4 +1,4 @@
-"""Q&A (`/api/ask`, SSE) and the Mực guide (`/api/guide`), offline: the models are mocked, content is the dev samples."""
+"""Q&A (`/api/ask`, SSE) and the guide chicken (`/api/guide`), offline: the models are mocked, content is the dev samples."""
 
 import io
 import json
@@ -14,7 +14,7 @@ from mentor_gateway.ask.llm import LLMError
 from mentor_gateway.ask.service import AskService, route_text
 
 REPO = Path(__file__).resolve().parents[3]
-GUIDES_TS = REPO / "apps" / "app" / "src" / "lib" / "guides.ts"
+GUIDES_TS = REPO / "apps" / "app" / "src" / "lang" / "guide" / "data.ts"
 
 
 class FakeLLM:
@@ -399,25 +399,25 @@ def test_empty_request_is_422(ask):
 def test_guide_uses_the_map_as_context(client, student, llm):
     client.app.state.ask = AskService(client.app.state.content, client.app.state.gw.db, client.app.state.gw.clock, llm)
     llm.script["mentor-chat"] = ["Gõ tên khóa vào ô tìm kiếm. Mặc định chỉ hiện khóa hợp lớp em!"]
-    r = client.post("/api/guide", json={"question": "Làm sao tìm khóa mới?", "lang": "vi", "screen": "courses",
-                                        "visible_keys": ["course-search", "my-courses"]})
+    r = client.post("/api/guide", json={"question": "Làm sao tìm khóa mới?", "lang": "vi", "screen": "village",
+                                        "visible_keys": ["village.chicken-market", "village.chat"]})
     assert r.status_code == 200 and r.json()["answer"].startswith("Gõ tên khóa") and "!" not in r.json()["answer"]
     _, msgs = llm.calls[0]
     ctx = json.loads(msgs[1]["content"])
-    assert ctx["visible_keys"] == ["course-search", "my-courses"] and "course-search" in ctx["guide_map"]
-    assert ctx["guide_map"]["ask"].startswith("Trò chuyện với Mực") and "ONLY questions about how to use the app" in msgs[0]["content"].replace("\n", " ")
+    assert ctx["visible_keys"] == ["village.chicken-market", "village.chat"] and "village.chicken-market" in ctx["guide_map"]
+    assert ctx["guide_map"]["village.chat"].startswith("Khung trò chuyện") and "Mực" not in msgs[0]["content"] and "guide chicken" in msgs[0]["content"] and "ONLY questions about how to use the app" in msgs[0]["content"].replace("\n", " ")
 
 
 def test_guide_without_model_answers_from_the_visible_area(client, student):
-    r = client.post("/api/guide", json={"question": "nút tìm kiếm là gì", "lang": "en", "visible_keys": ["my-courses", "course-search"]})
-    assert r.json()["answer"].startswith("Type a subject or topic")
+    r = client.post("/api/guide", json={"question": "how do I snap my homework in the chat", "lang": "en", "visible_keys": ["village.chat", "village.chicken-market"]})
+    assert r.json()["answer"].startswith("Chat: Type, snap homework")
     r = client.post("/api/guide", json={"question": "asdf", "lang": "vi"})
     assert "nhấn giữ" in r.json()["answer"]
 
 
 def test_guide_model_failure_falls_back(client, student, llm):
     client.app.state.ask = AskService(client.app.state.content, client.app.state.gw.db, client.app.state.gw.clock, llm)
-    r = client.post("/api/guide", json={"question": "settings", "lang": "en", "screen": "settings"})
+    r = client.post("/api/guide", json={"question": "settings", "lang": "en", "screen": "village"})
     assert r.status_code == 200 and r.json()["answer"].startswith("Settings:")
 
 
@@ -428,11 +428,14 @@ def test_guide_validates_input_and_requires_login(client):
 
 
 @pytest.mark.skipif(not GUIDES_TS.is_file(), reason="apps/app not checked out")
-def test_guide_map_json_matches_guides_ts():
-    body = GUIDES_TS.read_text(encoding="utf-8").split("export const GUIDES")[1].split("const strip")[0]
-    ts = {m.group(1): {"vi": m.group(2), "en": m.group(3)}
-          for m in re.finditer(r'"?([\w-]+)"?: \{\s*vi: "(.*?)",\s*en: "(.*?)",\s*\}', body, re.DOTALL)}
-    assert ts and ts == guide_mod.guide_map(), "guide_map.json is out of date: run `pnpm run guides:export` in apps/app"
+def test_guide_map_json_matches_chicken_guide_texts():
+    gm = guide_mod.guide_map()
+    ts = GUIDES_TS.read_text(encoding="utf-8")
+    titles = re.findall(r'^  G\(".*?", "(.*?)", "(.*?)", "(.*?)", "(.*?)"', ts, re.MULTILINE)
+    assert len(titles) >= 40 and len(gm) == len(titles) + 1, "guide_map.json is out of date: run `pnpm run guides:export` in apps/app"
+    texts = {v["vi"] for v in gm.values()}
+    assert all(f"{vt}: {vd}".replace('\\"', '"') in texts for vt, vd, _, _ in titles)
+    assert not any("Mực" in v["vi"] + v["en"] for v in gm.values())
 
 
 # ---------------------------------------------------------------- coming-soon placeholders in the reply text

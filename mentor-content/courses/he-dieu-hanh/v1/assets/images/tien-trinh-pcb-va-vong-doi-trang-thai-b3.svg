@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<marker id="ah" markerWidth="12" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L11,5 L0,10 Z" fill="#5A4BC0"/></marker>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="50" y="130" width="130" height="70" rx="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="115.0" y="176" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">new</text>
+<rect x="260" y="130" width="150" height="70" rx="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="335.0" y="176" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">ready</text>
+<rect x="500" y="130" width="150" height="70" rx="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<text x="575.0" y="176" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">running</text>
+<rect x="790" y="130" width="190" height="70" rx="14" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="885.0" y="176" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">terminated</text>
+<rect x="500" y="340" width="150" height="70" rx="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<text x="575.0" y="386" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">waiting</text>
+<path d="M180,165 L258,165" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M410,165 L498,165" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M575,130 C575,55 335,55 335,128" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M575,200 L575,338" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M500,375 C405,388 335,295 335,202" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<path d="M650,165 L788,165" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ah)"/>
+<text x="60" y="495" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">ready &#8594; running: b&#7897; l&#7853;p l&#7883;ch ch&#7885;n</text>
+<text x="60" y="539" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">running &#8594; ready: b&#7883; ti&#7871;m quy&#7873;n</text>
+<text x="60" y="583" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">running &#8594; waiting: y&#234;u c&#7847;u I/O ho&#7863;c ch&#7901; s&#7921; ki&#7879;n</text>
+<text x="60" y="627" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">waiting &#8594; ready: s&#7921; ki&#7879;n ho&#224;n t&#7845;t</text>
+<text x="60" y="671" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">running &#8594; terminated: g&#7885;i exit()</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

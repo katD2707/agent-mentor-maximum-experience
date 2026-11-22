@@ -8,12 +8,19 @@
 }
 :root[data-theme="dark"] { --img-dim: brightness(.82) saturate(.92); --img-dim-soft: brightness(.78) saturate(.95); --cover-bg: #2A2640; }
 
-.tile img, .thumb, .kid-tile .pic, .cover-media img, .row .media img, .ask-thumb, .sheet-cover img, .pg-thumb, .pg-chip img, .video-missing img { filter: var(--img-dim); }
+.tile img,
+.thumb,
+.kid-tile .pic,
+.row .media img,
+.video-missing img { filter: var(--img-dim); }
 .blk-image img, .q-img, .bad img { filter: var(--img-dim-soft); }
 
-.tile, .thumb, .kid-tile .pic, .cover-media, .row .media, .ask-thumb, .sheet-cover, .pg-thumb, .pg-chip img { background-color: var(--cover-bg); }
+.tile,
+.thumb,
+.kid-tile .pic,
+.row .media { background-color: var(--cover-bg); }
 .video { background: var(--cover-bg); }
-.bad img, .bad .bad-ph { background: var(--cover-bg); }
+.bad img { background: var(--cover-bg); }
 
 /* Figures drawn on white or cream (lesson images, question stems) sit on a dimmed, framed plate so they do not glare; photos are only dimmed, never inverted.
    The plate colour shows through transparent SVGs, whose ink is dark. */

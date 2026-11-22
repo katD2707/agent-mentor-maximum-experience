@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="336" rx="78" ry="12" fill="#E9E5F6"/>
+
+  <!-- the star -->
+  <path d="M200,90 L216.69,148.65 L264.65,111.01 L243.69,168.26 L304.62,166.01
+           L254,200 L304.62,233.99 L243.69,231.74 L264.65,288.99 L216.69,251.35
+           L200,310 L183.31,251.35 L135.35,288.99 L156.31,231.74 L95.38,233.99
+           L146,200 L95.38,166.01 L156.31,168.26 L135.35,111.01 L183.31,148.65 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="7"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- cheeks -->
+  <ellipse cx="166" cy="201" rx="10" ry="6.5" fill="#E8806A"/>
+  <ellipse cx="234" cy="201" rx="10" ry="6.5" fill="#E8806A"/>
+
+  <!-- eyes -->
+  <circle cx="184" cy="180" r="6.5" fill="#2B283F"/>
+  <circle cx="216" cy="180" r="6.5" fill="#2B283F"/>
+
+  <!-- smile -->
+  <path d="M186,202 Q200,218 214,202" fill="none" stroke="#2B283F"
+        stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

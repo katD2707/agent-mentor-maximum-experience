@@ -1,0 +1,2143 @@
+{
+  "schema_version": 1,
+  "course_id": "hoa-hoc-10-cau-tao-nguyen-tu-va",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g10_12",
+  "title": "Hóa học 10: Cấu tạo nguyên tử và liên kết",
+  "chapters": [
+    {
+      "id": "ch-nguyen-tu",
+      "title": "Nguyên tử",
+      "lessons": [
+        {
+          "id": "hat-co-ban",
+          "title": "Hạt cơ bản",
+          "est_minutes": 15,
+          "summary": "Nhận biết proton, neutron, electron; tính số hạt và điện tích hạt nhân từ kí hiệu nguyên tử, ion; vận dụng qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Proton, neutron, electron: điện tích và khối lượng",
+            "Kí hiệu nguyên tử với số khối A = Z + N",
+            "Nguyên tử trung hòa: số p = số e",
+            "Ion dương mất electron, ion âm nhận electron",
+            "Lỗi: không đồng nhất N = Z"
+          ],
+          "blocks": [
+            {
+              "id": "hat-co-ban-b1",
+              "kind": "text",
+              "md": "Ba loại hạt tạo nên nguyên tử: **proton** (p) mang điện tích $+1$, khối lượng $1$ amu, nằm trong hạt nhân; **neutron** (n) không mang điện, khối lượng $1$ amu, nằm trong hạt nhân; **electron** (e) mang điện tích $-1$, khối lượng $0{,}00055$ amu, chuyển động rất nhanh quanh hạt nhân. Khối lượng electron rất nhỏ nên khối lượng nguyên tử thực chất là khối lượng hạt nhân.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "hat-co-ban-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/hat-co-ban-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "961da193bf118869daf66f3143129096b15ae02ec45728a4ea3a0d38ca81e910",
+                "bytes": 2420
+              },
+              "alt": "Kí hiệu nguyên tử với A ở trên, Z ở dưới, bên trái kí hiệu X",
+              "caption": "Cách đọc kí hiệu nguyên tử",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "hat-co-ban-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hat-co-ban-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Ion $\\text{Cl}^{-}$ có bao nhiêu electron?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "17",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "18",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "19",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "35",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Cl có $Z=17$; ion $\\text{Cl}^{-}$ nhận thêm 1 electron nên có $17+1=18$ electron.",
+                  "option_feedback": {
+                    "A": "17 là số electron của nguyên tử Cl trung hòa, chưa tính việc nhận thêm 1 electron.",
+                    "C": "19 là kết quả của việc nhận 2 electron, trong khi Cl$^{-}$ chỉ nhận 1.",
+                    "D": "35 là số khối của đồng vị Cl, không phải số electron."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "hat-co-ban-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba công thức gốc",
+              "md": "$A = Z + N$, suy ra $N = A - Z$.\n\nNguyên tử trung hòa về điện: số p $=$ số e $= Z$.\n\nĐiện tích hạt nhân là $Z+$ (ví dụ $Z = 13$ thì điện tích hạt nhân là $13+$). Số khối $A$ gần đúng bằng khối lượng nguyên tử theo amu.",
+              "audio": null
+            },
+            {
+              "id": "hat-co-ban-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hat-co-ban-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Nguyên tử $^{56}_{26}\\text{Fe}$ có bao nhiêu neutron?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "26",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "30",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "56",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "82",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Số neutron $N = A - Z = 56 - 26 = 30$.",
+                  "option_feedback": {
+                    "A": "26 là số proton $Z$, không phải số neutron.",
+                    "C": "56 là số khối $A$, không phải số neutron.",
+                    "D": "82 là tổng $A+Z$, không dùng để tính số neutron."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "hat-co-ban-b4",
+              "kind": "text",
+              "md": "Với ion: ion dương (cation) **mất** electron, số e $= Z -$ số e đã mất; ví dụ $\\text{Mg}^{2+}$ có $12 - 2 = 10$ electron. Ion âm (anion) **nhận** thêm electron, số e $= Z +$ số e đã nhận; ví dụ $\\text{Cl}^{-}$ có $17 + 1 = 18$ electron. Số proton và số neutron không thay đổi khi tạo ion.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "hat-co-ban-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: $^{56}_{26}\\text{Fe}$",
+              "md": "Số proton $= Z = 26$; nguyên tử trung hòa nên số electron $= 26$.\n\nSố neutron $N = A - Z = 56 - 26 = 30$.\n\nĐiện tích hạt nhân là $26+$; khối lượng nguyên tử gần đúng $56$ amu.",
+              "audio": null
+            },
+            {
+              "id": "hat-co-ban-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hat-co-ban-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Nguyên tử $^{31}_{15}\\text{P}$ có bao nhiêu neutron trong hạt nhân?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "16"
+                    ]
+                  },
+                  "hint": "Dùng hệ thức $A = Z + N$.",
+                  "explanation": "Số neutron $N = A - Z = 31 - 15 = 16$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "hat-co-ban-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Đừng đồng nhất $N$ với $Z$",
+              "md": "Nhiều bạn nghĩ nguyên tử trung hòa thì số neutron luôn bằng số proton. Điều đó **sai**. Chỉ một số hạt nhân nhẹ như $^{12}_{6}\\text{C}$, $^{14}_{7}\\text{N}$ mới tình cờ có $N = Z$. Nói chung $N$ phải tính từ $N = A - Z$: $^{35}_{17}\\text{Cl}$ có $Z = 17$ nhưng $N = 18$.",
+              "audio": null
+            },
+            {
+              "id": "hat-co-ban-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hat-co-ban-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Trong kí hiệu nguyên tử, $A = Z + {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "N",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "e",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "p",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "$A$ là số khối, bằng tổng số proton $Z$ và số neutron $N$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "hat-co-ban-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để nguyên tử $^{56}\\text{X}$ có đúng $30$ neutron",
+              "x": {
+                "symbol": "Z",
+                "label": "Số proton",
+                "unit": "hạt"
+              },
+              "y": {
+                "symbol": "N",
+                "label": "Số neutron",
+                "unit": "hạt"
+              },
+              "expr": "56 - x",
+              "x_min": 20.0,
+              "x_max": 34.0,
+              "x_step": 1.0,
+              "x_start": 22.0,
+              "target_y": 30.0,
+              "tolerance": 0.1,
+              "praise": "Chuẩn! $^{56}_{26}\\text{Fe}$ có 26 proton và 30 neutron.",
+              "audio": null
+            },
+            {
+              "id": "hat-co-ban-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hat-co-ban-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi hạt hoặc kí hiệu với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Proton",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "điện tích +1, khối lượng 1 amu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Neutron",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "không mang điện, khối lượng 1 amu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Electron",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "điện tích -1, khối lượng rất nhỏ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Số khối A",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "A = Z + N",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Proton và neutron nằm trong hạt nhân; electron nhẹ hơn rất nhiều; số khối $A = Z + N$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "hat-co-ban-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Nguyên tử trung hòa về điện thì số p và số e liên hệ thế nào?",
+                  "answer": "Số e bằng số p, cùng bằng $Z$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Từ kí hiệu nguyên tử, tính số neutron bằng cách nào?",
+                  "answer": "$N = A - Z$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nguyên tử tạo ion, loại hạt nào thay đổi số lượng?",
+                  "answer": "Chỉ electron thay đổi; proton và neutron giữ nguyên.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cau-hinh-electron",
+          "title": "Cấu hình electron",
+          "est_minutes": 15,
+          "summary": "Viết cấu hình electron theo mức năng lượng rồi sắp xếp theo lớp; từ cấu hình suy ra chu kì, nhóm, tính chất; kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Số electron tối đa: s 2, p 6, d 10, f 14",
+            "Thứ tự điền: 1s 2s 2p 3s 3p 4s 3d...",
+            "Nguyên lí Pauli và quy tắc Hund",
+            "Số lớp electron = chu kì; electron ngoài cùng = nhóm A",
+            "Lỗi: chép thứ tự điền khi viết kết quả"
+          ],
+          "blocks": [
+            {
+              "id": "cau-hinh-electron-b1",
+              "kind": "text",
+              "md": "Cấu hình electron là cách viết sự phân bố electron theo các lớp và phân lớp. Mỗi phân lớp chỉ chứa tối đa một số electron nhất định, tùy loại $s, p, d, f$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cau-hinh-electron-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Thứ tự điền electron",
+              "md": "Số e tối đa: $s$ 2, $p$ 6, $d$ 10, $f$ 14.\nĐiền theo mức năng lượng: $1s\\,2s\\,2p\\,3s\\,3p\\,4s\\,3d\\dots$",
+              "audio": null
+            },
+            {
+              "id": "cau-hinh-electron-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cau-hinh-electron-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo nguyên lí Pauli, mỗi orbital nguyên tử chứa tối đa bao nhiêu electron?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "1 electron",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "2 electron",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "6 electron",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "10 electron",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Nguyên lí Pauli: mỗi orbital chỉ chứa tối đa 2 electron.",
+                  "option_feedback": {
+                    "A": "Nhầm với số electron độc thân tối thiểu, không phải giới hạn của một orbital.",
+                    "C": "Nhầm với số electron tối đa của phân lớp p.",
+                    "D": "Nhầm với số electron tối đa của phân lớp d."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cau-hinh-electron-b3",
+              "kind": "text",
+              "md": "Nguyên lí Pauli: mỗi orbital chứa tối đa 2 electron. Quy tắc Hund: trong cùng một phân lớp, electron xếp vào các orbital sao cho số electron độc thân là lớn nhất.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cau-hinh-electron-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cau-hinh-electron-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cấu hình electron nào sau đây được viết đúng quy ước cho nguyên tử Fe (Z = 26)?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$1s^2 2s^2 2p^6 3s^2 3p^6 3d^6 4s^2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$1s^2 2s^2 2p^6 3s^2 3p^6 4s^2 3d^6$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$1s^2 2s^2 2p^6 3s^2 3p^6 3d^8 4s^2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$1s^2 2s^2 2p^6 3s^2 3p^6 3d^5 4s^2$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Điền đủ 26 electron theo mức năng lượng rồi xếp lại theo lớp tăng dần: 3d đứng trước 4s.",
+                  "option_feedback": {
+                    "B": "Đây là thứ tự điền electron, chưa viết lại theo thứ tự lớp từ trong ra ngoài.",
+                    "C": "Sai số electron ở phân lớp 3d: tổng cấu hình này là 28 electron, không đúng Z = 26.",
+                    "D": "Thiếu 1 electron ở phân lớp 3d: tổng cấu hình này là 25 electron, không đúng Z = 26."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cau-hinh-electron-b4",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Không chép nguyên thứ tự điền",
+              "md": "Thứ tự $4s$ trước $3d$ chỉ dùng để điền electron. Khi viết cấu hình, phải xếp theo lớp từ trong ra ngoài: $1s\\,2s\\,2p\\,3s\\,3p\\,3d\\,4s\\dots$",
+              "audio": null
+            },
+            {
+              "id": "cau-hinh-electron-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Fe ($Z = 26$)",
+              "md": "Điền 26 electron theo mức năng lượng:\n$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,4s^2\\,3d^6$\nViết lại theo lớp:\n$1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^6\\,3d^6\\,4s^2$\nCó 4 lớp $\\Rightarrow$ chu kì 4. Tổng electron $3d$ và $4s$ là $6+2=8$ $\\Rightarrow$ nhóm VIIIB. Có 2 electron lớp ngoài cùng $\\Rightarrow$ Fe là kim loại.",
+              "audio": null
+            },
+            {
+              "id": "cau-hinh-electron-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cau-hinh-electron-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Nguyên tử Y có tổng số hạt proton, neutron, electron là 34; số hạt mang điện nhiều hơn số hạt không mang điện là 10. Số khối A của Y là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "23"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Từ $2Z + N = 34$ và $2Z - N = 10$ suy ra $Z = 11$, $N = 12$, nên $A = 23$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cau-hinh-electron-b6",
+              "kind": "text",
+              "md": "Số lớp electron = chu kì. Với nhóm A, số electron lớp ngoài cùng = số thứ tự nhóm; nhóm B xét tổng electron của $ns$ và $(n-1)d$. Lớp ngoài cùng 1, 2, 3: kim loại (trừ H, He); 5, 6, 7: phi kim; 8: khí hiếm; 4: có thể kim loại hoặc phi kim.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cau-hinh-electron-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cau-hinh-electron-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Cấu hình electron của Ne (Z = 10) là $1s^2 2s^2 2p^{{gap}}$, nên Ne có {{gap}} electron ở lớp ngoài cùng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "6",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "8",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "10",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tổng số electron là $2+2+6=10$; lớp ngoài cùng gồm $2s^2 2p^6$ nên có 8 electron.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cau-hinh-electron-b7",
+              "kind": "text",
+              "md": "X có lớp ngoài cùng $3s^2\\,3p^5$: cấu hình đầy đủ là $1s^2\\,2s^2\\,2p^6\\,3s^2\\,3p^5$, tổng 17 electron nên $Z=17$. Có 3 lớp nên thuộc chu kì 3; 7 electron lớp ngoài cùng nên nhóm VIIA và là phi kim.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cau-hinh-electron-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cau-hinh-electron-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi phân lớp với số electron tối đa tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$s$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "2 electron",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$p$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "6 electron",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$d$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "10 electron",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$f$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "14 electron",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Số electron tối đa của các phân lớp là s 2, p 6, d 10, f 14.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cau-hinh-electron-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Số electron tối đa của phân lớp s, p, d, f?",
+                  "answer": "s 2, p 6, d 10, f 14.",
+                  "image": null
+                },
+                {
+                  "prompt": "Sau khi điền theo mức năng lượng, phải viết cấu hình theo thứ tự nào?",
+                  "answer": "Theo lớp từ trong ra ngoài, ví dụ 3d đứng trước 4s.",
+                  "image": null
+                },
+                {
+                  "prompt": "Từ cấu hình electron suy ra chu kì và nhóm A thế nào?",
+                  "answer": "Số lớp = chu kì; số electron lớp ngoài cùng = số thứ tự nhóm A.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dong-vi",
+          "title": "Đồng vị",
+          "est_minutes": 15,
+          "summary": "Hiểu đồng vị và tính nguyên tử khối trung bình từ phần trăm số nguyên tử; giải bài toán tìm phần trăm đồng vị; có ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Đồng vị: cùng Z, khác N hoặc A",
+            "Công thức nguyên tử khối trung bình theo phần trăm",
+            "Phần trăm số nguyên tử xấp xỉ phần trăm số mol",
+            "Lỗi: lấy trung bình cộng khi tỉ lệ không 1 : 1",
+            "Áp dụng cho Cl, Cu, Br, B, H"
+          ],
+          "blocks": [
+            {
+              "id": "dong-vi-b2",
+              "kind": "text",
+              "md": "Đồng vị là những nguyên tử có cùng số proton ($Z$) nhưng khác số neutron, nên khác số khối $A$. Hiđro có $^{1}_{1}\\text{H}$, $^{2}_{1}\\text{H}$ (đơteri) và $^{3}_{1}\\text{H}$ (triti). Các đồng vị có tính chất hóa học giống nhau vì lớp electron giống nhau.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-vi-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-vi-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đồng vị là những nguyên tử có đặc điểm nào sau đây?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cùng số proton, khác số neutron",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Cùng số neutron, khác số proton",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Cùng số proton và số neutron, khác số khối",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Cùng số khối, khác số proton",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Đồng vị có cùng $Z$ (cùng nguyên tố) nhưng khác $N$, do đó khác $A$.",
+                  "option_feedback": {
+                    "B": "Sai: đồng vị giữ nguyên số proton, không phải số neutron.",
+                    "C": "Sai: cùng $Z$ và $N$ thì $A$ cũng bằng nhau.",
+                    "D": "Sai: định nghĩa đồng vị dựa trên cùng $Z$, không dựa trên cùng $A$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dong-vi-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức nguyên tử khối trung bình",
+              "md": "$\\bar{A} = \\dfrac{a_1 A_1 + a_2 A_2 + \\dots}{100}$, với $a_1+a_2+\\dots=100$ (%). Phần trăm số nguyên tử xấp xỉ phần trăm số mol.",
+              "audio": null
+            },
+            {
+              "id": "dong-vi-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: clo",
+              "md": "Clo tự nhiên gồm $75{,}77\\%$ $^{35}\\text{Cl}$ và $24{,}23\\%$ $^{37}\\text{Cl}$. $\\bar{A}_{\\text{Cl}}=\\dfrac{75{,}77\\cdot35+24{,}23\\cdot37}{100}\\approx35{,}49$ amu, làm tròn $35{,}5$ amu.",
+              "audio": null
+            },
+            {
+              "id": "dong-vi-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-vi-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Nguyên tử khối trung bình của clo là bao nhiêu amu, biết clo tự nhiên gồm $75,77\\%$ $^{35}\\text{Cl}$ và $24,23\\%$ $^{37}\\text{Cl}$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "35,49",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "36,00",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "35,00",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "37,00",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Áp dụng $\\bar{A}=\\dfrac{75,77\\cdot35+24,23\\cdot37}{100}\\approx35,49$.",
+                  "option_feedback": {
+                    "B": "Sai vì lấy trung bình cộng $35$ và $37$ khi tỉ lệ hai đồng vị không phải $1:1$.",
+                    "C": "Sai vì bỏ qua đồng vị $^{37}\\text{Cl}$.",
+                    "D": "Sai vì chỉ dùng số khối của đồng vị $^{37}\\text{Cl}$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dong-vi-b5",
+              "kind": "text",
+              "md": "Nếu biết $\\bar{A}$ và hai đồng vị, gọi $x$ là % số nguyên tử của đồng vị thứ nhất, đồng vị kia là $100-x$, rồi giải phương trình. Với Cu: $\\dfrac{63x+65(100-x)}{100}=63{,}54$ cho $x=73$, tức $^{63}\\text{Cu}$ chiếm $73\\%$ và $^{65}\\text{Cu}$ chiếm $27\\%$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-vi-b6",
+              "kind": "interactive",
+              "prompt": "Kéo để nguyên tử khối trung bình của Cu bằng 63,54 amu",
+              "x": {
+                "symbol": "x",
+                "label": "Phần trăm 63Cu",
+                "unit": "%"
+              },
+              "y": {
+                "symbol": "A",
+                "label": "Nguyên tử khối trung bình",
+                "unit": "amu"
+              },
+              "expr": "(63*x+65*(100-x))/100",
+              "x_min": 0.0,
+              "x_max": 100.0,
+              "x_step": 1.0,
+              "x_start": 40.0,
+              "target_y": 63.54,
+              "tolerance": 0.01,
+              "praise": "Chính xác: 63Cu chiếm 73%, 65Cu chiếm 27%.",
+              "audio": null
+            },
+            {
+              "id": "dong-vi-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-vi-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Brom tự nhiên gồm $50,69\\%$ $^{79}\\text{Br}$ và $49,31\\%$ $^{81}\\text{Br}$. Tính nguyên tử khối trung bình của brom, đơn vị amu.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "79,9862",
+                      "79.9862",
+                      "79,99",
+                      "79.99"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "Áp dụng $\\bar{A}=\\dfrac{50,69\\cdot79+49,31\\cdot81}{100}\\approx79,99$ amu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dong-vi-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Không lấy trung bình cộng $\\dfrac{35+37}{2}=36$ cho clo: hai đồng vị không có số nguyên tử bằng nhau. Chỉ được lấy trung bình cộng khi tỉ lệ số nguyên tử của chúng là $1:1$.",
+              "audio": null
+            },
+            {
+              "id": "dong-vi-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-vi-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Điền vào chỗ trống trong công thức nguyên tử khối trung bình: $\\bar{A} = \\dfrac{a_1 A_1 + a_2 A_2 + \\dots}{{gap}}$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "100",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "1",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "50",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Vì $a_1,a_2,\\dots$ là phần trăm số nguyên tử nên phải chia cho $100$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dong-vi-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đồng vị khác nhau ở đại lượng nào?",
+                  "answer": "Cùng Z nhưng khác N, do đó khác A.",
+                  "image": null
+                },
+                {
+                  "prompt": "Công thức tính nguyên tử khối trung bình?",
+                  "answer": "$\\bar{A}=\\dfrac{a_1A_1+a_2A_2+\\dots}{100}$ với $a_i$ là % số nguyên tử.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào được lấy trung bình cộng các số khối?",
+                  "answer": "Khi tỉ lệ số nguyên tử của các đồng vị là 1:1.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về nguyên tử, gồm ba phần: các hạt cơ bản, cấu hình electron và đồng vị. Trọng tâm là cách tính số hạt, cách viết cấu hình và cách tính nguyên tử khối trung bình.",
+          "Trước hết, nguyên tử được tạo nên từ proton, neutron và electron. Proton mang điện tích dương một, khối lượng một amu và nằm trong hạt nhân; neutron không mang điện, khối lượng một amu và cũng nằm trong hạt nhân; electron mang điện tích âm một, khối lượng rất nhỏ, chỉ khoảng 0,00055 amu, và chuyển động rất nhanh quanh hạt nhân. Vì electron quá nhẹ nên khối lượng nguyên tử thực chất là khối lượng hạt nhân.",
+          "Với kí hiệu nguyên tử, số khối A bằng số proton Z cộng số neutron N, nên N bằng A trừ Z. Nguyên tử trung hòa về điện thì số proton bằng số electron và bằng Z; điện tích hạt nhân là Z cộng. Số khối A gần đúng bằng khối lượng nguyên tử tính theo amu.",
+          "Khi tạo ion, số proton và số neutron không đổi, chỉ số electron thay đổi. Ion dương mất electron nên số electron bằng Z trừ số electron đã mất, ví dụ ion magie hai cộng có mười hai trừ hai bằng mười electron; ion âm nhận thêm electron nên số electron bằng Z cộng số electron đã nhận, ví dụ ion clorua có mười bảy cộng một bằng mười tám electron. Đừng mặc định số neutron bằng số proton: với clo ba mươi lăm có Z bằng mười bảy thì N bằng ba mươi lăm trừ mười bảy, tức mười tám, chứ không bằng Z.",
+          "Sang cấu hình electron, đây là cách viết sự phân bố electron theo các lớp và phân lớp. Mỗi phân lớp chỉ chứa tối đa một số electron: s là hai, p là sáu, d là mười, f là mười bốn. Điền electron theo mức năng lượng một s, hai s, hai p, ba s, ba p, bốn s, ba d; nguyên lí Pauli nói mỗi orbital chứa tối đa hai electron, còn quy tắc Hund nói trong cùng một phân lớp phải xếp sao cho số electron độc thân là lớn nhất.",
+          "Cần phân biệt thứ tự điền với thứ tự viết kết quả. Thứ tự bốn s trước ba d chỉ dùng để điền electron; khi viết cấu hình phải xếp theo lớp từ trong ra ngoài. Ví dụ với hai mươi sáu electron, điền theo mức năng lượng là một s hai, hai s hai, hai p sáu, ba s hai, ba p sáu, bốn s hai, ba d sáu; nhưng viết lại theo lớp thành một s hai, hai s hai, hai p sáu, ba s hai, ba p sáu, ba d sáu, bốn s hai.",
+          "Từ cấu hình, số lớp electron cho biết chu kì. Với nhóm A, số electron lớp ngoài cùng bằng số thứ tự nhóm; với nhóm B thì xét tổng electron của phân lớp n s và phân lớp n trừ một d. Ví dụ một nguyên tử có lớp ngoài cùng ba s hai ba p năm thì cấu hình đầy đủ có tổng mười bảy electron nên Z bằng mười bảy, có ba lớp nên thuộc chu kì ba, có bảy electron lớp ngoài cùng nên thuộc nhóm bảy A và là phi kim.",
+          "Đồng vị là những nguyên tử có cùng số proton Z nhưng khác số neutron, nên khác số khối A. Hiđro có ba đồng vị là hiđro một, hiđro hai còn gọi là đơteri, và hiđro ba còn gọi là triti. Các đồng vị có tính chất hóa học giống nhau vì lớp electron giống nhau.",
+          "Nguyên tử khối trung bình bằng tổng của phần trăm số nguyên tử từng đồng vị nhân với số khối tương ứng, rồi chia cho một trăm; phần trăm số nguyên tử xấp xỉ phần trăm số mol. Ví dụ clo tự nhiên có bảy mươi lăm phẩy bảy mươi bảy phần trăm clo ba mươi lăm và hai mươi bốn phẩy hai mươi ba phần trăm clo ba mươi bảy, nên trung bình khoảng ba mươi lăm phẩy bốn chín, làm tròn ba mươi lăm phẩy năm amu. Nếu biết trung bình và hai đồng vị, gọi x là phần trăm đồng vị thứ nhất, đồng vị kia là một trăm trừ x rồi giải phương trình; với đồng, giải ra đồng vị sáu mươi ba chiếm bảy mươi ba phần trăm và đồng vị sáu mươi lăm chiếm hai mươi bảy phần trăm. Không được lấy trung bình cộng ba mươi lăm và ba mươi bảy chia hai bằng ba mươi sáu, vì hai đồng vị không có tỉ lệ số nguyên tử bằng nhau; chỉ lấy trung bình cộng khi tỉ lệ là một chia một.",
+          "Ba điều cần nhớ là, thứ nhất, nguyên tử trung hòa có số proton bằng số electron bằng Z, số neutron tính bằng A trừ Z, và khi tạo ion chỉ electron thay đổi. Thứ hai, điền electron theo thứ tự năng lượng nhưng viết cấu hình theo lớp, số lớp là chu kì, số electron lớp ngoài cùng cho nhóm A. Thứ ba, đồng vị cùng Z khác N hoặc A, nguyên tử khối trung bình phải tính theo phần trăm chứ không lấy trung bình cộng, trừ khi tỉ lệ là một chia một."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-bang-tuan-hoan-va-lien-ket",
+      "title": "Bảng tuần hoàn và liên kết",
+      "lessons": [
+        {
+          "id": "quy-luat-tuan-hoan",
+          "title": "Quy luật tuần hoàn",
+          "est_minutes": 15,
+          "summary": "Liên hệ cấu hình electron với ô, chu kì, nhóm; vận dụng quy luật biến đổi bán kính, độ âm điện, tính kim loại, phi kim, tính acid-base; kèm ví dụ, lỗi thường gặp và luyện tập.",
+          "key_ideas": [
+            "Ô = Z; chu kì = số lớp; nhóm A = electron ngoài cùng",
+            "Trong chu kì trái sang phải: bán kính giảm, độ âm điện tăng",
+            "Trong nhóm A trên xuống: bán kính tăng, tính kim loại tăng",
+            "Hóa trị cao nhất với oxi = số thứ tự nhóm A",
+            "Lỗi: nói bán kính tăng trong một chu kì"
+          ],
+          "blocks": [
+            {
+              "id": "quy-luat-tuan-hoan-b1",
+              "kind": "text",
+              "md": "Số thứ tự ô nguyên tố = $Z$ = số proton = số electron. Số thứ tự chu kì = số lớp electron. Với nguyên tố nhóm A, số thứ tự nhóm = số electron ở lớp ngoài cùng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/quy-luat-tuan-hoan-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "f70896b3cf03efd8c5d7b19d1e4d39b06db7716c35464c06c4f7f744a1071c48",
+                "bytes": 3139
+              },
+              "alt": "Sơ đồ quy luật biến đổi bán kính, độ âm điện, tính kim loại trong chu kì và nhóm A",
+              "caption": "Xu hướng biến đổi trong bảng tuần hoàn",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-luat-tuan-hoan-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong một chu kì, khi đi từ trái sang phải, bán kính nguyên tử và độ âm điện biến đổi như thế nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Bán kính giảm, độ âm điện tăng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Bán kính tăng, độ âm điện giảm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Bán kính tăng, độ âm điện tăng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Bán kính giảm, độ âm điện giảm",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Trong chu kì từ trái sang phải, $Z$ tăng nên hạt nhân hút lớp vỏ mạnh hơn: bán kính giảm và độ âm điện tăng.",
+                  "option_feedback": {
+                    "B": "Áp dụng nhầm quy luật của nhóm A cho chu kì.",
+                    "C": "Sai ở bán kính: trong chu kì bán kính giảm, không tăng.",
+                    "D": "Sai ở độ âm điện: trong chu kì độ âm điện tăng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b3",
+              "kind": "text",
+              "md": "Trong một chu kì từ trái sang phải: bán kính nguyên tử giảm; độ âm điện tăng; tính kim loại giảm, tính phi kim tăng; tính base của oxide và hydroxide giảm, tính acid tăng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b4",
+              "kind": "text",
+              "md": "Trong một nhóm A từ trên xuống: bán kính nguyên tử tăng vì thêm lớp electron; độ âm điện giảm; tính kim loại tăng, tính phi kim giảm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-luat-tuan-hoan-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Nguyên tố có cấu hình electron $1s^22s^22p^63s^23p^5$ thuộc ô, chu kì và nhóm nào sau đây?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Ô 17, chu kì 3, nhóm VIIA",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Ô 17, chu kì 3, nhóm VA",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Ô 17, chu kì 7, nhóm VIIA",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Ô 35, chu kì 3, nhóm VIIA",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Có 17 electron nên ở ô 17; có 3 lớp electron nên chu kì 3; có 7 electron lớp ngoài cùng nên nhóm VIIA.",
+                  "option_feedback": {
+                    "B": "Chỉ đếm electron phân lớp $3p$ làm electron lớp ngoài cùng.",
+                    "C": "Nhầm số electron lớp ngoài cùng thành số chu kì.",
+                    "D": "Cộng nhầm số electron của các phân lớp."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức cần nhớ",
+              "md": "Hóa trị cao nhất với oxi = số thứ tự nhóm A. Với phi kim nhóm IVA–VIIA: hóa trị với hiđro = $8 -$ số thứ tự nhóm. Oxide cao nhất có dạng $\\mathrm{R_2O_n}$ hoặc $\\mathrm{RO_n}$; hydroxide tương ứng là $\\mathrm{R(OH)_n}$ hoặc $\\mathrm{H_nRO_{n/2}}$.",
+              "audio": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: so sánh Na ($Z=11$) và O ($Z=8$)",
+              "md": "Na: $1s^22s^22p^63s^1$ → ô 11, chu kì 3, nhóm IA. O: $1s^22s^22p^4$ → ô 8, chu kì 2, nhóm VIA. Na có 3 lớp electron, O có 2 lớp nên bán kính Na > O. Độ âm điện: O (3,44) > Na (0,93).",
+              "audio": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-luat-tuan-hoan-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Nguyên tố X ở chu kì 3, nhóm VIA. Số hiệu nguyên tử $Z$ của X bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "16"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "X là lưu huỳnh, có cấu hình $1s^22s^22p^63s^23p^4$, nên $Z=16$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Viết “trong một chu kì, bán kính nguyên tử tăng dần từ trái sang phải” là sai. Trong một chu kì, các nguyên tử có cùng số lớp electron, nhưng $Z$ tăng nên hạt nhân hút lớp vỏ mạnh hơn, do đó bán kính giảm dần. Chỉ trong một nhóm A từ trên xuống, bán kính mới tăng vì thêm lớp electron.",
+              "audio": null
+            },
+            {
+              "id": "quy-luat-tuan-hoan-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-luat-tuan-hoan-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Hóa trị cao nhất với oxi của nguyên tố nhóm VIA bằng {{gap}}; hóa trị với hiđro của phi kim nhóm VIA bằng {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "6",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "8",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "4",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nhóm VIA có hóa trị cao nhất với O bằng 6; hóa trị với H của phi kim nhóm VIA bằng $8-6=2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "quy-luat-tuan-hoan-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Số thứ tự ô, chu kì và nhóm A cho biết gì?",
+                  "answer": "Ô = $Z$; chu kì = số lớp electron; nhóm A = số electron lớp ngoài cùng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trong một chu kì từ trái sang phải, bán kính và độ âm điện biến đổi thế nào?",
+                  "answer": "Bán kính giảm, độ âm điện tăng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trong một nhóm A từ trên xuống, tính kim loại và bán kính biến đổi thế nào?",
+                  "answer": "Tính kim loại tăng; bán kính nguyên tử tăng do thêm lớp electron.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lien-ket-ion",
+          "title": "Liên kết ion",
+          "est_minutes": 15,
+          "summary": "Hình thành liên kết ion qua nhường nhận electron, phân loại theo hiệu độ âm điện, tính chất tinh thể ion; có ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Kim loại nhường electron tạo cation",
+            "Phi kim nhận electron tạo anion",
+            "Liên kết ion: lực hút tĩnh điện giữa ion trái dấu",
+            "Δχ ≥ 1,7: liên kết ion",
+            "Lỗi: coi NaCl là phân tử riêng lẻ"
+          ],
+          "blocks": [
+            {
+              "id": "lien-ket-ion-b1",
+              "kind": "text",
+              "md": "Kim loại điển hình (nhóm IA, IIA) có ít electron lớp ngoài cùng nên **nhường** electron tạo cation: $\\mathrm{Na} \\rightarrow \\mathrm{Na^+} + 1e$; $\\mathrm{Mg} \\rightarrow \\mathrm{Mg^{2+}} + 2e$. Phi kim điển hình (VIA, VIIA) **nhận** electron tạo anion: $\\mathrm{Cl} + 1e \\rightarrow \\mathrm{Cl^-}$; $\\mathrm{O} + 2e \\rightarrow \\mathrm{O^{2-}}$. Cả hai đều nhằm đạt cấu hình 8 electron lớp ngoài cùng bền của khí hiếm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lien-ket-ion-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Định nghĩa và ngưỡng phân loại",
+              "md": "Liên kết ion là **lực hút tĩnh điện giữa ion dương (cation) và ion âm (anion)**. Dựa vào hiệu độ âm điện $\\Delta\\chi$: $\\Delta\\chi \\ge 1{,}7$ → liên kết ion; $0{,}4 \\le \\Delta\\chi < 1{,}7$ → cộng hóa trị phân cực; $\\Delta\\chi < 0{,}4$ → cộng hóa trị không phân cực.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-ion-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-ion-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Dựa vào hiệu độ âm điện, chất nào sau đây KHÔNG phải là hợp chất ion? (Cho χ: Na 0,93; Mg 1,31; K 0,82; H 2,20; O 3,44; Cl 3,16)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "NaCl",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "MgO",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "HCl",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "KCl",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Tính Δχ rồi so với mốc 1,7.",
+                  "explanation": "HCl có Δχ = 3,16 − 2,20 = 0,96, nằm trong khoảng 0,4 ≤ Δχ < 1,7 nên là liên kết cộng hóa trị phân cực.",
+                  "option_feedback": {
+                    "A": "Δχ = 3,16 − 0,93 = 2,23 ≥ 1,7 nên NaCl là hợp chất ion.",
+                    "B": "Δχ = 3,44 − 1,31 = 2,13 ≥ 1,7 nên MgO là hợp chất ion.",
+                    "D": "Δχ = 3,16 − 0,82 = 2,34 ≥ 1,7 nên KCl là hợp chất ion."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-ion-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "MgO: nhường – nhận 2 electron",
+              "md": "Mg (2/8/2) nhường 2e thành $\\mathrm{Mg^{2+}}$ (2/8); O (2/6) nhận 2e thành $\\mathrm{O^{2-}}$ (2/8). Hai ion hút nhau: $\\mathrm{Mg^{2+}} + \\mathrm{O^{2-}} \\rightarrow \\mathrm{MgO}$. Kiểm tra: $\\Delta\\chi = 3{,}44 - 1{,}31 = 2{,}13 \\ge 1{,}7$ → đúng là liên kết ion.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-ion-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-ion-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Phát biểu nào sau đây đúng về tinh thể NaCl?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Tinh thể NaCl gồm các phân tử NaCl riêng lẻ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Mỗi ion Na+ được bao quanh bởi 6 ion Cl− và ngược lại.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "NaCl dẫn điện ở thể rắn vì trong mạng lưới có ion.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Công thức NaCl cho biết một phân tử gồm 1 nguyên tử Na và 1 nguyên tử Cl.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Trong tinh thể ion không có phân tử riêng lẻ.",
+                  "explanation": "Hợp chất ion tạo mạng lưới liên tục, mỗi ion Na+ được bao quanh bởi 6 ion Cl− và ngược lại. Công thức NaCl chỉ cho biết tỉ lệ số ion Na+ : Cl− = 1 : 1.",
+                  "option_feedback": {
+                    "A": "Hợp chất ion tạo mạng lưới liên tục, mỗi ion Na+ được bao quanh bởi 6 ion Cl− và ngược lại. Công thức NaCl chỉ cho biết tỉ lệ số ion Na+ : Cl− = 1 : 1.",
+                    "C": "Hợp chất ion tạo mạng lưới liên tục, mỗi ion Na+ được bao quanh bởi 6 ion Cl− và ngược lại. Công thức NaCl chỉ cho biết tỉ lệ số ion Na+ : Cl− = 1 : 1.",
+                    "D": "Hợp chất ion tạo mạng lưới liên tục, mỗi ion Na+ được bao quanh bởi 6 ion Cl− và ngược lại. Công thức NaCl chỉ cho biết tỉ lệ số ion Na+ : Cl− = 1 : 1."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-ion-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/lien-ket-ion-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "5c2ffda96dab54cf75faf3587a00733a232119de7abf5b99432cf402f7ec897a",
+                "bytes": 8155
+              },
+              "alt": "Mô hình tinh thể NaCl dạng lập phương với các ion Na+ và Cl- xen kẽ",
+              "caption": "Tinh thể NaCl: mạng lưới ion liên tục, không có phân tử riêng lẻ",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "lien-ket-ion-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-ion-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các phát biểu sau về liên kết ion.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Liên kết ion là lực hút tĩnh điện giữa ion dương (cation) và ion âm (anion)."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nguyên tử phi kim điển hình nhường electron để tạo thành anion."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Hợp chất ion thường rắn ở điều kiện thường, nhiệt độ nóng chảy cao và giòn."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Liên kết trong HCl (Δχ = 0,96) được xếp vào loại liên kết ion."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Phi kim điển hình nhận electron tạo anion, còn HCl có Δχ = 0,96 < 1,7 nên là liên kết cộng hóa trị phân cực.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-ion-b5",
+              "kind": "text",
+              "md": "Lực hút tĩnh điện trong mạng rất mạnh nên hợp chất ion **rắn ở điều kiện thường, nhiệt độ nóng chảy và nhiệt độ sôi cao, giòn, tan nhiều trong nước**. Chúng dẫn điện khi nóng chảy hoặc khi tan trong nước, vì lúc đó các ion chuyển động tự do.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lien-ket-ion-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-ion-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tính hiệu độ âm điện Δχ của liên kết K–Cl, biết χ(K) = 0,82 và χ(Cl) = 3,16.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "2,34",
+                      "2.34"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Lấy độ âm điện lớn trừ độ âm điện nhỏ.",
+                  "explanation": "Δχ = 3,16 − 0,82 = 2,34, lớn hơn 1,7 nên KCl là hợp chất ion.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-ion-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Không có “phân tử NaCl”",
+              "md": "Viết “nguyên tử Na kết hợp với nguyên tử Cl tạo thành phân tử NaCl” là **sai**. Trong tinh thể NaCl, mỗi ion $\\mathrm{Na^+}$ được 6 ion $\\mathrm{Cl^-}$ bao quanh và ngược lại, tạo mạng lưới ion liên tục; công thức NaCl chỉ cho biết tỉ lệ $\\mathrm{Na^+} : \\mathrm{Cl^-} = 1 : 1$.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-ion-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-ion-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Nguyên tử Na nhường {{gap}} electron tạo ion $\\mathrm{Na^+}$; nguyên tử O nhận {{gap}} electron tạo ion $\\mathrm{O^{2-}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "1",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "3",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "8",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Na có 1 electron lớp ngoài cùng nên nhường 1e; O có 6 electron lớp ngoài cùng nên nhận 2e để đạt 8 electron bền như khí hiếm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-ion-b7",
+              "kind": "interactive",
+              "prompt": "Kéo độ âm điện của X để $\\Delta\\chi$ (so với Cl, $\\chi = 3{,}16$) đạt đúng 1,70 — ngưỡng bắt đầu có liên kết ion",
+              "x": {
+                "symbol": "\\chi_X",
+                "label": "Độ âm điện của X",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "\\Delta\\chi",
+                "label": "Hiệu độ âm điện với Cl",
+                "unit": ""
+              },
+              "expr": "3.16 - x",
+              "x_min": 0.7,
+              "x_max": 3.0,
+              "x_step": 0.01,
+              "x_start": 2.2,
+              "target_y": 1.7,
+              "tolerance": 0.02,
+              "praise": "Chính xác! $\\Delta\\chi = 1{,}70$ — từ đây trở lên là liên kết ion.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-ion-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-ion-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi nội dung ở cột trái với nội dung tương ứng ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Kim loại điển hình",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "nhường electron tạo cation",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Phi kim điển hình",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "nhận electron tạo anion",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$\\Delta\\chi \\ge 1{,}7$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "liên kết ion",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$0{,}4 \\le \\Delta\\chi < 1{,}7$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "cộng hóa trị phân cực",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Kim loại nhường electron, phi kim nhận electron; hiệu độ âm điện từ 1,7 trở lên ứng với liên kết ion, từ 0,4 đến dưới 1,7 ứng với cộng hóa trị phân cực.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-ion-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Kim loại và phi kim làm gì để tạo thành ion?",
+                  "answer": "Kim loại nhường electron tạo cation, phi kim nhận electron tạo anion, nhằm đạt cấu hình bền của khí hiếm.",
+                  "image": null
+                },
+                {
+                  "prompt": "Liên kết ion là gì?",
+                  "answer": "Là lực hút tĩnh điện giữa ion dương và ion âm.",
+                  "image": null
+                },
+                {
+                  "prompt": "Dựa vào đâu để kết luận một hợp chất là hợp chất ion?",
+                  "answer": "Tính hiệu độ âm điện: $\\Delta\\chi \\ge 1{,}7$ thì là liên kết ion.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lien-ket-cong-hoa-tri",
+          "title": "Liên kết cộng hóa trị",
+          "est_minutes": 15,
+          "summary": "Nhận biết liên kết cộng hóa trị đơn, đôi, ba và phân cực/không phân cực; viết công thức electron, công thức cấu tạo và xác định hóa trị; kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Liên kết cộng hóa trị: cặp electron dùng chung",
+            "Liên kết đơn, đôi, ba tương ứng 1, 2, 3 cặp electron",
+            "Δχ < 0,4: không phân cực; 0,4 ≤ Δχ < 1,7: phân cực",
+            "Hóa trị = số liên kết cộng hóa trị",
+            "Lỗi: cho HCl là hợp chất ion vì tan trong nước dẫn điện"
+          ],
+          "blocks": [
+            {
+              "id": "lien-ket-cong-hoa-tri-b1",
+              "kind": "text",
+              "md": "**Liên kết cộng hóa trị** là liên kết giữa hai nguyên tử bằng một hay nhiều **cặp electron dùng chung**. Cặp electron này nằm giữa hai nguyên tử.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b2",
+              "kind": "text",
+              "md": "Theo số cặp electron dùng chung: **liên kết đơn** có 1 cặp, kí hiệu $-$; **liên kết đôi** có 2 cặp, kí hiệu $=$; **liên kết ba** có 3 cặp, kí hiệu $\\equiv$. Ví dụ phân tử $\\mathrm{N_2}$ có công thức cấu tạo $\\mathrm{N}\\equiv\\mathrm{N}$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-cong-hoa-tri-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Liên kết cộng hóa trị được tạo thành giữa hai nguyên tử bằng",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "một hay nhiều cặp electron dùng chung.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "lực hút tĩnh điện giữa các ion trái dấu.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "sự chuyển hẳn electron từ nguyên tử này sang nguyên tử kia.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "lực hút giữa các phân tử trong chất lỏng.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Cặp electron chung nằm giữa hai nguyên tử.",
+                  "explanation": "Liên kết cộng hóa trị hình thành nhờ một hay nhiều cặp electron được hai nguyên tử dùng chung.",
+                  "option_feedback": {
+                    "B": "Đó là bản chất của liên kết ion, không phải liên kết cộng hóa trị.",
+                    "C": "Chuyển hẳn electron là quá trình tạo ion, không tạo cặp electron dùng chung.",
+                    "D": "Đó là tương tác giữa các phân tử, không phải liên kết trong phân tử."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Phân cực và hóa trị",
+              "md": "$\\Delta\\chi = 0$ hoặc $\\Delta\\chi < 0{,}4$: cộng hóa trị **không phân cực** (cặp electron nằm giữa hai nguyên tử).\n\n$0{,}4 \\le \\Delta\\chi < 1{,}7$: cộng hóa trị **phân cực** (cặp electron lệch về phía nguyên tử có độ âm điện lớn hơn).\n\nHóa trị của một nguyên tử trong hợp chất cộng hóa trị bằng **số liên kết cộng hóa trị** mà nguyên tử đó tạo",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-cong-hoa-tri-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Biết độ âm điện: H 2,20; Cl 3,16. Phát biểu nào sau đây đúng về HCl?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "HCl là hợp chất ion vì dung dịch HCl dẫn điện.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Liên kết trong phân tử HCl là cộng hóa trị phân cực, cặp electron lệch về phía Cl.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Liên kết trong phân tử HCl là cộng hóa trị không phân cực.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "HCl dẫn điện khi tan trong nước chứng tỏ phân tử HCl có liên kết ion.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Δχ = 3,16 − 2,20 = 0,96 nên HCl có liên kết cộng hóa trị phân cực, cặp electron lệch về phía Cl. Dẫn điện là tính chất của dung dịch, không phải của phân tử.",
+                  "option_feedback": {
+                    "A": "Nhầm tính chất của dung dịch với bản chất liên kết trong phân tử.",
+                    "C": "Δχ = 0,96 nằm trong khoảng 0,4 đến 1,7 nên liên kết phân cực.",
+                    "D": "Dòng điện trong dung dịch do các ion sinh ra khi phân li, không phải bằng chứng về liên kết trong phân tử."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: viết công thức của CO₂",
+              "md": "C có 4 electron lớp ngoài cùng, mỗi O có 6. Mỗi O góp 2 electron, C góp 2 electron cho mỗi liên kết → tạo 2 liên kết đôi.\n\nCông thức electron: $\\mathrm{O}::\\mathrm{C}::\\mathrm{O}$ (mỗi O còn 2 cặp electron riêng).\n\nCông thức cấu tạo: $\\mathrm{O}=\\mathrm{C}=\\mathrm{O}$.\n\nHóa trị: C là 4, O là 2.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/lien-ket-cong-hoa-tri-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "7855a5e09b7750e6ef3b14ad9be6f5f3a56b10b9e9b3c098a06ed09461a17625",
+                "bytes": 3065
+              },
+              "alt": "Mô hình dạng hình học của CO₂, H₂O và CH₄",
+              "caption": "Dạng hình học phân tử quan sát rõ nhất trên mô hình không gian xoay được.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-cong-hoa-tri-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tính hiệu độ âm điện Δχ của liên kết H–Br, biết độ âm điện của H là 2,20 và của Br là 2,96.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "0,76",
+                      "0.76"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Lấy độ âm điện của Br trừ độ âm điện của H.",
+                  "explanation": "Δχ = 2,96 − 2,20 = 0,76, nằm trong khoảng 0,4 đến 1,7 nên đây là liên kết cộng hóa trị phân cực.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b6",
+              "kind": "interactive",
+              "prompt": "Kéo cho $\\Delta\\chi = 0{,}96$ – trường hợp nguyên tử H liên kết với Cl",
+              "x": {
+                "symbol": "χ",
+                "label": "Độ âm điện của nguyên tử kia",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "Δχ",
+                "label": "Hiệu độ âm điện",
+                "unit": ""
+              },
+              "expr": "sqrt((3.16-x)^2)",
+              "x_min": 1.0,
+              "x_max": 3.16,
+              "x_step": 0.01,
+              "x_start": 1.5,
+              "target_y": 0.96,
+              "tolerance": 0.01,
+              "praise": "Δχ = 0,96 < 1,7 → liên kết cộng hóa trị phân cực, cặp electron dùng chung lệch về phía Cl.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-cong-hoa-tri-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Mỗi nguyên tử N (Z = 7) có {{gap}} electron lớp ngoài cùng; để có 8 electron, mỗi nguyên tử N góp chung {{gap}} electron, tạo ra liên kết {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "5",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "3",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "ba",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "7",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "đôi",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "N có 5 electron lớp ngoài cùng, góp chung 3 electron với nguyên tử N kia tạo 3 cặp electron dùng chung, tức liên kết ba.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Cho rằng “HCl tan trong nước dẫn điện nên HCl là hợp chất ion”. **Sai.** Phân tử HCl được tạo bởi liên kết cộng hóa trị phân cực ($\\Delta\\chi = 3{,}16 - 2{,}20 = 0{,}96$). Khi tan vào nước, HCl mới phân li thành $\\mathrm{H^+}$ (thực chất là $\\mathrm{H_3O^+}$) và $\\mathrm{Cl^-}$; dẫn điện là tính chất của **dung dịch**, không phải bằng chứng về bản chất liên kết trong phân tử.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-cong-hoa-tri-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Liên kết đơn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "1 cặp electron dùng chung",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Liên kết đôi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "2 cặp electron dùng chung",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Liên kết ba",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "3 cặp electron dùng chung",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Δχ = 0",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "cộng hóa trị không phân cực",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Số cặp electron dùng chung quyết định liên kết đơn, đôi, ba; hai nguyên tử giống nhau có Δχ = 0 nên liên kết không phân cực.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-cong-hoa-tri-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Liên kết cộng hóa trị hình thành nhờ cái gì?",
+                  "answer": "Nhờ một hay nhiều cặp electron dùng chung giữa hai nguyên tử.",
+                  "image": null
+                },
+                {
+                  "prompt": "Δχ bằng bao nhiêu thì liên kết là phân cực?",
+                  "answer": "0,4 ≤ Δχ < 1,7; còn Δχ < 0,4 là không phân cực và Δχ ≥ 1,7 là liên kết ion.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hóa trị của một nguyên tử trong hợp chất cộng hóa trị tính thế nào?",
+                  "answer": "Bằng số liên kết cộng hóa trị mà nguyên tử đó tạo ra.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về bảng tuần hoàn và liên kết hóa học, gồm quy luật tuần hoàn, liên kết ion và liên kết cộng hóa trị.",
+          "Trong bảng tuần hoàn, số thứ tự ô nguyên tố bằng số proton, cũng bằng số electron. Số thứ tự chu kì bằng số lớp electron. Với nguyên tố nhóm A, số thứ tự nhóm bằng số electron ở lớp ngoài cùng. Ví dụ, Na có 11 proton, 11 electron, 3 lớp electron và 1 electron lớp ngoài cùng, nên ở ô 11, chu kì 3, nhóm IA. O có 8 proton, 8 electron, 2 lớp electron và 6 electron lớp ngoài cùng, nên ở ô 8, chu kì 2, nhóm VIA.",
+          "Trong một chu kì, từ trái sang phải, bán kính nguyên tử giảm dần, độ âm điện tăng dần. Tính kim loại giảm, tính phi kim tăng. Tính base của oxide và hydroxide giảm, tính acid tăng. Vì các nguyên tử cùng số lớp electron nhưng số proton tăng, hạt nhân hút lớp vỏ mạnh hơn nên bán kính giảm; do đó nói bán kính tăng trong một chu kì là sai.",
+          "Trong một nhóm A, từ trên xuống, bán kính nguyên tử tăng vì thêm lớp electron. Độ âm điện giảm, tính kim loại tăng, tính phi kim giảm. Hóa trị cao nhất với oxi bằng số thứ tự nhóm A. Với phi kim nhóm IVA đến VIIA, hóa trị với hiđro bằng 8 trừ số thứ tự nhóm.",
+          "Liên kết ion hình thành khi kim loại điển hình nhường electron tạo cation, còn phi kim điển hình nhận electron tạo anion. Cả hai đều nhằm đạt cấu hình 8 electron lớp ngoài cùng bền của khí hiếm. Liên kết ion là lực hút tĩnh điện giữa ion dương và ion âm. Dựa vào hiệu độ âm điện, nếu lớn hơn hoặc bằng 1,7 thì đó là liên kết ion.",
+          "Ví dụ, Mg có 2 electron lớp ngoài cùng nên nhường 2 electron thành ion Mg hai cộng. O có 6 electron lớp ngoài cùng nên nhận 2 electron thành ion O hai trừ. Hiệu độ âm điện giữa O và Mg là 3,44 trừ 1,31 bằng 2,13, lớn hơn 1,7, nên MgO có liên kết ion. Hợp chất ion thường rắn ở điều kiện thường, nhiệt độ nóng chảy và nhiệt độ sôi cao, giòn, tan nhiều trong nước, dẫn điện khi nóng chảy hoặc tan trong nước. Lưu ý, NaCl không phải là phân tử riêng lẻ mà là mạng lưới ion, mỗi ion Na cộng được 6 ion Cl trừ bao quanh và ngược lại.",
+          "Liên kết cộng hóa trị là liên kết giữa hai nguyên tử bằng một hay nhiều cặp electron dùng chung. Liên kết đơn có 1 cặp electron, liên kết đôi có 2 cặp, liên kết ba có 3 cặp. Nếu hiệu độ âm điện nhỏ hơn 0,4 thì cộng hóa trị không phân cực; từ 0,4 đến dưới 1,7 thì cộng hóa trị phân cực. Hóa trị của một nguyên tử trong hợp chất cộng hóa trị bằng số liên kết cộng hóa trị mà nguyên tử đó tạo ra.",
+          "Ví dụ, trong phân tử cacbon đioxit, C có 4 electron lớp ngoài cùng, mỗi O có 6 electron. Mỗi O góp 2 electron, C góp 2 electron cho mỗi liên kết, tạo thành 2 liên kết đôi. Công thức cấu tạo có dạng O bằng C bằng O, hóa trị của C là 4, của O là 2. Cần nhớ, HCl tan trong nước dẫn điện nhưng HCl là liên kết cộng hóa trị phân cực, hiệu độ âm điện là 0,96, không phải hợp chất ion; dẫn điện là tính chất của dung dịch, không phải bằng chứng về bản chất liên kết trong phân tử.",
+          "Ba điều cần nhớ: thứ nhất, trong một chu kì bán kính nguyên tử giảm dần từ trái sang phải, còn trong một nhóm A bán kính tăng dần từ trên xuống. Thứ hai, liên kết ion là lực hút tĩnh điện giữa ion trái dấu, thường có hiệu độ âm điện lớn hơn hoặc bằng 1,7. Thứ ba, liên kết cộng hóa trị là cặp electron dùng chung, phân cực khi hiệu độ âm điện từ 0,4 đến dưới 1,7."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

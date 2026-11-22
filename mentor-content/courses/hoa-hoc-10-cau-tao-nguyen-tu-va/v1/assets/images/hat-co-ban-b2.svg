@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="Lexend, sans-serif" stroke-linecap="round" stroke-linejoin="round">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#5A4BC0"/></marker>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="386" y="208" width="238" height="270" rx="30" fill="#F0D76E"/>
+<text x="460" y="262" font-size="62" text-anchor="end" fill="#5A4BC0" font-weight="600">A</text>
+<text x="460" y="466" font-size="62" text-anchor="end" fill="#5A4BC0" font-weight="600">Z</text>
+<text x="474" y="404" font-size="172" text-anchor="start" fill="#5A4BC0" font-weight="700">X</text>
+<line x1="330" y1="158" x2="402" y2="220" stroke="#5A4BC0" stroke-width="3.5" marker-end="url(#ar)"/>
+<line x1="300" y1="560" x2="400" y2="474" stroke="#5A4BC0" stroke-width="3.5" marker-end="url(#ar)"/>
+<line x1="660" y1="182" x2="616" y2="240" stroke="#5A4BC0" stroke-width="3.5" marker-end="url(#ar)"/>
+<line x1="650" y1="562" x2="602" y2="424" stroke="#5A4BC0" stroke-width="3.5" marker-end="url(#ar)"/>
+<text x="300" y="150" font-size="30" text-anchor="end" fill="#5A4BC0" font-weight="600" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">A &#8211; s&#7889; kh&#7889;i</text>
+<text x="80" y="600" font-size="28" text-anchor="start" fill="#5A4BC0" font-weight="600" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Z &#8211; s&#7889; proton, c&#361;ng l&#224; s&#7889;</text>
+<text x="80" y="642" font-size="28" text-anchor="start" fill="#5A4BC0" font-weight="600" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#273;&#417;n v&#7883; &#273;i&#7879;n t&#237;ch h&#7841;t nh&#226;n</text>
+<text x="640" y="160" font-size="27" text-anchor="start" fill="#5A4BC0" font-weight="600" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">N = A &#8722; Z &#8211; s&#7889; neutron</text>
+<text x="660" y="600" font-size="28" text-anchor="start" fill="#5A4BC0" font-weight="600" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">X &#8211; k&#237; hi&#7879;u nguy&#234;n t&#7889;</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

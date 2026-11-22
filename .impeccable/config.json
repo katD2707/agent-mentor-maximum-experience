@@ -4,6 +4,16 @@
     "ignoreFiles": [
       "packages/mentor-mascot/demo.html"
     ],
-    "ignoreValues": []
+    "ignoreValues": [
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "mentor/mockups/lg-04-bai-hoc.html"
+        ],
+        "createdAt": "2026-11-22T03:11:25.480Z",
+        "reason": "Agent: the wooden lesson board framing a calm reading sheet is the intended Làng gà layout"
+      }
+    ]
   }
 }

@@ -30,7 +30,6 @@ ENV VITE_API_BASE=$VITE_API_BASE VITE_API_MOCK= APPIMAGE_EXTRACT_AND_RUN=1 NO_ST
 
 COPY apps/app/package.json apps/app/pnpm-lock.yaml apps/app/
 RUN pnpm -C apps/app install --frozen-lockfile
-COPY packages/mentor-mascot packages/mentor-mascot
 COPY apps/app apps/app
 # prebuild writes the guide map for the gateway; the gateway is not in this image, so give it somewhere to land
 RUN mkdir -p services/gateway/src/mentor_gateway/ask

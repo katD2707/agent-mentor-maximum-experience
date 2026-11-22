@@ -14,6 +14,8 @@ function seed(birth: number, scenario?: "full" | "empty" | "searching", sources?
   localStorage.setItem("mentor.mock.users", JSON.stringify({ hocsinh: { password: "123456", user: { id: "u-hs", role: "student", username: "hocsinh", display_name: "Lan", age_band: null, birth_year: birth, language: "vi", theme: "system", quiet_until: null } } }));
   localStorage.setItem("mentor.token", "mock-u-hs");
   localStorage.setItem("mentor.lang", "vi");
+  // a chicken to start with, so the village opens (a student with none is sent to the chooser)
+  localStorage.setItem("mentor.mock.lg.u-hs", JSON.stringify({ chickens: [{ id: birth <= 2007 ? "khmt" : "toan", xp: 0, taken_at: "2026-11-01T00:00:00Z" }] }));
   if (sources) localStorage.setItem("mentor.mock.research.sources", JSON.stringify(sources));
   resetMockResearch(scenario);
 }
@@ -39,23 +41,33 @@ beforeEach(async () => {
   researchPoll.ms = 20;
 });
 
-describe("band guard and the research entry on Today", () => {
-  it("shows the research topic in the course strip to the university band only", async () => {
+describe("band guard and the old research addresses", () => {
+  it("the Library is for the university band: the old address lands there, with the chicken's corner and the ribbon", async () => {
     seed(UNI);
-    open("/");
-    const link = await screen.findByRole("link", { name: /Đề tài của bạn/ });
-    expect(link).toHaveAttribute("href", "/nghien-cuu");
-  });
-  it("hides it from everyone else and sends them back to Today from the research routes", async () => {
-    seed(2010);
     open("/nghien-cuu");
-    expect(await screen.findByRole("log", { name: "Trò chuyện với Mực" })).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /Đề tài của bạn/ })).toBeNull();
+    expect(await screen.findByRole("heading", { name: "Thư viện" })).toBeInTheDocument();
+    expect(await screen.findByRole("link", { name: "Về làng" })).toHaveAttribute("href", "/");
   });
-  it("opens a paper by its deep link for the university band", async () => {
+  it("hides it from everyone else and sends them back to the village from the Library routes", async () => {
+    seed(2010);
+    localStorage.setItem("mentor.mock.lg.u-hs", JSON.stringify({ chickens: [{ id: "toan", xp: 0, taken_at: "2026-11-01T00:00:00Z" }] }));
+    open("/thu-vien");
+    expect(await screen.findByRole("log", { name: "Trò chuyện với gà" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Thư viện" })).toBeNull();
+  });
+  it("opens a paper by its address, and by the old research address, for the university band", async () => {
     seed(UNI);
+    const first = open("/thu-vien/paper/p-2601.08832");
+    expect(await screen.findByRole("heading", { name: /Equivariant Message Passing/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Bàn đọc" })).toBeInTheDocument();
+    first.unmount();
     open("/nghien-cuu/paper/p-2601.08832");
     expect(await screen.findByRole("heading", { name: /Equivariant Message Passing/ })).toBeInTheDocument();
+  });
+  it("the chicken says what fits the state: ask for the topic when there is none", async () => {
+    seed(UNI, "empty");
+    open("/thu-vien");
+    expect(await screen.findByText("Em nghiên cứu gì? Nói một câu thôi, mình đi tìm paper.")).toBeInTheDocument();
   });
 });
 
@@ -63,20 +75,20 @@ describe("home states", () => {
   it("empty: asks for the topic, then shows the topic-saved state while Mentor searches", async () => {
     seed(UNI, "empty");
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     expect(await screen.findByRole("heading", { name: "Đề tài của bạn?" })).toBeInTheDocument();
     expect(screen.queryByRole("search")).toBeNull();
     await ui.type(screen.getByLabelText("Đề tài"), "mạng nơ-ron đồ thị cho vật liệu");
     await ui.click(screen.getByRole("button", { name: "Bắt đầu" }));
     expect(await screen.findByRole("heading", { name: "Đã ghi đề tài" })).toBeInTheDocument();
-    expect(screen.getByText(/Đang tìm paper đầu tiên/)).toBeInTheDocument();
+    expect((await screen.findAllByText(/Đang tìm paper đầu tiên/)).length).toBeGreaterThan(0); // the chicken bubble and the board may both say it
   });
   it("full: four chapters in tabs; Reading first, dots on the tabs, arrow keys, the tab is remembered", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    const view = open("/nghien-cuu");
-    expect(await screen.findByRole("link", { name: "Đọc tiếp" })).toHaveAttribute("href", "/nghien-cuu/paper/p-2601.08832");
-    const tabs = screen.getByRole("tablist", { name: "Các phần của Nghiên cứu" });
+    const view = open("/thu-vien");
+    expect(await screen.findByRole("link", { name: "Đọc tiếp" })).toHaveAttribute("href", "/thu-vien/paper/p-2601.08832");
+    const tabs = screen.getByRole("tablist", { name: "Các phần của Thư viện" });
     expect(within(tabs).getAllByRole("tab").map((t) => t.textContent?.replace(/\d+ paper mới|Hạn nộp còn \d+ ngày/, ""))).toEqual(["Đọc", "Lịch", "Thí nghiệm", "Đề tài"]);
     expect(screen.getByRole("tab", { name: /^Đọc/ })).toHaveAttribute("aria-selected", "true");
     expect(screen.getByRole("tab", { name: /^Đọc/ })).toHaveTextContent(/paper mới/);
@@ -94,12 +106,12 @@ describe("home states", () => {
     await ui.keyboard("{End}");
     expect(screen.getByRole("tabpanel", { name: "Đề tài" })).toHaveTextContent("Mốc luận văn");
     view.unmount();
-    open("/nghien-cuu");
+    open("/thu-vien");
     expect(await screen.findByRole("tab", { name: /^Đề tài/ })).toHaveAttribute("aria-selected", "true");
   });
   it("searching: the banner shows above the board, with skeleton cards", async () => {
     seed(UNI, "searching");
-    open("/nghien-cuu");
+    open("/thu-vien");
     expect(await screen.findByText(/Mentor đang tìm/)).toBeInTheDocument();
     expect(document.querySelectorAll(".rs-skel").length).toBe(2);
     expect(screen.getByRole("link", { name: "Đọc tiếp" })).toBeInTheDocument();
@@ -107,7 +119,7 @@ describe("home states", () => {
   it("accepts and dismisses a suggestion, and changes a reading-list status", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await screen.findByText(/A Benchmark of Data-Efficient/);
     await ui.click(within(entry(/A Benchmark of Data-Efficient/)).getByRole("button", { name: "Thêm" }));
     await waitFor(() => expect(within(entry(/A Benchmark of Data-Efficient/)).queryByRole("button", { name: "Bỏ qua" })).toBeNull());
@@ -120,7 +132,7 @@ describe("home states", () => {
   it("adds a deadline by text, and says so when the date cannot be read", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await goTab(ui, "Lịch");
     await ui.click(await screen.findByRole("button", { name: "Thêm hạn" }));
     await ui.type(screen.getByLabelText("Hạn mới"), "gửi báo cáo");
@@ -134,7 +146,7 @@ describe("home states", () => {
   it("opens the agenda and saves the two boxes", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await goTab(ui, "Lịch");
     await ui.click(await screen.findByRole("button", { name: "Xem agenda" }));
     expect(await screen.findByText("Chạy lại baseline trên bộ dữ liệu B")).toBeInTheDocument();
@@ -148,7 +160,7 @@ describe("experiment log", () => {
   it("logs a run and keeps the composer inside its card", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await goTab(ui, "Thí nghiệm");
     const box = await screen.findByLabelText("Thí nghiệm vừa chạy");
     const card = box.closest(".rs-card");
@@ -171,7 +183,7 @@ describe("search", () => {
   it("arXiv only: cards have no citations and no TL;DR", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await ui.type(await screen.findByRole("textbox", { name: "Tìm paper" }), "graph network{Enter}");
     await screen.findByText(/Learning Formation Energies from Fewer/);
     expect(screen.getByRole("button", { name: /^Độ sâu tìm: Nhanh/ })).toBeInTheDocument(); // no key: only the arXiv level
@@ -183,7 +195,7 @@ describe("search", () => {
   it("with Semantic Scholar: citations and TL;DR; with Asta: full-text snippets", async () => {
     seed(UNI, "full", { s2: true, asta: true });
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await ui.type(await screen.findByRole("textbox", { name: "Tìm paper" }), "graph network{Enter}");
     await screen.findByText(/Graph Contrastive Pretraining/);
     expect(screen.getAllByText(/Trích dẫn \d+ lần/).length).toBeGreaterThan(0);
@@ -202,7 +214,7 @@ describe("search", () => {
   it("depth picker: starts at the deepest level with a key, a lower level leaves the source out, keyboard works", async () => {
     seed(UNI, "full", { s2: true });
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await ui.type(await screen.findByRole("textbox", { name: "Tìm paper" }), "graph network{Enter}");
     await screen.findByText(/Graph Contrastive Pretraining/);
     expect(screen.getAllByText("TL;DR · Semantic Scholar").length).toBeGreaterThan(0);
@@ -225,7 +237,7 @@ describe("search", () => {
   it("filters by year and PDF, and adds a result to the list", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await ui.type(await screen.findByRole("textbox", { name: "Tìm paper" }), "graph{Enter}");
     await screen.findByText(/Message Passing Networks for Materials/);
     await ui.click(screen.getByRole("button", { name: "Năm nay" }));
@@ -237,7 +249,7 @@ describe("search", () => {
   it("quick review: working state, then the table with its caveat and follow-ups", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     await ui.type(await screen.findByRole("textbox", { name: "Tìm paper" }), "graph{Enter}");
     await screen.findByText(/Message Passing Networks for Materials/);
     await ui.click(screen.getByRole("button", { name: "Tổng quan nhanh" }));
@@ -257,7 +269,7 @@ describe("source key dialog", () => {
   it("empty, invalid, checking, success and connected states, with a focus trap and Esc", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu");
+    open("/thu-vien");
     const depthBtn = await screen.findByRole("button", { name: /^Độ sâu tìm: Nhanh/ });
     await ui.click(depthBtn);
     await ui.click(screen.getByRole("menuitemradio", { name: /Kỹ.*Cần key/ }));
@@ -309,7 +321,7 @@ describe("source key dialog", () => {
     const ui = userEvent.setup();
     open("/");
     await ui.click(await screen.findByRole("button", { name: /Cài đặt|Settings/ }));
-    expect(screen.getByText("Nguồn tìm paper")).toBeInTheDocument();
+    expect(screen.getByText("Tìm paper kỹ hơn (tùy chọn)")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Thêm Asta" }));
     expect(await screen.findByRole("dialog", { name: "Thêm Asta" })).toBeInTheDocument();
   });
@@ -318,7 +330,7 @@ describe("source key dialog", () => {
     const ui = userEvent.setup();
     open("/");
     await ui.click(await screen.findByRole("button", { name: /Cài đặt|Settings/ }));
-    expect(screen.queryByText("Nguồn tìm paper")).toBeNull();
+    expect(screen.queryByText("Tìm paper kỹ hơn (tùy chọn)")).toBeNull();
   });
 });
 
@@ -326,7 +338,7 @@ describe("paper reader", () => {
   it("summary first: no feedback until the learner writes, then the rows in order", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu/paper/p-2601.08832");
+    open("/thu-vien/paper/p-2601.08832");
     await screen.findByRole("heading", { name: /Equivariant Message Passing/ });
     expect(screen.queryByText("Góp ý")).toBeNull();
     const go = screen.getByRole("button", { name: "Xem góp ý" });
@@ -348,7 +360,7 @@ describe("paper reader", () => {
   it("answers with a cited passage, and says plainly when it finds none", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    open("/nghien-cuu/paper/p-2601.08832");
+    open("/thu-vien/paper/p-2601.08832");
     const ask = await screen.findByLabelText("Hỏi về bài này");
     await ui.type(ask, "Họ có báo độ lệch chuẩn qua nhiều seed không?{Enter}");
     expect(await screen.findByText(/Mình không tìm thấy đoạn nào nói về điều này/)).toBeInTheDocument();
@@ -361,12 +373,12 @@ describe("paper reader", () => {
   it("related papers: invites Semantic Scholar without a key, shows both tabs with one", async () => {
     seed(UNI);
     const ui = userEvent.setup();
-    const first = open("/nghien-cuu/paper/p-2601.08832");
+    const first = open("/thu-vien/paper/p-2601.08832");
     expect(await screen.findByText("Thêm Semantic Scholar để xem bài trích dẫn và được trích dẫn")).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /Trích dẫn bài này/ })).toBeNull();
     first.unmount();
     seed(UNI, "full", { s2: true });
-    open("/nghien-cuu/paper/p-2601.08832");
+    open("/thu-vien/paper/p-2601.08832");
     const tab = await screen.findByRole("button", { name: "Trích dẫn bài này (14)" });
     expect(screen.getByText(/Calibrated Uncertainty for Graph/)).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Bài này trích dẫn (38)" }));

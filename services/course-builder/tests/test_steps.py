@@ -278,3 +278,42 @@ def test_ask_json_asks_again_after_an_empty_reply():
 
     assert ask_json(Flaky(), "s", "u", retries=1) == {"ok": True}
     assert Flaky.calls == 2
+
+
+def test_json_reply_with_code_fences_inside_strings():
+    from mentor_course_builder.jsonparse import parse_model_json
+
+    body = '{"blocks": [{"kind": "text", "md": "Ví dụ:\n```sql\nSELECT * FROM hoc_sinh;\n```\nXong."}]}'
+    assert parse_model_json(body)["blocks"][0]["md"].startswith("Ví dụ:")
+    fenced = "```json\n" + body + "\n```"
+    assert "SELECT" in parse_model_json(fenced)["blocks"][0]["md"]
+    assert parse_model_json('Here you go:\n```json\n{"a": 1}\n```')["a"] == 1
+
+
+def test_paren_math_becomes_dollar_math():
+    from mentor_course_builder.gen import dollar_math
+    from mentor_course_builder.verify import katex_problems
+
+    out = dollar_math({"md": "Hàm \(f(x)=x^2\) liên tục: \[\lim_{x\to a} f(x) = f(a)\]", "n": 3, "l": ["\(a\)"]})
+    assert out["md"] == "Hàm $f(x)=x^2$ liên tục: $$\lim_{x\to a} f(x) = f(a)$$" and out["l"] == ["$a$"] and out["n"] == 3
+    assert katex_problems(out["md"]) == []
+    assert dollar_math("re.compile(r'\(')") == "re.compile(r'\(')"  # a lone \( is not math
+
+
+def test_prices_are_escaped_only_when_dollars_do_not_pair_up():
+    from mentor_course_builder.gen import dollar_math
+    from mentor_course_builder.verify import katex_problems
+
+    s = dollar_math("The ticket costs $15 and the bag $3.")
+    assert s == "The ticket costs \$15 and the bag \$3." and katex_problems(s) == []
+    one = dollar_math("It costs $15.")
+    assert one == "It costs \$15." and katex_problems(one) == []
+    math = "Let $x = 2$ and $y = 3$."
+    assert dollar_math(math) == math  # balanced: left alone
+
+
+def test_formulas_starting_with_a_number_stay_math():
+    from mentor_course_builder.gen import dollar_math
+
+    for m in ("Ta có $2x + 3 = 7$ nên $x = 2$.", "Diện tích $3 \cdot 4 = 12$ cm².", "$$2^{10} = 1024$$"):
+        assert dollar_math(m) == m

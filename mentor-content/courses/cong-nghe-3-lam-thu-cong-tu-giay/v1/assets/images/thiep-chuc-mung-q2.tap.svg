@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper background -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- stem -->
+  <path d="M200 240 C202 280 198 312 200 342" fill="none" stroke="#5A4BC0"
+        stroke-width="9" stroke-linecap="round"/>
+
+  <!-- left leaf -->
+  <path d="M200 296 C182 276 158 274 148 284 C156 301 184 306 200 296 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M200 296 L157 286" fill="none" stroke="#2B283F" stroke-width="2"
+        opacity="0.35" stroke-linecap="round"/>
+
+  <!-- right leaf -->
+  <path d="M200 318 C218 298 242 296 252 306 C244 323 216 328 200 318 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M200 318 L243 308" fill="none" stroke="#2B283F" stroke-width="2"
+        opacity="0.35" stroke-linecap="round"/>
+
+  <!-- outer petals (8) -->
+  <g fill="#E8806A" stroke="#5A4BC0" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(0)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(45)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(90)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(135)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(180)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(225)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(270)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(315)"/>
+  </g>
+
+  <!-- paper fold creases on outer petals -->
+  <g stroke="#5A4BC0" stroke-width="2.2" opacity="0.26" stroke-linecap="round">
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(0)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(45)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(90)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(135)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(180)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(225)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(270)"/>
+    <path d="M0 -12 L0 -84" transform="translate(200 160) rotate(315)"/>
+  </g>
+
+  <!-- inner petals (8, offset) -->
+  <g fill="#F0D76E" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round">
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(22.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(67.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(112.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(157.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(202.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(247.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(292.5) scale(0.6)"/>
+    <path d="M0 0 C-27 -13 -34 -52 0 -94 C34 -52 27 -13 0 0 Z" transform="translate(200 160) rotate(337.5) scale(0.6)"/>
+  </g>
+
+  <!-- flower heart -->
+  <circle cx="200" cy="160" r="30" fill="#5A4BC0"/>
+  <circle cx="217" cy="160" r="3.6" fill="#E9E5F6"/>
+  <circle cx="208.5" cy="174.7" r="3.6" fill="#E9E5F6"/>
+  <circle cx="191.5" cy="174.7" r="3.6" fill="#E9E5F6"/>
+  <circle cx="183" cy="160" r="3.6" fill="#E9E5F6"/>
+  <circle cx="191.5" cy="145.3" r="3.6" fill="#E9E5F6"/>
+  <circle cx="208.5" cy="145.3" r="3.6" fill="#E9E5F6"/>
+  <circle cx="200" cy="160" r="8" fill="#F0D76E"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

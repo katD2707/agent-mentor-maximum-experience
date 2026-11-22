@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<defs><marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5A4BC0"/></marker><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="20" y="130" width="590" height="120" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round" stroke-dasharray="14 9"/>
+<text x="315.0" y="190.0" text-anchor="middle" dominant-baseline="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Although [counterpoint or limitation]</text>
+<rect x="660" y="130" width="290" height="120" rx="18" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<text x="805.0" y="190.0" text-anchor="middle" dominant-baseline="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">[claim]</text>
+<rect x="320" y="420" width="340" height="120" rx="18" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<text x="490.0" y="480.0" text-anchor="middle" dominant-baseline="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">because [reason 1]</text>
+<rect x="710" y="420" width="280" height="120" rx="18" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<text x="850.0" y="480.0" text-anchor="middle" dominant-baseline="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">and [reason 2]</text>
+<line x1="615" y1="190" x2="655" y2="190" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="490" y1="417" x2="725" y2="256" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="851" y1="417" x2="851" y2="256" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" marker-end="url(#arw)"/>
+<line x1="665" y1="480" x2="705" y2="480" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" marker-end="url(#arw)"/>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

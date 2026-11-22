@@ -12,6 +12,8 @@ export interface TeacherVersion {
   students: number;
   level_suggested?: CourseLevel | null;
   level_confirmed?: CourseLevel | null;
+  /** the teacher's labels of this version (gv labels step): gà chính, bậc học, lớp / năm */
+  labels?: { chicken?: string; band?: string; grade?: number; goals?: string[]; language?: "vi" | "en"; topics?: string[] } | null;
 }
 
 export interface TeacherCourseSummary {
@@ -32,6 +34,11 @@ export interface TeacherCourseSummary {
   /** of the working version (the open draft, else the latest published): the agent's guess and the teacher's pick */
   level_suggested?: CourseLevel | null;
   level_confirmed?: CourseLevel | null;
+  /** only in the detail (GET /teacher/courses/{id}): what Mentor read from the files */
+  subject?: string | null;
+  age_band?: string | null;
+  /** only in the detail: the labels step values of the working version, with Mentor suggestion for what is not set yet */
+  labels?: CourseLabelsInfo | null;
 }
 
 export interface OutlineLesson {
@@ -170,4 +177,14 @@ export interface TeacherApi {
   putTest(token: string, courseId: string, profileId: string, body: { items: number; minutes: number }): Promise<void>;
   /** Retake thumbnail as an <img> src. */
   thumbSrc(token: string, url: string | null | undefined): string;
+}
+
+/** Mục tiêu (one line each), Ngôn ngữ and Chủ đề of a course (gv labels step). */
+export interface CourseLabelsValues {
+  goals: string[];
+  language: "vi" | "en";
+  topics: string[];
+}
+export interface CourseLabelsInfo extends CourseLabelsValues {
+  suggested?: CourseLabelsValues;
 }

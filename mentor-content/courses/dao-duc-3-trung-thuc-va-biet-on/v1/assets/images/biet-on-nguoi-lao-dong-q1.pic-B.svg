@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+
+    <g id="tuft">
+      <path d="M -9,0 C -11,-11 -17,-19 -27,-24 C -15,-21 -7,-11 -3,0 Z"/>
+      <path d="M 0,0 C -1,-13 1,-25 6,-34 C 8,-21 6,-9 4,0 Z"/>
+      <path d="M 7,0 C 10,-9 17,-16 27,-19 C 19,-12 13,-5 11,0 Z"/>
+    </g>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- ground shadow -->
+  <ellipse cx="200" cy="302" rx="110" ry="18" fill="#E9E5F6"/>
+
+  <!-- yard grass -->
+  <use href="#tuft" transform="translate(106,320)" fill="#9FD8BF"/>
+  <use href="#tuft" transform="translate(298,316) scale(0.9)" fill="#9FD8BF"/>
+
+  <!-- right peel flap -->
+  <g transform="rotate(-60 200 185)">
+    <path d="M 172,152 C 158,198 162,252 182,280 C 191,292 209,292 218,280 C 238,252 242,198 228,152 Z"
+          fill="#F0D76E" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M 200,166 C 197,204 198,240 200,266"
+          fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- left peel flap -->
+  <g transform="rotate(60 200 185)">
+    <path d="M 172,152 C 158,198 162,252 182,280 C 191,292 209,292 218,280 C 238,252 242,198 228,152 Z"
+          fill="#F0D76E" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M 200,166 C 197,204 198,240 200,266"
+          fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- near flap, pale inner peel -->
+  <g>
+    <path d="M 172,152 C 158,198 162,252 182,280 C 191,292 209,292 218,280 C 238,252 242,198 228,152 Z"
+          fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M 200,166 C 197,204 198,240 200,266"
+          fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" opacity="0.22"/>
+  </g>
+
+  <!-- stem -->
+  <path d="M 189,150 C 186,128 188,112 200,104 C 212,112 214,128 211,150 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- peel dome -->
+  <path d="M 200,136 C 236,136 258,156 258,180 C 258,202 232,214 200,214 C 168,214 142,202 142,180 C 142,156 164,136 200,136 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 170,188 C 186,170 214,170 230,188"
+        fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 190,150 C 196,158 204,158 210,150"
+        fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+
+  <!-- tiny bloom -->
+  <g transform="translate(310,294)">
+    <circle cx="0" cy="-8" r="5" fill="#E8806A"/>
+    <circle cx="8" cy="0" r="5" fill="#E8806A"/>
+    <circle cx="0" cy="8" r="5" fill="#E8806A"/>
+    <circle cx="-8" cy="0" r="5" fill="#E8806A"/>
+    <circle cx="0" cy="0" r="3.5" fill="#F0D76E"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

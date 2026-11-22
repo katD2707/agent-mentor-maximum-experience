@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="298" rx="118" ry="14" fill="#E9E5F6"/>
+
+  <!-- pencil case body -->
+  <rect x="64" y="156" width="272" height="128" rx="34" fill="#5A4BC0"/>
+
+  <!-- top highlight -->
+  <path d="M 100 178 Q 200 166 300 178" fill="none" stroke="#E9E5F6"
+        stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- mint stitching along the belly -->
+  <path d="M 96 258 H 304" fill="none" stroke="#9FD8BF" stroke-width="5"
+        stroke-linecap="round" stroke-dasharray="12 12"/>
+
+  <!-- zipper tape -->
+  <rect x="78" y="190" width="244" height="22" rx="11" fill="#F0D76E"/>
+
+  <!-- zipper teeth -->
+  <path d="M 90 201 H 296" fill="none" stroke="#2B283F" stroke-width="3"
+        stroke-linecap="round" stroke-dasharray="5 8"/>
+
+  <!-- zipper slider -->
+  <rect x="284" y="184" width="30" height="34" rx="10" fill="#E8806A"/>
+  <rect x="292" y="192" width="14" height="18" rx="7" fill="#2B283F"/>
+
+  <!-- pull tab -->
+  <rect x="289" y="214" width="22" height="50" rx="11" fill="#E8806A"/>
+  <rect x="295" y="230" width="10" height="20" rx="5" fill="#F7F1E3"/>
+
+  <!-- small mint patch -->
+  <circle cx="112" cy="228" r="13" fill="#9FD8BF"/>
+  <circle cx="112" cy="228" r="5" fill="#5A4BC0"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

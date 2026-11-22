@@ -163,10 +163,10 @@
       '<div class="set-row set-upd" data-when="app=desktop"><span class="set-label" data-en="Updates">Cập nhật</span>' +
       '<span class="upd-line"><button type="button" class="set-chip-btn upd-check" data-en="Check for updates">Kiểm tra cập nhật</button><span class="upd-state" role="status" aria-live="polite"></span></span>' +
       '<label class="upd-beta"><span data-en="Try new versions early (beta)">Dùng thử bản mới sớm (beta)</span><button class="set-switch" role="switch" aria-checked="false" aria-label="Beta"></button></label></div>' +
-      '<div class="set-row"><span class="set-label" data-en="Mực\'s tips">Hướng dẫn của Mực</span>' +
+      '<div class="set-row"><span class="set-label" data-en="Guide tips">Gà hướng dẫn</span>' +
       '<button type="button" class="set-chip-btn set-replay" data-en="Show them again">Xem lại từ đầu</button></div>' +
       '<p class="set-foot"><span data-en="Mentor 1.4.2, up to date">Mentor 1.4.2, bản mới nhất</span>' +
-      '<a href="hs-01-dang-nhap.html" data-en="Log out">Đăng xuất</a></p>';
+      '<a href="lg-00-dang-nhap.html" data-en="Log out">Đăng xuất</a></p>';
     document.body.appendChild(pop);
     btn.setAttribute("aria-expanded", "false");
     btn.setAttribute("aria-controls", "set-pop");
@@ -679,7 +679,7 @@
   }, true);
 })();
 
-// phone-width home strip for Mực (see shared.css); only shown at <= 480px
+// phone-width home strip for the guide chicken (see shared.css); only shown at <= 480px
 document.addEventListener('DOMContentLoaded', function () {
   ['mascot-bar', 'mascot-dock'].forEach(function (c) { var d = document.createElement('div'); d.className = c; d.setAttribute('aria-hidden', 'true'); document.body.appendChild(d); });
 });

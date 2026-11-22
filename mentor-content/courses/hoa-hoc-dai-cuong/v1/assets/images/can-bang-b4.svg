@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="80" y="120" width="260" height="470" rx="20" fill="#E9E5F6"/>
+<rect x="350" y="120" width="300" height="470" rx="20" fill="#F0D76E" fill-opacity="0.55"/>
+<rect x="660" y="120" width="260" height="470" rx="20" fill="#E9E5F6"/>
+<line x1="60" y1="350" x2="928" y2="350" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<path d="M904 336 L930 350 L904 364" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="350" y1="326" x2="350" y2="374" stroke="#2B283F" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="660" y1="326" x2="660" y2="374" stroke="#2B283F" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="120" y1="450" x2="300" y2="450" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<path d="M276 435 L300 450 L276 465" fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="880" y1="450" x2="700" y2="450" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<path d="M724 435 L700 450 L724 465" fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="410" y1="441" x2="590" y2="441" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<path d="M568 430 L590 441 L568 452" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="410" y1="459" x2="590" y2="459" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<path d="M432 470 L410 459 L432 448" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="210" y="250" font-family="Lexend, sans-serif" font-size="46" font-weight="600" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Q &lt; K</text>
+<text x="500" y="250" font-family="Lexend, sans-serif" font-size="46" font-weight="600" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Q = K</text>
+<text x="790" y="250" font-family="Lexend, sans-serif" font-size="46" font-weight="600" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Q &gt; K</text>
+<text x="210" y="540" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">chi&#7873;u thu&#7853;n</text>
+<text x="500" y="540" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c&#226;n b&#7857;ng</text>
+<text x="790" y="540" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">chi&#7873;u ngh&#7883;ch</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

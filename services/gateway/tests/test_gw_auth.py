@@ -35,7 +35,7 @@ def test_login_ok_returns_token_and_user(client):
     assert body["token"]
     assert body["user"] == {"id": body["user"]["id"], "role": "student", "username": "hocsinh",
                             "display_name": "Lan", "age_band": "g10_12", "birth_year": 2010, "language": None, "theme": "system",
-                            "quiet_until": None}
+                            "quiet_until": None, "avatar": None}
     teacher = _login(client, "giaovien", role="teacher").json()["user"]
     assert teacher["role"] == "teacher" and teacher["display_name"] == "Thầy Minh"
 
@@ -98,7 +98,7 @@ def test_patch_me(client):
     assert r.status_code == 200
     assert r.json() | {"id": "x"} == {"id": "x", "role": "student", "username": "hocsinh", "display_name": "Lan A",
                                       "age_band": "g10_12", "birth_year": 2010, "language": "en", "theme": "dark",
-                                      "quiet_until": None}
+                                      "quiet_until": None, "avatar": None}
     # a partial update leaves the rest alone; language can be cleared
     r = client.patch("/api/me", json={"theme": "light"}).json()
     assert r["theme"] == "light" and r["age_band"] == "g10_12" and r["language"] == "en"
@@ -189,3 +189,24 @@ def test_pre_redesign_dev_db_is_reset(tmp_path):
     con = sqlite3.connect(path)
     assert not con.execute("SELECT name FROM sqlite_master WHERE name = 'magic_links'").fetchall()
     con.close()
+
+
+def _preflight(c, origin):
+    return c.options("/api/auth/login", headers={"Origin": origin, "Access-Control-Request-Method": "POST",
+                                                 "Access-Control-Request-Headers": "authorization,content-type"})
+
+
+def test_cors_dev_allows_any_localhost_port_other_envs_do_not(settings, clock, executor):
+    from fastapi.testclient import TestClient
+
+    from mentor_gateway.app import create_app
+
+    for env, allowed in (("dev", True), ("test", False)):  # anything but dev keeps the strict list
+        s = settings.model_copy(update={"env": env})
+        with TestClient(create_app(s, clock=clock, executor=executor)) as c:
+            for origin in ("http://localhost:4173", "http://127.0.0.1:8080", "http://localhost"):
+                r = _preflight(c, origin)
+                assert ("access-control-allow-origin" in r.headers) is allowed, (env, origin)
+            for origin in ("http://evil.test", "https://localhost:4173", "http://localhost.evil.test"):
+                assert "access-control-allow-origin" not in _preflight(c, origin).headers, (env, origin)
+            assert _preflight(c, "tauri://localhost").headers["access-control-allow-origin"] == "tauri://localhost"

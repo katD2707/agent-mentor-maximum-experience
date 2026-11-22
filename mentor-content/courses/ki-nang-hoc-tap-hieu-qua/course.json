@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "ki-nang-hoc-tap-hieu-qua",
+  "title": "Kĩ năng học tập hiệu quả",
+  "subject": "Kĩ năng học tập",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "u09b64c786b838946",
+  "teacher_name": "Cô Hồng Nhung",
+  "description_short": "Khóa học trang bị kĩ năng quản lí thời gian và ghi nhớ lâu cho học sinh THPT. Nội dung gồm mục tiêu tuần, lịch ôn tập, ghi chép, thẻ ghi nhớ và tự kiểm tra.",
+  "outcomes": [
+    "Viết được mục tiêu tuần theo SMART và tính quỹ thời gian rảnh hợp lí.",
+    "Lập được lịch ôn tập ngắt quãng theo các mốc d+1, d+3, d+7, d+14, d+30.",
+    "Ghi chép hiệu quả bằng Cornell, sơ đồ tư duy và quy tắc 5R.",
+    "Tạo và ôn thẻ ghi nhớ theo hộp Leitner.",
+    "Tự kiểm tra bằng câu hỏi theo thang Bloom và kỹ thuật Feynman."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 70,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-18T03:40:22.953228Z",
+      "published_at": "2026-11-18T03:40:42.358573Z",
+      "pack_sha256": "b499347ad9bda2e77cd84a3570a2bb07cd19ba983b16f8ee12b92685eb1a0cbc",
+      "pack_bytes": 86778,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": "basic",
+  "status": "live",
+  "outline": []
+}

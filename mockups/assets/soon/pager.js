@@ -1,6 +1,6 @@
-// Mock-only: renders the sample catalog in pages of 10 and scrolls to the first item of the new page.
+// Mock-only: renders the sample catalog in pages of 12 and scrolls to the first item of the new page.
 (function () {
-  var PER = 10;
+  var PER = 12;
   var root = document.documentElement;
   var lang = function () { return root.dataset.lang === "en" ? "en" : "vi"; };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (m) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]; }); };
@@ -13,7 +13,7 @@
     vi: { soon: "Sắp có", prev: "Trang trước", next: "Trang sau", page: "Trang", les: "bài" },
     en: { soon: "Coming soon", prev: "Previous page", next: "Next page", page: "Page", les: "lessons" }
   };
-  function href(c) { return "hs-08-khoa-sap-co.html?c=" + c.k; }
+  function href(c) { return "lg-03-chuong-ga.html?tim=1&c=" + c.k; } // lg-03 works out the chicken from the course
   function meta(c) {
     var en = lang() === "en";
     return esc(c.te) + ", " + c.n + " " + T[lang()].les + ", " + dur(c.m, en);

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain">
+  <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+  <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+</filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g stroke="#5A4BC0" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 150 200 H 260"/>
+  <circle cx="270" cy="200" r="6" fill="#5A4BC0"/>
+  <circle cx="330" cy="200" r="6" fill="#5A4BC0"/>
+  <path d="M 270 200 L 320 170"/>
+  <path d="M 330 200 H 480"/>
+  <rect x="480" y="180" width="120" height="40" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+  <path d="M 600 200 H 700"/>
+  <path d="M 700 180 L 700 220 L 740 200 Z" fill="#5A4BC0"/>
+  <path d="M 740 180 V 220"/>
+  <path d="M 720 160 L 740 140"/>
+  <path d="M 740 140 L 735 147 M 740 140 L 733 143" stroke-width="3"/>
+  <path d="M 740 160 L 760 140"/>
+  <path d="M 760 140 L 755 147 M 760 140 L 753 143" stroke-width="3"/>
+  <path d="M 740 200 H 850 V 500 H 150"/>
+  <path d="M 150 200 V 320"/>
+  <path d="M 150 350 V 500"/>
+  <path d="M 125 320 H 175" stroke-width="6"/>
+  <path d="M 140 350 H 160" stroke-width="6"/>
+  <path d="M 850 500 V 530"/>
+  <path d="M 820 530 H 880"/>
+  <path d="M 830 545 H 870"/>
+  <path d="M 840 560 H 860"/>
+</g>
+<g font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">
+  <text x="80" y="170">+5 V</text>
+  <text x="300" y="130">C&#244;ng t&#7855;c</text>
+  <text x="540" y="130">R = 330 &#937;</text>
+  <text x="730" y="110">LED</text>
+  <text x="920" y="545">GND</text>
+</g>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

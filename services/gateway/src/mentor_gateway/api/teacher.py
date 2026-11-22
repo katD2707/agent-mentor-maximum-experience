@@ -11,7 +11,7 @@ from typing import Annotated, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import FileResponse, Response, StreamingResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 from mentor_gateway.api.courses import IMMUTABLE, MIME_FIX, _cached, media_user
 from mentor_gateway.api.deps import current_user
@@ -342,6 +342,62 @@ async def put_level(course_id: str, version: int, body: LevelBody, user: User = 
     (or reuses) the next draft and is stored there: `{version, new_version, level, level_suggested, level_confirmed}`."""
     st = _version(svc, user, course_id, version)
     return svc.set_level(st, version, body.level)
+
+
+class LabelsBody(BaseModel):
+    """gv-04: the labels of a course. `band` = bậc học, `chicken` = gà chính (checked against the band), `difficulty` = độ khó,
+    `level` = lớp (1-12; a difficulty word is accepted here too). Only the fields sent change."""
+
+    chicken: str | None = Field(default=None, max_length=16)
+    band: Literal["g1_5", "g6_9", "g10_12", "uni"] | None = None
+    level: int | Literal["basic", "intermediate", "advanced"] | None = Field(default=None)
+    difficulty: Literal["basic", "intermediate", "advanced"] | None = None
+    goals: list[str] | None = Field(default=None, max_length=6)  # Mục tiêu -> course outcomes
+    language: Literal["vi", "en"] | None = None
+    topics: list[str] | None = Field(default=None, max_length=8)  # Chủ đề tags
+
+    @field_validator("goals", "topics", mode="after")
+    @classmethod
+    def _clean(cls, v: list[str] | None, info) -> list[str] | None:
+        if v is None:
+            return None
+        out = [" ".join(x.split()) for x in v]
+        out = [x for x in out if x]
+        if any(len(x) > (160 if info.field_name == "goals" else 40) for x in out):
+            raise ValueError("too long")
+        return out
+
+
+@router.put("/courses/{course_id}/versions/{version}/labels")
+async def put_labels(course_id: str, version: int, body: LabelsBody, user: User = Depends(teacher_only),
+                     svc: BuilderService = Depends(builder)) -> dict:
+    """Sets the labels of a version (a draft keeps them until publish; the latest published version takes them at once and
+    the catalog follows). 422 `chicken_not_in_band` when the chicken is not one of the band's chickens."""
+    from mentor_gateway.langga import subjects
+
+    st = _version(svc, user, course_id, version)
+    store = svc.content.store
+    meta = store.load_meta(course_id)
+    info = store.version_info(meta, version)
+    grade = body.level if isinstance(body.level, int) else None
+    difficulty = body.difficulty or (body.level if isinstance(body.level, str) else None)
+    if grade is not None and not 1 <= grade <= 12:
+        raise HTTPException(422, {"error": "bad_level"})
+    band = body.band or (info.labels or {}).get("band") or meta.age_band
+    if body.chicken is not None and not (body.chicken in subjects.CHICKENS and subjects.valid_for_band(body.chicken, band)):
+        raise HTTPException(422, {"error": "chicken_not_in_band"})
+    store.set_labels(course_id, version, chicken=body.chicken, band=body.band, grade=grade, difficulty=difficulty,
+                     goals=body.goals, language=body.language, topics=body.topics)
+    svc._save(st)  # noqa: SLF001
+    svc.emit(st)
+    meta = store.load_meta(course_id)
+    info = store.version_info(meta, version)
+    labels = info.labels or {}
+    eff_band = labels.get("band") or meta.age_band
+    chicken = subjects.chicken_of(meta.subject, eff_band, labels.get("chicken") or meta.chicken)
+    return {"version": version, "chicken": chicken, "band": eff_band, "level": labels.get("grade") or meta.grade,
+            "difficulty": info.level_confirmed or meta.level, "labels": labels,
+            "published": info.status == "published"}
 
 
 @router.post("/courses/{course_id}/versions/{version}/publish")

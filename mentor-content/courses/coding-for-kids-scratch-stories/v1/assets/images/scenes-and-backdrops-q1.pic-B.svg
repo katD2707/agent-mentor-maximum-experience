@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="345" rx="92" ry="11" fill="#E9E5F6"/>
+
+  <!-- tail -->
+  <path d="M262,306 C302,314 322,292 316,266 C311,242 292,232 279,243"
+        fill="none" stroke="#5A4BC0" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- ears (outer) -->
+  <path d="M146,126 L136,58 L190,106 Z" fill="#5A4BC0" stroke="#5A4BC0"
+        stroke-width="8" stroke-linejoin="round"/>
+  <path d="M254,126 L264,58 L210,106 Z" fill="#5A4BC0" stroke="#5A4BC0"
+        stroke-width="8" stroke-linejoin="round"/>
+  <!-- ears (inner) -->
+  <path d="M156,116 L150,82 L180,106 Z" fill="#F0D76E" stroke="#F0D76E"
+        stroke-width="4" stroke-linejoin="round"/>
+  <path d="M244,116 L250,82 L220,106 Z" fill="#F0D76E" stroke="#F0D76E"
+        stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- body -->
+  <path d="M200,196 C244,196 272,236 274,288 C276,326 254,342 200,342
+           C146,342 124,326 126,288 C128,236 156,196 200,196 Z" fill="#5A4BC0"/>
+
+  <!-- chest patch -->
+  <ellipse cx="200" cy="292" rx="40" ry="36" fill="#F0D76E"/>
+
+  <!-- paws -->
+  <ellipse cx="164" cy="334" rx="26" ry="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+  <ellipse cx="236" cy="334" rx="26" ry="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+  <path d="M156,334 L160,334 M168,334 L172,334" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+  <path d="M228,334 L232,334 M240,334 L244,334" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- head -->
+  <circle cx="200" cy="166" r="64" fill="#5A4BC0"/>
+
+  <!-- forehead stripes -->
+  <path d="M200,112 L200,130" stroke="#F0D76E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M186,116 L183,132" stroke="#F0D76E" stroke-width="5" stroke-linecap="round"/>
+  <path d="M214,116 L217,132" stroke="#F0D76E" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- eyes -->
+  <ellipse cx="178" cy="160" rx="11" ry="13" fill="#2B283F"/>
+  <ellipse cx="222" cy="160" rx="11" ry="13" fill="#2B283F"/>
+  <circle cx="182" cy="155" r="3.4" fill="#F7F1E3"/>
+  <circle cx="226" cy="155" r="3.4" fill="#F7F1E3"/>
+
+  <!-- nose -->
+  <path d="M192,181 L208,181 L200,191 Z" fill="#E8806A" stroke="#E8806A"
+        stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- mouth -->
+  <path d="M186,194 Q193,203 200,194 Q207,203 214,194" fill="none"
+        stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- whiskers -->
+  <path d="M154,176 L116,168" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M152,186 L112,184" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M156,196 L120,204" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M246,176 L284,168" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M248,186 L288,184" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M244,196 L280,204" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

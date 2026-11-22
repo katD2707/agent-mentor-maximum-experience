@@ -33,6 +33,7 @@ log = logging.getLogger(__name__)
 # Columns added after first release (Nghiên cứu, CONTRACTS 15.8): study_goals.source / milestones
 _ADDED_COLUMNS: dict[str, list[tuple[str, str]]] = {
     "study_goals": [("source", "VARCHAR(10) NOT NULL DEFAULT 'learning'"), ("milestones", "JSON")],
+    "users": [("avatar", "VARCHAR(8)")],  # Làng gà: the student's avatar, "nam" | "nu"
 }
 
 
@@ -76,6 +77,7 @@ class User(Base):
     birth_year: Mapped[int | None] = mapped_column(Integer, nullable=True)  # set once at first run (admin CLI fixes it)
     language: Mapped[str | None] = mapped_column(String(8), nullable=True)  # vi | en
     theme: Mapped[str] = mapped_column(String(8), default="system")  # light | dark | system
+    avatar: Mapped[str | None] = mapped_column(String(8), nullable=True)  # nam | nu (Làng gà first run)
     quiet_until: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)  # no notifications before this
     provisioned_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)  # learner workspace created
     created_at: Mapped[datetime] = mapped_column(UTCDateTime)

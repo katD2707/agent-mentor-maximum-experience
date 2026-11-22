@@ -1,4 +1,5 @@
 import { API_BASE } from "./http";
+import { emitXp } from "../lang/xp";
 import { withToken, getMediaToken } from "./media";
 import type { DiagramSpec } from "../lib/diagram/types";
 
@@ -53,8 +54,18 @@ export interface StatementResult {
   explanation?: string | null;
 }
 
+/** XP a call paid (Làng gà): one row per chicken and source. */
+export interface PXp {
+  chicken: string;
+  source: string;
+  amount: number;
+  level_up?: boolean;
+}
+
 export interface PResult {
   saved?: boolean;
+  /** practice answers only: +2 for a right one */
+  xp?: PXp[];
   /** null = left blank */
   correct?: boolean | null;
   points?: number;
@@ -91,6 +102,20 @@ export interface PSession {
   answers: Record<string, PAnswerState>;
   parts?: { label: string; positions: number[]; points_each: number }[] | null;
   disclaimer?: string | null;
+  /** `paper:<id>`, `course-mock:<id>`, `course:<id>`, `notes:<id>`, `quick`, `mock:<profile>` */
+  source?: string | null;
+  /** Arena paper sessions */
+  paper?: { id: string; kind: string; chicken: string; title_vi: string; title_en: string; placeholder?: boolean; boss: { name_vi: string; name_en: string; art: string } } | null;
+}
+
+export interface PBoss {
+  name: string;
+  name_vi: string;
+  name_en: string;
+  art: string;
+  hp: number;
+  damage: number;
+  beaten: boolean;
 }
 
 export interface Line {
@@ -114,6 +139,10 @@ export interface PReport {
   redo?: Line | null;
   /** the items answered wrong, with the learner's first answer (CONTRACTS 16.3) */
   wrong?: { position: number; item_id: string; type: PItemType; chosen?: string | null }[];
+  /** Arena paper: the boss of the paper (hp = items, damage = right answers) */
+  boss?: PBoss | null;
+  /** XP paid when the session was submitted (`mock_submit`, `paper_submit`, `boss_beaten`) */
+  xp?: PXp[];
 }
 
 /** POST /practice/sessions/{id}/fix: one more try at a wrong item. Wrong again: the right answer and why. */
@@ -124,6 +153,7 @@ export interface PFix {
   right?: string;
   /** the note for the option the learner chose */
   note?: string;
+  xp?: PXp[];
 }
 
 export interface PReviewItem extends PItem {
@@ -143,11 +173,11 @@ export interface PReviewItem extends PItem {
 
 export interface PHome {
   quick: { count: number; minutes: number; from: { course_id?: string; subject?: string; label: string; n: number }[]; seed: string | number; reason?: string | null };
-  mocks: { profile_id: string; title: string; subject: string; minutes: number; items: number; last_score: number | null }[];
+  mocks: { profile_id: string; title: string; subject: string; minutes: number; items: number; last_score: number | null; /** the age band the paper is for (a bank paper without it is for grades 10-12) */ band?: string | null }[];
   by_course: { course_id: string; title: string; cover_sha256?: string | null; lessons_range: string; lessons_from: number; lessons_to: number; items: number }[];
 }
 
-export type StartSource = "quick" | `course:${string}` | `mock:${string}` | `notes:${string}`;
+export type StartSource = "quick" | `course:${string}` | `mock:${string}` | `notes:${string}` | `paper:${string}` | `course-mock:${string}`;
 
 /** One rung of a course's level ladder (CONTRACTS 10.13): level 1 easiest .. 4 hardest. */
 export interface PLevel {
@@ -246,7 +276,19 @@ export const httpPractice: PracticeApi = {
 
 /** The API the screens use; the mock build and tests swap it. */
 let current: PracticeApi = httpPractice;
-export const practice: PracticeApi = new Proxy({} as PracticeApi, { get: (_t, k) => current[k as keyof PracticeApi] });
+/** Calls that can pay XP: whatever they pay goes on the XP bus (the village shows the level-up when the student gets back). */
+const PAYS = new Set(["answer", "fix", "finish"]);
+export const practice: PracticeApi = new Proxy({} as PracticeApi, {
+  get: (_t, k) => {
+    const f = current[k as keyof PracticeApi] as (...a: unknown[]) => Promise<{ xp?: PXp[] }>;
+    if (!PAYS.has(k as string)) return f;
+    return async (...a: unknown[]) => {
+      const r = await f.apply(current, a);
+      emitXp(r?.xp, "practice:" + String(a[1] ?? ""));
+      return r;
+    };
+  },
+});
 export const setPracticeApi = (a: PracticeApi) => {
   current = a;
 };

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<path d="M 520 620 L 520 330 Q 520 300 490 300 L 190 300" fill="none" stroke="#5A4BC0" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 520 620 L 520 330 Q 520 300 490 300 L 190 300" fill="none" stroke="#F7F1E3" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="590" y="440" width="120" height="85" rx="8" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="245" y="370" width="160" height="95" rx="8" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="245" y="150" width="160" height="95" rx="8" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="640" y="470" width="14" height="14" fill="#5A4BC0"/>
+<rect x="660" y="470" width="14" height="14" fill="#5A4BC0"/>
+<rect x="300" y="400" width="14" height="14" fill="#5A4BC0"/>
+<rect x="340" y="400" width="14" height="14" fill="#5A4BC0"/>
+<rect x="300" y="190" width="14" height="14" fill="#5A4BC0"/>
+<rect x="340" y="190" width="14" height="14" fill="#5A4BC0"/>
+<path d="M 520 605 L 520 330 Q 520 300 490 300 L 222 300" fill="none" stroke="#E8806A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="212,300 246,288 246,312" fill="#E8806A"/>
+<circle cx="520" cy="608" r="10" fill="#E8806A"/>
+<text x="520" y="686" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">You are here</text>
+<text x="645" y="572" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">caf�</text>
+<text x="650" y="392" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">left turn</text>
+<text x="325" y="512" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">library</text>
+<text x="325" y="116" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">toilets</text>
+<text x="400" y="622" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">route</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

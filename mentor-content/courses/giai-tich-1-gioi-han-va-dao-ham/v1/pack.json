@@ -1,0 +1,2198 @@
+{
+  "schema_version": 1,
+  "course_id": "giai-tich-1-gioi-han-va-dao-ham",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Giải tích 1: Giới hạn và đạo hàm",
+  "chapters": [
+    {
+      "id": "ch-gioi-han-va-lien-tuc",
+      "title": "Giới hạn và liên tục",
+      "lessons": [
+        {
+          "id": "gioi-han-day-so",
+          "title": "Giới hạn dãy số",
+          "est_minutes": 15,
+          "summary": "Bài học trình bày định nghĩa epsilon–N, các quy tắc giới hạn, định lý kẹp, giới hạn chuẩn và cách xử lý ví dụ, lỗi thường gặp, bài tập về dãy số.",
+          "key_ideas": [
+            "Định nghĩa ε–N: với mọi ε>0, tồn tại N để n≥N thì |a_n−L|<ε",
+            "Quy tắc tổng, hiệu, tích, thương của giới hạn hữu hạn",
+            "Định lý kẹp và các giới hạn chuẩn 1/n, q^n, (1+1/n)^n",
+            "Phân biệt hội tụ hữu hạn với ký hiệu +∞",
+            "Ví dụ, lỗi thường gặp và bài tập được giữ trong bài"
+          ],
+          "blocks": [
+            {
+              "id": "gioi-han-day-so-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Định nghĩa ε–N",
+              "md": "Dãy $(a_n)$ **hội tụ** về $L\\in\\mathbb{R}$ nếu với mọi $\\varepsilon>0$, tồn tại $N\\in\\mathbb{N}$ sao cho với mọi $n\\ge N$,\n$$|a_n-L|<\\varepsilon.$$\nKhi đó viết $\\lim_{n\\to\\infty}a_n=L$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/gioi-han-day-so-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "fd4e51aa33f1b0cd020a7092dd2c5d6d891831aa89e583a3c5fa39a254e8846b",
+                "bytes": 4342
+              },
+              "alt": "Trục số với dải quanh 3, các số hạng a_n chui dần vào dải",
+              "caption": "Dù dải $(L-\\varepsilon,L+\\varepsilon)$ hẹp đến đâu, từ chỉ số $N$ trở đi mọi $a_n$ đều nằm trong dải.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "gioi-han-day-so-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-day-so-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho dãy $a_n=n$. Khẳng định nào sau đây đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Dãy hội tụ vì $\\lim a_n=+\\infty$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Dãy phân kỳ vì không có giới hạn hữu hạn.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Dãy hội tụ về $0$ vì $\\frac1n\\to0$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Dãy bị chặn dưới nên hội tụ.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "$a_n=n$ không tiến về số thực nào nên phân kỳ; ký hiệu $+\\infty$ chỉ mô tả dãy lớn tùy ý.",
+                  "option_feedback": {
+                    "A": "Nhầm $+\\infty$ với một giới hạn hữu hạn, trong khi hội tụ đòi hỏi $L\\in\\mathbb{R}$.",
+                    "C": "Áp dụng giới hạn chuẩn của $\\frac1n$ cho một dãy hoàn toàn khác.",
+                    "D": "Bị chặn không kéo theo hội tụ; thiếu điều kiện về giới hạn hữu hạn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-day-so-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Quy tắc và định lý kẹp",
+              "md": "Nếu $a_n\\to A$, $b_n\\to B$ (hữu hạn) thì\n- $a_n\\pm b_n\\to A\\pm B$;\n- $a_nb_n\\to AB$;\n- nếu $B\\ne0$ thì $\\dfrac{a_n}{b_n}\\to\\dfrac{A}{B}$.\n\n**Kẹp:** nếu $a_n\\le b_n\\le c_n$ và $a_n\\to L$, $c_n\\to L$ thì $b_n\\to L$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba giới hạn chuẩn",
+              "md": "$$\\frac1n\\to0,\\qquad q^n\\to0\\ \\text{nếu}\\ |q|<1,\\qquad \\left(1+\\frac1n\\right)^n\\to e.$$",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-day-so-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Trong chứng minh $\\lim\\dfrac{3n+1}{n+2}=3$: ta có $\\left|\\dfrac{3n+1}{n+2}-3\\right|=\\dfrac{{{gap}}}{n+2}$, nên chỉ cần chọn $N>{{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "5",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "5/\\varepsilon",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "6",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "3/\\varepsilon",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "\\varepsilon/5",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tử số sau khi quy đồng là $3n+1-3n-6=-5$ nên trị tuyệt đối bằng $\\frac{5}{n+2}$, và $\\frac{5}{n+2}<\\frac5n<\\varepsilon$ khi $n>\\frac5\\varepsilon$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-day-so-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 1: chứng minh bằng định nghĩa",
+              "md": "Chứng minh $\\lim_{n\\to\\infty}\\dfrac{3n+1}{n+2}=3$.\n\nVới $\\varepsilon>0$: $\\left|\\dfrac{3n+1}{n+2}-3\\right|=\\left|\\dfrac{3n+1-3n-6}{n+2}\\right|=\\dfrac{5}{n+2}<\\dfrac{5}{n}$. Chọn $N>\\dfrac{5}{\\varepsilon}$; khi đó với mọi $n\\ge N$, $\\left|\\dfrac{3n+1}{n+2}-3\\right|<\\dfrac5N<\\varepsilon$. Vậy giới hạn bằng $3$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-day-so-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tính $\\displaystyle\\lim_{n\\to\\infty}\\frac{n^2+3n-1}{2n^2-n+4}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "1/2",
+                      "0.5",
+                      "1 / 2"
+                    ]
+                  },
+                  "hint": "Chia tử và mẫu cho $n^2$ rồi dùng $\\frac1n\\to0$.",
+                  "explanation": "Chia cả tử và mẫu cho $n^2$, các số hạng chứa $\\frac1n$ dần về $0$ nên giới hạn là $\\frac{1}{2}$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-day-so-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 2: nhân lượng liên hợp",
+              "md": "Tính $\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+n}-n\\right)$.\n\n$$\\sqrt{n^2+n}-n=\\frac{n}{\\sqrt{n^2+n}+n}=\\frac{1}{\\sqrt{1+\\frac1n}+1}.$$\nVì $\\frac1n\\to0$ nên $\\sqrt{1+\\frac1n}\\to1$, do đó giới hạn bằng $\\dfrac{1}{1+1}=\\dfrac12$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Dãy phân kỳ và ký hiệu +∞",
+              "md": "Nếu $a_n$ không hội tụ về một số thực nào, ta nói dãy **phân kỳ**. Ký hiệu $a_n\\to+\\infty$ chỉ mô tả dãy lớn tùy ý, **không** phải hội tụ theo định nghĩa trên: dãy $a_n=n$ phân kỳ, dù ta có viết $\\lim a_n=+\\infty$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-day-so-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mô tả đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$\\lim a_n=L\\in\\mathbb{R}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "dãy hội tụ về $L$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$a_n\\to+\\infty$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "lớn tùy ý, không hội tụ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$q^n$ với $|q|<1$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "dần về $0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Định lý kẹp",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$a_n\\le b_n\\le c_n$, hai đầu cùng về $L$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Hội tụ chỉ ứng với giới hạn hữu hạn; $+\\infty$ chỉ là mô tả xu hướng, còn kẹp cho phép suy ra giới hạn của dãy bị kẹp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-day-so-b8",
+              "kind": "interactive",
+              "prompt": "Kéo chỉ số $n$ để sai số $|a_n-3|$ của dãy ở Ví dụ 1 nhỏ hơn $0.5$.",
+              "x": {
+                "symbol": "n",
+                "label": "Chỉ số n",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "|a_n-3|",
+                "label": "Sai số",
+                "unit": ""
+              },
+              "expr": "5/(x+2)",
+              "x_min": 1.0,
+              "x_max": 40.0,
+              "x_step": 1.0,
+              "x_start": 1.0,
+              "target_y": 0.5,
+              "tolerance": 0.02,
+              "praise": "Chính xác: từ $n=8$ trở đi sai số nhỏ hơn $0.5$ — đó chính là $N$ trong định nghĩa ε–N.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-day-so-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-day-so-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các phát biểu về giới hạn dãy số.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu $a_n\\to2$ và $b_n\\to0$ thì $\\dfrac{a_n}{b_n}\\to0$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nếu $a_n\\le b_n\\le c_n$ và $a_n\\to L$, $c_n\\to L$ thì $b_n\\to L$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Dãy $a_n=(-1)^n$ hội tụ vì nó bị chặn."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Nếu $|q|<1$ thì $q^n\\to0$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Quy tắc thương chỉ dùng được khi mẫu có giới hạn khác $0$, còn bị chặn không đủ để hội tụ; định lý kẹp và giới hạn chuẩn $q^n$ thì đúng như phát biểu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-day-so-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Phát biểu định nghĩa ε–N của $\\lim a_n=L$.",
+                  "answer": "Với mọi ε>0 tồn tại N sao cho mọi n≥N đều có |a_n−L|<ε.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nếu $a_n\\to A$, $b_n\\to B$ hữu hạn thì giới hạn của $a_nb_n$ và $a_n/b_n$ là gì?",
+                  "answer": "Lần lượt là AB và A/B, với điều kiện B≠0 cho thương.",
+                  "image": null
+                },
+                {
+                  "prompt": "Dãy $a_n=n$ có hội tụ không? $a_n\\to+\\infty$ nghĩa là gì?",
+                  "answer": "Không, nó phân kỳ; +∞ chỉ mô tả dãy tăng không bị chặn, không phải hội tụ.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gioi-han-ham-so",
+          "title": "Giới hạn hàm số",
+          "est_minutes": 15,
+          "summary": "Bài học nêu định nghĩa epsilon–delta, giới hạn một phía, quy tắc và các giới hạn chuẩn của hàm số, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Định nghĩa ε–δ với 0<|x−x0|<δ",
+            "Giới hạn một phía và điều kiện tồn tại giới hạn hai phía",
+            "Quy tắc giới hạn và định lý kẹp cho hàm số",
+            "Các giới hạn chuẩn sinx/x, (1−cosx)/x^2, (e^x−1)/x",
+            "Dạng 0/0 chưa kết luận giới hạn không tồn tại"
+          ],
+          "blocks": [
+            {
+              "id": "gioi-han-ham-so-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Giới hạn hàm số theo ε–δ",
+              "md": "Cho $f$ xác định trên một lân cận của $x_0$ (có thể trừ chính $x_0$). Ta nói $\\lim_{x\\to x_0}f(x)=L$ nếu với mọi $\\varepsilon>0$, tồn tại $\\delta>0$ sao cho với mọi $x$, $$0<|x-x_0|<\\delta \\quad\\Longrightarrow\\quad |f(x)-L|<\\varepsilon.$$ Điều kiện $0<|x-x_0|$ nghĩa là không cần quan tâm giá trị tại $x_0$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/gioi-han-ham-so-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "578cdea1b1648be346a0033d342e9fcd900ca41ac6a289657fda656b9e36d2e5",
+                "bytes": 5430
+              },
+              "alt": "Minh họa định nghĩa epsilon–delta: dải đứng quanh x0 và dải ngang quanh L.",
+              "caption": "Muốn đồ thị nằm trong dải ngang quanh $L$, chỉ cần chọn dải đứng đủ hẹp quanh $x_0$.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "gioi-han-ham-so-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-ham-so-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho hàm $f$ xác định trên một lân cận của $x_0$ (có thể trừ $x_0$). Khẳng định nào đúng về giới hạn hai phía tại $x_0$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Hai giới hạn một phía tồn tại và bằng nhau.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Chỉ cần một giới hạn một phía tồn tại.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Giới hạn luôn bằng $f(x_0)$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$f(x_0)$ phải xác định thì giới hạn mới tồn tại.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Xét điều kiện $0<|x-x_0|$.",
+                  "explanation": "Giới hạn hai phía tồn tại khi và chỉ khi hai giới hạn một phía tồn tại và bằng nhau; điều kiện $0<|x-x_0|$ bỏ qua giá trị tại $x_0$.",
+                  "option_feedback": {
+                    "B": "Chỉ một phía không đủ; hai giới hạn một phía phải tồn tại và bằng nhau.",
+                    "C": "Giới hạn hai phía tồn tại khi và chỉ khi hai giới hạn một phía tồn tại và bằng nhau; điều kiện $0<|x-x_0|$ bỏ qua giá trị tại $x_0$.",
+                    "D": "Định nghĩa dùng $0<|x-x_0|$ nên không cần $f(x_0)$ xác định."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-ham-so-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Giới hạn một phía",
+              "md": "$\\lim_{x\\to x_0^-}f(x)$ xét $x<x_0$; $\\lim_{x\\to x_0^+}f(x)$ xét $x>x_0$. Giới hạn hai phía tồn tại khi và chỉ khi hai giới hạn một phía tồn tại và bằng nhau.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Chứng minh $\\lim_{x\\to2}(3x-1)=5$",
+              "md": "Với $\\varepsilon>0$, ta có $|(3x-1)-5|=3|x-2|$. Chọn $\\delta=\\varepsilon/3$. Khi $0<|x-2|<\\delta$ thì $|(3x-1)-5|=3|x-2|<3\\delta=\\varepsilon$. Vậy giới hạn bằng $5$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-ham-so-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền các giới hạn chuẩn: $\\lim_{x\\to0}\\frac{\\sin x}{x}={{gap}}$ và $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}={{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "1",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\frac12",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "0",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Hai giới hạn chuẩn tại $0$ lần lượt bằng $1$ và $\\frac12$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-ham-so-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Quy tắc giới hạn và định lý kẹp",
+              "md": "Các quy tắc tổng, hiệu, tích, thương (mẫu khác $0$) giống như với dãy số. Nếu $g(x)\\le f(x)\\le h(x)$ và $\\lim g(x)=\\lim h(x)=L$ thì $\\lim f(x)=L$ (định lý kẹp).",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-ham-so-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tính $\\lim_{x\\to 0}\\frac{e^x-1}{x}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "1"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "Đây là một giới hạn chuẩn trong bài: $\\lim_{x\\to0}\\frac{e^x-1}{x}=1$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-ham-so-b6",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba giới hạn chuẩn tại $0$",
+              "md": "$$\\lim_{x\\to0}\\frac{\\sin x}{x}=1,\\qquad \\lim_{x\\to0}\\frac{1-\\cos x}{x^2}=\\frac12,\\qquad \\lim_{x\\to0}\\frac{e^x-1}{x}=1.$$",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-b7",
+              "kind": "interactive",
+              "prompt": "Kéo $x$ về $0$ để $\\frac{1}{\\sqrt{1+x}+1}$ tiến tới $\\frac12$.",
+              "x": {
+                "symbol": "x",
+                "label": "Giá trị x",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "B",
+                "label": "Biểu thức",
+                "unit": ""
+              },
+              "expr": "1/(sqrt(1+x)+1)",
+              "x_min": -0.75,
+              "x_max": 1.0,
+              "x_step": 0.05,
+              "x_start": 0.5,
+              "target_y": 0.5,
+              "tolerance": 0.02,
+              "praise": "Đúng: khi $x\\to0$ biểu thức tiến tới $\\frac12$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-ham-so-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép khái niệm với mô tả đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$x\\to x_0^-$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "xét $x<x_0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$x\\to x_0^+$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "xét $x>x_0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Điều kiện $\\varepsilon$–$\\delta$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$0<|x-x_0|<\\delta$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Định lý kẹp",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$g\\le f\\le h$, $\\lim g=\\lim h=L$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các cặp nối theo định nghĩa giới hạn một phía, định nghĩa $\\varepsilon$–$\\delta$ và định lý kẹp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-ham-so-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Dạng $\\frac00$ chưa kết luận được gì",
+              "md": "Thấy $\\frac00$ rồi kết luận “giới hạn không tồn tại” là sai. $\\frac00$ chỉ là dạng không xác định; cần biến đổi đại số, dùng giới hạn chuẩn hoặc định lý kẹp. Ví dụ $\\lim_{x\\to0}\\frac{\\sqrt{1+x}-1}{x}=\\frac12$.",
+              "audio": null
+            },
+            {
+              "id": "gioi-han-ham-so-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gioi-han-ham-so-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các khẳng định sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu $\\lim_{x\\to x_0}f(x)$ tồn tại thì $f$ phải xác định tại $x_0$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nếu $\\lim_{x\\to x_0^-}f(x)=\\lim_{x\\to x_0^+}f(x)$ thì giới hạn hai phía tồn tại và bằng giá trị chung đó."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Gặp dạng $\\frac00$ thì kết luận ngay giới hạn không tồn tại."
+                    },
+                    {
+                      "id": "d",
+                      "text": "$\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}=\\frac12$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Giới hạn bỏ qua giá trị tại $x_0$, và $0/0$ chỉ là dạng không xác định. Hai giới hạn một phía bằng nhau thì giới hạn hai phía tồn tại; giới hạn chuẩn $(1-\\cos x)/x^2$ bằng $1/2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gioi-han-ham-so-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Phát biểu điều kiện ε–δ để $\\lim_{x\\to x_0}f(x)=L$.",
+                  "answer": "Với mọi $\\varepsilon>0$ có $\\delta>0$ sao cho $0<|x-x_0|<\\delta$ kéo theo $|f(x)-L|<\\varepsilon$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào giới hạn hai phía tồn tại?",
+                  "answer": "Khi hai giới hạn một phía tồn tại và bằng nhau.",
+                  "image": null
+                },
+                {
+                  "prompt": "Gặp dạng $0/0$ thì có được kết luận giới hạn không tồn tại không?",
+                  "answer": "Không; đó là dạng không xác định, phải biến đổi hoặc dùng giới hạn chuẩn/định lý kẹp.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lien-tuc",
+          "title": "Liên tục",
+          "est_minutes": 15,
+          "summary": "Bài học định nghĩa hàm liên tục tại một điểm, nêu tính chất, định lý giá trị trung gian và các ví dụ, lỗi thường gặp, bài tập liên quan.",
+          "key_ideas": [
+            "Liên tục tại x0 khi lim f(x)=f(x0)",
+            "Dạng ε–δ của tính liên tục",
+            "Tổng, hiệu, tích, thương, hợp của hàm liên tục",
+            "Định lý giá trị trung gian và ứng dụng tìm nghiệm",
+            "Hàm xác định tại x0 chưa chắc liên tục tại x0"
+          ],
+          "blocks": [
+            {
+              "id": "lien-tuc-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Liên tục tại một điểm",
+              "md": "Hàm $f$ liên tục tại $x_0$ nếu $f$ xác định tại $x_0$ và\n$$ \\lim_{x\\to x_0} f(x)=f(x_0). $$\nDạng $\\varepsilon$-$\\delta$: với mọi $\\varepsilon>0$, tồn tại $\\delta>0$ sao cho với mọi $x$ trong tập xác định,\n$$ |x-x_0|<\\delta \\Rightarrow |f(x)-f(x_0)|<\\varepsilon. $$",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/lien-tuc-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "b80ba198005b31248d909e10f3df98bd8833c815478e9d16b3c533386bd7184d",
+                "bytes": 10091
+              },
+              "alt": "Minh họa tính liên tục bằng dải epsilon-delta",
+              "caption": "Muốn đồ thị nằm trong dải ngang, chỉ cần chọn dải đứng đủ hẹp quanh $x_0$.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "lien-tuc-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-tuc-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Hàm số $f$ được gọi là liên tục tại điểm $x_0$ khi và chỉ khi điều kiện nào sau đây đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$f$ xác định tại $x_0$ và $\\lim_{x\\to x_0}f(x)=f(x_0)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$f$ xác định tại $x_0$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$\\lim_{x\\to x_0}f(x)$ tồn tại và hữu hạn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$f$ có đạo hàm tại $x_0$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Định nghĩa đòi hỏi đồng thời $f$ xác định tại $x_0$ và giới hạn tại $x_0$ bằng đúng giá trị $f(x_0)$.",
+                  "option_feedback": {
+                    "B": "Chỉ xác định thôi thì chưa đủ: hàm bằng $1$ tại $0$ và bằng $0$ ở nơi khác vẫn xác định tại $0$ nhưng không liên tục tại đó.",
+                    "C": "Còn thiếu điều kiện $f$ xác định tại $x_0$ và giới hạn đó phải bằng $f(x_0)$.",
+                    "D": "Đạo hàm không thuộc định nghĩa liên tục; hàm liên tục vẫn có thể không khả vi tại $x_0$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "lien-tuc-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tìm $a$ để hàm liên tục tại $x=2$",
+              "md": "Cho\n$$ f(x)=\\begin{cases}\\dfrac{x^2-4}{x-2},&x\\ne2,\\\\ a,&x=2.\\end{cases} $$\nVới $x\\ne2$, $\\dfrac{x^2-4}{x-2}=x+2$, nên $\\lim_{x\\to2}f(x)=4$. Để liên tục tại $2$, cần $a=f(2)=\\lim_{x\\to2}f(x)=4$.",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Phép toán giữ liên tục",
+              "md": "Tổng, hiệu, tích, thương (mẫu khác $0$) và hợp của các hàm liên tục là hàm liên tục.",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-tuc-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Cho $f(x)=\\dfrac{x^2-4}{x-2}$ với $x\\ne 2$. Để $f$ liên tục tại $x=2$, cần đặt $f(2)={{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "4",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "0",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Với $x\\ne2$ thì $\\dfrac{x^2-4}{x-2}=x+2$ nên $\\lim_{x\\to2}f(x)=4$, do đó phải đặt $f(2)=4$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lien-tuc-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Định lý giá trị trung gian (IVT)",
+              "md": "Nếu $f$ liên tục trên $[a,b]$ và $N$ nằm giữa $f(a)$ và $f(b)$ thì tồn tại $c\\in(a,b)$ sao cho $f(c)=N$. Nếu $f(a)f(b)<0$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trong $(a,b)$.",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-tuc-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $f(x)=\\dfrac{1-\\cos x}{x^2}$ với $x\\ne 0$. Tìm giá trị $a=f(0)$ để $f$ liên tục tại $x=0$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "1/2",
+                      "0.5"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Dùng giới hạn chuẩn $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$.",
+                  "explanation": "Theo giới hạn chuẩn, $\\lim_{x\\to0}\\dfrac{1-\\cos x}{x^2}=\\dfrac12$, nên cần $a=\\dfrac12$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-tuc-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Phương trình $x^3+x-1=0$ có nghiệm trong $(0,1)$",
+              "md": "$f(x)=x^3+x-1$ là đa thức nên liên tục trên $[0,1]$. Ta có $f(0)=-1<0$ và $f(1)=1>0$, nên $f(0)f(1)<0$; theo IVT, tồn tại $c\\in(0,1)$ với $f(c)=0$.",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Xác định tại $x_0$ chưa đủ để liên tục",
+              "md": "Hàm\n$$ f(x)=\\begin{cases}0,&x\\ne0,\\\\1,&x=0\\end{cases} $$\nxác định tại $0$ nhưng $\\lim_{x\\to0}f(x)=0\\ne f(0)=1$, nên không liên tục tại $0$. Cần kiểm tra cả sự tồn tại giới hạn và đẳng thức với giá trị hàm.",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-tuc-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi biểu thức với ý nghĩa hoặc giá trị đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$\\lim_{x\\to x_0}f(x)=f(x_0)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$f$ liên tục tại $x_0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$f$ liên tục trên $[a,b]$, $f(a)f(b)<0$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$f(x)=0$ có nghiệm trong $(a,b)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$\\lim_{x\\to0}\\dfrac{\\sin x}{x}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$1$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$\\lim_{x\\to0}\\dfrac{1-\\cos x}{x^2}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$\\dfrac12$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đẳng thức giới hạn bằng giá trị hàm chính là định nghĩa liên tục; hệ quả IVT cho nghiệm khi hai đầu trái dấu; hai giới hạn chuẩn cho $1$ và $\\dfrac12$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lien-tuc-b8",
+              "kind": "interactive",
+              "prompt": "Với $f(x)=3x-1$ tại $x_0=2$, kéo $\\varepsilon$ để $\\delta=\\varepsilon/3$ đạt $0.3$.",
+              "x": {
+                "symbol": "ε",
+                "label": "sai số ε",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "δ",
+                "label": "bán kính δ",
+                "unit": ""
+              },
+              "expr": "x/3",
+              "x_min": 0.1,
+              "x_max": 2.0,
+              "x_step": 0.1,
+              "x_start": 1.5,
+              "target_y": 0.3,
+              "tolerance": 0.01,
+              "praise": "Đúng: $\\varepsilon=0.9$ cho $\\delta=0.3$.",
+              "audio": null
+            },
+            {
+              "id": "lien-tuc-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-tuc-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng sai của các phát biểu về tính liên tục.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Hàm số xác định tại $x_0$ thì liên tục tại $x_0$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Tổng của hai hàm liên tục là một hàm liên tục."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Nếu $f$ liên tục trên $[a,b]$ và $f(a)f(b)<0$ thì phương trình $f(x)=0$ có ít nhất một nghiệm trong $(a,b)$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Hàm $f(x)=x\\sin\\dfrac1x$ với $x\\ne0$, $f(0)=0$ không liên tục tại $0$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Xác định tại $x_0$ không kéo theo liên tục; tổng các hàm liên tục thì liên tục và IVT cho nghiệm khi hai đầu trái dấu. Riêng $0\\le|f(x)|\\le|x|\\to0=f(0)$ nên hàm đó liên tục tại $0$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "lien-tuc-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Hàm $f$ liên tục tại $x_0$ khi nào?",
+                  "answer": "Khi $f$ xác định tại $x_0$ và $\\lim_{x\\to x_0}f(x)=f(x_0)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "IVT cho ta kết luận gì khi $f(a)f(b)<0$?",
+                  "answer": "Phương trình $f(x)=0$ có ít nhất một nghiệm trong $(a,b)$ nếu $f$ liên tục trên $[a,b]$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hàm xác định tại $x_0$ có luôn liên tục tại $x_0$?",
+                  "answer": "Không; cần giới hạn tồn tại và bằng $f(x_0)$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về giới hạn và liên tục: giới hạn dãy số, giới hạn hàm số, rồi dùng giới hạn để định nghĩa tính liên tục và áp dụng định lý giá trị trung gian.",
+          "Dãy a n hội tụ về L nếu với mọi epsilon dương, tồn tại số tự nhiên N sao cho khi n lớn hơn hoặc bằng N thì trị tuyệt đối của a n trừ L nhỏ hơn epsilon. Khi đó ta viết giới hạn của a n bằng L. Nếu dãy không hội tụ về một số thực nào thì gọi là phân kỳ.",
+          "Với hai dãy hội tụ hữu hạn, giới hạn của tổng, hiệu, tích bằng tổng, hiệu, tích các giới hạn; giới hạn của thương bằng thương các giới hạn nếu mẫu khác không. Định lý kẹp nói rằng nếu a n nhỏ hơn hoặc bằng b n nhỏ hơn hoặc bằng c n và hai dãy ngoài cùng cùng hội tụ về L thì b n cũng hội tụ về L. Các giới hạn chuẩn cần nhớ là một chia n tiến về không, q mũ n tiến về không khi trị tuyệt đối của q nhỏ hơn một, và một cộng một chia n tất cả mũ n tiến về e.",
+          "Chẳng hạn, để chứng minh giới hạn của ba n cộng một trên n cộng hai bằng ba, ta biến đổi trị tuyệt đối của biểu thức trừ ba thành năm chia n cộng hai, rồi chọn N lớn hơn năm chia epsilon. Với ví dụ căn của n bình phương cộng n trừ n, nhân lượng liên hợp và chia cho n, biểu thức thành một trên căn của một cộng một chia n cộng một, nên giới hạn bằng một phần hai.",
+          "Cần phân biệt hội tụ hữu hạn với ký hiệu dãy tiến tới dương vô cùng. Viết giới hạn bằng dương vô cùng chỉ mô tả dãy lớn tùy ý, không phải hội tụ theo định nghĩa; dãy a n bằng n là phân kỳ.",
+          "Với hàm số, giới hạn tại x không bằng L nếu với mọi epsilon dương, tồn tại delta dương sao cho khi x khác x không và cách x không ít hơn delta thì f của x cách L ít hơn epsilon. Điều kiện x khác x không nghĩa là không cần quan tâm giá trị tại x không. Giới hạn bên trái xét x nhỏ hơn x không, bên phải xét x lớn hơn x không; giới hạn hai phía tồn tại khi và chỉ khi hai giới hạn một phía tồn tại và bằng nhau.",
+          "Các quy tắc tổng, hiệu, tích, thương và định lý kẹp cho hàm số giống như với dãy số. Ví dụ muốn chứng minh giới hạn của ba x trừ một tại x bằng hai là năm, ta có trị tuyệt đối của ba x trừ một trừ năm bằng ba nhân trị tuyệt đối của x trừ hai, nên chọn delta bằng epsilon chia ba. Ba giới hạn chuẩn tại không là sin x trên x bằng một, một trừ cos x trên x bình phương bằng một phần hai, và e mũ x trừ một trên x bằng một. Gặp dạng không trên không thì chưa được kết luận giới hạn không tồn tại, mà phải biến đổi đại số, dùng giới hạn chuẩn hoặc định lý kẹp.",
+          "Hàm f liên tục tại x không nếu f xác định tại x không và giới hạn của f tại x không bằng f của x không. Tổng, hiệu, tích, thương với mẫu khác không, và hợp của các hàm liên tục là hàm liên tục. Ví dụ hàm bằng x bình phương trừ bốn trên x trừ hai khi x khác hai và bằng a khi x bằng hai; với x khác hai biểu thức rút gọn là x cộng hai, nên giới hạn tại hai bằng bốn, do đó muốn liên tục tại hai thì a phải bằng bốn.",
+          "Định lý giá trị trung gian nói rằng nếu f liên tục trên đoạn từ a đến b và N nằm giữa f của a và f của b thì có c trong khoảng mở từ a đến b để f của c bằng N. Hệ quả là nếu f của a nhân f của b nhỏ hơn không thì phương trình f của x bằng không có ít nhất một nghiệm trong khoảng đó; chẳng hạn x mũ ba cộng x trừ một liên tục trên đoạn từ không đến một, nhận giá trị âm tại không và dương tại một, nên có nghiệm trong khoảng mở từ không đến một. Một hàm xác định tại x không chưa chắc liên tục tại x không: hàm bằng không khi x khác không và bằng một khi x bằng không xác định tại không nhưng giới hạn tại không bằng không, khác giá trị hàm bằng một.",
+          "Ba điều cần nhớ. Thứ nhất, hội tụ được định nghĩa bằng epsilon và N hoặc delta, và giới hạn hữu hạn phải là một số thực. Thứ hai, các quy tắc giới hạn và định lý kẹp dùng được cho cả dãy và hàm, cùng với các giới hạn chuẩn đã học. Thứ ba, hàm liên tục tại x không khi giới hạn tại x không bằng giá trị hàm, từ đó định lý giá trị trung gian giúp chứng minh phương trình có nghiệm."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-dao-ham",
+      "title": "Đạo hàm",
+      "lessons": [
+        {
+          "id": "dinh-nghia-dao-ham",
+          "title": "Định nghĩa đạo hàm",
+          "est_minutes": 15,
+          "summary": "Bài học định nghĩa đạo hàm bằng giới hạn tỉ số vi phân, ý nghĩa hình học, liên hệ với liên tục, đạo hàm một phía cùng ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "f'(x0)=lim_{h→0} [f(x0+h)−f(x0)]/h",
+            "Đạo hàm là hệ số góc tiếp tuyến",
+            "Khả vi tại x0 suy ra liên tục tại x0, ngược lại không đúng",
+            "Đạo hàm một phía và điều kiện khả vi",
+            "Ví dụ, lỗi thường gặp và bài tập được giữ trong bài"
+          ],
+          "blocks": [
+            {
+              "id": "dinh-nghia-dao-ham-b1",
+              "kind": "text",
+              "md": "Đạo hàm cho biết tốc độ thay đổi **tức thời** của $f$ tại $x_0$: ta lấy hệ số góc của cát tuyến trên đoạn $[x_0,\\,x_0+h]$ rồi cho $h\\to 0$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Định nghĩa đạo hàm",
+              "md": "Đạo hàm của $f$ tại $x_0$ là\n$$f'(x_0)=\\lim_{h\\to 0}\\frac{f(x_0+h)-f(x_0)}{h},$$\nnếu giới hạn này tồn tại **hữu hạn**. Cách viết tương đương:\n$$f'(x_0)=\\lim_{x\\to x_0}\\frac{f(x)-f(x_0)}{x-x_0}.$$",
+              "audio": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dinh-nghia-dao-ham-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo định nghĩa, $f'(x_0)$ (nếu tồn tại hữu hạn) được tính bởi giới hạn nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$\\lim_{h\\to0}\\frac{f(x_0+h)-f(x_0)}{h}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$\\lim_{h\\to0}\\frac{f(x_0+h)-f(x_0)}{h^2}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$\\lim_{h\\to0}\\frac{f(x_0+h)+f(x_0)}{h}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$\\lim_{x\\to x_0}\\frac{f(x)-f(x_0)}{x+x_0}$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Định nghĩa dùng tỉ số gia trị hàm trên độ tăng $h$ rồi cho $h\\to0$; dạng tương đương có mẫu $x-x_0$.",
+                  "option_feedback": {
+                    "B": "Mẫu phải là $h$, không phải $h^2$; dùng $h^2$ là sai định nghĩa tỉ số vi phân.",
+                    "C": "Tử phải là hiệu $f(x_0+h)-f(x_0)$, không phải tổng.",
+                    "D": "Mẫu trong cách viết tương đương phải là $x-x_0$, không phải $x+x_0$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/dinh-nghia-dao-ham-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "5d7cb6f47688f78d3de23dd9d44d5a4e710e2943a159931c170eed17b7e0e3f4",
+                "bytes": 7196
+              },
+              "alt": "Cát tuyến AB tiến về tiếp tuyến tại A",
+              "caption": "Khi $h\\to 0$, cát tuyến tiến tới tiếp tuyến; $f'(x_0)$ là hệ số góc của tiếp tuyến.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 1: $f(x)=x^2$ tại $x_0=2$",
+              "md": "$$f'(2)=\\lim_{h\\to 0}\\frac{(2+h)^2-2^2}{h}=\\lim_{h\\to 0}\\frac{4+4h+h^2-4}{h}=\\lim_{h\\to 0}(4+h)=4.$$\nVậy $f'(2)=4$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dinh-nghia-dao-ham-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Hàm $f$ khả vi tại $x_0$ khi và chỉ khi $f'_-(x_0)$ và $f'_+(x_0)$ tồn tại và {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "bằng nhau",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "đối nhau",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "khác nhau",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Điều kiện khả vi là hai đạo hàm một phía tồn tại và bằng nhau; khi đó chúng bằng $f'(x_0)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 2: $f(x)=\\dfrac{1}{x}$ tại $x_0=2$",
+              "md": "$$f'(2)=\\lim_{h\\to 0}\\frac{\\dfrac{1}{2+h}-\\dfrac{1}{2}}{h}=\\lim_{h\\to 0}\\frac{-h}{2h(2+h)}=\\lim_{h\\to 0}\\frac{-1}{2(2+h)}=-\\frac14.$$\nVậy $f'(2)=-\\dfrac14$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Đạo hàm một phía",
+              "md": "$f'_-(x_0)$ và $f'_+(x_0)$ là giới hạn trái và phải của tỉ số vi phân $\\dfrac{f(x)-f(x_0)}{x-x_0}$.\n\nHàm khả vi tại $x_0$ **khi và chỉ khi** hai đạo hàm một phía tồn tại và bằng nhau; khi đó $f'(x_0)=f'_-(x_0)=f'_+(x_0)$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dinh-nghia-dao-ham-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Dùng định nghĩa, tính $f'(2)$ với $f(x)=x^2$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "4",
+                      "4.0"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Khai triển $(2+h)^2-4=4h+h^2$, chia cho $h$ rồi lấy giới hạn được $4$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Liên tục không suy ra khả vi",
+              "md": "Nếu $f$ khả vi tại $x_0$ thì $f$ liên tục tại $x_0$. **Ngược lại không đúng.**\n\nHàm $f(x)=|x|$ liên tục tại $0$ nhưng\n$$f'_-(0)=-1,\\qquad f'_+(0)=1,$$\n hai đạo hàm một phía khác nhau nên $f'(0)$ không tồn tại. Liên tục chỉ đảm bảo đồ thị không đứt, không đảm bảo có tiếp tuyến.",
+              "audio": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b8",
+              "kind": "interactive",
+              "prompt": "Kéo $h$ để hệ số góc cát tuyến của $y=x^2$ tại $x_0=2$ bằng $4{,}1$",
+              "x": {
+                "symbol": "h",
+                "label": "Độ dời h",
+                "unit": "đv"
+              },
+              "y": {
+                "symbol": "k",
+                "label": "Hệ số góc cát tuyến",
+                "unit": "đv"
+              },
+              "expr": "((2+x)^2-4)/x",
+              "x_min": 0.1,
+              "x_max": 2.0,
+              "x_step": 0.1,
+              "x_start": 1.5,
+              "target_y": 4.1,
+              "tolerance": 0.01,
+              "praise": "Chính xác: hệ số góc cát tuyến là $4+h$, nên khi $h\\to 0$ nó tiến về $f'(2)=4$.",
+              "audio": null
+            },
+            {
+              "id": "dinh-nghia-dao-ham-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dinh-nghia-dao-ham-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi ký hiệu/khái niệm với ý nghĩa đúng theo bài.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$f'_-(x_0)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "đạo hàm bên trái tại $x_0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$f'_+(x_0)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "đạo hàm bên phải tại $x_0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$f'(x_0)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "hệ số góc tiếp tuyến tại $x_0$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Khả vi tại $x_0$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "suy ra liên tục tại $x_0$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đạo hàm một phía là giới hạn trái/phải của tỉ số vi phân; nếu khả vi, $f'(x_0)$ là hệ số góc tiếp tuyến.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dinh-nghia-dao-ham-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đạo hàm của $f$ tại $x_0$ được định nghĩa thế nào?",
+                  "answer": "Là giới hạn hữu hạn $f'(x_0)=\\lim_{h\\to 0}\\dfrac{f(x_0+h)-f(x_0)}{h}$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Ý nghĩa hình học của $f'(x_0)$ là gì?",
+                  "answer": "Là hệ số góc của tiếp tuyến với đồ thị tại điểm $x_0$ (giới hạn của hệ số góc cát tuyến).",
+                  "image": null
+                },
+                {
+                  "prompt": "Liên tục tại $x_0$ có suy ra khả vi tại $x_0$ không?",
+                  "answer": "Không; $|x|$ liên tục tại $0$ nhưng $f'_-(0)=-1$, $f'_+(0)=1$ nên $f'(0)$ không tồn tại.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "quy-tac-tinh-dao-ham",
+          "title": "Quy tắc tính đạo hàm",
+          "est_minutes": 15,
+          "summary": "Bài học cung cấp bảng đạo hàm cơ bản, quy tắc tích/thương/chuỗi, đạo hàm hàm ẩn và các ví dụ, lỗi thường gặp, bài tập.",
+          "key_ideas": [
+            "Bảng đạo hàm của x^n, sinx, cosx, e^x, lnx, sqrtx",
+            "Quy tắc tổng, tích, thương và quy tắc chuỗi",
+            "Đạo hàm hàm ẩn bằng cách lấy đạo hàm hai vế theo x",
+            "Không bỏ quên đạo hàm hàm trong khi dùng quy tắc chuỗi"
+          ],
+          "blocks": [
+            {
+              "id": "quy-tac-tinh-dao-ham-b1",
+              "kind": "text",
+              "md": "Các đạo hàm cơ bản cần nhớ:\n$$(x^n)'=nx^{n-1},\\quad (\\sin x)'=\\cos x,\\quad (\\cos x)'=-\\sin x,$$\n$$(e^x)'=e^x,\\quad (\\ln x)'=\\frac1x,\\quad (\\sqrt x)'=\\frac{1}{2\\sqrt x}.$$\nVới tổng, hiệu: $(u\\pm v)'=u'\\pm v'$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Quy tắc tích, thương, chuỗi",
+              "md": "Với $u,v$ khả vi:\n$$(uv)'=u'v+uv',\\qquad \\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2},\\quad v\\ne0.$$\nQuy tắc chuỗi: nếu $y=f(g(x))$ thì\n$$y'=f'(g(x))\\,g'(x).$$",
+              "audio": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-tac-tinh-dao-ham-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho $x^2+xy+y^2=3$. Khẳng định nào đúng về $y'$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$y'=-\\dfrac{2x+y}{x+2y}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$y'=-\\dfrac{2x+y}{x+y}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$y'=\\dfrac{2x+y}{x+2y}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$y'=-\\dfrac{x+2y}{2x+y}$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nhớ $y$ là hàm của $x$ nên đạo hàm của $xy$ là $y+xy'$.",
+                  "explanation": "Lấy đạo hàm hai vế được $2x+y+xy'+2yy'=0$, giải ra $y'=-(2x+y)/(x+2y)$.",
+                  "option_feedback": {
+                    "B": "Nhầm khi gom số hạng $2yy'$ thành $yy'$, nên hệ số của $y'$ bị hụt.",
+                    "C": "Sai dấu khi chuyển $2x+y$ sang vế phải.",
+                    "D": "Đảo ngược tử và mẫu khi giải phương trình cho $y'$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính đạo hàm của $y=(x^2+1)^5\\sin(2x)$",
+              "md": "Áp dụng quy tắc tích và quy tắc chuỗi:\n$$y'=5(x^2+1)^4\\cdot2x\\cdot\\sin(2x)+(x^2+1)^5\\cdot2\\cos(2x).$$\nRút gọn:\n$$y'=2(x^2+1)^4\\left[5x\\sin(2x)+(x^2+1)\\cos(2x)\\right].$$",
+              "audio": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-tac-tinh-dao-ham-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền vào chỗ trống: $\\big(\\sin(3x^2+1)\\big)'={{gap}}\\cdot\\cos(3x^2+1)$ và $(\\sqrt x)'={{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "6x",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\frac{1}{2\\sqrt x}",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "3x",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "\\cos(3x^2+1)",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "\\frac{1}{\\sqrt x}",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Quy tắc chuỗi nhân thêm đạo hàm $6x$ của hàm trong; đạo hàm $\\sqrt x$ là $1/(2\\sqrt x)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b4",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Bỏ sót đạo hàm hàm trong",
+              "md": "Viết $(\\sin(3x^2+1))'=\\cos(3x^2+1)$ là sai, vì còn phải nhân với đạo hàm của $3x^2+1$. Đúng là\n$$(\\sin(3x^2+1))'=6x\\cos(3x^2+1).$$",
+              "audio": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Đạo hàm hàm ẩn",
+              "md": "Nếu $y=y(x)$ được cho bởi phương trình $F(x,y)=0$, lấy đạo hàm hai vế theo $x$, nhớ $y$ là hàm của $x$, rồi giải tìm $y'$.",
+              "audio": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-tac-tinh-dao-ham-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $x^2+y^2=25$. Tính hệ số góc của tiếp tuyến tại điểm $(3,4)$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "-3/4",
+                      "-0.75",
+                      "-0,75"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Lấy đạo hàm hai vế theo $x$ rồi thay $x=3$, $y=4$.",
+                  "explanation": "Từ $2x+2yy'=0$ suy ra $y'=-x/y$, tại $(3,4)$ được $-3/4$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cho $x^2+xy+y^2=3$, tính $y'(1,1)$",
+              "md": "Lấy đạo hàm hai vế theo $x$:\n$$2x+y+xy'+2yy'=0.$$\nSuy ra\n$$y'(x+2y)=-(2x+y)\\quad\\Longrightarrow\\quad y'=-\\frac{2x+y}{x+2y}.$$\nTại $(1,1)$:\n$$y'(1,1)=-\\frac{2+1}{1+2}=-1.$$",
+              "audio": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-tac-tinh-dao-ham-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi hàm với đạo hàm của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$(\\cos x)'$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$-\\sin x$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$(e^x)'$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$e^x$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$(\\ln x)'$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$\\dfrac1x$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$(x^n)'$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$nx^{n-1}$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đây là các đạo hàm cơ bản trong bảng đạo hàm cần nhớ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b7",
+              "kind": "interactive",
+              "prompt": "Kéo $x$ để đạo hàm của $x^2$ bằng $6$",
+              "x": {
+                "symbol": "x",
+                "label": "Giá trị x",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "y'",
+                "label": "Đạo hàm của $x^2$",
+                "unit": ""
+              },
+              "expr": "2*x",
+              "x_min": 0.0,
+              "x_max": 5.0,
+              "x_step": 0.1,
+              "x_start": 1.0,
+              "target_y": 6.0,
+              "tolerance": 0.06,
+              "praise": "Đúng: tại $x=3$, $(x^2)'=2x=6$.",
+              "audio": null
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quy-tac-tinh-dao-ham-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các khẳng định sau về đạo hàm.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu $f$ khả vi tại $x_0$ thì $f$ liên tục tại $x_0$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nếu $f$ liên tục tại $x_0$ thì $f$ khả vi tại $x_0$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Hàm $f(x)=|x|$ có đạo hàm tại $x=0$ bằng $0$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Quy tắc đạo hàm của thương là $\\left(\\dfrac uv\\right)'=\\dfrac{u'v-uv'}{v^2}$ với $v\\ne0$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Khả vi kéo theo liên tục nhưng không ngược lại; $|x|$ có đạo hàm một phía $-1$ và $1$ tại $0$ nên không khả vi.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "quy-tac-tinh-dao-ham-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đạo hàm của $x^n$, $\\sin x$, $\\cos x$, $e^x$, $\\ln x$, $\\sqrt x$ lần lượt là gì?",
+                  "answer": "$nx^{n-1}$, $\\cos x$, $-\\sin x$, $e^x$, $1/x$, $1/(2\\sqrt x)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Viết quy tắc tích, thương và chuỗi.",
+                  "answer": "$(uv)'=u'v+uv'$, $\\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2}$, $(f(g(x)))'=f'(g(x))g'(x)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Muốn tính $y'$ từ $F(x,y)=0$ thì làm thế nào?",
+                  "answer": "Lấy đạo hàm hai vế theo $x$, coi $y=y(x)$, rồi giải tìm $y'$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ung-dung-dao-ham",
+          "title": "Ứng dụng đạo hàm",
+          "est_minutes": 15,
+          "summary": "Bài học trình bày cực trị, định lý Fermat, điểm tới hạn, dấu đạo hàm, tiêu chuẩn đạo hàm bậc hai, giá trị lớn nhất/nhỏ nhất và xấp xỉ tuyến tính.",
+          "key_ideas": [
+            "Cực trị địa phương và định lý Fermat",
+            "Điểm tới hạn: f'(x)=0 hoặc f'(x) không tồn tại",
+            "Dấu f' cho biết đồng biến, nghịch biến",
+            "Tiêu chuẩn đạo hàm bậc hai để nhận diện cực trị",
+            "Tìm max/min trên [a,b] và xấp xỉ tuyến tính"
+          ],
+          "blocks": [
+            {
+              "id": "ung-dung-dao-ham-b1",
+              "kind": "text",
+              "md": "Đạo hàm là hệ số góc của tiếp tuyến. Nó cũng cho biết hàm tăng, giảm và chỉ ra chỗ có thể đạt cực trị. Trên một khoảng, dấu của $f'$ quyết định chiều biến thiên của $f$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ung-dung-dao-ham-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Cực trị địa phương và định lý Fermat",
+              "md": "$x_0$ là điểm cực đại địa phương nếu $f(x)\\le f(x_0)$ với mọi $x$ gần $x_0$; cực tiểu địa phương định nghĩa tương tự. Nếu $f$ khả vi tại $x_0$ và $x_0$ là cực trị địa phương nằm trong khoảng xác định thì $f'(x_0)=0$ (định lý Fermat).",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-dao-ham-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-dao-ham-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo định lý Fermat, nếu $f$ khả vi tại $x_0$ và $x_0$ là điểm cực trị địa phương nằm trong khoảng xác định thì kết luận nào đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$f'(x_0)=0$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$f''(x_0)=0$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$f'(x_0)$ không tồn tại",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$f(x_0)=0$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Định lý Fermat nói rằng tại cực trị địa phương mà hàm khả vi, đạo hàm phải triệt tiêu.",
+                  "option_feedback": {
+                    "B": "Đây là điều kiện của đạo hàm bậc hai, không phải kết luận của định lý Fermat.",
+                    "C": "Fermat giả thiết $f$ khả vi tại $x_0$, nên $f'(x_0)$ phải tồn tại.",
+                    "D": "Giá trị hàm tại điểm cực trị không nhất thiết bằng 0."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-dao-ham-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Điểm tới hạn và dấu đạo hàm",
+              "md": "Điểm tới hạn là điểm mà $f'(x)=0$ hoặc $f'(x)$ không tồn tại. Trên một khoảng: $f'(x)>0$ thì $f$ đồng biến; $f'(x)<0$ thì $f$ nghịch biến.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-dao-ham-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/ung-dung-dao-ham-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "eedd03941fc28440ba499d0860d3cc928448995f7ef04fa226330e3e24989344",
+                "bytes": 2379
+              },
+              "alt": "Biểu đồ dấu đạo hàm đổi từ âm sang dương tại điểm tới hạn c",
+              "caption": "Dấu $f'$ đổi từ âm sang dương: $f$ giảm rồi tăng, nên $c$ là cực tiểu địa phương.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "ung-dung-dao-ham-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-dao-ham-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Nếu $f'(x_0)=0$ và $f''(x_0) {{gap}} 0$ thì $x_0$ là cực tiểu địa phương; nếu $f''(x_0) {{gap}} 0$ thì $x_0$ là cực đại địa phương.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": ">",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "<",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "=",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "≠",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tiêu chuẩn đạo hàm bậc hai: $f''>0$ cho cực tiểu, $f''<0$ cho cực đại.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-dao-ham-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tiêu chuẩn đạo hàm bậc hai",
+              "md": "Nếu $f'(x_0)=0$ và $f''(x_0)>0$ thì $x_0$ là cực tiểu địa phương; nếu $f''(x_0)<0$ thì $x_0$ là cực đại địa phương.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-dao-ham-b6",
+              "kind": "text",
+              "md": "Trên $[a,b]$, để tìm giá trị lớn nhất và nhỏ nhất: tính $f$ tại các điểm tới hạn trong $(a,b)$ và tại hai đầu mút $a,b$, rồi so sánh các giá trị.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ung-dung-dao-ham-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-dao-ham-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Dùng xấp xỉ tuyến tính của $f(x)=x^2$ tại $x_0=2$, ước lượng $f(2.1)$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "4.4",
+                      "4,4"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "Xấp xỉ tuyến tính tại $x_0=2$ là $x^2≈4+4(x-2)$; tại $x=2.1$ được $4+4(0.1)=4.4$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-dao-ham-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Xấp xỉ tuyến tính",
+              "md": "Với $f(x)=x^2$ tại $x_0=2$, ta có $f(2)=4$ và $f'(2)=4$ (theo định nghĩa đạo hàm). Công thức $f(x)\\approx f(x_0)+f'(x_0)(x-x_0)$ cho $x^2\\approx 4+4(x-2)$ khi $x$ gần $2$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-dao-ham-b8",
+              "kind": "interactive",
+              "prompt": "Kéo $x$ để xấp xỉ tuyến tính của $x^2$ tại $x_0=2$ bằng $4{,}8$.",
+              "x": {
+                "symbol": "x",
+                "label": "Giá trị x",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "y",
+                "label": "Xấp xỉ",
+                "unit": ""
+              },
+              "expr": "4+4*(x-2)",
+              "x_min": 2.0,
+              "x_max": 3.0,
+              "x_step": 0.1,
+              "x_start": 2.0,
+              "target_y": 4.8,
+              "tolerance": 0.05,
+              "praise": "Đúng: $4+4(2{,}2-2)=4{,}8$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-dao-ham-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-dao-ham-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mệnh đề đúng theo bài học.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$f'(x)>0$ trên một khoảng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$f$ đồng biến trên khoảng đó",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$f'(x)<0$ trên một khoảng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$f$ nghịch biến trên khoảng đó",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Điểm tới hạn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$f'(x)=0$ hoặc $f'(x)$ không tồn tại",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Định lý Fermat",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$f'(x_0)=0$ tại cực trị địa phương khả vi",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Dấu đạo hàm quyết định chiều biến thiên; điểm tới hạn gồm chỗ đạo hàm bằng 0 hoặc không tồn tại.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-dao-ham-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Định lý Fermat nói gì khi hàm khả vi tại một cực trị địa phương?",
+                  "answer": "Thì đạo hàm tại đó bằng 0: $f'(x_0)=0$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Một điểm tới hạn là gì?",
+                  "answer": "Là điểm mà $f'(x)=0$ hoặc $f'(x)$ không tồn tại.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trên $[a,b]$, cần so sánh những giá trị nào để tìm max/min?",
+                  "answer": "Giá trị tại các điểm tới hạn trong $(a,b)$ và tại hai đầu mút $a,b$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về đạo hàm: định nghĩa, các quy tắc tính và ứng dụng. Đạo hàm của f tại x không là giới hạn khi h tiến tới không của thương f của x không cộng h trừ f của x không, tất cả chia cho h, nếu giới hạn này tồn tại hữu hạn. Nó là hệ số góc của tiếp tuyến, và cũng là tốc độ thay đổi tức thời. Ví dụ với f bằng x bình tại x không bằng hai, theo định nghĩa ta tính được đạo hàm bằng bốn.",
+          "Hàm khả vi tại x không khi và chỉ khi đạo hàm bên trái và đạo hàm bên phải tồn tại và bằng nhau. Nếu f khả vi tại x không thì f liên tục tại x không, nhưng ngược lại không đúng. Hàm trị tuyệt đối của x liên tục tại không nhưng đạo hàm bên trái bằng trừ một, đạo hàm bên phải bằng một, nên đạo hàm tại không không tồn tại.",
+          "Các đạo hàm cơ bản cần nhớ là đạo hàm của x mũ n bằng n nhân x mũ n trừ một; đạo hàm của sin x bằng cos x; đạo hàm của cos x bằng trừ sin x; đạo hàm của e mũ x bằng e mũ x; đạo hàm của ln x bằng một trên x; đạo hàm của căn x bằng một trên hai căn x. Với tổng và hiệu, đạo hàm bằng tổng hoặc hiệu các đạo hàm.",
+          "Với tích, đạo hàm của u nhân v bằng u phẩy nhân v cộng u nhân v phẩy. Với thương, đạo hàm của u trên v bằng u phẩy nhân v trừ u nhân v phẩy, tất cả trên v bình phương, với v khác không. Quy tắc chuỗi nói rằng đạo hàm của f của g của x bằng f phẩy tại g của x nhân với g phẩy của x. Ví dụ đạo hàm của sin của ba x bình cộng một phải bằng sáu x nhân cos của ba x bình cộng một; nếu chỉ viết cos của ba x bình cộng một là sai vì quên đạo hàm của hàm trong.",
+          "Với hàm ẩn cho bởi F của x, y bằng không, ta lấy đạo hàm hai vế theo x, nhớ rằng y là hàm của x, rồi giải tìm y phẩy. Ví dụ lấy đạo hàm hai vế của phương trình x bình cộng x y cộng y bình bằng ba, ta được hai x cộng y cộng x nhân y phẩy cộng hai y nhân y phẩy bằng không. Tại điểm có hoành độ bằng một và tung độ bằng một, suy ra y phẩy bằng âm một.",
+          "Đạo hàm là hệ số góc của tiếp tuyến, đồng thời cho biết hàm tăng, giảm và chỗ có thể đạt cực trị. Trên một khoảng, nếu f phẩy dương thì f đồng biến; nếu f phẩy âm thì f nghịch biến. x không là điểm cực đại địa phương nếu f của x nhỏ hơn hoặc bằng f của x không với mọi x gần x không; cực tiểu địa phương định nghĩa tương tự. Định lý Fermat nói rằng nếu f khả vi tại x không và x không là cực trị địa phương nằm trong khoảng xác định thì f phẩy tại x không bằng không.",
+          "Điểm tới hạn là điểm mà f phẩy bằng không hoặc f phẩy không tồn tại. Nếu f phẩy tại x không bằng không và f phẩy hai tại x không dương thì x không là cực tiểu địa phương; nếu f phẩy hai âm thì x không là cực đại địa phương. Trên đoạn từ a đến b, muốn tìm giá trị lớn nhất và nhỏ nhất, ta tính f tại các điểm tới hạn trong khoảng mở và tại hai đầu mút, rồi so sánh. Công thức xấp xỉ tuyến tính là f của x xấp xỉ f của x không cộng f phẩy của x không nhân với x trừ x không; với f bằng x bình tại x không bằng hai, ta có x bình xấp xỉ bốn cộng bốn nhân với lượng x trừ hai khi x gần hai.",
+          "Ba điều cần nhớ là thứ nhất, đạo hàm là giới hạn của tỉ số vi phân và là hệ số góc tiếp tuyến; khả vi thì liên tục nhưng liên tục chưa chắc khả vi. Thứ hai, nắm vững đạo hàm cơ bản cùng quy tắc tổng, tích, thương và quy tắc chuỗi, đặc biệt đừng quên đạo hàm của hàm trong. Thứ ba, dùng dấu đạo hàm để xét đồng biến nghịch biến, dùng điểm tới hạn và đạo hàm bậc hai để tìm cực trị, và nhớ quy trình tìm giá trị lớn nhất nhỏ nhất trên đoạn."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

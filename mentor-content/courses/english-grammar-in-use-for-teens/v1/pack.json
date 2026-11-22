@@ -1,0 +1,2107 @@
+{
+  "schema_version": 1,
+  "course_id": "english-grammar-in-use-for-teens",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "en",
+  "age_band": "g6_9",
+  "title": "English Grammar in Use for Teens: Tenses",
+  "chapters": [
+    {
+      "id": "ch-present",
+      "title": "Present",
+      "lessons": [
+        {
+          "id": "simple-and-continuous",
+          "title": "Simple and continuous",
+          "est_minutes": 12,
+          "summary": "Compare present simple and present continuous forms, time words, spelling and stative verbs through examples, a common mistake and practice.",
+          "key_ideas": [
+            "Present simple for routines, habits, facts and timetables",
+            "Present continuous for actions now, temporary situations and pictures",
+            "Forms, negatives and questions with do/does or am/is/are",
+            "Time words: every day, usually, now, at the moment",
+            "Stative verbs usually avoid continuous; common mistake: She watching TV"
+          ],
+          "blocks": [
+            {
+              "id": "simple-and-continuous-b2",
+              "kind": "text",
+              "md": "Use the present simple for routines, habits, facts and timetables. Example: *I walk to school every day.*",
+              "audio": null,
+              "gloss": "Dùng thì hiện tại đơn cho thói quen, sự thật và thời gian biểu. Ví dụ: *I walk to school every day.*"
+            },
+            {
+              "id": "simple-and-continuous-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "simple-and-continuous-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which sentence is correct?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "She is watching TV in her room now.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "She watching TV in her room now.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "She watch TV in her room now.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "She is watch TV in her room now.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Look for the full be + verb-ing pattern.",
+                  "explanation": "The present continuous is formed with be + verb-ing, so 'is watching' is correct. The word 'now' signals an action happening at this moment.",
+                  "option_feedback": {
+                    "B": "This has no be verb, and present continuous needs am/is/are + verb-ing.",
+                    "C": "This is the present simple form, but 'now' calls for the present continuous.",
+                    "D": "After is you need the -ing form, not the base verb."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "simple-and-continuous-b3",
+              "kind": "text",
+              "md": "Use the present continuous for actions happening now, temporary situations, and describing a picture. Example: *She is watching TV now.*",
+              "audio": null,
+              "gloss": "Dùng thì hiện tại tiếp diễn cho hành động đang xảy ra bây giờ, tình huống tạm thời và mô tả tranh. Ví dụ: *She is watching TV now.*"
+            },
+            {
+              "id": "simple-and-continuous-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Routine vs now",
+              "md": "Complete: *My sister ___ (chat) online every evening, but right now she ___ (do) her homework.*\n\n*every evening* → routine → present simple: **chats**.\n*right now* → action now → present continuous: **is doing**.\n\nFull sentence: *My sister chats online every evening, but right now she is doing her homework.*",
+              "audio": null
+            },
+            {
+              "id": "simple-and-continuous-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "simple-and-continuous-q2",
+                  "type": "FILL_TILES",
+                  "stem": "My sister {{gap}} online every evening, but right now she {{gap}} her homework.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "chats",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "is doing",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "chat",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "does",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "'Every evening' shows a routine, so we use the present simple 'chats'. 'Right now' shows an action happening now, so we use the present continuous 'is doing'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "simple-and-continuous-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Forms, negatives and questions",
+              "md": "**Present simple**\n- $S + V_1$; with he/she/it add -s/-es.\n- Negative: $S + do/does + not + V_1$.\n- Question: $Do/Does + S + V_1$?\n- With be: $S + am/is/are$; negative add not; question invert.\n\n**Present continuous**\n- $S + am/is/are + V_{ing}$.\n- Negative: add not after am/is/are.\n- Question: $Am/Is/Are + S + V_{ing}$?",
+              "audio": null
+            },
+            {
+              "id": "simple-and-continuous-b6",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Time words",
+              "md": "Present simple: *every day, usually, often, never*.\n\nPresent continuous: *now, at the moment, these days, Look!, Listen!*.",
+              "audio": null
+            },
+            {
+              "id": "simple-and-continuous-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "simple-and-continuous-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each word or form with its partner.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "usually",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "present simple time word",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "at the moment",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "present continuous time word",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "watch (he/she/it)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "watches",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "make (+ -ing)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "making",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "'Usually' goes with routines, while 'at the moment' goes with actions now. With he/she/it we add -es to watch, and final -e is dropped before -ing in make.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "simple-and-continuous-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Spelling and stative verbs",
+              "md": "Spelling: watch → watches; study → studies; play → plays; run → running; make → making.\n\nStative verbs like *like, want, know, need, understand, hate* usually do not take the continuous form.",
+              "audio": null
+            },
+            {
+              "id": "simple-and-continuous-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Common mistake",
+              "md": "*She watching TV in her room.*\n\nWhy it is wrong: present continuous needs **be + verb-ing**. *Watching* alone is not a complete verb form here.\n\nCorrect: *She is watching TV in her room.*",
+              "audio": null
+            },
+            {
+              "id": "simple-and-continuous-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "simple-and-continuous-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Put the steps in order to make the question from: your friends / play / video games now?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Start with the subject: your friends.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Choose are, because the subject is plural.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Put are before the subject.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Add the -ing form of the verb: playing.",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Result: Are your friends playing video games now?",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Present continuous questions invert am/is/are and the subject, then add the verb-ing. So the question is 'Are your friends playing video games now?'",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "simple-and-continuous-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "When do we use the present simple?",
+                  "answer": "For routines, habits, facts and timetables.",
+                  "image": null
+                },
+                {
+                  "prompt": "When do we use the present continuous?",
+                  "answer": "For actions now, temporary situations and pictures.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is missing in *She watching TV*?",
+                  "answer": "The verb *be*: *She is watching TV*.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "present-perfect",
+          "title": "Present perfect",
+          "est_minutes": 12,
+          "summary": "Learn present perfect form and uses for experience, result now, unfinished time and how long, with examples, a common mistake and practice.",
+          "key_ideas": [
+            "Form: have/has + V3; negatives and questions",
+            "Uses: experience, result now, unfinished time and how long",
+            "Time words: ever, never, just, already, yet, since, for",
+            "For + period; since + starting point",
+            "No present perfect with finished past time; common mistake: I have watched that film yesterday"
+          ],
+          "blocks": [
+            {
+              "id": "present-perfect-b2",
+              "kind": "text",
+              "md": "Present perfect links a past action to now. The action happened before now, but it matters now. Form: $S + \\text{have/has} + V_3$.",
+              "audio": null,
+              "gloss": "Thì hiện tại hoàn thành nối một hành động trong quá khứ với hiện tại. Hành động xảy ra trước bây giờ, nhưng nó quan trọng ở hiện tại. Cấu trúc: $S + \\text{have/has} + V_3$."
+            },
+            {
+              "id": "present-perfect-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "present-perfect-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Complete the sentence: I ______ my keys, so I can't open the door.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "lost",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "have lost",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "lose",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "am losing",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Think about whether the result of the action is important now.",
+                  "explanation": "The result (I can't open the door) matters now, so we use the present perfect: have lost.",
+                  "option_feedback": {
+                    "A": "Past simple is used for finished past time, not for a result that matters now.",
+                    "C": "Present simple is used for habits or facts, not for a past action with a result now.",
+                    "D": "Present continuous is used for actions happening now, not for a completed action with a result."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "present-perfect-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Form: have/has + V3",
+              "md": "$S + \\text{have/has} + V_3$\n\nNegative: $S + \\text{have/has} + \\text{not} + V_3$\n\nQuestion: $\\text{Have/Has} + S + V_3$?\n\nIrregular examples: see, saw, seen; do, did, done; lose, lost, lost.",
+              "audio": null
+            },
+            {
+              "id": "present-perfect-b4",
+              "kind": "text",
+              "md": "Use it for experience: *I have never eaten sushi.* For a result now: *I have lost my keys.* For unfinished time: *I have done three exercises today.* For how long: *She has lived here for two years.*",
+              "audio": null,
+              "gloss": "Dùng thì này cho trải nghiệm: *I have never eaten sushi.* Cho kết quả ở hiện tại: *I have lost my keys.* Cho thời gian chưa kết thúc: *I have done three exercises today.* Cho khoảng thời gian: *She has lived here for two years.*"
+            },
+            {
+              "id": "present-perfect-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "present-perfect-q2",
+                  "type": "FILL_TILES",
+                  "stem": "She {{gap}} lived here {{gap}} two years.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "has",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "for",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "have",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "since",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "'She' takes 'has', and 'two years' is a period, so we use 'for'.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "present-perfect-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example: result now",
+              "md": "Complete: *I ___ (lose) my phone. I can’t find it anywhere.*\n\nThe phone is still missing, so the result matters now. Use present perfect: **have lost**.\n\nFull sentence: *I have lost my phone. I can’t find it anywhere.*",
+              "audio": null
+            },
+            {
+              "id": "present-perfect-b6",
+              "kind": "text",
+              "md": "Time words: *ever, never, just, already, yet, since, for*. Use *for* + period: *for two years*. Use *since* + starting point: *since 2020*.",
+              "audio": null,
+              "gloss": "Các từ chỉ thời gian: *ever, never, just, already, yet, since, for*. Dùng *for* + khoảng thời gian: *for two years*. Dùng *since* + mốc bắt đầu: *since 2020*."
+            },
+            {
+              "id": "present-perfect-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "present-perfect-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each time word with its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "ever",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "at any time (in questions)",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "never",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "not at any time",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "just",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "a very short time ago",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "yet",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "up to now (negatives and questions)",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These time words are typical markers of the present perfect.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "present-perfect-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Common mistake",
+              "md": "*I have watched that film yesterday.*\n\nWhy it is wrong: *yesterday* is finished past time, so present perfect is not used.\n\nCorrect: *I watched that film yesterday.*",
+              "audio": null
+            },
+            {
+              "id": "present-perfect-b8",
+              "kind": "text",
+              "md": "Past simple = finished action at a known past time: *I saw that film last week.* Present perfect = past action connected to now, with no finished past time: *I have seen that film.*",
+              "audio": null,
+              "gloss": "Quá khứ đơn = hành động đã kết thúc ở một thời điểm quá khứ xác định: *I saw that film last week.* Hiện tại hoàn thành = hành động quá khứ gắn với hiện tại, không có thời gian quá khứ đã kết thúc: *I have seen that film.*"
+            },
+            {
+              "id": "present-perfect-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "present-perfect-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Put the steps for choosing between past simple and present perfect in the right order.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Look for a finished past time like 'yesterday' or 'last week'.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "If you find one, use the past simple.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "If there is no finished past time and the result matters now, use the present perfect.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Form it with have/has + past participle.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "A finished past time forces the past simple; otherwise the present perfect links the action to now.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "present-perfect-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What is the form of the present perfect?",
+                  "answer": "Subject + have/has + past participle (V3).",
+                  "image": null
+                },
+                {
+                  "prompt": "When do you use for and when do you use since?",
+                  "answer": "For + a period (for two years); since + a starting point (since 2020).",
+                  "image": null
+                },
+                {
+                  "prompt": "Why is “I have watched that film yesterday” wrong?",
+                  "answer": "Yesterday is finished past time, so use past simple: I watched that film yesterday.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "perfect-or-past",
+          "title": "Perfect or past?",
+          "est_minutes": 10,
+          "summary": "Choose between past simple and present perfect by checking finished past time and present result, with examples, a common mistake and practice.",
+          "key_ideas": [
+            "Past simple for finished actions at a definite past time",
+            "Present perfect for past actions connected to now",
+            "If you say when, use past simple",
+            "Questions: Did you see...? vs Have you seen...?",
+            "Common mistake: I have finished my homework two hours ago"
+          ],
+          "blocks": [
+            {
+              "id": "perfect-or-past-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/perfect-or-past-b1.svg",
+                "mime": "image/svg+xml",
+                "sha256": "b026e29a5f8e9df94bdaf209d5cbdcfb89e195ff6f576160dabb62bbe4dc307d",
+                "bytes": 3862
+              },
+              "alt": "Timeline comparing past simple, which stops at a finished past time, with present perfect, which connects the past to now.",
+              "caption": "Past simple stops at a finished time; present perfect reaches now.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "perfect-or-past-b2",
+              "kind": "text",
+              "md": "Past simple is for a finished action at a definite past time. Present perfect connects a past action to now.",
+              "audio": null,
+              "gloss": "Thì quá khứ đơn dùng cho hành động đã kết thúc tại một thời điểm xác định trong quá khứ. Thì hiện tại hoàn thành nối một hành động trong quá khứ với hiện tại."
+            },
+            {
+              "id": "perfect-or-past-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "perfect-or-past-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Choose the correct sentence.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "I saw that film last week.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "I have seen that film last week.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "I have saw that film last week.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "I seen that film last week.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Look at the time phrase.",
+                  "explanation": "Last week is finished past time, so the past simple saw is correct.",
+                  "option_feedback": {
+                    "B": "Last week is a finished past time, so present perfect is the wrong tense here.",
+                    "C": "Have saw is not a correct perfect form; the past simple is saw.",
+                    "D": "Seen alone is not the past simple; the past simple of see is saw."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "perfect-or-past-b3",
+              "kind": "text",
+              "md": "If you say when, use past simple: yesterday, last week, in 2020, two days ago. No definite past time and a result now? Use present perfect.",
+              "audio": null,
+              "gloss": "Nếu bạn nói thời gian cụ thể, hãy dùng quá khứ đơn: yesterday, last week, in 2020, two days ago. Không có thời gian quá khứ xác định và kết quả ảnh hưởng đến hiện tại? Hãy dùng hiện tại hoàn thành."
+            },
+            {
+              "id": "perfect-or-past-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "perfect-or-past-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Complete the sentence with the correct form: I {{gap}} (see) that film last week.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "saw",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "have seen",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "seen",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Last week is finished past time, so the past simple saw is correct.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "perfect-or-past-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Two sentences, two tenses",
+              "md": "I **saw** that film last week. → *last week* is a finished past time, so past simple.\n\nI **have seen** that film, so I don’t want to see it again. → the result matters now, and no finished time is given, so present perfect.",
+              "audio": null
+            },
+            {
+              "id": "perfect-or-past-b5",
+              "kind": "text",
+              "md": "Present perfect often goes with ever, never, just, already, yet, since, and for. Use this week only if the week is not finished.",
+              "audio": null,
+              "gloss": "Thì hiện tại hoàn thành thường đi với ever, never, just, already, yet, since và for. Chỉ dùng this week nếu tuần đó chưa kết thúc."
+            },
+            {
+              "id": "perfect-or-past-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "perfect-or-past-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide if each statement is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Past simple is used for finished actions at a definite past time."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Present perfect connects a past action to now."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Use present perfect with last week."
+                    },
+                    {
+                      "id": "d",
+                      "text": "You can use present perfect with two hours ago."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Last week and two hours ago are finished past times, so they take past simple, not present perfect.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "perfect-or-past-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Common mistake",
+              "md": "Wrong: I have finished my homework two hours ago.\n\nRight: I finished my homework two hours ago.\n\nWhy: *two hours ago* is a finished past time, so use past simple.",
+              "audio": null
+            },
+            {
+              "id": "perfect-or-past-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "perfect-or-past-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each time word or question form to the tense it belongs with.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "yesterday",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "past simple",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "since 2020",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "present perfect",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Did you see...?",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "past simple question",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Have you seen...?",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "present perfect question",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Finished past time words like yesterday take past simple; since and Have you seen...? belong with present perfect.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "perfect-or-past-b7",
+              "kind": "text",
+              "md": "Use Did you see…? for past simple and Have you seen…? for present perfect. The question form shows which tense you need.",
+              "audio": null,
+              "gloss": "Dùng Did you see…? cho quá khứ đơn và Have you seen…? cho hiện tại hoàn thành. Dạng câu hỏi cho thấy bạn cần dùng thì nào."
+            },
+            {
+              "id": "perfect-or-past-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "perfect-or-past-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Put the steps for choosing between past simple and present perfect in the correct order.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Look for a time phrase in the sentence.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "If the time phrase is finished past time, use past simple.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "If there is no definite past time and the result matters now, use present perfect.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The tense depends on whether the time is finished past time or connected to now.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "perfect-or-past-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "When do you use past simple?",
+                  "answer": "For a finished action at a definite past time, like yesterday or last week.",
+                  "image": null
+                },
+                {
+                  "prompt": "When do you use present perfect?",
+                  "answer": "For a past action connected to now, with no definite finished past time.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is wrong with “I have finished my homework two hours ago”?",
+                  "answer": "Two hours ago is finished past time, so use past simple: I finished my homework two hours ago.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about the present, and it helps you choose between the present simple, the present continuous, the present perfect and the past simple. You will see how time words and small details change the tense, and you will fix two common mistakes.",
+          "Use the present simple for routines, habits, facts and timetables. For example, I walk to school every day. Use the present continuous for actions happening now, temporary situations, and describing a picture, for example, she is watching TV now.",
+          "For the present simple, use the subject plus the base verb, but with he, she or it you add s or es. The negative uses do not or does not plus the base verb, and the question starts with do or does. A good example is my sister chats online every evening, but right now she is doing her homework. Every evening is a routine, so it uses chats, and right now is an action now, so it uses is doing.",
+          "For the present continuous, use am, is or are plus the verb ending in ing. The negative adds not after am, is or are, and the question starts with am, is or are. Every day, usually, often and never go with the present simple, while now, at the moment, these days, look and listen go with the present continuous. Spelling changes too, for example watch becomes watches, study becomes studies, play becomes plays, run becomes running, and make becomes making.",
+          "Stative verbs like like, want, know, need, understand and hate usually do not take the continuous form. A common mistake is she watching TV, because the present continuous needs be plus the verb ending in ing. The correct sentence is she is watching TV.",
+          "The present perfect links a past action to now. The action happened before now, but it matters now. The form is have or has plus the past participle. The negative adds not after have or has, and the question starts with have or has.",
+          "Use the present perfect for experience, for a result now, for unfinished time, and for how long. For example, I have never eaten sushi, I have lost my keys, I have done three exercises today, and she has lived here for two years. Time words are ever, never, just, already, yet, since and for. Use for with a period, like for two years, and use since with a starting point, like since 2020.",
+          "Do not use the present perfect with finished past time. I have watched that film yesterday is wrong because yesterday is finished past time, so the correct sentence is I watched that film yesterday. Past simple is for a finished action at a definite past time, like I saw that film last week, while present perfect connects a past action to now. If you say when, use past simple, with words like yesterday, last week, in 2020 or two days ago.",
+          "If there is no definite past time and the result matters now, use present perfect, like I have seen that film, so I do not want to see it again. Questions show the tense too. Did you see is past simple, and Have you seen is present perfect. A common mistake is I have finished my homework two hours ago. Two hours ago is a finished past time, so the correct sentence is I finished my homework two hours ago.",
+          "Remember three things. First, use the present simple for routines and the present continuous for now. Second, use the present perfect for a past action connected to now, with have or has plus the past participle. Third, if you say when, use past simple."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-present.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "5dc4d17d2e1e4630998bda530bc94852061d7b0d649ffff1f6de12d6fca4e41f",
+          "bytes": 1377272
+        },
+        "duration_s": 228.68
+      }
+    },
+    {
+      "id": "ch-past-and-future",
+      "title": "Past and future",
+      "lessons": [
+        {
+          "id": "past-simple",
+          "title": "Past simple",
+          "est_minutes": 12,
+          "summary": "Study past simple regular and irregular forms, negatives, questions and be forms with examples, a common mistake and practice.",
+          "key_ideas": [
+            "Past simple for finished actions, sequences and past habits",
+            "Regular V1 + ed; irregular V2",
+            "Negative: didn't + base verb; question: Did + S + base verb",
+            "Be: was/were; wasn't/weren't",
+            "Common mistake: I didn't went to school yesterday"
+          ],
+          "blocks": [
+            {
+              "id": "past-simple-b1",
+              "kind": "text",
+              "md": "Past simple is for a finished action at a definite past time. It also describes a sequence of past events and past habits. Time words: *yesterday, last night, two days ago, in 2022*.",
+              "audio": null,
+              "gloss": "Thì quá khứ đơn dùng cho hành động đã kết thúc tại một thời điểm xác định trong quá khứ. Nó cũng diễn tả chuỗi sự kiện và thói quen trong quá khứ. Từ chỉ thời gian: *yesterday, last night, two days ago, in 2022*."
+            },
+            {
+              "id": "past-simple-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/past-simple-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "2551832e597b6ee00df111a13392d2ca3be7810e8d27897f78956f8bf234efbf",
+                "bytes": 1442
+              },
+              "alt": "Timeline showing a finished past action before now",
+              "caption": "The action is finished and sits at a definite past time.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "past-simple-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-simple-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which sentence is correct?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "I didn't went to school yesterday.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "I didn't go to school yesterday.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "I didn't goes to school yesterday.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "I don't went to school yesterday.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "After did/didn't, use the base verb, so the correct sentence is I didn't go.",
+                  "option_feedback": {
+                    "A": "After didn't, use the base verb go, not the past form went.",
+                    "C": "After didn't, use the base verb, not the -s form goes.",
+                    "D": "Use didn't for a past simple negative, and use the base verb go."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "past-simple-b3",
+              "kind": "text",
+              "md": "Regular verbs: $V_1 + ed$. Watch → watched. Irregular verbs use $V_2$, the past form. Go → went, have → had.",
+              "audio": null,
+              "gloss": "Động từ có quy tắc: $V_1 + ed$ — watch → watched. Động từ bất quy tắc dùng $V_2$, dạng quá khứ — go → went, have → had."
+            },
+            {
+              "id": "past-simple-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example",
+              "md": "*Last Saturday, my friends and I ___ (go) to a basketball game. We ___ (have) a great time.*\n\n*Last Saturday* is a finished past time. *go → went*, *have → had*.\n\n**Last Saturday, my friends and I went to a basketball game. We had a great time.**",
+              "audio": null
+            },
+            {
+              "id": "past-simple-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-simple-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Last Saturday, my friends and I {{gap}} to a basketball game. We {{gap}} a great time.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "went",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "had",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "go",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "have",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "going",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Go and have are irregular verbs, so their past simple forms are went and had.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "past-simple-b5",
+              "kind": "text",
+              "md": "Negative: $S + didn't + V_1$. Use the base verb after *didn't*: She watched → **She didn't watch a film last night.**",
+              "audio": null,
+              "gloss": "Phủ định: $S + didn't + V_1$. Dùng động từ nguyên mẫu sau *didn't*: She watched → **She didn't watch a film last night.**"
+            },
+            {
+              "id": "past-simple-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-simple-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide if each statement about the past simple is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "The past simple can describe past habits."
+                    },
+                    {
+                      "id": "b",
+                      "text": "After didn't, you use the past form of the verb."
+                    },
+                    {
+                      "id": "c",
+                      "text": "The negative of 'She watched a film' is 'She didn't watch a film.'"
+                    },
+                    {
+                      "id": "d",
+                      "text": "With be, the question form is 'Did she was tired?'"
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Use didn't + base verb for negatives, and use was/were without did for questions with be.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "past-simple-b6",
+              "kind": "text",
+              "md": "Question: $Did + S + V_1$? Example: She watched a film → **Did she watch a film last night?**",
+              "audio": null,
+              "gloss": "Câu hỏi: $Did + S + V_1$? Ví dụ: She watched a film → **Did she watch a film last night?**"
+            },
+            {
+              "id": "past-simple-b7",
+              "kind": "text",
+              "md": "With *be*: $S + was/were$. Negative: *wasn't/weren't*. Question: $Was/Were + S$. **Was she tired?**",
+              "audio": null,
+              "gloss": "Với *be*: $S + was/were$. Phủ định: *wasn't/weren't*. Câu hỏi: $Was/Were + S$ — **Was she tired?**"
+            },
+            {
+              "id": "past-simple-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-simple-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each verb with its past simple form.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "watch",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "watched",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "go",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "went",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "have",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "had",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "be (they)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "were",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Regular verbs add -ed, while irregular verbs have special past forms such as went, had and were.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "past-simple-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Common mistake",
+              "md": "Wrong: *I didn't went to school yesterday.*\n\nAfter *didn't*, use the base verb *go*, not *went*.\n\nCorrect: **I didn't go to school yesterday.**",
+              "audio": null
+            },
+            {
+              "id": "past-simple-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-simple-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Order the steps to change 'She watched a film last night.' into a past simple question.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Start with Did.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Add the subject: she.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Use the base verb: watch.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Add the rest: a film last night?",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Past simple questions are formed as Did + subject + base verb.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "past-simple-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "How do you form the past simple of regular and irregular verbs?",
+                  "answer": "Regular: verb + ed. Irregular: use the past form, e.g. go → went.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which verb form comes after didn't?",
+                  "answer": "The base verb: I didn't go.",
+                  "image": null
+                },
+                {
+                  "prompt": "How do you make past simple questions with action verbs and with be?",
+                  "answer": "Did + subject + base verb; with be: Was/Were + subject.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "past-continuous",
+          "title": "Past continuous",
+          "est_minutes": 12,
+          "summary": "Learn past continuous for actions in progress, background and interrupted actions, with examples, a common mistake and practice.",
+          "key_ideas": [
+            "Form: was/were + V-ing",
+            "Use for actions in progress, background and interrupted actions",
+            "While + past continuous; when + past simple",
+            "Negative and question forms with was/were",
+            "Common mistake: At 8 p.m. I watched TV for an action in progress"
+          ],
+          "blocks": [
+            {
+              "id": "past-continuous-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Form",
+              "md": "Past continuous is **was/were + V-ing**. Use it for an action in progress at a specific past time.",
+              "audio": null
+            },
+            {
+              "id": "past-continuous-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-continuous-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which sentence correctly describes an action in progress at 8 p.m. last night?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "At 8 p.m. last night, I was watching TV.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "At 8 p.m. last night, I watched TV.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "At 8 p.m. last night, I am watching TV.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "At 8 p.m. last night, I were watching TV.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Past continuous is was/were + V-ing and describes an action in progress at a specific past time.",
+                  "option_feedback": {
+                    "B": "Past simple suggests a finished action, not one in progress at that time.",
+                    "C": "Present continuous is for now, not for a past time.",
+                    "D": "The subject I takes was, not were."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "past-continuous-b3",
+              "kind": "text",
+              "md": "At 8 p.m. last night, I was watching TV. The action was in progress at that past time.",
+              "audio": null,
+              "gloss": "Tối qua lúc 8 giờ, tôi đang xem TV. Hành động đang diễn ra tại thời điểm đó trong quá khứ."
+            },
+            {
+              "id": "past-continuous-b4",
+              "kind": "text",
+              "md": "Past continuous can show background. It can also show interrupted actions or two actions at the same time.",
+              "audio": null,
+              "gloss": "Quá khứ tiếp diễn có thể diễn tả hành động nền. Nó cũng có thể diễn tả hành động bị ngắt quãng hoặc hai hành động cùng lúc."
+            },
+            {
+              "id": "past-continuous-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-continuous-q2",
+                  "type": "FILL_TILES",
+                  "stem": "I {{gap}} home when it {{gap}} to rain.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "was walking",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "started",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "walked",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "was starting",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Walking home is the longer background action, so it uses past continuous. The rain started suddenly, so it uses past simple.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "past-continuous-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example",
+              "md": "I ___ (walk) home when it ___ (start) to rain. → I **was walking** home when it **started** to rain. Walking home was the longer background action. The rain started suddenly.",
+              "audio": null
+            },
+            {
+              "id": "past-continuous-b6",
+              "kind": "text",
+              "md": "Use **while** + past continuous for the longer action. Use **when** + past simple for the shorter interrupting action.",
+              "audio": null,
+              "gloss": "Dùng **while** + quá khứ tiếp diễn cho hành động dài hơn. Dùng **when** + quá khứ đơn cho hành động ngắn hơn xen vào."
+            },
+            {
+              "id": "past-continuous-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-continuous-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each form or word with its use or meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "was/were + V-ing",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "past continuous form",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "while + past continuous",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "longer background action",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "when + past simple",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "shorter interrupting action",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "wasn't/weren't + V-ing",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "negative past continuous",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The past continuous uses was/were + V-ing; while often marks the longer action and when marks the shorter one.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "past-continuous-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Negative and questions",
+              "md": "Negative: **wasn’t/weren’t + V-ing**. They weren’t playing football. Question: **Was/Were + S + V-ing?** Were they playing football?",
+              "audio": null
+            },
+            {
+              "id": "past-continuous-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Common mistake",
+              "md": "**At 8 p.m. I watched TV.** If the action was in progress, use past continuous: **At 8 p.m. I was watching TV.** Past simple suggests a finished action.",
+              "audio": null
+            },
+            {
+              "id": "past-continuous-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "past-continuous-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Put the steps for describing an interrupted past action in the correct order.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Identify the longer background action.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Use while + past continuous for the longer action.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Identify the shorter interrupting action.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Use when + past simple for the shorter action.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "While introduces the longer action in past continuous, and when introduces the shorter interrupting action in past simple.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "past-continuous-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "How do you form the past continuous?",
+                  "answer": "was/were + V-ing.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which tense follows while, and which follows when for an interruption?",
+                  "answer": "while + past continuous; when + past simple.",
+                  "image": null
+                },
+                {
+                  "prompt": "Fix this for an action in progress: At 8 p.m. I watched TV.",
+                  "answer": "At 8 p.m. I was watching TV.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "future-forms",
+          "title": "Future forms",
+          "est_minutes": 12,
+          "summary": "Compare will, be going to, present continuous and present simple for future meanings with examples, a common mistake and practice.",
+          "key_ideas": [
+            "Will + V1 for spontaneous decisions, predictions, promises and offers",
+            "Be going to + V1 for plans and predictions with evidence",
+            "Present continuous for fixed arrangements; present simple for timetables",
+            "Negative won't + V1; question Will + S + V1?",
+            "Common mistake: She will goes to the concert"
+          ],
+          "blocks": [
+            {
+              "id": "future-forms-b1",
+              "kind": "text",
+              "md": "English has four common future forms: will, be going to, present continuous and present simple. The meaning decides which form to use.",
+              "audio": null,
+              "gloss": "Tiếng Anh có bốn dạng tương lai thường gặp: will, be going to, hiện tại tiếp diễn và hiện tại đơn. Ý nghĩa quyết định dùng dạng nào."
+            },
+            {
+              "id": "future-forms-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/future-forms-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "038cac597b6f33ddb7b009fdf0495de9b97a6a2d88a0b4cdfbfc118bf4a7a309",
+                "bytes": 3095
+              },
+              "alt": "Timeline from now to future with four future forms.",
+              "caption": "The future starts from now.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "future-forms-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "future-forms-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Look at those dark clouds! It ___ very soon.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "is going to rain",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "will rain",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "rains",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "is raining",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Dark clouds are evidence you can see now, so 'be going to' is the right form for the prediction.",
+                  "option_feedback": {
+                    "B": "'Will' is for spontaneous decisions, promises and offers, not for a prediction based on evidence you can see now.",
+                    "C": "The present simple is used for timetables, not for predictions about the weather.",
+                    "D": "The present continuous describes something happening now, not a prediction about the future."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "future-forms-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "will + V1",
+              "md": "Use **will + $V_1$** for a spontaneous decision, a prediction, a promise or an offer. Negative: **won’t + $V_1$**. Question: **Will + S + $V_1$?**",
+              "audio": null
+            },
+            {
+              "id": "future-forms-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Spontaneous decision",
+              "md": "*The phone is ringing. I will answer it.* The decision is made at the moment of speaking.",
+              "audio": null
+            },
+            {
+              "id": "future-forms-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "future-forms-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Don’t worry — I {{gap}} {{gap}} you with your homework.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "will",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "help",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "helps",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "going",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "This is an offer made at the moment of speaking, so we use 'will' plus the base verb 'help'. After 'will' the verb never takes -s.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "future-forms-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "be going to + V1",
+              "md": "Use **be going to + $V_1$** for a plan or intention already decided, and for a prediction with evidence now. Negative: **am/is/are not going to + $V_1$**. Question: **Am/Is/Are + S + going to + $V_1$?**",
+              "audio": null
+            },
+            {
+              "id": "future-forms-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Evidence and plans",
+              "md": "Evidence: *Look at those dark clouds! It is going to rain.* Plan: *I’ve already decided. I am going to study French next year.*",
+              "audio": null
+            },
+            {
+              "id": "future-forms-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "future-forms-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each future form with the meaning it expresses.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "will + V1",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "a spontaneous decision, promise or offer",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "be going to + V1",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "a plan, or a prediction with evidence",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "present continuous",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "a fixed arrangement with time and place",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "present simple",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "a timetable",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Each future form has its own job: the meaning of the sentence decides which form you use.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "future-forms-b7",
+              "kind": "text",
+              "md": "**Present continuous**: a fixed arrangement with a time and place. **Present simple**: a timetable. *The train leaves at 7:30.*",
+              "audio": null,
+              "gloss": "Hiện tại tiếp diễn: một sự sắp xếp cố định có thời gian và địa điểm. Hiện tại đơn: một thời gian biểu. The train leaves at 7:30."
+            },
+            {
+              "id": "future-forms-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "After will",
+              "md": "*She will goes to the concert.* After **will**, use the base verb, not the -s form. Correct: *She will go to the concert.*",
+              "audio": null
+            },
+            {
+              "id": "future-forms-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "future-forms-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Put the steps in the right order to build the question 'Are you going to study French?'",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Start with Am, Is or Are.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Add the subject.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Add going to.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Add the base verb.",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Add the rest of the sentence and a question mark.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "In a 'going to' question the order is Am/Is/Are + subject + going to + base verb. The auxiliary comes before the subject.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "future-forms-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "For a spontaneous decision, promise or offer, which form follows will, and what mistake should you avoid?",
+                  "answer": "will + V1; never 'will goes'.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which form is for a plan already decided or a prediction with evidence?",
+                  "answer": "be going to + V1.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which forms are for fixed arrangements and timetables?",
+                  "answer": "Present continuous for arrangements; present simple for timetables.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about talking about the past and the future with the right verb forms, including past simple, past continuous, and four common future forms.",
+          "Past simple is for a finished action at a definite past time. It also describes a sequence of past events and past habits. Time words like yesterday, last night, two days ago, and in 2022 show a finished past time.",
+          "Regular verbs add ed, like watch becomes watched, and irregular verbs use their past form, like go becomes went and have becomes had. For example, last Saturday my friends and I went to a basketball game, and we had a great time. Last Saturday is a finished past time, so the past simple is correct.",
+          "For negatives, use didn't plus the base verb, and for questions use did plus the subject plus the base verb. With be, use was or were, and the negatives are wasn't and weren't. A common mistake is I didn't went to school yesterday; after didn't, use go, so the correct sentence is I didn't go to school yesterday.",
+          "Past continuous is was or were plus the ing form. Use it for an action in progress at a specific past time. At eight p.m. last night, I was watching TV because the action was in progress at that past time.",
+          "Past continuous can show background, an interrupted action, or two actions at the same time. Use while with the past continuous for the longer action and when with the past simple for the shorter interrupting action. For example, I was walking home when it started to rain, where walking home was the longer background action and the rain started suddenly. The negative is wasn't or weren't plus the ing form, the question starts with was or were, and a common mistake is at eight p.m. I watched TV instead of I was watching TV.",
+          "English has four common future forms: will, be going to, present continuous, and present simple, and the meaning decides which form to use. Use will plus the base verb for a spontaneous decision, a prediction, a promise, or an offer. For example, when the phone is ringing, I will answer it, because the decision is made at the moment of speaking. The negative is won't plus the base verb, and the question is will plus the subject plus the base verb.",
+          "Use be going to plus the base verb for a plan or intention already decided, and for a prediction with evidence now. For example, look at those dark clouds, it is going to rain, and I have already decided I am going to study French next year. The negative is am, is, or are not going to plus the base verb, and the question starts with am, is, or are.",
+          "Use present continuous for a fixed arrangement with a time and place, and present simple for a timetable. For example, the train leaves at seven thirty is a timetable. A common mistake is she will goes to the concert; after will, use the base verb, so the correct sentence is she will go to the concert.",
+          "To remember, first, past simple uses the past form, and after didn't you use the base verb. Second, past continuous uses was or were plus the ing form for actions in progress, with while for the longer action and when for the shorter one. Third, choose future forms by meaning. Use will for decisions at the moment, be going to for plans and evidence, present continuous for arrangements, and present simple for timetables."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-past-and-future.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "d29873a6296ecb5321321f6b07569c78bf0a46bb33f7df89fe8dc38755eaae7c",
+          "bytes": 1291304
+        },
+        "duration_s": 214.35
+      }
+    }
+  ],
+  "gloss_start": 30
+}

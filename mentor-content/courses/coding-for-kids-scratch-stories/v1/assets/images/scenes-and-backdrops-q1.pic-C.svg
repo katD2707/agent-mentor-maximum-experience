@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- yellow halo disc -->
+  <circle cx="200" cy="188" r="118" fill="#F0D76E"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="330" rx="70" ry="10" fill="#E9E5F6"/>
+
+  <!-- sprite shoes peeking out -->
+  <ellipse cx="172" cy="300" rx="18" ry="12" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+  <ellipse cx="228" cy="300" rx="18" ry="12" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+
+  <!-- sprite leaf ears -->
+  <path d="M152 126 C132 112 128 88 142 78 C158 88 164 110 152 126 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M248 126 C268 112 272 88 258 78 C242 88 236 110 248 126 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- costume sheet -->
+  <path d="M200 100
+           C246 100 278 138 278 186
+           C278 220 274 244 274 268
+           Q255.5 298 237 268
+           Q218.5 298 200 268
+           Q181.5 298 163 268
+           Q144.5 298 126 268
+           C126 244 122 220 122 186
+           C122 138 154 100 200 100 Z"
+        fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- eye holes -->
+  <ellipse cx="174" cy="176" rx="15" ry="19" fill="#5A4BC0"/>
+  <ellipse cx="226" cy="176" rx="15" ry="19" fill="#5A4BC0"/>
+  <circle cx="169" cy="168" r="5" fill="#F7F1E3"/>
+  <circle cx="221" cy="168" r="5" fill="#F7F1E3"/>
+
+  <!-- cheeks -->
+  <circle cx="152" cy="208" r="9" fill="#E8806A"/>
+  <circle cx="248" cy="208" r="9" fill="#E8806A"/>
+
+  <!-- mouth -->
+  <ellipse cx="200" cy="218" rx="8" ry="7" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+
+  <!-- sparkles -->
+  <path d="M92 88 L96 98 L106 102 L96 106 L92 116 L88 106 L78 102 L88 98 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M312 262 L315 269 L322 272 L315 275 L312 282 L309 275 L302 272 L309 269 Z"
+        fill="#E8806A" stroke="#5A4BC0" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="316" cy="118" r="7" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+  <circle cx="88" cy="276" r="6" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

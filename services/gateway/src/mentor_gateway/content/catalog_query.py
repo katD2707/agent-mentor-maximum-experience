@@ -13,6 +13,7 @@ from datetime import datetime
 from mentor_schemas.course import CatalogEntry
 
 from mentor_gateway.content.search import fold
+from mentor_gateway.langga.subjects import chicken_of_entry
 
 PAGE_SIZE = 10
 MAX_PAGE_SIZE = 50
@@ -22,7 +23,7 @@ DURATIONS = ["short", "medium", "long"]  # under 1 h, 1 to 3 h, over 3 h (from e
 MEDIA = ["video", "reading", "quiz", "interactive", "audio"]
 STATUSES = ["live", "coming_soon"]
 LANGS = ["vi", "en"]
-FACET_KEYS = ["band", "subject", "language", "level", "duration", "media", "status", "teacher"]
+FACET_KEYS = ["band", "subject", "chicken", "language", "level", "duration", "media", "status", "teacher"]
 SORTS = ["rel", "new", "pop", "dur"]
 
 
@@ -35,6 +36,8 @@ def values(e: CatalogEntry, key: str) -> list[str]:
         return [e.age_band]
     if key == "subject":
         return [e.subject]
+    if key == "chicken":
+        return [e.chicken or chicken_of_entry(e)]
     if key == "language":
         return [e.language]
     if key == "level":

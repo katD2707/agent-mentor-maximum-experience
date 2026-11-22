@@ -745,3 +745,13 @@ def test_rebuild_hides_old_comments_but_keeps_them(client, teacher, runner, stor
     assert client.get(url).json() == []
     old = client.get(url, params={"stale": "true"}).json()
     assert len(old) == 1 and old[0]["stale"] is True
+
+
+def test_a_published_course_without_outline_json_shows_the_pack_outline(client, teacher, runner, store):
+    cid = built_course(client, runner, store, teacher["id"])
+    confirm(client, cid, 1, "basic")
+    assert client.post(f"/api/teacher/courses/{cid}/versions/1/publish").status_code == 200
+    client.app.state.builder.course_dir(cid).joinpath("outline.json").unlink()
+    d = client.get(f"/api/teacher/courses/{cid}").json()
+    assert d["status"] == "published"
+    assert [ls["id"] for ch in d["outline"]["chapters"] for ls in ch["lessons"]] == ["duong-suc", "cuong-do"]

@@ -1,4 +1,4 @@
-import { PracticeError, type PHome, type PItem, type PReport, type PResult, type PReviewItem, type PSession, type PracticeApi } from "./practice";
+import { PracticeError, type PXp, type PHome, type PItem, type PReport, type PResult, type PReviewItem, type PSession, type PracticeApi } from "./practice";
 import { checkShortAnswer } from "../lib/quiz";
 
 /** In-browser stand-in for `/api/practice` (VITE_API_MOCK=1 and the tests). Keys live here, never in the items. */
@@ -189,6 +189,19 @@ function sameJson(a: string, b: string): boolean {
   }
 }
 
+/** Arena papers of the mock: id `thpt-<chicken>-...`; the boss follows the subject like the gateway's table. */
+const BOSS: Record<string, { name_vi: string; name_en: string; art: string }> = {
+  toan: { name_vi: "Quái Sai Số", name_en: "The Slip-Up Monster", art: "boss-toan" },
+  van: { name_vi: "Bóng Lạc Đề", name_en: "The Off-Topic Phantom", art: "boss-van" },
+  anh: { name_vi: "Quái Lỗi Ngữ Pháp", name_en: "The Grammar-Slip Monster", art: "boss-anh" },
+};
+function paperOf(id: string): NonNullable<PSession["paper"]> {
+  const c = id.split("-")[1] ?? "toan";
+  const chicken = c === "ly" ? "li" : c;
+  const boss = BOSS[chicken === "anh" ? "anh" : chicken === "van" ? "van" : "toan"];
+  return { id, kind: "thpt", chicken, title_vi: `Đề mẫu ${id}`, title_en: `Sample ${id}`, placeholder: true, boss };
+}
+
 interface Rec {
   s: PSession;
   bank: BankSet;
@@ -258,12 +271,17 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       }
     });
     r.s.status = "finished";
+    const score10 = mock ? Math.round((correct / r.s.items.length) * 1000) / 100 : null;
+    const paper = r.s.paper;
+    const xp: PXp[] = !mock || !answered ? [] : paper ? [{ chicken: paper.chicken, source: "paper_submit", amount: 40, level_up: false }, ...((score10 ?? 0) >= 5 ? [{ chicken: paper.chicken, source: "boss_beaten", amount: 50, level_up: false }] : [])] : [{ chicken: "toan", source: "mock_submit", amount: 40, level_up: false }];
     r.finished = {
+      ...(paper ? { boss: { name: paper.boss.name_vi, ...paper.boss, hp: r.s.items.length, damage: correct, beaten: (score10 ?? 0) >= 5 } } : {}),
+      xp,
       session: { id: r.s.id, kind: r.s.kind, subject: r.s.subject, status: "finished" },
       correct,
       total: mock ? r.s.items.length : answered,
       answered,
-      score_10: mock ? Math.round((correct / r.s.items.length) * 1000) / 100 : null,
+      score_10: score10,
       minutes: 1,
       hints: 0,
       per_topic: [{ topic: "t", title: r.s.items[0]?.topic_title ?? "", right: correct, total: mock ? r.s.items.length : answered, label: "Đang tiến bộ" }],
@@ -301,7 +319,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
     },
     async start(token, body) {
       if (body.source === "quick" && !enough) throw new PracticeError(422, "insufficient_content", "Chưa đủ câu hỏi.", {});
-      const mock = body.source.startsWith("mock:");
+      const mock = body.source.startsWith("mock:") || body.source.startsWith("paper:") || body.source.startsWith("course-mock:");
       for (const r of sessions.values()) if (mock && r.s.kind === "mock" && r.s.status === "active") throw new PracticeError(409, "active_session", null, { session_id: r.s.id });
       n += 1;
       const id = `p-${n}`;
@@ -311,6 +329,9 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
         id,
         kind: mock ? "mock" : "practice",
         subject: mock ? "toan" : "quick",
+        source: body.source,
+        ...(mock ? { minutes: opts.mockMinutes ?? 20 } : {}),
+        ...(body.source.startsWith("paper:") ? { paper: paperOf(body.source.slice(6)) } : {}),
         status: "active",
         started_at: new Date().toISOString(),
         deadline: mock ? new Date(Date.now() + (opts.mockMinutes ?? 20) * 60000).toISOString() : null,
@@ -345,7 +366,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       st.correct = res.correct;
       st.result = res;
       r.results[b.position] = res;
-      return res;
+      return res.correct ? { ...res, xp: [{ chicken: "toan", source: "practice_right", amount: 2, level_up: false }] } : res;
     },
     async hint(_t, id, position) {
       const r = rec(id);
@@ -382,7 +403,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       if (r.fixed.has(b.item_id)) throw new PracticeError(409, "already_fixed");
       r.fixed.add(b.item_id);
       const res = grade(r.s.items[i], r.keys[i], b.answer);
-      if (res.correct) return { correct: true };
+      if (res.correct) return { correct: true, xp: [{ chicken: "toan", source: "fix_right", amount: 3, level_up: false }] };
       return { correct: false, right: r.keys[i].correct, explanation: r.keys[i].explanation, ...(r.keys[i].feedback?.[b.answer] ? { note: r.keys[i].feedback![b.answer] } : {}) };
     },
     async review(_t, id) {

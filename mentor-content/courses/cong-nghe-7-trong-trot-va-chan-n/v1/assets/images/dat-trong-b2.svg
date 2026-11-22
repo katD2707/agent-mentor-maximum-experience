@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 330 350 L 330.00 160.00 A 190 190 0 0 1 388.71 530.70 Z" fill="#F0D76E"/>
+<path d="M 330 350 L 388.71 530.70 A 190 190 0 0 1 330.00 540.00 Z" fill="#E8806A"/>
+<path d="M 330 350 L 330.00 540.00 A 190 190 0 0 1 140.00 350.00 Z" fill="#9FD8BF"/>
+<path d="M 330 350 L 140.00 350.00 A 190 190 0 0 1 330.00 160.00 Z" fill="#E9E5F6"/>
+<circle cx="330" cy="350" r="190" fill="none" stroke="#5A4BC0" stroke-width="4"/>
+</g>
+<rect x="580" y="190" width="30" height="30" rx="6" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2"/>
+<text x="630" y="212" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Ch&#7845;t kho&#225;ng: 45%</text>
+<rect x="580" y="280" width="30" height="30" rx="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="2"/>
+<text x="630" y="302" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Ch&#7845;t h&#7919;u c&#417; (m&#249;n): 5%</text>
+<rect x="580" y="370" width="30" height="30" rx="6" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2"/>
+<text x="630" y="392" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">N&#432;&#7899;c: 25%</text>
+<rect x="580" y="460" width="30" height="30" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2"/>
+<text x="630" y="482" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Kh&#244;ng kh&#237;: 25%</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

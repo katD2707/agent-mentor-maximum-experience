@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
 <link rel="stylesheet" href="shared.css">
 <script src="shared.js"></script>
-<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<link rel="stylesheet" href="ga-guide.css"><script src="ga-guide.js" defer></script>
 <style>
   /* same on gv-01..03: header with step indicator */
   .steps { display: flex; gap: 4px; align-items: center; margin-left: 6px; }
@@ -70,14 +70,13 @@
   .pbar i { display: block; height: 100%; background: var(--xanh); border-radius: inherit; }
   .pv { display: grid; gap: 14px; align-content: start; }
   .pv .ask { font-size: 1.1em; font-weight: 600; margin: 0; }
-  .say { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 10px; align-items: end; }
-  .say .muc { width: 52px; height: 64px; }
+  .say { display: block; }
   .bub { position: relative; padding: 10px 14px; border-radius: 16px; border: 2px solid var(--rule-strong); background: var(--surface); line-height: 1.45; font-size: .95em; overflow-wrap: anywhere; }
-  .bub::before { content: ""; position: absolute; left: -8px; bottom: 14px; width: 12px; height: 12px; background: var(--surface); border-left: 2px solid var(--rule-strong); border-bottom: 2px solid var(--rule-strong); transform: rotate(45deg); }
+  .bub::before { content: none; position: absolute; left: -8px; bottom: 14px; width: 12px; height: 12px; background: var(--surface); border-left: 2px solid var(--rule-strong); border-bottom: 2px solid var(--rule-strong); transform: rotate(45deg); }
   .speakb { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: var(--tim); color: var(--on-tim); margin-right: 8px; vertical-align: middle; }
   .speakb svg { width: 18px; height: 18px; }
   .vi { display: inline-block; margin-left: 8px; padding: 0 8px; border-radius: 99px; border: 1.5px solid var(--rule-strong); color: var(--ink-2); font-size: .8em; font-weight: 600; }
-  .gloss { margin: 0; color: var(--ink-2); font-size: .88em; padding-left: 62px; }
+  .gloss { margin: 0; color: var(--ink-2); font-size: .88em; padding-left: 0; }
   .mixchip { display: inline-flex; align-items: center; gap: 8px; justify-self: start; padding: 3px 10px; border-radius: 99px; background: var(--tim-soft); color: var(--tim-ink); font-size: .85em; font-weight: 600; }
   .mixchip i { width: 8px; height: 8px; border-radius: 99px; background: var(--rule-strong); display: inline-block; }
   .mixchip i.on { background: var(--tim); }
@@ -214,12 +213,13 @@
 
 <div class="app">
   <header class="topbar">
-    <a class="icon-btn" href="gv-02-cau-truc.html?state=xem" aria-label="Quay lại"><i data-i="back"></i></a>
+    <a class="icon-btn" href="gv-04-gan-nhan.html" aria-label="Quay lại"><i data-i="back"></i></a>
     <a class="logo" href="gv-01-gui-bai.html?state=co-khoa"><span class="logo-mark">M</span><span class="nm">Mentor</span></a>
     <nav class="steps" aria-label="Các bước">
       <a href="gv-01-gui-bai.html?state=co-khoa"><span class="n">1</span><span class="l" data-en="Upload">Gửi</span></a>
       <a href="gv-02-cau-truc.html?state=xem"><span class="n">2</span><span class="l" data-en="Outline">Cấu trúc</span></a>
-      <a href="gv-03-duyet-noi-dung.html?state=duyet" aria-current="step"><span class="n">3</span><span class="l" data-en="Review">Duyệt</span></a>
+      <a href="gv-04-gan-nhan.html"><span class="n">3</span><span class="l" data-en="Tags">Nhãn</span></a>
+      <a href="gv-03-duyet-noi-dung.html?state=duyet" aria-current="step"><span class="n">4</span><span class="l" data-en="Review">Duyệt</span></a>
     </nav>
     <span class="grow"></span>
     <button class="btn btn-primary act pub" id="pub" data-when="state=duyet"><span data-en="Publish">Xuất bản</span></button>
@@ -240,14 +240,9 @@
     <p class="vernote" data-when="state=da-xuat-ban" role="note"><i data-i="layers"></i><span data-en="Becomes v2. 38 students stay on v1.">Thành bản 2. 38 học sinh đang học vẫn giữ bản 1.</span></p>
 
     <div class="levelrow" id="levelrow">
-      <span class="lv-label" id="lv-l" data-en="Level">Mức độ</span>
-      <div class="lv-seg" role="radiogroup" aria-labelledby="lv-l">
-        <button type="button" class="lv-opt" role="radio" data-lv="basic" aria-checked="false"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span data-en="Basic">Cơ bản</span><em class="sug" hidden data-en="Suggested">Gợi ý</em></button>
-        <button type="button" class="lv-opt" role="radio" data-lv="intermediate" aria-checked="false"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></span><span data-en="Intermediate">Trung bình</span><em class="sug" hidden data-en="Suggested">Gợi ý</em></button>
-        <button type="button" class="lv-opt" role="radio" data-lv="advanced" aria-checked="false"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span data-en="Advanced">Nâng cao</span><em class="sug" hidden data-en="Suggested">Gợi ý</em></button>
-      </div>
-      <button type="button" class="btn btn-primary lv-ok" id="lv-ok"><span data-en="Confirm">Xác nhận</span></button>
-      <span class="lv-note" id="lv-note" hidden></span>
+      <span class="lv-label" data-en="Difficulty">Độ khó</span>
+      <span class="lv-opt" id="lv-val" aria-live="polite"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span id="lv-txt">Cơ bản</span></span>
+      <a class="btn btn-ghost lv-ok" href="gv-04-gan-nhan.html"><span data-en="Change in Tags">Sửa ở bước Nhãn</span></a>
     </div>
 
     <div class="tabs" role="tablist" id="tabs" aria-label="Nội dung">
@@ -305,7 +300,7 @@
     "vat-li": {
       title: "Vật lí 11: Điện trường", titleEn: "Physics 11: Electric field",
       steps: [
-        { k: "read", label: "Mực giải thích", labelEn: "Mực explains", muc: "Quanh điện tích có điện trường. Càng xa, lực càng yếu.", fig: "push" },
+        { k: "read", label: "Giải thích", labelEn: "Explanation", muc: "Quanh điện tích có điện trường. Càng xa, lực càng yếu.", fig: "push" },
         { k: "pick", label: "Chọn hình", labelEn: "Pick a picture", ask: "Hình nào hút nhau?", style: "pic", right: 1, why: "Hai điện tích trái dấu thì hút nhau.",
           opts: [O("+ +", "Cùng dấu thì đẩy nhau."), O("+ −"), O("− −", "Cùng dấu thì đẩy nhau."), O("+", "Một điện tích thì chưa có lực.")] },
         { k: "tiles", label: "Điền công thức", labelEn: "Fill the formula", stem: "E = k · |q| /", style: "tile", right: 2, why: "E giảm theo bình phương khoảng cách.", unsure: true,
@@ -344,7 +339,7 @@
     "anh": {
       title: "Tiếng Anh 8: Thì hiện tại đơn", titleEn: "English 8: Present simple",
       steps: [
-        { k: "read", label: "Mực giải thích", labelEn: "Mực explains", en: "We use the present simple for habits: I study every day.", gloss: "Ta dùng thì hiện tại đơn cho thói quen: Tôi học mỗi ngày.", mix: 30, fig: "none" },
+        { k: "read", label: "Giải thích", labelEn: "Explanation", en: "We use the present simple for habits: I study every day.", gloss: "Ta dùng thì hiện tại đơn cho thói quen: Tôi học mỗi ngày.", mix: 30, fig: "none" },
         { k: "pick", label: "Chọn từ đúng", labelEn: "Pick the word", ask: "She ___ to school every day.", gloss: "Cô ấy ___ đến trường mỗi ngày.", style: "text", right: 1, why: "Với she, động từ thêm -es: goes.", unsure: true,
           opts: [O("go", "Với she cần thêm -es."), O("goes"), O("going", "Đó là dạng V-ing."), O("went", "Đó là quá khứ.")] },
         { k: "recall", label: "Nhớ lại", labelEn: "Recall", muc: "Recall: when do we use the present simple?", gloss: "Nhớ lại: khi nào dùng hiện tại đơn?", ideas: ["For habits", "For facts", ""] },
@@ -361,7 +356,7 @@
     "tieu-hoc": {
       title: "Toán 1: Phép cộng đến 10", titleEn: "Maths 1: Adding to 10",
       steps: [
-        { k: "read", label: "Mực giải thích", labelEn: "Mực explains", muc: "3 quả táo, thêm 2 quả. Đếm nhé!", fig: "apples" },
+        { k: "read", label: "Giải thích", labelEn: "Explanation", muc: "3 quả táo, thêm 2 quả. Đếm nhé!", fig: "apples" },
         { k: "pick", label: "Chọn giỏ", labelEn: "Pick a basket", ask: "Giỏ nào có 5 táo?", style: "basket", right: 1, why: "3 thêm 2 là 5.", unsure: true,
           opts: [O("4", "Giỏ này chỉ có 4 quả."), O("5"), O("2", "Giỏ này chỉ có 2 quả."), O("6", "Giỏ này có 6 quả.")] },
         { k: "drag", label: "Kéo táo", labelEn: "Drag apples", lead: "Kéo táo vào giỏ cho ", target: "đủ 5 quả", praise: "Giỏi quá! Đủ 5 quả rồi.", why: "3 thêm 2 là 5.", fig: "basket" },
@@ -383,7 +378,7 @@
   // comments (one line each). k = course, tab + position say where it points
   const list = [
     { k: "vat-li", tab: "bai", step: 1, said: "Đáp án B chưa rõ vì sao hút nhau.", saidEn: "Answer B doesn't say why they attract.", fixed: true },
-    { k: "vat-li", tab: "bai", step: 6, said: "Lời khen của Mực dài, rút còn một câu.", saidEn: "Mực's praise is long, cut to one line.", fixed: false },
+    { k: "vat-li", tab: "bai", step: 6, said: "Lời khen dài, rút còn một câu.", saidEn: "The praise is long, cut to one line.", fixed: false },
     { k: "vat-li", tab: "luyen", lv: 2, q: 0, said: "Số liệu lẻ, đổi cho tròn.", saidEn: "Awkward numbers, make them round.", fixed: false },
     { k: "vat-li", tab: "nghe", ch: 0, said: "Đoạn 2 đọc nhanh, tách làm hai câu.", saidEn: "Paragraph 2 reads too fast, split it.", fixed: true },
     { k: "anh", tab: "bai", step: 0, said: "Phần giải nghĩa hơi dài.", saidEn: "The gloss is a bit long.", fixed: true },
@@ -393,7 +388,6 @@
   const ui = { tab: "bai", step: 0, lv: 0, q: null };
 
   // ---------- svg bits ----------
-  const MUC = '<svg class="muc" viewBox="0 0 80 100" aria-hidden="true"><path d="M40 4 C47 18 68 33 68 56 A28 28 0 0 1 12 56 C12 33 33 18 40 4 Z" fill="var(--tim)"/><ellipse cx="31" cy="50" rx="7" ry="8" fill="#fff"/><ellipse cx="49" cy="50" rx="7" ry="8" fill="#fff"/><circle cx="32" cy="51" r="4" fill="#1F1B3A"/><circle cx="50" cy="51" r="4" fill="#1F1B3A"/><path d="M34 62 Q40 68 46 62" stroke="#1F1B3A" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>';
   const apple = (x, y, r) => '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="#E5484D"/><path d="M' + x + " " + (y - r) + "c0-4 3-6 6-6\" stroke=\"#2F9E6B\" stroke-width=\"3\" fill=\"none\" stroke-linecap=\"round\"/>";
   function chargePic(t) {
     const cs = t.replace(/[^+−-]/g, "").split("").slice(0, 2);
@@ -417,7 +411,7 @@
   };
 
   // ---------- phone preview: the step as the student gets it ----------
-  const sayHTML = (text, speak, tail) => '<div class="say">' + MUC + '<div class="bub">' + (speak ? '<span class="speakb">' + ico("volume") + "</span>" : "") + esc(text) + (tail || "") + "</div></div>";
+  const sayHTML = (text, speak, tail) => '<div class="say"><div class="bub">' + (speak ? '<span class="speakb">' + ico("volume") + "</span>" : "") + esc(text) + (tail || "") + "</div></div>";
   const mixHTML = (v) => '<span class="mixchip"><span>' + L("Tiếng Việt ", "Vietnamese ") + v + '%</span><span aria-hidden="true" style="display:inline-flex;gap:3px"><i class="on"></i><i class="' + (v < 60 ? "" : "on") + '"></i><i class="' + (v < 90 ? "" : "on") + '"></i></span></span>';
   const optHTML = (s, o, i) => {
     const r = i === s.right ? " right" : "";
@@ -542,7 +536,7 @@
         r.addEventListener("input", () => { s.mix = +r.value; sp.textContent = L("Tiếng Việt ", "Vietnamese ") + s.mix + "%"; rePrev(); });
         mx.appendChild(r); mx.appendChild(sp);
         add(fld(L("Lúc bắt đầu", "Starting mix"), mx, true));
-      } else add(fld(L("Lời của Mực", "Mực's line"), area(s, "muc", 2)));
+      } else add(fld(L("Lời giải thích", "Explanation text"), area(s, "muc", 2)));
       if (kid) add(speakBtn());
     }
     if (s.k === "pick" || s.k === "calc") {
@@ -573,11 +567,11 @@
     }
     if (s.k === "drag") {
       add(fld(L("Mục tiêu", "Target"), inp(s, "target")));
-      add(fld(L("Mực khen", "Mực's praise"), area(s, "praise", 1)));
+      add(fld(L("Lời khen", "Praise"), area(s, "praise", 1)));
       if (kid) add(speakBtn());
     }
     if (s.k === "recall") {
-      add(fld(L("Câu hỏi của Mực", "Mực's question"), area(s, "muc", 1)));
+      add(fld(L("Câu hỏi gợi nhớ", "Recall question"), area(s, "muc", 1)));
       if (anh) add(fld(L("Nghĩa tiếng Việt", "Vietnamese gloss"), inp(s, "gloss")));
       const g = h("div"); g.style.display = "grid"; g.style.gap = "6px";
       while (s.ideas.length < 3) s.ideas.push("");
@@ -753,32 +747,19 @@
   }
   document.querySelectorAll("#tabs button").forEach((b) => b.addEventListener("click", () => { ui.tab = b.dataset.tab; show(); }));
 
-  // ---------- course level: the agent suggests, the teacher confirms ----------
-  const SUGGESTED = "intermediate";
-  const lvs = { duyet: { v: SUGGESTED, ok: false }, "da-xuat-ban": { v: "intermediate", ok: true, orig: "intermediate" } };
-  const curState = () => document.documentElement.dataset.state;
+  // ---------- difficulty: read-only, set in the Tags step (gv-04) ----------
+  const KHO = { "Cơ bản": ["Basic", 1], "Nâng cao": ["Advanced", 2], "Luyện thi": ["Exam prep", 3] };
   function lvRender() {
-    const st = curState(), s = lvs[st];
-    if (!s) return;
-    document.querySelectorAll(".lv-opt").forEach((b) => {
-      b.setAttribute("aria-checked", String(b.dataset.lv === s.v));
-      b.querySelector(".sug").hidden = s.ok || b.dataset.lv !== SUGGESTED;
-    });
-    $("lv-ok").hidden = s.ok;
-    $("levelrow").classList.toggle("need", !s.ok && !!s.nudged);
-    const changed = st === "da-xuat-ban" && s.v !== s.orig;
-    const n = $("lv-note");
-    n.hidden = !(changed || (!s.ok && s.nudged));
-    n.textContent = changed ? L("Có trong bản 2.", "Goes in v2.") : L("Xác nhận để xuất bản.", "Confirm to publish.");
-    $("pub").setAttribute("aria-disabled", String(!s.ok));
+    let v = "Cơ bản"; try { v = localStorage.getItem("mentor.kho") || v; } catch (e) {}
+    const k = KHO[v] || KHO["Cơ bản"];
+    $("lv-txt").textContent = en() ? k[0] : (KHO[v] ? v : "Cơ bản");
+    document.querySelectorAll("#lv-val .lvbars i").forEach((i, n) => i.classList.toggle("on", n < k[1]));
   }
-  document.querySelectorAll(".lv-opt").forEach((b) => b.addEventListener("click", () => { const s = lvs[curState()]; if (s) { s.v = b.dataset.lv; s.ok = true; lvRender(); } }));
-  $("lv-ok").addEventListener("click", () => { const s = lvs[curState()]; if (s) { s.ok = true; lvRender(); } });
 
   // ---------- publish ----------
   const toast = $("toast");
   function say(t) { toast.textContent = t; toast.hidden = false; clearTimeout(say.t); say.t = setTimeout(() => (toast.hidden = true), 3200); }
-  $("pub").addEventListener("click", () => !lvs.duyet.ok ? (lvs.duyet.nudged = true, lvRender(), $("levelrow").scrollIntoView({ block: "center", behavior: smooth })) : say(L("Đã xuất bản.", "Published.")));
+  $("pub").addEventListener("click", () => say(L("Đã xuất bản.", "Published.")));
   $("pub2").addEventListener("click", () => say(L("Đã xuất bản bản 2.", "Version 2 published.")));
 
   let lastKhoa = null;

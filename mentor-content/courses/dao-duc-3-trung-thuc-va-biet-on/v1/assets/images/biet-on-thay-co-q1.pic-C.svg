@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- paper background -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="318" rx="88" ry="13" fill="#E9E5F6"/>
+
+  <!-- crumpled paper ball base -->
+  <polygon points="308,195 287,245 255,290 200,300 144,292 112,246 92,195 110,143 145,100 200,89 254,101 288,144"
+           fill="#E9E5F6"/>
+
+  <!-- facet planes -->
+  <polygon points="220,123 271,122 258,200 240,150" fill="#F0D76E"
+           stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="200,89 254,101 240,150 175,135" fill="#F7F1E3"
+           stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="255,290 200,300 185,250 232,245" fill="#F7F1E3"
+           stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="112,246 92,195 128,190 140,235" fill="#F7F1E3"
+           stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- outer ink outline -->
+  <polygon points="308,195 287,245 255,290 200,300 144,292 112,246 92,195 110,143 145,100 200,89 254,101 288,144"
+           fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- inner crumple ring -->
+  <polygon points="175,135 240,150 258,200 232,245 185,250 140,235 128,190 140,150"
+           fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- creases running out to the edge -->
+  <g stroke="#5A4BC0" stroke-width="4.5" stroke-linecap="round">
+    <line x1="240" y1="150" x2="271" y2="122"/>
+    <line x1="258" y1="200" x2="297" y2="220"/>
+    <line x1="232" y1="245" x2="271" y2="267"/>
+    <line x1="185" y1="250" x2="172" y2="296"/>
+    <line x1="140" y1="235" x2="128" y2="269"/>
+    <line x1="128" y1="190" x2="102" y2="220"/>
+    <line x1="140" y1="150" x2="101" y2="169"/>
+    <line x1="175" y1="135" x2="127" y2="121"/>
+  </g>
+
+  <!-- fine inner folds -->
+  <g stroke="#2B283F" stroke-width="2.5" stroke-linecap="round" opacity="0.75">
+    <line x1="175" y1="135" x2="258" y2="200"/>
+    <line x1="140" y1="150" x2="232" y2="245"/>
+    <line x1="128" y1="190" x2="185" y2="250"/>
+  </g>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

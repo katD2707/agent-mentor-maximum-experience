@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- floor shadow -->
+  <ellipse cx="200" cy="324" rx="118" ry="15" fill="#E9E5F6"/>
+
+  <!-- bottom block (coral) -->
+  <rect x="95" y="250" width="210" height="70" rx="14" fill="#E8806A" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="145" cy="285" r="10" fill="#F0D76E"/>
+  <circle cx="200" cy="285" r="10" fill="#F0D76E"/>
+  <circle cx="255" cy="285" r="10" fill="#F0D76E"/>
+
+  <!-- middle block (mint) -->
+  <rect x="122" y="180" width="156" height="70" rx="14" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="170" cy="215" r="9" fill="#5A4BC0"/>
+  <circle cx="230" cy="215" r="9" fill="#5A4BC0"/>
+
+  <!-- top block (yellow) -->
+  <rect x="150" y="110" width="100" height="70" rx="14" fill="#F0D76E" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="200" cy="145" r="13" fill="#E8806A"/>
+
+  <!-- thin grounding detail -->
+  <path d="M138 332 L262 332" fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- trunk (drawn first so the mound sits over its base) -->
+  <rect x="183" y="258" width="34" height="80" rx="17" fill="#5A4BC0"/>
+  <path d="M 200 300 L 176 274" stroke="#5A4BC0" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 200 306 L 226 282" stroke="#5A4BC0" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- ground mound -->
+  <ellipse cx="200" cy="332" rx="128" ry="22" fill="#F0D76E" stroke="#5A4BC0" stroke-width="6"/>
+
+  <!-- canopy -->
+  <path d="M 200 62
+           C 250 62 292 92 300 138
+           C 340 148 352 190 330 218
+           C 320 236 296 246 274 240
+           C 262 268 232 282 200 282
+           C 168 282 138 268 126 240
+           C 104 246 80 236 70 218
+           C 48 190 60 148 100 138
+           C 108 92 150 62 200 62 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- soft leaf texture -->
+  <ellipse cx="148" cy="118" rx="28" ry="17" fill="#E9E5F6" transform="rotate(-18 148 118)"/>
+  <ellipse cx="252" cy="176" rx="22" ry="14" fill="#E9E5F6" transform="rotate(14 252 176)"/>
+  <ellipse cx="176" cy="222" rx="20" ry="12" fill="#E9E5F6" transform="rotate(-8 176 222)"/>
+
+  <!-- berries -->
+  <circle cx="162" cy="150" r="9" fill="#E8806A"/>
+  <circle cx="240" cy="130" r="8" fill="#E8806A"/>
+  <circle cx="216" cy="208" r="7" fill="#E8806A"/>
+
+  <!-- little yellow buds -->
+  <circle cx="140" cy="198" r="6" fill="#F0D76E"/>
+  <circle cx="264" cy="180" r="6" fill="#F0D76E"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

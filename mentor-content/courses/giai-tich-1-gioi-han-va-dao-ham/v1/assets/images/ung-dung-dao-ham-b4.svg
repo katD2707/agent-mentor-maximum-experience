@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="140" y="150" width="720" height="500" rx="34" fill="#E9E5F6"/>
+<line x1="120" y1="430" x2="880" y2="430" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<polygon points="905,430 875,417 875,443" fill="#5A4BC0"/>
+<polygon points="95,430 125,417 125,443" fill="#5A4BC0"/>
+<line x1="200" y1="418" x2="200" y2="442" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="350" y1="418" x2="350" y2="442" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="650" y1="418" x2="650" y2="442" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="800" y1="418" x2="800" y2="442" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<circle cx="500" cy="430" r="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="320" y1="258" x2="320" y2="338" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<polygon points="320,370 302,332 338,332" fill="#5A4BC0"/>
+<line x1="680" y1="342" x2="680" y2="272" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<polygon points="680,235 662,273 698,273" fill="#5A4BC0"/>
+<text x="320" y="205" font-family="Lexend, sans-serif" font-size="34" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">f'&lt;0</text>
+<text x="680" y="205" font-family="Lexend, sans-serif" font-size="34" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">f'&gt;0</text>
+<text x="500" y="515" font-family="Lexend, sans-serif" font-size="32" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c: f'=0</text>
+<text x="315" y="565" font-family="Lexend, sans-serif" font-size="32" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">gi&#7843;m</text>
+<text x="685" y="565" font-family="Lexend, sans-serif" font-size="32" fill="#2B283F" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">t&#259;ng</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<rect x="523.3" y="320" width="333.3" height="160" fill="#9FD8BF" fill-opacity="0.38"/>
+<rect x="684.5" y="320" width="11" height="160" fill="#F0D76E" fill-opacity="0.55"/>
+<line x1="88" y1="400" x2="928" y2="400" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<polygon points="934,400 906,388 906,412" fill="#5A4BC0"/>
+<line x1="523.3" y1="320" x2="523.3" y2="480" stroke="#5A4BC0" stroke-width="2.5" stroke-dasharray="10 7"/>
+<line x1="690.0" y1="320" x2="690.0" y2="480" stroke="#2B283F" stroke-width="2.5" stroke-dasharray="10 7"/>
+<line x1="856.7" y1="320" x2="856.7" y2="480" stroke="#5A4BC0" stroke-width="2.5" stroke-dasharray="10 7"/>
+<line x1="134.4" y1="398" x2="134.4" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="134.4" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="273.3" y1="398" x2="273.3" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="273.3" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="356.7" y1="398" x2="356.7" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="356.7" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="412.2" y1="398" x2="412.2" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="412.2" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="451.9" y1="398" x2="451.9" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="451.9" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="481.7" y1="398" x2="481.7" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="481.7" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="504.8" y1="398" x2="504.8" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="504.8" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="523.3" y1="398" x2="523.3" y2="347" stroke="#E8806A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="523.3" cy="340" r="5.5" fill="#E8806A" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="538.5" y1="398" x2="538.5" y2="347" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<circle cx="538.5" cy="340" r="5.5" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="551.1" y1="398" x2="551.1" y2="347" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<circle cx="551.1" cy="340" r="5.5" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="561.8" y1="398" x2="561.8" y2="347" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<circle cx="561.8" cy="340" r="5.5" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="1.5"/>
+<line x1="571.0" y1="398" x2="571.0" y2="347" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<circle cx="571.0" cy="340" r="5.5" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="1.5"/>
+<path d="M120 314 V300 H512 V314" fill="none" stroke="#2B283F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="316" y="252" text-anchor="middle" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">ch&#7881; h&#7919;u h&#7841;n s&#7889; h&#7841;ng n&#7857;m ngo&#224;i d&#7843;i</text>
+<text x="523.3" y="548" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">L&#8722;&#949;=2.5</text>
+<text x="690.0" y="548" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">L=3</text>
+<text x="856.7" y="548" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">L+&#949;=3.5</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

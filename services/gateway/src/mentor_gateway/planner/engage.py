@@ -1,7 +1,7 @@
 """Keeping a learner coming back, the way Duolingo does it, on top of the plan (CONTRACTS 12.1).
 
 - **Streak**: consecutive local days with a study session, counted up to today (or yesterday while today is still open).
-- **Mực's voice**: reminder texts come from small sets of lines, picked per day so they do not repeat word for word, and
+- **The chicken's voice**: reminder texts come from small sets of lines, picked per day so they do not repeat word for word, and
   they carry the lesson, the minutes and the streak.
 - **Streak saver**: with a streak of 2+ days and nothing done today, one reminder an hour before the age band's bedtime.
   It is cancelled as soon as the learner studies.
@@ -26,7 +26,7 @@ from mentor_gateway.planner.tables import Reminder
 from mentor_gateway.planner.text import clean
 
 OWN_KINDS = ("later", "streak")  # reminders that are not part of a plan: a replan never cancels them
-BACKOFF_AFTER = 4  # reminders ignored in a row (since the last study session) before Mực reminds less
+BACKOFF_AFTER = 4  # reminders ignored in a row (since the last study session) before the chicken reminds less
 SAVER_BEFORE_BED = 60  # the streak saver fires this many minutes before bedtime
 EARLIEST_MIN = 6 * 60 + 30  # no reminder before 06:30
 LATER_MIN_AHEAD = timedelta(minutes=5)
@@ -57,11 +57,11 @@ def streak(days: set[date], today: date) -> tuple[int, bool]:
     return n, done
 
 
-# ---- Mực's lines -------------------------------------------------------------------------------------
+# ---- the chicken's lines (the course's subject chicken, or a neutral "Gà") -------------------------------------------------------------------------------------
 
 _STUDY = [
-    ("Mực đây! {min} phút {what} nhé?", "Mực here! {min} minutes of {what}?"),
-    ("Tới giờ {what} rồi. {min} phút thôi, Mực để sẵn bài cho {you}.", "Time for {what}. Just {min} minutes, your lesson is ready."),
+    ("{ga} đây! {min} phút {what} nhé?", "{ga_en} here! {min} minutes of {what}?"),
+    ("Tới giờ {what} rồi. {min} phút thôi, {ga} để sẵn bài cho {you}.", "Time for {what}. Just {min} minutes, your lesson is ready."),
     ("{what} đang chờ {you}. {min} phút là xong một phần.", "{what} is waiting. {min} minutes gets a part done."),
 ]
 _STUDY_STREAK = [
@@ -70,10 +70,10 @@ _STUDY_STREAK = [
 ]
 _SAVER = [
     ("Hôm nay {you} chưa học. 5 phút thôi là giữ được chuỗi {n} ngày.", "Nothing done today yet. 5 minutes keeps your {n}-day streak."),
-    ("Chuỗi {n} ngày sắp mất rồi! Mực để sẵn một bài ngắn cho {you}.", "Your {n}-day streak is about to end! A short lesson is ready."),
+    ("Chuỗi {n} ngày sắp mất rồi! {ga} để sẵn một bài ngắn cho {you}.", "Your {n}-day streak is about to end! A short lesson is ready."),
     ("Còn kịp giữ chuỗi {n} ngày đấy. Một bài ngắn trước khi ngủ nhé?", "There's still time to keep your {n}-day streak. One short lesson before bed?"),
 ]
-_LATER = ("Tới giờ hẹn rồi: {what}. Mực để sẵn bài cho {you}.", "It's the time you picked: {what}. Your lesson is ready.")
+_LATER = ("Tới giờ hẹn rồi: {what}. {ga} để sẵn bài cho {you}.", "It's the time you picked: {what}. Your lesson is ready.")
 
 
 def _pick(lines: list, *key: object):
@@ -85,17 +85,25 @@ def _you(band: str | None) -> str:
     return "bạn" if band == "uni" else "em"
 
 
-def study_text(what_vi: str, what_en: str, minutes: int, streak_days: int, key: str, band: str | None) -> tuple[str, str]:
-    """A study reminder in Mực's voice, one line of a small set chosen by `key` (the reminder's date and slot)."""
+def chicken_names(ga_vi: str | None, ga_en: str | None) -> tuple[str, str]:
+    """Who speaks: the subject chicken ("Gà Toán" / "Math chicken"), else a neutral "Gà" / "Your chicken"."""
+    return ga_vi or "Gà", ga_en or "Your chicken"
+
+
+def study_text(what_vi: str, what_en: str, minutes: int, streak_days: int, key: str, band: str | None,
+               ga_vi: str | None = None, ga_en: str | None = None) -> tuple[str, str]:
+    """A study reminder in the chicken's voice, one line of a small set chosen by `key` (the reminder's date and slot)."""
     lines = _STUDY_STREAK if streak_days >= 2 else _STUDY
     vi, en = _pick(lines, key)
-    args = {"min": minutes, "n": streak_days, "next": streak_days + 1, "you": _you(band)}
+    ga, ga_en = chicken_names(ga_vi, ga_en)
+    args = {"min": minutes, "n": streak_days, "next": streak_days + 1, "you": _you(band), "ga": ga, "ga_en": ga_en}
     return (clean(vi.format(what=what_vi, **args), 120), clean(en.format(what=what_en, **args), 120))
 
 
 def saver_text(streak_days: int, key: str, band: str | None) -> tuple[str, str]:
     vi, en = _pick(_SAVER, key)
-    return clean(vi.format(n=streak_days, you=_you(band)), 120), clean(en.format(n=streak_days), 120)
+    ga, ga_en = chicken_names(None, None)
+    return clean(vi.format(n=streak_days, you=_you(band), ga=ga), 120), clean(en.format(n=streak_days, ga_en=ga_en), 120)
 
 
 # ---- backing off -------------------------------------------------------------------------------------
@@ -185,14 +193,14 @@ def create_later(db: Database, user: User, now: datetime, at: datetime, title_vi
     loc = local(at)
     minute = loc.hour * 60 + loc.minute
     if minute >= band_for(user.age_band).bedtime_min or minute < EARLIEST_MIN:
-        raise EngageError("bedtime", "Giờ đó muộn quá, Mực không nhắc lúc đi ngủ.")
+        raise EngageError("bedtime", "Giờ đó muộn quá, Gà không nhắc lúc đi ngủ.")
     if quiet_until and at < quiet_until:
         raise EngageError("quiet", "Em đang bật tạm im lặng tới giờ đó.")
     link = deep_link if deep_link.startswith("/") else "/"
     what_vi, what_en = clean(title_vi or "bài học", 60), clean(title_en or title_vi or "your lesson", 60)
     vi, en = _LATER
     row = Reminder(id="r-" + secrets.token_hex(8), user_id=user.id, at=at, kind="later",
-                   text_vi=clean(vi.format(what=what_vi, you=_you(user.age_band)), 140), text_en=clean(en.format(what=what_en), 140),
+                   text_vi=clean(vi.format(what=what_vi, you=_you(user.age_band), ga=chicken_names(None, None)[0]), 140), text_en=clean(en.format(what=what_en), 140),
                    deep_link=link[:300], status="scheduled", created_at=now, updated_at=now)
     with db.session() as s:
         active = list(s.scalars(select(Reminder).where(Reminder.user_id == user.id, Reminder.kind == "later",

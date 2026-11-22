@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<line x1="253.2" y1="312.8" x2="450" y2="175" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+<line x1="746.8" y1="387.2" x2="550" y2="525" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+<line x1="253.2" y1="387.2" x2="450" y2="525" stroke="#E8806A" stroke-width="5" stroke-linecap="round"/>
+<line x1="746.8" y1="312.8" x2="550" y2="175" stroke="#E8806A" stroke-width="5" stroke-linecap="round"/>
+<rect x="460" y="120" width="80" height="60" rx="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+<path d="M 480 120 A 20 20 0 0 1 520 120" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<circle cx="500" cy="150" r="5" fill="#2B283F"/>
+<line x1="500" y1="155" x2="500" y2="165" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+<rect x="460" y="540" width="80" height="60" rx="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+<path d="M 480 540 A 20 20 0 0 1 520 540" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<circle cx="500" cy="570" r="5" fill="#2B283F"/>
+<line x1="500" y1="575" x2="500" y2="585" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+<circle cx="200" cy="350" r="65" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="800" cy="350" r="65" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<polygon points="450,525 427.9,521.7 439.3,505.3" fill="#E8806A"/>
+<polygon points="550,175 572.1,178.3 560.7,194.7" fill="#E8806A"/>
+<text x="120" y="350" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="end" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T1</text>
+<text x="880" y="350" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="start" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T2</text>
+<text x="320" y="200" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">gi&#7919; A</text>
+<text x="700" y="510" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">gi&#7919; B</text>
+<text x="300" y="540" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">ch&#7901; B</text>
+<text x="720" y="180" font-family="Lexend, sans-serif" font-size="30" fill="#5A4BC0" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">ch&#7901; A</text>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

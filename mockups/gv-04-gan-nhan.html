@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="chac" data-course="vat-li">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gán nhãn khóa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<link rel="stylesheet" href="ga-guide.css"><script src="ga-guide.js" defer></script>
+<style>
+  /* same on gv-01..04: header with step indicator */
+  .steps { display: flex; gap: 4px; align-items: center; margin-left: 6px; }
+  .steps a { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 10px 0 6px; border-radius: 99px; color: var(--ink-2); text-decoration: none; font-size: .88em; font-weight: 500; }
+  .steps a:hover { background: var(--tim-soft); }
+  .steps .n { width: 22px; height: 22px; border-radius: 99px; border: 1.5px solid var(--rule-strong); display: grid; place-items: center; font-size: .8em; font-weight: 600; }
+  .steps a[aria-current] { color: var(--tim-ink); background: var(--tim-soft); font-weight: 600; }
+  .steps a[aria-current] .n { background: var(--tim); color: var(--on-tim); border-color: transparent; }
+  .topbar .btn.act { min-height: 44px; padding: 0 18px; white-space: nowrap; flex: none; }
+  .topbar .btn.act[aria-disabled="true"] { opacity: .5; cursor: default; }
+  @media (max-width: 640px) { .steps .l { display: none; } .steps a { padding: 0 4px; } .topbar > a.icon-btn { display: none; } .topbar .logo .nm { display: none; } .topbar .btn.act { padding: 0 14px; } }
+
+  .main { max-width: 1000px; padding-bottom: 60px; }
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 36px; align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 20px; } .side { order: -1; position: static !important; } }
+
+  .course-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+  .course-head .media { width: 52px; height: 52px; border-radius: 12px; overflow: hidden; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; flex: none; }
+  .course-head .media img { width: 100%; height: 100%; object-fit: cover; }
+  .course-head .media svg { width: 26px; height: 26px; }
+  .course-head h1 { font-size: clamp(1.3em, 3vw, 1.6em); }
+  .course-head .meta { color: var(--ink-2); font-size: .88em; }
+  .lead { color: var(--ink-2); font-size: .92em; margin: 10px 0 8px; }
+
+  .unsure-note { display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: 12px; background: var(--cam-soft); color: var(--cam); font-size: .9em; font-weight: 500; margin: 12px 0 4px; }
+  .unsure-note svg { width: 20px; height: 20px; flex: none; }
+
+  .field { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  .field.need { background: var(--cam-soft); margin: 0 -14px; padding: 18px 14px; border-radius: 12px; border-bottom-color: transparent; }
+  .fhead { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-bottom: 10px; }
+  .fhead h2 { font-size: 1em; font-weight: 600; }
+  .fhead .opt { color: var(--ink-2); font-size: .82em; font-weight: 400; }
+  .fhead .tag svg { width: 13px; height: 13px; stroke-width: 2.4; }
+  .fhint { color: var(--ink-2); font-size: .85em; margin-top: 10px; min-height: 1.3em; }
+  .fhint b { color: var(--ink); font-weight: 600; }
+  .fhint.warn { color: var(--cam); font-weight: 500; }
+
+  .grp-label { color: var(--ink-2); font-size: .8em; font-weight: 600; letter-spacing: .02em; margin: 12px 0 6px; }
+  .grp-label:first-child { margin-top: 0; }
+  .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt-btn { min-height: 44px; padding: 0 16px; border-radius: 99px; border: 1.5px solid var(--rule-strong); background: transparent; color: var(--ink); font-size: .92em; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color .15s, border-color .15s; }
+  .opt-btn:hover { border-color: var(--ink-3); }
+  .opt-btn[aria-checked="true"], .opt-btn[aria-pressed="true"] { background: var(--tim); border-color: var(--tim); color: var(--on-tim); }
+  .opt-btn svg { width: 16px; height: 16px; stroke-width: 2.6; display: none; }
+  .opt-btn[aria-checked="true"] svg, .opt-btn[aria-pressed="true"] svg { display: block; }
+  .opt-btn.sq { min-width: 44px; padding: 0 12px; justify-content: center; }
+  .need .opt-btn { background: var(--surface); }
+  .need .opt-btn[aria-checked="true"], .need .opt-btn[aria-pressed="true"] { background: var(--tim); }
+  .lv-inline { display: inline-flex; align-items: flex-end; gap: 2px; height: 14px; }
+  .lv-inline i { display: block; width: 4px; border-radius: 1px; background: currentColor; opacity: .35; }
+  .lv-inline i:nth-child(1) { height: 6px; } .lv-inline i:nth-child(2) { height: 10px; } .lv-inline i:nth-child(3) { height: 14px; }
+  .lv-inline i.on { opacity: 1; }
+
+  /* subject chips carry a tiny chicken head so teachers recognise it */
+  .sub-btn .ico { width: 22px; height: 22px; border-radius: 99px; overflow: hidden; position: relative; background: var(--tim-soft); flex: none; }
+  .sub-btn .ico img { position: absolute; width: 70px; max-width: none; left: -23px; top: -22px; }
+  .sub-btn[aria-checked="true"] .ico { background: rgba(255,255,255,.92); }
+  .sub-btn .ico.draw0 img { filter: brightness(0) opacity(.2); }
+
+  /* topics */
+  .topics { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .topic { display: inline-flex; align-items: center; gap: 2px; min-height: 40px; padding: 0 4px 0 14px; border-radius: 99px; background: var(--vang-soft); color: var(--ink); font-weight: 500; font-size: .92em; border: 1px solid var(--vang); }
+  .topic button { width: 32px; height: 32px; border: 0; border-radius: 99px; background: transparent; color: inherit; cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .topic button:hover { background: rgba(0,0,0,.1); }
+  .topic svg { width: 14px; height: 14px; stroke-width: 2.4; }
+  .tinput { flex: 1; min-width: 180px; min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1.5px dashed var(--rule-strong); background: transparent; }
+  .tinput:focus { border-style: solid; border-color: var(--tim); outline: none; box-shadow: 0 0 0 3px var(--tim-soft); }
+  .tinput::placeholder { color: var(--ink-2); }
+  .sugg { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-top: 10px; }
+  .sugg > span { color: var(--ink-2); font-size: .82em; margin-right: 2px; }
+  .sg { min-height: 36px; padding: 0 12px 0 8px; border-radius: 99px; border: 1.5px dashed var(--rule-strong); background: transparent; color: var(--ink-2); font-size: .86em; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+  .sg:hover { border-color: var(--tim); color: var(--tim-ink); }
+  .sg svg { width: 14px; height: 14px; stroke-width: 2.2; }
+
+  /* side: where students will see it */
+  .side { position: sticky; top: 130px; padding: 18px 16px 16px; border-radius: 16px; border: 1px solid var(--rule-strong); background: var(--surface); display: grid; gap: 8px; justify-items: center; text-align: center; }
+  .side h2 { font-size: .85em; font-weight: 500; color: var(--ink-2); }
+  .crop { position: relative; overflow: hidden; display: block; flex: none; }
+  .crop img { position: absolute; max-width: none; }
+  .crop.draw0 img { filter: brightness(0) opacity(.16); }
+  .side .cname { font-size: 1.15em; font-weight: 700; }
+  .side .csub { color: var(--ink-2); font-size: .84em; }
+  .side .draw-note { font-size: .78em; color: var(--ink-2); background: var(--rule); padding: 2px 10px; border-radius: 99px; }
+  .side .empty { color: var(--ink-2); font-size: .88em; padding: 18px 0; }
+  .side .shelf { width: 100%; height: 2px; background: var(--rule-strong); margin-top: -2px; border-radius: 2px; display: block; }
+  .pvbox { display: grid; justify-items: center; gap: 6px; width: 100%; }
+
+  .bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 8px; padding-top: 18px; }
+  .bottom .need-msg { color: var(--cam); font-weight: 500; font-size: .9em; }
+  .bottom .btn { min-height: 48px; }
+  .btn[aria-disabled="true"] { opacity: .5; cursor: default; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Giáo viên: Gán nhãn khóa</span>
+  <span class="mock-seg"><span>Khóa</span><button data-set="course:vat-li">Vật lí 11 (THPT)</button><button data-set="course:hdh">Hệ điều hành (ĐH)</button></span>
+  <span class="mock-seg"><span>Mentor</span><button data-set="state:chac">Điền đủ</button><button data-set="state:phan-van">Chưa chắc 1 nhãn</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Mỗi môn một chú gà; gà chính quyết định khóa vào chuồng nào.</span>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <a class="icon-btn" href="gv-02-cau-truc.html?state=xem" aria-label="Quay lại"><i data-i="back"></i></a>
+    <a class="logo" href="gv-01-gui-bai.html?state=co-khoa"><span class="logo-mark">M</span><span class="nm">Mentor</span></a>
+    <nav class="steps" aria-label="Các bước">
+      <a href="gv-01-gui-bai.html?state=co-khoa"><span class="n">1</span><span class="l" data-en="Upload">Gửi</span></a>
+      <a href="gv-02-cau-truc.html?state=xem"><span class="n">2</span><span class="l" data-en="Outline">Cấu trúc</span></a>
+      <a href="gv-04-gan-nhan.html" aria-current="step"><span class="n">3</span><span class="l" data-en="Tags">Nhãn</span></a>
+      <a href="gv-03-duyet-noi-dung.html?state=duyet"><span class="n">4</span><span class="l" data-en="Review">Duyệt</span></a>
+    </nav>
+    <span class="grow"></span>
+    <a class="btn btn-primary act" id="go" href="gv-03-duyet-noi-dung.html?state=duyet"><span data-en="Continue">Tiếp tục</span></a>
+    <button class="icon-btn" type="button" data-settings="teacher" aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </header>
+
+  <main class="main">
+    <div class="course-head">
+      <span class="media" id="cmedia"></span>
+      <div><h1 id="ctitle"></h1><div class="meta" id="cmeta"></div></div>
+    </div>
+    <p class="lead" data-en="Mentor filled these in from your lesson. Check them and fix what is off.">Mentor đã điền sẵn từ bài của thầy cô. Xem lại và sửa chỗ chưa đúng.</p>
+    <div class="unsure-note" data-when="state=phan-van" role="status"><i data-i="flag"></i><span id="unsure-msg"></span></div>
+
+    <div class="layout">
+      <form class="fields" id="form" onsubmit="return false">
+        <section class="field" data-f="bac" aria-labelledby="h-bac">
+          <div class="fhead"><h2 id="h-bac" data-en="Level">Bậc học</h2><span class="tag" data-slot="status"></span></div>
+          <div class="opts" role="radiogroup" aria-labelledby="h-bac" id="o-bac"></div>
+        </section>
+
+        <section class="field" data-f="mon" aria-labelledby="h-mon">
+          <div class="fhead"><h2 id="h-mon" data-en="Main chicken (subject)">Gà chính (môn)</h2><span class="tag" data-slot="status"></span></div>
+          <div id="o-mon" role="radiogroup" aria-labelledby="h-mon"></div>
+          <p class="fhint" id="hint-mon" aria-live="polite"></p>
+        </section>
+
+        <section class="field" data-f="lop" aria-labelledby="h-lop">
+          <div class="fhead"><h2 id="h-lop"><span id="lop-label">Lớp</span></h2><span class="tag" data-slot="status"></span></div>
+          <div id="o-lop" role="radiogroup" aria-labelledby="h-lop"></div>
+          <p class="fhint" id="hint-lop" aria-live="polite"></p>
+        </section>
+
+        <section class="field" data-f="kho" aria-labelledby="h-kho">
+          <div class="fhead"><h2 id="h-kho" data-en="Difficulty">Độ khó</h2><span class="tag" data-slot="status"></span></div>
+          <div class="opts" role="radiogroup" aria-labelledby="h-kho" id="o-kho"></div>
+        </section>
+
+        <section class="field" data-f="muctieu" aria-labelledby="h-mt">
+          <div class="fhead"><h2 id="h-mt" data-en="Goal">Mục tiêu</h2><span class="opt" data-en="pick one or more">chọn một hoặc nhiều</span><span class="tag" data-slot="status"></span></div>
+          <div class="opts" role="group" aria-labelledby="h-mt" id="o-mt"></div>
+        </section>
+
+        <section class="field" data-f="ngonngu" aria-labelledby="h-nn">
+          <div class="fhead"><h2 id="h-nn" data-en="Language">Ngôn ngữ</h2><span class="tag" data-slot="status"></span></div>
+          <div class="opts" role="radiogroup" aria-labelledby="h-nn" id="o-nn"></div>
+        </section>
+
+        <section class="field" data-f="chude" aria-labelledby="h-cd" style="border-bottom:0">
+          <div class="fhead"><h2 id="h-cd" data-en="Topics">Chủ đề</h2><span class="opt" data-en="up to 5">tối đa 5</span><span class="tag" data-slot="status"></span></div>
+          <div class="topics" id="topics"></div>
+          <div class="sugg" id="sugg"></div>
+          <p class="fhint" data-en="Mentor uses topics to find matching exam questions by type.">Mentor dùng chủ đề để tìm đề thi cùng dạng câu.</p>
+        </section>
+
+        <div class="bottom">
+          <a class="btn btn-primary" id="go2" href="gv-03-duyet-noi-dung.html?state=duyet"><span data-en="Continue to review">Tiếp tục: duyệt bài</span></a>
+          <a class="btn btn-ghost" href="gv-02-cau-truc.html?state=xem"><span data-en="Back">Quay lại</span></a>
+          <span class="need-msg" id="need-msg" role="status"></span>
+        </div>
+      </form>
+
+      <aside class="side" aria-live="polite">
+        <h2 data-en="Students will find this course in:">Học sinh sẽ thấy khóa này trong:</h2>
+        <div id="pv" class="pvbox"></div>
+      </aside>
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const EN = () => root.dataset.lang === "en";
+  const L = (vi, en) => (EN() ? en : vi);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const icon = (n) => window.mentorIcon(n);
+
+  // chicken art (assets/ga/<key>.png). top = where the drawing starts in the 512 frame; it ends at .85.
+  // Văn and Anh are drawn as gà choai (stage 2, shorter); every other chicken is an adult
+  const ART = new Proxy({}, { get: (_, k) => ({ src: "assets/ga/" + k + ".png", top: k === "van" || k === "anh" ? .41 : .33 }) });
+  const BLANK = { src: "assets/ga/van.png", top: .41 };
+
+  // fixed lists (name, what it covers, art key when drawn)
+  const SCHOOL = [
+    ["Toán", "Toán lớp 1–12", "toan"], ["Văn", "Tiếng Việt lớp 1–5, Ngữ văn lớp 6–12", "van"], ["Anh", "Tiếng Anh", "anh"],
+    ["Khoa học", "Tự nhiên và Xã hội 1–3, Khoa học 4–5, Khoa học tự nhiên 6–9", "khoahoc"], ["Lí", "Vật lí", "li"], ["Hóa", "Hóa học", "hoa"], ["Sinh", "Sinh học, lớp 10–12", "sinh"],
+    ["Sử", "Lịch sử, và Lịch sử và Địa lí lớp 4–9", "su"], ["Địa", "Địa lí", "dia"], ["Công dân", "Đạo đức 1–5, GDCD 6–9, GD Kinh tế và Pháp luật 10–12", "cd"],
+    ["Tin", "Tin học", "tin"], ["Công nghệ", "Công nghệ", "cn"], ["Nghệ thuật", "Âm nhạc, Mĩ thuật", "nghethuat"], ["Kỹ năng", "Kỹ năng sống, kỹ năng mềm", "kynang"],
+  ];
+  const UNI = [
+    ["Khoa học máy tính", "Lập trình, học máy (ML), xử lý ngôn ngữ (NLP), thị giác máy tính (CV)", "khmt"],
+    ["Kỹ thuật máy tính", "Cấu trúc dữ liệu và giải thuật, hệ điều hành, kiến trúc máy tính, mạng, vi xử lý", "ktmt"],
+    ["Hệ thống thông tin", "Cơ sở dữ liệu, phân tích thiết kế hệ thống", "httt"],
+    ["Khoa học dữ liệu", "Thống kê ứng dụng, khai phá dữ liệu, trực quan hóa", "khdl"],
+    ["Toán học", "Giải tích, đại số, xác suất thống kê", "toan"], ["Vật lí", "Cơ, nhiệt, điện từ, quang, vật lí hiện đại", "vatli"], ["Hóa học", "Hóa đại cương, hữu cơ, vô cơ", "hoahoc"],
+    ["Kinh tế", "Vi mô, vĩ mô, tài chính", "kinhte"], ["Kế toán", "Kế toán, kiểm toán", "ketoan"], ["Ngôn ngữ Anh", "Ngữ pháp, dịch, giao tiếp", "anh"], ["Đại cương", "Môn chung: triết, pháp luật, kỹ năng", "daicuong"],
+  ];
+  const BAC = [["pt", "Phổ thông (CT 2018)"], ["dh", "Đại học"]];
+  const LOP_GROUPS = [["Tiểu học", [1, 2, 3, 4, 5]], ["THCS", [6, 7, 8, 9]], ["THPT", [10, 11, 12]]];
+  const NAM = [1, 2, 3, 4];
+  const KHO = [["Cơ bản", "Basic", 1], ["Nâng cao", "Advanced", 2], ["Luyện thi", "Exam prep", 3]];
+  const MT = [["Học mới", "Learn new"], ["Ôn tập", "Revise"], ["Thi THPT", "THPT exam"], ["IELTS", "IELTS"], ["Thi cuối kỳ", "Final exam"]];
+  const NN = [["Tiếng Việt", "Vietnamese"], ["Tiếng Anh", "English"]];
+
+  // example courses: Mentor's guess; "unsure" names the tag it could not decide
+  const COURSES = {
+    "vat-li": {
+      title: "Vật lí 11: Điện trường", meta: "7 bài · 32 trang đã đọc", img: "assets/courses/dien-truong.jpg",
+      guess: { bac: "pt", mon: "Lí", lop: 11, kho: "Cơ bản", muctieu: ["Học mới", "Thi THPT"], ngonngu: "Tiếng Việt", chude: ["Điện tích", "Định luật Cu-lông", "Cường độ điện trường", "Đường sức điện"] },
+      sugg: ["Công của lực điện", "Điện thế", "Tụ điện", "Điện trường đều"],
+      unsure: "kho", unsureMsg: "Mentor chưa chắc độ khó: bài có cả câu cơ bản và câu vận dụng cao. Mời thầy cô chọn.",
+    },
+    "hdh": {
+      title: "Hệ điều hành", meta: "12 bài · slide 186 trang", img: null,
+      guess: { bac: "dh", mon: "Kỹ thuật máy tính", lop: 2, kho: "Nâng cao", muctieu: ["Học mới", "Thi cuối kỳ"], ngonngu: "Tiếng Việt", chude: ["Tiến trình", "Lập lịch CPU", "Bộ nhớ ảo", "Deadlock"] },
+      sugg: ["Đồng bộ hóa", "Semaphore", "Phân trang", "Hệ thống tệp"],
+      unsure: "mon", unsureMsg: "Mentor chưa chắc gà chính: bài này gần với cả Kỹ thuật máy tính và Khoa học máy tính. Mời thầy cô chọn.",
+    },
+  };
+
+  let cur = null, touched = {}, open = {};
+  const course = () => COURSES[root.dataset.course] || COURSES["vat-li"];
+
+  function load() {
+    const c = course();
+    cur = JSON.parse(JSON.stringify(c.guess));
+    touched = {}; open = {};
+    if (root.dataset.state === "phan-van") { open[c.unsure] = true; cur[c.unsure] = null; }
+    paint();
+  }
+
+  const mk = (cls, html, attrs) => { const b = document.createElement("button"); b.type = "button"; b.className = cls; b.innerHTML = html; Object.entries(attrs || {}).forEach(([k, v]) => b.setAttribute(k, v)); return b; };
+  const check = () => icon("check");
+  const refocus = (host) => { const f = host.querySelector('[aria-checked="true"]'); if (f) f.focus(); };
+
+  function arrows(e) {
+    if (!["ArrowRight", "ArrowDown", "ArrowLeft", "ArrowUp"].includes(e.key)) return;
+    const all = [...e.currentTarget.querySelectorAll('[role="radio"]')];
+    const i = all.indexOf(document.activeElement); if (i < 0) return;
+    e.preventDefault();
+    all[(i + (e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1) + all.length) % all.length].click();
+  }
+
+  function radio(host, items, field, onPick) {
+    host.innerHTML = "";
+    items.forEach(([v, label, cls, extra], i) => {
+      const on = cur[field] === v;
+      const b = mk("opt-btn " + (cls || ""), (extra || "") + "<span>" + esc(label) + "</span>" + check(), { role: "radio", "aria-checked": String(on), tabindex: on || (cur[field] == null && i === 0) ? "0" : "-1" });
+      b.addEventListener("click", () => { onPick ? onPick(v) : (cur[field] = v); touched[field] = true; delete open[field]; paint(); refocus(host); });
+      host.appendChild(b);
+    });
+    host.onkeydown = arrows;
+  }
+
+  function crop(art, w) {
+    const a = art || BLANK, S = w / 0.35, h = S * (0.85 - a.top);
+    return '<span class="crop' + (art ? "" : " draw0") + '" style="width:' + w + "px;height:" + h + 'px"><img alt="" src="' + a.src + '" style="width:' + S + "px;left:" + (-0.34 * S) + "px;top:" + (-a.top * S) + 'px"></span>';
+  }
+
+  function drawSubject() {
+    const host = document.getElementById("o-mon"); host.innerHTML = "";
+    const list = cur.bac === "dh" ? UNI : SCHOOL;
+    const wrap = document.createElement("div"); wrap.className = "opts";
+    list.forEach(([name, , art], i) => {
+      const on = cur.mon === name;
+      const ico = '<span class="ico' + (art ? "" : " draw0") + '"><img alt="" src="' + (art ? ART[art].src : BLANK.src) + '"></span>';
+      const b = mk("opt-btn sub-btn", ico + "<span>" + esc(name) + "</span>" + check(), { role: "radio", "aria-checked": String(on), tabindex: on || (cur.mon == null && i === 0) ? "0" : "-1" });
+      b.addEventListener("click", () => { cur.mon = name; touched.mon = true; delete open.mon; paint(); refocus(host); });
+      wrap.appendChild(b);
+    });
+    host.appendChild(wrap);
+    host.onkeydown = arrows;
+  }
+
+  function drawLop() {
+    const host = document.getElementById("o-lop"); host.innerHTML = "";
+    document.getElementById("lop-label").textContent = cur.bac === "dh" ? L("Năm học", "Year") : L("Lớp", "Grade");
+    let first = true;
+    const mkOpt = (v, label) => {
+      const on = cur.lop === v;
+      const b = mk("opt-btn sq", "<span>" + esc(label) + "</span>", { role: "radio", "aria-checked": String(on), tabindex: on || (cur.lop == null && first) ? "0" : "-1" });
+      first = false;
+      b.addEventListener("click", () => { cur.lop = v; touched.lop = true; delete open.lop; paint(); refocus(host); });
+      return b;
+    };
+    if (cur.bac === "dh") {
+      const w = document.createElement("div"); w.className = "opts";
+      NAM.forEach((n) => w.appendChild(mkOpt(n, L("Năm ", "Year ") + n)));
+      host.appendChild(w);
+    } else {
+      LOP_GROUPS.forEach(([g, ls]) => {
+        const lab = document.createElement("div"); lab.className = "grp-label"; lab.textContent = g; host.appendChild(lab);
+        const w = document.createElement("div"); w.className = "opts";
+        ls.forEach((n) => w.appendChild(mkOpt(n, String(n))));
+        host.appendChild(w);
+      });
+    }
+    host.onkeydown = arrows;
+  }
+
+  function drawTopics() {
+    const host = document.getElementById("topics"); host.innerHTML = "";
+    cur.chude.forEach((t) => {
+      const s = document.createElement("span"); s.className = "topic"; s.textContent = t;
+      const x = mk("", icon("x"), { "aria-label": L("Bỏ chủ đề ", "Remove topic ") + t });
+      x.addEventListener("click", () => { cur.chude = cur.chude.filter((v) => v !== t); touched.chude = true; paint(); document.getElementById("tin").focus(); });
+      s.appendChild(x); host.appendChild(s);
+    });
+    const full = cur.chude.length >= 5;
+    const inp = document.createElement("input");
+    inp.id = "tin"; inp.className = "tinput"; inp.type = "text"; inp.maxLength = 40; inp.disabled = full;
+    inp.placeholder = full ? L("Đủ 5 chủ đề", "5 topics, the max") : L("Thêm chủ đề, nhấn Enter", "Add a topic, press Enter");
+    inp.setAttribute("aria-label", L("Thêm chủ đề", "Add a topic"));
+    inp.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); addTopic(inp.value); } });
+    host.appendChild(inp);
+    const sg = document.getElementById("sugg"); sg.innerHTML = "";
+    const left = course().sugg.filter((t) => !cur.chude.includes(t));
+    if (left.length && !full) {
+      sg.innerHTML = "<span>" + L("Mentor gợi ý:", "Suggested:") + "</span>";
+      left.forEach((t) => { const b = mk("sg", icon("plus") + esc(t), { "aria-label": L("Thêm chủ đề ", "Add topic ") + t }); b.addEventListener("click", () => addTopic(t)); sg.appendChild(b); });
+    }
+  }
+  function addTopic(v) {
+    v = v.trim(); if (!v) return;
+    if (!cur.chude.includes(v) && cur.chude.length < 5) { cur.chude.push(v); touched.chude = true; }
+    paint(); const i = document.getElementById("tin"); if (i && !i.disabled) i.focus();
+  }
+
+  function drawPreview() {
+    const pv = document.getElementById("pv");
+    if (!cur.mon) { pv.innerHTML = '<p class="empty">' + L("Chọn gà chính để xem.", "Pick the main chicken to preview.") + "</p>"; return; }
+    const row = (cur.bac === "dh" ? UNI : SCHOOL).find((r) => r[0] === cur.mon) || [];
+    const art = row[2] ? ART[row[2]] : null;
+    const where = cur.lop ? (cur.bac === "dh" ? L("Năm ", "Year ") : L("Lớp ", "Grade ")) + cur.lop : "";
+    pv.innerHTML = crop(art, 112) + '<span class="shelf"></span>' +
+      '<div class="cname">' + L("Gà ", "") + esc(cur.mon) + (EN() ? " chicken" : "") + "</div>" +
+      '<div class="csub">' + esc([where, cur.kho].filter(Boolean).join(" · ")) + "</div>" +
+      (art ? "" : '<span class="draw-note">' + L("Đang vẽ", "Being drawn") + "</span>");
+  }
+
+  function paint() {
+    const c = course();
+    document.getElementById("ctitle").textContent = c.title;
+    document.getElementById("cmeta").textContent = c.meta;
+    document.getElementById("cmedia").innerHTML = c.img ? '<img alt="" src="' + c.img + '">' : icon("layers");
+    document.getElementById("unsure-msg").textContent = c.unsureMsg;
+
+    radio(document.getElementById("o-bac"), BAC, "bac", (v) => {
+      if (v === cur.bac) return;
+      cur.bac = v; cur.mon = null; cur.lop = null; open.mon = true; open.lop = true;
+    });
+    drawSubject(); drawLop();
+    radio(document.getElementById("o-kho"), KHO.map(([v, en, n]) => [v, EN() ? en : v, "", '<span class="lv-inline" aria-hidden="true">' + [1, 2, 3].map((k) => '<i class="' + (k <= n ? "on" : "") + '"></i>').join("") + "</span>"]), "kho");
+    radio(document.getElementById("o-nn"), NN.map(([v, en]) => [v, EN() ? en : v]), "ngonngu");
+
+    const mt = document.getElementById("o-mt"); mt.innerHTML = "";
+    MT.forEach(([v, en], idx) => {
+      const on = cur.muctieu.includes(v);
+      const b = mk("opt-btn", "<span>" + esc(EN() ? en : v) + "</span>" + check(), { "aria-pressed": String(on) });
+      b.addEventListener("click", () => { cur.muctieu = on ? cur.muctieu.filter((x) => x !== v) : cur.muctieu.concat(v); touched.muctieu = true; paint(); mt.children[idx].focus(); });
+      mt.appendChild(b);
+    });
+    drawTopics();
+
+    const row = (cur.bac === "dh" ? UNI : SCHOOL).find((r) => r[0] === cur.mon);
+    const hm = document.getElementById("hint-mon");
+    hm.innerHTML = row ? "<b>" + esc(row[0]) + ":</b> " + esc(row[1]) : L("Chọn một gà. Mỗi khóa nằm trong đúng một gà.", "Pick one chicken. Each course lives in exactly one.");
+    const hl = document.getElementById("hint-lop"); hl.className = "fhint"; hl.textContent = "";
+    if (cur.bac !== "dh" && cur.lop && cur.lop < 10 && ["Lí", "Hóa", "Sinh"].includes(cur.mon)) {
+      hl.className = "fhint warn"; hl.textContent = L("Lớp " + cur.lop + " học Khoa học tự nhiên, nên thuộc gà Khoa học. Đổi gà?", "Grade " + cur.lop + " uses integrated science, so it belongs to the Science chicken. Switch?");
+    } else if (cur.bac !== "dh" && cur.lop && cur.lop >= 10 && cur.mon === "Khoa học") {
+      hl.className = "fhint warn"; hl.textContent = L("Lớp 10–12 học riêng Lí, Hóa, Sinh. Đổi gà?", "Grades 10–12 split into Physics, Chemistry, Biology. Switch?");
+    }
+
+    document.querySelectorAll(".field").forEach((f) => {
+      const k = f.dataset.f, t = f.querySelector('[data-slot="status"]');
+      f.classList.toggle("need", !!open[k]);
+      t.className = "tag" + (open[k] ? " wait" : touched[k] ? " ok" : "");
+      t.innerHTML = open[k] ? icon("flag") + L("Mentor chưa chắc, mời chọn", "Mentor is unsure, please pick")
+        : touched[k] ? icon("check") + L("Đã sửa", "You changed this")
+        : icon("check") + L("Mentor điền sẵn", "Filled in by Mentor");
+    });
+    drawPreview();
+    try { localStorage.setItem('mentor.kho', cur.kho || ''); } catch (e) {}
+
+    const missing = !cur.mon || !cur.lop || !cur.kho || !cur.muctieu.length || !cur.ngonngu;
+    ["go", "go2"].forEach((id) => { const a = document.getElementById(id); a.setAttribute("aria-disabled", String(missing)); if (missing) a.removeAttribute("href"); else a.setAttribute("href", "gv-03-duyet-noi-dung.html?state=duyet"); });
+    document.getElementById("need-msg").textContent = missing ? L("Còn nhãn trống. Chọn xong rồi tiếp tục.", "Some tags are empty. Pick them to continue.") : "";
+  }
+
+  document.addEventListener("click", (e) => { const a = e.target.closest('a.btn[aria-disabled="true"]'); if (a) e.preventDefault(); });
+  document.addEventListener("mock:change", (e) => { if (!cur) return; if (e.detail.key === "course" || e.detail.key === "state") load(); else if (e.detail.key === "lang") paint(); });
+  document.addEventListener("DOMContentLoaded", () => {
+    const q = new URLSearchParams(location.search);
+    const co = q.get("course"), st = q.get("state");
+    window.mockSet("course", COURSES[co] ? co : root.dataset.course);
+    window.mockSet("state", st === "phan-van" || st === "chac" ? st : root.dataset.state);
+    load();
+  });
+})();
+</script>
+</body>
+</html>

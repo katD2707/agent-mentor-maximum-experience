@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "hoa-hoc-10-cau-tao-nguyen-tu-va",
+  "title": "Hóa học 10: Cấu tạo nguyên tử và liên kết",
+  "subject": "Hóa học",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "udf5e8cf902e8d16e",
+  "teacher_name": "Cô Trinh",
+  "description_short": "Khóa học trình bày cấu tạo nguyên tử, cấu hình electron, đồng vị, quy luật tuần hoàn và hai loại liên kết hóa học cơ bản. Nội dung dành cho học sinh lớp 10 THPT đang học Hóa học 10.",
+  "outcomes": [
+    "Xác định được số proton, neutron, electron và điện tích hạt nhân từ kí hiệu nguyên tử hoặc ion.",
+    "Viết được cấu hình electron và suy ra vị trí, tính chất của nguyên tố trong bảng tuần hoàn.",
+    "Tính được nguyên tử khối trung bình của hỗn hợp các đồng vị.",
+    "Vận dụng được quy luật tuần hoàn để so sánh bán kính, độ âm điện, tính kim loại, tính phi kim và tính acid-base.",
+    "Phân biệt được liên kết ion với liên kết cộng hóa trị và viết được công thức electron, công thức cấu tạo."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:11:24.834655Z",
+      "published_at": "2026-11-17T08:11:36.506410Z",
+      "pack_sha256": "9d60defbb6485d7966187c7adbd5466669f56bd71f0d8abd49d2996cd3230625",
+      "pack_bytes": 116243,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

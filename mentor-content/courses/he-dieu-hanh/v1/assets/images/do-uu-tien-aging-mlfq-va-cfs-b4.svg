@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="110" y="120" width="690" height="96" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="126" y="134" width="14" height="68" rx="7" fill="#E8806A" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="170" y="151" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="296" y="151" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="422" y="151" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="548" y="151" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="674" y="151" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="110" y="308" width="690" height="96" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="126" y="322" width="14" height="68" rx="7" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="170" y="339" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="296" y="339" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="422" y="339" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="548" y="339" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="674" y="339" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="110" y="496" width="690" height="96" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="126" y="510" width="14" height="68" rx="7" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="170" y="527" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="296" y="527" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="422" y="527" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="548" y="527" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="674" y="527" width="104" height="34" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<path d="M 805 168 C 940 168 940 544 805 544" fill="none" stroke="#2B283F" stroke-width="4" stroke-linecap="round"/>
+<polygon points="805,544 832,529 832,559" fill="#2B283F"/>
+<circle cx="905" cy="356" r="16" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<text x="455" y="102" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">M&#7913;c &#432;u ti&#234;n cao</text>
+<text x="455" y="290" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">M&#7913;c trung gian</text>
+<text x="455" y="478" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">M&#7913;c th&#7845;p</text>
+<text x="500" y="662" font-family="Lexend, sans-serif" font-size="30" text-anchor="middle" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">D&#249;ng nhi&#7873;u CPU &#8594; h&#7841; m&#7913;c</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

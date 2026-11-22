@@ -8,6 +8,8 @@ const marked = new Marked({
   gfm: true,
   renderer: {
     html: ({ text }) => esc(text),
+    // short inline code (`T a[n]`) stays in one piece; a long one may wrap
+    codespan: ({ text }) => `<code${text.length <= 28 ? ' class="s"' : ""}>${esc(text)}</code>`,
     image: ({ text }) => esc(text),
     link({ href, tokens }) {
       const inner = this.parser.parseInline(tokens);

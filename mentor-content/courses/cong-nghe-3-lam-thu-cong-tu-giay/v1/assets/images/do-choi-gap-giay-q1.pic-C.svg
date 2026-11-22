@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- soft shadow -->
+    <ellipse cx="200" cy="344" rx="88" ry="12" fill="#E9E5F6"/>
+
+    <!-- neck -->
+    <rect x="170" y="118" width="60" height="40" rx="6" fill="#5A4BC0"/>
+
+    <!-- bottle body -->
+    <path d="M 170 148
+             L 230 148
+             C 246 148 264 168 274 196
+             C 281 216 283 240 283 268
+             L 283 310
+             Q 283 340 253 340
+             L 147 340
+             Q 117 340 117 310
+             L 117 268
+             C 117 240 119 216 126 196
+             C 136 168 154 148 170 148 Z"
+          fill="#5A4BC0"/>
+
+    <!-- shine on body -->
+    <path d="M 137 226 C 130 252 130 286 137 312" fill="none" stroke="#E9E5F6" stroke-width="9"/>
+
+    <!-- label -->
+    <rect x="150" y="200" width="100" height="100" rx="18" fill="#F7F1E3"/>
+
+    <!-- glue drop on label -->
+    <path d="M 200 218
+             C 200 218 222 244 222 258
+             C 222 272 212 280 200 280
+             C 188 280 178 272 178 258
+             C 178 244 200 218 200 218 Z"
+          fill="#E8806A"/>
+    <ellipse cx="189" cy="256" rx="5.5" ry="9" fill="#F7F1E3" transform="rotate(-18 189 256)"/>
+
+    <!-- mint collar -->
+    <rect x="156" y="112" width="88" height="18" rx="8" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5"/>
+
+    <!-- cap -->
+    <rect x="162" y="74" width="76" height="44" rx="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="6"/>
+    <g stroke="#2B283F" stroke-width="2.5">
+      <line x1="182" y1="84" x2="182" y2="108"/>
+      <line x1="200" y1="84" x2="200" y2="108"/>
+      <line x1="218" y1="84" x2="218" y2="108"/>
+    </g>
+  </g>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

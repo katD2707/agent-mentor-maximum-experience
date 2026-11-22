@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "academic-writing-for-university",
+  "title": "Academic Writing for University",
+  "subject": "Academic Writing",
+  "age_band": "uni",
+  "language": "en",
+  "teacher_id": "uc8bb8fc077d8468f",
+  "teacher_name": "Dr. Helen Do",
+  "description_short": "This course covers academic argument, thesis, evidence, structure, APA citation, paraphrasing, and revision. It is for university students who need to write clear, well-sourced academic essays.",
+  "outcomes": [
+    "formulate a focused, arguable thesis that previews the essay's reasons",
+    "support subclaims with credible evidence and analysis",
+    "structure body paragraphs around subclaims rather than source order",
+    "apply APA 7th edition citation rules and write correct reference entries",
+    "paraphrase accurately and revise essays by checking thesis, evidence, structure, and sources"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 87,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:18:01.647010Z",
+      "published_at": "2026-11-17T07:18:09.714506Z",
+      "pack_sha256": "0f24724ac795fc087c4820d3f6bedfa0f1fa3ad5437c17e3251768159570d557",
+      "pack_bytes": 2688029,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

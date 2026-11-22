@@ -208,15 +208,8 @@ schema is dropped and recreated on start-up (logged); a Postgres one raises. Man
 
 ## 9. Notifications, nudges, mascot (trimmed 2026-11-06)
 
-**Mascot (M).** One framework-free custom element `<mentor-mascot state size>` in `packages/mentor-mascot/`
-(ESM `mascot.js` + inline SVG, no runtime deps), used by `apps/app`. States: `idle`, `listening`,
-`thinking`, `talking`, `happy`, `celebrate`, `sleepy`, `calm` (gentle, for serious topics), `wave` (greeting).
-Event `mascot-done` fires when a one-shot state (`celebrate`, `wave`) ends, then it returns to `idle`.
-Built (M, 2026-11-03): attributes also `label` (aria name; `""` = decorative), `tail` (`right|left|none`, desktop maps
-its docked side), `theme` (`light|dark`, else OS), `motion` (`reduce|full`, else OS). `el.play(state)` returns a
-promise (one-shots resolve with `{state, interrupted}`); `mascot-done.detail = {state, interrupted}`. Colors via
-`--mascot-body`, `--mascot-ink`, `--mascot-cheek`, `--mascot-spark` (web sets body/ink to `--accent`/`--accent-text`).
-Exports `MentorMascot`, `defineMentorMascot()`; SSR-safe import. Types in `mascot.d.ts`; details in its README.
+**Mascot.** The old `<mentor-mascot>` element (Mực) is retired and removed (2026-11-23). The guide is the chicken guide in
+`apps/app/src/lang/guide` (see CONTRACTS-LANGGA.md).
 
 **Notifications** (`GET /api/notifications`, `notifications` + `notification_meta` tables). A `Notification` = `{id, kind, title, body,
 actions: [{id, label}] (≤3), mascot, prefill, text, created_at, status, delivered_at, read_at, answer}`; kinds `checkin`, `deadline`,
@@ -671,12 +664,12 @@ Cold start (< 3 sessions): g1_5 18:00 x 10, g6_9 and g10_12 19:30 x 20, uni 20:0
 
 Research additions for the `uni` band (item and reminder kind `research`, `Goal.source` and `milestones`, `hub.research`, four server-recorded events, two replan triggers): section 15.8 and 15.9.
 
-### 12.1 Engagement: streak, Mực's voice, streak saver, remind me later, backing off (2026-11-10)
+### 12.1 Engagement: streak, the chicken's voice, streak saver, remind me later, backing off (2026-11-10)
 
 Modelled on how Duolingo keeps learners coming back; code `planner/engage.py`, no model.
 - **Streak**: consecutive local days with a study session (`sessions()` of the behaviour events), counted up to today, or up to
   yesterday while today has nothing yet. `GET /today` gains `streak: {days, today_done}` and `reminders_backoff: bool`.
-- **Mực's voice**: the fallback's study reminders pick one of a few lines per (date, slot) so they do not repeat word for word, and
+- **The chicken's voice**: the fallback's study reminders (spoken by the course's subject chicken, "Gà Toán đây! 15 phút ...", else a neutral "Gà") pick one of a few lines per (date, slot) so they do not repeat word for word, and
   name the lesson, the minutes and, from 2 days, the streak ("Chuỗi 5 ngày của em vẫn đang giữ. 15 phút Điện trường nhé?").
 - **Streak saver** (reminder kind `streak`): from a 2-day streak with nothing studied today, the planner tick adds one reminder at
   the band's bedtime minus 60 min (g10_12 21:30), at most 3 reminders that day, one saver per day. Cancelled once the learner studies.
@@ -690,7 +683,7 @@ Modelled on how Duolingo keeps learners coming back; code `planner/engage.py`, n
 
 ## 13. Q&A and guide (P5-B backend, 2026-11-07; gateway serves under `/api`)
 
-Design: REQUIREMENTS-PLAN 3.5 (Hỏi đáp) and 3.9 (Mực). Package `mentor_gateway/ask/` (`service.py` flow, `llm.py` router client, `photo.py`
+Design: REQUIREMENTS-PLAN 3.5 (Hỏi đáp) and 3.9 (the guide chicken; map built from `apps/app/src/lang/guide/data.ts` by `pnpm run guides:export`). Package `mentor_gateway/ask/` (`service.py` flow, `llm.py` router client, `photo.py`
 photo check, `prompts.py`, `guide.py`, `guide_map.json`). Models through router aliases only: `mentor-chat` (intent, short answers, guide),
 `mentor-vision` (OCR, Gemini 3.5 Flash), `mentor-audio` (speech to text, Gemini 3.5 Flash), `mentor-reasoning` (solutions, similar items).
 Streamed and retried 3 times (`RouterChatLLM`). No `MODEL_ROUTER_URL`: learn still works (lexical search + template sentence), solve/photo/audio
@@ -1011,7 +1004,7 @@ explanation and `gloss_start` 30. Every chapter gets a `recap` (script + TTS aud
 
 ### 16.4 Class notes to review ("Chụp vở", hs-03; bands g6_9 and up)
 - `POST /api/ask/notes` multipart `images[]` (1-6 photos of the learner's own notes) -> `{notes_id, title, pages, items, first_review_at,
-  next_review_at}`; Mực's line is built from these. Mentor reads the pages, writes `items` (4-8) review questions in the existing quiz
+  next_review_at}`; the chicken's line is built from these. Mentor reads the pages, writes `items` (4-8) review questions in the existing quiz
   types and schedules them (reminder at `first_review_at`, again after ~3 days). `items` is the number of questions (4-8). Reminders are kind `later`
   with deep link `/luyen-tap?notes=<notes_id>`; `first_review_at` is the learner's usual study time today if still 30+ minutes ahead, else tomorrow.
   g1_5 gets 403 `band_mismatch`. Questions are stored in table `ask_notes`. Unreadable photos -> 422 `unreadable`; g1_5 -> 403.
@@ -1031,3 +1024,11 @@ explanation and `gloss_start` 30. Every chapter gets a `recap` (script + TTS aud
   Unsure-list "seen" marks live in `versions/<v>/review.seen.json` (the builder's `review.json` is never changed). Test sizes live in
   `<builder dir>/<course>/tests.json`; `PUT .../tests/{profile_id}` needs a known profile (404 `unknown_profile`), items 3-200, minutes 5-240.
 - Comments (section 14) keep working for anything else ("Nhận xét cho Mentor").
+
+## 18. Làng gà (2026-11-22)
+
+The student UI is the "Làng gà" village; its contract is [CONTRACTS-LANGGA.md](CONTRACTS-LANGGA.md) (chickens, XP ledger, village and
+market, course mocks, Arena papers, study room, chicken chat, notes list, teacher labels). Everything above still holds; the new
+fields are additive (`xp` on progress/answer/fix/finish responses, `chicken` on catalog entries, `avatar` on the user, `source`/`paper`
+on a practice session, `boss`/`xp` on a paper report). Gateway code: `services/gateway/src/mentor_gateway/langga/`; paper files:
+`mentor-content/papers/` (format in its README, validator `python -m mentor_gateway.langga.papers validate <dir>`).

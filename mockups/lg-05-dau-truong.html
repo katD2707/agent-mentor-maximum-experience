@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="hub" data-ga="toan">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đấu trường</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="ga-guide.css">
+<script src="shared.js"></script>
+<script src="ga-guide.js" defer></script>
+<style>
+  /* Đấu trường: REAL exam papers only (past national exams, sample papers, entrance tests; end-of-term exams for
+     university). Timed; when the time is up the paper is submitted automatically. Practice, boss fights and the
+     course mock exam are NOT here: they belong to each course (lg-07-kiem-tra.html). Free; no PvP, no ranking. */
+  :root { --board: #fff7e6; --board-edge: #c98a45; --board-dark: #7d4c22; --ink-g: #3a2010; --muted-g: #6b4a2e; --sel: #ffcf3d; --line-g: #e7cfa8;
+          --ok: #1f7a43; --ok-soft: #dff3e4; --bad: #b3261e; --bad-soft: #fde4df; }
+  body { min-height: 100vh; background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; font-family: "Lexend", system-ui, sans-serif; color: var(--ink-g); }
+  body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .42); backdrop-filter: blur(6px); pointer-events: none; }
+  .mascot-bar, .mascot-dock { display: none !important; }
+  [hidden] { display: none !important; }
+  :focus-visible { outline: 3px solid #1a47c8; outline-offset: 2px; box-shadow: 0 0 0 5px #fff; border-radius: 12px; }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .wrap { position: relative; max-width: 980px; margin: 0 auto; padding: 56px 16px 60px; }
+  .board { background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 40px clamp(14px, 3.5vw, 32px) 28px; position: relative; margin-bottom: 36px; }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 26px; border-radius: 16px; background: linear-gradient(#c8452a, #b0361f); color: #fff; font-size: clamp(1.05em, 3vw, 1.4em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #8f2d1c; margin: 0; max-width: calc(100% - 32px); overflow: hidden; text-overflow: ellipsis; }
+  .board h2 { font-size: 1.15em; font-weight: 800; margin: 18px 0 10px; }
+  .muted { color: var(--muted-g); }
+  .stack { display: grid; gap: 16px; }
+
+  /* buttons */
+  .gbtn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 16px; border: 3px solid #fff; font: inherit; font-weight: 700; cursor: pointer; text-decoration: none; background: linear-gradient(#1f7d44, #176a37); color: #fff; box-shadow: 0 5px 0 #165c32; }
+  .gbtn:active { transform: translateY(3px); box-shadow: 0 2px 0 #165c32; }
+  .gbtn[disabled] { opacity: .5; cursor: default; }
+  .gbtn.big { min-height: 58px; padding: 0 30px; font-size: 1.08em; font-weight: 800; }
+  .gbtn.wood { background: #f3e2c0; color: var(--ink-g); border-color: var(--board-edge); box-shadow: 0 5px 0 #b8884d; }
+  .gbtn.red { background: linear-gradient(#c8452a, #b0361f); box-shadow: 0 5px 0 #8f2d1c; }
+  .gbtn.quiet { background: transparent; color: var(--ink-g); border: 2px solid var(--line-g); box-shadow: none; min-height: 42px; padding: 0 16px; }
+  .gbtn svg { width: 20px; height: 20px; }
+  .xbtn { width: 46px; height: 46px; border-radius: 14px; border: 3px solid var(--board-edge); background: #f3e2c0; color: var(--ink-g); display: grid; place-items: center; cursor: pointer; flex: none; box-shadow: 0 4px 0 #b8884d; text-decoration: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 12px; border-radius: 99px; font-size: .82em; font-weight: 700; background: #f3e2c0; color: #5a3b1a; border: 2px solid var(--line-g); }
+  .chip.lv { background: var(--sel); color: #4a3200; border-color: #c99a10; }
+  .chip.real { background: #c2402a; color: #fff; border-color: #8f2d1c; padding: 1px 10px; font-size: .78em; vertical-align: middle; }
+
+  /* chicken crops (the sprite frame is 512 square with room above for the jump) */
+  .cro { position: relative; overflow: hidden; flex: none; background: radial-gradient(ellipse 45% 9% at 50% 87%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); }
+  .cro img { position: absolute; max-width: none; }
+  .cro.body { width: 150px; height: 150px; border-radius: 22px; border: 3px solid var(--line-g); }
+  .cro.body img { width: 165%; left: -35%; top: -46%; }
+  .cro.head { width: 72px; height: 72px; border-radius: 50%; border: 3px solid var(--sel); }
+  .cro.head img { width: 300%; left: -104%; top: -89%; }
+  .cro.head.lg { width: 96px; height: 96px; }
+
+  /* ===== hub: list of real papers ===== */
+  .hubtop { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -6px 0 14px; }
+  .hubtop .gbtn { min-height: 44px; }
+  .gate { position: relative; height: clamp(96px, 15vw, 130px); margin: -8px -8px 10px; border-radius: 20px; overflow: hidden; background: linear-gradient(#bfe6f7, #e8f6fb 55%, #cfe9b3 55%); border: 3px solid var(--line-g); }
+  .gate svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .lead { margin: 0 0 12px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin: 0 0 14px; }
+  .fgrp { display: flex; flex-wrap: wrap; gap: 8px; }
+  .fchip { min-height: 40px; padding: 0 14px; border-radius: 99px; border: 2px solid var(--line-g); background: #f3e2c0; color: #5a3b1a; font: inherit; font-weight: 700; font-size: .9em; cursor: pointer; }
+  .fchip[aria-pressed="true"] { background: var(--sel); border-color: #c99a10; color: #4a3200; }
+  .yr select { min-height: 40px; border-radius: 12px; border: 2px solid var(--line-g); background: #fff; font: inherit; font-size: .9em; color: var(--ink-g); padding: 0 10px; }
+  .rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .rows li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border-radius: 18px; background: #fffdf7; border: 3px solid var(--line-g); box-shadow: 0 4px 0 #e0c294; }
+  .rows h3 { font-size: 1em; font-weight: 700; margin: 0; line-height: 1.4; }
+  .rows p { margin: 2px 0 0; color: var(--muted-g); font-size: .88em; }
+  .ico { width: 56px; height: 56px; border-radius: 16px; background: #fde9c4; color: #7d4c22; display: grid; place-items: center; border: 2px solid var(--line-g); }
+  .ico svg { width: 30px; height: 30px; }
+  .empty { text-align: center; margin: 18px 0 0; }
+
+  /* ===== confirm card ===== */
+  .cf { display: grid; justify-items: center; gap: 14px; text-align: center; max-width: 560px; margin: 0 auto; }
+  .cf h2 { margin: 0; font-size: 1.35em; }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .facts .chip { font-size: .92em; padding: 5px 14px; }
+
+  /* ===== exam ===== */
+  .player { display: grid; gap: 16px; max-width: 760px; margin: 0 auto; }
+  .ptop { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .ptop.stick { position: sticky; top: 0; z-index: 5; background: var(--board); padding: 8px 0; margin: -8px 0 0; }
+  .exname { margin: -4px 0 0; font-weight: 600; }
+  .timer { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 1.05em; font-variant-numeric: tabular-nums; background: rgba(34,28,58,.88); color: #fff; padding: 6px 14px; border-radius: 99px; border: 3px solid transparent; }
+  .timer svg { width: 18px; height: 18px; }
+  .timer.warn { background: #ffcf3d; color: #3a2400; border-color: #c99a10; }
+  .timer.crit { background: #b3261e; color: #fff; border-color: #fff; }
+  .tnote { margin: 0; padding: 10px 14px; border-radius: 14px; background: #fff3c4; border: 2px solid #d9a21a; font-weight: 600; }
+  .tnote:empty { display: none; }
+  .tnote.crit { background: var(--bad-soft); border-color: var(--bad); color: #7a1610; }
+  .qcard { padding: clamp(14px, 3vw, 22px); border-radius: 20px; background: #fffdf7; border: 3px solid var(--line-g); display: grid; gap: 14px; }
+  .qtext { font-size: 1.1em; line-height: 1.55; margin: 0; font-weight: 500; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .ans { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: center; min-height: 56px; padding: 8px 14px 8px 8px; border-radius: 16px; border: 3px solid var(--line-g); background: #fff; cursor: pointer; text-align: left; font: inherit; color: var(--ink-g); box-shadow: 0 3px 0 #e0c294; }
+  .ans:hover { border-color: var(--board-edge); }
+  .ans .k { width: 36px; height: 36px; border-radius: 10px; background: #f3e2c0; color: #5a3b1a; display: grid; place-items: center; font-weight: 800; }
+  .ans[aria-pressed="true"] { border-color: #1a47c8; background: #e8eefc; }
+  .ans[aria-pressed="true"] .k { background: #1a47c8; color: #fff; }
+  .tfs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .tfs li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 8px 10px; border-radius: 14px; background: #fff; border: 2px solid var(--line-g); }
+  .tfb { display: inline-flex; gap: 6px; }
+  .tfb button { min-height: 42px; min-width: 70px; border-radius: 12px; border: 2px solid var(--line-g); background: #f3e2c0; color: #5a3b1a; font: inherit; font-weight: 700; cursor: pointer; }
+  .tfb button[aria-pressed="true"] { border-color: #1a47c8; background: #1a47c8; color: #fff; }
+  .inp { width: 100%; box-sizing: border-box; border-radius: 14px; border: 3px solid var(--line-g); background: #fff; font: inherit; color: var(--ink-g); padding: 10px 14px; min-height: 48px; }
+  textarea.inp { resize: vertical; line-height: 1.5; }
+  .qmap { display: flex; flex-wrap: wrap; gap: 8px; max-height: 176px; overflow: auto; padding: 2px; }
+  .qn { width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--line-g); background: #fff; color: #5a3b1a; font: inherit; font-weight: 600; cursor: pointer; display: grid; place-items: center; padding: 0; }
+  .qn.done { background: #f3e2c0; border-color: var(--board-edge); }
+  .qn[aria-current="true"] { border-color: #1a47c8; color: #1a47c8; background: #e8eefc; box-shadow: 0 0 0 2px #1a47c8; }
+  .pfoot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .pfoot .mid { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* ===== dialog ===== */
+  .dscrim { position: fixed; inset: 0; z-index: 90; background: rgba(20, 24, 20, .6); }
+  .dlg { position: fixed; z-index: 91; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(92vw, 420px); box-sizing: border-box; background: var(--board); border: 4px solid var(--board-edge); border-radius: 24px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.4); padding: 22px; display: grid; gap: 12px; }
+  .dlg h2 { margin: 0; font-size: 1.25em; font-weight: 800; }
+  .dlg p { margin: 0; line-height: 1.5; }
+  .dlg .acts { margin-top: 6px; }
+
+  /* ===== result ===== */
+  .res { display: grid; gap: 16px; max-width: 680px; margin: 0 auto; justify-items: start; }
+  .res-top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; width: 100%; }
+  .bigscore { font-size: clamp(3.2em, 9vw, 4.8em); font-weight: 800; line-height: 1; color: #c2402a; margin: 0; }
+  .bigscore small { font-size: 24px; color: var(--muted-g); font-weight: 600; }
+  .res p { margin: 0; }
+  .autonote { width: 100%; box-sizing: border-box; padding: 12px 16px; border-radius: 16px; background: #fff3c4; border: 3px solid #d9a21a; font-weight: 700; }
+  .autonote:empty { display: none; }
+  .xpgain { color: #1f7a43; font-weight: 800; font-size: 1.1em; }
+  .sub { font-size: 1.05em; font-weight: 800; margin: 0; }
+  .bytype { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 12px; }
+  .bytype li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; }
+  .bytype .nm { font-weight: 500; }
+  .bytype .ct { font-variant-numeric: tabular-nums; color: var(--muted-g); font-size: .9em; }
+  .bytype .tr { grid-column: 1 / -1; height: 12px; border-radius: 99px; background: #ecd9b4; overflow: hidden; }
+  .bytype .tr i { display: block; height: 100%; border-radius: inherit; background: #23874a; }
+  .bytype li.weak .tr i { background: #c2402a; }
+  .bytype li.weak .nm { color: var(--bad); font-weight: 700; }
+  .acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .rvs { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 12px; }
+  .rv { padding: 12px 14px; border-radius: 16px; background: #fff; border: 2px solid var(--line-g); display: grid; gap: 6px; }
+  .rv .hd { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+  .rv p { margin: 0; }
+  .rv .bad { color: var(--bad); font-weight: 700; }
+  .rv .good { color: var(--ok); font-weight: 700; }
+
+  /* ===== boss: each real paper is a boss. Hub tile, battle strip while sitting the exam, replay on submit ===== */
+  .btile { width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(#d8f0fb 0 62%, #e9cf98 62%); border: 2px solid var(--line-g); display: grid; place-items: center; overflow: hidden; }
+  .btile svg { width: 56px; height: 56px; display: block; overflow: visible; }
+  .face-n, .face-hit, .face-win, .face-ko { transition: none; }
+  .face-hit, .face-win, .face-ko { opacity: 0; }
+  .bossline { margin: 0; font-weight: 600; font-size: .92em; }
+  .stage { position: relative; height: var(--H); border-radius: 22px; overflow: hidden; border: 3px solid #7d4c22; background: linear-gradient(#bfe6f7, #e6f5fa 52%); isolation: isolate; --H: clamp(230px, 33vw, 340px); }
+  .stage.strip { --H: clamp(150px, 15vw, 170px); border-radius: 18px; }
+  .stage > .bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .plate { position: absolute; z-index: 5; top: 8px; background: rgba(34, 28, 58, .86); color: #fff; border-radius: 12px; padding: 5px 10px 6px; max-width: 48%; display: grid; gap: 4px; }
+  .plate b { font-size: .88em; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .plate .row { display: flex; align-items: center; gap: 8px; }
+  .plate.me { left: 8px; min-width: 150px; }
+  .plate.foe { right: 8px; min-width: 150px; }
+  .hpbar { height: 14px; border-radius: 99px; background: #4a4166; border: 2px solid #fff; overflow: hidden; position: relative; }
+  .hpbar i { display: block; height: 100%; width: var(--w, 100%); background: linear-gradient(#ff8b5e, #e2442a); border-radius: 99px; transition: width .18s linear; }
+  .hpbar.hid i { width: 100%; background: repeating-linear-gradient(45deg, #6a5f8e 0 6px, #564c78 6px 12px); }
+  .hpbar em { position: absolute; inset: 0; display: grid; place-items: center; font-style: normal; font-size: 11px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: .08em; }
+  .hpnum { font-size: .76em; font-variant-numeric: tabular-nums; color: #ffe9b0; font-weight: 600; }
+  .lucbar { height: 14px; border-radius: 99px; background: #4a4166; border: 2px solid #fff; overflow: hidden; position: relative; }
+  .lucbar i { display: block; height: 100%; width: var(--w, 0%); background: linear-gradient(#ffe27a, #ffb21a); border-radius: 99px; transition: width .25s ease-out; }
+  .lucbar::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 calc(var(--step, 10%) - 1px), rgba(58, 32, 16, .55) calc(var(--step, 10%) - 1px) var(--step, 10%)); }
+  .luclab { font-size: 11px; font-weight: 700; color: #ffe9b0; font-variant-numeric: tabular-nums; }
+  .hero { position: absolute; z-index: 3; left: calc(26% - var(--H) * .62); bottom: calc(var(--H) * .205 - var(--H) * .186); width: calc(var(--H) * 1.24); height: calc(var(--H) * 1.24); }
+  .hero img { width: 100%; height: 100%; display: block; }
+  .boss { position: absolute; z-index: 2; right: 5%; bottom: calc(var(--H) * .15); width: calc(var(--H) * .72); height: calc(var(--H) * .72); transform-origin: 50% 90%; }
+  .battle .boss { bottom: calc(var(--H) * .09); width: calc(var(--H) * .62); height: calc(var(--H) * .62); }
+  .strip .boss { bottom: calc(var(--H) * .06); width: calc(var(--H) * .58); height: calc(var(--H) * .58); }
+  .boss svg { width: 100%; height: 100%; overflow: visible; display: block; filter: drop-shadow(0 6px 0 rgba(60, 40, 20, .28)); }
+  .dmg { display: none; position: absolute; z-index: 6; right: calc(5% + var(--H) * .3); top: 24%; font-size: clamp(1.6em, 4.5vw, 2.4em); font-weight: 800; color: #fff; background: #8f2d1c; border: 3px solid #fff; border-radius: 16px; padding: 0 12px; box-shadow: 0 3px 0 rgba(0,0,0,.25); }
+  .shot { display: none; position: absolute; z-index: 4; left: 27%; bottom: 42%; width: calc(var(--H) * .2); height: calc(var(--H) * .2); border-radius: 50%; background: radial-gradient(circle, #fff6c4, #ffcf3d 62%, #f0a010); border: 3px solid #fff; box-shadow: 0 0 0 4px rgba(255, 207, 61, .5), 0 0 18px #ffcf3d; }
+  .boom { display: none; position: absolute; z-index: 5; right: calc(5% + var(--H) * .22); bottom: calc(var(--H) * .45); width: calc(var(--H) * .36); height: calc(var(--H) * .36); }
+  .stage[data-fx="nhanh"] .shot, .stage[data-fx="nhanh"] .dmg { display: grid; }
+  .stage[data-fx="nhanh"] .boom { display: block; }
+  .stage[data-fx="thang"] .face-n, .stage[data-fx="thang"] .face-hit { opacity: 0; }
+  .stage[data-fx="thang"] .face-ko { opacity: 1; }
+  .stage[data-fx="thang"] .boss { transform: rotate(16deg) translateY(10%); opacity: .92; }
+  .stage[data-fx="thoat"] .face-n { opacity: 0; }
+  .stage[data-fx="thoat"] .face-win { opacity: 1; }
+  .stage[data-fx="thoat"] .boss { transform: translateX(calc(var(--H) * .5)) scale(.9); opacity: .55; }
+  /* answering = the chicken charges up (no hit on the boss: a real exam gives no right/wrong) */
+  .hero.charge img { animation: charge .55s ease-out; }
+  .lucbar.charge { animation: lucflash .55s ease-out; }
+  /* replay: one quick strike per step */
+  .stage[data-fx="nhanh"] .shot { animation: fly .22s cubic-bezier(.3, .1, .6, 1) both; }
+  .stage[data-fx="nhanh"] .boom { animation: boom .3s .2s both; }
+  .stage[data-fx="nhanh"] .boss { animation: flinch .3s .2s both; }
+  .stage[data-fx="nhanh"] .face-n { animation: nface .3s .2s; }
+  .stage[data-fx="nhanh"] .face-hit { animation: hface .3s .2s; }
+  .stage[data-fx="nhanh"] .dmg { animation: pop .3s .2s both; }
+  @keyframes fly { 0% { left: 27%; bottom: 40%; opacity: 0; transform: scale(.6); } 10% { opacity: 1; } 100% { left: 62%; bottom: 46%; opacity: 1; transform: rotate(360deg) scale(1.1); } }
+  @keyframes boom { 0% { opacity: 0; transform: scale(.3); } 40% { opacity: 1; transform: scale(1.15); } 100% { opacity: 0; transform: scale(1.5); } }
+  @keyframes flinch { 0% { transform: none; filter: none; } 25% { transform: translateX(14px) rotate(6deg); filter: brightness(1.8); } 60% { transform: translateX(-5px) rotate(-3deg); } 100% { transform: none; filter: none; } }
+  @keyframes nface { 0% { opacity: 1; } 1%, 80% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes hface { 0%, 80% { opacity: 1; } 100% { opacity: 0; } }
+  @keyframes pop { 0% { opacity: 0; transform: translateY(14px) scale(.4); } 70% { transform: translateY(-10px) scale(1.2); } 100% { opacity: 1; transform: translateY(-4px) scale(1); } }
+  @keyframes charge { 0% { transform: none; filter: none; } 35% { transform: scale(1.07) translateY(-4px); filter: drop-shadow(0 0 10px #ffd24a) brightness(1.15); } 100% { transform: none; filter: none; } }
+  @keyframes lucflash { 0% { box-shadow: none; } 35% { box-shadow: 0 0 0 3px #ffd24a, 0 0 12px #ffd24a; } 100% { box-shadow: none; } }
+  .battle { display: grid; gap: 14px; max-width: 760px; margin: 0 auto; justify-items: center; text-align: center; }
+  .battle .stage { width: 100%; box-sizing: border-box; }
+  .bverdict { margin: 0; font-size: clamp(1.4em, 4vw, 1.9em); font-weight: 800; min-height: 1.4em; }
+  .bverdict.win { color: var(--ok); }
+  .bverdict.run { color: var(--bad); }
+  /* time-up overlay */
+  .timeup { position: fixed; inset: 0; z-index: 95; display: grid; place-items: center; background: rgba(20, 24, 20, .55); padding: 16px; }
+  .timeup div { background: #b3261e; color: #fff; border: 4px solid #fff; border-radius: 22px; padding: 18px 26px; font-weight: 800; font-size: clamp(1.1em, 3.6vw, 1.5em); text-align: center; box-shadow: 0 8px 0 #7a1610; }
+
+  @media (max-width: 560px) {
+    .opts { grid-template-columns: 1fr; }
+    .rows li { grid-template-columns: auto minmax(0, 1fr); }
+    .rows li > button:last-child { grid-column: 1 / -1; }
+    .btile { width: 56px; height: 56px; }
+    .btile svg { width: 48px; height: 48px; }
+    .cro.body { width: 110px; height: 110px; }
+    .stage.strip { --H: 132px; }
+    .boss { width: calc(var(--H) * .62); height: calc(var(--H) * .62); }
+    .strip .boss { width: calc(var(--H) * .55); height: calc(var(--H) * .55); }
+    .battle .boss { width: calc(var(--H) * .52); height: calc(var(--H) * .52); }
+    .dmg { top: 50%; right: calc(5% + var(--H) * .55); }
+    .plate { padding: 4px 8px 5px; }
+    .plate.me, .plate.foe { min-width: 0; width: 42%; }
+    .plate .nm { display: none; }
+    .qmap { max-height: 120px; }
+    .pfoot { position: sticky; bottom: 0; z-index: 6; display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; background: var(--board); padding: 10px 0 6px; margin: 0 0 -6px; border-top: 2px solid var(--line-g); }
+    .pfoot .mid { display: contents; }
+    .pfoot .gbtn { padding: 0 8px; min-height: 48px; white-space: nowrap; font-size: .95em; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .timer.crit { animation: pulse 1s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.06); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gbtn { transition: none; }
+    .stage *, .hero.charge img, .lucbar.charge { animation: none !important; transition: none !important; }
+    .shot, .boom, .dmg { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Đấu trường</span>
+  <span class="mock-seg"><span>Màn</span><button data-set="state:hub">Danh sách đề</button><button data-set="state:xac-nhan">Xác nhận</button><button data-set="state:dang-thi">Đang thi</button><button data-set="state:con-5-phut">Còn 5 phút</button><button data-set="state:het-gio">Hết giờ (tự nộp)</button><button data-set="state:danh-boss">Đánh boss</button><button data-set="state:ket-qua">Kết quả</button><button data-set="state:xem-lai">Xem câu sai</button></span>
+  <span class="mock-seg"><span>Cấp</span><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
+  <span class="mock-note">URL: ?state=dang-thi&amp;paper=t25-toan&amp;left=300</span>
+</div>
+
+<main class="wrap">
+
+<!-- ===================== HUB ===================== -->
+<section class="board" data-when="state=hub" aria-labelledby="t-hub">
+  <h1 class="ribbon" id="t-hub" data-en="Arena">Đấu trường</h1>
+  <div class="hubtop">
+    <a class="gbtn wood" href="lg-01-lang.html"><i data-i="back"></i><span data-en="Back to village">Về làng</span></a>
+    <button class="xbtn" type="button" data-settings aria-label="Cài đặt"><i data-i="gear"></i></button>
+  </div>
+  <div class="gate" aria-hidden="true">
+    <svg viewBox="0 0 800 130" preserveAspectRatio="xMidYMax slice">
+      <ellipse cx="400" cy="126" rx="520" ry="30" fill="#9ccf78"/>
+      <ellipse cx="400" cy="108" rx="300" ry="22" fill="#e9cf98"/>
+      <g transform="translate(200 20)">
+        <path d="M20 70 Q20 44 56 44 L344 44 Q380 44 380 70 L380 82 Q380 90 340 90 L60 90 Q20 90 20 82Z" fill="#c2402a"/>
+        <path d="M20 58 L380 58" stroke="#fff" stroke-width="4" opacity=".85"/>
+        <path d="M20 74 L380 74" stroke="#8f2d1c" stroke-width="3"/>
+        <g stroke="#7d4c22" stroke-width="3"><path d="M70 44V12M150 44V6M250 44V6M330 44V12"/></g>
+        <path d="M70 12l24 6-24 6z" fill="#ffcf3d"/><path d="M150 6l24 6-24 6z" fill="#e2573a"/><path d="M250 6l24 6-24 6z" fill="#ffcf3d"/><path d="M330 12l24 6-24 6z" fill="#e2573a"/>
+        <g fill="#fff"><circle cx="112" cy="66" r="3"/><circle cx="200" cy="66" r="3"/><circle cx="288" cy="66" r="3"/></g>
+      </g>
+    </svg>
+  </div>
+  <p class="lead muted" id="lead"></p>
+  <div class="filters">
+    <div class="fgrp" id="f-subj" role="group" aria-label="Môn"></div>
+    <label class="yr"><span class="vh" id="yr-l">Năm</span><select id="f-yr" aria-labelledby="yr-l"></select></label>
+  </div>
+  <ul class="rows" id="papers"></ul>
+  <p class="muted empty" id="p-empty" hidden data-en="No paper for this choice.">Chưa có đề cho lựa chọn này.</p>
+</section>
+
+<!-- ===================== CONFIRM ===================== -->
+<section class="board" data-when="state=xac-nhan" aria-labelledby="t-cf">
+  <h1 class="ribbon" id="t-cf" data-en="Ready?">Sẵn sàng?</h1>
+  <div class="cf">
+    <span class="btile" id="cf-boss" style="width:110px;height:110px"></span>
+    <div><h2 id="cf-name"></h2><span class="chip real" id="cf-badge"></span></div>
+    <p class="bossline" id="cf-bossline"></p>
+    <ul class="facts" id="cf-facts" aria-label="Thông tin đề"></ul>
+    <div class="acts" style="justify-content:center">
+      <button class="gbtn big" type="button" id="cf-go"><i data-i="play"></i><span data-en="Start">Bắt đầu</span></button>
+      <button class="gbtn quiet" type="button" data-set="state:hub" data-en="Back">Quay lại</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXAM ===================== -->
+<section class="board" data-when="state=dang-thi|con-5-phut|het-gio" aria-labelledby="t-ex">
+  <h1 class="ribbon" id="t-ex" data-en="Exam in progress">Đang thi</h1>
+  <div class="player">
+    <div class="ptop stick">
+      <span class="chip" id="qno"></span>
+      <span class="chip lv" id="qpart"></span>
+      <span style="flex:1"></span>
+      <span class="timer" id="clockbox" role="timer" aria-label="Thời gian còn lại"><i data-i="clock"></i><span id="clock">--:--</span></span>
+    </div>
+    <div class="stage strip" id="strip" role="img" aria-label="Gà tích lực, boss chờ ở bên phải" data-fx="">
+      <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 80 Q0 56 40 56 L360 56 Q400 56 400 80 L400 128 L0 128Z" fill="#c2402a"/>
+        <path d="M0 76 H400" stroke="#fff" stroke-width="4" opacity=".8"/>
+        <path d="M0 98 H400" stroke="#8f2d1c" stroke-width="3"/>
+        <rect y="124" width="400" height="76" fill="#e9cf98"/>
+        <ellipse cx="200" cy="170" rx="260" ry="42" fill="#f1dcaa" opacity=".85"/>
+        <rect y="124" width="400" height="6" fill="#9ccf78"/>
+      </svg>
+      <div class="plate me"><b class="nm" id="s-me"></b><div class="row"><div class="lucbar" id="s-luc" style="flex:1"><i></i></div><span class="luclab" id="s-lab"></span></div></div>
+      <div class="plate foe"><b class="nm" id="s-foe"></b><div class="hpbar hid" aria-label="Máu boss: ẩn đến khi nộp bài"><i></i><em>???</em></div></div>
+      <div class="boss" id="s-boss"></div>
+      <div class="hero" id="s-hero"><img id="s-heroimg" src="assets/ga/toan-dung.webp" alt=""></div>
+    </div>
+    <p class="exname muted" id="ex-name"></p>
+    <p class="tnote" id="tstatus" role="status" aria-live="polite"></p>
+    <div class="qcard" id="qcard"></div>
+    <div class="qmap" id="qmap" role="group" aria-label="Bản đồ câu"></div>
+    <div class="pfoot">
+      <div class="mid">
+        <button class="gbtn wood" type="button" id="prev" data-en="Previous">Câu trước</button>
+        <button class="gbtn" type="button" id="next" data-en="Next">Câu tiếp</button>
+      </div>
+      <button class="gbtn red" type="button" id="submit" data-en="Submit">Nộp bài</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BOSS REPLAY ===================== -->
+<section class="board" data-when="state=danh-boss" aria-labelledby="t-bs">
+  <h1 class="ribbon" id="t-bs" data-en="Boss fight">Đánh boss</h1>
+  <div class="battle">
+    <div class="stage" id="stage" data-fx="" role="img" aria-label="Gà tấn công boss">
+      <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 80 Q0 56 40 56 L360 56 Q400 56 400 80 L400 128 L0 128Z" fill="#c2402a"/>
+        <path d="M0 76 H400" stroke="#fff" stroke-width="4" opacity=".8"/>
+        <path d="M0 98 H400" stroke="#8f2d1c" stroke-width="3"/>
+        <g stroke="#7d4c22" stroke-width="3"><path d="M50 56V20M140 56V12M260 56V12M350 56V20"/></g>
+        <path d="M50 20l22 6-22 6z" fill="#ffcf3d"/><path d="M140 12l22 6-22 6z" fill="#e2573a"/><path d="M260 12l22 6-22 6z" fill="#ffcf3d"/><path d="M350 20l22 6-22 6z" fill="#e2573a"/>
+        <rect y="124" width="400" height="76" fill="#e9cf98"/>
+        <ellipse cx="200" cy="170" rx="260" ry="42" fill="#f1dcaa" opacity=".85"/>
+        <rect y="124" width="400" height="6" fill="#9ccf78"/>
+      </svg>
+      <div class="plate me"><b id="b-me"></b></div>
+      <div class="plate foe"><b id="b-foe"></b><div class="hpbar" id="b-hp" role="progressbar" aria-label="Máu boss" aria-valuemin="0"><i></i></div><span class="hpnum" id="b-hpnum"></span></div>
+      <div class="boss" id="b-boss"></div>
+      <div class="hero"><img id="b-hero" src="assets/ga/toan-dung.webp" alt=""></div>
+      <div class="shot" id="b-shot" aria-hidden="true"></div>
+      <svg class="boom" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4l9 28 28-12-14 26 27 10-27 11 14 26-28-12-9 28-9-28-28 12 14-26-27-11 27-10-14-26 28 12z" fill="#ffcf3d" stroke="#fff" stroke-width="4" stroke-linejoin="round"/></svg>
+      <div class="dmg" id="b-dmg" aria-hidden="true">-1</div>
+    </div>
+    <p class="bverdict" id="b-verdict" role="status" aria-live="polite"></p>
+    <div class="acts" style="justify-content:center">
+      <button class="gbtn quiet" type="button" id="b-skip" data-en="Skip">Bỏ qua</button>
+      <button class="gbtn big" type="button" id="b-go" data-set="state:ket-qua" hidden data-en="See result">Xem kết quả</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULT ===================== -->
+<section class="board" data-when="state=ket-qua" aria-labelledby="t-kq">
+  <h1 class="ribbon" id="t-kq" data-en="Result">Kết quả</h1>
+  <div class="res">
+    <p class="autonote" id="auto-note" role="status"></p>
+    <div class="res-top">
+      <span class="cro body"><img id="kq-ga" src="assets/ga/toan.png" alt=""></span>
+      <div><p class="bigscore" id="kq-score"></p><p class="muted" id="kq-sub"></p><p class="bverdict" id="kq-boss" style="font-size:1.1em"></p><p class="xpgain" id="kq-xp"></p><p class="xpgain" id="kq-xp2"></p></div>
+    </div>
+    <ul class="facts" id="kq-facts"></ul>
+    <h2 class="sub" data-en="By part">Theo phần</h2>
+    <ul class="bytype" id="kq-parts"></ul>
+    <div class="acts">
+      <button class="gbtn" type="button" id="kq-rev" data-set="state:xem-lai"></button>
+      <button class="gbtn quiet" type="button" data-set="state:hub" data-en="Back to the Arena">Về Đấu trường</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REVIEW ===================== -->
+<section class="board" data-when="state=xem-lai" aria-labelledby="t-rv">
+  <h1 class="ribbon" id="t-rv" data-en="Wrong answers">Câu sai</h1>
+  <div class="res">
+    <button class="gbtn wood" type="button" data-set="state:ket-qua"><i data-i="back"></i><span data-en="Result">Kết quả</span></button>
+    <p class="muted" id="rv-sum"></p>
+    <ul class="rvs" id="rv-list"></ul>
+    <button class="gbtn quiet" type="button" data-set="state:hub" data-en="Back to the Arena">Về Đấu trường</button>
+  </div>
+</section>
+
+</main>
+
+<!-- submit confirm -->
+<div class="timeup" id="timeup" role="alert" hidden><div data-en="Time is up! Your paper was submitted for you.">Hết giờ! Bài đã được tự nộp.</div></div>
+<div class="dscrim" id="dscrim" hidden></div>
+<div class="dlg" id="dlg" role="alertdialog" aria-modal="true" aria-labelledby="dlg-t" aria-describedby="dlg-d" hidden>
+  <h2 id="dlg-t" data-en="Submit now?">Nộp bài bây giờ?</h2>
+  <p id="dlg-d"></p>
+  <div class="acts">
+    <button class="gbtn wood" type="button" id="dlg-no" data-en="Keep going">Làm tiếp</button>
+    <button class="gbtn red" type="button" id="dlg-ok" data-en="Submit">Nộp bài</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const root = document.documentElement, $ = (id) => document.getElementById(id);
+  const q = new URLSearchParams(location.search);
+  const en = () => root.lang === "en";
+  const T = (vi, e) => (en() ? e : vi);
+  const dh = () => root.dataset.age === "dai-hoc";
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const f1 = (x) => (Math.round(x * 10) / 10).toFixed(1).replace(".", ",");
+
+  // ---------- real papers (names only; the question bank behind each one is generated for the mock) ----------
+  const PAPERS = {
+    thpt: [
+      { id: "mh26-toan", s: "toan", y: "2026", vi: "Đề minh họa 2026 · Toán", en: "2026 sample paper · Maths", min: 90, n: 22, mh: 1 },
+      { id: "t25-toan", s: "toan", y: "2025", vi: "Tốt nghiệp THPT 2025 · Toán", en: "National exam 2025 · Maths", min: 90, n: 22, best: 6.4 },
+      { id: "t25-anh", s: "anh", y: "2025", vi: "Tốt nghiệp THPT 2025 · Tiếng Anh", en: "National exam 2025 · English", min: 50, n: 40 },
+      { id: "t25-van", s: "van", y: "2025", vi: "Tốt nghiệp THPT 2025 · Ngữ văn", en: "National exam 2025 · Literature", min: 120, n: 3, essay: 1 },
+      { id: "t24-toan", s: "toan", y: "2024", vi: "Tốt nghiệp THPT 2024 · Toán", en: "National exam 2024 · Maths", min: 90, n: 50, best: 7.2 },
+      { id: "t24-anh", s: "anh", y: "2024", vi: "Tốt nghiệp THPT 2024 · Tiếng Anh", en: "National exam 2024 · English", min: 60, n: 50 },
+      { id: "hsa", s: "dgnl", y: "2025", vi: "Đánh giá năng lực HSA", en: "HSA aptitude test", min: 150, n: 150 },
+    ],
+    dh: [
+      { id: "xs-hk1", s: "xs", y: "2024–2025", vi: "Cuối kỳ Xác suất thống kê · HK1 2024–2025", en: "Final: Probability & Statistics · Term 1 2024–2025", min: 90, n: 20, best: 7.0 },
+      { id: "xs-gk", s: "xs", y: "2024–2025", vi: "Giữa kỳ Xác suất thống kê · HK1 2024–2025", en: "Midterm: Probability & Statistics · Term 1 2024–2025", min: 45, n: 12 },
+      { id: "gt-hk2", s: "gt", y: "2023–2024", vi: "Cuối kỳ Giải tích 1 · HK2 2023–2024", en: "Final: Calculus 1 · Term 2 2023–2024", min: 90, n: 20 },
+      { id: "anh-hk1", s: "anh", y: "2024–2025", vi: "Cuối kỳ Tiếng Anh 2 · HK1 2024–2025", en: "Final: English 2 · Term 1 2024–2025", min: 60, n: 40 },
+    ],
+  };
+  const SUBJ = {
+    thpt: [["all", "Tất cả", "All"], ["toan", "Toán", "Maths"], ["van", "Văn", "Literature"], ["anh", "Anh", "English"], ["dgnl", "Đánh giá năng lực", "Aptitude test"]],
+    dh: [["all", "Tất cả", "All"], ["xs", "Xác suất", "Probability"], ["gt", "Giải tích", "Calculus"], ["anh", "Anh", "English"]],
+  };
+  // each subject belongs to one of the student's chickens (Toán, Văn, Anh)
+  const GA = { toan: "toan", dgnl: "toan", xs: "toan", gt: "toan", van: "van", anh: "anh" };
+  const GANAME = { toan: "Gà Toán", van: "Gà Văn", anh: "Gà Anh" };
+  // ---------- bosses: original art, one per subject; each has 4 faces (calm, hit, grin, knocked out) ----------
+  const face = (cx, cy, s) => {
+    const T = `translate(${cx} ${cy}) scale(${s})`;
+    const eyes = `<ellipse cx="-24" cy="-4" rx="15" ry="18" fill="#fff" stroke="#1d1530" stroke-width="3"/><ellipse cx="24" cy="-4" rx="15" ry="18" fill="#fff" stroke="#1d1530" stroke-width="3"/>`;
+    return `
+    <g class="face-n" transform="${T}">${eyes}<circle cx="-20" cy="0" r="7" fill="#1d1530"/><circle cx="20" cy="0" r="7" fill="#1d1530"/>
+      <path d="M-42 -30 L-10 -18 M42 -30 L10 -18" stroke="#1d1530" stroke-width="6" stroke-linecap="round"/>
+      <path d="M-20 30 L-10 20 L0 30 L10 20 L20 30" fill="none" stroke="#1d1530" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g class="face-hit" transform="${T}"><path d="M-40 -16 L-14 -4 L-40 8 M40 -16 L14 -4 L40 8" fill="none" stroke="#1d1530" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="0" cy="28" rx="13" ry="10" fill="#1d1530"/><ellipse cx="0" cy="32" rx="7" ry="4" fill="#ff7d7d"/>
+      <path d="M52 -26 q8 12 0 18 q-8 -6 0 -18z" fill="#7fd0ff" stroke="#1d1530" stroke-width="2"/></g>
+    <g class="face-win" transform="${T}">${eyes}<circle cx="-26" cy="4" r="7" fill="#1d1530"/><circle cx="22" cy="4" r="7" fill="#1d1530"/>
+      <path d="M-44 -22 L-10 -8 M44 -22 L10 -8" stroke="#1d1530" stroke-width="6" stroke-linecap="round"/>
+      <path d="M-28 18 Q0 54 28 18Z" fill="#1d1530" stroke="#1d1530" stroke-width="3" stroke-linejoin="round"/><path d="M-18 21h36" stroke="#fff" stroke-width="6"/></g>
+    <g class="face-ko" transform="${T}"><path d="M-38 -16 l22 22 M-16 -16 l-22 22 M16 -16 l22 22 M38 -16 l-22 22" stroke="#1d1530" stroke-width="6" stroke-linecap="round"/>
+      <path d="M-14 28 H14" stroke="#1d1530" stroke-width="5" stroke-linecap="round"/><path d="M0 28 v12 a6 6 0 0 0 12 0 v-12z" fill="#ff7d7d" stroke="#1d1530" stroke-width="3"/>
+      <path d="M-20 -50 l4 9 9 1 -7 6 2 9 -8 -5 -8 5 2 -9 -7 -6 9 -1z" fill="#ffcf3d" transform="translate(6 -14) scale(.7)"/></g>`;
+  };
+  const BOSSES = {
+    toan: (c) => `<svg viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M72 38 L60 8 M128 38 L142 8" stroke="#2f2160" stroke-width="6" stroke-linecap="round"/><circle cx="60" cy="8" r="9" fill="#ffcf3d" stroke="#2f2160" stroke-width="4"/><circle cx="142" cy="8" r="9" fill="#ffcf3d" stroke="#2f2160" stroke-width="4"/>
+      <path d="M32 112 q-26 -4 -26 -34 M168 112 q26 -4 26 -34" fill="none" stroke="#2f2160" stroke-width="9" stroke-linecap="round"/><circle cx="6" cy="76" r="11" fill="#7b5cc9" stroke="#2f2160" stroke-width="5"/><circle cx="194" cy="76" r="11" fill="#7b5cc9" stroke="#2f2160" stroke-width="5"/>
+      <ellipse cx="72" cy="186" rx="26" ry="10" fill="#2f2160"/><ellipse cx="130" cy="186" rx="26" ry="10" fill="#2f2160"/>
+      <path d="M26 112 C16 56 64 26 102 28 C148 26 186 62 176 116 C170 160 142 182 100 182 C58 182 32 164 26 112Z" fill="#7b5cc9" stroke="#2f2160" stroke-width="6" stroke-linejoin="round"/>
+      <g fill="#d8ccff" font-family="Lexend, sans-serif" font-weight="800" font-size="24"><text x="42" y="62" transform="rotate(-18 42 62)">7</text><text x="140" y="56" transform="rotate(16 140 56)">π</text><text x="38" y="150" transform="rotate(14 38 150)">÷</text><text x="146" y="152" transform="rotate(-12 146 152)">9</text><text x="94" y="172">−3</text></g>
+      <path d="M44 128 q20 -22 36 -4 t38 -6 t34 10" fill="none" stroke="#d8ccff" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+      ${c}</svg>`,
+    van: (c) => `<svg viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M150 34 C176 8 188 4 194 2 C190 22 176 44 154 56Z" fill="#8fe0ff" stroke="#1d3b6b" stroke-width="4" stroke-linejoin="round"/><path d="M154 52 L136 70" stroke="#1d3b6b" stroke-width="5" stroke-linecap="round"/>
+      <path d="M30 120 C14 62 58 26 104 28 C152 28 188 66 174 122 C168 150 150 160 136 160 L136 178 q-6 18 -14 0 L120 160 C100 166 84 164 74 160 L68 188 q-8 14 -14 -2 L52 158 C40 150 34 138 30 120Z" fill="#2b2f6b" stroke="#141848" stroke-width="6" stroke-linejoin="round"/>
+      <ellipse cx="62" cy="62" rx="22" ry="12" fill="#5a62c8" opacity=".6" transform="rotate(-24 62 62)"/>
+      <circle cx="18" cy="150" r="9" fill="#2b2f6b"/><circle cx="188" cy="150" r="6" fill="#2b2f6b"/><circle cx="12" cy="30" r="5" fill="#2b2f6b"/>
+      <g fill="#aeb6ff" font-family="Lexend, sans-serif" font-weight="700" font-size="16"><text x="44" y="150">“?</text><text x="136" y="148">…!</text></g>
+      ${c}</svg>`,
+    anh: (c) => `<svg viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M40 160 L22 196 L78 168Z" fill="#f08a3c" stroke="#8a3c0a" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="14" y="22" width="172" height="146" rx="46" fill="#f08a3c" stroke="#8a3c0a" stroke-width="6"/>
+      <path d="M44 40 L36 12 M156 40 L166 12" stroke="#8a3c0a" stroke-width="6" stroke-linecap="round"/><circle cx="36" cy="12" r="8" fill="#fff" stroke="#8a3c0a" stroke-width="4"/><circle cx="166" cy="12" r="8" fill="#fff" stroke="#8a3c0a" stroke-width="4"/>
+      <g fill="#fff3dc" font-family="Lexend, sans-serif" font-weight="800" font-size="20"><text x="30" y="60" transform="rotate(-10 30 60)">goed</text><text x="128" y="154">are?</text><text x="30" y="150">he go</text></g>
+      <path d="M126 50 q10 -8 20 0 t20 0" fill="none" stroke="#b3261e" stroke-width="4" stroke-linecap="round"/>
+      ${c}</svg>`,
+  };
+  // papers without their own art use the closest boss (science, aptitude, university maths: the maths boss)
+  const BK = { toan: "toan", dgnl: "toan", xs: "toan", gt: "toan", van: "van", anh: "anh" };
+  const BNAME = { toan: "Quái Sai Số", van: "Bóng Lạc Đề", anh: "Quái Lỗi Ngữ Pháp" };
+  const FP = { toan: [100, 104, 1], van: [102, 92, 1], anh: [100, 94, 1] };
+  const bossSvg = (s) => { const k = BK[s]; return BOSSES[k](face(...FP[k])); };
+  const bossName = (s) => BNAME[BK[s]];
+  const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const nameOf = (p) => T(p.vi, p.en);
+  const all = () => PAPERS.thpt.concat(PAPERS.dh);
+  const list = () => PAPERS[dh() ? "dh" : "thpt"];
+
+  // ---------- question bank (generated, deterministic) ----------
+  const L = "ABCD";
+  const place = (a, w, pos) => { const o = w.slice(); o.splice(pos, 0, a); return { o, a: pos }; };
+  const sup = (n) => String(n).replace(/d/g, (d) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[d]);
+  const fc = (x) => String(Math.round(x * 100) / 100).replace(".", ",");
+  const ANH = [
+    { t: "If she ____ harder, she would pass the exam.", o: ["studies", "studied", "will study", "had studied"], a: 1, why: "Điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu." },
+    { t: "The book ____ by millions of people last year.", o: ["was read", "read", "is read", "has read"], a: 0, why: "Câu bị động quá khứ đơn: was/were + V3." },
+    { t: "She suggested ____ to the museum.", o: ["to go", "going", "go", "went"], a: 1, why: "suggest + V-ing." },
+    { t: "He asked me where ____.", o: ["did I live", "I live", "I lived", "do I live"], a: 2, why: "Câu tường thuật: không đảo ngữ, lùi thì." },
+  ];
+  const GEN = {
+    toan(i) {
+      const k = i % 3;
+      if (k === 0) { const a = 2 + (i * 3) % 7, d = 2 + i % 4, r = a + 9 * d; return { t: `Cấp số cộng có u₁ = ${a} và công sai d = ${d}. Tính u₁₀.`, ...place(String(r), [r + d, r - d, r + 2 * d].map(String), i % 4), why: `u₁₀ = u₁ + 9d = ${a} + ${9 * d} = ${r}. Cộng d đúng 9 lần.` }; }
+      if (k === 1) { const e = 2 + i % 5; return { t: `Giá trị của log₂ ${2 ** e} bằng bao nhiêu?`, ...place(String(e), [e + 1, e - 1, 2 * e].map(String), i % 4), why: `2${sup(e)} = ${2 ** e} nên log₂ ${2 ** e} = ${e}.` }; }
+      const e = 3 + i % 4; return { t: `Đạo hàm của hàm số y = x${sup(e)} là:`, ...place(`${e}x${sup(e - 1)}`, [`x${sup(e - 1)}`, `${e - 1}x${sup(e)}`, `${e}x${sup(e + 1)}`], i % 4), why: `(xⁿ)' = n·xⁿ⁻¹, nên y' = ${e}x${sup(e - 1)}.` };
+    },
+    xs(i) { const p = (2 + i % 4) / 10, pr = p * 0.6; return { t: `Hai biến cố A, B độc lập, P(A) = ${fc(p)}, P(B) = 0,6. Tính P(A ∩ B).`, ...place(fc(pr), [fc(p + 0.6 - pr), fc(p), fc(p + 0.6)], i % 4), why: `Độc lập nên P(A ∩ B) = P(A)·P(B) = ${fc(p)} · 0,6 = ${fc(pr)}.` }; },
+    gt(i) { const k = 2 + i % 4; return { t: `Giới hạn của sin(${k}x)/x khi x → 0 bằng:`, ...place(String(k), ["1", `1/${k}`, "0"], i % 4), why: `sin(${k}x)/x = ${k} · sin(${k}x)/(${k}x) → ${k}.` }; },
+    anh(i) { const x = ANH[i % 4]; return { t: x.t, o: x.o, a: x.a, why: x.why }; },
+  };
+  const tfQ = (i) => {
+    const a = 3 + i % 3, d = 2 + i % 2;
+    return { stem: `Cho cấp số cộng (uₙ) có u₁ = ${a} và công sai d = ${d}.`, st: [`u₂ = ${a + d}`, `u₅ = ${a + 5 * d}`, `u₈ = ${a + 7 * d}`, `S₄ = ${4 * a + 5 * d}`], a: [1, 0, 1, 0],
+      why: `u₅ = u₁ + 4d = ${a + 4 * d} và S₄ = 4u₁ + 6d = ${4 * a + 6 * d}, nên ý b và d sai.` };
+  };
+  const shortQ = (i) => { const a = 3 + i % 4, d = 2 + i % 3; return { t: `Cấp số cộng có u₁ = ${a} và u₆ = ${a + 5 * d}. Tìm công sai d.`, a: String(d), why: `u₆ = u₁ + 5d nên d = (${a + 5 * d} − ${a}) / 5 = ${d}.` }; };
+  const ESSAY = [
+    { t: "Đọc câu thơ “Của ong bướm này đây tuần tháng mật” (Xuân Diệu). Nêu biện pháp tu từ chính và tác dụng.", why: "Ý chính: liệt kê hình ảnh nối nhau, làm thiên đường trần gian hiện ra dày đặc, thể hiện niềm say mê sống." },
+    { t: "Viết đoạn văn khoảng 200 chữ: em nghĩ gì về thói quen đọc sách mỗi ngày?", why: "Ý chính: nêu quan điểm, hai lý lẽ, một dẫn chứng, kết lại bằng bài học cho em." },
+    { t: "Phân tích hình ảnh người lính trong một đoạn thơ em đã học (khoảng 600 chữ).", why: "Ý chính: mở bài nêu đoạn thơ, phân tích 2–3 chi tiết, nhận xét nghệ thuật, kết bài." },
+  ];
+  // parts of a paper: [vi, en, type, count, subject]
+  function partsOf(p) {
+    if (p.s === "van") return [["Đọc hiểu", "Reading", "essay", 1, "van"], ["Nghị luận xã hội", "Social essay", "essay", 1, "van"], ["Nghị luận văn học", "Literary essay", "essay", 1, "van"]];
+    if (p.s === "toan" && p.n === 22) return [["Phần I · Trắc nghiệm", "Part I · Multiple choice", "mc", 12, "toan"], ["Phần II · Đúng/sai", "Part II · True/false", "tf", 4, "toan"], ["Phần III · Trả lời ngắn", "Part III · Short answer", "short", 6, "toan"]];
+    if (p.id === "hsa") return [["Toán và số liệu", "Maths and data", "mc", 50, "toan"], ["Văn và ngôn ngữ", "Language", "mc", 50, "anh"], ["Khoa học", "Science", "mc", 50, "anh"]];
+    return [[T("Trắc nghiệm", "Multiple choice"), "Multiple choice", "mc", p.n, p.s === "dgnl" ? "toan" : p.s]];
+  }
+  function buildQs(p) {
+    const out = [];
+    partsOf(p).forEach((pt, pi) => {
+      for (let j = 0; j < pt[3]; j++) {
+        const i = out.length;
+        if (pt[2] === "mc") out.push({ pi, type: "mc", ...GEN[pt[4]](i) });
+        else if (pt[2] === "tf") out.push({ pi, type: "tf", ...tfQ(i) });
+        else if (pt[2] === "short") out.push({ pi, type: "short", ...shortQ(i) });
+        else out.push({ pi, type: "essay", ...ESSAY[pi % 3] });
+      }
+    });
+    return out;
+  }
+
+  // ---------- state ----------
+  let paper = null, Q = [], A = [], cur = 0, endAt = 0, total = 0, timerId = 0, said5 = false, said1 = false, res = null, internal = false;
+  let subj = q.get("ga") || q.get("mon") || "all", yr = "all", lastDh = dh(), opener = null;
+  const paramPaper = q.get("paper"), paramLeft = parseInt(q.get("left"), 10);
+  const defPaper = () => (paramPaper && list().find((p) => p.id === paramPaper)) || list().find((p) => p.s === subj && !p.mh) || (dh() ? list()[0] : list()[1]);
+  const paint = (el) => { if (window.mockPaint) mockPaint(el); };
+  const parts = () => partsOf(paper);
+
+  // ---------- hub ----------
+  function paintHub() {
+    const chips = SUBJ[dh() ? "dh" : "thpt"];
+    if (!chips.some((c) => c[0] === subj)) subj = "all";
+    const years = [...new Set(list().map((p) => p.y))].sort().reverse();
+    if (yr !== "all" && !years.includes(yr)) yr = "all";
+    $("lead").textContent = dh() ? T("Đề cuối kỳ các năm trước. Bấm giờ như ngày thi.", "Past end-of-term exams. Timed, like exam day.") : T("Đề thi thật các năm. Bấm giờ như ngày thi.", "Real past papers. Timed, like exam day.");
+    $("f-subj").innerHTML = chips.map((c) => `<button class="fchip" type="button" data-subj="${c[0]}" aria-pressed="${c[0] === subj}">${T(c[1], c[2])}</button>`).join("");
+    $("yr-l").textContent = T("Năm", "Year");
+    $("f-yr").innerHTML = `<option value="all">${T("Mọi năm", "Any year")}</option>` + years.map((y) => `<option value="${y}"${y === yr ? " selected" : ""}>${y}</option>`).join("");
+    const rows = list().filter((p) => (subj === "all" || p.s === subj) && (yr === "all" || p.y === yr));
+    $("papers").innerHTML = rows.map((p) => {
+      const meta = [T(`${p.min} phút`, `${p.min} min`), p.essay ? T("tự luận", "essay") : T(`${p.n} câu`, `${p.n} questions`), T(`Boss ${bossName(p.s)}`, "Boss: " + bossName(p.s))];
+      if (p.best != null) meta.push(T(`Tốt nhất ${f1(p.best)}`, `Best ${f1(p.best)}`));
+      return `<li><span class="btile" aria-hidden="true">${bossSvg(p.s)}</span><div><h3>${esc(nameOf(p))} <span class="chip real">${p.mh ? T("Đề minh họa", "Sample") : T("Đề thật", "Real paper")}</span></h3><p>${meta.join(" · ")}</p></div><button class="gbtn wood" type="button" data-paper="${p.id}">${T("Làm đề", "Take it")}</button></li>`;
+    }).join("");
+    $("p-empty").hidden = rows.length > 0;
+    paint($("papers"));
+  }
+
+  // ---------- confirm ----------
+  function paintConfirm() {
+    if (!paper) paper = defPaper();
+    const p = paper;
+    $("cf-boss").innerHTML = bossSvg(p.s);
+    $("cf-bossline").textContent = T(`Boss ${bossName(p.s)}. Hạ boss bằng đề thật.`, `Boss: ${bossName(p.s)}. Beat it with a real paper.`);
+    $("cf-name").textContent = nameOf(p);
+    $("cf-badge").textContent = p.mh ? T("Đề minh họa", "Sample paper") : T("Đề thật", "Real paper");
+    $("cf-facts").innerHTML = [T(`${p.min} phút`, `${p.min} min`), p.essay ? T("Tự luận", "Essay") : T(`${p.n} câu`, `${p.n} questions`), T("Hết giờ máy tự nộp bài", "Time up: auto-submitted"), T("Không có gợi ý", "No hints")].map((x) => `<li class="chip">${x}</li>`).join("");
+  }
+
+  // ---------- exam ----------
+  const answered = (i) => { const a = A[i], t = Q[i].type; return t === "tf" ? Array.isArray(a) && a.some((x) => x != null) : t === "mc" ? a != null : !!(a && String(a).trim()); };
+  const unanswered = () => Q.reduce((c, _, i) => c + (answered(i) ? 0 : 1), 0);
+  function seedAnswers(k) {
+    for (let i = 0; i < k && i < Q.length; i++) {
+      const x = Q[i], bad = i % 3 === 2;
+      if (x.type === "mc") A[i] = bad ? (x.a + 1) % 4 : x.a;
+      else if (x.type === "tf") A[i] = x.a.map((v, j) => (bad && j === 1 ? 1 - v : v));
+      else if (x.type === "short") A[i] = bad ? "0" : x.a;
+      else A[i] = "Bài làm của em ".repeat(15);
+    }
+    cur = Math.min(k, Q.length - 1);
+  }
+  function begin(p, opt) {
+    paper = p; Q = buildQs(p); A = Q.map(() => null); cur = 0; lastDone = -1; total = p.min * 60; res = null;
+    if (opt.seed) seedAnswers(opt.seed);
+    setLeft(opt.left == null ? total : opt.left);
+  }
+  const fmt = (s) => { const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), c = s % 60, z = (n) => String(n).padStart(2, "0"); return h ? `${h}:${z(m)}:${z(c)}` : `${z(m)}:${z(c)}`; };
+  function setLeft(sec) {
+    endAt = Date.now() + sec * 1000;   // an end timestamp, not a counter: stays right when the tab sleeps
+    said5 = said1 = false; $("tstatus").textContent = ""; $("tstatus").classList.remove("crit");
+    clearInterval(timerId); timerId = setInterval(tick, 500); tick();
+  }
+  const say = (msg, crit) => { const n = $("tstatus"); n.textContent = msg; n.classList.toggle("crit", !!crit); };
+  function tick() {
+    if (!paper || res) return;
+    const left = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+    $("clock").textContent = fmt(left);
+    $("clockbox").classList.toggle("warn", left <= 300 && left > 60);
+    $("clockbox").classList.toggle("crit", left <= 60);
+    if (left <= 60 && !said1) { said1 = said5 = true; say(T("Còn 1 phút. Hết giờ máy tự nộp bài.", "1 minute left. The paper is submitted for you at zero."), true); }
+    else if (left <= 300 && !said5) { said5 = true; say(T("Còn 5 phút", "5 minutes left"), false); }
+    if (left <= 0) submit(true);
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) tick(); });
+
+  function paintExam() {
+    if (!paper) return;
+    const q0 = Q[cur], pt = parts()[q0.pi];
+    $("ex-name").textContent = nameOf(paper);
+    $("qno").textContent = T(`Câu ${cur + 1}/${Q.length}`, `Q ${cur + 1}/${Q.length}`);
+    $("qpart").textContent = T(pt[0], pt[1]);
+    $("qpart").hidden = parts().length < 2;
+    const a = A[cur]; let h = "";
+    if (q0.type === "mc") h = `<p class="qtext">${esc(q0.t)}</p><div class="opts" role="group" aria-label="${T("Đáp án", "Answers")}">${q0.o.map((t, i) => `<button class="ans" type="button" data-i="${i}" aria-pressed="${a === i}"><span class="k">${L[i]}</span><span>${esc(t)}</span></button>`).join("")}</div>`;
+    else if (q0.type === "tf") h = `<p class="qtext">${esc(q0.stem)}</p><ul class="tfs">${q0.st.map((s, j) => `<li><span>${"abcd"[j]}) ${esc(s)}</span><span class="tfb" role="group" aria-label="${"abcd"[j]}"><button type="button" data-tf="${j}:1" aria-pressed="${a && a[j] === 1}">${T("Đúng", "True")}</button><button type="button" data-tf="${j}:0" aria-pressed="${a && a[j] === 0}">${T("Sai", "False")}</button></span></li>`).join("")}</ul>`;
+    else if (q0.type === "short") h = `<p class="qtext">${esc(q0.t)}</p><label><span class="vh">${T("Đáp án", "Answer")}</span><input class="inp" id="short" inputmode="decimal" autocomplete="off" placeholder="${T("Nhập đáp án", "Type the answer")}" value="${esc(a || "")}"></label>`;
+    else h = `<p class="qtext">${esc(q0.t)}</p><label><span class="vh">${T("Bài làm", "Your answer")}</span><textarea class="inp" id="essay" rows="8" placeholder="${T("Viết bài làm của em", "Write your answer")}">${esc(a || "")}</textarea></label>`;
+    $("qcard").innerHTML = h;
+    $("prev").disabled = cur === 0; $("next").disabled = cur === Q.length - 1;
+    paintMap(); paintStrip();
+  }
+  // battle strip: your chicken charges up one notch per answered question; the boss HP stays hidden until you submit
+  let lastDone = -1;
+  function paintStrip() {
+    const k = GA[paper.s], done = Q.reduce((c, _, i) => c + (answered(i) ? 1 : 0), 0), n = Q.length;
+    $("s-me").textContent = GANAME[k]; $("s-foe").textContent = bossName(paper.s);
+    if (!$("s-boss").firstChild || $("s-boss").dataset.s !== paper.s) { $("s-boss").innerHTML = bossSvg(paper.s); $("s-boss").dataset.s = paper.s; }
+    const hi = $("s-heroimg"), want = `assets/ga/${k}-dung.webp`; if (hi.getAttribute("src") !== want) hi.src = want;
+    const luc = $("s-luc"); luc.style.setProperty("--w", (done / n * 100) + "%"); luc.style.setProperty("--step", (n <= 60 ? 100 / n : 100) + "%");
+    $("s-lab").textContent = `${T("Lực", "Power")} ${done}/${n}`;
+    $("strip").setAttribute("aria-label", T(`${GANAME[k]} đã tích lực ${done}/${n}. Máu boss ẩn đến khi nộp bài.`, `${GANAME[k]} power ${done}/${n}. Boss HP is hidden until you submit.`));
+    if (lastDone >= 0 && done > lastDone) {
+      [$("s-hero"), luc].forEach((e) => { e.classList.remove("charge"); void e.offsetWidth; e.classList.add("charge"); });
+    }
+    lastDone = done;
+  }
+  function paintMap() {
+    $("qmap").innerHTML = Q.map((_, i) => `<button class="qn${answered(i) ? " done" : ""}" type="button" data-q="${i}" aria-label="${T("Câu", "Question")} ${i + 1}, ${answered(i) ? T("đã làm", "answered") : T("chưa làm", "blank")}"${i === cur ? ' aria-current="true"' : ""}>${i + 1}</button>`).join("");
+  }
+  $("qcard").addEventListener("click", (e) => {
+    const b = e.target.closest(".ans, [data-tf]"); if (!b || !paper) return;
+    if (b.matches(".ans")) A[cur] = +b.dataset.i;
+    else { const [j, v] = b.dataset.tf.split(":").map(Number); const a = Array.isArray(A[cur]) ? A[cur].slice() : [null, null, null, null]; a[j] = v; A[cur] = a; }
+    paintExam();
+  });
+  $("qcard").addEventListener("input", (e) => { if (e.target.matches("#short, #essay")) { A[cur] = e.target.value; const b = $("qmap").children[cur]; if (b) { b.classList.toggle("done", answered(cur)); } paintStrip(); } });
+  $("qmap").addEventListener("click", (e) => { const b = e.target.closest("[data-q]"); if (b) { cur = +b.dataset.q; paintExam(); } });
+  $("prev").addEventListener("click", () => { if (cur > 0) { cur--; paintExam(); } });
+  $("next").addEventListener("click", () => { if (cur < Q.length - 1) { cur++; paintExam(); } });
+
+  // ---------- submit (with confirm) ----------
+  function openDlg() {
+    const k = unanswered();
+    $("dlg-d").textContent = (k ? T(`Em còn ${k} câu chưa làm.`, `${k} questions are still blank.`) : T(`Em đã làm hết ${Q.length} câu.`, `You answered all ${Q.length} questions.`)) + " " + T("Nộp rồi không sửa được nữa.", "You can't change it after submitting.");
+    opener = document.activeElement; $("dscrim").hidden = $("dlg").hidden = false; $("dlg-no").focus();
+  }
+  function closeDlg(back) { $("dscrim").hidden = $("dlg").hidden = true; if (back && opener && opener.focus) opener.focus(); }
+  $("submit").addEventListener("click", openDlg);
+  $("dlg-no").addEventListener("click", () => closeDlg(true));
+  $("dscrim").addEventListener("click", () => closeDlg(true));
+  $("dlg-ok").addEventListener("click", () => { closeDlg(false); submit(false); });
+  document.addEventListener("keydown", (e) => {
+    if ($("dlg").hidden) return;
+    if (e.key === "Escape") closeDlg(true);
+    if (e.key === "Tab") { const f = [$("dlg-no"), $("dlg-ok")], i = f.indexOf(document.activeElement); e.preventDefault(); f[(i + (e.shiftKey ? -1 : 1) + 2) % 2].focus(); }
+  });
+
+  function score(x, a) {
+    if (x.type === "mc") return a === x.a ? 1 : 0;
+    if (x.type === "tf") { const c = Array.isArray(a) ? a.filter((v, j) => v === x.a[j]).length : 0; return [0, 0.1, 0.25, 0.5, 1][c]; }
+    if (x.type === "short") return a != null && parseFloat(String(a).replace(",", ".")) === parseFloat(x.a) ? 1 : 0;
+    const n = a ? String(a).trim().length : 0; return n >= 200 ? 0.8 : n >= 50 ? 0.5 : n > 0 ? 0.2 : 0;
+  }
+  let afterT = 0, replayT = 0;
+  function submit(auto, target) {
+    if (!paper || res) return;
+    clearInterval(timerId); closeDlg(false);
+    const left = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+    const pts = Q.map((x, i) => score(x, A[i]));
+    const sc = pts.reduce((s, v) => s + v, 0) / Q.length * 10;
+    res = { auto, sc, pts, blank: unanswered(), used: auto ? paper.min : Math.max(1, Math.ceil((total - left) / 60)),
+      wrong: Q.map((x, i) => i).filter((i) => pts[i] < (Q[i].type === "essay" ? 0.8 : 1)) };
+    if (paper.best == null || sc > paper.best) paper.best = Math.round(sc * 10) / 10;
+    const go = () => { afterT = 0; internal = true; mockSet("state", target || "danh-boss"); };
+    if (auto && !target) { $("timeup").hidden = false; afterT = setTimeout(() => { $("timeup").hidden = true; go(); }, reduced() ? 2200 : 1800); }
+    else go();
+  }
+
+  // ---------- boss replay: damage = right answers, boss HP = number of questions ----------
+  const dmgOf = () => Math.min(Q.length, Math.round(res.sc / 10 * Q.length));
+  const won = () => res.sc >= 5;
+  function paintReplay() {
+    clearTimeout(replayT);
+    const k = GA[paper.s], n = Q.length, st = $("stage");
+    $("b-me").textContent = GANAME[k]; $("b-foe").textContent = bossName(paper.s);
+    $("b-boss").innerHTML = bossSvg(paper.s);
+    $("b-hero").src = `assets/ga/${k}-dung.webp`;
+    $("b-hp").setAttribute("aria-valuemax", n);
+    st.dataset.fx = ""; $("b-verdict").textContent = ""; $("b-verdict").className = "bverdict";
+    $("b-go").hidden = true; $("b-skip").hidden = false;
+    setHp(n);
+    if (reduced()) { finishReplay(); return; }
+    const d = dmgOf(), steps = Math.min(Math.max(d, 1), 8), gap = Math.max(260, Math.floor(2200 / steps));
+    let i = 0, dealt = 0;
+    const strike = () => {
+      if (i >= steps || d === 0) { replayT = setTimeout(finishReplay, d === 0 ? 700 : 450); return; }
+      i++; const part = Math.round(d * i / steps) - dealt; dealt += part;
+      st.dataset.fx = ""; void st.offsetWidth; st.dataset.fx = "nhanh";
+      $("b-dmg").textContent = "-" + part;
+      replayT = setTimeout(() => { setHp(n - dealt); }, 200);
+      replayT = setTimeout(strike, gap);
+    };
+    replayT = setTimeout(strike, 500);
+  }
+  function setHp(left) {
+    const n = Q.length; $("b-hp").firstElementChild.style.setProperty("--w", (left / n * 100) + "%");
+    $("b-hp").setAttribute("aria-valuenow", left); $("b-hpnum").textContent = `HP ${left}/${n}`;
+  }
+  function finishReplay() {
+    clearTimeout(replayT);
+    const st = $("stage"), n = Q.length, d = dmgOf(), w = won();
+    st.dataset.fx = w ? "thang" : "thoat";
+    setHp(w ? 0 : n - d);
+    const v = $("b-verdict");
+    v.className = "bverdict " + (w ? "win" : "run");
+    v.textContent = w ? T("Hạ boss!", "Boss down!") : T("Boss chạy thoát. Lần sau đánh tiếp.", "The boss got away. Fight again next time.");
+    $("b-skip").hidden = true; $("b-go").hidden = false; $("b-go").focus();
+  }
+  $("b-skip").addEventListener("click", finishReplay);
+
+  // ---------- result + review ----------
+  function paintResult() {
+    const k = GA[paper.s], g = GANAME[k];
+    $("auto-note").textContent = res.auto ? T("Hết giờ, bài đã được tự nộp.", "Time is up. Your paper was submitted automatically.") : "";
+    $("kq-ga").src = `assets/ga/${k}${res.sc >= 5 ? "-vui" : ""}.png`;
+    $("kq-score").innerHTML = `${f1(res.sc)}<small>/10</small>`;
+    $("kq-sub").textContent = nameOf(paper);
+    const w5 = res.sc >= 5;
+    $("kq-boss").textContent = w5 ? T(`Hạ ${bossName(paper.s)}!`, `${bossName(paper.s)} defeated!`) : T(`${bossName(paper.s)} chạy thoát`, `${bossName(paper.s)} got away`);
+    $("kq-boss").className = "bverdict " + (w5 ? "win" : "run");
+    $("kq-xp").textContent = T(`${g} +40 KN khi nộp bài`, `${g} +40 XP for submitting`);
+    $("kq-xp2").textContent = w5 ? T("+50 KN hạ boss", "+50 XP for beating the boss") : "";
+    $("kq-facts").innerHTML = [T(`Thời gian: ${res.used}/${paper.min} phút`, `Time: ${res.used}/${paper.min} min`), T(`Chưa làm: ${res.blank} câu`, `Blank: ${res.blank}`)].map((x) => `<li class="chip">${x}</li>`).join("");
+    const rs = parts().map((pt, pi) => { const idx = Q.map((x, i) => i).filter((i) => Q[i].pi === pi); return { nm: T(pt[0], pt[1]), p: idx.reduce((s, i) => s + res.pts[i], 0), n: idx.length }; });
+    const worst = Math.min(...rs.map((r) => r.p / r.n));
+    $("kq-parts").innerHTML = rs.map((r) => `<li${rs.length > 1 && r.p / r.n === worst && worst < 0.6 ? ' class="weak"' : ""}><span class="nm">${esc(r.nm)}</span><span class="ct">${f1(r.p).replace(",0", "")}/${r.n}</span><span class="tr"><i style="width:${Math.round(r.p / r.n * 100)}%"></i></span></li>`).join("");
+    const w = res.wrong.length, rb = $("kq-rev");
+    rb.hidden = w === 0; rb.textContent = T(`Xem ${w} câu sai`, `Review ${w} wrong`);
+  }
+  function paintReview() {
+    const w = res.wrong, shown = w.slice(0, 20);
+    $("rv-sum").textContent = T(`${w.length} câu cần xem lại`, `${w.length} to review`) + (w.length > shown.length ? T(` (hiện ${shown.length} câu đầu)`, ` (first ${shown.length})`) : "");
+    $("rv-list").innerHTML = shown.map((i) => {
+      const x = Q[i], a = A[i], pt = parts()[x.pi];
+      let mine, right;
+      if (x.type === "mc") { mine = a == null ? "" : `${L[a]}. ${x.o[a]}`; right = `${L[x.a]}. ${x.o[x.a]}`; }
+      else if (x.type === "tf") { mine = Array.isArray(a) ? a.map((v) => (v == null ? "–" : v ? "Đ" : "S")).join(" ") : ""; right = x.a.map((v) => (v ? "Đ" : "S")).join(" "); }
+      else if (x.type === "short") { mine = a || ""; right = x.a; }
+      else { mine = a ? T(`${String(a).trim().length} chữ`, `${String(a).trim().length} chars`) : ""; right = ""; }
+      const line = x.type === "essay"
+        ? `<p>${T("Bài viết của em", "Your writing")}: <b class="bad">${mine || T("Chưa làm", "Blank")}</b></p>`
+        : `<p>${T("Em chọn", "You chose")}: <b class="bad">${mine ? esc(mine) : T("Chưa làm", "Blank")}</b> · ${T("Đáp án", "Answer")}: <b class="good">${esc(right)}</b></p>`;
+      return `<li class="rv"><div class="hd"><b>${T("Câu", "Q")} ${i + 1}</b>${parts().length > 1 ? `<span class="chip">${esc(T(pt[0], pt[1]))}</span>` : ""}</div><p>${esc(x.type === "tf" ? x.stem : x.t)}</p>${line}<p class="muted">${esc(x.why)}</p></li>`;
+    }).join("");
+  }
+
+  // ---------- state machine (mock-bar buttons, hub clicks, URL) ----------
+  const EXAM = ["dang-thi", "con-5-phut", "het-gio"];
+  function ensureExam(st) {
+    const demoLeft = st === "con-5-phut" ? Math.min(298, (paper || defPaper()).min * 60) : st === "het-gio" ? 6 : null;
+    if (!paper || !Q.length || res) {   // nothing running: start a demo exam that already has some answers
+      const p = (paper && !res) ? paper : (paper || defPaper());
+      const base = Math.round(p.min * 60 * 0.55);
+      begin(p, { seed: Math.min(6, Math.floor(p.n / 3) || 1), left: demoLeft != null ? demoLeft : (!isNaN(paramLeft) ? paramLeft : base) });
+    } else if (demoLeft != null) setLeft(demoLeft);
+  }
+  function repaint() {
+    const st = root.dataset.state;
+    if (st !== "danh-boss") clearTimeout(replayT);
+    if (st === "hub") paintHub();
+    else if (st === "xac-nhan") paintConfirm();
+    else if (EXAM.includes(st)) paintExam();
+    else if (st === "danh-boss" && res) paintReplay();
+    else if (st === "ket-qua" && res) paintResult();
+    else if (st === "xem-lai" && res) paintReview();
+    paint(document.querySelector("main"));
+  }
+  document.addEventListener("mock:change", (e) => {
+    const k = e.detail.key;
+    if (k === "lang") { repaint(); return; }
+    if (k === "age") {
+      if (dh() !== lastDh) { lastDh = dh(); clearInterval(timerId); paper = null; Q = []; res = null; subj = "all"; yr = "all"; }
+      if (root.dataset.state !== "hub" && !internal) { mockSet("state", "hub"); return; }
+      repaint(); return;
+    }
+    if (k !== "state") return;
+    const st = root.dataset.state, was = internal; internal = false;
+    if (st !== "danh-boss") clearTimeout(replayT);
+    if (afterT && !was) { clearTimeout(afterT); afterT = 0; $("timeup").hidden = true; }
+    if (st !== "xem-lai" && st !== "ket-qua" && st !== "danh-boss" && !EXAM.includes(st)) { clearInterval(timerId); closeDlg(false); }
+    if (st === "hub") { if (res) { paper = null; Q = []; res = null; } }
+    if (st === "xac-nhan" && (res || (paper && Q.length))) { /* keep chosen paper; a new start resets the run */ res = null; Q = []; }
+    if (EXAM.includes(st) && !was) ensureExam(st);
+    if ((st === "ket-qua" || st === "xem-lai" || st === "danh-boss") && !res) {   // jumped here from the mock bar: grade a demo run
+      if (!paper) paper = defPaper();
+      begin(paper, { seed: Math.max(1, Math.round(paper.n * 0.8)) }); clearInterval(timerId);
+      total = paper.min * 60; endAt = Date.now() + total * 0.1 * 1000;
+      submit(false, st === "danh-boss" ? "danh-boss" : "ket-qua");
+      if (st === "xem-lai") { internal = true; mockSet("state", "xem-lai"); }
+      return;
+    }
+    if (EXAM.includes(st)) { if (!timerId || was === false) { /* running already */ } }
+    repaint();
+    window.scrollTo(0, 0);
+  });
+
+  document.addEventListener("click", (e) => {
+    const pb = e.target.closest("[data-paper]");
+    if (pb) { paper = all().find((p) => p.id === pb.dataset.paper); Q = []; res = null; mockSet("state", "xac-nhan"); return; }
+    const sb = e.target.closest("[data-subj]");
+    if (sb) { subj = sb.dataset.subj; paintHub(); const n = document.querySelector(`[data-subj="${subj}"]`); if (n) n.focus(); }
+  });
+  $("f-yr").addEventListener("change", (e) => { yr = e.target.value; paintHub(); $("f-yr").focus(); });
+  $("cf-go").addEventListener("click", () => { begin(paper, {}); internal = true; mockSet("state", "dang-thi"); });
+
+  window.addEventListener("DOMContentLoaded", () => { repaint(); });
+})();
+</script>
+</body>
+</html>

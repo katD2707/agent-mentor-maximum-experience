@@ -112,14 +112,26 @@ def _regex_salvage(s: str) -> dict[str, Any] | None:
 def parse_model_json(raw: str) -> dict[str, Any]:
     """Parse a JSON object out of model output. Raises ValueError when nothing usable is found."""
     s = raw.strip()
+    # The whole reply first (an opening ```json fence stripped): lesson text often holds its own ```sql / ```python code
+    # fences inside JSON strings, and the first fence pair would then be a code sample, not the JSON. The first fenced
+    # block is the fallback (prose around a fenced JSON reply).
+    cands = [re.sub(r"^```(?:json|JSON)?\s*", "", s).strip()]
     fence = re.search(r"```(?:json|JSON)?\s*(.*?)```", s, re.DOTALL)
     if fence:
-        s = fence.group(1).strip()
-    else:
-        s = re.sub(r"^```(?:json)?", "", s).strip()  # unterminated fence
-    obj = _extract_object(s)
-    if obj is None:
-        raise ValueError("no JSON object in model output")
+        cands.append(fence.group(1).strip())
+    found = False
+    for c in cands:
+        obj = _extract_object(c)
+        if obj is None:
+            continue
+        found = True
+        v = _parse_object(obj)
+        if v is not None:
+            return v
+    raise ValueError("could not parse model JSON" if found else "no JSON object in model output")
+
+
+def _parse_object(obj: str) -> dict[str, Any] | None:
     for cand in (_fix_backslashes(obj), obj, re.sub(r",\s*([}\]])", r"\1", _fix_backslashes(obj))):
         v = _try(cand)
         if v is not None:
@@ -129,7 +141,4 @@ def parse_model_json(raw: str) -> dict[str, Any]:
         v = _try(fixed + tail)
         if v is not None:
             return v
-    v = _regex_salvage(obj)
-    if v is not None:
-        return v
-    raise ValueError("could not parse model JSON")
+    return _regex_salvage(obj)

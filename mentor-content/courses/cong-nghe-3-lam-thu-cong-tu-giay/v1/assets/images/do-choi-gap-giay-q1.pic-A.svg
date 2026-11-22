@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- paper background -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow of the sheet -->
+  <path d="M 100 77 Q 100 55 122 55 L 254 55 L 300 101 L 300 323
+           Q 300 345 278 345 L 122 345 Q 100 345 100 323 Z"
+        transform="translate(11 13)"
+        fill="#E9E5F6"/>
+
+  <!-- the A4 sheet -->
+  <path d="M 100 77 Q 100 55 122 55 L 254 55 L 300 101 L 300 323
+           Q 300 345 278 345 L 122 345 Q 100 345 100 323 Z"
+        fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- ruled lines (no writing, just paper) -->
+  <g stroke="#E9E5F6" stroke-width="9" stroke-linecap="round">
+    <line x1="130" y1="148" x2="270" y2="148"/>
+    <line x1="130" y1="188" x2="270" y2="188"/>
+    <line x1="130" y1="228" x2="270" y2="228"/>
+    <line x1="130" y1="268" x2="270" y2="268"/>
+  </g>
+
+  <!-- one highlighter stroke across the page -->
+  <line x1="130" y1="308" x2="212" y2="308"
+        stroke="#F0D76E" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- folded dog-ear corner -->
+  <path d="M 254 55 L 254 101 L 300 101 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- small crease hint on the flap -->
+  <path d="M 262 97 L 288 97" stroke="#2B283F" stroke-width="2.5"
+        stroke-linecap="round" opacity="0.55"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

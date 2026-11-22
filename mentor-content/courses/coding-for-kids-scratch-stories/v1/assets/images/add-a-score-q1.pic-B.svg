@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- tail (outlined tube: purple under, light core over) -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 250 296 C 294 304 318 282 312 254 C 308 234 292 228 280 234" stroke="#5A4BC0" stroke-width="18"/>
+    <path d="M 250 296 C 294 304 318 282 312 254 C 308 234 292 228 280 234" stroke="#E9E5F6" stroke-width="9"/>
+  </g>
+
+  <!-- body -->
+  <path d="M 200 190 C 166 190 146 216 142 262 C 138 300 162 326 200 326 C 238 326 262 300 258 262 C 254 216 234 190 200 190 Z"
+        fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- front paws -->
+  <ellipse cx="168" cy="316" rx="24" ry="16" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="4.5"/>
+  <ellipse cx="232" cy="316" rx="24" ry="16" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="4.5"/>
+
+  <!-- ears (behind head) -->
+  <g stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round">
+    <path d="M 134 138 L 116 54 L 178 92 Z" fill="#E8806A"/>
+    <path d="M 266 138 L 284 54 L 222 92 Z" fill="#E8806A"/>
+  </g>
+
+  <!-- head -->
+  <circle cx="200" cy="158" r="74" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+
+  <!-- blush -->
+  <ellipse cx="148" cy="176" rx="10" ry="6.5" fill="#E8806A"/>
+  <ellipse cx="252" cy="176" rx="10" ry="6.5" fill="#E8806A"/>
+
+  <!-- muzzle -->
+  <ellipse cx="200" cy="190" rx="31" ry="19" fill="#F7F1E3"/>
+
+  <!-- eyes -->
+  <circle cx="172" cy="143" r="10" fill="#2B283F"/>
+  <circle cx="228" cy="143" r="10" fill="#2B283F"/>
+  <circle cx="175" cy="139" r="3.5" fill="#F7F1E3"/>
+  <circle cx="231" cy="139" r="3.5" fill="#F7F1E3"/>
+
+  <!-- nose -->
+  <path d="M 190 179 L 210 179 L 200 189 Z" fill="#E8806A" stroke="#E8806A" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- mouth -->
+  <g fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round">
+    <path d="M 200 189 Q 194 198 186 192"/>
+    <path d="M 200 189 Q 206 198 214 192"/>
+  </g>
+
+  <!-- whiskers -->
+  <g fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round">
+    <path d="M 170 180 L 128 172"/>
+    <path d="M 168 190 L 124 190"/>
+    <path d="M 170 200 L 130 208"/>
+    <path d="M 230 180 L 272 172"/>
+    <path d="M 232 190 L 276 190"/>
+    <path d="M 230 200 L 270 208"/>
+  </g>
+
+  <!-- collar -->
+  <path d="M 154 234 Q 200 268 246 234" fill="none" stroke="#9FD8BF" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- bell -->
+  <circle cx="200" cy="262" r="12" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3.5"/>
+  <circle cx="200" cy="266" r="2.6" fill="#2B283F"/>
+
+  <!-- paper grain -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

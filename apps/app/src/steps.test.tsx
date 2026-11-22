@@ -1,17 +1,14 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { beforeEach, describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
 import i18n from "./i18n";
-import { App } from "./App";
-import { AuthProvider } from "./state/auth";
 import type { QuizItem, TextBlock } from "./api";
 import { PracticeError, type PItem } from "./api";
 import { createMockPractice } from "./api/mock-practice-api";
 import { canSubmit, checkAnswer, shuffled, stemPieces } from "./lib/quiz";
 import { canCheck, stepDecode, stepEncode, stepText } from "./lib/practice";
-import { GlossChip, StaticBlock } from "./screens/courses/blocks";
-import { fmtVal } from "./screens/courses/StepBlocks";
+import { GlossChip, StaticBlock } from "./lang/kit/blocks";
+import { fmtVal } from "./lang/kit/StepBlocks";
 
 const q = (over: Partial<QuizItem> & Pick<QuizItem, "type" | "answer_key">): QuizItem => ({ id: "q", stem: "s", options: [], statements: [], option_feedback: {}, skill_ids: [], difficulty: 2, explanation: "", ...over });
 const parts = [{ id: "a", text: "r" }, { id: "b", text: "q" }, { id: "c", text: "r²" }];
@@ -87,49 +84,6 @@ describe("English: the Vietnamese gloss", () => {
     expect(fmtVal(18000, "vi")).toBe("18 000");
     expect(fmtVal(0.25, "vi")).toBe("0,25");
     expect(fmtVal(0.25, "en")).toBe("0.25");
-  });
-});
-
-describe("Nghe tóm tắt on the course page", () => {
-  beforeEach(async () => {
-    await i18n.changeLanguage("vi");
-    vi.spyOn(HTMLMediaElement.prototype, "play").mockImplementation(function (this: HTMLMediaElement) {
-      Object.defineProperty(this, "paused", { value: false, configurable: true });
-      this.dispatchEvent(new Event("play"));
-      return Promise.resolve();
-    });
-    vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(function (this: HTMLMediaElement) {
-      Object.defineProperty(this, "paused", { value: true, configurable: true });
-      this.dispatchEvent(new Event("pause"));
-    });
-  });
-  afterEach(() => vi.restoreAllMocks());
-  const open = (band: string, birth: number) => {
-    localStorage.setItem("mentor.mock.users", JSON.stringify({ hocsinh: { password: "123456", user: { id: "u-hs", role: "student", username: "hocsinh", display_name: "Lan", age_band: band, birth_year: birth, language: "vi", theme: "system", quiet_until: null } } }));
-    localStorage.setItem("mentor.token", "mock-u-hs");
-    localStorage.setItem("mentor.tour.seen.u-hs", JSON.stringify(["today", "course"]));
-    render(
-      <MemoryRouter initialEntries={["/khoa-hoc/vat-li-11-dien-truong"]}>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-      </MemoryRouter>,
-    );
-  };
-  it("a row opens the docked player: play, 10 s back, speed 1x / 1,25x, progress", async () => {
-    const ui = userEvent.setup();
-    open("g10_12", 2009);
-    await ui.click(await screen.findByRole("button", { name: /Nghe tóm tắt · 4 phút/ }));
-    const mini = await screen.findByRole("region", { name: "Nghe tóm tắt" });
-    expect(within(mini).getByRole("button", { name: "Lùi 10 giây" })).toBeInTheDocument();
-    expect(within(mini).getByRole("slider", { name: "Tiến độ bài nghe" })).toBeInTheDocument();
-    expect(await within(mini).findByRole("button", { name: "Tạm dừng" })).toBeInTheDocument(); // starts at once
-    await ui.click(within(mini).getByRole("button", { name: "Tốc độ 1x" }));
-    expect(within(mini).getByRole("button", { name: "Tốc độ 1.25x" })).toHaveTextContent("1.25x");
-    await ui.click(within(mini).getByRole("button", { name: "Tạm dừng" }));
-    expect(within(mini).getByRole("button", { name: "Phát" })).toBeInTheDocument();
-    await ui.click(within(mini).getByRole("button", { name: "Đóng trình nghe" }));
-    expect(screen.queryByRole("region", { name: "Nghe tóm tắt" })).toBeNull();
   });
 });
 

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<g stroke="#5A4BC0" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M200 180 L380 180"/>
+<path d="M500 180 L800 180 L800 280"/>
+<path d="M800 418 L800 520 L520 520"/>
+<path d="M480 520 L200 520 L200 400"/>
+<path d="M200 300 L200 180"/>
+<path d="M800 280 A28 23 0 0 1 800 326 A28 23 0 0 1 800 372 A28 23 0 0 1 800 418"/>
+<circle cx="200" cy="350" r="50" fill="#E9E5F6"/>
+<path d="M175 350 Q187.5 330 200 350 T225 350"/>
+<line x1="480" y1="480" x2="480" y2="560"/>
+<line x1="520" y1="480" x2="520" y2="560"/>
+</g>
+<rect x="380" y="155" width="120" height="50" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="6"/>
+<g font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">
+<text x="130" y="270" text-anchor="middle">Ngu&#7891;n ~</text>
+<text x="440" y="120" text-anchor="middle">R</text>
+<text x="870" y="360" text-anchor="start">L</text>
+<text x="500" y="610" text-anchor="middle">C</text>
+</g>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3" filter="url(#grain)"/>
+</svg>

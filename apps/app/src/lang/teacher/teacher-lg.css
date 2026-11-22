@@ -1,0 +1,74 @@
+/* gv labels step (gv-04 mockup). Uses the teacher notebook tokens (--tim, --rule, --cam ...) of styles/teacher.css. */
+.lbl-main { max-width: 1000px; padding-bottom: 60px; }
+.lbl .layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 36px; align-items: start; }
+@media (max-width: 900px) { .lbl .layout { grid-template-columns: 1fr; gap: 20px; } .lbl .side { order: -1; position: static !important; } }
+.lbl-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+.lbl-head .media { width: 52px; height: 52px; border-radius: 12px; overflow: hidden; background: var(--tim-soft); color: var(--tim-ink); display: grid; place-items: center; flex: none; }
+.lbl-head .media img { width: 100%; height: 100%; object-fit: cover; }
+.lbl-head .media svg { width: 26px; height: 26px; }
+.lbl .lead { color: var(--ink-2); font-size: .92em; margin: 10px 0 8px; }
+.lbl .unsure-note { display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: 12px; background: var(--cam-soft); color: var(--cam); font-size: .9em; font-weight: 500; margin: 12px 0 4px; }
+.lbl .unsure-note svg { width: 20px; height: 20px; flex: none; }
+.lbl .field { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.lbl .field.need { background: var(--cam-soft); margin: 0 -14px; padding: 18px 14px; border-radius: 12px; border-bottom-color: transparent; }
+.lbl .fhead { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-bottom: 10px; }
+.lbl .fhead h2 { font-size: 1em; font-weight: 600; }
+.lbl .fhead .tag svg { width: 13px; height: 13px; stroke-width: 2.4; }
+.lbl .fhint { color: var(--ink-2); font-size: .85em; margin-top: 10px; min-height: 1.3em; }
+.lbl .fhint.warn { color: var(--cam); font-weight: 500; }
+.lbl .grp-label { color: var(--ink-2); font-size: .8em; font-weight: 600; letter-spacing: .02em; margin: 12px 0 6px; }
+.lbl .grp-label:first-child { margin-top: 0; }
+.lbl .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt-btn { min-height: 44px; padding: 0 16px; border-radius: 99px; border: 1.5px solid var(--rule-strong); background: transparent; color: var(--ink); font: 500 .92em var(--font-ui, inherit); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: background-color .15s, border-color .15s; }
+.opt-btn:hover { border-color: var(--ink-3); }
+.opt-btn:focus-visible { outline: 3px solid var(--tim); outline-offset: 2px; }
+.opt-btn[aria-checked="true"] { background: var(--tim); border-color: var(--tim); color: var(--on-tim); }
+.opt-btn svg { width: 16px; height: 16px; stroke-width: 2.6; display: none; }
+.opt-btn[aria-checked="true"] svg { display: block; }
+.opt-btn.sq { min-width: 44px; padding: 0 12px; justify-content: center; }
+.lbl .need .opt-btn { background: var(--surface); }
+.lbl .need .opt-btn[aria-checked="true"] { background: var(--tim); }
+.opt-btn .lvx-bars i.on { background: currentColor; }
+.opt-btn .lvx-bars i { background: currentColor; opacity: .35; }
+.opt-btn .lvx-bars i.on { opacity: 1; }
+.sub-btn .ico { width: 22px; height: 22px; border-radius: 99px; overflow: hidden; position: relative; background: var(--tim-soft); flex: none; }
+.sub-btn .ico img { position: absolute; width: 70px; max-width: none; left: -23px; top: -22px; }
+.sub-btn[aria-checked="true"] .ico { background: rgba(255,255,255,.92); }
+.lbl .side { position: sticky; top: 130px; padding: 18px 16px 16px; border-radius: 16px; border: 1px solid var(--rule-strong); background: var(--surface); display: grid; gap: 8px; justify-items: center; text-align: center; }
+.lbl .side h2 { font-size: .85em; font-weight: 500; color: var(--ink-2); }
+.lbl .crop { position: relative; overflow: hidden; display: block; flex: none; }
+.lbl .crop img { position: absolute; max-width: none; }
+.lbl .side .cname { font-size: 1.15em; font-weight: 700; }
+.lbl .side .csub { color: var(--ink-2); font-size: .84em; }
+.lbl .side .empty { color: var(--ink-2); font-size: .88em; padding: 18px 0; }
+.lbl .side .shelf { width: 100%; height: 2px; background: var(--rule-strong); margin-top: -2px; border-radius: 2px; display: block; }
+.lbl .pvbox { display: grid; justify-items: center; gap: 6px; width: 100%; }
+.lbl .bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 8px; padding-top: 18px; }
+.lbl .bottom .need-msg { color: var(--cam); font-weight: 500; font-size: .9em; }
+.lbl .bottom .btn { min-height: 48px; }
+.lbl .btn[aria-disabled="true"], .topbar .btn.act[aria-disabled="true"] { opacity: .5; }
+
+/* review: the student's lesson step (StepPreview) inside the phone frame */
+.pv .rv-lp { background: none; min-height: 0; }
+.pv .rv-lp .rv-lesson { margin: 0; min-height: 0; width: 100%; display: block; background: var(--lboard); color: var(--ink); border: 0; border-radius: 18px; box-shadow: none; padding: 12px 10px; }
+.pv .rv-lp .lp-stage { padding: 0; overflow: visible; }
+.pv .rv-lp .lp-in { padding: 0; width: 100%; }
+
+/* labels: goals, topics */
+.lbl .gv-lab-area { width: 100%; min-height: 96px; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--rule-strong); background: var(--paper); color: var(--ink); font: inherit; line-height: 1.45; resize: vertical; }
+.lbl .gv-lab-area:focus { outline: none; border-color: var(--tim); box-shadow: 0 0 0 3px var(--tim-soft); }
+.lbl .topics { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.lbl .topic { display: inline-flex; align-items: center; gap: 2px; min-height: 40px; padding: 0 4px 0 14px; border-radius: 99px; background: var(--vang-soft); color: var(--ink); font-weight: 500; font-size: .92em; border: 1px solid var(--vang); }
+.lbl .topic button { width: 32px; height: 32px; border: 0; border-radius: 99px; background: transparent; color: inherit; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.lbl .topic button:hover { background: rgba(0, 0, 0, .1); }
+.lbl .topic svg { width: 14px; height: 14px; stroke-width: 2.4; }
+.lbl .tinput { flex: 1; min-width: 180px; min-height: 40px; padding: 0 14px; border-radius: 99px; border: 1.5px dashed var(--rule-strong); background: transparent; color: var(--ink); font: inherit; }
+.lbl .tinput:focus { border-style: solid; border-color: var(--tim); outline: none; box-shadow: 0 0 0 3px var(--tim-soft); }
+.lbl .tinput::placeholder { color: var(--ink-2); }
+.lbl .sugg { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-top: 10px; }
+.lbl .sugg > span { color: var(--ink-2); font-size: .82em; margin-right: 2px; }
+.lbl .sg { min-height: 36px; padding: 0 12px 0 8px; border-radius: 99px; border: 1.5px dashed var(--rule-strong); background: transparent; color: var(--ink-2); font: inherit; font-size: .86em; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; }
+.lbl .sg:hover { border-color: var(--tim); color: var(--tim-ink); }
+.lbl .sg svg { width: 14px; height: 14px; stroke-width: 2.2; }
+.pv .rv-lp { position: static; inset: auto; overflow: visible; background: none; min-height: 0; }
+.pv .rv-lp::before { content: none; }

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" refX="10" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#E8806A"/></marker><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="60" y="220" width="180" height="280" fill="#F0D76E"/>
+<path d="M240 220H60V500H240" fill="none" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M60 260H240 M60 300H240 M60 340H240 M60 380H240 M60 420H240 M60 460H240" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<rect x="240" y="300" width="660" height="100" fill="#E9E5F6"/>
+<rect x="330" y="400" width="460" height="210" fill="#9FD8BF"/>
+<path d="M790 400V610H330V400" fill="none" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+<path d="M240 300H300 M370 300H520 M590 300H740 M810 300H900 M240 400H520 M590 400H900 M900 300V400" fill="none" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+<g fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"><path d="M300 300V230 M370 300A70 70 0 0 0 300 230"/><path d="M520 300V230 M590 300A70 70 0 0 0 520 230"/><path d="M740 300V230 M810 300A70 70 0 0 0 740 230"/><path d="M520 400V470 M590 400A70 70 0 0 1 520 470"/></g>
+<line x1="650" y1="172" x2="548" y2="262" stroke="#E8806A" stroke-width="4" stroke-linecap="round" marker-end="url(#a)"/>
+<text x="335" y="195" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">door 1</text>
+<text x="775" y="195" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">door 3</text>
+<text x="960" y="140" text-anchor="end" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">door 2 (second door on right)</text>
+<text x="150" y="545" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">first floor</text>
+<text x="560" y="535" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">reading room (opposite)</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

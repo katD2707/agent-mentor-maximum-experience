@@ -35,6 +35,7 @@ class UserView(BaseModel):
     language: Language | None
     theme: Theme
     quiet_until: datetime | None
+    avatar: Literal["nam", "nu"] | None = None  # Làng gà: chosen at first run
 
 
 # Accounts created on startup in dev (infra/README, docs/demo-accounts.md). Passwords are for local use only.
@@ -106,7 +107,7 @@ class UserService:
             age_band=user.age_band, birth_year=user.birth_year,
             language=user.language if user.language in ("vi", "en") else None,
             theme=user.theme if user.theme in ("light", "dark", "system") else "system",
-            quiet_until=user.quiet_until,
+            quiet_until=user.quiet_until, avatar=user.avatar if user.avatar in ("nam", "nu") else None,
         )
 
     def quiet_active(self, user_id: str, now: datetime | None = None) -> bool:

@@ -1,4 +1,4 @@
-"""`/api/guide`: Mực's chat about using the app (any signed-in user; the guide map is not private)."""
+"""`/api/guide`: the guide chicken's chat about using the app (any signed-in user; the guide map is not private)."""
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field

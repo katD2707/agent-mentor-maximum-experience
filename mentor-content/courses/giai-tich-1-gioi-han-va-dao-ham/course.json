@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "giai-tich-1-gioi-han-va-dao-ham",
+  "title": "Giải tích 1: Giới hạn và đạo hàm",
+  "subject": "Giải tích",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ufe3882a13c630f17",
+  "teacher_name": "TS. Thắng",
+  "description_short": "Khóa học bao gồm giới hạn dãy số, giới hạn hàm số, tính liên tục và đạo hàm cùng các quy tắc, ứng dụng cơ bản. Khóa học dành cho sinh viên đại học bắt đầu học Giải tích 1.",
+  "outcomes": [
+    "hiểu định nghĩa ε–N, ε–δ của giới hạn và điều kiện liên tục",
+    "tính được giới hạn dãy số, giới hạn hàm số bằng quy tắc, biến đổi đại số và định lý kẹp",
+    "nhận biết và tránh các lỗi thường gặp về hội tụ, dạng 0/0 và tính liên tục",
+    "dùng định nghĩa để tính đạo hàm và áp dụng các quy tắc đạo hàm, quy tắc chuỗi, đạo hàm hàm ẩn",
+    "vận dụng đạo hàm để xét cực trị, dấu đạo hàm, giá trị lớn nhất/nhỏ nhất và xấp xỉ tuyến tính"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:00:42.501039Z",
+      "published_at": "2026-11-17T08:12:55.164505Z",
+      "pack_sha256": "835812f7a1ff2b6ef11a5e6dbfd2e727fa44567d944a1123e8d17b9a46e15878",
+      "pack_bytes": 129898,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "advanced"
+    }
+  ],
+  "level": "advanced",
+  "status": "live",
+  "outline": []
+}

@@ -1,0 +1,1757 @@
+{
+  "schema_version": 1,
+  "course_id": "co-so-du-lieu-sql-tu-co-ban",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Cơ sở dữ liệu: SQL từ cơ bản",
+  "chapters": [
+    {
+      "id": "ch-mo-hinh",
+      "title": "Mô hình",
+      "lessons": [
+        {
+          "id": "mo-hinh-quan-he",
+          "title": "Mô hình quan hệ",
+          "est_minutes": 15,
+          "summary": "Trình bày mô hình quan hệ, khóa, ràng buộc toàn vẹn và đại số quan hệ qua ví dụ cửa hàng sách, kèm lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Quan hệ, lược đồ, bộ và miền giá trị",
+            "Siêu khóa, khóa ứng viên, khóa chính, khóa ngoài",
+            "Ba ràng buộc toàn vẹn và hành vi ON DELETE",
+            "Đại số quan hệ: chọn, chiếu, tích Descartes, nối",
+            "Ví dụ cửa hàng sách và lỗi tích Descartes"
+          ],
+          "blocks": [
+            {
+              "id": "mo-hinh-quan-he-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Quan hệ, lược đồ, bộ, miền giá trị",
+              "md": "Mô hình quan hệ biểu diễn dữ liệu bằng bảng. Lược đồ $R(A_1,\\dots,A_n)$ gồm tên quan hệ và danh sách thuộc tính. Mỗi $A_i$ có miền giá trị $D_i$. Một thể hiện của $R$ là tập con của $D_1\\times\\cdots\\times D_n$. Mỗi phần tử là một bộ, tức một dòng. Bậc là số thuộc tính. Lực lượng là số bộ. `NULL` nghĩa là không biết hoặc không áp dụng, không phải số 0 hay chuỗi rỗng.",
+              "audio": null
+            },
+            {
+              "id": "mo-hinh-quan-he-b2",
+              "kind": "text",
+              "md": "Trong mô hình quan hệ, quan hệ là tập hợp: dòng không có thứ tự và không có hai bộ trùng nhau. SQL khác ở chỗ bảng là multiset (có thể trùng) và thứ tự dòng không được đảm bảo, nên cần `DISTINCT` khi loại trùng và `ORDER BY` khi sắp xếp.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "mo-hinh-quan-he-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mo-hinh-quan-he-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong lược đồ SACH(MaSach, TenSach, MaNXB, Gia, NamXB) với MaSach là khóa chính và TenSach UNIQUE, phát biểu nào sau đây đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "{MaSach, TenSach} là siêu khóa nhưng không là khóa ứng viên.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "{MaSach, TenSach} là khóa ứng viên vì xác định duy nhất mỗi bộ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "{TenSach} không thể là khóa ứng viên vì không phải khóa chính.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "{MaNXB} là khóa ứng viên của SACH.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "SACH có hai khóa ứng viên là {MaSach} và {TenSach}; {MaSach, TenSach} là siêu khóa không tối thiểu.",
+                  "option_feedback": {
+                    "B": "Không tối thiểu: bỏ TenSach vẫn còn MaSach là siêu khóa.",
+                    "C": "Nhầm khóa ứng viên với khóa chính; TenSach UNIQUE nên là khóa ứng viên.",
+                    "D": "MaNXB bị lặp (NX01 cho S01 và S03) nên không xác định duy nhất bộ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "mo-hinh-quan-he-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Siêu khóa, khóa ứng viên, khóa chính, khóa ngoại",
+              "md": "$K\\subseteq R$ là siêu khóa nếu mọi thể hiện hợp lệ của $R$ không có hai bộ trùng nhau trên $K$. $K$ là khóa ứng viên nếu là siêu khóa và tối thiểu: bỏ bất kỳ thuộc tính nào khỏi $K$ thì mất tính siêu khóa. Chọn một khóa ứng viên làm khóa chính. Các khóa còn lại là khóa thay thế. $R.A$ là khóa ngoại tham chiếu $S.B$ nếu $B$ là khóa ứng viên của $S$ và với mọi $t\\in R$: hoặc $t[A]$ là `NULL`, hoặc có $u\\in S$ với $u[B]=t[A]$.",
+              "audio": null
+            },
+            {
+              "id": "mo-hinh-quan-he-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ba ràng buộc toàn vẹn",
+              "md": "Toàn vẹn miền: giá trị thuộc miền của thuộc tính (kiểu dữ liệu, `CHECK`). Toàn vẹn thực thể: thuộc tính khóa chính không được `NULL`. Toàn vẹn tham chiếu: khóa ngoại trỏ tới bộ có thật hoặc bằng `NULL`. PostgreSQL xử lý theo khai báo: `ON DELETE CASCADE` (xóa dây chuyền), `ON DELETE SET NULL`, `ON DELETE RESTRICT` hay `NO ACTION` (từ chối).",
+              "audio": null
+            },
+            {
+              "id": "mo-hinh-quan-he-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mo-hinh-quan-he-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền vào chỗ trống: $R \\bowtie_{\\theta} S = \\sigma_{\\theta}({{gap}})$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "R \\times S",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "R \\bowtie S",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "\\pi_R(R \\times S)",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nối theta là chọn các bộ thỏa θ từ tích Descartes R × S.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "mo-hinh-quan-he-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cửa hàng sách",
+              "md": "`SACH(MaSach, TenSach, MaNXB, Gia, NamXB)` với `MaSach` là khóa chính, `TenSach` là `UNIQUE`; `NHAXUATBAN(MaNXB, TenNXB, DiaChi)` với `MaNXB` là khóa chính; `SACH.MaNXB` là khóa ngoại `NOT NULL`. Vậy `SACH` có hai khóa ứng viên là $\\{\\text{MaSach}\\}$ và $\\{\\text{TenSach}\\}$, nên $\\{\\text{MaSach},\\text{TenSach}\\}$ là siêu khóa nhưng không tối thiểu. Truy vấn tên sách và tên nhà xuất bản của sách giá trên 90.000: $\\pi_{\\text{TenSach},\\text{TenNXB}}(\\sigma_{\\text{Gia}>90000}(\\text{SACH}\\bowtie\\text{NHAXUATBAN}))$, cho kết quả SQL Cơ Bản (120000) và Toán Rời Rạc (95000).",
+              "audio": null
+            },
+            {
+              "id": "mo-hinh-quan-he-b6",
+              "kind": "text",
+              "md": "Đại số quan hệ là cơ sở lý thuyết của SQL. Chọn $\\sigma_P(R)$ giữ các bộ thỏa vị từ $P$; chiếu $\\pi_{A_1,\\dots,A_k}(R)$ giữ các cột và loại bộ trùng; tích Descartes $R\\times S$ ghép mọi cặp bộ nên có $|R|\\cdot|S|$ bộ; nối theta $R\\bowtie_\\theta S=\\sigma_\\theta(R\\times S)$, nối tự nhiên nối trên các thuộc tính cùng tên; nửa nối $R\\ltimes S=\\pi_R(R\\bowtie S)$ chỉ lấy bộ của $R$ có bạn trong $S$. Hợp, giao, hiệu đòi hai quan hệ tương thích hợp.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "mo-hinh-quan-he-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mo-hinh-quan-he-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Truy vấn sai dùng FROM sach s, nhaxuatban n tạo ra bao nhiêu bộ trước khi GROUP BY? (nhập số)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "12"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tích Descartes của 4 sách và 3 nhà xuất bản có 4 × 3 = 12 bộ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "mo-hinh-quan-he-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Quên điều kiện nối",
+              "md": "Viết `FROM sach s, nhaxuatban n` mà không có điều kiện nối là vô tình dùng tích Descartes: $4\\times 3=12$ bộ, mỗi sách bị nhân bản cho cả ba nhà xuất bản, nên `count(*)` cho mỗi nhà xuất bản đều là 4 thay vì 2, 1, 1; với `SUM(gia)` thì ra số tiền sai. Cách đúng là nối có điều kiện `ON s.ma_nxb = n.ma_nxb`, và dùng `LEFT JOIN` nếu muốn giữ nhà xuất bản chưa có sách.",
+              "audio": null
+            },
+            {
+              "id": "mo-hinh-quan-he-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "mo-hinh-quan-he-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi thuật ngữ với định nghĩa đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Siêu khóa",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Xác định duy nhất bộ, chưa chắc tối thiểu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Khóa ứng viên",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Siêu khóa tối thiểu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Khóa chính",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Khóa ứng viên được chọn",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Khóa ngoại",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Tham chiếu khóa ứng viên của quan hệ khác",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đây là các định nghĩa về khóa trong mô hình quan hệ theo bài học.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "mo-hinh-quan-he-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Quan hệ trong mô hình quan hệ khác bảng SQL ở điểm nào?",
+                  "answer": "Quan hệ là tập hợp nên không trùng bộ và không có thứ tự; bảng SQL là multiset và thứ tự dòng không được đảm bảo.",
+                  "image": null
+                },
+                {
+                  "prompt": "Siêu khóa và khóa ứng viên khác nhau ở đâu?",
+                  "answer": "Khóa ứng viên là siêu khóa tối thiểu: bỏ bất kỳ thuộc tính nào thì mất tính siêu khóa.",
+                  "image": null
+                },
+                {
+                  "prompt": "Ba ràng buộc toàn vẹn là gì?",
+                  "answer": "Toàn vẹn miền, toàn vẹn thực thể (khóa chính không NULL) và toàn vẹn tham chiếu (khóa ngoại trỏ tới bộ có thật hoặc NULL).",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "chuan-hoa",
+          "title": "Chuẩn hóa",
+          "est_minutes": 15,
+          "summary": "Giới thiệu phụ thuộc hàm, bao đóng, các dạng chuẩn và tiêu chí phân rã lược đồ qua ví dụ tìm khóa và phân rã 3NF.",
+          "key_ideas": [
+            "Phụ thuộc hàm và bao đóng thuộc tính",
+            "1NF, 2NF, 3NF, BCNF",
+            "Bảo toàn thông tin và bảo toàn phụ thuộc",
+            "Thuật toán tổng hợp 3NF và phân rã BCNF",
+            "Ví dụ tìm khóa và phân rã lược đồ"
+          ],
+          "blocks": [
+            {
+              "id": "chuan-hoa-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Phụ thuộc hàm",
+              "md": "Cho lược đồ $R$. $X \\to Y$ (với $X,Y \\subseteq R$) là một phụ thuộc hàm nếu với mọi thể hiện hợp lệ $r$ của $R$ và mọi $t_1,t_2 \\in r$: $t_1[X]=t_2[X] \\Rightarrow t_1[Y]=t_2[Y]$. Tập $F$ là tập phụ thuộc hàm của lược đồ; $F^+$ là bao đóng của $F$, gồm mọi phụ thuộc suy diễn được từ $F$.",
+              "audio": null
+            },
+            {
+              "id": "chuan-hoa-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Bao đóng thuộc tính, siêu khóa, khóa ứng viên",
+              "md": "Tính $X^+$: bắt đầu $X^+ := X$; lặp lại việc cộng $Z$ vào $X^+$ nếu có $Y \\to Z \\in F$ với $Y \\subseteq X^+$; dừng khi không đổi. Khi đó $X$ là siêu khóa $\\iff X^+ = R$. Khóa ứng viên là $X$ tối thiểu có tính chất đó.",
+              "audio": null
+            },
+            {
+              "id": "chuan-hoa-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuan-hoa-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Phân rã $R$ thành hai mảnh $R_1, R_2$ được gọi là bảo toàn thông tin (lossless join) khi điều kiện nào sau đây đúng theo $F^+$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$(R_1 \\cap R_2) \\to R_1$ hoặc $(R_1 \\cap R_2) \\to R_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$(R_1 \\cup R_2) \\to R_1$ hoặc $(R_1 \\cup R_2) \\to R_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$(R_1 \\setminus R_2) \\to R_1$ hoặc $(R_2 \\setminus R_1) \\to R_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$R_1 \\to R_2$ hoặc $R_2 \\to R_1$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Điều kiện lossless là thuộc tính chung của hai mảnh xác định được $R_1$ hoặc $R_2$; khi đó $R_1 \\bowtie R_2 = R$ và không sinh bộ giả.",
+                  "option_feedback": {
+                    "B": "Nhầm hợp với giao: điều kiện dùng phần thuộc tính chung, không dùng toàn bộ thuộc tính của $R$.",
+                    "C": "Dùng hiệu thay vì phần chung $R_1 \\cap R_2$.",
+                    "D": "Đảo ngược chiều phụ thuộc: phải là phần chung xác định một trong hai mảnh."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "chuan-hoa-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "1NF, 2NF, 3NF, BCNF",
+              "md": "1NF: mọi giá trị thuộc tính là nguyên tử (không danh sách, không quan hệ lồng). 2NF: 1NF và không có phụ thuộc bộ phận — không tồn tại $X \\subsetneq K$ ($K$ là khóa ứng viên) với $X \\to A$, $A$ là thuộc tính không khóa; nếu mọi khóa ứng viên chỉ gồm một thuộc tính thì lược đồ luôn đạt 2NF. 3NF: với mọi $X \\to A \\in F^+$ không tầm thường ($A \\notin X$): hoặc $X$ là siêu khóa, hoặc $A$ là thuộc tính khóa. BCNF: với mọi $X \\to A \\in F^+$ không tầm thường: $X$ là siêu khóa (BCNF mạnh hơn 3NF).",
+              "audio": null
+            },
+            {
+              "id": "chuan-hoa-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Bảo toàn thông tin và bảo toàn phụ thuộc",
+              "md": "$R$ phân rã thành $R_1,R_2$ là bảo toàn thông tin (lossless join) nếu $(R_1 \\cap R_2) \\to R_1$ hoặc $(R_1 \\cap R_2) \\to R_2$ theo $F^+$; khi đó $R_1 \\bowtie R_2 = R$, không sinh bộ giả. Bảo toàn phụ thuộc: hợp các phụ thuộc hàm chiếu xuống các mảnh suy ra được toàn bộ $F$.",
+              "audio": null
+            },
+            {
+              "id": "chuan-hoa-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuan-hoa-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Thuật toán tổng hợp 3NF: mỗi phụ thuộc trong phủ tối thiểu được tách thành một {{gap}}, sau đó thêm một quan hệ chứa {{gap}} nếu chưa có.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "quan hệ",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "khóa",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "thuộc tính",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "bộ giả",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi phụ thuộc hàm sinh một quan hệ riêng, và cần thêm quan hệ chứa khóa để bảo đảm tính lossless.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chuan-hoa-b5",
+              "kind": "text",
+              "md": "Thuật toán tổng hợp 3NF: tính phủ tối thiểu (tách vế phải thành một thuộc tính; bỏ thuộc tính dư thừa ở vế trái; bỏ phụ thuộc dư thừa), mỗi phụ thuộc thành một quan hệ, thêm một quan hệ chứa khóa nếu chưa có. Kết quả luôn lossless và bảo toàn phụ thuộc. Phân rã BCNF lặp lại việc tách theo phụ thuộc vi phạm: luôn lossless nhưng có thể mất bảo toàn phụ thuộc.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chuan-hoa-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuan-hoa-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Trong Ví dụ 1 của bài, khóa ứng viên duy nhất của lược đồ R(MaHD, MaSach, TenSach, SoLuong, MaKH, TenKH, DiaChiKH, NgayLap) là tập thuộc tính nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "{MaHD, MaSach}",
+                      "MaHD, MaSach",
+                      "MaHD,MaSach",
+                      "MaHD và MaSach",
+                      "MaHD; MaSach",
+                      "MaHD + MaSach"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "{MaHD, MaSach}+ = R, còn {MaHD}+ và {MaSach}+ đều khác R nên không tối thiểu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chuan-hoa-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tìm khóa",
+              "md": "Cho $R(\\text{MaHD}, \\text{MaSach}, \\text{TenSach}, \\text{SoLuong}, \\text{MaKH}, \\text{TenKH}, \\text{DiaChiKH}, \\text{NgayLap})$ với $F = \\{\\text{MaHD},\\text{MaSach} \\to \\text{SoLuong};\\ \\text{MaSach} \\to \\text{TenSach};\\ \\text{MaHD} \\to \\text{NgayLap},\\text{MaKH};\\ \\text{MaKH} \\to \\text{TenKH},\\text{DiaChiKH}\\}$. Ta có $\\{\\text{MaHD},\\text{MaSach}\\}^+ = R$ nên đây là siêu khóa. Tối thiểu: $\\{\\text{MaHD}\\}^+ = \\{\\text{MaHD},\\text{NgayLap},\\text{MaKH},\\text{TenKH},\\text{DiaChiKH}\\} \\neq R$ và $\\{\\text{MaSach}\\}^+ = \\{\\text{MaSach},\\text{TenSach}\\} \\neq R$. Vậy khóa duy nhất là $\\{\\text{MaHD},\\text{MaSach}\\}$.",
+              "audio": null
+            },
+            {
+              "id": "chuan-hoa-b7",
+              "kind": "text",
+              "md": "Giả sử dữ liệu đã ở 1NF. Lược đồ **không đạt 2NF**: $\\text{MaSach} \\to \\text{TenSach}$ và $\\text{MaHD} \\to \\text{NgayLap},\\text{MaKH}$ là các phụ thuộc bộ phận vào khóa. Nó cũng **không đạt 3NF**: $\\text{MaHD} \\to \\text{MaKH} \\to \\text{TenKH}$ là phụ thuộc bắc cầu, vì $\\text{MaKH}$ không là siêu khóa và $\\text{TenKH}$ không là thuộc tính khóa.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chuan-hoa-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuan-hoa-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mô tả đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "1NF",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Mọi giá trị thuộc tính là nguyên tử",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "2NF",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "1NF và không có phụ thuộc bộ phận",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "BCNF",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Mọi phụ thuộc không tầm thường có vế trái là siêu khóa",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Lossless join",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Kết nối các mảnh không sinh bộ giả",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi dạng chuẩn là một điều kiện chặt dần, còn lossless join là tiêu chí chất lượng của phép phân rã.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chuan-hoa-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: phân rã về 3NF",
+              "md": "Phủ tối thiểu (tách vế phải): $\\text{MaHD},\\text{MaSach} \\to \\text{SoLuong}$; $\\text{MaSach} \\to \\text{TenSach}$; $\\text{MaHD} \\to \\text{NgayLap}$; $\\text{MaHD} \\to \\text{MaKH}$; $\\text{MaKH} \\to \\text{TenKH}$; $\\text{MaKH} \\to \\text{DiaChiKH}$. Mỗi phụ thuộc thành một quan hệ: $R_1(\\text{MaHD},\\text{MaSach},\\text{SoLuong})$, $R_2(\\text{MaSach},\\text{TenSach})$, $R_3(\\text{MaHD},\\text{NgayLap},\\text{MaKH})$, $R_4(\\text{MaKH},\\text{TenKH},\\text{DiaChiKH})$. Khóa $\\{\\text{MaHD},\\text{MaSach}\\}$ đã nằm trong $R_1$ nên không cần thêm quan hệ khóa; kết quả lossless và bảo toàn phụ thuộc.",
+              "audio": null
+            },
+            {
+              "id": "chuan-hoa-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chuan-hoa-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đánh giá tính đúng/sai của các phát biểu về chuẩn hóa.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu mọi khóa ứng viên của lược đồ chỉ gồm một thuộc tính thì lược đồ luôn đạt 2NF."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Phân rã BCNF luôn bảo toàn phụ thuộc."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Mọi lược đồ đạt 3NF đều đạt BCNF."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Thuật toán tổng hợp 3NF luôn cho kết quả lossless và bảo toàn phụ thuộc."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Không có phụ thuộc bộ phận khi khóa chỉ một thuộc tính nên 2NF luôn đúng; BCNF chỉ bảo đảm lossless, còn 3NF yếu hơn BCNF và tổng hợp 3NF đạt cả hai tiêu chí.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "chuan-hoa-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Làm sao kiểm tra $X$ là siêu khóa?",
+                  "answer": "Tính bao đóng $X^+$ theo $F$; $X$ là siêu khóa khi và chỉ khi $X^+ = R$.",
+                  "image": null
+                },
+                {
+                  "prompt": "3NF khác BCNF ở điều kiện nào?",
+                  "answer": "3NF cho phép $X$ không là siêu khóa nếu $A$ là thuộc tính khóa; BCNF đòi mọi phụ thuộc không tầm thường đều có vế trái là siêu khóa.",
+                  "image": null
+                },
+                {
+                  "prompt": "Phân rã BCNF và tổng hợp 3NF khác nhau thế nào về hai tiêu chí chất lượng?",
+                  "answer": "Tổng hợp 3NF luôn lossless và bảo toàn phụ thuộc; phân rã BCNF luôn lossless nhưng có thể mất bảo toàn phụ thuộc.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": null
+    },
+    {
+      "id": "ch-sql",
+      "title": "SQL",
+      "lessons": [
+        {
+          "id": "truy-van-co-ban",
+          "title": "Truy vấn cơ bản",
+          "est_minutes": 15,
+          "summary": "Hướng dẫn cú pháp SELECT cơ bản, lọc, sắp xếp, giới hạn và xử lý NULL qua ví dụ và bài tập.",
+          "key_ideas": [
+            "Cú pháp SELECT, WHERE, ORDER BY, LIMIT",
+            "DISTINCT và thứ tự logic của truy vấn",
+            "Toán tử, BETWEEN, IN, LIKE/ILIKE, IS NULL",
+            "Ví dụ lọc, sắp xếp và đặt alias",
+            "Lỗi so sánh với NULL"
+          ],
+          "blocks": [
+            {
+              "id": "truy-van-co-ban-b1",
+              "kind": "text",
+              "md": "Bài dùng ba bảng: `books(book_id, title, author_id, publisher_id, price, stock, publish_year)`, `customers(customer_id, name, city)`, `orders(order_id, customer_id, order_date, status)`.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "truy-van-co-ban-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Cú pháp truy vấn SELECT",
+              "md": "`SELECT [DISTINCT] biểu_thức AS alias FROM bảng WHERE điều_kiện ORDER BY cột [ASC | DESC] LIMIT n OFFSET m;`. `SELECT` chọn cột hoặc biểu thức. `WHERE` lọc từng dòng trước khi chọn cột. `ORDER BY` sắp xếp kết quả. `LIMIT n OFFSET m` lấy $n$ dòng sau khi bỏ qua $m$ dòng.",
+              "audio": null
+            },
+            {
+              "id": "truy-van-co-ban-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "truy-van-co-ban-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Thứ tự logic xử lý các mệnh đề trong một truy vấn SQL là:",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "FROM → WHERE → SELECT → ORDER BY → LIMIT",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "SELECT → FROM → WHERE → ORDER BY → LIMIT",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "FROM → SELECT → WHERE → ORDER BY → LIMIT",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "FROM → WHERE → ORDER BY → SELECT → LIMIT",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "WHERE lọc dòng trước, SELECT chọn cột, ORDER BY sắp xếp kết quả và LIMIT cắt lấy n dòng cuối cùng.",
+                  "option_feedback": {
+                    "B": "Chọn cột không thể là bước đầu: dữ liệu phải được lấy từ FROM trước đã.",
+                    "C": "WHERE lọc từng dòng trước khi SELECT chọn cột, nên WHERE đứng trước SELECT.",
+                    "D": "ORDER BY sắp xếp trên kết quả đã được SELECT chọn, nên nó không chạy trước SELECT."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "truy-van-co-ban-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/truy-van-co-ban-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "2c390ded7b77817d38ce88950c3b5eac1d9f2c19ca2c6fedb70b17289cd27d2b",
+                "bytes": 4288
+              },
+              "alt": "Sơ đồ thứ tự logic FROM, WHERE, SELECT, ORDER BY, LIMIT",
+              "caption": "Thứ tự logic của truy vấn",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "truy-van-co-ban-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "DISTINCT, toán tử và NULL",
+              "md": "`DISTINCT` loại bỏ các dòng trùng nhau trên toàn bộ danh sách cột được chọn. Các toán tử thường dùng gồm `=`, `<>`, `<`, `<=`, `>`, `>=`, `BETWEEN`, `IN`, `LIKE`, `ILIKE`, `IS NULL`; so sánh với `NULL` phải dùng `IS NULL` hoặc `IS NOT NULL`, không dùng `= NULL`.",
+              "audio": null
+            },
+            {
+              "id": "truy-van-co-ban-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "truy-van-co-ban-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Để tìm các sách chưa có giá, điều kiện phải viết: `WHERE price {{gap}} NULL`",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "IS",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "=",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "<>",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mọi so sánh với NULL cho kết quả UNKNOWN chứ không phải TRUE, nên phải dùng IS NULL.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "truy-van-co-ban-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: lọc, sắp xếp, giới hạn",
+              "md": "```sql\nSELECT book_id, title, price, stock\nFROM books\nWHERE price > 100000 AND stock > 0\nORDER BY price DESC, title ASC\nLIMIT 5;\n```\nLấy sách giá trên $100000$ và còn hàng; sắp theo giá giảm dần, nếu trùng giá thì theo tên tăng dần; chỉ lấy 5 dòng đầu.",
+              "audio": null
+            },
+            {
+              "id": "truy-van-co-ban-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "truy-van-co-ban-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Mọi phép so sánh với `NULL` (ví dụ `price = NULL`) cho kết quả logic nào — không phải TRUE cũng không phải FALSE?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "UNKNOWN",
+                      "unknown",
+                      "Unknown"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "SQL dùng logic ba giá trị: so sánh với NULL trả về UNKNOWN nên WHERE không giữ lại dòng nào.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "truy-van-co-ban-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: DISTINCT, IN, ILIKE",
+              "md": "```sql\nSELECT DISTINCT city\nFROM customers\nWHERE city IN ('Hà Nội', 'Đà Nẵng')\n  AND name ILIKE '%An%';\n```\n`IN` giới hạn thành phố; `ILIKE '%An%'` tìm tên chứa `An` không phân biệt hoa thường; `DISTINCT city` chỉ giữ mỗi thành phố một lần.",
+              "audio": null
+            },
+            {
+              "id": "truy-van-co-ban-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp với NULL",
+              "md": "Viết `WHERE price = NULL` để tìm sách chưa có giá là sai: mọi so sánh với `NULL` cho kết quả `UNKNOWN`, không phải `TRUE`, nên truy vấn không trả về dòng nào. Phải viết `WHERE price IS NULL`.",
+              "audio": null
+            },
+            {
+              "id": "truy-van-co-ban-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "truy-van-co-ban-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi toán tử với ý nghĩa của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "BETWEEN",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "nằm trong một khoảng, gồm cả hai đầu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "IN",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "thuộc một danh sách giá trị",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "ILIKE",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "khớp mẫu, không phân biệt hoa thường",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "IS NULL",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "kiểm tra giá trị rỗng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "BETWEEN và IN giới hạn theo khoảng hoặc danh sách, ILIKE so mẫu không phân biệt hoa thường, còn IS NULL là cách duy nhất kiểm tra NULL.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "truy-van-co-ban-b8",
+              "kind": "interactive",
+              "prompt": "Kéo giá gốc để giá sau giảm 10% đạt 180000",
+              "x": {
+                "symbol": "price",
+                "label": "Giá gốc",
+                "unit": "đơn vị"
+              },
+              "y": {
+                "symbol": "sale_price",
+                "label": "Giá sau giảm",
+                "unit": "đơn vị"
+              },
+              "expr": "0.9*x",
+              "x_min": 0.0,
+              "x_max": 300000.0,
+              "x_step": 10000.0,
+              "x_start": 100000.0,
+              "target_y": 180000.0,
+              "tolerance": 1.0,
+              "praise": "Đúng: giá 200000 sau giảm 10% còn 180000.",
+              "audio": null
+            },
+            {
+              "id": "truy-van-co-ban-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "truy-van-co-ban-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu về truy vấn cơ bản trong SQL.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "`WHERE` lọc từng dòng trước khi `SELECT` chọn cột."
+                    },
+                    {
+                      "id": "b",
+                      "text": "`DISTINCT` chỉ loại bỏ trùng lặp dựa trên cột đầu tiên trong danh sách được chọn."
+                    },
+                    {
+                      "id": "c",
+                      "text": "`ORDER BY price DESC, title ASC` sắp giá giảm dần, nếu trùng giá thì sắp tên tăng dần."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Có thể dùng `WHERE price = NULL` để tìm các dòng có giá trị NULL."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "DISTINCT loại trùng trên toàn bộ danh sách cột được chọn, còn so sánh với NULL luôn cho UNKNOWN nên phải dùng IS NULL.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "truy-van-co-ban-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Thứ tự logic của truy vấn SELECT là gì?",
+                  "answer": "FROM → WHERE → SELECT → ORDER BY → LIMIT.",
+                  "image": null
+                },
+                {
+                  "prompt": "DISTINCT làm gì?",
+                  "answer": "Loại bỏ các dòng trùng nhau trên toàn bộ danh sách cột được chọn.",
+                  "image": null
+                },
+                {
+                  "prompt": "Muốn tìm giá trị NULL thì dùng toán tử nào?",
+                  "answer": "IS NULL hoặc IS NOT NULL, không dùng = NULL.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "noi-bang",
+          "title": "Nối bảng",
+          "est_minutes": 15,
+          "summary": "Trình bày các loại JOIN, điều kiện nối và lỗi quên điều kiện nối qua ví dụ nối nhiều bảng.",
+          "key_ideas": [
+            "INNER, LEFT, RIGHT, FULL, CROSS JOIN",
+            "Điều kiện nối và alias bảng",
+            "Nối nhiều bảng trong một truy vấn",
+            "Lỗi quên điều kiện nối gây tích Descartes",
+            "Ví dụ khách hàng và đơn hàng"
+          ],
+          "blocks": [
+            {
+              "id": "noi-bang-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nối bảng",
+              "md": "Nối bảng ghép các dòng từ hai hay nhiều bảng dựa trên một **điều kiện nối**. Cú pháp: `SELECT ... FROM A JOIN B ON điều_kiện_nối;`",
+              "audio": null
+            },
+            {
+              "id": "noi-bang-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Các loại JOIN",
+              "md": "`INNER JOIN` (viết `JOIN` cũng được) chỉ giữ các cặp dòng thỏa điều kiện nối. `LEFT JOIN` giữ toàn bộ dòng bên trái; dòng bên phải không khớp thì các cột bên phải nhận `NULL`. `RIGHT JOIN` làm ngược lại `LEFT JOIN`; `FULL JOIN` giữ tất cả dòng ở cả hai bên.",
+              "audio": null
+            },
+            {
+              "id": "noi-bang-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "noi-bang-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong PostgreSQL, viết `FROM books, authors` mà không có điều kiện nối trong `WHERE` thì kết quả là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Tích Descartes giữa books và authors.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Chỉ các sách có tác giả.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Lỗi cú pháp, không chạy.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chỉ các tác giả có sách.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Thiếu điều kiện nối, PostgreSQL ghép mọi dòng của books với mọi dòng của authors, tạo tích Descartes.",
+                  "option_feedback": {
+                    "B": "Muốn vậy phải có điều kiện nối, còn thiếu điều kiện thì ghép mọi cặp.",
+                    "C": "PostgreSQL vẫn chạy truy vấn và trả về tích Descartes.",
+                    "D": "Đây là kết quả của phép nối có điều kiện, không phải khi thiếu điều kiện nối."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "noi-bang-b3",
+              "kind": "text",
+              "md": "`CROSS JOIN` là tích Descartes: mọi dòng bên trái ghép với mọi dòng bên phải. Hai bảng có tên cột trùng nhau thì nên dùng alias bảng và ghi rõ cột, ví dụ `books b` và `authors a`.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "noi-bang-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "noi-bang-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền từ khóa nối đúng: `FROM customers c {{gap}} orders o ON o.customer_id = c.customer_id` để giữ mọi khách hàng kể cả khách chưa có đơn.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "LEFT JOIN",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "INNER JOIN",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "RIGHT JOIN",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "CROSS JOIN",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "LEFT JOIN giữ toàn bộ dòng bên trái; khách chưa có đơn sẽ có các cột từ orders là NULL.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "noi-bang-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Nối nhiều bảng: sách, tác giả, nhà xuất bản",
+              "md": "`SELECT b.title, a.name AS author, p.name AS publisher FROM books b JOIN authors a ON a.author_id = b.author_id JOIN publishers p ON p.publisher_id = b.publisher_id ORDER BY b.title;`. `books` nối với `authors` qua `author_id`; kết quả trung gian nối tiếp với `publishers` qua `publisher_id`.",
+              "audio": null
+            },
+            {
+              "id": "noi-bang-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "LEFT JOIN: mọi khách hàng và đơn hàng",
+              "md": "`SELECT c.name, o.order_id, o.order_date FROM customers c LEFT JOIN orders o ON o.customer_id = c.customer_id ORDER BY c.name, o.order_date;`. `customers` là bảng bên trái nên mọi khách hàng đều được giữ; khách chưa có đơn thì `o.order_id` và `o.order_date` là `NULL`.",
+              "audio": null
+            },
+            {
+              "id": "noi-bang-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "noi-bang-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tên đầy đủ của kiểu nối tạo tích Descartes giữa hai bảng là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "CROSS JOIN",
+                      "cross join",
+                      "Cross Join",
+                      "CROSS join",
+                      "cross JOIN"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "CROSS JOIN ghép mọi dòng bên trái với mọi dòng bên phải.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "noi-bang-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Quên điều kiện nối",
+              "md": "Viết `FROM books, authors` mà quên điều kiện nối trong `WHERE` thì PostgreSQL tạo tích Descartes: mỗi sách ghép với mọi tác giả, kết quả sai và rất lớn. Phải dùng `JOIN ... ON ...` hoặc thêm điều kiện nối đúng, ví dụ `WHERE books.author_id = authors.author_id`.",
+              "audio": null
+            },
+            {
+              "id": "noi-bang-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "noi-bang-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi kiểu nối với mô tả đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "INNER JOIN",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Chỉ giữ cặp dòng thỏa điều kiện nối",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "LEFT JOIN",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Giữ toàn bộ dòng bảng bên trái",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "FULL JOIN",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Giữ tất cả dòng ở cả hai bên",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "CROSS JOIN",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Ghép mọi dòng với mọi dòng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "INNER chỉ giữ cặp khớp; LEFT giữ bên trái; FULL giữ cả hai; CROSS tạo tích Descartes.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "noi-bang-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/noi-bang-b7.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e6e6fdcf411777c4e7f68ceda9cc0e2cdbf3dff5dab334cc513880b278e46e9e",
+                "bytes": 3012
+              },
+              "alt": "Sơ đồ nối bảng books với authors qua cột author_id",
+              "caption": "Điều kiện nối xác định cặp dòng nào được ghép.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "noi-bang-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "noi-bang-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu về nối bảng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Viết `JOIN` mà không ghi rõ loại thì mặc định là `INNER JOIN`."
+                    },
+                    {
+                      "id": "b",
+                      "text": "`LEFT JOIN` giữ toàn bộ dòng của bảng bên phải, kể cả khi không khớp."
+                    },
+                    {
+                      "id": "c",
+                      "text": "`FULL JOIN` giữ tất cả dòng ở cả hai bảng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Quên điều kiện nối khi dùng `FROM books, authors` sẽ báo lỗi cú pháp."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "JOIN mặc định là INNER JOIN; LEFT JOIN giữ bên trái; FULL JOIN giữ cả hai; thiếu điều kiện nối tạo tích Descartes chứ không phải lỗi cú pháp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "noi-bang-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Nối bảng dựa trên gì?",
+                  "answer": "Dựa trên một điều kiện nối giữa các bảng.",
+                  "image": null
+                },
+                {
+                  "prompt": "LEFT JOIN giữ những dòng nào?",
+                  "answer": "Giữ toàn bộ dòng bên trái; dòng không khớp bên phải nhận NULL ở các cột bên phải.",
+                  "image": null
+                },
+                {
+                  "prompt": "Quên điều kiện nối khi viết FROM A, B gây ra gì?",
+                  "answer": "Tích Descartes: mọi dòng A ghép với mọi dòng B, kết quả sai và rất lớn.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nhom-va-truy-van-con",
+          "title": "Nhóm và truy vấn con",
+          "est_minutes": 15,
+          "summary": "Giới thiệu hàm tổng hợp, GROUP BY, HAVING và các dạng truy vấn con qua ví dụ và bài tập.",
+          "key_ideas": [
+            "Hàm tổng hợp COUNT, SUM, AVG, MIN, MAX",
+            "GROUP BY và HAVING",
+            "Truy vấn con vô hướng, IN/ANY/ALL, EXISTS, tương quan",
+            "Thứ tự logic với GROUP BY/HAVING",
+            "Lỗi dùng hàm tổng hợp trong WHERE"
+          ],
+          "blocks": [
+            {
+              "id": "nhom-va-truy-van-con-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hàm tổng hợp",
+              "md": "Hàm tổng hợp nhận nhiều dòng và trả về một giá trị: `COUNT(*)` đếm số dòng; `COUNT(cột)` đếm số dòng có giá trị khác `NULL`; `COUNT(DISTINCT cột)` đếm số giá trị khác `NULL` và khác nhau; `SUM(cột)`, `AVG(cột)`, `MIN(cột)`, `MAX(cột)` tính tổng, trung bình, nhỏ nhất, lớn nhất.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "GROUP BY và HAVING",
+              "md": "`GROUP BY cột_nhóm` gom các dòng có cùng giá trị ở cột nhóm. Sau khi nhóm, mỗi cột trong `SELECT` phải là cột nhóm hoặc nằm trong hàm tổng hợp.\n\n`WHERE` lọc dòng trước khi nhóm; `HAVING` lọc nhóm sau khi tổng hợp.\n\n```sql\nSELECT cột_nhóm, hàm_tổng_hợp(...)\nFROM bảng\nWHERE điều_kiện_lọc_dòng\nGROUP BY cột_nhóm\nHAVING điều_kiện_lọc_nhóm\nORDER BY ...;\n```",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-truy-van-con-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Muốn lọc các nhóm sau khi đã tổng hợp (ví dụ chỉ giữ nhóm có COUNT(*) > 1), phải dùng mệnh đề nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "HAVING",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "WHERE",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "GROUP BY",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "ORDER BY",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "HAVING lọc nhóm sau khi tổng hợp, nên dùng được hàm tổng hợp như COUNT(*) > 1.",
+                  "option_feedback": {
+                    "B": "WHERE chạy trước GROUP BY nên lúc đó chưa có nhóm và không được dùng hàm tổng hợp.",
+                    "C": "GROUP BY chỉ gom dòng thành nhóm, không có chức năng lọc nhóm.",
+                    "D": "ORDER BY chỉ sắp xếp kết quả, không lọc nhóm."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-truy-van-con-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/nhom-va-truy-van-con-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "d3175217af35b5f3b33c32196b2962ede7df50561578aec38de3e94f428c6bfa",
+                "bytes": 3234
+              },
+              "alt": "Sơ đồ thứ tự logic: FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT",
+              "caption": "Thứ tự logic của một câu SELECT có GROUP BY.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Đếm sách theo nhà xuất bản",
+              "md": "```sql\nSELECT p.publisher_id, p.name,\n       COUNT(b.book_id) AS so_sach,\n       AVG(b.price) AS gia_tb\nFROM publishers p\nLEFT JOIN books b ON b.publisher_id = p.publisher_id\nGROUP BY p.publisher_id, p.name\nHAVING COUNT(b.book_id) >= 2\nORDER BY so_sach DESC, p.name;\n```\n`LEFT JOIN` giữ mọi nhà xuất bản. `COUNT(b.book_id)` đếm số sách; sách không có thì không được đếm. `HAVING` loại nhóm có ít hơn 2 sách. `ORDER BY so_sach DESC` sắp giảm dần.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-truy-van-con-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Thứ tự logic của truy vấn: FROM → {{gap}} → GROUP BY → {{gap}} → SELECT → ORDER BY → LIMIT",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "WHERE",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "HAVING",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "LIMIT",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "JOIN",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "WHERE lọc dòng trước khi nhóm, còn HAVING lọc nhóm sau khi tổng hợp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-truy-van-con-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Truy vấn con",
+              "md": "Truy vấn con là một câu `SELECT` nằm trong câu `SELECT` khác. Dạng vô hướng trả về một giá trị, dùng với `=`, `>`, `<`, ... Dạng nhiều dòng dùng với `IN`, `ANY`, `ALL`. `EXISTS` kiểm tra có dòng thỏa điều kiện không. Truy vấn con tương quan tham chiếu cột của truy vấn ngoài.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-truy-van-con-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Mệnh đề nào được dùng để lọc các nhóm sau khi đã thực hiện tổng hợp với GROUP BY?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "HAVING",
+                      "having",
+                      "Having",
+                      "mệnh đề HAVING",
+                      "Mệnh đề HAVING"
+                    ]
+                  },
+                  "hint": "Đừng nhầm với mệnh đề lọc dòng trước khi nhóm.",
+                  "explanation": "HAVING lọc nhóm sau khi GROUP BY và các hàm tổng hợp đã được tính; WHERE không dùng được cho mục đích này.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-truy-van-con-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "So với giá trung bình",
+              "md": "```sql\nSELECT book_id, title, price\nFROM books\nWHERE price > (SELECT AVG(price) FROM books);\n```\nTruy vấn con `(SELECT AVG(price) FROM books)` trả về một giá trị vô hướng. Truy vấn ngoài so từng `price`",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Sách chưa từng được đặt",
+              "md": "```sql\nSELECT b.book_id, b.title\nFROM books b\nWHERE NOT EXISTS (\n  SELECT 1\n  FROM order_items oi\n  WHERE oi.book_id = b.book_id\n)\nORDER BY b.title;\n```\nTruy vấn con tương quan tham chiếu `b.book_id`; `NOT EXISTS` giữ sách không có dòng `order_items` tương ứng.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-truy-van-con-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi thành phần với ý nghĩa đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "COUNT(*)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "đếm số dòng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "COUNT(cột)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "đếm số dòng có giá trị khác NULL",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "COUNT(DISTINCT cột)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "đếm số giá trị khác NULL và khác nhau",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "EXISTS",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "kiểm tra có tồn tại dòng thỏa điều kiện",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "COUNT(*) đếm mọi dòng, COUNT(cột) bỏ qua NULL, COUNT(DISTINCT) loại trùng, EXISTS chỉ kiểm tra có dòng hay không.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-truy-van-con-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Dùng hàm tổng hợp trong WHERE",
+              "md": "`WHERE COUNT(*) > 1` sai vì `WHERE` chạy trước `GROUP BY`, lúc đó chưa có nhóm và không được dùng hàm tổng hợp trong `WHERE`. Muốn lọc nhóm có nhiều hơn một dòng, viết `HAVING COUNT(*) > 1`.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-truy-van-con-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-truy-van-con-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các khẳng định về GROUP BY và truy vấn con.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Sau khi GROUP BY, mỗi cột trong SELECT phải là cột nhóm hoặc nằm trong hàm tổng hợp."
+                    },
+                    {
+                      "id": "b",
+                      "text": "WHERE lọc các nhóm sau khi đã tổng hợp."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Truy vấn con vô hướng trả về một giá trị và có thể dùng với =, >, <."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Truy vấn con tương quan không được tham chiếu cột của truy vấn ngoài."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "WHERE lọc dòng trước khi nhóm còn HAVING mới lọc nhóm; truy vấn con tương quan chính là loại tham chiếu cột của truy vấn ngoài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-truy-van-con-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Sau GROUP BY, điều kiện gì đặt lên các cột trong SELECT?",
+                  "answer": "Mỗi cột phải là cột nhóm hoặc nằm trong hàm tổng hợp.",
+                  "image": null
+                },
+                {
+                  "prompt": "WHERE và HAVING khác nhau ở đâu trong thứ tự logic?",
+                  "answer": "WHERE lọc dòng trước GROUP BY; HAVING lọc nhóm sau GROUP BY và tổng hợp.",
+                  "image": null
+                },
+                {
+                  "prompt": "Truy vấn con vô hướng và truy vấn con tương quan khác nhau ở đâu?",
+                  "answer": "Vô hướng trả về một giá trị; tương quan tham chiếu cột của truy vấn ngoài.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": null
+    }
+  ],
+  "gloss_start": null
+}

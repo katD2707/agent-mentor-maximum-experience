@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="60" y="438" width="880" height="64" rx="32" fill="#E9E5F6"/>
+<line x1="80" y1="470" x2="886" y2="470" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<polygon points="932,470 874,445 874,495" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+<line x1="200" y1="468" x2="200" y2="404" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="380" y1="468" x2="380" y2="404" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="640" y1="468" x2="640" y2="404" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="880" y1="468" x2="880" y2="404" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<circle cx="200" cy="400" r="11" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="380" cy="400" r="11" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="640" cy="400" r="11" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="880" cy="400" r="11" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="200" y1="388" x2="200" y2="342" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="380" y1="388" x2="380" y2="252" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="640" y1="388" x2="640" y2="342" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="880" y1="388" x2="880" y2="252" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<text x="60" y="330" text-anchor="start" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">will: spontaneous</text>
+<text x="100" y="240" text-anchor="start" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">be going to: plan/evidence</text>
+<text x="390" y="330" text-anchor="start" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">present continuous: arrangement</text>
+<text x="560" y="240" text-anchor="start" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">present simple: timetable</text>
+<text x="110" y="545" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">now</text>
+<text x="900" y="545" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">future</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

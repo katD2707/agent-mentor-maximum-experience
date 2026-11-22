@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/baloo-2':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource/lexend':
         specifier: ^5.3.0
         version: 5.3.0
@@ -104,6 +107,9 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@fontsource/baloo-2@5.3.0':
+    resolution: {integrity: sha512-CBuxZ27jvMmD5+KaaPkMWv/yjdRNppVAd5/002yAyvyQyLNL3aZCbkx6gbAT/bjxPd1A0VMdDQjfcELI8chccQ==}
 
   '@fontsource/lexend@5.3.0':
     resolution: {integrity: sha512-4igbsooynC6xwfagkAW6eo9JMrw8ALFGkWn1YChYmYchufMJSPgWihD+cy5ruX5YX/gDk/gllcl1Oj7q6KUZmw==}
@@ -1011,6 +1017,8 @@ snapshots:
   '@babel/runtime@7.29.13': {}
 
   '@exodus/bytes@1.16.0': {}
+
+  '@fontsource/baloo-2@5.3.0': {}
 
   '@fontsource/lexend@5.3.0': {}
 

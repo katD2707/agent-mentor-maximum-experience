@@ -31,6 +31,7 @@ class CourseInfo:
     last_lesson_id: str | None = None
     enrolled_at: datetime | None = None
     updated_at: datetime | None = None
+    age_band: str | None = None  # the course's band (None = unknown)
 
     def remaining_minutes(self) -> int:
         return sum(ls.minutes for ls in self.lessons if not ls.done)

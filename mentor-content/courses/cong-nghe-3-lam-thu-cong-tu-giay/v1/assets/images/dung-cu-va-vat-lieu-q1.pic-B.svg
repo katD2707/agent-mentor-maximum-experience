@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="348" rx="112" ry="16" fill="#E9E5F6"/>
+
+  <!-- offset backing sheet (ink wash) -->
+  <g transform="rotate(-6 200 200)">
+    <path d="M126 56 h122 a14 14 0 0 1 14 14 v244 a14 14 0 0 1 -14 14 h-122 a14 14 0 0 1 -14 -14 v-244 a14 14 0 0 1 14 -14 z"
+          fill="#E9E5F6"/>
+  </g>
+
+  <!-- main A4 sheet -->
+  <g transform="rotate(4 200 200)">
+    <path d="M132 44 h116 a16 16 0 0 1 16 16 v252 l-34 34 h-98 a16 16 0 0 1 -16 -16 v-270 a16 16 0 0 1 16 -16 z"
+          fill="#F7F1E3" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- folded corner -->
+    <path d="M264 312 v-0.5 l-34 34 h34 z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M230 312 h34" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" fill="none"/>
+
+    <!-- ruled lines -->
+    <g stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" opacity="0.30">
+      <path d="M154 108 h92"/>
+      <path d="M154 140 h92"/>
+      <path d="M154 172 h92"/>
+      <path d="M154 204 h74"/>
+      <path d="M154 236 h86"/>
+      <path d="M154 268 h58"/>
+    </g>
+
+    <!-- yellow highlighter bar near the top -->
+    <rect x="154" y="76" width="70" height="14" rx="7" fill="#F0D76E"/>
+
+    <!-- coral marker dot bottom-left -->
+    <circle cx="160" cy="288" r="11" fill="#E8806A"/>
+  </g>
+
+  <!-- little yellow tab peeking at top-right -->
+  <path d="M286 62 l26 0 l0 34 l-13 -10 l-13 10 z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

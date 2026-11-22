@@ -1,0 +1,2225 @@
+{
+  "schema_version": 1,
+  "course_id": "dia-li-12-cac-vung-kinh-te",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g10_12",
+  "title": "Địa lí 12: Các vùng kinh tế",
+  "chapters": [
+    {
+      "id": "ch-cac-vung-phia-bac",
+      "title": "Các vùng phía Bắc",
+      "lessons": [
+        {
+          "id": "trung-du-va-mien-nui-bac-bo",
+          "title": "Trung du và miền núi Bắc Bộ",
+          "est_minutes": 15,
+          "summary": "Bài trình bày khái quát, thế mạnh và hạn chế của Trung du và miền núi Bắc Bộ, kèm ví dụ đọc Atlat/tính toán, lỗi thường gặp và bài luyện tập.",
+          "key_ideas": [
+            "Gồm 15 tỉnh; diện tích lớn nhất, mật độ thấp",
+            "Địa hình Đông Bắc – Tây Bắc; mùa đông lạnh",
+            "Giàu khoáng sản, thủy năng, chè, dược liệu, trâu",
+            "Kinh tế biển Quảng Ninh; hạn chế giao thông, thiếu lao động kĩ thuật",
+            "Đọc Atlat thủy điện; tính năng suất và chọn biểu đồ chè"
+          ],
+          "blocks": [
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b1",
+              "kind": "text",
+              "md": "Trung du và miền núi Bắc Bộ gồm 15 tỉnh, diện tích lớn nhất cả nước khoảng $95,2$ nghìn km² (28,8%); dân số trên 12 triệu người, mật độ chỉ khoảng $130$ người/km². Địa hình chia hai tiểu vùng Đông Bắc và Tây Bắc; mùa đông lạnh nhất cả nước.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/trung-du-va-mien-nui-bac-bo-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "603fd184ca81d02dc65f5fa48284402c9114fe2a2274bce00af9ef8879a156e8",
+                "bytes": 3746
+              },
+              "alt": "Sơ đồ vùng Trung du và miền núi Bắc Bộ với hai tiểu vùng Đông Bắc, Tây Bắc và các hướng giáp",
+              "caption": "Vùng lớn nhất nước, chia hai tiểu vùng Đông Bắc và Tây Bắc",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trung-du-va-mien-nui-bac-bo-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khoáng sản nào được khai thác ở Quảng Ninh và Thái Nguyên theo nội dung bài học?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Than",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "A-pa-tít",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Thiếc",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chì - kẽm",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Bài học nêu than ở Quảng Ninh và Thái Nguyên, thuộc nhóm khoáng sản giàu nhất của vùng.",
+                  "option_feedback": {
+                    "B": "A-pa-tít được nêu ở Lào Cai, không phải Quảng Ninh và Thái Nguyên.",
+                    "C": "Thiếc được nêu ở Cao Bằng.",
+                    "D": "Chì - kẽm được nêu ở Bắc Kạn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b3",
+              "kind": "text",
+              "md": "Khoáng sản giàu nhất cả nước: than ở Quảng Ninh, Thái Nguyên; a-pa-tít ở Lào Cai; thiếc ở Cao Bằng; chì - kẽm ở Bắc Kạn. Thủy năng lớn nhất: sông Đà có Sơn La $2400$ MW, Hòa Bình $1920$ MW, Lai Châu $1200$ MW. Atlat trang 13 thể hiện các nhà máy: Hòa Bình, Sơn La, Lai Châu, Tuyên Quang, Thác Bà.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trung-du-va-mien-nui-bac-bo-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho bảng số liệu diện tích và sản lượng chè của vùng qua ba năm. Để thể hiện hai đại lượng khác đơn vị và so sánh qua các năm, nên chọn dạng biểu đồ nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cột ghép",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đường",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Tròn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Miền",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Hai đại lượng khác đơn vị, ba mốc thời gian, mục đích so sánh nên dùng cột ghép (mỗi năm hai cột).",
+                  "option_feedback": {
+                    "B": "Đường thường dùng khi thể hiện tốc độ tăng trưởng sau khi quy về %.",
+                    "C": "Tròn dùng khi thể hiện cơ cấu %.",
+                    "D": "Miền dùng khi thể hiện cơ cấu hoặc sự thay đổi theo thời gian, không phù hợp để so sánh hai đại lượng khác đơn vị."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b4",
+              "kind": "text",
+              "md": "Thế mạnh nông nghiệp: chè có diện tích và sản lượng lớn nhất cả nước; hồi, quế, tam thất, mận, đào, cải bắp. Đàn trâu lớn nhất nước nhờ đồng cỏ vùng núi. Quảng Ninh phát triển kinh tế biển: than, cảng Cái Lân, du lịch Vịnh Hạ Long. Hạn chế: địa hình chia cắt, giao thông khó khăn, thiếu lao động kĩ thuật, cơ sở hạ tầng thấp.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức",
+              "md": "Mật độ dân số $=\\dfrac{\\text{Dân số}}{\\text{Diện tích}}$ (người/km²). Năng suất $=\\dfrac{\\text{Sản lượng}}{\\text{Diện tích}}$; đổi tấn/ha sang tạ/ha: nhân $10$.",
+              "audio": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ",
+              "md": "Năm 2020, diện tích chè là $130$ nghìn ha, sản lượng $1060$ nghìn tấn. Năng suất $=\\dfrac{1060}{130}\\approx 8,2$ tấn/ha $=82$ tạ/ha.",
+              "audio": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trung-du-va-mien-nui-bac-bo-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Điền từ thích hợp vào công thức tính mật độ dân số: Mật độ dân số = {{gap}} / {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Dân số",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "Diện tích",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Sản lượng",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "Tốc độ tăng trưởng",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mật độ dân số bằng dân số chia cho diện tích (người/km²).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để mật độ dân số còn khoảng 132 người/km²",
+              "x": {
+                "symbol": "S",
+                "label": "Diện tích",
+                "unit": "nghìn km²"
+              },
+              "y": {
+                "symbol": "M",
+                "label": "Mật độ dân số",
+                "unit": "người/km²"
+              },
+              "expr": "12600/x",
+              "x_min": 60.0,
+              "x_max": 150.0,
+              "x_step": 1.0,
+              "x_start": 70.0,
+              "target_y": 132.0,
+              "tolerance": 1.5,
+              "praise": "Đúng: 12,6 triệu người trên 95,2 nghìn km² cho khoảng 132 người/km².",
+              "audio": null
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trung-du-va-mien-nui-bac-bo-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép tên đối tượng với thông số tương ứng trong bài học.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Sơn La",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "2400 MW",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Hòa Bình",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "1920 MW",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Lai Châu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "1200 MW",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Phan-xi-păng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "3143 m",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các nhà máy thủy điện trên sông Đà có công suất như bài học; Phan-xi-păng cao 3143 m.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "trung-du-va-mien-nui-bac-bo-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vùng Trung du và miền núi Bắc Bộ có bao nhiêu tỉnh và diện tích so với cả nước thế nào?",
+                  "answer": "15 tỉnh; diện tích lớn nhất cả nước, khoảng 95,2 nghìn km² (28,8%).",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao vùng trồng được chè, hồi, quế và rau quả ôn đới?",
+                  "answer": "Khí hậu có mùa đông lạnh, địa hình cao phân hóa đai cao nên trồng được cây cận nhiệt, ôn đới.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hai hạn chế lớn của vùng là gì?",
+                  "answer": "Địa hình chia cắt, giao thông khó khăn; thiếu lao động kĩ thuật, cơ sở hạ tầng thấp.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dong-bang-song-hong",
+          "title": "Đồng bằng sông Hồng",
+          "est_minutes": 15,
+          "summary": "Bài trình bày khái quát, thế mạnh và hạn chế của Đồng bằng sông Hồng, kèm ví dụ đọc Atlat/tính toán, lỗi thường gặp và bài luyện tập.",
+          "key_ideas": [
+            "10 tỉnh; mật độ cao nhất, dân đông",
+            "Thế mạnh đất phù sa, vụ đông, công nghiệp sớm, dịch vụ",
+            "Hạn chế bình quân đất nông nghiệp thấp, thiếu nguyên liệu",
+            "Đọc Atlat công nghiệp; tính bình quân đất, chọn biểu đồ",
+            "Lỗi: nhầm Quảng Ninh thuộc Đồng bằng sông Hồng"
+          ],
+          "blocks": [
+            {
+              "id": "dong-bang-song-hong-b1",
+              "kind": "text",
+              "md": "Đồng bằng sông Hồng gồm **10 tỉnh, thành phố**, diện tích khoảng $15,0$ nghìn km² (4,5% cả nước) nhưng dân số trên $22$ triệu người. Mật độ dân số cao nhất cả nước, khoảng $1.500$ người/km².",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-hong-b2",
+              "kind": "text",
+              "md": "Địa hình là đồng bằng phù sa sông Hồng và sông Thái Bình, thấp, khá bằng phẳng, có hệ thống đê điều và nhiều ô trũng. Khí hậu nhiệt đới ẩm gió mùa, mùa đông lạnh (tháng 11 - 4) nên có vụ đông.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-hong-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-hong-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo bài học, Quảng Ninh thuộc vùng kinh tế nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Trung du và miền núi Bắc Bộ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đồng bằng sông Hồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Bắc Trung Bộ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Đồng bằng sông Hồng vì nằm trong vùng kinh tế trọng điểm Bắc Bộ",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Chú ý phân biệt vùng kinh tế trọng điểm Bắc Bộ với vùng Đồng bằng sông Hồng.",
+                  "explanation": "Bài học nêu rõ Quảng Ninh thuộc Trung du và miền núi Bắc Bộ, không thuộc Đồng bằng sông Hồng.",
+                  "option_feedback": {
+                    "B": "Đây là nhầm lẫn thường gặp: Đồng bằng sông Hồng chỉ gồm 10 tỉnh, thành phố và không có Quảng Ninh.",
+                    "C": "Bắc Trung Bộ không phải vùng chứa Quảng Ninh theo nội dung bài học.",
+                    "D": "Vùng kinh tế trọng điểm Bắc Bộ và vùng Đồng bằng sông Hồng là hai khái niệm khác nhau."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-hong-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức tính bình quân đất nông nghiệp",
+              "md": "$$\\text{Bình quân đất nông nghiệp} = \\frac{\\text{Diện tích đất nông nghiệp}}{\\text{Dân số}}$$\n\nĐơn vị: ha/người (hoặc m²/người). Diện tích và dân số phải cùng đơn vị đo tương ứng.",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-hong-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-hong-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Bình quân đất nông nghiệp của Đồng bằng sông Hồng khoảng 0,036 ha/người; cả nước khoảng 0,28 ha/người. Mức của vùng bằng khoảng bao nhiêu phần trăm mức cả nước?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "13%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "28%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "36%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "87%",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "0,036/0,28 ≈ 0,13, tức khoảng 13% mức cả nước; đây là hạn chế lớn của vùng.",
+                  "option_feedback": {
+                    "B": "28% là lấy nhầm số 0,28 ha/người của cả nước làm tỉ lệ.",
+                    "C": "36% là nhầm 0,036 ha thành 36% thay vì chia cho 0,28.",
+                    "D": "87% là phần bù của 13%, không phải tỉ lệ bình quân đất của vùng so với cả nước."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-hong-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính bình quân đất nông nghiệp",
+              "md": "Vùng có $800$ nghìn ha đất nông nghiệp, dân số $22,5$ triệu người:\n\n- Vùng: $\\dfrac{800\\,000}{22\\,500\\,000} \\approx 0,036$ ha/người $\\approx 360$ m²/người.\n- Cả nước: $\\dfrac{27\\,700\\,000}{98\\,000\\,000} \\approx 0,28$ ha/người $\\approx 2\\,800$ m²/người.\n\nBình quân của vùng chỉ bằng khoảng $13\\%$ mức cả nước.",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-hong-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-hong-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Chọn đúng hoặc sai cho mỗi nhận định sau về Đồng bằng sông Hồng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Mật độ dân số của vùng cao nhất cả nước."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Quảng Ninh thuộc vùng Đồng bằng sông Hồng."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Vùng có năng suất lúa cao nhất cả nước, trên 60 tạ/ha."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Vùng giàu khoáng sản, đặc biệt là than đá."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Vùng có mật độ dân số và năng suất lúa cao nhất; Quảng Ninh thuộc Trung du và miền núi Bắc Bộ, còn khoáng sản của vùng nghèo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-hong-b5",
+              "kind": "text",
+              "md": "Thế mạnh: đất phù sa màu mỡ, năng suất lúa cao nhất cả nước (trên $60$ tạ/ha), vụ đông với khoai tây, cà rốt, bắp cải. Công nghiệp hình thành sớm nhất, cơ cấu đa dạng; dịch vụ phát triển nhất nước.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-hong-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Nhầm Quảng Ninh vào Đồng bằng sông Hồng",
+              "md": "Quảng Ninh nằm trong vùng kinh tế trọng điểm Bắc Bộ nhưng **thuộc Trung du và miền núi Bắc Bộ**, không thuộc Đồng bằng sông Hồng. Vùng Đồng bằng sông Hồng chỉ gồm 10 tỉnh, thành phố; nhầm lẫn này làm sai toàn bộ diện tích, dân số, mật độ và tỉ trọng.",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-hong-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-hong-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Công thức tính bình quân đất nông nghiệp trên đầu người: $\\text{Bình quân} = \\dfrac{\\text{{{gap}}}}{\\text{{{gap}}}}$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "diện tích đất nông nghiệp",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "dân số",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "sản lượng lúa",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "GDP",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Bình quân đất nông nghiệp bằng diện tích đất nông nghiệp chia cho dân số.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-hong-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để mật độ dân số đạt 1.500 người/km² (diện tích vùng 15.000 km²)",
+              "x": {
+                "symbol": "D",
+                "label": "Dân số",
+                "unit": "triệu người"
+              },
+              "y": {
+                "symbol": "M",
+                "label": "Mật độ",
+                "unit": "người/km²"
+              },
+              "expr": "x*1000000/15000",
+              "x_min": 10.0,
+              "x_max": 30.0,
+              "x_step": 0.5,
+              "x_start": 18.0,
+              "target_y": 1500.0,
+              "tolerance": 20.0,
+              "praise": "Chính xác! 22,5 triệu người trên 15.000 km² cho mật độ 1.500 người/km².",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-hong-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-hong-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Nối mỗi đối tượng với thông tin đúng theo bài.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Đồng bằng sông Hồng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "10 tỉnh, thành phố",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Trung du và miền núi Bắc Bộ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "15 tỉnh",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Quảng Ninh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "thuộc Trung du và miền núi Bắc Bộ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Năng suất lúa Đồng bằng sông Hồng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "trên 60 tạ/ha",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các thông tin này đều được nêu trong bài: 10 tỉnh, 15 tỉnh, Quảng Ninh thuộc Trung du và miền núi Bắc Bộ, năng suất lúa trên 60 tạ/ha.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-hong-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đồng bằng sông Hồng gồm bao nhiêu tỉnh, thành phố?",
+                  "answer": "10 tỉnh, thành phố; Quảng Ninh không thuộc vùng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao năng suất lúa cao nhất nhưng sản lượng chỉ đứng thứ hai?",
+                  "answer": "Đất phù sa màu mỡ, thâm canh, tăng vụ; nhưng diện tích lúa chỉ khoảng 1,1 triệu ha, nhỏ hơn Đồng bằng sông Cửu Long.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hạn chế lớn nhất về đất nông nghiệp của vùng là gì?",
+                  "answer": "Bình quân đất nông nghiệp rất thấp, chỉ khoảng 0,036 ha/người, bằng khoảng 13% mức cả nước.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bac-trung-bo",
+          "title": "Bắc Trung Bộ",
+          "est_minutes": 15,
+          "summary": "Bài trình bày khái quát, thế mạnh và hạn chế của Bắc Trung Bộ, kèm ví dụ đọc Atlat/tính toán, lỗi thường gặp và bài luyện tập.",
+          "key_ideas": [
+            "6 tỉnh; địa hình hẹp ngang, phân hóa Tây – Đông",
+            "Gió phơn khô nóng; mưa lệch thu – đông, nhiều bão lũ",
+            "Thế mạnh rừng, khoáng sản, du lịch di sản, cửa ngõ ra biển",
+            "Tính độ che phủ rừng; đọc Atlat du lịch",
+            "Lỗi: cho gió phơn gây mưa lớn mùa hạ"
+          ],
+          "blocks": [
+            {
+              "id": "bac-trung-bo-b1",
+              "kind": "text",
+              "md": "Bắc Trung Bộ gồm **6 tỉnh** từ Thanh Hóa đến Thừa Thiên Huế, diện tích khoảng $51,5$ nghìn km² (15,5% cả nước), dân số trên 10 triệu người. Địa hình **hẹp ngang**, phân hóa rõ Tây và Đông: núi → đồi → đồng bằng nhỏ hẹp ven biển → biển, đảo. Đồng bằng lớn nhất là Thanh Nghệ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bac-trung-bo-b2",
+              "kind": "text",
+              "md": "Khí hậu nhiệt đới ẩm gió mùa, chịu ảnh hưởng mạnh của gió phơn Tây Nam khô nóng (gió Lào). Mùa mưa **lệch về thu đông**, nhiều bão, lũ, hạn hán.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bac-trung-bo-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bac-trung-bo-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Bắc Trung Bộ gồm bao nhiêu tỉnh?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "4 tỉnh",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "5 tỉnh",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "6 tỉnh",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "7 tỉnh",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Đếm các tỉnh từ Thanh Hóa đến Thừa Thiên Huế.",
+                  "explanation": "Bài học nêu Bắc Trung Bộ gồm 6 tỉnh từ Thanh Hóa đến Thừa Thiên Huế.",
+                  "option_feedback": {
+                    "A": "Sai: Bắc Trung Bộ có 6 tỉnh, không phải 4.",
+                    "B": "Sai: thiếu một tỉnh so với bài học.",
+                    "D": "Sai: vùng chỉ có 6 tỉnh từ Thanh Hóa đến Thừa Thiên Huế."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "bac-trung-bo-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bac-trung-bo-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Yếu tố nào chủ yếu gây mưa cho Bắc Trung Bộ vào thu - đông?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Gió phơn Tây Nam",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Gió Đông Bắc, bão, dải hội tụ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Gió mùa Tây Nam",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Tín phong khô nóng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Chú ý mùa mưa lệch về thu - đông.",
+                  "explanation": "Mưa thu - đông do gió Đông Bắc qua biển, bão và dải hội tụ nhiệt đới; gió phơn gây khô nóng.",
+                  "option_feedback": {
+                    "A": "Sai: gió phơn khô nóng làm mùa hạ ít mưa, không phải nguồn mưa thu - đông.",
+                    "C": "Sai: gió mùa Tây Nam không phải nguyên nhân chính gây mưa thu - đông ở vùng này.",
+                    "D": "Sai: tín phong khô nóng không tạo mưa lớn thu - đông cho vùng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "bac-trung-bo-b3",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Đừng nhầm chiều gió phơn",
+              "md": "Không phải gió phơn gây mưa lớn mùa hạ. Gió vượt Trường Sơn rồi giáng xuống nên **khô và nóng**, làm mùa hạ ít mưa, bốc hơi mạnh, dễ hạn hán. Mưa tập trung vào thu đông do gió Đông Bắc qua biển, bão và dải hội tụ nhiệt đới.",
+              "audio": null
+            },
+            {
+              "id": "bac-trung-bo-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bac-trung-bo-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xác định đúng/sai các nhận định sau về Bắc Trung Bộ.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Vùng gồm 6 tỉnh từ Thanh Hóa đến Thừa Thiên Huế."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Địa hình vùng rộng ngang và ít phân hóa Tây - Đông."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Gió phơn Tây Nam khô nóng làm mùa hạ ít mưa, dễ hạn hán."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Mùa mưa của vùng tập trung chủ yếu vào mùa hạ do gió phơn."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Vùng có địa hình hẹp ngang, phân hóa rõ Tây - Đông; gió phơn khô nóng, còn mưa lệch về thu - đông.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "bac-trung-bo-b4",
+              "kind": "text",
+              "md": "Thế mạnh: rừng diện tích lớn, độ che phủ cao; khoáng sản (sắt Thạch Khê, crômit Cổ Định, thiếc Quỳ Hợp, đá vôi); du lịch di sản (Cố đô Huế, Phong Nha - Kẻ Bàng); là cửa ngõ ra biển của Lào và Đông Bắc Thái Lan qua Lao Bảo, Cầu Treo.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bac-trung-bo-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bac-trung-bo-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Diện tích rừng của Bắc Trung Bộ là 2,9 triệu ha, diện tích vùng là 51,5 nghìn km². Tính độ che phủ rừng (%, làm tròn đến một chữ số thập phân).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "56,3",
+                      "56.3"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Dùng công thức độ che phủ = diện tích rừng / diện tích vùng × 100%.",
+                  "explanation": "Đổi 2,9 triệu ha = 2900 nghìn ha; 2900/5150 × 100 ≈ 56,3%.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "bac-trung-bo-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức độ che phủ rừng",
+              "md": "$$\\text{Độ che phủ} = \\dfrac{\\text{Diện tích rừng}}{\\text{Diện tích vùng}} \\times 100\\%$$\nVới Bắc Trung Bộ, diện tích vùng là $5150$ nghìn ha.",
+              "audio": null
+            },
+            {
+              "id": "bac-trung-bo-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bac-trung-bo-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Công thức tính độ che phủ rừng: $\\text{Độ che phủ} = \\dfrac{\\text{Diện tích rừng}}{\\text{Diện tích vùng}} \\times {{gap}}$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "100%",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "10%",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "1000",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Độ che phủ tính bằng tỉ lệ phần trăm, nên nhân với 100%.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "bac-trung-bo-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính độ che phủ rừng năm 2020",
+              "md": "Diện tích rừng năm 2020 là $2900$ nghìn ha, diện tích vùng $5150$ nghìn ha.\n$$\\dfrac{2900}{5150} \\times 100 \\approx 56,3\\%$$\nĐộ che phủ cao giúp hạn chế lũ quét, sạt lở, bảo vệ đất và nguồn nước. Rất quan trọng với vùng hay gặp thiên tai.",
+              "audio": null
+            },
+            {
+              "id": "bac-trung-bo-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bac-trung-bo-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép khoáng sản/địa danh với địa điểm hoặc đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Sắt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Thạch Khê",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Crômit",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Cổ Định",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Thiếc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Quỳ Hợp",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Đồng bằng lớn nhất",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Thanh - Nghệ",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Bài học ghi sắt Thạch Khê, crômit Cổ Định, thiếc Quỳ Hợp; đồng bằng lớn nhất là Thanh - Nghệ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "bac-trung-bo-b7",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Bắc Trung Bộ gồm mấy tỉnh, từ đâu đến đâu?",
+                  "answer": "6 tỉnh, từ Thanh Hóa đến Thừa Thiên Huế.",
+                  "image": null
+                },
+                {
+                  "prompt": "Gió phơn Tây Nam gây thời tiết gì cho vùng vào mùa hạ?",
+                  "answer": "Khô và nóng, ít mưa, bốc hơi mạnh, dễ hạn hán; mưa tập trung vào thu – đông.",
+                  "image": null
+                },
+                {
+                  "prompt": "Tính độ che phủ rừng bằng công thức nào?",
+                  "answer": "Diện tích rừng chia diện tích vùng, nhân 100%.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này ôn ba vùng phía Bắc là Trung du và miền núi Bắc Bộ, Đồng bằng sông Hồng và Bắc Trung Bộ. Trung du và miền núi Bắc Bộ gồm 15 tỉnh, có diện tích lớn nhất cả nước, khoảng 95,2 nghìn ki lô mét vuông, chiếm 28,8 phần trăm. Dân số trên 12 triệu người, mật độ chỉ khoảng 130 người trên ki lô mét vuông.",
+          "Vùng này chia thành hai tiểu vùng Đông Bắc và Tây Bắc, có mùa đông lạnh nhất cả nước. Đây là vùng giàu khoáng sản nhất: than ở Quảng Ninh và Thái Nguyên, a-pa-tít ở Lào Cai, thiếc ở Cao Bằng, chì kẽm ở Bắc Kạn. Thủy năng lớn nhất nằm trên sông Đà với các nhà máy Sơn La 2400 MW, Hòa Bình 1920 MW, Lai Châu 1200 MW. Trên Atlat trang 13 có thể thấy Hòa Bình, Sơn La, Lai Châu, Tuyên Quang, Thác Bà.",
+          "Thế mạnh nông nghiệp là chè có diện tích và sản lượng lớn nhất cả nước, cùng hồi, quế, tam thất, mận, đào, cải bắp. Đàn trâu lớn nhất nước nhờ đồng cỏ vùng núi. Quảng Ninh phát triển kinh tế biển với than, cảng Cái Lân và du lịch Vịnh Hạ Long. Hạn chế là địa hình chia cắt, giao thông khó khăn, thiếu lao động kĩ thuật và cơ sở hạ tầng thấp.",
+          "Về tính toán, mật độ dân số bằng dân số chia diện tích, đơn vị là người trên ki lô mét vuông. Năng suất bằng sản lượng chia diện tích; đổi tấn trên héc ta sang tạ trên héc ta thì nhân với 10. Ví dụ năm 2020 diện tích chè là 130 nghìn héc ta, sản lượng 1060 nghìn tấn, năng suất khoảng 8,2 tấn trên héc ta, tức 82 tạ trên héc ta.",
+          "Đồng bằng sông Hồng gồm 10 tỉnh, thành phố, diện tích khoảng 15,0 nghìn ki lô mét vuông, chỉ 4,5 phần trăm cả nước, nhưng dân số trên 22 triệu người. Mật độ dân số cao nhất cả nước, khoảng 1500 người trên ki lô mét vuông. Địa hình là đồng bằng phù sa sông Hồng và sông Thái Bình, thấp và khá bằng phẳng, có đê điều và nhiều ô trũng. Khí hậu nhiệt đới ẩm gió mùa, mùa đông lạnh từ tháng 11 đến tháng 4 nên có vụ đông.",
+          "Bình quân đất nông nghiệp bằng diện tích đất nông nghiệp chia dân số, đơn vị héc ta trên người hoặc mét vuông trên người. Ví dụ vùng có 800 nghìn héc ta đất nông nghiệp và 22,5 triệu người thì bình quân khoảng 0,036 héc ta trên người, tức 360 mét vuông trên người; cả nước khoảng 0,28 héc ta trên người, tức 2800 mét vuông trên người, nên vùng chỉ bằng khoảng 13 phần trăm mức cả nước. Thế mạnh là đất phù sa màu mỡ, năng suất lúa cao nhất cả nước trên 60 tạ trên héc ta, vụ đông với khoai tây, cà rốt, bắp cải. Công nghiệp hình thành sớm nhất, cơ cấu đa dạng; dịch vụ phát triển nhất nước.",
+          "Cần nhớ Quảng Ninh nằm trong vùng kinh tế trọng điểm Bắc Bộ nhưng thuộc Trung du và miền núi Bắc Bộ, không thuộc Đồng bằng sông Hồng. Nếu nhầm sẽ sai toàn bộ diện tích, dân số, mật độ và tỉ trọng của vùng. Bắc Trung Bộ gồm 6 tỉnh từ Thanh Hóa đến Thừa Thiên Huế, diện tích khoảng 51,5 nghìn ki lô mét vuông, chiếm 15,5 phần trăm cả nước, dân số trên 10 triệu người. Địa hình hẹp ngang, phân hóa rõ Tây Đông từ núi, đồi, đồng bằng nhỏ hẹp ven biển đến biển đảo; đồng bằng lớn nhất là Thanh Nghệ.",
+          "Bắc Trung Bộ chịu ảnh hưởng mạnh của gió phơn Tây Nam khô nóng, còn gọi là gió Lào. Mùa mưa lệch về thu đông, nhiều bão, lũ, hạn hán. Cần tránh lỗi cho rằng gió phơn gây mưa lớn mùa hạ: gió vượt Trường Sơn rồi giáng xuống nên khô và nóng, làm mùa hạ ít mưa, bốc hơi mạnh, dễ hạn; mưa tập trung thu đông do gió Đông Bắc qua biển, bão và dải hội tụ nhiệt đới.",
+          "Thế mạnh của vùng là rừng có diện tích lớn, độ che phủ cao; khoáng sản như sắt Thạch Khê, crômit Cổ Định, thiếc Quỳ Hợp, đá vôi; du lịch di sản với Cố đô Huế và Phong Nha Kẻ Bàng; là cửa ngõ ra biển của Lào và Đông Bắc Thái Lan qua Lao Bảo, Cầu Treo. Độ che phủ rừng bằng diện tích rừng chia diện tích vùng rồi nhân 100 phần trăm. Năm 2020, diện tích rừng là 2900 nghìn héc ta, diện tích vùng 5150 nghìn héc ta, nên độ che phủ khoảng 56,3 phần trăm. Độ che phủ cao giúp hạn chế lũ quét, sạt lở, bảo vệ đất và nguồn nước, rất quan trọng với vùng hay gặp thiên tai.",
+          "Ba điều cần nhớ. Thứ nhất, Trung du và miền núi Bắc Bộ có diện tích lớn nhất, giàu khoáng sản và thủy năng, dẫn đầu về chè và trâu. Thứ hai, Đồng bằng sông Hồng có mật độ dân số cao nhất, mạnh về đất phù sa và vụ đông, nhưng bình quân đất nông nghiệp thấp, và Quảng Ninh không thuộc vùng. Thứ ba, Bắc Trung Bộ hẹp ngang, có gió phơn khô nóng, mưa lệch thu đông và độ che phủ rừng cao."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-cac-vung-phia-bac.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "56cb6768adf242673b3b0b3c70fbb77b34baf71827f30f3d78bc3060bc0e559c",
+          "bytes": 1660520
+        },
+        "duration_s": 275.87
+      }
+    },
+    {
+      "id": "ch-cac-vung-phia-nam",
+      "title": "Các vùng phía Nam",
+      "lessons": [
+        {
+          "id": "duyen-hai-nam-trung-bo",
+          "title": "Duyên hải Nam Trung Bộ",
+          "est_minutes": 15,
+          "summary": "Bài trình bày khái quát, thế mạnh và hạn chế của Duyên hải Nam Trung Bộ, kèm ví dụ đọc Atlat/tính toán, lỗi thường gặp và bài luyện tập.",
+          "key_ideas": [
+            "8 tỉnh; cầu nối Bắc – Nam, cửa ngõ Tây Nguyên",
+            "Khô hạn Ninh Thuận – Bình Thuận; bờ biển, vũng vịnh nước sâu",
+            "Thế mạnh thủy sản, cảng, du lịch, cây chịu hạn",
+            "Tính mật độ, bình quân lương thực; chọn biểu đồ",
+            "Lỗi: nhầm lúa là trụ cột của vùng"
+          ],
+          "blocks": [
+            {
+              "id": "duyen-hai-nam-trung-bo-b1",
+              "kind": "text",
+              "md": "Duyên hải Nam Trung Bộ gồm 8 tỉnh, thành: Đà Nẵng, Quảng Nam, Quảng Ngãi, Bình Định, Phú Yên, Khánh Hòa, Ninh Thuận, Bình Thuận. Diện tích khoảng $44,4$ nghìn km² (hơn $13\\%$ cả nước), dân số khoảng $9,3$ triệu người (2021). Vùng là cầu nối giữa Bắc Trung Bộ với Đông Nam Bộ, đồng thời là cửa ngõ ra biển của Tây Nguyên và một phần Nam Lào, Đông Bắc Thái Lan qua hành lang kinh tế Đông Tây.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b2",
+              "kind": "text",
+              "md": "Địa hình hẹp ngang: phía tây là sườn đông Trường Sơn, phía đông là biển; đồng bằng nhỏ hẹp, bị núi chia cắt thành từng ô. Khí hậu nhiệt đới gió mùa, mùa khô kéo dài; Ninh Thuận và Bình Thuận là nơi khô hạn nhất nước, lượng mưa dưới $800$ mm/năm, bức xạ lớn nhất cả nước.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyen-hai-nam-trung-bo-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Thế mạnh kinh tế nổi bật nhất của Duyên hải Nam Trung Bộ là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Trồng lúa nước trên đồng bằng phù sa rộng lớn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Kinh tế biển: thủy sản, cảng nước sâu, du lịch",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Khai thác bô xít và thủy điện quy mô lớn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chăn nuôi lợn và trồng cây công nghiệp dài ngày",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Nhìn vào đường bờ biển dài và các vũng vịnh nước sâu.",
+                  "explanation": "Vùng có bờ biển dài, nhiều bãi tôm bãi cá và các vịnh nước sâu Dung Quất, Vân Phong, Cam Ranh. Vì vậy kinh tế biển mới là trụ cột, còn lúa chỉ đủ tự cung.",
+                  "option_feedback": {
+                    "A": "Đồng bằng ở đây nhỏ hẹp, bị núi chia cắt nên lúa chỉ đủ tự cung, không phải thế mạnh.",
+                    "C": "Đó là thế mạnh của Tây Nguyên, không phải của vùng Duyên hải Nam Trung Bộ.",
+                    "D": "Vùng chủ yếu nuôi bò thịt, cừu và trồng cây chịu hạn, không phải lợn với quy mô lớn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b3",
+              "kind": "text",
+              "md": "Bờ biển dài, vùng biển rộng, nhiều bãi tôm bãi cá; các vũng vịnh nước sâu Dung Quất, Vân Phong, Cam Ranh thuận lợi xây cảng nước sâu và làm du lịch. Khoáng sản có cát thủy tinh (Khánh Hòa), muối (Ninh Thuận, Bình Thuận), titan ven biển, vật liệu xây dựng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyen-hai-nam-trung-bo-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Bảng số liệu sản lượng thủy sản của vùng gồm khai thác và nuôi trồng qua các năm 2010, 2015, 2021. Biểu đồ thích hợp nhất để thể hiện cả quy mô và cơ cấu là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Biểu đồ đường",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Biểu đồ tròn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Biểu đồ cột đơn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Biểu đồ cột chồng hoặc miền",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "D"
+                  },
+                  "hint": "Có hai thành phần cộng lại thành một tổng và cần so sánh qua nhiều năm.",
+                  "explanation": "Khai thác và nuôi trồng cộng lại thành tổng sản lượng, cần thể hiện cả quy mô lẫn cơ cấu qua nhiều năm. Vì vậy cột chồng (hoặc miền) là lựa chọn thích hợp nhất.",
+                  "option_feedback": {
+                    "A": "Đường chỉ phù hợp khi cần thấy tốc độ tăng của một đối tượng, không thể hiện cơ cấu.",
+                    "B": "Tròn chỉ hợp với ít năm, ở đây có tới ba mốc thời gian nên khó so sánh cơ cấu.",
+                    "C": "Cột đơn không cho thấy hai thành phần cộng lại thành tổng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Trụ cột của vùng",
+              "md": "Thế mạnh thật sự là **kinh tế biển** (khai thác và nuôi trồng thủy sản, cảng nước sâu, du lịch biển đảo) và **cây công nghiệp chịu hạn** (mía, dừa, nho Ninh Thuận, thanh long Bình Thuận, điều). Lúa chỉ đủ tự cung.",
+              "audio": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyen-hai-nam-trung-bo-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai về Duyên hải Nam Trung Bộ?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Ninh Thuận – Bình Thuận là nơi khô hạn nhất nước, lượng mưa dưới 800 mm/năm."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Vùng là cửa ngõ ra biển của Tây Nguyên và một phần Nam Lào, Đông Bắc Thái Lan."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Dân cư vùng phân bố khá đều giữa đồng bằng ven biển và vùng núi phía tây."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Lúa là cây trồng tạo ra sản phẩm hàng hóa chủ lực, sản lượng vượt xa nhu cầu của vùng."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ninh Thuận – Bình Thuận khô hạn nhất nước và vùng là cửa ngõ ra biển của Tây Nguyên. Ngược lại, dân cư phân bố rất không đều và lúa chỉ đủ tự cung.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính mật độ và bình quân lương thực",
+              "md": "Diện tích $44\\,400$ km², dân số $9,3$ triệu người, sản lượng lương thực có hạt $3,2$ triệu tấn.\n\n$$\\text{Mật độ}=\\frac{9\\,300\\,000}{44\\,400}\\approx 209 \\text{ người/km}^2$$\n\n$$\\text{Bình quân}=\\frac{3\\,200\\,000}{9\\,300\\,000}\\approx 0,344 \\text{ tấn/người}=344 \\text{ kg/người}$$\n\nMức $344$ kg/người thấp hơn trung bình cả nước, cho thấy vùng không lấy lúa làm trụ cột.",
+              "audio": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyen-hai-nam-trung-bo-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho diện tích Duyên hải Nam Trung Bộ là 44 400 km² và dân số 9,3 triệu người. Hãy tính mật độ dân số của vùng (người/km², làm tròn đến hàng đơn vị).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "209",
+                      "209 người/km2",
+                      "209 người/km²"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Lấy số dân chia cho diện tích, nhớ đổi 9,3 triệu = 9 300 000 người.",
+                  "explanation": "9 300 000 chia cho 44 400 xấp xỉ 209 người/km². Đây là mật độ trung bình của vùng, cao hơn mức của Tây Nguyên.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "\"Giáp biển, có đồng bằng phù sa nên trồng lúa nước là thế mạnh\": **sai**. Đồng bằng ở đây nhỏ hẹp, bị núi ăn sát biển chia cắt, đất phù sa ít, mùa khô sâu nên lúa chỉ đủ tự cung.",
+              "audio": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyen-hai-nam-trung-bo-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Duyên hải Nam Trung Bộ gồm {{gap}} tỉnh, thành với diện tích khoảng {{gap}} nghìn km²; vùng có thế mạnh về cây công nghiệp {{gap}} hạn.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "8",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "44,4",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "chịu",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "5",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "54,6",
+                      "side": null
+                    },
+                    {
+                      "id": "t6",
+                      "text": "ưa",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": "Số tỉnh ít hơn Tây Nguyên một đơn vị? Không – hãy nhớ danh sách từ Đà Nẵng đến Bình Thuận.",
+                  "explanation": "Vùng có 8 tỉnh, thành với diện tích khoảng 44,4 nghìn km². Cây công nghiệp đặc trưng là loại chịu hạn như nho, thanh long, mía.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để mật độ dân số còn khoảng 209 người/km² (dân số 9,3 triệu người)",
+              "x": {
+                "symbol": "S",
+                "label": "Diện tích",
+                "unit": "nghìn km²"
+              },
+              "y": {
+                "symbol": "D",
+                "label": "Mật độ dân số",
+                "unit": "người/km²"
+              },
+              "expr": "9300000/(x*1000)",
+              "x_min": 30.0,
+              "x_max": 60.0,
+              "x_step": 0.4,
+              "x_start": 55.0,
+              "target_y": 209.5,
+              "tolerance": 2.0,
+              "praise": "Chuẩn! Với 44,4 nghìn km², mật độ khoảng 209 người/km².",
+              "audio": null
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "duyen-hai-nam-trung-bo-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi địa phương với sản phẩm hoặc cơ sở nổi bật của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Quảng Ngãi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Cảng và nhà máy lọc dầu Dung Quất",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Khánh Hòa",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Cát thủy tinh, vịnh Cam Ranh",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Ninh Thuận",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Nho, muối, điện gió – điện mặt trời",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Bình Thuận",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Thanh long, muối, Mũi Né",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi địa phương gắn với một thế mạnh riêng: Dung Quất ở Quảng Ngãi, cát thủy tinh và Cam Ranh ở Khánh Hòa. Ninh Thuận và Bình Thuận nổi bật với cây chịu hạn, muối và năng lượng tái tạo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "duyen-hai-nam-trung-bo-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vùng gồm những tỉnh, thành nào và giữ vai trò gì về vị trí?",
+                  "answer": "8 tỉnh, thành từ Đà Nẵng đến Bình Thuận; là cầu nối Bắc – Nam và cửa ngõ ra biển của Tây Nguyên.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao Ninh Thuận – Bình Thuận có tiềm năng điện gió, điện mặt trời lớn nhất nước?",
+                  "answer": "Khô hạn, ít mưa, bức xạ lớn nhất nước; địa hình đồi núi thấp và ven biển ít che chắn nên gió mạnh.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao không coi lúa nước là trụ cột của vùng?",
+                  "answer": "Đồng bằng nhỏ hẹp, bị núi chia cắt, mùa khô sâu nên lúa chỉ đủ tự cung; trụ cột là kinh tế biển và cây chịu hạn.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tay-nguyen",
+          "title": "Tây Nguyên",
+          "est_minutes": 15,
+          "summary": "Bài trình bày khái quát, thế mạnh và hạn chế của Tây Nguyên, kèm ví dụ đọc Atlat/tính toán, lỗi thường gặp và bài luyện tập.",
+          "key_ideas": [
+            "5 tỉnh; cao nguyên xếp tầng, đất badan",
+            "Cà phê chiếm khoảng 90% diện tích cả nước; hồ tiêu, cao su, chè",
+            "Rừng, thủy điện, bô xít, du lịch sinh thái – văn hóa",
+            "Hạn chế mùa khô sâu, cháy rừng, chế biến mỏng",
+            "Lỗi: nhầm là vùng lương thực lớn; tính tỉ trọng cà phê"
+          ],
+          "blocks": [
+            {
+              "id": "tay-nguyen-b1",
+              "kind": "text",
+              "md": "Tây Nguyên gồm 5 tỉnh: Kon Tum, Gia Lai, Đắk Lắk, Đắk Nông, Lâm Đồng. Diện tích khoảng $54,6$ nghìn km$^2$ (16,5% cả nước), dân số khoảng $5,9$ triệu người, mật độ khoảng $108$ người/km$^2$. Vùng giáp Duyên hải Nam Trung Bộ, Đông Nam Bộ, Lào và Campuchia.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tay-nguyen-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/tay-nguyen-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "9d0e08bd45a8234e1a34ea96aee0dec79b172edc3d5fecbcba830d662a70f8eb",
+                "bytes": 8715
+              },
+              "alt": "Mặt cắt các cao nguyên xếp tầng của Tây Nguyên trên nền đá badan, có sông chảy qua.",
+              "caption": "Cao nguyên xếp tầng trên nền đá badan",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "tay-nguyen-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tay-nguyen-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Tỉnh nào sau đây không thuộc Tây Nguyên?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đắk Lắk",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Lâm Đồng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Kon Tum",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Bình Thuận",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "D"
+                  },
+                  "hint": null,
+                  "explanation": "Tây Nguyên gồm Kon Tum, Gia Lai, Đắk Lắk, Đắk Nông, Lâm Đồng; Bình Thuận thuộc Duyên hải Nam Trung Bộ.",
+                  "option_feedback": {
+                    "A": "Đắk Lắk là một trong 5 tỉnh của Tây Nguyên, không phải tỉnh ngoài vùng.",
+                    "B": "Lâm Đồng là một trong 5 tỉnh của Tây Nguyên, không phải tỉnh ngoài vùng.",
+                    "C": "Kon Tum là một trong 5 tỉnh của Tây Nguyên, không phải tỉnh ngoài vùng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tay-nguyen-b3",
+              "kind": "text",
+              "md": "Địa hình cao nguyên xếp tầng trên nền đá badan, đất badan màu mỡ, tầng phong hóa dày, thuận lợi cho cây công nghiệp lâu năm. Rừng có diện tích và độ che phủ lớn nhất nước; trữ năng thủy điện khoảng 21% cả nước, sau Tây Bắc; bô xít trữ lượng hàng tỉ tấn.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tay-nguyen-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tay-nguyen-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho diện tích cà phê cả nước khoảng 700 nghìn ha, riêng Tây Nguyên khoảng 650 nghìn ha. Tỉ trọng diện tích cà phê của Tây Nguyên khoảng",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "90,0%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "92,9%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "95,0%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "85,0%",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "$650/700 \\times 100 \\approx 92,9\\%$, nên Tây Nguyên chiếm khoảng 92,9% diện tích cà phê cả nước.",
+                  "option_feedback": {
+                    "A": "Dùng con số khái quát khoảng 90% thay vì tính từ 650/700.",
+                    "C": "Tính sai tỉ lệ, không lấy 650 chia cho 700 rồi nhân 100.",
+                    "D": "Tính sai tỉ lệ, có thể đã lấy nhầm mẫu số."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tay-nguyen-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức tính tỉ trọng",
+              "md": "$$\\text{Tỉ trọng} = \\frac{\\text{giá trị thành phần}}{\\text{tổng số}} \\times 100\\%$$\n\nDùng khi tính tỉ trọng diện tích cà phê của Tây Nguyên so với cả nước.",
+              "audio": null
+            },
+            {
+              "id": "tay-nguyen-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tỉ trọng cà phê",
+              "md": "Diện tích cà phê cả nước khoảng $700$ nghìn ha, Tây Nguyên khoảng $650$ nghìn ha.\n\n$$\\text{Tỉ trọng}=\\frac{650}{700}\\times100 \\approx 92,9\\%$$\n\nVậy Tây Nguyên chiếm khoảng $92,9\\%$ diện tích cà phê cả nước.",
+              "audio": null
+            },
+            {
+              "id": "tay-nguyen-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tay-nguyen-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Diện tích cà phê cả nước khoảng 700 nghìn ha, trong đó Tây Nguyên khoảng 650 nghìn ha. Tính tỉ trọng diện tích cà phê của Tây Nguyên trong cả nước (đơn vị: %, làm tròn đến một chữ số thập phân).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "92,9",
+                      "92.9",
+                      "93"
+                    ],
+                    "tolerance": 0.005
+                  },
+                  "hint": "Tỉ trọng = (diện tích Tây Nguyên : diện tích cả nước) × 100.",
+                  "explanation": "Lấy 650 : 700 × 100 ≈ 92,9%, đúng với vai trò \"thủ phủ cà phê\" của vùng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tay-nguyen-b6",
+              "kind": "text",
+              "md": "Mùa khô kéo dài 4-5 tháng gây thiếu nước tưới, nguy cơ cháy rừng; độ che phủ rừng giảm, công nghiệp chế biến còn mỏng. Lưu ý: Tây Nguyên không phải vùng lương thực lớn. Đất badan thoát nước nhanh, địa hình cao, mùa khô sâu nên lúa chỉ trồng ở thung lũng nhỏ; thế mạnh là cây công nghiệp lâu năm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tay-nguyen-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tay-nguyen-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Điền số thích hợp: Tây Nguyên gồm {{gap}} tỉnh, diện tích khoảng {{gap}} nghìn km².",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "5",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "54,6",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "6",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "44,4",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tây Nguyên có 5 tỉnh và diện tích khoảng 54,6 nghìn km²; 6 và 44,4 không khớp với vùng này.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tay-nguyen-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để tỉ trọng cà phê Tây Nguyên đạt khoảng 92,9% (cả nước 700 nghìn ha).",
+              "x": {
+                "symbol": "S",
+                "label": "Diện tích cà phê Tây Nguyên",
+                "unit": "nghìn ha"
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Tỉ trọng cà phê",
+                "unit": "%"
+              },
+              "expr": "x / 700 * 100",
+              "x_min": 0.0,
+              "x_max": 700.0,
+              "x_step": 5.0,
+              "x_start": 400.0,
+              "target_y": 92.9,
+              "tolerance": 0.5,
+              "praise": "Chính xác: 650 nghìn ha cho tỉ trọng khoảng 92,9%.",
+              "audio": null
+            },
+            {
+              "id": "tay-nguyen-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tay-nguyen-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi thế mạnh của Tây Nguyên với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Cà phê",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "chiếm khoảng 90% diện tích cả nước",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Bô xít",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "trữ lượng hàng tỉ tấn ở Kon Tum, Đắk Nông",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Thủy điện",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "trữ năng lớn thứ hai sau Tây Bắc",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Rừng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "diện tích và độ che phủ lớn nhất nước",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đây là các thế mạnh tự nhiên nổi bật của Tây Nguyên được nêu trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tay-nguyen-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Tây Nguyên gồm những tỉnh nào và địa hình – đất đai có gì nổi bật?",
+                  "answer": "5 tỉnh: Kon Tum, Gia Lai, Đắk Lắk, Đắk Nông, Lâm Đồng; cao nguyên xếp tầng trên đất badan màu mỡ.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao Tây Nguyên không phải vùng lương thực lớn?",
+                  "answer": "Đất badan thoát nước nhanh, địa hình cao, mùa khô sâu; lúa chỉ trồng ở thung lũng nhỏ, thế mạnh là cây công nghiệp lâu năm.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu hai hạn chế lớn của Tây Nguyên.",
+                  "answer": "Mùa khô sâu thiếu nước, cháy rừng; công nghiệp chế biến mỏng, hạ tầng và lao động kỹ thuật còn yếu.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dong-bang-song-cuu-long",
+          "title": "Đồng bằng sông Cửu Long",
+          "est_minutes": 15,
+          "summary": "Bài trình bày khái quát, thế mạnh và khó khăn của Đồng bằng sông Cửu Long, kèm ví dụ đọc Atlat/tính toán, lỗi thường gặp và bài luyện tập.",
+          "key_ideas": [
+            "13 tỉnh; hạ lưu Mê Công, đất phù sa, phèn, mặn",
+            "Vựa lúa lớn nhất; thủy sản, cây ăn quả, du lịch miệt vườn",
+            "Khó khăn mùa khô, xâm nhập mặn, sạt lở",
+            "Tính năng suất lúa, bình quân lương thực; chọn biểu đồ cơ cấu",
+            "Lỗi: cho rằng không cần thủy lợi"
+          ],
+          "blocks": [
+            {
+              "id": "dong-bang-song-cuu-long-b1",
+              "kind": "text",
+              "md": "Vùng gồm 13 tỉnh, thành (Long An, An Giang, Kiên Giang, Cần Thơ, Cà Mau…), diện tích khoảng $40,6$ nghìn km² (12,3% cả nước), dân số khoảng $17,4$ triệu người, mật độ khoảng $430$ người/km². Vùng nằm ở hạ lưu sông Mê Công, giáp Đông Nam Bộ, Campuchia và biển Đông với vùng biển rộng, nhiều đảo (Phú Quốc).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b2",
+              "kind": "text",
+              "md": "Đất phù sa ngọt khoảng $1,2$ triệu ha dọc sông Tiền, sông Hậu rất màu mỡ; đất phèn khoảng $1,6$ triệu ha, đất mặn khoảng $0,75$ triệu ha. Khí hậu cận xích đạo nóng ẩm quanh năm, mùa khô rõ nhưng ít bão hơn các vùng khác. Sông kênh chằng chịt, nước ngọt dồi dào mùa lũ; rừng ngập mặn (Cà Mau, Bạc Liêu) và rừng tràm U Minh có giá trị sinh thái.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-cuu-long-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đồng bằng sông Cửu Long có diện tích khoảng 40,6 nghìn km² và dân số khoảng 17,4 triệu người. Mật độ dân số của vùng khoảng",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "430 người/km²",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "43 người/km²",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "4 300 người/km²",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "1 740 người/km²",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Mật độ = 17 400 000 : 40 600 ≈ 430 người/km².",
+                  "option_feedback": {
+                    "B": "Bạn chia sai số 0 khi đổi 40,6 nghìn km² ra km².",
+                    "C": "Bạn nhầm 40,6 nghìn km² thành 406 km² nên kết quả lớn gấp 10 lần.",
+                    "D": "Bạn lấy dân số chia cho 10 thay vì chia cho diện tích."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b3",
+              "kind": "text",
+              "md": "Lúa: diện tích khoảng $3,9$ triệu ha, sản lượng khoảng $24$ triệu tấn, hơn một nửa cả nước, trên $90\\%$ gạo xuất khẩu; dẫn đầu là An Giang, Kiên Giang, Đồng Tháp. Nuôi trồng thủy sản dẫn đầu: tôm (Cà Mau, Bạc Liêu, Sóc Trăng, Kiên Giang), cá tra (An Giang, Đồng Tháp, Cần Thơ). Cây ăn quả, dừa (Bến Tre nhất cả nước), du lịch miệt vườn, biển đảo Phú Quốc.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba công thức phải nhớ",
+              "md": "Tỉ trọng $=\\dfrac{\\text{giá trị thành phần}}{\\text{tổng số}}\\times 100\\%$; năng suất $=\\dfrac{\\text{sản lượng}}{\\text{diện tích}}$; bình quân lương thực $=\\dfrac{\\text{sản lượng}}{\\text{dân số}}$. Bảng một năm, các thành phần cộng thành $100\\%$ → biểu đồ tròn; từ ba năm trở lên → biểu đồ miền để thấy chuyển dịch cơ cấu.",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-cuu-long-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao Đồng bằng sông Cửu Long vẫn cần hệ thống thủy lợi (kênh, đê bao, cống ngăn mặn – trữ ngọt) dù sông kênh chằng chịt?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì mùa khô kéo dài, nước mặn xâm nhập sâu và đất phèn cần nước ngọt để rửa.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì mạng lưới sông kênh dày đặc nên vùng không cần thêm công trình thủy lợi.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì khí hậu nóng ẩm và mưa đều quanh năm nên không có mùa khô.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì đất badan thoát nước nhanh nên khó giữ ẩm cho cây trồng.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Mùa khô sâu làm thiếu nước ngọt, mặn xâm nhập sâu 40–50 km; đất phèn cần nước ngọt để rửa nên thủy lợi là bắt buộc.",
+                  "option_feedback": {
+                    "B": "Đây chính là lỗi thường gặp: sông nhiều nhưng mùa khô vẫn thiếu nước ngọt và bị mặn xâm nhập.",
+                    "C": "Sai: vùng có mùa khô rõ, kéo dài 4–5 tháng.",
+                    "D": "Đất badan là thế mạnh của Tây Nguyên, không phải đặc trưng của đồng bằng này."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính năng suất và bình quân lương thực",
+              "md": "Diện tích lúa $3,9$ triệu ha, sản lượng $24$ triệu tấn, dân số $17,4$ triệu người.\n\nNăng suất $=\\dfrac{24\\,000\\,000}{3\\,900\\,000}\\approx 6,15$ tấn/ha $=61,5$ tạ/ha.\n\nBình quân $=\\dfrac{24\\,000\\,000}{17\\,400\\,000}\\approx 1,38$ tấn/người $=1\\,380$ kg/người.",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b6",
+              "kind": "text",
+              "md": "Mùa khô sâu, xâm nhập mặn vào sâu $40$ đến $50$ km, thiếu nước ngọt cho sản xuất và sinh hoạt. Đất phèn, đất mặn cải tạo tốn kém; sạt lở bờ sông, bờ biển và nước biển dâng do biến đổi khí hậu. Chuyển dịch cơ cấu kinh tế còn chậm, lao động ít được đào tạo, hạ tầng giao thông hạn chế.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "“Sông nước chằng chịt nên không cần thủy lợi”",
+              "md": "Sai. Mùa khô kéo dài 4 đến 5 tháng, nước mặn theo sông lớn xâm nhập sâu, đất phèn cần nước ngọt để rửa. Hệ thống kênh, đê bao, cống ngăn mặn và trữ ngọt là điều kiện bắt buộc để giữ ổn định sản xuất.",
+              "audio": null
+            },
+            {
+              "id": "dong-bang-song-cuu-long-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dong-bang-song-cuu-long-q4",
+                  "type": "FILL_TILES",
+                  "stem": "$\\text{Tỉ trọng} = \\dfrac{{{gap}}}{{{gap}}} \\times 100\\%$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "giá trị thành phần",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "tổng số",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "dân số",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "diện tích",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tỉ trọng của một thành phần bằng giá trị thành phần chia cho tổng số rồi nhân 100%.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dong-bang-song-cuu-long-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đồng bằng sông Cửu Long gồm bao nhiêu tỉnh, thành và nằm ở đâu?",
+                  "answer": "13 tỉnh, thành; nằm ở hạ lưu sông Mê Công, giáp Đông Nam Bộ, Campuchia và biển Đông.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao vùng được gọi là vựa lúa lớn nhất cả nước?",
+                  "answer": "Lúa khoảng 3,9 triệu ha, sản lượng khoảng 24 triệu tấn – hơn một nửa cả nước, trên 90% gạo xuất khẩu.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khó khăn lớn nhất về tự nhiên và cách khắc phục?",
+                  "answer": "Mùa khô thiếu nước, mặn xâm nhập sâu 40–50 km; phải làm kênh, đê bao, cống ngăn mặn – trữ ngọt.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về ba vùng phía Nam: Duyên hải Nam Trung Bộ, Tây Nguyên và Đồng bằng sông Cửu Long, gồm thế mạnh tự nhiên, hạn chế và cách tính mấy chỉ số hay ra trong đề.",
+          "Duyên hải Nam Trung Bộ gồm 8 tỉnh thành, từ Đà Nẵng đến Bình Thuận, là cầu nối giữa Bắc Trung Bộ với Đông Nam Bộ và là cửa ngõ ra biển của Tây Nguyên. Vùng hẹp ngang, phía tây là sườn đông Trường Sơn, phía đông là biển, đồng bằng nhỏ hẹp bị núi chia cắt thành từng ô. Mùa khô kéo dài, Ninh Thuận và Bình Thuận là nơi khô hạn nhất nước với lượng mưa dưới 800 mm một năm.",
+          "Bờ biển dài, nhiều bãi tôm bãi cá, các vũng vịnh nước sâu như Dung Quất, Vân Phong, Cam Ranh thuận lợi xây cảng và làm du lịch. Thế mạnh thật sự là kinh tế biển gồm khai thác và nuôi trồng thủy sản, cảng nước sâu, du lịch biển đảo. Bên cạnh đó là cây công nghiệp chịu hạn như mía, dừa, nho Ninh Thuận, thanh long Bình Thuận.",
+          "Bài tập hay gặp là tính mật độ và bình quân lương thực. Mật độ bằng 9,3 triệu người chia cho 44.400 km vuông, ra khoảng 209 người trên một km vuông. Bình quân lương thực bằng 3,2 triệu tấn chia cho 9,3 triệu người, ra khoảng 344 kg một người.",
+          "Con số 344 kg thấp hơn trung bình cả nước, cho thấy vùng này không lấy lúa làm trụ cột. Đây là lỗi rất dễ mắc khi nghĩ rằng giáp biển và có đồng bằng phù sa thì trồng lúa là thế mạnh. Không đúng, vì đồng bằng ở đây nhỏ hẹp, đất phù sa ít, mùa khô sâu nên lúa chỉ đủ tự cung.",
+          "Tây Nguyên gồm 5 tỉnh, diện tích khoảng 54,6 nghìn km vuông, dân số khoảng 5,9 triệu người. Địa hình là cao nguyên xếp tầng trên nền đá badan, đất badan màu mỡ nên rất hợp cây công nghiệp lâu năm. Cà phê là cây chủ lực, cả nước khoảng 700 nghìn ha còn Tây Nguyên khoảng 650 nghìn ha, bên cạnh đó là hồ tiêu, cao su và chè.",
+          "Vùng có rừng lớn nhất nước, trữ năng thủy điện khoảng 21 phần trăm cả nước và trữ lượng bô xít lớn. Muốn tính tỉ trọng thì lấy giá trị thành phần chia tổng số rồi nhân 100; lấy 650 chia 700 rồi nhân 100 ra khoảng 92,9 phần trăm diện tích cà phê cả nước. Hạn chế là mùa khô 4 đến 5 tháng gây thiếu nước tưới và nguy cơ cháy rừng, công nghiệp chế biến còn mỏng.",
+          "Lưu ý Tây Nguyên không phải vùng lương thực lớn, vì đất badan thoát nước nhanh, địa hình cao, lúa chỉ trồng ở thung lũng nhỏ; thế mạnh là cây công nghiệp lâu năm. Còn Đồng bằng sông Cửu Long gồm 13 tỉnh thành, diện tích khoảng 40,6 nghìn km vuông, dân số khoảng 17,4 triệu người, mật độ khoảng 430 người trên km vuông. Vùng nằm ở hạ lưu sông Mê Công, có khoảng 1,2 triệu ha đất phù sa ngọt, 1,6 triệu ha đất phèn và 0,75 triệu ha đất mặn.",
+          "Đây là vựa lúa lớn nhất nước với diện tích khoảng 3,9 triệu ha và sản lượng khoảng 24 triệu tấn, hơn một nửa cả nước và trên 90 phần trăm gạo xuất khẩu. Vùng cũng dẫn đầu nuôi trồng thủy sản với tôm ở Cà Mau, Bạc Liêu, Sóc Trăng, Kiên Giang và cá tra ở An Giang, Đồng Tháp, Cần Thơ, cùng cây ăn quả, dừa Bến Tre và du lịch miệt vườn.",
+          "Năng suất bằng sản lượng chia diện tích, tức 24 triệu tấn chia 3,9 triệu ha, ra khoảng 61,5 tạ một ha. Bình quân lương thực bằng 24 triệu tấn chia 17,4 triệu người, ra khoảng 1.380 kg một người. Với biểu đồ cơ cấu, bảng một năm thì vẽ biểu đồ tròn, từ ba năm trở lên thì vẽ biểu đồ miền để thấy chuyển dịch cơ cấu.",
+          "Khó khăn của đồng bằng là mùa khô sâu, xâm nhập mặn vào sâu 40 đến 50 km, thiếu nước ngọt, rồi sạt lở bờ sông bờ biển và nước biển dâng. Đừng nghĩ vùng này không cần thủy lợi, vì đất phèn cần nước ngọt để rửa, nên kênh, đê bao, cống ngăn mặn trữ ngọt là bắt buộc.",
+          "Ba điều cần nhớ. Thứ nhất, mỗi vùng một thế mạnh riêng: Duyên hải Nam Trung Bộ là kinh tế biển và cây chịu hạn, Tây Nguyên là cây công nghiệp lâu năm, Đồng bằng sông Cửu Long là lúa và thủy sản. Thứ hai, nắm chắc bốn công thức: mật độ, bình quân lương thực, năng suất và tỉ trọng. Thứ ba, tránh các bẫy: lúa không phải trụ cột của hai vùng đầu, và đồng bằng sông Cửu Long vẫn bắt buộc phải có thủy lợi."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M 340.00 150.00 A 210 210 0 0 1 488.49 211.51 L 424.85 275.15 A 120 120 0 0 0 340.00 240.00 Z" fill="#E8806A" stroke="#5A4BC0"/>
+<path d="M 488.49 211.51 A 210 210 0 0 1 550.00 360.00 L 460.00 360.00 A 120 120 0 0 0 424.85 275.15 Z" fill="#E8806A" stroke="#5A4BC0"/>
+<path d="M 550.00 360.00 A 210 210 0 0 1 488.49 508.49 L 424.85 444.85 A 120 120 0 0 0 460.00 360.00 Z" fill="#E9E5F6" stroke="#5A4BC0"/>
+<path d="M 488.49 508.49 A 210 210 0 0 1 340.00 570.00 L 340.00 480.00 A 120 120 0 0 0 424.85 444.85 Z" fill="#E9E5F6" stroke="#5A4BC0"/>
+<path d="M 340.00 570.00 A 210 210 0 0 1 191.51 508.49 L 255.15 444.85 A 120 120 0 0 0 340.00 480.00 Z" fill="#E9E5F6" stroke="#5A4BC0"/>
+<path d="M 191.51 508.49 A 210 210 0 0 1 130.00 360.00 L 220.00 360.00 A 120 120 0 0 0 255.15 444.85 Z" fill="#E9E5F6" stroke="#5A4BC0"/>
+<path d="M 130.00 360.00 A 210 210 0 0 1 191.51 211.51 L 255.15 275.15 A 120 120 0 0 0 220.00 360.00 Z" fill="#E9E5F6" stroke="#5A4BC0"/>
+<path d="M 191.51 211.51 A 210 210 0 0 1 340.00 150.00 L 340.00 240.00 A 120 120 0 0 0 255.15 275.15 Z" fill="#E9E5F6" stroke="#5A4BC0"/>
+</g>
+<g stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="622" y="157" width="56" height="56" rx="14" fill="#E9E5F6"/>
+<g stroke="#2B283F" stroke-width="4">
+<line x1="636" y1="173" x2="664" y2="173"/>
+<line x1="636" y1="185" x2="664" y2="185"/>
+<line x1="636" y1="197" x2="664" y2="197"/>
+</g>
+<rect x="622" y="307" width="56" height="56" rx="14" fill="#E9E5F6"/>
+<g stroke="#2B283F" stroke-width="4">
+<line x1="636" y1="323" x2="664" y2="323"/>
+<line x1="636" y1="335" x2="664" y2="335"/>
+<line x1="636" y1="347" x2="664" y2="347"/>
+</g>
+<rect x="622" y="457" width="56" height="56" rx="14" fill="#E9E5F6"/>
+<g stroke="#2B283F" stroke-width="4">
+<line x1="636" y1="473" x2="664" y2="473"/>
+<line x1="636" y1="485" x2="664" y2="485"/>
+<line x1="636" y1="497" x2="664" y2="497"/>
+</g>
+</g>
+<text x="710" y="197" font-family="Lexend, sans-serif" font-size="34" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">empty = 6</text>
+<text x="710" y="347" font-family="Lexend, sans-serif" font-size="34" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">full = 2</text>
+<text x="710" y="497" font-family="Lexend, sans-serif" font-size="34" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">mutex = 1</text>
+<text x="340" y="374" text-anchor="middle" font-family="Lexend, sans-serif" font-size="40" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">N = 8</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

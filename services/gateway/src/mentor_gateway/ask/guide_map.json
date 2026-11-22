@@ -1,270 +1,182 @@
 {
- "login-role": {
-  "vi": "Chạm vào hình học sinh hoặc giáo viên. Tài khoản phải đúng với vai trò em chọn.",
-  "en": "Tap the student or teacher picture. Your account has to match the role you pick."
+ "app": {
+  "vi": "Mentor là một làng gà: mỗi môn là một chú gà (Gà Toán, Gà Văn...). Bấm gà để vào chuồng xem khóa và bài học; ở làng có đấu trường đề thi, phòng tự học, tiến độ và thư viện. Việc khác, nhắn ở khung trò chuyện.",
+  "en": "Mentor is a chicken village: each subject is a chicken (Math chicken, Literature chicken...). Tap a chicken to enter its coop for courses and lessons; the village also has the exam arena, study room, progress and library. For anything else, use the chat box."
  },
- "courses": {
-  "vi": "Khóa của em: chạm một khóa để học tiếp và luyện tập theo mức. Ô cuối dải để tìm khóa mới.",
-  "en": "Your courses: tap one to carry on and practise by level. The last tile finds a new course."
+ "login.pick-your-role": {
+  "vi": "Chọn vai trò: Chạm hình học sinh hoặc giáo viên. Vai trò phải khớp với tài khoản.",
+  "en": "Pick your role: Tap student or teacher. It must match your account."
  },
- "course-today": {
-  "vi": "Bài hôm nay do Mentor xếp sẵn. Chỉ cần nhấn nút lớn để học tiếp đúng chỗ em đang dừng.",
-  "en": "Today's lesson is planned by Mentor. Just press the big button to continue where you stopped."
+ "login.account": {
+  "vi": "Tài khoản: Nhập tên tài khoản trường hoặc thầy cô đưa cho em.",
+  "en": "Account: Enter the account your school or teacher gave you."
  },
- "my-courses": {
-  "vi": "Các khóa em đã thêm, kèm tiến độ. Khóa đã tải về máy thì học được cả khi mất mạng.",
-  "en": "The courses you've added, with progress. Downloaded courses work even without internet."
+ "login.password": {
+  "vi": "Mật khẩu: Nhập mật khẩu. Bấm hình con mắt để xem lại.",
+  "en": "Password: Enter your password. Tap the eye to check it."
  },
- "more-courses": {
-  "vi": "Các khóa khác hợp với lớp em. Nhấn Xem tất cả để tìm thêm khóa.",
-  "en": "Other courses for your grade. Press See all to find more."
+ "login.log-in": {
+  "vi": "Đăng nhập: Bấm sau khi đã chọn vai trò và điền đủ.",
+  "en": "Log in: Press after picking a role and filling both boxes."
  },
- "course-search": {
-  "vi": "Gõ tên môn hoặc chủ đề, ví dụ “điện trường”, để tìm khóa hợp với lớp của em.",
-  "en": "Type a subject or topic, like “electric field”, to find courses for your grade."
+ "first.language": {
+  "vi": "Ngôn ngữ: Chạm để chọn tiếng Việt hoặc tiếng Anh.",
+  "en": "Language: Tap to choose Vietnamese or English."
  },
- "course-tree": {
-  "vi": "Chạm một nhóm để gập hoặc mở. Dấu tích là xong.",
-  "en": "Tap a group to fold or open it. A tick means done."
+ "first.who-are-you": {
+  "vi": "Em là ai: Chọn bạn sẽ đứng trong làng cùng các chú gà.",
+  "en": "Who are you: Pick who stands in the village with the chickens."
  },
- "course-next": {
-  "vi": "Mentor đưa em tới đúng chỗ nên học bây giờ.",
-  "en": "Mentor takes you to what to do now."
+ "first.three-perches": {
+  "vi": "Ba ô đậu: Chọn gà cho các ô, mỗi gà là một môn. Thêm gà sau ở Chợ gà.",
+  "en": "Three perches: Pick chickens for the perches, one per subject. Add more later at the market."
  },
- "player-progress": {
-  "vi": "Thanh này cho biết em học được bao nhiêu của bài. Nút X để dừng, Mentor nhớ chỗ em dừng.",
-  "en": "This bar shows how much of the lesson you've done. The X stops here; Mentor remembers your place."
+ "chuong.growing-up": {
+  "vi": "Gà lớn dần: Học bài, luyện tập, đánh boss đều cho gà kinh nghiệm. Đủ 100 điểm là lên cấp.",
+  "en": "Growing up: Lessons, practice and boss fights give experience. 100 points make a level."
  },
- "practice": {
-  "vi": "Luyện tập nằm trong từng khóa: mở khóa ở dải Khóa của em, xem mục Luyện tập theo mức. Hoặc nhắn Mực “cho em luyện tập”.",
-  "en": "Practice lives in each course: open one from Your courses and see Practice by level. Or tell Mực “let me practise”."
+ "chuong.suggestion": {
+  "vi": "Gà gợi ý: Việc nên học tiếp của môn này. Bấm nút để vào bài.",
+  "en": "Suggestion: What to study next in this subject. Press the button to start."
  },
- "course-practice": {
-  "vi": "Mức từ dễ tới khó. Ổ khóa là mức của gói khác.",
-  "en": "Levels from easy to hard. A lock means another plan."
+ "chuong.courses": {
+  "vi": "Khóa của gà: Các khóa em đang học và đã học. Bấm một khóa để mở các bài.",
+  "en": "Courses: The courses you are on or finished. Tap one to open its lessons."
  },
- "practice-quick": {
-  "vi": "Mentor chọn sẵn câu hỏi cho hôm nay. Bấm Bắt đầu là làm.",
-  "en": "Mentor picked today's questions. Press Start."
- },
- "practice-resume": {
-  "vi": "Em còn một bài làm dở. Nhấn Làm tiếp để vào đúng câu em dừng.",
-  "en": "You have a session left half done. Press Continue to return to the question where you stopped."
- },
- "practice-mock": {
-  "vi": "Đề thi thử có đồng hồ. Đáp án hiện sau khi nộp; đề chỉ để luyện.",
-  "en": "Mock exams have a clock. Answers show after you submit; just for practice."
- },
- "practice-courses": {
-  "vi": "Bài kiểm tra của từng khóa, chỉ gồm những bài em đã học tới.",
-  "en": "Each course's tests, using only the lessons you've reached."
+ "lesson.your-study-buddy": {
+  "vi": "Gà đi cùng: Gà học cùng em suốt bài. Làm xong bài, gà được kinh nghiệm.",
+  "en": "Your study buddy: Your chicken studies with you all lesson and gets experience when you finish."
  },
  "practice-answer": {
-  "vi": "Bấm vào đáp án em chọn. Sai thì Mentor chỉ ra chỗ nhầm ngay.",
-  "en": "Tap your answer. If it's wrong, Mentor shows the slip right away."
- },
- "practice-progress": {
-  "vi": "Thanh này cho biết em đã làm bao nhiêu câu. Nút X lưu bài lại, em quay lại làm tiếp được.",
-  "en": "This bar shows how many questions you've done. The X saves your place so you can come back."
- },
- "practice-hint": {
-  "vi": "Cần gợi ý thì nhấn đây. Mỗi câu có một gợi ý, và câu có dùng gợi ý được Mentor ghi nhận riêng.",
-  "en": "Press here for a hint. Each question has one, and Mentor notes when you used it."
- },
- "practice-feedback": {
-  "vi": "Sau mỗi câu: đáp án đúng màu xanh và một câu nói rõ chỗ em nhầm. Xong nhấn Câu tiếp.",
-  "en": "After each question: the right answer in green and one sentence on where it slipped. Then press Next."
+  "vi": "Chọn đáp án: Làm bài rồi bấm Kiểm tra. Sai thì gà chỉ ra chỗ nhầm ngay.",
+  "en": "Pick an answer: Answer, then press Check. If it is wrong the chicken shows the slip right away."
  },
  "practice-clock": {
-  "vi": "Đồng hồ của bài thi thử, tính theo máy chủ. Hết giờ bài tự nộp.",
-  "en": "The mock exam clock, kept by the server. When it reaches zero the exam is handed in for you."
+  "vi": "Đồng hồ: Đề thi có giờ. Hết giờ máy tự nộp bài.",
+  "en": "Clock: Exams have a clock. At zero the paper is handed in for you."
  },
- "practice-flag": {
-  "vi": "Đánh dấu câu em chưa chắc để quay lại sau. Bảng Tất cả câu cho thấy câu nào đã làm, câu nào đánh dấu.",
-  "en": "Flag a question you're unsure about to return to it. The All questions grid shows what's answered or flagged."
+ "practice-progress": {
+  "vi": "Số câu đã làm: Thanh này cho biết em làm tới câu nào.",
+  "en": "Questions done: This bar shows how far you are."
  },
- "practice-result": {
-  "vi": "Điểm của lần luyện này. Câu sai sẽ được làm lại vào buổi sau.",
-  "en": "Your score. Missed questions come back next session."
+ "practice-hint": {
+  "vi": "Gợi ý: Bí thì bấm gợi ý, gà nhắc một ý nhỏ.",
+  "en": "Hint: Stuck? Tap hint and the chicken gives a small nudge."
  },
- "practice-review": {
-  "vi": "Xem lại từng câu: em chọn gì, đáp án đúng và lời giải.",
-  "en": "Go through each question: what you chose, the right answer and the solution."
+ "arena.filter-papers": {
+  "vi": "Lọc đề: Chọn năm hoặc môn để tìm đề hợp với em.",
+  "en": "Filter papers: Pick a year or subject to find the right paper."
  },
- "ask": {
-  "vi": "Trò chuyện với Mực: Mực gợi ý việc nên làm. Ở ô bên dưới em chụp bài, gõ hoặc nói để hỏi bài, tìm khóa, xin luyện tập hay thêm mục tiêu.",
-  "en": "Talking with Mực: Mực suggests what to do. In the box below, snap, type or talk to ask about homework, find a course, practise or add a goal."
+ "arena.real-papers-one-boss-each": {
+  "vi": "Đề thật, mỗi đề một boss: Đề thi các năm trước, bấm giờ như ngày thi. Nộp bài xong gà đánh boss: đúng từ nửa số câu là hạ boss.",
+  "en": "Real papers, one boss each: Past exam papers, timed like exam day. After you submit your chicken fights the boss: half right or more beats it."
  },
- "ask-composer": {
-  "vi": "Gõ câu hỏi vào ô, hoặc nhấn máy ảnh để chụp bài, nút ảnh để chọn ảnh có sẵn, micro để nói. Nhấn nút tím để gửi.",
-  "en": "Type your question here, or press the camera to snap an exercise, the picture button to pick a photo, the microphone to talk. Press the purple button to send."
+ "tests.course-tests": {
+  "vi": "Bài kiểm tra: Thi thử cả khóa hoặc làm từng mức. Đáp án hiện sau khi nộp.",
+  "en": "Course tests: Take a mock of the whole course or one level. Answers show after you submit."
  },
- "ask-camera": {
-  "vi": "Đưa một bài vào trong khung, giữ máy thật yên rồi nhấn nút tròn để chụp. Cũng chọn được ảnh có sẵn.",
-  "en": "Fit one exercise inside the frame, hold steady and press the round button. You can also pick a photo you already have."
+ "study.how-long": {
+  "vi": "Học bao lâu: Chọn số phút. Mỗi phút gà được 1 điểm, học trọn thêm 5 điểm.",
+  "en": "How long: Pick the minutes. 1 point a minute, 5 more for a full session."
  },
- "ask-courses": {
-  "vi": "Các khóa Mentor gợi ý. Nhấn tên khóa để xem cây nội dung, nhấn Thêm để đưa khóa vào lịch học và tải về máy.",
-  "en": "Courses Mentor suggests. Tap a title to see its contents, tap Add to put it in your plan and download it."
+ "study.what-to-study": {
+  "vi": "Học gì: Chọn bài gà gợi ý, hoặc tự học bằng sách vở của em.",
+  "en": "What to study: Pick the suggested lesson, or study from your own books."
  },
- "ask-choices": {
-  "vi": "Ảnh có nhiều bài. Chọn bài em muốn giải, Mentor sẽ giải từng bước.",
-  "en": "The photo has several exercises. Pick the one you want and Mentor solves it step by step."
+ "study.how-points-work": {
+  "vi": "Cách tính điểm: Giữ đủ giờ thì gà được thưởng thêm. Học đủ 10 phút là giữ chuỗi ngày.",
+  "en": "How points work: A full session earns a bonus. 10 minutes keeps your streak."
  },
- "ask-solution": {
-  "vi": "Lời giải từng bước. Mentor để dành bước cuối cho em tự thử, rồi nhấn Xem bước cuối để kiểm tra.",
-  "en": "A step-by-step solution. Mentor keeps the last step for you to try, then press Show last step to check."
+ "progress.goals": {
+  "vi": "Mục tiêu: Thanh xanh là phần đã xong. Mentor tự thêm buổi khi em hơi chậm.",
+  "en": "Goals: The green bar is what is done. Mentor adds sessions when you fall behind."
  },
- "progress": {
-  "vi": "Vòng này cho biết tuần này em học được bao nhiêu buổi. Chạm để xem lịch tuần và mục tiêu.",
-  "en": "This ring shows how many sessions you have done this week. Tap it for the week and your goals."
+ "progress.this-week": {
+  "vi": "Lịch tuần: Mentor xếp lịch và dời buổi em bỏ lỡ. Ô viền đậm là hôm nay.",
+  "en": "This week: Mentor plans the week and moves sessions you miss. The outlined box is today."
  },
- "progress-goals": {
-  "vi": "Thanh tím là phần đã xong. Nhãn bên phải cho biết em đang đúng nhịp hay hơi chậm, Mentor tự thêm buổi khi cần.",
-  "en": "The purple bar is what is done. The tag says if you are on track; Mentor adds sessions when needed."
+ "progress.how-chickens-grow": {
+  "vi": "Cách gà lớn: Mỗi việc học cho gà bao nhiêu điểm kinh nghiệm.",
+  "en": "How chickens grow: How many points each kind of study gives."
  },
- "progress-week": {
-  "vi": "Mentor tự xếp và tự dời lịch khi em bỏ buổi. Ô viền tím là hôm nay. Chạm một ô để vào học luôn.",
-  "en": "Mentor plans the week and moves sessions you miss. The purple box is today. Tap a box to start."
+ "library.four-chapters": {
+  "vi": "Bốn chương: Đọc, Lịch, Thí nghiệm và Đề tài.",
+  "en": "Four chapters: Read, Schedule, Experiments and Topic."
  },
- "progress-courses": {
-  "vi": "Từng khóa em học và đã được bao nhiêu phần trăm. Chạm tên khóa để mở.",
-  "en": "Each course you study and how far you are. Tap a name to open it."
- },
- "research": {
-  "vi": "Nghiên cứu: đề tài của bạn, việc sắp tới, paper cần đọc và nhật ký thí nghiệm. Mentor tìm paper mới mỗi thứ Hai.",
-  "en": "Research: your topic, what is coming up, the papers to read and your experiment log. Mentor looks for new papers every Monday."
- },
- "research-tabs": {
-  "vi": "Bốn chương: Đọc, Lịch, Thí nghiệm và Đề tài. Chấm tím là có paper mới, chấm cam là sắp tới hạn nộp.",
-  "en": "Four chapters: Read, Schedule, Experiments and Topic. A purple dot means new papers, an orange one a deadline coming up."
- },
- "research-hero": {
-  "vi": "Paper bạn nên đọc tiếp và lý do Mentor chọn. Nhấn Đọc tiếp để mở paper.",
-  "en": "The paper to read next and why Mentor picked it. Press Keep reading to open it."
- },
- "research-topic": {
-  "vi": "Đề tài và các từ khóa Mentor dùng để tìm paper. Bỏ từ khóa không hợp, hoặc nhấn Sửa để đổi đề tài.",
-  "en": "Your topic and the keywords Mentor searches with. Remove one that does not fit, or press Edit to change the topic."
- },
- "research-search": {
-  "vi": "Tìm paper theo chủ đề, tên bài hoặc tác giả. Mặc định lấy từ arXiv; thêm Semantic Scholar hoặc Asta bằng key của bạn để có thêm số trích dẫn và đoạn trích.",
-  "en": "Search papers by topic, title or author. It uses arXiv by default; add Semantic Scholar or Asta with your own key for citation counts and snippets."
- },
- "research-upcoming": {
-  "vi": "Họp với giáo viên hướng dẫn và các hạn nộp. Thêm một hạn bằng một dòng, ví dụ nộp bài 16/11, 23:59 AoE; Mentor đổi sang giờ Việt Nam.",
-  "en": "Advisor meetings and deadlines. Add one in a line, like submit 16/11, 23:59 AoE; Mentor converts it to Vietnam time."
- },
- "research-agenda": {
-  "vi": "Khung agenda Mentor soạn từ nhật ký và buổi họp trước. Bạn điền kết quả mới và câu hỏi mở; sau buổi họp ghi vài dòng để Mentor tách việc cần làm.",
-  "en": "The agenda Mentor drafted from your log and the last meeting. Fill in new results and open questions; after the meeting jot a few lines and Mentor splits out the to-dos."
- },
- "research-reading": {
-  "vi": "Paper cần đọc, tối đa 5 bài đang đọc. Đánh dấu đã đọc để có chỗ cho bài mới, hoặc nhận gợi ý của Mentor.",
-  "en": "Papers to read, at most 5 at a time. Mark one read to free a slot, or take one of Mentor's suggestions."
- },
- "research-milestones": {
-  "vi": "Các mốc luận văn theo thời gian. Mốc tiếp theo được tô đậm.",
-  "en": "Your thesis milestones in time order. The next one is highlighted."
- },
- "research-log": {
-  "vi": "Ghi nhanh thí nghiệm vừa chạy, kèm ảnh bảng kết quả nếu có. Mentor chép lại số liệu, không nhận xét kết quả thay bạn.",
-  "en": "Jot down the experiment you just ran, with a photo of the result table if you like. Mentor restates the numbers and does not judge the result for you."
- },
- "research-paper": {
-  "vi": "Một paper: tự tóm tắt trước, rồi Mentor góp ý. Bên dưới là hỏi về paper và các bài liên quan.",
-  "en": "One paper: write your own summary first, then Mentor gives feedback. Below are questions about the paper and related papers."
- },
- "research-summary": {
-  "vi": "Viết tóm tắt bằng lời của bạn, ít nhất 20 ký tự. Mentor chỉ góp ý sau khi bạn viết.",
-  "en": "Write a summary in your own words, at least 20 characters. Mentor only gives feedback after you write."
- },
- "research-ask": {
-  "vi": "Hỏi về paper này. Câu trả lời kèm đoạn trích dẫn; nếu không thấy đoạn nào, Mentor nói thẳng là không tìm thấy.",
-  "en": "Ask about this paper. Answers come with quoted passages; if nothing is found, Mentor says so plainly."
- },
- "research-related": {
-  "vi": "Các bài trích dẫn paper này và các bài paper này trích dẫn. Cần key Semantic Scholar hoặc Asta.",
-  "en": "Papers that cite this one and papers it cites. Needs a Semantic Scholar or Asta key."
- },
- "research-sources": {
-  "vi": "Nguồn tìm paper: arXiv luôn bật; thêm Semantic Scholar hoặc Asta bằng key của riêng bạn, gỡ bất cứ lúc nào.",
-  "en": "Paper sources: arXiv is always on; add Semantic Scholar or Asta with your own key and remove it any time."
- },
- "settings": {
-  "vi": "Cài đặt: đổi lớp, ngôn ngữ, giao diện, và tạm tắt nhắc học khi em cần yên tĩnh.",
-  "en": "Settings: change grade, language, theme, and pause reminders when you need quiet."
- },
- "back": {
-  "vi": "Nút này đưa em về màn Hôm nay, nơi Mực gợi ý việc nên làm.",
-  "en": "This takes you back to Today, where Mực suggests what to do."
+ "library.find-papers": {
+  "vi": "Tìm paper: Gõ chủ đề, tên bài hoặc tác giả.",
+  "en": "Find papers: Type a topic, a title or an author."
  },
  "drop": {
-  "vi": "Kéo ảnh chụp sách, PDF, slide hay video vào đây. Gửi xong có thể đóng app, khóa soạn xong sẽ tự hiện.",
-  "en": "Drag book photos, PDFs, slides or videos here. You can close the app; the course appears when it's ready."
+  "vi": "Thả tài liệu: Kéo ảnh chụp sách, PDF, slide hay video vào đây. Gửi xong có thể đóng app, khóa soạn xong sẽ tự hiện.",
+  "en": "Drop your material: Drag book photos, PDFs, slides or videos here. You can close the app; the course appears when it is ready."
  },
  "teacher-courses": {
-  "vi": "Nhãn màu cho biết khóa đang được soạn, cần bạn xem hay đã xuất bản.",
-  "en": "The coloured tag shows if a course is being prepared, needs you, or is published."
+  "vi": "Khóa của bạn: Nhãn màu cho biết khóa đang được soạn, cần bạn xem hay đã xuất bản.",
+  "en": "Your courses: The coloured tag shows if a course is being prepared, needs you, or is published."
  },
- "gv-back": {
-  "vi": "Nút nhỏ này đưa bạn về màn gửi bài giảng và danh sách khóa học.",
-  "en": "This small button takes you back to the send-lesson screen and your course list."
- },
- "gv-note": {
-  "vi": "Ghi chú không bắt buộc, ví dụ lớp nào, trình độ ra sao. Gõ trước khi thả tệp để Mentor soạn cho đúng đối tượng.",
-  "en": "An optional note, like which class and what level. Type it before dropping files so Mentor writes for the right students."
- },
- "gv-sending": {
-  "vi": "Tiến độ tải tệp lên. Khi đủ rồi bạn đóng app được, Mentor đọc tiếp ở phía máy chủ.",
-  "en": "Upload progress. Once it's complete you can close the app; Mentor keeps reading on the server."
- },
- "gv-outline": {
-  "vi": "Sửa thẳng ở đây: đổi tên, kéo để đổi thứ tự, xóa hoặc thêm bài.",
-  "en": "Edit right here: rename, drag to reorder, delete or add lessons."
+ "gv-course.course-structure": {
+  "vi": "Cấu trúc khóa: Sửa thẳng ở đây: đổi tên, kéo để đổi thứ tự, xóa hoặc thêm bài.",
+  "en": "Course structure: Edit right here: rename, drag to reorder, delete or add lessons."
  },
  "gv-retake": {
-  "vi": "Ảnh này mờ hoặc tối. Bấm Chụp lại để gửi lại đúng trang đó.",
-  "en": "This photo is blurry or dark. Tap Retake to resend that page."
- },
- "gv-level": {
-  "vi": "Mức độ của khóa, để Mentor soạn bài vừa sức học sinh. Cần xác nhận mức độ trước khi xuất bản.",
-  "en": "The course level, so Mentor writes at the right difficulty. Confirm it before you publish."
+  "vi": "Trang chưa đọc được: Ảnh này mờ hoặc tối. Bấm Chụp lại để gửi lại đúng trang đó.",
+  "en": "Unreadable page: This photo is blurry or dark. Tap Retake to resend that page."
  },
  "gv-compose": {
-  "vi": "Gõ điều cần sửa rồi gửi. Mentor làm theo luôn, không hỏi lại.",
-  "en": "Type what to change. Mentor just does it."
+  "vi": "Nhắn Mentor: Gõ điều cần sửa rồi gửi. Mentor làm theo luôn, không hỏi lại.",
+  "en": "Message Mentor: Type what to change. Mentor just does it."
  },
  "gv-go": {
-  "vi": "Bấm khi đã ưng cấu trúc. Mentor soạn xong sẽ báo bạn.",
-  "en": "Press when the structure looks right. Mentor tells you when it's done."
+  "vi": "Soạn nội dung: Bấm khi đã ưng cấu trúc. Mentor soạn xong sẽ báo bạn.",
+  "en": "Write the lessons: Press when the structure looks right. Mentor tells you when it is done."
  },
- "gv-review": {
-  "vi": "Bôi đen câu chưa ưng rồi bấm Nhận xét. Mentor sửa luôn.",
-  "en": "Select a sentence you don't like and comment. Mentor fixes it."
+ "gv-labels.main-chicken": {
+  "vi": "Gà chính: Mentor đoán sẵn môn. Mỗi khóa nằm trong đúng một gà.",
+  "en": "Main chicken: Mentor guessed the subject. Each course sits in exactly one chicken."
  },
- "gv-text-comment": {
-  "vi": "Bôi đen một đoạn chữ rồi bấm Nhận xét. Mentor sẽ sửa đúng đoạn đó.",
-  "en": "Highlight some text, then press Comment. Mentor fixes exactly that part."
+ "gv-labels.topics": {
+  "vi": "Chủ đề: Vài từ khóa ngắn, dùng để ghép với câu hỏi trong đề thi.",
+  "en": "Topics: A few short keywords, used to match exam questions."
  },
- "gv-video-comment": {
-  "vi": "Tua tới đoạn cần sửa rồi bấm Nhận xét tại giây đó.",
-  "en": "Scrub to the part to fix, then comment at that second."
+ "gv-labels.course-goals": {
+  "vi": "Mục tiêu khóa: Mỗi dòng một điều học sinh làm được sau khóa. Học sinh thấy ở đầu khóa.",
+  "en": "Course goals: One line per thing students can do after the course. They see it at the start."
  },
- "gv-image-pin": {
-  "vi": "Bấm vào chỗ chưa đúng trên hình để cắm ghim và ghi nhận xét.",
-  "en": "Click the wrong spot on the figure to pin a comment."
+ "gv-level": {
+  "vi": "Mức độ: Mức độ của khóa, để Mentor soạn bài vừa sức học sinh.",
+  "en": "Level: The course level, so Mentor writes at the right difficulty."
  },
- "gv-comment-box": {
-  "vi": "Viết bạn muốn sửa thế nào rồi bấm Gửi. Mentor sửa luôn, không hỏi lại.",
-  "en": "Write what should change and press Send. Mentor fixes it straight away, no questions back."
- },
- "gv-comments": {
-  "vi": "Mentor sửa theo từng nhận xét. Xong thì nhãn đổi thành Đã sửa.",
-  "en": "Mentor fixes each one; the tag turns to Fixed."
+ "gv-review.steps": {
+  "vi": "Các bước: Mỗi bước là một màn hình học sinh sẽ thấy. Chọn bước để xem và sửa.",
+  "en": "Steps: Each step is one screen students see. Pick one to view and edit."
  },
  "gv-publish": {
-  "vi": "Đưa bản này tới học sinh. Ai đang học bản cũ vẫn giữ tiến độ.",
-  "en": "Sends this version to students. Anyone mid-course keeps their progress."
+  "vi": "Xuất bản: Đưa bản này tới học sinh. Ai đang học bản cũ vẫn giữ tiến độ.",
+  "en": "Publish: Sends this version to students. Anyone mid-course keeps their progress."
+ },
+ "village.today": {
+  "vi": "Việc hôm nay: Gà nói trước một việc nên làm bây giờ. Trả lời ở khung trò chuyện bên dưới.",
+  "en": "Today: Your chicken suggests one thing to do now. Answer in the chat below."
+ },
+ "village.your-chickens": {
+  "vi": "Gà của em: Mỗi chú gà là một môn. Bấm vào gà để vào chuồng xem các khóa.",
+  "en": "Your chickens: Each chicken is a subject. Tap one to see its courses."
+ },
+ "village.this-week": {
+  "vi": "Tuần này: Vòng này cho biết em học được mấy buổi trong tuần. Bấm để xem lịch.",
+  "en": "This week: The ring shows how many sessions you did this week. Tap to see the plan."
+ },
+ "village.chicken-market": {
+  "vi": "Chợ gà: Nhận thêm gà để học thêm môn, miễn phí.",
+  "en": "Chicken market: Take more chickens to study more subjects, free."
+ },
+ "village.chat": {
+  "vi": "Khung trò chuyện: Nhắn, chụp bài, chụp vở hoặc nói. Gà trả lời ngay tại đây.",
+  "en": "Chat: Type, snap homework, snap your notes or talk. Your chicken answers right here."
+ },
+ "village.settings": {
+  "vi": "Cài đặt: Đổi ngôn ngữ, nền sáng tối, nhắc học. Muốn yên tĩnh thì chọn Tạm im lặng.",
+  "en": "Settings: Change language, theme and reminders. Pick Quiet for a while to stop them."
  }
 }

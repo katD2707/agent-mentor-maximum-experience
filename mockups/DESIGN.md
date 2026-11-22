@@ -5,6 +5,27 @@
 > project's design system. Written in English because it is Stitch's working language; the UI copy itself is
 > Vietnamese-first with an English switch.
 
+## 0. Student side: Làng gà (2026-11-22, supersedes the notebook look for students)
+
+The student app is a chibi game world, inspired by the browser game Gunny in **style only** (no Gunny art, characters
+or interface). The home is a painted village (`assets/ga/lang.webp`). It has the student's own character (boy or girl,
+one template each) and their chickens on a dirt yard. Around the yard are the places: Đấu trường (real exam papers only: past national exams, entrance tests, university end-of-term exams; timed, auto-submitted at zero; each real paper is a boss: a battle strip shows the chicken charging while sitting the exam, and on submit a short replay deals damage equal to right answers, 5/10 beats it; practice and the course mock exam live in each course, Kiểm tra khóa), Chợ gà (a box in the village to take more chickens; courses are found inside each chicken's page, Chuồng gà), the warm pond (Phòng tự học), Thư viện (university
+only), and the coops behind the yard.
+Sections 1–6 below still describe the **teacher side**, which keeps the plain notebook look.
+
+- **One subject = one chicken.** For university, one ngành = one chicken, and every course sits in exactly one chicken. A chicken is recognised by its comb, its prop and its tint. Gà Toán has a "+" comb and a set square. Gà Văn has a real comb and a calligraphy brush. Gà Anh has a real comb and a "Hi!" bubble.
+- **Growth.** 100 experience points per level. Stages: Lv 1 Gà con, Lv 2–4 Gà choai, Lv 5–9 Trưởng thành, Lv 10+ Cao thủ. The size and details of the drawing grow with the stage.
+- **Art.** Made in Blender 4.5 by script (`assets/ga/src/`), toon-shaded with an outline. Sprites are 512 px square frames with room above for the jump. The drawing spans 33→85% of the frame for an adult, 41→85% for a stage 2 chicken, and 8.4→87.7% for the student. Each chicken has an idle loop (`*-dung.webp`), a jump (`*-nhay.webp`), and happy, sad and surprised stills. Under reduced motion, stills replace the animations.
+- **Chrome:**
+  - Wooden boards: board #fff7e6, edge #c98a45, shadow #7d4c22.
+  - Red ribbon titles: #e2573a→#c2402a, large bold white text.
+  - Dark name plates: rgba(34,28,58,.84), with a yellow level badge #ffcf3d.
+  - Chunky buttons with a bottom shadow: green #23874a over #165c32, white text.
+  - Wooden signs: #f2c68c→#d6a060, with #3a2010 text.
+  - Font: Lexend.
+- **Reading stays calm.** Lesson text, answers and papers sit on a clean cream sheet inside the board. The game look frames content and never covers it.
+- **The guide is the chicken** (`ga-guide.js`). Mực is retired.
+
 ## 1. Visual Theme & Atmosphere
 
 A Vietnamese school notebook come to life. The signature surface is **vở ô li**, the grid-ruled exercise book every
@@ -105,5 +126,5 @@ purple ink lightens to **Lavender Ink (#9C8AFF)** so it keeps contrast. Shadows 
   progress bars fill from zero, numbers count up, the main headline gets a highlighter swipe, hub squares lean toward
   the pointer, buttons press in with a ripple, and right answers, added courses, saved goals and publishing throw a
   small confetti burst. Everything turns off under reduced-motion.
-- A guide character, **Mực** (an original purple ink-drop with a pencil), lives on every screen. Tap it for a speech
+- A guide character, the subject's **chicken** (Gà Toán by default; it replaced the old ink-drop guide), lives on every screen. Tap it for a speech
   bubble; hold and drag it onto anything to hear what that part does; afterwards it runs off to a new spot.

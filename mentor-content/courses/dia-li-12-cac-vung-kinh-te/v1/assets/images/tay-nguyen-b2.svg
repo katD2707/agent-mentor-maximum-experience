@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<circle cx="80" cy="90" r="28" fill="#F0D76E"/>
+<polygon points="0.0,520.0 30.0,480.0 180.0,480.0 200.0,430.0 350.0,430.0 370.0,380.0 515.0,380.0 535.0,330.0 675.0,330.0 695.0,280.0 830.0,280.0 850.0,230.0 965.0,230.0 1000.0,240.0 1000.0,620.0 0.0,620.0" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="8.0,548.0 28.0,550.3 48.0,551.7 68.0,551.9 88.0,550.7 108.0,548.6 128.0,546.2 148.0,544.5 168.0,544.0 188.0,544.9 208.0,546.9 228.0,549.2 248.0,551.2 268.0,552.0 288.0,551.4 308.0,549.6 328.0,547.3 348.0,545.2 368.0,544.1 388.0,544.3 408.0,545.9 428.0,548.1 448.0,550.4 468.0,551.8 488.0,551.9 508.0,550.6 528.0,548.4 548.0,546.1 568.0,544.4 588.0,544.0 608.0,545.0 628.0,547.0 648.0,549.4 668.0,551.3 688.0,552.0 708.0,551.3 728.0,549.5 748.0,547.2 768.0,545.1 788.0,544.1 808.0,544.4 828.0,546.0 848.0,548.3 868.0,550.5 888.0,551.8 908.0,551.8 928.0,550.5 948.0,548.3 968.0,546.0 988.0,544.4" fill="none" stroke="#2B283F" stroke-opacity="0.30" stroke-width="1.4"/>
+<polyline points="8.0,612.0 28.0,614.3 48.0,615.7 68.0,615.9 88.0,614.7 108.0,612.6 128.0,610.2 148.0,608.5 168.0,608.0 188.0,608.9 208.0,610.9 228.0,613.2 248.0,615.2 268.0,616.0 288.0,615.4 308.0,613.6 328.0,611.3 348.0,609.2 368.0,608.1 388.0,608.3 408.0,609.9 428.0,612.1 448.0,614.4 468.0,615.8 488.0,615.9 508.0,614.6 528.0,612.4 548.0,610.1 568.0,608.4 588.0,608.0 608.0,609.0 628.0,611.0 648.0,613.4 668.0,615.3 688.0,616.0 708.0,615.3 728.0,613.5 748.0,611.2 768.0,609.1 788.0,608.1 808.0,608.4 828.0,610.0 848.0,612.3 868.0,614.5 888.0,615.8 908.0,615.8 928.0,614.5 948.0,612.3 968.0,610.0 988.0,608.4" fill="none" stroke="#2B283F" stroke-opacity="0.30" stroke-width="1.4"/>
+<polyline points="380.0,580.0 395.0,581.9 410.0,583.4 425.0,584.0 440.0,583.6 455.0,582.4 470.0,580.6 485.0,578.6 500.0,577.0 515.0,576.1 530.0,576.2 545.0,577.2 560.0,578.9 575.0,580.9 590.0,582.6 605.0,583.8 620.0,584.0 635.0,583.2 650.0,581.6 665.0,579.7 680.0,577.8 695.0,576.5 710.0,576.0 725.0,576.5 740.0,577.9 755.0,579.7 770.0,581.7 785.0,583.2 800.0,584.0 815.0,583.7 830.0,582.6 845.0,580.8 860.0,578.8 875.0,577.2 890.0,576.2 905.0,576.1 920.0,577.0 935.0,578.6 950.0,580.6 965.0,582.4 980.0,583.7 995.0,584.0" fill="none" stroke="#2B283F" stroke-opacity="0.25" stroke-width="1.3"/>
+<circle cx="580" cy="585" r="2.0" fill="#2B283F" opacity="0.22"/>
+<circle cx="590" cy="582" r="1.6" fill="#2B283F" opacity="0.22"/>
+<circle cx="385" cy="583" r="1.7" fill="#2B283F" opacity="0.22"/>
+<circle cx="829" cy="559" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="316" cy="599" r="1.8" fill="#2B283F" opacity="0.22"/>
+<circle cx="281" cy="609" r="2.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="727" cy="588" r="1.2" fill="#2B283F" opacity="0.22"/>
+<circle cx="261" cy="584" r="1.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="389" cy="568" r="1.0" fill="#2B283F" opacity="0.22"/>
+<circle cx="589" cy="579" r="1.9" fill="#2B283F" opacity="0.22"/>
+<circle cx="629" cy="590" r="1.5" fill="#2B283F" opacity="0.22"/>
+<circle cx="734" cy="580" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="978" cy="610" r="1.9" fill="#2B283F" opacity="0.22"/>
+<circle cx="767" cy="572" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="461" cy="558" r="1.8" fill="#2B283F" opacity="0.22"/>
+<circle cx="542" cy="601" r="1.4" fill="#2B283F" opacity="0.22"/>
+<circle cx="949" cy="601" r="1.0" fill="#2B283F" opacity="0.22"/>
+<circle cx="403" cy="605" r="1.5" fill="#2B283F" opacity="0.22"/>
+<circle cx="966" cy="576" r="1.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="710" cy="598" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="314" cy="573" r="2.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="803" cy="561" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="324" cy="557" r="1.9" fill="#2B283F" opacity="0.22"/>
+<circle cx="380" cy="585" r="1.5" fill="#2B283F" opacity="0.22"/>
+<circle cx="389" cy="595" r="1.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="720" cy="561" r="1.5" fill="#2B283F" opacity="0.22"/>
+<circle cx="405" cy="569" r="2.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="836" cy="571" r="2.0" fill="#2B283F" opacity="0.22"/>
+<circle cx="404" cy="576" r="1.9" fill="#2B283F" opacity="0.22"/>
+<circle cx="719" cy="560" r="2.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="406" cy="568" r="1.8" fill="#2B283F" opacity="0.22"/>
+<circle cx="490" cy="571" r="1.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="316" cy="587" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="689" cy="575" r="1.5" fill="#2B283F" opacity="0.22"/>
+<circle cx="950" cy="581" r="1.6" fill="#2B283F" opacity="0.22"/>
+<circle cx="883" cy="564" r="1.2" fill="#2B283F" opacity="0.22"/>
+<circle cx="913" cy="600" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="389" cy="595" r="2.0" fill="#2B283F" opacity="0.22"/>
+<circle cx="394" cy="607" r="2.0" fill="#2B283F" opacity="0.22"/>
+<circle cx="691" cy="578" r="1.1" fill="#2B283F" opacity="0.22"/>
+<circle cx="278" cy="608" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="764" cy="568" r="1.9" fill="#2B283F" opacity="0.22"/>
+<circle cx="685" cy="570" r="1.2" fill="#2B283F" opacity="0.22"/>
+<circle cx="776" cy="558" r="1.3" fill="#2B283F" opacity="0.22"/>
+<circle cx="658" cy="602" r="1.7" fill="#2B283F" opacity="0.22"/>
+<circle cx="455" cy="605" r="1.2" fill="#2B283F" opacity="0.22"/>
+<circle cx="262" cy="569" r="1.5" fill="#2B283F" opacity="0.22"/>
+<circle cx="294" cy="564" r="1.4" fill="#2B283F" opacity="0.22"/>
+<circle cx="668" cy="561" r="1.4" fill="#2B283F" opacity="0.22"/>
+<circle cx="900" cy="609" r="1.7" fill="#2B283F" opacity="0.22"/>
+<circle cx="755" cy="587" r="1.2" fill="#2B283F" opacity="0.22"/>
+<circle cx="276" cy="555" r="2.0" fill="#2B283F" opacity="0.22"/>
+<polyline points="951.0,238.0 850.0,238.0 830.0,288.0 695.0,288.0 695.0,288.0 675.0,338.0 535.0,338.0 535.0,338.0 515.0,388.0 370.0,388.0 370.0,388.0 350.0,438.0 200.0,438.0 200.0,438.0 180.0,488.0 30.0,488.0 2.0,524.0" fill="none" stroke="#5A4BC0" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="951.0,238.0 850.0,238.0 830.0,288.0 695.0,288.0 695.0,288.0 675.0,338.0 535.0,338.0 535.0,338.0 515.0,388.0 370.0,388.0 370.0,388.0 350.0,438.0 200.0,438.0 200.0,438.0 180.0,488.0 30.0,488.0 2.0,524.0" fill="none" stroke="#9FD8BF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<ellipse cx="830" cy="288" rx="9" ry="3.5" fill="#F7F1E3" opacity="0.9"/>
+<ellipse cx="675" cy="338" rx="9" ry="3.5" fill="#F7F1E3" opacity="0.9"/>
+<ellipse cx="515" cy="388" rx="9" ry="3.5" fill="#F7F1E3" opacity="0.9"/>
+<ellipse cx="350" cy="438" rx="9" ry="3.5" fill="#F7F1E3" opacity="0.9"/>
+<ellipse cx="180" cy="488" rx="9" ry="3.5" fill="#F7F1E3" opacity="0.9"/>
+<text x="105.0" y="462" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Kon Tum</text>
+<text x="275.0" y="412" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Pl&#226;y Ku</text>
+<text x="442.5" y="362" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#272;&#7855;k L&#7855;k</text>
+<text x="605.0" y="312" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">M&#417; N&#244;ng</text>
+<text x="762.5" y="262" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Di Linh</text>
+<text x="907.5" y="212" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">L&#226;m Vi&#234;n</text>
+<text x="150" y="590" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#273;&#7845;t badan</text>
+<text x="500" y="668" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">s&#244;ng X&#234; Xan, Xr&#234; P&#244;k, &#272;&#7891;ng Nai</text>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

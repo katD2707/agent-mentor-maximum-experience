@@ -13,6 +13,9 @@ from mentor_gateway.db import Database
 from mentor_gateway.engagement import EngagementService
 from mentor_gateway.gitrepo import UserLocks
 from mentor_gateway.jobs import JobExecutor, JobRunner, JobStore
+from mentor_gateway.langga import tables as _langga_tables  # noqa: F401  (registers the Làng gà tables before create_all)
+from mentor_gateway.langga.papers import PaperStore
+from mentor_gateway.langga.xp import XpService
 from mentor_gateway.mirror import Mirror, WorkspaceSync
 from mentor_gateway.notifications import NotificationHub
 from mentor_gateway.nudges import NudgeService
@@ -48,6 +51,7 @@ class Gateway:
     engagement: EngagementService  # GET /api/engagement
     audit: AuditLog
     planner: PlannerService | None = None  # behaviour events, study profile, planner agent, goals, reminders
+    xp: XpService | None = None  # Làng gà XP ledger
 
 
 def build_gateway(settings: Settings, *, clock: Clock = utc_now, executor: JobExecutor | None = None) -> Gateway:
@@ -83,9 +87,12 @@ def build_gateway(settings: Settings, *, clock: Clock = utc_now, executor: JobEx
     nudges = NudgeService(db, hub, jobs, users, mirror, clock, audit.record, runner.run_due)
     runner.nudges = nudges
     practice = PracticeService(db, mirror, PracticeBank(settings.content_dir), clock)
+    xp = XpService(db, clock)
+    practice.xp = xp  # Làng gà XP for practice answers, fixes and finished mocks/papers
+    practice.papers = PaperStore(settings.content_dir)
     scheduler.practice_sweep = practice.sweep
     llm = RouterPlannerLLM(settings.model_router_url, settings.model_router_key) if settings.model_router_url else None
     planner = PlannerService(db, users, hub, push, clock, practice, llm)
     scheduler.planner = planner.tick
     return Gateway(settings, clock, db, box, mirror, sync, users, hub, dispatcher, jobs, runner, scheduler, backups,
-                   push, nudges, practice, EngagementService(db, mirror, clock), audit, planner)
+                   push, nudges, practice, EngagementService(db, mirror, clock), audit, planner, xp)

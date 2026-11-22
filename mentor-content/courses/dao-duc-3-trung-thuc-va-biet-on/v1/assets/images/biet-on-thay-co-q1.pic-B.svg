@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft wash behind the figure -->
+  <circle cx="200" cy="206" r="146" fill="#E9E5F6"/>
+
+  <!-- neck -->
+  <rect x="184" y="198" width="32" height="54" rx="12" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+
+  <!-- shirt -->
+  <path d="M132 350 C132 286 158 244 200 244 C242 244 268 286 268 350 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- collar -->
+  <path d="M178 246 C184 264 192 272 200 272 C208 272 216 264 222 246 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- raised arm: outline then fill -->
+  <path d="M256 312 C278 298 294 274 298 240" fill="none"
+        stroke="#5A4BC0" stroke-width="38" stroke-linecap="round"/>
+  <path d="M256 312 C278 298 294 274 298 240" fill="none"
+        stroke="#9FD8BF" stroke-width="28" stroke-linecap="round"/>
+
+  <!-- hand -->
+  <path d="M290 244 C280 238 276 226 282 218 C278 204 288 192 302 192
+           C316 192 326 202 326 216 C326 232 318 244 306 246 C300 247 294 246 290 244 Z"
+        fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M296 201 L295 214" fill="none" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M312 201 L312 214" fill="none" stroke="#5A4BC0" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- head -->
+  <circle cx="200" cy="158" r="64" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5"/>
+
+  <!-- hair -->
+  <path d="M140 180 A64 64 0 1 1 260 180
+           C256 152 248 144 238 148
+           C226 140 210 138 200 146
+           C188 138 168 138 158 148
+           C148 144 142 158 140 180 Z"
+        fill="#5A4BC0" stroke="#5A4BC0" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- eyes -->
+  <ellipse cx="180" cy="166" rx="7" ry="9.5" fill="#2B283F"/>
+  <ellipse cx="220" cy="166" rx="7" ry="9.5" fill="#2B283F"/>
+  <circle cx="183" cy="162" r="2.6" fill="#F7F1E3"/>
+  <circle cx="223" cy="162" r="2.6" fill="#F7F1E3"/>
+
+  <!-- cheeks -->
+  <circle cx="160" cy="190" r="11" fill="#E8806A"/>
+  <circle cx="240" cy="190" r="11" fill="#E8806A"/>
+
+  <!-- speaking mouth -->
+  <ellipse cx="200" cy="196" rx="16" ry="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="4.5"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

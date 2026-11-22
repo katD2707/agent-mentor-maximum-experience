@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" font-family="Lexend, sans-serif">
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5A4BC0"/></marker>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="40" y="100" width="200" height="100" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<text x="140.0" y="160.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#E9E5F6" stroke-width="6" paint-order="stroke">FROM</text>
+<rect x="280" y="100" width="200" height="100" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<text x="380.0" y="160.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#E9E5F6" stroke-width="6" paint-order="stroke">WHERE</text>
+<rect x="520" y="100" width="200" height="100" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<text x="620.0" y="160.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#E9E5F6" stroke-width="6" paint-order="stroke">GROUP BY</text>
+<rect x="760" y="100" width="200" height="100" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<text x="860.0" y="160.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#E9E5F6" stroke-width="6" paint-order="stroke">HAVING</text>
+<rect x="760" y="430" width="200" height="100" rx="18" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+<text x="860.0" y="490.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#F0D76E" stroke-width="6" paint-order="stroke">SELECT</text>
+<rect x="520" y="430" width="200" height="100" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<text x="620.0" y="490.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#E9E5F6" stroke-width="6" paint-order="stroke">ORDER BY</text>
+<rect x="280" y="430" width="200" height="100" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<text x="380.0" y="490.0" text-anchor="middle" font-size="30" fill="#2B283F" stroke="#E9E5F6" stroke-width="6" paint-order="stroke">LIMIT</text>
+<line x1="240" y1="150" x2="280" y2="150" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ar)"/>
+<line x1="480" y1="150" x2="520" y2="150" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ar)"/>
+<line x1="720" y1="150" x2="760" y2="150" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ar)"/>
+<line x1="860" y1="200" x2="860" y2="430" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ar)"/>
+<line x1="760" y1="480" x2="720" y2="480" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ar)"/>
+<line x1="520" y1="480" x2="480" y2="480" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#ar)"/>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

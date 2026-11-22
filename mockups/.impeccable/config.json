@@ -74,6 +74,42 @@
         ],
         "createdAt": "2026-11-10T09:33:50.983Z",
         "reason": "False positive: .quick card has 22-36px padding on every side; the detector misreads the ruled notebook background as children flush to the edge"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "lg-02-chon-ga.html"
+        ],
+        "createdAt": "2026-11-22T04:16:30.334Z",
+        "reason": "Game board: chicken tiles sit on a wooden board panel, the Lang ga world's sanctioned look"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "lg-03-chuong-ga.html"
+        ],
+        "createdAt": "2026-11-22T13:00:48.961Z",
+        "reason": "Course cards sit on the game's wooden board panel (Làng gà style, same as lg-02); the board is the page frame, not a card"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "lg-01-lang.html"
+        ],
+        "createdAt": "2026-11-22T15:56:03.867Z",
+        "reason": "Chợ gà HUD icon title: user asked for a game Event-icon look (gold gradient lettering with dark outline)"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "lg-01-lang.html"
+        ],
+        "createdAt": "2026-11-22T15:56:03.966Z",
+        "reason": "Soft gold glow behind the Chợ gà event-style icon, requested by the user"
       }
     ]
   }

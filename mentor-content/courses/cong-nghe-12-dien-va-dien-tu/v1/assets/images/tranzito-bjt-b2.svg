@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="110" y="130" width="340" height="480" rx="26" fill="#E9E5F6"/>
+<line x1="280" y1="308" x2="280" y2="452" stroke="#5A4BC0" stroke-width="11" stroke-linecap="round"/>
+<line x1="170" y1="380" x2="280" y2="380" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<polyline points="280,340 375,260 375,185" fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="280,420 375,500 375,575" fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="356.0,484.0 318.0,473.1 338.8,448.4" fill="#E8806A"/>
+<text x="150" y="392" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="end">B</text>
+<text x="398" y="208" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">C</text>
+<text x="398" y="585" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">E</text>
+<text x="280" y="612" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="middle">NPN</text>
+<rect x="550" y="130" width="340" height="480" rx="26" fill="#E9E5F6"/>
+<line x1="720" y1="308" x2="720" y2="452" stroke="#5A4BC0" stroke-width="11" stroke-linecap="round"/>
+<line x1="610" y1="380" x2="720" y2="380" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round"/>
+<polyline points="720,340 815,260 815,185" fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="720,420 815,500 815,575" fill="none" stroke="#5A4BC0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<polygon points="750.4,445.6 788.4,456.5 767.6,481.2" fill="#E8806A"/>
+<text x="590" y="392" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="end">B</text>
+<text x="838" y="208" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">C</text>
+<text x="838" y="585" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">E</text>
+<text x="720" y="612" font-family="Lexend, sans-serif" font-size="32" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="middle">PNP</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

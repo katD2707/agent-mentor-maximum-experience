@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "cong-nghe-12-dien-va-dien-tu",
+  "title": "Công nghệ 12: Điện và điện tử",
+  "subject": "Công nghệ",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "u0647cd6bdf59f1c9",
+  "teacher_name": "Thầy Tú",
+  "description_short": "Khóa học trình bày kiến thức về mạch điện xoay chiều, mạch ba pha và các linh kiện điện tử cơ bản. Nội dung dành cho học sinh THPT lớp 12 học Công nghệ, kèm ví dụ và bài tập tính toán.",
+  "outcomes": [
+    "Tính được các đại lượng đặc trưng của dòng điện xoay chiều và mạch RLC nối tiếp.",
+    "Phân biệt được cách nối hình sao, hình tam giác và tính công suất tải ba pha đối xứng.",
+    "Nhận biết và tính toán được các linh kiện thụ động R, L, C trong mạch.",
+    "Phân tích được nguyên lí hoạt động của điốt, LED, tranzito và mạch khuếch đại emitơ chung."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 15,
+  "est_minutes": 134,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T06:11:12.743766Z",
+      "published_at": "2026-11-17T06:11:31.235562Z",
+      "pack_sha256": "c315160cac83b35bb705d56eea0649a0895e67fb4d8f7fadb5879f547f300478",
+      "pack_bytes": 308177,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

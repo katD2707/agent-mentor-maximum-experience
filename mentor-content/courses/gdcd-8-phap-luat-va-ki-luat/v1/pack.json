@@ -1,0 +1,1832 @@
+{
+  "schema_version": 1,
+  "course_id": "gdcd-8-phap-luat-va-ki-luat",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g6_9",
+  "title": "GDCD 8: Pháp luật và kỉ luật",
+  "chapters": [
+    {
+      "id": "ch-phap-luat-va-ki-luat",
+      "title": "Pháp luật và kỉ luật",
+      "lessons": [
+        {
+          "id": "phap-luat-la-gi",
+          "title": "Pháp luật là gì",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu khái niệm pháp luật, đặc điểm, phân biệt với kỉ luật, đạo đức và nhận diện vi phạm qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Pháp luật là quy tắc xử sự chung do Nhà nước ban hành hoặc thừa nhận",
+            "Pháp luật bắt buộc với mọi người, được bảo đảm bằng giáo dục, thuyết phục, cưỡng chế",
+            "Phân biệt pháp luật, kỉ luật, đạo đức theo nguồn và phạm vi",
+            "Một hành vi có thể vừa vi phạm pháp luật, kỉ luật, đạo đức"
+          ],
+          "blocks": [
+            {
+              "id": "phap-luat-la-gi-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Pháp luật là gì?",
+              "md": "Pháp luật là hệ thống quy tắc xử sự chung do Nhà nước ban hành hoặc thừa nhận, bắt buộc với mọi người. Nhà nước bảo đảm thực hiện bằng giáo dục, thuyết phục và cưỡng chế.",
+              "audio": null
+            },
+            {
+              "id": "phap-luat-la-gi-b2",
+              "kind": "text",
+              "md": "Pháp luật áp dụng chung cho nhiều người và được quy định rõ ràng. Mọi người phải thực hiện; vi phạm có thể bị xử lí theo pháp luật.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "phap-luat-la-gi-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phap-luat-la-gi-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Hành vi nào dưới đây là vi phạm pháp luật?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đi học muộn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vượt đèn đỏ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Không làm bài tập về nhà",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chen hàng khi mua đồ",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Hãy tìm hành vi do Nhà nước quy định và có thể bị xử lí bằng biện pháp của Nhà nước.",
+                  "explanation": "Vượt đèn đỏ là vi phạm quy định về an toàn giao thông do Nhà nước ban hành, nên là vi phạm pháp luật.",
+                  "option_feedback": {
+                    "A": "Đi học muộn chỉ vi phạm nội quy của lớp, tức là vi phạm kỉ luật.",
+                    "C": "Việc này do lớp, thầy cô nhắc nhở nên chỉ là vi phạm kỉ luật.",
+                    "D": "Đây là hành vi thiếu lịch sự, trái đạo đức chứ chưa phải vi phạm pháp luật."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "phap-luat-la-gi-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/phap-luat-la-gi-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e18e6260a2196d8e0bf9cde33e140f101f815a22172d5e538755a15ff9daeb6d",
+                "bytes": 3369
+              },
+              "alt": "Ba cột so sánh pháp luật, kỉ luật, đạo đức theo nguồn hình thành",
+              "caption": "Phân biệt theo nguồn tạo ra quy tắc",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "phap-luat-la-gi-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phap-luat-la-gi-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Pháp luật là hệ thống những quy tắc xử sự chung do {{gap}} ban hành hoặc thừa nhận, có tính {{gap}} đối với mọi người.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Nhà nước",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "bắt buộc",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "trường học",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "tự nguyện",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Pháp luật do Nhà nước ban hành hoặc thừa nhận và mọi người đều phải thực hiện, không ai được tự ý bỏ qua.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "phap-luat-la-gi-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ba loại quy tắc",
+              "md": "- **Pháp luật:** do Nhà nước ban hành, bắt buộc toàn xã hội, vi phạm có thể bị xử lí bằng biện pháp của Nhà nước.\n- **Kỉ luật:** do trường, lớp, gia đình, tổ chức đặt ra, bắt buộc trong phạm vi tập thể đó; vi phạm thường bị nhắc nhở, xử lí nội bộ.\n- **Đạo đức:** chuẩn mực tốt, xấu do xã hội thừa nhận, điều chỉnh bằng dư luận, lương tâm, giáo dục.",
+              "audio": null
+            },
+            {
+              "id": "phap-luat-la-gi-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 1: không đội mũ bảo hiểm",
+              "md": "H đi xe đạp điện đến trường nhưng không đội mũ bảo hiểm, bị cảnh sát giao thông nhắc nhở và xử lí. Đây là vi phạm pháp luật về an toàn giao thông, vì đội mũ bảo hiểm là quy định bắt buộc do Nhà nước ban hành cho người tham gia giao thông.",
+              "audio": null
+            },
+            {
+              "id": "phap-luat-la-gi-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phap-luat-la-gi-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Pháp luật do Nhà nước ban hành hoặc thừa nhận."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Kỉ luật chỉ do Nhà nước ban hành."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Một hành vi có thể vừa vi phạm pháp luật, vừa vi phạm kỉ luật, vừa trái đạo đức."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Vi phạm pháp luật chỉ có thể bị phạt tiền."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Kỉ luật do trường, lớp, gia đình, tổ chức đặt ra; còn vi phạm pháp luật có thể bị nhắc nhở, xử phạt hành chính hoặc bồi thường thiệt hại. Ví dụ đánh bạn gây thương tích vừa vi phạm pháp luật, vừa vi phạm kỉ luật, vừa trái đạo đức.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "phap-luat-la-gi-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 2: đi học muộn",
+              "md": "Lớp 8A quy định ai đi học muộn phải trực nhật thay lớp một ngày. B đi muộn nên bị nhắc nhở và phân công trực nhật. Đây là vi phạm kỉ luật của lớp: quy định do tập thể lớp đặt ra, chỉ có hiệu lực trong lớp và được xử lí nội bộ.",
+              "audio": null
+            },
+            {
+              "id": "phap-luat-la-gi-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phap-luat-la-gi-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi loại quy tắc với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Pháp luật",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Do Nhà nước ban hành, bắt buộc toàn xã hội",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Kỉ luật",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Do tập thể đặt ra, vi phạm bị xử lí nội bộ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Đạo đức",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Điều chỉnh bằng dư luận, lương tâm, giáo dục",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi loại quy tắc khác nhau ở nguồn hình thành và phạm vi áp dụng: Nhà nước, tập thể hay xã hội.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "phap-luat-la-gi-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nghĩ rằng “mọi quy định của trường đều là pháp luật” là sai, vì nội quy trường học chủ yếu là kỉ luật nội bộ. Cũng sai khi nghĩ “vi phạm pháp luật chỉ bị phạt tiền”: tùy tính chất, mức độ, có thể bị nhắc nhở, xử phạt hành chính, bồi thường thiệt hại hoặc bị xử lí theo quy định pháp luật.",
+              "audio": null
+            },
+            {
+              "id": "phap-luat-la-gi-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phap-luat-la-gi-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các việc lớp trưởng nên làm theo đúng thứ tự khi một bạn đi học muộn.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Nhắc nhở bạn đã đi học muộn",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Ghi nhận việc vi phạm của bạn",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Báo giáo viên chủ nhiệm để xử lí theo nội quy",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Lớp trưởng chỉ nhắc nhở và ghi nhận rồi báo giáo viên chủ nhiệm, vì lớp học không có quyền phạt tiền hay tự đặt hình phạt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "phap-luat-la-gi-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Pháp luật là gì?",
+                  "answer": "Là quy tắc xử sự chung do Nhà nước ban hành hoặc thừa nhận, bắt buộc với mọi người.",
+                  "image": null
+                },
+                {
+                  "prompt": "Pháp luật khác kỉ luật ở nguồn và phạm vi thế nào?",
+                  "answer": "Pháp luật do Nhà nước ban hành, bắt buộc toàn xã hội; kỉ luật do tập thể đặt ra, chỉ bắt buộc trong tập thể đó.",
+                  "image": null
+                },
+                {
+                  "prompt": "Một hành vi có thể vừa vi phạm pháp luật, kỉ luật, đạo đức không?",
+                  "answer": "Có, ví dụ đánh bạn gây thương tích.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ki-luat-o-truong",
+          "title": "Kỉ luật ở trường",
+          "est_minutes": 12,
+          "summary": "Tìm hiểu kỉ luật ở trường, vai trò và cách thực hiện đúng, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Kỉ luật là quy định, quy ước của một tập thể, cộng đồng",
+            "Kỉ luật ở trường gồm nội quy, giờ giấc, đồng phục, ứng xử, vệ sinh, thi cử",
+            "Kỉ luật tạo môi trường an toàn, công bằng, rèn tự giác và trách nhiệm",
+            "Kỉ luật không được trái pháp luật, không xúc phạm thân thể, nhân phẩm"
+          ],
+          "blocks": [
+            {
+              "id": "ki-luat-o-truong-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Kỉ luật là gì?",
+              "md": "Kỉ luật là những quy định, quy ước của tập thể, cộng đồng. Nó giữ nề nếp, trật tự và giúp mọi thành viên rèn luyện, trưởng thành.",
+              "audio": null
+            },
+            {
+              "id": "ki-luat-o-truong-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/ki-luat-o-truong-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "3c376629a3d154f25403a6143b218df3419f39b56e36e60889abdc3112bf3f44",
+                "bytes": 5498
+              },
+              "alt": "Sơ đồ sáu nhóm quy định kỉ luật ở trường",
+              "caption": "Kỉ luật ở trường gồm nhiều nhóm quy định khác nhau",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "ki-luat-o-truong-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ki-luat-o-truong-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Lớp trưởng thấy bạn đi học muộn liền tự ý phạt bạn 20.000 đồng. Theo em, nhận xét nào sau đây là đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đó là biện pháp kỉ luật hợp pháp của lớp.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Lớp học không có quyền phạt tiền nên việc làm đó là sai.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Chỉ cần bạn vi phạm đồng ý nộp phạt là được.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Đó là việc bình thường, không liên quan đến kỉ luật.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Ai có quyền xử lí khi học sinh vi phạm nội quy?",
+                  "explanation": "Kỉ luật không được trái pháp luật; lớp học không có quyền phạt tiền. Đúng cách là nhắc nhở, ghi nhận và báo giáo viên chủ nhiệm.",
+                  "option_feedback": {
+                    "A": "Bạn nhầm rằng mọi hình thức xử lí do tập thể đặt ra đều hợp pháp.",
+                    "C": "Bạn nghĩ sự đồng ý của người bị phạt làm cho việc phạt tiền trở nên hợp pháp.",
+                    "D": "Bạn bỏ qua việc phạt tiền chính là một cách xử lí kỉ luật nên cần xét tính hợp pháp."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ki-luat-o-truong-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Điện thoại trong giờ học",
+              "md": "Trường quy định vào lớp trước giờ, điện thoại để chế độ im lặng. P vẫn dùng điện thoại trong giờ nên cô giáo nhắc nhở. P vi phạm kỉ luật. Nếu P quay ảnh bạn rồi đăng lên mạng để xúc phạm, hành vi đó còn có thể vi phạm pháp luật về quyền riêng tư, danh dự.",
+              "audio": null
+            },
+            {
+              "id": "ki-luat-o-truong-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ki-luat-o-truong-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Kỉ luật ở trường gồm nội quy học sinh, quy định {{gap}}, đồng phục, ứng xử, giữ {{gap}} và thi cử.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "giờ giấc",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "vệ sinh",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "pháp luật",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "đạo đức",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nội dung cốt lõi của bài nêu kỉ luật ở trường gồm nội quy, giờ giấc, đồng phục, ứng xử, giữ vệ sinh, thi cử.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ki-luat-o-truong-b4",
+              "kind": "text",
+              "md": "Kỉ luật tạo môi trường học tập an toàn, công bằng. Nó rèn tính tự giác, trách nhiệm và bảo vệ uy tín của lớp, trường.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ki-luat-o-truong-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Kỉ luật không phải để trừng phạt",
+              "md": "Lớp trưởng tự phạt bạn đi muộn 20.000 đồng là sai. Lớp học không có quyền phạt tiền. Kỉ luật không được trái pháp lu",
+              "audio": null
+            },
+            {
+              "id": "ki-luat-o-truong-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ki-luat-o-truong-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xác định các nhận định sau đúng hay sai về kỉ luật ở trường.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Kỉ luật ở trường chỉ nhằm trừng phạt học sinh cho sợ."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nội quy học sinh, quy định giờ giấc, đồng phục, ứng xử, vệ sinh, thi cử là những nội dung của kỉ luật ở trường."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Lớp học có thể tự đặt ra hình phạt đánh bạn hoặc phạt tiền khi bạn vi phạm kỉ luật."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Kỉ luật góp phần tạo môi trường học tập an toàn, công bằng và rèn tính tự giác, trách nhiệm."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": "Chú ý mục đích của kỉ luật và giới hạn: không được trái pháp luật, không xúc phạm thân thể, nhân phẩm.",
+                  "explanation": "Kỉ luật nhằm rèn nếp, bảo vệ tập thể và giúp cá nhân tiến bộ, không phải để trừng phạt cho sợ. Kỉ luật không được trái pháp luật và không được xúc phạm thân thể, nhân phẩm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ki-luat-o-truong-b6",
+              "kind": "text",
+              "md": "Thực hiện kỉ luật cần tự giác, nhắc nhở nhẹ nhàng và báo thầy cô khi cần. Không bao che cho bạn vi phạm, cũng không dùng hình phạt xúc phạm bạn.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ki-luat-o-truong-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ki-luat-o-truong-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với đặc điểm đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Pháp luật",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Do Nhà nước ban hành, bắt buộc mọi người",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Kỉ luật",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Do tập thể đặt ra, bắt buộc trong phạm vi tập thể",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Đạo đức",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Điều chỉnh bằng dư luận, lương tâm, giáo dục",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Vi phạm kỉ luật",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Thường bị nhắc nhở, xử lí nội bộ",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Pháp luật do Nhà nước ban hành và bắt buộc toàn xã hội; kỉ luật do tập thể đặt ra và chỉ có hiệu lực trong tập thể đó.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ki-luat-o-truong-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "Kỉ luật do tập thể đặt ra, bắt buộc trong phạm vi tập thể đó. Mục đích của kỉ luật là rèn nếp và giúp cá nhân tiến bộ, không phải làm cho sợ.",
+              "audio": null
+            },
+            {
+              "id": "ki-luat-o-truong-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ki-luat-o-truong-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xử lí đúng khi thấy bạn cùng lớp vi phạm kỉ luật.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Nhận ra bạn đã vi phạm quy định của lớp, của trường",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Nhắc nhở nhẹ nhàng để bạn sửa sai",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Ghi nhận sự việc và báo giáo viên chủ nhiệm khi cần",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Đề xuất biện pháp phù hợp, không xúc phạm thân thể, nhân phẩm bạn",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Thực hiện kỉ luật cần tự giác, nhắc nhở nhẹ nhàng, báo thầy cô khi cần và không dùng biện pháp xúc phạm bạn.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ki-luat-o-truong-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Kỉ luật là gì?",
+                  "answer": "Là những quy định, quy ước của một tập thể, cộng đồng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Kỉ luật ở trường gồm những gì?",
+                  "answer": "Nội quy học sinh, giờ giấc, đồng phục, ứng xử, vệ sinh, thi cử, hoạt động tập thể.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi bạn vi phạm kỉ luật, ta nên xử lí thế nào?",
+                  "answer": "Nhắc nhở nhẹ nhàng, báo thầy cô; không phạt tiền, không xúc phạm thân thể, nhân phẩm.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về pháp luật và kỉ luật, cách phân biệt hai khái niệm này và vì sao mọi người cần tuân theo.",
+          "Pháp luật là hệ thống quy tắc xử sự chung do Nhà nước ban hành hoặc thừa nhận, bắt buộc với mọi người. Nhà nước bảo đảm thực hiện bằng giáo dục, thuyết phục và cưỡng chế. Pháp luật áp dụng chung cho nhiều người và được quy định rõ ràng. Mọi người phải thực hiện, vi phạm có thể bị xử lí theo pháp luật.",
+          "Pháp luật do Nhà nước ban hành, bắt buộc toàn xã hội, vi phạm có thể bị xử lí bằng biện pháp của Nhà nước. Kỉ luật do trường, lớp, gia đình, tổ chức đặt ra, bắt buộc trong phạm vi tập thể đó. Vi phạm kỉ luật thường bị nhắc nhở, xử lí nội bộ. Đạo đức là chuẩn mực tốt, xấu do xã hội thừa nhận, điều chỉnh bằng dư luận, lương tâm, giáo dục. Một hành vi có thể vừa vi phạm pháp luật, kỉ luật, đạo đức.",
+          "Ví dụ, H đi xe đạp điện đến trường nhưng không đội mũ bảo hiểm, bị cảnh sát giao thông nhắc nhở và xử lí. Đây là vi phạm pháp luật về an toàn giao thông, vì đội mũ bảo hiểm là quy định bắt buộc do Nhà nước ban hành cho người tham gia giao thông. Lớp tám A quy định ai đi học muộn phải trực nhật thay lớp một ngày. B đi muộn nên bị nhắc nhở và phân công trực nhật. Đây là vi phạm kỉ luật của lớp vì quy định do tập thể lớp đặt ra, chỉ có hiệu lực trong lớp và được xử lí nội bộ.",
+          "Cần tránh hiểu sai rằng mọi quy định của trường đều là pháp luật, vì nội quy trường học chủ yếu là kỉ luật nội bộ. Cũng sai khi nghĩ vi phạm pháp luật chỉ bị phạt tiền. Tùy tính chất, mức độ, người vi phạm có thể bị nhắc nhở, xử phạt hành chính, bồi thường thiệt hại hoặc bị xử lí theo quy định pháp luật.",
+          "Kỉ luật là những quy định, quy ước của một tập thể, cộng đồng. Nó giữ nề nếp, trật tự và giúp mọi thành viên rèn luyện, trưởng thành. Kỉ luật ở trường gồm nội quy, giờ giấc, đồng phục, ứng xử, vệ sinh, thi cử. Kỉ luật tạo môi trường học tập an toàn, công bằng, rèn tính tự giác, trách nhiệm và bảo vệ uy tín của lớp, trường.",
+          "Trường quy định vào lớp trước giờ và điện thoại để chế độ im lặng. P vẫn dùng điện thoại trong giờ nên cô giáo nhắc nhở, P vi phạm kỉ luật. Nếu P quay ảnh bạn rồi đăng lên mạng để xúc phạm, hành vi đó còn có thể vi phạm pháp luật về quyền riêng tư, danh dự. Như vậy một hành vi có thể vừa vi phạm kỉ luật vừa vi phạm pháp luật.",
+          "Thực hiện kỉ luật cần tự giác, nhắc nhở nhẹ nhàng và báo thầy cô khi cần. Không bao che cho bạn vi phạm, cũng không dùng hình phạt xúc phạm bạn. Lớp trưởng tự phạt bạn đi muộn hai mươi nghìn đồng là sai vì lớp học không có quyền phạt tiền. Kỉ luật không được trái pháp luật, không xúc phạm thân thể, nhân phẩm.",
+          "Kỉ luật do tập thể đặt ra và bắt buộc trong phạm vi tập thể đó. Mục đích của kỉ luật là rèn nếp và giúp cá nhân tiến bộ, không phải làm cho sợ. Vì vậy, khi nhắc nhở bạn, ta hướng tới việc giữ nề nếp chung và giúp bạn sửa sai.",
+          "Ba điều cần nhớ là pháp luật do Nhà nước ban hành hoặc thừa nhận và bắt buộc với mọi người. Kỉ luật do tập thể đặt ra và bắt buộc trong phạm vi tập thể đó. Kỉ luật phải không trái pháp luật, không xúc phạm thân thể, nhân phẩm và nhằm giúp cá nhân tiến bộ."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-quyen-va-nghia-vu",
+      "title": "Quyền và nghĩa vụ",
+      "lessons": [
+        {
+          "id": "quyen-cua-hoc-sinh",
+          "title": "Quyền của học sinh",
+          "est_minutes": 12,
+          "summary": "Tìm hiểu quyền của học sinh, giới hạn của quyền và cách bảo vệ quyền khi bị xâm phạm, kèm ví dụ và bài tập.",
+          "key_ideas": [
+            "Quyền là điều học sinh được hưởng, được làm, được yêu cầu",
+            "Quyền học tập, bảo vệ, tôn trọng thân thể, danh dự, bày tỏ ý kiến, bảo vệ thông tin cá nhân",
+            "Quyền không vô hạn, phải tôn trọng quyền của người khác",
+            "Khi bị xâm phạm: bình tĩnh, lưu bằng chứng, báo người lớn, không trả đũa"
+          ],
+          "blocks": [
+            {
+              "id": "quyen-cua-hoc-sinh-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Quyền của học sinh",
+              "md": "Quyền là những điều học sinh được hưởng, được làm, được yêu cầu theo pháp luật và nội quy.",
+              "audio": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b2",
+              "kind": "text",
+              "md": "Học sinh có quyền học tập, được bảo vệ và chăm sóc. Các em được tôn trọng thân thể, danh dự, nhân phẩm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quyen-cua-hoc-sinh-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi quyền của mình bị xâm phạm, học sinh nên làm gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Bình tĩnh, lưu bằng chứng và báo cha mẹ, thầy cô",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Im lặng, không kể cho ai biết",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Đăng tin xấu về bạn để trả đũa",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Tự xử lí bằng bạo lực cho nhanh",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nhớ bước 'lưu bằng chứng' và 'báo người lớn'.",
+                  "explanation": "Khi bị xâm phạm, em cần bình tĩnh, lưu bằng chứng và báo người lớn, thầy cô để được hỗ trợ.",
+                  "option_feedback": {
+                    "B": "Im lặng khiến việc xâm phạm tiếp tục và em không được giúp đỡ.",
+                    "C": "Trả đũa là tự xâm phạm quyền của người khác nên không được làm.",
+                    "D": "Bạo lực không phải cách bảo vệ quyền và có thể vi phạm pháp luật."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b3",
+              "kind": "text",
+              "md": "Học sinh được bày tỏ ý kiến, tham gia văn hóa, thể thao. Thông tin cá nhân và đời sống riêng tư cũng được bảo vệ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Quyền không vô hạn",
+              "md": "Khi thực hiện quyền, học sinh phải tôn trọng quyền của người khác. Không được lợi dụng quyền để xâm phạm người khác.",
+              "audio": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quyen-cua-hoc-sinh-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Quyền là những điều học sinh được {{gap}}, được làm, được {{gap}} theo pháp luật và nội quy.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "hưởng",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "yêu cầu",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "chịu",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "cấm",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Theo bài học, quyền là điều học sinh được hưởng, được làm, được yêu cầu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Bị đăng ảnh riêng tư",
+              "md": "T bị một bạn chụp ảnh trong nhà vệ sinh rồi đăng lên nhóm chat. T nên báo cha mẹ, thầy cô và lưu bằng chứng. T yêu cầu gỡ ảnh, không đăng ảnh trả đũa.",
+              "audio": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quyen-cua-hoc-sinh-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai về quyền của học sinh?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Học sinh có quyền bày tỏ ý kiến của mình."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Quyền của học sinh nghĩa là muốn làm gì cũng được."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Khi bị xâm phạm quyền, học sinh nên trả đũa để tự bảo vệ."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Học sinh được bảo vệ thông tin cá nhân và đời sống riêng tư."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Quyền không vô hạn: phải tôn trọng pháp luật, nội quy và quyền của người khác, không trả đũa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Lập câu lạc bộ đọc sách",
+              "md": "Học sinh muốn lập câu lạc bộ đọc sách, thầy cô yêu cầu làm đơn và hoạt động theo quy định. Đây không phải hạn chế tùy tiện. Quy định bảo đảm an toàn, trật tự và quyền lợi của các bạn khác.",
+              "audio": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Hiểu sai thường gặp",
+              "md": "“Quyền của",
+              "audio": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quyen-cua-hoc-sinh-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với nội dung đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Quyền",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "điều học sinh được hưởng, được làm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Nghĩa vụ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "việc học sinh phải thực hiện theo quy định",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Tổng đài 111",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "kênh bảo vệ trẻ em",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Lưu bằng chứng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "chụp màn hình, giữ đường link",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Quyền là điều được hưởng, nghĩa vụ là việc phải làm; bằng chứng giúp bảo vệ em khi bị xâm phạm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b8",
+              "kind": "text",
+              "md": "Khi quyền bị xâm phạm, em cần bình tĩnh, nói rõ với người liên quan. Báo cha mẹ, thầy cô hoặc người có trách nhiệm; lưu bằng chứng; không trả đũa.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "quyen-cua-hoc-sinh-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước học sinh nên làm khi quyền bị xâm phạm.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Bình tĩnh, nói rõ sự việc với người liên quan",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Lưu bằng chứng như ảnh chụp màn hình, đường link",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Báo cha mẹ, thầy cô hoặc người có trách nhiệm",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Không trả đũa, không tự xử lí bằng bạo lực",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cần bình tĩnh, lưu bằng chứng rồi báo người lớn và không trả đũa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "quyen-cua-hoc-sinh-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Quyền của học sinh là gì?",
+                  "answer": "Là điều học sinh được hưởng, được làm, được yêu cầu theo pháp luật và nội quy.",
+                  "image": null
+                },
+                {
+                  "prompt": "Quyền của học sinh có vô hạn không?",
+                  "answer": "Không; khi dùng quyền phải tôn trọng quyền của người khác.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi bị xâm phạm quyền, em nên làm gì?",
+                  "answer": "Bình tĩnh, nói rõ sự việc, lưu bằng chứng, báo cha mẹ hoặc thầy cô, không trả đũa.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nghia-vu-cong-dan",
+          "title": "Nghĩa vụ công dân",
+          "est_minutes": 12,
+          "summary": "Tìm hiểu nghĩa vụ công dân và nghĩa vụ của học sinh, mối quan hệ quyền - nghĩa vụ, kèm ví dụ và bài tập.",
+          "key_ideas": [
+            "Nghĩa vụ là việc công dân, học sinh phải thực hiện",
+            "Nghĩa vụ học sinh: học tập, tôn trọng thầy cô bạn bè, giữ vệ sinh, chấp hành pháp luật",
+            "Nghĩa vụ công dân vì lợi ích chung: tôn trọng pháp luật, bảo vệ Tổ quốc, môi trường",
+            "Quyền và nghĩa vụ đi đôi"
+          ],
+          "blocks": [
+            {
+              "id": "nghia-vu-cong-dan-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nghĩa vụ là gì?",
+              "md": "Nghĩa vụ là những việc công dân, học sinh **phải thực hiện** theo pháp luật, đạo đức và nội quy.",
+              "audio": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-b2",
+              "kind": "text",
+              "md": "Học sinh có nghĩa vụ học tập chuyên cần, tôn trọng thầy cô và bạn bè. Các em cũng phải giữ vệ sinh, bảo vệ tài sản trường lớp, chấp hành pháp luật.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nghia-vu-cong-dan-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo bài học, nghĩa vụ là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Những việc công dân, học sinh phải thực hiện theo pháp luật, đạo đức và nội quy",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Những điều học sinh được hưởng, được làm theo pháp luật",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Những việc học sinh có thể làm hoặc không làm tùy thích",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Những việc chỉ dành cho người lớn, không liên quan học sinh",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Phân biệt 'phải thực hiện' với 'được hưởng'.",
+                  "explanation": "Nghĩa vụ là những việc phải thực hiện theo pháp luật, đạo đức và nội quy.",
+                  "option_feedback": {
+                    "B": "Đây là định nghĩa của quyền, không phải nghĩa vụ.",
+                    "C": "Nghĩa vụ là việc bắt buộc phải thực hiện, không tùy thích.",
+                    "D": "Bài học nêu rõ học sinh cũng có nghĩa vụ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nghia-vu-cong-dan-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: nhặt được ví",
+              "md": "A nhặt được ví của người khác và trả lại. Việc làm đó thể hiện nghĩa vụ tôn trọng tài sản của người khác, phù hợp quy định pháp luật.",
+              "audio": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nghia-vu-cong-dan-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Học sinh có {{gap}} học tập thì phải có {{gap}} học tập chuyên cần, trung thực.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "quyền",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "nghĩa vụ",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "lợi ích",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "phần thưởng",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": "Điền hai từ trái nghĩa nhau trong cặp 'quyền — nghĩa vụ'.",
+                  "explanation": "Quyền và nghĩa vụ đi đôi: hưởng quyền phải thực hiện nghĩa vụ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nghia-vu-cong-dan-b4",
+              "kind": "text",
+              "md": "Nghĩa vụ công dân là việc phải làm vì lợi ích chung. Đó là tôn trọng pháp luật, bảo vệ Tổ quốc và môi trường.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: đăng tin sai sự thật",
+              "md": "Một học sinh đăng tin sai về trường để “nổi tiếng”. Hành vi này vi phạm nghĩa vụ tôn trọng sự thật và bảo vệ uy tín tập thể.",
+              "audio": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nghia-vu-cong-dan-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xác định mỗi nhận định sau là đúng hay sai về quyền và nghĩa vụ.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nghĩa vụ là những việc công dân, học sinh phải thực hiện theo pháp luật, đạo đức và nội quy."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Chỉ việc lớn mới là nghĩa vụ; việc nhỏ như giữ vệ sinh, đi học đúng giờ không tính."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Quyền và nghĩa vụ đi đôi; không được lấy quyền của mình để xâm phạm quyền của người khác."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Vì có quyền tự do ngôn luận nên học sinh được đăng thông tin sai sự thật về bạn khác để trêu đùa."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý lỗi thường gặp: nghĩa vụ không chỉ là việc lớn, và quyền không phải là vô hạn.",
+                  "explanation": "Nghĩa vụ thể hiện cả từ việc nhỏ; quyền luôn đi với nghĩa vụ và không được dùng quyền để xâm phạm người khác.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nghia-vu-cong-dan-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Hiểu sai thường gặp",
+              "md": "Nghĩ rằng “nghĩa vụ chỉ là việc lớn” là sai. Nghĩa vụ thể hiện từ việc nhỏ: đi học đúng giờ, giữ vệ sinh, trung thực, tôn trọng bạn bè.",
+              "audio": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nghia-vu-cong-dan-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm ở cột trái với nội dung phù hợp ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Quyền",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Điều học sinh được hưởng, được làm, được yêu cầu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Nghĩa vụ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Việc công dân, học sinh phải thực hiện",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Quyền và nghĩa vụ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Đi đôi với nhau",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Tổng đài bảo vệ trẻ em",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "111",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Quyền là những điều được hưởng, còn nghĩa vụ là việc phải thực hiện; hai mặt này đi đôi. Tổng đài 111 dùng để hỗ trợ bảo vệ trẻ em.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nghia-vu-cong-dan-b7",
+              "kind": "text",
+              "md": "Quyền và nghĩa vụ đi đôi: hưởng quyền thì phải thực hiện nghĩa vụ. Có quyền học tập thì phải học chuyên cần, trung thực.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nghia-vu-cong-dan-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nghia-vu-cong-dan-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xử lí khi bị đe dọa, tống tiền trên mạng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Bình tĩnh, không chuyển tiền và không gửi thêm ảnh",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Chụp màn hình, lưu bằng chứng",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Chặn và báo cáo tài khoản xấu",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Báo ngay cha mẹ, thầy cô và cơ quan công an",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": "Việc lưu bằng chứng phải làm trước khi chặn tài khoản.",
+                  "explanation": "Cần bình tĩnh, lưu bằng chứng rồi báo người lớn và cơ quan chức năng để được hỗ trợ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nghia-vu-cong-dan-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Nghĩa vụ là gì?",
+                  "answer": "Là những việc công dân, học sinh phải thực hiện theo pháp luật, đạo đức và nội quy.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu ba nghĩa vụ của học sinh.",
+                  "answer": "Học tập chuyên cần; tôn trọng thầy cô, bạn bè; giữ vệ sinh; chấp hành pháp luật.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao quyền và nghĩa vụ phải đi đôi?",
+                  "answer": "Để bảo đảm công bằng, trật tự và tôn trọng lẫn nhau.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "an-toan-tren-mang",
+          "title": "An toàn trên mạng",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu nguyên tắc an toàn trên mạng và cách xử lí khi bị đe dọa, bắt nạt trực tuyến, kèm ví dụ và bài tập.",
+          "key_ideas": [
+            "An toàn trên mạng là bảo vệ thông tin, tài khoản, hình ảnh, danh dự",
+            "Không chia sẻ thông tin cá nhân, dùng mật khẩu mạnh, kiểm tra nguồn tin",
+            "Không tham gia chế giễu, bắt nạt; chặn và báo cáo tài khoản xấu",
+            "Khi bị xâm hại: lưu bằng chứng, báo cha mẹ, thầy cô, công an, tổng đài 111"
+          ],
+          "blocks": [
+            {
+              "id": "an-toan-tren-mang-b2",
+              "kind": "text",
+              "md": "An toàn trên mạng là bảo vệ thông tin cá nhân, tài khoản, hình ảnh, danh dự. Đó cũng là ứng xử văn minh và biết xử lí khi bị xâm hại.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "an-toan-tren-mang-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-toan-tren-mang-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Nhận được tin nhắn đe dọa: “Nếu không chuyển 200.000 đồng, tao sẽ đăng ảnh của mày”, em nên làm gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Chuyển tiền ngay để tài khoản lạ không đăng ảnh",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Không chuyển tiền, lưu bằng chứng, báo người lớn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Gửi thêm ảnh để chứng minh mình không sợ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Xóa tin nhắn và không nói với ai",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Đây là đe dọa, có dấu hiệu tống tiền; em không chuyển tiền, không gửi thêm ảnh, cần lưu bằng chứng và báo cha mẹ, thầy cô, công an.",
+                  "option_feedback": {
+                    "A": "Chuyển tiền là làm theo yêu cầu của kẻ tống tiền, không giải quyết an toàn.",
+                    "C": "Gửi thêm ảnh càng làm lộ thông tin và tăng nguy cơ bị xâm hại.",
+                    "D": "Xóa tin nhắn làm mất bằng chứng và không nhận được hỗ trợ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "an-toan-tren-mang-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nguyên tắc cơ bản",
+              "md": "- Không chia sẻ họ tên, địa chỉ, trường lớp, số điện thoại, ảnh nhạy cảm.\n- Dùng mật khẩu mạnh, không cho người lạ; không bấm vào đường link lạ.\n- Kiểm tra nguồn tin trước khi chia sẻ; không lan truyền tin sai, ảnh xúc phạm.\n- Không tham gia nhóm chế giễu, bắt nạt; chặn và báo cáo tài khoản xấu.",
+              "audio": null
+            },
+            {
+              "id": "an-toan-tren-mang-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/an-toan-tren-mang-b4.webp",
+                "mime": "image/webp",
+                "sha256": "e442e3911a0de5c8f1721c799ebcce2725e2435d4388d8099088870d347467c0",
+                "bytes": 27192
+              },
+              "alt": "Bạn học sinh được tấm khiên bảo vệ trước máy tính, các thông tin riêng bị gạch chéo",
+              "caption": "Giữ riêng thông tin cá nhân, giữ an toàn cho mình",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "an-toan-tren-mang-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-toan-tren-mang-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Để bảo vệ tài khoản, em nên dùng {{gap}} và không cho người lạ biết.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "mật khẩu mạnh",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "mật khẩu dễ đoán",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "đường link lạ",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mật khẩu mạnh giúp bảo vệ tài khoản; không chia sẻ mật khẩu cho người lạ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "an-toan-tren-mang-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tin nhắn đe dọa",
+              "md": "“Nếu không chuyển 200.000 đồng, tao sẽ đăng ảnh của mày.” Đây là đe dọa, có dấu hiệu tống tiền và xâm phạm quyền riêng tư.\n\nEm **không chuyển tiền, không gửi thêm ảnh**; chụp màn hình, chặn tài khoản, báo ngay cha mẹ, thầy cô và công an. Nếu nguy hiểm, có thể gọi Tổng đài bảo vệ trẻ em 111.",
+              "audio": null
+            },
+            {
+              "id": "an-toan-tren-mang-b6",
+              "kind": "text",
+              "md": "Nhóm chat chế giễu một bạn: em không tham gia, không chia sẻ nội dung. Em an ủi bạn, nhắc bạn lưu bằng chứng và báo thầy cô, gia đình.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "an-toan-tren-mang-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-toan-tren-mang-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi nội dung ở cột trái với cách hiểu hoặc cách xử lí phù hợp ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Thông tin cá nhân",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "họ tên, địa chỉ, số điện thoại",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Mật khẩu mạnh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "bảo vệ tài khoản",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Tài khoản xấu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "chặn và báo cáo",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Bị đe dọa, tống tiền",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "báo công an, gọi 111",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Cần bảo vệ thông tin cá nhân, dùng mật khẩu mạnh, chặn/báo cáo tài khoản xấu; khi bị đe dọa, tống tiền thì báo công an hoặc gọi 111.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "an-toan-tren-mang-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nghĩ rằng “trên mạng là ảo nên nói gì cũng không sao”. Sai: lời nói, hình ảnh trên mạng vẫn gây hại thật và có thể vi phạm kỉ luật, đạo đức, pháp luật.",
+              "audio": null
+            },
+            {
+              "id": "an-toan-tren-mang-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-toan-tren-mang-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xử lí khi bị xâm hại trên mạng theo thứ tự hợp lí.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Bình tĩnh, không trả đũa.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Lưu bằng chứng: ảnh chụp màn hình, đường link, tên tài khoản.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Chặn và báo cáo tài khoản có hành vi xấu.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Báo cha mẹ, thầy cô; nếu nguy hiểm thì báo công an hoặc gọi 111.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Khi bị xâm hại trên mạng cần bình tĩnh, lưu bằng chứng, chặn/báo cáo rồi báo người lớn; trường hợp nguy hiểm báo công an hoặc gọi 111.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "an-toan-tren-mang-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "An toàn trên mạng là gì?",
+                  "answer": "Là bảo vệ thông tin, tài khoản, hình ảnh, danh dự và ứng xử văn minh trên mạng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi bị đe dọa trên mạng, em làm gì trước tiên?",
+                  "answer": "Bình tĩnh, không trả đũa, không chuyển tiền; lưu bằng chứng rồi báo cha mẹ, thầy cô, công an.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao không nên tham gia nhóm chế giễu bạn?",
+                  "answer": "Vì bắt nạt trên mạng gây hại thật và có thể vi phạm kỉ luật, pháp luật.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về quyền và nghĩa vụ của học sinh, công dân, và cách giữ an toàn trên mạng. Nội dung gồm quyền của học sinh, nghĩa vụ công dân và an toàn trên mạng. Học sinh cần biết mình được hưởng gì và phải làm gì.",
+          "Quyền là những điều học sinh được hưởng, được làm, được yêu cầu theo pháp luật và nội quy. Học sinh có quyền học tập, được bảo vệ và chăm sóc. Các em được tôn trọng thân thể, danh dự, nhân phẩm. Học sinh được bày tỏ ý kiến, tham gia văn hóa, thể thao.",
+          "Thông tin cá nhân và đời sống riêng tư của học sinh cũng được bảo vệ. Nhưng quyền không vô hạn, khi thực hiện quyền, học sinh phải tôn trọng quyền của người khác. Không được lợi dụng quyền để xâm phạm người khác.",
+          "Ví dụ, bạn T bị một bạn chụp ảnh trong nhà vệ sinh rồi đăng lên nhóm chat. Khi quyền bị xâm phạm, T cần bình tĩnh, nói rõ với người liên quan. T báo cha mẹ, thầy cô hoặc người có trách nhiệm và lưu bằng chứng. T yêu cầu gỡ ảnh, không đăng ảnh trả đũa.",
+          "Học sinh muốn lập câu lạc bộ đọc sách thì thầy cô yêu cầu làm đơn và hoạt động theo quy định. Đây không phải hạn chế tùy tiện. Quy định bảo đảm an toàn, trật tự và quyền lợi của các bạn khác.",
+          "Nghĩa vụ là những việc công dân, học sinh phải thực hiện theo pháp luật, đạo đức và nội quy. Học sinh có nghĩa vụ học tập chuyên cần, tôn trọng thầy cô và bạn bè. Các em cũng phải giữ vệ sinh, bảo vệ tài sản trường lớp, chấp hành pháp luật. Ví dụ, bạn A nhặt được ví của người khác và trả lại, việc làm đó thể hiện nghĩa vụ tôn trọng tài sản của người khác, phù hợp quy định pháp luật.",
+          "Nghĩa vụ công dân là việc phải làm vì lợi ích chung, như tôn trọng pháp luật, bảo vệ Tổ quốc và môi trường. Nghĩ rằng nghĩa vụ chỉ là việc lớn là sai. Nghĩa vụ thể hiện từ việc nhỏ như đi học đúng giờ, giữ vệ sinh, trung thực, tôn trọng bạn bè. Quyền và nghĩa vụ đi đôi, có quyền học tập thì phải học chuyên cần, trung thực.",
+          "An toàn trên mạng là bảo vệ thông tin cá nhân, tài khoản, hình ảnh, danh dự, và là ứng xử văn minh, biết xử lí khi bị xâm hại. Không chia sẻ họ tên, địa chỉ, trường lớp, số điện thoại, ảnh nhạy cảm. Dùng mật khẩu mạnh, không cho người lạ, không bấm vào đường link lạ. Kiểm tra nguồn tin trước khi chia sẻ, không lan truyền tin sai, ảnh xúc phạm, không tham gia nhóm chế giễu, bắt nạt, chặn và báo cáo tài khoản xấu.",
+          "Ví dụ, có tin nhắn đe dọa nếu không chuyển hai trăm nghìn đồng thì sẽ đăng ảnh, đây là đe dọa, có dấu hiệu tống tiền và xâm phạm quyền riêng tư. Em không chuyển tiền, không gửi thêm ảnh, chụp màn hình, chặn tài khoản, báo ngay cha mẹ, thầy cô và công an, hoặc gọi Tổng đài bảo vệ trẻ em số một một một nếu nguy hiểm. Với nhóm chat chế giễu một bạn, em không tham gia, không chia sẻ nội dung, an ủi bạn, nhắc bạn lưu bằng chứng và báo thầy cô, gia đình. Nghĩ rằng trên mạng là ảo nên nói gì cũng không sao là sai, vì lời nói, hình ảnh trên mạng vẫn gây hại thật và có thể vi phạm kỉ luật, đạo đức, pháp luật.",
+          "Ba điều cần nhớ là thế này. Thứ nhất, quyền của học sinh phải đi cùng tôn trọng quyền của người khác. Thứ hai, nghĩa vụ là việc phải thực"
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

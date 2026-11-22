@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<line x1="180.00" y1="140.00" x2="120.00" y2="140.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="180.00" y1="140.00" x2="240.00" y2="140.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="120.00" cy="140.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="240.00" cy="140.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="180.00" cy="140.00" r="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="500.00" y1="140.00" x2="500.00" y2="82.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="500.00" cy="82.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="500.00" y1="140.00" x2="550.23" y2="169.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="550.23" cy="169.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="500.00" y1="140.00" x2="449.77" y2="169.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="449.77" cy="169.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="500.00" cy="140.00" r="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="820.00" y1="140.00" x2="820.00" y2="78.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="820.00" y1="140.00" x2="766.00" y2="172.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="820.00" y1="140.00" x2="874.00" y2="172.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="820.00" y1="140.00" x2="820.00" y2="202.00" stroke="#2B283F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6"/>
+<circle cx="820.00" cy="78.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="766.00" cy="172.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="874.00" cy="172.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="820.00" cy="202.00" r="10" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="820.00" cy="140.00" r="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="250.00" y1="430.00" x2="250.00" y2="490.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="250.00" cy="490.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="250.00" y1="430.00" x2="198.00" y2="455.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="198.00" cy="455.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="250.00" y1="430.00" x2="302.00" y2="455.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="302.00" cy="455.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="244.00" cy="368.00" r="3.2" fill="#2B283F"/>
+<circle cx="256.00" cy="368.00" r="3.2" fill="#2B283F"/>
+<circle cx="250.00" cy="430.00" r="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="750.00" y1="430.00" x2="690.00" y2="485.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="690.00" cy="485.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<line x1="750.00" y1="430.00" x2="810.00" y2="485.00" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="810.00" cy="485.00" r="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="714.00" cy="370.00" r="3.2" fill="#2B283F"/>
+<circle cx="726.00" cy="370.00" r="3.2" fill="#2B283F"/>
+<circle cx="774.00" cy="370.00" r="3.2" fill="#2B283F"/>
+<circle cx="786.00" cy="370.00" r="3.2" fill="#2B283F"/>
+<circle cx="750.00" cy="430.00" r="13" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<text x="180" y="300" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">$AX_2$: $180^\circ$</text>
+<text x="500" y="300" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">$AX_3$: $120^\circ$</text>
+<text x="820" y="300" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">$AX_4$: $109,5^\circ$</text>
+<text x="250" y="625" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">$AX_3E$: $\approx 107^\circ$</text>
+<text x="750" y="625" text-anchor="middle" font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">$AX_2E_2$: $\approx 104,5^\circ$</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "hoa-hoc-9-kim-loai-va-phi-kim",
+  "title": "Hóa học 9: Kim loại và phi kim",
+  "subject": "Hóa học",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ud3991d425db18dab",
+  "teacher_name": "Cô Loan",
+  "description_short": "Khóa học củng cố kiến thức cốt lõi về kim loại và phi kim trong Hóa học 9, gồm dãy hoạt động, nhôm, sắt, ăn mòn kim loại, clo, cacbon và oxit, bảng tuần hoàn. Dành cho học sinh lớp 9 THCS đang học hoặc ôn tập chương trình Hóa học 9.",
+  "outcomes": [
+    "Vận dụng được dãy hoạt động hóa học để dự đoán phản ứng của kim loại với nước, axit loãng và dung dịch muối.",
+    "Trình bày được tính chất vật lí, tính chất hóa học và ứng dụng của nhôm, sắt; viết đúng phương trình phản ứng.",
+    "Giải thích được hiện tượng ăn mòn kim loại và nêu được các biện pháp bảo vệ kim loại.",
+    "Mô tả được tính chất, điều chế, ứng dụng của clo, cacbon, CO và CO2; nhận biết CO2 bằng nước vôi trong.",
+    "Xác định được vị trí, cấu tạo nguyên tử và xu hướng biến đổi tính kim loại, tính phi kim trong bảng tuần hoàn."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 83,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:18:04.633243Z",
+      "published_at": "2026-11-17T08:18:12.141755Z",
+      "pack_sha256": "1126811e870de6e0534d500c0ce9884ca3dbe9ed3ae4c35cb8716681154c64c2",
+      "pack_bytes": 151260,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

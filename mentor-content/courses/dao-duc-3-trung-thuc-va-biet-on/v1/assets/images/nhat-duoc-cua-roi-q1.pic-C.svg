@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper background -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- the single object: one eraser -->
+  <g transform="rotate(-8 200 211)" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- soft shadow -->
+    <ellipse cx="206" cy="291" rx="118" ry="16" fill="#E9E5F6"/>
+
+    <!-- rubber body -->
+    <rect x="80" y="138" width="240" height="146" rx="30"
+          fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+
+    <!-- matte shine on the rubber -->
+    <rect x="101" y="159" width="54" height="15" rx="7.5" fill="#F7F1E3"/>
+    <rect x="101" y="243" width="30" height="11" rx="5.5" fill="#F7F1E3"/>
+
+    <!-- wrapped paper sleeve -->
+    <rect x="160" y="131" width="80" height="160" rx="4"
+          fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+
+    <!-- thin label border on the sleeve -->
+    <rect x="173" y="146" width="54" height="130" rx="9"
+          fill="none" stroke="#5A4BC0" stroke-width="2.5"/>
+
+  </g>
+
+  <!-- paper grain overlay -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

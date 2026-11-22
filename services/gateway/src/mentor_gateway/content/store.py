@@ -35,6 +35,8 @@ from mentor_schemas.course import (
     VideoBlock,
 )
 
+from mentor_gateway.langga.subjects import chicken_of_entry
+
 
 class ContentError(Exception):
     def __init__(self, code: str, message: str = "") -> None:
@@ -184,7 +186,13 @@ class ContentStore:
         return target
 
     def load_catalog(self) -> Catalog:
-        return Catalog.model_validate_json(self.catalog_bytes())
+        """The catalog, every entry carrying its Làng gà `chicken` (the teacher's label, else derived from subject + band)."""
+        cat = Catalog.model_validate_json(self.catalog_bytes())
+        for i, e in enumerate(cat.courses):
+            want = chicken_of_entry(e)
+            if e.chicken != want:
+                cat.courses[i] = e.model_copy(update={"chicken": want})
+        return cat
 
     def catalog_bytes(self) -> bytes:
         if not self.catalog_path.is_file():
@@ -205,7 +213,8 @@ class ContentStore:
                 version = max((v.version for v in cur.versions), default=0) + 1
                 new = meta.model_copy(update={"versions": list(cur.versions), "latest_published": cur.latest_published,
                                               "lessons_count": cur.lessons_count, "est_minutes": cur.est_minutes,
-                                              "media": cur.media, "level": cur.level})
+                                              "media": cur.media, "level": cur.level,
+                                          "chicken": cur.chicken, "grade": cur.grade})
             else:
                 version = 1
                 new = meta.model_copy(update={"versions": [], "latest_published": None})
@@ -221,7 +230,8 @@ class ContentStore:
             cur = self.load_meta(meta.id)
             new = meta.model_copy(update={"versions": list(cur.versions), "latest_published": cur.latest_published,
                                           "lessons_count": cur.lessons_count, "est_minutes": cur.est_minutes,
-                                          "media": cur.media, "level": cur.level})
+                                          "media": cur.media, "level": cur.level,
+                                          "chicken": cur.chicken, "grade": cur.grade})
             self._save_meta(new)
 
     def set_level(self, course_id: str, version: int, *, suggested: str | None = None,
@@ -238,11 +248,52 @@ class ContentStore:
                 src = self.version_info(meta, meta.latest_published)
                 info.level_suggested = src.level_suggested
                 info.level_confirmed = src.level_confirmed or meta.level
+                info.labels = dict(src.labels) if src.labels else None
             if suggested is not None:
                 info.level_suggested = suggested  # type: ignore[assignment]
             if confirmed is not None:
                 info.level_confirmed = confirmed  # type: ignore[assignment]
             self._save_meta(meta)
+            return info
+
+    def set_labels(self, course_id: str, version: int, *, chicken: str | None = None, band: str | None = None,
+                   grade: int | None = None, difficulty: str | None = None, goals: list[str] | None = None,
+                   language: str | None = None, topics: list[str] | None = None) -> VersionInfo:
+        """Teacher labels (Làng gà gv-04). A draft keeps them on its version (copied to the course at publish); the latest
+        published version takes them at once: course.json and catalog.json change, the pack does not. Older published
+        versions are frozen. Only the fields given change."""
+        with self._lock:
+            meta = self.load_meta(course_id)
+            info = self.version_info(meta, version)
+            latest = info.status == "published" and meta.latest_published == version
+            if info.status == "published" and not latest:
+                raise Immutable("version_published", f"{course_id} v{version} is published")
+            labels = dict(info.labels or {})
+            for k, v in (("chicken", chicken), ("band", band), ("grade", grade), ("goals", goals),
+                         ("language", language), ("topics", topics)):
+                if v is not None:
+                    labels[k] = v
+            info.labels = labels or None
+            if difficulty is not None:
+                info.level_confirmed = difficulty  # type: ignore[assignment]
+            if latest:
+                if chicken is not None:
+                    meta.chicken = chicken
+                if grade is not None:
+                    meta.grade = grade
+                if band is not None:
+                    meta.age_band = band  # type: ignore[assignment]
+                if difficulty is not None:
+                    meta.level = difficulty  # type: ignore[assignment]
+                if goals is not None:
+                    meta.outcomes = list(goals)
+                if language is not None:
+                    meta.language = language  # type: ignore[assignment]
+                if topics is not None:
+                    meta.topics = list(topics)
+            self._save_meta(meta)
+            if latest:
+                self.regenerate_catalog()
             return info
 
     def set_status(self, course_id: str, version: int, status: str) -> None:
@@ -310,9 +361,16 @@ class ContentStore:
                 meta.lessons_count = sum(len(c.lessons) for c in pack.chapters)
                 meta.est_minutes = sum(ls.est_minutes for c in pack.chapters for ls in c.lessons)
                 meta.media = derive_media(pack)  # type: ignore[assignment]
-                meta.age_band = pack.age_band
-                meta.language = pack.language
+                labels = info.labels or {}
+                meta.age_band = labels.get("band") or pack.age_band
+                meta.language = labels.get("language") or pack.language
+                if labels.get("goals") is not None:
+                    meta.outcomes = list(labels["goals"])
+                if labels.get("topics") is not None:
+                    meta.topics = list(labels["topics"])
                 meta.level = info.level_confirmed or meta.level
+                meta.chicken = labels.get("chicken") or meta.chicken
+                meta.grade = labels.get("grade") or meta.grade
             self._save_meta(meta)
             self.regenerate_catalog()
             return info
@@ -334,7 +392,7 @@ class ContentStore:
                         outcomes=meta.outcomes, cover_sha256=cover_sha, media=meta.media,
                         lessons_count=sum(len(c.lessons) for c in meta.outline),
                         est_minutes=sum(ls.est_minutes for c in meta.outline for ls in c.lessons), status="coming_soon",
-                        level=meta.level))
+                        level=meta.level, chicken=chicken_of_entry(meta), topics=meta.topics))
                     continue
                 if meta.latest_published is None:
                     continue
@@ -347,7 +405,7 @@ class ContentStore:
                     id=meta.id, title=meta.title, subject=meta.subject, age_band=meta.age_band, language=meta.language,
                     teacher_name=meta.teacher_name, description_short=meta.description_short, outcomes=meta.outcomes,
                     cover_sha256=cover_sha, media=meta.media, lessons_count=meta.lessons_count,
-                    est_minutes=meta.est_minutes, level=meta.level, version=info.version, pack_sha256=info.pack_sha256 or "",
+                    est_minutes=meta.est_minutes, level=meta.level, chicken=chicken_of_entry(meta), topics=meta.topics, version=info.version, pack_sha256=info.pack_sha256 or "",
                     pack_bytes=info.pack_bytes or 0, published_at=info.published_at or self.clock()))
             cat = Catalog(generated_at=self.clock(), courses=entries + soon)
             atomic_write(self.catalog_path, _json_bytes(cat))

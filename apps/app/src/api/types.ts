@@ -18,9 +18,11 @@ export interface User {
   language: Lang | null;
   theme: Theme;
   quiet_until: string | null;
+  /** The student's character in the village (Làng gà); set at first run via PATCH /me. */
+  avatar?: "nam" | "nu" | null;
 }
 
-export type UserPatch = Partial<Pick<User, "birth_year" | "language" | "theme" | "display_name">>;
+export type UserPatch = Partial<Pick<User, "birth_year" | "language" | "theme" | "display_name" | "avatar">>;
 
 export interface LoginResult {
   token: string;

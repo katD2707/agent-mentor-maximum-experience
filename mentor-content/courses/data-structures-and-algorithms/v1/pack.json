@@ -1,0 +1,3193 @@
+{
+  "schema_version": 1,
+  "course_id": "data-structures-and-algorithms",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "en",
+  "age_band": "uni",
+  "title": "Data Structures and Algorithms",
+  "chapters": [
+    {
+      "id": "ch-linear-structures",
+      "title": "Linear structures",
+      "lessons": [
+        {
+          "id": "arrays-and-lists",
+          "title": "Arrays and lists",
+          "est_minutes": 15,
+          "summary": "Explains array address arithmetic, dynamic-array growth and amortized append, plus shifting costs for insertion and deletion, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "contiguous array address arithmetic gives O(1) random access",
+            "dynamic arrays grow by copying; geometric growth gives amortized O(1) append",
+            "insert and delete shift later elements, costing O(n-i)",
+            "Python list stores references; slicing and linear search cost O(n)",
+            "common mistake: confusing append worst-case O(n) with amortized O(1)"
+          ],
+          "blocks": [
+            {
+              "id": "arrays-and-lists-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Array",
+              "md": "An array stores $n$ elements of the same type in one contiguous block of memory. With element size $s$ bytes, $\\mathrm{addr}(a[i]) = \\mathrm{addr}(a[0]) + i \\cdot s$, so random access is $O(1)$.",
+              "audio": null
+            },
+            {
+              "id": "arrays-and-lists-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/arrays-and-lists-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "bfa48c1bb13fb9683c6dcfb94b1e425e96ffe43b3a82b0d5e6934a7c64c08c41",
+                "bytes": 3566
+              },
+              "alt": "Contiguous array cells with addresses increasing by 8 bytes",
+              "caption": "Contiguity makes the address computable from the index.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "arrays-and-lists-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "arrays-and-lists-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "For a dynamic array that doubles its capacity whenever it is full, what is the correct running-time description of `append`?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Worst case $O(n)$ per call, $O(1)$ amortized",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Worst case $O(1)$ per call, $O(n)$ amortized",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Every call is $O(1)$ because the elements sit in contiguous memory",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Every call is $O(n)$ because reallocation may copy all elements",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "A resize copies all $n$ elements, so one append can be $O(n)$; geometric growth makes the total copying over $n$ appends less than $2n$, hence $O(1)$ amortized.",
+                  "option_feedback": {
+                    "B": "Reallocation copies all elements, so a single append can cost $O(n)$, not $O(1)$.",
+                    "C": "Contiguity gives $O(1)$ random access, not $O(1)$ worst-case append when the buffer must be copied.",
+                    "D": "Copies happen only at doubling capacities, so over $n$ appends they total less than $2n$, giving $O(1)$ amortized."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "arrays-and-lists-b3",
+              "kind": "interactive",
+              "prompt": "Drag the index until the address is 1160 bytes.",
+              "x": {
+                "symbol": "i",
+                "label": "Index",
+                "unit": "index"
+              },
+              "y": {
+                "symbol": "addr",
+                "label": "Address",
+                "unit": "bytes"
+              },
+              "expr": "1000 + 8*x",
+              "x_min": 0.0,
+              "x_max": 20.0,
+              "x_step": 1.0,
+              "x_start": 0.0,
+              "target_y": 1160.0,
+              "tolerance": 0.5,
+              "praise": "Correct: index 20 gives $1000 + 8\\cdot 20 = 1160$ bytes.",
+              "audio": null
+            },
+            {
+              "id": "arrays-and-lists-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Dynamic array",
+              "md": "A dynamic array adds a capacity field and grows on demand: when full, it allocates a larger block, copies the $n$ elements, and frees the old block. A Python `list` is a dynamic array of references to objects, so `a[i]` is one pointer lookup.",
+              "audio": null
+            },
+            {
+              "id": "arrays-and-lists-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "arrays-and-lists-q2",
+                  "type": "FILL_TILES",
+                  "stem": "For an array with element size $s$ bytes, $\\mathrm{addr}(a[i]) = \\mathrm{addr}(a[0]) + {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$i \\cdot s$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$i + s$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$n \\cdot s$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Each of the $i$ preceding elements occupies $s$ bytes, so the offset is $i \\cdot s$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "arrays-and-lists-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Amortized cost",
+              "md": "Amortized cost is the total cost of a sequence of operations divided by the number of operations. It bounds the average over the sequence, not the worst case of every single operation.",
+              "audio": null
+            },
+            {
+              "id": "arrays-and-lists-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "arrays-and-lists-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "A dynamic array starts with capacity 4 and doubles whenever it is full. How many element copies occur in total during 100 appends?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "124"
+                    ]
+                  },
+                  "hint": "List the capacities at which the buffer is full before the 100 appends finish.",
+                  "explanation": "The resizes at $4\\to8$, $8\\to16$, $16\\to32$, $32\\to64$ and $64\\to128$ copy $4+8+16+32+64=124$ elements.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "arrays-and-lists-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Amortized append with doubling",
+              "md": "Start with capacity $1$, double when full, and charge $1$ per copied element. For $n$ appends, the writes cost $n$; growth copies $1,2,4,\\ldots,2^K$ elements, where $2^K < n \\le 2^{K+1}$, so copying is $1+2+4+\\cdots+2^K = 2^{K+1}-1 < 2n$. Total cost $< 3n$, hence $O(n)$ for $n$ appends and $O(1)$ amortized each; one append can still cost $O(n)$.",
+              "audio": null
+            },
+            {
+              "id": "arrays-and-lists-b7",
+              "kind": "text",
+              "md": "Inserting or deleting at index $i$ shifts every later element one slot, costing $n-i$ moves: $O(n-i)$, worst case $O(n)$ at $i=0$. Reversing a list with `result.insert(0, x)` in a loop costs $\\sum_{i=1}^{n}(i-1)=n(n-1)/2=O(n^2)$.",
+              "audio": null,
+              "gloss": "Chèn hoặc xóa tại chỉ số $i$ phải dịch mọi phần tử phía sau sang một vị trí, tốn $n-i$ lần di chuyển: $O(n-i)$, trường hợp xấu nhất $O(n)$ khi $i=0$. Đảo ngược danh sách bằng `result.insert(0, x)` trong vòng lặp tốn $\\sum_{i=1}^{n}(i-1)=n(n-1)/2=O(n^2)$."
+            },
+            {
+              "id": "arrays-and-lists-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "arrays-and-lists-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each operation on a Python list to its time cost.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "`a[i]`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$O(1)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "`a.insert(i, x)`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$O(n-i)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "`a[i:j]`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$O(j-i)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "`a.sort()`",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$O(n\\log n)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Indexing is one pointer lookup, inserting or slicing shifts/copies the affected elements, and sorting is comparison-based.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "arrays-and-lists-b8",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Costs in a Python list",
+              "md": "`a[i]`, `a[i]=x`, `len(a)`: $O(1)$; `append`, `pop()`: $O(1)$ amortized; `insert(i,x)`, `pop(i)`, `del a[i]`: $O(n-i)$; `a[i:j]`: $O(j-i)$; `x in a`, `index`, `count`: $O(n)$; `a+b`: $O(n+m)$; `sort`: $O(n\\log n)$.",
+              "audio": null
+            },
+            {
+              "id": "arrays-and-lists-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "arrays-and-lists-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about arrays and lists is true.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A single `append` on a dynamic array can cost $O(n)$ even though its amortized cost is $O(1)$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Growing a dynamic array by adding one slot at a time still gives $O(1)$ amortized append."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Calling `result.insert(0, x)` once per element in a loop over $n$ elements takes $O(n^2)$ total time."
+                    },
+                    {
+                      "id": "d",
+                      "text": "A Python `list` stores the objects themselves in one contiguous block of memory."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Appending may trigger a full copy, but geometric growth makes the amortized cost $O(1)$; growing by $+1$ would total $O(n^2)$. A Python list stores references, and inserting at index 0 shifts $i-1$ elements on iteration $i$, summing to $O(n^2)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "arrays-and-lists-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Why is array indexing $O(1)$?",
+                  "answer": "Elements are contiguous and equal-sized, so the address is base plus index times element size.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why is append amortized $O(1)$ under doubling?",
+                  "answer": "Resize copies form a geometric series bounded by $2n$ over $n$ appends; a single append can still be $O(n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does insert or delete at index $i$ cost, and why?",
+                  "answer": "It shifts the $n-i$ later elements, so $O(n-i)$, worst case $O(n)$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "stacks-and-queues",
+          "title": "Stacks and queues",
+          "est_minutes": 15,
+          "summary": "Covers LIFO stacks, FIFO queues, circular buffers and queue-from-two-stacks, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "stack operations push, pop and peek are LIFO and O(1)",
+            "using list.pop(0) for dequeue costs O(n) per removal",
+            "a circular buffer computes the rear with modulo and gives O(1) queue operations",
+            "two stacks implement a FIFO queue with amortized O(1) dequeue",
+            "common mistake: implementing a queue with list.pop(0)"
+          ],
+          "blocks": [
+            {
+              "id": "stacks-and-queues-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Stack (LIFO)",
+              "md": "A stack has one access point, the top. `push(x)` inserts. `pop()` removes and returns the most recently pushed element. `peek()`/`top()` inspects it. The ordering is LIFO: last in, first out. In Python, `a.append(x)` and `a.pop()` give $O(1)$ push (amortized) and pop. Peek is $O(1)$.",
+              "audio": null
+            },
+            {
+              "id": "stacks-and-queues-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Queue (FIFO)",
+              "md": "A queue inserts at the rear with `enqueue(x)` and removes from the front with `dequeue()`. Its ordering is FIFO: first in, first out. It is an abstract data type: the interface fixes behavior; implementations may realise it with different costs.",
+              "audio": null
+            },
+            {
+              "id": "stacks-and-queues-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "stacks-and-queues-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "A queue is implemented with a Python list using append for enqueue and pop(0) for dequeue. What is the total cost of $n$ enqueues followed by $n$ dequeues?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$O(n^2)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$O(n)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$O(1)$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$O(n \\log n)$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Each pop(0) shifts the remaining elements, so the n dequeues cost $1+2+...+(n-1)=O(n^2)$ in total.",
+                  "option_feedback": {
+                    "B": "This treats each dequeue as constant time and ignores the shifting done by pop(0).",
+                    "C": "This ignores the number of elements that pop(0) must shift on every dequeue.",
+                    "D": "No logarithmic factor arises here; the cost comes from linear shifting on each dequeue."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "stacks-and-queues-b3",
+              "kind": "text",
+              "md": "The tempting queue uses a Python list: `append` for enqueue and `pop(0)` for dequeue. `append` is $O(1)$ amortized, but `pop(0)` shifts every remaining element one slot left. So dequeue is $O(n)$ and $n$ dequeues cost $O(n^2)$.",
+              "audio": null,
+              "gloss": "Hàng đợi dễ dụ dùng list Python: `append` để enqueue và `pop(0)` để dequeue. `append` là $O(1)$ khấu hao, nhưng `pop(0)` dịch mọi phần tử còn lại sang trái một ô, nên dequeue là $O(n)$ và $n$ lần dequeue tốn $O(n^2)$."
+            },
+            {
+              "id": "stacks-and-queues-b4",
+              "kind": "text",
+              "md": "The right implementation is a circular buffer. Keep `_head`, `_size`, and a fixed capacity $C$. Compute the rear index instead of storing it: $\\text{rear}=(\\text{head}+\\text{size})\\bmod C$. Enqueue writes at rear and increments size. Dequeue reads at head, clears the slot, and advances head modulo $C$. Both are $O(1)$ with no shifting; `collections.deque` is another $O(1)$-at-both-ends option.",
+              "audio": null,
+              "gloss": "Bộ đệm vòng, cách đúng. Giữ `_head`, `_size` và sức chứa cố định $C$. Chỉ số rear được tính, không lưu: $\\text{rear}=(\\text{head}+\\text{size})\\bmod C$. Enqueue ghi tại rear và tăng size; dequeue đọc tại head, xóa ô, rồi tiến head theo modulo $C$. Cả hai đều $O(1)$ không dịch phần tử; `collections.deque` là lựa chọn khác $O(1)$ ở cả hai đầu."
+            },
+            {
+              "id": "stacks-and-queues-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "stacks-and-queues-q2",
+                  "type": "FILL_TILES",
+                  "stem": "With a Python list, one dequeue using pop(0) costs {{gap}}, while a circular buffer makes one dequeue cost {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$O(n)$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$O(1)$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$O(n^2)$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "$O(\\log n)$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "pop(0) shifts the remaining elements, giving $O(n)$; a circular buffer only updates the head index, giving $O(1)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "stacks-and-queues-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/stacks-and-queues-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "04706911834a2eb766df54f6411f3e5029e8b343517d9921f3585329f5aea14b",
+                "bytes": 3158
+              },
+              "alt": "Circular queue with five slots: head at index 1, elements 2 and 3 at indices 1 and 2, and rear at index 3.",
+              "caption": "In a circular buffer the rear is computed from head and size.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "stacks-and-queues-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "stacks-and-queues-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "A circular queue has capacity $8$, head index $6$, and current size $5$. At what index does the next enqueue write?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The rear is computed as $(6+5) mod 8 = 3$, so the next enqueue writes at index 3.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "stacks-and-queues-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Queue from two stacks",
+              "md": "Use `_in` for enqueues and `_out` for dequeues. When `_out` is empty, pop all of `_in` into `_out`. That reverses the order, so the oldest element is on top. Each element moves at most once, so dequeue is $O(1)$ amortized.",
+              "audio": null
+            },
+            {
+              "id": "stacks-and-queues-b7",
+              "kind": "interactive",
+              "prompt": "Set n so that n dequeues via list.pop(0) shift 45 elements in total.",
+              "x": {
+                "symbol": "n",
+                "label": "Dequeues",
+                "unit": "dequeues"
+              },
+              "y": {
+                "symbol": "S",
+                "label": "Total shifts",
+                "unit": "elements"
+              },
+              "expr": "x*(x-1)/2",
+              "x_min": 1.0,
+              "x_max": 20.0,
+              "x_step": 1.0,
+              "x_start": 3.0,
+              "target_y": 45.0,
+              "tolerance": 0.5,
+              "praise": "Exactly: 10 dequeues shift 45 elements in total.",
+              "audio": null
+            },
+            {
+              "id": "stacks-and-queues-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "stacks-and-queues-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each structure or operation with its property.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Stack",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "LIFO",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Queue",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "FIFO",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Circular buffer rear",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "(head + size) mod C",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "list.pop(0) dequeue",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$O(n)$ cost",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "A stack removes the most recently added item, a queue removes the oldest; circular buffers use modulo indexing, while pop(0) shifts elements.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "stacks-and-queues-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Queue with list.pop(0)",
+              "md": "Using `append` for enqueue and `pop(0)` for dequeue is functionally correct but $O(n)$ per dequeue: every remaining element shifts left. BFS over a graph with $V$ vertices then costs $O(V^2+E)$ instead of $O(V+E)$; use `collections.deque` or a circular buffer.",
+              "audio": null
+            },
+            {
+              "id": "stacks-and-queues-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "stacks-and-queues-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about stacks and queues is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A stack follows LIFO order and supports push, pop, and peek."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Using pop(0) for dequeue in a Python list gives $O(1)$ removal."
+                    },
+                    {
+                      "id": "c",
+                      "text": "A circular buffer uses modulo arithmetic and provides $O(1)$ queue operations."
+                    },
+                    {
+                      "id": "d",
+                      "text": "A queue is LIFO, while a stack is FIFO."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "A stack is LIFO and a queue FIFO; circular buffers avoid shifting, whereas pop(0) shifts all remaining elements.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "stacks-and-queues-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What ordering does a stack enforce, and what are the costs of push, pop, and peek on a Python list?",
+                  "answer": "LIFO; push is $O(1)$ amortized, pop and peek are $O(1)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is the right O(1) array-based queue, and why is list.pop(0) wrong?",
+                  "answer": "A circular buffer with rear = (head + size) mod C; list.pop(0) shifts all remaining elements, costing O(n) per dequeue.",
+                  "image": null
+                },
+                {
+                  "prompt": "How does a queue built from two stacks achieve amortized O(1) dequeue?",
+                  "answer": "Enqueue pushes to `_in`; dequeue pops all of `_in` into `_out` only when `_out` is empty, so each element moves at most once.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hash-tables",
+          "title": "Hash tables",
+          "est_minutes": 15,
+          "summary": "Introduces hash functions, chaining, open addressing, load factor and expected versus worst-case lookup costs, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "hash function plus compression map; collisions are unavoidable",
+            "separate chaining stores buckets; open addressing probes alternative slots",
+            "load factor controls expected cost; resize and rehash at a threshold",
+            "expected O(1) lookup, worst case O(n); deletion in open addressing needs tombstones",
+            "hashable keys need stable __hash__ consistent with __eq__"
+          ],
+          "blocks": [
+            {
+              "id": "hash-tables-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hash table, hash function, compression map",
+              "md": "A hash table implements a dictionary by computing a key's slot arithmetically. A hash function $\\texttt{hash}(k)$ maps the key to an integer hash code. A compression map reduces that integer to an index in $[0,m-1]$, typically $h(k)=\\texttt{hash}(k)\\bmod m$. Keys must be hashable: `__hash__` must stay constant while the key is in the table and must agree with `__eq__`.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Collision",
+              "md": "A collision occurs when $h(k_1)=h(k_2)$ for $k_1\\ne k_2$. Collisions are unavoidable because the key universe is larger than $m$. Every hash-table design needs a resolution strategy.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hash-tables-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Why must a hash table include a collision-resolution strategy?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Distinct keys can map to the same slot.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Hash codes may be negative integers.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "The load factor can exceed 0.75.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Buckets must be stored as linked lists.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Compare the size of the key universe with the number of slots.",
+                  "explanation": "There are more possible keys than slots, so two distinct keys can satisfy $h(k_1)=h(k_2)$; every design must handle this.",
+                  "option_feedback": {
+                    "B": "Negative hash codes are handled by the compression map, not by collision resolution.",
+                    "C": "A high load factor increases cost but does not itself create the need for a resolution strategy.",
+                    "D": "Chaining uses buckets, but collision resolution is required regardless of the bucket representation."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "hash-tables-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Separate chaining",
+              "md": "Each of the $m$ slots holds a small list, or bucket, of the pairs hashing there. Insertion appends to or updates the bucket. Search computes the slot, then scans only that bucket.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Open addressing and tombstones",
+              "md": "All $m$ slots hold at most one entry. On collision we probe other slots, for example linear probing through $h(k), h(k)+1, h(k)+2,\\dots \\pmod m$. Deletion leaves a tombstone. Search skips it, but insertion may reuse it; emptying the slot would break probe chains.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hash-tables-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Under simple uniform hashing, the expected successful-search cost with separate chaining is $\\Theta({{gap}})$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "1+\\alpha/2",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "1+\\alpha",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "1-\\alpha",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "1/(1-\\alpha)",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": "Successful search is slightly cheaper than unsuccessful search.",
+                  "explanation": "For chaining, a successful search checks about $1+\\alpha/2$ comparisons on average; $1+\\alpha$ is the unsuccessful-search bound.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "hash-tables-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Linear probing: $m=11$",
+              "md": "Insert $10,22,31,4,15,28,17,88,59$ with $h(k)=k\\bmod 11$. Final table: slot 0:22, 1:88, 2:empty, 3:empty, 4:4, 5:15, 6:28, 7:17, 8:59, 9:31, 10:10. With $n=9$, $m=11$, $\\alpha=9/11\\approx0.82$. Finding $59$ probes slots $4,5,6,7,8$: five probes, because the cluster $4$ to $7$ must be traversed.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Load factor",
+              "md": "The load factor is $\\alpha=n/m$, the average number of entries per slot. It controls expected cost. Assume each key is equally likely to hash to each slot independently. Then chaining uses $\\Theta(1+\\alpha)$ comparisons for an unsuccessful search and $\\Theta(1+\\alpha/2)$ for a successful one. Keeping $m$ proportional to $n$ gives $O(1)$ expected operations. Open addressing requires $\\alpha<1$ and degrades sharply as $\\alpha\\to1$. Implementations resize and rehash at a threshold such as $0.75$. That costs $O(n)$, but $O(1)$ amortized per insertion.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hash-tables-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "In Worked example 2, how many probes are used to find 59 in the final linear-probing table?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "5"
+                    ]
+                  },
+                  "hint": "Start at $59 \\bmod 11$ and follow the occupied run.",
+                  "explanation": "The search checks slots 4, 5, 6, 7, and 8 before reaching 59, so it uses five probes.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "hash-tables-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Expected $O(1)$ is not worst-case $O(1)$",
+              "md": "“Hash tables give $O(1)$ lookup” is an expected bound, not a worst-case one. If all $n$ keys land in one bucket or one probe cluster, lookup degrades to $O(n)$. Structured or adversarial keys can cause this, so report both $O(1)$ expected and $O(n)$ worst case.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-b8",
+              "kind": "interactive",
+              "prompt": "Drag the load factor so the expected successful-search cost with chaining is 1.5 comparisons.",
+              "x": {
+                "symbol": "α",
+                "label": "Load factor",
+                "unit": "entries/slot"
+              },
+              "y": {
+                "symbol": "C",
+                "label": "Expected successful comparisons",
+                "unit": "comparisons"
+              },
+              "expr": "1 + x/2",
+              "x_min": 0.0,
+              "x_max": 2.0,
+              "x_step": 0.05,
+              "x_start": 0.2,
+              "target_y": 1.5,
+              "tolerance": 0.01,
+              "praise": "Right: $\\alpha=1$ gives $1+\\alpha/2=1.5$ expected comparisons.",
+              "audio": null
+            },
+            {
+              "id": "hash-tables-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "hash-tables-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each hash-table term with its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Separate chaining",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Bucket lists in slots",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Open addressing",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Probing alternative slots",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Tombstone",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Deleted-slot marker",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Load factor",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$n/m$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These terms distinguish the two collision strategies and the special open-addressing deletion marker; load factor is entries per slot.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "hash-tables-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Why must every hash-table design resolve collisions?",
+                  "answer": "Because the key universe is larger than the table size $m$, so distinct keys can map to the same slot.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does the load factor $\\alpha=n/m$ control, and what is the worst-case lookup cost?",
+                  "answer": "It controls expected cost; expected lookup is $O(1)$ when $m$ is proportional to $n$, but worst case is $O(n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why does deletion in open addressing need a tombstone?",
+                  "answer": "Emptying a slot would break probe chains for keys inserted after it; a tombstone is skipped in search but can be reused on insertion.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about linear structures: arrays and lists, stacks and queues, and hash tables, with the focus on how each stores elements and what its operations cost.",
+          "An array stores elements of the same type in one contiguous block, so the address of an element is the base address plus the index times the element size. That address arithmetic gives constant-time random access. A dynamic array adds a capacity and, when full, allocates a larger block, copies the elements, and frees the old block. Geometric growth gives amortized constant-time append.",
+          "Inserting or deleting at index i shifts every later element, so it costs n minus i moves, which is linear in the worst case at the front. For example, building a reversed list by inserting at position zero in a loop costs quadratic time. In a Python list, elements are references, and slicing and linear search cost linear time. A single append can still be linear, even though its amortized cost is constant, and confusing those two is a common mistake.",
+          "The main costs are these: indexing, assignment, and length are constant time; append and pop from the end are amortized constant; insert, pop at an index, and deletion cost n minus i; slicing costs the slice length; membership, index, and count are linear; concatenation is linear in both lengths; and sorting is n times log n.",
+          "A stack has one access point, the top, and its order is last in, first out. Push inserts, pop removes and returns the most recently pushed element, and peek inspects it, all in constant time. In Python, appending and popping from the end give constant-time push and pop, with push amortized.",
+          "A queue inserts at the rear with enqueue and removes from the front with dequeue, so its order is first in, first out. It is an abstract data type: the interface fixes the behavior, while implementations can have different costs. The tempting list implementation uses append for enqueue and pop at position zero for dequeue, but that shifts every remaining element, so each dequeue is linear and n dequeues are quadratic. A circular buffer computes the rear as head plus size modulo capacity, giving constant-time operations, and the deque from the collections module is another constant-time option. Two stacks also implement a queue: enqueue onto the in stack, and when the out stack is empty, pop everything from in into out, so each element moves at most once and dequeue is amortized constant.",
+          "A hash table implements a dictionary by computing a key's slot. A hash function maps the key to an integer hash code, and a compression map, usually modulo the table size, reduces it to an index. A collision occurs when two different keys get the same index, and collisions are unavoidable because the key universe is larger than the table. Separate chaining stores a bucket of pairs in each slot, while open addressing probes other slots, for example by linear probing. For instance, with eleven slots and a modulo-eleven hash, inserting the key eighty-eight can start at slot zero, find it occupied, and probe to slot one.",
+          "The load factor is n over m, the average number of entries per slot, and it controls expected cost. Chaining gives expected constant-time search when the table size stays proportional to the number of keys, and open addressing requires a load factor below one and degrades sharply as it approaches one. Implementations resize and rehash at a threshold such as zero point seven five, which costs linear time but is amortized constant per insertion. Hash tables give expected constant-time lookup, not worst-case constant time; if all keys land in one bucket or one probe cluster, lookup degrades to linear time.",
+          "Deletion in open addressing needs a tombstone, because emptying the slot would break probe chains; search skips a tombstone, but insertion may reuse it. Keys must be hashable, meaning the hash stays constant while the key is in the table and agrees with equality.",
+          "The three things to remember are: arrays give constant-time indexing but inserting or deleting shifts later elements; a queue must use a circular buffer, a deque, or two stacks, not pop at position zero; and hash tables give expected constant-time operations with a controlled load factor, but their worst case is linear."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-linear-structures.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "2b139dcee2f00dc3cf006fdba5862fb9940fb9bb8e8b81c12b8c07f7f85a3c78",
+          "bytes": 1668728
+        },
+        "duration_s": 277.25
+      }
+    },
+    {
+      "id": "ch-trees-and-graphs",
+      "title": "Trees and graphs",
+      "lessons": [
+        {
+          "id": "binary-trees",
+          "title": "Binary trees",
+          "est_minutes": 15,
+          "summary": "Defines binary trees, BST ordering, traversals and height, and checks BST validity with intervals, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "tree terms include root, leaf, depth, height and subtree",
+            "binary tree shapes and node-count bounds depend on height",
+            "BST property is inherited from ancestors, not just local children",
+            "traversals are preorder, inorder, postorder and level order",
+            "search, insert and delete cost O(h); sorted insertion can make h equal n-1"
+          ],
+          "blocks": [
+            {
+              "id": "binary-trees-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tree terms",
+              "md": "A *tree* is a connected, acyclic graph. In a *rooted tree* one node is the root; every other node has exactly one parent, and its children are the nodes below it. A *binary tree* is a rooted tree where every node has at most two children, called left and right; order matters: left and right are different. A *leaf* has no children. The *depth* of a node is the number of edges from the root to it (root depth $0$). The *height* of a node is the number of edges on the longest downward path to a leaf; the height of the tree is the height of the root (leaf height $0$, empty tree height $-1$). The *subtree* of $x$ is $x$ together with all its descendants.",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Shapes and counting",
+              "md": "*Full* (proper): every node has $0$ or $2$ children. *Complete*: all levels except possibly the last are full, and the last level is filled left to right. *Perfect*: full and all leaves at the same depth. For a binary tree with $n$ nodes and height $h$: at most $2^d$ nodes sit at depth $d$, and a perfect tree of height $h$ has $2^{h+1}-1$ nodes. So the minimum height is $\\lfloor \\log_2 n \\rfloor$, and the maximum height is $n-1$ (a chain where every node has exactly one child).",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "binary-trees-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which condition defines the BST property for every node $x$ in a binary search tree?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "All keys in x's left subtree are less than x.key, and all keys in x's right subtree are greater.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "x's left child is less than x.key, and x's right child is greater than x.key.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Every root-to-leaf path contains keys in increasing order.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "All keys at even depth are smaller than all keys at odd depth.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The BST property is inherited from ancestors: each node's whole left and right subtrees must satisfy the bound, not just its children.",
+                  "option_feedback": {
+                    "B": "This checks only local children and misses ancestor constraints, as the 10-5-12 example shows.",
+                    "C": "Sorted paths are not required; the BST property compares subtrees with each node's key.",
+                    "D": "Depth parity is irrelevant to the BST ordering property."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "binary-trees-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/binary-trees-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "1476e50eba359f74f2b883f189cb5b0f1c03ad6c4be992cf12c67c24610fe281",
+                "bytes": 2311
+              },
+              "alt": "A perfect binary tree with one root, two children, and four leaves at the bottom level.",
+              "caption": "A perfect tree of height 2 has 7 nodes; depth 2 holds 4 leaves.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "binary-trees-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Binary search tree (BST)",
+              "md": "A *binary search tree (BST)* stores comparable keys with the BST property: for every node $x$, every key in $x$'s left subtree is $< x.key$, and every key in $x$'s right subtree is $> x.key$. Search, insert and delete each walk one root-to-leaf path and cost $O(h)$.",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "binary-trees-q2",
+                  "type": "FILL_TILES",
+                  "stem": "A perfect binary tree of height $h$ has {{gap}} nodes.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$2^{h+1}-1$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$2^h-1$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$2h+1$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "$h^2$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "A perfect tree fills levels 0 through h, giving $1+2+...+2^h = 2^{h+1}-1$ nodes.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "binary-trees-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example: insert and inspect a BST",
+              "md": "Insert $50, 30, 70, 20, 40, 60, 80, 35$ into an empty BST. The root is $50$; $30$ is left of $50$ and $70$ is right; $20$ and $40$ are children of $30$; $60$ and $80$ are children of $70$; $35$ goes $50 \\to 30 \\to 40$ and becomes the left child of $40$. Inorder gives $20, 30, 35, 40, 50, 60, 70, 80$, which is sorted. The longest path $50 \\to 30 \\to 40 \\to 35$ has $3$ edges, so the height is $3$. Searching for $35$ visits $50, 30, 40, 35$: $4$ comparisons, $3$ edges traversed. With $n=8$ and $\\lfloor \\log_2 8 \\rfloor = 3$, this tree is perfectly balanced.",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "binary-trees-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "A complete binary tree has 1000 nodes. What is its height when height is counted in edges?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "9"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "For 1000 nodes the height is 9; levels 0 through 8 hold 511 nodes and level 9 holds the remaining 489.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "binary-trees-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Traversals",
+              "md": "Four standard orders each take $O(n)$ time. *Preorder*: node, left, right. *Inorder*: left, node, right; for a BST this outputs the keys in sorted order. *Postorder*: left, right, node. *Level order*: breadth-first, using a queue. The first three use $O(h)$ stack space; level order uses $O(\\text{width})$ queue space.",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Naive BST check is not enough",
+              "md": "Take root $10$ with left child $5$ and right child $15$; node $5$ has right child $12$. Every parent-child comparison passes: $5<10$, $15>10$, $12>5$. But $12$ lies in the left subtree of $10$, and $12>10$, so the BST property is violated. The constraint is inherited from ancestors, not local to a node and its child. The correct check passes an open interval down: reject if not $low < node.key < high$; recurse left with $(low, node.key)$ and right with $(node.key, high)$. This is $O(n)$ time and $O(h)$ stack.",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "binary-trees-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each binary-tree term to its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Leaf",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Node with no children",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Depth of a node",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Edges from the root to the node",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Height of a leaf",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "0",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Inorder traversal",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Left, node, right",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These are the edge-counting and traversal definitions from the lesson; a leaf has height 0 by convention.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "binary-trees-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để chiều cao của cây hoàn hảo bằng 3",
+              "x": {
+                "symbol": "h",
+                "label": "Height",
+                "unit": "edges"
+              },
+              "y": {
+                "symbol": "n",
+                "label": "Nodes",
+                "unit": "nodes"
+              },
+              "expr": "2^(x+1)-1",
+              "x_min": 0.0,
+              "x_max": 5.0,
+              "x_step": 1.0,
+              "x_start": 0.0,
+              "target_y": 15.0,
+              "tolerance": 0.01,
+              "praise": "At height 3 the perfect tree has 15 nodes.",
+              "audio": null
+            },
+            {
+              "id": "binary-trees-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "binary-trees-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about binary trees is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A plain BST search is always $O(log n)$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "An inorder traversal of a BST outputs the keys in sorted order."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Every leaf in a binary tree has depth 0."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Inserting already-sorted keys into a plain BST can make the height equal $n-1$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Plain BST search costs $O(h)$ and can degrade to $O(n)$, while inorder traversal of a BST is sorted. Depth depends on distance from the root, and sorted insertion can form a chain.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "binary-trees-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Why can a tree pass the naive parent-child test and still fail as a BST?",
+                  "answer": "The BST constraint is inherited from all ancestors, so a node can be on the wrong side of a higher ancestor.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is the cost of search, insert and delete in a plain BST, and what can make it worst-case?",
+                  "answer": "Each costs $O(h)$; inserting already-sorted keys builds a chain with $h=n-1$, giving $O(n)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Which traversal outputs a BST's keys sorted, and which traversal uses a queue?",
+                  "answer": "Inorder outputs sorted keys; level order uses a queue for breadth-first order.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "heaps",
+          "title": "Heaps",
+          "est_minutes": 15,
+          "summary": "Explains complete binary min-heaps, array indexing, push and pop, build_heap and heapsort, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "min-heap combines a complete tree with heap order",
+            "array representation uses parent and child index formulas",
+            "push and pop sift up or down in O(log n)",
+            "build_heap is O(n); heapsort is O(n log n)",
+            "a heap is not sorted; searching for an arbitrary key is O(n)"
+          ],
+          "blocks": [
+            {
+              "id": "heaps-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Binary min-heap",
+              "md": "A binary min-heap is a binary tree that is (i) complete (every level full except possibly the last, filled left to right) and (ii) heap-ordered: every node's key is $\\le$ the keys of its children. A max-heap reverses the inequality. Completeness makes the array representation possible; heap order makes the minimum accessible at the root.",
+              "audio": null
+            },
+            {
+              "id": "heaps-b2",
+              "kind": "text",
+              "md": "Store the level-order sequence in an array $A$ of length $n$. For index $i$: $\\text{parent}(i)=\\lfloor(i-1)/2\\rfloor$ for $i>0$, $\\text{left}(i)=2i+1$, and $\\text{right}(i)=2i+2$. The last internal node is at $\\lfloor n/2\\rfloor-1$, the leaves are indices $\\lfloor n/2\\rfloor \\dots n-1$, and the height is $\\lfloor\\log_2 n\\rfloor$. No pointers are needed, so $n$ keys use $O(n)$ memory.",
+              "audio": null,
+              "gloss": "Lưu dãy theo thứ tự mức vào mảng $A$ có độ dài $n$. Với chỉ số $i$: cha là $\\lfloor(i-1)/2\\rfloor$ khi $i>0$, con trái là $2i+1$, con phải là $2i+2$. Nút trong cuối cùng ở $\\lfloor n/2\\rfloor-1$, các lá là chỉ số từ $\\lfloor n/2\\rfloor$ đến $n-1$, và chiều cao là $\\lfloor\\log_2 n\\rfloor$. Không cần con trỏ, nên $n$ khóa dùng bộ nhớ $O(n)$."
+            },
+            {
+              "id": "heaps-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "heaps-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Why does finding an arbitrary key in a binary min-heap take $O(n)$ in the worst case?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Heap order links each node only to its children, so sibling subtrees are unordered.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "The array is sorted in level order, but the root hides the middle keys.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "A heap is complete, so every search must inspect all nodes on the last level first.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "The heap property orders each root-to-leaf path, so binary search must branch both ways.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Only the root's extremum is guaranteed; heap order does not order left versus right subtrees, so a search may need to scan all nodes.",
+                  "option_feedback": {
+                    "B": "The array is not sorted in level order; completeness controls shape, not key order.",
+                    "C": "Completeness does not force a search to inspect the last level first.",
+                    "D": "Heap order does not sort root-to-leaf paths; it only constrains a parent against its children."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "heaps-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/heaps-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "89f20db82ee8bb08561ea72b4a0ba84b4d805c5a5a7de920d0501edac280a4c7",
+                "bytes": 4180
+              },
+              "alt": "Tree and array view of the min-heap with root 1, showing how level order fills the array.",
+              "caption": "The same min-heap as a complete tree and as a 0-indexed array.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "heaps-b4",
+              "kind": "text",
+              "md": "`peek()` returns $A[0]$ in $O(1)$. `push(x)` appends $x$ at the end, then sifts up while $x$ is smaller than its parent. `pop()` saves $A[0]$, moves the last element to the root, shrinks the array, then sifts down by repeatedly swapping with the smaller child until heap order holds. Both `push` and `pop` cost $O(\\log n)$, since they move along at most the height.",
+              "audio": null,
+              "gloss": "`peek()` trả về $A[0]$ trong $O(1)$. `push(x)` thêm $x$ vào cuối rồi sàng lên trong khi $x$ nhỏ hơn cha. `pop()` lưu $A[0]$, đưa phần tử cuối lên gốc, giảm kích thước mảng, rồi sàng xuống bằng cách đổi chỗ với con nhỏ hơn cho đến khi thỏa thứ tự heap. Cả `push` và `pop` tốn $O(\\log n)$ vì chỉ đi tối đa bằng chiều cao."
+            },
+            {
+              "id": "heaps-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "heaps-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Complete the 0-indexed array formula: the right child of index $i$ is at index {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "2i+2",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "2i+1",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "2i",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "i/2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "In a 0-indexed heap array, left(i)=2i+1 and right(i)=2i+2.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "heaps-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Push and pop trace",
+              "md": "Push $5,3,8,1,9,2$ into an empty min-heap: $[5] \\to [3,5] \\to [3,5,8] \\to [1,3,8,5] \\to [1,3,8,5,9] \\to [1,3,2,5,9,8]$. Final heap $[1,3,2,5,9,8]$, with $4$ swaps total. Now `pop()`: return $1$; move the last element $8$ to the root and shrink → $[8,3,2,5,9]$. The children of the root are $3$ and $2$; swap with the smaller child $2$ → $[2,3,8,5,9]$. Index $2$ has no children, so stop. Return value $1$, heap $[2,3,8,5,9]$.",
+              "audio": null
+            },
+            {
+              "id": "heaps-b6",
+              "kind": "text",
+              "md": "`build_heap(A)` runs for $i=\\lfloor n/2\\rfloor-1$ down to $0$, sifting down at $i$. This is $O(n)$, not $O(n\\log n)$: a node at height $k$ does at most $k$ swaps, and there are about $n/2^{k+1}$ such nodes, so the total is $\\sum_k k\\cdot n/2^{k+1}=O(n)$. Heapsort builds a max-heap in $O(n)$ and then calls `pop` $n$ times. Overall $O(n\\log n)$, in place, and not stable.",
+              "audio": null,
+              "gloss": "`build_heap(A)` chạy với $i=\\lfloor n/2\\rfloor-1$ giảm đến $0$, sàng xuống tại $i$. Thuật toán tốn $O(n)$, không phải $O(n\\log n)$: nút ở độ cao $k$ đổi chỗ tối đa $k$ lần, và có khoảng $n/2^{k+1}$ nút như vậy, nên tổng là $\\sum_k k\\cdot n/2^{k+1}=O(n)$. Heapsort dựng max-heap trong $O(n)$, rồi gọi `pop` $n$ lần: tổng cộng $O(n\\log n)$, tại chỗ và không ổn định."
+            },
+            {
+              "id": "heaps-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "heaps-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "A binary min-heap contains 1000 nodes. What is its height, defined as floor(log2 n)?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "9"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Since 2^9 = 512 <= 1000 < 1024 = 2^10, floor(log2 1000) = 9.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "heaps-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "A heap is not sorted",
+              "md": "Heap order only constrains each node against its own children; left and right subtrees are unordered relative to each other. In $[1,3,2,9,7,5,6]$, the key $9$ is in the left subtree while $2$ is in the right, so binary-search logic such as “go left if $x<\\text{current}$” is meaningless. Searching for an arbitrary key such as $5$ may require examining every node, $O(n)$. Only the extremum at the root is guaranteed to be retrievable quickly.",
+              "audio": null
+            },
+            {
+              "id": "heaps-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "heaps-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each heap operation or algorithm with its worst-case time complexity.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "push",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$O(\\log n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "build_heap",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$O(n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "peek",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$O(1)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "heapsort",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$O(n \\log n)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Push and pop sift along the height, build_heap's bottom-up sifts total O(n), and heapsort is O(n log n).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "heaps-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What two properties define a binary min-heap?",
+                  "answer": "It is a complete binary tree and it is heap-ordered: every node's key is at most its children's keys.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why is build_heap O(n) while n separate pushes can be O(n log n)?",
+                  "answer": "Most nodes are near the bottom and sift down only a short distance, so the summed work is O(n).",
+                  "image": null
+                },
+                {
+                  "prompt": "What can a heap retrieve quickly, and what search is slow?",
+                  "answer": "The minimum at the root in O(1); searching for an arbitrary key is O(n) because a heap is not sorted.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "graph-search",
+          "title": "Graph search",
+          "est_minutes": 15,
+          "summary": "Covers graph representations, BFS shortest paths in unweighted graphs, DFS, topological sort and connected components, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "adjacency lists use O(n+m) space; adjacency matrices use O(n^2)",
+            "BFS uses a queue and marks vertices at enqueue time for O(n+m)",
+            "DFS uses recursion or a stack and records discovery and finish times",
+            "topological sort outputs reverse postorder of a DAG",
+            "common mistake: marking visited on dequeue instead of enqueue in BFS"
+          ],
+          "blocks": [
+            {
+              "id": "graph-search-b1",
+              "kind": "text",
+              "md": "A graph $G=(V,E)$ has vertices $V$ and edges $E \\subseteq V\\times V$. Edges can be directed or undirected, and they can have weights. A path is a sequence of vertices joined by edges; a cycle returns to its start. A graph is connected if every pair of vertices is joined by a path (for directed graphs, strongly connected if reachable in both directions).",
+              "audio": null,
+              "gloss": "Đồ thị $G=(V,E)$ gồm tập đỉnh $V$ và tập cạnh $E \\subseteq V\\times V$. Cạnh có thể có hướng hoặc vô hướng và có thể có trọng số. Đường đi là một dãy đỉnh nối với nhau bằng các cạnh; chu trình là đường đi quay về đỉnh xuất phát. Đồ thị liên thông nếu mọi cặp đỉnh đều được nối bằng một đường đi (với đồ thị có hướng: liên thông mạnh nếu đi được cả hai chiều)."
+            },
+            {
+              "id": "graph-search-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Adjacency list and adjacency matrix",
+              "md": "An adjacency list stores `adj[v]` as a list of $v$'s neighbours: space $O(n+m)$, scanning neighbours $O(\\deg v)$, edge test $O(\\deg u)$. An adjacency matrix is an $n\\times n$ array with `M[u][v]=1` (or the weight): space $O(n^2)$, edge test $O(1)$, neighbour scan $O(n)$. Use lists for sparse graphs ($m \\ll n^2$). Use matrices for dense graphs, or when constant-time edge tests dominate.",
+              "audio": null
+            },
+            {
+              "id": "graph-search-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "graph-search-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which order does DFS topological sort of a DAG output?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Reverse postorder",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "BFS queue order",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Increasing discovery time",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Adjacency matrix row order",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Think about when a vertex is appended after its DFS completes.",
+                  "explanation": "DFS topological sort appends vertices as they finish and reverses the resulting postorder.",
+                  "option_feedback": {
+                    "B": "Confuses topological sort with BFS traversal order.",
+                    "C": "Mixes up discovery times with the finish-order output.",
+                    "D": "Confuses a storage layout with a traversal result."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "graph-search-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/graph-search-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "5049cfe381f20b8e60698222594ac1d79d1f05e301f4c827bd60dcb901051316",
+                "bytes": 1547
+              },
+              "alt": "Graph with vertices A to G and the edges listed for the BFS example",
+              "caption": "The graph used in the BFS worked example.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "graph-search-b4",
+              "kind": "text",
+              "md": "Breadth-first search explores level by level with a FIFO queue. When a vertex $u$ is dequeued, each undiscovered neighbour $v$ is marked visited at enqueue time, given $dist[v]=dist[u]+1$, and appended. It runs in $O(n+m)$ time and uses $O(n)$ extra space. In an unweighted graph, $dist[v]$ is the minimum number of edges from the source to $v$. So the BFS tree gives shortest paths in edge count.",
+              "audio": null,
+              "gloss": "Tìm kiếm theo chiều rộng duyệt theo từng mức bằng hàng đợi FIFO. Khi lấy đỉnh $u$ ra khỏi hàng đợi, mỗi đỉnh kề $v$ chưa được phát hiện sẽ được đánh dấu đã thăm ngay lúc đưa vào hàng đợi, gán $dist[v]=dist[u]+1$, rồi thêm vào hàng đợi. Thuật toán chạy trong thời gian $O(n+m)$ và bộ nhớ phụ $O(n)$. Trong đồ thị không trọng số, $dist[v]$ là số cạnh ít nhất từ nguồn đến $v$, nên cây BFS cho đường đi ngắn nhất theo số cạnh."
+            },
+            {
+              "id": "graph-search-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "graph-search-q2",
+                  "type": "FILL_TILES",
+                  "stem": "In BFS, a vertex should be marked visited when it is {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "enqueued",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "dequeued",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "finished",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": "It is before the vertex is processed.",
+                  "explanation": "Marking at enqueue time prevents duplicates and keeps BFS distances nondecreasing.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "graph-search-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "BFS from A",
+              "md": "Run BFS from $A$ on the graph in the figure. Adjacency: $A:[B,C]$, $B:[A,D,E]$, $C:[A,F]$, $D:[B]$, $E:[B,F,G]$, $F:[C,E]$, $G:[E]$. Starting at $A$, we discover $B,C$ at $d=1$; from $B$ discover $D,E$ at $d=2$; from $C$ discover $F$ at $d=2$; from $E$ discover $G$ at $d=3$. Visit order is $A,B,C,D,E,F,G$; distances are $A:0$, $B:1$, $C:1$, $D:2$, $E:2$, $F:2$, $G:3$. One shortest $A\\to G$ path is $A,B,E,G$ (3 edges), recovered from `parent`.",
+              "audio": null
+            },
+            {
+              "id": "graph-search-b6",
+              "kind": "text",
+              "md": "Depth-first search follows one edge as far as possible, then backtracks. You can implement it recursively or with an explicit stack. Each vertex gets a discovery time and a finish time. DFS runs in $O(n+m)$ time. It is used for connected components, cycle detection (a back edge to a grey/on-stack vertex means a cycle in a directed graph), topological sorting, and bridge/articulation-point finding.",
+              "audio": null,
+              "gloss": "Tìm kiếm theo chiều sâu đi theo một cạnh xa nhất có thể rồi quay lui; được cài đặt bằng đệ quy hoặc ngăn xếp tường minh. Mỗi đỉnh nhận một thời điểm phát hiện và một thời điểm kết thúc. DFS chạy trong thời gian $O(n+m)$ và hỗ trợ tìm thành phần liên thông, phát hiện chu trình (cạnh quay về một đỉnh xám/đang trong ngăn xếp nghĩa là có chu trình trong đồ thị có hướng), sắp xếp tôpô, và tìm cầu/điểm khớp."
+            },
+            {
+              "id": "graph-search-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "graph-search-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Using the connected-components algorithm from the lesson, how many components does the graph on vertices 1 through 7 with edges 1-2, 2-3, 1-3, 4-5, and 6-7 have?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "3",
+                      "three"
+                    ]
+                  },
+                  "hint": "Count each unvisited start of DFS or BFS.",
+                  "explanation": "The components are {1,2,3}, {4,5}, and {6,7}.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "graph-search-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Topological sort by DFS",
+              "md": "Topologically sort the DAG with edges $5\\to2$, $5\\to0$, $4\\to0$, $4\\to1$, $2\\to3$, $3\\to1$. Adjacency in insertion order: $5:[2,0]$, $4:[0,1]$, $2:[3]$, $3:[1]$, $1:[]$, $0:[]$. DFS from $5$ visits $5,2,3,1$, finishing $1,3,2$, then visits $0$ and finishes $0$, then $5$. DFS from $4$ finds its neighbours black and appends $4$. Postorder $1,3,2,0,5,4$; reverse gives $\\mathbf{4,5,0,2,3,1}$, a valid topological order: every edge points forward.",
+              "audio": null
+            },
+            {
+              "id": "graph-search-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Marking visited on dequeue in BFS",
+              "md": "On the triangle $A-B$, $A-C$, $B-C$ from $A$, processing $A$ enqueues $B$ and $C$ with $d=1$. If visited is set only on dequeue, processing $B$ sees unmarked $C$ and enqueues it again with $d=2$, overwriting the correct distance or leaving a duplicate in the queue. This gives wrong distances, repeated processing, and a queue of up to $O(m)$ entries instead of $O(n)$. Mark at enqueue time: BFS needs vertices to enter the queue in nondecreasing distance order, and the first time a vertex is seen is via a shortest path.",
+              "audio": null
+            },
+            {
+              "id": "graph-search-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "graph-search-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each graph-search term with its key implementation or space bound.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "BFS",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "FIFO queue",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "DFS",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "recursion or stack",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Adjacency list",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$O(n+m)$ space",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Adjacency matrix",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$O(n^2)$ space",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": "Separate traversal mechanics from representation costs.",
+                  "explanation": "BFS uses a FIFO queue; DFS uses recursion or an explicit stack. List and matrix spaces are $O(n+m)$ and $O(n^2)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "graph-search-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Why must BFS mark a vertex when it is enqueued?",
+                  "answer": "Because the first time a vertex is seen is via a shortest path, and BFS must keep queue distances nondecreasing.",
+                  "image": null
+                },
+                {
+                  "prompt": "What are the space costs of an adjacency list and an adjacency matrix?",
+                  "answer": "Adjacency list uses $O(n+m)$ space; adjacency matrix uses $O(n^2)$ space.",
+                  "image": null
+                },
+                {
+                  "prompt": "How do you get a topological order from DFS on a DAG?",
+                  "answer": "Output vertices in reverse finish-time order, i.e. reverse the DFS postorder.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about trees and graphs: binary trees and binary search trees, heaps and heapsort, and breadth-first and depth-first graph search.",
+          "A tree is connected and acyclic, and in a rooted tree every node except the root has one parent. A binary tree allows at most two ordered children; a leaf has none. Depth counts edges from the root, height counts edges on the longest downward path, and a subtree is a node with all descendants. Full, complete, and perfect describe shapes: full means zero or two children, complete fills levels left to right, and perfect has all leaves at the same depth.",
+          "For n nodes, depth d holds at most two to the d nodes, so the minimum height is floor log base two of n and the maximum is n minus one. A binary search tree requires every key in a node's left subtree to be smaller and every key in its right subtree to be larger. That property is inherited from ancestors, not just local children.",
+          "Search, insert, and delete walk one root-to-leaf path and cost big O of h, so sorted insertion can make h equal n minus one. The traversals are preorder, inorder, postorder, and level order; inorder on a binary search tree outputs sorted keys. For example, inserting fifty, thirty, seventy, twenty, forty, sixty, eighty, and thirty-five gives height three.",
+          "A binary min-heap is a complete binary tree that is heap-ordered: every node's key is less than or equal to its children's keys, so the minimum is at the root. Completeness lets us store it in an array in level order. For index i, the parent is the floor of i minus one divided by two, and the children are two i plus one and two i plus two.",
+          "Push appends and sifts up; pop saves the root, moves the last element to the root, shrinks the array, and sifts down with the smaller child. Both cost big O of log n. Build heap sifts down from the last internal node and is big O of n. Heapsort builds a max-heap and pops n times for big O of n log n; a heap is not sorted, so arbitrary search can cost big O of n.",
+          "A graph has vertices and edges, which may be directed, undirected, or weighted. An adjacency list uses big O of n plus m space, while an adjacency matrix uses big O of n squared space and tests an edge in constant time. Use lists for sparse graphs and matrices for dense graphs.",
+          "Breadth-first search uses a first-in first-out queue and explores level by level. Mark a vertex at enqueue time, set its distance to the parent's distance plus one, and enqueue it; this gives big O of n plus m time and shortest paths in edge count for unweighted graphs. The common mistake is marking visited on dequeue instead of enqueue.",
+          "Depth-first search follows one edge as far as possible and"
+        ],
+        "audio": {
+          "path": "audio/recap-ch-trees-and-graphs.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "bedffeffb60300d81f0e0adc1f67881b921d1d0f7ef95f44b806888fc45aefa6",
+          "bytes": 1083420
+        },
+        "duration_s": 179.79
+      }
+    },
+    {
+      "id": "ch-algorithms",
+      "title": "Algorithms",
+      "lessons": [
+        {
+          "id": "sorting",
+          "title": "Sorting",
+          "est_minutes": 15,
+          "summary": "Compares insertion sort, merge sort and quicksort by time, space, stability and adaptivity, and derives the comparison lower bound, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "insertion sort is O(n^2) worst case, O(n) best case, stable and in place",
+            "merge sort is O(n log n) in all cases, stable and needs O(n) extra space",
+            "quicksort averages O(n log n), worst case O(n^2), and is not stable",
+            "any comparison sort needs Omega(n log n) comparisons",
+            "insertion sort performs exactly one shift per inversion"
+          ],
+          "blocks": [
+            {
+              "id": "sorting-b1",
+              "kind": "text",
+              "md": "Sorting rearranges a sequence into non-decreasing order. We compare sorting algorithms on four axes: running time (best, average, worst case in Big O), space (in place with $O(1)$ auxiliary space, or a second array of size $n$), stability, and adaptivity.",
+              "audio": null,
+              "gloss": "Sắp xếp sắp lại một dãy thành thứ tự không giảm. Ta so sánh các thuật toán sắp xếp theo bốn trục: thời gian chạy (tốt nhất, trung bình, xấu nhất theo Big O), bộ nhớ (tại chỗ với $O(1)$ bộ nhớ phụ, hoặc cần mảng thứ hai kích thước $n$), tính ổn định và tính thích nghi."
+            },
+            {
+              "id": "sorting-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Key terms",
+              "md": "**Stable:** equal keys keep their original relative order. This matters when you sort records by one field after already sorting by another. **Adaptive:** the algorithm uses existing order and runs faster on nearly sorted input. **In place:** it uses $O(1)$ auxiliary space, not a second array of size $n$.",
+              "audio": null
+            },
+            {
+              "id": "sorting-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sorting-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "An array of n distinct keys is already sorted in increasing order. What is the running time of quicksort on this input when the pivot is always the last element (Lomuto partition)?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$\\Theta(n^2)$, because every partition splits into sizes $n-1$ and $0$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$O(n)$, because no element ever needs to be swapped",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$\\Theta(n \\log n)$, because the input order does not affect how the pivot lands",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "It does not terminate, because the recursion makes no progress",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "With the last element as pivot on sorted input, the pivot is the maximum, so each partition gives splits of size n-1 and 0, giving T(n) = T(n-1) + Theta(n) = Theta(n^2). Random or median-of-three pivot selection is what avoids this.",
+                  "option_feedback": {
+                    "B": "Confuses adaptivity with partition cost: quicksort still scans the whole subarray and recurses at every level.",
+                    "C": "Wrongly assumes the split is balanced; the largest element is the pivot every time, so one side is always empty.",
+                    "D": "The recursion still shrinks the subarray by one element per call, so it terminates, just slowly."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "sorting-b3",
+              "kind": "text",
+              "md": "Insertion sort grows a sorted prefix: for $i=1,\\dots,n-1$, take $a[i]$ as the key and shift larger elements of the prefix right until the key fits. Worst case $O(n^2)$ on reversed input, best case $O(n)$ on already sorted input; it is in place and stable.",
+              "audio": null,
+              "gloss": "Sắp xếp chèn mở rộng một tiền tố đã sắp: với $i=1,\\dots,n-1$, lấy $a[i]$ làm khóa và dịch các phần tử lớn hơn trong tiền tố sang phải cho đến khi khóa vào đúng chỗ. Xấu nhất $O(n^2)$ với đầu vào bị đảo ngược, tốt nhất $O(n)$ với đầu vào đã sắp; thuật toán tại chỗ và ổn định."
+            },
+            {
+              "id": "sorting-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Insertion sort on $[5,2,4,6,1,3]$",
+              "md": "After each outer iteration: $[2,5,4,6,1,3]$, $[2,4,5,6,1,3]$, $[2,4,5,6,1,3]$, $[1,2,4,5,6,3]$, $[1,2,3,4,5,6]$. Total shifts: $1+1+0+4+3=9$. An inversion is a pair $i<j$ with $a[i]>a[j]$; the input has exactly these 9, and insertion sort performs one shift per inversion.",
+              "audio": null
+            },
+            {
+              "id": "sorting-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sorting-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Merge sort's running time obeys the recurrence $T(n) = 2T(n/{{gap}}) + {{gap}}$, which solves to $O(n \\log n)$ because the recursion has depth $\\log_2 n$ and each level does linear merging work.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\Theta(n)",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "n",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "\\Theta(1)",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "\\Theta(n \\log n)",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Splitting in half gives two subproblems of size n/2, and merging two halves of total size n costs Theta(n) per level. The recursion tree therefore has log n levels of linear work.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "sorting-b5",
+              "kind": "text",
+              "md": "Merge sort splits the array in half, sorts each half recursively, and merges the two sorted halves. Its recursion has depth $\\log_2 n$ and each level does $\\Theta(n)$ merging, so $T(n)=2T(n/2)+\\Theta(n)$ gives $O(n\\log n)$ in all cases; it is stable but needs $\\Theta(n)$ extra space. Quicksort picks a pivot (the element whose final position the partition fixes), partitions smaller elements left and larger right, then recurses on both sides. It averages $O(n\\log n)$, has worst case $O(n^2)$, sorts in place, and is not stable.",
+              "audio": null,
+              "gloss": "Sắp xếp trộn chia đôi mảng, sắp xếp đệ quy từng nửa, rồi trộn hai nửa đã sắp. Đệ quy có độ sâu $\\log_2 n$ và mỗi mức làm $\\Theta(n)$ công việc trộn, nên $T(n)=2T(n/2)+\\Theta(n)$ cho $O(n\\log n)$ trong mọi trường hợp; thuật toán ổn định nhưng cần $\\Theta(n)$ bộ nhớ phụ. Sắp xếp nhanh chọn một chốt (phần tử mà bước phân hoạch đặt vào đúng vị trí cuối), phân hoạch các phần tử nhỏ hơn sang trái và lớn hơn sang phải, rồi đệ quy hai bên. Trung bình $O(n\\log n)$, xấu nhất $O(n^2)$, sắp xếp tại chỗ và không ổn định."
+            },
+            {
+              "id": "sorting-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sorting-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Insertion sort performs exactly one shift per inversion. How many shifts does it perform in total when sorting the array $[5, 2, 4, 6, 1, 3]$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "9",
+                      "nine"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The outer iterations contribute 1 + 1 + 0 + 4 + 3 = 9 shifts, which equals the number of inversions in the input.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "sorting-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Average is not worst",
+              "md": "“Quicksort's average case is $O(n\\log n)$, so its worst case is also $O(n\\log n)$” is wrong. With `pivot = a[hi]` and already sorted input $[1,2,\\dots,n]$, every partition puts the pivot at the end, giving splits of sizes $n-1$ and $0$. Then $T(n)=T(n-1)+\\Theta(n)=\\Theta(n^2)$, and the total work is $1+2+\\cdots+n$.",
+              "audio": null
+            },
+            {
+              "id": "sorting-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/sorting-b7.svg",
+                "mime": "image/svg+xml",
+                "sha256": "4e298eef5b53d4c3be1b609c2b189b83bbbeb6aab63c6e86d5b6700cd1af852d",
+                "bytes": 5330
+              },
+              "alt": "Binary decision tree whose leaves are permutations; at least n! leaves force height log2(n!).",
+              "caption": "Any comparison sort needs Ω(n log n) comparisons in the worst case.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "sorting-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sorting-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each algorithm or bound to its running time on the stated input.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Insertion sort on already sorted input",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$O(n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Merge sort in the worst case",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$O(n \\log n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Quicksort, last-element pivot, sorted input",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$O(n^2)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Lower bound for any comparison sort",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$\\Omega(n \\log n)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Insertion sort is adaptive and linear on sorted input, merge sort is n log n in all cases, and a last-element pivot degrades quicksort on sorted input. No comparison sort can beat Omega(n log n).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "sorting-b8",
+              "kind": "interactive",
+              "prompt": "Set the array size $n$ so quicksort's sorted-input work $1+2+\\cdots+n$ equals the target.",
+              "x": {
+                "symbol": "n",
+                "label": "Array size",
+                "unit": "elements"
+              },
+              "y": {
+                "symbol": "W",
+                "label": "Total work",
+                "unit": "comparisons"
+              },
+              "expr": "x*(x+1)/2",
+              "x_min": 2.0,
+              "x_max": 20.0,
+              "x_step": 1.0,
+              "x_start": 4.0,
+              "target_y": 120.0,
+              "tolerance": 0.5,
+              "praise": "Exactly — the sorted worst case costs $1+2+\\cdots+n = n(n+1)/2$ comparisons.",
+              "audio": null
+            },
+            {
+              "id": "sorting-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "sorting-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about sorting algorithms is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Merge sort is stable and needs $\\Theta(n)$ extra space, while quicksort sorts in place but is not stable."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Quicksort's worst case is $O(n \\log n)$, since that is also its average case."
+                    },
+                    {
+                      "id": "c",
+                      "text": "An already sorted array is the worst case for quicksort when the pivot is the last element."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Insertion sort needs $\\Theta(n)$ extra space because it grows a sorted prefix."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Average and worst case are different quantities: with a last-element pivot, sorted input forces quadratic quicksort. Insertion sort shifts elements within the same array, so it uses only O(1) auxiliary space.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "sorting-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What are the four axes for comparing sorting algorithms?",
+                  "answer": "Running time (best/average/worst), space, stability, and adaptivity.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does insertion sort do on each outer iteration, and how many shifts does it perform in total?",
+                  "answer": "It inserts the key into the sorted prefix by shifting larger elements right; it performs exactly one shift per inversion.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why can no comparison sort beat $\\Omega(n\\log n)$?",
+                  "answer": "A decision tree for $n$ distinct keys needs at least $n!$ leaves, so its height is at least $\\log_2(n!)=\\Theta(n\\log n)$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "recursion",
+          "title": "Recursion",
+          "est_minutes": 15,
+          "summary": "Explains base cases, recursive calls, recursion trees and the master theorem for analysing recurrences, with worked examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "every recursion needs a base case and a recursive case that makes progress",
+            "stack frames use memory proportional to recursion depth",
+            "linear, halving and branching recurrences have different growth rates",
+            "the master theorem compares root work with leaf work",
+            "common mistake: assuming depth alone determines recursive cost"
+          ],
+          "blocks": [
+            {
+              "id": "recursion-b1",
+              "kind": "text",
+              "md": "A recursive function solves a problem by calling itself on a **smaller** instance of the same problem. Every recursive function needs at least one base case, an input small enough to answer directly, and a recursive case that makes progress toward a base case and combines the results of the recursive calls.",
+              "audio": null,
+              "gloss": "Hàm đệ quy giải bài toán bằng cách gọi chính nó trên một bản thể **nhỏ hơn** của cùng bài toán. Mọi hàm đệ quy cần ít nhất một trường hợp cơ sở — đầu vào đủ nhỏ để trả lời trực tiếp — và một trường hợp đệ quy tiến dần về trường hợp cơ sở rồi kết hợp các kết quả trả về."
+            },
+            {
+              "id": "recursion-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Base case and recursive case",
+              "md": "A **base case** is an input answered directly, with no recursive call. The **recursive case** calls the function on a smaller instance and combines the results; it must make progress toward a base case.",
+              "audio": null
+            },
+            {
+              "id": "recursion-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "recursion-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Each recursive call creates a stack frame. According to the lesson, total stack memory used by recursive calls is proportional to what?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Recursion depth",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Number of base cases",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Total number of calls made",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Size of the original input always",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Frames are pushed on call and popped on return, so only the current call chain occupies stack memory.",
+                  "option_feedback": {
+                    "B": "Base cases end recursion; they do not set the number of simultaneously live frames.",
+                    "C": "Frames are popped on return, so calls made sequentially do not all remain on the stack.",
+                    "D": "The lesson says memory is proportional to depth, which need not equal the input size."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "recursion-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Stack frame and recursion tree",
+              "md": "Each call creates its own **stack frame** holding its parameters and local variables. Frames are pushed on call and popped on return, so total memory is proportional to recursion depth. The calls form a **recursion tree**: the original call is the root, and each recursive call is a child. Python's default limit is about $1000$ frames and raises `RecursionError` beyond that.",
+              "audio": null
+            },
+            {
+              "id": "recursion-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Recursive binary search",
+              "md": "Search for $7$ in $[1,3,4,6,7,9,11]$: $mid=3$, $a[3]=6<7$ → right half; $mid=5$, $a[5]=9>7$ → left part $[4..4]$; $mid=4$, $a[4]=7$ → return $4$.\nExactly one recursive call on size $n/2$ plus $\\Theta(1)$ work:\n$$T(n)=T(n/2)+\\Theta(1).$$\nHere $a=1$, $b=2$, $c=\\log_2 1=0$, and $f(n)=\\Theta(n^0)$, so master theorem case 2 gives $T(n)=\\Theta(\\log n)$. Space is $\\Theta(\\log n)$ frames.",
+              "audio": null
+            },
+            {
+              "id": "recursion-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "recursion-q2",
+                  "type": "FILL_TILES",
+                  "stem": "The halving recurrence $T(n) = T(n/2) + \\Theta(1)$ solves to $T(n) = {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "\\Theta(\\log n)",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\Theta(n)",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "\\Theta(2^n)",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "This is master theorem case 2 with $c=\\log_2 1=0$, giving $\\Theta(\\log n)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "recursion-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/recursion-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "f9aa6e1f9d5993b3086a4b65d1dc0bf4c9ee0cbd3a9aa93eff85b5322cd52728",
+                "bytes": 7877
+              },
+              "alt": "Three recursion trees comparing a linear chain, a halving chain, and a branching binary tree.",
+              "caption": "Depth alone is not cost: branching changes the number of nodes.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "recursion-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "recursion-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Using the master theorem, give the asymptotic solution of $T(n)=4T(n/2)+\\Theta(n)$ in $\\Theta$ notation.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "Theta(n^2)",
+                      "Θ(n^2)",
+                      "$\\Theta(n^2)$",
+                      "Θ(n²)",
+                      "Theta(n²)",
+                      "n^2",
+                      "O(n^2)"
+                    ]
+                  },
+                  "hint": "First compute $c=\\log_b a$.",
+                  "explanation": "Here $a=4$ and $b=2$, so $c=\\log_2 4=2$. Since $f(n)=\\Theta(n)$ is polynomially smaller than $n^2$, case 1 gives $T(n)=\\Theta(n^2)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "recursion-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Master theorem",
+              "md": "For $T(n)=aT(n/b)+f(n)$ with $a\\ge1$, $b>1$, set $c=\\log_b a$.\n- If $f(n)=O(n^{c-\\varepsilon})$, then $T(n)=\\Theta(n^c)$.\n- If $f(n)=\\Theta(n^c)$, then $T(n)=\\Theta(n^c\\log n)$.\n- If $f(n)=\\Omega(n^{c+\\varepsilon})$ and $a f(n/b)\\le k f(n)$ for some $k<1$, then $T(n)=\\Theta(f(n))$.\nIntuition: compare root work $f(n)$ with leaf work $n^{\\log_b a}$.",
+              "audio": null
+            },
+            {
+              "id": "recursion-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Depth alone does not determine cost",
+              "md": "Claiming `fib(n)` is $O(n)$ because the recursion tree has about $n$ levels is wrong. The tree branches: level $k$ has $2^k$ nodes, so naive Fibonacci makes $\\sum_{k=0}^{n}2^k=2^{n+1}-1$ calls. Depth $n$ with branching factor $1$ is linear; with branching factor $2$ it is exponential.",
+              "audio": null
+            },
+            {
+              "id": "recursion-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "recursion-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each recurrence from the lesson with its growth rate.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$T(n)=T(n-1)+\\Theta(1)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$\\Theta(n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$T(n)=T(n/2)+\\Theta(1)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$\\Theta(\\log n)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$T(n)=2T(n-1)+\\Theta(1)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$\\Theta(2^n)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These are the lesson's linear, halving, and branching recurrence growth rates.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "recursion-b8",
+              "kind": "interactive",
+              "prompt": "Drag n until the number of moves is 1023.",
+              "x": {
+                "symbol": "n",
+                "label": "Disks",
+                "unit": "disks"
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Moves",
+                "unit": "moves"
+              },
+              "expr": "2^x - 1",
+              "x_min": 1.0,
+              "x_max": 12.0,
+              "x_step": 1.0,
+              "x_start": 3.0,
+              "target_y": 1023.0,
+              "tolerance": 0.5,
+              "praise": "Correct: $n=10$ disks need $2^{10}-1=1023$ moves.",
+              "audio": null
+            },
+            {
+              "id": "recursion-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "recursion-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about recursion is true or false according to the lesson.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A recursive function needs at least one base case and a recursive case that makes progress toward it."
+                    },
+                    {
+                      "id": "b",
+                      "text": "In the master theorem, if root work $f(n)$ dominates leaf work, then $T(n)=\\Theta(n^{\\log_b a})$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Merge sort's recurrence $T(n)=2T(n/2)+\\Theta(n)$ has depth $\\log_2 n$ and $\\Theta(n)$ work per level."
+                    },
+                    {
+                      "id": "d",
+                      "text": "The recursion depth alone always determines the total cost of a recursive algorithm."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson requires base cases and progress, compares root and leaf work in the master theorem, and warns that depth alone does not determine recursive cost.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "recursion-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What two parts must every recursive function have?",
+                  "answer": "A base case answered directly and a recursive case that makes progress toward it.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does recursion depth cost in memory?",
+                  "answer": "One stack frame per active call, so memory is proportional to depth.",
+                  "image": null
+                },
+                {
+                  "prompt": "How does the master theorem choose between root work and leaf work?",
+                  "answer": "It compares $f(n)$ with $n^{\\log_b a}$; the larger term determines the growth.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dynamic-programming",
+          "title": "Dynamic programming",
+          "est_minutes": 15,
+          "summary": "Introduces memoization and tabulation for optimal substructure and overlapping subproblems, with Fibonacci and 0/1 knapsack examples, a common mistake and practice exercises.",
+          "key_ideas": [
+            "define the state, transition, base cases and iteration order",
+            "memoization is top-down; tabulation is bottom-up",
+            "complexity is number of states times work per state",
+            "the 1-D 0/1 knapsack uses a descending capacity loop",
+            "knapsack is pseudo-polynomial in O(nW)"
+          ],
+          "blocks": [
+            {
+              "id": "dynamic-programming-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Dynamic programming (DP)",
+              "md": "DP applies when a problem has **optimal substructure**: an optimal solution is built from optimal solutions to subproblems, and **overlapping subproblems**: naive recursion solves the same subproblem many times (as with `fib`).",
+              "audio": null
+            },
+            {
+              "id": "dynamic-programming-b2",
+              "kind": "text",
+              "md": "The DP recipe: (1) define the state: what the table indices mean; (2) write the transition from smaller states; (3) state the base cases; (4) choose the iteration order so dependencies come first; (5) read the answer from the final state; (6) analyse as $(\\text{number of states}) \\times (\\text{work per state})$.",
+              "audio": null,
+              "gloss": "Công thức DP: (1) xác định trạng thái — các chỉ số bảng nghĩa là gì; (2) viết chuyển tiếp từ các trạng thái nhỏ hơn; (3) nêu các trường hợp cơ sở; (4) chọn thứ tự lặp để các phụ thuộc được tính trước; (5) đọc đáp án từ trạng thái cuối; (6) phân tích bằng $(\\text{số trạng thái}) \\times (\\text{công việc mỗi trạng thái})$."
+            },
+            {
+              "id": "dynamic-programming-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dynamic-programming-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "In the 1-D (one-array) DP for 0/1 knapsack, why must the capacity loop run from $W$ down to $w$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "So that $dp[c-w]$ still holds the value from before item $i$ was considered.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "So that the answer is read from $dp[W]$ instead of from $dp[0]$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Because descending order cuts the running time from $\\Theta(nW)$ to $\\Theta(W)$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Because capacities must be visited in decreasing order of the item weights.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Going downward, $dp[c-w]$ has not yet been updated for the current item, so each item is added at most once. An upward loop would let the same item be taken repeatedly.",
+                  "option_feedback": {
+                    "B": "The answer is read from $dp[W]$ whichever direction the loop runs; direction does not move it.",
+                    "C": "Both directions perform the same number of cell updates, so the cost is $\\Theta(nW)$ either way.",
+                    "D": "The loop order controls which array entries are read, not the order of the items."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dynamic-programming-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Memoization vs. tabulation",
+              "md": "**Memoization** is top-down: keep the natural recursion and add a cache. **Tabulation** is bottom-up: fill a table iteratively in an order where dependencies are already computed. Both solve each distinct subproblem exactly once.",
+              "audio": null
+            },
+            {
+              "id": "dynamic-programming-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Fibonacci: memoized and tabulated",
+              "md": "`fib_memo(5)` descends $5\\to4\\to3\\to2\\to1\\to0$, then each later request hits the cache. There are $n+1$ states at $\\Theta(1)$ each, so time is $\\Theta(n)$ and space is $\\Theta(n)$. `fib_tab` keeps only the last two values, so space is $O(1)$. The naive recursion is $\\Theta(\\varphi^n)$ with $\\varphi=(1+\\sqrt5)/2\\approx1.618$.",
+              "audio": null
+            },
+            {
+              "id": "dynamic-programming-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dynamic-programming-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Complete the 0/1 knapsack transition for the case $w_i \\le c$: $dp[i][c] = \\max\\{dp[i-1][c],\\; dp[i-1][{{gap}}] + v_i\\}$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "c - w_i",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "c - v_i",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "c + w_i",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "i - 1",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Leaving room $w_i$ for item $i$ means reading the previous row at capacity $c - w_i$, then adding $v_i$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dynamic-programming-b5",
+              "kind": "text",
+              "md": "For 0/1 knapsack, let $dp[i][c]$ be the maximum value using only the first $i$ items with capacity $c$. With item $i$ having weight $w_i$ and value $v_i$, $dp[i][c]=dp[i-1][c]$ if $w_i>c$; otherwise $dp[i][c]=\\max\\{dp[i-1][c],\\,dp[i-1][c-w_i]+v_i\\}$. Base case $dp[0][c]=0$. Complexity is $n\\cdot(W+1)$ states, $\\Theta(1)$ per state, so $\\Theta(nW)$ time and space; this is pseudo-polynomial in $W$.",
+              "audio": null,
+              "gloss": "Với ba lô 0/1, gọi $dp[i][c]$ là giá trị lớn nhất chỉ dùng $i$ vật đầu tiên với sức chứa $c$. Với vật $i$ có khối lượng $w_i$ và giá trị $v_i$, $dp[i][c]=dp[i-1][c]$ nếu $w_i>c$; ngược lại $dp[i][c]=\\max\\{dp[i-1][c],\\,dp[i-1][c-w_i]+v_i\\}$. Cơ sở $dp[0][c]=0$. Độ phức tạp là $n\\cdot(W+1)$ trạng thái, $\\Theta(1)$ mỗi trạng thái, nên thời gian và bộ nhớ là $\\Theta(nW)$; đây là giả đa thức theo $W$."
+            },
+            {
+              "id": "dynamic-programming-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dynamic-programming-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "The Towers of Hanoi recurrence is $T(n) = 2T(n-1) + 1$ with $T(1) = 1$. How many moves are needed for $n = 10$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "1023"
+                    ]
+                  },
+                  "hint": "Unroll: $T(n) = 2^n - 1$.",
+                  "explanation": "Unrolling gives $T(n) = 2^n - 1$, so $n = 10$ needs $1024 - 1 = 1023$ moves.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dynamic-programming-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/dynamic-programming-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "967cf892d68756c3b933fc17ab15e867cb7a532344db40017343645eea5a9c82",
+                "bytes": 8437
+              },
+              "alt": "A grid of knapsack DP values with rows for items and columns for capacity, showing the maximum value 7 at capacity 5.",
+              "caption": "dp table for items (2,3), (3,4), (4,5), W=5; answer dp[3][5]=7.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "dynamic-programming-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Upward loop in 1-D 0/1 knapsack",
+              "md": "Using `for c in range(w, W + 1)` is the unbounded-knapsack transition: `dp[c - w]` has already been updated for the current item, so the item can be used repeatedly. For items $(1,1)$ and $(2,5)$ with $W=4$, the 0/1 optimum is $1+5=6$; the upward loop yields $dp[2]=5$ and $dp[4]=dp[2]+5=10$, taking item 2 twice. Fix: iterate $c$ from $W$ down to $w$.",
+              "audio": null
+            },
+            {
+              "id": "dynamic-programming-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dynamic-programming-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each term to its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Memoization",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Top-down recursion plus a cache",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Tabulation",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Bottom-up iterative table filling",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Overlapping subproblems",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "The same subproblem is solved many times",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Optimal substructure",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "An optimal solution is built from optimal subproblem solutions",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The two DP styles differ only in direction, and both rely on optimal substructure and overlapping subproblems.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dynamic-programming-b8",
+              "kind": "interactive",
+              "prompt": "Adjust capacity $W$ so the knapsack DP table for $n=3$ items has 18 states.",
+              "x": {
+                "symbol": "W",
+                "label": "Capacity",
+                "unit": "units"
+              },
+              "y": {
+                "symbol": "S",
+                "label": "DP states",
+                "unit": "states"
+              },
+              "expr": "3*(x+1)",
+              "x_min": 0.0,
+              "x_max": 10.0,
+              "x_step": 1.0,
+              "x_start": 2.0,
+              "target_y": 18.0,
+              "tolerance": 0.5,
+              "praise": "Correct: $W=5$ gives $3\\cdot(5+1)=18$ states.",
+              "audio": null
+            },
+            {
+              "id": "dynamic-programming-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What two properties make dynamic programming applicable?",
+                  "answer": "Optimal substructure and overlapping subproblems.",
+                  "image": null
+                },
+                {
+                  "prompt": "Memoization versus tabulation: which is top-down and which is bottom-up?",
+                  "answer": "Memoization is top-down recursion plus a cache; tabulation is bottom-up table filling.",
+                  "image": null
+                },
+                {
+                  "prompt": "In the 1-D 0/1 knapsack, which direction should the capacity loop go, and why?",
+                  "answer": "Descending from W to w, so dp[c-w] still holds the previous item's value and each item is used at most once.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about analyzing and designing algorithms through three examples: sorting, recursion, and dynamic programming. For sorting we compare algorithms by time in best, average, and worst case, by space, by stability, and by adaptivity. A key lower bound is that any comparison sort needs at least big Omega of n log n comparisons.",
+          "Sorting rearranges a sequence into non-decreasing order. Insertion sort grows a sorted prefix by taking the next key and shifting larger prefix elements right. It is stable and in place, with worst case time big O of n squared on reversed input and best case big O of n on sorted input. It performs exactly one shift per inversion, so the number of shifts measures how far the input is from sorted.",
+          "Merge sort splits the array in half, sorts each half recursively, and merges them. Its recursion depth is log base two of n and each level does linear merging, so it is big O of n log n in all cases; it is stable but needs linear extra space. Quicksort partitions around a pivot, averages big O of n log n, but has worst case big O of n squared and is not stable. A common mistake is to think its average case saves its worst case; with the last element as pivot and sorted input, partitions are very unbalanced and the work becomes one plus two up to n, which is n squared.",
+          "A recursive function solves a problem by calling itself on a smaller instance of the same problem. Every recursion needs at least one base case answered directly and a recursive case that makes progress toward a base case and combines results. Each call gets its own stack frame, so memory is proportional to recursion depth, and Python's default limit is about one thousand frames. For example, binary search for seven in a small sorted list halves the interval and returns the matching index.",
+          "For cost, exactly one recursive call on half the input plus constant work gives big Theta of log n time and log n stack frames. The master theorem compares the work at the root with the work at the leaves; for a recurrence with a calls on size n over b, set c as log base b of a. A common mistake is to assume depth alone determines cost: depth n with one branch is linear, but depth n with two branches is exponential, as in naive Fibonacci.",
+          "Dynamic programming applies when a problem has optimal substructure and overlapping subproblems. The recipe is to define what each state means, write the transition from smaller states, state the base cases, choose an order so dependencies come first, read the final state, and analyze complexity as number of states times work per state. Memoization is top-down with a cache, while tabulation is bottom-up and fills a table iteratively.",
+          "For Fibonacci, memoization has n plus one states at constant work each, so time is big Theta of n and space is big Theta of n, while tabulation can keep only the last two values and use constant space. The naive recursion is exponential because the tree branches. For zero one knapsack, let the state be the best value using the first i items with capacity c, and transition either by skipping item i or taking it if it fits.",
+          "The base case is zero for no items, and the complexity is big Theta of n times W, which is pseudo-polynomial in the capacity. For the one-dimensional version, iterate capacity downward from W to the item weight to keep each item in zero one form. Iterating upward reuses the current item, so with items of weight one value one and weight two value five at capacity four, upward gives ten by taking the second item twice; downward gives the correct six.",
+          "So the three things to remember are: first, sorting algorithms trade time, space, stability, and adaptivity, with insertion sort stable and in place, merge sort stable with linear extra space, and quicksort not stable with a quadratic worst case. Second, every recursion needs a base case and progress toward it, memory follows depth, and cost depends on both depth and branching. Third, for dynamic programming define the state, transition, base cases, and order, then multiply the number of states by the work per state, and in the one-dimensional knapsack loop capacity downward for zero one."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-algorithms.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "435be58ce7d9843c2e81e802a10b924bd99ddfa233f5e157db16eb32369c74b1",
+          "bytes": 1647756
+        },
+        "duration_s": 273.85
+      }
+    }
+  ],
+  "gloss_start": 30
+}

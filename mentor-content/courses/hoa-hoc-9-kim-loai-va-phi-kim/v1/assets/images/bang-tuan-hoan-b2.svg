@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g stroke-linecap="round" stroke-linejoin="round">
+<rect x="520" y="230" width="384" height="256" fill="#E9E5F6"/>
+<rect x="616" y="230" width="32" height="256" fill="#9FD8BF"/>
+<rect x="520" y="358" width="384" height="32" fill="#F0D76E"/>
+<rect x="616" y="358" width="32" height="32" fill="#5A4BC0"/>
+<line x1="520" y1="230" x2="520" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="552" y1="230" x2="552" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="584" y1="230" x2="584" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="616" y1="230" x2="616" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="648" y1="230" x2="648" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="680" y1="230" x2="680" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="712" y1="230" x2="712" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="744" y1="230" x2="744" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="776" y1="230" x2="776" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="808" y1="230" x2="808" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="840" y1="230" x2="840" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="872" y1="230" x2="872" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="904" y1="230" x2="904" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="230" x2="904" y2="230" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="262" x2="904" y2="262" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="294" x2="904" y2="294" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="326" x2="904" y2="326" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="358" x2="904" y2="358" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="390" x2="904" y2="390" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="422" x2="904" y2="422" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="454" x2="904" y2="454" stroke="#5A4BC0" stroke-width="1.4"/>
+<line x1="520" y1="486" x2="904" y2="486" stroke="#5A4BC0" stroke-width="1.4"/>
+<rect x="520" y="230" width="384" height="256" fill="none" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="110" y="130" width="180" height="180" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3.5"/>
+<rect x="132" y="152" width="136" height="136" rx="8" fill="none" stroke="#5A4BC0" stroke-width="2"/>
+<circle cx="200" cy="220" r="30" fill="#E8806A"/>
+<line x1="298" y1="170" x2="512" y2="374" stroke="#2B283F" stroke-width="1.2" stroke-dasharray="5 6"/>
+<text x="200" y="105" text-anchor="middle" font-family="Lexend, sans-serif" font-size="27" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#xD4; nguy&#xEA;n t&#x1ED1;</text>
+<text x="490" y="383" text-anchor="end" font-family="Lexend, sans-serif" font-size="27" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Chu k&#xEC; (h&#xE0;ng ngang)</text>
+<text x="632" y="205" text-anchor="middle" font-family="Lexend, sans-serif" font-size="27" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Nh&#xF3;m A (c&#x1ED9;t d&#x1ECD;c)</text>
+</g>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

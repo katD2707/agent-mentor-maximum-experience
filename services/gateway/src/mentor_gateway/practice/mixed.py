@@ -365,6 +365,10 @@ class MixedSessions:
         return {"quick": quick, "mocks": self._mock_cards(user_id), "by_course": by_course}
 
     def _mock_cards(self, user_id: str) -> list[dict]:
+        user = self._user(user_id)
+        # the bank's mock exams are the national upper-secondary papers: only a g10_12 learner (or one with no band yet) sees them
+        if user is not None and user.age_band not in (None, "g10_12"):
+            return []
         grade = self.learner_grade(user_id)  # type: ignore[attr-defined]
         last: dict[str, float | None] = {}
         with self.db.session() as s:  # type: ignore[attr-defined]

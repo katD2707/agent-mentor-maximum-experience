@@ -94,7 +94,7 @@ async def make_notes(svc: AskService, planner: Any, user: User, images: list[byt
         if "blank_page" in det.reasons or photo.hopeless(det):
             continue
         parts.append(image_part(await asyncio.to_thread(photo.to_jpeg, img)))
-    unreadable = NotesError(422, "unreadable", "Mực chưa đọc được vở này. Em chụp lại cho rõ và đủ sáng nhé.")
+    unreadable = NotesError(422, "unreadable", "Gà chưa đọc được vở này. Em chụp lại cho rõ và đủ sáng nhé.")
     if not parts:
         raise unreadable
     try:
@@ -116,7 +116,7 @@ async def make_notes(svc: AskService, planner: Any, user: User, images: list[byt
                        items=[i.model_dump(mode="json") for i in items], created_at=now))
         for at in (first, again):
             s.add(Reminder(id="r-" + secrets.token_hex(8), user_id=user.id, at=at, kind="later",
-                           text_vi=f"Mực để sẵn câu ôn từ vở \"{title}\" cho em.",
+                           text_vi=f"Gà để sẵn câu ôn từ vở \"{title}\" cho em.",
                            text_en=f"Review questions from your notes \"{title}\" are ready.",
                            deep_link=f"/luyen-tap?notes={nid}", status="scheduled", created_at=now, updated_at=now))
     return {"notes_id": nid, "title": title, "pages": len(images), "items": len(items),

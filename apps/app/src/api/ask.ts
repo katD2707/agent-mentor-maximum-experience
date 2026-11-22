@@ -3,7 +3,7 @@ import type { Lang } from "./types";
 import type { Media, TreeChapter } from "./course";
 import { mockAskStream, mockNotes } from "./mock-ask";
 
-/** Hỏi đáp (CONTRACTS.md section 13): POST /ask answers as a Server-Sent Events stream, POST /guide is Mực's chat. */
+/** Hỏi đáp (CONTRACTS.md section 13): POST /ask answers as a Server-Sent Events stream, POST /guide is the guide chicken's chat. */
 
 export interface AskCard {
   course_id: string;
@@ -228,12 +228,13 @@ export async function streamAsk(token: string, req: AskRequest, onEvent: (e: Ask
   }
 }
 
-/** POST /guide: Mực's answer about using the app, given the screen and the data-guide areas that are visible. */
-export async function postGuide(token: string, body: { question: string; lang: Lang; screen?: string; visible_keys?: string[] }): Promise<string> {
+/** POST /guide: the guide chicken's answer about using the app, given the screen and the data-guide areas that are visible. */
+export async function postGuide(token: string, body: { question: string; lang: Lang; screen?: string; visible_keys?: string[] }, signal?: AbortSignal): Promise<string> {
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}/guide`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, body: JSON.stringify(body) });
-  } catch {
+    res = await fetch(`${API_BASE}/guide`, { method: "POST", headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, body: JSON.stringify(body), signal });
+  } catch (e) {
+    if (signal?.aborted) throw e;
     throw new AskError(0, "network");
   }
   if (!res.ok) throw new AskError(res.status, await errorCode(res));
@@ -256,14 +257,15 @@ export interface NotesResult {
 }
 
 /** POST /ask/notes (multipart `images[]`). Rejects with `AskError`: 422 `unreadable` (retake), 403 for the little ones, `network`. */
-export async function postNotes(token: string, images: Blob[]): Promise<NotesResult> {
+export async function postNotes(token: string, images: Blob[], signal?: AbortSignal): Promise<NotesResult> {
   if (isMock()) return mockNotes(images);
   const f = new FormData();
   images.forEach((b, i) => f.append("images[]", b, `notes-${i + 1}.jpg`));
   let res: Response;
   try {
-    res = await fetch(`${API_BASE}/ask/notes`, { method: "POST", headers: { Authorization: `Bearer ${token}` }, body: f });
-  } catch {
+    res = await fetch(`${API_BASE}/ask/notes`, { method: "POST", headers: { Authorization: `Bearer ${token}` }, body: f, signal });
+  } catch (e) {
+    if (signal?.aborted) throw e;
     throw new AskError(0, "network");
   }
   if (!res.ok) throw new AskError(res.status, await errorCode(res));

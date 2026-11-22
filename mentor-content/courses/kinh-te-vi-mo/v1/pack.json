@@ -1,0 +1,1320 @@
+{
+  "schema_version": 1,
+  "course_id": "kinh-te-vi-mo",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Kinh tế vĩ mô",
+  "chapters": [
+    {
+      "id": "ch-chi-tieu",
+      "title": "Chỉ tiêu",
+      "lessons": [
+        {
+          "id": "gdp",
+          "title": "GDP",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày khái niệm GDP, ba phương pháp tính, GDP danh nghĩa/thực và chỉ số giảm phát, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Khái niệm GDP, phân biệt hàng hóa cuối cùng và trung gian",
+            "Ba phương pháp tính: sản xuất, chi tiêu, thu nhập",
+            "GDP danh nghĩa, GDP thực, chỉ số giảm phát và tốc độ tăng trưởng",
+            "Ví dụ, lỗi cộng trùng doanh thu và bài tập tính GDP"
+          ],
+          "blocks": [
+            {
+              "id": "gdp-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "GDP là gì?",
+              "md": "GDP (tổng sản phẩm trong nước) là giá trị thị trường của toàn bộ hàng hóa và dịch vụ **cuối cùng** được sản xuất trên lãnh thổ một quốc gia trong một thời kỳ nhất định, thường là một năm hoặc một quý. “Cuối cùng” nghĩa là không tính hàng hóa trung gian, chỉ tính giá trị tạo thêm ở mỗi khâu. “Trong nước” nghĩa là tính theo lãnh thổ, không phân biệt chủ sở hữu; $GNP = GDP +$ thu nhập yếu tố ròng từ nước ngoài. GDP chỉ đo hoạt động có giao dịch thị trường nên bỏ sót kinh tế phi chính thức, lao động tự sản tự tiêu; GDP không phản ánh phân phối thu nhập, môi trường hay chất lượng cuộc sống.",
+              "audio": null
+            },
+            {
+              "id": "gdp-b2",
+              "kind": "text",
+              "md": "Ba phương pháp tính GDP cho cùng một kết quả. Phương pháp sản xuất (giá trị gia tăng): $GDP=\\sum VA_i=\\sum(GO_i-IC_i)$, với $GO$ là giá trị sản xuất và $IC$ là chi phí trung gian. Phương pháp chi tiêu: $GDP=C+I+G+NX$, $NX=X-M$; $C$ tiêu dùng hộ gia đình, $I$ đầu tư (gồm đầu tư cố định và thay đổi tồn kho), $G$ chi tiêu chính phủ mua hàng hóa dịch vụ, $X$ xuất khẩu, $M$ nhập khẩu. Phương pháp thu nhập: $GDP=W+R+i+\\pi+Ti+De$ (tiền lương, tiền thuê, lãi, lợi nhuận, thuế gián thu ròng, khấu hao).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "gdp-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gdp-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi tính GDP theo phương pháp sản xuất, xử lý hàng hóa trung gian thế nào là đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cộng giá trị gia tăng $GO-IC$ của các ngành",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Cộng toàn bộ doanh thu của doanh nghiệp",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Tính cả hàng trung gian và hàng cuối cùng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chỉ tính giá trị hàng trung gian",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Phương pháp sản xuất cộng giá trị gia tăng $GO-IC$, nên hàng trung gian không bị đếm trùng.",
+                  "option_feedback": {
+                    "B": "Cộng doanh thu sẽ đếm trùng giá trị hàng trung gian.",
+                    "C": "Tính cả hai loại sẽ đếm trùng hàng trung gian.",
+                    "D": "GDP tính hàng cuối cùng hoặc giá trị gia tăng, không chỉ hàng trung gian."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gdp-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/gdp-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e1bc80c7f59cad999e00298e6a57b8ef5a764fd39c7e9a18eddfbd774917ccaf",
+                "bytes": 2977
+              },
+              "alt": "Cột chồng minh họa GDP theo phương pháp chi tiêu gồm C, I, G và NX",
+              "caption": "GDP theo phương pháp chi tiêu (nghìn tỷ đồng)",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "gdp-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính GDP theo chi tiêu",
+              "md": "Với $C=4.700$, $I=1.600$ (trong đó thay đổi tồn kho $+80$), $G=1.150$, $X=1.900$, $M=1.850$ (nghìn tỷ đồng): $GDP=4.700+1.600+1.150+(1.900-1.850)=7.500$. Thương mại ròng $NX=50$, nên $NX/GDP=50/7.500=0,67\\%$. Tổng cầu trong nước $C+I+G=7.450$ chiếm $99,3\\%$ GDP; thương mại ròng gần cân bằng. Nếu $M$ tăng thêm $100$ và các thành phần khác không đổi thì GDP giảm $100$, vì nhập khẩu không tạo ra giá trị sản xuất trong nước.",
+              "audio": null
+            },
+            {
+              "id": "gdp-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gdp-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Theo phương pháp chi tiêu: $GDP = C + I + G + {{gap}}$, với $NX = {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "NX",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "X - M",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "M - X",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "X + M",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "$NX$ là xuất khẩu ròng, bằng xuất khẩu trừ nhập khẩu: $NX=X-M$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gdp-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "GDP danh nghĩa, GDP thực và chỉ số giảm phát",
+              "md": "Chỉ số giảm phát GDP là chỉ số Paasche, dùng rổ hàng hóa của năm hiện hành: $D_t=\\frac{\\sum p_t q_t}{\\sum p_0 q_t}\\times 100$, suy ra $Y_t^{\\text{thực}}=\\frac{Y_t^{\\text{danh nghĩa}}}{D_t}\\times 100$. Tốc độ tăng trưởng $g_t=\\frac{Y_t^{\\text{thực}}-Y_{t-1}^{\\text{thực}}}{Y_{t-1}^{\\text{thực}}}\\times 100\\%$. Lạm phát theo deflator $\\pi_t=\\frac{D_t-D_{t-1}}{D_{t-1}}\\times 100\\%$. Liên hệ: $(1+g^{\\text{danh nghĩa}})=(1+g^{\\text{thực}})(1+\\pi)$; quy tắc 70: số năm để GDP thực gấp đôi $\\approx 70/g$ với $g$ tính bằng %/năm.",
+              "audio": null
+            },
+            {
+              "id": "gdp-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính GDP thực và lạm phát",
+              "md": "Năm gốc 2019. Năm 2023: GDP danh nghĩa $10.000$ nghìn tỷ, $D=125$. Năm 2024: GDP danh nghĩa $10.900$ nghìn tỷ, $D=130$; dân số $100$ triệu người. $Y_{2023}=10.000/1,25=8.000$; $Y_{2024}=10.900/1,30=8.384,6$. Tăng trưởng thực $g=\\frac{8.384,6-8.000}{8.000}\\times100\\%=4,81\\%$. Lạm phát theo deflator $\\pi=\\frac{130-125}{125}\\times100\\%=4\\%$. GDP thực bình quân đầu người năm 2024 $=\\frac{8.384,6\\ \\text{nghìn tỷ}}{100\\ \\text{triệu}}=83,85$ triệu đồng/người. Kiểm tra: $1,0481\\times1,04=1,0900$, đúng bằng $10.900/10.000$.",
+              "audio": null
+            },
+            {
+              "id": "gdp-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gdp-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Năm 2023, GDP danh nghĩa là 9.600 nghìn tỷ đồng và chỉ số giảm phát GDP là 120. Năm 2024, GDP danh nghĩa là 10.584 nghìn tỷ đồng và chỉ số giảm phát là 126. Tính tốc độ tăng trưởng GDP thực năm 2024 (đơn vị: %, làm tròn đến hàng đơn vị).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "5",
+                      "5%"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Chia GDP danh nghĩa cho chỉ số giảm phát dạng thập phân để được GDP thực, rồi tính phần trăm thay đổi.",
+                  "explanation": "GDP thực 2023 = 9.600/1,20 = 8.000; GDP thực 2024 = 10.584/1,26 = 8.400. Vậy g = (8.400 − 8.000)/8.000 × 100% = 5%.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gdp-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Cộng trùng doanh thu",
+              "md": "Cộng doanh thu của tất cả doanh nghiệp để tính GDP là sai: doanh thu đã bao gồm giá trị hàng trung gian nên bị đếm trùng nhiều lần. Ví dụ thép bán cho nhà máy ô tô giá $100$, ô tô bán ra $300$. Cộng doanh thu được $400$, nhưng đóng góp đúng vào GDP chỉ là $100+(300-100)=300$, tức tổng giá trị gia tăng. Cách đúng là dùng $GO-IC$ hoặc chỉ cộng giá trị hàng hóa cuối cùng.",
+              "audio": null
+            },
+            {
+              "id": "gdp-b8",
+              "kind": "interactive",
+              "prompt": "Kéo chỉ số giảm phát D để GDP thực bằng 8.000 nghìn tỷ đồng, biết GDP danh nghĩa là 10.000 nghìn tỷ.",
+              "x": {
+                "symbol": "D",
+                "label": "Chỉ số giảm phát",
+                "unit": "điểm"
+              },
+              "y": {
+                "symbol": "Y",
+                "label": "GDP thực",
+                "unit": "nghìn tỷ đồng"
+              },
+              "expr": "10000/(x/100)",
+              "x_min": 100.0,
+              "x_max": 150.0,
+              "x_step": 1.0,
+              "x_start": 110.0,
+              "target_y": 8000.0,
+              "tolerance": 20.0,
+              "praise": "Chính xác: với D = 125, GDP thực = 8.000 nghìn tỷ đồng.",
+              "audio": null
+            },
+            {
+              "id": "gdp-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gdp-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép ký hiệu trong phương pháp chi tiêu với nội dung tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "C",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Tiêu dùng hộ gia đình",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "I",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Đầu tư, gồm thay đổi tồn kho",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "G",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Chi tiêu chính phủ mua hàng hóa, dịch vụ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "NX",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Xuất khẩu trừ nhập khẩu",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Trong $GDP=C+I+G+NX$, các ký hiệu lần lượt là tiêu dùng, đầu tư, chi tiêu chính phủ và xuất khẩu ròng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gdp-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "GDP là gì và vì sao chỉ tính hàng hóa cuối cùng?",
+                  "answer": "GDP là giá trị thị trường của hàng hóa và dịch vụ cuối cùng sản xuất trên lãnh thổ trong một thời kỳ; chỉ tính giá trị tạo thêm để tránh đếm trùng hàng trung gian.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu ba phương pháp tính GDP.",
+                  "answer": "Phương pháp sản xuất (giá trị gia tăng), phương pháp chi tiêu ($C+I+G+NX$) và phương pháp thu nhập ($W+R+i+\\pi+Ti+De$).",
+                  "image": null
+                },
+                {
+                  "prompt": "GDP thực được tính từ GDP danh nghĩa và chỉ số giảm phát như thế nào?",
+                  "answer": "$Y^{\\text{thực}}=\\frac{Y^{\\text{danh nghĩa}}}{D}\\times100$; tăng trưởng thực dùng GDP thực, lạm phát theo deflator dùng mức thay đổi của $D$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lam-phat",
+          "title": "Lạm phát",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày khái niệm và đo lường lạm phát, phân loại, nguyên nhân, tác động, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Phân biệt lạm phát, giảm phát và giảm lạm phát",
+            "CPI Laspeyres, chỉ số giảm phát Paasche và lạm phát cơ bản",
+            "Nguyên nhân cầu kéo, chi phí đẩy và lạm phát tiền tệ",
+            "Tác động qua lãi suất thực Fisher và sức mua",
+            "Ví dụ, lỗi thường gặp và bài tập CPI, lãi suất thực"
+          ],
+          "blocks": [
+            {
+              "id": "lam-phat-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Lạm phát, giảm phát, giảm lạm phát",
+              "md": "**Lạm phát** là mức giá chung tăng liên tục ($\\pi>0$). **Giảm phát** là mức giá chung giảm liên tục ($\\pi<0$). **Giảm lạm phát** là tốc độ tăng giá chậm lại nhưng mức giá vẫn tăng ($\\pi$ giảm nhưng vẫn dương). Nên “lạm phát giảm” không có nghĩa là giá đang giảm.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-b2",
+              "kind": "text",
+              "md": "Đo lạm phát bằng CPI, chỉ số Laspeyres dùng rổ hàng hóa cố định:\n$$CPI_t=\\frac{\\sum p_t q_0}{\\sum p_0 q_0}\\times100,\\qquad \\pi_t=\\frac{CPI_t-CPI_{t-1}}{CPI_{t-1}}\\times100\\%.$$\nTrong đó $p_t$ là giá năm $t$, $q_0$ là lượng rổ hàng năm gốc; $\\pi_t$ là tỷ lệ lạm phát năm $t$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lam-phat-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "CPI, deflator và lạm phát cơ bản",
+              "md": "- **CPI** dùng rổ cố định, gồm cả hàng nhập khẩu, phản ánh chi phí sinh hoạt; thường bị thiên lệch do thay thế hàng, hàng mới và thay đổi chất lượng.\n- **Chỉ số giảm phát GDP** là chỉ số Paasche, dùng rổ hàng hiện hành và chỉ gồm hàng sản xuất trong nước: $D_t=\\frac{\\sum p_t q_t}{\\sum p_0 q_t}\\times100$.\n- **Lạm phát cơ bản** loại bỏ lương thực, thực phẩm tươi sống, năng lượng và các mặt hàng do Nhà nước định giá, để phản ánh xu hướng tiền tệ dài hạn.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lam-phat-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "CPI của một nền kinh tế tăng từ 120 lên 126 trong năm thứ nhất, rồi từ 126 lên 129 trong năm thứ hai. Hiện tượng của năm thứ hai được gọi là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Giảm lạm phát (disinflation)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Giảm phát (deflation)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Lạm phát phi mã",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Siêu lạm phát",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "CPI vẫn tăng (126 lên 129) nên vẫn là lạm phát, nhưng tốc độ tăng giảm từ 5% xuống 2,4% — đó là giảm lạm phát.",
+                  "option_feedback": {
+                    "B": "Giảm phát đòi hỏi mức giá chung giảm liên tục, tức CPI phải giảm chứ không chỉ tăng chậm lại.",
+                    "C": "Lạm phát phi mã là hai hoặc ba chữ số mỗi năm, còn ở đây giá chỉ tăng khoảng 2,4%.",
+                    "D": "Siêu lạm phát là trên 50%/tháng hoặc hàng trăm %/năm, hoàn toàn khác mức tăng nhỏ này."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "lam-phat-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ba nguyên nhân",
+              "md": "- **Cầu kéo**: tổng cầu $AD$ tăng (chi tiêu công, tiêu dùng, xuất khẩu) vượt sản lượng tiềm năng.\n- **Chi phí đẩy**: giá đầu vào (dầu, điện, lương, tỷ giá) tăng làm tổng cung $AS$ dịch chuyển lên.\n- **Lạm phát tiền tệ**: cung tiền tăng nhanh hơn sản lượng thực. Từ $MV=PY$ suy ra $\\%\\Delta M\\approx\\%\\Delta P+\\%\\Delta Y$ khi $V$ ổn định.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "CPI và lạm phát bình quân",
+              "md": "Năm gốc 2020, rổ hàng có giá $(20;15;40)$ và lượng $(2;4;1)$. Năm 2024, giá là $(26;18;50)$, quyền số không đổi.\n$$\\sum p_0q_0=20\\times2+15\\times4+40\\times1=140$$\n$$\\sum p_{24}q_0=26\\times2+18\\times4+50\\times1=174$$\n$$CPI_{2024}=\\frac{174}{140}\\times100=124,29$$\nLạm phát cả giai đoạn là $24,29\\%$. Bình quân hình học 4 năm: $\\bar\\pi=(1,2429)^{1/4}-1=5,6\\%/\\text{năm}$. Không dùng trung bình cộng $24,29/4=6,07\\%$ cho lãi kép.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Lãi suất thực Fisher và sức mua",
+              "md": "Quan hệ Fisher: $(1+i)=(1+r)(1+\\pi)$, xấp xỉ $i\\approx r+\\pi$, với $i$ là lãi suất danh nghĩa, $r$ là lãi suất thực, $\\pi$ là lạm phát. Khi lạm phát cao hơn lãi suất danh nghĩa, $r<0$: thu nhập chuyển từ người cho vay/người gửi tiền sang người đi vay. Sức mua của một khoản danh nghĩa $X$ là $X_{thực}=\\dfrac{X_{danh\\ nghĩa}}{1+\\pi}$.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính lãi suất thực",
+              "md": "Lãi suất danh nghĩa $8,5\\%/\\text{năm}$, lạm phát $3,6\\%$. Lãi suất thực chính xác:\n$$r=\\frac{1+i}{1+\\pi}-1=\\frac{1,085}{1,036}-1=4,73\\%,\\qquad r\\approx 8,5-3,6=4,9\\%.$$\nGửi 500 triệu đồng, sau một năm có $500\\times1,085=542,5$ triệu danh nghĩa. Sức mua theo giá năm gốc:\n$$\\frac{542,5}{1,036}=523,65\\ \\text{triệu},$$\ntăng $4,73\\%$, đúng bằng lãi suất thực. Xấp xỉ $i\\approx r+\\pi$ chỉ nên dùng khi lạm phát thấp.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-b8",
+              "kind": "interactive",
+              "prompt": "Kéo lạm phát để lãi suất thực đạt 4,73%/năm (lãi suất danh nghĩa 8,5%)",
+              "x": {
+                "symbol": "\\pi",
+                "label": "Lạm phát",
+                "unit": "%/năm"
+              },
+              "y": {
+                "symbol": "r",
+                "label": "Lãi suất thực",
+                "unit": "%/năm"
+              },
+              "expr": "((1+8.5/100)/(1+x/100)-1)*100",
+              "x_min": 0.0,
+              "x_max": 10.0,
+              "x_step": 0.1,
+              "x_start": 2.0,
+              "target_y": 4.73,
+              "tolerance": 0.05,
+              "praise": "Đúng: với lạm phát 3,6% và lãi suất danh nghĩa 8,5%, lãi suất thực xấp xỉ 4,73%/năm.",
+              "audio": null
+            },
+            {
+              "id": "lam-phat-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lam-phat-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với đặc điểm tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "CPI",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Chỉ số Laspeyres, rổ hàng cố định",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Chỉ số giảm phát GDP",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Chỉ số Paasche, rổ hàng hiện hành",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Lạm phát cơ bản",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Loại bỏ lương thực tươi sống và năng lượng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Giảm phát",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Mức giá chung giảm liên tục",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "CPI cố định quyền số năm gốc và gồm cả hàng nhập khẩu, còn deflator GDP dùng rổ hiện hành và chỉ tính hàng sản xuất trong nước.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lam-phat-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Lạm phát giảm từ 4% xuống 2% có phải là giảm phát không?",
+                  "answer": "Không, đó là giảm lạm phát vì mức giá vẫn tăng 2%; giảm phát chỉ khi $\\pi<0$.",
+                  "image": null
+                },
+                {
+                  "prompt": "CPI và chỉ số giảm phát GDP khác nhau cơ bản ở đâu?",
+                  "answer": "CPI là Laspeyres với rổ cố định và gồm hàng nhập khẩu; deflator là Paasche với rổ hiện hành và chỉ gồm hàng sản xuất trong nước.",
+                  "image": null
+                },
+                {
+                  "prompt": "Lạm phát ảnh hưởng thế nào qua lãi suất thực?",
+                  "answer": "Theo Fisher $(1+i)=(1+r)(1+\\pi)$; lạm phát cao hơn lãi suất danh nghĩa làm lãi suất thực âm, chuyển thu nhập từ người cho vay sang người đi vay.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "that-nghiep",
+          "title": "Thất nghiệp",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày khái niệm và cách đo thất nghiệp, phân loại, thất nghiệp tự nhiên, định luật Okun, kèm ví dụ, dữ liệu Việt Nam và bài tập.",
+          "key_ideas": [
+            "Khái niệm thất nghiệp, lực lượng lao động, tỷ lệ thất nghiệp và LFPR",
+            "Phân loại tạm thời, cơ cấu, chu kỳ và thời vụ",
+            "Thất nghiệp tự nhiên và định luật Okun",
+            "Ví dụ tính u, LFPR, dữ liệu Việt Nam và bài tập"
+          ],
+          "blocks": [
+            {
+              "id": "that-nghiep-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thất nghiệp, lực lượng lao động và các tỷ lệ",
+              "md": "Người thất nghiệp ($U$) là người trong độ tuổi lao động, hiện không có việc làm, đang tích cực tìm việc trong 4 tuần gần nhất và sẵn sàng làm việc. Người không tìm việc nằm ngoài lực lượng lao động. Lực lượng lao động $LF=U+E$, với $u=\\frac{U}{LF}\\times100\\%$ và $LFPR=\\frac{LF}{POP_{15+}}\\times100\\%$. Tỷ lệ thiếu việc làm đo người có việc nhưng làm dưới thời gian mong muốn hoặc thu nhập quá thấp.",
+              "audio": null
+            },
+            {
+              "id": "that-nghiep-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Phân loại thất nghiệp và thất nghiệp tự nhiên",
+              "md": "Thất nghiệp tạm thời là thời gian tìm việc giữa hai công việc. Thất nghiệp cơ cấu do kỹ năng không khớp nhu cầu. Thất nghiệp chu kỳ do suy thoái, tổng cầu thiếu. Thất nghiệp thời vụ theo mùa vụ. Thất nghiệp tự nhiên $u_n$ gồm tạm thời và cơ cấu (một số giáo trình gộp cả thời vụ). Khi sản lượng bằng sản lượng tiềm năng $Y^*$ thì $u=u_n$.",
+              "audio": null
+            },
+            {
+              "id": "that-nghiep-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "that-nghiep-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo cách đo lực lượng lao động, ai sau đây được tính là người thất nghiệp?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Sinh viên mới tốt nghiệp đang tìm việc và sẵn sàng làm việc",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Người nội trợ ở nhà, không có nhu cầu tìm việc",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Người đã nghỉ hưu và không tham gia tìm việc",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Người nản chí đã ngừng tìm việc nhiều tháng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Cần hội đủ: không có việc làm, tìm việc tích cực, sẵn sàng làm việc.",
+                  "explanation": "Thất nghiệp là người không có việc làm, tích cực tìm việc trong 4 tuần gần nhất và sẵn sàng làm việc. Ba trường hợp còn lại đều không tìm việc nên nằm ngoài LF.",
+                  "option_feedback": {
+                    "B": "Người không tìm việc nằm ngoài lực lượng lao động nên không được tính là thất nghiệp.",
+                    "C": "Người nghỉ hưu không tìm việc thuộc nhóm ngoài lực lượng lao động, không phải thất nghiệp.",
+                    "D": "Người nản chí không tích cực tìm việc nên bị xếp ra ngoài lực lượng lao động."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "that-nghiep-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Định luật Okun",
+              "md": "Mỗi 1 điểm phần trăm thất nghiệp vượt mức tự nhiên gắn với khoảng 2% chênh lệch sản lượng. Dạng tốc độ là $\\Delta u=-\\beta(g-g^*)$, với $\\beta\\approx0,4\\div0,5$ và $g^*$ là tốc độ tăng của sản lượng tiềm năng. Chi phí kinh tế của thất nghiệp chu kỳ rất lớn, nên chính sách tài khóa và tiền tệ đều nhắm vào biến này.",
+              "audio": null
+            },
+            {
+              "id": "that-nghiep-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "that-nghiep-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền vào chỗ trống: $LF = {{gap}}$ và $LFPR = \\dfrac{LF}{{{gap}}}\\times 100\\%$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "U+E",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "POP_{15+}",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "U",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "POP",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Lực lượng lao động gồm người thất nghiệp và người có việc làm, còn LFPR lấy LF chia cho dân số từ 15 tuổi trở lên.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "that-nghiep-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/that-nghiep-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "1f3dba29e57fea70f324af64bf8a87cb553c9461cec2f6a6ecb58c7dbd54499c",
+                "bytes": 1585
+              },
+              "alt": "Đường Okun dốc xuống với độ dốc âm khoảng 0,45",
+              "caption": "Đường Okun với β = 0,45",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "that-nghiep-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tính U, u và LFPR",
+              "md": "Dân số 100 triệu; dân số từ 15 tuổi trở lên 78 triệu; lực lượng lao động 54,6 triệu; số người có việc làm 53,5 triệu. Ta có $U=54,6-53,5=1,1$ triệu, $u=\\frac{1,1}{54,6}\\times100\\%=2,01\\%$, $LFPR=\\frac{54,6}{78}\\times100\\%=70,0\\%$.",
+              "audio": null
+            },
+            {
+              "id": "that-nghiep-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "that-nghiep-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Dân số từ 15 tuổi trở lên là 78 triệu người, lực lượng lao động là 54,6 triệu người. Tính tỷ lệ tham gia lực lượng lao động LFPR (đơn vị %, làm tròn đến 1 chữ số thập phân).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "70",
+                      "70.0",
+                      "70,0",
+                      "70.00"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "LFPR = LF / POP15+ × 100%.",
+                  "explanation": "$LFPR = 54,6/78 \\times 100\\% = 70,0\\%$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "that-nghiep-b6",
+              "kind": "text",
+              "md": "Giai đoạn 2019–2024, tỷ lệ thất nghiệp của lực lượng lao động khoảng 2,2–2,5%/năm, cao hơn ở thành thị và ở thanh niên 15–24 tuổi (thường 6–8%). Quý 3/2021 do giãn cách xã hội, tỷ lệ thất nghiệp trong độ tuổi lao động vượt 3,7%, mức cao nhất nhiều năm. Tỷ lệ tham gia lực lượng lao động khoảng 68–69% dân số từ 15 tuổi trở lên, tỷ lệ thiếu việc làm khoảng 2%, và khoảng 2/3 lao động làm việc phi chính thức nên chỉ tiêu $u$ chưa phản ánh hết mức thiếu hụt việc làm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "that-nghiep-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "that-nghiep-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi loại thất nghiệp với nguyên nhân đặc trưng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Thất nghiệp tạm thời",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Thời gian tìm việc giữa hai công việc",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Thất nghiệp cơ cấu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Kỹ năng không khớp nhu cầu do công nghệ, chuyển dịch cơ cấu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Thất nghiệp chu kỳ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Do suy thoái, tổng cầu thiếu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Thất nghiệp thời vụ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Theo mùa vụ: du lịch, nông nghiệp, xây dựng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Bốn loại thất nghiệp khác nhau ở nguồn gốc: tìm việc, lệch kỹ năng, thiếu tổng cầu và yếu tố mùa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "that-nghiep-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để Δu = -1,8 điểm phần trăm khi β = 0,45",
+              "x": {
+                "symbol": "g-g^*",
+                "label": "Chênh lệch tăng trưởng",
+                "unit": "điểm %"
+              },
+              "y": {
+                "symbol": "Δu",
+                "label": "Thay đổi thất nghiệp",
+                "unit": "điểm %"
+              },
+              "expr": "-0.45*x",
+              "x_min": -4.0,
+              "x_max": 4.0,
+              "x_step": 0.5,
+              "x_start": 2.0,
+              "target_y": -1.8,
+              "tolerance": 0.1,
+              "praise": "Đúng: khi sản lượng tăng 4 điểm % trên tiềm năng, Δu ≈ -1,8 điểm %.",
+              "audio": null
+            },
+            {
+              "id": "that-nghiep-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "that-nghiep-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các nhận định sau về thất nghiệp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Thất nghiệp tự nhiên gồm thất nghiệp tạm thời và thất nghiệp cơ cấu."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Khi sản lượng bằng sản lượng tiềm năng $Y^*$ thì thất nghiệp chu kỳ bằng 0."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Theo định luật Okun dạng tốc độ, nếu $g < g^*$ thì tỷ lệ thất nghiệp giảm."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Ở Việt Nam, tỷ lệ thiếu việc làm thường thấp hơn tỷ lệ thất nghiệp."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "$u_n$ = tạm thời + cơ cấu, và $u = u_n$ khi $Y = Y^*$ nên thất nghiệp chu kỳ bằng 0. Ngược lại, $\\Delta u = -\\beta(g-g^*)$ nên $g<g^*$ làm thất nghiệp tăng, còn thiếu việc làm ở Việt Nam thường cao hơn thất nghiệp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "that-nghiep-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Thất nghiệp tự nhiên gồm những loại nào?",
+                  "answer": "Tạm thời và cơ cấu (một số giáo trình gộp cả thời vụ).",
+                  "image": null
+                },
+                {
+                  "prompt": "Định luật Okun nói gì?",
+                  "answer": "1 điểm % thất nghiệp vượt tự nhiên gắn với khoảng 2% chênh lệch sản lượng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào u = u_n?",
+                  "answer": "Khi sản lượng bằng sản lượng tiềm năng Y*.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": null
+    },
+    {
+      "id": "ch-chinh-sach",
+      "title": "Chính sách",
+      "lessons": [
+        {
+          "id": "chinh-sach-tien-te",
+          "title": "Chính sách tiền tệ",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày mục tiêu, công cụ, cơ chế truyền dẫn của chính sách tiền tệ và thực tiễn Việt Nam, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Mục tiêu và công cụ của Ngân hàng Nhà nước",
+            "Cung tiền M = mB và số nhân tiền",
+            "Chính sách mở rộng/thắt chặt và kênh truyền dẫn lãi suất, tín dụng, tỷ giá",
+            "Thực tiễn Việt Nam, ví dụ, lỗi thường gặp và bài tập"
+          ],
+          "blocks": [
+            {
+              "id": "chinh-sach-tien-te-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Chính sách tiền tệ",
+              "md": "Là các quyết định của ngân hàng trung ương, ở Việt Nam là Ngân hàng Nhà nước (NHNN), về cung tiền, lãi suất, tín dụng và tỷ giá, nhằm tác động đến tổng cầu, sản lượng, việc làm và lạm phát. Mục tiêu cuối cùng thường gồm: ổn định giá cả, hỗ trợ tăng trưởng, tạo việc làm, ổn định hệ thống tài chính và cân bằng thanh toán quốc tế.",
+              "audio": null
+            },
+            {
+              "id": "chinh-sach-tien-te-b2",
+              "kind": "text",
+              "md": "Ở Việt Nam, Quốc hội giao mục tiêu lạm phát bình quân từng năm, còn NHNN theo dõi thêm tăng trưởng tín dụng, thanh khoản và tỷ giá; lạm phát được đo qua tốc độ tăng CPI: $\\pi_t=\\frac{CPI_t-CPI_{t-1}}{CPI_{t-1}}\\times 100\\%$. Vì lạm phát kỳ vọng $\\pi^e$ quyết định lãi suất thực $r\\approx i-\\pi^e$ (với $i$ là lãi suất danh nghĩa), neo kỳ vọng là phần cốt lõi của điều hành.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chinh-sach-tien-te-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chinh-sach-tien-te-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Biện pháp nào sau đây thuộc chính sách tiền tệ thắt chặt?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Bán giấy tờ có giá và tăng tỷ lệ dự trữ bắt buộc.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Mua giấy tờ có giá và giảm tỷ lệ dự trữ bắt buộc.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Giảm lãi suất điều hành và nới room tín dụng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Mua ngoại tệ để bơm nội tệ.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Bán giấy tờ có giá hút thanh khoản; tăng dự trữ bắt buộc làm số nhân tiền và cung tiền giảm.",
+                  "option_feedback": {
+                    "B": "Đây là tổ hợp mở rộng: mua giấy tờ có giá bơm thanh khoản và giảm dự trữ làm số nhân tiền tăng.",
+                    "C": "Giảm lãi suất và nới room là biện pháp mở rộng, không phải thắt chặt.",
+                    "D": "Mua ngoại tệ bơm nội tệ ra thị trường, tức nới lỏng thanh khoản."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chinh-sach-tien-te-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Năm công cụ chính",
+              "md": "- **Lãi suất điều hành**: tái cấp vốn, tái chiết khấu, cho vay qua đêm, lãi suất dự trữ bắt buộc; tăng lãi suất làm chi phí vốn tăng, tín dụng và tổng cầu giảm.\n- **Tỷ lệ dự trữ bắt buộc**: tăng tỷ lệ này làm số nhân tiền $m$ giảm, cung tiền $M=mB$ giảm.\n- **Nghiệp vụ thị trường mở**: mua giấy tờ có giá để bơm thanh khoản, bán để hút thanh khoản.\n- **Hạn mức tín dụng**: công cụ hành chính đặc thù của Việt Nam; nới room mở rộng tín dụng, siết room thắt chặt.\n- **Tỷ giá và can thiệp ngoại hối**: bán ngoại tệ để hút nội tệ, mua ngoại tệ để bơm nội tệ.",
+              "audio": null
+            },
+            {
+              "id": "chinh-sach-tien-te-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chinh-sach-tien-te-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Cung tiền được mô tả bởi công thức $M = {{gap}} \\cdot B$, trong đó $B$ là cơ số tiền.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "m",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "i",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "\\pi^e",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Theo bài, $M=mB$; $m$ là số nhân tiền.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "chinh-sach-tien-te-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: mua giấy tờ có giá và số nhân tiền",
+              "md": "Với $B=600$ nghìn tỷ đồng và $m=4$: $M_0=600\\times 4=2400$ nghìn tỷ đồng. NHNN mua 30 nghìn tỷ đồng giấy tờ có giá làm $B_1=630$, nên $M_1=630\\times 4=2520$ và $\\Delta M=120$ nghìn tỷ đồng. Nếu dự trữ bắt buộc tăng làm $m$ giảm còn 3,8 thì $M_2=630\\times 3,8=2394$ nghìn tỷ đồng, thấp hơn ban đầu 6 nghìn tỷ: bơm thanh khoản bị trung hòa khi số nhân tiền giảm.",
+              "audio": null
+            },
+            {
+              "id": "chinh-sach-tien-te-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chinh-sach-tien-te-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho cơ số tiền $B=500$ nghìn tỷ đồng, số nhân tiền ban đầu $m=5$. NHNN mua 25 nghìn tỷ đồng giấy tờ có giá trên thị trường mở; sau đó số nhân tiền giảm 10% so với ban đầu. Cung tiền sau khi số nhân tiền đã giảm là bao nhiêu nghìn tỷ đồng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "2362.5",
+                      "2362,5",
+                      "2362.50",
+                      "2362,50"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Tính cơ số tiền sau khi mua, rồi nhân với số nhân tiền mới.",
+                  "explanation": "Sau khi mua, $B=525$. Số nhân tiền mới là $4{,}5$, nên $M=525\\times 4{,}5=2362{,}5$ nghìn tỷ đồng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chinh-sach-tien-te-b6",
+              "kind": "interactive",
+              "prompt": "Kéo số nhân tiền $m$ để cung tiền $M=mB$ đạt 2400 nghìn tỷ đồng, với $B=600$.",
+              "x": {
+                "symbol": "m",
+                "label": "Số nhân tiền",
+                "unit": "lần"
+              },
+              "y": {
+                "symbol": "M",
+                "label": "Cung tiền",
+                "unit": "nghìn tỷ đồng"
+              },
+              "expr": "600*x",
+              "x_min": 3.0,
+              "x_max": 5.0,
+              "x_step": 0.1,
+              "x_start": 3.2,
+              "target_y": 2400.0,
+              "tolerance": 1.0,
+              "praise": "Chính xác: với B = 600, m = 4 cho M = 2400 nghìn tỷ đồng.",
+              "audio": null
+            },
+            {
+              "id": "chinh-sach-tien-te-b7",
+              "kind": "text",
+              "md": "Giai đoạn 2011–2015: CPI tăng khoảng 18,13% năm 2011, NHNN thắt chặt mạnh, CPI giảm còn 6,81% (2012), 6,04% (2013) và 0,63% (2015). Giai đoạn 2020–2024: NHNN giảm lãi suất điều hành và hỗ trợ thanh khoản năm 2020 (GDP tăng 2,91%, CPI khoảng 3,23%); năm 2022 tăng lãi suất điều hành hai lần trước áp lực lạm phát và tỷ giá, năm 2023 hạ bốn lần (CPI khoảng 3,25%, GDP tăng 5,05%), năm 2024 CPI khoảng 3,63% và GDP tăng khoảng 7,09%.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "chinh-sach-tien-te-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chinh-sach-tien-te-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi công cụ với tác động phù hợp theo bài.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Tăng dự trữ bắt buộc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Số nhân tiền giảm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Bán giấy tờ có giá",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Hút thanh khoản",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Mua ngoại tệ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Bơm nội tệ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Siết room tín dụng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Hạn chế tín dụng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các tác động này tương ứng với cơ chế công cụ được nêu trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "chinh-sach-tien-te-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Tăng lãi suất là lạm phát giảm ngay?",
+              "md": "Sai. Truyền dẫn lãi suất không hoàn hảo và có độ trễ: lãi suất cho vay của ngân hàng thương mại không tăng ngay và không tăng đúng bằng mức lãi suất điều hành. Kết quả còn phụ thuộc thanh khoản, room tín dụng, kỳ vọng và cả lạm phát do phía cung; ở Việt Nam, hạn mức tín dụng và can thiệp ngoại hối cũng làm cơ chế truyền dẫn khác mô hình đơn giản.",
+              "audio": null
+            },
+            {
+              "id": "chinh-sach-tien-te-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "chinh-sach-tien-te-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đánh dấu đúng/sai cho các phát biểu sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Truyền dẫn lãi suất không hoàn hảo và có độ trễ."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Khi NHNN tăng lãi suất điều hành, lãi suất cho vay của ngân hàng thương mại tăng ngay và đúng bằng mức tăng."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Nếu số nhân tiền giảm đủ mạnh, việc mua giấy tờ có giá có thể không làm cung tiền tăng so với ban đầu."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Tăng tỷ lệ dự trữ bắt buộc thường làm số nhân tiền tăng và cung tiền tăng."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Truyền dẫn lãi suất có độ trễ và không hoàn hảo; tăng dự trữ bắt buộc làm số nhân tiền giảm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "chinh-sach-tien-te-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Cung tiền được xác định bởi công thức nào, và số nhân tiền phụ thuộc gì?",
+                  "answer": "M = mB; m phụ thuộc tỷ lệ dự trữ bắt buộc, dự trữ dư và tỷ lệ tiền mặt ngoài hệ thống ngân hàng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi NHNN muốn mở rộng tiền tệ, họ làm gì và kênh truyền dẫn chính là gì?",
+                  "answer": "Giảm lãi suất, giảm dự trữ bắt buộc, mua giấy tờ có giá, nới room; i↓ ⇒ I↑, C↑ ⇒ AD↑ ⇒ Y↑, P↑ trong ngắn hạn.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao không thể kỳ vọng lạm phát giảm ngay sau khi tăng lãi suất?",
+                  "answer": "Vì truyền dẫn có độ trễ và không hoàn hảo, còn phụ thuộc thanh khoản, room tín dụng, kỳ vọng và lạm phát phía cung.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": null
+    }
+  ],
+  "gloss_start": null
+}

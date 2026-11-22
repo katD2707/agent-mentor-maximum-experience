@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "dia-li-12-cac-vung-kinh-te",
+  "title": "Địa lí 12: Các vùng kinh tế",
+  "subject": "Địa lí",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "uca424c1bd475fcf1",
+  "teacher_name": "Cô Nhàn",
+  "description_short": "Khóa học hệ thống các vùng kinh tế của Việt Nam theo trình tự phía Bắc và phía Nam, gắn lí thuyết với đọc Atlat và xử lí số liệu. Nội dung dành cho học sinh lớp 12 đang ôn tập Địa lí, đặc biệt là kĩ năng phân tích vùng kinh tế.",
+  "outcomes": [
+    "Phân tích được vị trí, điều kiện tự nhiên và thế mạnh kinh tế của các vùng đã học.",
+    "Đọc và khai thác được Atlat Địa lí Việt Nam để chứng minh thế mạnh vùng.",
+    "Tính được mật độ dân số, năng suất, bình quân lương thực, độ che phủ rừng và tỉ trọng.",
+    "Chọn được dạng biểu đồ phù hợp và tránh các lỗi thường gặp khi phân tích số liệu."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:47:49.341371Z",
+      "published_at": "2026-11-17T07:48:05.254626Z",
+      "pack_sha256": "8b7a7feb8da97f8d4f04840ac3fa20403069cd55f5261a145946692e4fde523f",
+      "pack_bytes": 1781314,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

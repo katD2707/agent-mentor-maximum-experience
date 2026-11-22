@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="131.2" y="519.5" width="46" height="60.5" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="199.5" y="528.9" width="46" height="51.1" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="267.8" y="533.5" width="46" height="46.5" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="336.2" y="524.2" width="46" height="55.8" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="404.5" y="487.0" width="46" height="93.0" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="472.8" y="370.8" width="46" height="209.2" rx="6" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="541.2" y="217.3" width="46" height="362.7" rx="6" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="609.5" y="152.2" width="46" height="427.8" rx="6" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="677.8" y="277.8" width="46" height="302.2" rx="6" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="746.2" y="394.0" width="46" height="186.0" rx="6" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="814.5" y="463.8" width="46" height="116.2" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="882.8" y="500.9" width="46" height="79.1" rx="6" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="118" y1="580.0" x2="942" y2="580.0" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+<line x1="118" y1="414.1" x2="942" y2="414.1" stroke="#E8806A" stroke-width="4" stroke-dasharray="14 10" stroke-linecap="round"/>
+<text x="154.2" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T1</text>
+<text x="222.5" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T2</text>
+<text x="290.8" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T3</text>
+<text x="359.2" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T4</text>
+<text x="427.5" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T5</text>
+<text x="495.8" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T6</text>
+<text x="564.2" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T7</text>
+<text x="632.5" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T8</text>
+<text x="700.8" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T9</text>
+<text x="769.2" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T10</text>
+<text x="837.5" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T11</text>
+<text x="905.8" y="620" font-family="Lexend, sans-serif" font-size="26" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">T12</text>
+<text x="500" y="84" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Q trung b&#236;nh &#8776; 3 567 m&#179;/s</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

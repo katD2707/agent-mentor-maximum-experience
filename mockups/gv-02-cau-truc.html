@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
 <link rel="stylesheet" href="shared.css">
 <script src="shared.js"></script>
-<link rel="stylesheet" href="mascot.css"><script src="mascot.js" defer></script>
+<link rel="stylesheet" href="ga-guide.css"><script src="ga-guide.js" defer></script>
 <style>
   /* same on gv-01..03: header with step indicator */
   .steps { display: flex; gap: 4px; align-items: center; margin-left: 6px; }
@@ -128,7 +128,8 @@
     <nav class="steps" aria-label="Các bước">
       <a href="gv-01-gui-bai.html?state=co-khoa"><span class="n">1</span><span class="l" data-en="Upload">Gửi</span></a>
       <a href="gv-02-cau-truc.html?state=xem" aria-current="step"><span class="n">2</span><span class="l" data-en="Outline">Cấu trúc</span></a>
-      <a href="gv-03-duyet-noi-dung.html?state=duyet"><span class="n">3</span><span class="l" data-en="Review">Duyệt</span></a>
+      <a href="gv-04-gan-nhan.html"><span class="n">3</span><span class="l" data-en="Tags">Nhãn</span></a>
+      <a href="gv-03-duyet-noi-dung.html?state=duyet"><span class="n">4</span><span class="l" data-en="Review">Duyệt</span></a>
     </nav>
     <span class="grow"></span>
     <button type="button" class="btn btn-primary act" id="go"><span data-when="state=xem|loi" data-en="Compose">Soạn bài</span><span data-when="state=dang-soan" data-en="Composing">Đang soạn</span></button>
@@ -379,6 +380,7 @@
   document.getElementById("go").addEventListener("click", () => {
     if (document.documentElement.dataset.state === "dang-soan") return;
     window.mockSet("state", "dang-soan");
+    setTimeout(() => { location.href = "gv-04-gan-nhan.html"; }, 1200);
   });
 })();
 </script>

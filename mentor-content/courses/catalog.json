@@ -1,7 +1,36 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-07T08:11:39.532914Z",
+  "generated_at": "2026-11-18T03:40:45.614014Z",
   "courses": [
+    {
+      "id": "academic-writing-for-university",
+      "title": "Academic Writing for University",
+      "subject": "Academic Writing",
+      "age_band": "uni",
+      "language": "en",
+      "teacher_name": "Dr. Helen Do",
+      "description_short": "This course covers academic argument, thesis, evidence, structure, APA citation, paraphrasing, and revision. It is for university students who need to write clear, well-sourced academic essays.",
+      "outcomes": [
+        "formulate a focused, arguable thesis that previews the essay's reasons",
+        "support subclaims with credible evidence and analysis",
+        "structure body paragraphs around subclaims rather than source order",
+        "apply APA 7th edition citation rules and write correct reference entries",
+        "paraphrase accurately and revise essays by checking thesis, evidence, structure, and sources"
+      ],
+      "cover_sha256": "2a5c8e543d0951cbd2dc76b4038c30e16611c193cc51a955c5516f14ce414519",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 87,
+      "version": 1,
+      "pack_sha256": "0f24724ac795fc087c4820d3f6bedfa0f1fa3ad5437c17e3251768159570d557",
+      "pack_bytes": 2688029,
+      "published_at": "2026-11-17T07:18:09.714506Z",
+      "level": "intermediate",
+      "status": "live"
+    },
     {
       "id": "c-110e873a",
       "title": "Xác suất thống kê: Suy luận Bayes",
@@ -91,60 +120,604 @@
       "status": "live"
     },
     {
-      "id": "ph-academic-writing-for-university",
-      "title": "Academic Writing for University",
-      "subject": "Academic Writing",
-      "age_band": "uni",
-      "language": "en",
-      "teacher_name": "Dr. Helen Do",
-      "description_short": "How to build an argument, cite sources and revise a 1500-word essay, with before and after examples. For students writing in English for the first time at university.",
-      "outcomes": [
-        "State a thesis and support it in paragraphs.",
-        "Cite and reference in APA style.",
-        "Revise for clarity and concision."
-      ],
-      "cover_sha256": "251e0580bb9e1c9e2d55434847a6b48b1ce0a9d2db001ba4c46bd1c5c8740731",
-      "media": [
-        "video",
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 147,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-cau-truc-du-lieu-va-giai-thuat",
+      "id": "cau-truc-du-lieu-va-giai-thuat-2",
       "title": "Cấu trúc dữ liệu và giải thuật",
-      "subject": "Cấu trúc dữ liệu",
+      "subject": "Cấu trúc dữ liệu và giải thuật",
       "age_band": "uni",
       "language": "vi",
       "teacher_name": "TS. Ngô Thanh Sơn",
-      "description_short": "Mảng, danh sách liên kết, ngăn xếp, hàng đợi, cây và đồ thị, cài đặt bằng C++ với phân tích độ phức tạp. Dành cho sinh viên năm hai ngành công nghệ thông tin.",
+      "description_short": "Khóa học trình bày cấu trúc dữ liệu tuyến tính, cây, đồ thị và các thuật toán sắp xếp, tìm kiếm cùng phân tích độ phức tạp. Dành cho sinh viên đại học ngành công nghệ thông tin đã có kiến thức lập trình cơ bản.",
       "outcomes": [
-        "Cài đặt được các cấu trúc dữ liệu cơ bản.",
-        "Phân tích được độ phức tạp thời gian.",
-        "Chọn được cấu trúc phù hợp cho bài toán."
+        "Phân tích được chi phí thời gian và bộ nhớ của các thao tác trên mảng, danh sách liên kết, ngăn xếp và hàng đợi",
+        "Cài đặt và đánh giá được cây nhị phân, cây tìm kiếm nhị phân và duyệt đồ thị BFS",
+        "Áp dụng được sắp xếp, tìm kiếm nhị phân và nhị phân trên miền đáp án cho bài toán cụ thể",
+        "Giải được phương trình truy hồi bằng định lý master và phân tích độ phức tạp của vòng lặp, đệ quy"
       ],
-      "cover_sha256": "a5e6d80738b14cef8f49c15d9cbb6b519e93de6227cf7f2ea9127ae55b2f0fb8",
+      "cover_sha256": "1356677ce80ee2dc1869401bc2bb8e0ac3a98678aecf02a7a26fc359b35f60f9",
       "media": [
-        "video",
         "reading",
         "quiz"
       ],
       "lessons_count": 8,
-      "est_minutes": 231,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
+      "est_minutes": 120,
+      "version": 1,
+      "pack_sha256": "705d82382dab512c3640553d7d4ff1b1a26e7428edab1ec5d4960fa62e1941ed",
+      "pack_bytes": 158337,
+      "published_at": "2026-11-17T07:25:09.882779Z",
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "live"
+    },
+    {
+      "id": "co-so-du-lieu-sql-tu-co-ban",
+      "title": "Cơ sở dữ liệu: SQL từ cơ bản",
+      "subject": "Cơ sở dữ liệu",
+      "age_band": "uni",
+      "language": "vi",
+      "teacher_name": "TS. Bùi Anh Kiệt",
+      "description_short": "Khóa học trình bày mô hình quan hệ, chuẩn hóa và SQL từ truy vấn cơ bản đến nối bảng, nhóm và truy vấn con. Dành cho sinh viên đại học bắt đầu học cơ sở dữ liệu.",
+      "outcomes": [
+        "Trình bày được mô hình quan hệ, khóa và các ràng buộc toàn vẹn, phân biệt quan hệ với bảng trong SQL.",
+        "Viết được truy vấn SQL cơ bản với SELECT, WHERE, ORDER BY, LIMIT và DISTINCT.",
+        "Nối bảng bằng INNER/LEFT/RIGHT/FULL/CROSS JOIN và nhận biết lỗi tích Descartes.",
+        "Sử dụng hàm tổng hợp, GROUP BY, HAVING và truy vấn con để trả lời câu hỏi dữ liệu.",
+        "Xác định phụ thuộc hàm, khóa, dạng chuẩn và phân rã lược đồ về 3NF/BCNF."
+      ],
+      "cover_sha256": "8fc638fdc3401726232ed49284d6661819004088eb05f207bc179fdb03d2a90d",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 5,
+      "est_minutes": 75,
+      "version": 1,
+      "pack_sha256": "fbc220b7535a511f1b97a772656d1b0234ef0c52260b7725af5454016a835f70",
+      "pack_bytes": 89468,
+      "published_at": "2026-11-18T03:31:53.510945Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "coding-for-kids-scratch-stories",
+      "title": "Coding for Kids: Scratch Stories",
+      "subject": "Coding",
+      "age_band": "g1_5",
+      "language": "en",
+      "teacher_name": "Mr. Quan Le",
+      "description_short": "This course introduces primary pupils to Scratch by building simple stories with blocks, sprites, costumes, backdrops, loops, and variables. It is for young beginners who are starting to code with Scratch.",
+      "outcomes": [
+        "use the Stage, sprites, Blocks palette, Code area, green flag, and stop sign to run a simple script",
+        "make a sprite move, talk, and change costumes in a timed order",
+        "build two-scene stories with backdrops and waits",
+        "repeat actions with loops and update a score with a variable"
+      ],
+      "cover_sha256": "52dabaa046b8aac73349cba52e7a023efdd16a076a4b89822039bd167da2044c",
+      "media": [
+        "reading",
+        "quiz",
+        "interactive"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 58,
+      "version": 1,
+      "pack_sha256": "9af4e89db0536e8039fc80b72785bae6bc154eb282584091e082b5c8ad40d6f5",
+      "pack_bytes": 5283326,
+      "published_at": "2026-11-17T05:51:59.727909Z",
+      "level": "basic",
+      "status": "live"
+    },
+    {
+      "id": "cong-nghe-12-dien-va-dien-tu",
+      "title": "Công nghệ 12: Điện và điện tử",
+      "subject": "Công nghệ",
+      "age_band": "g10_12",
+      "language": "vi",
+      "teacher_name": "Thầy Tú",
+      "description_short": "Khóa học trình bày kiến thức về mạch điện xoay chiều, mạch ba pha và các linh kiện điện tử cơ bản. Nội dung dành cho học sinh THPT lớp 12 học Công nghệ, kèm ví dụ và bài tập tính toán.",
+      "outcomes": [
+        "Tính được các đại lượng đặc trưng của dòng điện xoay chiều và mạch RLC nối tiếp.",
+        "Phân biệt được cách nối hình sao, hình tam giác và tính công suất tải ba pha đối xứng.",
+        "Nhận biết và tính toán được các linh kiện thụ động R, L, C trong mạch.",
+        "Phân tích được nguyên lí hoạt động của điốt, LED, tranzito và mạch khuếch đại emitơ chung."
+      ],
+      "cover_sha256": "dd52553cc56ae4de37dcca893d4568cb554546177579892e51ef6f308b4ae3c8",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 15,
+      "est_minutes": 134,
+      "version": 1,
+      "pack_sha256": "c315160cac83b35bb705d56eea0649a0895e67fb4d8f7fadb5879f547f300478",
+      "pack_bytes": 308177,
+      "published_at": "2026-11-17T06:11:31.235562Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "cong-nghe-3-lam-thu-cong-tu-giay",
+      "title": "Công nghệ 3: Làm thủ công từ giấy và bìa",
+      "subject": "Công nghệ",
+      "age_band": "g1_5",
+      "language": "vi",
+      "teacher_name": "Cô Liên",
+      "description_short": "Khóa học hướng dẫn làm thủ công từ giấy và bìa: chuẩn bị dụng cụ, an toàn, làm hộp đựng bút, thiệp chúc mừng và đồ chơi gấp giấy. Dành cho học sinh lớp 3 bước đầu làm sản phẩm thủ công.",
+      "outcomes": [
+        "Chuẩn bị đủ dụng cụ, vật liệu và thực hiện đúng ba quy tắc đo – kẻ – cắt.",
+        "Cầm, cất và chuyền kéo an toàn; dùng hồ dán đúng cách và giữ bàn gọn.",
+        "Làm được hộp đựng bút từ bìa cứng theo số đo cho trước.",
+        "Làm được thiệp chúc mừng và máy bay giấy đạt tiêu chí về nếp gấp, hình dán và cân đối."
+      ],
+      "cover_sha256": "d01e17f3c571aa5521649ca8671e4b9a944f13b71fc8b67616bce3802733d64c",
+      "media": [
+        "reading",
+        "quiz",
+        "interactive"
+      ],
+      "lessons_count": 5,
+      "est_minutes": 75,
+      "version": 1,
+      "pack_sha256": "a9c03658cd9521c09e732aa232e8cd3cee190c2fe633597f19266effa18a9f69",
+      "pack_bytes": 2204916,
+      "published_at": "2026-11-17T08:03:59.489428Z",
+      "level": "basic",
+      "status": "live"
+    },
+    {
+      "id": "cong-nghe-7-trong-trot-va-chan-n",
+      "title": "Công nghệ 7: Trồng trọt và chăn nuôi",
+      "subject": "Công nghệ",
+      "age_band": "g6_9",
+      "language": "vi",
+      "teacher_name": "Cô Tâm",
+      "description_short": "Khóa học cung cấp kiến thức cơ bản về đất trồng, giống và gieo hạt, chăm sóc cây, nuôi gà, nuôi cá và phòng bệnh cho vật nuôi. Nội dung dành cho học sinh lớp 7 trung học cơ sở, gắn lý thuyết với ví dụ, lỗi thường gặp và bài tập tính toán thực tế.",
+      "outcomes": [
+        "Trình bày được thành phần, tính chất của đất trồng và cách chọn, cải tạo đất phù hợp.",
+        "Thực hiện được các bước chọn, xử lý, gieo hạt và chăm sóc cây; tính được tỉ lệ nảy mầm, số cây, lượng nước và phân bón.",
+        "Mô tả được kỹ thuật nuôi gà, nuôi cá và biện pháp phòng bệnh cho vật nuôi.",
+        "Vận dụng được công thức tính lượng thức ăn, nhiệt độ úm gà, pha thuốc sát trùng và xử lý các lỗi thường gặp."
+      ],
+      "cover_sha256": "5554255a6331fb704ab7af775d9ea08bd849304f82e9e6e59b3434e19c254df8",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "9c0824b666f3e5fc32013b5b71efe149c879248c02efa422f7f454cdab6f8e14",
+      "pack_bytes": 135983,
+      "published_at": "2026-11-17T07:22:39.917575Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "dai-so-tuyen-tinh-khong-gian-vec-2",
+      "title": "Đại số tuyến tính: Không gian vectơ và trị riêng",
+      "subject": "Đại số tuyến tính",
+      "age_band": "uni",
+      "language": "vi",
+      "teacher_name": "TS. Đỗ Thu Hà",
+      "description_short": "Khóa học trình bày không gian vectơ, độc lập tuyến tính, cơ sở, số chiều và ánh xạ tuyến tính. Phần tiếp theo gồm trị riêng, vectơ riêng, chéo hóa và các ứng dụng PageRank, nén ảnh cho sinh viên đại học.",
+      "outcomes": [
+        "kiểm tra được tính độc lập tuyến tính và tìm cơ sở, số chiều của không gian vectơ con",
+        "xác định được hạt nhân, ảnh, hạng của ánh xạ tuyến tính và vận dụng định lý rank-nullity",
+        "tính được trị riêng, vectơ riêng, bội đại số và bội hình học của ma trận",
+        "chéo hóa được ma trận khi có đủ vectơ riêng và áp dụng trị riêng vào PageRank, nén ảnh"
+      ],
+      "cover_sha256": "01b0a33349480beaaa365a4d044a9fb32ebd9525dfd3cb0e0925227372c13e53",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "4e4fe9d91da78175b5de72ac71e04ca71995f7a9eb9caa9cc2fe404c1be5eac9",
+      "pack_bytes": 114599,
+      "published_at": "2026-11-17T07:29:45.565848Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "dao-duc-3-trung-thuc-va-biet-on",
+      "title": "Đạo đức 3: Trung thực và biết ơn",
+      "subject": "Đạo đức",
+      "age_band": "g1_5",
+      "language": "vi",
+      "teacher_name": "Cô Bích",
+      "description_short": "Khóa học Đạo đức 3 giúp học sinh tiểu học hiểu và thực hành tính trung thực, biết nhận lỗi, biết ơn thầy cô và người lao động. Nội dung gồm lý thuyết, câu chuyện, ví dụ, lỗi thường gặp và bài tập gắn với tình huống gần gũi.",
+      "outcomes": [
+        "nhận biết và thực hiện việc trung thực khi nhặt được của rơi",
+        "dám nhận lỗi, xin lỗi và sửa lỗi khi làm sai",
+        "thể hiện lòng biết ơn thầy cô bằng lời nói, thái độ lễ phép và việc làm phù hợp",
+        "kính trọng, cảm ơn người lao động và không lãng phí thức ăn, đồ dùng"
+      ],
+      "cover_sha256": "0d85b69391c01710ec00e6156d5329df46b93e52168008020b857588130db9c9",
+      "media": [
+        "reading",
+        "quiz",
+        "interactive"
+      ],
+      "lessons_count": 4,
+      "est_minutes": 48,
+      "version": 1,
+      "pack_sha256": "e0aeaf644179817af159915d92245901e5ced08df09e8cb351335f359ae60703",
+      "pack_bytes": 1597617,
+      "published_at": "2026-11-17T07:02:46.731107Z",
+      "level": "basic",
+      "status": "live"
+    },
+    {
+      "id": "data-structures-and-algorithms",
+      "title": "Data Structures and Algorithms",
+      "subject": "Computer Science",
+      "age_band": "uni",
+      "language": "en",
+      "teacher_name": "Dr. Lan Nguyen",
+      "description_short": "This course covers arrays, lists, stacks, queues, hash tables, binary trees, heaps, graph search, sorting, recursion and dynamic programming with rigorous worked examples and analysis. It is for university students building a foundation in data structures and algorithms.",
+      "outcomes": [
+        "analyse the time and space complexity of core data structures and algorithms",
+        "implement arrays, stacks, queues, hash tables, heaps, binary search trees and graph traversals",
+        "choose appropriate data structures and algorithms for a given problem",
+        "derive recurrences and apply dynamic programming to optimisation and counting problems",
+        "recognise common implementation mistakes and correct them"
+      ],
+      "cover_sha256": "265ad4b7f8a73a7533b042a3cc766a7894a9ea84100f354a02981c7fceddffc3",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 9,
+      "est_minutes": 135,
+      "version": 1,
+      "pack_sha256": "62e13e8dcd62d7c7f78d12e259149abbf1f3ce850dad56a3ef239cec7ea1c34d",
+      "pack_bytes": 4592176,
+      "published_at": "2026-11-17T07:29:48.077891Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "dia-li-12-cac-vung-kinh-te",
+      "title": "Địa lí 12: Các vùng kinh tế",
+      "subject": "Địa lí",
+      "age_band": "g10_12",
+      "language": "vi",
+      "teacher_name": "Cô Nhàn",
+      "description_short": "Khóa học hệ thống các vùng kinh tế của Việt Nam theo trình tự phía Bắc và phía Nam, gắn lí thuyết với đọc Atlat và xử lí số liệu. Nội dung dành cho học sinh lớp 12 đang ôn tập Địa lí, đặc biệt là kĩ năng phân tích vùng kinh tế.",
+      "outcomes": [
+        "Phân tích được vị trí, điều kiện tự nhiên và thế mạnh kinh tế của các vùng đã học.",
+        "Đọc và khai thác được Atlat Địa lí Việt Nam để chứng minh thế mạnh vùng.",
+        "Tính được mật độ dân số, năng suất, bình quân lương thực, độ che phủ rừng và tỉ trọng.",
+        "Chọn được dạng biểu đồ phù hợp và tránh các lỗi thường gặp khi phân tích số liệu."
+      ],
+      "cover_sha256": "78b5cebfeb01458a7a0e47c07de4c50467d33fdac6ec35a097da8177049a7ab5",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "8b7a7feb8da97f8d4f04840ac3fa20403069cd55f5261a145946692e4fde523f",
+      "pack_bytes": 1781314,
+      "published_at": "2026-11-17T07:48:05.254626Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "dia-li-8-khi-hau-va-song-ngoi-vi",
+      "title": "Địa lí 8: Khí hậu và sông ngòi Việt Nam",
+      "subject": "Địa lí",
+      "age_band": "g6_9",
+      "language": "vi",
+      "teacher_name": "Cô Hương",
+      "description_short": "Khóa học trình bày khí hậu nhiệt đới gió mùa và sông ngòi Việt Nam qua các bài về gió mùa, nhiệt độ – lượng mưa, thiên tai, hệ thống sông, chế độ nước và sử dụng nguồn nước. Dành cho học sinh lớp 8 đang học Địa lí, cần đọc biểu đồ, tính toán cơ bản và giải thích các hiện tượng thực tế.",
+      "outcomes": [
+        "Trình bày được hướng, tính chất và tác động của gió mùa mùa đông và mùa hạ ở nước ta.",
+        "Đọc và tính được nhiệt độ trung bình năm, biên độ nhiệt, tổng lượng mưa, mùa mưa từ bảng số liệu và biểu đồ.",
+        "Phân biệt được các hệ thống sông lớn, hướng chảy và chế độ nước theo mùa của sông ngòi Việt Nam.",
+        "Giải thích được một số thiên tai thường gặp và nêu biện pháp phòng chống, sử dụng hợp lí nguồn nước."
+      ],
+      "cover_sha256": "14d05ae092d483bb1afe91fbf811f1f99e72f260fd03ecce1a8b52aa5623335d",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "81be1bed438c2d58d1daa6649e622361026c12c00ab612cb818c1ae516336fea",
+      "pack_bytes": 1541869,
+      "published_at": "2026-11-17T07:42:18.449038Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "english-grammar-in-use-for-teens",
+      "title": "English Grammar in Use for Teens: Tenses",
+      "subject": "English",
+      "age_band": "g6_9",
+      "language": "en",
+      "teacher_name": "Mr. David Nguyen",
+      "description_short": "This course covers present, past and future tenses with theory, examples, common mistakes and exercises. It is for lower secondary students who want clear, practical grammar practice.",
+      "outcomes": [
+        "use present simple and present continuous to talk about routines, facts and actions happening now",
+        "form and use present perfect for experiences, results and unfinished time",
+        "choose between past simple and present perfect using time clues",
+        "describe finished past actions and past actions in progress",
+        "talk about the future with will, be going to, present continuous and present simple"
+      ],
+      "cover_sha256": "17807dc935e763ad8a25f1c9ab794d2517112ef19bae696c76b381a61b104a7f",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 70,
+      "version": 1,
+      "pack_sha256": "ffa3e3e8f18d7dde1d582735753ab2fd9f63b91f347bea7c85d421edf918ac2d",
+      "pack_bytes": 2767104,
+      "published_at": "2026-11-17T07:38:26.179686Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "gdcd-8-phap-luat-va-ki-luat",
+      "title": "GDCD 8: Pháp luật và kỉ luật",
+      "subject": "Giáo dục công dân",
+      "age_band": "g6_9",
+      "language": "vi",
+      "teacher_name": "Thầy Hùng",
+      "description_short": "Khóa học giúp học sinh lớp 8 hiểu pháp luật, kỉ luật, quyền và nghĩa vụ công dân, đồng thời biết ứng xử an toàn trên mạng. Nội dung phù hợp với học sinh THCS trong môn Giáo dục công dân 8.",
+      "outcomes": [
+        "phân biệt được pháp luật, kỉ luật và đạo đức trong các tình huống cụ thể",
+        "nhận diện được hành vi vi phạm pháp luật và vi phạm kỉ luật",
+        "nêu và thực hiện đúng quyền, nghĩa vụ của học sinh",
+        "bảo vệ thông tin cá nhân và ứng xử an toàn, văn minh trên mạng"
+      ],
+      "cover_sha256": "de74948492d19c8637c39dab2cc26e82cafec5040f4cd82a945a32e7b174662f",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 5,
+      "est_minutes": 66,
+      "version": 1,
+      "pack_sha256": "5951d87e5df199f1163cbaa11b80b5eda06e216fc81d61b471d63fe3cee2d508",
+      "pack_bytes": 122052,
+      "published_at": "2026-11-17T07:51:58.695363Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "giai-tich-1-gioi-han-va-dao-ham",
+      "title": "Giải tích 1: Giới hạn và đạo hàm",
+      "subject": "Giải tích",
+      "age_band": "uni",
+      "language": "vi",
+      "teacher_name": "TS. Thắng",
+      "description_short": "Khóa học bao gồm giới hạn dãy số, giới hạn hàm số, tính liên tục và đạo hàm cùng các quy tắc, ứng dụng cơ bản. Khóa học dành cho sinh viên đại học bắt đầu học Giải tích 1.",
+      "outcomes": [
+        "hiểu định nghĩa ε–N, ε–δ của giới hạn và điều kiện liên tục",
+        "tính được giới hạn dãy số, giới hạn hàm số bằng quy tắc, biến đổi đại số và định lý kẹp",
+        "nhận biết và tránh các lỗi thường gặp về hội tụ, dạng 0/0 và tính liên tục",
+        "dùng định nghĩa để tính đạo hàm và áp dụng các quy tắc đạo hàm, quy tắc chuỗi, đạo hàm hàm ẩn",
+        "vận dụng đạo hàm để xét cực trị, dấu đạo hàm, giá trị lớn nhất/nhỏ nhất và xấp xỉ tuyến tính"
+      ],
+      "cover_sha256": "2976cf3d1184bb99ec15081c1548eb1ba736eb5d368286092b7bf6244b9a7cf9",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "835812f7a1ff2b6ef11a5e6dbfd2e727fa44567d944a1123e8d17b9a46e15878",
+      "pack_bytes": 129898,
+      "published_at": "2026-11-17T08:12:55.164505Z",
+      "level": "advanced",
+      "status": "live"
+    },
+    {
+      "id": "giao-duc-kinh-te-va-phap-luat-10",
+      "title": "Giáo dục kinh tế và pháp luật 10",
+      "subject": "Giáo dục kinh tế và pháp luật",
+      "age_band": "g10_12",
+      "language": "vi",
+      "teacher_name": "Cô Thùy Anh",
+      "description_short": "Khóa học giới thiệu các khái niệm cơ bản về thị trường, cung cầu, cạnh tranh, giá cả, tiền, thuế và tín dụng qua ví dụ trà sữa gần gũi. Nội dung phù hợp cho học sinh lớp 10 bắt đầu học Giáo dục kinh tế và pháp luật.",
+      "outcomes": [
+        "Phân biệt được nhu cầu với cầu, cung với cầu và xác định giá, lượng cân bằng trong các ví dụ đơn giản.",
+        "Nhận biết được cạnh tranh lành mạnh, cạnh tranh không lành mạnh và vai trò của cạnh tranh với người tiêu dùng.",
+        "Giải thích được các chức năng của tiền và phân biệt phương tiện trao đổi với phương tiện thanh toán.",
+        "Phân loại được thuế trực thu, thuế gián thu và tính được số thuế phải nộp trong tình huống cơ bản.",
+        "Hiểu được tín dụng, lãi suất, cách tính lãi đơn và biết cân nhắc khi vay tiêu dùng."
+      ],
+      "cover_sha256": "fbd604239ca8ed316b9987665601aefaed90b3d2d402c57f5af8918a5cd88191",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 84,
+      "version": 1,
+      "pack_sha256": "06c05fe0aae3886aeefd73ffb15b21c8ff5e61c2931e0cc7fa77ba978dd781c4",
+      "pack_bytes": 152253,
+      "published_at": "2026-11-17T08:11:28.858737Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "hoa-hoc-10-cau-tao-nguyen-tu-va",
+      "title": "Hóa học 10: Cấu tạo nguyên tử và liên kết",
+      "subject": "Hóa học",
+      "age_band": "g10_12",
+      "language": "vi",
+      "teacher_name": "Cô Trinh",
+      "description_short": "Khóa học trình bày cấu tạo nguyên tử, cấu hình electron, đồng vị, quy luật tuần hoàn và hai loại liên kết hóa học cơ bản. Nội dung dành cho học sinh lớp 10 THPT đang học Hóa học 10.",
+      "outcomes": [
+        "Xác định được số proton, neutron, electron và điện tích hạt nhân từ kí hiệu nguyên tử hoặc ion.",
+        "Viết được cấu hình electron và suy ra vị trí, tính chất của nguyên tố trong bảng tuần hoàn.",
+        "Tính được nguyên tử khối trung bình của hỗn hợp các đồng vị.",
+        "Vận dụng được quy luật tuần hoàn để so sánh bán kính, độ âm điện, tính kim loại, tính phi kim và tính acid-base.",
+        "Phân biệt được liên kết ion với liên kết cộng hóa trị và viết được công thức electron, công thức cấu tạo."
+      ],
+      "cover_sha256": "303e391aef93199bae28f89d0148e92a36f75500aed33499f000244a2eb9c760",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "9d60defbb6485d7966187c7adbd5466669f56bd71f0d8abd49d2996cd3230625",
+      "pack_bytes": 116243,
+      "published_at": "2026-11-17T08:11:36.506410Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "hoa-hoc-9-kim-loai-va-phi-kim",
+      "title": "Hóa học 9: Kim loại và phi kim",
+      "subject": "Hóa học",
+      "age_band": "g6_9",
+      "language": "vi",
+      "teacher_name": "Cô Loan",
+      "description_short": "Khóa học củng cố kiến thức cốt lõi về kim loại và phi kim trong Hóa học 9, gồm dãy hoạt động, nhôm, sắt, ăn mòn kim loại, clo, cacbon và oxit, bảng tuần hoàn. Dành cho học sinh lớp 9 THCS đang học hoặc ôn tập chương trình Hóa học 9.",
+      "outcomes": [
+        "Vận dụng được dãy hoạt động hóa học để dự đoán phản ứng của kim loại với nước, axit loãng và dung dịch muối.",
+        "Trình bày được tính chất vật lí, tính chất hóa học và ứng dụng của nhôm, sắt; viết đúng phương trình phản ứng.",
+        "Giải thích được hiện tượng ăn mòn kim loại và nêu được các biện pháp bảo vệ kim loại.",
+        "Mô tả được tính chất, điều chế, ứng dụng của clo, cacbon, CO và CO2; nhận biết CO2 bằng nước vôi trong.",
+        "Xác định được vị trí, cấu tạo nguyên tử và xu hướng biến đổi tính kim loại, tính phi kim trong bảng tuần hoàn."
+      ],
+      "cover_sha256": "0bc3bd050e1f9b2891362681ac1178b1f5a07664407ec095d927ad8d6fba5282",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 83,
+      "version": 1,
+      "pack_sha256": "1126811e870de6e0534d500c0ce9884ca3dbe9ed3ae4c35cb8716681154c64c2",
+      "pack_bytes": 151260,
+      "published_at": "2026-11-17T08:18:12.141755Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "hoa-hoc-dai-cuong",
+      "title": "Hóa học đại cương",
+      "subject": "Hóa học",
+      "age_band": "uni",
+      "language": "vi",
+      "teacher_name": "TS. Lâm Thị Bích",
+      "description_short": "Khóa học trình bày cấu tạo chất, liên kết, trạng thái chất và các quy luật cơ bản của phản ứng hóa học. Dành cho sinh viên đại học học Hóa học đại cương.",
+      "outcomes": [
+        "viết được cấu hình electron, xác định electron hóa trị và tính nguyên tử khối trung bình",
+        "phân loại được liên kết, dự đoán hình học phân tử và giải thích lực liên phân tử",
+        "áp dụng được phương trình khí lí tưởng, định luật Hess và biểu thức hằng số cân bằng",
+        "cân bằng được phản ứng oxi hóa – khử và tính suất điện động pin theo Nernst"
+      ],
+      "cover_sha256": "f126c049f175ca104505528558c46eaf6dbfc9f1a76a05a6b12d370618de2eff",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 90,
+      "version": 1,
+      "pack_sha256": "59227b791bf0ce8f577008477bc68a548623369cb167d84e08b68044ee9443eb",
+      "pack_bytes": 131096,
+      "published_at": "2026-11-17T08:29:57.149052Z",
+      "level": "intermediate",
+      "status": "live"
+    },
+    {
+      "id": "ielts-listening-and-speaking-for",
+      "title": "IELTS Listening and Speaking for Beginners",
+      "subject": "English",
+      "age_band": "g10_12",
+      "language": "en",
+      "teacher_name": "Ms. Mai Dang",
+      "description_short": "This beginner course covers IELTS Listening Part 1 skills such as numbers, spelling, maps and short conversations, and IELTS Speaking Part 1 skills such as talking about yourself, describing places and giving a one-minute talk. It is for upper secondary students who are starting IELTS Listening and Speaking.",
+      "outcomes": [
+        "take notes on numbers, spelling, maps and short conversations in IELTS Listening Part 1",
+        "recognise common Listening traps such as 13/30 and corrected answers",
+        "answer IELTS Speaking Part 1 questions in 2–3 sentences using simple patterns",
+        "describe places accurately with There is/There are and It has",
+        "give a structured one-minute talk using short notes and signposts"
+      ],
+      "cover_sha256": "3cb6dde27eda358ec3a4cf9bd895ae6a7597454cf2530a25a2a632693b300932",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 8,
+      "est_minutes": 94,
+      "version": 1,
+      "pack_sha256": "ed3fb0b03836972df3aef0aae42653842271074ba1a67c8b127588dfae3cfd28",
+      "pack_bytes": 3116002,
+      "published_at": "2026-11-17T08:51:02.565299Z",
+      "level": "basic",
+      "status": "live"
+    },
+    {
+      "id": "khoa-hoc-tu-nhien-6-chat-va-su-b",
+      "title": "Khoa học tự nhiên 6: Chất và sự biến đổi",
+      "subject": "Khoa học tự nhiên",
+      "age_band": "g6_9",
+      "language": "vi",
+      "teacher_name": "Thầy Cường",
+      "description_short": "Khóa học cung cấp kiến thức cơ bản về chất, ba thể của chất, hỗn hợp và sự biến đổi của chất. Bài học dành cho học sinh lớp 6 THCS, gồm lý thuyết, ví dụ, lỗi thường gặp và bài tập trong từng bài.",
+      "outcomes": [
+        "Phân biệt được vật thể và chất, lấy được ví dụ về vật thể tự nhiên và vật thể nhân tạo.",
+        "Mô tả được ba thể của chất và các quá trình nóng chảy, đông đặc, bay hơi, sôi, ngưng tụ.",
+        "Nhận biết được hỗn hợp, dung dịch, dung môi, chất tan và giải thích cách tách chất bằng lọc, chiết, cô cạn.",
+        "Phân biệt được biến đổi vật lí và biến đổi hóa học, nêu dấu hiệu của biến đổi hóa học."
+      ],
+      "cover_sha256": "bfc60ccd0e7d3ecf1dd5383f2a5671cc4427188c7912ca573d51ae41df0fffed",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 6,
+      "est_minutes": 76,
+      "version": 1,
+      "pack_sha256": "8131aceb720b78ac46373453477b072352b42135a068933e90dc3e8bb11735ac",
+      "pack_bytes": 156338,
+      "published_at": "2026-11-17T08:47:55.710016Z",
+      "level": "basic",
+      "status": "live"
+    },
+    {
+      "id": "ki-nang-hoc-tap-hieu-qua",
+      "title": "Kĩ năng học tập hiệu quả",
+      "subject": "Kĩ năng học tập",
+      "age_band": "g10_12",
+      "language": "vi",
+      "teacher_name": "Cô Hồng Nhung",
+      "description_short": "Khóa học trang bị kĩ năng quản lí thời gian và ghi nhớ lâu cho học sinh THPT. Nội dung gồm mục tiêu tuần, lịch ôn tập, ghi chép, thẻ ghi nhớ và tự kiểm tra.",
+      "outcomes": [
+        "Viết được mục tiêu tuần theo SMART và tính quỹ thời gian rảnh hợp lí.",
+        "Lập được lịch ôn tập ngắt quãng theo các mốc d+1, d+3, d+7, d+14, d+30.",
+        "Ghi chép hiệu quả bằng Cornell, sơ đồ tư duy và quy tắc 5R.",
+        "Tạo và ôn thẻ ghi nhớ theo hộp Leitner.",
+        "Tự kiểm tra bằng câu hỏi theo thang Bloom và kỹ thuật Feynman."
+      ],
+      "cover_sha256": "6e8857198e8343148b7bc3d3a9f2fece71ff93ea4d5b25658539996b35eb30e6",
+      "media": [
+        "reading",
+        "quiz"
+      ],
+      "lessons_count": 5,
+      "est_minutes": 70,
+      "version": 1,
+      "pack_sha256": "b499347ad9bda2e77cd84a3570a2bb07cd19ba983b16f8ee12b92685eb1a0cbc",
+      "pack_bytes": 86778,
+      "published_at": "2026-11-18T03:40:42.358573Z",
+      "level": "basic",
+      "status": "live"
     },
     {
       "id": "ph-co-so-du-lieu-sql-tu-co-ban",
@@ -166,117 +739,6 @@
       ],
       "lessons_count": 5,
       "est_minutes": 152,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-coding-for-kids-scratch-stories",
-      "title": "Coding for Kids: Scratch Stories",
-      "subject": "Computing",
-      "age_band": "g1_5",
-      "language": "en",
-      "teacher_name": "Mr. Quan Le",
-      "description_short": "Children build three animated stories in Scratch, learning loops, events and variables as they go. Lessons use drag-and-drop blocks, so typing is optional.",
-      "outcomes": [
-        "Move and animate a character with blocks.",
-        "Use loops and events to tell a short story.",
-        "Share a finished project with a classmate."
-      ],
-      "cover_sha256": "1fef2cb9643cd869e2cf7c9dee0c78f32e5aa32dbdab39bffea83f71fd182d3b",
-      "media": [
-        "reading",
-        "audio",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 54,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "basic",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-cong-nghe-12-dien-va-dien-tu",
-      "title": "Công nghệ 12: Điện và điện tử",
-      "subject": "Công nghệ",
-      "age_band": "g10_12",
-      "language": "vi",
-      "teacher_name": "Thầy Tú",
-      "description_short": "Mạch điện xoay chiều, linh kiện điện tử cơ bản và mạch khuếch đại đơn giản, có sơ đồ mạch để tự lắp trên mô phỏng. Dành cho học sinh lớp 12.",
-      "outcomes": [
-        "Đọc được sơ đồ mạch điện cơ bản.",
-        "Nhận biết điốt, tranzito, tụ điện.",
-        "Lắp được mạch đèn LED trên mô phỏng."
-      ],
-      "cover_sha256": "29611553f77b92393f787fe10171cd003839667d9563a381ec2edb4621360b3c",
-      "media": [
-        "video",
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 5,
-      "est_minutes": 67,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-cong-nghe-3-lam-thu-cong-tu-giay-va-bia",
-      "title": "Công nghệ 3: Làm thủ công từ giấy và bìa",
-      "subject": "Công nghệ",
-      "age_band": "g1_5",
-      "language": "vi",
-      "teacher_name": "Cô Liên",
-      "description_short": "Em gấp, cắt, dán để làm hộp bút, thiệp và đồ chơi, có sơ đồ từng bước kèm danh sách dụng cụ. Dành cho học sinh lớp 3.",
-      "outcomes": [
-        "Dùng kéo, hồ dán an toàn.",
-        "Làm được một sản phẩm từ giấy theo hướng dẫn.",
-        "Đánh giá được sản phẩm của mình và của bạn."
-      ],
-      "cover_sha256": "90d9cfa19dfe494e12a829f684a2a03fb8deab0d803a8db62fe4dec1e277181c",
-      "media": [
-        "reading",
-        "audio",
-        "quiz"
-      ],
-      "lessons_count": 5,
-      "est_minutes": 50,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "basic",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-cong-nghe-7-trong-trot-va-chan-nuoi",
-      "title": "Công nghệ 7: Trồng trọt và chăn nuôi",
-      "subject": "Công nghệ",
-      "age_band": "g6_9",
-      "language": "vi",
-      "teacher_name": "Cô Tâm",
-      "description_short": "Từ đất trồng, giống cây đến nuôi gà, cá ở quy mô gia đình, các bài đều có kế hoạch mà em có thể thực hiện tại nhà. Dành cho học sinh lớp 7.",
-      "outcomes": [
-        "Chọn được đất, giống và phân bón phù hợp.",
-        "Lập được kế hoạch trồng một loại rau.",
-        "Nêu được cách phòng bệnh cho vật nuôi."
-      ],
-      "cover_sha256": "802e1387d7b9cb46727a48979faf0e66944f7d2aab4b88a4975d25108218d6e3",
-      "media": [
-        "video",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 73,
       "version": 0,
       "pack_sha256": "",
       "pack_bytes": 0,
@@ -312,33 +774,6 @@
       "status": "coming_soon"
     },
     {
-      "id": "ph-dai-so-tuyen-tinh-khong-gian-vecto-va-tri-ri",
-      "title": "Đại số tuyến tính: Không gian vectơ và trị riêng",
-      "subject": "Đại số tuyến tính",
-      "age_band": "uni",
-      "language": "vi",
-      "teacher_name": "TS. Đỗ Thu Hà",
-      "description_short": "Cơ sở, số chiều, trị riêng và chéo hóa ma trận, đi kèm ứng dụng trong PageRank và nén ảnh. Dành cho sinh viên đã học ma trận cơ bản.",
-      "outcomes": [
-        "Tìm được cơ sở và số chiều của không gian con.",
-        "Tính được trị riêng và vectơ riêng.",
-        "Chéo hóa được ma trận đối xứng."
-      ],
-      "cover_sha256": "320e0d8fb1f6a97bfd5c1ea6a8fd3aa733dc10cb27a6dcaf41b45c3aa9aefe4d",
-      "media": [
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 215,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
       "id": "ph-dai-so-tuyen-tinh-ma-tran-va-he-phuong-trinh",
       "title": "Đại số tuyến tính: Ma trận và hệ phương trình",
       "subject": "Đại số tuyến tính",
@@ -358,116 +793,6 @@
       ],
       "lessons_count": 6,
       "est_minutes": 195,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-dao-duc-3-trung-thuc-va-biet-on",
-      "title": "Đạo đức 3: Trung thực và biết ơn",
-      "subject": "Đạo đức",
-      "age_band": "g1_5",
-      "language": "vi",
-      "teacher_name": "Cô Bích",
-      "description_short": "Những tình huống gần gũi ở lớp và ở nhà giúp em nghĩ xem nên làm gì khi nhặt được của rơi hay khi nhận lỗi. Mỗi bài có câu chuyện ngắn và một câu hỏi để em chọn.",
-      "outcomes": [
-        "Kể được biểu hiện của sự trung thực.",
-        "Biết nói lời cảm ơn và làm việc nhỏ để đền đáp.",
-        "Chọn được cách ứng xử phù hợp trong tình huống quen thuộc."
-      ],
-      "cover_sha256": "a661a428df53264394bcadfcd147c8a44d90dd9c2f183648c61f1c2f5f16f91e",
-      "media": [
-        "video",
-        "audio",
-        "quiz"
-      ],
-      "lessons_count": 4,
-      "est_minutes": 37,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "basic",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-data-structures-and-algorithms",
-      "title": "Data Structures and Algorithms",
-      "subject": "Computer Science",
-      "age_band": "uni",
-      "language": "en",
-      "teacher_name": "Dr. Lan Nguyen",
-      "description_short": "Arrays, linked lists, trees, graphs and hashing, implemented in Python with complexity analysis for each. For students who finished a first programming course.",
-      "outcomes": [
-        "Implement the standard data structures from scratch.",
-        "Analyse running time with Big O.",
-        "Choose a data structure for a given problem."
-      ],
-      "cover_sha256": "3765b353f54f3b5439d25207a2397101807379efe976d2eebdcfd7c7a5922843",
-      "media": [
-        "video",
-        "reading"
-      ],
-      "lessons_count": 9,
-      "est_minutes": 336,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-dia-li-12-cac-vung-kinh-te",
-      "title": "Địa lí 12: Các vùng kinh tế",
-      "subject": "Địa lí",
-      "age_band": "g10_12",
-      "language": "vi",
-      "teacher_name": "Cô Nhàn",
-      "description_short": "Đặc điểm tự nhiên, dân cư và ngành kinh tế nổi bật của bảy vùng, học cùng Atlat và biểu đồ. Dành cho học sinh lớp 12.",
-      "outcomes": [
-        "Nêu được thế mạnh của từng vùng.",
-        "Đọc nhanh Atlat để trả lời câu hỏi.",
-        "Chọn và vẽ được dạng biểu đồ phù hợp."
-      ],
-      "cover_sha256": "637fb39b2b12ed06609ebe5b3cb1dd7c3d6b9245cd227e3f4e60a63c107071fd",
-      "media": [
-        "video",
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 94,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-dia-li-8-khi-hau-va-song-ngoi-viet-nam",
-      "title": "Địa lí 8: Khí hậu và sông ngòi Việt Nam",
-      "subject": "Địa lí",
-      "age_band": "g6_9",
-      "language": "vi",
-      "teacher_name": "Cô Hương",
-      "description_short": "Đọc bản đồ khí hậu, biểu đồ nhiệt độ lượng mưa và hệ thống sông chính của nước ta. Mỗi bài có một bản đồ trống để em tự điền.",
-      "outcomes": [
-        "Giải thích được tính chất nhiệt đới gió mùa.",
-        "Đọc được biểu đồ nhiệt độ và lượng mưa.",
-        "Kể được các hệ thống sông lớn."
-      ],
-      "cover_sha256": "d93f62684285961ebc49b0a8ab236dc907f2ef635a0cb87918c4a46e371b76f0",
-      "media": [
-        "video",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 79,
       "version": 0,
       "pack_sha256": "",
       "pack_bytes": 0,
@@ -533,88 +858,6 @@
       "status": "coming_soon"
     },
     {
-      "id": "ph-english-grammar-in-use-for-teens-tenses",
-      "title": "English Grammar in Use for Teens: Tenses",
-      "subject": "English",
-      "age_band": "g6_9",
-      "language": "en",
-      "teacher_name": "Mr. David Nguyen",
-      "description_short": "Twelve tenses explained with timelines and examples from teenage life, followed by short gap-fill drills. For learners at pre-intermediate level.",
-      "outcomes": [
-        "Choose between past simple, present perfect and past continuous.",
-        "Build correct questions and negatives in each tense.",
-        "Fix common tense mistakes in your own writing."
-      ],
-      "cover_sha256": "74f0ac33f08a4cd03b6b960836b0c0e58bd3f557dfa8cbdf473594278921ebe2",
-      "media": [
-        "video",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 89,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-gdcd-8-phap-luat-va-ki-luat",
-      "title": "GDCD 8: Pháp luật và kỉ luật",
-      "subject": "GDCD",
-      "age_band": "g6_9",
-      "language": "vi",
-      "teacher_name": "Thầy Hùng",
-      "description_short": "Dùng tình huống ở trường và trên mạng để phân biệt quyền và nghĩa vụ, kỉ luật và pháp luật. Mỗi bài kết thúc bằng một câu hỏi xử lí tình huống.",
-      "outcomes": [
-        "Phân biệt được pháp luật, kỉ luật và đạo đức.",
-        "Nêu được quyền và nghĩa vụ cơ bản của học sinh.",
-        "Biết cách xử lí khi gặp vi phạm trên mạng."
-      ],
-      "cover_sha256": "a11e9d328026c4ac81661323af816811fd59ded22fa6423038f6387f4dca3ffa",
-      "media": [
-        "video",
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 5,
-      "est_minutes": 55,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-giai-tich-1-gioi-han-va-dao-ham",
-      "title": "Giải tích 1: Giới hạn và đạo hàm",
-      "subject": "Giải tích",
-      "age_band": "uni",
-      "language": "vi",
-      "teacher_name": "TS. Thắng",
-      "description_short": "Giới hạn, liên tục và đạo hàm của hàm một biến, giải thích bằng định nghĩa epsilon–delta kèm hình minh họa. Dành cho sinh viên năm nhất khối kĩ thuật.",
-      "outcomes": [
-        "Tính được giới hạn bằng định nghĩa và quy tắc.",
-        "Xét được tính liên tục và khả vi.",
-        "Áp dụng đạo hàm vào cực trị và xấp xỉ."
-      ],
-      "cover_sha256": "7ec1b14cab732f83f2574a86ad3e2164aef9759898c3bd9a0f459cbce65ae0dd",
-      "media": [
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 195,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "advanced",
-      "status": "coming_soon"
-    },
-    {
       "id": "ph-giai-tich-2-tich-phan-va-chuoi",
       "title": "Giải tích 2: Tích phân và chuỗi",
       "subject": "Giải tích",
@@ -670,33 +913,6 @@
       "status": "coming_soon"
     },
     {
-      "id": "ph-giao-duc-kinh-te-va-phap-luat-10",
-      "title": "Giáo dục kinh tế và pháp luật 10",
-      "subject": "Giáo dục kinh tế và pháp luật",
-      "age_band": "g10_12",
-      "language": "vi",
-      "teacher_name": "Cô Thùy Anh",
-      "description_short": "Cơ chế thị trường, tiền tệ, thuế và tín dụng được giải thích bằng ví dụ về quán trà sữa của một học sinh. Dành cho học sinh lớp 10.",
-      "outcomes": [
-        "Giải thích được cung, cầu và giá cả.",
-        "Phân biệt được các loại thuế và chức năng của tiền.",
-        "Nêu được cách quản lí chi tiêu cá nhân."
-      ],
-      "cover_sha256": "0a20a4737b9f45ae2bc90d8c790ced2d0d42019eeb877e808f6b92b948810e63",
-      "media": [
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 91,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
       "id": "ph-he-dieu-hanh",
       "title": "Hệ điều hành",
       "subject": "Hệ điều hành",
@@ -722,33 +938,6 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-hoa-hoc-10-cau-tao-nguyen-tu-va-lien-ket",
-      "title": "Hóa học 10: Cấu tạo nguyên tử và liên kết",
-      "subject": "Hóa học",
-      "age_band": "g10_12",
-      "language": "vi",
-      "teacher_name": "Cô Trinh",
-      "description_short": "Cấu hình electron, bảng tuần hoàn và các loại liên kết hóa học được giải thích bằng mô hình có thể xoay. Dành cho học sinh lớp 10.",
-      "outcomes": [
-        "Viết được cấu hình electron của 20 nguyên tố đầu.",
-        "Suy ra tính chất từ vị trí trong bảng tuần hoàn.",
-        "Phân biệt liên kết ion, cộng hóa trị."
-      ],
-      "cover_sha256": "9672fd4fbb95271461413afd68ad7b25a24892248477517060a49974c4a35975",
-      "media": [
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 96,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
       "status": "coming_soon"
     },
     {
@@ -805,89 +994,6 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-hoa-hoc-9-kim-loai-va-phi-kim",
-      "title": "Hóa học 9: Kim loại và phi kim",
-      "subject": "Hóa học",
-      "age_band": "g6_9",
-      "language": "vi",
-      "teacher_name": "Cô Loan",
-      "description_short": "Khóa học sắp xếp dãy hoạt động hóa học của kim loại, tính chất của clo, cacbon và các bài tập tính theo phương trình. Có bảng tổng kết sau từng chương.",
-      "outcomes": [
-        "Viết được phản ứng của kim loại với axit, muối.",
-        "Nêu được tính chất của clo và cacbon.",
-        "Giải được bài toán hỗn hợp kim loại."
-      ],
-      "cover_sha256": "f602c78aafb8060c321929365b3df147be2280e46c9cc06f61378ac5d9e43d97",
-      "media": [
-        "video",
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 79,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-hoa-hoc-dai-cuong",
-      "title": "Hóa học đại cương",
-      "subject": "Hóa học đại cương",
-      "age_band": "uni",
-      "language": "vi",
-      "teacher_name": "TS. Lâm Thị Bích",
-      "description_short": "Cấu tạo chất, nhiệt hóa học, cân bằng và điện hóa với bài tập tính và phòng thí nghiệm ảo. Dành cho sinh viên năm nhất khối kĩ thuật, y dược.",
-      "outcomes": [
-        "Tính được hiệu ứng nhiệt của phản ứng.",
-        "Giải được bài toán cân bằng hóa học.",
-        "Viết được sơ đồ pin điện hóa."
-      ],
-      "cover_sha256": "8fd15c0281ac31b00cffe3d93e8486c58c5bb8e9cd5180d69e65d529bd559d1a",
-      "media": [
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 167,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-ielts-listening-and-speaking-for-beginners",
-      "title": "IELTS Listening and Speaking for Beginners",
-      "subject": "IELTS",
-      "age_band": "g10_12",
-      "language": "en",
-      "teacher_name": "Ms. Mai Dang",
-      "description_short": "Short listening tasks and speaking prompts for learners at about band 4.5, with slow models first and natural speed later. Each unit ends with a recording task.",
-      "outcomes": [
-        "Follow numbers, names and directions in a recording.",
-        "Answer Part 1 questions in two or three sentences.",
-        "Speak for one minute on a familiar topic."
-      ],
-      "cover_sha256": "beb01960a562950c3ebe63f1b8785c212374b75bd4b19596c24a1a581a59ec3d",
-      "media": [
-        "video",
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 98,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "basic",
       "status": "coming_soon"
     },
     {
@@ -1026,33 +1132,6 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
-    },
-    {
-      "id": "ph-khoa-hoc-tu-nhien-6-chat-va-su-bien-doi",
-      "title": "Khoa học tự nhiên 6: Chất và sự biến đổi",
-      "subject": "Khoa học tự nhiên",
-      "age_band": "g6_9",
-      "language": "vi",
-      "teacher_name": "Thầy Cường",
-      "description_short": "Từ vật thể, chất đến hỗn hợp và cách tách chất, mỗi bài có thí nghiệm có thể làm bằng đồ dùng trong nhà. Dành cho học sinh lớp 6.",
-      "outcomes": [
-        "Phân biệt vật thể, chất và hỗn hợp.",
-        "Chọn được cách tách phù hợp cho từng hỗn hợp.",
-        "Nêu được sự biến đổi vật lí và hóa học."
-      ],
-      "cover_sha256": "305ed144344484d1fa87c4944505976920f7c23cd93eb213d87d86e58ee3f08a",
-      "media": [
-        "reading",
-        "quiz"
-      ],
-      "lessons_count": 6,
-      "est_minutes": 87,
-      "version": 0,
-      "pack_sha256": "",
-      "pack_bytes": 0,
-      "published_at": null,
-      "level": "basic",
       "status": "coming_soon"
     },
     {

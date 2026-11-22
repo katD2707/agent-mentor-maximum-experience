@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "coding-for-kids-scratch-stories",
+  "title": "Coding for Kids: Scratch Stories",
+  "subject": "Coding",
+  "age_band": "g1_5",
+  "language": "en",
+  "teacher_id": "u1787445de745ccf6",
+  "teacher_name": "Mr. Quan Le",
+  "description_short": "This course introduces primary pupils to Scratch by building simple stories with blocks, sprites, costumes, backdrops, loops, and variables. It is for young beginners who are starting to code with Scratch.",
+  "outcomes": [
+    "use the Stage, sprites, Blocks palette, Code area, green flag, and stop sign to run a simple script",
+    "make a sprite move, talk, and change costumes in a timed order",
+    "build two-scene stories with backdrops and waits",
+    "repeat actions with loops and update a score with a variable"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 58,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T05:51:40.428703Z",
+      "published_at": "2026-11-17T05:51:59.727909Z",
+      "pack_sha256": "9af4e89db0536e8039fc80b72785bae6bc154eb282584091e082b5c8ad40d6f5",
+      "pack_bytes": 5283326,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": "basic",
+  "status": "live",
+  "outline": []
+}

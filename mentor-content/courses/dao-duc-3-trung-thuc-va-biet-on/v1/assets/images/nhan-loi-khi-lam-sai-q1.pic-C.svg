@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow -->
+  <ellipse cx="196" cy="288" rx="128" ry="15" fill="#E9E5F6"/>
+
+  <!-- eraser -->
+  <g transform="rotate(-9 200 200)">
+    <!-- rubber body -->
+    <rect x="68" y="142" width="264" height="116" rx="30" fill="#5A4BC0"/>
+
+    <!-- gloss along the top edge -->
+    <rect x="212" y="151" width="86" height="9" rx="4.5" fill="#E9E5F6" opacity="0.40"/>
+
+    <!-- paper sleeve -->
+    <path d="M98 142 H176 V258 H98 A30 30 0 0 1 68 228 V172 A30 30 0 0 1 98 142 Z" fill="#E9E5F6"/>
+
+    <!-- sleeve bands -->
+    <rect x="86" y="174" width="78" height="20" rx="10" fill="#F0D76E"/>
+    <rect x="86" y="206" width="78" height="20" rx="10" fill="#E8806A"/>
+
+    <!-- thin edge line where the sleeve meets the rubber -->
+    <rect x="177" y="148" width="3" height="104" rx="1.5" fill="#2B283F" opacity="0.30"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

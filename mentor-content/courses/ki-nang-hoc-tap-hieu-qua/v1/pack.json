@@ -1,0 +1,1950 @@
+{
+  "schema_version": 1,
+  "course_id": "ki-nang-hoc-tap-hieu-qua",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g10_12",
+  "title": "Kĩ năng học tập hiệu quả",
+  "chapters": [
+    {
+      "id": "ch-quan-li-thoi-gian",
+      "title": "Quản lí thời gian",
+      "lessons": [
+        {
+          "id": "muc-tieu-tuan",
+          "title": "Mục tiêu tuần",
+          "est_minutes": 15,
+          "summary": "Hướng dẫn đặt mục tiêu tuần theo SMART, xếp ưu tiên, ước lượng thời gian và tính quỹ thời gian rảnh; kèm ví dụ, lỗi thường gặp và bài tập tự luyện.",
+          "key_ideas": [
+            "Mục tiêu tuần kiểm tra được",
+            "SMART: Specific, Measurable, Achievable, Relevant, Time-bound",
+            "Ưu tiên quan trọng – khẩn cấp; hệ số đệm 1,3",
+            "T_rảnh = 168 − ngủ − trường − đi lại − ăn − khác",
+            "Dùng 60%–70% quỹ rảnh cho học; ví dụ, lỗi, bài tập"
+          ],
+          "blocks": [
+            {
+              "id": "muc-tieu-tuan-b1",
+              "kind": "text",
+              "md": "Mục tiêu tuần là kết quả cụ thể em muốn đạt trong 7 ngày, viết sao cho kiểm tra được.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "muc-tieu-tuan-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tiêu chí SMART",
+              "md": "- **S – Specific:** rõ môn, rõ nội dung, rõ hành động.\n- **M – Measurable:** có con số đo được: số bài, số đề, số trang, mức điểm.\n- **A – Achievable:** vừa sức với quỹ thời gian thật.\n- **R – Relevant:** gắn với mục tiêu học kì hoặc kì thi.\n- **T – Time-bound:** có hạn cuối cụ thể.",
+              "audio": null
+            },
+            {
+              "id": "muc-tieu-tuan-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "muc-tieu-tuan-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Mục tiêu tuần nào dưới đây được viết đúng theo tiêu chí SMART?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Tuần này học chăm hơn môn Toán để chuẩn bị cho bài kiểm tra giữa kì sắp tới.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Hoàn thành 20 bài tập Hàm số bậc hai và 1 đề 45 phút đạt ít nhất 7 điểm trước Chủ nhật.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Cố gắng đạt điểm cao hơn trong bài kiểm tra giữa kì môn Toán của tuần này.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Mỗi tối dành 45 phút ngồi vào bàn học Toán và làm hết bài cô giáo giao.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Hãy tìm mục tiêu có đủ con số đo được và hạn cuối.",
+                  "explanation": "Mục tiêu này đủ S, M, A, R, T: rõ môn và nội dung, có con số đo được, vừa sức và có hạn cuối là Chủ nhật.",
+                  "option_feedback": {
+                    "A": "Mục tiêu này không có con số đo được và không có hạn cuối nên không kiểm tra được.",
+                    "C": "Đây là mong muốn chung chung, thiếu con số cụ thể và thiếu sản phẩm cần hoàn thành.",
+                    "D": "Mục tiêu chỉ nêu thời lượng, chưa nêu sản phẩm đo được và hạn cuối cụ thể."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "muc-tieu-tuan-b3",
+              "kind": "text",
+              "md": "Ví dụ: “Tuần này học tốt môn Toán” → “Từ thứ Hai đến Chủ nhật, hoàn thành $20$ bài tập chương Hàm số bậc hai, làm $1$ đề $45$ phút đạt ít nhất $7$ điểm, mỗi tối $45$ phút.”",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "muc-tieu-tuan-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "muc-tieu-tuan-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Một bạn tính được quỹ thời gian rảnh trong tuần là 65,5 giờ. Theo bài học, bạn nên dành khoảng bao nhiêu thời gian cho việc học?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Khoảng 26–33 giờ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Khoảng 39–46 giờ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Khoảng 52–59 giờ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Toàn bộ 65,5 giờ",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Bài học khuyên dùng 60%–70% quỹ rảnh cho việc học.",
+                  "explanation": "Lấy 65,5 × 0,6 = 39,3 giờ và 65,5 × 0,7 = 45,85 giờ, tức khoảng 39–46 giờ mỗi tuần.",
+                  "option_feedback": {
+                    "A": "Mức này chỉ khoảng 40%–50% quỹ rảnh, thấp hơn khung 60%–70% được khuyến nghị.",
+                    "C": "Mức này vượt quá 70% quỹ rảnh nên không còn thời gian đệm và nghỉ.",
+                    "D": "Dùng hết quỹ rảnh cho học thì không còn 30%–40% thời gian đệm và nghỉ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "muc-tieu-tuan-b4",
+              "kind": "text",
+              "md": "Việc quan trọng nhưng chưa khẩn cấp vẫn phải xếp lịch trước. Nếu không, đến phút cuối nó sẽ thành khẩn cấp.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "muc-tieu-tuan-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "muc-tieu-tuan-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Mục tiêu “Tuần này học chăm hơn” là mục tiêu tốt vì ngắn gọn và dễ nhớ."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Việc quan trọng nhưng chưa khẩn cấp vẫn phải xếp lịch trước, nếu không sẽ thành khẩn cấp vào phút cuối."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Học bài mới vào thứ Hai ngày 15/9 thì theo mốc 1–3–7–14–30, buổi ôn đầu tiên là ngày 16/9."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Nên xếp kín từng phút trong lịch tuần để không lãng phí thời gian."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mục tiêu “học chăm hơn” không đo được, không có hạn cuối; còn lịch tuần nên chừa 20%–30% thời gian đệm nên không nên xếp kín.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "muc-tieu-tuan-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức thời gian",
+              "md": "Ước lượng thời gian: $T_{\\text{thực}} \\approx T_{\\text{ước}} \\times 1{,}3$.\n\nQuỹ rảnh tuần: $T_{\\text{rảnh}} = 168 - T_{\\text{ngủ}} - T_{\\text{trường}} - T_{\\text{đi lại}} - T_{\\text{ăn}} - T_{\\text{khác}}$.\n\nDùng $60\\%$–$70\\%$ quỹ rảnh cho học; giữ $30\\%$–$40\\%$ làm đệm và nghỉ.",
+              "audio": null
+            },
+            {
+              "id": "muc-tieu-tuan-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tính quỹ thời gian rảnh",
+              "md": "Bạn ngủ $7$ giờ/ngày, ở trường $6$ giờ × $5$ ngày, đi lại $0{,}5$ giờ × $5$ ngày, ăn $1{,}5$ giờ/ngày, việc khác $1{,}5$ giờ/ngày.\n\nTổng đã dùng: $49+30+2{,}5+10{,}5+10{,}5=102{,}5$ giờ. Quỹ rảnh: $168-102{,}5=65{,}5$ giờ.\n\nDùng $60\\%$–$70\\%$ cho học: $65{,}5 \\times 0{,}6=39{,}3$ giờ; $65{,}5 \\times 0{,}7=45{,}85$ giờ. Vậy khoảng $39$–$46$ giờ/tuần.",
+              "audio": null
+            },
+            {
+              "id": "muc-tieu-tuan-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "muc-tieu-tuan-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Khi ước lượng thời gian, thời gian thực tế thường lâu hơn dự kiến nên có thể dùng hệ số đệm: $T_{\\text{thực}} \\approx T_{\\text{ước}} \\times {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "1,3",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "0,7",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "2,3",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Hệ số đệm 1,3 nghĩa là cộng thêm khoảng 30% so với thời gian ước tính ban đầu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "muc-tieu-tuan-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để thời gian thực bằng 6,5 giờ",
+              "x": {
+                "symbol": "T_{\\text{ước}}",
+                "label": "Thời gian ước",
+                "unit": "giờ"
+              },
+              "y": {
+                "symbol": "T_{\\text{thực}}",
+                "label": "Thời gian thực",
+                "unit": "giờ"
+              },
+              "expr": "x*1.3",
+              "x_min": 0.0,
+              "x_max": 10.0,
+              "x_step": 0.5,
+              "x_start": 2.0,
+              "target_y": 6.5,
+              "tolerance": 0.05,
+              "praise": "Chính xác: thời gian thực thường bằng 1,3 lần ước lượng.",
+              "audio": null
+            },
+            {
+              "id": "muc-tieu-tuan-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "muc-tieu-tuan-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi chữ cái trong tiêu chí SMART với nội dung tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "S – Specific",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "rõ môn, rõ nội dung, rõ hành động",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "M – Measurable",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "có con số đo được: số bài, số đề, mức điểm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "A – Achievable",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "vừa sức với quỹ thời gian thật",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "T – Time-bound",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "có hạn cuối cụ thể",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "SMART gồm Specific, Measurable, Achievable, Relevant, Time-bound; mỗi chữ cái ứng với một yêu cầu khi viết mục tiêu tuần.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "muc-tieu-tuan-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Một mục tiêu tuần tốt phải kiểm tra được. Tiêu chí SMART gồm những gì?",
+                  "answer": "Specific, Measurable, Achievable, Relevant, Time-bound.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao mục tiêu “tuần này học chăm hơn” không dùng được?",
+                  "answer": "Vì không đo được, không có hạn cuối, không biết khi nào hoàn thành.",
+                  "image": null
+                },
+                {
+                  "prompt": "Quỹ thời gian rảnh trong tuần tính thế nào và nên dùng bao nhiêu cho học?",
+                  "answer": "$T_{\\text{rảnh}} = 168 - T_{\\text{ngủ}} - T_{\\text{trường}} - T_{\\text{đi lại}} - T_{\\text{ăn}} - T_{\\text{khác}}$; dùng $60\\%$–$70\\%$ cho học.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lich-on-tap",
+          "title": "Lịch ôn tập",
+          "est_minutes": 15,
+          "summary": "Hướng dẫn lập lịch ôn tập ngắt quãng, xen kẽ môn, chia khối thời gian và chừa thời gian đệm; kèm ví dụ, lỗi thường gặp và bài tập tự luyện.",
+          "key_ideas": [
+            "Lịch ghi rõ môn, nội dung, sản phẩm, thời lượng",
+            "Ôn ngắt quãng d+1, d+3, d+7, d+14, d+30",
+            "Khối 45–60 phút, nghỉ 5–10 phút; Pomodoro 25+5",
+            "Chừa 20%–30% thời gian đệm",
+            "Ví dụ, lỗi thường gặp và bài tập tự luyện"
+          ],
+          "blocks": [
+            {
+              "id": "lich-on-tap-b2",
+              "kind": "text",
+              "md": "Lịch ôn tập là bảng phân bổ thời gian theo ngày hoặc tuần, ghi rõ: học môn gì, nội dung gì, làm ra sản phẩm gì, trong bao lâu. Chỉ ghi “Học Toán” là chưa đủ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lich-on-tap-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lich-on-tap-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Một lịch ôn tập hữu ích nên có những thông tin nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Môn, nội dung, sản phẩm, thời lượng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Tên môn và số trang cần đọc.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Giờ bắt đầu và giờ kết thúc.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Điểm số mục tiêu và lời nhắc.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Lịch ôn tập cần ghi rõ học môn gì, nội dung gì, làm ra sản phẩm gì, trong bao lâu.",
+                  "option_feedback": {
+                    "B": "Chỉ có môn và số trang thì thiếu sản phẩm và thời lượng.",
+                    "C": "Chỉ có mốc giờ thì chưa cho biết học nội dung gì, làm ra gì.",
+                    "D": "Điểm mục tiêu không thay thế nội dung và sản phẩm của buổi ôn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "lich-on-tap-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/lich-on-tap-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "7222790df58481f278e67434a794333792b21b71ef4e8c43857f1d3efc514399",
+                "bytes": 3045
+              },
+              "alt": "Trục thời gian với các mốc ôn ngắt quãng sau ngày học bài mới",
+              "caption": "Các mốc ôn ngắt quãng thường dùng",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "lich-on-tap-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lich-on-tap-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi lập lịch tuần, bài học khuyên chừa khoảng bao nhiêu thời gian đệm?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "5%–10%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "20%–30%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "60%–70%",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "80%–90%",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Lịch tuần nên chừa khoảng 20%–30% thời gian đệm để xử lí việc phát sinh.",
+                  "option_feedback": {
+                    "A": "Đây là khoảng nghỉ giữa các khối học, không phải thời gian đệm của lịch tuần.",
+                    "C": "Đây là tỉ lệ quỹ thời gian rảnh nên dành cho học, không phải thời gian đệm.",
+                    "D": "Chừng này là xếp quá kín, trái với khuyến nghị trong bài."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lich-on-tap-b4",
+              "kind": "text",
+              "md": "Mỗi khối học nên kéo dài $45$–$60$ phút, nghỉ $5$–$10$ phút; có thể dùng Pomodoro $25+5$. Xen kẽ môn trong tuần và chừa $20\\%$–$30\\%$ thời gian đệm; đừng xếp kín từng phút.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lich-on-tap-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Nhịp ôn và khối thời gian",
+              "md": "Ôn ngắt quãng theo các mốc: $d+1,\\ d+3,\\ d+7,\\ d+14,\\ d+30$ ($d$ là ngày học bài mới). Khối học $45$–$60$ phút, nghỉ $5$–$10$ phút; Pomodoro $25+5$; chừa $20\\%$–$30\\%$ thời gian đệm.",
+              "audio": null
+            },
+            {
+              "id": "lich-on-tap-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lich-on-tap-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Em học bài mới vào thứ Sáu ngày 3/10. Theo các mốc ôn $d+1$, $d+3$, $d+7$, $d+14$, $d+30$, ngày ôn cuối cùng là ngày nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "2/11",
+                      "02/11",
+                      "2-11",
+                      "2 tháng 11",
+                      "ngày 2 tháng 11"
+                    ]
+                  },
+                  "hint": "Cộng 30 ngày kể từ 3/10; tháng 10 có 31 ngày.",
+                  "explanation": "Mốc $d+30$ tính từ 3/10 là ngày 2/11, vì tháng 10 có 31 ngày.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lich-on-tap-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: 5 mốc ôn từ 15/9",
+              "md": "Học bài “Dao động điều hòa” vào thứ Hai $15/9$. Áp dụng $d+1,d+3,d+7,d+14,d+30$: ôn các ngày $16/9$, $18/9$, $22/9$, $29/9$ và $15/10$ (tháng 9 có 30 ngày).",
+              "audio": null
+            },
+            {
+              "id": "lich-on-tap-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lich-on-tap-q4",
+                  "type": "FILL_TILES",
+                  "stem": "Pomodoro thường là ${{gap}}$ phút học + $5$ phút nghỉ.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "25",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "20",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "30",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "45",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Pomodoro trong bài là 25 phút học và 5 phút nghỉ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lich-on-tap-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để 5 tối rảnh cho tổng thời gian có là 600 phút.",
+              "x": {
+                "symbol": "n",
+                "label": "Số tối rảnh",
+                "unit": "tối"
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Tổng thời gian có",
+                "unit": "phút"
+              },
+              "expr": "120*x",
+              "x_min": 1.0,
+              "x_max": 6.0,
+              "x_step": 1.0,
+              "x_start": 2.0,
+              "target_y": 600.0,
+              "tolerance": 1.0,
+              "praise": "Đúng: $5 \\times 120 = 600$ phút.",
+              "audio": null
+            },
+            {
+              "id": "lich-on-tap-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lich-on-tap-q5",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với thông tin tương ứng trong bài.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Pomodoro",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "25 phút học + 5 phút nghỉ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Khối học",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "45–60 phút",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Thời gian đệm",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "20%–30%",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Mốc ôn ngắt quãng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "d+1, d+3, d+7, d+14, d+30",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đây là các con số và mốc ôn được nêu trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "lich-on-tap-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Một lịch ôn tập tốt phải ghi rõ những gì?",
+                  "answer": "Môn, nội dung, sản phẩm và thời lượng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Các mốc ôn ngắt quãng thường dùng là gì?",
+                  "answer": "d+1, d+3, d+7, d+14, d+30.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nên chừa bao nhiêu thời gian đệm trong lịch tuần?",
+                  "answer": "Khoảng 20%–30%.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": null
+    },
+    {
+      "id": "ch-nho-lau",
+      "title": "Nhớ lâu",
+      "lessons": [
+        {
+          "id": "ghi-chep",
+          "title": "Ghi chép",
+          "est_minutes": 15,
+          "summary": "Hướng dẫn ghi chép có chọn lọc bằng Cornell, sơ đồ tư duy, quy tắc 5R và ký hiệu nhanh; kèm ví dụ, lỗi thường gặp và bài tập tự luyện.",
+          "key_ideas": [
+            "Chọn lọc ý chính, diễn đạt bằng lời của mình",
+            "Cornell: cột trái 1/3 câu hỏi, cột phải 2/3 nội dung, tóm tắt cuối",
+            "Sơ đồ tư duy: từ khóa trung tâm → nhánh chính → nhánh phụ",
+            "Quy tắc 5R và ký hiệu nhanh",
+            "Ví dụ, lỗi thường gặp và bài tập tự luyện"
+          ],
+          "blocks": [
+            {
+              "id": "ghi-chep-b1",
+              "kind": "text",
+              "md": "Ghi chép hiệu quả không phải là chép lại nguyên văn. Em cần **chọn lọc ý chính**, tổ chức lại rồi diễn đạt bằng lời của mình. Như vậy em mới xử lí thông tin và tạo được \"đường nhớ\".",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ghi-chep-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/ghi-chep-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "ee225afc6c341ae6801cdb03fb99a221cbdb3ca34ded181828d4c221bd22a449",
+                "bytes": 2164
+              },
+              "alt": "Sơ đồ trang giấy Cornell chia ba phần: cột trái một phần ba, cột phải hai phần ba, phần tóm tắt ở dưới cùng",
+              "caption": "Bố cục trang ghi chú Cornell",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "ghi-chep-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ghi-chep-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo phương pháp Cornell, cột bên phải (khoảng $2/3$ trang giấy) được dùng để ghi nội dung gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Ý chính, ví dụ, công thức",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Câu hỏi và từ khóa",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Tóm tắt $2$–$3$ câu",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Các ký hiệu ghi chép nhanh",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Cột rộng hơn dành cho nội dung bài học.",
+                  "explanation": "Cornell chia trang thành 3 phần: cột trái $1/3$ ghi câu hỏi, cột phải $2/3$ ghi ý chính, ví dụ, công thức.",
+                  "option_feedback": {
+                    "B": "Đó là nội dung của cột trái, chiếm khoảng $1/3$ trang.",
+                    "C": "Phần tóm tắt nằm ở dưới cùng trang, không phải cột phải.",
+                    "D": "Ký hiệu nhanh được dùng rải rác trong ghi chú, không phải phần chia cột của Cornell."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ghi-chep-b3",
+              "kind": "text",
+              "md": "Phương pháp Cornell chia trang giấy làm 3 phần: cột trái khoảng $1/3$ trang ghi câu hỏi, từ khóa; cột phải khoảng $2/3$ trang ghi ý chính, ví dụ, công thức; phần dưới cùng tóm tắt $2$–$3$ câu.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ghi-chep-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ghi-chep-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao chép nguyên văn từ slide hoặc sách lại là cách ghi chép kém hiệu quả?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì em không xử lí thông tin nên không tạo được “đường nhớ”",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì trang giấy sẽ không đủ chỗ để viết",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì không dùng được bút màu khi chép bài",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì cột trái Cornell sẽ bị bỏ trống",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Chép y nguyên khiến em không chọn lọc, không đặt câu hỏi và không tự kiểm tra được. Ghi chép hiệu quả là chọn lọc ý chính rồi diễn đạt bằng lời của mình.",
+                  "option_feedback": {
+                    "B": "Thiếu chỗ không phải vấn đề chính; điều đáng ngại là không hiểu và không nhớ.",
+                    "C": "Màu sắc chỉ là công cụ hỗ trợ, không phải lí do khiến việc chép nguyên văn kém hiệu quả.",
+                    "D": "Đó chỉ là một biểu hiện bên ngoài, không phải nguyên nhân sâu xa của việc nhớ kém."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "ghi-chep-b4",
+              "kind": "text",
+              "md": "Với sơ đồ tư duy, em đi từ **từ khóa trung tâm** → **nhánh chính** → **nhánh phụ**, dùng mũi tên, màu và ký hiệu để thể hiện quan hệ. Sau buổi học, dành khoảng $10$ phút hoàn thiện ghi chú và viết câu hỏi vào cột trái.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ghi-chep-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ghi-chep-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đánh dấu đúng/sai cho các nhận định sau về ghi chép.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Phương pháp Cornell chia trang giấy làm 3 phần."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Khi lập sơ đồ tư duy, nên bắt đầu từ các nhánh phụ rồi mới tới từ khóa trung tâm."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Ký hiệu $!$ được dùng để đánh dấu ý quan trọng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Cột trái của trang Cornell dùng để ghi ý chính, ví dụ và công thức."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Cornell gồm 3 phần: cột trái $1/3$ ghi câu hỏi, cột phải $2/3$ ghi nội dung, dưới cùng là tóm tắt; sơ đồ tư duy đi từ từ khóa trung tâm ra các nhánh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ghi-chep-b5",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Quy tắc 5R và ký hiệu nhanh",
+              "md": "**5R**: Record (ghi) → Reduce (rút gọn) → Recite (nhắc lại) → Reflect (suy ngẫm) → Review (ôn lại).\n\nKý hiệu nhanh: $\\Rightarrow$ (suy ra), $\\uparrow$ (tăng), $\\downarrow$ (giảm), $?$ (chưa hiểu), $!$ (quan trọng).",
+              "audio": null
+            },
+            {
+              "id": "ghi-chep-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ghi-chep-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Sau mỗi buổi học, nên dành bao nhiêu phút để hoàn thiện ghi chú và viết câu hỏi vào cột trái? (chỉ nêu số)",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "10"
+                    ]
+                  },
+                  "hint": "Một khoảng thời gian ngắn, khoảng một phần sáu giờ.",
+                  "explanation": "Bài học khuyến nghị dành khoảng $10$ phút sau buổi học để hoàn thiện ghi chú và đặt câu hỏi cho cột trái.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "ghi-chep-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ghi chú bài “Định luật Ôm” theo Cornell",
+              "md": "| Cột trái: câu hỏi/từ khóa | Cột phải: nội dung |\n|---|---|\n| Định luật Ôm phát biểu thế nào? | Cường độ dòng điện qua vật dẫn tỉ lệ thuận với hiệu điện thế hai đầu vật dẫn, tỉ lệ nghịch với điện trở. |\n| Công thức? | $I = \\dfrac{U}{R}$ |\n| Đơn vị? | $I$: ampe (A); $U$: vôn (V); $R$: ôm ($\\Omega$). |\n| Khi nào dùng? | Mạch điện có điện trở thuần, nhiệt độ ổn định. |\n\n**Tóm tắt dưới cùng**: “Định luật Ôm cho quan hệ $I$, $U$, $R$; công thức $I=U/R$; cần chú ý điều kiện áp dụng.”",
+              "audio": null
+            },
+            {
+              "id": "ghi-chep-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ghi-chep-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Quy tắc 5R: Record (ghi) → {{gap}} (rút gọn) → Recite (nhắc lại) → {{gap}} (suy ngẫm) → Review (ôn lại).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Reduce",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "Reflect",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Recall",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "Repeat",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "5R gồm Record, Reduce, Recite, Reflect, Review — trong đó Reduce là rút gọn, Reflect là suy ngẫm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ghi-chep-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "**Chép nguyên văn từ slide hoặc sách, không chọn lọc, không đặt câu hỏi.**\n\nVì sao sai: em không xử lí thông tin nên không tạo được “đường nhớ”. Khi mở lại vẫn thấy dài, không biết đâu là ý chính và rất khó tự kiểm tra.",
+              "audio": null
+            },
+            {
+              "id": "ghi-chep-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ghi-chep-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi ký hiệu ghi chép nhanh với ý nghĩa của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$\\Rightarrow$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "suy ra",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$\\uparrow$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "tăng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$\\downarrow$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "giảm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$?$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "chưa hiểu",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các ký hiệu nhanh giúp ghi bài tốt hơn: mũi tên kép là suy ra, mũi tên lên/xuống là tăng/giảm, dấu hỏi là chỗ chưa hiểu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "ghi-chep-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Ghi chép hiệu quả khác chép nguyên văn ở chỗ nào?",
+                  "answer": "Chọn lọc ý chính, tổ chức lại và diễn đạt bằng lời của mình.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trang Cornell chia làm mấy phần, mỗi phần ghi gì?",
+                  "answer": "Cột trái $1/3$ ghi câu hỏi, từ khóa; cột phải $2/3$ ghi ý chính, ví dụ, công thức; dưới cùng tóm tắt $2$–$3$ câu.",
+                  "image": null
+                },
+                {
+                  "prompt": "Quy tắc 5R gồm những bước nào?",
+                  "answer": "Record (ghi), Reduce (rút gọn), Recite (nhắc lại), Reflect (suy ngẫm), Review (ôn lại).",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the-ghi-nho",
+          "title": "Thẻ ghi nhớ",
+          "est_minutes": 15,
+          "summary": "Hướng dẫn làm thẻ ghi nhớ hai mặt và ôn theo hộp Leitner, kèm cách tính số thẻ và thời gian ôn; có ví dụ, lỗi thường gặp và bài tập tự luyện.",
+          "key_ideas": [
+            "Thẻ hai mặt: câu hỏi ở trước, trả lời ngắn ở sau",
+            "Mỗi thẻ một ý; câu hỏi cụ thể; trả lời ngắn",
+            "Hộp Leitner 1–5: ôn hàng ngày đến 1 tháng/lần",
+            "Đúng chuyển hộp cao hơn, sai về hộp 1",
+            "N_ôn = N_mới + N_đến hạn; T ≈ N × t; ví dụ, lỗi, bài tập"
+          ],
+          "blocks": [
+            {
+              "id": "the-ghi-nho-b1",
+              "kind": "text",
+              "md": "Thẻ ghi nhớ (flashcard) có hai mặt. Mặt trước là câu hỏi, khái niệm hoặc hình gợi ý; mặt sau là câu trả lời ngắn, công thức hoặc ví dụ. Mỗi thẻ chỉ nên chứa **một ý**.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "the-ghi-nho-b2",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Nguyên tắc làm thẻ",
+              "md": "- Câu hỏi cụ thể, tránh kiểu \"Hãy trình bày…\".\n- Trả lời ngắn, bằng lời của mình.\n- Có thể dùng hình vẽ, màu, ký hiệu.\n- Không tạo quá $15$ thẻ mới mỗi ngày để tránh quá tải.",
+              "audio": null
+            },
+            {
+              "id": "the-ghi-nho-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-ghi-nho-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Nguyên tắc nào sau đây đúng khi làm thẻ ghi nhớ?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Mỗi thẻ chỉ nên chứa một ý",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Mỗi thẻ nên nhồi nhiều ý để tiết kiệm số thẻ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Câu hỏi mặt trước nên bắt đầu bằng “Hãy trình bày…”",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Mặt sau nên chép nguyên văn cả đoạn dài trong sách",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi thẻ một ý giúp nhớ trọn trong vài giây và biết rõ mình sai ở ý nào.",
+                  "option_feedback": {
+                    "B": "Nhồi nhiều ý làm thẻ dài, không nhớ trọn trong vài giây và khó xác định mình sai ở đâu.",
+                    "C": "Kiểu câu hỏi “Hãy trình bày…” quá rộng, không cụ thể nên khó tự kiểm tra.",
+                    "D": "Chép nguyên văn là lỗi thường gặp: không chọn lọc, không viết bằng lời của mình."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "the-ghi-nho-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Hộp Leitner 1–5",
+              "md": "- Hộp 1: ôn hàng ngày.\n- Hộp 2: ôn $2$–$3$ ngày/lần.\n- Hộp 3: ôn $1$ tuần/lần.\n- Hộp 4: ôn $2$ tuần/lần.\n- Hộp 5: ôn $1$ tháng/lần.",
+              "audio": null
+            },
+            {
+              "id": "the-ghi-nho-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-ghi-nho-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Một ngày em có 5 thẻ mới và 15 thẻ đến hạn, trung bình 12 giây/thẻ. Thời gian ôn ước lượng là bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "4 phút",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "3 phút",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "5 phút",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "20 phút",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "N = 5 + 15 = 20 thẻ, T ≈ 20 × 12 = 240 giây = 4 phút.",
+                  "option_feedback": {
+                    "B": "Em chỉ lấy 15 thẻ đến hạn mà quên cộng 5 thẻ mới.",
+                    "C": "Em cộng nhầm số thẻ cần ôn thành 25 thay vì 20.",
+                    "D": "Em nhầm giây với phút khi đổi đơn vị."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "the-ghi-nho-b4",
+              "kind": "text",
+              "md": "Trả lời đúng: chuyển thẻ lên hộp cao hơn. Trả lời sai: đưa thẻ về hộp 1. Mỗi ngày, số thẻ cần ôn là $N_{\\text{ôn}} = N_{\\text{mới}} + N_{\\text{đến hạn}}$, và thời gian ôn ước lượng $T \\approx N \\times t$ với $t$ khoảng $10$–$20$ giây/thẻ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "the-ghi-nho-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-ghi-nho-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai về thẻ ghi nhớ và hộp Leitner?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Thẻ ở hộp 3 được ôn khoảng 1 tuần một lần."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Trả lời đúng thì chuyển thẻ về hộp 1."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Mỗi thẻ nên chứa càng nhiều ý càng tốt."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Không nên tạo quá 15 thẻ mới mỗi ngày."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Trả lời đúng thì thẻ lên hộp cao hơn, trả lời sai mới về hộp 1; mỗi thẻ chỉ một ý và tối đa 15 thẻ mới/ngày.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "the-ghi-nho-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: hôm nay ôn bao nhiêu thẻ?",
+              "md": "Hộp 1 có $6$ thẻ, hộp 2 có $4$ thẻ, hộp 3 có $3$ thẻ.\n\nSố thẻ cần ôn: $N_{\\text{ôn}} = 6 + 4 + 3 = 13$ thẻ.\n\nVới $t = 12$ giây/thẻ: $T \\approx 13 \\times 12 = 156$ giây $\\approx 2{,}6$ phút.",
+              "audio": null
+            },
+            {
+              "id": "the-ghi-nho-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-ghi-nho-q4",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Hôm nay hộp 1 có 6 thẻ, hộp 2 có 4 thẻ, hộp 3 có 3 thẻ. Cần ôn bao nhiêu thẻ?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "13",
+                      "13 thẻ"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "N_ôn = 6 + 4 + 3 = 13 thẻ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "the-ghi-nho-b6",
+              "kind": "interactive",
+              "prompt": "Kéo để thời gian ôn còn đúng 12 phút (trung bình 12 giây/thẻ)",
+              "x": {
+                "symbol": "N",
+                "label": "Số thẻ cần ôn",
+                "unit": "thẻ"
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Thời gian ôn",
+                "unit": "phút"
+              },
+              "expr": "0.2*x",
+              "x_min": 0.0,
+              "x_max": 150.0,
+              "x_step": 5.0,
+              "x_start": 20.0,
+              "target_y": 12.0,
+              "tolerance": 0.6,
+              "praise": "Chuẩn! 60 thẻ × 12 giây = 720 giây = 12 phút.",
+              "audio": null
+            },
+            {
+              "id": "the-ghi-nho-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-ghi-nho-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Số thẻ cần ôn mỗi ngày: $N_{\\text{ôn}} = {{gap}} + N_{\\text{đến hạn}}$ và thời gian ôn $T \\approx N \\times {{gap}}$, với $t$ khoảng 10–20 giây/thẻ.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "N_{\\text{mới}}",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "t",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "N_{\\text{đến hạn}}",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "15",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Công thức trong bài là N_ôn = N_mới + N_đến hạn và T ≈ N × t.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "the-ghi-nho-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Viết cả một đoạn văn dài hoặc nhồi nhiều ý lên một thẻ. Thẻ dài không thể nhớ trọn trong vài giây, em không xác định được mình sai ở ý nào, và việc ôn trở nên tốn thời gian.",
+              "audio": null
+            },
+            {
+              "id": "the-ghi-nho-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "the-ghi-nho-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi hộp Leitner với tần suất ôn tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Hộp 1",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "hàng ngày",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Hộp 2",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "2–3 ngày/lần",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Hộp 3",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "1 tuần/lần",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Hộp 5",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "1 tháng/lần",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Hộp càng cao thì khoảng cách giữa các lần ôn càng dài: từ hàng ngày đến 1 tháng/lần.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "the-ghi-nho-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Một thẻ ghi nhớ tốt có gì ở hai mặt?",
+                  "answer": "Mặt trước là câu hỏi cụ thể, mặt sau là câu trả lời ngắn — mỗi thẻ một ý.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trong hộp Leitner, trả lời đúng và sai thì thẻ đi đâu?",
+                  "answer": "Đúng thì lên hộp cao hơn (ôn thưa hơn), sai thì về hộp 1 (ôn hàng ngày).",
+                  "image": null
+                },
+                {
+                  "prompt": "Tính số thẻ cần ôn và thời gian ôn mỗi ngày thế nào?",
+                  "answer": "$N_{\\text{ôn}} = N_{\\text{mới}} + N_{\\text{đến hạn}}$ và $T \\approx N \\times t$ với $t$ khoảng 10–20 giây/thẻ.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tu-kiem-tra",
+          "title": "Tự kiểm tra",
+          "est_minutes": 10,
+          "summary": "Hướng dẫn tự kiểm tra bằng câu hỏi theo thang Bloom và kỹ thuật Feynman.",
+          "key_ideas": [
+            "Tự đặt câu hỏi và trả lời không nhìn tài liệu",
+            "Sau mỗi buổi học viết 3–5 câu hỏi",
+            "Thang Bloom: nhớ, hiểu, vận dụng, phân tích, đánh giá, sáng tạo",
+            "Kỹ thuật Feynman: giải thích lại cho người bạn tưởng tượng"
+          ],
+          "blocks": [
+            {
+              "id": "tu-kiem-tra-b1",
+              "kind": "text",
+              "md": "Tự kiểm tra là tự đặt câu hỏi và trả lời **mà không nhìn tài liệu**. Mục đích là đo mức độ nhớ thật, thay vì cảm giác “mình đọc rồi nên biết rồi”.\n\nNếu phải mở vở mới trả lời được thì bài đó chưa vào đầu.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tu-kiem-tra-b2",
+              "kind": "text",
+              "md": "Sau mỗi buổi học, dành vài phút viết ra **3–5 câu hỏi** cho bài vừa học. Đó là bộ đề tự kiểm tra của em cho buổi sau.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tu-kiem-tra-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tu-kiem-tra-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Mục đích chính của việc tự kiểm tra là gì?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đo mức độ nhớ thật khi không nhìn tài liệu",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Ghi lại toàn bộ lời giảng để học thuộc",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Trang trí vở học cho đẹp mắt",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Đọc thầm lời giải trong vở",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nghĩ xem việc này khác gì với việc đọc lại vở.",
+                  "explanation": "Tự kiểm tra là tự đặt câu hỏi và trả lời mà không nhìn tài liệu, nhằm đo mức độ nhớ thật.",
+                  "option_feedback": {
+                    "B": "Đây là chép nguyên văn, không phải tự kiểm tra.",
+                    "C": "Trang trí vở không giúp đo mức độ nhớ.",
+                    "D": "Đọc thầm lời giải vẫn là nhìn tài liệu nên không kiểm tra được trí nhớ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tu-kiem-tra-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tu-kiem-tra-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo nội dung Tự kiểm tra, sau mỗi buổi học em nên viết ra bao nhiêu câu hỏi để tự kiểm tra?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "1–2 câu",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "3–5 câu",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "6–8 câu",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "10–15 câu",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Con số này nằm ngay trong phần kiến thức cốt lõi của bài Tự kiểm tra.",
+                  "explanation": "Bài học nêu rõ: sau mỗi buổi học nên viết ra 3–5 câu hỏi để tự kiểm tra mức độ nhớ thật.",
+                  "option_feedback": {
+                    "A": "Con số này ít hơn khuyến nghị trong bài.",
+                    "C": "Bài khuyến nghị 3–5 câu, không phải 6–8 câu.",
+                    "D": "Đây là giới hạn số thẻ mới mỗi ngày, không phải số câu hỏi tự kiểm tra."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "tu-kiem-tra-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Sáu mức câu hỏi theo thang Bloom",
+              "md": "- **Nhớ:** “Phát biểu định nghĩa…”\n- **Hiểu:** “Giải thích vì sao…”\n- **Vận dụng:** “Tính…”\n- **Phân tích:** “So sánh…”\n- **Đánh giá:** “Nhận xét cách giải…”\n- **Sáng tạo:** “Đề xuất ví dụ mới…”",
+              "audio": null
+            },
+            {
+              "id": "tu-kiem-tra-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tu-kiem-tra-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xác định mỗi nhận định sau đúng hay sai.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Sau mỗi buổi học, nên viết ra 3–5 câu hỏi tự kiểm tra."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Tự kiểm tra chỉ có hiệu quả khi được nhìn lại vở trong lúc trả lời."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Kỹ thuật Feynman yêu cầu giải thích lại bài bằng lời của chính mình cho một người bạn tưởng tượng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Trong thang Bloom, “Đề xuất ví dụ mới” thuộc mức “Nhớ”."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Tự kiểm tra phải trả lời không nhìn tài liệu; “Đề xuất ví dụ mới” thuộc mức Sáng tạo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tu-kiem-tra-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: bộ câu hỏi cho bài “pH”",
+              "md": "- **Nhớ:** “pH là gì?” → pH là chỉ số đo độ axit/bazơ của dung dịch.\n- **Vận dụng:** “Dung dịch có pH = 3 là axit, trung tính hay bazơ?” → axit, vì pH < 7.\n- **Phân tích:** “So sánh dung dịch pH = 2 và dung dịch pH = 9.” → một dung dịch axit, một dung dịch bazơ.\n\nBa câu là đủ cho một buổi; buổi sau hỏi lại mà không nhìn đáp án.",
+              "audio": null
+            },
+            {
+              "id": "tu-kiem-tra-b6",
+              "kind": "text",
+              "md": "**Kỹ thuật Feynman:** giải thích lại bài cho một người bạn tưởng tượng, bằng lời của chính em. Không có bạn thật cũng được. Phải nói ra thành lời, không đọc lại trong vở.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tu-kiem-tra-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tu-kiem-tra-q5",
+                  "type": "FILL_TILES",
+                  "stem": "Thang Bloom gồm: nhớ, hiểu, vận dụng, phân tích, {{gap}}, {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "đánh giá",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "sáng tạo",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "so sánh",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "ghi nhớ",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Hai mức cuối của thang Bloom là đánh giá và sáng tạo.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tu-kiem-tra-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi làm mất khả năng tự kiểm tra",
+              "md": "Chép nguyên văn từ slide hoặc sách, không chọn lọc và **không đặt câu hỏi**. Vì không xử lí thông tin nên em không tạo được “đường nhớ”; khi mở lại vẫn thấy dài, không biết đâu là ý chính và rất khó tự kiểm tra.",
+              "audio": null
+            },
+            {
+              "id": "tu-kiem-tra-k6",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tu-kiem-tra-q6",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi mức trong thang Bloom với kiểu câu hỏi tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Nhớ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Phát biểu định nghĩa",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Hiểu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Giải thích vì sao",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Vận dụng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Phân tích",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "So sánh",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi mức Bloom gắn với một kiểu câu hỏi đặc trưng như bài học nêu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tu-kiem-tra-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Tự kiểm tra là gì?",
+                  "answer": "Tự đặt câu hỏi và trả lời mà không nhìn tài liệu, để kiểm tra mức độ nhớ thật.",
+                  "image": null
+                },
+                {
+                  "prompt": "Sau mỗi buổi học nên viết bao nhiêu câu hỏi?",
+                  "answer": "Khoảng 3–5 câu hỏi cho bài vừa học.",
+                  "image": null
+                },
+                {
+                  "prompt": "Kỹ thuật Feynman làm thế nào?",
+                  "answer": "Giải thích lại bài cho một người bạn tưởng tượng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": null
+    }
+  ],
+  "gloss_start": null
+}

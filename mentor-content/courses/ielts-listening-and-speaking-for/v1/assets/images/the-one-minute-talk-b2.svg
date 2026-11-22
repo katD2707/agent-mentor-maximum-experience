@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <clipPath id="barclip"><rect x="90" y="320" width="820" height="70" rx="18"/></clipPath>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<g clip-path="url(#barclip)">
+  <rect x="90.0" y="320" width="131.2" height="70" fill="#E9E5F6"/>
+  <rect x="221.2" y="320" width="229.6" height="70" fill="#9FD8BF"/>
+  <rect x="450.8" y="320" width="229.6" height="70" fill="#F0D76E"/>
+  <rect x="680.4" y="320" width="229.6" height="70" fill="#E8806A"/>
+  <line x1="221.2" y1="320" x2="221.2" y2="390" stroke="#2B283F" stroke-width="1.2" opacity="0.4" stroke-linecap="round"/>
+  <line x1="450.8" y1="320" x2="450.8" y2="390" stroke="#2B283F" stroke-width="1.2" opacity="0.4" stroke-linecap="round"/>
+  <line x1="680.4" y1="320" x2="680.4" y2="390" stroke="#2B283F" stroke-width="1.2" opacity="0.4" stroke-linecap="round"/>
+</g>
+<rect x="90" y="320" width="820" height="70" rx="18" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M795.2 369.0 C773.2 349.0, 787.2 335.0, 795.2 347.0 C803.2 335.0, 817.2 349.0, 795.2 369.0 Z" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="950" cy="355.0" r="26" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="950" y1="355.0" x2="950" y2="339.0" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="950" y1="355.0" x2="963" y2="363.0" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="950" cy="355.0" r="2.5" fill="#2B283F"/>
+<text x="50" y="220" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">Introduction: what it is</text>
+<text x="80" y="150" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">First detail</text>
+<text x="490" y="220" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">Also, second detail</text>
+<text x="950" y="150" font-family="Lexend, sans-serif" font-size="26" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="end">Finally: feeling / I like it because</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

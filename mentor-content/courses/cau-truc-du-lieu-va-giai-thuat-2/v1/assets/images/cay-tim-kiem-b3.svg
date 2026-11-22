@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<g stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.85">
+<line x1="500.00" y1="120.00" x2="310.00" y2="330.00"/>
+<line x1="500.00" y1="120.00" x2="690.00" y2="330.00"/>
+<line x1="310.00" y1="330.00" x2="170.00" y2="540.00"/>
+<line x1="310.00" y1="330.00" x2="440.00" y2="540.00"/>
+<line x1="690.00" y1="330.00" x2="560.00" y2="540.00"/>
+<line x1="690.00" y1="330.00" x2="830.00" y2="540.00"/>
+</g>
+<circle cx="500.00" cy="120.00" r="44" fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="310.00" cy="330.00" r="44" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="690.00" cy="330.00" r="44" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="170.00" cy="540.00" r="44" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="440.00" cy="540.00" r="44" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="560.00" cy="540.00" r="44" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<circle cx="830.00" cy="540.00" r="44" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+<text x="500.00" y="120.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">50</text>
+<text x="310.00" y="330.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">30</text>
+<text x="690.00" y="330.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">70</text>
+<text x="170.00" y="540.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">20</text>
+<text x="440.00" y="540.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">40</text>
+<text x="560.00" y="540.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">60</text>
+<text x="830.00" y="540.00" text-anchor="middle" dominant-baseline="central" font-family="Lexend, sans-serif" font-size="34" font-weight="600" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">80</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

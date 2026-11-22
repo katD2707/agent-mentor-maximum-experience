@@ -1,0 +1,2105 @@
+{
+  "schema_version": 1,
+  "course_id": "hoa-hoc-9-kim-loai-va-phi-kim",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g6_9",
+  "title": "Hóa học 9: Kim loại và phi kim",
+  "chapters": [
+    {
+      "id": "ch-kim-loai",
+      "title": "Kim loại",
+      "lessons": [
+        {
+          "id": "day-hoat-dong",
+          "title": "Dãy hoạt động",
+          "est_minutes": 15,
+          "summary": "Nắm dãy hoạt động hóa học của kim loại, ba quy tắc phản ứng và vận dụng giải bài tập tính theo phương trình, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Dãy hoạt động: K, Na, Ba, Ca, Mg, Al, Zn, Fe, Ni, Sn, Pb, H, Cu, Hg, Ag, Pt, Au",
+            "Kim loại trước Mg tác dụng với nước; trước H tác dụng với axit loãng; trước kim loại sau đẩy được ra khỏi muối (trừ K, Na, Ba, Ca)",
+            "Ví dụ tính theo Zn + H2SO4 và Mg + CuSO4",
+            "Lỗi thường gặp: Na + CuSO4 không tạo Cu mà tạo Cu(OH)2 và H2",
+            "Bài tập: nhận biết phản ứng, tính V H2, m muối, bài toán lá kim loại"
+          ],
+          "blocks": [
+            {
+              "id": "day-hoat-dong-b1",
+              "kind": "text",
+              "md": "Dãy hoạt động xếp kim loại theo chiều giảm dần mức độ hoạt động, từ trái sang phải. $H$ là mốc chia kim loại thành nhóm trước $H$ và sau $H$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "day-hoat-dong-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/day-hoat-dong-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "e8ab9b58c82a46ef48dad31a08290a18eea45de669d20b81259efaff658582d3",
+                "bytes": 7046
+              },
+              "alt": "Dãy hoạt động hóa học của kim loại với H làm mốc.",
+              "caption": "Từ trái sang phải, kim loại càng kém hoạt động.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "day-hoat-dong-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ba quy tắc",
+              "md": "- Kim loại trước $Mg$ ($K, Na, Ba, Ca$) tác dụng với nước, tạo bazơ tan và $H_2$.\n- Kim loại trước $H$ tác dụng với axit loãng tạo muối và $H_2$; kim loại sau $H$ không tác dụng.\n- Kim loại trước đẩy kim loại sau ra khỏi dung dịch muối, trừ $K, Na, Ba, Ca$.",
+              "audio": null
+            },
+            {
+              "id": "day-hoat-dong-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "day-hoat-dong-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Kim loại nào sau đây tác dụng được với dung dịch axit loãng giải phóng khí hiđro?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cu",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Ag",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Fe",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Au",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": null,
+                  "explanation": "Fe đứng trước H nên tác dụng với axit loãng tạo muối và khí $H_2$.",
+                  "option_feedback": {
+                    "A": "Cu đứng sau H trong dãy hoạt động nên không tác dụng với axit loãng.",
+                    "B": "Ag đứng sau H trong dãy hoạt động nên không tác dụng với axit loãng.",
+                    "D": "Au đứng sau H trong dãy hoạt động nên không tác dụng với axit loãng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "day-hoat-dong-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: Zn + H₂SO₄ loãng",
+              "md": "Cho $6,5$ g $Zn$ tác dụng hết với dung dịch $H_2SO_4$ loãng.\n$n_{Zn}=\\dfrac{6,5}{65}=0,1$ mol.\n$Zn+H_2SO_4 \\rightarrow ZnSO_4+H_2$.\nTheo phương trình: $n_{H_2}=n_{ZnSO_4}=n_{Zn}=0,1$ mol.\n$V_{H_2}=0,1 \\times 22,4=2,24$ lít.\n$m_{ZnSO_4}=0,1 \\times 161=16,1$ gam.",
+              "audio": null
+            },
+            {
+              "id": "day-hoat-dong-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: Mg + CuSO₄",
+              "md": "Cho $4,8$ g $Mg$ vào $200$ ml dung dịch $CuSO_4$ $1M$.\n$n_{Mg}=\\dfrac{4,8}{24}=0,2$ mol; $n_{CuSO_4}=0,2 \\times 1=0,2$ mol.\n$Mg+CuSO_4 \\rightarrow MgSO_4+Cu$.\nTỉ lệ $1:1$ và số mol bằng nhau nên hai chất vừa hết.\n$n_{Cu}=n_{MgSO_4}=0,2$ mol.\n$m_{Cu}=0,2 \\times 64=12,8$ gam.\n$C_{M}(MgSO_4)=\\dfrac{0,2}{0,2}=1$ M.",
+              "audio": null
+            },
+            {
+              "id": "day-hoat-dong-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "day-hoat-dong-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền từ thích hợp vào chỗ trống: Kim loại đứng trước {{gap}} tác dụng với nước ở nhiệt độ thường; kim loại đứng trước {{gap}} tác dụng với dung dịch axit loãng tạo muối và khí hiđro.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Mg",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "H",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Cu",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "Fe",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Trước Mg gồm K, Na, Ba, Ca tác dụng với nước; trước H gồm các kim loại tác dụng với axit loãng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "day-hoat-dong-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp: Na + CuSO₄",
+              "md": "Không viết $Na+CuSO_4 \\rightarrow Na_2SO_4+Cu$ và kết luận $Na$ đẩy được $Cu$.\n$Na$ đứng trước $Mg$ nên tác dụng với nước của dung dịch trước: $2Na+2H_2O \\rightarrow 2NaOH+H_2$.\nSau đó: $2NaOH+CuSO_4 \\rightarrow Cu(OH)_2\\downarrow+Na_2SO_4$.\nVậy thu được kết tủa xanh $Cu(OH)_2$ và khí $H_2$, không thu được kim loại $Cu$.",
+              "audio": null
+            },
+            {
+              "id": "day-hoat-dong-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để thể tích $H_2$ (đktc) đạt $2,24$ lít.",
+              "x": {
+                "symbol": "n",
+                "label": "Số mol Zn",
+                "unit": "mol"
+              },
+              "y": {
+                "symbol": "V",
+                "label": "Thể tích H₂",
+                "unit": "lít"
+              },
+              "expr": "x*22.4",
+              "x_min": 0.0,
+              "x_max": 0.3,
+              "x_step": 0.01,
+              "x_start": 0.05,
+              "target_y": 2.24,
+              "tolerance": 0.02,
+              "praise": "Đúng: $V = n \\times 22,4$; với $n=0,1$ mol thì $V=2,24$ lít.",
+              "audio": null
+            },
+            {
+              "id": "day-hoat-dong-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "day-hoat-dong-q3",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước giải bài toán: Cho 4,8 gam Mg vào 200 ml dung dịch CuSO4 1M. Tính khối lượng Cu và nồng độ mol MgSO4.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Tính số mol: $n_{Mg} = 4,8/24 = 0,2$ mol; $n_{CuSO_4} = 0,2 × 1 = 0,2$ mol.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Viết phương trình: $Mg + CuSO_4 \\rightarrow MgSO_4 + Cu$.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Nhận thấy tỉ lệ 1:1 và số mol bằng nhau nên hai chất phản ứng vừa hết.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Tính khối lượng Cu: $m_{Cu} = 0,2 × 64 = 12,8$ gam.",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Tính nồng độ: $C_M(MgSO_4) = 0,2/0,2 = 1$ M.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Làm theo thứ tự tính số mol, viết phương trình, xác định phản ứng vừa hết rồi tính sản phẩm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "day-hoat-dong-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Kim loại trước $Mg$ tác dụng với nước tạo gì?",
+                  "answer": "Tạo bazơ tan và khí $H_2$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Kim loại đứng sau $H$ có tác dụng với axit loãng không?",
+                  "answer": "Không tác dụng với axit loãng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao $Na$ không đẩy được $Cu$ ra khỏi dung dịch $CuSO_4$?",
+                  "answer": "Vì $Na$ tác dụng với nước trước, tạo $NaOH$, rồi mới tạo $Cu(OH)_2$ và $H_2$, không tạo $Cu$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nhom-va-sat",
+          "title": "Nhôm và sắt",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu tính chất vật lí, hóa học và ứng dụng của nhôm, sắt; luyện ví dụ hỗn hợp, nhiệt nhôm, nhận diện lỗi hóa trị và làm bài tập liên quan.",
+          "key_ideas": [
+            "Nhôm: tính chất vật lí, phản ứng với O2, Cl2, axit, muối, kiềm, nhiệt nhôm",
+            "Sắt: tính chất vật lí, phản ứng với O2, Cl2, axit loãng/đặc nóng, muối; gang và thép",
+            "Ví dụ: hỗn hợp Al, Fe + HCl; nhiệt nhôm Al + Fe2O3",
+            "Lỗi thường gặp: Fe + HCl chỉ tạo FeCl2; Al chỉ tạo AlCl3",
+            "Bài tập: hoàn thành PTHH, tính H2/muối, hỗn hợp Fe-Cu"
+          ],
+          "blocks": [
+            {
+              "id": "nhom-va-sat-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/nhom-va-sat-b1.svg",
+                "mime": "image/svg+xml",
+                "sha256": "9d5d838f5b42120a0165c607888f27d0e795bd65caa4370ab3ebb7bdc5a587b1",
+                "bytes": 6016
+              },
+              "alt": "Dãy hoạt động hóa học của kim loại với Al đứng sau Mg, trước Zn và Fe đứng sau Zn, trước Pb.",
+              "caption": "Al đứng sau Mg, trước Zn; Fe đứng sau Zn, trước Pb.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "nhom-va-sat-b2",
+              "kind": "text",
+              "md": "Nhôm màu trắng bạc, nhẹ ($D=2,7$ g/cm³), dẻo, dẫn điện và dẫn nhiệt tốt. Nhôm nóng chảy ở $660^oC$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhom-va-sat-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-sat-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho sắt tác dụng với dung dịch $HCl$ loãng, sản phẩm của phản ứng là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$FeCl_2$ và $H_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$FeCl_3$ và $H_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$FeCl_2$ và $Cl_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$FeCl_3$ và $H_2O$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Chú ý hóa trị của sắt khi gặp axit loãng.",
+                  "explanation": "Sắt tác dụng với axit loãng như $HCl$ chỉ tạo muối sắt(II) và khí hiđro.",
+                  "option_feedback": {
+                    "B": "Với axit loãng, sắt chỉ thể hiện hóa trị II nên không tạo $FeCl_3$.",
+                    "C": "Khí thoát ra là hiđro chứ không phải clo.",
+                    "D": "Phản ứng không sinh ra nước và cũng không tạo muối sắt(III)."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-sat-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Nhôm phản ứng",
+              "md": "Với oxi: $4Al+3O_2\\to2Al_2O_3$; lớp $Al_2O_3$ mỏng bảo vệ nhôm. Với clo: $2Al+3Cl_2\\to2AlCl_3$ (t°). Với axit loãng: $2Al+6HCl\\to2AlCl_3+3H_2$. Với kiềm: $2Al+2NaOH+2H_2O\\to2NaAlO_2+3H_2$. Nhiệt nhôm: $2Al+Fe_2O_3\\to Al_2O_3+2Fe$ (t°). Nhôm không phản ứng với $HNO_3$ đặc nguội và $H_2SO_4$ đặc nguội.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-sat-b4",
+              "kind": "text",
+              "md": "Sắt màu trắng xám, $D=7,86$ g/cm³, dẻo, dẫn điện và dẫn nhiệt tốt; bị nam châm hút. Sắt cháy trong oxi: $3Fe+2O_2\\to Fe_3O_4$ (t°).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhom-va-sat-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-sat-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền vào chỗ trống để hoàn thành phương trình: $2Al + 6HCl \\rightarrow 2{{gap}} + 3{{gap}}$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "AlCl_3",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "H_2",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "AlCl_2",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "H_2O",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "Cl_2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nhôm luôn tạo muối hóa trị III là $AlCl_3$, đồng thời giải phóng khí $H_2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-sat-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Dễ nhầm hóa trị của Fe và Al",
+              "md": "Với axit loãng, Fe chỉ tạo $FeCl_2$: $Fe+2HCl\\to FeCl_2+H_2$. Với $Cl_2$, Fe tạo $FeCl_3$: $2Fe+3Cl_2\\to2FeCl_3$ (t°). Với $H_2SO_4$ đặc nóng: $2Fe+6H_2SO_4\\to Fe_2(SO_4)_3+3SO_2+6H_2O$. Với muối: $Fe+CuSO_4\\to FeSO_4+Cu$. Nhôm luôn hóa trị III, không có $AlCl_2$.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-sat-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Hỗn hợp Al, Fe tác dụng HCl",
+              "md": "Cho $11$ gam hỗn hợp Al, Fe tác dụng hết với HCl dư, thu $8,96$ lít $H_2$ (đktc). $n_{H_2}=0,4$ mol; gọi $x,y$ là số mol Al, Fe. Ta có $27x+56y=11$ và $1,5x+y=0,4$, suy ra $x=0,2$, $y=0,1$. $m_{Al}=5,4$ g (≈49,09%); $m_{Fe}=5,6$ g (≈50,91",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-sat-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-sat-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi chất với mô tả đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$AlCl_3$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Muối nhôm clorua (nhôm hóa trị III)",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$FeCl_2$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Muối sắt(II) clorua",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$Fe_3O_4$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Oxit sắt từ tạo khi đốt sắt trong oxi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$NaAlO_2$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Muối tạo thành khi nhôm tan trong kiềm",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi công thức ứng với một muối hoặc oxit đúng thành phần và hóa trị đã học.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-sat-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để số mol H₂ bằng 0,3 mol",
+              "x": {
+                "symbol": "nAl",
+                "label": "Số mol Al",
+                "unit": "mol"
+              },
+              "y": {
+                "symbol": "nH2",
+                "label": "Số mol H2",
+                "unit": "mol"
+              },
+              "expr": "1.5*x",
+              "x_min": 0.0,
+              "x_max": 0.4,
+              "x_step": 0.05,
+              "x_start": 0.1,
+              "target_y": 0.3,
+              "tolerance": 0.01,
+              "praise": "Đúng rồi! $2Al+6HCl\\to2AlCl_3+3H_2$ nên $n_{H_2}=1,5n_{Al}$.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-sat-b8",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Gang và thép",
+              "md": "Gang là hợp kim Fe-C với C từ $2\\%$ đến $5\\%$, giòn. Thép là hợp kim Fe-C với C dưới $2\\%$, có thêm $Mn, Cr, Ni$, bền và dẻo hơn.",
+              "audio": null
+            },
+            {
+              "id": "nhom-va-sat-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhom-va-sat-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước giải bài toán: cho $0,54$ gam $Al$ tác dụng hết với dung dịch $HCl$ dư, tính thể tích khí $H_2$ (đktc).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Tính số mol nhôm: $n_{Al} = 0,54 : 27 = 0,02$ mol",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Viết phương trình: $2Al + 6HCl \\rightarrow 2AlCl_3 + 3H_2$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Từ tỉ lệ phương trình suy ra $n_{H_2} = 1,5 \\times n_{Al} = 0,03$ mol",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Tính thể tích: $V_{H_2} = 0,03 \\times 22,4 = 0,672$ lít",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Phải tính số mol, viết phương trình, dùng tỉ lệ mol rồi mới tính thể tích khí.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhom-va-sat-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Nhôm tác dụng với dung dịch kiềm tạo gì?",
+                  "answer": "Tạo $NaAlO_2$ và khí $H_2$: $2Al+2NaOH+2H_2O\\to2NaAlO_2+3H_2$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Sắt tác dụng với HCl loãng tạo muối nào?",
+                  "answer": "Tạo $FeCl_2$ (sắt hóa trị II): $Fe+2HCl\\to FeCl_2+H_2$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Phản ứng nhiệt nhôm giữa Al và Fe₂O₃ tạo ra gì?",
+                  "answer": "Tạo $Al_2O_3$ và Fe: $2Al+Fe_2O_3\\to Al_2O_3+2Fe$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "an-mon-kim-loai",
+          "title": "Ăn mòn kim loại",
+          "est_minutes": 12,
+          "summary": "Hiểu khái niệm, hai dạng ăn mòn, yếu tố ảnh hưởng và biện pháp bảo vệ kim loại, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Khái niệm ăn mòn kim loại; gỉ sắt xốp không bảo vệ được sắt",
+            "Hai dạng: ăn mòn hóa học và ăn mòn điện hóa học",
+            "Yếu tố ảnh hưởng: môi trường, nhiệt độ, bản chất kim loại",
+            "Biện pháp: cách li bề mặt, hợp kim chống gỉ, phương pháp điện hóa",
+            "Ví dụ đinh sắt trong nước muối; lỗi 'kim loại hoạt động mạnh thì bền'; bài tập phân loại và tính lá kim loại"
+          ],
+          "blocks": [
+            {
+              "id": "an-mon-kim-loai-b1",
+              "kind": "text",
+              "md": "Ăn mòn kim loại là sự phá hủy kim loại, hợp kim do tác dụng hóa học với môi trường. Kim loại biến thành hợp chất (gỉ sắt, lớp oxit, muối…) và mất tính chất quý.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "an-mon-kim-loai-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Gỉ sắt",
+              "md": "Gỉ sắt là oxit sắt ngậm nước. Lớp gỉ xốp nên không bảo vệ được sắt bên trong.",
+              "audio": null
+            },
+            {
+              "id": "an-mon-kim-loai-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-mon-kim-loai-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Hiện tượng nào sau đây là ăn mòn điện hóa học?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vỏ tàu thép trong nước biển bị gỉ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đốt dây sắt trong khí clo",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Cho đinh sắt vào dung dịch HCl thấy sủi bọt khí",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Nung nóng sắt trong khí oxi",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Ăn mòn điện hóa cần môi trường chất điện li và tạo ra dòng điện.",
+                  "explanation": "Vỏ tàu thép tiếp xúc với nước biển là dung dịch chất điện li nên xảy ra ăn mòn điện hóa học.",
+                  "option_feedback": {
+                    "B": "Sắt tác dụng trực tiếp với clo nên đây là ăn mòn hóa học.",
+                    "C": "Sắt tác dụng trực tiếp với axit nên đây là ăn mòn hóa học.",
+                    "D": "Sắt tác dụng trực tiếp với oxi nên đây là ăn mòn hóa học."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "an-mon-kim-loai-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hai dạng ăn mòn",
+              "md": "Ăn mòn hóa học: kim loại tác dụng trực tiếp với $O_2$, $Cl_2$, hơi nước, axit, muối…, không sinh dòng điện. Ăn mòn điện hóa học: kim loại tiếp xúc dung dịch chất điện li và kim loại khác, sinh dòng điện; nhanh và phổ biến hơn.",
+              "audio": null
+            },
+            {
+              "id": "an-mon-kim-loai-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/an-mon-kim-loai-b4.webp",
+                "mime": "image/webp",
+                "sha256": "c2270b269f9b5fbda4cb1c4b2b938fe5cd666ac92b19078a9f4237022284bc47",
+                "bytes": 21446
+              },
+              "alt": "Đinh sắt trong nước muối bị gỉ nhanh hơn trong nước cất.",
+              "caption": "Nước muối là dung dịch chất điện li.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "an-mon-kim-loai-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-mon-kim-loai-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Gỉ sắt là oxit sắt ngậm nước; lớp gỉ {{gap}} nên không bảo vệ được sắt bên trong.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "xốp",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "đặc",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "bền",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Gỉ sắt có cấu trúc xốp nên không ngăn được oxi, hơi nước tiếp xúc với sắt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "an-mon-kim-loai-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Đinh sắt trong nước muối",
+              "md": "Nước muối là dung dịch chất điện li. Đinh sắt (hợp kim $Fe$ - $C$) tiếp xúc với nước muối bị ăn mòn điện hóa: $Fe$ bị oxi hóa thành $Fe^{2+}$ rồi thành gỉ, đồng thời sinh dòng điện. Vì vậy đinh gỉ nhanh hơn trong nước cất.",
+              "audio": null
+            },
+            {
+              "id": "an-mon-kim-loai-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Kim loại mạnh không phải càng bền",
+              "md": "Kim loại hoạt động mạnh như $K, Na, Ca, Mg, Al, Fe$ dễ bị ăn mòn; $Au, Ag, Pt$ rất bền. Môi trường có $O_2$, $CO_2$, hơi nước, axit, muối và nhiệt độ cao làm ăn mòn nhanh hơn.",
+              "audio": null
+            },
+            {
+              "id": "an-mon-kim-loai-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-mon-kim-loai-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mô tả đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Ăn mòn hóa học",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Kim loại tác dụng trực tiếp với chất trong môi trường, không sinh dòng điện",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Ăn mòn điện hóa học",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Kim loại tiếp xúc dung dịch chất điện li và sinh ra dòng điện",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Gỉ sắt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Oxit sắt ngậm nước, xốp",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Bảo vệ điện hóa",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Gắn tấm Zn hoặc Mg vào vỏ tàu",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ăn mòn hóa học không sinh dòng điện, còn ăn mòn điện hóa sinh dòng điện; gỉ sắt xốp; gắn Zn/Mg là phương pháp điện hóa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "an-mon-kim-loai-b7",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Biện pháp bảo vệ",
+              "md": "Giữ bề mặt sạch, khô ráo; phủ lớp cách li như sơn, mạ kẽm, mạ crom, tráng men, dầu mỡ, bọc nhựa. Dùng hợp kim ít bị ăn mòn (inox chứa $Cr$, $Ni$) hoặc gắn $Zn$, $Mg$ vào vỏ tàu, ống thép để chúng bị ăn mòn trước.",
+              "audio": null
+            },
+            {
+              "id": "an-mon-kim-loai-b8",
+              "kind": "interactive",
+              "prompt": "Ngâm lá sắt 20 g trong $CuSO_4$; cứ 1 mol Cu sinh ra, lá tăng 8 g. Kéo để lá nặng 20,8 g.",
+              "x": {
+                "symbol": "n_Cu",
+                "label": "Số mol Cu sinh ra",
+                "unit": "mol"
+              },
+              "y": {
+                "symbol": "m",
+                "label": "Khối lượng lá sắt",
+                "unit": "g"
+              },
+              "expr": "20 + 8*x",
+              "x_min": 0.0,
+              "x_max": 0.1,
+              "x_step": 0.01,
+              "x_start": 0.03,
+              "target_y": 20.8,
+              "tolerance": 0.01,
+              "praise": "Đúng: 0,1 mol Cu sinh ra làm lá tăng 0,8 g, nên khối lượng là 20,8 g.",
+              "audio": null
+            },
+            {
+              "id": "an-mon-kim-loai-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "an-mon-kim-loai-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước giải thích vì sao đinh sắt bị gỉ nhanh trong nước muối.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Đinh sắt là hợp kim Fe – C.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Ngâm đinh sắt trong nước muối, một dung dịch chất điện li.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Xuất hiện ăn mòn điện hóa học và sinh ra dòng điện.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Sắt bị oxi hóa thành ion $Fe^{2+}$ rồi chuyển thành gỉ.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Đinh sắt tiếp xúc dung dịch điện li tạo ăn mòn điện hóa, nên sắt bị oxi hóa thành gỉ nhanh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "an-mon-kim-loai-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Ăn mòn kim loại là gì?",
+                  "answer": "Là sự phá hủy kim loại, hợp kim do tác dụng hóa học với môi trường.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hai dạng ăn mòn khác nhau ở điểm nào?",
+                  "answer": "Hóa học không sinh dòng điện; điện hóa sinh dòng điện và xảy ra nhanh hơn.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu nguyên tắc bảo vệ kim loại.",
+                  "answer": "Cách li bề mặt hoặc dùng kim loại hoạt động mạnh hơn để bị ăn mòn thay.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này ôn về kim loại, gồm dãy hoạt động, tính chất của nhôm và sắt, cùng hiện tượng ăn mòn kim loại. Mình sẽ đi lần lượt từng bài và nhấn vào các ý dễ nhầm khi làm bài.",
+          "Dãy hoạt động xếp kim loại theo chiều giảm dần mức độ hoạt động, từ trái sang phải. Trong dãy có kali, natri, bari, canxi, magie, nhôm, kẽm, sắt, niken, thiếc, chì, hiđro, đồng, thủy ngân, bạc, bạch kim, vàng. Hiđro là mốc chia kim loại thành nhóm trước hiđro và sau hiđro. Kim loại trước magie gồm kali, natri, bari, canxi tác dụng với nước tạo bazơ tan và khí hiđro.",
+          "Kim loại trước hiđro tác dụng với axit loãng tạo muối và khí hiđro, còn kim loại sau hiđro thì không. Kim loại đứng trước đẩy được kim loại đứng sau ra khỏi dung dịch muối, trừ kali, natri, bari, canxi. Ví dụ cho sáu phẩy năm gam kẽm tác dụng hết với dung dịch axit sunfuric loãng thì số mol kẽm là không phẩy một mol. Theo phương trình, thu được không phẩy một mol khí hiđro, tức hai phẩy hai mươi tư lít ở điều kiện tiêu chuẩn, và mười sáu phẩy một gam kẽm sunfat.",
+          "Với magie và đồng sunfat, nếu số mol magie và đồng sunfat bằng nhau thì tỉ lệ một một nên cả hai vừa hết, từ đó tính được khối lượng đồng và nồng độ mol của magie sunfat. Lỗi thường gặp là viết natri đẩy đồng ra khỏi dung dịch đồng sunfat. Thực tế natri đứng trước magie nên tác dụng với nước trước, tạo natri hiđroxit và khí hiđro. Sau đó natri hiđroxit tác dụng với đồng sunfat tạo kết tủa xanh đồng hiđroxit và natri sunfat, không tạo kim loại đồng.",
+          "Nhôm màu trắng bạc, nhẹ, dẻo, dẫn điện và dẫn nhiệt tốt; lớp oxit mỏng bảo vệ nhôm. Nhôm tác dụng với oxi, với clo, với axit loãng, với dung dịch muối, với kiềm và tham gia phản ứng nhiệt nhôm. Với kiềm, nhôm tan tạo natri aluminat và khí hiđro; nhiệt nhôm là nhôm khử sắt ba oxit tạo nhôm oxit và sắt. Nhôm không phản ứng với axit nitric đặc nguội và axit sunfuric đặc nguội, và nhôm luôn hóa trị ba, chỉ tạo nhôm clorua, không có nhôm clorua hóa trị hai.",
+          "Sắt màu trắng xám, nặng hơn nhôm, dẻo, dẫn điện dẫn nhiệt tốt và bị nam châm hút. Sắt cháy trong oxi tạo sắt từ oxit; với clo tạo sắt ba clorua; với axit loãng chỉ tạo sắt hai clorua và khí hiđro. Với axit sunfuric đặc nóng, sắt tạo sắt ba sunfat, khí sunfurơ và nước; với dung dịch muối, sắt đẩy đồng ra khỏi đồng sunfat. Gang là hợp kim của sắt với cacbon, cacbon từ hai đến năm phần trăm, giòn; thép cũng là hợp kim sắt cacbon nhưng cacbon dưới hai phần trăm, có thêm mangan, crom, niken, bền và dẻo hơn.",
+          "Ví dụ cho mười một gam hỗn hợp nhôm và sắt tác dụng hết với axit clohiđric dư, thu được tám phẩy chín mươi sáu lít khí hiđro ở điều kiện tiêu chuẩn. Gọi số mol nhôm là x, sắt là y, lập hệ theo khối lượng và số mol hiđro, giải ra x bằng không phẩy hai, y bằng không phẩy một. Từ đó tính được khối lượng nhôm là năm phẩy bốn gam và sắt là năm phẩy sáu gam.",
+          "Ăn mòn kim loại là sự phá hủy kim loại, hợp kim do tác dụng hóa học với môi trường, làm kim loại biến thành hợp chất như gỉ sắt, lớp oxit hay muối và mất tính chất quý. Gỉ sắt là oxit sắt ngậm nước, lớp gỉ xốp nên không bảo vệ được sắt bên trong. Có hai dạng là ăn mòn hóa học, không sinh dòng điện, và ăn mòn điện hóa học, sinh dòng điện, nhanh và phổ biến hơn. Ví dụ đinh sắt trong nước muối bị ăn mòn điện hóa vì nước muối là dung dịch chất điện li, nên đinh gỉ nhanh hơn trong nước cất.",
+          "Kim loại hoạt động mạnh như kali, natri, canxi, magie, nhôm, sắt dễ bị ăn mòn; vàng, bạc, bạch kim rất bền, nên không phải kim loại hoạt động mạnh thì bền. Môi trường có oxi, cacbon đioxit, hơi nước, axit, muối và nhiệt độ cao làm ăn mòn nhanh hơn. Biện pháp là giữ bề mặt sạch, khô ráo; phủ lớp cách li như sơn, mạ kẽm, mạ crom, tráng men, dầu mỡ, bọc nhựa. Có thể dùng hợp kim ít bị ăn mòn như inox chứa crom, niken, hoặc gắn kẽm, magie vào vỏ tàu, ống thép để chúng bị ăn mòn trước.",
+          "Thứ nhất, dãy hoạt động quyết định phản ứng với nước, với axit và đẩy kim loại khỏi muối; hiđro là mốc và kali, natri, bari, canxi là ngoại lệ khi đẩy kim loại khỏi muối. Thứ hai, nhôm luôn hóa trị ba, sắt với axit loãng chỉ tạo sắt hai, còn gang và thép khác nhau chủ yếu ở hàm lượng cacbon. Thứ ba, ăn mòn là phá hủy kim loại, gỉ sắt xốp không bảo vệ được sắt, và cần cách li bề mặt, dùng hợp kim chống gỉ hoặc phương pháp điện hóa."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-phi-kim",
+      "title": "Phi kim",
+      "lessons": [
+        {
+          "id": "clo",
+          "title": "Clo",
+          "est_minutes": 14,
+          "summary": "Mô tả tính chất vật lí, hóa học, điều chế và ứng dụng của clo, kèm ví dụ tính theo phương trình, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Tính chất vật lí của Cl2: vàng lục, nặng hơn không khí, độc",
+            "Tính chất hóa học: với kim loại, H2, nước, kiềm, muối NaBr",
+            "Điều chế trong phòng thí nghiệm và công nghiệp; ứng dụng khử trùng, tẩy trắng, sản xuất HCl/PVC",
+            "Ví dụ Fe + Cl2 và Cl2 + NaOH",
+            "Lỗi thường gặp: tạo FeCl2 thay vì FeCl3; bài tập hoàn thành PTHH và tính theo mol"
+          ],
+          "blocks": [
+            {
+              "id": "clo-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tính chất vật lí",
+              "md": "Clo có kí hiệu $Cl$, nguyên tử khối $35,5$; phân tử $Cl_2$ ($M = 71$). Clo là khí màu vàng lục, mùi hắc, rất độc, nặng hơn không khí ($d_{Cl_2/kk} = \\frac{71}{29} \\approx 2,45$), tan vừa trong nước.",
+              "audio": null
+            },
+            {
+              "id": "clo-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/clo-b2.webp",
+                "mime": "image/webp",
+                "sha256": "009b3278314a8e3515f150b861c19883d8bde1893362c225e01062495db4773a",
+                "bytes": 13206
+              },
+              "alt": "Bình chứa khí clo màu vàng lục, khí nặng chìm xuống đáy",
+              "caption": "Clo nặng hơn không khí nên chìm xuống đáy bình.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "clo-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "clo-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đun nóng sắt với khí clo dư. Muối thu được có công thức là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$FeCl_2$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$FeCl_3$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$FeCl$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$Fe_2Cl_3$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Clo mạnh hơn axit clohiđric rất nhiều.",
+                  "explanation": "Clo là chất oxi hóa mạnh nên đẩy sắt lên hóa trị III, sản phẩm là $FeCl_3$.",
+                  "option_feedback": {
+                    "A": "Nhầm với phản ứng của Fe với dung dịch $HCl$, vốn chỉ tạo muối sắt(II).",
+                    "C": "Sai hóa trị của sắt trong muối clorua tạo bởi clo.",
+                    "D": "Viết sai công thức: sắt hóa trị III, clo hóa trị I nên phải là $FeCl_3$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "clo-b3",
+              "kind": "text",
+              "md": "Clo là phi kim hoạt động mạnh, chỉ kém flo và oxi. Clo tác dụng với kim loại (thường đun nóng) tạo muối clorua: $2Na + Cl_2 \\xrightarrow{t^o} 2NaCl$, $Cu + Cl_2 \\xrightarrow{t^o} CuCl_2$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "clo-b4",
+              "kind": "text",
+              "md": "Clo tác dụng với hiđro dưới ánh sáng: $H_2 + Cl_2 \\xrightarrow{ánh\\ sáng} 2HCl$. Khí HCl tan trong nước thành axit clohiđric.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "clo-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "clo-q2",
+                  "type": "FILL_TILES",
+                  "stem": "$Cl_2 + 2NaOH \\to {{gap}} + {{gap}} + H_2O$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "NaCl",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "NaClO",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Na_2O",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "NaClO_3",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": "Sản phẩm gồm một muối clorua và một muối hipoclorit.",
+                  "explanation": "Clo tác dụng với kiềm tạo nước Gia-ven gồm hai muối $NaCl$ và $NaClO$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "clo-b5",
+              "kind": "text",
+              "md": "Clo tác dụng với nước tạo nước clo có tính tẩy màu, khử trùng: $Cl_2 + H_2O \\rightleftharpoons HCl + HClO$. Với kiềm, clo tạo nước Gia-ven: $Cl_2 + 2NaOH \\to NaCl + NaClO + H_2O$. Clo đẩy brom khỏi muối: $Cl_2 + 2NaBr \\to 2NaCl + Br_2$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "clo-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: 5,6 g Fe + clo dư",
+              "md": "$n_{Fe} = \\frac{5,6}{56} = 0,1$ mol. PTHH: $2Fe + 3Cl_2 \\xrightarrow{t^o} 2FeCl_3$. Theo tỉ lệ: $n_{Cl_2} = \\frac{3}{2}n_{Fe} = 0,15$ mol → $V_{Cl_2} = 0,15 \\times 22,4 = 3,36$ lít. $n_{FeCl_3} = n_{Fe} = 0,1$ mol → $m_{FeCl_3} = 0,1 \\times 162,5 = 16,25$ g.",
+              "audio": null
+            },
+            {
+              "id": "clo-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "clo-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi phản ứng hoặc chất ở cột trái với sản phẩm, ứng dụng tương ứng ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$Cl_2 + H_2O$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "nước clo, có tính tẩy màu",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$Cl_2 + 2NaOH$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "nước Gia-ven",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$MnO_2 + 4HCl$ (đun nóng)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "điều chế clo trong phòng thí nghiệm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$Cl_2 + 2NaBr$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "đẩy brom ra khỏi muối",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi phản ứng đặc trưng của clo cho một sản phẩm riêng: nước clo, nước Gia-ven, khí clo và brom.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "clo-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Viết $2Fe + 3Cl_2 \\to 2FeCl_2$ là sai. Clo là chất oxi hóa mạnh nên đưa sắt lên hóa trị III, sản phẩm là $FeCl_3$. Chỉ khi cho Fe tác dụng với dung dịch $HCl$ mới thu được $FeCl_2$.",
+              "audio": null
+            },
+            {
+              "id": "clo-b8",
+              "kind": "text",
+              "md": "Điều chế trong phòng thí nghiệm: $MnO_2 + 4HCl \\xrightarrow{t^o} MnCl_2 + Cl_2\\uparrow + 2H_2O$. Công nghiệp: điện phân dung dịch $NaCl$ bão hòa có màng ngăn. Ứng dụng: khử trùng nước sinh hoạt, tẩy trắng vải sợi, sản xuất nước Gia-ven, nhựa PVC, axit $HCl$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "clo-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "clo-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước giải bài toán: cho $5,6$ g Fe phản ứng hoàn toàn với khí clo dư, tính thể tích clo (đktc) và khối lượng muối thu được.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Tính số mol Fe: $n_{Fe} = \\frac{5,6}{56} = 0,1$ mol",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Viết PTHH: $2Fe + 3Cl_2 \\xrightarrow{t^o} 2FeCl_3$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Theo tỉ lệ phương trình: $n_{Cl_2} = \\frac{3}{2}n_{Fe} = 0,15$ mol",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Tính thể tích clo: $V_{Cl_2} = 0,15 \\times 22,4 = 3,36$ lít",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Tính khối lượng muối: $m_{FeCl_3} = 0,1 \\times 162,5 = 16,25$ g",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": "Bắt đầu từ dữ kiện đã cho là khối lượng Fe.",
+                  "explanation": "Phải đổi khối lượng ra số mol, dựa vào tỉ lệ PTHH để tìm số mol clo rồi mới tính thể tích và khối lượng muối.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "clo-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Clo là khí màu gì, nặng hay nhẹ hơn không khí?",
+                  "answer": "Khí màu vàng lục, mùi hắc, rất độc, nặng hơn không khí (khoảng 2,45 lần).",
+                  "image": null
+                },
+                {
+                  "prompt": "Cho Fe tác dụng với clo dư thu được muối nào?",
+                  "answer": "$FeCl_3$ (sắt hóa trị III), không phải $FeCl_2$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Clo tác dụng với dung dịch NaOH tạo ra gì?",
+                  "answer": "Nước Gia-ven: $Cl_2 + 2NaOH \\to NaCl + NaClO + H_2O$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cacbon-va-oxit",
+          "title": "Cacbon và oxit",
+          "est_minutes": 15,
+          "summary": "Trình bày tính chất của cacbon, CO, CO2 và cách nhận biết, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Cacbon: thù hình, tính khử khi đun nóng, ứng dụng",
+            "CO: oxit trung tính, tính khử mạnh, độc; ứng dụng luyện kim",
+            "CO2: oxit axit, làm đục nước vôi trong, ứng dụng",
+            "Ví dụ CO + CuO; đốt than rồi hấp thụ CO2",
+            "Lỗi thường gặp: CO không làm đục nước vôi trong; bài tập PTHH, tính chất rắn, V CO2"
+          ],
+          "blocks": [
+            {
+              "id": "cacbon-va-oxit-b1",
+              "kind": "text",
+              "md": "Cacbon có ba dạng thù hình: kim cương, than chì và cacbon vô định hình (than gỗ, than đá, muội than).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cacbon-va-oxit-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Cacbon khi đun nóng",
+              "md": "Ở nhiệt độ thường, cacbon khá trơ. Khi đun nóng, cacbon thể hiện tính khử:\n$C + O_2 \\xrightarrow{t^o} CO_2$\n$2CuO + C \\xrightarrow{t^o} 2Cu + CO_2$\nCacbon dùng làm nhiên liệu, chất khử trong luyện kim, làm điện cực, bút chì, đồ trang sức.",
+              "audio": null
+            },
+            {
+              "id": "cacbon-va-oxit-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cacbon-va-oxit-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo bài, để nhận biết khí $CO$, ta dùng cách nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Dẫn qua $CuO$ nung nóng, thấy chất rắn đen chuyển dần thành đỏ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Dẫn qua nước vôi trong, thấy xuất hiện vẩn đục.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Dẫn qua dung dịch $NaOH$, thấy có kết tủa trắng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Dẫn qua nước, thấy khí tan nhiều tạo dung dịch axit.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "$CO$ khử $CuO$ nung nóng tạo $Cu$ màu đỏ; khí sinh ra là $CO_2$ làm đục nước vôi trong.",
+                  "option_feedback": {
+                    "B": "$CO$ là oxit trung tính nên không tạo kết tủa với nước vôi trong.",
+                    "C": "$CO$ không tác dụng với $NaOH$ và không tạo kết tủa.",
+                    "D": "$CO$ ít tan trong nước và không tạo axit khi tan."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cacbon-va-oxit-b3",
+              "kind": "text",
+              "md": "CO là khí không màu, không mùi, ít tan trong nước, hơi nhẹ hơn không khí và rất độc.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cacbon-va-oxit-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "CO và CO2",
+              "md": "CO là oxit trung tính, có tính khử mạnh, được dùng làm chất khử trong luyện kim. CO2 là oxit axit, làm đục nước vôi trong: $CO_2 + Ca(OH)_2 \\to CaCO_3\\downarrow + H_2O$. CO2 dùng trong nước giải khát, chữa cháy, bảo quản thực phẩm, sản xuất đá khô, phân bón.",
+              "audio": null
+            },
+            {
+              "id": "cacbon-va-oxit-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cacbon-va-oxit-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền sản phẩm còn thiếu: $CO_2 + Ca(OH)_2 \\to$ {{gap}} $+ H_2O$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "CaCO_3",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "CaCO_2",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "CaO",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "CO",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "$CO_2$ là oxit axit, tác dụng với $Ca(OH)_2$ tạo kết tủa trắng $CaCO_3$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cacbon-va-oxit-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "CO không làm đục nước vôi trong",
+              "md": "CO là oxit trung tính, không phản ứng với $Ca(OH)_2$; chỉ $CO_2$ mới tạo kết tủa $CaCO_3$. Muốn nhận biết CO, dùng CuO nung nóng: bột đen chuyển dần thành chất rắn màu đỏ (Cu).",
+              "audio": null
+            },
+            {
+              "id": "cacbon-va-oxit-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/cacbon-va-oxit-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "40bef41c44ff043ae3a8107eca658684c53b5d4e834573f202d0a62b46a9e2a6",
+                "bytes": 2551
+              },
+              "alt": "Thí nghiệm dẫn khí CO qua CuO nung nóng",
+              "caption": "CO khử CuO thành Cu.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "cacbon-va-oxit-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cacbon-va-oxit-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi chất/thù hình với đặc điểm đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Kim cương",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "rất cứng, trong suốt",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Than chì",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "mềm, dẫn điện",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$CO$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "oxit trung tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$CO_2$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "oxit axit",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Kim cương và than chì là các dạng thù hình của cacbon; $CO$ trung tính, $CO_2$ có tính axit.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "cacbon-va-oxit-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để khối lượng Cu thu được bằng 12,8 g",
+              "x": {
+                "symbol": "n(CuO)",
+                "label": "Số mol CuO",
+                "unit": "mol"
+              },
+              "y": {
+                "symbol": "m(Cu)",
+                "label": "Khối lượng Cu",
+                "unit": "g"
+              },
+              "expr": "64*x",
+              "x_min": 0.0,
+              "x_max": 0.4,
+              "x_step": 0.05,
+              "x_start": 0.05,
+              "target_y": 12.8,
+              "tolerance": 0.1,
+              "praise": "Chính xác: 0,2 mol CuO cho 12,8 g Cu.",
+              "audio": null
+            },
+            {
+              "id": "cacbon-va-oxit-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Đốt than rồi hấp thụ CO2",
+              "md": "Đốt cháy hoàn toàn 3 g than chứa 80\\% cacbon trong oxi dư. $m_C = 3 \\times 80\\% = 2,4$ g → $n_C = 0,2$ mol. $C + O_2 \\xrightarrow{t^o} CO_2$ → $n_{CO_2}=0,2$ mol. Dẫn khí vào $Ca(OH)_2$ dư: $CO_2 + Ca(OH)_2 \\to CaCO_3\\downarrow + H_2O$ → $m_{CaCO_3}=0,2 \\times 100 = 20$ g.",
+              "audio": null
+            },
+            {
+              "id": "cacbon-va-oxit-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cacbon-va-oxit-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước nhận biết khí $CO$ theo đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Dẫn khí $CO$ qua $CuO$ đang nung nóng.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Quan sát bột $CuO$ màu đen chuyển dần thành chất rắn màu đỏ.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Dẫn khí thoát ra vào nước vôi trong, thấy dung dịch vẩn đục.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "$CO$ khử $CuO$ thành $Cu$ đỏ, đồng thời tạo $CO_2$ làm đục nước vôi trong.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cacbon-va-oxit-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Cacbon thể hiện tính gì khi đun nóng?",
+                  "answer": "Tính khử.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khí nào làm đục nước vôi trong, CO hay CO2?",
+                  "answer": "CO2, vì CO2 là oxit axit tạo CaCO3.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nhận biết CO bằng cách nào?",
+                  "answer": "Dùng CuO nung nóng: chất rắn đen chuyển thành đỏ.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bang-tuan-hoan",
+          "title": "Bảng tuần hoàn",
+          "est_minutes": 12,
+          "summary": "Nắm cấu tạo bảng tuần hoàn, quy luật biến đổi tính chất và vận dụng xác định vị trí, so sánh tính kim loại/phi kim, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Nguyên tắc sắp xếp theo chiều tăng điện tích hạt nhân nguyên tử",
+            "Ô nguyên tố, chu kì, nhóm; số lớp electron và số electron lớp ngoài cùng",
+            "Biến đổi tính chất trong chu kì và nhóm A",
+            "Ví dụ xác định vị trí Cl, so sánh F > Cl > S",
+            "Lỗi thường gặp: nhầm chu kì/nhóm; bài tập xác định vị trí và so sánh tính kim loại/phi kim"
+          ],
+          "blocks": [
+            {
+              "id": "bang-tuan-hoan-b1",
+              "kind": "text",
+              "md": "Các nguyên tố trong bảng tuần hoàn được sắp xếp theo chiều tăng dần điện tích hạt nhân nguyên tử.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bang-tuan-hoan-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/bang-tuan-hoan-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "467433a358f0cb70ddbeeec8956303bb18016b791ff7e411d0eb246746cb3f2b",
+                "bytes": 3532
+              },
+              "alt": "Sơ đồ bảng tuần hoàn với một ô nguyên tố phóng to, một hàng ngang là chu kì và một cột dọc là nhóm A",
+              "caption": "Ô nguyên tố, chu kì và nhóm A trong bảng tuần hoàn",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "bang-tuan-hoan-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bang-tuan-hoan-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Các nguyên tố trong bảng tuần hoàn được sắp xếp theo chiều tăng dần của yếu tố nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "nguyên tử khối",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "điện tích hạt nhân",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "số lớp electron",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "số electron lớp ngoài cùng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Bảng tuần hoàn sắp xếp các nguyên tố theo chiều tăng dần điện tích hạt nhân nguyên tử.",
+                  "option_feedback": {
+                    "A": "Nguyên tử khối không phải tiêu chí sắp xếp; bảng tuần hoàn dựa vào điện tích hạt nhân.",
+                    "C": "Số lớp electron quyết định chu kì, không phải chiều sắp xếp chung.",
+                    "D": "Số electron lớp ngoài cùng quyết định nhóm A, không phải tiêu chí sắp xếp."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "bang-tuan-hoan-b3",
+              "kind": "text",
+              "md": "Chu kì là dãy nguyên tố nằm ngang, gồm các nguyên tố cùng số lớp electron. Số thứ tự chu kì bằng số lớp electron.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bang-tuan-hoan-b4",
+              "kind": "text",
+              "md": "Nhóm A là cột dọc, gồm các nguyên tố cùng số electron ở lớp ngoài cùng. Số thứ tự nhóm A bằng số electron lớp ngoài cùng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bang-tuan-hoan-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bang-tuan-hoan-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền vào chỗ trống vị trí của clo: Clo có $Z = 17$: ô {{gap}}, chu kì {{gap}}, nhóm {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "17",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "3",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "VIIA",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "7",
+                      "side": null
+                    },
+                    {
+                      "id": "t6",
+                      "text": "IA",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cl có 17 electron nên ở ô 17; cấu hình $2/8/7$ cho 3 lớp (chu kì 3) và 7 electron lớp ngoài cùng (nhóm VIIA).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "bang-tuan-hoan-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: vị trí của clo (Z = 17)",
+              "md": "$Z = 17$ → ô 17, có 17 proton và 17 electron.\nCấu hình lớp electron: $2/8/7$ → 3 lớp → chu kì 3.\n7 electron lớp ngoài cùng → nhóm VIIA.\nClo nằm gần cuối chu kì 3 nên là phi kim mạnh.",
+              "audio": null
+            },
+            {
+              "id": "bang-tuan-hoan-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bang-tuan-hoan-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Chọn đúng hoặc sai cho mỗi nhận xét.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong một chu kì, đi từ trái sang phải tính kim loại giảm, tính phi kim tăng."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Chu kì là cột dọc gồm các nguyên tố cùng số electron lớp ngoài cùng."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Số thứ tự nhóm A bằng số electron lớp ngoài cùng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Trong một nhóm A, đi từ trên xuống dưới tính phi kim tăng."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Chu kì là hàng ngang; nhóm A là cột dọc. Trong nhóm A từ trên xuống, tính kim loại tăng và tính phi kim giảm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "bang-tuan-hoan-b6",
+              "kind": "text",
+              "md": "Trong một chu kì, đi từ trái sang phải: tính kim loại giảm, tính phi kim tăng. Trong một nhóm A, đi từ trên xuống dưới: tính kim loại tăng, tính phi kim giảm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bang-tuan-hoan-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: so sánh F, Cl, S",
+              "md": "$F$ (ô 9, chu kì 2, nhóm VIIA) ở trên $Cl$ trong cùng nhóm nên $F$ mạnh hơn $Cl$.\n$S$ (ô 16, chu kì 3, nhóm VIA) đứng trước $Cl$ trong cùng chu kì nên $Cl$ mạnh hơn $S$.\nVậy: $F > Cl > S$.",
+              "audio": null
+            },
+            {
+              "id": "bang-tuan-hoan-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bang-tuan-hoan-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Nối mỗi khái niệm ở cột trái với nội dung phù hợp ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Chu kì",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Dãy nguyên tố nằm ngang, cùng số lớp electron",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Nhóm A",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Cột dọc, cùng số electron lớp ngoài cùng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Ô nguyên tố",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Cho biết số hiệu nguyên tử, kí hiệu, tên và nguyên tử khối",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Số thứ tự chu kì",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Bằng số lớp electron",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Chu kì là hàng ngang còn nhóm A là cột dọc. Số thứ tự chu kì bằng số lớp electron, còn ô nguyên tố cung cấp các thông tin cơ bản của nguyên tố.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "bang-tuan-hoan-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nhầm chu kì là cột dọc, nhóm là hàng ngang. Cũng có thể nhầm rằng trong một chu kì, đi từ trái sang phải tính kim loại tăng; thực tế tính kim loại giảm, tính phi kim tăng.",
+              "audio": null
+            },
+            {
+              "id": "bang-tuan-hoan-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bang-tuan-hoan-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xác định vị trí nguyên tố từ số hiệu nguyên tử.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Ghi số hiệu nguyên tử $Z$",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Suy ra số electron bằng $Z$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Viết cấu hình lớp electron",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Đếm số lớp electron để xác định chu kì",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Đếm electron lớp ngoài cùng để xác định nhóm A",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Từ $Z$ suy ra số electron, viết cấu hình; số lớp cho chu kì, số electron lớp ngoài cùng cho nhóm A.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "bang-tuan-hoan-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Bảng tuần hoàn sắp xếp các nguyên tố theo chiều nào?",
+                  "answer": "Chiều tăng dần điện tích hạt nhân nguyên tử.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trong một chu kì, từ trái sang phải, tính kim loại và tính phi kim biến đổi ra sao?",
+                  "answer": "Tính kim loại giảm, tính phi kim tăng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Số thứ tự nhóm A cho biết điều gì về nguyên tử?",
+                  "answer": "Bằng số electron ở lớp ngoài cùng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về phi kim, gồm clo, cacbon và các oxit của cacbon, rồi bảng tuần hoàn. Clo là phi kim mạnh, cacbon có tính khử, còn bảng tuần hoàn cho biết vị trí và chiều biến đổi tính chất.",
+          "Clo có nguyên tử khối ba mươi lăm phẩy năm, phân tử khối bảy mươi mốt; clo là khí màu vàng lục, mùi hắc, rất độc, nặng hơn không khí khoảng hai phẩy bốn lăm lần và tan vừa trong nước. Clo là phi kim hoạt động mạnh, chỉ kém flo và oxi. Khi đun nóng, clo tác dụng với kim loại tạo muối clorua, ví dụ natri tạo natri clorua, đồng tạo đồng hai clorua. Với hiđro dưới ánh sáng, clo tạo khí hiđro clorua, khí này tan trong nước thành axit clohiđric.",
+          "Clo tác dụng với nước tạo nước clo có tính tẩy màu và khử trùng, gồm axit clohiđric và axit hipoclorơ. Với kiềm như natri hiđroxit, clo tạo nước Gia-ven gồm natri clorua, natri hipoclorit và nước. Clo còn đẩy brom ra khỏi muối natri bromua, tạo natri clorua và brom.",
+          "Trong phòng thí nghiệm, clo được điều chế bằng mangan đioxit với axit clohiđric đặc khi đun nóng; trong công nghiệp là điện phân dung dịch natri clorua bão hòa có màng ngăn. Clo dùng khử trùng nước sinh hoạt, tẩy trắng vải sợi, sản xuất nước Gia-ven, nhựa pi vi xi và axit clohiđric. Lỗi thường gặp là cho sắt tác dụng với clo mà viết sản phẩm là sắt hai clorua; thực tế clo là chất oxi hóa mạnh nên tạo sắt ba clorua. Ví dụ năm phẩy sáu gam sắt cho không phẩy một mol sắt, cần không phẩy mười lăm mol clo tức ba phẩy ba sáu lít, và thu mười sáu phẩy hai lăm gam sắt ba clorua.",
+          "Cacbon có ba dạng thù hình là kim cương, than chì và cacbon vô định hình như than gỗ, than đá, muội than. Ở nhiệt độ thường cacbon khá trơ; khi đun nóng cacbon thể hiện tính khử. Ví dụ cacbon cháy trong oxi tạo cacbon đioxit, và cacbon khử đồng hai oxit thành đồng và cacbon đioxit. Cacbon dùng làm nhiên liệu, chất khử trong luyện kim, làm điện cực, bút chì và đồ trang sức.",
+          "Cacbon monoxit là khí không màu, không mùi, ít tan trong nước, hơi nhẹ hơn không khí và rất độc. Nó là oxit trung tính, có tính khử mạnh, dùng làm chất khử trong luyện kim. Ví dụ cacbon monoxit khử đồng hai oxit thành đồng và cacbon đioxit. Cần nhớ cacbon monoxit không làm đục nước vôi trong; muốn nhận biết nó có thể dùng đồng hai oxit nung nóng, bột đen chuyển dần thành chất rắn màu đỏ.",
+          "Cacbon đioxit là oxit axit, làm đục nước vôi trong vì tạo kết tủa canxi cacbonat. Nó dùng trong nước giải khát, chữa cháy, bảo quản thực phẩm, sản xuất đá khô và phân bón. Ví dụ đốt ba gam than chứa tám mươi phần trăm cacbon, khối lượng cacbon là hai phẩy bốn gam, tức không phẩy hai mol. Cháy trong oxi dư tạo không phẩy hai mol cacbon đioxit; dẫn vào nước vôi trong dư thu không phẩy hai mol canxi cacbonat, tức hai mươi gam kết tủa.",
+          "Bảng tuần hoàn sắp xếp các nguyên tố theo chiều tăng dần điện tích hạt nhân nguyên tử. Chu kì là dãy nằm ngang gồm các nguyên tố cùng số lớp electron; số thứ tự chu kì bằng số lớp electron. Nhóm A là cột dọc gồm các nguyên tố cùng số electron lớp ngoài cùng; số thứ tự nhóm A bằng số electron lớp ngoài cùng. Ví dụ clo có điện tích hạt nhân mười bảy nên ở ô mười bảy, có mười bảy proton và mười bảy electron; cấu hình lớp electron là hai, tám, bảy nên có ba lớp, thuộc chu kì ba, và có bảy electron lớp ngoài cùng nên thuộc nhóm bảy A.",
+          "Trong một chu kì đi từ trái sang phải, tính kim loại giảm và tính phi kim tăng; trong một nhóm A đi từ trên xuống dưới, tính kim loại tăng và tính phi kim giảm. Ví dụ flo ở ô chín, chu kì hai, nhóm bảy A, ở trên clo trong cùng nhóm nên flo mạnh hơn clo. Lưu huỳnh ở ô mười sáu, chu kì ba, nhóm sáu A, đứng trước clo trong cùng chu kì nên clo mạnh hơn lưu huỳnh; vậy thứ tự là flo mạnh hơn clo, clo mạnh hơn lưu huỳnh. Lỗi thường gặp là nhầm chu kì là cột dọc, nhóm là hàng ngang, hoặc nhầm trong một chu kì đi từ trái sang phải tính kim loại tăng; thực tế tính kim loại giảm.",
+          "Ba điều cần nhớ là clo là phi kim mạnh, tác dụng với kim loại tạo muối clorua và với sắt tạo sắt ba clorua, điều chế bằng mangan đioxit với axit clohiđric hoặc điện phân dung dịch natri clorua bão hòa. Cacbon có tính khử khi đun nóng; cacbon monoxit là oxit trung tính, rất độc, có tính khử mạnh và không làm đục nước vôi trong; cacbon đioxit là oxit axit, làm đục nước vôi trong. Bảng tuần hoàn xếp theo điện tích hạt nhân tăng dần; chu kì theo số lớp electron, nhóm A theo số electron lớp ngoài cùng, và trong chu kì từ trái sang phải tính phi kim tăng."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

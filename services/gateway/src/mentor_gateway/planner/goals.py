@@ -19,6 +19,12 @@ def new_goal_id() -> str:
     return "g-" + secrets.token_hex(6)
 
 
+def in_band(courses: list[CourseInfo], age_band: str | None) -> list[CourseInfo]:
+    """Goals are only inferred from courses of the student's own band: an old enrollment from another band
+    (a university student who once opened a primary-school course) must not become a goal."""
+    return [c for c in courses if age_band is None or c.age_band in (None, age_band)]
+
+
 def sync_inferred(db: Database, user_id: str, courses: list[CourseInfo], language: str, now: datetime) -> None:
     """One inferred goal per enrolled course; removed with the enrollment; a goal the student deleted stays dismissed."""
     wanted = {f"inf-{c.id}"[:64]: c for c in courses}

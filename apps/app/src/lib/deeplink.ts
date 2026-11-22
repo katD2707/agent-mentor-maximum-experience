@@ -11,7 +11,9 @@ export interface DeepTarget {
 }
 
 const ID = /^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$/;
-const FIXED = new Set(["/", "/khoa-hoc", "/khoa-hoc/tim-kiem", "/luyen-tap", "/hoi-dap", "/tien-do", "/nghien-cuu"]);
+const FIXED = new Set(["/", "/khoa-hoc", "/khoa-hoc/tim-kiem", "/luyen-tap", "/hoi-dap", "/tien-do", "/dau-truong", "/phong-tu-hoc", "/thu-vien"]);
+/** Làng gà routes with one id (CONTRACTS-LANGGA.md section 4): coop, mock test, arena paper. */
+const WITH_ID = /^\/(chuong|kiem-tra|dau-truong|thu-vien\/paper)\/([^/]+)$/;
 
 export function resolveDeepLink(link: string | null | undefined): DeepTarget {
   const hub: DeepTarget = { to: "/", reminderId: null };
@@ -35,10 +37,17 @@ export function resolveDeepLink(link: string | null | undefined): DeepTarget {
     return { to: notes && ID.test(notes) ? `/luyen-tap?notes=${encodeURIComponent(notes)}` : path, reminderId };
   }
   if (FIXED.has(path)) return { to: path, reminderId };
+  const idRoute = WITH_ID.exec(path);
+  if (idRoute) {
+    const id = decodeURIComponent(idRoute[2]);
+    return ID.test(id) ? { to: `/${idRoute[1]}/${encodeURIComponent(id)}`, reminderId } : { to: "/", reminderId };
+  }
+  // the old research links of servers and reminders from before the Library: same places under /thu-vien
+  if (path === "/nghien-cuu") return { to: "/thu-vien", reminderId };
   const paper = /^\/nghien-cuu\/paper\/([^/]+)$/.exec(path);
   if (paper) {
     const id = decodeURIComponent(paper[1]);
-    return ID.test(id) ? { to: `/nghien-cuu/paper/${encodeURIComponent(id)}`, reminderId } : { to: "/nghien-cuu", reminderId };
+    return ID.test(id) ? { to: `/thu-vien/paper/${encodeURIComponent(id)}`, reminderId } : { to: "/thu-vien", reminderId };
   }
   const m = /^\/khoa-hoc\/([^/]+)(\/hoc)?$/.exec(path);
   if (!m) return { to: "/", reminderId };

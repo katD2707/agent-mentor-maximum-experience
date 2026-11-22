@@ -25,6 +25,7 @@ from sqlalchemy import delete, func, select
 
 from mentor_gateway.content.store import ComingSoon, ContentError
 from mentor_gateway.db import Database, User
+from mentor_gateway.langga.mocks import COURSE_MOCK_PREFIX, PAPER_PREFIX, LanggaSessions
 from mentor_gateway.mirror import Mirror
 from mentor_gateway.practice import assembler as asm
 from mentor_gateway.practice import evidence, recommender, scoring
@@ -71,7 +72,7 @@ class Plan:
     params: dict[str, Any]
 
 
-class PracticeService(MixedSessions):
+class PracticeService(MixedSessions, LanggaSessions):
     def __init__(self, db: Database, mirror: Mirror, bank: Bank, clock: Clock) -> None:
         self.db, self.mirror, self.bank, self.clock = db, mirror, bank, clock
         self.content = None  # ContentService, set by app.py (course quiz items)
@@ -244,6 +245,10 @@ class PracticeService(MixedSessions):
     def start(self, user_id: str, body: dict[str, Any]) -> dict:
         kind, subject, course_id = body.get("kind"), body.get("subject"), None
         source = body.get("source")
+        if source and source.startswith(COURSE_MOCK_PREFIX) and len(source) > len(COURSE_MOCK_PREFIX):
+            return self._start_course_mock(user_id, source[len(COURSE_MOCK_PREFIX):], body)
+        if source and source.startswith(PAPER_PREFIX) and len(source) > len(PAPER_PREFIX):
+            return self._start_paper(user_id, source[len(PAPER_PREFIX):], body)
         if source:  # quick | course:<id> | mock:<profile>
             if source == "quick":
                 kind, subject = "practice", "quick"
@@ -265,7 +270,7 @@ class PracticeService(MixedSessions):
                     raise PracticeError(404, "unknown_profile", "Không tìm thấy đề thi thử này.")
                 kind, subject, body = "mock", profile.subject, {**body, "profile_id": profile.id}
             else:
-                raise PracticeError(422, "bad_source", "source phải là quick, course:<id> hoặc mock:<đề>.")
+                raise PracticeError(422, "bad_source", "source phải là quick, course:<id>, mock:<đề>, course-mock:<id> hoặc paper:<id>.")
         elif not kind or not subject:
             raise PracticeError(422, "bad_request", "Cần kind và subject, hoặc source.")
         mixed = kind == "practice" and bool(source)
@@ -434,8 +439,10 @@ class PracticeService(MixedSessions):
             "started_at": _iso(sess.started_at), "finished_at": _iso(sess.finished_at), "deadline": _iso(sess.deadline),
             "remaining_sec": self._remaining(sess), "position": max(0, position),
             "items": [self._client_item(r) for r in sess.items], "answers": answers, "minutes": sess.params.get("minutes"),
-            "goal": sess.params.get("goal"),
+            "goal": sess.params.get("goal"), "source": sess.params.get("source"),
         }
+        if sess.params.get("paper"):
+            view["paper"] = sess.params["paper"]
         if sess.parts:
             view["parts"] = [{"label": p["label"], "positions": p["positions"], "points_each": p["points_each"]} for p in sess.parts]
         if sess.profile_id and sess.profile_id in self.bank.profiles:
@@ -528,7 +535,7 @@ class PracticeService(MixedSessions):
             sess.position = position
             return self._result(rec, row)
 
-        return self._write(user_id, sid, run)
+        return self._langga_answer(user_id, sid, position, self._write(user_id, sid, run))
 
     def hint(self, user_id: str, sid: str, position: int) -> dict:
         def run(s, sess: PracticeSession) -> dict:
@@ -659,6 +666,7 @@ class PracticeService(MixedSessions):
         if is_practice:  # one line about the session, and when the planner will bring the wrong ones back
             report["takeaway"] = takeaway
             report["redo"] = self.redo_line(user_id, wrong)
+        report = self._langga_finish(user_id, sid, report)  # mock/paper submit XP, the boss of an Arena paper
         with self.db.session() as s:
             s.get(PracticeSession, sid).report = report
         return report
@@ -819,6 +827,9 @@ class PracticeService(MixedSessions):
     # ---- fix wrong answers (CONTRACTS 16.3) ---------------------------------------------------------------------
 
     def fix(self, user_id: str, sid: str, item_id: str, answer: Any) -> dict:
+        return self._langga_fix(user_id, sid, item_id, self._fix(user_id, sid, item_id, answer))
+
+    def _fix(self, user_id: str, sid: str, item_id: str, answer: Any) -> dict:
         """One more try at an item answered wrong, after the session ended; each item once. A wrong retry shows the
         right answer. Nothing is written to the learner's evidence: still-wrong items stay in review as before."""
         with self.db.session() as s:

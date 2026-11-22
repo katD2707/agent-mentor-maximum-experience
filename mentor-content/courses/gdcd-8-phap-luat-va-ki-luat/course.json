@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "gdcd-8-phap-luat-va-ki-luat",
+  "title": "GDCD 8: Pháp luật và kỉ luật",
+  "subject": "Giáo dục công dân",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "ub6c41584ddee8d0a",
+  "teacher_name": "Thầy Hùng",
+  "description_short": "Khóa học giúp học sinh lớp 8 hiểu pháp luật, kỉ luật, quyền và nghĩa vụ công dân, đồng thời biết ứng xử an toàn trên mạng. Nội dung phù hợp với học sinh THCS trong môn Giáo dục công dân 8.",
+  "outcomes": [
+    "phân biệt được pháp luật, kỉ luật và đạo đức trong các tình huống cụ thể",
+    "nhận diện được hành vi vi phạm pháp luật và vi phạm kỉ luật",
+    "nêu và thực hiện đúng quyền, nghĩa vụ của học sinh",
+    "bảo vệ thông tin cá nhân và ứng xử an toàn, văn minh trên mạng"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 66,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:51:49.827344Z",
+      "published_at": "2026-11-17T07:51:58.695363Z",
+      "pack_sha256": "5951d87e5df199f1163cbaa11b80b5eda06e216fc81d61b471d63fe3cee2d508",
+      "pack_bytes": 122052,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

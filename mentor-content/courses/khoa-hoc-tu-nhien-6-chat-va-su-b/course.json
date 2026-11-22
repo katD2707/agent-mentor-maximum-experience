@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "khoa-hoc-tu-nhien-6-chat-va-su-b",
+  "title": "Khoa học tự nhiên 6: Chất và sự biến đổi",
+  "subject": "Khoa học tự nhiên",
+  "age_band": "g6_9",
+  "language": "vi",
+  "teacher_id": "u0ba836f4cc8cff98",
+  "teacher_name": "Thầy Cường",
+  "description_short": "Khóa học cung cấp kiến thức cơ bản về chất, ba thể của chất, hỗn hợp và sự biến đổi của chất. Bài học dành cho học sinh lớp 6 THCS, gồm lý thuyết, ví dụ, lỗi thường gặp và bài tập trong từng bài.",
+  "outcomes": [
+    "Phân biệt được vật thể và chất, lấy được ví dụ về vật thể tự nhiên và vật thể nhân tạo.",
+    "Mô tả được ba thể của chất và các quá trình nóng chảy, đông đặc, bay hơi, sôi, ngưng tụ.",
+    "Nhận biết được hỗn hợp, dung dịch, dung môi, chất tan và giải thích cách tách chất bằng lọc, chiết, cô cạn.",
+    "Phân biệt được biến đổi vật lí và biến đổi hóa học, nêu dấu hiệu của biến đổi hóa học."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 76,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:47:40.476085Z",
+      "published_at": "2026-11-17T08:47:55.710016Z",
+      "pack_sha256": "8131aceb720b78ac46373453477b072352b42135a068933e90dc3e8bb11735ac",
+      "pack_bytes": 156338,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": "basic",
+  "status": "live",
+  "outline": []
+}

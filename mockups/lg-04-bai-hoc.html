@@ -1,0 +1,1299 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-ai="ok" data-ga="toan">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài học cùng gà</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Literata:opsz,wght@7..72,400;7..72,600&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="ga-guide.css">
+<script src="shared.js"></script>
+<script src="ga-guide.js" defer></script>
+<style>
+  /* Làng gà · bài học từng bước. One idea or one small task per screen, checked at once, taught by the subject's chicken.
+     The game look (village backdrop, wooden board, red ribbon, dark plates, chunky green button) stays AROUND the content;
+     the reading area itself is a calm cream page. Content comes from the LESSONS table in the script (subject x age). */
+  :root {
+    --board-edge: #c98a45; --board-dark: #7d4c22; --plate: #2a2346; --lv: #ffcf3d; --lv-ink: #5a3b00;
+    --lboard: #fff7e6; --ink: #3a2010; --ink-2: #5b4838; --ink-3: #6f5d4b; --surface: #fffdf7; --rule: #efdcb8; --rule-strong: #dec394;
+    --tim: #a35a14; --tim-ink: #6e3f10; --tim-soft: #fdeec9; --on-tim: #fff; --hl: #ffe27a;
+    --btn: #1a6d3a; --btn-top: #1f8046; --btn-dark: #165c32;
+    --lua: #F2891F; --lua-ink: #B35400;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --lboard: #26203f; --ink: #ECEAF7; --ink-2: #B4B0CC; --ink-3: #9D99B8; --surface: #1E1B38; --rule: #34305A; --rule-strong: #4a4575;
+    --tim: #ffcf3d; --tim-ink: #ffd966; --tim-soft: #4a3a1e; --on-tim: #3a2010; --hl: #6b5514; --lua: #FFA94D; --lua-ink: #FFB65C; } }
+  :root[data-theme="dark"] {
+    --lboard: #26203f; --ink: #ECEAF7; --ink-2: #B4B0CC; --ink-3: #9D99B8; --surface: #1E1B38; --rule: #34305A; --rule-strong: #4a4575;
+    --tim: #ffcf3d; --tim-ink: #ffd966; --tim-soft: #4a3a1e; --on-tim: #3a2010; --hl: #6b5514; --lua: #FFA94D; --lua-ink: #FFB65C; }
+  /* per subject: how tall the chicken's drawing is next to its width (toan is the tall adult one) and where its head starts */
+  html[data-ga="toan"] { --gh: 1.42; --ay: -.8; }
+  html[data-ga="van"], html[data-ga="anh"] { --gh: 1.2; --ay: -1; }
+
+  body { font-family: var(--font-ui); background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; min-height: 100vh; }
+  body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .42); backdrop-filter: blur(6px); pointer-events: none; }
+  html:root, html:root[data-age] { --dock-h: 0px; }
+  .mascot-bar, .mascot-dock { display: none !important; }
+  .mock-bar { z-index: 80; }
+
+  /* ---- the chicken sprite: square transparent frame with room above for the jump, feet at 85% of the frame ---- */
+  .gsp { --w: 92px; position: relative; display: block; flex: none; width: var(--w); height: calc(var(--w) * var(--gh)); pointer-events: none; }
+  .gsp img { position: absolute; left: 50%; bottom: calc(var(--w) * -.39); width: calc(var(--w) * 2.6); max-width: none; height: auto; transform: translateX(-50%); user-select: none; -webkit-user-drag: none; }
+  .gav { --s: 34px; position: relative; flex: none; width: var(--s); height: var(--s); border-radius: 50%; overflow: hidden; background: #d8f0fb; border: 2px solid #e7cfa8; }
+  .gav img { position: absolute; left: 50%; top: calc(var(--s) * var(--ay)); width: calc(var(--s) * 2.5); max-width: none; height: auto; transform: translateX(-50%); }
+  .lvb { display: inline-grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--lv); color: var(--lv-ink); font-weight: 800; font-size: .78em; box-shadow: inset 0 -2px 0 rgba(0,0,0,.15); }
+  .plate { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 4px; border-radius: 999px; background: var(--plate); color: #fff; font-weight: 600; font-size: .85em; box-shadow: 0 2px 0 rgba(0,0,0,.25); white-space: nowrap; }
+
+  /* ---- the board that holds the lesson ---- */
+  .lesson { position: relative; z-index: 1; width: min(780px, calc(100% - 24px)); margin: 50px auto 40px; min-height: calc(100vh - 250px); display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+    background: var(--lboard); color: var(--ink); border: 4px solid var(--board-edge); border-radius: 30px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -58%); max-width: calc(100% - 32px); padding: 8px 26px; border-radius: 16px; background: linear-gradient(#c4432a, #a83a24); color: #fff; font-size: clamp(1em, 2.6vw, 1.3em); font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: 3px solid #fff; box-shadow: 0 5px 0 #a83a24; z-index: 2; }
+  .ltop { display: flex; align-items: center; gap: 12px; padding: 30px 20px 6px; }
+  .ltop .x { width: 44px; height: 44px; border-radius: 999px; border: 0; background: none; color: var(--ink-3); display: grid; place-items: center; cursor: pointer; flex: none; }
+  .ltop .x:hover { color: var(--ink); }
+  .ltop .x svg { width: 26px; height: 26px; }
+  .lbar { flex: 1; height: 22px; padding: 3px; border-radius: 99px; background: var(--plate); overflow: hidden; }
+  .lbar i { display: block; height: 100%; min-width: 10px; border-radius: 99px; background: linear-gradient(#5fd987, #2aa458); transition: width .45s cubic-bezier(.2, .8, .2, 1); box-shadow: inset 0 -3px 0 rgba(0,0,0,.14), inset 0 2px 0 rgba(255,255,255,.35); }
+  .combo { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px 5px 9px; border-radius: 999px; background: var(--plate); color: #ffb14a; font-weight: 700; font-size: .85em; white-space: nowrap; box-shadow: 0 2px 0 rgba(0,0,0,.25); }
+  .combo svg { width: 18px; height: 18px; }
+  .combo[hidden] { display: none; }
+
+  .stage { padding: 16px 22px 26px; display: grid; align-content: start; gap: 18px; }
+  .ask { font-size: clamp(1.25em, 3.4vw, 1.5em); font-weight: 600; }
+  :root[data-age="dai-hoc"] .ask { font-size: 1.25em; }
+  .step { display: none; gap: 18px; animation: in .3s ease-out both; }
+  .step.on { display: grid; }
+  @keyframes in { from { opacity: 0; transform: translateX(16px); } }
+  .big { font-size: 1.25em; font-weight: 600; font-family: var(--font-read); }
+  .pics.long .pic { justify-items: start; text-align: left; font-size: 1em; line-height: 1.45; }
+
+  .say { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 14px; align-items: end; }
+  .say .bub { position: relative; padding: 14px 18px; border-radius: 20px; border: 3px solid var(--rule-strong); background: var(--surface); font-size: 1.05em; line-height: 1.5; margin-bottom: 8px; }
+  .say .bub::before { content: ""; position: absolute; left: -11px; bottom: 22px; width: 16px; height: 16px; background: var(--surface); border-left: 3px solid var(--rule-strong); border-bottom: 3px solid var(--rule-strong); transform: rotate(45deg); }
+  .say .bub b { color: var(--tim-ink); }
+  .speakb { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; border: 0; background: var(--tim); color: var(--on-tim); cursor: pointer; margin-right: 8px; vertical-align: middle; box-shadow: 0 3px 0 rgba(0,0,0,.2); }
+  .speakb svg { width: 22px; height: 22px; }
+  .figure { border-radius: var(--r-lg); border: 3px solid var(--rule); background: var(--surface); padding: 12px; display: grid; place-items: center; }
+  .figure svg { width: 100%; max-width: 420px; height: auto; }
+
+  .pics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pic { display: grid; gap: 6px; justify-items: center; align-content: center; padding: 12px; border-radius: 18px; border: 3px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); cursor: pointer; font: inherit; color: var(--ink); min-height: 60px; }
+  .pic svg { width: 100%; max-width: 180px; height: auto; }
+  .pic[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); color: var(--tim-ink); }
+  .pic.right { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); }
+  .pic.wrong { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); }
+
+  .slots { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-height: 64px; padding: 10px 4px; border-bottom: 3px solid var(--rule-strong); font-family: var(--font-read); font-size: 1.35em; }
+  .slots .gap { min-width: 72px; min-height: 52px; border-radius: 14px; border: 3px dashed var(--tim); background: var(--tim-soft); }
+  .bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 64px; }
+  .tile { min-height: 52px; min-width: 52px; padding: 0 16px; border-radius: 14px; border: 3px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); font: inherit; font-family: var(--font-read); font-size: 1.15em; color: var(--ink); cursor: pointer; transition: transform .12s ease; }
+  .tile:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--rule-strong); }
+  .tile.used { visibility: hidden; }
+  .tile.ui { font-family: var(--font-ui); font-size: 1em; text-align: left; padding: 10px 16px; }
+  .slots.right .tile { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); }
+  .slots.wrong .tile { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); }
+  .order { display: grid; gap: 10px; border-bottom: 0; font-family: var(--font-ui); font-size: 1em; min-height: 200px; align-content: start; padding: 12px; border: 3px dashed var(--rule-strong); border-radius: 18px; }
+  .order:empty::before { content: attr(data-empty); color: var(--ink-3); }
+
+  .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+  .pairs .tile { width: 100%; }
+  .pairs .tile[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); }
+  .pairs .tile.done { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: none; color: var(--xanh); cursor: default; }
+  .pairs .tile.shake { animation: shake .35s; border-color: var(--do); }
+  @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+  .lfoot { position: sticky; bottom: 0; z-index: 30; padding: 14px 22px calc(18px + env(safe-area-inset-bottom)); border-top: 2px solid var(--rule); background: var(--lboard); border-radius: 0 0 26px 26px; display: grid; gap: 12px; }
+  .lfoot.ok { background: var(--xanh-soft); border-top-color: var(--xanh); }
+  .lfoot.no { background: var(--do-soft); border-top-color: var(--do); }
+  .fb { display: none; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: end; }
+  .lfoot.ok .fb, .lfoot.no .fb { display: grid; animation: up .25s ease-out both; }
+  .lfoot.nosp .fb { grid-template-columns: minmax(0, 1fr); }
+  .lfoot.nosp .fbga { display: none; }
+  @keyframes up { from { opacity: 0; transform: translateY(10px); } }
+  .fbga { --w: 64px; margin-bottom: -2px; }
+  .fbt { display: grid; gap: 4px; align-self: center; }
+  .fb h3 { font-size: 1.25em; display: flex; align-items: center; gap: 10px; }
+  .lfoot.ok .fb h3 { color: var(--xanh); }
+  .lfoot.no .fb h3 { color: var(--do); }
+  .fb h3 svg { width: 28px; height: 28px; }
+  .fb p { color: var(--ink); }
+  .go { width: 100%; min-height: 58px; border-radius: 18px; border: 3px solid rgba(255,255,255,.7); background: linear-gradient(var(--btn-top), var(--btn)); color: #fff; font: inherit; font-size: 1.12em; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 var(--btn-dark); letter-spacing: .01em; }
+  .go:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--btn-dark); }
+  .go[disabled] { background: #d7ccb8; border-color: transparent; color: #54442f; box-shadow: 0 6px 0 #b9ab92; cursor: default; }
+  :root[data-theme="dark"] .go[disabled] { background: #3c3760; color: #cfcbe6; box-shadow: 0 6px 0 #2b2748; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .go[disabled] { background: #3c3760; color: #cfcbe6; box-shadow: 0 6px 0 #2b2748; } }
+  .lfoot.no .go { background: linear-gradient(#c94a31, #b83d26); box-shadow: 0 6px 0 #8a2a18; }
+  :root[data-age="tieu-hoc"] .go { min-height: 72px; font-size: 1.25em; }
+  .go:focus-visible, .tile:focus-visible, .pic:focus-visible, .dgi:focus-visible, .speakb:focus-visible, .askb:focus-visible, .sug:focus-visible, .mic:focus-visible, .sendb:focus-visible, .vibtn:focus-visible, .ltop .x:focus-visible, .askq:focus-visible { outline: 3px solid #1a5fb4; outline-offset: 3px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .go:focus-visible, :root:not([data-theme="light"]) .tile:focus-visible, :root:not([data-theme="light"]) .pic:focus-visible, :root:not([data-theme="light"]) .dgi:focus-visible { outline-color: #9ec5ff; } }
+  :root[data-theme="dark"] :is(.go, .tile, .pic, .dgi):focus-visible { outline-color: #9ec5ff; }
+
+  /* the end: what was done, how much the chicken grew, then the streak */
+  .done-sum { display: grid; justify-items: center; text-align: center; gap: 16px; padding-top: 4px; }
+  .done-sum h2 { font-size: 1.8em; color: var(--tim-ink); }
+  .done-sum .gsp { --w: 132px; }
+  .xp { display: grid; gap: 8px; width: 100%; max-width: 480px; padding: 12px 16px 14px; border-radius: 20px; background: var(--plate); color: #fff; text-align: left; box-shadow: 0 4px 0 rgba(0,0,0,.25); }
+  .xp-h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-weight: 700; }
+  .xp-h .lvb { min-width: 26px; height: 26px; font-size: .85em; }
+  .xp-h small { font-weight: 500; color: #e9e4ff; }
+  .xp-gain { margin-left: auto; padding: 2px 12px; border-radius: 99px; background: var(--lv); color: var(--lv-ink); font-weight: 800; animation: pop .5s cubic-bezier(.3, 1.6, .5, 1) both; }
+  .xp-bonus { padding: 2px 12px; border-radius: 99px; background: #fff; color: #165c32; font-weight: 700; font-size: .85em; }
+  .xp-up { padding: 2px 12px; border-radius: 99px; background: #2f9d58; color: #04230f; font-weight: 800; font-size: .85em; }
+  @keyframes pop { from { transform: scale(.6); opacity: 0; } }
+  .xp-track { height: 16px; padding: 3px; border-radius: 99px; background: rgba(255,255,255,.18); }
+  .xp-track i { display: block; height: 100%; width: 78%; border-radius: 99px; background: linear-gradient(#ffe27a, #ffcf3d); box-shadow: inset 0 -3px 0 rgba(0,0,0,.14); transition: width 1s cubic-bezier(.2, .8, .2, 1); }
+  .xp-n { font-size: .85em; color: #e9e4ff; }
+  .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; max-width: 480px; }
+  .stat { border-radius: 16px; border: 3px solid var(--rule-strong); overflow: hidden; background: var(--surface); }
+  .stat b { display: block; padding: 6px; font-size: .78em; color: var(--on-tim); background: var(--tim); }
+  .stat.g b { background: var(--xanh); color: #fff; } .stat.o b { background: var(--cam); color: #fff; }
+  :root[data-theme="dark"] .stat.g b, :root[data-theme="dark"] .stat.o b { color: #15132A; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stat.g b, :root:not([data-theme="light"]) .stat.o b { color: #15132A; } }
+  .stat span { display: block; padding: 12px 6px; font-size: 1.35em; font-weight: 700; }
+  .streak { display: grid; justify-items: center; text-align: center; gap: 12px; padding-top: 4px; }
+  .streak .gsp { --w: 96px; }
+  .streak .bubble { position: relative; padding: 12px 18px; border: 3px solid var(--rule-strong); border-radius: 18px; background: var(--surface); max-width: 360px; margin-bottom: 8px; }
+  .streak .bubble::after { content: ""; position: absolute; left: 50%; bottom: -11px; width: 16px; height: 16px; background: var(--surface); border-right: 3px solid var(--rule-strong); border-bottom: 3px solid var(--rule-strong); transform: translateX(-50%) rotate(45deg); }
+  .flamerow { display: flex; align-items: center; justify-content: center; gap: 16px; }
+  .flame { width: 96px; height: 96px; }
+  .bignum { font-size: 5em; line-height: 1; font-weight: 700; color: var(--lua-ink); }
+  .streak .days { color: var(--lua-ink); font-weight: 700; font-size: 1.3em; margin-top: -6px; }
+  .wk { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; width: 100%; max-width: 420px; padding: 14px; border: 3px solid var(--rule-strong); border-radius: 18px; background: var(--surface); }
+  .wk span { display: grid; gap: 6px; justify-items: center; font-size: .8em; color: var(--ink-3); font-weight: 600; }
+  .wk i { width: 34px; height: 34px; border-radius: 50%; background: var(--rule); display: grid; place-items: center; color: #3a2010; }
+  .wk .on i { background: var(--lua); } .wk .on { color: var(--lua-ink); }
+  .wk i svg { width: 18px; height: 18px; }
+
+  .phone { justify-self: center; width: min(340px, 100%); aspect-ratio: 9 / 14; border-radius: 40px; padding: 18px 14px; background: linear-gradient(160deg, #3D2E93, #140F38); color: #fff; display: grid; align-content: start; gap: 10px; box-shadow: var(--shadow); }
+  .phone .clock { text-align: center; font-size: 3.2em; font-weight: 600; margin: 18px 0 2px; }
+  .phone .date { text-align: center; color: #e4def8; margin-bottom: 18px; }
+  .note { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; padding: 12px; border-radius: 18px; background: rgba(255,255,255,.18); backdrop-filter: blur(8px); }
+  .note .ni { position: relative; width: 34px; height: 34px; border-radius: 9px; overflow: hidden; background: #d8f0fb; }
+  .note .ni img { position: absolute; left: 50%; top: -28px; width: 85px; max-width: none; transform: translateX(-50%); }
+  .note b { font-size: .85em; display: flex; justify-content: space-between; }
+  .note b small { font-weight: 400; color: #e4def8; }
+  .note p { font-size: .92em; line-height: 1.4; margin-top: 2px; }
+  .why { color: var(--ink-2); font-size: .9em; text-align: center; max-width: 52ch; justify-self: center; }
+  details.why summary { cursor: pointer; min-height: 44px; display: grid; place-items: center; }
+
+  [hidden] { display: none !important; }
+
+  .vibtn { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; border: 3px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); font: inherit; font-size: .8em; font-weight: 700; cursor: pointer; margin-left: 8px; vertical-align: middle; }
+  .vibtn[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); }
+  .bub .vi { display: block; margin-top: 8px; padding-top: 8px; border-top: 2px dashed var(--rule-strong); color: var(--ink-2); font-size: .95em; }
+  .mix { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; color: var(--ink-2); font-size: .9em; }
+  .mixchip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 99px; background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+  .mixchip i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--tim); }
+  .mixchip i.on { background: var(--tim); }
+
+  /* the draggable step: a slider diagram (maths) or a basket you drop things into */
+  .drag-say { margin-top: 2px; }
+  #fld { touch-action: none; user-select: none; -webkit-user-select: none; max-width: 420px; width: 100%; height: auto; cursor: ew-resize; }
+  #hnd { outline: none; cursor: grab; }
+  #hnd .ring { fill: none; stroke: var(--tim); stroke-width: 3; opacity: 0; }
+  #hnd:focus-visible .ring { opacity: 1; }
+  #fld.hint #hnd .pulse { animation: pulse 1.6s ease-out infinite; }
+  @keyframes pulse { from { r: 16; opacity: .7; } to { r: 30; opacity: 0; } }
+  #hnd .pulse { fill: none; stroke: var(--tim); stroke-width: 3; opacity: 0; }
+  .readout { font-size: 1.05em; color: var(--ink-2); text-align: center; }
+  .readout b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .readout small { display: block; font-size: .85em; color: var(--ink-3); }
+  .dragbox { gap: 14px; width: 100%; }
+  .basket { display: grid; justify-items: center; gap: 4px; width: 100%; }
+  .bk-in { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 4px; min-height: 52px; max-width: 260px; }
+  .basket.wide .bk-in { max-width: none; gap: 8px; }
+  .bk-in svg, .bk-in .apple { width: 46px; height: 46px; }
+  .bk-in .chip { min-height: 44px; padding: 0 12px; }
+  .bk-body { width: min(260px, 100%); height: 48px; border-radius: 0 0 40px 40px; background: #8a5524; margin-top: -14px; display: grid; place-items: center; font-weight: 700; font-size: 1.6em; color: #fff; }
+  .basket.wide .bk-body { width: 100%; height: auto; min-height: 48px; padding: 8px 16px; border-radius: 0 0 24px 24px; font-size: 1.05em; text-align: center; }
+  .ground { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 72px; padding: 8px; width: 100%; border: 3px dashed var(--rule-strong); border-radius: 18px; }
+  .dgi { border: 0; background: none; padding: 0; cursor: grab; touch-action: none; position: relative; font: inherit; color: var(--ink); }
+  .dgi.apple { width: 64px; height: 64px; border-radius: 50%; }
+  .dgi.apple svg { width: 100%; height: 100%; display: block; pointer-events: none; }
+  .dgi.chip { min-height: 52px; padding: 0 16px; border-radius: 14px; border: 3px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); font-family: var(--font-read); font-size: 1.05em; }
+  .dgi.drag { cursor: grabbing; z-index: 5; filter: drop-shadow(0 6px 6px rgba(0,0,0,.25)); }
+  .basket.over .bk-body { outline: 3px dashed var(--tim); outline-offset: 3px; }
+
+  .rc-n { font-size: .9em; font-weight: 600; color: var(--ink-3); }
+  .rc-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+  .rc-in input { min-height: 56px; padding: 0 16px; border-radius: 16px; border: 3px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: 1.05em; width: 100%; }
+  .rc-in input:focus-visible { outline: none; border-color: var(--tim); box-shadow: 0 0 0 3px var(--tim-soft); }
+  .mic { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); cursor: pointer; }
+  .mic svg { width: 26px; height: 26px; }
+  .mic[aria-pressed="true"] { background: var(--tim); border-color: var(--tim); color: var(--on-tim); animation: pulse2 1.2s ease-in-out infinite; }
+  @keyframes pulse2 { 50% { box-shadow: 0 0 0 10px var(--tim-soft); } }
+  :root[data-age="tieu-hoc"] .rc-in { grid-template-columns: 1fr; justify-items: center; }
+  :root[data-age="tieu-hoc"] .rc-in input { display: none; }
+  :root[data-age="tieu-hoc"] .mic { width: 96px; height: 96px; background: var(--tim); border-color: var(--tim); color: var(--on-tim); box-shadow: 0 5px 0 var(--tim-ink); }
+  :root[data-age="tieu-hoc"] .mic svg { width: 44px; height: 44px; }
+  .rc-heard { color: var(--ink-2); text-align: center; min-height: 1.5em; }
+  .rc-ans { display: grid; gap: 4px; padding: 14px 18px; border-radius: 18px; border: 3px solid var(--tim); background: var(--tim-soft); }
+  .rc-ans small { color: var(--tim-ink); font-weight: 600; }
+  .rc-ans b { font-family: var(--font-read); font-size: 1.3em; font-weight: 600; }
+  .rc-mark { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .rc-mark .tile { min-height: 58px; font-family: var(--font-ui); font-size: 1.05em; font-weight: 600; }
+  .rc-mark .yes { border-color: var(--xanh); box-shadow: 0 4px 0 var(--xanh); }
+  .rc-mark .no { border-color: var(--do); box-shadow: 0 4px 0 var(--do); }
+
+  /* read aloud: the words light up as the voice reaches them */
+  .reading .w { color: var(--ink-3); transition: color .15s ease; }
+  .reading .w.said { color: var(--ink); }
+  .reading .w.now { color: var(--ink); background: var(--hl); border-radius: 4px; box-shadow: 0 0 0 2px var(--hl); }
+  .speakb[aria-pressed="true"] { background: var(--tim-ink); color: #fff; }
+  :root[data-theme="dark"] .speakb[aria-pressed="true"] { background: #fff; color: #3a2010; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .speakb[aria-pressed="true"] { background: #fff; color: #3a2010; } }
+
+  /* "Hỏi gà": on every screen of the lesson, about the screen on view */
+  .askb { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 4px 16px 4px 5px; border-radius: 999px; border: 3px solid #e7cfa8; background: #fffdf7; color: #3a2010; font: inherit; font-size: .9em; font-weight: 700; cursor: pointer; flex: none; box-shadow: 0 4px 0 #e0c294; }
+  .askb:hover { border-color: var(--board-edge); }
+  .askb:active { transform: translateY(3px); box-shadow: 0 1px 0 #e0c294; }
+  .askb .gav { --s: 34px; }
+  .fb .askq { justify-self: start; margin-top: 4px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid rgba(58, 32, 16, .35); background: rgba(255,255,255,.7); color: #3a2010; font: inherit; font-size: .88em; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .fb .askq svg { width: 18px; height: 18px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .fb .askq { background: rgba(255,255,255,.08); color: var(--ink); border-color: rgba(255,255,255,.35); } }
+  :root[data-theme="dark"] .fb .askq { background: rgba(255,255,255,.08); color: var(--ink); border-color: rgba(255,255,255,.35); }
+
+  .ascrim { position: fixed; inset: 0; z-index: 90; background: rgba(20, 16, 40, .45); }
+  .asheet { position: fixed; z-index: 91; left: 50%; bottom: 0; transform: translateX(-50%); width: min(720px, 100%); max-height: min(84vh, 780px); display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; background: var(--lboard); color: var(--ink); border: 4px solid var(--board-edge); border-bottom: 0; border-radius: 28px 28px 0 0; box-shadow: 0 -18px 40px -20px rgba(0,0,0,.6); animation: sheetup .28s cubic-bezier(.2, .8, .2, 1) both; }
+  @keyframes sheetup { from { transform: translate(-50%, 40px); opacity: 0; } }
+  .ash-h { display: flex; align-items: center; gap: 12px; padding: 12px 16px 6px 20px; }
+  .ash-h .gsp { --w: 46px; margin-top: 0; }
+  .ash-h h2 { font-size: 1.2em; }
+  .ash-h .icon-btn { margin-left: auto; flex: none; }
+  .ash-h .plate { margin-right: auto; font-size: .78em; }
+  .ash-ctx { margin: 4px 20px 6px; padding: 10px 14px; border-radius: 14px; border: 2px dashed var(--rule-strong); color: var(--ink-2); font-size: .88em; line-height: 1.45; }
+  .ash-ctx b { color: var(--ink); font-weight: 600; }
+  .ash-log { overflow-y: auto; padding: 8px 20px 12px; display: grid; align-content: start; gap: 12px; }
+  .msg { max-width: 88%; padding: 12px 16px; border-radius: 18px; line-height: 1.5; }
+  .msg.me { justify-self: end; background: var(--tim); color: var(--on-tim); border-bottom-right-radius: 6px; }
+  .msg.ga-a { justify-self: start; background: var(--surface); border: 3px solid var(--rule-strong); border-bottom-left-radius: 6px; }
+  .msg.ga-a .speakb { width: 34px; height: 34px; border-radius: 10px; float: left; margin: 0 10px 2px 0; }
+  .msg.ga-a .speakb svg { width: 19px; height: 19px; }
+  .msg.think { color: var(--ink-2); font-style: italic; }
+  .msg.fallback { justify-self: stretch; max-width: none; background: var(--cam-soft); border: 0; display: grid; gap: 8px; }
+  .msg.fallback small { color: var(--cam); font-weight: 700; font-size: .82em; }
+  .msg.fallback button { justify-self: start; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--cam); background: none; color: var(--cam); font: inherit; font-weight: 600; cursor: pointer; }
+  .ash-foot { padding: 10px 16px calc(14px + env(safe-area-inset-bottom)); border-top: 2px solid var(--rule); display: grid; gap: 10px; background: var(--lboard); }
+  .sugs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 3px; }
+  .sug { flex: none; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--tim-soft); background: var(--tim-soft); color: var(--tim-ink); font: inherit; font-size: .88em; font-weight: 600; cursor: pointer; }
+  .sug:hover { border-color: var(--tim); }
+  .ash-in { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; }
+  .ash-in input { min-height: 50px; padding: 0 16px; border-radius: 16px; border: 3px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; width: 100%; }
+  .ash-in input:focus-visible { outline: none; border-color: var(--tim); box-shadow: 0 0 0 3px var(--tim-soft); }
+  .ash-in .mic { width: 50px; height: 50px; }
+  .sendb { width: 50px; height: 50px; border-radius: 16px; border: 0; background: linear-gradient(var(--btn-top), var(--btn)); color: #fff; display: grid; place-items: center; cursor: pointer; box-shadow: 0 4px 0 var(--btn-dark); }
+  .sendb svg { width: 22px; height: 22px; }
+  :root[data-age="tieu-hoc"] .ash-in { grid-template-columns: 1fr; justify-items: center; }
+  :root[data-age="tieu-hoc"] .ash-in input, :root[data-age="tieu-hoc"] .sendb { display: none; }
+  :root[data-age="tieu-hoc"] .ash-in .mic { width: 84px; height: 84px; background: var(--tim); border-color: var(--tim); color: var(--on-tim); box-shadow: 0 5px 0 var(--tim-ink); }
+  :root[data-age="tieu-hoc"] .ash-in .mic svg { width: 38px; height: 38px; }
+
+  /* wrong answer: the chicken explains it again more simply, then a similar question */
+  .rlabel { justify-self: start; }
+  .tag.wait { background: var(--cam-soft); color: var(--cam); }
+  .steps-say { margin: 8px 0 0; padding-left: 1.3em; display: grid; gap: 6px; }
+  .twin-ask small { display: block; color: var(--ink-3); font-size: .62em; font-weight: 600; margin-bottom: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    #fld.hint #hnd .pulse { animation: none; }
+  }
+  @media (max-width: 560px) {
+    .lesson { width: calc(100% - 12px); margin-top: 44px; border-width: 3px; border-radius: 24px; }
+    .ltop { padding: 28px 10px 4px; gap: 6px; }
+    .stage { padding: 12px 14px 20px; }
+    .lfoot { padding: 12px 14px calc(16px + env(safe-area-inset-bottom)); }
+    .say { grid-template-columns: 58px minmax(0, 1fr); gap: 10px; }
+    .say .gsp { --w: 58px; }
+    .fbga { --w: 50px; }
+    .askb { padding-right: 6px; } .askb .lbl { display: none; }
+    .pairs { gap: 8px; }
+    .pics.long { grid-template-columns: 1fr; }
+    .ash-h .plate { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Làng gà · bài học từng bước</span>
+  <span class="mock-seg"><span>Môn</span><button data-set="ga:toan">Gà Toán</button><button data-set="ga:van">Gà Văn</button><button data-set="ga:anh">Gà Anh</button></span>
+  <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
+  <span class="mock-seg" style="flex-wrap:wrap"><span>Tới bước</span><button data-jump="0">1 Gà giảng</button><button data-jump="1">2 Chọn</button><button data-jump="2">3 Ghép</button><button data-jump="3">4 Nối cặp</button><button data-jump="4">5 Xếp bước</button><button data-jump="5">6 Tự tính</button><button data-jump="6">7 Kéo thả</button><button data-jump="7">8 Nhớ lại</button><button data-jump="8">Xong bài</button><button data-jump="9">Chuỗi ngày</button><button data-jump="10">Thông báo</button><button data-demo="wrong">Sai → giảng lại</button><button data-demo="ask">Hỏi gà</button></span>
+  <span class="mock-seg"><span>Gà trả lời</span><button data-set="ai:ok">Được</button><button data-set="ai:down">Mất kết nối</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+  <span class="mock-note">Mỗi màn một việc; làm xong biết đúng sai ngay. Sai thì gà giảng lại rồi cho câu tương tự. Bấm loa: chữ sáng theo tiếng đọc. Đổi môn: gà và bài đổi theo. Tiểu học học bản ngắn.</span>
+</div>
+
+<div class="lesson">
+  <h1 class="ribbon" id="rib">Bài 3</h1>
+  <header class="ltop">
+    <button class="x" type="button" aria-label="Thoát" onclick="leave()"><i data-i="x"></i></button>
+    <span class="lbar" role="progressbar" aria-label="Tiến độ" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"><i id="bar" style="width:4%"></i></span>
+    <span class="combo" id="combo" hidden></span>
+    <button class="askb" id="askb" type="button" aria-haspopup="dialog" aria-label="Hỏi gà"><span class="gav"><img class="gimg" src="assets/ga/toan.png" data-pose="tinh" alt=""></span><span class="lbl">Hỏi gà</span></button>
+  </header>
+
+  <main class="stage" id="stage">
+    <!-- 0 · gà explains one idea -->
+    <section class="step" data-kind="read">
+      <div class="say">
+        <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="dung" alt=""></span>
+        <div class="bub" id="rdbub"></div>
+      </div>
+      <div class="mix" id="rdmix" hidden><span class="mixchip" title="Tiếng Việt 30%"><span>Tiếng Việt 30%</span><span aria-hidden="true" style="display:inline-flex;gap:3px"><i class="on"></i><i></i><i></i></span></span><span>Em tiến bộ, gà nói ít tiếng Việt dần.</span></div>
+      <div class="figure" id="rdfig" hidden></div>
+    </section>
+
+    <!-- 1 · pick -->
+    <section class="step" data-kind="pick">
+      <p class="ask" id="pq1"></p>
+      <div class="pics" id="pp1"></div>
+    </section>
+
+    <!-- 2 · build from tiles -->
+    <section class="step" data-kind="tiles">
+      <p class="ask" id="tq"></p>
+      <div class="slots" id="slt"></div>
+      <div class="bank" id="bnk"></div>
+    </section>
+
+    <!-- 3 · match pairs -->
+    <section class="step" data-kind="pairs">
+      <p class="ask" id="pq3"></p>
+      <div class="pairs" id="pairs"></div>
+    </section>
+
+    <!-- 4 · order the steps -->
+    <section class="step" data-kind="order">
+      <p class="ask" id="oq"></p>
+      <div class="slots order" id="ord" data-empty="Chạm theo thứ tự"></div>
+      <div class="bank" id="obnk"></div>
+    </section>
+
+    <!-- 5 · work it out -->
+    <section class="step" data-kind="pick">
+      <p class="ask" id="pq5"></p>
+      <div class="pics" id="pp5"></div>
+    </section>
+
+    <!-- 6 · draggable step -->
+    <section class="step" data-kind="drag">
+      <p class="ask" id="dq"></p>
+      <div class="figure dragbox" id="dfig"></div>
+      <div class="say drag-say">
+        <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="dung" alt=""></span>
+        <div class="bub" id="fldsay" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- 7 · recall with no choices -->
+    <section class="step" data-kind="recall">
+      <div class="say">
+        <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="dung" alt=""></span>
+        <div class="bub"><span class="rc-n" id="rcn">1/3</span><br><span id="rcq"></span></div>
+      </div>
+      <div class="figure" id="rcpic" hidden></div>
+      <div id="rcin">
+        <div class="rc-in"><input id="rctext" type="text" autocomplete="off" aria-label="Câu trả lời của em" placeholder="Gõ ý em nhớ"><button class="mic" id="rcmic" type="button" aria-pressed="false" aria-label="Nói câu trả lời"><i data-i="mic"></i></button></div>
+        <p class="rc-heard" id="rcheard" role="status" aria-live="polite"></p>
+      </div>
+      <div class="rc-ans" id="rcans" hidden><small>Ý đúng</small><b id="rca"></b></div>
+      <div class="rc-mark" id="rcmark" hidden><button class="tile no" type="button" data-m="0">Chưa nhớ</button><button class="tile yes" type="button" data-m="1">Nhớ</button></div>
+    </section>
+
+    <!-- 8 · the end of the lesson -->
+    <section class="step" data-kind="end">
+      <div class="done-sum">
+        <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="dung" id="endga" alt=""></span>
+        <h2 id="endh">Xong bài 3!</h2>
+        <div class="xp" aria-label="Kinh nghiệm của gà">
+          <div class="xp-h"><span class="lvb" id="xplv">7</span><span><span class="gname">Gà Toán</span> <small id="xpstage">Trưởng thành</small></span><span class="xp-gain">+20 kinh nghiệm</span><span class="xp-bonus" id="xpbonus">+5 đúng hết ngay lần đầu</span><span class="xp-up" id="xpup" hidden>Lên cấp!</span></div>
+          <div class="xp-track" role="progressbar" aria-label="Tiến tới cấp kế" aria-valuemin="0" aria-valuemax="100" aria-valuenow="78"><i id="xpf" style="width:78%"></i></div>
+          <div class="xp-n" id="xpn">98/100 · còn 2 nữa là lên cấp 8</div>
+        </div>
+        <div class="stats">
+          <div class="stat g"><b>Đúng</b><span id="acc">7/7</span></div>
+          <div class="stat"><b>Thời gian</b><span>6 phút</span></div>
+          <div class="stat o"><b>Ôn lại</b><span id="redo">0 câu</span></div>
+        </div>
+        <p class="why">Câu sai và ý chưa nhớ: ôn lại sau 2 ngày.</p>
+      </div>
+    </section>
+
+    <!-- 9 · the streak -->
+    <section class="step" data-kind="streak">
+      <div class="streak">
+        <p class="bubble">Xong 1 bài là tính một ngày. Ngày thứ 4, gà khoe cả làng!</p>
+        <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="ngac" alt=""></span>
+        <div class="flamerow">
+          <svg class="flame" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 8 C72 34 98 46 98 76 A38 38 0 0 1 22 76 C22 56 34 46 40 30 C46 44 52 48 56 48 C54 32 56 20 60 8 Z" fill="var(--lua)"/><path d="M60 54 C66 66 78 72 78 86 A18 18 0 0 1 42 86 C42 76 50 70 52 62 C55 68 58 70 60 70 Z" fill="var(--vang)"/></svg>
+          <div class="bignum">4</div>
+        </div>
+        <p class="days">ngày liên tiếp</p>
+        <div class="wk" aria-label="Đã học T2 đến T5">
+          <span class="on">T2<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span class="on">T3<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span class="on">T4<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span class="on">T5<i><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg></i></span>
+          <span>T6<i></i></span><span>T7<i></i></span><span>CN<i></i></span>
+        </div>
+        <p class="why">Một ngày được tính khi em học đủ 10 phút hoặc xong 1 bài. Quên thì gà nhắc tối mai.</p>
+      </div>
+    </section>
+
+    <!-- 10 · outside the app -->
+    <section class="step" data-kind="notif">
+      <div class="phone" aria-label="Thông báo màn khóa">
+        <div class="clock">21:30</div>
+        <div class="date">Thứ Sáu, 13 tháng 11</div>
+        <div class="note"><span class="ni"><img class="nimg" src="assets/ga/toan.png" alt=""></span><div><b><span class="gname">Gà Toán</span> <small>bây giờ</small></b><p>Em chưa học hôm nay. 5 phút giữ chuỗi 4 ngày nhé.</p></div></div>
+        <div class="note"><span class="ni"><img class="nimg" src="assets/ga/toan.png" alt=""></span><div><b><span class="gname">Gà Toán</span> <small>19:30</small></b><p id="ntxt">15 phút cấp số cộng nhé?</p></div></div>
+      </div>
+      <details class="why"><summary>Quy tắc nhắc</summary>Tối đa 3 lời nhắc mỗi ngày, không nhắc giờ ngủ; bị lờ 4 lần thì nhắc thưa lại.</details>
+    </section>
+
+    <!-- after a wrong answer: the chicken explains it again, simpler -->
+    <section class="step" data-kind="reteach" id="reteach">
+      <span class="tag wait rlabel">Gà giảng lại</span>
+      <div class="say">
+        <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="dung" alt=""></span>
+        <div class="bub" id="rtbub"></div>
+      </div>
+      <div class="figure" id="rtfig" hidden></div>
+    </section>
+
+    <!-- ...then a similar question -->
+    <section class="step" data-kind="twin" id="twin">
+      <span class="tag rlabel">Câu tương tự</span>
+      <p class="ask twin-ask" id="twq"></p>
+      <div class="pics" id="twopts"></div>
+    </section>
+  </main>
+
+  <footer class="lfoot" id="foot">
+    <div class="fb" id="fb" role="status" aria-live="polite"><span class="gsp fbga" aria-hidden="true"><img class="gimg" id="fbga" src="assets/ga/toan.png" data-pose="vui" alt=""></span><div class="fbt"><h3 id="fbh"></h3><p id="fbp"></p><button class="askq" id="askq" type="button" hidden><i data-i="chat"></i>Hỏi gà về câu này</button></div></div>
+    <button class="go" id="go" type="button">Tiếp tục</button>
+  </footer>
+</div>
+
+<!-- Hỏi gà: a sheet over the lesson; the question goes with the screen on view -->
+<div class="ascrim" id="ascrim" hidden></div>
+<section class="asheet" id="asheet" role="dialog" aria-modal="true" aria-labelledby="ash-t" hidden>
+  <div class="ash-h">
+    <span class="gsp" aria-hidden="true"><img class="gimg" src="assets/ga/toan.png" data-pose="dung" alt=""></span>
+    <h2 id="ash-t">Hỏi gà</h2><span class="plate"><span class="lvb glv">7</span><span class="gname">Gà Toán</span></span>
+    <button class="icon-btn" type="button" id="ash-x" aria-label="Đóng, quay lại bài"><i data-i="x"></i></button>
+  </div>
+  <p class="ash-ctx" id="ash-ctx"></p>
+  <div class="ash-log" id="ash-log" aria-live="polite"></div>
+  <div class="ash-foot">
+    <div class="sugs" id="sugs"></div>
+    <form class="ash-in" id="ash-form">
+      <input id="ash-text" type="text" autocomplete="off" placeholder="Em muốn hỏi gì?" aria-label="Câu hỏi của em">
+      <button class="mic" id="ash-mic" type="button" aria-pressed="false" aria-label="Nói câu hỏi"><i data-i="mic"></i></button>
+      <button class="sendb" type="submit" aria-label="Gửi"><i data-i="send"></i></button>
+    </form>
+  </div>
+</section>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const $ = (id) => document.getElementById(id);
+  const num = (t) => `<span class="big">${t}</span>`;
+  const SPEAK = '<button class="speakb" type="button" aria-label="Đọc to" aria-pressed="false"><i data-i="volume"></i></button>';
+
+  // ---------- small drawing helpers (everything uses theme variables so both themes stay readable) ----------
+  const APPLE = '<circle cx="20" cy="22" r="15" fill="#E5484D"/><path d="M20 8c0-4 3-6 6-6" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/>';
+  const apple1 = `<svg viewBox="0 0 40 40" aria-hidden="true">${APPLE}</svg>`;
+  const applesPic = (n) => `<svg viewBox="0 0 ${n * 44} 44" width="${n * 44}" height="44" aria-hidden="true" style="max-width:100%;height:auto">${Array.from({ length: n }, (_, k) => `<g transform="translate(${k * 44 + 2} 2)">${APPLE}</g>`).join("")}</svg>`;
+  const basket = (n) => {
+    const top = Math.max(0, n - 3), low = n - top, w = 36;
+    const row = (m, y) => Array.from({ length: m }, (_, k) => `<circle cx="${90 - ((m - 1) * w) / 2 + k * w}" cy="${y}" r="15"/>`).join("");
+    return `<svg viewBox="0 0 180 110" aria-hidden="true"><path d="M20 50h140l-14 50H34z" fill="#C98A4B"/><g fill="#E5484D">${row(low, 40)}${row(top, 18)}</g></svg>`;
+  };
+  const FRUIT = {
+    apple: `<svg viewBox="0 0 40 40" aria-hidden="true">${APPLE}</svg>`,
+    banana: '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 12c2 16 14 24 30 18-12 2-20-6-22-20z" fill="#F2C94C" stroke="#8a6d00" stroke-width="2" stroke-linejoin="round"/></svg>',
+    orange: '<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="22" r="15" fill="#F2994A"/><path d="M20 8c0-3 3-5 6-5" stroke="#2F9E6B" stroke-width="3" fill="none" stroke-linecap="round"/></svg>',
+    grapes: '<svg viewBox="0 0 40 40" aria-hidden="true"><g fill="#7B4FBF"><circle cx="13" cy="18" r="6"/><circle cx="25" cy="18" r="6"/><circle cx="19" cy="27" r="6"/><circle cx="19" cy="9" r="5"/></g><path d="M19 4c0-2 2-3 4-3" stroke="#2F9E6B" stroke-width="2.5" fill="none"/></svg>',
+  };
+  const big = (svg, w = 90) => svg.replace("<svg ", `<svg width="${w}" height="${w}" `);
+  const dot = (cx, cy, r, t, hi) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${hi ? "var(--tim)" : "var(--tim-soft)"}" stroke="var(--tim)" stroke-width="3"/><text x="${cx}" y="${cy + 8}" text-anchor="middle" font-size="22" font-weight="700" fill="${hi ? "var(--on-tim)" : "var(--ink)"}">${t}</text>`;
+  // a chain of numbers with the same step between neighbours (arithmetic progression)
+  const chain = (vals, lab, aria) => {
+    const n = vals.length, gap = n > 4 ? 80 : 100, x0 = (420 - (n - 1) * gap) / 2;
+    let s = `<svg viewBox="0 0 420 150" role="img" aria-label="${aria}">`;
+    vals.forEach((v, k) => { s += dot(x0 + k * gap, 100, 27, v, true); });
+    for (let k = 0; k < n - 1; k++) {
+      const a = x0 + k * gap + 22, b = x0 + (k + 1) * gap - 22;
+      s += `<path d="M${a} 68 Q${(a + b) / 2} 22 ${b} 66" fill="none" stroke="var(--xanh)" stroke-width="3"/><polygon points="${b},70 ${b - 11},58 ${b + 2},56" fill="var(--xanh)"/><text x="${(a + b) / 2}" y="34" text-anchor="middle" font-size="16" font-weight="700" fill="var(--xanh)">${lab}</text>`;
+    }
+    return s + "</svg>";
+  };
+  // boxes in a row; the highlighted one is the point of the lesson
+  const flow = (labels, hi, aria, cap) => {
+    const n = labels.length, w = n === 3 ? 124 : 90, g = 14, x0 = (420 - n * w - (n - 1) * g) / 2;
+    let s = `<svg viewBox="0 0 420 ${cap ? 130 : 100}" role="img" aria-label="${aria}">`;
+    labels.forEach((t, k) => {
+      const x = x0 + k * (w + g), on = k === hi;
+      s += `<rect x="${x}" y="16" width="${w}" height="56" rx="14" fill="${on ? "var(--tim)" : "var(--tim-soft)"}" stroke="var(--tim)" stroke-width="3"/><text x="${x + w / 2}" y="51" text-anchor="middle" font-size="${t.length > 9 ? 15 : 19}" font-weight="700" fill="${on ? "var(--on-tim)" : "var(--ink)"}">${t}</text>`;
+    });
+    if (cap) s += `<text x="210" y="112" text-anchor="middle" font-size="15" fill="var(--ink-2)">${cap}</text>`;
+    return s + "</svg>";
+  };
+  const parabola = () => {
+    const P = (x) => [210 + 60 * x, 150 - 45 * x * x];
+    let d = ""; for (let x = -1.6; x <= 1.61; x += .1) d += (d ? "L" : "M") + P(x).map((v) => v.toFixed(1)).join(" ");
+    const [px, py] = P(1), tl = (x) => P(x), a = tl(.2), b = tl(1.8);
+    const ty = (x) => 150 - 45 * (1 + 2 * (x - 1)), tx = (x) => 210 + 60 * x;
+    return `<svg viewBox="0 0 420 170" role="img" aria-label="Parabol y = x² và tiếp tuyến tại x = 1"><line x1="30" y1="150" x2="400" y2="150" stroke="var(--ink-3)" stroke-width="2"/><path d="${d}" fill="none" stroke="var(--tim)" stroke-width="4"/><line x1="${tx(.2)}" y1="${ty(.2)}" x2="${tx(1.7)}" y2="${ty(1.7)}" stroke="var(--xanh)" stroke-width="3"/><circle cx="${px}" cy="${py}" r="7" fill="var(--xanh)"/><text x="${px + 12}" y="${py + 22}" font-size="15" font-weight="700" fill="var(--xanh)">hệ số góc = 2</text><text x="120" y="24" font-size="16" font-weight="700" fill="var(--ink)">y = x²</text></svg>`;
+  };
+
+  // ---------- the lessons: one set per chicken x age band (tieu-hoc is the short version: explain, pick, drag, recall) ----------
+  // pick/calc: q, opts[], ans, ok, no · tiles: pre/post/bank/ans · pairs: items[[left,right]] · order: steps[] (correct order)
+  // rem[1], rem[5]: say/fig/q/opts/answer/ok/no (the chicken re-explains, then a similar question) · hint/why/slip/readq/ask: canned "Hỏi gà" answers
+  const L = {};
+  const nonkid = (o) => o;
+
+  L["toan:thpt"] = {
+    title: "Bài 3 · Cấp số cộng",
+    read: { html: "Cấp số cộng là dãy số mà mỗi số bằng số liền trước <b>cộng thêm một số d không đổi</b> (công sai). Ví dụ 3, 5, 7, 9: d = 2.", fig: chain([3, 5, 7, 9], "+2", "Dãy 3, 5, 7, 9, mỗi số hơn số trước 2") },
+    pick: { q: "Dãy nào là <b>cấp số cộng</b>?", opts: ["2, 4, 8, 16", "5, 8, 11, 14", "1, 2, 4, 7", "10, 7, 5, 2"].map(num), ans: "b", ok: "Hiệu hai số liền nhau luôn là 3.", no: "Đáp án B: 8 − 5 = 11 − 8 = 14 − 11 = 3." },
+    tiles: { q: "Điền chỗ trống", pre: "uₙ = u₁ +", post: "· d", bank: ["n", "n − 1", "n + 1", "d"], ans: "n − 1", ok: "Từ u₁ đến uₙ có n − 1 bước.", no: "Từ u₁ đến uₙ có n − 1 bước, mỗi bước cộng d." },
+    pairs: { q: "Nối dãy với công sai", items: [["2, 5, 8, …", "d = 3"], ["10, 6, 2, …", "d = −4"], ["7, 7, 7, …", "d = 0"]], perm: [1, 2, 0] },
+    order: { q: "Xếp các bước tìm u₁₀ khi u₁ = 4, d = 3", steps: ["Đọc đề: u₁ = 4, d = 3, n = 10", "Chọn công thức uₙ = u₁ + (n − 1)d", "Thay số: 4 + 9 · 3", "Ra kết quả: u₁₀ = 31"], perm: [2, 0, 3, 1], ok: "Đề, công thức, số, kết quả.", no: "Đề, công thức, số, kết quả." },
+    calc: { q: "u₁ = 4, d = 3. Tính u₁₀.", opts: ["27", "34", "31", "37"].map(num), ans: "c", ok: "u₁₀ = 4 + 9·3 = 31.", no: "u₁₀ = 4 + (10 − 1)·3 = 4 + 27 = 31." },
+    drag: {
+      type: "slider", q: "Kéo công sai d để u₅ = 11", min: 0, max: 4, step: 1, init: 0, x0: 40, x1: 320, aria: "Công sai d. Kéo để các cột tăng nhanh hay chậm.",
+      pos: (v) => [40 + (v / 4) * 280, 205],
+      dyn: (v) => {
+        let s = '<line x1="40" y1="205" x2="320" y2="205" stroke="var(--rule-strong)" stroke-width="6" stroke-linecap="round"/>';
+        for (let t = 0; t <= 4; t++) s += `<line x1="${40 + t * 70}" y1="198" x2="${40 + t * 70}" y2="212" stroke="var(--ink-3)" stroke-width="2"/>`;
+        for (let k = 0; k < 5; k++) {
+          const val = 3 + k * v, h = val * 8, x = 24 + k * 66;
+          s += `<rect x="${x}" y="${170 - h}" width="44" height="${h}" rx="6" fill="${k === 4 ? "var(--xanh)" : "var(--tim)"}"/><text x="${x + 22}" y="${164 - h}" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">${val}</text><text x="${x + 22}" y="188" text-anchor="middle" font-size="14" fill="currentColor">u${"₁₂₃₄₅"[k]}</text>`;
+        }
+        return s;
+      },
+      read: (v) => `d = <b>${v}</b> · u₅ = <b>${3 + 4 * v}</b><small>u₁ = 3. Cần u₅ = 11</small>`,
+      valtext: (v) => `d = ${v}, u5 = ${3 + 4 * v}`,
+      say: (v) => v === 2 ? ["Đúng! u₅ = 3 + 4·2 = 11.", 1] : v === 0 ? ["Kéo núm để đổi công sai d.", 0] : v < 2 ? ["d còn nhỏ, các cột tăng chậm. Kéo thêm.", 0] : ["d lớn quá, u₅ vượt 11. Kéo lại.", 0],
+      start: "Kéo núm để đổi công sai d.", okfb: "u₅ = 3 + 4·2 = 11.",
+    },
+    recall: [{ q: "Công sai d của dãy 5, 8, 11?", a: "d = 3", say: "d bằng ba" }, { q: "Công thức số hạng tổng quát?", a: "uₙ = u₁ + (n − 1)d", say: "u n bằng u một cộng n trừ một nhân d" }, { q: "u₁ = 2, d = 5. u₃ = ?", a: "12", say: "Mười hai" }],
+    rem: {
+      1: { say: "Nhớ một câu thôi: <b>hiệu hai số liền nhau luôn bằng nhau</b>. Với 5, 8, 11: 8 − 5 = 3 và 11 − 8 = 3, nên d = 3.", fig: chain([5, 8, 11], "+3", "Dãy 5, 8, 11: mỗi số hơn số trước 3"), q: "Dãy nào có <b>d = 4</b>?", opts: ["1, 4, 9, 16", "2, 6, 10, 14", "3, 6, 12, 24", "4, 8, 16, 32"].map(num), answer: "b", ok: "Hiệu luôn là 4. Em hiểu rồi đấy!", no: "Đáp án B: 6 − 2 = 10 − 6 = 14 − 10 = 4." },
+      5: { say: 'Làm từng bước nhé:<ol class="steps-say"><li>n − 1 = 10 − 1 = <b>9</b></li><li>9 · d = 9 · 3 = <b>27</b></li><li>u₁₀ = 4 + 27 = <b>31</b></li></ol>Hay sai ở bước 1: lấy n thay cho n − 1 (ra 34).', q: "<small>Giống câu vừa rồi, số khác</small>u₁ = 5, d = 2. Tính u₈.", opts: ["21", "19", "16", "23"].map(num), answer: "b", ok: "n − 1 = 7, 7·2 = 14, 5 + 14 = 19. Đúng từng bước!", no: "n − 1 = 7, 7 · 2 = 14, rồi 5 + 14 = 19." },
+    },
+    hint: { 1: "Lấy số sau trừ số trước. Hiệu có luôn bằng nhau không?", 2: "Từ u₁ đến uₙ phải đi bao nhiêu bước?", 3: "Công sai là số sau trừ số trước.", 4: "Bước đầu luôn là đọc đề: ghi u₁, d, n.", 5: "Dùng uₙ = u₁ + (n − 1)d. Tính n − 1 trước: 10 − 1 = 9.", 6: "Thử kéo từng nấc: u₅ = 3 + 4d. Em cần u₅ = 11." },
+    why: { 1: "Dãy B có 8 − 5 = 11 − 8 = 14 − 11 = 3: hiệu luôn bằng nhau nên là cấp số cộng.", 5: "u₁₀ = 4 + (10 − 1)·3 = 4 + 27 = 31." },
+    slip: { 1: "Dãy A là nhân đôi, C có hiệu 1, 2, 3 (đổi liên tục), D có hiệu −3 rồi −2.", 5: "Nhiều bạn lấy n·d = 30 rồi cộng 4 ra 34. Phải nhân (n − 1) = 9 lần d." },
+    readq: { 1: "Đề hỏi dãy nào mà hai số liền nhau luôn hơn kém nhau cùng một số.", 5: "Đề cho số đầu u₁ = 4, công sai d = 3 và hỏi số hạng thứ 10." },
+    ask: { easier: "Cấp số cộng giống bậc cầu thang: mỗi bậc cao hơn bậc trước đúng d. Biết bậc đầu và d thì đếm được bậc nào cũng ra.", example: "Mỗi tuần để dành 20 nghìn, tuần đầu có 50 nghìn: 50, 70, 90, 110… là cấp số cộng với d = 20.", ex5: "u₁ = 1, d = 4: u₆ = 1 + 5·4 = 21.", use: "Tính tiền lãi đơn, số ghế mỗi hàng trong rạp, lịch trả góp đều mỗi tháng." },
+    ntxt: "15 phút cấp số cộng nhé?",
+  };
+
+  L["toan:dai-hoc"] = {
+    title: "Bài 3 · Đạo hàm và tiếp tuyến",
+    read: { html: "Đạo hàm của f tại x₀ là <b>hệ số góc tiếp tuyến</b> của đồ thị tại điểm đó. Với f(x) = x² thì f′(x) = 2x, nên tại x = 1 hệ số góc là 2.", fig: parabola() },
+    pick: { q: "f(x) = x³. f′(x) = ?", opts: ["x²", "3x²", "3x", "x⁴/4"].map(num), ans: "b", ok: "Hạ số mũ 3 xuống, còn x².", no: "Đáp án B: (x³)′ = 3x²." },
+    tiles: { q: "Điền chỗ trống", pre: "(xⁿ)′ =", post: "· xⁿ⁻¹", bank: ["n", "n − 1", "n + 1", "1"], ans: "n", ok: "Số mũ hạ xuống làm hệ số.", no: "Số mũ n hạ xuống làm hệ số, số mũ còn n − 1." },
+    pairs: { q: "Nối hàm với đạo hàm", items: [["x²", "2x"], ["sin x", "cos x"], ["eˣ", "eˣ"]], perm: [2, 0, 1] },
+    order: { q: "Xếp các bước viết tiếp tuyến của y = x² tại x = 2", steps: ["Tính f(2) = 4", "Tính f′(x) = 2x, nên f′(2) = 4", "Viết y − 4 = 4(x − 2)", "Rút gọn: y = 4x − 4"], perm: [1, 3, 0, 2], ok: "Điểm, hệ số góc, phương trình, rút gọn.", no: "Điểm, hệ số góc, phương trình, rút gọn." },
+    calc: { q: "f(x) = x³ − 2x. Tính f′(1).", opts: ["−1", "3", "1", "0"].map(num), ans: "c", ok: "f′(1) = 3 − 2 = 1.", no: "f′(x) = 3x² − 2, nên f′(1) = 3 − 2 = 1." },
+    drag: {
+      type: "slider", q: "Kéo điểm trên parabol để hệ số góc tiếp tuyến bằng 4", min: 0, max: 3, step: .5, init: 0, x0: 40, x1: 320, aria: "Điểm trên đồ thị y = x². Kéo để đổi x₀.",
+      pos: (v) => [40 + (v / 3) * 280, 180 - 16 * v * v],
+      dyn: (v) => {
+        let d = ""; for (let x = 0; x <= 3.001; x += .1) d += (d ? "L" : "M") + (40 + (x / 3) * 280).toFixed(1) + " " + (180 - 16 * x * x).toFixed(1);
+        const X = (x) => 40 + (x / 3) * 280, Y = (x) => 180 - 16 * (v * v + 2 * v * (x - v));
+        let s = `<line x1="40" y1="180" x2="320" y2="180" stroke="var(--ink-3)" stroke-width="2"/><path d="${d}" fill="none" stroke="var(--tim)" stroke-width="4"/>`;
+        s += `<svg x="0" y="0" width="360" height="190" viewBox="0 0 360 190"><line x1="${X(v - 1)}" y1="${Y(v - 1)}" x2="${X(v + 1)}" y2="${Y(v + 1)}" stroke="var(--xanh)" stroke-width="3"/></svg>`;
+        s += '<line x1="40" y1="206" x2="320" y2="206" stroke="var(--rule-strong)" stroke-width="5" stroke-linecap="round"/>';
+        s += `<circle cx="${X(v)}" cy="206" r="5" fill="var(--tim)"/><text x="${X(v)}" y="226" text-anchor="middle" font-size="13" fill="currentColor">x₀ = ${String(v).replace(".", ",")}</text>`;
+        return s;
+      },
+      read: (v) => `x₀ = <b>${String(v).replace(".", ",")}</b> · f′(x₀) = <b>${String(2 * v).replace(".", ",")}</b><small>Cần hệ số góc bằng 4</small>`,
+      valtext: (v) => `x0 = ${v}, hệ số góc = ${2 * v}`,
+      say: (v) => v === 2 ? ["Đúng! f′(2) = 2·2 = 4.", 1] : v === 0 ? ["Kéo điểm ra xa gốc để tiếp tuyến dốc hơn.", 0] : v < 2 ? ["Còn thoải. Kéo điểm đi xa thêm.", 0] : ["Dốc quá, hệ số góc vượt 4. Kéo lại gần.", 0],
+      start: "Kéo điểm ra xa gốc để tiếp tuyến dốc hơn.", okfb: "f′(x₀) = 2x₀ = 4 khi x₀ = 2.",
+    },
+    recall: [{ q: "(xⁿ)′ = ?", a: "n · xⁿ⁻¹", say: "n nhân x mũ n trừ một" }, { q: "Đạo hàm của sin x?", a: "cos x", say: "Cô sin x" }, { q: "f′(x₀) có nghĩa hình học gì?", a: "Hệ số góc tiếp tuyến tại x₀", say: "Hệ số góc tiếp tuyến" }],
+    rem: {
+      1: { say: "Quy tắc lũy thừa: <b>hạ số mũ xuống làm hệ số, rồi giảm số mũ đi 1</b>. Ví dụ (x⁴)′ = 4x³.", fig: null, q: "(x⁵)′ = ?", opts: ["5x⁴", "x⁴", "5x⁶", "4x⁵"].map(num), answer: "a", ok: "Đúng: hạ 5 xuống, còn x⁴.", no: "Đáp án A: (x⁵)′ = 5x⁴." },
+      5: { say: 'Làm từng bước nhé:<ol class="steps-say"><li>Đạo hàm từng số hạng: f′(x) = <b>3x² − 2</b></li><li>Thay x = 1: 3·1² − 2</li><li>= <b>1</b></li></ol>Hay sai: thay x = 1 vào f(x) thay vì f′(x).', q: "<small>Giống câu vừa rồi, số khác</small>f(x) = x³ − 3x. Tính f′(2).", opts: ["5", "9", "12", "6"].map(num), answer: "b", ok: "f′(x) = 3x² − 3, f′(2) = 12 − 3 = 9.", no: "f′(x) = 3x² − 3, nên f′(2) = 12 − 3 = 9." },
+    },
+    hint: { 1: "Hạ số mũ xuống làm hệ số, giảm số mũ đi 1.", 2: "Số mũ n hạ xuống thành hệ số đứng trước.", 3: "Nhớ bảng đạo hàm cơ bản: x², sin x, eˣ.", 4: "Bước đầu: tìm giá trị hàm tại điểm đó.", 5: "f′(x) = 3x² − 2, rồi thay x = 1.", 6: "Hệ số góc tiếp tuyến là f′(x₀) = 2x₀. Cần bằng 4." },
+    why: { 1: "(x³)′ = 3x²: hạ số mũ 3 xuống, còn x³⁻¹ = x².", 5: "f′(x) = 3x² − 2, nên f′(1) = 3 − 2 = 1." },
+    slip: { 1: "x² quên hệ số 3; x⁴/4 là nguyên hàm chứ không phải đạo hàm.", 5: "Dễ nhầm thay x = 1 vào f(x) (ra −1) thay vì vào f′(x)." },
+    readq: { 1: "Đề hỏi đạo hàm của x³ theo x.", 5: "Đề cho f(x) = x³ − 2x, hỏi giá trị đạo hàm tại x = 1." },
+    ask: { easier: "Đạo hàm cho biết đồ thị dốc bao nhiêu tại một điểm. Dốc càng cao thì f′ càng lớn.", example: "Quãng đường s(t) = t² thì vận tốc là s′(t) = 2t: tại t = 3 giây xe chạy 6 m/s.", ex5: "f(x) = x² + x. f′(x) = 2x + 1, f′(2) = 5.", use: "Tìm cực trị, tốc độ biến thiên, và là nền của tối ưu hóa trong học máy." },
+    ntxt: "15 phút đạo hàm nhé?",
+  };
+
+  L["toan:tieu-hoc"] = {
+    title: "Bài 3 · Phép cộng",
+    read: { html: "<b>3 quả táo</b>, thêm <b>2 quả</b>. Đếm nhé!", fig: `<svg viewBox="0 0 420 120" aria-hidden="true"><g fill="#E5484D"><circle cx="60" cy="60" r="28"/><circle cx="130" cy="60" r="28"/><circle cx="200" cy="60" r="28"/></g><text x="250" y="72" font-size="36" font-weight="700" fill="currentColor">+</text><g fill="#E5484D"><circle cx="310" cy="60" r="28"/><circle cx="380" cy="60" r="28"/></g></svg>` },
+    pick: { q: "Giỏ nào có 5 táo?", opts: [basket(3), basket(5), basket(2), basket(4)], labels: ["Giỏ thứ nhất", "Giỏ thứ hai", "Giỏ thứ ba", "Giỏ thứ tư"], ans: "b", ok: "Đúng, 5 quả!", no: "Giỏ thứ hai có 5 quả." },
+    drag: { type: "bucket", q: "Kéo táo vào giỏ cho đủ 5", pre: [apple1, apple1, apple1], showCount: true, apples: 4, judge: (n) => (n === 2 ? "win" : n < 2 ? "more" : "over"), msg: { start: "Cho đủ 5 quả táo nhé!", more: "Thêm táo vào giỏ nhé.", over: "Nhiều quá. Bỏ bớt một quả.", win: "Đúng! 3 và 2 là 5." }, okfb: "3 và 2 là 5." },
+    recall: [{ pic: applesPic(5), q: "Mấy quả táo?", a: "5 quả", say: "Năm quả" }, { pic: applesPic(4), q: "Còn đây?", a: "4 quả", say: "Bốn quả" }],
+    rem: { 1: { say: "Mình đếm từng quả nhé: <b>1, 2, 3, 4, 5</b>. Giỏ nào đếm đúng đến 5 là giỏ đó.", fig: applesPic(5), q: SPEAK + "Giỏ nào có <b>4</b> quả?", opts: [basket(3), basket(4), basket(2), basket(5)], answer: "b", ok: "Đúng, 4 quả!", no: "Giỏ thứ hai có 4 quả." } },
+    kid: { "Kể lại cho em": "Có 3 quả táo. Thêm 2 quả nữa. Đếm hết là 5 quả.", "Ví dụ khác": "Em có 2 cái kẹo, mẹ cho thêm 1 cái. Đếm nhé: 1, 2, 3. Là 3 cái kẹo!", "Gợi ý cho em": "Chỉ tay vào từng quả và đếm to nhé.", "Vì sao đúng?": "Vì giỏ đó đếm được đúng 5 quả.", def: "Gà nghe rồi! Mình đếm chậm từng quả nhé." },
+    ntxt: "Đếm táo 5 phút nhé?",
+  };
+
+  L["van:thpt"] = {
+    title: "Bài 3 · Biện pháp tu từ",
+    read: { html: "<b>So sánh</b> đặt hai sự vật cạnh nhau để làm rõ nét giống: “Trẻ em như búp trên cành” (Hồ Chí Minh). Dấu hiệu: từ nối <b>như, tựa, giống</b>.", fig: flow(["Trẻ em", "như", "búp trên cành"], 1, "Trẻ em được so sánh với búp trên cành bằng từ như", "hai sự vật + từ so sánh") },
+    pick: { q: "Câu thơ nào dùng <b>so sánh</b>?", long: 1, opts: ["Mặt trời xuống biển như hòn lửa", "Sóng đã cài then, đêm sập cửa", "Hoa đào nở ven sông", "Chiều chiều ra đứng ngõ sau"], ans: "a", ok: "“Như” nối mặt trời với hòn lửa.", no: "Đáp án A: có từ “như” nối mặt trời với hòn lửa." },
+    tiles: { q: "Điền từ so sánh", pre: "Cô ấy hát hay", post: "chim họa mi.", bank: ["như", "và", "nhưng", "vì"], ans: "như", ok: "“Như” là từ so sánh.", no: "Cần từ so sánh “như” để nối hai vế." },
+    pairs: { q: "Nối biện pháp với ví dụ", items: [["So sánh", "“Trăng tròn như cái đĩa”"], ["Nhân hóa", "“Gió thì thầm kể chuyện”"], ["Điệp ngữ", "“Cố lên, cố lên!”"]], perm: [1, 2, 0] },
+    order: { q: "Xếp các bước phân tích một biện pháp tu từ", steps: ["Đọc câu, tìm hình ảnh nổi bật", "Gọi tên biện pháp (so sánh, nhân hóa…)", "Nói hình ảnh ấy gợi điều gì", "Nêu tác dụng với cảm xúc của câu"], perm: [3, 0, 2, 1], ok: "Tìm, gọi tên, giải thích, nêu tác dụng.", no: "Tìm, gọi tên, giải thích, nêu tác dụng." },
+    calc: { q: "“Nhớ gì như nhớ người yêu” (Tố Hữu). Phép so sánh có tác dụng gì?", long: 1, opts: ["Tả cảnh núi rừng", "Kể lại một sự việc", "Cho thấy nỗi nhớ da diết, thân thiết như tình yêu", "Đếm số lượng"], ans: "c", ok: "Nỗi nhớ được so với tình yêu nên rất da diết.", no: "Đáp án C: so với nhớ người yêu cho thấy nỗi nhớ da diết, thân thiết." },
+    drag: { type: "bucket", txt: 1, q: "Kéo các câu có so sánh vào khung", box: "Câu có so sánh", items: [["Trẻ em như búp trên cành", 1], ["Trời hôm nay nắng đẹp", 0], ["Cô ấy đẹp tựa tiên", 1], ["Lúa chín vàng ngoài đồng", 0]], msg: { start: "Kéo những câu có từ như, tựa vào khung.", more: "Còn một câu nữa. Tìm tiếp nhé.", bad: "Có câu không so sánh. Bỏ ra nhé.", win: "Đúng! “Như” và “tựa” là từ so sánh." }, okfb: "Hai câu có “như” và “tựa”." },
+    recall: [{ q: "So sánh có dấu hiệu nào?", a: "Có từ nối như, tựa, giống…", say: "Từ như, tựa, giống" }, { q: "“Trẻ em như búp trên cành”: biện pháp gì?", a: "So sánh", say: "So sánh" }, { q: "Nhân hóa là gì?", a: "Gọi hay tả vật như người", say: "Tả vật như người" }],
+    rem: {
+      1: { say: "Đừng nhầm: <b>so sánh có từ nối</b> (như, tựa, giống). <b>Nhân hóa</b> cho vật biết nói, biết làm như người.", fig: null, q: "Câu nào dùng <b>nhân hóa</b>?", long: 1, opts: ["Trăng sáng như gương", "Dòng sông thì thầm với bờ", "Lúa vàng mênh mông", "Trời mưa to"], answer: "b", ok: "Sông biết thì thầm như người. Đúng rồi!", no: "Đáp án B: sông “thì thầm” như người." },
+      5: { say: 'Làm từng bước nhé:<ol class="steps-say"><li>Vế được so: <b>nỗi nhớ</b></li><li>Vế so sánh: <b>nhớ người yêu</b></li><li>Tác dụng: nỗi nhớ mạnh, thân thiết như tình yêu</li></ol>Hay sai: chỉ gọi tên biện pháp mà quên nêu tác dụng.', q: "<small>Giống câu vừa rồi</small>“Anh em như thể tay chân” (ca dao). So sánh nhằm gì?", long: 1, opts: ["Tả hình dáng tay chân", "Nhấn mạnh anh em gắn bó, không tách rời", "Kể chuyện hai anh em", "Chê trách anh em"], answer: "b", ok: "Tay chân gắn liền cơ thể, nên anh em gắn bó như vậy.", no: "Đáp án B: tay chân không rời nhau, anh em cũng gắn bó." },
+    },
+    hint: { 1: "Tìm từ nối như, tựa, giống giữa hai sự vật.", 2: "Từ so sánh thường là “như”, “tựa”, “giống”.", 3: "Thử hỏi: vật làm như người, hay hai vật đặt cạnh nhau?", 4: "Bước đầu là đọc câu và tìm hình ảnh nổi bật.", 5: "Nỗi nhớ được so với điều gì? Điều đó gợi cảm xúc gì?", 6: "Chọn câu có từ nối như, tựa. Đọc kĩ từng câu." },
+    why: { 1: "Câu A có “như” nối mặt trời với hòn lửa, đó là so sánh.", 5: "Nhớ được so với nhớ người yêu: nỗi nhớ da diết, thân thiết." },
+    slip: { 1: "Câu B là nhân hóa (sóng cài then, đêm sập cửa); C và D chỉ tả, không có hai sự vật được so.", 5: "Nhiều bạn chỉ gọi tên biện pháp mà quên nêu tác dụng với cảm xúc." },
+    readq: { 1: "Đề hỏi câu thơ nào đặt hai sự vật cạnh nhau bằng từ nối.", 5: "Đề hỏi: so sánh nỗi nhớ với tình yêu giúp câu thơ thể hiện điều gì." },
+    ask: { easier: "So sánh là nói “A giống B”. Em tìm hai sự vật và từ nối giữa chúng, rồi thấy A rõ hơn.", example: "“Công cha như núi Thái Sơn”: cha được so với núi, cho thấy công ơn lớn lao.", use: "Viết văn giàu hình ảnh, và hiểu vì sao câu thơ chạm vào cảm xúc người đọc." },
+    ntxt: "15 phút biện pháp tu từ nhé?",
+  };
+
+  L["van:dai-hoc"] = {
+    title: "Bài 3 · Ngôi kể",
+    read: { html: "<b>Ngôi kể</b> là chỗ người kể đứng. Ngôi thứ nhất (“tôi”) kể điều mình trải qua. Ngôi thứ ba nhìn từ ngoài, có thể biết nhiều hơn các nhân vật.", fig: flow(["Người kể", "ngôi kể", "Câu chuyện"], 1, "Người kể, ngôi kể, câu chuyện", "ngôi kể quyết định ta thấy gì") },
+    pick: { q: "Đoạn nào kể ở <b>ngôi thứ nhất</b>?", long: 1, opts: ["Chí Phèo vừa đi vừa chửi.", "Tôi đứng nhìn con đò xa dần.", "Hắn chợt thấy lòng nhẹ.", "Bà lão nhìn trời."], ans: "b", ok: "“Tôi” là người kể.", no: "Đáp án B: người kể tự xưng “tôi”." },
+    tiles: { q: "Điền chỗ trống", pre: "“Tôi nhớ mãi chiều ấy” là ngôi kể", post: ".", bank: ["thứ nhất", "thứ hai", "thứ ba", "hỗn hợp"], ans: "thứ nhất", ok: "Xưng “tôi” là ngôi thứ nhất.", no: "Người kể xưng “tôi” nên là ngôi thứ nhất." },
+    pairs: { q: "Nối thuật ngữ với nghĩa", items: [["Ngôi kể", "Vị trí người kể"], ["Điểm nhìn", "Sự việc được nhìn từ đâu"], ["Giọng điệu", "Thái độ người kể bộc lộ"]], perm: [2, 0, 1] },
+    order: { q: "Xếp các bước phân tích ngôi kể", steps: ["Xác định người kể (có xưng “tôi” không?)", "Gọi tên ngôi kể", "Xem người kể biết gì, giấu gì", "Nêu tác dụng với người đọc"], perm: [1, 3, 0, 2], ok: "Xác định, gọi tên, xét hiểu biết, nêu tác dụng.", no: "Xác định, gọi tên, xét hiểu biết, nêu tác dụng." },
+    calc: { q: "Ngôi thứ ba toàn tri có tác dụng gì?", long: 1, opts: ["Chỉ cho thấy một nhân vật", "Cho người đọc thấy nội tâm nhiều nhân vật", "Làm truyện ngắn lại", "Bắt buộc có lời thoại"], ans: "b", ok: "Người kể biết hết, nên ta vào được nhiều nội tâm.", no: "Đáp án B: người kể toàn tri cho thấy suy nghĩ nhiều nhân vật." },
+    drag: { type: "bucket", txt: 1, q: "Kéo các đoạn ngôi thứ nhất vào khung", box: "Ngôi thứ nhất", items: [["Tôi bước vào lớp, tim đập thình thịch.", 1], ["Hắn ngồi xuống, im lặng.", 0], ["Chúng tôi chia tay ở bến sông.", 1], ["Bà lão nhìn ra ngõ.", 0]], msg: { start: "Tìm những đoạn người kể xưng “tôi”.", more: "Còn một đoạn nữa. Tìm tiếp nhé.", bad: "Có đoạn kể từ bên ngoài. Bỏ ra nhé.", win: "Đúng! “Tôi” và “chúng tôi” là ngôi thứ nhất." }, okfb: "Hai đoạn xưng “tôi”, “chúng tôi”." },
+    recall: [{ q: "Ngôi thứ nhất dùng đại từ nào?", a: "“Tôi”, “chúng tôi”", say: "Tôi, chúng tôi" }, { q: "Ngôi thứ ba toàn tri biết gì?", a: "Cả nội tâm các nhân vật", say: "Nội tâm các nhân vật" }],
+    rem: {
+      1: { say: "Nhìn đại từ: <b>tôi</b> thường là ngôi thứ nhất; <b>hắn, nó, bà lão</b> là ngôi thứ ba.", fig: null, q: "Đoạn nào kể ở <b>ngôi thứ ba</b>?", long: 1, opts: ["Tôi mở cửa bước ra.", "Lão Hạc ngồi lặng bên bậu cửa.", "Chúng tôi về làng.", "Tôi nhớ bà."], answer: "b", ok: "Người kể đứng ngoài, gọi “Lão Hạc”. Đúng!", no: "Đáp án B: người kể không xưng “tôi”." },
+      5: { say: 'Làm từng bước nhé:<ol class="steps-say"><li>Người kể đứng ngoài, <b>biết hết</b></li><li>Nên thấy được <b>nội tâm nhiều nhân vật</b></li></ol>Hay nhầm với ngôi thứ nhất, nơi người kể chỉ biết điều mình thấy.', q: "<small>Giống câu vừa rồi</small>Ngôi thứ nhất giới hạn hiểu biết thế nào?", long: 1, opts: ["Biết hết mọi người", "Chỉ biết điều người kể thấy và nghĩ", "Không biết gì", "Biết trước kết thúc"], answer: "b", ok: "Người kể chỉ thấy phần mình trải qua.", no: "Đáp án B: ngôi thứ nhất chỉ biết điều người kể thấy và nghĩ." },
+    },
+    hint: { 1: "Tìm đại từ người kể xưng: “tôi”, “chúng tôi”.", 2: "“Tôi” là người kể xưng chính mình.", 3: "Thuật ngữ nào nói người kể đứng ở đâu?", 4: "Bước đầu: người kể có tự xưng “tôi” không?", 5: "Người kể biết hết hay chỉ biết một phần?", 6: "Tìm đoạn có “tôi” hoặc “chúng tôi”." },
+    why: { 1: "Câu B có “tôi” là người kể, nên là ngôi thứ nhất.", 5: "Ngôi thứ ba toàn tri thấy cả nội tâm nhiều nhân vật." },
+    slip: { 1: "A, C, D kể từ bên ngoài bằng tên hay “hắn”, “bà lão”.", 5: "Dễ nhầm với ngôi thứ nhất, nơi người kể chỉ biết điều mình thấy." },
+    readq: { 1: "Đề hỏi đoạn nào người kể tự xưng “tôi”.", 5: "Đề hỏi ích lợi của người kể biết hết suy nghĩ các nhân vật." },
+    ask: { easier: "Ngôi kể là chỗ người kể đứng. Đứng trong truyện thì xưng “tôi”. Đứng ngoài thì gọi nhân vật bằng tên hoặc “hắn”.", example: "“Tôi đứng nhìn con đò xa dần” kể từ trong; “Lão Hạc ngồi lặng” kể từ ngoài.", use: "Phân tích truyện, và chọn ngôi kể phù hợp khi tự viết." },
+    ntxt: "15 phút ngôi kể nhé?",
+  };
+
+  L["van:tieu-hoc"] = {
+    title: "Bài 3 · Từ chỉ sự vật",
+    read: { html: "Từ chỉ sự vật gọi tên <b>người, vật, cây, con vật</b>. Ví dụ: <b>mèo</b>, <b>bàn</b>, <b>hoa</b>.", fig: flow(["mèo", "bàn", "hoa"], -1, "Ba từ chỉ sự vật: mèo, bàn, hoa", "từ chỉ sự vật") },
+    pick: { q: "Từ nào chỉ sự vật?", opts: ["chạy", "con mèo", "đẹp", "nhanh"].map(num), ans: "b", ok: "Con mèo là sự vật!", no: "Con mèo chỉ một con vật." },
+    drag: { type: "bucket", txt: 1, q: "Kéo những từ chỉ sự vật vào giỏ", box: "Sự vật", items: [["bàn", 1], ["chạy", 0], ["hoa", 1], ["đẹp", 0]], msg: { start: "Kéo từ chỉ sự vật vào giỏ nhé!", more: "Còn một từ nữa. Tìm tiếp nhé.", bad: "Có từ không phải sự vật. Bỏ ra nhé.", win: "Đúng! Bàn và hoa là sự vật." }, okfb: "Bàn và hoa là sự vật." },
+    recall: [{ q: "Nói một từ chỉ sự vật.", a: "Ví dụ: bàn, hoa, mèo", say: "Con mèo" }, { q: "“Chạy” có phải sự vật không?", a: "Không, “chạy” chỉ việc làm", say: "Không phải" }],
+    rem: { 1: { say: "Sự vật là thứ em nhìn và chạm vào được: <b>bàn, hoa, mèo</b>. Còn <b>chạy, đẹp</b> là việc làm và đặc điểm.", fig: null, q: SPEAK + "Từ nào chỉ sự vật?", opts: ["hát", "quyển vở", "to", "bay"].map(num), answer: "b", ok: "Quyển vở là sự vật!", no: "Quyển vở là sự vật." } },
+    kid: { "Kể lại cho em": "Từ chỉ sự vật gọi tên người, vật, cây, con vật: bàn, hoa, mèo.", "Ví dụ khác": "Cái bút, quyển vở, bạn Lan đều là sự vật.", "Gợi ý cho em": "Hỏi: em nhìn hoặc chạm vào được không? Nếu được thì là sự vật.", "Vì sao đúng?": "Vì “con mèo” gọi tên một con vật, là sự vật.", def: "Gà nghe rồi! Mình nghĩ chậm từng từ nhé." },
+    ntxt: "Tìm từ chỉ sự vật 5 phút nhé?",
+  };
+
+  const ENF = (en, vi) => ({ en, vi });
+  L["anh:thpt"] = {
+    title: "Bài 3 · Thì hiện tại đơn",
+    read: { ...ENF("We use the <b>present simple</b> for habits: I <b>study</b> every day.", "Thì <b>hiện tại đơn</b> nói về thói quen: Tôi <b>học</b> mỗi ngày."), fig: flow(["She", "studies", "every day"], 1, "She studies every day", "he, she, it: động từ thêm -s") },
+    pick: { q: '<span lang="en">Which sentence is correct?</span>', opts: ["She go to school.", "She goes to school.", "She going to school.", "She gone to school."].map((t) => `<span class="big" lang="en">${t}</span>`), ans: "b", ok: "She + goes: thêm -es cho he, she, it.", no: "Đáp án B: She goes to school." },
+    tiles: { q: '<span lang="en">Fill in the blank</span>', pre: "He", post: "football every Sunday.", bank: ["play", "plays", "playing", "played"], ans: "plays", ok: "He + plays.", no: "He cần plays: thêm -s cho he, she, it." },
+    pairs: { q: '<span lang="en">Match the verb with its he/she/it form</span>', items: [["study", "studies"], ["go", "goes"], ["play", "plays"]], perm: [2, 0, 1] },
+    order: { q: '<span lang="en">Put the steps in order</span>', steps: ["Choose the subject: She", "Choose the verb: study", "Add -es for he, she, it: studies", "Finish: She studies every day."], perm: [3, 1, 0, 2], ok: "Subject, verb, ending, sentence.", no: "Subject, verb, ending, sentence." },
+    calc: { q: '<span lang="en">My brother ___ breakfast at 6.</span>', opts: ["eat", "eating", "eats", "eated"].map((t) => `<span class="big" lang="en">${t}</span>`), ans: "c", ok: "My brother = he, nên eats.", no: "My brother = he, nên eat thành eats." },
+    drag: { type: "bucket", txt: 1, q: '<span lang="en">Drag the correct sentences into the box</span>', box: "Correct sentences", items: [['<span lang="en">She plays the piano.</span>', 1], ['<span lang="en">He go to bed late.</span>', 0], ['<span lang="en">They study at night.</span>', 1], ['<span lang="en">My dog eat bones.</span>', 0]], msg: { start: "Kéo các câu đúng ngữ pháp vào khung.", more: "Còn một câu đúng nữa. Tìm tiếp nhé.", bad: "Có câu sai (thiếu -s). Bỏ ra nhé.", win: "Đúng! She plays, They study." }, okfb: "She plays, They study." },
+    recall: [{ q: "Present simple dùng khi nào?", a: "Thói quen và việc lặp lại", say: "Thói quen" }, { q: "He ___ (go). Dạng đúng?", a: "goes", say: "goes" }, { q: "Chủ ngữ nào cần thêm -s?", a: "he, she, it", say: "He, she, it" }],
+    rem: {
+      1: { say: "Với <b>he, she, it</b> thêm -s: I go, she <b>goes</b>.", fig: null, q: '<span lang="en">Which sentence is correct?</span>', opts: ["He watch TV.", "He watches TV.", "He watching TV.", "He watchs TV."].map((t) => `<span class="big" lang="en">${t}</span>`), answer: "b", ok: "watch + es = watches. Đúng!", no: "Đáp án B: watch kết thúc bằng -ch nên thêm -es." },
+      5: { say: 'Làm từng bước nhé:<ol class="steps-say"><li>My brother = <b>he</b></li><li>Thói quen: dùng <b>present simple</b></li><li>he + động từ thêm -s: eat → <b>eats</b></li></ol>Hay sai: quên -s sau he, she, it.', q: '<small>Giống câu vừa rồi</small><span lang="en">Her sister ___ to school by bike.</span>', opts: ["go", "goes", "going", "gone"].map((t) => `<span class="big" lang="en">${t}</span>`), answer: "b", ok: "Her sister = she, nên goes.", no: "Her sister = she, nên go thành goes." },
+    },
+    hint: { 1: "Với he, she, it thêm -s vào động từ: she goes.", 2: "Chủ ngữ là He: thêm -s cho động từ.", 3: "go thêm -es; study đổi y thành ies; play chỉ thêm -s.", 4: "Chọn chủ ngữ trước, rồi mới đến động từ.", 5: "My brother = he. Thêm -s vào eat.", 6: "Nhìn chủ ngữ. He, she, it cần động từ có -s." },
+    why: { 1: "“She goes”: she cần động từ thêm -es.", 5: "My brother = he, nên eat thành eats." },
+    slip: { 1: "A thiếu -es; C và D dùng sai dạng động từ.", 5: "Nhiều bạn quên -s sau he, she, it nên viết “eat” thay vì “eats”." },
+    readq: { 1: "Chọn câu viết đúng thì hiện tại đơn.", 5: "Điền dạng đúng của eat cho My brother." },
+    ask: { easier: "Present simple là việc em làm thường xuyên. I study every day: ngày nào em cũng học.", example: "She plays football every Sunday. Với he, she, it thì động từ thêm -s.", use: "Để kể thói quen và lịch trình, ví dụ The bus leaves at 7." },
+    ntxt: "15 phút present simple nhé?",
+  };
+  L["anh:dai-hoc"] = L["anh:thpt"];
+
+  const F = FRUIT;
+  L["anh:tieu-hoc"] = {
+    title: "Bài 3 · Fruits",
+    read: { ...ENF("This is an <b>apple</b>. I like apples.", "Đây là <b>quả táo</b>. Em thích táo."), fig: `<div style="display:flex;gap:18px;align-items:center">${big(F.apple, 96)}<b style="font-size:1.6em" lang="en">apple</b></div>` },
+    pick: { q: '<span lang="en">Which one is an apple?</span>', opts: [F.apple, F.banana, F.orange, F.grapes], labels: ["apple", "banana", "orange", "grapes"], ans: "a", ok: "Đúng, an apple!", no: "Quả đỏ và tròn là an apple." },
+    drag: { type: "bucket", q: '<span lang="en">Drag the apples into the basket</span>', box: "apples", items: [[F.apple, 1, "apple"], [F.banana, 0, "banana"], [F.apple, 1, "apple"], [F.orange, 0, "orange"]], apples: 1, msg: { start: "Kéo những quả táo vào giỏ nhé!", more: "Còn một quả táo nữa.", bad: "Quả đó không phải táo. Bỏ ra nhé.", win: "Đúng! Two apples." }, okfb: "Two apples." },
+    recall: [{ pic: big(F.apple), q: "What is it?", a: "An apple", say: "An apple" }, { pic: big(F.banana), q: "And this?", a: "A banana", say: "A banana" }],
+    rem: { 1: { say: "Đây là <b>apple</b>: quả táo đỏ, tròn. Tìm quả táo nhé!", fig: big(F.apple), q: SPEAK + '<span lang="en">Which one is a banana?</span>', opts: [F.apple, F.orange, F.banana, F.grapes], labels: ["apple", "orange", "banana", "grapes"], answer: "c", ok: "Đúng, a banana!", no: "Quả vàng cong là a banana." } },
+    kid: { "Kể lại cho em": "This is an apple. Em thích táo: I like apples.", "Ví dụ khác": "This is a banana. Chuối màu vàng.", "Gợi ý cho em": "Táo màu đỏ và tròn. Tìm quả đỏ nhé.", "Vì sao đúng?": "Vì đó là quả táo: an apple.", def: "Gà nghe rồi! Mình nhìn kĩ từng quả nhé." },
+    ntxt: "Học tiếng Anh 5 phút nhé?",
+  };
+
+  const LESSONS = L;
+  const GAS = { toan: ["Gà Toán", 7, 78], van: ["Gà Văn", 3, 40], anh: ["Gà Anh", 2, 15] };
+  const stageOf = (lv) => (lv >= 10 ? "Cao thủ" : lv >= 5 ? "Trưởng thành" : lv >= 2 ? "Gà choai" : "Gà con");
+
+  // ---------- state ----------
+  const steps = [...document.querySelectorAll(".step")];
+  const go = $("go"), foot = $("foot"), fbh = $("fbh"), fbp = $("fbp"), bar = $("bar"), comboEl = $("combo");
+  const askb = $("askb"), askq = $("askq"), fbga = $("fbga"), sheetGa = document.querySelector("#asheet .gimg");
+  let i = 0, checked = false, right = 0, wrong = 0, combo = 0, choice = null;
+  let mode = null, remedyFrom = null, twinChoice = null, twinChecked = false, reading = null;
+  const age = () => root.dataset.age || "thpt";
+  const gaKey = () => root.dataset.ga || "toan";
+  const S = () => L[gaKey() + ":" + age()] || L[gaKey() + ":thpt"];
+  const kid = () => age() === "tieu-hoc";
+  const path = () => (kid() ? [0, 1, 6, 7, 8, 9, 10] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const kind = () => steps[i].dataset.kind;
+  const stepOf = { pick: 1, tiles: 2, pairs: 3, order: 4, calc: 5, drag: 6 };
+
+  // ---------- the chicken: idle loop while explaining, one jump when happy, stills for sad / surprised / neutral ----------
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  function setPose(img, pose) {
+    if (!img) return;
+    clearTimeout(img._t);
+    const base = "assets/ga/" + gaKey();
+    img.dataset.pose = pose;
+    if (pose === "dung") img.src = still.matches ? base + ".png" : base + "-dung.webp";
+    else if (pose === "nhay") {
+      if (still.matches) img.src = base + "-vui.png";
+      else { img.src = base + "-nhay.webp?" + Date.now(); img._t = setTimeout(() => setPose(img, "dung"), 2000); }
+    } else img.src = base + (pose === "tinh" ? "" : "-" + pose) + ".png";
+  }
+  function paintGa() {
+    const g = GAS[gaKey()];
+    document.querySelectorAll(".gname").forEach((e) => { e.textContent = g[0]; });
+    document.querySelectorAll(".glv").forEach((e) => { e.textContent = g[1]; });
+    document.querySelectorAll(".nimg").forEach((e) => { e.src = "assets/ga/" + gaKey() + ".png"; });
+    document.querySelectorAll(".gimg").forEach((img) => { if (!img.closest(".step") || img.closest(".step.on")) setPose(img, img.dataset.pose || "dung"); else setPose(img, "dung"); });
+  }
+  const stageGa = () => { const st = document.querySelector(".step.on"); return st && st.querySelector(".gimg"); };
+
+  // ---------- building the steps from the lesson table ----------
+  function renderPick(q, p, c) {
+    q.removeAttribute("data-wrapped"); q.innerHTML = (kid() ? SPEAK : "") + c.q;
+    p.className = "pics" + (c.long ? " long" : "");
+    p.innerHTML = c.opts.map((h, k) => `<button class="pic" type="button" data-v="${"abcd"[k]}"${c.labels ? ` aria-label="${c.labels[k]}"` : ""}>${h}</button>`).join("");
+  }
+  function resetTiles() {
+    const c = S().tiles; if (!c) return;
+    $("tq").removeAttribute("data-wrapped"); $("tq").innerHTML = c.q;
+    $("slt").className = "slots"; $("slt").innerHTML = `<span>${c.pre}</span><span class="gap" data-gap></span><span>${c.post}</span>`;
+    $("bnk").innerHTML = c.bank.map((t) => `<button class="tile" type="button">${t}</button>`).join("");
+  }
+  function resetOrder() {
+    const c = S().order; if (!c) return;
+    $("oq").removeAttribute("data-wrapped"); $("oq").innerHTML = c.q;
+    $("ord").className = "slots order"; $("ord").innerHTML = "";
+    $("obnk").innerHTML = c.perm.map((n) => `<button class="tile ui" type="button" data-o="${n + 1}">${c.steps[n]}</button>`).join("");
+  }
+  let left = null, pairsDone = 0;
+  function resetPairs() {
+    const c = S().pairs; if (!c) return;
+    left = null; pairsDone = 0;
+    $("pq3").removeAttribute("data-wrapped"); $("pq3").innerHTML = c.q;
+    $("pairs").innerHTML = c.items.map((it, j) => `<button class="tile ui" type="button" data-l="${j}">${it[0]}</button><button class="tile ui" type="button" data-r="${c.perm[j]}">${c.items[c.perm[j]][1]}</button>`).join("");
+  }
+  function build() {
+    const s = S(), en = gaKey() === "anh";
+    stopRead();
+    $("rib").textContent = s.title;
+    const bub = $("rdbub"); bub.removeAttribute("data-wrapped");
+    bub.innerHTML = SPEAK + (en ? `<span lang="en">${s.read.en}</span><button class="vibtn" type="button" aria-pressed="false" aria-label="Xem nghĩa tiếng Việt">VI</button><span class="vi" hidden>${s.read.vi}</span>` : s.read.html);
+    $("rdmix").hidden = !en;
+    $("rdfig").hidden = !s.read.fig; $("rdfig").innerHTML = s.read.fig || "";
+    renderPick($("pq1"), $("pp1"), s.pick);
+    if (s.calc) renderPick($("pq5"), $("pp5"), s.calc);
+    resetTiles(); resetOrder(); resetPairs();
+    $("ntxt").textContent = s.ntxt;
+    $("endh").textContent = "Xong bài 3!";
+    right = 0; wrong = 0; combo = 0; paintCombo();
+    window.mockPaint && mockPaint(document.body);
+  }
+
+  // ---------- showing a step ----------
+  function paintBar() {
+    const tasks = path().filter((n) => n >= 1 && n <= 7);
+    const done = i >= 8 && i <= 10 ? tasks.length : Math.max(0, tasks.indexOf(i));
+    bar.style.width = Math.max(4, (done / tasks.length) * 100) + "%";
+    bar.parentElement.setAttribute("aria-valuemax", String(tasks.length));
+    bar.parentElement.setAttribute("aria-valuenow", String(done));
+  }
+  function show(n) {
+    const p = path();
+    n = Math.max(0, Math.min(10, n));
+    n = p.find((x) => x >= n) ?? p[p.length - 1];
+    i = n;
+    steps.forEach((s, k) => s.classList.toggle("on", k === i));
+    checked = false; choice = null;
+    stopRead(); mode = null; remedyFrom = null; askq.hidden = true;
+    steps[i].querySelectorAll(".pic").forEach((x) => { x.classList.remove("right", "wrong"); x.removeAttribute("aria-pressed"); });
+    foot.className = "lfoot";
+    const k = kind();
+    steps[i].querySelectorAll(".gimg").forEach((img) => setPose(img, k === "streak" ? "ngac" : "dung"));
+    if (i === 2) resetTiles(); if (i === 3) resetPairs(); if (i === 4) resetOrder();
+    if (k === "end") startEnd();
+    askb.hidden = ["end", "streak", "notif"].includes(k);
+    const from = new URLSearchParams(location.search).get("from");
+    go.textContent = k === "read" || k === "end" || k === "drag" ? "Tiếp tục" : k === "recall" ? "Xem ý đúng" : k === "streak" ? "Giữ chuỗi" : k === "notif" ? (from === "khoa" ? "Về chuồng gà" : "Về làng") : "Kiểm tra";
+    go.disabled = ["pick", "tiles", "order", "drag", "pairs"].includes(k);
+    if (k === "drag") initDrag();
+    if (k === "recall") initRecall();
+    paintBar();
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- answering ----------
+  document.querySelector(".stage").addEventListener("click", (e) => {
+    const b = e.target.closest(".step[data-kind=pick] .pics .pic");
+    if (!b || checked) return;
+    b.closest(".pics").querySelectorAll(".pic").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    choice = b.dataset.v; go.disabled = false;
+  });
+  $("bnk").addEventListener("click", (e) => {
+    const t = e.target.closest(".tile"); if (!t || checked || t.classList.contains("used")) return;
+    const gap = $("slt").querySelector("[data-gap]"); if (!gap) return;
+    const placed = t.cloneNode(true);
+    gap.replaceWith(placed); t.classList.add("used");
+    choice = placed.textContent.trim(); go.disabled = false;
+    placed.addEventListener("click", () => {
+      if (checked) return;
+      const g = document.createElement("span"); g.className = "gap"; g.dataset.gap = "";
+      placed.replaceWith(g); t.classList.remove("used"); choice = null; go.disabled = true;
+    });
+  });
+  const ord = $("ord");
+  $("obnk").addEventListener("click", (e) => {
+    const t = e.target.closest(".tile"); if (!t || checked || t.classList.contains("used")) return;
+    const n = S().order.steps.length, upd = () => { choice = [...ord.children].map((x) => x.dataset.o).join(""); go.disabled = ord.children.length < n; };
+    const c = t.cloneNode(true); ord.append(c); t.classList.add("used");
+    c.addEventListener("click", () => { if (checked) return; c.remove(); t.classList.remove("used"); upd(); });
+    upd();
+  });
+  $("pairs").addEventListener("click", (e) => {
+    const t = e.target.closest(".tile"); if (!t || t.classList.contains("done")) return;
+    if (t.dataset.l !== undefined) { document.querySelectorAll("#pairs [data-l]").forEach((x) => x.setAttribute("aria-pressed", String(x === t))); left = t; return; }
+    if (!left) return;
+    if (left.dataset.l === t.dataset.r) {
+      left.classList.add("done"); t.classList.add("done"); left.removeAttribute("aria-pressed"); left = null; pairsDone++;
+      if (pairsDone === S().pairs.items.length) { right++; combo++; feedback(true, "Đúng cả ba."); }
+    } else {
+      wrong++; combo = 0; paintCombo();
+      [left, t].forEach((x) => { x.classList.remove("shake"); void x.offsetWidth; x.classList.add("shake"); });
+    }
+  });
+
+  function paintCombo() { comboEl.hidden = combo < 3; comboEl.innerHTML = combo >= 3 ? window.mentorIcon("flame") + `${combo} đúng liền` : ""; }
+  function feedback(ok, text) {
+    checked = true;
+    const host = stageGa();
+    foot.className = "lfoot " + (ok ? "ok" : "no") + (host ? " nosp" : "");
+    setPose(host || fbga, ok ? (combo >= 3 ? "ngac" : "nhay") : "buon");
+    fbh.innerHTML = window.mentorIcon(ok ? "check" : "x") + (ok ? (combo >= 3 ? "Xuất sắc!" : "Chính xác!") : "Chưa đúng");
+    fbp.textContent = text;
+    go.textContent = "Tiếp tục"; go.disabled = false;
+    askq.hidden = false;
+    paintCombo();
+  }
+  const cfgOf = (n) => { const s = S(); return { 1: s.pick, 2: s.tiles, 4: s.order, 5: s.calc }[n]; };
+  function check() {
+    const st = steps[i], k = kind(), c = cfgOf(i);
+    let ok;
+    if (k === "pick") {
+      ok = choice === c.ans;
+      st.querySelectorAll(".pics .pic").forEach((x) => { if (x.dataset.v === c.ans) x.classList.add("right"); else if (x.dataset.v === choice) x.classList.add("wrong"); });
+    } else if (k === "tiles") {
+      ok = choice === c.ans; $("slt").classList.add(ok ? "right" : "wrong");
+    } else {
+      ok = choice === c.steps.map((_, n) => n + 1).join(""); ord.classList.add(ok ? "right" : "wrong");
+    }
+    ok ? (right++, combo++) : (wrong++, combo = 0);
+    feedback(ok, ok ? c.ok : c.no);
+    if (!ok && (S().rem || {})[i]) { remedyFrom = i; go.textContent = "Gà giảng lại"; }
+  }
+
+  // ---------- the draggable step ----------
+  const fmt = (n) => String(n).replace(".", ",");
+  const setSay = (t) => { $("fldsay").textContent = t; };
+  let dragWon = false, dragging = false, dv = 0, fld = null, hnd = null;
+  const HND = '<g id="hnd" tabindex="0" role="slider" aria-orientation="horizontal"><circle r="34" fill="transparent"/><circle class="pulse" r="16"/><circle class="ring" r="21"/><circle r="14" fill="var(--tim)" stroke="var(--surface)" stroke-width="3"/><text y="5" text-anchor="middle" font-size="14" font-weight="700" fill="var(--on-tim)">↔</text></g>';
+  function sliderSet(v, byUser) {
+    const c = S().drag;
+    v = Math.max(c.min, Math.min(c.max, Math.round(v / c.step) * c.step));
+    const changed = v !== dv; dv = v;
+    $("dyn").innerHTML = c.dyn(v);
+    const [x, y] = c.pos(v);
+    hnd.setAttribute("transform", `translate(${x} ${y})`);
+    hnd.setAttribute("aria-valuenow", v); hnd.setAttribute("aria-valuetext", c.valtext(v));
+    $("rdo").innerHTML = c.read(v);
+    if (!byUser || !changed) return;
+    fld.classList.remove("hint");
+    const [t, win] = c.say(v); setSay(t);
+    if (win && !dragWon) { dragWon = true; right++; combo++; feedback(true, c.okfb); }
+  }
+  function initSlider(c) {
+    $("dfig").innerHTML = `<svg id="fld" class="hint" viewBox="0 0 360 234" role="group" aria-label="${c.aria}"><g id="dyn"></g>${HND}</svg><p class="readout" id="rdo"></p>`;
+    fld = $("fld"); hnd = $("hnd"); dv = NaN;
+    hnd.setAttribute("aria-label", c.aria); hnd.setAttribute("aria-valuemin", c.min); hnd.setAttribute("aria-valuemax", c.max);
+    const toV = (ev) => { const r = fld.getBoundingClientRect(), sx = ((ev.clientX - r.left) * 360) / r.width; return c.min + ((sx - c.x0) / (c.x1 - c.x0)) * (c.max - c.min); };
+    fld.addEventListener("pointerdown", (ev) => { dragging = true; fld.setPointerCapture(ev.pointerId); hnd.focus({ preventScroll: true }); sliderSet(toV(ev), true); ev.preventDefault(); });
+    fld.addEventListener("pointermove", (ev) => { if (dragging) sliderSet(toV(ev), true); });
+    ["pointerup", "pointercancel"].forEach((n) => fld.addEventListener(n, () => { dragging = false; }));
+    hnd.addEventListener("keydown", (ev) => {
+      const d = { ArrowRight: c.step, ArrowUp: c.step, ArrowLeft: -c.step, ArrowDown: -c.step }[ev.key];
+      if (d) { sliderSet(dv + d, true); ev.preventDefault(); }
+      else if (ev.key === "Home") { sliderSet(c.min, true); ev.preventDefault(); }
+      else if (ev.key === "End") { sliderSet(c.max, true); ev.preventDefault(); }
+    });
+    sliderSet(c.init, false); setSay(c.start);
+  }
+  // bucket: drag things into a basket (or tap / Enter to move; tap again to take out)
+  let suppress = false, bucketWon = false, bcfg = null;
+  function judge() {
+    const inB = [...$("bkin").querySelectorAll(".dgi")];
+    if (bcfg.judge) return bcfg.judge(inB.length);
+    if (inB.some((a) => a.dataset.g === "0")) return "bad";
+    const need = bcfg.items.filter((x) => x[1]).length;
+    return inB.length < need ? "more" : "win";
+  }
+  function paintBucket(byUser) {
+    if (bcfg.showCount) $("bcount").textContent = bcfg.pre.length + $("bkin").querySelectorAll(".dgi").length;
+    if (!byUser) return;
+    const st = judge(); setSay(bcfg.msg[st] || bcfg.msg.more);
+    if (st === "win" && !bucketWon) { bucketWon = true; right++; combo++; feedback(true, bcfg.okfb); }
+  }
+  function attachItem(a) {
+    const bsk = $("bsk"), grd = $("grd"), bkin = $("bkin");
+    let sx = 0, sy = 0, moved = false, pid = null;
+    const inside = (ev) => { const r = bsk.getBoundingClientRect(); return ev.clientX > r.left && ev.clientX < r.right && ev.clientY > r.top - 20 && ev.clientY < r.bottom; };
+    a.addEventListener("pointerdown", (ev) => { pid = ev.pointerId; a.setPointerCapture(pid); sx = ev.clientX; sy = ev.clientY; moved = false; });
+    a.addEventListener("pointermove", (ev) => {
+      if (pid !== ev.pointerId) return;
+      const dx = ev.clientX - sx, dy = ev.clientY - sy;
+      if (!moved && Math.hypot(dx, dy) < 8) return;
+      moved = true; a.classList.add("drag"); a.style.transform = `translate(${dx}px, ${dy}px)`; bsk.classList.toggle("over", inside(ev));
+    });
+    const end = (ev) => {
+      if (pid !== ev.pointerId) return;
+      pid = null; a.classList.remove("drag"); a.style.transform = "";
+      if (moved) { suppress = true; setTimeout(() => { suppress = false; }, 0); (inside(ev) ? bkin : grd).append(a); paintBucket(true); }
+      bsk.classList.remove("over");
+    };
+    a.addEventListener("pointerup", end); a.addEventListener("pointercancel", end);
+    a.addEventListener("click", () => { if (suppress) return; (a.parentElement === grd ? bkin : grd).append(a); paintBucket(true); });
+  }
+  function initBucket(c) {
+    bcfg = c; bucketWon = false;
+    const items = c.items || Array.from({ length: c.apples }, () => [apple1, 1, "Quả táo"]);
+    $("dfig").innerHTML = `<div class="basket${c.txt ? " wide" : ""}" id="bsk" aria-label="Giỏ"><div class="bk-in" id="bkin">${(c.pre || []).join("")}</div><div class="bk-body"><span id="bcount" aria-live="polite">${c.showCount ? (c.pre || []).length : c.box}</span></div></div><div class="ground" id="grd"></div>`;
+    items.forEach(([h, g, label]) => {
+      const b = document.createElement("button"); b.type = "button"; b.className = "dgi " + (c.txt ? "chip" : "apple"); b.dataset.g = g;
+      b.setAttribute("aria-label", (label || b.textContent) + ", chạm để bỏ vào giỏ"); b.innerHTML = h; $("grd").append(b); attachItem(b);
+    });
+    // text chips need their own readable label when the html is markup
+    $("grd").querySelectorAll(".dgi.chip").forEach((b) => b.setAttribute("aria-label", b.textContent.trim() + ", chạm để bỏ vào giỏ"));
+    setSay(c.msg.start);
+  }
+  function initDrag() {
+    const c = S().drag; dragWon = false; dragging = false;
+    const q = $("dq"); q.removeAttribute("data-wrapped"); q.innerHTML = (kid() ? SPEAK : "") + c.q;
+    c.type === "slider" ? initSlider(c) : initBucket(c);
+    window.mockPaint && mockPaint(steps[i]);
+  }
+
+  // ---------- recall: no choices; say it or type it, see the idea, mark it ----------
+  const rcEl = $;
+  let rc = [], rn = 0, rstate = "ask", micTimer = null;
+  function renderRecall() {
+    const c = rc[rn];
+    $("rcn").textContent = `${rn + 1}/${rc.length}`; $("rcq").textContent = c.q;
+    const pic = $("rcpic"); pic.hidden = !c.pic; pic.innerHTML = c.pic || "";
+    $("rctext").value = ""; $("rcheard").textContent = "";
+    clearTimeout(micTimer); $("rcmic").setAttribute("aria-pressed", "false");
+    $("rcin").hidden = false; $("rcans").hidden = true; $("rcmark").hidden = true;
+    foot.className = "lfoot"; setPose(stageGa(), "dung"); go.textContent = "Xem ý đúng"; go.disabled = false; rstate = "ask";
+  }
+  function initRecall() { rc = S().recall; rn = 0; renderRecall(); }
+  $("rcmic").addEventListener("click", (ev) => {
+    const m = ev.currentTarget;
+    if (m.getAttribute("aria-pressed") === "true") return;
+    m.setAttribute("aria-pressed", "true"); $("rcheard").textContent = "Gà đang nghe…";
+    micTimer = setTimeout(() => { m.setAttribute("aria-pressed", "false"); $("rcheard").textContent = `Em nói: “${rc[rn].say}”`; }, 1400);
+  });
+  $("rcmark").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-m]"); if (!b || rstate !== "reveal") return;
+    const ok = b.dataset.m === "1";
+    ok ? (right++, combo++) : (wrong++, combo = 0);
+    paintCombo();
+    foot.className = "lfoot nosp " + (ok ? "ok" : "no"); setPose(stageGa(), ok ? "nhay" : "buon");
+    fbh.innerHTML = window.mentorIcon(ok ? "check" : "x") + (ok ? "Nhớ rồi!" : "Chưa nhớ");
+    fbp.textContent = ok ? "Ý này gặp lại sau 6 ngày." : "Ý này quay lại sau 2 ngày.";
+    $("rcmark").hidden = true; go.textContent = "Tiếp tục"; go.disabled = false; rstate = "marked";
+  });
+  function recallGo() {
+    if (rstate === "ask") {
+      $("rca").textContent = rc[rn].a; $("rcans").hidden = false; $("rcin").hidden = true; $("rcmark").hidden = false;
+      go.textContent = "Nhớ hay chưa?"; go.disabled = true; rstate = "reveal";
+    } else if (rstate === "marked") {
+      if (rn + 1 < rc.length) { rn++; renderRecall(); window.scrollTo(0, 0); } else show(i + 1);
+    }
+  }
+
+  // ---------- the end: +20 kinh nghiệm, +5 more when everything was right at the first try; 100 KN per level ----------
+  function startEnd() {
+    const g = GAS[gaKey()], perfect = wrong === 0, gain = 20 + (perfect ? 5 : 0);
+    const before = g[2], total = before + gain, up = total >= 100, lv = g[1] + (up ? 1 : 0), after = up ? total - 100 : total;
+    $("xplv").textContent = lv; $("xpstage").textContent = stageOf(lv);
+    $("xpbonus").hidden = !perfect; $("xpup").hidden = !up; $("xpup").textContent = `Lên cấp ${lv}!`;
+    const f = $("xpf");
+    f.style.transition = "none"; f.style.width = before + "%"; void f.offsetWidth; f.style.transition = ""; f.style.width = (up ? 100 : after) + "%";
+    if (up) setTimeout(() => { if (i === 8) { f.style.transition = "none"; f.style.width = "0%"; void f.offsetWidth; f.style.transition = ""; f.style.width = after + "%"; } }, 1100);
+    f.parentElement.setAttribute("aria-valuenow", String(after));
+    $("xpn").textContent = `${after}/100 · còn ${100 - after} nữa là lên cấp ${lv + 1}`;
+    const tasks = path().filter((n) => n >= 1 && n <= 7).length;
+    $("acc").textContent = `${right || tasks}/${right + wrong || tasks}`;
+    $("redo").textContent = `${wrong} câu`;
+    setPose($("endga"), "nhay");
+    const e = document.querySelector(".xp-gain"); e.style.animation = "none"; void e.offsetWidth; e.style.animation = "";
+  }
+
+  // English course: "VI" shows the Vietnamese meaning inline
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".vibtn"); if (!b) return;
+    const vi = b.parentElement.querySelector(".vi"), on = vi.hidden;
+    vi.hidden = !on; b.setAttribute("aria-pressed", String(on));
+  });
+
+  // ---------- read aloud: words light up as the voice reaches them ----------
+  function wrapWords(el) {
+    if (el.dataset.wrapped) return;
+    const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: (n) => n.parentElement.closest("button, .vi, small, svg") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    const nodes = []; while (tw.nextNode()) nodes.push(tw.currentNode);
+    nodes.forEach((n) => {
+      const f = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach((p) => {
+        if (!p) return;
+        if (/^\s+$/.test(p)) { f.append(p); return; }
+        const s = document.createElement("span"); s.className = "w"; s.textContent = p; f.append(s);
+      });
+      n.replaceWith(f);
+    });
+    el.dataset.wrapped = "1";
+  }
+  function stopRead() {
+    if (!reading) return;
+    clearTimeout(reading.t); reading.el.classList.remove("reading");
+    reading.btn && reading.btn.setAttribute("aria-pressed", "false");
+    reading.el.querySelectorAll(".w").forEach((w) => w.classList.remove("said", "now"));
+    reading = null;
+  }
+  function readAloud(el, btn) {
+    const again = reading && reading.el === el;
+    stopRead(); if (again) return;
+    wrapWords(el);
+    const ws = [...el.querySelectorAll(".w")];
+    el.classList.add("reading"); btn && btn.setAttribute("aria-pressed", "true");
+    let k = 0; reading = { el, btn, t: 0 };
+    const tick = () => {
+      if (!reading || reading.el !== el) return;
+      if (k > 0) { ws[k - 1].classList.remove("now"); ws[k - 1].classList.add("said"); }
+      if (k >= ws.length) { reading.t = setTimeout(stopRead, 700); return; }
+      ws[k].classList.add("now");
+      reading.t = setTimeout(tick, 150 + 40 * ws[k].textContent.length); k++;
+    };
+    tick();
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".speakb"); if (!b) return;
+    const el = b.closest(".bub, .msg, .ask"); if (el) readAloud(el, b);
+  });
+  const autoRead = (el) => { if (kid()) { const b = el.querySelector(".speakb"); if (b) readAloud(el, b); } };
+
+  // ---------- wrong answer: the chicken explains again, more simply, then a similar question ----------
+  const rt = $("reteach"), tw = $("twin");
+  const remOf = (n) => (S().rem || {})[n];
+  function onlyStep(el) { stopRead(); el.querySelectorAll(".gimg").forEach((img) => setPose(img, "dung")); steps.forEach((s) => s.classList.toggle("on", s === el)); foot.className = "lfoot"; askq.hidden = true; window.scrollTo(0, 0); }
+  function showReteach() {
+    const r = remOf(remedyFrom); mode = "reteach"; onlyStep(rt);
+    const bub = $("rtbub"); bub.removeAttribute("data-wrapped"); bub.innerHTML = SPEAK + r.say;
+    const fig = $("rtfig"); fig.hidden = !r.fig; fig.innerHTML = r.fig || "";
+    window.mockPaint && mockPaint(rt);
+    go.textContent = "Làm câu tương tự"; go.disabled = false;
+    autoRead(bub);
+  }
+  function showTwin() {
+    const r = remOf(remedyFrom); mode = "twin"; twinChecked = false; twinChoice = null; onlyStep(tw);
+    const q = $("twq"); q.removeAttribute("data-wrapped"); q.innerHTML = r.q;
+    const p = $("twopts"); p.className = "pics" + ((cfgOf(remedyFrom) || {}).long ? " long" : "");
+    p.innerHTML = r.opts.map((h, k) => `<button class="pic" type="button" data-v="${"abcd"[k]}"${r.labels ? ` aria-label="${r.labels[k]}"` : ""}>${h}</button>`).join("");
+    window.mockPaint && mockPaint(tw);
+    go.textContent = "Kiểm tra"; go.disabled = true;
+  }
+  $("twopts").addEventListener("click", (e) => {
+    const b = e.target.closest(".pic"); if (!b || twinChecked) return;
+    b.parentElement.querySelectorAll(".pic").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    twinChoice = b.dataset.v; go.disabled = false;
+  });
+  function remedyGo() {
+    if (mode === "reteach") return showTwin();
+    if (mode === "twin" && !twinChecked) {
+      const r = remOf(remedyFrom), ok = twinChoice === r.answer;
+      document.querySelectorAll("#twopts .pic").forEach((x) => { if (x.dataset.v === r.answer) x.classList.add("right"); else if (x.dataset.v === twinChoice) x.classList.add("wrong"); });
+      twinChecked = true;
+      feedback(ok, ok ? r.ok : r.no + " Ý này quay lại sau 2 ngày.");
+      if (ok) fbh.innerHTML = window.mentorIcon("check") + "Hiểu rồi!";
+      return;
+    }
+    show(remedyFrom + 1);
+  }
+
+  // ---------- Hỏi gà: asked about the screen on view; before the answer is checked the chicken only hints ----------
+  const ash = $("asheet"), ascrim = $("ascrim"), alog = $("ash-log"), ainput = $("ash-text"), amic = $("ash-mic");
+  let askedOn = null, lastQ = "";
+  const cur = () => document.querySelector(".step.on");
+  const plain = (el) => (el ? el.innerText.replace(/\s+/g, " ").replace(/^VI\s*|\s*VI$/g, "").trim() : "");
+  const here = () => (mode ? remedyFrom : i);
+  const isTask = () => !["read", "reteach", "end", "streak", "notif"].includes(cur().dataset.kind);
+  function ctxHtml() {
+    const st = cur(), k = st.dataset.kind;
+    if (k === "read") return `Về đoạn gà đang giảng: <b>${plain(st.querySelector(".bub span[lang]") || st.querySelector(".bub"))}</b>`;
+    if (k === "reteach") return "Về đoạn gà vừa giảng lại.";
+    const q = plain(st.querySelector(".ask")) || "câu này";
+    return `Về câu: <b>${q}</b>` + (checked ? "" : "<br>Em chưa trả lời: gà chỉ gợi ý, chưa nói đáp án.");
+  }
+  function suggestions() {
+    const k = kid();
+    if (!isTask()) return k ? ["Kể lại cho em", "Ví dụ khác"] : ["Giảng lại dễ hơn", "Cho em ví dụ khác", "Cái này dùng để làm gì?"];
+    if (!checked) return k ? ["Gợi ý cho em"] : ["Gợi ý cho em", "Em chưa hiểu đề"];
+    return k ? ["Vì sao đúng?"] : ["Vì sao ra đáp án đó?", "Em sai ở đâu?", "Cho em ví dụ khác"];
+  }
+  function answerFor(q) {
+    const s = S(), n = here();
+    if (kid()) return s.kid[q] || s.kid.def;
+    const a = s.ask, c = cfgOf(n) || {};
+    const P = {
+      "Giảng lại dễ hơn": a.easier,
+      "Cho em ví dụ khác": isTask() && n === 5 && a.ex5 ? a.ex5 : a.example,
+      "Cái này dùng để làm gì?": a.use,
+      "Gợi ý cho em": s.hint[n], "Em chưa hiểu đề": s.readq[n], "Vì sao ra đáp án đó?": s.why[n] || c.ok, "Em sai ở đâu?": s.slip[n] || c.no,
+    };
+    return P[q] || (checked ? (s.why[n] || "Gà giải thích theo bài: " + (c.ok || "xem lại ý chính nhé.")) : (s.hint[n] || "Đọc lại đề, gạch chân dữ kiện, rồi chọn cách làm có đủ dữ kiện đó."));
+  }
+  function prepared() {
+    const s = S(), n = here(), st = cur(), c = cfgOf(n) || {};
+    if (st.dataset.kind === "read") return plain(st.querySelector(".bub"));
+    if (mode === "reteach") return plain($("rtbub"));
+    return checked ? (c.no || s.why[n] || "Xem lại ý chính của bài.") : (s.hint[n] || "Đọc lại đề và tìm dữ kiện đã cho.");
+  }
+  const addMsg = (cls, html) => { const m = document.createElement("div"); m.className = "msg " + cls; m.innerHTML = html; alog.append(m); alog.scrollTop = alog.scrollHeight; window.mockPaint && mockPaint(m); return m; };
+  function ask(q, heard) {
+    if (!q) return; lastQ = q;
+    addMsg("me", heard ? `“${q}”` : q);
+    setPose(sheetGa, "dung");
+    const th = addMsg("ga-a think", "Gà đang nghĩ…");
+    setTimeout(() => {
+      th.remove();
+      if (root.dataset.ai === "down") {
+        setPose(sheetGa, "buon");
+        const label = isTask() && !checked ? "Gợi ý có sẵn trong bài" : "Lời giải có sẵn trong bài";
+        addMsg("fallback", `<small>Gà chưa trả lời được lúc này</small><span>${label}: ${prepared()}</span><button type="button" data-retry>Hỏi lại</button>`);
+        return;
+      }
+      setPose(sheetGa, "vui");
+      const m = addMsg("ga-a", SPEAK + answerFor(q));
+      autoRead(m);
+    }, 900);
+  }
+  function openAsk() {
+    stopRead();
+    if (askedOn !== cur()) { alog.innerHTML = ""; askedOn = cur(); }
+    $("ash-ctx").innerHTML = ctxHtml();
+    $("sugs").innerHTML = suggestions().map((t) => `<button class="sug" type="button">${t}</button>`).join("");
+    ash.hidden = ascrim.hidden = false; setPose(sheetGa, "dung");
+    if (!kid()) ainput.focus({ preventScroll: true }); else amic.focus({ preventScroll: true });
+  }
+  function closeAsk() { stopRead(); ash.hidden = ascrim.hidden = true; askb.focus({ preventScroll: true }); }
+  askb.addEventListener("click", openAsk);
+  askq.addEventListener("click", openAsk);
+  $("ash-x").addEventListener("click", closeAsk);
+  ascrim.addEventListener("click", closeAsk);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !ash.hidden) closeAsk(); });
+  $("sugs").addEventListener("click", (e) => { const b = e.target.closest(".sug"); if (b) ask(b.textContent); });
+  alog.addEventListener("click", (e) => { if (e.target.closest("[data-retry]")) { e.target.closest(".msg").remove(); alog.lastElementChild && alog.lastElementChild.remove(); ask(lastQ); } });
+  $("ash-form").addEventListener("submit", (e) => { e.preventDefault(); const q = ainput.value.trim(); ainput.value = ""; ask(q); });
+  amic.addEventListener("click", () => {
+    if (amic.getAttribute("aria-pressed") === "true") return;
+    amic.setAttribute("aria-pressed", "true");
+    const t = addMsg("ga-a think", "Gà đang nghe…");
+    setTimeout(() => { amic.setAttribute("aria-pressed", "false"); t.remove(); ask(suggestions()[0], true); }, 1400);
+  });
+
+  // ---------- mock bar: a wrong answer, the open sheet, jumps ----------
+  const demoStep = () => (kid() ? 1 : 5);
+  const picks = () => [...steps[i].querySelectorAll(".pics .pic")];
+  const wrongPic = () => picks().find((x) => x.dataset.v !== cfgOf(i).ans);
+  document.addEventListener("click", (e) => {
+    const d = e.target.closest("[data-demo]"); if (!d) return;
+    if (!ash.hidden) closeAsk();
+    show(demoStep());
+    if (d.dataset.demo === "wrong") { wrongPic().click(); check(); } else openAsk();
+  });
+  document.addEventListener("click", (e) => { const j = e.target.closest("[data-jump]"); if (j) show(Number(j.dataset.jump)); });
+
+  go.addEventListener("click", () => {
+    if (mode) return remedyGo();
+    if (remedyFrom !== null && checked) return showReteach();
+    const k = kind();
+    if (k === "notif") return leave();
+    if (k === "recall") return recallGo();
+    if (["pick", "tiles", "order"].includes(k) && !checked) return check();
+    show(i + 1);
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Enter" && !go.disabled && ash.hidden && document.activeElement?.tagName !== "BUTTON" && document.activeElement?.tagName !== "INPUT") go.click(); });
+
+  // another subject or age = another lesson
+  const practice = new URLSearchParams(location.search).get("mode") === "practice";
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key !== "ga" && e.detail.key !== "age") return;
+    build(); show(practice ? 1 : 0); paintGa();
+  });
+  // ?mode=practice (from a course's level ladder or gà's "10 câu ôn"): only the tasks, no explanation step
+  if (practice) document.title = "Luyện tập từng bước";
+  build(); show(practice ? 1 : 0); paintGa();
+
+  // preview states from the URL: ?ga=van&age=tieu-hoc&step=5&demo=wrong|right|combo|ask&after=reteach|twin|twin-ok&ai=down&read=1&vi=1&theme=dark&ask=1&q=1&from=khoa
+  window.addEventListener("DOMContentLoaded", () => {
+    const q = new URLSearchParams(location.search), M = window.mockSet;
+    if (q.get("theme")) M("theme", q.get("theme"));
+    if (q.get("ai")) M("ai", q.get("ai")); else M("ai", root.dataset.ai || "ok");
+    M("ga", q.get("ga") || root.dataset.ga);
+    const d = q.get("demo");
+    if (d) {
+      show(demoStep());
+      if (d === "wrong") { wrongPic().click(); check(); }
+      if (d === "right" || d === "combo") { if (d === "combo") combo = 3; picks().find((x) => x.dataset.v === cfgOf(i).ans).click(); check(); }
+      if (d === "ask") openAsk();
+      const a = q.get("after");
+      if (a) { go.click(); if (a !== "reteach") { go.click(); if (a !== "twin") { const o = document.querySelector('#twopts .pic[data-v="' + (a === "twin-ok" ? remOf(remedyFrom).answer : "a") + '"]'); o && o.click(); go.click(); } } }
+    }
+    if (q.get("step") && !d) show(Number(q.get("step")));
+    if (q.get("vi")) { const v = document.querySelector(".step.on .vibtn"); v && v.click(); }
+    if (q.get("read")) { const b = document.querySelector(".step.on .speakb"); b && b.click(); }
+    if (q.get("ask")) { openAsk(); if (q.get("q")) { const sg = document.querySelector("#sugs .sug"); sg && sg.click(); } }
+  });
+
+  window.leave = function () {
+    const p = new URLSearchParams(location.search);
+    mockReturn(p.get("from") === "khoa" ? "lg-03-chuong-ga.html?mon=" + gaKey() : "lg-01-lang.html");
+  };
+})();
+</script>
+</body>
+</html>

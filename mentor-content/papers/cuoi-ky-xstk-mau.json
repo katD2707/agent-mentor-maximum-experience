@@ -1,0 +1,278 @@
+{
+ "id": "cuoi-ky-xstk-mau",
+ "kind": "cuoi-ky",
+ "band": "uni",
+ "chicken": "khdl",
+ "title_vi": "Đề mẫu cuối kỳ Xác suất thống kê (rút gọn 8 câu)",
+ "title_en": "Sample final exam, Probability and Statistics (8 items)",
+ "year": 2026,
+ "minutes": 45,
+ "parts": [
+  {
+   "id": "p1",
+   "title_vi": "Câu hỏi",
+   "title_en": "Questions",
+   "type": "MIXED",
+   "items": [
+    {
+     "id": "dinh-ly-bayes-q1",
+     "type": "SHORT_ANSWER",
+     "stem": "Một bệnh có tỉ lệ mắc 1%. Xét nghiệm đúng 95% với người bệnh và cho dương tính giả 5% với người khỏe. Một người có kết quả dương tính; xác suất người đó thực sự mắc bệnh là bao nhiêu? (làm tròn đến hai chữ số thập phân)",
+     "options": [],
+     "statements": [],
+     "answer_key": {
+      "accepted": [
+       "0,16",
+       "0.16",
+       "0,161",
+       "0.161",
+       "0,1610",
+       "0.1610"
+      ],
+      "tolerance": 0.02
+     },
+     "hint": "Tính P(B) bằng công thức xác suất toàn phần rồi áp dụng công thức Bayes.",
+     "explanation": "Mẫu số theo xác suất toàn phần là 0,95·0,01 + 0,05·0,99 = 0,059, nên hậu nghiệm bằng 0,0095/0,059 ≈ 0,16.",
+     "option_feedback": {},
+     "skill_ids": [],
+     "difficulty": 2
+    },
+    {
+     "id": "tien-nghiem-hop-ly-hau-nghiem-q1",
+     "type": "SINGLE_CHOICE",
+     "stem": "Theo quan hệ cốt lõi trong bài, hậu nghiệm $p(\\theta\\mid x)$ tỉ lệ với đại lượng nào?",
+     "options": [
+      {
+       "id": "A",
+       "text": "$p(x\\mid\\theta)\\,p(\\theta)$",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "B",
+       "text": "$p(x\\mid\\theta)/p(\\theta)$",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "C",
+       "text": "$p(\\theta)/p(x\\mid\\theta)$",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "D",
+       "text": "$p(x)\\,p(\\theta)$",
+       "image": null,
+       "audio": null
+      }
+     ],
+     "statements": [],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "hint": null,
+     "explanation": "Bỏ hằng số chuẩn hóa $p(x)$, ta có $p(\\theta\\mid x)\\propto p(x\\mid\\theta)\\,p(\\theta)$.",
+     "option_feedback": {
+      "B": "Chia cho tiên nghiệm không phải quan hệ tỉ lệ được nêu trong bài.",
+      "C": "Đảo ngược tử số và mẫu số không đúng với công thức Bayes.",
+      "D": "$p(x)$ là hằng số chuẩn hóa, không nhân vào tử số theo cách này."
+     },
+     "skill_ids": [],
+     "difficulty": 2
+    },
+    {
+     "id": "tien-nghiem-hop-ly-hau-nghiem-q2",
+     "type": "SHORT_ANSWER",
+     "stem": "Sau khi chuẩn hóa, phân phối hậu nghiệm $p(\\theta\\mid x)$ có tích phân theo $\\theta$ trên toàn không gian tham số bằng bao nhiêu?",
+     "options": [],
+     "statements": [],
+     "answer_key": {
+      "accepted": [
+       "1",
+       "1.0",
+       "một"
+      ]
+     },
+     "hint": "Đây là điều kiện để kết quả là một phân phối.",
+     "explanation": "Vì $p(\\theta\\mid x)$ là một phân phối xác suất trên không gian tham số, tích phân của nó bằng $1$.",
+     "option_feedback": {},
+     "skill_ids": [],
+     "difficulty": 1
+    },
+    {
+     "id": "tien-nghiem-hop-ly-hau-nghiem-q3",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Xét các phát biểu sau về tiên nghiệm, hợp lý và hậu nghiệm.",
+     "options": [],
+     "statements": [
+      {
+       "id": "a",
+       "text": "Trong suy luận tham số Bayes, $\\theta$ chưa biết được xem là biến ngẫu nhiên."
+      },
+      {
+       "id": "b",
+       "text": "Tiên nghiệm $p(\\theta)$ biểu thị niềm tin về $\\theta$ sau khi đã quan sát dữ liệu $x$."
+      },
+      {
+       "id": "c",
+       "text": "Hợp lý $p(x\\mid\\theta)$ cho biết dữ liệu $x$ khả dĩ đến mức nào nếu tham số là $\\theta$."
+      },
+      {
+       "id": "d",
+       "text": "Mẫu số $p(x)$ phụ thuộc $\\theta$ nên làm thay đổi hình dạng của hậu nghiệm."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": false,
+       "c": true,
+       "d": false
+      }
+     },
+     "hint": null,
+     "explanation": "Tiên nghiệm là niềm tin trước dữ liệu, còn $p(x)$ không phụ thuộc $\\theta$ và chỉ là hằng số chuẩn hóa.",
+     "option_feedback": {},
+     "skill_ids": [],
+     "difficulty": 2
+    },
+    {
+     "id": "khoang-tin-cay-bayes-q1",
+     "type": "SINGLE_CHOICE",
+     "stem": "Khoảng tin cậy Bayes $[a,b]$ mức $1-\\gamma$ cho tham số $\\theta$ được định nghĩa bởi điều kiện nào?",
+     "options": [
+      {
+       "id": "A",
+       "text": "$P(a\\le \\theta\\le b\\mid x)=1-\\gamma$",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "B",
+       "text": "$P(a\\le \\theta\\le b)=1-\\gamma$",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "C",
+       "text": "$P(a\\le \\theta\\le b\\mid x)=\\gamma$",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "D",
+       "text": "$P(x\\in[a,b]\\mid\\theta)=1-\\gamma$",
+       "image": null,
+       "audio": null
+      }
+     ],
+     "statements": [],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "hint": null,
+     "explanation": "Định nghĩa dùng xác suất hậu nghiệm của $\\theta$ với điều kiện dữ liệu $x$, và mức đó bằng $1-\\gamma$.",
+     "option_feedback": {
+      "B": "Thiếu điều kiện trên dữ liệu $x$: đây là xác suất tiên nghiệm, không phải hậu nghiệm.",
+      "C": "Sai mức: xác suất hậu nghiệm phải bằng $1-\\gamma$, không phải $\\gamma$.",
+      "D": "Đây là phát biểu kiểu tần suất về dữ liệu, không phải về $\\theta$ sau khi thấy dữ liệu."
+     },
+     "skill_ids": [],
+     "difficulty": 1
+    },
+    {
+     "id": "khoang-tin-cay-bayes-q2",
+     "type": "SHORT_ANSWER",
+     "stem": "Với hậu nghiệm $\\mathrm{Beta}(5,25)$ ở mức $95\\%$, khoảng đối xứng theo phân vị có cận trên xấp xỉ bằng bao nhiêu? (Làm tròn đến hai chữ số thập phân.)",
+     "options": [],
+     "statements": [],
+     "answer_key": {
+      "accepted": [
+       "0,31"
+      ],
+      "tolerance": 0
+     },
+     "hint": null,
+     "explanation": "Khoảng $95\\%$ đối xứng của $\\mathrm{Beta}(5,25)$ xấp xỉ $[0{,}06;\\,0{,}31]$ nên cận trên là $0{,}31$.",
+     "option_feedback": {},
+     "skill_ids": [],
+     "difficulty": 2
+    },
+    {
+     "id": "sau-dang-bai-tap-betanhi-thuc-q1",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong tiên nghiệm $\\mathrm{Beta}(a,b)$ của mô hình Beta–Nhị thức, tổng $a+b$ được hiểu là gì?",
+     "options": [
+      {
+       "id": "A",
+       "text": "Cỡ mẫu tưởng tượng của tiên nghiệm",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "B",
+       "text": "Số lần thành công quan sát được",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "C",
+       "text": "Số lần thất bại quan sát được",
+       "image": null,
+       "audio": null
+      },
+      {
+       "id": "D",
+       "text": "Hằng số chuẩn hoá của hàm hợp lý",
+       "image": null,
+       "audio": null
+      }
+     ],
+     "statements": [],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "hint": null,
+     "explanation": "Bài học nêu rõ $a+b$ đóng vai trò 'cỡ mẫu tưởng tượng' của tiên nghiệm: nó càng lớn thì hậu nghiệm càng bám tiên nghiệm.",
+     "option_feedback": {
+      "B": "Số lần thành công quan sát được là $k$, không phải $a+b$.",
+      "C": "Số lần thất bại là $n-k$, không phải $a+b$.",
+      "D": "Hằng số chuẩn hoá của hàm hợp lý là $\\binom{n}{k}$, không liên quan tới $a+b$."
+     },
+     "skill_ids": [],
+     "difficulty": 2
+    },
+    {
+     "id": "sau-dang-bai-tap-betanhi-thuc-q2",
+     "type": "SHORT_ANSWER",
+     "stem": "Với tiên nghiệm $\\theta\\sim\\mathrm{Beta}(2,3)$, dữ liệu đến hai đợt: đợt 1 có $n_1=4$, $k_1=3$; đợt 2 có $n_2=6$, $k_2=4$. Trung bình hậu nghiệm của $\\theta$ sau cả hai đợt bằng bao nhiêu? (nhập số thập phân)",
+     "options": [],
+     "statements": [],
+     "answer_key": {
+      "accepted": [
+       "0.6",
+       "0,6",
+       "0.60",
+       "0,60",
+       "3/5"
+      ],
+      "tolerance": 0.01
+     },
+     "hint": null,
+     "explanation": "Hậu nghiệm là $\\mathrm{Beta}(9,6)$ nên trung bình là $9/15=0{,}6$, trùng với kết quả khi gộp dữ liệu $n=10$, $k=7$.",
+     "option_feedback": {},
+     "skill_ids": [],
+     "difficulty": 2
+    }
+   ]
+  }
+ ],
+ "source": {
+  "name": "Mentor (đề mẫu từ khóa học Xác suất thống kê)",
+  "url": ""
+ },
+ "placeholder": true,
+ "note_vi": "Rút gọn: 8 câu lấy từ các câu kiểm tra của khóa học, chưa phải đề thi thật.",
+ "note_en": "Shortened: 8 items taken from the course quizzes, not a real exam."
+}

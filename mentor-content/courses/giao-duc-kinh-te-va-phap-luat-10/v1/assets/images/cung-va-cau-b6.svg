@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+<feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<line x1="150" y1="600" x2="920" y2="600" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<line x1="150" y1="600" x2="150" y2="70" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round"/>
+<path d="M905 592 L920 600 L905 608" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M142 85 L150 70 L158 85" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="587.5" y1="383.33333333333337" x2="587.5" y2="600" stroke="#2B283F" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.55" stroke-linecap="round"/>
+<line x1="150" y1="383.33333333333337" x2="587.5" y2="383.33333333333337" stroke="#2B283F" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.55" stroke-linecap="round"/>
+<line x1="587.5" y1="594" x2="587.5" y2="606" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<line x1="144" y1="383.33333333333337" x2="156" y2="383.33333333333337" stroke="#5A4BC0" stroke-width="2" stroke-linecap="round"/>
+<line x1="900.0" y1="600.0" x2="150.0" y2="80.0" stroke="#E8806A" stroke-width="5" stroke-linecap="round"/>
+<line x1="275.0" y1="600.0" x2="900.0" y2="166.66666666666669" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<circle cx="587.5" cy="383.33333333333337" r="8" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<text x="165" y="55" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">P (ngh&#236;n &#273;&#7891;ng/ly)</text>
+<text x="915" y="645" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="end">Q (ly/ng&#224;y)</text>
+<text x="830" y="520" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">Q_d</text>
+<text x="490" y="430" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="end">Q_s</text>
+<text x="660" y="315" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="start">E (25; 70)</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

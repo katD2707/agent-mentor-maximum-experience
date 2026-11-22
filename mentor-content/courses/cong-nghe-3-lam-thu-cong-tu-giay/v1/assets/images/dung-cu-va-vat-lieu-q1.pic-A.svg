@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow -->
+  <ellipse cx="200" cy="330" rx="132" ry="13" fill="#E9E5F6"/>
+
+  <!-- thickness / cut edge of the board -->
+  <path d="M 74 280 H 326 V 300 Q 326 314 312 314 H 88 Q 74 314 74 300 Z"
+        fill="#E8806A" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- corrugated flute marks on the cut edge -->
+  <g stroke="#2B283F" stroke-width="2.4" stroke-linecap="round">
+    <line x1="100" y1="304" x2="100" y2="310"/>
+    <line x1="124" y1="304" x2="124" y2="310"/>
+    <line x1="148" y1="304" x2="148" y2="310"/>
+    <line x1="172" y1="304" x2="172" y2="310"/>
+    <line x1="196" y1="304" x2="196" y2="310"/>
+    <line x1="220" y1="304" x2="220" y2="310"/>
+    <line x1="244" y1="304" x2="244" y2="310"/>
+    <line x1="268" y1="304" x2="268" y2="310"/>
+    <line x1="292" y1="304" x2="292" y2="310"/>
+  </g>
+
+  <!-- exposed corrugated core at the folded corner -->
+  <path d="M 290 84 L 326 84 L 326 120 Z"
+        fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+  <g stroke="#2B283F" stroke-width="2.2" stroke-linecap="round">
+    <line x1="298" y1="84" x2="326" y2="112"/>
+    <line x1="306" y1="84" x2="326" y2="104"/>
+    <line x1="314" y1="84" x2="326" y2="96"/>
+  </g>
+
+  <!-- the cardboard sheet face -->
+  <path d="M 92 84 H 290 L 326 120 V 282 Q 326 300 308 300 H 92 Q 74 300 74 282 V 102 Q 74 84 92 84 Z"
+        fill="#F0D76E" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- folded-back corner flap -->
+  <path d="M 290 84 L 326 120 L 290 120 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

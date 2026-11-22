@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- ground shadow -->
+  <ellipse cx="200" cy="331" rx="86" ry="11" fill="#E9E5F6"/>
+
+  <!-- lid handle (behind lid) -->
+  <rect x="177" y="94" width="46" height="24" rx="12" fill="#E8806A" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- lid -->
+  <rect x="124" y="112" width="152" height="34" rx="17" fill="#E8806A" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round"/>
+
+  <!-- body -->
+  <path d="M140 150 L260 150 L248 308 Q247 318 237 318 L163 318 Q153 318 152 308 Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- label band -->
+  <rect x="151" y="194" width="98" height="28" rx="14" fill="#F0D76E"/>
+
+  <!-- ribs -->
+  <line x1="178" y1="246" x2="176" y2="300" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+  <line x1="222" y1="246" x2="224" y2="300" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

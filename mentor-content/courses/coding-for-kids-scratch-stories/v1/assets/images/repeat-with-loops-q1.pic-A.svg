@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <!-- paper -->
+    <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+    <!-- mint offset shadow -->
+    <rect x="80" y="80" width="260" height="260" rx="40" fill="#9FD8BF"/>
+
+    <!-- main block -->
+    <rect x="70" y="70" width="260" height="260" rx="40" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="8"/>
+
+    <!-- highlighter inner frame -->
+    <rect x="90" y="90" width="220" height="220" rx="30" fill="none" stroke="#F0D76E" stroke-width="5"/>
+
+    <!-- repeat loop -->
+    <path d="M 252.6 152.8 A 56 56 0 1 1 219.2 119.4"
+          fill="none" stroke="#5A4BC0" stroke-width="16"/>
+
+    <!-- loop arrowhead -->
+    <polygon points="239.9,126.9 211.5,134.7 223.1,102.7" fill="#E8806A"/>
+
+    <!-- three counters -->
+    <circle cx="158" cy="282" r="15" fill="#E8806A"/>
+    <circle cx="200" cy="282" r="15" fill="#E8806A"/>
+    <circle cx="242" cy="282" r="15" fill="#E8806A"/>
+  </g>
+
+  <!-- paper grain -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

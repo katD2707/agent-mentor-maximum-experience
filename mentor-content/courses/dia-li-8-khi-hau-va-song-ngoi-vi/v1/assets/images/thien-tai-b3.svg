@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<line x1="110" y1="600" x2="930" y2="600" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="110" y1="100" x2="110" y2="600" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="130" y="534.10" width="52" height="65.90" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="198" y="545.00" width="52" height="55.00" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="266" y="554.30" width="52" height="45.70" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="334" y="546.45" width="52" height="53.55" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="402" y="505.35" width="52" height="94.65" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="470" y="365.40" width="52" height="234.60" rx="4" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="538" y="200.70" width="52" height="399.30" rx="4" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="606" y="137.70" width="52" height="462.30" rx="4" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="674" y="265.50" width="52" height="334.50" rx="4" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="742" y="393.90" width="52" height="206.10" rx="4" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="810" y="482.80" width="52" height="117.20" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="878" y="517.75" width="52" height="82.25" rx="4" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="110" y1="420.75" x2="930" y2="420.75" stroke="#2B283F" stroke-width="3" stroke-dasharray="12 10" stroke-linecap="round"/>
+<text x="120" y="70" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">L&#432;u l&#432;&#7907;ng (m&#179;/s)</text>
+<text x="120" y="396.75" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Trung b&#236;nh n&#259;m 3585</text>
+<text x="525" y="670" text-anchor="middle" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Th&#225;ng 1&#8211;12</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

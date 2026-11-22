@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "dao-duc-3-trung-thuc-va-biet-on",
+  "title": "Đạo đức 3: Trung thực và biết ơn",
+  "subject": "Đạo đức",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "u389d87524698696b",
+  "teacher_name": "Cô Bích",
+  "description_short": "Khóa học Đạo đức 3 giúp học sinh tiểu học hiểu và thực hành tính trung thực, biết nhận lỗi, biết ơn thầy cô và người lao động. Nội dung gồm lý thuyết, câu chuyện, ví dụ, lỗi thường gặp và bài tập gắn với tình huống gần gũi.",
+  "outcomes": [
+    "nhận biết và thực hiện việc trung thực khi nhặt được của rơi",
+    "dám nhận lỗi, xin lỗi và sửa lỗi khi làm sai",
+    "thể hiện lòng biết ơn thầy cô bằng lời nói, thái độ lễ phép và việc làm phù hợp",
+    "kính trọng, cảm ơn người lao động và không lãng phí thức ăn, đồ dùng"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 4,
+  "est_minutes": 48,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T06:53:29.479132Z",
+      "published_at": "2026-11-17T07:02:46.731107Z",
+      "pack_sha256": "e0aeaf644179817af159915d92245901e5ced08df09e8cb351335f359ae60703",
+      "pack_bytes": 1597617,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": "basic",
+  "status": "live",
+  "outline": []
+}

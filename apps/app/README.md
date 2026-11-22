@@ -5,13 +5,16 @@ One frontend (Vite + React 19 + TypeScript) for the desktop (Tauri 2), the web/P
 
 ## Screens
 
-Student: login, first run (language and age band), hub with four squares, Courses (today block, my courses, search, course intro
-tree, lesson player), Practice (10-question runs, mock exams, practice from a course), Ask (text, photo, voice, course cards),
-Progress (goals, planned week, per-course strengths), settings popover (grade, language, theme, reminders, quiet time, sign out).
-Teacher: send material, structure chat, review and publish. There is no tab bar: each feature screen has a small back button at the
-top left. The mascot "Mực" is on every screen and also opens the guide chat.
-
-Routes are Vietnamese slugs: `/khoa-hoc`, `/luyen-tap`, `/hoi-dap`, `/tien-do`; teachers use `/khoa/:id`.
+The student UI is **Làng gà** (design: `mockups/lg-*.html`, teacher `gv-*.html`; contract `CONTRACTS-LANGGA.md`). The home is the village:
+each subject (or ngành at university) is one chicken that grows with XP (stages: level 1, 2-4, 5-9, 10+ "Cao thủ" with a gold crown). The chicken
+that speaks first suggests what to do, and a chat tray takes questions, photos of homework and notes. From the village: the chicken's coop
+(`/chuong/:chicken`: its courses, find and add courses), lessons (`/khoa-hoc/:id/hoc`), the arena with real papers and course tests
+(`/dau-truong`, `/kiem-tra/:courseId`; the tray only points there), practice runs (`/luyen-tap/:id`), the study room (`/phong-tu-hoc`), progress
+(`/tien-do`), the Library for university students (`/thu-vien`), the market to take more chickens, the news board and settings. Login and
+first run (language, birth year, up to three chickens) use the same wood-board look.
+Teacher: send material, structure chat, labels (chicken, level, grade, difficulty, goals, language, topics), review (the student's lesson
+blocks, read only) and publish; routes `/khoa/:id`, `/khoa/:id/nhan`, `/khoa/:id/duyet`.
+A small guide chicken stands on every screen, teachers included (first-visit tour, tap for help, drag it onto a part to have it explained).
 
 ## Run (Windows PowerShell)
 
@@ -40,9 +43,12 @@ The mock keeps its users in `localStorage` (`mentor.mock.users`); clear site dat
 - `src/api`: contract types (`course.ts`, `planner.ts`, ... mirror `packages/mentor-schemas`), HTTP client, and the mock API
   (`mock-*.ts`). `media.ts` is the one place that builds asset and cover URLs (`?t=<media token>`).
 - `src/state/auth.tsx`: session, `PATCH /me`, quiet time; applies theme, `data-age` and language to `<html>`.
-- `src/styles`: `tokens.css` (light/dark/system and age density via `data-age="g1_5|g6_9|g10_12|uni"`), `base.css`, `screens.css`.
+- `src/styles`: shared sheets of the lesson blocks and the research body (`courses.css`, `practice.css`, `research.css`), `tokens.css` (light/dark/system and age density via `data-age="g1_5|g6_9|g10_12|uni"`), `base.css`, `screens.css`.
 - `src/i18n`: vi (default) and en. Every string exists in both.
-- `src/screens`: `courses`, `practice`, `ask`, `teacher`, plus Hub, Login, FirstRun, Progress. `src/components`: Settings, Guide (Mực), icons.
+- `src/lang`: the whole UI. `screens/` (village, arena, chuong, lesson, practice, study, progress, library), `teacher/`, `guide/` (the chicken guide),
+  `engine/` (the painted village), `api/` (typed clients + the mock for `VITE_API_MOCK=1`), `kit/` (lesson blocks, quiz and answer inputs, shared with the
+  teacher review), `styles/`, `i18n*` (the `lg` namespace), `xp.ts` (XP event bus), `subjects.ts` (chickens, levels, stages) and `gaFiles.json`
+  (which pictures exist; written by `node scripts/sync-ga-assets.mjs`, which also copies the art from `mockups/assets/ga`). `src/components`: icons, update notice.
 - `src/lib`: offline and sync (`offline.ts`, `sync.ts`: enrolled courses are cached, sha256 checked), behaviour logging
   (`behaviour.ts`, `events.ts`, `focus.ts`, `reminders.ts`), deep links, updater, quiet-time rules.
 - `public/sw.js`: service worker (offline shell, Web Push); stamped per build by `vite.config.ts`.
@@ -51,8 +57,7 @@ The mock keeps its users in `localStorage` (`mentor.mock.users`); clear site dat
 
 ## Notes
 
-- Mực's guide text lives in `src/lib/guides.ts` (`data-guide` keys on screen regions). After editing it run `pnpm run guides:export`;
-  `build` does it too, and a gateway test fails when `ask/guide_map.json` is stale.
+- `src/lib/guides.ts` is only the server's guide map (`pnpm run guides:export` copies it to the gateway, a gateway test checks it); the screens use the chicken guide.
 - Ask mock (`api/mock-ask.ts`): learning questions give course cards, a maths task gives a solution, a photo gives two problems,
   audio gives a transcript; `localStorage["mentor.mock.badphoto"]="1"` makes photos return the retake flow.
 - Mock courses (`api/mock-courses.ts`): Điện trường (g10_12), Đếm táo (g1_5), Suy luận Bayes (uni). Their videos are missing on

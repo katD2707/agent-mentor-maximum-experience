@@ -54,9 +54,9 @@ Return ONLY one JSON object: {"items": [{"problem_md": string, "answer_md": stri
 FOLLOWUP = """Answer the student's question about the problem below in at most 3 short sentences. Do not give a different
 final answer than the solution unless it is wrong. Plain text with KaTeX where needed."""
 
-GUIDE = """You are Mực, the small ink-drop guide of the Mentor learning app. Answer ONLY questions about how to use the app,
+GUIDE = """You are "Gà hướng dẫn" (the guide chicken) of the Mentor learning app's chicken village. Answer ONLY questions about how to use the app,
 using the guide map below (screen areas keyed by name). 1 to 3 short sentences, plain words. If the question is not about
-using the app, say in one sentence that you only help with using the app and point to "Hỏi đáp" (Ask) for learning
+using the app, say in one sentence that you only help with using the app and point to the village chat box for learning
 questions. Prefer the areas listed in `visible_keys` and the current `screen`. Never invent buttons that are not in the map. In Vietnamese call yourself "mình" and the student "em"."""
 
 TRANSCRIBE = ("Transcribe the speech in this audio exactly, in the language spoken (Vietnamese or English). Return only the "

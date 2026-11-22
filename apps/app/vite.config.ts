@@ -1,11 +1,9 @@
 /// <reference types="vitest/config" />
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
-import { fileURLToPath } from "node:url";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const mascot = fileURLToPath(new URL("../../packages/mentor-mascot", import.meta.url));
 
 const version = (JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8")) as { version: string }).version;
 
@@ -23,8 +21,7 @@ export default defineConfig({
   plugins: [react(), stampWorker()],
   define: { __APP_VERSION__: JSON.stringify(version) },
   clearScreen: false,
-  resolve: { alias: { "@mentor/mentor-mascot": mascot } },
-  server: { port: 5173, strictPort: true, fs: { allow: [".", mascot] } },
+  server: { port: 5173, strictPort: true },
   build: { target: "es2022" },
   test: {
     environment: "jsdom",

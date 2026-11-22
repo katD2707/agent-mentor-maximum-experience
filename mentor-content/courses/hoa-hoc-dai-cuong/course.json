@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "hoa-hoc-dai-cuong",
+  "title": "Hóa học đại cương",
+  "subject": "Hóa học",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "u4840887cabbeb948",
+  "teacher_name": "TS. Lâm Thị Bích",
+  "description_short": "Khóa học trình bày cấu tạo chất, liên kết, trạng thái chất và các quy luật cơ bản của phản ứng hóa học. Dành cho sinh viên đại học học Hóa học đại cương.",
+  "outcomes": [
+    "viết được cấu hình electron, xác định electron hóa trị và tính nguyên tử khối trung bình",
+    "phân loại được liên kết, dự đoán hình học phân tử và giải thích lực liên phân tử",
+    "áp dụng được phương trình khí lí tưởng, định luật Hess và biểu thức hằng số cân bằng",
+    "cân bằng được phản ứng oxi hóa – khử và tính suất điện động pin theo Nernst"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:29:45.217953Z",
+      "published_at": "2026-11-17T08:29:57.149052Z",
+      "pack_sha256": "59227b791bf0ce8f577008477bc68a548623369cb167d84e08b68044ee9443eb",
+      "pack_bytes": 131096,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

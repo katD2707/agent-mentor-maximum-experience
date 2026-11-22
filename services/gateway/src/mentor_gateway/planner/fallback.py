@@ -8,6 +8,7 @@ Pure function of the PlanContext: same input, same plan.
 from datetime import datetime, timedelta
 
 from mentor_gateway.planner.bands import EARLIEST_MIN, TZ, hhmm, to_min
+from mentor_gateway.langga.subjects import CHICKENS, chicken_of
 from mentor_gateway.planner.engage import study_text
 from mentor_gateway.planner.text import clean
 from mentor_gateway.planner.types import WEEKDAYS_EN, WEEKDAYS_VI, CourseInfo, LessonInfo, PlanContext
@@ -210,9 +211,11 @@ def _reminders(ctx: PlanContext, items: list[dict]) -> list[dict]:
             ls = c.lesson(it["lesson_id"])
         what_vi = ls.title if ls else (c.title if c else "ôn tập")
         what_en = ls.title if ls else (c.title if c else "practice")
-        # in Mực's voice, a different line from day to day, with the streak when there is one (planner/engage.py)
+        # in the subject chicken's voice, a different line from day to day, with the streak when there is one (planner/engage.py)
+        ga = CHICKENS[chicken_of(c.subject, c.age_band or p.get("age_band"))] if c else None
         text_vi, text_en = study_text(what_vi, what_en, it["minutes"], p.get("streak_days") or 0,
-                                      f"{it['date']}{it['start']}", p.get("age_band"))
+                                      f"{it['date']}{it['start']}", p.get("age_band"),
+                                      ga.name_vi if ga else None, ga.name_en if ga else None)
         out.append({"at": at.isoformat(), "kind": "study", "text_vi": text_vi, "text_en": text_en,
                     "deep_link": deep_link(it["course_id"], it["lesson_id"], it["kind"])})
     d = p.get("days_since_study")
@@ -224,10 +227,10 @@ def _reminders(ctx: PlanContext, items: list[dict]) -> list[dict]:
             at = datetime.fromisoformat(f"{first['date']}T{first['start']}:00").replace(tzinfo=TZ)
             if at > ctx.now:
                 out.append({"at": at.isoformat(), "kind": "nudge",
-                            "text_vi": clean("Mực nhớ em rồi đấy! Mấy hôm nay chưa học, mở bài lên 10 phút thôi cũng được."
+                            "text_vi": clean("Gà nhớ em rồi đấy! Mấy hôm nay chưa học, mở bài lên 10 phút thôi cũng được."
                                              if p.get("age_band") != "uni" else
-                                             "Mực nhớ bạn rồi đấy! Mấy hôm nay chưa học, mở bài lên 10 phút thôi cũng được."),
-                            "text_en": clean("Mực misses you! It has been a couple of days; even 10 minutes helps."),
+                                             "Gà nhớ bạn rồi đấy! Mấy hôm nay chưa học, mở bài lên 10 phút thôi cũng được."),
+                            "text_en": clean("Your chicken misses you! It has been a couple of days; even 10 minutes helps."),
                             "deep_link": deep_link(first["course_id"], first["lesson_id"], first["kind"])})
     out.sort(key=lambda r: r["at"])
     return out

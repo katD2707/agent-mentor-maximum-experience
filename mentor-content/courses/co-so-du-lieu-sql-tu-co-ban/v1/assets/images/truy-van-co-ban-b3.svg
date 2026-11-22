@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="30" y="200" width="140" height="250" rx="26" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="225" y="200" width="140" height="250" rx="26" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="430" y="200" width="140" height="250" rx="26" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="635" y="200" width="140" height="250" rx="26" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="830" y="200" width="140" height="250" rx="26" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<line x1="176" y1="325" x2="219" y2="325" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<polyline points="206,316 219,325 206,334" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="371" y1="325" x2="424" y2="325" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<polyline points="411,316 424,325 411,334" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="576" y1="325" x2="629" y2="325" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<polyline points="616,316 629,325 616,334" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="781" y1="325" x2="824" y2="325" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round"/>
+<polyline points="811,316 824,325 811,334" fill="none" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="66" y="241" width="68" height="68" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="3"/>
+<line x1="89" y1="241" x2="89" y2="309" stroke="#2B283F" stroke-width="2.2"/>
+<line x1="66" y1="264" x2="134" y2="264" stroke="#2B283F" stroke-width="2.2"/>
+<line x1="111" y1="241" x2="111" y2="309" stroke="#2B283F" stroke-width="2.2"/>
+<line x1="66" y1="286" x2="134" y2="286" stroke="#2B283F" stroke-width="2.2"/>
+<path d="M 259 241 L 331 241 L 307 285 L 307 314 L 283 300 L 283 285 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="500" cy="275" r="36" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3"/>
+<polyline points="484,277 498,291 518,259" fill="none" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="671" y="281" width="20" height="28" rx="6" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="695" y="261" width="20" height="48" rx="6" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="719" y="241" width="20" height="68" rx="6" fill="#E8806A" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="862" y="241" width="76" height="14" rx="7" fill="#E8806A" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="862" y="263" width="76" height="14" rx="7" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="862" y="285" width="76" height="14" rx="7" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<text x="100" y="525" font-family="Lexend, sans-serif" font-size="32" font-weight="700" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">FROM</text>
+<text x="295" y="525" font-family="Lexend, sans-serif" font-size="32" font-weight="700" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">WHERE</text>
+<text x="500" y="525" font-family="Lexend, sans-serif" font-size="32" font-weight="700" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">SELECT</text>
+<text x="705" y="525" font-family="Lexend, sans-serif" font-size="32" font-weight="700" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">ORDER BY</text>
+<text x="900" y="525" font-family="Lexend, sans-serif" font-size="32" font-weight="700" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">LIMIT</text>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

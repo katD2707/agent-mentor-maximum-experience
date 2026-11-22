@@ -1,0 +1,1243 @@
+{
+  "schema_version": 1,
+  "course_id": "dao-duc-3-trung-thuc-va-biet-on",
+  "version": 1,
+  "min_app_version": "0.1.0",
+  "language": "vi",
+  "age_band": "g1_5",
+  "title": "Đạo đức 3: Trung thực và biết ơn",
+  "chapters": [
+    {
+      "id": "ch-trung-thuc",
+      "title": "Trung thực",
+      "lessons": [
+        {
+          "id": "nhat-duoc-cua-roi",
+          "title": "Nhặt được của rơi",
+          "est_minutes": 12,
+          "summary": "Học cách trả lại của rơi cho người mất hoặc giao cho người lớn phù hợp thay vì giữ, dùng hay chia.",
+          "key_ideas": [
+            "Của rơi không phải của em",
+            "Tìm người mất để trả lại",
+            "Không biết ai mất thì đưa thầy cô, bố mẹ hoặc người lớn",
+            "Nói rõ mình nhặt được ở đâu",
+            "Không giấu, không dùng, không chia của rơi"
+          ],
+          "blocks": [
+            {
+              "id": "nhat-duoc-cua-roi-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/nhat-duoc-cua-roi-b1.webp",
+                "mime": "image/webp",
+                "sha256": "11d8e075002208a6652fa29671e3971f3272a4c22c1719c27d46c3321617942c",
+                "bytes": 22500
+              },
+              "alt": "Bạn nhỏ thấy hộp bút rơi ở gốc cây.",
+              "caption": "Thấy hộp bút rơi.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "86e9722ca3c516eebff39740d98e405dd1fb8d246bbad4ffec785436e08b5d28",
+                "bytes": 14204
+              },
+              "attribution": null
+            },
+            {
+              "id": "nhat-duoc-cua-roi-b2",
+              "kind": "text",
+              "md": "Của rơi không phải của em. Em tìm người mất để trả lại.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "7fcafb166b0a1c04b81fe61f3b0bfaa6df1939d3e65bedb1f495e3605a24a5a5",
+                "bytes": 35660
+              },
+              "gloss": null
+            },
+            {
+              "id": "nhat-duoc-cua-roi-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/nhat-duoc-cua-roi-b3.webp",
+                "mime": "image/webp",
+                "sha256": "606d35dc254ca511a4ceaadc8f162ee51f9c4329a52913cc3ca26876fdc38a47",
+                "bytes": 25836
+              },
+              "alt": "Bạn nhỏ đưa hộp bút cho cô giáo.",
+              "caption": "Đưa cô giáo tìm người mất.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "73846b28ab7b15a0a3f89b43157fb1b51a3daedbde499f3d62f1ac48d34642be",
+                "bytes": 17372
+              },
+              "attribution": null
+            },
+            {
+              "id": "nhat-duoc-cua-roi-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhat-duoc-cua-roi-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Na nhặt được vật nào?",
+                  "stem_audio": {
+                    "path": "audio/nhat-duoc-cua-roi-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "325a19e8cb50a28df393b4350fa4eaa2deb114d48d7bde9fe69f64dab1444cf3",
+                    "bytes": 15932
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhat-duoc-cua-roi-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "b8e3061aa3cbc0f52738b885f6bb122558e921be999b4da2879b7206fab2d8b5",
+                        "bytes": 1733
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhat-duoc-cua-roi-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "8cf0c7b6956f8ba44289051708668bc3e96a2e93f426b80a5cddf308626a76c3",
+                        "bytes": 1691
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhat-duoc-cua-roi-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "f102359333b0b0ddc350b75b4b8b3e01780abb36bd465f04e2e7b643be0bc182",
+                        "bytes": 1374
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Trong truyện, Na nhặt được hộp bút màu xanh ở gốc cây.",
+                  "option_feedback": {
+                    "B": "Trong truyện, Na nhặt được hộp bút màu xanh ở gốc cây.",
+                    "C": "Trong truyện, Na nhặt được hộp bút màu xanh ở gốc cây."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nhat-duoc-cua-roi-b4",
+              "kind": "text",
+              "md": "Không biết ai mất? Em đưa thầy cô. Em đưa bố mẹ hoặc người lớn. Em nói rõ chỗ nhặt.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "5b03be27bb70800af44962fb11f135883b0a0dd5b556a69266234794128d31b7",
+                "bytes": 59996
+              },
+              "gloss": null
+            },
+            {
+              "id": "nhat-duoc-cua-roi-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/nhat-duoc-cua-roi-b5.webp",
+                "mime": "image/webp",
+                "sha256": "163490d52d3dc353f2702ac9feed81d2d661e82a5a93d7d34e77e895627ae359",
+                "bytes": 19638
+              },
+              "alt": "Bạn nhỏ không chia tiền nhặt được, đưa cho người lớn.",
+              "caption": "Không chia của rơi.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "c934c1233ac91b54c7f8056a9dec6977397dbf8bd47eefd072f22bd28902ad10",
+                "bytes": 14780
+              },
+              "attribution": null
+            },
+            {
+              "id": "nhat-duoc-cua-roi-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhat-duoc-cua-roi-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Chạm vào 3 chiếc bút.",
+                  "stem_audio": {
+                    "path": "audio/nhat-duoc-cua-roi-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "fd40dd75c62439909c08712031c76d874182e0322c522a9bca5b23325e689f91",
+                    "bytes": 15932
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/nhat-duoc-cua-roi-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "613ec75927aa7ce2d09b473b64c84ce7338927c625ca30c274b875853c9d3704",
+                      "bytes": 1517
+                    },
+                    "total": 3
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 3
+                  },
+                  "hint": null,
+                  "explanation": "Hộp bút Na nhặt có 3 chiếc bút.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nhat-duoc-cua-roi-b6",
+              "kind": "text",
+              "md": "Em không giấu của rơi. Em không dùng, không chia. Đó là trung thực.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "43d84cdaacf0424c2387aa22c994db742974ab5e540fe6d75187fa6d953d7ff1",
+                "bytes": 46172
+              },
+              "gloss": null
+            },
+            {
+              "id": "nhat-duoc-cua-roi-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "Nhặt được của rơi, tìm người trả lại.",
+              "audio": {
+                "path": "audio/nhat-duoc-cua-roi-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "85dd0c88dc405771eb61f1553233b159f0f2a63d9ff6d7ec9319ecf5da591877",
+                "bytes": 32780
+              }
+            },
+            {
+              "id": "nhat-duoc-cua-roi-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhat-duoc-cua-roi-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Không biết ai mất, em làm gì?",
+                  "stem_audio": {
+                    "path": "audio/nhat-duoc-cua-roi-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "9cf5ab073c1cd504a5cb74b04db3f348883fff3360e6621e3ecba1714894ad52",
+                    "bytes": 20540
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đưa người lớn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhat-duoc-cua-roi-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "49495dc09a0e38fe4e94507865dfdd74abf378541757c1d8ce02eb8ba62f2bf5",
+                        "bytes": 13628
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Giữ lại",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhat-duoc-cua-roi-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "3b96c786a9d680b1a72dd331beeea09e1a26ee5548192ac43ca487366be79c16",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Dùng luôn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhat-duoc-cua-roi-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "932d07fcd8f6d11f16e55acf026fd8a4058e266509de2ea37bbb2fddde1664f0",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chia cho bạn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhat-duoc-cua-roi-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "63fba99b47e45db93600c4216a925ad6ac1eaa0cf68e2c31c136a0f84da318ea",
+                        "bytes": 12908
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Không biết ai mất thì đưa thầy cô, bố mẹ hoặc người lớn.",
+                  "option_feedback": {
+                    "B": "Giữ lại là giấu của rơi, không trung thực.",
+                    "C": "Dùng của rơi là lấy đồ của người khác.",
+                    "D": "Chia của rơi là không trung thực."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nhan-loi-khi-lam-sai",
+          "title": "Nhận lỗi khi làm sai",
+          "est_minutes": 12,
+          "summary": "Học cách nói thật, xin lỗi và sửa lỗi khi mình làm sai, không nói dối hay đổ lỗi cho người khác.",
+          "key_ideas": [
+            "Ai cũng có thể làm sai",
+            "Dám nhận lỗi và nói thật",
+            "Sửa lỗi nếu làm được",
+            "Hứa lần sau cẩn thận hơn",
+            "Không giấu lỗi, không đổ lỗi cho người khác"
+          ],
+          "blocks": [
+            {
+              "id": "nhan-loi-khi-lam-sai-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/nhan-loi-khi-lam-sai-b1.webp",
+                "mime": "image/webp",
+                "sha256": "95c2804875de4935c48568c9dc2cbc097b1c06cf41defab685e640865fecad7d",
+                "bytes": 23244
+              },
+              "alt": "Nam làm rơi hộp phấn",
+              "caption": null,
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "0e6a0ca0d913f198693aaa945de3daae886072b4ada6d634fed41e8e63bf859e",
+                "bytes": 18092
+              },
+              "attribution": null
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-b2",
+              "kind": "text",
+              "md": "Ai cũng có thể làm sai.",
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "82dfbcccc5ec1c80212198d584e89509a57005b2bd6735d437fed034842a0134",
+                "bytes": 17948
+              },
+              "gloss": null
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/nhan-loi-khi-lam-sai-b3.webp",
+                "mime": "image/webp",
+                "sha256": "cb2aa4736189eb8e295bece3d9ab14f2daea46ac3c84290c146b75ade36bd4db",
+                "bytes": 23664
+              },
+              "alt": "Nam xin lỗi cô giáo",
+              "caption": null,
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "f16bb2b5b2bee0f9f869dd5cfeae225e43c3236d4dcaa472509b15aff0f9f0b0",
+                "bytes": 17804
+              },
+              "attribution": null
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhan-loi-khi-lam-sai-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Na nhặt được gì ở gốc cây?",
+                  "stem_audio": {
+                    "path": "audio/nhan-loi-khi-lam-sai-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "43d46d9491ea256a4ffcd3e1b88630b9e3265799231ea18093a508ab9a21f4a8",
+                    "bytes": 19100
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhan-loi-khi-lam-sai-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "70eb1413853b9c2199f520cf9f45c521ca8cbf88eba7eedf63b97c0456f387d5",
+                        "bytes": 2548
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhan-loi-khi-lam-sai-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "d0c4e351c0bcc2f074bdaf0eda1bf95c3c0c89065d7cdb824d1dec220d35f6e6",
+                        "bytes": 1849
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/nhan-loi-khi-lam-sai-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "e0ad4cc194fb1a61f8c80cf8a2af63af7d1f0d39483ac708dcadcd59bc30ace2",
+                        "bytes": 1347
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Na nhặt được hộp bút ở gốc cây.",
+                  "option_feedback": {
+                    "B": "Na nhặt được hộp bút ở gốc cây.",
+                    "C": "Na nhặt được hộp bút ở gốc cây."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-b4",
+              "kind": "text",
+              "md": "Nam dám nhận lỗi. Bạn nói thật: “Em xin lỗi cô.”",
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "00cd3161fcb572b174a7026817008c7afa6ca37b0a8e31cb62c88b4118ab9ec7",
+                "bytes": 37532
+              },
+              "gloss": null
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/nhan-loi-khi-lam-sai-b5.webp",
+                "mime": "image/webp",
+                "sha256": "5f50b0397ba0dde8b6ba64051502036d3b93c5bb443abdd160a67fb0bc9abad1",
+                "bytes": 24784
+              },
+              "alt": "Nam nhặt phấn cùng cô",
+              "caption": null,
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "344d3ff9da44560417dd7e8a1590a370bda8c0a3aaca18277209aeaeb67b32ab",
+                "bytes": 16508
+              },
+              "attribution": null
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhan-loi-khi-lam-sai-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Đếm số viên phấn bị vỡ.",
+                  "stem_audio": {
+                    "path": "audio/nhan-loi-khi-lam-sai-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "0c273563d60834266ad743bd1afcf7f6745306b818837dc97a3724a910254000",
+                    "bytes": 18524
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/nhan-loi-khi-lam-sai-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "b1ec39492d97442cff63d9dd1144f7ea59869a91dc4756d457aa451855722520",
+                      "bytes": 1184
+                    },
+                    "total": 7
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 2
+                  },
+                  "hint": null,
+                  "explanation": "Nam làm rơi hộp phấn, hai viên phấn bị vỡ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-b6",
+              "kind": "text",
+              "md": "Nam sửa lỗi và hứa cẩn thận hơn. Bạn không giấu lỗi, không đổ lỗi.",
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "36e4f007362bc9f81b694ee2371e7a74d2cd06e1789341a6f631adc27451182b",
+                "bytes": 44300
+              },
+              "gloss": null
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Ghi nhớ",
+              "md": "Nhận lỗi, xin lỗi, sửa lỗi.",
+              "audio": {
+                "path": "audio/nhan-loi-khi-lam-sai-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "d259936e6ee463c6a493ecdb9a7c7b7a9e2aef39710a0099898514b46262eb41",
+                "bytes": 33068
+              }
+            },
+            {
+              "id": "nhan-loi-khi-lam-sai-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhan-loi-khi-lam-sai-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi làm sai, em nên làm gì?",
+                  "stem_audio": {
+                    "path": "audio/nhan-loi-khi-lam-sai-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "0087a12668bdc2d7f315ae6570a9e175c3cd6bfa7f4b968e09a44dc8d8916a31",
+                    "bytes": 20828
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Nhận lỗi, xin lỗi",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhan-loi-khi-lam-sai-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "6468ed94ad165d7addb3defef6434b32cbb0d9e2c1a32828a6c227b75397731c",
+                        "bytes": 17660
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Giấu lỗi",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhan-loi-khi-lam-sai-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "0504b94ee42ef016f574c3cc8d1c49004185ff78d4c3bd730270ed8dd8c5d51b",
+                        "bytes": 11756
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Đổ lỗi cho bạn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhan-loi-khi-lam-sai-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "bcd5ea8828d62731c3cb9eaf69d7744748b2bde14c8a6bfd815a3dad1376994a",
+                        "bytes": 14924
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "Nói dối",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/nhan-loi-khi-lam-sai-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "051712001de0da05e3d078b312ce79a8ea2d4c551ea9b463b4c49c1a55e24311",
+                        "bytes": 11756
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Nhận lỗi, xin lỗi và sửa lỗi là trung thực.",
+                  "option_feedback": {
+                    "B": "Giấu lỗi là không trung thực.",
+                    "C": "Đổ lỗi cho người khác là sai.",
+                    "D": "Nói dối là không trung thực."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về trung thực, với hai bài học là nhặt được của rơi và nhận lỗi khi làm sai. Hai bài này dạy em nói thật với mọi người và làm đúng việc mình cần làm. Nghe xong, em sẽ biết nên làm gì khi nhặt được đồ của người khác. Em cũng biết nên làm gì khi chính mình làm sai.",
+          "Bài đầu tiên có tên là nhặt được của rơi, và điều quan trọng nhất là của rơi không phải của em. Món đồ em nhặt được là của người khác đã đánh mất, nên em không được coi nó là đồ của mình. Khi nhặt được đồ, em tìm người mất để trả lại, vì trả lại mới là việc làm trung thực. Trả lại được cho đúng người đã mất là em đã làm một việc rất tốt.",
+          "Nếu em nhặt được đồ mà không biết ai là người đã làm mất thì em nên làm gì? Lúc đó em đưa món đồ cho thầy cô giáo, hoặc đưa cho bố mẹ, hoặc đưa cho một người lớn. Khi đưa, em nói rõ mình nhặt được món đồ đó ở đâu. Nói rõ chỗ nhặt sẽ giúp người lớn tìm được người đã làm mất và trả lại cho họ.",
+          "Ví dụ, em nhặt được một cái bút ở sân trường. Em không cất cái bút vào cặp của mình, vì nó không phải của em. Em mang cái bút đến đưa cô giáo và nói rõ là em nhặt được ở sân trường. Như vậy là em đã làm đúng, và đó là trung thực.",
+          "Có ba điều em không làm với của rơi. Em không giấu của rơi đi, không dùng nó như đồ của mình và không chia nó cho bạn khác. Giấu đi, dùng hay chia của rơi đều là không thật thà. Câu nhắc của bài này là nhặt được của rơi thì tìm người trả lại.",
+          "Bài thứ hai là nhận lỗi khi làm sai. Ai cũng có thể làm sai, cả em và các bạn. Khi đã làm sai, em dám nhận lỗi và nói thật. Nói thật là em nói ra lỗi của mình, chứ không giấu lỗi đi.",
+          "Ví dụ, bạn Nam làm sai và bạn dám nhận lỗi. Bạn nói thật với cô và xin lỗi cô. Sau đó bạn sửa lỗi nếu làm được, và bạn hứa lần sau sẽ cẩn thận hơn. Bạn không giấu lỗi của mình và cũng không đổ lỗi cho người khác.",
+          "Nhận lỗi gồm ba việc là nhận lỗi, xin lỗi và sửa lỗi. Sửa lỗi là làm lại cho đúng, và hứa lần sau cẩn thận hơn cũng là một cách sửa lỗi. Không giấu lỗi và không đổ lỗi cho người khác cũng là trung thực.",
+          "Giờ là ba điều cần nhớ. Thứ nhất, của rơi không phải của em, em tìm người mất để trả lại, không biết ai mất thì đưa thầy cô, bố mẹ hoặc người lớn và nói rõ chỗ nhặt. Thứ hai, ai cũng có thể làm sai, nên em dám nhận lỗi và nói thật. Thứ ba, em sửa lỗi nếu làm được, hứa lần sau cẩn thận hơn, không giấu lỗi và không đổ lỗi cho người khác."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-biet-on",
+      "title": "Biết ơn",
+      "lessons": [
+        {
+          "id": "biet-on-thay-co",
+          "title": "Biết ơn thầy cô",
+          "est_minutes": 12,
+          "summary": "Hiểu công ơn thầy cô và thể hiện bằng lời cảm ơn, thái độ lễ phép, chăm học và việc làm nhỏ phù hợp.",
+          "key_ideas": [
+            "Thầy cô dạy em đọc, viết, làm toán và nhiều điều hay",
+            "Chào hỏi và nói lời cảm ơn thầy cô",
+            "Học bài, làm bài, giữ trật tự",
+            "Giúp việc nhỏ như lau bảng, nhặt rác, tưới cây",
+            "Quà tặng không cần đắt tiền"
+          ],
+          "blocks": [
+            {
+              "id": "biet-on-thay-co-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/biet-on-thay-co-b1.webp",
+                "mime": "image/webp",
+                "sha256": "da304d0b0a7f3f8bf75569a839f0652b2fe6ab001ab2bfd03c2a1cd1ec366c0a",
+                "bytes": 20846
+              },
+              "alt": "Cô giáo dạy các bạn đọc, viết và làm toán",
+              "caption": "Cô dạy em học",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "7458c1ba16137153b63985ce9eaf3b6e980b3f389a9f9c305be65bb5417513a3",
+                "bytes": 14060
+              },
+              "attribution": null
+            },
+            {
+              "id": "biet-on-thay-co-b2",
+              "kind": "text",
+              "md": "Thầy cô dạy em đọc, viết, làm toán. Thầy cô dạy em nhiều điều hay. Thầy cô nhắc em khi em làm sai.",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "6ccbee67dc364ec7349b7412c88b79a5218619ebdc6c88799f96b5f693dad72e",
+                "bytes": 63308
+              },
+              "gloss": null
+            },
+            {
+              "id": "biet-on-thay-co-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/biet-on-thay-co-b3.webp",
+                "mime": "image/webp",
+                "sha256": "d6b2b64dd960f1e54483f8c00bd156dec900150dd1c5161a60a13a69da1d0b4d",
+                "bytes": 20208
+              },
+              "alt": "Bạn nhỏ lễ phép chào và cảm ơn cô giáo",
+              "caption": "Chào hỏi, cảm ơn",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "309c9e9cae14770996e18876c8881152a8145e63efe727e818bea6de36e3b8bc",
+                "bytes": 16796
+              },
+              "attribution": null
+            },
+            {
+              "id": "biet-on-thay-co-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "biet-on-thay-co-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Việc nào thể hiện biết ơn thầy cô?",
+                  "stem_audio": {
+                    "path": "audio/biet-on-thay-co-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "f4409e5c5f242dee1734b8eb81d4ebea4799d316cb1e4e875ceef6bd0b2b5604",
+                    "bytes": 21116
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/biet-on-thay-co-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "5b31c3aeedc5eb3e13a748e3a5dcc5aa0449c66ac2c7d47e498253b50ec9cf6e",
+                        "bytes": 3721
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/biet-on-thay-co-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "442d2e66fdec38bfad99ae79399afb021028086dbb47242ea1368373778e78f3",
+                        "bytes": 2716
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/biet-on-thay-co-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "4d759255ca0c878d969c1ef19bc7e66472656ff5b086f40d64d3db4fac19df82",
+                        "bytes": 2511
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Giơ tay phát biểu là chăm học, thể hiện lòng biết ơn thầy cô.",
+                  "option_feedback": {
+                    "B": "Nói chuyện trong lớp là mất trật tự, không thể hiện biết ơn.",
+                    "C": "Vứt giấy ra lớp là làm bẩn lớp, không thể hiện biết ơn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "biet-on-thay-co-b4",
+              "kind": "text",
+              "md": "Em chào hỏi thầy cô lễ phép. Khi được giúp, em nói: “Em cảm ơn thầy/cô ạ.”",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "799494a9249ece89ea63f974437316b247e648845a46cfacf76e6659515fb538",
+                "bytes": 51068
+              },
+              "gloss": null
+            },
+            {
+              "id": "biet-on-thay-co-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/biet-on-thay-co-b5.webp",
+                "mime": "image/webp",
+                "sha256": "167321d9526c2fb37e6637ef9d6cc07dc69c02c34ccbf9be816a4843707f0177",
+                "bytes": 21676
+              },
+              "alt": "Bạn nhỏ chăm học và làm việc nhỏ giúp thầy cô",
+              "caption": "Chăm học, giúp việc nhỏ",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "5fe46d80e80ca3a8ab3fe463ffabb809b25e729ad8aa1de12fb0dda71ee5a38d",
+                "bytes": 17660
+              },
+              "attribution": null
+            },
+            {
+              "id": "biet-on-thay-co-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "biet-on-thay-co-q2",
+                  "type": "TAP_COUNT",
+                  "stem": "Đếm và chạm vào 4 bông hoa.",
+                  "stem_audio": {
+                    "path": "audio/biet-on-thay-co-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "031e0cd42649d0bfd9b5e422931f0d1fce5bbe5542b4b19c1145f0fdd231150d",
+                    "bytes": 20252
+                  },
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": {
+                    "image": {
+                      "path": "images/biet-on-thay-co-q2.tap.svg",
+                      "mime": "image/svg+xml",
+                      "sha256": "11e61d9ce60b8723532adbd85f8a17cc3f59cf1f1157f7c570ac0d5207615083",
+                      "bytes": 2259
+                    },
+                    "total": 7
+                  },
+                  "parts": [],
+                  "answer_key": {
+                    "count": 4
+                  },
+                  "hint": null,
+                  "explanation": "Em chạm đúng 4 bông hoa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "biet-on-thay-co-b6",
+              "kind": "text",
+              "md": "Em học bài, làm bài, giữ trật tự. Em lau bảng, nhặt rác, tưới cây. Quà tặng không cần đắt tiền.",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "a22cff54f41798277a67f92d7a37881a7efe06ba4e0d5558af9bb90652a4884a",
+                "bytes": 65324
+              },
+              "gloss": null
+            },
+            {
+              "id": "biet-on-thay-co-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Kính trọng thầy cô, chăm học, lễ phép.",
+              "audio": {
+                "path": "audio/biet-on-thay-co-b7.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "3d2f69099c77ad9526661b85aecd480b3f6aee3ff3fe06f83bcc186249e85a6c",
+                "bytes": 24572
+              }
+            },
+            {
+              "id": "biet-on-thay-co-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "biet-on-thay-co-q3",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Điều nào quý nhất khi tặng thầy cô?",
+                  "stem_audio": {
+                    "path": "audio/biet-on-thay-co-q3.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "4d060b3d95cbe9761f327dc6e5b16b45084e2b1a4316acb115ec6bc4a3521f47",
+                    "bytes": 20540
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Quà đắt tiền",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-thay-co-q3.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "a17d917b031b59389f3612b2cc0cf5eae694b3e6f897f05925bd90ed7b9069a5",
+                        "bytes": 13196
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Lời cảm ơn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-thay-co-q3.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "bfe4cffc583d80bb8ffd6872e92e221c991d775c3116ec7b3d7f90a00b85795c",
+                        "bytes": 13628
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Quà thật to",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-thay-co-q3.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "a0badfb3453fbbbc5c6b3440c75736ec787a5f8b0c151bb4c7f7b56889f1cd7f",
+                        "bytes": 13052
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "Nhiều tiền",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-thay-co-q3.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "8b4461122729b545c2bf3473e80a5e93786a3a30738f1991256f2388dbeed2ff",
+                        "bytes": 11900
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Lời cảm ơn và việc làm tốt rất quý, không cần quà đắt tiền.",
+                  "option_feedback": {
+                    "A": "Quà đắt tiền không phải điều thầy cô cần nhất.",
+                    "C": "Quà thật to không quý bằng lời cảm ơn chân thành.",
+                    "D": "Nhiều tiền không thể hiện lòng biết ơn bằng lời cảm ơn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "biet-on-nguoi-lao-dong",
+          "title": "Biết ơn người lao động",
+          "est_minutes": 12,
+          "summary": "Hiểu mọi nghề lao động đều đáng quý và thể hiện lòng biết ơn bằng chào hỏi, không chê nghề, không lãng phí và giữ sạch.",
+          "key_ideas": [
+            "Người lao động tạo ra đồ ăn, quần áo, nhà ở, trường sạch",
+            "Kính trọng, chào hỏi, nói lời cảm ơn",
+            "Không chê nghề của người khác",
+            "Không lãng phí thức ăn, đồ dùng",
+            "Bỏ rác đúng chỗ và giữ lớp, sân sạch"
+          ],
+          "blocks": [
+            {
+              "id": "biet-on-nguoi-lao-dong-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/biet-on-nguoi-lao-dong-b1.webp",
+                "mime": "image/webp",
+                "sha256": "e2022c7ef4d0323225280be45ba968998c357f0698994bce8da114042b3858d8",
+                "bytes": 28246
+              },
+              "alt": "Nhiều người lao động làm các nghề khác nhau",
+              "caption": "Nhiều nghề lao động",
+              "audio": {
+                "path": "audio/biet-on-nguoi-lao-dong-b1.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "4dfb304d14fa3834a566611142d2861c65eba0893e4dcde355a075842ddb9da6",
+                "bytes": 15500
+              },
+              "attribution": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-b2",
+              "kind": "text",
+              "md": "Mọi nghề lao động đều đáng quý.",
+              "audio": {
+                "path": "audio/biet-on-nguoi-lao-dong-b2.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "41a2bde9bd3f528d0388ca70e71c14dd4f3801b1af5d7984b8e24324dcb287ca",
+                "bytes": 20540
+              },
+              "gloss": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/biet-on-nguoi-lao-dong-b3.webp",
+                "mime": "image/webp",
+                "sha256": "b610503cbf656d5e12d9e24982c82d5a61753c8cbc7299c30a43c6a87d8e36ca",
+                "bytes": 23954
+              },
+              "alt": "Bạn nhỏ chào bác lao công và bỏ rác đúng chỗ",
+              "caption": "Giữ sân sạch",
+              "audio": {
+                "path": "audio/biet-on-nguoi-lao-dong-b3.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "4b8b8e18915f99da0cbd4188cdfaf02570f6c4550d48b133f8498329ab85d5c9",
+                "bytes": 13772
+              },
+              "attribution": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-b4",
+              "kind": "text",
+              "md": "Em chào bác lao công. Em bỏ rác đúng chỗ.",
+              "audio": {
+                "path": "audio/biet-on-nguoi-lao-dong-b4.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "67e2edd5093ad90665dd6d2e3253bb5c15fad0280b9b621ed647e4586dfa163f",
+                "bytes": 31484
+              },
+              "gloss": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "biet-on-nguoi-lao-dong-q1",
+                  "type": "PICTURE_CHOICE",
+                  "stem": "Hình nào là nơi bỏ rác đúng chỗ?",
+                  "stem_audio": {
+                    "path": "audio/biet-on-nguoi-lao-dong-q1.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "9c78f112a36efd3cc9acbb4de2e5f2d9ae7bf45535a728af6ddac6536d3a7bef",
+                    "bytes": 21404
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": null,
+                      "image": {
+                        "path": "images/biet-on-nguoi-lao-dong-q1.pic-A.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "91fdc1170368103ab10c4adb34f7cda2c9b9273f082964a60326f23d6d4045a1",
+                        "bytes": 1298
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": null,
+                      "image": {
+                        "path": "images/biet-on-nguoi-lao-dong-q1.pic-B.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "8b76614c5020d214da17076b94d3f9fa82f45e8bacc87a37b4ccfbe5d79b9515",
+                        "bytes": 3378
+                      },
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": null,
+                      "image": {
+                        "path": "images/biet-on-nguoi-lao-dong-q1.pic-C.svg",
+                        "mime": "image/svg+xml",
+                        "sha256": "a1173a8cd8de2c93e1d2cdeda63bd52bba7b32e6362a184941e14e117ee7dc6e",
+                        "bytes": 2026
+                      },
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Rác bỏ vào thùng là đúng chỗ, giúp sân lớp sạch.",
+                  "option_feedback": {
+                    "B": "Vỏ chuối trên sân là rác chưa đúng chỗ.",
+                    "C": "Giấy dưới đất làm sân bẩn, chưa đúng chỗ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/biet-on-nguoi-lao-dong-b5.webp",
+                "mime": "image/webp",
+                "sha256": "9a669eee26553e946c5aaf4c1416ba1d0d720ba7af011678b25bf076270e4a7d",
+                "bytes": 27080
+              },
+              "alt": "Bạn nhỏ cảm ơn mẹ và ăn hết thức ăn",
+              "caption": "Ăn hết, không lãng phí",
+              "audio": {
+                "path": "audio/biet-on-nguoi-lao-dong-b5.audio.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "510eb3fac8399d2d9bf1b5e2814a68537baf7bad2d96915f2665d2fc151f6dea",
+                "bytes": 17804
+              },
+              "attribution": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-b6",
+              "kind": "text",
+              "md": "Em cảm ơn mẹ. Em không lãng phí thức ăn, đồ dùng.",
+              "audio": {
+                "path": "audio/biet-on-nguoi-lao-dong-b6.mp3",
+                "mime": "audio/mpeg",
+                "sha256": "a37337cac96462e5cf38b87a54f3d2cf53d668dcc75c7599f3eeb1060fba1628",
+                "bytes": 36380
+              },
+              "gloss": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-b7",
+              "kind": "callout",
+              "variant": "remember",
+              "title": null,
+              "md": "Mọi nghề đều quý, không chê nghề nào.",
+              "audio": null
+            },
+            {
+              "id": "biet-on-nguoi-lao-dong-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "biet-on-nguoi-lao-dong-q2",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Việc nào thể hiện biết ơn người lao động?",
+                  "stem_audio": {
+                    "path": "audio/biet-on-nguoi-lao-dong-q2.stem.mp3",
+                    "mime": "audio/mpeg",
+                    "sha256": "3d406a43c1b07f5cc69dfeac84a5e1ab375dac0f0357c8193840266e03c9d12d",
+                    "bytes": 22556
+                  },
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Chào bác lao công",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-nguoi-lao-dong-q2.opt-A.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "5233feb5a1e526b17aba640c7c54289e225442ffde1c04a48a6e5af598019536",
+                        "bytes": 14636
+                      }
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vứt rác ra sân",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-nguoi-lao-dong-q2.opt-B.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "b6407b685ecf10fc14c86e0d2d5784ada6a34f16cb548ca23eccb7f73126ec81",
+                        "bytes": 14780
+                      }
+                    },
+                    {
+                      "id": "C",
+                      "text": "Chê cơm mẹ nấu",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-nguoi-lao-dong-q2.opt-C.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "12b908eaecbfd4ed5af1faa393f16d4227fc083d3c88fb0e1f80b2a16fb33086",
+                        "bytes": 15068
+                      }
+                    },
+                    {
+                      "id": "D",
+                      "text": "Lãng phí thức ăn",
+                      "image": null,
+                      "audio": {
+                        "path": "audio/biet-on-nguoi-lao-dong-q2.opt-D.mp3",
+                        "mime": "audio/mpeg",
+                        "sha256": "d607ccbacfe25765a522c930db8b863fef8a9f7b694bbc5f324d25ba81f7b607",
+                        "bytes": 14924
+                      }
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Chào hỏi thể hiện kính trọng bác lao công; bỏ rác đúng chỗ cũng là biết ơn.",
+                  "option_feedback": {
+                    "B": "Vứt rác ra sân làm bẩn sân, không kính trọng bác lao công.",
+                    "C": "Chê cơm mẹ nấu là không biết ơn người làm ra thức ăn.",
+                    "D": "Lãng phí thức ăn là không quý công sức người lao động."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về lòng biết ơn. Chúng ta học cách biết ơn thầy cô đã dạy em đọc, viết, làm toán và nhiều điều hay. Chúng ta cũng học cách biết ơn người lao động đã tạo ra đồ ăn, quần áo, nhà ở và giữ trường sạch. Mình cùng nhớ những việc làm nhỏ thể hiện lòng biết ơn mỗi ngày.",
+          "Thầy cô dạy em đọc, dạy em viết và dạy em làm toán. Thầy cô còn dạy em nhiều điều hay. Khi em làm sai, thầy cô nhắc em để em sửa lỗi. Em biết ơn thầy cô vì những điều thầy cô đã dạy em.",
+          "Em chào hỏi thầy cô lễ phép mỗi khi gặp thầy cô. Khi được thầy cô giúp, em nói lời cảm ơn thầy cô. Em có thể nói Em cảm ơn thầy cô ạ. Lời chào và lời cảm ơn là cách thể hiện lòng biết ơn thầy cô.",
+          "Em học bài và làm bài đầy đủ. Em giữ trật tự trong lớp khi thầy cô đang dạy. Em giúp việc nhỏ như lau bảng, nhặt rác và tưới cây. Những việc làm nhỏ này cũng thể hiện lòng biết ơn thầy cô.",
+          "Quà tặng thầy cô không cần đắt tiền. Một món quà nhỏ cũng có thể nói lên lòng biết ơn của em. Điều quan trọng nhất là em kính trọng thầy cô. Em chăm học và lễ phép với thầy cô mỗi ngày.",
+          "Mọi nghề lao động đều đáng quý và đáng được kính trọng. Người lao động tạo ra đồ ăn, quần áo và nhà ở cho mọi người. Người lao động còn giữ cho trường em sạch sẽ. Em biết ơn người lao động vì những việc họ làm.",
+          "Em kính trọng người lao động bằng cách chào hỏi và nói lời cảm ơn. Em chào bác lao công. Em cảm ơn mẹ. Những lời nói ấy thể hiện lòng biết ơn của em.",
+          "Em không chê nghề của người khác. Mọi nghề đều quý, em không chê nghề nào. Em không lãng phí thức ăn. Em cũng không lãng phí đồ dùng.",
+          "Em bỏ rác đúng chỗ để giữ lớp và sân sạch. Em giữ lớp học sạch bằng cách nhặt rác và lau bảng. Những việc nhỏ này thể hiện lòng biết ơn người lao động. Em nhớ làm những việc nhỏ đó mỗi ngày.",
+          "Ba điều cần nhớ để thể hiện lòng biết ơn. Một là kính trọng thầy cô, chăm học và lễ phép với thầy cô. Hai là kính trọng người lao động, chào hỏi và nói lời cảm ơn người lao động. Ba là không lãng phí thức ăn, đồ dùng và bỏ rác đúng chỗ để giữ lớp, sân sạch."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

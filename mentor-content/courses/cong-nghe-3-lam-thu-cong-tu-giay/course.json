@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "cong-nghe-3-lam-thu-cong-tu-giay",
+  "title": "Công nghệ 3: Làm thủ công từ giấy và bìa",
+  "subject": "Công nghệ",
+  "age_band": "g1_5",
+  "language": "vi",
+  "teacher_id": "uefdbe33d57da0858",
+  "teacher_name": "Cô Liên",
+  "description_short": "Khóa học hướng dẫn làm thủ công từ giấy và bìa: chuẩn bị dụng cụ, an toàn, làm hộp đựng bút, thiệp chúc mừng và đồ chơi gấp giấy. Dành cho học sinh lớp 3 bước đầu làm sản phẩm thủ công.",
+  "outcomes": [
+    "Chuẩn bị đủ dụng cụ, vật liệu và thực hiện đúng ba quy tắc đo – kẻ – cắt.",
+    "Cầm, cất và chuyền kéo an toàn; dùng hồ dán đúng cách và giữ bàn gọn.",
+    "Làm được hộp đựng bút từ bìa cứng theo số đo cho trước.",
+    "Làm được thiệp chúc mừng và máy bay giấy đạt tiêu chí về nếp gấp, hình dán và cân đối."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 5,
+  "est_minutes": 75,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:03:44.735951Z",
+      "published_at": "2026-11-17T08:03:59.489428Z",
+      "pack_sha256": "a9c03658cd9521c09e732aa232e8cd3cee190c2fe633597f19266effa18a9f69",
+      "pack_bytes": 2204916,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "basic"
+    }
+  ],
+  "level": "basic",
+  "status": "live",
+  "outline": []
+}

@@ -371,6 +371,8 @@ class VersionInfo(_Strict):
     note: str | None = None  # what changed, one line
     level_suggested: Level | None = None  # the builder's guess for this version; never shown to students
     level_confirmed: Level | None = None  # what the teacher picked; publishing needs it; becomes CourseMeta.level
+    # teacher labels of this version (Làng gà, gv-04): {chicken, band, grade}; copied to CourseMeta when it is published
+    labels: dict | None = None
 
 
 CourseStatus = Literal["live", "coming_soon"]
@@ -414,6 +416,9 @@ class CourseMeta(_Strict):
     level: Level | None = None  # difficulty the teacher confirmed for the latest published version
     status: CourseStatus = "live"
     outline: list[OutlineChapter] = []  # coming_soon only: the lesson tree shown on the course page
+    chicken: str | None = None  # teacher label (Làng gà): the chicken (subject) the course lives in; None = derived from subject
+    grade: int | None = Field(default=None, ge=1, le=12)  # teacher label: school grade ("Lớp"), informational
+    topics: list[str] = []  # teacher label: "Chủ đề" tags (<= 8)
 
 
 class CatalogEntry(_Strict):
@@ -435,6 +440,8 @@ class CatalogEntry(_Strict):
     published_at: datetime | None = None
     level: Level | None = None  # difficulty the teacher confirmed for the latest published version
     status: CourseStatus = "live"
+    chicken: str | None = None  # Làng gà chicken id; filled by the gateway (teacher label, else derived from subject + band)
+    topics: list[str] = []  # teacher label: "Chủ đề" tags
 
     @model_validator(mode="after")
     def _live_has_pack(self) -> "CatalogEntry":

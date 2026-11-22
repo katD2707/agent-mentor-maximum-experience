@@ -159,7 +159,8 @@ def build_outline(intake: IntakeResult, client: ModelClient, teacher_note: str |
     pages = source_pages(intake)
     body = pages_block(pages)
     note = f"Teacher's note: {teacher_note}\n\n" if teacher_note else ""
-    data = ask_json(client, OUTLINE_SYSTEM, f"{note}MATERIAL:\n{body}", max_tokens=6000)
+    # generous budget: a reasoning model thinks first, and a cut-off reply loses whole chapters
+    data = ask_json(client, OUTLINE_SYSTEM, f"{note}MATERIAL:\n{body}", max_tokens=12000, retries=2)
     return outline_from_json(data, teacher_note=teacher_note, course_id=course_id, valid_pages={p for p, _ in pages},
                              detect_from=body)
 

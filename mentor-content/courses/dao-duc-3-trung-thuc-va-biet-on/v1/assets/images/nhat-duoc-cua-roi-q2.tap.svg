@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft shadow on the ground -->
+  <ellipse cx="200" cy="352" rx="72" ry="11" fill="#E9E5F6"/>
+
+  <g transform="rotate(-7 200 200)">
+    <!-- crayon body -->
+    <rect x="152" y="132" width="96" height="200" rx="9" fill="#5A4BC0"/>
+
+    <!-- pointed tip -->
+    <path d="M152 142 L191 66 Q200 50 209 66 L248 142 Z" fill="#5A4BC0" stroke="#5A4BC0"
+          stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- paper wrapper -->
+    <rect x="157" y="172" width="86" height="134" rx="5" fill="#E9E5F6"/>
+    <!-- wrapper stripes -->
+    <rect x="157" y="196" width="86" height="24" fill="#F0D76E"/>
+    <rect x="157" y="252" width="86" height="24" fill="#9FD8BF"/>
+    <!-- small seam accents on wrapper -->
+    <rect x="168" y="286" width="64" height="6" rx="3" fill="#E8806A"/>
+
+    <!-- base rim -->
+    <rect x="152" y="316" width="96" height="16" rx="8" fill="#2B283F" opacity="0.12"/>
+  </g>
+
+  <!-- friendly accents -->
+  <circle cx="96" cy="118" r="9" fill="#E8806A"/>
+  <circle cx="308" cy="272" r="10" fill="#9FD8BF"/>
+  <circle cx="300" cy="104" r="6" fill="#F0D76E"/>
+
+  <!-- paper grain -->
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+    <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+  </filter>
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

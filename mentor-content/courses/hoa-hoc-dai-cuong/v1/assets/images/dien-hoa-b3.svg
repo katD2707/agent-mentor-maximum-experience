@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<path d="M155 380 L155 540 Q155 555 170 555 L380 555 Q395 555 395 540 L395 380 Z" fill="#E9E5F6"/>
+<path d="M605 380 L605 540 Q605 555 620 555 L830 555 Q845 555 845 540 L845 380 Z" fill="#E9E5F6"/>
+<path d="M150 320 L150 540 Q150 560 170 560 L380 560 Q400 560 400 540 L400 320" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M600 320 L600 540 Q600 560 620 560 L830 560 Q850 560 850 540 L850 320" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="250" y="240" width="20" height="280" fill="#E8806A" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="730" y="240" width="20" height="280" fill="#5A4BC0" stroke="#5A4BC0" stroke-width="2"/>
+<path d="M385 420 Q500 260 615 420" fill="none" stroke="#5A4BC0" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M385 420 Q500 260 615 420" fill="none" stroke="#F7F1E3" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M260 240 L260 160 L455 160" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M740 240 L740 160 L545 160" fill="none" stroke="#5A4BC0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="500" cy="160" r="45" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="3"/>
+<text x="500" y="172" font-family="Lexend, sans-serif" font-size="36" text-anchor="middle" fill="#2B283F">V</text>
+<rect x="215" y="360" width="18" height="4" fill="#5A4BC0"/>
+<rect x="765" y="355" width="18" height="4" fill="#5A4BC0"/>
+<rect x="772" y="348" width="4" height="18" fill="#5A4BC0"/>
+<text x="275" y="620" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">anot Zn (&#8722;)</text>
+<text x="725" y="620" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">catot Cu (+)</text>
+<text x="200" y="500" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Zn2+</text>
+<text x="800" y="500" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">Cu2+</text>
+<text x="500" y="250" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">c&#7847;u mu&#7889;i</text>
+<text x="500" y="80" font-family="Lexend, sans-serif" font-size="28" text-anchor="middle" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">v&#244;n k&#7871;</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

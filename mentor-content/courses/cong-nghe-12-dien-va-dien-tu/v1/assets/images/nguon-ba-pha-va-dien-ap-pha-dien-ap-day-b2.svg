@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#2B283F"/>
+</marker>
+<filter id="grain">
+<feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+<feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+</filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<path d="M 500.0 360.0 L 500.0 344.0 A 16.0 16.0 0 0 1 500.0 312.0 A 16.0 16.0 0 0 0 500.0 280.0 A 16.0 16.0 0 0 1 500.0 248.0 A 16.0 16.0 0 0 0 500.0 216.0 L 500.0 200.0" stroke="#5A4BC0" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 500.0 360.0 L 487.0 367.5 A 15.0 15.0 0 0 1 461.0 382.5 A 15.0 15.0 0 0 0 435.0 397.5 A 15.0 15.0 0 0 1 409.0 412.5 A 15.0 15.0 0 0 0 383.0 427.5 L 370.0 435.0" stroke="#5A4BC0" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 500.0 360.0 L 513.0 367.5 A 15.0 15.0 0 0 1 539.0 382.5 A 15.0 15.0 0 0 0 565.0 397.5 A 15.0 15.0 0 0 1 591.0 412.5 A 15.0 15.0 0 0 0 617.0 427.5 L 630.0 435.0" stroke="#5A4BC0" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="500" y1="360" x2="500" y2="560" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round"/>
+<circle cx="500" cy="360" r="6" fill="#5A4BC0"/>
+<path d="M 500 200 L 700 200 L 700 560 L 500 560" stroke="#2B283F" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path d="M 500 200 L 300 200 L 300 435 L 370 435" stroke="#2B283F" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="500" y="150" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">D&#226;y pha A</text>
+<text x="340" y="460" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="end" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">D&#226;y pha B</text>
+<text x="720" y="460" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">D&#226;y pha C</text>
+<text x="500" y="600" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">D&#226;y trung t&#237;nh N</text>
+<text x="710" y="380" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="start" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#272;i&#7879;n &#225;p pha $U_p$</text>
+<text x="290" y="320" font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" text-anchor="end" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">&#272;i&#7879;n &#225;p d&#226;y $U_d$</text>
+<rect width="1000" height="700" fill="none" filter="url(#grain)"/>
+</svg>

@@ -175,9 +175,40 @@ def _intake_pdf(src: Path, ctx: _Ctx, n: int) -> Material:
     return m
 
 
+def _docx_plain_markdown(src: Path) -> str:
+    """The Word file read paragraph by paragraph (headings kept as #/##/###). Used when docling misses text."""
+    try:
+        import docx  # python-docx
+    except ImportError:
+        return ""
+    try:
+        d = docx.Document(str(src))
+    except Exception:  # noqa: BLE001 - a broken file: docling's result stands
+        return ""
+    out: list[str] = []
+    for p in d.paragraphs:
+        t = p.text.strip()
+        if not t:
+            continue
+        style = (p.style.name or "").lower() if p.style is not None else ""
+        level = next((int(c) for c in style if c.isdigit()), 0) if style.startswith("heading") else (1 if style == "title" else 0)
+        bullet = "list" in style
+        out.append(("#" * min(max(level, 1), 3) + " " + t) if level else (("- " + t) if bullet else t))
+    for table in d.tables:
+        for row in table.rows:
+            out.append(" | ".join(c.text.strip() for c in row.cells))
+    return "\n\n".join(out)
+
+
 def _intake_docx(src: Path, ctx: _Ctx, n: int) -> Material:
     m = Material(str(src), "docx")
     md = documents.docling_pages(src)
+    got = "\n\n".join(md.values())
+    plain = _docx_plain_markdown(src)
+    if len(got.strip()) < 0.6 * len(plain.strip()):
+        # docling sometimes stops early on Word files; the teacher's whole text matters more than its layout
+        m.notes.append(f"docx read paragraph by paragraph (docling found {len(got.strip())} of ~{len(plain.strip())} characters)")
+        md = {1: plain}
     for i, chunk in enumerate(documents.split_markdown("\n\n".join(md.values())), 1):
         m.pages.append(Page(str(src), i, KIND_DOCX, text=chunk))
     return m

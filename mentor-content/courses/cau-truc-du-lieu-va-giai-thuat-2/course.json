@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "cau-truc-du-lieu-va-giai-thuat-2",
+  "title": "Cấu trúc dữ liệu và giải thuật",
+  "subject": "Cấu trúc dữ liệu và giải thuật",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ub3412bdae080c130",
+  "teacher_name": "TS. Ngô Thanh Sơn",
+  "description_short": "Khóa học trình bày cấu trúc dữ liệu tuyến tính, cây, đồ thị và các thuật toán sắp xếp, tìm kiếm cùng phân tích độ phức tạp. Dành cho sinh viên đại học ngành công nghệ thông tin đã có kiến thức lập trình cơ bản.",
+  "outcomes": [
+    "Phân tích được chi phí thời gian và bộ nhớ của các thao tác trên mảng, danh sách liên kết, ngăn xếp và hàng đợi",
+    "Cài đặt và đánh giá được cây nhị phân, cây tìm kiếm nhị phân và duyệt đồ thị BFS",
+    "Áp dụng được sắp xếp, tìm kiếm nhị phân và nhị phân trên miền đáp án cho bài toán cụ thể",
+    "Giải được phương trình truy hồi bằng định lý master và phân tích độ phức tạp của vòng lặp, đệ quy"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 8,
+  "est_minutes": 120,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:25:04.553585Z",
+      "published_at": "2026-11-17T07:25:09.882779Z",
+      "pack_sha256": "705d82382dab512c3640553d7d4ff1b1a26e7428edab1ec5d4960fa62e1941ed",
+      "pack_bytes": 158337,
+      "note": "draft by course-builder",
+      "level_suggested": "advanced",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

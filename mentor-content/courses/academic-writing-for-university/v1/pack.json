@@ -1,0 +1,2183 @@
+{
+  "schema_version": 1,
+  "course_id": "academic-writing-for-university",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "en",
+  "age_band": "uni",
+  "title": "Academic Writing for University",
+  "chapters": [
+    {
+      "id": "ch-argument",
+      "title": "Argument",
+      "lessons": [
+        {
+          "id": "thesis",
+          "title": "Thesis",
+          "est_minutes": 15,
+          "summary": "A thesis is the essay's central, arguable claim, and this lesson shows how to make it focused, supportable, and predictive.",
+          "key_ideas": [
+            "Thesis is a central claim, not a topic or announcement",
+            "A strong thesis is focused, arguable, supportable, and predictive",
+            "Use the pattern: Although [counterpoint], [claim] because [reason 1] and [reason 2]",
+            "The thesis usually appears at the end of the introduction and may be revised after drafting",
+            "Avoid announcement theses and overbroad scope"
+          ],
+          "blocks": [
+            {
+              "id": "thesis-b1",
+              "kind": "text",
+              "md": "An academic argument is a reasoned claim backed by evidence and explanation, not just an opinion or a summary. The thesis is the essay’s central claim. It tells the reader what you will argue and why it matters.",
+              "audio": null,
+              "gloss": "Một lập luận học thuật là một tuyên bố có lý lẽ được hỗ trợ bởi bằng chứng và giải thích, không chỉ là ý kiến hay bản tóm tắt. Luận điểm (thesis) là tuyên bố trung tâm của bài luận: nó cho người đọc biết bạn sẽ lập luận điều gì và vì sao lập luận đó quan trọng."
+            },
+            {
+              "id": "thesis-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thesis",
+              "md": "The thesis is the essay’s central claim, not the topic and not an announcement of what the essay will discuss. It states the position the essay will argue.",
+              "audio": null
+            },
+            {
+              "id": "thesis-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thesis-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Which of the following is the strongest thesis for a 1500-word essay?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "This essay will examine sleep schedules and academic performance among first-year students.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Sleep is important, and many first-year students get too little of it during exam periods.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Although napping is popular, universities should teach first-year students scheduling because consistent routines support attention and reduce procrastination.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Students who cram all night tend to fail, as I have seen among my own classmates.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": null,
+                  "explanation": "Option C states a debatable position, limits the scope to first-year students, and previews two reasons (attention and procrastination). The others announce a topic, state the obvious, or rely on anecdote.",
+                  "option_feedback": {
+                    "A": "This is an announcement: it names the topic but never states a claim.",
+                    "B": "This is a broad topic statement that almost no reasonable reader would dispute.",
+                    "D": "This rests on personal anecdote and offers no arguable, supportable position."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "thesis-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "A strong thesis",
+              "md": "A strong thesis is focused: it can be supported within the assignment length, here $1500$ words. It is arguable: a reasonable reader could disagree. It is supportable: evidence exists and can be cited. It is predictive: it signals the main reasons or structure of the essay.",
+              "audio": null
+            },
+            {
+              "id": "thesis-b4",
+              "kind": "text",
+              "md": "The thesis usually appears at the end of the introduction. It may be revised after drafting, once the argument becomes clearer.",
+              "audio": null,
+              "gloss": "Luận điểm thường xuất hiện ở cuối phần mở bài. Nó có thể được chỉnh sửa sau khi viết nháp, khi lập luận trở nên rõ ràng hơn."
+            },
+            {
+              "id": "thesis-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thesis-q2",
+                  "type": "FILL_TILES",
+                  "stem": "A thesis that only states the topic (\"This essay will discuss...\") is an {{gap}} thesis, while one that tries to cover far too much is {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "announcement",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "overbroad",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "predictive",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "arguable",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "An announcement thesis gives the topic but not the claim, and an overbroad thesis exceeds what the assignment length can support. Predictive and arguable describe strengths of a good thesis, not these faults.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "thesis-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/thesis-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "676b49d15adf92a0b7af06b83ff6ebf0dc67c40c04c887b51c29625f70dd48f2",
+                "bytes": 2459
+              },
+              "alt": "Diagram of the thesis pattern: Although counterpoint, claim because reason 1 and reason 2.",
+              "caption": "A useful pattern: Although [counterpoint], [claim] because [reason 1] and [reason 2].",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "thesis-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thesis-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "At the end of which section of an essay does the thesis usually appear?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "introduction",
+                      "the introduction"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson states that the thesis usually appears at the end of the introduction, though it may be revised after drafting.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "thesis-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "From topic to thesis",
+              "md": "Weak: “Social media has a big impact on university students.” This is a topic, not a thesis. It takes no position, names no mechanism, and sets no scope.\n\nRevised: “Although social media helps first-year students maintain contact with peers, universities should teach time-management strategies for social media because unregulated use during study periods fragments attention and increases procrastination.”\n\nThe revision is arguable. It is limited to first-year students and study behaviour, and it previews two reasons: attention and procrastination.",
+              "audio": null
+            },
+            {
+              "id": "thesis-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Announcement thesis",
+              "md": "A common mistake is an announcement thesis: “This essay will talk about sleep and academic performance.” It gives the topic but not the claim. The reader cannot tell what you will argue, and the essay often becomes a summary instead of an argument.",
+              "audio": null
+            },
+            {
+              "id": "thesis-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thesis-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each quality of a strong thesis to its description.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Focused",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Can be supported within the assignment length",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Arguable",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "A reasonable reader could disagree",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Supportable",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Evidence exists and can be cited",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Predictive",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Signals the main reasons or structure",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "These four qualities together keep a thesis limited, debatable, evidenced and forward-looking. A thesis missing any of them tends toward summary or vagueness.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "thesis-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Replacing an announcement",
+              "md": "Weak: “This essay will discuss citation instruction and plagiarism.”\n\nRevised: “First-year students often plagiarize unintentionally not because they are dishonest but because citation instruction is separated from writing tasks; therefore, universities should integrate APA practice into draft feedback.”\n\nThis makes a causal claim. It rejects a common assumption and proposes a specific response.",
+              "audio": null
+            },
+            {
+              "id": "thesis-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thesis-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about theses is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "An announcement thesis tells the reader what the essay will discuss but not what it will argue."
+                    },
+                    {
+                      "id": "b",
+                      "text": "A thesis may be revised after drafting, once the argument becomes clearer."
+                    },
+                    {
+                      "id": "c",
+                      "text": "A thesis covering several domains and a global policy claim is appropriately focused for a 1500-word essay."
+                    },
+                    {
+                      "id": "d",
+                      "text": "The pattern \"Although [counterpoint], [claim] because [reason 1] and [reason 2]\" is required in every academic essay."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Announcement theses lack a claim, and revision after drafting is normal and encouraged. Overbroad, multi-domain claims exceed the assignment's scope, and the although-because pattern is useful but not compulsory.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "thesis-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What is a thesis?",
+                  "answer": "The essay’s central, arguable claim—not the topic or an announcement.",
+                  "image": null
+                },
+                {
+                  "prompt": "What four qualities make a thesis strong?",
+                  "answer": "Focused, arguable, supportable, and predictive.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is the useful thesis pattern?",
+                  "answer": "Although [counterpoint], [claim] because [reason 1] and [reason 2].",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "title": "Evidence",
+          "est_minutes": 15,
+          "summary": "Evidence supports subclaims and must be relevant, reliable, sufficient, current when needed, and explained in the paragraph.",
+          "key_ideas": [
+            "Use credible sources, not anecdote alone",
+            "Each body paragraph normally contains a subclaim, evidence, analysis, and a link to the thesis",
+            "Evidence does not speak for itself; explain what it shows",
+            "Prefer institutional or large-sample evidence over anonymous blogs for general claims",
+            "Avoid quote dumping"
+          ],
+          "blocks": [
+            {
+              "id": "evidence-b1",
+              "kind": "text",
+              "md": "Evidence is the material that supports a claim. In academic writing, evidence doesn't speak for itself: you have to explain what it shows and connect it back to your thesis.",
+              "audio": null,
+              "gloss": "Bằng chứng là chất liệu hỗ trợ cho một nhận định. Trong văn bản học thuật, bằng chứng không tự nói lên ý nghĩa: bạn phải giải thích nó cho thấy điều gì và nối nó trở lại với luận điểm trung tâm."
+            },
+            {
+              "id": "evidence-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Evidence",
+              "md": "Evidence is the material that supports a claim: findings from credible sources, statistics, examples, case studies, or quotations.",
+              "audio": null
+            },
+            {
+              "id": "evidence-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "evidence-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "A student wants to support the general claim that campus tutoring improves retention. Which source should the student prefer?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "An anonymous student blog post saying tutoring saved one student's semester.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "A university institutional research report with 1,200 students and a comparison group.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "A long quotation from a friend who attended two tutoring sessions.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "A social media comment thread where students share opinions about tutoring.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Institutional evidence with a large sample and a comparison group is more reliable and sufficient than anecdote for a general claim. It still needs explanation linking it to the subclaim.",
+                  "option_feedback": {
+                    "A": "This is a single anecdote from an unidentifiable source and cannot support a general claim on its own.",
+                    "C": "This is personal testimony rather than credible, sufficient evidence for a general claim.",
+                    "D": "Anonymous opinions are unreliable and too thin to support a claim about retention."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "evidence-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Subclaim",
+              "md": "A subclaim is the main claim of one body paragraph. It supports the essay's central claim.",
+              "audio": null
+            },
+            {
+              "id": "evidence-b4",
+              "kind": "text",
+              "md": "Use evidence that is:\n- Relevant: it directly addresses the subclaim.\n- Reliable: it comes from credible sources such as peer-reviewed articles, official reports, or reputable institutions.\n- Sufficient: you have enough evidence, not just one anecdote.\n- Current where necessary: especially for claims about policy, technology, or current student populations.\n\nFor a $1500$-word essay, a few strong sources used carefully are enough.",
+              "audio": null,
+              "gloss": "Sử dụng bằng chứng:\n- **Liên quan:** trực tiếp giải quyết nhận định phụ.\n- **Đáng tin cậy:** đến từ nguồn có uy tín như bài bình duyệt, báo cáo chính thức, hoặc cơ sở có danh tiếng.\n- **Đầy đủ:** có đủ bằng chứng, không chỉ một giai thoại.\n- **Cập nhật khi cần:** đặc biệt với các nhận định về chính sách, công nghệ, hoặc nhóm sinh viên hiện nay.\n\nVới bài luận $1500$ từ, một số ít nguồn mạnh được dùng cẩn thận là đủ."
+            },
+            {
+              "id": "evidence-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "evidence-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Each body paragraph should normally contain a subclaim, {{gap}}, analysis, and a {{gap}} to the thesis.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "evidence",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "link",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "quotation dump",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "anecdote",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson states that body paragraphs normally contain a subclaim, evidence, analysis, and a link to the thesis.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "evidence-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/evidence-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "838d8350f49c0cf87a818c29bb1b9d3dd4a3b37fc7ee71ed57c4b1b5070563bd",
+                "bytes": 2839
+              },
+              "alt": "Four connected boxes show the normal order of a body paragraph: subclaim, evidence, analysis, link to thesis.",
+              "caption": "A body paragraph normally contains a subclaim, evidence, analysis, and a link to the thesis.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "evidence-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "evidence-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "According to the lesson, what is the term for the mistake of inserting a long quotation and assuming the reader will see its relevance without interpretation?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "quote dumping",
+                      "quote-dumping",
+                      "quotedumping"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson names this error \"quote dumping\": evidence needs interpretation, so a long quotation without explanation does not support the subclaim.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "evidence-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Weak paragraph vs revised paragraph",
+              "md": "**Weak:** “Many students sleep badly. I know people who cram all night and fail. Sleep is important for grades.” It relies on anecdote, lacks a source, and does not explain a mechanism.\n\n**Revised:** “Structured sleep schedules may support academic performance. In an illustrative meta-analysis of 34 studies, Chen and Lee (2022) found that university students with consistent sleep schedules had higher term grades than students with irregular schedules, even after controlling for prior achievement. This suggests that consistency, not only total hours of sleep, may matter for sustained attention during study and examinations. For first-year students, therefore, time-management advice should include regular sleep routines, not only study hours.”",
+              "audio": null
+            },
+            {
+              "id": "evidence-b7",
+              "kind": "text",
+              "md": "For a general claim, prefer institutional or large-sample evidence over an anonymous blog. A university report with 1,200 students and a comparison group is stronger than a blog post saying “Tutoring saved my semester.” Even strong evidence needs explanation.",
+              "audio": null,
+              "gloss": "Với một nhận định chung, hãy ưu tiên bằng chứng từ cơ sở hoặc mẫu lớn hơn là blog ẩn danh. Một báo cáo đại học với 1.200 sinh viên và nhóm so sánh mạnh hơn một bài blog nói “Học kèm đã cứu học kỳ của tôi.” Ngay cả bằng chứng mạnh cũng cần được giải thích."
+            },
+            {
+              "id": "evidence-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "evidence-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each term to its meaning as defined in the lesson.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Thesis",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "The essay's central claim",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Analysis",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Explaining what the evidence shows",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Quote dumping",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Inserting a quotation without interpretation",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Reliable evidence",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Comes from credible, reputable sources",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson defines the thesis as the central claim and stresses that evidence must be interpreted rather than dumped. Reliability depends on credible sources such as peer-reviewed articles or official reports.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "evidence-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Quote dumping",
+              "md": "Quote dumping is inserting a long quotation and assuming the reader will see its relevance. This doesn't work because evidence needs interpretation: the source supports your argument only when you explain how it supports the subclaim and why it matters for the thesis.",
+              "audio": null
+            },
+            {
+              "id": "evidence-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "evidence-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about evidence is true or false according to the lesson.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Evidence speaks for itself, so a writer does not need to explain what it shows."
+                    },
+                    {
+                      "id": "b",
+                      "text": "A single anecdote is sufficient to support a general claim about a student population."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Evidence should be relevant to the subclaim and sufficient rather than a lone example."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Even strong institutional evidence requires explanation connecting it to the subclaim."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": false,
+                      "c": true,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson insists that evidence must be interpreted and connected to the thesis, and that anecdote alone cannot support a general claim. Relevance, reliability, and sufficiency are the criteria for good evidence.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "evidence-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What four elements normally appear in a body paragraph?",
+                  "answer": "A subclaim, evidence, analysis, and a link to the thesis.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why is a university report with 1,200 students and a comparison group stronger than an anonymous blog post?",
+                  "answer": "It is more reliable, has a larger sample, and uses a comparison group.",
+                  "image": null
+                },
+                {
+                  "prompt": "What must you do after citing evidence?",
+                  "answer": "Explain what it shows and connect it to the subclaim and the thesis.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "structure",
+          "title": "Structure",
+          "est_minutes": 15,
+          "summary": "Essays are organised around subclaims, not source order, with an introduction, body paragraphs, and conclusion, and reverse outlining checks alignment.",
+          "key_ideas": [
+            "Introduction: context, problem, thesis, brief roadmap",
+            "Body paragraph: topic sentence, evidence, analysis, link",
+            "Conclusion restates the thesis in light of evidence and does not introduce new evidence",
+            "Use a reverse outline after drafting to check each paragraph against the thesis",
+            "Do not organise the essay by source order"
+          ],
+          "blocks": [
+            {
+              "id": "structure-b1",
+              "kind": "text",
+              "md": "An argument essay is organised around subclaims, not the order of your sources. A typical 1500-word essay has an introduction (context, problem, thesis, brief roadmap), body paragraphs that each develop one subclaim supporting the thesis, and a conclusion. The conclusion restates the thesis in light of the evidence and states implications. It does not introduce new evidence.",
+              "audio": null,
+              "gloss": "Một bài luận lập luận được tổ chức quanh các tiểu luận điểm (subclaim), không theo thứ tự nguồn. Một bài 1500 từ thường có mở bài (bối cảnh, vấn đề, luận điểm chính, lộ trình ngắn), các đoạn thân bài mỗi đoạn phát triển một tiểu luận điểm hỗ trợ luận điểm chính, và kết bài nhắc lại luận điểm chính dựa trên bằng chứng và nêu hàm ý. Kết bài không đưa bằng chứng mới."
+            },
+            {
+              "id": "structure-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thesis and subclaim",
+              "md": "The **thesis** is the essay's central claim. A **subclaim** is a smaller claim that supports the thesis and controls one body paragraph. So the structure follows your subclaims, and each body paragraph has one job.",
+              "audio": null
+            },
+            {
+              "id": "structure-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "structure-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "According to the lesson, what should a conclusion do?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Restate the thesis in light of the evidence and state implications",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Introduce new evidence that strengthens the thesis",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Summarise each source in the order it was used",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "State the thesis for the first time so the reader stays unbiased",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The lesson defines the conclusion as restating the thesis in light of the evidence, stating implications, and introducing no new evidence.",
+                  "option_feedback": {
+                    "B": "New evidence belongs in body paragraphs, where it can be analysed; the conclusion must not introduce it.",
+                    "C": "This confuses the conclusion with source-order summary, which the lesson identifies as a common mistake.",
+                    "D": "The thesis belongs in the introduction; the conclusion only restates it."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "structure-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/structure-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "467c2c702453fbfad6e32536ec0775b347a07116dc17a39569f1e9f4d9df7024",
+                "bytes": 3256
+              },
+              "alt": "Diagram of an essay structure: introduction, body paragraphs organised by subclaims, and conclusion.",
+              "caption": "The essay follows your subclaims, not source order.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "structure-b4",
+              "kind": "text",
+              "md": "A strong body paragraph often follows this pattern: topic sentence (the subclaim), evidence (cited source material), analysis (how the evidence supports the subclaim), and link (back to the thesis or transition to the next paragraph). Evidence needs interpretation. A quotation alone does not support the subclaim.",
+              "audio": null,
+              "gloss": "Một đoạn thân bài mạnh thường theo mô hình: câu chủ đề (tiểu luận điểm), bằng chứng (tài liệu nguồn được trích dẫn), phân tích (bằng chứng hỗ trợ tiểu luận điểm như thế nào) và liên kết (quay lại luận điểm chính hoặc chuyển sang đoạn tiếp theo). Bằng chứng cần được diễn giải; chỉ một trích dẫn đơn thuần không hỗ trợ tiểu luận điểm."
+            },
+            {
+              "id": "structure-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "structure-q2",
+                  "type": "FILL_TILES",
+                  "stem": "A strong body paragraph follows this pattern: {{gap}} (the subclaim), {{gap}} (cited source material), {{gap}} (how the evidence supports the subclaim), and a link back to the thesis.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "topic sentence",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "evidence",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "analysis",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "thesis",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "roadmap",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson's paragraph pattern runs topic sentence, evidence, analysis, link. The thesis and roadmap belong to the introduction, not inside a body paragraph.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "structure-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Topic sentence",
+              "md": "A **topic sentence** states the subclaim of a body paragraph. It tells the reader what the paragraph will argue, so the evidence and analysis have a clear job.",
+              "audio": null
+            },
+            {
+              "id": "structure-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "structure-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "What is the post-drafting check called in which you write one sentence summarising each paragraph to test whether it supports the thesis?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "reverse outline",
+                      "a reverse outline",
+                      "reverse-outline",
+                      "reverse outlining"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson names this check the reverse outline and says paragraphs that do not support the thesis should be revised or removed.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "structure-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Reverse outline",
+              "md": "You make a **reverse outline** after drafting: write one sentence summarising each paragraph. If a paragraph does not support the thesis, revise or remove it. It shows whether your paragraphs and thesis line up.",
+              "audio": null
+            },
+            {
+              "id": "structure-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Organising by source order",
+              "md": "A common mistake is to organise the essay by source order: first source, second source, third source. That turns the essay into a summary of what others say rather than an argument. Structure should follow your subclaims, with sources used as evidence inside those subclaims.",
+              "audio": null
+            },
+            {
+              "id": "structure-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "structure-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each term from the lesson to its meaning.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Thesis",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "the essay's central claim",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Subclaim",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "a smaller claim controlling one body paragraph",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Topic sentence",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "states the subclaim of a paragraph",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Reverse outline",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "one-sentence summaries of paragraphs, made after drafting",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson defines structure as following subclaims that support the central thesis, with the reverse outline used afterwards to check alignment.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "structure-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Weak paragraph to revised paragraph",
+              "md": "Weak: “Citation is important. Many students plagiarize. There are many rules. APA has author and date. Students should learn it.” It has no controlling subclaim, no evidence, no analysis, and no link. Revised: “Citation instruction is most effective when it is embedded in drafting.” Then cite evidence, explain what it suggests, and link back to the essay's argument about teaching.",
+              "audio": null
+            },
+            {
+              "id": "structure-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "structure-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about essay structure matches the lesson.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "An essay should be organised in the order of its sources."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Each body paragraph should develop one subclaim that supports the thesis."
+                    },
+                    {
+                      "id": "c",
+                      "text": "A long quotation supports a subclaim even if the writer never explains its relevance."
+                    },
+                    {
+                      "id": "d",
+                      "text": "The introduction includes context, the problem, the thesis, and a brief roadmap."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Structure follows subclaims, with sources used as evidence inside them, and evidence always needs interpretation. The introduction carries context, problem, thesis and roadmap.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "structure-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "How should an essay be organised, and what mistake should you avoid?",
+                  "answer": "Around subclaims, not source order; each body paragraph develops one subclaim and sources are evidence inside it.",
+                  "image": null
+                },
+                {
+                  "prompt": "What pattern does a strong body paragraph follow?",
+                  "answer": "Topic sentence, evidence, analysis, link.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is a reverse outline and what does it check?",
+                  "answer": "After drafting, summarise each paragraph in one sentence and check whether it supports the thesis; revise or remove it if not.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about building an academic argument through a thesis, evidence, and structure. An academic argument is a reasoned claim backed by evidence and explanation, not just an opinion or a summary.",
+          "The thesis is the essay's central claim, not the topic and not an announcement of what the essay will discuss. A strong thesis is focused, arguable, supportable, and predictive. It usually appears at the end of the introduction and may be revised after drafting once the argument becomes clearer.",
+          "For example, saying social media has a big impact on university students is only a topic. A stronger thesis says that although social media helps first-year students maintain contact with peers, universities should teach time-management strategies because unregulated use during study periods fragments attention and increases procrastination. Avoid announcement theses such as this essay will talk about sleep and academic performance, because they give the topic but not the claim.",
+          "Evidence is the material that supports a claim, such as findings from credible sources, statistics, examples, case studies, or quotations. Evidence does not speak for itself, so you have to explain what it shows and connect it back to your thesis. Each body paragraph normally contains a subclaim, evidence, analysis, and a link to the thesis.",
+          "Use evidence that is relevant, reliable, sufficient, and current where necessary. For a general claim, prefer institutional or large-sample evidence over an anonymous blog, and remember that a few strong sources used carefully are enough for a fifteen hundred word essay. Avoid quote dumping, where you insert a long quotation and assume the reader will see its relevance.",
+          "For example, a personal story about all-night cramming is weaker than a meta-analysis of thirty-four studies showing that students with consistent sleep schedules had higher grades. Even strong evidence needs explanation, because the source supports your argument only when you explain how it supports the subclaim and why it matters for the thesis.",
+          "An argument essay is organised around subclaims, not the order of your sources. The introduction gives context, the problem, the thesis, and a brief roadmap. Body paragraphs each develop one subclaim supporting the thesis, and the conclusion restates the thesis in light of the evidence and states implications without introducing new evidence.",
+          "A strong body paragraph often follows a pattern: topic sentence, evidence, analysis, and link. The topic sentence states the subclaim and tells the reader what the paragraph will argue. After drafting, make a reverse outline by writing one sentence summarising each paragraph, and revise or remove any paragraph that does not support the thesis. Organising by source order turns the essay into a summary of what others say rather than an argument.",
+          "Remember three things. First, the thesis is a central, arguable, predictive claim, not a topic or announcement. Second, evidence must be credible and interpreted, and each body paragraph should link it to a subclaim. Third, structure should follow your subclaims, and a reverse outline helps you check that every paragraph supports the thesis."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-argument.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "ac73907d8ac9803e92fd0f947044d0bdb0acf2370295e812f869b6cebe3cf98c",
+          "bytes": 1241388
+        },
+        "duration_s": 206.11
+      }
+    },
+    {
+      "id": "ch-sources-and-style",
+      "title": "Sources and style",
+      "lessons": [
+        {
+          "id": "citing",
+          "title": "Citing",
+          "est_minutes": 15,
+          "summary": "APA 7th edition citation is intellectual accountability and uses author-date forms for parenthetical, narrative, and direct quotations, plus a reference list.",
+          "key_ideas": [
+            "Cite ideas, data, paraphrases, and quotations",
+            "Parenthetical citation: (Torres & Kim, 2021); narrative citation: Torres and Kim (2021)",
+            "Direct quotations need a page number",
+            "Three or more authors use et al. from the first citation; no date uses n.d.",
+            "Reference list: alphabetical order, hanging indent, author, date, title, source, and DOI"
+          ],
+          "blocks": [
+            {
+              "id": "citing-b1",
+              "kind": "text",
+              "md": "Citing your sources lets readers find them, shows which ideas are yours, and keeps you clear of plagiarism. In APA 7th edition, in-text citations use author and date.",
+              "audio": null,
+              "gloss": "Trích dẫn là trách nhiệm trí tuệ: nó giúp người đọc tìm được nguồn, cho thấy ý nào là của bạn và giúp bạn tránh đạo văn. Trong APA 7, trích dẫn trong bài dùng tác giả và năm."
+            },
+            {
+              "id": "citing-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "In-text citation forms",
+              "md": "**Parenthetical citation** puts author and date in parentheses: (Torres & Kim, 2021). **Narrative citation** names the authors in your sentence: Torres and Kim (2021) argue that… With two authors, use “&” in parentheses and “and” in narrative text. For three or more authors, use the first author followed by “et al.” from the first citation. If there is no date, use “n.d.”",
+              "audio": null
+            },
+            {
+              "id": "citing-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "citing-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "In APA 7th edition, how should you cite a 2021 article by Kim, Park, and Lee from the very first citation onward?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "(Kim et al., 2021)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "(Kim, Park, & Lee, 2021)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "(Kim and others, 2021)",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "(Kim, 2021, et al.)",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "For three or more authors, APA 7 uses the first author followed by “et al.” starting with the first citation.",
+                  "option_feedback": {
+                    "B": "Listing every author is the older APA style; APA 7 shortens to the first author plus “et al.”",
+                    "C": "“and others” is never used; APA requires the Latin abbreviation “et al.”",
+                    "D": "The date must follow “et al.” inside the parentheses, not interrupt it."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "citing-b3",
+              "kind": "text",
+              "md": "Direct quotations need a page number: (Torres & Kim, 2021, p. 88). When the author is named in your sentence, the page number follows the quotation: Do (2024) argues that feedback is most effective when it is “specific, timely, and tied to criteria” (p. 31).",
+              "audio": null,
+              "gloss": "Trích dẫn trực tiếp cần số trang: (Torres & Kim, 2021, p. 88). Khi tác giả được nêu trong câu, số trang đặt sau phần trích: Do (2024) argues that feedback is most effective when it is “specific, timely, and tied to criteria” (p. 31)."
+            },
+            {
+              "id": "citing-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "citing-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Fill the gaps so both citations are correct: {{gap}} (2021) found that… and (Torres & Kim, 2021, {{gap}} 88).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Torres and Kim",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "p.",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Torres & Kim",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "pp.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Narrative citations join two authors with “and”, and a single page is abbreviated “p.”",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "citing-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Worked example: one source, four forms",
+              "md": "Using Torres and Kim’s 2021 article, page 88:\n\n- Parenthetical: (Torres & Kim, 2021).\n- Narrative: Torres and Kim (2021) found that…\n- Direct quote: (Torres & Kim, 2021, p. 88).\n- Reference list entry: Torres, M., & Kim, J. (2021). The effects of structured feedback on first-year writing. *Journal of University Teaching, 18*(2), 80-95. https://doi.org/10.0000/jut.2021.18.2.80\n\nThis entry is an example. It shows the required order: authors, year, article title, journal title and volume, issue, pages, DOI.",
+              "audio": null
+            },
+            {
+              "id": "citing-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": null,
+              "md": "A common mistake is citing only direct quotations and leaving paraphrased ideas uncited. A paraphrase is still someone else's idea. APA requires a citation for ideas, findings, and data, not only for exact words. Leaving out the citation for a paraphrase can be plagiarism.",
+              "audio": null
+            },
+            {
+              "id": "citing-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "citing-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "You cite a source that carries no publication date. What abbreviation does APA 7 use in place of the year?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "n.d.",
+                      "n.d",
+                      "nd",
+                      "N.D."
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "APA uses “n.d.”, meaning “no date”, wherever the year would appear.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "citing-b6",
+              "kind": "text",
+              "md": "The reference list is alphabetical, uses a hanging indent, and gives author, date, title, and source. Include a DOI as a URL beginning with https://doi.org/. List only sources cited in the essay. You do not cite common knowledge that is widely known and undisputed.",
+              "audio": null,
+              "gloss": "Danh mục tài liệu tham khảo xếp theo thứ tự chữ cái, dùng thụt lề treo, và gồm tác giả, năm, nhan đề, nguồn; DOI được ghi dưới dạng URL bắt đầu bằng https://doi.org/. Danh mục chỉ gồm các nguồn được trích trong bài. Không trích những kiến thức phổ thông được biết rộng rãi và không gây tranh cãi."
+            },
+            {
+              "id": "citing-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "citing-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each APA element to what it does.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Torres and Kim (2021) argue…",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "narrative citation",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "(Torres & Kim, 2021, p. 88)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "quotation with page number",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "et al.",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "three or more authors",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "n.d.",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "no publication date",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Narrative citations name authors in the sentence, direct quotations add a page, “et al.” shortens long author lists, and “n.d.” marks a missing date.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "citing-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Reference list entry for a book",
+              "md": "Do, H. (2024). *Academic writing for university students*. Routledge.\n\nOrder: author, date, title, source.",
+              "audio": null
+            },
+            {
+              "id": "citing-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "citing-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about citing is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A fully reworded paraphrase still needs a citation."
+                    },
+                    {
+                      "id": "b",
+                      "text": "The reference list should include every source you consulted while researching."
+                    },
+                    {
+                      "id": "c",
+                      "text": "A direct quotation must include a page number."
+                    },
+                    {
+                      "id": "d",
+                      "text": "In a parenthetical citation with two authors, you write “and” between the names."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Paraphrased ideas are borrowed ideas and must be cited, and only sources actually cited appear in the reference list; parenthetical citations use “&”, and quotations need a page number.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "citing-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Why does APA require a citation for a paraphrase, not just a direct quotation?",
+                  "answer": "Paraphrased ideas are still borrowed; citation covers ideas, findings, and data as well as exact words.",
+                  "image": null
+                },
+                {
+                  "prompt": "What changes between a parenthetical and a narrative citation with two authors?",
+                  "answer": "Parenthetical uses “&”: (Torres & Kim, 2021); narrative uses “and”: Torres and Kim (2021).",
+                  "image": null
+                },
+                {
+                  "prompt": "What belongs in a reference list entry, in order?",
+                  "answer": "Author, date, title, source; include a DOI as a https://doi.org/ URL when available.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "paraphrasing",
+          "title": "Paraphrasing",
+          "est_minutes": 15,
+          "summary": "A paraphrase restates a source's idea in new words and sentence structure, preserves meaning, and must be cited, while patchwriting is not acceptable.",
+          "key_ideas": [
+            "Read the source, close it, write the idea in your own words, compare, and add the citation",
+            "Change structure and vocabulary, not just synonyms",
+            "Use direct quotation only when the exact wording matters",
+            "Avoid patchwriting",
+            "Paraphrased ideas still need citation"
+          ],
+          "blocks": [
+            {
+              "id": "paraphrasing-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Paraphrase",
+              "md": "A paraphrase restates a source’s idea in your own words and sentence structure while preserving the meaning. It must be cited; it is not merely replacing words with synonyms.",
+              "audio": null
+            },
+            {
+              "id": "paraphrasing-b2",
+              "kind": "text",
+              "md": "A reliable process has five steps: read the source until you understand it, close the source, write the idea in your own words, compare your version with the original to check meaning and wording, then add the citation.",
+              "audio": null,
+              "gloss": "Một quy trình đáng tin cậy gồm năm bước: đọc nguồn cho đến khi hiểu, đóng nguồn, viết ý tưởng bằng lời của bạn, so sánh bản của bạn với bản gốc để kiểm tra ý nghĩa và cách diễn đạt, sau đó thêm trích dẫn."
+            },
+            {
+              "id": "paraphrasing-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "paraphrasing-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "A student rewrites a source sentence as: \"Learners frequently misapprehend referencing since they view it as a collection of punishments instead of an activity of entering scholarly discussion.\" Which problem does this version best illustrate?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Patchwriting, because the sentence keeps the source's structure while swapping in synonyms",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Correct quotation, because the source's exact words are preserved",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Acceptable paraphrase, because the vocabulary has been changed",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The version substitutes synonyms but retains the original sentence structure, which is the definition of patchwriting. A strong paraphrase changes structure and vocabulary and adds a citation.",
+                  "option_feedback": {
+                    "B": "No words are quoted and no quotation marks or page number appear, so this is not a quotation at all.",
+                    "C": "Changing vocabulary alone is not paraphrasing; the sentence structure still mirrors the source."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "paraphrasing-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/paraphrasing-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "1b2827bebc3250d7c102c9d439ab1a56043c54158f75610e34a0116349c89fd6",
+                "bytes": 3444
+              },
+              "alt": "Flowchart of five paraphrasing steps.",
+              "caption": "A reliable paraphrasing process.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "paraphrasing-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "paraphrasing-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Reliable paraphrasing process: read the source until you understand it, {{gap}} the source, write the idea in your own words, {{gap}} your version with the original, then add the {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "close",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "compare",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "citation",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "quote",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "memorise",
+                      "side": null
+                    },
+                    {
+                      "id": "t6",
+                      "text": "reference list",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The lesson's five-step process is: understand, close the source, write in your own words, compare with the original, and cite.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "paraphrasing-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Weak and strong paraphrase",
+              "md": "Original: “Students often misunderstand citation because they encounter it as a set of penalties rather than as a practice of joining an academic conversation” (Do, 2024, p. 12).\n\nWeak: “Students often misunderstand citation because they see it as penalties rather than joining an academic conversation.” This is patchwriting: it keeps too much of the original wording and structure.\n\nStrong: “According to Do (2024), citation instruction is more effective when it presents referencing as participation in scholarly debate rather than as a collection of punitive rules.” This changes structure and vocabulary, keeps the meaning, and cites the source.",
+              "audio": null
+            },
+            {
+              "id": "paraphrasing-b5",
+              "kind": "text",
+              "md": "Use direct quotation only when the exact wording matters; use paraphrase when the idea matters more than the wording. In Torres and Kim (2021), if the qualification “only” is important, quote the exact wording; if the idea is enough, paraphrase: Torres and Kim (2021) argue that peer review is effective only if students are taught to apply clear criteria.",
+              "audio": null,
+              "gloss": "Chỉ dùng trích dẫn trực tiếp khi cách diễn đạt chính xác quan trọng; dùng diễn giải khi ý tưởng quan trọng hơn cách diễn đạt. Trong Torres và Kim (2021), nếu từ định lượng “only” là quan trọng, hãy trích dẫn nguyên văn; nếu chỉ cần ý, hãy diễn giải: Torres và Kim (2021) lập luận rằng phản hồi đồng nghiệp chỉ hiệu quả nếu sinh viên được dạy áp dụng tiêu chí rõ ràng."
+            },
+            {
+              "id": "paraphrasing-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "paraphrasing-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "According to the lesson's worked example, which single word in the Torres and Kim (2021) sentence makes the exact wording important enough to quote rather than paraphrase?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "only"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "The qualification \"only\" carries the precise restriction of the claim, so the lesson quotes the wording when that restriction matters.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "paraphrasing-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Patchwriting",
+              "md": "Patchwriting copies the source’s sentence structure and replaces a few words with synonyms. It is not acceptable paraphrasing: the phrasing and organisation still belong to the source, it can count as plagiarism, and synonyms rarely fit the original argument, so the prose becomes awkward.",
+              "audio": null
+            },
+            {
+              "id": "paraphrasing-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "paraphrasing-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each citation form to its correct APA 7th edition pattern, using the article by Maria Torres and Jae Kim (2021), page 88.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Parenthetical citation",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "(Torres & Kim, 2021)",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Narrative citation",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Torres and Kim (2021)",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Direct quotation",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "(Torres & Kim, 2021, p. 88)",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "No date available",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "(Torres & Kim, n.d.)",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Parenthetical citations use the ampersand, narrative text uses \"and\", quotations add a page number, and undated sources use \"n.d.\".",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "paraphrasing-b7",
+              "kind": "text",
+              "md": "Paraphrased ideas are still borrowed, so they need a citation. In APA 7th edition, in-text citations can be parenthetical, (Torres & Kim, 2021), or narrative, Torres and Kim (2021) argue that…; omitting a citation for a paraphrase can be plagiarism.",
+              "audio": null,
+              "gloss": "Các ý tưởng được diễn giải vẫn là mượn từ nguồn, nên cần có trích dẫn. Trong APA 7th edition, trích dẫn trong văn bản có thể là dạng ngoặc đơn, (Torres & Kim, 2021), hoặc dạng tường thuật, Torres và Kim (2021) lập luận rằng…; việc bỏ trích dẫn cho một bản diễn giải có thể bị coi là đạo văn."
+            },
+            {
+              "id": "paraphrasing-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "paraphrasing-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement about paraphrasing is true or false.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "A paraphrased idea does not need a citation as long as no words were copied."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Direct quotation is appropriate when the exact wording of the source matters."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Comparing your paraphrase with the original is part of checking meaning and wording."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Replacing most words in a source sentence with synonyms produces an acceptable paraphrase."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Paraphrased ideas are still borrowed and must be cited, and synonym substitution alone is patchwriting. Quoting is reserved for cases where exact wording matters, and comparison is a step in the process.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "paraphrasing-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What must a paraphrase change, and what must it preserve?",
+                  "answer": "It changes words and sentence structure but preserves the source’s meaning, and it must be cited.",
+                  "image": null
+                },
+                {
+                  "prompt": "What is patchwriting, and why is it unacceptable?",
+                  "answer": "Copying the source’s structure and swapping a few synonyms; it still belongs to the source and can count as plagiarism.",
+                  "image": null
+                },
+                {
+                  "prompt": "When should you quote instead of paraphrase?",
+                  "answer": "When the exact wording matters; otherwise paraphrase the idea and cite it.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "revising",
+          "title": "Revising",
+          "est_minutes": 12,
+          "summary": "Revision is more than proofreading and begins with global revision of thesis, evidence, structure, and sources.",
+          "key_ideas": [
+            "Revision is not only proofreading",
+            "Revision has two levels",
+            "Global revision addresses thesis, evidence, structure, and source"
+          ],
+          "blocks": [
+            {
+              "id": "revising-b1",
+              "kind": "text",
+              "md": "Revision is more than proofreading. It has two levels, and one is global revision.",
+              "audio": null,
+              "gloss": "Chỉnh sửa không chỉ là đọc soát lỗi. Nó có hai cấp độ, và một trong số đó là chỉnh sửa tổng thể."
+            },
+            {
+              "id": "revising-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Global revision",
+              "md": "Global revision addresses the thesis, evidence, structure, and sources of a text.",
+              "audio": null
+            },
+            {
+              "id": "revising-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "revising-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "According to the lesson, what does global revision address?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "The thesis, the evidence, the structure, and the sources",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Spelling, punctuation, and grammar only",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Only the wording of individual sentences",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Only the formatting of citations",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "The lesson states that global revision covers the thesis, evidence, structure, and sources.",
+                  "option_feedback": {
+                    "B": "That describes proofreading, which the lesson says is only one part of revision.",
+                    "C": "Sentence-level polishing is not what the lesson calls global revision.",
+                    "D": "Sources are one object of global revision, not the whole of it."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "revising-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/revising-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "ff63ebbe203bcc82bdf7b23eafc365bc4438c78a2e10944b02305e1882844963",
+                "bytes": 3420
+              },
+              "alt": "Concept map showing revision as broader than proofreading, with global revision covering thesis, evidence, structure, and sources.",
+              "caption": "Global revision is one level; proofreading is not the whole of revision.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "revising-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "revising-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Global revision addresses the thesis, the {{gap}}, the structure, and the {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "evidence",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "sources",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "punctuation",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "font size",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "These are the four objects of global revision named in the lesson. Punctuation and formatting belong to proofreading, not global revision.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "revising-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "A global revision pass",
+              "md": "Take a draft whose thesis has changed. Revise the thesis statement first. Then check that the evidence in each section still supports it. Then revise the order of sections. Finally, check that the sources are handled correctly. This is global revision because it moves through thesis, evidence, structure, and sources.",
+              "audio": null
+            },
+            {
+              "id": "revising-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "revising-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Which level of revision focuses on the thesis, evidence, structure, and source?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "global revision",
+                      "Global revision",
+                      "global"
+                    ]
+                  },
+                  "hint": "It is the broader of the two levels of revision.",
+                  "explanation": "Global revision addresses the thesis, evidence, structure, and source, while proofreading is only one part of revising.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "revising-b5",
+              "kind": "text",
+              "md": "Global revision looks at four things: the thesis, the evidence, the structure, and the sources.",
+              "audio": null,
+              "gloss": "Bốn đối tượng của chỉnh sửa tổng thể là luận điểm, bằng chứng, cấu trúc và nguồn."
+            },
+            {
+              "id": "revising-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "revising-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Match each term from the lesson to its description.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Global revision",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "thesis, evidence, structure, sources",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Stopping at proofreading",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "skips global revision",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Draft with a changed thesis",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "revise the thesis statement first",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Last check in global revision",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "sources handled correctly",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson describes global revision as moving through thesis, evidence, structure, and sources in that order.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "revising-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Proofreading only",
+              "md": "A common mistake is to treat revision as proofreading and stop there. That skips global revision of the thesis, evidence, structure, and sources.",
+              "audio": null
+            },
+            {
+              "id": "revising-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "revising-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Decide whether each statement agrees with the lesson.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Revision is only proofreading."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Global revision is one of the levels of revision."
+                    },
+                    {
+                      "id": "c",
+                      "text": "When a draft's thesis has changed, the thesis statement should be revised before checking whether the evidence still supports it."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Proofreading alone is enough to revise the thesis, evidence, structure, and sources."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "The lesson insists revision is not only proofreading and that global revision must cover thesis, evidence, structure, and sources.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "revising-b7",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "What are the two levels of revision?",
+                  "answer": "Revision has two levels, and global revision is one of them; proofreading is not the whole of revision.",
+                  "image": null
+                },
+                {
+                  "prompt": "What does global revision address?",
+                  "answer": "The thesis, the evidence, the structure, and the sources.",
+                  "image": null
+                },
+                {
+                  "prompt": "Why is proofreading not enough?",
+                  "answer": "Because revision also requires global revision of thesis, evidence, structure, and sources.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "This chapter is about sources and style, specifically how to cite sources in APA 7th edition, how to paraphrase responsibly, and how to revise a draft beyond proofreading.",
+          "Citing your sources lets readers find them, shows which ideas are yours, and keeps you clear of plagiarism. In APA 7th edition, in-text citations use author and date. A parenthetical citation puts the author and date in parentheses, for example Torres and Kim, 2021, placed inside parentheses. A narrative citation names the authors in your sentence, as in Torres and Kim, 2021, found that.",
+          "With two authors, use an ampersand inside parentheses and the word and in narrative text. For three or more authors, use the first author followed by et al. from the first citation. If there is no date, use n dot d. Direct quotations need a page number, for example Torres and Kim, 2021, page 88, in parentheses; when the author is named in your sentence, the page number follows the quotation.",
+          "The reference list is alphabetical, uses a hanging indent, and gives author, date, title, and source, and include a DOI as a link when available. List only sources cited in the essay. Do not cite common knowledge that is widely known and undisputed. A common mistake is citing only direct quotations and leaving paraphrased ideas uncited, but a paraphrase is still someone else's idea.",
+          "A paraphrase restates a source's idea in your own words and sentence structure while preserving the meaning, and it must be cited. A reliable process has five steps: read the source until you understand it, close the source, write the idea in your own words, compare your version with the original, and add the citation. For example, a strong paraphrase of Do 2024 changes the structure and vocabulary and says that citation instruction is more effective when referencing is presented as participation in scholarly debate rather than as punitive rules. It keeps the meaning and cites the source.",
+          "Patchwriting copies the source's sentence structure and replaces a few words with synonyms; it is not acceptable paraphrasing and can count as plagiarism. Use direct quotation only when the exact wording matters, and use paraphrase when the idea matters more than the wording. Paraphrased ideas are still borrowed, so they need a citation, either parenthetical or narrative. Omitting a citation for a paraphrase can be plagiarism.",
+          "Revision is more than proofreading, and one of its two levels is global revision. Global revision addresses the thesis, evidence, structure, and sources of a text. In a draft whose thesis has changed, revise the thesis statement first, then check that the evidence in each section still supports it, then revise the order of sections, and finally check that the sources are handled correctly. A common mistake is to treat revision as proofreading and stop there, which skips global revision of the thesis, evidence, structure, and sources.",
+          "The three things to remember are these. Cite ideas, data, paraphrases, and quotations with author and date, add a page number for direct quotations, and build an alphabetical reference list. Paraphrase by changing structure and vocabulary rather than patchwriting, and cite the paraphrase. Revise globally by checking the thesis, evidence, structure, and sources, not only by proofreading."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-sources-and-style.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "e7991839caa37f0030653bf230178f21cd59554ff5b0a43a3b1f100933a35030",
+          "bytes": 1327120
+        },
+        "duration_s": 220.5
+      }
+    }
+  ],
+  "gloss_start": 30
+}

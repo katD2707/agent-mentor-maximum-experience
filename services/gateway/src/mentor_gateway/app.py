@@ -22,6 +22,12 @@ from mentor_gateway.content.service import ContentService
 from mentor_gateway.content.store import ContentError
 from mentor_gateway.context import build_gateway
 from mentor_gateway.jobs import JobExecutor
+from mentor_gateway.langga import api as langga_api
+from mentor_gateway.langga.chat import ChatService
+from mentor_gateway.langga.focus import FocusService
+from mentor_gateway.langga.hooks import make_progress_hook
+from mentor_gateway.langga.resolve import ChickenResolver
+from mentor_gateway.langga.service import LanggaService
 from mentor_gateway.practice import PracticeError
 from mentor_gateway.teacher import steps as teacher_steps
 from mentor_gateway.research.service import ResearchService
@@ -71,6 +77,13 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     gw.planner.content = gw.practice.content = app.state.content  # course quiz items for Luyện tập
     gw.practice.planner = gw.planner
     gw.practice.course_tests = lambda cid: teacher_steps.course_tests(app.state.builder, cid)
+    resolver = ChickenResolver(app.state.content)  # Làng gà: course -> chicken
+    gw.practice.resolver = resolver
+    app.state.content.progress_hook = make_progress_hook(gw.db, gw.xp, resolver)
+    app.state.langga = LanggaService(gw.db, clock, gw.xp, app.state.content, gw.planner, gw.practice, resolver, gw.practice.papers)
+    app.state.focus = FocusService(gw.db, clock, gw.xp, app.state.langga)
+    app.state.chat = ChatService(gw.db, clock, app.state.langga)
+    app.state.chicken_resolver = resolver
     app.state.research = ResearchService(gw, app.state.content, ask.build_llm(gw))  # /api/research (uni band)
     gw.scheduler.research = app.state.research.tick  # Monday discovery, agenda drafts
     app.add_exception_handler(ContentError, lambda _req, exc: courses.content_error_response(exc))
@@ -88,6 +101,8 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.allowed_origins,
+        # dev only: a build previewed on any other localhost port (vite preview, a second dev server) can log in too
+        allow_origin_regex=r"^http://(localhost|127\.0\.0\.1)(:\d+)?$" if settings.env == "dev" else None,
         allow_credentials=False,  # bearer tokens, no cookies
         allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
         allow_headers=["Content-Type", "Accept", "Authorization", "If-None-Match", "Range"],
@@ -104,9 +119,10 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     api.include_router(plan.router)  # /api/events, /api/today, /api/plan/week, /api/reminders
     api.include_router(goals.router)  # /api/goals
     api.include_router(ask.router)  # /api/ask (SSE Q&A)
-    api.include_router(guide.router)  # /api/guide (Muc)
+    api.include_router(guide.router)  # /api/guide (guide chicken)
     api.include_router(teacher.router)  # /api/teacher (course authoring)
     api.include_router(research_api.router)  # /api/research (Nghiên cứu, uni band)
+    api.include_router(langga_api.router)  # Làng gà: /api/village, /market, /chickens, /xp, /arena, /focus, /chat
     app.include_router(api)
 
     @app.get("/healthz")

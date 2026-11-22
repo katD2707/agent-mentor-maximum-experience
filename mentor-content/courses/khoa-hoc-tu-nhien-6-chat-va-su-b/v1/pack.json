@@ -1,0 +1,2026 @@
+{
+  "schema_version": 1,
+  "course_id": "khoa-hoc-tu-nhien-6-chat-va-su-b",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g6_9",
+  "title": "Khoa học tự nhiên 6: Chất và sự biến đổi",
+  "chapters": [
+    {
+      "id": "ch-chat-quanh-ta",
+      "title": "Chất quanh ta",
+      "lessons": [
+        {
+          "id": "vat-the-va-chat",
+          "title": "Vật thể và chất",
+          "est_minutes": 10,
+          "summary": "Bài học phân biệt vật thể với chất, chỉ ra chất tạo nên vật thể và khắc phục lỗi thường gặp qua ví dụ và bài tập.",
+          "key_ideas": [
+            "Vật thể là vật cụ thể có hình dạng, kích thước, vị trí xác định",
+            "Vật thể tự nhiên và vật thể nhân tạo",
+            "Chất là thành phần tạo nên vật thể và có tính chất nhất định",
+            "Một vật thể có thể làm từ một hay nhiều chất; một chất có thể tạo nhiều vật thể"
+          ],
+          "blocks": [
+            {
+              "id": "vat-the-va-chat-b1",
+              "kind": "text",
+              "md": "Vật thể là vật cụ thể, có hình dạng, kích thước và vị trí xác định. Cái cốc, cái bàn, con cá, chiếc xe đạp đều là vật thể.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "vat-the-va-chat-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/vat-the-va-chat-b2.webp",
+                "mime": "image/webp",
+                "sha256": "6ae4158450ab02e52c5da2eeadc4b25b9a987b9cb184026b273be739675a2573",
+                "bytes": 25182
+              },
+              "alt": "Cảnh vật tự nhiên và các đồ vật nhân tạo",
+              "caption": "Vật thể tự nhiên và vật thể nhân tạo",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "vat-the-va-chat-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "vat-the-va-chat-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong câu “Cái ấm bằng nhôm đựng nước”, đâu là các chất?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Cái ấm và nước",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Nhôm và nước",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Nhôm và cái ấm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Nước và cái ấm",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Chất là thành phần tạo nên vật thể, không phải bản thân đồ vật.",
+                  "explanation": "Nhôm và nước là những chất có tính chất xác định, còn cái ấm và nước trong ấm chỉ là vật thể chứa chúng.",
+                  "option_feedback": {
+                    "A": "Cái ấm là vật thể có hình dạng, kích thước xác định nên không phải là chất.",
+                    "C": "Cái ấm là vật thể, chỉ có nhôm mới là chất tạo nên nó.",
+                    "D": "Cái ấm là vật thể, không phải chất tạo nên vật thể."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "vat-the-va-chat-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hai loại vật thể",
+              "md": "- Vật thể tự nhiên: con người, cây cối, sông, núi…\n- Vật thể nhân tạo: bàn, ghế, cốc, xe…",
+              "audio": null
+            },
+            {
+              "id": "vat-the-va-chat-b4",
+              "kind": "text",
+              "md": "Chất là thành phần tạo nên vật thể. Mỗi chất có tính chất nhất định: màu, mùi, vị, độ cứng, khả năng tan trong nước, khả năng cháy…",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "vat-the-va-chat-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "vat-the-va-chat-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Chất ở thể {{gap}} có thể tích xác định nhưng hình dạng phụ thuộc vào vật chứa; chất ở thể {{gap}} không có hình dạng và thể tích xác định, dễ nén.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "lỏng",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "khí",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "rắn",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "nóng chảy",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Thể lỏng giữ thể tích nhưng lấy hình dạng vật chứa; thể khí không có hình dạng, thể tích xác định và dễ nén.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "vat-the-va-chat-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Chỉ ra vật thể và chất",
+              "md": "Cái bàn gỗ là vật thể, chất tạo nên chủ yếu là gỗ. Cái thìa nhôm là vật thể, chất tạo nên là nhôm. Cốc thủy tinh là vật thể, chất tạo nên là thủy tinh.",
+              "audio": null
+            },
+            {
+              "id": "vat-the-va-chat-b6",
+              "kind": "text",
+              "md": "Một vật thể có thể làm từ một chất hoặc nhiều chất. Bút bi có thể làm từ nhựa, kim loại và mực. Nhôm tạo nên thìa, nồi, khung cửa.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "vat-the-va-chat-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "vat-the-va-chat-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi quá trình với sự chuyển thể đúng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Sự nóng chảy",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Rắn → lỏng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Sự đông đặc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Lỏng → rắn",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Sự bay hơi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Lỏng → hơi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Sự ngưng tụ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Hơi → lỏng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi quá trình là một chiều chuyển thể: nóng chảy và đông đặc ngược nhau, bay hơi và ngưng tụ ngược nhau.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "vat-the-va-chat-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Nhôm là chất, cái nồi nhôm là vật thể",
+              "md": "Nhôm là vật liệu có tính chất xác định, dùng để tạo nên đồ vật, nên nhôm là chất. Cái nồi nhôm là đồ vật cụ thể, có hình dạng, kích thước, nên là vật thể.",
+              "audio": null
+            },
+            {
+              "id": "vat-the-va-chat-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Không nói “cái cốc là chất thủy tinh”",
+              "md": "Sai, vì cái cốc là vật thể; thủy tinh mới là chất tạo nên cái cốc.",
+              "audio": null
+            },
+            {
+              "id": "vat-the-va-chat-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "vat-the-va-chat-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước mô tả sự chuyển thể của nước khi được đun nóng rồi gặp lạnh.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Nước đá ở thể rắn, các hạt xếp sát nhau",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Nước đá nóng chảy thành nước lỏng ở $0^\\circ C$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Nước lỏng bay hơi và sôi thành hơi nước ở $100^\\circ C$",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Hơi nước gặp lạnh ngưng tụ thành các giọt nước",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nước đá nóng chảy ở $0^\\circ C$, sôi ở $100^\\circ C$ thành hơi, rồi hơi gặp lạnh ngưng tụ lại thành giọt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "vat-the-va-chat-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vật thể là gì?",
+                  "answer": "Là một vật cụ thể, có hình dạng, kích thước và vị trí xác định.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vật thể tự nhiên khác vật thể nhân tạo thế nào?",
+                  "answer": "Vật thể tự nhiên có sẵn trong tự nhiên; vật thể nhân tạo do con người làm ra.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trong “cái thìa nhôm”, đâu là vật thể, đâu là chất?",
+                  "answer": "Cái thìa là vật thể; nhôm là chất tạo nên nó.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ba-the-cua-chat",
+          "title": "Ba thể của chất",
+          "est_minutes": 12,
+          "summary": "Bài học mô tả thể rắn, lỏng, khí và sự thay đổi thể của chất, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Chất có thể tồn tại ở thể rắn, lỏng, khí",
+            "Thể rắn có hình dạng và thể tích xác định, khó nén",
+            "Thể lỏng có thể tích xác định, hình dạng phụ thuộc vật chứa",
+            "Thể khí không có hình dạng, thể tích xác định và dễ nén",
+            "Thể thay đổi khi nhiệt độ, áp suất thay đổi"
+          ],
+          "blocks": [
+            {
+              "id": "ba-the-cua-chat-b1",
+              "kind": "text",
+              "md": "Một chất có thể tồn tại ở ba thể: rắn, lỏng, khí. Nước là ví dụ quen thuộc: nước đá (rắn), nước (lỏng), hơi nước (khí).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ba-the-cua-chat-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/ba-the-cua-chat-b2.webp",
+                "mime": "image/webp",
+                "sha256": "4e86adf4d91818f3674b34cefbc31db2703e66b5a43c635bed24b342c48ec129",
+                "bytes": 15280
+              },
+              "alt": "Ba khung hình minh họa nước ở thể rắn, lỏng và khí",
+              "caption": "Cùng là nước nhưng ở ba thể khác nhau",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "ba-the-cua-chat-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ba-the-cua-chat-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đặc điểm nào sau đây đúng với chất ở thể khí?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Có hình dạng và thể tích xác định, khó nén.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Có thể tích xác định, hình dạng phụ thuộc vật chứa.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Không có hình dạng và thể tích xác định, dễ nén.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Có hình dạng xác định nhưng thể tích thay đổi.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Nghĩ đến hơi nước lan khắp phòng.",
+                  "explanation": "Chất khí không có hình dạng, thể tích xác định, chiếm toàn bộ không gian vật chứa và dễ nén.",
+                  "option_feedback": {
+                    "A": "Đây là đặc điểm của thể rắn, không phải thể khí.",
+                    "B": "Đây là đặc điểm của thể lỏng, không phải thể khí.",
+                    "D": "Không thể nào vừa có hình dạng xác định vừa đổi thể tích như vậy; đây là sự pha trộn đặc điểm rắn và lỏng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ba-the-cua-chat-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thể rắn",
+              "md": "Thể rắn có hình dạng và thể tích xác định, khó nén. Ví dụ: đá viên, viên phấn, cái bàn.",
+              "audio": null
+            },
+            {
+              "id": "ba-the-cua-chat-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thể lỏng",
+              "md": "Thể lỏng có thể tích xác định nhưng hình dạng phụ thuộc vật chứa; khó nén. Ví dụ: nước trong cốc, dầu ăn.",
+              "audio": null
+            },
+            {
+              "id": "ba-the-cua-chat-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ba-the-cua-chat-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Chất ở thể rắn có {{gap}} và {{gap}} xác định, khó nén.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "hình dạng",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "thể tích",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "khối lượng",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "màu sắc",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Thể rắn có hình dạng và thể tích xác định nên khó nén. Khối lượng và màu sắc không phải đặc điểm dùng để phân biệt thể.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ba-the-cua-chat-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thể khí",
+              "md": "Thể khí không có hình dạng và thể tích xác định, chiếm toàn bộ không gian vật chứa; dễ nén. Ví dụ: hơi nước, khí oxygen.",
+              "audio": null
+            },
+            {
+              "id": "ba-the-cua-chat-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ba-the-cua-chat-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Chọn Đúng hoặc Sai cho mỗi nhận xét sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nước đá nóng chảy ở $0^\\circ C$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Chất lỏng chỉ bay hơi khi được đun sôi."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Chất khí không có khối lượng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Thể của chất có thể thay đổi khi nhiệt độ hoặc áp suất thay đổi."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Sự bay hơi xảy ra ở mọi nhiệt độ, còn khí vẫn có khối lượng dù thường nhỏ và khó cảm nhận. Nóng chảy và chuyển thể gắn với nhiệt độ, áp suất.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "ba-the-cua-chat-b6",
+              "kind": "text",
+              "md": "Ở thể rắn, các hạt xếp sát nhau. Ở thể lỏng, các hạt gần nhau và chuyển động. Ở thể khí, các hạt ở xa nhau và chuyển động nhanh.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ba-the-cua-chat-b7",
+              "kind": "text",
+              "md": "Thể của chất thay đổi khi nhiệt độ, áp suất thay đổi. Nước đá (rắn) → nước (lỏng) → hơi nước (khí).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "ba-the-cua-chat-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ba-the-cua-chat-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi quá trình với sự chuyển thể tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Sự nóng chảy",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "rắn → lỏng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Sự đông đặc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "lỏng → rắn",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Sự bay hơi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "lỏng → hơi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Sự ngưng tụ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "hơi → lỏng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Nóng chảy và đông đặc là hai quá trình ngược nhau giữa rắn và lỏng; bay hơi và ngưng tụ ngược nhau giữa lỏng và hơi.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "ba-the-cua-chat-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Đừng nhầm",
+              "md": "Không phải “chất khí không có khối lượng”. Khí vẫn có khối lượng, nhưng thường nhỏ và khó cảm nhận.",
+              "audio": null
+            },
+            {
+              "id": "ba-the-cua-chat-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ba-the-cua-chat-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước mô tả sự chuyển thể của nước theo đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Nước ở thể rắn (nước đá)",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Nước đá nóng chảy thành nước ở thể lỏng ở $0^\\circ C$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Nước lỏng bay hơi thành hơi nước ở thể khí",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Hơi nước gặp lạnh ngưng tụ thành các giọt nước",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": "Bắt đầu từ nước đá và kết thúc bằng hơi nước gặp lạnh.",
+                  "explanation": "Nước chuyển từ rắn sang lỏng rồi sang khí khi được cung cấp nhiệt, và hơi nước ngưng tụ khi gặp lạnh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "ba-the-cua-chat-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Thể rắn khác thể khí ở chỗ nào?",
+                  "answer": "Rắn có hình dạng và thể tích xác định, khó nén; khí không có hình dạng, thể tích xác định và dễ nén.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao chất khí dễ nén hơn chất lỏng?",
+                  "answer": "Vì các hạt chất khí ở xa nhau, có nhiều khoảng trống nên dễ bị nén lại.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào thể của chất thay đổi?",
+                  "answer": "Khi nhiệt độ hoặc áp suất thay đổi.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "su-nong-chay-va-bay-hoi",
+          "title": "Sự nóng chảy và bay hơi",
+          "est_minutes": 15,
+          "summary": "Bài học nhận biết các quá trình nóng chảy, đông đặc, bay hơi, sôi, ngưng tụ và yếu tố ảnh hưởng đến bay hơi, kèm ví dụ và bài tập.",
+          "key_ideas": [
+            "Nóng chảy: rắn → lỏng ở nhiệt độ nóng chảy xác định; đông đặc là quá trình ngược lại",
+            "Bay hơi: lỏng → hơi ở bề mặt, xảy ra ở mọi nhiệt độ; sôi xảy ra cả trong lòng và trên mặt thoáng ở nhiệt độ sôi",
+            "Ngưng tụ: hơi → lỏng",
+            "Bay hơi nhanh hơn khi nhiệt độ cao, diện tích mặt thoáng lớn, có gió, chất dễ bay hơi",
+            "Các quá trình này không tạo ra chất mới"
+          ],
+          "blocks": [
+            {
+              "id": "su-nong-chay-va-bay-hoi-b1",
+              "kind": "text",
+              "md": "Sự nóng chảy là quá trình rắn chuyển thành lỏng ở nhiệt độ nóng chảy xác định; nước đá nóng chảy ở $0^\\circ C$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": null,
+              "md": "Sự đông đặc là quá trình ngược lại: lỏng → rắn.",
+              "audio": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-nong-chay-va-bay-hoi-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Đặc điểm nào sau đây đúng với sự sôi?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Xảy ra ở mọi nhiệt độ, chỉ trên mặt thoáng chất lỏng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Xảy ra ở cả trong lòng và trên mặt thoáng, ở nhiệt độ sôi xác định.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Xảy ra ở một nhiệt độ xác định nhưng chỉ trên mặt thoáng.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Xảy ra ở mọi nhiệt độ, cả trong lòng chất lỏng.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Phân biệt sự sôi với sự bay hơi ở chỗ: sôi xảy ra ở đâu và ở nhiệt độ nào?",
+                  "explanation": "Sự sôi là chất lỏng chuyển thành hơi ở cả bên trong và trên mặt thoáng, tại nhiệt độ sôi xác định.",
+                  "option_feedback": {
+                    "A": "Đó là sự bay hơi, không phải sự sôi.",
+                    "C": "Sự sôi còn xảy ra cả bên trong chất lỏng, không chỉ ở mặt thoáng.",
+                    "D": "Sự sôi chỉ xảy ra ở một nhiệt độ sôi xác định, ví dụ nước sôi ở $100^\\circ C$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b3",
+              "kind": "text",
+              "md": "Sự bay hơi là chất lỏng chuyển thành hơi ở bề mặt chất lỏng. Bay hơi xảy ra ở mọi nhiệt độ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b4",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Không chỉ khi sôi",
+              "md": "Nói “nước chỉ bay hơi khi sôi” là sai. Quần áo ướt vẫn khô ở nhiệt độ thường.",
+              "audio": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-nong-chay-va-bay-hoi-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền số thích hợp: Nước đá nóng chảy ở {{gap}} $^\\circ C$ và nước sôi ở {{gap}} $^\\circ C$ (ở điều kiện thường).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "0",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "100",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "50",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "-20",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nước đá nóng chảy ở $0^\\circ C$ và nước sôi ở $100^\\circ C$ ở điều kiện thường.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b5",
+              "kind": "text",
+              "md": "Sự sôi xảy ra cả bên trong và trên bề mặt chất lỏng, ở nhiệt độ sôi xác định. Nước sôi ở $100^\\circ C$ trong điều kiện thường.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-nong-chay-va-bay-hoi-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nước đá nóng chảy ở $0^\\circ C$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nước chỉ bay hơi khi được đun sôi."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Quần áo ướt khô nhanh hơn khi phơi ở nơi có nắng và gió."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Sự nóng chảy tạo ra một chất mới khác chất ban đầu."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Sự bay hơi xảy ra ở mọi nhiệt độ, còn nóng chảy chỉ là rắn chuyển thành lỏng nên không tạo ra chất mới.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": null,
+              "md": "Sự ngưng tụ là quá trình ngược lại: hơi → lỏng.",
+              "audio": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b7",
+              "kind": "image",
+              "image": {
+                "path": "images/su-nong-chay-va-bay-hoi-b7.webp",
+                "mime": "image/webp",
+                "sha256": "02989152a8c09f27de73fb8f7f0e246f4e00d636df503429f557fb2d45bb271f",
+                "bytes": 26668
+              },
+              "alt": "Ba cách làm nước bay hơi nhanh hơn: nắng, mặt thoáng rộng, gió.",
+              "caption": "Bay hơi nhanh hơn khi nhiệt độ cao, diện tích mặt thoáng lớn, có gió.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Quần áo phơi nắng gió",
+              "md": "Nắng làm nhiệt độ tăng, gió cuốn hơi nước đi. Nước trong vải bay hơi nhanh hơn nên quần áo khô nhanh hơn. Chất vẫn là nước, không tạo ra chất mới.",
+              "audio": null
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-nong-chay-va-bay-hoi-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước mô tả sự chuyển thể của nước cho đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Cho vài viên nước đá vào cốc",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Nước đá nóng chảy thành nước ở $0^\\circ C$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Để cốc nước ở nơi ấm, nước bay hơi dần",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Hơi nước gặp nắp lạnh ngưng tụ thành các giọt nước",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nước đi từ rắn (đá) sang lỏng (nước), rồi bay hơi thành hơi và ngưng tụ lại thành giọt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "su-nong-chay-va-bay-hoi-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Sự nóng chảy và sự đông đặc khác nhau thế nào?",
+                  "answer": "Nóng chảy: rắn → lỏng; đông đặc: lỏng → rắn.",
+                  "image": null
+                },
+                {
+                  "prompt": "Sự bay hơi xảy ra ở đâu và khi nào?",
+                  "answer": "Ở bề mặt chất lỏng, xảy ra ở mọi nhiệt độ.",
+                  "image": null
+                },
+                {
+                  "prompt": "Kể ba yếu tố làm bay hơi nhanh hơn.",
+                  "answer": "Nhiệt độ cao, mặt thoáng lớn, có gió.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương Chất quanh ta giúp mình hiểu về vật thể và chất, ba thể của chất, cùng các quá trình nóng chảy và bay hơi. Mình sẽ đi lần lượt qua ba bài: vật thể và chất, ba thể của chất, sự nóng chảy và bay hơi.",
+          "Vật thể là vật cụ thể, có hình dạng, kích thước và vị trí xác định. Cái cốc, cái bàn, con cá, chiếc xe đạp đều là vật thể. Vật thể tự nhiên như con người, cây cối, sông, núi; vật thể nhân tạo như bàn, ghế, cốc, xe. Chất là thành phần tạo nên vật thể và mỗi chất có tính chất nhất định như màu, mùi, vị, độ cứng, khả năng tan trong nước, khả năng cháy.",
+          "Một vật thể có thể làm từ một chất hoặc nhiều chất; bút bi có thể làm từ nhựa, kim loại và mực. Cái bàn gỗ là vật thể, chất tạo nên chủ yếu là gỗ; cái thìa nhôm là vật thể, chất tạo nên là nhôm. Nhôm tạo nên thìa, nồi, khung cửa nên nhôm là chất, còn cái nồi nhôm là vật thể. Cái cốc là vật thể, còn thủy tinh mới là chất tạo nên cái cốc.",
+          "Một chất có thể tồn tại ở ba thể: rắn, lỏng, khí. Nước là ví dụ quen thuộc: nước đá ở thể rắn, nước ở thể lỏng, hơi nước ở thể khí. Thể rắn có hình dạng và thể tích xác định, khó nén, ví dụ đá viên, viên phấn, cái bàn. Thể lỏng có thể tích xác định nhưng hình dạng phụ thuộc vật chứa và khó nén, ví dụ nước trong cốc, dầu ăn.",
+          "Thể khí không có hình dạng và thể tích xác định, chiếm toàn bộ không gian vật chứa và dễ nén, ví dụ hơi nước, khí oxygen. Ở thể rắn các hạt xếp sát nhau; ở thể lỏng các hạt gần nhau và chuyển động; ở thể khí các hạt ở xa nhau và chuyển động nhanh. Thể của chất thay đổi khi nhiệt độ, áp suất thay đổi. Khí vẫn có khối lượng, nhưng thường nhỏ và khó cảm nhận, nên không đúng khi nói chất khí không có khối lượng.",
+          "Sự nóng chảy là quá trình rắn chuyển thành lỏng ở nhiệt độ nóng chảy xác định; nước đá nóng chảy ở không độ C. Sự đông đặc là quá trình ngược lại, từ lỏng chuyển thành rắn. Sự bay hơi là chất lỏng chuyển thành hơi ở bề mặt chất lỏng và xảy ra ở mọi nhiệt độ. Quần áo ướt vẫn khô ở nhiệt độ thường, nên nói nước chỉ bay hơi khi sôi là không đúng.",
+          "Sự sôi xảy ra cả bên trong và trên bề mặt chất lỏng, ở nhiệt độ sôi xác định; nước sôi ở một trăm độ C trong điều kiện thường. Sự ngưng tụ là quá trình ngược lại, từ hơi chuyển thành lỏng. Bay hơi nhanh hơn khi nhiệt độ cao, diện tích mặt thoáng lớn, có gió, hoặc chất dễ bay hơi; nắng và gió làm nước trong vải bay hơi nhanh hơn nên quần áo khô nhanh hơn. Các quá trình nóng chảy, đông đặc, bay hơi, sôi, ngưng tụ không tạo ra chất mới; ví dụ nước vẫn là nước.",
+          "Ba điều cần nhớ là vật thể là vật cụ thể, chất là thành phần tạo nên vật thể và một vật thể có thể gồm một hay nhiều chất. Điều thứ hai là chất có thể tồn tại ở thể rắn, lỏng, khí, với thể rắn có hình dạng và thể tích xác định, thể lỏng có thể tích xác định, thể khí không có hình dạng và thể tích xác định. Điều thứ ba là nóng chảy, đông đặc, bay hơi, sôi, ngưng tụ không tạo ra chất mới, và bay hơi xảy ra ở mọi nhiệt độ."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-hon-hop",
+      "title": "Hỗn hợp",
+      "lessons": [
+        {
+          "id": "dung-dich",
+          "title": "Dung dịch",
+          "est_minutes": 12,
+          "summary": "Bài học phân biệt hỗn hợp, dung dịch, dung môi, chất tan và cách tính khối lượng dung dịch, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Hỗn hợp gồm hai hay nhiều chất trộn lẫn nhưng không tạo chất mới",
+            "Dung dịch là hỗn hợp đồng nhất của chất tan và dung môi",
+            "Dung môi thường là nước; chất tan là chất bị hòa tan",
+            "Dung dịch có thể có một hoặc nhiều chất tan, phân bố đều",
+            "Muốn chất rắn tan nhanh hơn: khuấy, đun nóng nhẹ, nghiền nhỏ"
+          ],
+          "blocks": [
+            {
+              "id": "dung-dich-b1",
+              "kind": "text",
+              "md": "Hỗn hợp gồm hai hay nhiều chất trộn lẫn, nhưng không tạo thành chất mới. Ví dụ: nước muối, nước cam, không khí, nước bùn.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dung-dich-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Dung dịch, dung môi, chất tan",
+              "md": "Dung dịch là hỗn hợp đồng nhất của chất tan và dung môi. Dung môi hòa tan chất khác, thường là nước; chất tan là chất bị hòa tan. Ví dụ: nước đường có đường là chất tan, nước là dung môi.",
+              "audio": null
+            },
+            {
+              "id": "dung-dich-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-dich-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trong nước đường, đâu là dung môi và đâu là chất tan?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Nước là dung môi, đường là chất tan.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đường là dung môi, nước là chất tan.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Cả nước và đường đều là dung môi.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Cả nước và đường đều là chất tan.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Chất bị hòa tan là chất tan; chất hòa tan chất khác là dung môi.",
+                  "explanation": "Nước hòa tan đường, nên nước là dung môi và đường là chất tan.",
+                  "option_feedback": {
+                    "B": "Nhầm vai trò: đường bị hòa tan nên là chất tan, không phải dung môi.",
+                    "C": "Chỉ có một dung môi; đường bị hòa tan nên là chất tan.",
+                    "D": "Nước hòa tan đường nên nước là dung môi, không phải chất tan."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dung-dich-b4",
+              "kind": "text",
+              "md": "Dung dịch có thể có một hoặc nhiều chất tan. Các chất tan phân bố đều; mắt thường không nhìn thấy hạt chất tan.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dung-dich-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-dich-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền từ thích hợp vào chỗ trống: Trong nước muối, {{gap}} là chất tan và {{gap}} là dung môi.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "muối",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "nước",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "đường",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "cát",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": "Chất nào bị hòa tan? Chất nào hòa tan chất kia?",
+                  "explanation": "Muối bị hòa tan trong nước nên muối là chất tan, nước là dung môi.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dung-dich-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ pha nước muối",
+              "md": "Pha 5 g muối vào 45 g nước, khuấy đều được nước muối. Muối là chất tan, nước là dung môi. Khối lượng dung dịch = 5 + 45 = 50 g.",
+              "audio": null
+            },
+            {
+              "id": "dung-dich-b6",
+              "kind": "text",
+              "md": "Muốn chất rắn tan nhanh hơn, ta khuấy, đun nóng nhẹ hoặc nghiền nhỏ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dung-dich-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nói “nước muối là chất tinh khiết” là sai. Nước muối gồm nước và muối trộn lẫn, nên là hỗn hợp.",
+              "audio": null
+            },
+            {
+              "id": "dung-dich-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-dich-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Nối mỗi khái niệm với định nghĩa phù hợp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Dung môi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Chất hòa tan chất khác",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Chất tan",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Chất bị hòa tan trong dung môi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Dung dịch",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Hỗn hợp đồng nhất của chất tan và dung môi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Hỗn hợp",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Gồm hai hay nhiều chất trộn lẫn, không tạo chất mới",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Dung môi hòa tan chất tan; dung dịch là hỗn hợp đồng nhất; hỗn hợp gồm nhiều chất trộn lẫn.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dung-dich-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để chọn khối lượng muối; với 45 g nước, xem khối lượng dung dịch.",
+              "x": {
+                "symbol": "m_{muối}",
+                "label": "Khối lượng muối",
+                "unit": "g"
+              },
+              "y": {
+                "symbol": "m_{dd}",
+                "label": "Khối lượng dung dịch",
+                "unit": "g"
+              },
+              "expr": "x + 45",
+              "x_min": 0.0,
+              "x_max": 20.0,
+              "x_step": 5.0,
+              "x_start": 0.0,
+              "target_y": 50.0,
+              "tolerance": 0.5,
+              "praise": "Đúng! 5 g muối với 45 g nước cho 50 g dung dịch.",
+              "audio": null
+            },
+            {
+              "id": "dung-dich-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dung-dich-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước tách cát và muối ra khỏi hỗn hợp cát + muối + nước theo đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Lọc hỗn hợp bằng phễu lọc và giấy lọc",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Cát không tan bị giữ lại trên giấy lọc",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Nước muối chảy qua giấy lọc xuống dưới",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Cô cạn nước muối để thu muối",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cát không tan nên bị lọc giữ lại; muối tan trong nước nên cần cô cạn để thu lại.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dung-dich-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Hỗn hợp là gì?",
+                  "answer": "Gồm hai hay nhiều chất trộn lẫn, không tạo chất mới.",
+                  "image": null
+                },
+                {
+                  "prompt": "Dung dịch gồm những thành phần nào?",
+                  "answer": "Chất tan và dung môi; dung môi thường là nước.",
+                  "image": null
+                },
+                {
+                  "prompt": "Làm sao để chất rắn tan nhanh hơn?",
+                  "answer": "Khuấy, đun nóng nhẹ, nghiền nhỏ.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "loc-chiet-co-can",
+          "title": "Lọc, chiết, cô cạn",
+          "est_minutes": 15,
+          "summary": "Bài học chọn cách tách chất bằng lọc, chiết hoặc cô cạn dựa vào tính chất khác nhau, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Lọc tách chất rắn không tan khỏi chất lỏng",
+            "Chiết tách hai chất lỏng không hòa tan vào nhau",
+            "Cô cạn tách chất rắn tan bằng cách làm bay hơi chất lỏng",
+            "Chọn cách tách dựa vào tính tan, khối lượng riêng, khả năng bay hơi"
+          ],
+          "blocks": [
+            {
+              "id": "loc-chiet-co-can-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "loc-chiet-co-can-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Muốn thu muối ăn ra khỏi nước muối, nên chọn cách nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Lọc",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Chiết",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Cô cạn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Gạn",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Muối tan trong nước, nên không thể giữ nó lại bằng giấy lọc.",
+                  "explanation": "Cô cạn làm bay hơi nước, muối tan kết tinh lại nên thu được muối.",
+                  "option_feedback": {
+                    "A": "Lọc chỉ giữ lại chất rắn không tan, còn muối tan nên chảy qua giấy lọc cùng nước.",
+                    "B": "Chiết dùng để tách hai chất lỏng không hòa tan vào nhau, không tách được chất tan trong dung dịch.",
+                    "D": "Gạn chỉ tách được hai lớp chất lỏng không hòa tan, không thu được muối từ nước muối."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "loc-chiet-co-can-b3",
+              "kind": "text",
+              "md": "Lọc dùng để tách chất rắn không tan khỏi chất lỏng. Ví dụ: lọc cát ra khỏi nước bùn bằng phễu lọc, giấy lọc hoặc vải sạch.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "loc-chiet-co-can-b4",
+              "kind": "text",
+              "md": "Chiết tách hai chất lỏng không hòa tan vào nhau. Dầu ăn nhẹ hơn nước nên nổi lên trên; dùng phễu chiết để tách.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "loc-chiet-co-can-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "loc-chiet-co-can-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Cô cạn dùng để tách chất rắn {{gap}} trong chất lỏng bằng cách làm {{gap}} chất lỏng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "tan",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "bay hơi",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "không tan",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "đông đặc",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "kết tinh",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cô cạn áp dụng cho chất rắn tan: làm chất lỏng bay hơi thì chất rắn tan kết tinh lại.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "loc-chiet-co-can-b5",
+              "kind": "text",
+              "md": "Cô cạn tách chất rắn tan bằng cách làm bay hơi chất lỏng. Cô cạn nước muối: nước bay hơi, muối kết tinh lại.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "loc-chiet-co-can-b6",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Chọn cách tách",
+              "md": "Dựa vào tính chất khác nhau: tan hay không tan, nặng hay nhẹ hơn, bay hơi hay không bay hơi.",
+              "audio": null
+            },
+            {
+              "id": "loc-chiet-co-can-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "loc-chiet-co-can-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi cách tách với ứng dụng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Lọc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "tách chất rắn không tan khỏi chất lỏng",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Chiết",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "tách hai chất lỏng không hòa tan vào nhau",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Cô cạn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "tách chất rắn tan bằng cách làm bay hơi chất lỏng",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi cách tách dựa vào một tính chất khác nhau: tan hay không tan, không hòa tan vào nhau, hay bay hơi.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "loc-chiet-co-can-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tách cát và muối ra khỏi nước",
+              "md": "Đầu tiên lọc: cát không tan bị giữ lại, nước muối chảy xuống. Sau đó cô cạn nước muối: nước bay hơi, muối kết tinh lại.",
+              "audio": null
+            },
+            {
+              "id": "loc-chiet-co-can-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Dùng giấy lọc để tách muối khỏi nước muối là sai. Muối tan trong nước nên chảy qua giấy lọc; muốn thu muối phải cô cạn.",
+              "audio": null
+            },
+            {
+              "id": "loc-chiet-co-can-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "loc-chiet-co-can-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước tách cát và muối ra khỏi hỗn hợp cát + muối + nước.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Cho hỗn hợp qua phễu lọc để cát bị giữ lại trên giấy lọc",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Thu lấy nước muối chảy xuống dưới phễu",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Cô cạn nước muối cho nước bay hơi",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Thu muối kết tinh lại",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": "Chất không tan tách trước, chất tan tách sau.",
+                  "explanation": "Cát không tan nên lọc trước; muối tan nên phải cô cạn nước lọc mới thu được.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "loc-chiet-co-can-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Lọc dùng để tách loại chất nào?",
+                  "answer": "Chất rắn không tan trong chất lỏng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Chiết dùng khi hai chất lỏng có tính chất gì?",
+                  "answer": "Không hòa tan vào nhau.",
+                  "image": null
+                },
+                {
+                  "prompt": "Cô cạn tách chất rắn tan bằng cách nào?",
+                  "answer": "Làm bay hơi chất lỏng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bien-doi-hoa-hoc",
+          "title": "Biến đổi hóa học",
+          "est_minutes": 12,
+          "summary": "Bài học phân biệt biến đổi vật lí với biến đổi hóa học và nhận ra dấu hiệu của biến đổi hóa học qua ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Biến đổi vật lí thay đổi thể, hình dạng, kích thước nhưng không tạo chất mới",
+            "Biến đổi hóa học tạo ra chất mới",
+            "Dấu hiệu: có khí thoát ra, chất kết tủa, đổi màu, phát sáng, tỏa nhiệt",
+            "Biến đổi hóa học thường khó đảo ngược hơn biến đổi vật lí"
+          ],
+          "blocks": [
+            {
+              "id": "bien-doi-hoa-hoc-b2",
+              "kind": "text",
+              "md": "Biến đổi vật lí chỉ thay đổi thể, hình dạng, kích thước, không tạo chất mới. Ví dụ: nước đá tan, thủy tinh vỡ, đường tan trong nước.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bien-doi-hoa-hoc-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Hiện tượng nào sau đây là biến đổi hóa học?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đinh sắt bị gỉ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Nước đá tan thành nước",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Thủy tinh bị vỡ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Đường tan trong nước",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Biến đổi hóa học là biến đổi có tạo ra chất mới.",
+                  "explanation": "Đinh sắt bị gỉ tạo ra chất mới (gỉ sắt) nên là biến đổi hóa học.",
+                  "option_feedback": {
+                    "B": "Nhầm lẫn: nước đá chỉ đổi thể, vẫn là nước nên là biến đổi vật lí.",
+                    "C": "Nhầm lẫn: thủy tinh chỉ thay đổi hình dạng, kích thước, không tạo chất mới.",
+                    "D": "Nhầm lẫn: đường vẫn là đường, cô cạn thu lại được nên là biến đổi vật lí."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b3",
+              "kind": "text",
+              "md": "Biến đổi hóa học tạo ra chất mới. Ví dụ: đốt giấy, đinh sắt bị gỉ, giấm tác dụng với baking soda tạo bọt khí.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Biến đổi hóa học",
+              "md": "Biến đổi hóa học là biến đổi có tạo ra chất mới.",
+              "audio": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bien-doi-hoa-hoc-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Biến đổi {{gap}} tạo ra chất mới, còn biến đổi {{gap}} chỉ thay đổi thể, hình dạng, kích thước mà không tạo ra chất mới.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "hóa học",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "vật lí",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "hỗn hợp",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "dung dịch",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Biến đổi hóa học sinh ra chất mới; biến đổi vật lí chỉ đổi thể, hình dạng, kích thước.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ",
+              "md": "Cho giấm vào baking soda thấy sủi bọt. Đây là biến đổi hóa học vì tạo ra chất mới, trong đó có khí carbon dioxide ($CO_2$) làm sủi bọt.",
+              "audio": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b6",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Dấu hiệu thường gặp",
+              "md": "Có khí thoát ra, có chất kết tủa, đổi màu, phát sáng, tỏa nhiệt.",
+              "audio": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nói “nước sôi là biến đổi hóa học” là sai. Nước chỉ chuyển từ lỏng sang hơi, vẫn là nước, không tạo chất mới.",
+              "audio": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bien-doi-hoa-hoc-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi hiện tượng với cách phân loại đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Nước đá tan",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Biến đổi vật lí",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Đinh sắt bị gỉ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Biến đổi hóa học",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Giấm + baking soda sủi bọt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Tạo ra khí CO2",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Tỏa nhiệt, phát sáng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Dấu hiệu biến đổi hóa học",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Nước đá tan chỉ đổi thể; đinh gỉ và giấm với baking soda tạo chất mới. Tỏa nhiệt, phát sáng là dấu hiệu thường gặp.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b8",
+              "kind": "text",
+              "md": "Biến đổi hóa học thường khó đảo ngược hơn biến đổi vật lí.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "bien-doi-hoa-hoc-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "bien-doi-hoa-hoc-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước thí nghiệm cho giấm vào baking soda theo đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Cho baking soda vào cốc",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Rót giấm vào cốc",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Quan sát thấy sủi bọt khí",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Kết luận đây là biến đổi hóa học",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Phải cho baking soda vào cốc trước rồi mới rót giấm, sau đó quan sát bọt khí và kết luận. Bọt khí CO2 chứng tỏ có chất mới tạo thành.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "bien-doi-hoa-hoc-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Biến đổi vật lí khác biến đổi hóa học ở điểm nào?",
+                  "answer": "Vật lí không tạo chất mới; hóa học tạo ra chất mới.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu ba dấu hiệu thường gặp của biến đổi hóa học.",
+                  "answer": "Có khí thoát ra, có chất kết tủa, đổi màu (hoặc phát sáng, tỏa nhiệt).",
+                  "image": null
+                },
+                {
+                  "prompt": "Nước đá tan và giấy cháy thuộc loại biến đổi nào?",
+                  "answer": "Nước đá tan là biến đổi vật lí; giấy cháy là biến đổi hóa học.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về hỗn hợp, cách nhận biết dung dịch, cách tách các chất ra khỏi hỗn hợp và phân biệt biến đổi vật lí với biến đổi hóa học. Ta sẽ đi qua ba bài: dung dịch, lọc chiết cô cạn, và biến đổi hóa học.",
+          "Hỗn hợp gồm hai hay nhiều chất trộn lẫn nhưng không tạo thành chất mới. Ví dụ nước muối, nước cam, không khí, nước bùn đều là hỗn hợp. Dung dịch là hỗn hợp đồng nhất của chất tan và dung môi. Dung môi hòa tan chất khác, thường là nước; chất tan là chất bị hòa tan.",
+          "Nước đường có đường là chất tan, nước là dung môi. Dung dịch có thể có một hoặc nhiều chất tan; các chất tan phân bố đều và mắt thường không nhìn thấy hạt chất tan. Pha năm gam muối vào bốn mươi lăm gam nước, khuấy đều được nước muối; muối là chất tan, nước là dung môi, khối lượng dung dịch là năm mươi gam. Muốn chất rắn tan nhanh hơn thì khuấy, đun nóng nhẹ hoặc nghiền nhỏ; nói rằng nước muối là chất tinh khiết là sai vì nước muối gồm nước và muối trộn lẫn nên là hỗn hợp.",
+          "Lọc dùng để tách chất rắn không tan khỏi chất lỏng. Ví dụ lọc cát ra khỏi nước bùn bằng phễu lọc, giấy lọc hoặc vải sạch; cát không tan bị giữ lại, nước chảy xuống. Chiết tách hai chất lỏng không hòa tan vào nhau. Dầu ăn nhẹ hơn nước nên nổi lên trên; dùng phễu chiết để tách dầu ăn ra khỏi nước.",
+          "Cô cạn tách chất rắn tan bằng cách làm bay hơi chất lỏng. Cô cạn nước muối thì nước bay hơi, muối kết tinh lại, nên muối vẫn được giữ lại. Chọn cách tách dựa vào tính chất khác nhau như tan hay không tan, nặng hay nhẹ hơn, bay hơi hay không bay hơi. Với hỗn hợp cát và nước muối, đầu tiên lọc để cát không tan bị giữ lại và nước muối chảy xuống, sau đó cô cạn nước muối để nước bay hơi và muối kết tinh lại.",
+          "Dùng giấy lọc để tách muối khỏi nước muối là sai, vì muối tan trong nước nên chảy qua giấy lọc. Muốn thu muối phải cô cạn nước muối.",
+          "Biến đổi vật lí chỉ thay đổi thể, hình dạng, kích thước, không tạo chất mới. Ví dụ nước đá tan, thủy tinh vỡ, đường tan trong nước. Những biến đổi vật lí đó vẫn là chất ban đầu, chỉ khác thể, hình dạng hoặc kích thước. Biến đổi hóa học tạo ra chất mới; ví dụ đốt giấy, đinh sắt bị gỉ, giấm tác dụng với baking soda tạo bọt khí.",
+          "Cho giấm vào baking soda thấy sủi bọt; đây là biến đổi hóa học vì tạo ra chất mới, trong đó có khí carbon dioxide làm sủi bọt. Dấu hiệu của biến đổi hóa học là có khí thoát ra, có chất kết tủa, đổi màu, phát sáng, tỏa nhiệt. Nói nước sôi là biến đổi hóa học là sai, vì nước chỉ chuyển từ lỏng sang hơi, vẫn là nước, không tạo chất mới. Biến đổi hóa học thường khó đảo ngược hơn biến đổi vật lí.",
+          "Ba điều cần nhớ là thứ nhất, hỗn hợp gồm hai hay nhiều chất trộn lẫn mà không tạo chất mới, còn dung dịch là hỗn hợp đồng nhất của chất tan và dung môi. Thứ hai, lọc tách chất rắn không tan, chiết tách hai chất lỏng không hòa tan vào nhau, cô cạn tách chất rắn tan bằng cách làm bay hơi chất lỏng. Thứ ba, biến đổi vật lí không tạo chất mới, còn biến đổi hóa học tạo ra chất mới và thường khó đảo ngược hơn."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

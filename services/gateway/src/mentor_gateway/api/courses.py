@@ -161,7 +161,8 @@ def search_suggest(q: str = Query(min_length=1, max_length=100), user: User = De
 @router.get("/catalog/query")
 def catalog_query(
     q: str = Query("", max_length=200),
-    band: list[str] = Query(default=[]), subject: list[str] = Query(default=[]), language: list[str] = Query(default=[]),
+    band: list[str] = Query(default=[]), subject: list[str] = Query(default=[]), chicken: list[str] = Query(default=[]),
+    language: list[str] = Query(default=[]),
     level: list[str] = Query(default=[]), duration: list[str] = Query(default=[]), media: list[str] = Query(default=[]),
     status: list[str] = Query(default=[]), teacher: list[str] = Query(default=[]),
     sort: str = Query("rel", pattern="^(rel|new|pop|dur)$"), dir: str = Query("asc", pattern="^(asc|desc)$"),
@@ -170,7 +171,7 @@ def catalog_query(
 ) -> dict:
     """Course catalog with search, filters, facet counts, sort and paging. A filter with several values matches any of
     them; different filters all have to match. `band` is not defaulted (the app sends the student's band)."""
-    filters = {"band": set(band), "subject": set(subject), "language": set(language), "level": set(level),
+    filters = {"band": set(band), "subject": set(subject), "chicken": set(chicken), "language": set(language), "level": set(level),
                "duration": set(duration), "media": set(media), "status": set(status), "teacher": set(teacher)}
     return content.query_catalog(cq.Query(q=q.strip(), filters=filters, sort=sort, dir=dir, page=page, page_size=page_size))
 

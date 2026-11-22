@@ -1,0 +1,31 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 700' stroke-linecap='round' stroke-linejoin='round'>
+<defs><filter id='grain' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0'/></filter></defs>
+<rect x='0' y='0' width='1000' height='700' fill='#F7F1E3'/>
+<rect x='125' y='250' width='150' height='140' rx='6' fill='#E9E5F6' stroke='#5A4BC0' stroke-width='3'/>
+<rect x='275' y='250' width='150' height='140' rx='6' fill='#E9E5F6' stroke='#5A4BC0' stroke-width='3'/>
+<rect x='425' y='250' width='150' height='140' rx='6' fill='#F0D76E' stroke='#5A4BC0' stroke-width='3'/>
+<rect x='575' y='250' width='150' height='140' rx='6' fill='#E9E5F6' stroke='#5A4BC0' stroke-width='3'/>
+<rect x='725' y='250' width='150' height='140' rx='6' fill='#E9E5F6' stroke='#5A4BC0' stroke-width='3'/>
+<text x='200.0' y='333.0' font-family='Lexend, sans-serif' font-size='36' text-anchor='middle' fill='#5A4BC0' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>a[0]</text>
+<text x='350.0' y='333.0' font-family='Lexend, sans-serif' font-size='36' text-anchor='middle' fill='#5A4BC0' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>a[1]</text>
+<text x='500.0' y='333.0' font-family='Lexend, sans-serif' font-size='36' text-anchor='middle' fill='#5A4BC0' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>a[2]</text>
+<text x='650.0' y='333.0' font-family='Lexend, sans-serif' font-size='36' text-anchor='middle' fill='#5A4BC0' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>a[3]</text>
+<text x='800.0' y='333.0' font-family='Lexend, sans-serif' font-size='36' text-anchor='middle' fill='#5A4BC0' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>a[4]</text>
+<line x1='200.0' y1='390' x2='200.0' y2='414' stroke='#E8806A' stroke-width='4'/>
+<circle cx='200.0' cy='418.0' r='4' fill='#E8806A'/>
+<text x='200.0' y='464.0' font-family='Lexend, sans-serif' font-size='28' text-anchor='middle' fill='#2B283F' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>1000</text>
+<line x1='350.0' y1='390' x2='350.0' y2='414' stroke='#E8806A' stroke-width='4'/>
+<circle cx='350.0' cy='418.0' r='4' fill='#E8806A'/>
+<text x='350.0' y='464.0' font-family='Lexend, sans-serif' font-size='28' text-anchor='middle' fill='#2B283F' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>1008</text>
+<line x1='500.0' y1='390' x2='500.0' y2='414' stroke='#E8806A' stroke-width='4'/>
+<circle cx='500.0' cy='418.0' r='4' fill='#E8806A'/>
+<text x='500.0' y='464.0' font-family='Lexend, sans-serif' font-size='28' text-anchor='middle' fill='#2B283F' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>1016</text>
+<line x1='650.0' y1='390' x2='650.0' y2='414' stroke='#E8806A' stroke-width='4'/>
+<circle cx='650.0' cy='418.0' r='4' fill='#E8806A'/>
+<text x='650.0' y='464.0' font-family='Lexend, sans-serif' font-size='28' text-anchor='middle' fill='#2B283F' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>1024</text>
+<line x1='800.0' y1='390' x2='800.0' y2='414' stroke='#E8806A' stroke-width='4'/>
+<circle cx='800.0' cy='418.0' r='4' fill='#E8806A'/>
+<text x='800.0' y='464.0' font-family='Lexend, sans-serif' font-size='28' text-anchor='middle' fill='#2B283F' stroke='#F7F1E3' stroke-width='6' paint-order='stroke'>1032</text>
+<path d='M200.0 486 V498 H800.0 V486' fill='none' stroke='#5A4BC0' stroke-width='3'/>
+<rect x='0' y='0' width='1000' height='700' filter='url(#grain)'/>
+</svg>

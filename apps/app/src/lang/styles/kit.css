@@ -1,0 +1,189 @@
+/* The lesson player (mockups/hs-05-bai-hoc-tung-buoc): one step per screen. Top: exit + progress bar. Bottom: one big
+   button; after a check the feedback band slides up with it. Shared quiz classes (.opt .pics .tf ...) live in courses.css
+   and are restyled here, under .lesson only. */
+.lesson { --lua: #F2891F; --lua-ink: #B35400; background: var(--paper); min-height: 100vh; min-height: 100dvh; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; width: 100%; max-width: 720px; margin: 0 auto; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lesson { --lua: #FFA94D; --lua-ink: #FFB65C; } }
+:root[data-theme="dark"] .lesson { --lua: #FFA94D; --lua-ink: #FFB65C; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes ls-in { from { opacity: 0; transform: translateX(16px); } }
+
+/* Mực explains one idea */
+.ls-say { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: end; }
+.lesson .muc { width: 76px; height: 92px; }
+.ls-bub { position: relative; padding: 14px 18px; border-radius: 20px; border: 2px solid var(--rule-strong); background: var(--surface); font-size: 1.05em; line-height: 1.5; }
+.ls-bub::before { content: ""; position: absolute; left: -10px; bottom: 18px; width: 16px; height: 16px; background: var(--surface); border-left: 2px solid var(--rule-strong); border-bottom: 2px solid var(--rule-strong); transform: rotate(45deg); }
+.ls-bub b, .ls-bub strong { color: var(--tim-ink); }
+.ls-bub .blk-text { max-width: none; }
+.ls-media { display: grid; gap: 14px; }
+.ls-media .callout { max-width: none; }
+.ls-media .blk-image img { max-height: 52vh; }
+:root[data-age="uni"] .lesson .md, :root[data-age="uni"] .lesson .callout-body .md { font-family: var(--font-read); }
+.lesson .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+
+/* a question: the stem first, then the answers */
+.lesson .q { border-top: 0; padding: 0; gap: 18px; }
+.lesson .q-stem { font-size: clamp(1.25em, 3.4vw, 1.5em); font-weight: 600; line-height: 1.4; }
+.lesson .q-img { max-width: 100%; }
+.lesson .opts { gap: 12px; }
+.lesson .opt { min-height: 56px; padding: 10px 16px; border-radius: 16px; border-width: 2px; box-shadow: 0 4px 0 var(--rule-strong); }
+.lesson .opt:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 var(--rule-strong); }
+.lesson .opt.picked, .lesson .opt[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); color: var(--tim-ink); }
+.lesson .opt.right { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); color: var(--ink); }
+.lesson .opt.wrong { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); color: var(--ink); }
+.lesson .pics { grid-template-columns: 1fr 1fr; gap: 12px; }
+.lesson .opt.pic { min-height: 120px; padding: 12px; border-radius: 18px; }
+.lesson .opt.pic img { max-width: 180px; }
+.lesson .tf li { border-width: 2px; border-radius: 16px; }
+.lesson .short-in { min-height: 56px; font-size: 1.1em; width: 100%; border-width: 2px; }
+.lesson .short { display: block; }
+.lesson .tap { box-shadow: none; }
+.lesson .hint-line { padding-left: 0; }
+
+/* the bottom: feedback band + one big button */
+
+
+
+
+
+
+
+@keyframes ls-up { from { opacity: 0; transform: translateY(10px); } }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lesson.kid .q { justify-items: center; width: 100%; }
+.lesson.kid .q-stem { justify-content: center; font-size: 1.4em; }
+.lesson.kid .ls-bub { font-size: 1.3em; text-align: left; }
+.lesson.kid .opt.pic { min-height: 150px; border-radius: 26px; }
+
+/* the end: what was done, then the streak */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson .opt.pic.wrong,
+.lesson .wiggle { animation: none; }
+  
+}
+@media (max-width: 520px) { .ls-say { grid-template-columns: 60px minmax(0, 1fr); } .lesson .muc { width: 60px; height: 74px; }  }
+
+/* tiles, pairs, order (hs-05): tap a tile into a gap, tap left then right, tap steps in order */
+:is(.lesson, .practice-run) .ask { margin: 0; font-size: clamp(1.25em, 3.4vw, 1.5em); font-weight: 600; line-height: 1.4; }
+:is(.lesson, .practice-run) .slots { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-height: 64px; padding: 10px 4px; margin: 0; list-style: none; border-bottom: 2px solid var(--rule-strong); font-family: var(--font-read); font-size: 1.35em; }
+:is(.lesson, .practice-run) .slot-piece { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+:is(.lesson, .practice-run) .slots .gap { display: inline-block; min-width: 72px; min-height: 52px; border-radius: 14px; border: 2px dashed var(--tim); background: var(--tim-soft); }
+:is(.lesson, .practice-run) .slots.order:empty::before { content: attr(data-empty); color: var(--ink-3); font-family: var(--font-ui); font-size: .75em; }
+:is(.lesson, .practice-run) .bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 64px; }
+:is(.lesson, .practice-run) .tile { min-height: 52px; min-width: 52px; padding: 0 16px; border-radius: 14px; border: 2px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); font: inherit; font-family: var(--font-read); font-size: 1.15em; color: var(--ink); cursor: pointer; }
+:is(.lesson, .practice-run) .tile:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 var(--rule-strong); }
+:is(.lesson, .practice-run) .tile:disabled { cursor: default; }
+:is(.lesson, .practice-run) .tile.used { visibility: hidden; }
+:is(.lesson, .practice-run) .tile.ui { font-family: var(--font-ui); font-size: 1em; text-align: left; padding: 10px 16px; }
+:is(.lesson, .practice-run) .tile .md { display: inline; }
+:is(.lesson, .practice-run) .slots.right .tile { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); }
+:is(.lesson, .practice-run) .slots.wrong .tile { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); }
+:is(.lesson, .practice-run) .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+:is(.lesson, .practice-run) .pairs-col { display: grid; gap: 10px; align-content: start; }
+:is(.lesson, .practice-run) .pairs .tile { width: 100%; }
+:is(.lesson, .practice-run) .pairs .tile[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); }
+:is(.lesson, .practice-run) .pairs .tile.done { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: none; color: var(--xanh); opacity: .75; }
+:is(.lesson, .practice-run) .pairs .tile.joined { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); }
+:is(.lesson, .practice-run) .pairs .tile.shake { animation: ls-shake .35s; border-color: var(--do); }
+@keyframes ls-shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+/* English: the "VI" button and the Vietnamese share chip */
+.lesson .vibtn { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); font: inherit; font-size: .8em; font-weight: 700; cursor: pointer; margin-left: 8px; vertical-align: middle; }
+.lesson .vibtn[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); }
+.lesson .blk-text .vi { margin-top: 8px; color: var(--ink-2); }
+.lesson .mix { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 12px; color: var(--ink-2); font-size: .9em; }
+.lesson .mixchip { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 99px; background: var(--tim-soft); color: var(--tim-ink); font-weight: 600; }
+.lesson .mixchip .dots { display: inline-flex; gap: 3px; }
+.lesson .mixchip i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--tim); }
+.lesson .mixchip i.on { background: var(--tim); }
+
+/* "Kéo sơ đồ": the plot with a handle on it */
+.lesson .figure.drag { display: grid; gap: 10px; justify-items: center; }
+.lesson .drag-plot { position: relative; width: 100%; max-width: 480px; }
+.lesson .drag-plot .dg { display: block; width: 100%; height: auto; }
+.lesson .drag-hit { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; user-select: none; -webkit-user-select: none; cursor: ew-resize; }
+.lesson .drag-band { fill: var(--xanh); opacity: .18; }
+.lesson .drag-drop { stroke: var(--tim); stroke-width: 2; stroke-dasharray: 4 4; opacity: .6; }
+.lesson .drag-handle { outline: none; cursor: grab; }
+.lesson .drag-handle .dot { fill: var(--tim); stroke: var(--surface); stroke-width: 3; }
+.lesson .drag-handle.on .dot { fill: var(--xanh); }
+.lesson .drag-handle .ring { fill: none; stroke: var(--tim); stroke-width: 3; opacity: 0; }
+.lesson .drag-handle:focus-visible .ring { opacity: 1; }
+.lesson .drag-handle .pulse { fill: none; stroke: var(--tim); stroke-width: 3; opacity: 0; animation: ls-pulse 1.6s ease-out infinite; }
+@keyframes ls-pulse { from { r: 16; opacity: .7; } to { r: 30; opacity: 0; } }
+.lesson .readout { font-size: 1.05em; color: var(--ink-2); text-align: center; margin: 0; }
+.lesson .readout b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.lesson .readout small { display: block; font-size: .85em; color: var(--ink-3); }
+.lesson .drag-say { margin-top: 2px; }
+.lesson .ls-int, .lesson .ls-rc, .lesson .ls-gl, .lesson .ls-one { display: grid; gap: 18px; }
+
+/* "Nhớ lại": say or type, see the idea, mark it */
+.lesson .rc-n { font-size: .9em; font-weight: 600; color: var(--ink-3); }
+.lesson .rc-in { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; align-items: center; }
+.lesson .rc-in.has-mic { grid-template-columns: minmax(0, 1fr) auto; }
+.lesson .rc-in input { min-height: 56px; padding: 0 16px; border-radius: 16px; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--ink); font: inherit; font-size: 1.05em; width: 100%; }
+.lesson .rc-in input:focus-visible { outline: none; border-color: var(--tim); box-shadow: 0 0 0 3px var(--tim-soft); }
+.lesson .mic { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--rule-strong); background: var(--surface); color: var(--tim-ink); cursor: pointer; }
+.lesson .mic svg { width: 26px; height: 26px; }
+.lesson .mic[aria-pressed="true"] { background: var(--tim); border-color: var(--tim); color: var(--on-tim); }
+.lesson.kid .rc-in.has-mic { grid-template-columns: 1fr; justify-items: center; }
+.lesson.kid .rc-in.has-mic input { display: none; }
+.lesson.kid .mic { width: 96px; height: 96px; background: var(--tim); border-color: var(--tim); color: var(--on-tim); box-shadow: 0 5px 0 var(--tim-ink); }
+.lesson.kid .mic svg { width: 44px; height: 44px; }
+.lesson .rc-heard { color: var(--ink-2); text-align: center; min-height: 1.5em; margin: 0; }
+.lesson .rc-ans { display: grid; gap: 4px; padding: 14px 18px; border-radius: 18px; border: 2px solid var(--tim); background: var(--tim-soft); }
+.lesson .rc-ans small { color: var(--tim-ink); font-weight: 600; }
+.lesson .rc-ans .md { font-family: var(--font-read); font-size: 1.3em; font-weight: 600; }
+.lesson .rc-mark { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.lesson .rc-mark .tile { min-height: 58px; font-family: var(--font-ui); font-size: 1.05em; font-weight: 600; text-align: center; }
+.lesson .rc-mark .yes { border-color: var(--xanh); box-shadow: 0 4px 0 var(--xanh); }
+.lesson .rc-mark .no { border-color: var(--do); box-shadow: 0 4px 0 var(--do); }
+@media (prefers-reduced-motion: reduce) { .lesson .pairs .tile.shake, .lesson .drag-handle .pulse { animation: none; } }

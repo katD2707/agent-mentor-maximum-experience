@@ -96,7 +96,7 @@ def test_fix_wrong_answers_after_the_session(client, gw, student, store):
 
     ids = {w["type"]: w["item_id"] for w in report["wrong"]}
     ok = client.post(f"{P}/sessions/{sid}/fix", json={"item_id": ids["ORDER_STEPS"], "answer": {"order": ["s1", "s2", "s3"]}})
-    assert ok.status_code == 200 and ok.json() == {"correct": True}
+    assert ok.status_code == 200 and ok.json()["correct"] is True  # + Làng gà `xp` events
     assert client.post(f"{P}/sessions/{sid}/fix", json={"item_id": ids["ORDER_STEPS"], "answer": "x"}).json()["code"] == "already_fixed"
     bad = client.post(f"{P}/sessions/{sid}/fix", json={"item_id": ids["SINGLE_CHOICE"], "answer": "B"}).json()
     assert bad["correct"] is False and bad["right"] == "A" and bad["explanation"] == "Hai." and bad["note"] == "Đếm thừa."

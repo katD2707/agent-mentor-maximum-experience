@@ -3,6 +3,8 @@
 from datetime import UTC, datetime
 
 from fastapi import APIRouter, Depends, HTTPException
+from typing import Literal
+
 from pydantic import BaseModel, Field, field_validator
 
 from mentor_gateway.api.deps import current_user, get_gw
@@ -27,6 +29,7 @@ class MePatch(BaseModel):
     language: Language | None = None
     theme: Theme | None = None
     display_name: str | None = Field(default=None, max_length=200)
+    avatar: Literal["nam", "nu"] | None = None  # Làng gà first run; null clears it
 
     @field_validator("display_name")
     @classmethod

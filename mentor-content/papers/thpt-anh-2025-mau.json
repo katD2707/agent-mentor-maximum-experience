@@ -1,0 +1,1510 @@
+{
+ "id": "thpt-anh-2025-mau",
+ "kind": "thpt",
+ "band": "g10_12",
+ "chicken": "anh",
+ "title_vi": "Đề mẫu Tiếng Anh THPT, 40 câu",
+ "title_en": "Sample English paper, 40 items",
+ "year": 2025,
+ "minutes": 50,
+ "parts": [
+  {
+   "id": "p1",
+   "title_vi": "Trắc nghiệm",
+   "title_en": "Multiple choice",
+   "type": "SINGLE_CHOICE",
+   "items": [
+    {
+     "id": "eng.communication.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Read the following notice and choose the option that best fits the blank.\n\nNOTICE – CITY LIBRARY\nFrom 1 November, the reading room will be open from 7 a.m. to 9 p.m. on weekdays. Visitors are kindly asked to keep their phones on silent and _____ food or drinks into the computer area. Thank you for your cooperation.",
+     "hint": "Chỗ trống nối với \"to keep\" bằng \"and\" sau cấu trúc \"be asked to do something\". Hai vế phải song song.",
+     "explanation": "Cấu trúc bị động \"be asked (not) to do something\" (được yêu cầu (không) làm gì). Câu có hai vế song song: \"asked to keep their phones on silent and not to bring food or drinks\". Dạng phủ định của to-infinitive là \"not to + V\". \"not bringing\" (A) là V-ing, không song song với \"to keep\"; \"don't bring\" (B) là câu mệnh lệnh, không đứng sau \"and\" trong cấu trúc này; \"to not bringing\" (D) sai vì sau \"to\" phải là động từ nguyên mẫu. Chọn C.",
+     "skill_ids": [
+      "english.communication.notices"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "not bringing"
+      },
+      {
+       "id": "B",
+       "text": "don't bring"
+      },
+      {
+       "id": "C",
+       "text": "not to bring"
+      },
+      {
+       "id": "D",
+       "text": "to not bringing"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "V-ing không song song với \"to keep\" trong cấu trúc \"be asked to do\".",
+      "B": "\"don't bring\" là câu mệnh lệnh độc lập, không ghép được vào cấu trúc \"asked to ...\".",
+      "D": "Sau \"to\" (to-infinitive) phải là động từ nguyên mẫu, không dùng V-ing."
+     }
+    },
+    {
+     "id": "eng.communication.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Read the following advertisement and choose the option that best fits the blank.\n\nGREEN BIKE RENTAL\nExplore the Old Quarter on two wheels! Our bikes are light, safe and _____ for riders of all ages. Rent one for just VND 30,000 per hour, helmet included. Students with a valid ID card get a 20% discount every weekend. Book online or visit our shop at 15 Lotus Street.",
+     "hint": "Chỗ trống đứng trong chuỗi \"light, safe and _____\" sau động từ \"are\". Các từ trong chuỗi cùng loại từ gì?",
+     "explanation": "Sau động từ to be \"are\" là chuỗi tính từ song song \"light, safe and _____\", nên cần một tính từ. Cụm \"suitable for somebody\" nghĩa là phù hợp với ai. \"suit\" (A) là động từ, \"suitably\" (B) là trạng từ, \"suitability\" (C) là danh từ, đều không song song với \"light, safe\". Chọn D.",
+     "skill_ids": [
+      "english.communication.notices"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "suit"
+      },
+      {
+       "id": "B",
+       "text": "suitably"
+      },
+      {
+       "id": "C",
+       "text": "suitability"
+      },
+      {
+       "id": "D",
+       "text": "suitable"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "\"suit\" là động từ, không đứng sau \"are\" trong chuỗi tính từ.",
+      "B": "\"suitably\" là trạng từ, không bổ nghĩa cho chủ ngữ sau to be.",
+      "C": "\"suitability\" là danh từ, không song song với các tính từ \"light, safe\"."
+     }
+    },
+    {
+     "id": "eng.communication.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the most suitable response to complete the exchange.\n\nLan: \"Would you mind if I opened the window? It's quite hot in here.\"\nPeter: \"_____\"",
+     "hint": "\"Would you mind ...?\" hỏi \"Bạn có phiền không ...?\". Muốn đồng ý thì phải trả lời là KHÔNG phiền.",
+     "explanation": "Câu hỏi \"Would you mind if I opened the window?\" nghĩa là \"Bạn có phiền nếu mình mở cửa sổ không?\". Để cho phép, ta trả lời \"Not at all. Please do.\" (Không phiền chút nào. Bạn cứ mở đi.). \"Yes, of course\" (A) về mặt từ ngữ lại có nghĩa \"có, tôi phiền\" nên mâu thuẫn với \"Go ahead\"; \"Yes, I'd be glad to\" (B) là lời nhận lời giúp đỡ, không phải lời cho phép; \"Never mind. It's not your fault\" (D) dùng để đáp lại lời xin lỗi. Chọn C.",
+     "skill_ids": [
+      "english.communication.responses"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "Yes, of course. Go ahead."
+      },
+      {
+       "id": "B",
+       "text": "Yes, I'd be glad to."
+      },
+      {
+       "id": "C",
+       "text": "Not at all. Please do."
+      },
+      {
+       "id": "D",
+       "text": "Never mind. It's not your fault."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Bẫy phổ biến: \"Yes\" với \"Would you mind\" nghĩa là \"tôi có phiền\", mâu thuẫn với \"Go ahead\".",
+      "B": "\"I'd be glad to\" dùng khi nhận lời làm gì cho ai, trong khi Lan đang xin phép.",
+      "D": "Đây là lời đáp cho một lời xin lỗi, không hợp với lời xin phép."
+     }
+    },
+    {
+     "id": "eng.communication.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the most suitable response to complete the exchange.\n\nLinh: \"Why don't we take part in the beach clean-up this Sunday?\"\nJack: \"_____\"",
+     "hint": "\"Why don't we ...?\" là một lời đề nghị, không phải câu hỏi lý do. Câu đáp phải chấp nhận hoặc từ chối đề nghị.",
+     "explanation": "\"Why don't we + V?\" dùng để rủ rê, đề nghị cùng làm gì. Câu đáp phù hợp là lời từ chối lịch sự có lý do: \"I'd love to, but I've already promised to help my grandparents.\" (Mình rất muốn, nhưng mình đã hứa giúp ông bà rồi.). (A) chỉ kể chuyện năm ngoái, không trả lời lời rủ cho Chủ nhật này; (B) hiểu nhầm \"why\" là hỏi lý do; (C) là lời mời của người tổ chức, trong khi chính Linh mới là người rủ Jack. Chọn D.",
+     "skill_ids": [
+      "english.communication.responses"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "Yes, I took part in it last year."
+      },
+      {
+       "id": "B",
+       "text": "Because the beach is really dirty."
+      },
+      {
+       "id": "C",
+       "text": "You're welcome to join us."
+      },
+      {
+       "id": "D",
+       "text": "I'd love to, but I've already promised to help my grandparents."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Chỉ nói về quá khứ, không chấp nhận hay từ chối lời rủ cho Chủ nhật này.",
+      "B": "Bẫy: \"Why\" ở đây không hỏi lý do mà là cấu trúc đề nghị.",
+      "C": "Câu này là lời mời của người rủ; Jack là người được rủ nên nói vậy không hợp vai."
+     }
+    },
+    {
+     "id": "eng.grammar.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Since she moved to Da Nang in 2020, my sister _____ three different jobs in the tourism industry.",
+     "hint": "Chú ý mốc thời gian với \"since\" và mối liên hệ của hành động với hiện tại.",
+     "explanation": "Mệnh đề \"Since + mốc thời gian quá khứ\" (Since she moved to Da Nang in 2020) cho biết khoảng thời gian bắt đầu trong quá khứ và được tính đến hiện tại, nên mệnh đề chính dùng thì hiện tại hoàn thành: \"has had three different jobs\" (tính đến nay đã làm ba công việc khác nhau). \"had\" (quá khứ đơn) diễn tả việc đã kết thúc, không nối được với hiện tại; \"is having\" sai vì \"have\" mang nghĩa có/sở hữu (công việc) là động từ trạng thái, không chia tiếp diễn và không đi với \"since\"; \"was having\" (quá khứ tiếp diễn) cũng không dùng với \"since\" để tính đến nay. Chọn B.",
+     "skill_ids": [
+      "english.grammar.tenses"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "had"
+      },
+      {
+       "id": "B",
+       "text": "has had"
+      },
+      {
+       "id": "C",
+       "text": "is having"
+      },
+      {
+       "id": "D",
+       "text": "was having"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "\"had\" là quá khứ đơn, diễn tả việc đã kết thúc, không phù hợp với \"since\" tính đến hiện tại.",
+      "C": "\"have\" (có/sở hữu) là động từ trạng thái, không chia tiếp diễn; hiện tại tiếp diễn cũng không đi với \"since\".",
+      "D": "Quá khứ tiếp diễn diễn tả hành động đang xảy ra tại một thời điểm trong quá khứ, không dùng với \"since\" để tính đến nay."
+     }
+    },
+    {
+     "id": "eng.grammar.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Our teacher encouraged us _____ part in the community clean-up campaign last weekend.",
+     "hint": "Nhớ lại cấu trúc của động từ \"encourage\" khi có tân ngữ chỉ người.",
+     "explanation": "Cấu trúc: encourage + somebody + to V (khuyến khích ai làm gì), nên \"encouraged us to take part in\" là đúng. \"taking\" sai vì sau \"encourage + tân ngữ chỉ người\" không dùng V-ing (encourage + V-ing chỉ dùng khi không có tân ngữ người, ví dụ \"encourage recycling\"). \"take\" (nguyên mẫu không \"to\") và \"took\" (động từ đã chia thì) đều sai cấu trúc. Chọn A.",
+     "skill_ids": [
+      "english.grammar.gerund_infinitive"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "to take"
+      },
+      {
+       "id": "B",
+       "text": "taking"
+      },
+      {
+       "id": "C",
+       "text": "take"
+      },
+      {
+       "id": "D",
+       "text": "took"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "encourage + V-ing chỉ dùng khi không có tân ngữ chỉ người; ở đây có \"us\" nên phải là \"to V\".",
+      "C": "Thiếu \"to\": \"encourage somebody\" không đi với động từ nguyên mẫu trần.",
+      "D": "Động từ đã chia thì (took) không thể đứng sau tân ngữ \"us\" trong cấu trúc này."
+     }
+    },
+    {
+     "id": "eng.grammar.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "If more people in our city _____ to work by bicycle nowadays, the air would be much cleaner.",
+     "hint": "Mệnh đề chính dùng \"would be\" và câu có \"nowadays\": đây là giả định ở hiện tại hay ở quá khứ?",
+     "explanation": "Mệnh đề chính \"the air would be much cleaner\" cùng trạng từ \"nowadays\" cho thấy đây là câu điều kiện loại 2 – giả định trái với thực tế ở hiện tại (thực tế ít người đạp xe đi làm). Mệnh đề if dùng quá khứ đơn: \"If more people cycled...\". \"cycle\" (hiện tại đơn) dùng cho điều kiện loại 1, đi với \"will\" chứ không đi với \"would\"; \"will cycle\" không dùng trong mệnh đề if để nêu điều kiện; \"had cycled\" (quá khứ hoàn thành) chỉ giả định về quá khứ, mâu thuẫn với \"nowadays\". Chọn C.",
+     "skill_ids": [
+      "english.grammar.conditionals"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "cycle"
+      },
+      {
+       "id": "B",
+       "text": "will cycle"
+      },
+      {
+       "id": "C",
+       "text": "cycled"
+      },
+      {
+       "id": "D",
+       "text": "had cycled"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Hiện tại đơn dùng cho điều kiện loại 1 (đi với \"will\"), không đi với \"would be\".",
+      "B": "Không dùng \"will\" trong mệnh đề if để nêu điều kiện.",
+      "D": "Quá khứ hoàn thành chỉ giả định về quá khứ, mâu thuẫn với \"nowadays\"."
+     }
+    },
+    {
+     "id": "eng.grammar.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "The ancient temple on the hill is believed _____ in the 11th century.",
+     "hint": "Xét hai điều: ngôi chùa tự xây hay được xây? Việc xây xảy ra trước hay cùng lúc với \"is believed\"?",
+     "explanation": "Cấu trúc bị động với động từ tường thuật: S + is believed + to V / to have V3. Việc xây (in the 11th century) xảy ra trước thời điểm \"is believed\" (hiện tại) nên dùng động từ nguyên mẫu hoàn thành; ngôi chùa \"được xây\" nên dùng dạng bị động → \"to have been built\". \"to build\" và \"to have built\" là chủ động (ngôi chùa tự xây – vô lí); \"to be built\" là bị động nhưng chỉ hành động cùng lúc hoặc sau thời điểm hiện tại, mâu thuẫn với \"in the 11th century\". Chọn D.",
+     "skill_ids": [
+      "english.grammar.passive",
+      "english.grammar.gerund_infinitive"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "to build"
+      },
+      {
+       "id": "B",
+       "text": "to be built"
+      },
+      {
+       "id": "C",
+       "text": "to have built"
+      },
+      {
+       "id": "D",
+       "text": "to have been built"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Chủ động và không lùi thời gian – vừa sai thể vừa sai thời điểm.",
+      "B": "Đúng thể bị động nhưng không diễn tả được việc đã xảy ra trong quá khứ (thế kỉ 11).",
+      "C": "Đúng dạng hoàn thành nhưng là chủ động: ngôi chùa không tự xây."
+     }
+    },
+    {
+     "id": "eng.grammar.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "_____ the importance of lifelong learning, she would not have enrolled in an online course at the age of sixty.",
+     "hint": "Mệnh đề chính \"would not have enrolled\" thuộc loại câu điều kiện nào? Dạng đảo ngữ tương ứng được viết thế nào?",
+     "explanation": "Mệnh đề chính \"would not have enrolled\" (would have + V3) cho biết đây là điều kiện loại 3 – giả định trái với quá khứ (thực tế bà đã nhận ra tầm quan trọng và đã đăng kí học). Câu gốc: \"If she had not realised...\" → đảo ngữ: Had + S + not + V3 = \"Had she not realised\". \"Should she not realise\" là đảo ngữ loại 1 và \"Were she not to realise\" là đảo ngữ loại 2 – đều không khớp với mệnh đề chính loại 3. \"Hadn't she realised\" sai vì đảo ngữ câu điều kiện không dùng dạng viết tắt \"Hadn't\" ở đầu; \"not\" phải đứng sau chủ ngữ. Chọn A.",
+     "skill_ids": [
+      "english.grammar.conditionals",
+      "english.grammar.inversion"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "Had she not realised"
+      },
+      {
+       "id": "B",
+       "text": "Should she not realise"
+      },
+      {
+       "id": "C",
+       "text": "Were she not to realise"
+      },
+      {
+       "id": "D",
+       "text": "Hadn't she realised"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đảo ngữ loại 1 (Should), không hợp với mệnh đề chính loại 3 \"would not have enrolled\".",
+      "C": "Đảo ngữ loại 2 (Were ... to V), không khớp với mệnh đề chính loại 3.",
+      "D": "Đảo ngữ câu điều kiện không dùng dạng viết tắt \"Hadn't\" ở đầu câu; phải là \"Had she not\"."
+     }
+    },
+    {
+     "id": "eng.grammar.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Every year, millions of tonnes of plastic waste _____ into the world's oceans.",
+     "hint": "Xác định thì từ dấu hiệu \"Every year\", rồi xét quan hệ giữa chủ ngữ và hành động.",
+     "explanation": "Chủ ngữ \"millions of tonnes of plastic waste\" không tự thực hiện hành động \"dump\" (đổ, vứt bỏ) mà bị con người đổ ra biển, nên phải dùng câu bị động. \"Every year\" chỉ sự việc lặp lại hằng năm → hiện tại đơn bị động: are + V3 = \"are dumped\". \"dump\", \"are dumping\", \"have dumped\" đều là dạng chủ động, nghĩa là rác thải tự đi đổ một thứ khác – vô lí, và câu cũng không có tân ngữ. Chọn D.",
+     "skill_ids": [
+      "english.grammar.passive"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "dump"
+      },
+      {
+       "id": "B",
+       "text": "are dumping"
+      },
+      {
+       "id": "C",
+       "text": "have dumped"
+      },
+      {
+       "id": "D",
+       "text": "are dumped"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Dạng chủ động hiện tại đơn: rác thải không thể tự \"đổ\" thứ gì.",
+      "B": "Hiện tại tiếp diễn chủ động – vừa sai thể (cần bị động) vừa không hợp với \"Every year\".",
+      "C": "Hiện tại hoàn thành chủ động – rác thải không phải là chủ thể thực hiện hành động."
+     }
+    },
+    {
+     "id": "eng.grammar.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "The volunteers, most of _____ were university students, planted over 2,000 trees along the river.",
+     "hint": "Phần giữa hai dấu phẩy cần nối với \"The volunteers\" bằng từ loại nào?",
+     "explanation": "Phần giữa hai dấu phẩy là mệnh đề quan hệ không xác định bổ nghĩa cho \"The volunteers\" (chỉ người). Cấu trúc lượng từ + of + whom/which: \"most of whom\" = hầu hết trong số họ. Sau giới từ, đại từ quan hệ chỉ người phải là \"whom\", không dùng \"who\". \"them\" là đại từ nhân xưng, không có chức năng nối mệnh đề, nên câu sẽ thành hai mệnh đề độc lập chỉ ngăn cách bằng dấu phẩy – sai ngữ pháp. \"which\" dùng cho vật, không dùng cho \"volunteers\". Chọn A.",
+     "skill_ids": [
+      "english.grammar.relative_clauses"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "whom"
+      },
+      {
+       "id": "B",
+       "text": "them"
+      },
+      {
+       "id": "C",
+       "text": "who"
+      },
+      {
+       "id": "D",
+       "text": "which"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "\"them\" không phải đại từ quan hệ, không nối được hai mệnh đề; câu sẽ gồm hai mệnh đề độc lập chỉ nối bằng dấu phẩy.",
+      "C": "Sau giới từ \"of\" không dùng \"who\"; phải dùng \"whom\".",
+      "D": "\"which\" chỉ vật, trong khi \"volunteers\" là người."
+     }
+    },
+    {
+     "id": "eng.grammar.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Most of the products _____ in this factory are exported to Europe and Japan.",
+     "hint": "Câu đã có động từ chính \"are exported\". Chỗ trống là mệnh đề quan hệ rút gọn – mang nghĩa chủ động hay bị động?",
+     "explanation": "Câu đã có động từ chính \"are exported\", nên chỗ trống chỉ có thể là mệnh đề quan hệ (rút gọn) bổ nghĩa cho \"the products\". Sản phẩm được sản xuất (nghĩa bị động): \"which are made in this factory\" → rút gọn thành \"made in this factory\" (V3). \"making\" là rút gọn nghĩa chủ động (sản phẩm tự sản xuất – vô lí); \"are made\" khiến câu có hai động từ chia thì mà không có từ nối; \"which make\" cũng mang nghĩa chủ động sai. Chọn C.",
+     "skill_ids": [
+      "english.grammar.relative_clauses"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "making"
+      },
+      {
+       "id": "B",
+       "text": "are made"
+      },
+      {
+       "id": "C",
+       "text": "made"
+      },
+      {
+       "id": "D",
+       "text": "which make"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "V-ing là rút gọn mang nghĩa chủ động: sản phẩm không tự sản xuất.",
+      "B": "Thêm \"are made\" khiến câu có hai động từ chính mà không có đại từ quan hệ nối.",
+      "D": "\"which make\" mang nghĩa chủ động (sản phẩm làm ra thứ gì đó) – sai nghĩa."
+     }
+    },
+    {
+     "id": "eng.vocabulary.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Learners who want to _____ progress in English should practise speaking a little every day.",
+     "hint": "Danh từ \"progress\" kết hợp cố định với động từ nào?",
+     "explanation": "Collocation cố định: make progress (tiến bộ). Không nói \"do progress\", \"take progress\" hay \"get progress\". \"do\" thường đi với homework, research, exercise; \"take\" đi với part, notes, a break; \"get\" đi với a job, a chance... Chọn B.",
+     "skill_ids": [
+      "english.vocabulary.collocations"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "do"
+      },
+      {
+       "id": "B",
+       "text": "make"
+      },
+      {
+       "id": "C",
+       "text": "take"
+      },
+      {
+       "id": "D",
+       "text": "get"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "\"do\" đi với homework, research, damage..., không đi với \"progress\".",
+      "C": "\"take\" đi với part, notes, a break..., không nói \"take progress\".",
+      "D": "Không có kết hợp \"get progress\" trong tiếng Anh chuẩn."
+     }
+    },
+    {
+     "id": "eng.vocabulary.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "After graduating, Minh decided to _____ for a job at an international logistics company.",
+     "hint": "Động từ nào đi với giới từ \"for\" mang nghĩa \"nộp đơn xin\"?",
+     "explanation": "apply for a job = nộp đơn xin việc. \"request\" là ngoại động từ, dùng trực tiếp \"request something\" chứ không nói \"request for a job\"; \"enrol\" (đăng kí nhập học) đi với khóa học, trường học; \"claim for\" dùng khi đòi tiền bồi thường, chi phí (claim for damages/expenses). Chọn D.",
+     "skill_ids": [
+      "english.vocabulary.collocations"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "request"
+      },
+      {
+       "id": "B",
+       "text": "enrol"
+      },
+      {
+       "id": "C",
+       "text": "claim"
+      },
+      {
+       "id": "D",
+       "text": "apply"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "\"request\" dùng trực tiếp với tân ngữ (request information), không đi với \"for a job\".",
+      "B": "\"enrol\" dùng cho khóa học, trường học, không dùng cho việc làm.",
+      "C": "\"claim for\" dùng khi đòi tiền bồi thường, chi phí, không phải xin việc."
+     }
+    },
+    {
+     "id": "eng.vocabulary.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Rapid urbanisation has put a lot of _____ on public services such as hospitals, schools and public transport.",
+     "hint": "Tìm danh từ kết hợp với \"put ... on\" mang nghĩa \"gây áp lực, gây quá tải\".",
+     "explanation": "put pressure on something/somebody = gây áp lực lên... Đô thị hóa nhanh gây áp lực lên bệnh viện, trường học, giao thông công cộng. \"tension\" = sự căng thẳng (thường giữa người với người, nhóm với nhóm), không dùng \"put tension on public services\"; \"force\" = lực, vũ lực, không tạo collocation này; \"effort\" đi với \"put effort into\" (dồn công sức vào) và sai nghĩa. Chọn B.",
+     "skill_ids": [
+      "english.vocabulary.collocations"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "tension"
+      },
+      {
+       "id": "B",
+       "text": "pressure"
+      },
+      {
+       "id": "C",
+       "text": "force"
+      },
+      {
+       "id": "D",
+       "text": "effort"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "\"tension\" thường nói về căng thẳng giữa người/nhóm (tension between...), không dùng \"put tension on public services\".",
+      "C": "\"force\" = lực/vũ lực, không tạo collocation với \"put ... on\" theo nghĩa gây quá tải.",
+      "D": "\"effort\" đi với \"put ... into\" và mang nghĩa nỗ lực, không hợp ngữ cảnh."
+     }
+    },
+    {
+     "id": "eng.vocabulary.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "The new learning app looks complicated at first, but once you get the _____ of it, you'll find it really useful.",
+     "hint": "Thành ngữ \"get the ___ of something\" nghĩa là \"dần quen và biết cách làm/cách dùng\".",
+     "explanation": "get the hang of something (thân mật) = dần nắm được cách làm/cách dùng cái gì. Ngữ cảnh: ứng dụng lúc đầu trông phức tạp, nhưng khi đã quen cách dùng thì thấy rất hữu ích. \"grip\" chỉ có trong \"get a grip\" = bình tĩnh lại, hoặc \"get a grip on / get to grips with something\" = kiểm soát được, bắt đầu nắm được (vì vậy A dễ gây nhầm), nhưng không nói \"get the grip of\"; \"hold\" chỉ có trong \"get hold of\" (không có \"the\") = có được, liên lạc được; \"touch\" không tạo thành cụm \"get the touch of\". Chọn D.",
+     "skill_ids": [
+      "english.vocabulary.idioms"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "grip"
+      },
+      {
+       "id": "B",
+       "text": "touch"
+      },
+      {
+       "id": "C",
+       "text": "hold"
+      },
+      {
+       "id": "D",
+       "text": "hang"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Có \"get a grip on / get to grips with something\" (kiểm soát được, bắt đầu nắm được) và \"get a grip\" (bình tĩnh lại), nhưng không có \"get the grip of\".",
+      "B": "Không có thành ngữ \"get the touch of\".",
+      "C": "\"get hold of\" (không có \"the\") = có được, liên lạc với ai – sai cả nghĩa lẫn cấu trúc."
+     }
+    },
+    {
+     "id": "eng.vocabulary.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "After ten years of working in a bank, Hoa finally decided to _____ the plunge and start her own organic farm.",
+     "hint": "Thành ngữ \"___ the plunge\" nghĩa là quyết định làm một việc quan trọng, có phần mạo hiểm sau thời gian đắn đo.",
+     "explanation": "take the plunge = quyết định làm một việc lớn, mạo hiểm sau khi cân nhắc (ví dụ bỏ việc ổn định để khởi nghiệp). Ngữ cảnh: sau mười năm làm ngân hàng, Hoa \"finally decided\" mở trang trại hữu cơ của riêng mình. Thành ngữ cố định chỉ dùng động từ \"take\"; \"give/get/do the plunge\" đều không tồn tại. Chọn C.",
+     "skill_ids": [
+      "english.vocabulary.idioms"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "give"
+      },
+      {
+       "id": "B",
+       "text": "get"
+      },
+      {
+       "id": "C",
+       "text": "take"
+      },
+      {
+       "id": "D",
+       "text": "do"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Không có thành ngữ \"give the plunge\".",
+      "B": "\"get the plunge\" không phải thành ngữ tiếng Anh.",
+      "D": "\"do the plunge\" không tồn tại; thành ngữ cố định dùng \"take\"."
+     }
+    },
+    {
+     "id": "eng.vocabulary.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "A lot of information on social media is not verified, so you should always check facts against _____ sources.",
+     "hint": "Cần tính từ mô tả nguồn tin \"có thể tin cậy được\".",
+     "explanation": "reliable sources = nguồn tin đáng tin cậy – kết hợp rất phổ biến khi nói về kiểm chứng thông tin. \"trustful\" nghĩa là \"cả tin, dễ tin người\" (mô tả tính cách người), không mô tả nguồn tin; \"dependent\" nghĩa là \"phụ thuộc\"; \"faithful\" nghĩa là \"trung thành, chung thủy\" – đều không kết hợp tự nhiên với \"sources\" trong ngữ cảnh này. Chọn A.",
+     "skill_ids": [
+      "english.vocabulary.collocations"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "reliable"
+      },
+      {
+       "id": "B",
+       "text": "trustful"
+      },
+      {
+       "id": "C",
+       "text": "dependent"
+      },
+      {
+       "id": "D",
+       "text": "faithful"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "\"trustful\" = cả tin, dễ tin người – nói về tính cách con người, không phải nguồn tin.",
+      "C": "\"dependent\" = phụ thuộc, không mang nghĩa đáng tin cậy.",
+      "D": "\"faithful\" = trung thành, chung thủy – không kết hợp tự nhiên với \"sources\" ở đây."
+     }
+    },
+    {
+     "id": "eng.vocabulary.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "The school had to _____ the outdoor music festival because of the approaching storm.",
+     "hint": "Khi cơn bão sắp đến, một sự kiện ngoài trời thường sẽ ra sao?",
+     "explanation": "call off = hủy bỏ (sự kiện, kế hoạch). Vì bão sắp đến nên trường phải hủy lễ hội âm nhạc ngoài trời. \"put on\" = tổ chức, trình diễn – trái với lí do \"because of the approaching storm\"; \"take off\" = cởi ra, cất cánh, hoặc trở nên thành công nhanh; \"turn down\" = từ chối (lời mời, đề nghị) hoặc vặn nhỏ âm lượng. Chọn A.",
+     "skill_ids": [
+      "english.vocabulary.phrasal_verbs"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "call off"
+      },
+      {
+       "id": "B",
+       "text": "put on"
+      },
+      {
+       "id": "C",
+       "text": "take off"
+      },
+      {
+       "id": "D",
+       "text": "turn down"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "\"put on\" = tổ chức/trình diễn – không hợp với lí do \"because of the approaching storm\".",
+      "C": "\"take off\" = cởi ra/cất cánh/thành công nhanh, không mang nghĩa hủy sự kiện.",
+      "D": "\"turn down\" = từ chối lời mời/đề nghị, hoặc vặn nhỏ âm lượng."
+     }
+    },
+    {
+     "id": "eng.vocabulary.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Visitors are advised to _____ local customs, such as taking off their shoes before entering a pagoda.",
+     "hint": "Các phương án có hình thức gần giống nhau; hãy dịch nghĩa từng từ trong ngữ cảnh du lịch.",
+     "explanation": "respect local customs = tôn trọng phong tục địa phương – phù hợp với ví dụ cởi giày trước khi vào chùa. \"respond\" (đáp lại) là nội động từ, cần \"respond to\" và không hợp nghĩa; \"reserve\" = đặt trước, dành riêng; \"relieve\" = làm dịu, giảm bớt. Các từ này giống nhau về hình thức (re-) nhưng sai nghĩa. Chọn C.",
+     "skill_ids": [
+      "english.vocabulary.collocations"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "respond"
+      },
+      {
+       "id": "B",
+       "text": "reserve"
+      },
+      {
+       "id": "C",
+       "text": "respect"
+      },
+      {
+       "id": "D",
+       "text": "relieve"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "\"respond\" = đáp lại, cần giới từ \"to\" và không hợp nghĩa.",
+      "B": "\"reserve\" = đặt trước (phòng, bàn) hoặc dành riêng – không dùng với phong tục.",
+      "D": "\"relieve\" = làm giảm nhẹ (cơn đau, căng thẳng) – sai nghĩa."
+     }
+    },
+    {
+     "id": "eng.word-formation.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Air _____ in big cities like Ha Noi has become a serious threat to public health.",
+     "hint": "Chỗ trống cùng với \"Air\" tạo thành chủ ngữ của câu – cần từ loại gì?",
+     "explanation": "Chỗ trống đứng sau \"Air\" và trước động từ \"has become\", tạo thành cụm danh từ ghép làm chủ ngữ: air pollution (ô nhiễm không khí). \"pollute\" là động từ; \"polluted\" là tính từ/quá khứ phân từ (bị ô nhiễm), phải đứng trước danh từ (polluted air); \"polluting\" là V-ing/tính từ (gây ô nhiễm), không tạo được cụm chủ ngữ hợp lệ với \"Air\". Chọn C.",
+     "skill_ids": [
+      "english.wordform.word_class"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "pollute"
+      },
+      {
+       "id": "B",
+       "text": "polluted"
+      },
+      {
+       "id": "C",
+       "text": "pollution"
+      },
+      {
+       "id": "D",
+       "text": "polluting"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "\"pollute\" là động từ, không thể làm chủ ngữ cùng \"Air\".",
+      "B": "\"polluted\" là tính từ (bị ô nhiễm), cần đứng trước danh từ: polluted air.",
+      "D": "\"polluting\" là tính từ/V-ing (gây ô nhiễm), không kết hợp thành \"Air polluting\"."
+     }
+    },
+    {
+     "id": "eng.word-formation.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Viet Nam is famous for its _____ landscapes, from terraced rice fields to limestone islands.",
+     "hint": "Giữa tính từ sở hữu \"its\" và danh từ \"landscapes\" cần từ loại nào?",
+     "explanation": "Cấu trúc: tính từ sở hữu + tính từ + danh từ → its beautiful landscapes (những phong cảnh đẹp). \"beauty\" là danh từ, \"beauty landscapes\" không phải cụm danh từ chuẩn; \"beautify\" là động từ (làm đẹp); \"beautifully\" là trạng từ, không bổ nghĩa trực tiếp cho danh từ. Chọn D.",
+     "skill_ids": [
+      "english.wordform.word_class"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "beauty"
+      },
+      {
+       "id": "B",
+       "text": "beautify"
+      },
+      {
+       "id": "C",
+       "text": "beautifully"
+      },
+      {
+       "id": "D",
+       "text": "beautiful"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "\"beauty\" là danh từ; không dùng \"beauty landscapes\" để chỉ phong cảnh đẹp.",
+      "B": "\"beautify\" là động từ, không đứng trước danh từ để bổ nghĩa.",
+      "C": "Trạng từ không bổ nghĩa cho danh từ \"landscapes\"."
+     }
+    },
+    {
+     "id": "eng.word-formation.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Jobs in the renewable energy sector usually require a high level of technical _____.",
+     "hint": "Cụm \"a high level of ...\" cần một danh từ chỉ năng lực/kiến thức, không phải danh từ chỉ người.",
+     "explanation": "Sau \"a high level of\" + tính từ \"technical\" cần một danh từ trừu tượng, không đếm được, chỉ năng lực: expertise (chuyên môn, kiến thức chuyên sâu). \"expert\" là danh từ đếm được chỉ người (chuyên gia) – ở số ít cần mạo từ và không diễn tả được \"mức độ\"; \"experts\" (các chuyên gia) cũng chỉ người, \"a high level of technical experts\" không hợp nghĩa với yêu cầu của công việc; \"expertly\" là trạng từ, không đứng sau giới từ \"of\". Chọn B.",
+     "skill_ids": [
+      "english.wordform.word_class",
+      "english.wordform.suffixes"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "expert"
+      },
+      {
+       "id": "B",
+       "text": "expertise"
+      },
+      {
+       "id": "C",
+       "text": "expertly"
+      },
+      {
+       "id": "D",
+       "text": "experts"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "\"expert\" là danh từ đếm được chỉ người (chuyên gia), không diễn tả \"mức độ chuyên môn\".",
+      "C": "\"expertly\" là trạng từ, không đứng sau giới từ \"of\" làm tân ngữ.",
+      "D": "\"experts\" chỉ người; \"a high level of technical experts\" không hợp nghĩa với yêu cầu của công việc."
+     }
+    },
+    {
+     "id": "eng.word-formation.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "The _____ of the old textile factory into an art centre has attracted many young visitors to the area.",
+     "hint": "Sau \"The\" và trước \"of\" cần danh từ; danh từ đó chỉ quá trình hay chỉ người/thiết bị?",
+     "explanation": "Cấu trúc \"The + N + of + A + into + B\" cần danh từ chỉ quá trình: the conversion of A into B = việc chuyển đổi A thành B. \"convert\" chủ yếu là động từ (danh từ \"convert\" chỉ người cải đạo – sai nghĩa); \"converter\" là thiết bị chuyển đổi (bộ chuyển đổi điện), không phải quá trình; \"convertible\" là tính từ (có thể chuyển đổi) hoặc danh từ chỉ xe mui trần. Chọn D.",
+     "skill_ids": [
+      "english.wordform.suffixes"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "convert"
+      },
+      {
+       "id": "B",
+       "text": "converter"
+      },
+      {
+       "id": "C",
+       "text": "convertible"
+      },
+      {
+       "id": "D",
+       "text": "conversion"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Danh từ \"convert\" nghĩa là người cải đạo – không hợp ngữ cảnh; \"convert\" thường là động từ.",
+      "B": "\"converter\" là thiết bị chuyển đổi, không chỉ việc biến nhà máy thành trung tâm nghệ thuật.",
+      "C": "\"convertible\" là tính từ (có thể chuyển đổi) hoặc chỉ xe mui trần – sai nghĩa."
+     }
+    },
+    {
+     "id": "eng.word-formation.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Rapid urbanisation has led to the _____ of many traditional villages, as young people move to cities in search of jobs.",
+     "hint": "Mệnh đề \"as young people move to cities\" cho biết dân số ở các làng tăng hay giảm?",
+     "explanation": "Sau \"the\" và trước \"of\" cần danh từ; cả bốn phương án đều là danh từ nên phải dựa vào nghĩa. Người trẻ rời làng lên thành phố → dân số làng giảm mạnh: depopulation (sự suy giảm dân số, tình trạng làng vắng người). \"overpopulation\" (quá tải dân số) ngược nghĩa – xảy ra ở thành phố chứ không phải ở làng; \"population\" (dân số) không diễn tả sự thay đổi là kết quả của \"has led to\"; \"populousness\" (sự đông dân) cũng trái nghĩa. Chọn A.",
+     "skill_ids": [
+      "english.wordform.suffixes"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "depopulation"
+      },
+      {
+       "id": "B",
+       "text": "population"
+      },
+      {
+       "id": "C",
+       "text": "overpopulation"
+      },
+      {
+       "id": "D",
+       "text": "populousness"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "\"population\" chỉ dân số nói chung, không diễn tả kết quả \"giảm dân\" do người trẻ rời đi.",
+      "C": "\"overpopulation\" (quá tải dân số) xảy ra ở thành phố, ngược với tình trạng của các làng.",
+      "D": "\"populousness\" = sự đông dân – trái nghĩa với ngữ cảnh."
+     }
+    },
+    {
+     "id": "eng.word-formation.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "The students listened _____ to the guest speaker's talk about climate change.",
+     "hint": "Chỗ trống bổ nghĩa cho động từ \"listened\".",
+     "explanation": "Sau động từ thường \"listened\" cần trạng từ chỉ cách thức: listened attentively (lắng nghe chăm chú). \"attentive\" là tính từ (dùng sau linking verb như be/seem hoặc trước danh từ); \"attention\" là danh từ (pay attention to); \"attend\" là động từ. Chọn A.",
+     "skill_ids": [
+      "english.wordform.word_class"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "attentively"
+      },
+      {
+       "id": "B",
+       "text": "attentive"
+      },
+      {
+       "id": "C",
+       "text": "attention"
+      },
+      {
+       "id": "D",
+       "text": "attend"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Tính từ không bổ nghĩa cho động từ thường \"listened\".",
+      "C": "\"attention\" là danh từ; muốn dùng phải viết \"listened with attention\".",
+      "D": "\"attend\" là động từ, không đứng ngay sau \"listened\"."
+     }
+    },
+    {
+     "id": "eng.sentence-arrangement.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\nIt's three years since I last visited my grandparents' village.",
+     "hint": "\"It's + khoảng thời gian + since + S + last + V2\" nghĩa là đã bao lâu rồi kể từ lần cuối làm việc gì.",
+     "explanation": "Cấu trúc \"It's three years since I last visited ...\" (Đã ba năm kể từ lần cuối tôi về thăm ...) tương đương \"S + haven't/hasn't + V3 + for + khoảng thời gian\": \"I haven't visited my grandparents' village for three years.\" (A) mang nghĩa ngược lại (đã thăm liên tục suốt ba năm); (C) đổi \"lần cuối\" thành \"lần đầu tiên\"; (D) nói ba năm trước không về thăm – trái với câu gốc (ba năm trước là lần cuối về thăm). Chọn B.",
+     "skill_ids": [
+      "english.arrangement.rewrite"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "I have visited my grandparents' village for three years."
+      },
+      {
+       "id": "B",
+       "text": "I haven't visited my grandparents' village for three years."
+      },
+      {
+       "id": "C",
+       "text": "I visited my grandparents' village for the first time three years ago."
+      },
+      {
+       "id": "D",
+       "text": "I didn't visit my grandparents' village three years ago."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Thể khẳng định của hiện tại hoàn thành mang nghĩa \"đã thăm suốt ba năm\", ngược với câu gốc.",
+      "C": "\"for the first time\" sai nghĩa; câu gốc nói về lần cuối cùng.",
+      "D": "Ba năm trước là lần cuối người nói về thăm, nên \"didn't visit three years ago\" sai nghĩa."
+     }
+    },
+    {
+     "id": "eng.sentence-arrangement.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\nAlthough the weather was bad, the students went on their field trip.",
+     "hint": "\"Although + mệnh đề\" diễn tả sự nhượng bộ. Cụm từ nào cùng nghĩa nhưng đi với danh từ/cụm danh từ?",
+     "explanation": "\"Although + S + V\" (mặc dù) tương đương \"Despite/In spite of + cụm danh từ\": \"Despite the bad weather, the students went on their field trip.\" (A) dùng \"Because of\" biến thời tiết xấu thành nguyên nhân của chuyến đi – sai logic; (B) nói chuyến đi bị hủy – trái với câu gốc; (C) là câu điều kiện loại 3 giả định thời tiết xấu, ngụ ý thực tế thời tiết tốt – sai nghĩa. Chọn D.",
+     "skill_ids": [
+      "english.arrangement.rewrite"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "Because of the bad weather, the students went on their field trip."
+      },
+      {
+       "id": "B",
+       "text": "The weather was so bad that the students cancelled their field trip."
+      },
+      {
+       "id": "C",
+       "text": "If the weather had been bad, the students wouldn't have gone on their field trip."
+      },
+      {
+       "id": "D",
+       "text": "Despite the bad weather, the students went on their field trip."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "\"Because of\" chỉ nguyên nhân, không phải nhượng bộ.",
+      "B": "Câu gốc nói học sinh vẫn đi, không hủy chuyến đi.",
+      "C": "Câu điều kiện loại 3 ngụ ý thực tế thời tiết không xấu – trái với câu gốc."
+     }
+    },
+    {
+     "id": "eng.sentence-arrangement.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the sentence that is closest in meaning to the given sentence.\n\n\"Why don't we go cycling around the lake this weekend?\" said Hoa.",
+     "hint": "\"Why don't we + V?\" là câu rủ rê/đề nghị cùng làm gì. Động từ tường thuật nào diễn tả đúng chức năng đó?",
+     "explanation": "\"Why don't we + V?\" là lời đề nghị cùng làm gì, nên khi tường thuật dùng \"suggest + V-ing\": \"Hoa suggested going cycling around the lake that weekend.\" (\"this weekend\" chuyển thành \"that weekend\"). (A) \"refused\" (từ chối) ngược nghĩa; (B) \"apologised\" (xin lỗi) không đúng chức năng câu; (D) \"reminded us that we had gone\" biến lời rủ thành việc nhắc lại chuyện đã xảy ra – sai nghĩa. Chọn C.",
+     "skill_ids": [
+      "english.arrangement.rewrite"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "Hoa refused to go cycling around the lake that weekend."
+      },
+      {
+       "id": "B",
+       "text": "Hoa apologised for going cycling around the lake that weekend."
+      },
+      {
+       "id": "C",
+       "text": "Hoa suggested going cycling around the lake that weekend."
+      },
+      {
+       "id": "D",
+       "text": "Hoa reminded us that we had gone cycling around the lake that weekend."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "\"refuse\" là từ chối, ngược với lời rủ của Hoa.",
+      "B": "Câu gốc không phải lời xin lỗi.",
+      "D": "Câu gốc là lời rủ cho tương lai, không phải nhắc lại việc đã làm."
+     }
+    },
+    {
+     "id": "eng.sentence-arrangement.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the correct arrangement of the sentences to make a meaningful letter.\n\nDear Ms Thuy,\na. I am writing to apply for the position of volunteer English tutor advertised on your centre's website.\nb. Thank you for considering my application, and I look forward to hearing from you.\nc. In addition, last summer I helped my younger cousins with their English homework, which taught me to be patient with young learners.\nd. I am currently a Grade 12 student, and I achieved an IELTS score of 7.0 last month.\ne. With these skills and this experience, I believe I could help the children at your centre make real progress.\nYours sincerely,\nPhong",
+     "hint": "Thư xin việc: nêu mục đích → trình bày năng lực → kinh nghiệm bổ sung → kết luận → lời cảm ơn. Chú ý \"In addition\" và \"With these skills and this experience\".",
+     "explanation": "Thư mở đầu bằng mục đích viết thư (a) \"I am writing to apply for ...\". Tiếp theo giới thiệu bản thân và năng lực tiếng Anh (d). \"In addition\" ở (c) bổ sung kinh nghiệm dạy kèm, nên phải đứng sau (d). (e) \"With these skills and this experience\" tổng kết cả kỹ năng (d) và kinh nghiệm (c), nên đứng sau cả hai. Cuối cùng là lời cảm ơn (b). Thứ tự: a – d – c – e – b. (A) đặt \"In addition\" ngay sau câu nêu mục đích, chưa có năng lực nào để bổ sung; (B) mở thư bằng giới thiệu bản thân và kết thúc bằng (e) sau lời cảm ơn; (C) đặt (e) trước (c) nên \"this experience\" chưa được nhắc đến và \"In addition\" lại xuất hiện sau câu kết luận. Chọn D.",
+     "skill_ids": [
+      "english.arrangement.sentence_order"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "a – c – d – e – b"
+      },
+      {
+       "id": "B",
+       "text": "d – a – c – b – e"
+      },
+      {
+       "id": "C",
+       "text": "a – d – e – c – b"
+      },
+      {
+       "id": "D",
+       "text": "a – d – c – e – b"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "\"In addition\" cần một ý đứng trước để bổ sung; đặt ngay sau câu mục đích là không hợp lý.",
+      "B": "Câu mục đích (a) phải đứng đầu và lời cảm ơn (b) phải là câu kết thư.",
+      "C": "Câu e tổng kết \"this experience\" trước khi kinh nghiệm ở câu c được kể ra."
+     }
+    },
+    {
+     "id": "eng.sentence-arrangement.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the correct arrangement of the sentences to make a meaningful paragraph.\n\na. They are learning the craft from elderly artisans and promoting the prints on social media.\nb. Dong Ho folk paintings, printed from carved wooden blocks onto handmade paper, were once found in almost every Vietnamese home at Tet.\nc. However, as tastes changed and cheaper decorations became available, demand fell and many families gave up the craft.\nd. This combination of tradition and technology may be the key to keeping the art alive.\ne. Recently, though, a few young designers have decided not to let the tradition disappear.",
+     "hint": "Theo dõi diễn biến thời gian (once → However ... fell → Recently, though) và xác định \"They\" ở câu a là ai.",
+     "explanation": "(b) giới thiệu tranh Đông Hồ từng có mặt ở hầu hết mọi nhà dịp Tết (\"once\") → (c) \"However\" nêu sự suy giảm: nhu cầu giảm, nhiều gia đình bỏ nghề → (e) \"Recently, though\" đảo chiều: một số nhà thiết kế trẻ quyết không để truyền thống mai một → (a) \"They\" = the young designers, học nghề từ nghệ nhân cao tuổi và quảng bá trên mạng xã hội → (d) \"This combination of tradition and technology\" tổng kết việc học nghề truyền thống (tradition) kết hợp mạng xã hội (technology) ở (a). Thứ tự: b – c – e – a – d. (A) đặt (e) trước (c): truyền thống chưa bị mai một mà đã nói \"not to let the tradition disappear\", và \"They\" ở (a) sẽ chỉ \"many families\" vừa bỏ nghề – mâu thuẫn; (C) đặt (a) ngay sau (c) nên \"They\" cũng chỉ các gia đình đã bỏ nghề; (D) mở đầu bằng \"though\" mà không có ý nào trước đó để đối lập. Chọn B.",
+     "skill_ids": [
+      "english.arrangement.sentence_order"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "b – e – c – a – d"
+      },
+      {
+       "id": "B",
+       "text": "b – c – e – a – d"
+      },
+      {
+       "id": "C",
+       "text": "b – c – a – e – d"
+      },
+      {
+       "id": "D",
+       "text": "e – b – c – a – d"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Nếu e đứng trước c, \"They\" ở câu a sẽ chỉ \"many families\" vừa bỏ nghề, gây mâu thuẫn.",
+      "C": "Câu a đứng ngay sau c khiến \"They\" chỉ các gia đình đã bỏ nghề, không phải các nhà thiết kế trẻ.",
+      "D": "\"though\" trong câu e cần một ý đối lập phía trước, không thể mở đầu đoạn."
+     }
+    },
+    {
+     "id": "eng.sentence-arrangement.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choose the correct arrangement of the sentences to make a meaningful exchange.\n\na. Yes, I am. What do you have in mind?\nb. Hi Nam, are you free this Saturday afternoon?\nc. Some of us are going to clean up the park near school. Would you like to join?",
+     "hint": "Tìm câu mở đầu cuộc trò chuyện, rồi xem mỗi câu tiếp theo đang đáp lại câu nào.",
+     "explanation": "Hội thoại mở đầu bằng lời chào và câu hỏi (b) \"Hi Nam, are you free this Saturday afternoon?\". Nam trả lời (a) \"Yes, I am. What do you have in mind?\" (\"Yes, I am\" đáp cho \"are you free\"). Người kia giải thích kế hoạch và mời (c). Thứ tự: b – a – c. (B) b – c – a sai vì khi hai người nói luân phiên, câu c sẽ là của Nam: Nam chưa trả lời mình có rảnh không đã kể kế hoạch và mời lại, còn \"Yes, I am\" (câu a) không còn đáp cho \"are you free\"; (A) và (D) không bắt đầu bằng lời chào. Chọn C.",
+     "skill_ids": [
+      "english.arrangement.sentence_order"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "a – b – c"
+      },
+      {
+       "id": "B",
+       "text": "b – c – a"
+      },
+      {
+       "id": "C",
+       "text": "b – a – c"
+      },
+      {
+       "id": "D",
+       "text": "c – a – b"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Không thể bắt đầu bằng câu trả lời \"Yes, I am\".",
+      "B": "Theo thứ tự b – c – a, Nam (câu c) chưa trả lời có rảnh không đã mời lại, và \"Yes, I am\" không còn đáp cho câu hỏi \"are you free\".",
+      "D": "Câu c không phù hợp để mở đầu, và lời chào \"Hi Nam\" bị đặt ở cuối."
+     }
+    },
+    {
+     "id": "eng.reading.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "In many coastal provinces of Viet Nam, mangrove forests act as a natural wall against storms and rising sea levels. Their thick roots hold the soil in place and reduce the power of waves before they reach villages. Mangroves also provide homes for fish, crabs and birds, which local families depend on for food and income. However, large areas of mangroves were cleared in the past to make room for shrimp farms. Since 2015, several communities have joined hands with environmental groups to replant young trees along the shore. Volunteers, many of them secondary school students, spend their weekends planting seedlings and checking on their growth. Thanks to these efforts, some once-empty mudflats are now green again.\n\nAccording to the passage, why were large areas of mangroves cleared in the past?",
+     "hint": "Tìm câu nói về việc rừng ngập mặn bị chặt phá trong quá khứ.",
+     "explanation": "Câu \"However, large areas of mangroves were cleared in the past to make room for shrimp farms.\" cho biết rừng ngập mặn bị chặt để lấy chỗ làm đầm nuôi tôm; \"make room for\" = \"make space for\". (B) và (C) là lợi ích của rừng ngập mặn (chắn bão, làm nơi sinh sống cho cá, chim), không phải lý do chặt phá; (A) xây nhà không được nhắc đến. Chọn D.",
+     "skill_ids": [
+      "english.reading.detail"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "To build houses for local families."
+      },
+      {
+       "id": "B",
+       "text": "To protect villages from storms."
+      },
+      {
+       "id": "C",
+       "text": "To provide homes for fish and birds."
+      },
+      {
+       "id": "D",
+       "text": "To make space for shrimp farms."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Bài đọc không nhắc đến việc chặt rừng để xây nhà.",
+      "B": "Đây là tác dụng của rừng ngập mặn, không phải lý do chặt phá rừng.",
+      "C": "Đây cũng là lợi ích của rừng; chặt rừng sẽ làm mất nơi sống của cá và chim."
+     }
+    },
+    {
+     "id": "eng.reading.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Water puppetry is a traditional art form that began in the villages of the Red River Delta more than a thousand years ago. Farmers created it to entertain themselves after the rice harvest, using ponds and flooded fields as stages. The puppets are carved from wood and painted in bright colours. Puppeteers stand behind a bamboo screen in waist-deep water and control the puppets with long poles hidden under the surface. Shows usually tell stories about daily rural life, such as fishing and farming, or retell famous legends. Today, water puppetry attracts many international tourists, but fewer young people are learning the skills needed to keep the art alive.\n\nThe word \"it\" in the sentence \"Farmers created it to entertain themselves\" refers to _____.",
+     "hint": "Đọc lại câu đầu tiên: nông dân \"tạo ra\" cái gì để giải trí? Thử thay từng phương án vào chỗ \"it\".",
+     "explanation": "Câu trước nói \"Water puppetry is a traditional art form that began in the villages of the Red River Delta...\". Thứ mà nông dân \"created ... to entertain themselves\" chính là môn nghệ thuật múa rối nước. Thay vào: \"Farmers created water puppetry to entertain themselves\" – hợp lý. Không thể \"tạo ra\" vùng đồng bằng (A) hay \"một nghìn năm\" (D); vụ mùa (B) là thời điểm biểu diễn (after the rice harvest), không phải thứ được tạo ra. Chọn C.",
+     "skill_ids": [
+      "english.reading.reference"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "the Red River Delta"
+      },
+      {
+       "id": "B",
+       "text": "the rice harvest"
+      },
+      {
+       "id": "C",
+       "text": "water puppetry"
+      },
+      {
+       "id": "D",
+       "text": "a thousand years"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Đồng bằng sông Hồng là nơi môn nghệ thuật ra đời, không phải thứ nông dân tạo ra.",
+      "B": "\"the rice harvest\" xuất hiện trong cùng câu nhưng chỉ thời điểm, không phải đối tượng của \"created\".",
+      "D": "\"a thousand years\" chỉ thời gian, không thể là thứ được tạo ra để giải trí."
+     }
+    },
+    {
+     "id": "eng.reading.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Choosing a career is one of the most important decisions a young person makes, yet many students rush into it. Some simply follow their friends or pick a university major because their parents say it is \"safe\". Career counsellors suggest a more careful approach. First, students should identify their strengths and interests through tests, part-time work or volunteering. Next, they should research the jobs that match these qualities, including the skills required and the likely salary. Talking to people who already work in a field can be especially valuable, because they can describe the daily reality of the job rather than its glamorous image. Finally, students should remain flexible, since the job market is changing rapidly and new careers appear every year.\n\nThe word \"glamorous\" in the passage is closest in meaning to _____.",
+     "hint": "\"glamorous image\" được đặt đối lập với \"the daily reality of the job\" bằng \"rather than\".",
+     "explanation": "Câu \"they can describe the daily reality of the job rather than its glamorous image\" đối lập thực tế hằng ngày của công việc với hình ảnh \"glamorous\" – tức là hình ảnh hào nhoáng, hấp dẫn, thú vị mà người ngoài tưởng tượng. \"attractive and exciting\" là nghĩa gần nhất. (A) \"trung thực, chính xác\" lại gần với \"reality\" chứ không phải điều bị đối lập; (C) \"khó khăn, mệt mỏi\" và (D) \"bình thường, nhàm chán\" là những đặc điểm của thực tế hằng ngày, ngược nghĩa với \"glamorous\". Chọn B.",
+     "skill_ids": [
+      "english.reading.vocabulary_in_context"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "honest and accurate"
+      },
+      {
+       "id": "B",
+       "text": "attractive and exciting"
+      },
+      {
+       "id": "C",
+       "text": "difficult and tiring"
+      },
+      {
+       "id": "D",
+       "text": "ordinary and boring"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Trung thực, chính xác là đặc điểm của \"reality\" – vế bị đối lập với \"glamorous image\".",
+      "C": "Ngược nghĩa: khó khăn, mệt mỏi là thực tế công việc, không phải hình ảnh hào nhoáng.",
+      "D": "Ngược nghĩa với \"glamorous\"."
+     }
+    },
+    {
+     "id": "eng.reading.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "When the language-learning app LinguaPal added an AI chat partner last year, its designers expected users to practise for a few minutes a day. Instead, many users chatted for over an hour, asking the AI to correct their mistakes and explain grammar. Teachers have mixed feelings. Some welcome the tool because shy students can practise speaking without fear of being laughed at. Others worry that the AI sometimes gives confident but incorrect answers, and that students may stop thinking for themselves. Ms Ha, an English teacher in Da Nang, has found a middle way. She lets her class use the app for homework, but each student must write down one mistake the AI made and explain why it was wrong.\n\nWhat can be inferred about Ms Ha's approach to the AI chat partner?",
+     "hint": "Ms Ha tìm ra \"a middle way\" giữa hai luồng ý kiến. Học sinh của cô phải làm gì khi dùng ứng dụng?",
+     "explanation": "Ms Ha \"lets her class use the app for homework\" (vẫn cho dùng AI) nhưng yêu cầu mỗi học sinh \"write down one mistake the AI made and explain why it was wrong\" (phải phát hiện và giải thích lỗi của AI). Điều này cho thấy cô muốn học sinh dùng AI nhưng vẫn tư duy phản biện về câu trả lời của nó – đúng là \"middle way\" giữa hai nhóm giáo viên. (A) sai vì cô vẫn cho dùng; (B) mâu thuẫn vì bài tập của cô dựa trên việc AI có mắc lỗi; (C) bài nói \"her class\", không giới hạn ở học sinh nhút nhát. Chọn D.",
+     "skill_ids": [
+      "english.reading.inference"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "She believes AI apps should be banned from schools."
+      },
+      {
+       "id": "B",
+       "text": "She thinks the AI chat partner never makes mistakes."
+      },
+      {
+       "id": "C",
+       "text": "She allows only shy students to use the app."
+      },
+      {
+       "id": "D",
+       "text": "She wants students to use the AI but also to think critically about its answers."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Cô vẫn cho cả lớp dùng ứng dụng làm bài tập về nhà.",
+      "B": "Yêu cầu tìm \"one mistake the AI made\" cho thấy cô biết AI có mắc lỗi.",
+      "C": "Lợi ích cho học sinh nhút nhát là ý kiến của một số giáo viên khác; Ms Ha cho cả lớp dùng."
+     }
+    },
+    {
+     "id": "eng.reading.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Every year, millions of tonnes of plastic waste end up in the ocean. Much of it breaks down into tiny pieces called microplastics, which are swallowed by fish and eventually reach our dinner tables. [I] In response to this problem, a growing number of cafés across Viet Nam have replaced plastic straws with alternatives made from rice, grass or bamboo. [II] Customers have generally welcomed the change, although some complain that grass straws give their drinks an unusual taste. [III] Some supermarkets are also experimenting with wrapping vegetables in banana leaves instead of plastic film. [IV] Environmentalists praise these steps but warn that they are only a beginning. Real progress, they say, will require stricter laws and better recycling systems.\n\nWhere in the passage does the following sentence best fit?\n\"Scientists are still investigating how these tiny particles affect human health.\"",
+     "hint": "Câu cần chèn có cụm từ quy chiếu \"these tiny particles\". Hãy tìm trong bài danh từ mà cụm này thay thế.",
+     "explanation": "Cụm \"these tiny particles\" phải quy chiếu đến \"tiny pieces called microplastics\" và \"human health\" nối tiếp ý vi nhựa \"eventually reach our dinner tables\". Do đó câu cần chèn đứng ở vị trí [I], ngay sau câu về vi nhựa và trước \"In response to this problem\" (phản ứng trước vấn đề ô nhiễm nhựa vừa nêu). Ở [II] câu trước nói về ống hút từ gạo, cỏ, tre; ở [III] nói về vị lạ của ống hút cỏ; ở [IV] nói về gói rau bằng lá chuối – không có danh từ nào để \"these tiny particles\" thay thế, và việc chèn vào sẽ cắt đứt mạch ý về các giải pháp thay thế nhựa. Chọn A.",
+     "skill_ids": [
+      "english.reading.coherence"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "[I]"
+      },
+      {
+       "id": "B",
+       "text": "[II]"
+      },
+      {
+       "id": "C",
+       "text": "[III]"
+      },
+      {
+       "id": "D",
+       "text": "[IV]"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Câu trước [II] nói về ống hút thay thế; \"these tiny particles\" không quy chiếu được.",
+      "C": "Câu trước [III] nói về vị của ống hút cỏ, không liên quan đến sức khỏe do vi nhựa.",
+      "D": "Câu trước [IV] nói về lá chuối thay màng bọc nhựa; chèn vào đây làm đứt mạch các giải pháp."
+     }
+    },
+    {
+     "id": "eng.reading.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Farmers in the Mekong Delta are starting to use smartphone apps powered by artificial intelligence. A farmer simply takes a photo of a sick rice plant, and within seconds the app suggests what disease it might have and how to treat it. The app learns from thousands of images uploaded by other users, so its advice becomes more accurate over time. Some apps also send warnings when salt water is about to enter the fields, which helps farmers decide when to pump in fresh water. Although the technology is useful, experts remind farmers that the apps are not perfect. They recommend checking with local agricultural officers before using strong chemicals.\n\nAccording to the passage, what does a farmer need to do to get advice from the app?",
+     "hint": "Tìm câu mô tả cách nông dân sử dụng ứng dụng.",
+     "explanation": "Câu \"A farmer simply takes a photo of a sick rice plant, and within seconds the app suggests what disease it might have\" cho thấy người nông dân chỉ cần chụp ảnh cây lúa bị bệnh. (D) sai vì \"thousands of images\" là ảnh do NHIỀU người dùng khác tải lên để ứng dụng học, không phải việc mỗi nông dân phải làm; (C) là lời khuyên của chuyên gia trước khi dùng hóa chất mạnh, không phải điều kiện để nhận tư vấn; (A) không được nhắc đến. Chọn B.",
+     "skill_ids": [
+      "english.reading.detail"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "Send a soil sample to experts."
+      },
+      {
+       "id": "B",
+       "text": "Take a photo of a sick rice plant."
+      },
+      {
+       "id": "C",
+       "text": "Call a local agricultural officer."
+      },
+      {
+       "id": "D",
+       "text": "Upload thousands of images of rice."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Bài không nhắc đến việc gửi mẫu đất.",
+      "C": "Việc hỏi cán bộ nông nghiệp là lời khuyên trước khi dùng hóa chất, không phải cách nhận tư vấn từ ứng dụng.",
+      "D": "Hàng nghìn ảnh là do những người dùng khác tải lên; mỗi nông dân chỉ cần chụp một ảnh."
+     }
+    },
+    {
+     "id": "eng.reading.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "Over the past two decades, millions of young people have moved from rural areas to big cities such as Ha Noi and Ho Chi Minh City in search of better jobs and education. This movement has helped the cities grow quickly and has brought money back to villages, as many migrants send part of their wages home. However, rapid urbanisation has also created serious problems. Housing prices have risen sharply, forcing many newcomers to live in crowded rented rooms. Traffic jams and air pollution have become part of everyday life. Meanwhile, some villages are left with mainly elderly people and young children, as working-age adults have gone away. Planners argue that developing smaller cities and creating jobs in the countryside could ease the pressure on the largest cities.\n\nWhich of the following best states the main idea of the passage?",
+     "hint": "Ý chính phải bao quát cả phần nói về lợi ích (helped the cities grow, brought money) và phần \"However, ... serious problems\".",
+     "explanation": "Đoạn văn trình bày cả mặt tích cực của làn sóng di cư từ nông thôn lên thành phố (thành phố phát triển, tiền gửi về quê) và mặt tiêu cực (giá nhà tăng, tắc đường, ô nhiễm, làng quê thiếu lao động). Vì vậy ý chính là \"di cư từ nông thôn ra thành phố mang lại cả lợi ích lẫn vấn đề\". (A) sai chi tiết (bài nói \"part of their wages\", không phải \"most\") và quá hẹp; (B) chỉ là một chi tiết, bài không nói đó là vấn đề nghiêm trọng nhất; (C) bài không khuyên giới trẻ ở lại nông thôn, chỉ nhắc ý kiến phát triển đô thị nhỏ và tạo việc làm ở nông thôn. Chọn D.",
+     "skill_ids": [
+      "english.reading.main_idea"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "Migrants send most of their wages back to their home villages."
+      },
+      {
+       "id": "B",
+       "text": "Traffic jams are the most serious problem in big cities."
+      },
+      {
+       "id": "C",
+       "text": "Young people should stay in the countryside instead of moving to cities."
+      },
+      {
+       "id": "D",
+       "text": "Moving from rural areas to cities brings both benefits and problems."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Sai chi tiết (\"part of\", không phải \"most\") và chỉ là một ý nhỏ.",
+      "B": "Tắc đường chỉ là một trong nhiều vấn đề; bài không xếp hạng mức độ nghiêm trọng.",
+      "C": "Bài không đưa ra lời khuyên này; đây là suy diễn quá mức."
+     }
+    },
+    {
+     "id": "eng.reading.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Teenagers need between eight and ten hours of sleep each night, but surveys show that most get far less. One reason is biological: during adolescence, the body releases the sleep hormone melatonin later in the evening, so teenagers naturally feel awake until around 11 p.m. Homework, part-time jobs and social media make the problem worse. Lack of sleep does more than make students feel tired. It can weaken memory, reduce concentration in class and increase the risk of anxiety. Doctors advise teenagers to keep a regular bedtime, even at weekends, and to switch off screens at least an hour before going to bed. Some schools abroad have even moved the start of the school day later, and they report better attendance and grades.\n\nWhich of the following is NOT TRUE according to the passage?",
+     "hint": "Đối chiếu từng phương án với bài. Chú ý lời khuyên của bác sĩ về giờ ngủ \"even at weekends\".",
+     "explanation": "Bài viết: \"Doctors advise teenagers to keep a regular bedtime, even at weekends\" – bác sĩ khuyên giữ giờ ngủ đều đặn kể cả cuối tuần, chứ không khuyên ngủ muộn hơn vào cuối tuần để \"bù\". Vậy (C) không đúng. (A) đúng: \"the body releases the sleep hormone melatonin later in the evening\"; (B) đúng: \"It can weaken memory, reduce concentration\"; (D) đúng: các trường lùi giờ học \"report better attendance and grades\". Chọn C.",
+     "skill_ids": [
+      "english.reading.detail"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "Teenagers' bodies release melatonin later in the evening."
+      },
+      {
+       "id": "B",
+       "text": "Lack of sleep can affect students' memory and concentration."
+      },
+      {
+       "id": "C",
+       "text": "Doctors recommend sleeping later at weekends to recover."
+      },
+      {
+       "id": "D",
+       "text": "Some schools that start later have reported better grades."
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Đúng với bài: melatonin được tiết ra muộn hơn vào buổi tối ở tuổi vị thành niên.",
+      "B": "Đúng với bài: thiếu ngủ làm suy giảm trí nhớ và khả năng tập trung.",
+      "D": "Đúng với bài: các trường lùi giờ học báo cáo điểm số và chuyên cần tốt hơn."
+     }
+    }
+   ]
+  }
+ ],
+ "source": {
+  "name": "Mentor (đề mẫu từ ngân hàng câu hỏi)",
+  "url": ""
+ },
+ "placeholder": true,
+ "note_vi": "Đề mẫu dựng từ ngân hàng câu hỏi tiếng Anh: 40 câu trắc nghiệm, 50 phút như cấu trúc đề thật.",
+ "note_en": "Sample built from the English bank: 40 multiple-choice items, 50 minutes like the real paper."
+}

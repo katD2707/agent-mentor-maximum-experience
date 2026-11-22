@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft halo behind the object -->
+  <circle cx="200" cy="198" r="150" fill="#E9E5F6"/>
+
+  <!-- button base -->
+  <ellipse cx="196" cy="316" rx="52" ry="17" fill="#5A4BC0"/>
+  <ellipse cx="196" cy="308" rx="40" ry="11" fill="#E9E5F6"/>
+
+  <!-- pole -->
+  <rect x="188" y="92" width="16" height="224" rx="8" fill="#5A4BC0"/>
+
+  <!-- finial -->
+  <circle cx="196" cy="86" r="15" fill="#E8806A" stroke="#5A4BC0" stroke-width="6"/>
+
+  <!-- flag cloth -->
+  <path d="M204 100
+           C 242 82 270 122 302 100
+           C 310 134 308 168 300 200
+           C 268 218 240 178 204 200
+           Z"
+        fill="#9FD8BF" stroke="#5A4BC0" stroke-width="7"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- coral wave stripe -->
+  <path d="M210 150 C 244 134 266 172 292 150"
+        fill="none" stroke="#E8806A" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

@@ -1,4 +1,5 @@
 import { api, ApiError, type Enrollment, type ProgressBody, type QuizResult } from "../api";
+import { emitXp } from "../lang/xp";
 
 /**
  * Local mirror of the learner's enrollments, so the courses list and the player open without a network.
@@ -104,7 +105,8 @@ async function doFlush(token: string, userId: string): Promise<void> {
     let gone = false;
     try {
       for (const b of bodies) {
-        await api.putProgress(token, courseId, b);
+        const res = await api.putProgress(token, courseId, b);
+        if (res?.xp?.length) emitXp(res.xp, courseId);
         ok++;
       }
     } catch (e) {

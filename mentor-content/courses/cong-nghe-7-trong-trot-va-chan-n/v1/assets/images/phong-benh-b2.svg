@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<marker id="ah" markerWidth="12" markerHeight="12" refX="6" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#5A4BC0" stroke-linejoin="round"/></marker></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<rect x="50" y="110" width="260" height="300" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="690" y="90" width="260" height="320" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="4"/>
+<rect x="70" y="128" width="220" height="68" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="70" y="212" width="220" height="68" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="70" y="296" width="220" height="68" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="705" y="105" width="110" height="120" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="825" y="105" width="110" height="120" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="705" y="240" width="110" height="120" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<rect x="825" y="240" width="110" height="120" rx="10" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="2.5"/>
+<path d="M88,145 Q104,132 120,145 T152,145" fill="none" stroke="#E8806A" stroke-width="4" stroke-linecap="round"/>
+<path d="M88,179 Q104,192 120,179 T152,179" fill="none" stroke="#9FD8BF" stroke-width="4" stroke-linecap="round"/>
+<path d="M100,148 L100,176 M118,145 L118,179 M136,148 L136,176" stroke="#5A4BC0" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M110,220 L150,220 L150,245 Q130,262 110,245 Z" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M132,222 L126,238 L136,242" fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="120" cy="330" r="16" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<path d="M120,314 Q126,302 138,304" fill="none" stroke="#9FD8BF" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="760" cy="165" rx="24" ry="12" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+<path d="M736,165 q-12,-8 -20,2 M784,165 q12,-8 20,2" fill="none" stroke="#2B283F" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="752" cy="163" r="2.5" fill="#2B283F"/><circle cx="766" cy="167" r="2.5" fill="#2B283F"/>
+<rect x="866" y="164" width="28" height="24" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<polygon points="860,164 880,146 900,164" fill="#E8806A" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="870" cy="198" r="3" fill="#9FD8BF"/><circle cx="890" cy="198" r="3" fill="#9FD8BF"/>
+<circle cx="752" cy="296" r="16" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/><circle cx="770" cy="304" r="12" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/><circle cx="760" cy="316" r="8" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="2.5"/>
+<circle cx="738" cy="288" r="3" fill="#E8806A"/><circle cx="786" cy="292" r="3" fill="#E8806A"/><circle cx="778" cy="322" r="3" fill="#E8806A"/>
+<polygon points="870,322 886,268 900,322" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round"/>
+<line x1="886" y1="278" x2="886" y2="312" stroke="#2B283F" stroke-width="2" stroke-linecap="round"/>
+<g stroke="#5A4BC0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M548,282 Q596,300 578,342" fill="none" stroke-width="7"/>
+<ellipse cx="500" cy="282" rx="58" ry="42" fill="#E9E5F6"/>
+<rect x="474" y="312" width="14" height="26" rx="7" fill="#E9E5F6"/>
+<rect x="512" y="312" width="14" height="26" rx="7" fill="#E9E5F6"/>
+<polygon points="480,190 468,156 496,174" fill="#E9E5F6"/>
+<polygon points="520,190 532,156 504,174" fill="#E9E5F6"/>
+<circle cx="500" cy="212" r="35" fill="#E9E5F6"/>
+</g>
+<circle cx="487" cy="206" r="4" fill="#2B283F"/><circle cx="513" cy="206" r="4" fill="#2B283F"/>
+<polygon points="500,218 493,224 507,224" fill="#E8806A"/>
+<path d="M474,222 L444,218 M474,228 L444,232 M526,222 L556,218 M526,228 L556,232" stroke="#2B283F" stroke-width="2" stroke-linecap="round" fill="none"/>
+<line x1="458" y1="252" x2="325" y2="252" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+<line x1="542" y1="252" x2="675" y2="252" stroke="#5A4BC0" stroke-width="5" stroke-linecap="round" marker-end="url(#ah)"/>
+<g font-family="Lexend, sans-serif" font-size="26" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">
+<text x="30" y="520">B&#234;n trong: di truy&#7873;n, s&#7913;c &#273;&#7873; kh&#225;ng y&#7871;u, thi&#7871;u dinh d&#432;&#7905;ng</text>
+<text x="30" y="556">B&#234;n ngo&#224;i: vi sinh v&#7853;t, k&#253; sinh tr&#249;ng (giun, s&#225;n, ve, m&#242;ng)</text>
+<text x="30" y="592">M&#244;i tr&#432;&#7901;ng: chu&#7891;ng &#7849;m &#432;&#7899;t, n&#243;ng l&#7841;nh &#273;&#7897;t ng&#7897;t, kh&#237; &#273;&#7897;c</text>
+<text x="30" y="628">Th&#7913;c &#259;n &#244;i m&#7889;c, thi&#7871;u vitamin, thi&#7871;u kho&#225;ng</text>
+<text x="30" y="664">C&#417; h&#7885;c: chu&#7891;ng ch&#7853;t, v&#7853;t s&#7855;c nh&#7885;n g&#226;y x&#226;y x&#225;t</text>
+</g>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

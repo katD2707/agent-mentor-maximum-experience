@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft halo -->
+  <circle cx="200" cy="198" r="132" fill="#E9E5F6"/>
+
+  <!-- motion swooshes behind the plane -->
+  <g fill="none" stroke="#F0D76E" stroke-linecap="round">
+    <path d="M 186 196 C 146 210 100 218 56 234" stroke-width="14"/>
+    <path d="M 206 236 C 172 250 132 258 96 274" stroke-width="8"/>
+  </g>
+
+  <!-- the paper airplane -->
+  <g transform="translate(206 180) rotate(-14) scale(0.9)"
+     stroke="#5A4BC0" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <!-- shaded underside -->
+    <polygon points="138,0 -40,0 -108,92" fill="#5A4BC0"/>
+    <!-- lit top wing -->
+    <polygon points="138,0 -108,-92 -40,0" fill="#E9E5F6"/>
+  </g>
+
+  <!-- tiny friendly accents -->
+  <circle cx="300" cy="272" r="7" fill="#9FD8BF"/>
+  <circle cx="74" cy="176" r="6" fill="#E8806A"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

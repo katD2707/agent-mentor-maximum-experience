@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="328" rx="118" ry="14" fill="#E9E5F6"/>
+
+  <!-- brim underside (yellow rim) -->
+  <ellipse cx="200" cy="260" rx="151" ry="56" fill="#F0D76E"/>
+
+  <!-- brim top -->
+  <ellipse cx="200" cy="250" rx="151" ry="56" fill="#5A4BC0"/>
+
+  <!-- crown -->
+  <path d="M 110 236
+           C 110 142 145 94 200 94
+           C 255 94 290 142 290 236
+           C 290 258 250 272 200 272
+           C 150 272 110 258 110 236 Z"
+        fill="#9FD8BF"/>
+
+  <!-- hatband -->
+  <path d="M 110 236
+           C 110 258 150 272 200 272
+           C 250 272 290 258 290 236
+           L 290 212
+           C 250 232 150 232 110 212 Z"
+        fill="#E8806A"/>
+
+  <!-- small flower on the band -->
+  <circle cx="140" cy="236" r="6.5" fill="#F0D76E"/>
+  <circle cx="149.5" cy="242.9" r="6.5" fill="#F0D76E"/>
+  <circle cx="145.9" cy="254.1" r="6.5" fill="#F0D76E"/>
+  <circle cx="134.1" cy="254.1" r="6.5" fill="#F0D76E"/>
+  <circle cx="130.5" cy="242.9" r="6.5" fill="#F0D76E"/>
+  <circle cx="140" cy="246" r="6" fill="#5A4BC0"/>
+
+  <!-- paper grain -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

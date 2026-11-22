@@ -1,0 +1,2212 @@
+{
+  "schema_version": 1,
+  "course_id": "dia-li-8-khi-hau-va-song-ngoi-vi",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g6_9",
+  "title": "Địa lí 8: Khí hậu và sông ngòi Việt Nam",
+  "chapters": [
+    {
+      "id": "ch-khi-hau",
+      "title": "Khí hậu",
+      "lessons": [
+        {
+          "id": "gio-mua",
+          "title": "Gió mùa",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày khái niệm gió mùa, gió mùa mùa đông và mùa hạ, công thức tính nhiệt độ và tính chất nhiệt đới gió mùa của nước ta, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Gió mùa là gió đổi hướng theo mùa; nước ta có khí hậu nhiệt đới gió mùa.",
+            "Gió mùa đông (tháng 11–4): hướng Đông Bắc, lạnh và khô, qua biển ẩm hơn.",
+            "Gió mùa hạ (tháng 5–10): hướng Tây Nam, gây mưa lớn; gió Lào khô nóng.",
+            "Tính chất nhiệt đới: nhiệt độ trung bình năm trên 21°C, mưa 1500–2000 mm, độ ẩm trên 80%.",
+            "Công thức nhiệt độ trung bình năm và biên độ nhiệt năm; ví dụ, lỗi thường gặp và bài tập trong bài."
+          ],
+          "blocks": [
+            {
+              "id": "gio-mua-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Gió mùa",
+              "md": "Gió mùa thổi theo mùa: hướng hai mùa gần như ngược nhau. Nước ta thuộc khu vực gió mùa châu Á nên có khí hậu nhiệt đới gió mùa. Khí hậu nóng, ẩm, mưa nhiều và có hai mùa rõ rệt.",
+              "audio": null
+            },
+            {
+              "id": "gio-mua-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gio-mua-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao gió Tây Nam khi thổi đến Bắc Trung Bộ lại trở nên khô nóng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì gió đã vượt dãy Trường Sơn nên mất nhiều hơi ẩm.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì gió thổi từ biển Đông ấm và ẩm vào đất liền.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì gió bị áp cao Xibia chặn lại giữa đường.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì gió hình thành ngay trên lục địa châu Á lạnh giá.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nhớ hiệu ứng phơn khi gió vượt núi.",
+                  "explanation": "Gió Tây Nam từ vịnh Bengan qua Lào vượt Trường Sơn, mất hơi ẩm nên xuống sườn Việt Nam trở nên khô nóng (gió Lào).",
+                  "option_feedback": {
+                    "B": "Nhầm với hướng gió Tây Nam đi qua biển gây mưa lớn cho Nam Bộ.",
+                    "C": "Áp cao Xibia là nguồn gốc của gió mùa mùa đông, không phải gió mùa hạ.",
+                    "D": "Nhầm nguồn gốc gió mùa mùa đông với gió mùa mùa hạ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gio-mua-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/gio-mua-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "ecc74848c7d13dc372f4a06525df9e0715712e0a783a566686cc4730d6c98df0",
+                "bytes": 3774
+              },
+              "alt": "Sơ đồ hướng gió mùa đông và gió mùa hạ ở Việt Nam",
+              "caption": "Hướng gió mùa chính ở nước ta.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "gio-mua-b4",
+              "kind": "text",
+              "md": "Gió mùa đông (tháng 11 đến 4) hướng Đông Bắc, từ áp cao Xibia, lạnh và khô. Qua biển Đông, gió tăng ẩm nên cuối đông Bắc Bộ có mưa phùn. Gặp Trường Sơn Bắc, gió gây mưa lớn ở Bắc Trung Bộ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "gio-mua-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gio-mua-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Gió mùa mùa đông (tháng 11–4) thổi theo hướng {{gap}}, gió mùa mùa hạ (tháng 5–10) thổi theo hướng {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Đông Bắc",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "Tây Nam",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "Đông Nam",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "Tây Bắc",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Gió mùa đông có hướng Đông Bắc, còn gió mùa hạ chiếm ưu thế hướng Tây Nam.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gio-mua-b5",
+              "kind": "text",
+              "md": "Gió mùa hạ (tháng 5 đến 10) hướng Tây Nam. Gió từ Ấn Độ Dương và xích đạo nóng ẩm gây mưa lớn, nhất là Nam Bộ, Tây Nguyên, Tây Bắc. Gió qua Lào vượt Trường Sơn mất ẩm, thành gió Lào khô nóng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "gio-mua-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Biên độ nhiệt năm",
+              "md": "$\\bar{t}=\\dfrac{t_1+...+t_{12}}{12}$; $\\Delta t=t_{\\max}-t_{\\min}$. Hà Nội: $28,9-16,4=12,5^{\\circ}C$. TP. Hồ Chí Minh: $28,9-25,8=3,1^{\\circ}C$. Hà Nội chịu gió mùa Đông Bắc lạnh; TP.HCM gần xích đạo.",
+              "audio": null
+            },
+            {
+              "id": "gio-mua-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gio-mua-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi ý ở cột trái với nội dung đúng ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Gió mùa mùa đông",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "hướng Đông Bắc, lạnh và khô",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Gió mùa hạ từ Ấn Độ Dương",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "nóng ẩm, gây mưa lớn",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Gió Lào",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "khô nóng do vượt Trường Sơn",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Áp cao Xibia",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "nguồn gốc gió mùa mùa đông",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Gió mùa đông lạnh khô từ áp cao Xibia; gió mùa hạ nóng ẩm gây mưa lớn, riêng gió Lào khô nóng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "gio-mua-b7",
+              "kind": "text",
+              "md": "Tính chất nhiệt đới gió mùa: nhiệt độ trung bình năm trên $21^{\\circ}C$; mưa $1500-2000$ mm/năm; độ ẩm trên 80%. Mưa tập trung theo mùa, thời tiết khác nhau giữa mùa mưa và mùa khô.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "gio-mua-b8",
+              "kind": "interactive",
+              "prompt": "Kéo nhiệt độ tháng cao nhất để biên độ nhiệt năm của Hà Nội bằng 12,5°C (tháng 1 là 16,4°C).",
+              "x": {
+                "symbol": "t_{max}",
+                "label": "Nhiệt độ tháng cao nhất",
+                "unit": "°C"
+              },
+              "y": {
+                "symbol": "Δt",
+                "label": "Biên độ nhiệt năm",
+                "unit": "°C"
+              },
+              "expr": "x - 16.4",
+              "x_min": 16.4,
+              "x_max": 30.0,
+              "x_step": 0.1,
+              "x_start": 20.0,
+              "target_y": 12.5,
+              "tolerance": 0.1,
+              "praise": "Đúng: 28,9 − 16,4 = 12,5°C.",
+              "audio": null
+            },
+            {
+              "id": "gio-mua-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "gio-mua-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước đọc và tính từ biểu đồ nhiệt độ – lượng mưa theo thứ tự đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Xác định trục hoành: 12 tháng, từ tháng 1 đến tháng 12",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Đọc nhiệt độ trên đường theo trục tung bên trái (đơn vị °C)",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Đọc lượng mưa trên cột theo trục tung bên phải (đơn vị mm)",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Tính nhiệt độ trung bình năm, biên độ nhiệt và tổng lượng mưa năm",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Xác định mùa mưa: các tháng có lượng mưa từ 100 mm trở lên",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Phải đọc đúng trục trước (đường theo trục nhiệt độ, cột theo trục lượng mưa) rồi mới tính toán và xác định mùa mưa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "gio-mua-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Gió mùa là gì?",
+                  "answer": "Gió đổi hướng theo mùa, hai mùa gần như ngược nhau.",
+                  "image": null
+                },
+                {
+                  "prompt": "Gió mùa đông ở nước ta có hướng và tính chất nào?",
+                  "answer": "Hướng Đông Bắc, lạnh và khô; qua biển ẩm hơn.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao Nam Bộ mưa nhiều còn Bắc Trung Bộ khô nóng dưới gió Tây Nam?",
+                  "answer": "Gió Tây Nam từ biển gây mưa; vượt Trường Sơn mất ẩm nên khô nóng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nhiet-do-va-luong-mua",
+          "title": "Nhiệt độ và lượng mưa",
+          "est_minutes": 15,
+          "summary": "Bài này hướng dẫn đọc biểu đồ nhiệt độ – lượng mưa, tính nhiệt độ trung bình năm, biên độ nhiệt, tổng lượng mưa và xác định mùa mưa, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Biểu đồ nhiệt độ – lượng mưa: đường đọc theo trục °C, cột đọc theo trục mm.",
+            "Công thức tính nhiệt độ trung bình năm, biên độ nhiệt năm và tổng lượng mưa năm.",
+            "Mùa mưa gồm các tháng có lượng mưa từ 100 mm trở lên.",
+            "Nhiệt độ tăng và biên độ nhiệt giảm từ bắc vào nam; mùa mưa khác nhau theo miền.",
+            "Ví dụ Hà Nội, Huế; lỗi thường gặp và bài tập tính toán trong bài."
+          ],
+          "blocks": [
+            {
+              "id": "nhiet-do-va-luong-mua-b1",
+              "kind": "image",
+              "image": {
+                "path": "images/nhiet-do-va-luong-mua-b1.svg",
+                "mime": "image/svg+xml",
+                "sha256": "822c77ee583f8384c2dd1ef1bacc333f888110d57ba5987b77612dc7c6680b7d",
+                "bytes": 6960
+              },
+              "alt": "Sơ đồ biểu đồ nhiệt độ – lượng mưa có hai trục tung",
+              "caption": "Đường đọc theo trục nhiệt độ, cột đọc theo trục lượng mưa.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b2",
+              "kind": "text",
+              "md": "Trục hoành ghi 12 tháng. Trục tung bên trái là nhiệt độ (°C), vẽ bằng đường. Trục tung bên phải là lượng mưa (mm), vẽ bằng cột. Đọc đúng trục là bước quan trọng nhất.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-do-va-luong-mua-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Trên biểu đồ nhiệt độ – lượng mưa, đường biểu diễn nhiệt độ được đọc theo trục nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Trục tung bên trái, đơn vị °C",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Trục tung bên phải, đơn vị mm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Trục hoành, theo 12 tháng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Cả hai trục tung, tùy tháng",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Đường nhiệt độ đọc theo trục tung bên trái (°C), còn cột lượng mưa đọc theo trục bên phải (mm).",
+                  "option_feedback": {
+                    "B": "Nhầm đường nhiệt độ với cột lượng mưa nên đọc sai trục.",
+                    "C": "Trục hoành chỉ thể hiện các tháng, không phải giá trị nhiệt độ.",
+                    "D": "Không phân biệt được trục nhiệt độ và trục lượng mưa."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ba công thức cần nhớ",
+              "md": "Nhiệt độ trung bình năm: $\\bar{t}=\\dfrac{t_1+t_2+\\dots+t_{12}}{12}$.\nBiên độ nhiệt năm: $\\Delta t=t_{\\max}-t_{\\min}$.\nTổng lượng mưa năm: $P=p_1+p_2+\\dots+p_{12}$.\nMùa mưa: các tháng có lượng mưa từ $100$ mm trở lên.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ Hà Nội",
+              "md": "Tổng nhiệt độ 12 tháng là $281,9^\\circ C$, nên $\\bar{t}=281,9:12\\approx 23,5^\\circ C$.\nTháng 7 nóng nhất $28,9^\\circ C$, tháng 1 lạnh nhất $16,4^\\circ C$, nên $\\Delta t=12,5^\\circ C$.\nTổng lượng mưa $P=1676,2$ mm. Các tháng có mưa $\\ge 100$ mm: tháng 5 đến 10, chiếm khoảng $85\\%$ cả năm.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-do-va-luong-mua-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Công thức tính nhiệt độ trung bình năm là $\\bar t =$ {{gap}}; công thức tính biên độ nhiệt năm là $\\Delta t =$ {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$\\dfrac{t_1+t_2+\\dots+t_{12}}{12}$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$t_{\\max}-t_{\\min}$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$\\dfrac{t_{\\max}+t_{\\min}}{2}$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "$p_1+p_2+\\dots+p_{12}$",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "$p_{\\max}-p_{\\min}$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Nhiệt độ trung bình năm là tổng nhiệt độ 12 tháng chia 12; biên độ nhiệt năm là nhiệt độ cao nhất trừ thấp nhất.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b5",
+              "kind": "text",
+              "md": "Huế có tổng lượng mưa năm $2466$ mm. Các tháng mưa $\\ge 100$ mm là tháng 9, 10, 11, 12; bốn tháng này chiếm khoảng $80,6\\%$ lượng mưa cả năm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Tính nhiệt độ trung bình năm bằng $\\dfrac{t_{\\max}+t_{\\min}}{2}$ là sai. Với Hà Nội, cách này cho $22,7^\\circ C$, còn giá trị đúng là $23,5^\\circ C$: phải cộng đủ 12 tháng rồi chia 12.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-do-va-luong-mua-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép đúng các bộ phận của biểu đồ nhiệt độ – lượng mưa với ý nghĩa của chúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Trục tung bên trái",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "nhiệt độ, °C",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Trục tung bên phải",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "lượng mưa, mm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Đường trên biểu đồ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "biểu diễn nhiệt độ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Cột trên biểu đồ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "biểu diễn lượng mưa",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Phải đọc đúng trục: đường theo nhiệt độ, cột theo lượng mưa.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b7",
+              "kind": "text",
+              "md": "Nhiệt độ trung bình năm tăng dần từ bắc vào nam. Biên độ nhiệt giảm dần từ bắc vào nam. Mùa mưa khác nhau: Bắc Bộ tháng 5 đến 10, Trung Bộ tháng 9 đến 12, Nam Bộ tháng 5 đến 11.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b8",
+              "kind": "interactive",
+              "prompt": "Kéo nhiệt độ tháng 7 để biên độ nhiệt năm của Hà Nội bằng 12,5°C",
+              "x": {
+                "symbol": "t_max",
+                "label": "Nhiệt độ tháng 7",
+                "unit": "°C"
+              },
+              "y": {
+                "symbol": "Δt",
+                "label": "Biên độ nhiệt",
+                "unit": "°C"
+              },
+              "expr": "x - 16.4",
+              "x_min": 16.4,
+              "x_max": 30.0,
+              "x_step": 0.1,
+              "x_start": 25.0,
+              "target_y": 12.5,
+              "tolerance": 0.05,
+              "praise": "Đúng: 28,9 − 16,4 = 12,5°C.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-do-va-luong-mua-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xác định mùa mưa từ số liệu lượng mưa 12 tháng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Cộng lượng mưa của 12 tháng để tính tổng lượng mưa năm.",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "So sánh lượng mưa từng tháng với ngưỡng 100 mm.",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Chọn các tháng có lượng mưa từ 100 mm trở lên.",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Kết luận các tháng đó là mùa mưa.",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mùa mưa gồm các tháng có lượng mưa từ 100 mm trở lên, sau khi đã xem xét số liệu từng tháng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhiet-do-va-luong-mua-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đọc nhiệt độ trên biểu đồ nhiệt độ – lượng mưa theo đường hay cột, và theo trục nào?",
+                  "answer": "Theo đường, đọc ở trục nhiệt độ bên trái (°C).",
+                  "image": null
+                },
+                {
+                  "prompt": "Mùa mưa được xác định thế nào?",
+                  "answer": "Gồm các tháng có lượng mưa từ 100 mm trở lên.",
+                  "image": null
+                },
+                {
+                  "prompt": "Muốn tính nhiệt độ trung bình năm phải làm gì?",
+                  "answer": "Cộng nhiệt độ đủ 12 tháng rồi chia 12.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "thien-tai",
+          "title": "Thiên tai",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày bão, áp thấp nhiệt đới, lũ lụt, các thiên tai khác và biện pháp phòng chống, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Bão, áp thấp nhiệt đới: mùa bão tháng 6–11, tập trung tháng 8–10.",
+            "Mùa lũ xác định theo lưu lượng: tháng có Q lớn hơn lưu lượng trung bình năm.",
+            "Ba miền có mùa lũ khác nhau: Bắc Bộ, Trung Bộ, Nam Bộ.",
+            "Hạn hán, xâm nhập mặn, lũ quét, sạt lở đất, gió Lào khô nóng.",
+            "Biện pháp: dự báo, sơ tán, trồng rừng, đê điều, hồ chứa, tiết kiệm nước."
+          ],
+          "blocks": [
+            {
+              "id": "thien-tai-b1",
+              "kind": "text",
+              "md": "Bão hình thành trên vùng biển nhiệt đới nóng ẩm như Biển Đông và tây Thái Bình Dương. Mùa bão nước ta từ tháng 6 đến tháng 11, tập trung nhất vào tháng 8, 9, 10.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "thien-tai-b2",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Bão đổ bộ và tác hại",
+              "md": "Bão thường đổ bộ vào Bắc Bộ, Bắc Trung Bộ và duyên hải Trung Bộ.\n\nTác hại: gió mạnh, mưa lớn gây lũ, nước dâng ven biển, lật úp tàu thuyền, tốc mái nhà, sạt lở.",
+              "audio": null
+            },
+            {
+              "id": "thien-tai-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thien-tai-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Mùa bão ở nước ta kéo dài từ tháng nào đến tháng nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Tháng 6 đến tháng 11",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Tháng 8 đến tháng 10",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Tháng 5 đến tháng 10",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Tháng 7 đến tháng 11",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Bão xuất hiện khi biển đủ nóng ẩm, kéo dài hơn ba tháng cao điểm.",
+                  "explanation": "Mùa bão nước ta kéo dài từ tháng 6 đến tháng 11, tập trung nhất vào tháng 8, 9, 10.",
+                  "option_feedback": {
+                    "B": "Đây là thời gian bão tập trung nhất, không phải toàn bộ mùa bão.",
+                    "C": "Đây là mùa mưa của Hà Nội, không phải mùa bão cả nước.",
+                    "D": "Đây là mùa lũ của Nam Bộ, không phải mùa bão."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "thien-tai-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/thien-tai-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "0691d2a2bf75740bca4b5fe3cad76593294fd50d162879bdf9a841cd588170e7",
+                "bytes": 2642
+              },
+              "alt": "Biểu đồ lưu lượng 12 tháng của sông Hồng, tháng 8 cao nhất",
+              "caption": "Tháng có Q nằm trên đường trung bình 3585 m³/s thuộc mùa lũ.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "thien-tai-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: mùa lũ sông Hồng tại Hà Nội",
+              "md": "Tổng lưu lượng 12 tháng là $43021$ m³/s, nên $\\bar{Q}=43021:12 \\approx 3585$ m³/s.\n\nCác tháng có $Q>\\bar{Q}$ là tháng 6 đến 10. Đỉnh lũ tháng 8 đạt $9246$ m³/s, gấp khoảng $2,6$ lần trung bình năm.",
+              "audio": null
+            },
+            {
+              "id": "thien-tai-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thien-tai-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Các tháng có lưu lượng $Q > \\bar{Q}$ là các tháng thuộc {{gap}}; các tháng còn lại là {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "mùa lũ",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "mùa cạn",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "mùa mưa",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "mùa khô",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mùa lũ được xác định theo lưu lượng: tháng có $Q$ lớn hơn lưu lượng trung bình năm thuộc mùa lũ, còn lại là mùa cạn.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "thien-tai-b5",
+              "kind": "text",
+              "md": "Ba miền có mùa lũ khác nhau. Bắc Bộ: tháng 6 đến 10, đỉnh tháng 8. Trung Bộ: tháng 8 đến 12. Nam Bộ: tháng 7 đến 11, đỉnh tháng 9 đến 10.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "thien-tai-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Vì sao lũ Trung Bộ nhanh, lũ Nam Bộ chậm?",
+              "md": "Miền Trung: sông ngắn, dốc, lưu vực nhỏ, mưa lớn tập trung nên lũ lên nhanh, rút nhanh.\n\nNam Bộ: sông Mê Công dài, lưu vực rộng, đồng bằng thấp và phẳng, chịu ảnh hưởng thủy triều nên lũ lên chậm, ngập rộng nhiều tháng.",
+              "audio": null
+            },
+            {
+              "id": "thien-tai-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thien-tai-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi miền với mùa lũ tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Bắc Bộ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "tháng 6 – 10, đỉnh tháng 8",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Trung Bộ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "tháng 8 – 12, lũ lên nhanh",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Nam Bộ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "tháng 7 – 11, đỉnh tháng 9 – 10",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Xâm nhập mặn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "mùa khô, nước sông giảm",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ba miền có mùa lũ khác nhau, còn xâm nhập mặn xảy ra vào mùa khô khi nước sông giảm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "thien-tai-b7",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Các thiên tai khác",
+              "md": "- Hạn hán: mùa khô, nặng nhất ở Nam Bộ, Nam Trung Bộ, Tây Nguyên.\n- Xâm nhập mặn: mùa khô, nước sông giảm, thủy triều đưa nước mặn vào sâu đồng bằng sông Cửu Long.\n- Lũ quét, sạt lở đất: miền núi, nơi mất rừng, sườn dốc, mưa lớn.\n- Gió Lào khô nóng: có thể trên $37^{\\circ}C$, độ ẩm thấp, dễ gây cháy rừng.",
+              "audio": null
+            },
+            {
+              "id": "thien-tai-b8",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Biện pháp phòng chống",
+              "md": "- Theo dõi bản tin dự báo, cảnh báo bão, lũ; sơ tán dân khỏi vùng nguy hiểm.\n- Trồng và bảo vệ rừng đầu nguồn, rừng ngập mặn ven biển.\n- Củng cố đê điều, xây hồ chứa điều tiết lũ, công trình ngăn mặn, thủy lợi.\n- Tiết kiệm nước mùa khô, chuyển dịch mùa vụ và cơ cấu cây trồng phù hợp.",
+              "audio": null
+            },
+            {
+              "id": "thien-tai-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "thien-tai-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước tính và xác định mùa lũ của một con sông từ số liệu lưu lượng 12 tháng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Cộng lưu lượng nước của 12 tháng",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Chia tổng đó cho 12 để được lưu lượng trung bình năm $\\bar{Q}$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "So sánh lưu lượng từng tháng với $\\bar{Q}$",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Chọn các tháng có $Q > \\bar{Q}$ làm các tháng mùa lũ",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mùa lũ gồm những tháng có lưu lượng lớn hơn lưu lượng trung bình năm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "thien-tai-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Mùa bão nước ta kéo dài từ tháng nào đến tháng nào, tập trung nhất vào tháng nào?",
+                  "answer": "Tháng 6 đến tháng 11, tập trung nhất vào tháng 8, 9, 10.",
+                  "image": null
+                },
+                {
+                  "prompt": "Dựa vào đâu để xác định mùa lũ của một con sông?",
+                  "answer": "Các tháng có lưu lượng Q lớn hơn lưu lượng trung bình năm là tháng mùa lũ.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu vài biện pháp phòng chống thiên tai.",
+                  "answer": "Dự báo và sơ tán, trồng rừng, củng cố đê điều, xây hồ chứa, tiết kiệm nước mùa khô.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về khí hậu Việt Nam, gồm gió mùa, cách đọc nhiệt độ và lượng mưa, và các thiên tai thường gặp.",
+          "Gió mùa là gió đổi hướng theo mùa, hai mùa có hướng gần như ngược nhau. Nước ta thuộc khu vực gió mùa châu Á nên có khí hậu nhiệt đới gió mùa. Khí hậu nóng, ẩm, mưa nhiều và có hai mùa rõ rệt. Tính chất nhiệt đới thể hiện ở nhiệt độ trung bình năm trên 21 độ C, mưa từ 1500 đến 2000 mi-li-mét mỗi năm, độ ẩm trên 80 phần trăm.",
+          "Gió mùa đông kéo dài từ tháng 11 đến tháng 4, hướng Đông Bắc, từ áp cao Xibia nên lạnh và khô. Khi qua biển Đông, gió tăng ẩm nên cuối đông Bắc Bộ có mưa phùn; gặp Trường Sơn Bắc thì gây mưa lớn ở Bắc Trung Bộ. Gió mùa hạ từ tháng 5 đến tháng 10, hướng Tây Nam, từ Ấn Độ Dương và xích đạo nóng ẩm nên gây mưa lớn, nhất là Nam Bộ, Tây Nguyên, Tây Bắc. Gió qua Lào vượt Trường Sơn mất ẩm, thành gió Lào khô nóng.",
+          "Công thức nhiệt độ trung bình năm là lấy tổng nhiệt độ 12 tháng chia cho 12. Biên độ nhiệt năm là nhiệt độ tháng cao nhất trừ nhiệt độ tháng thấp nhất. Ví dụ Hà Nội có biên độ là 28,9 trừ 16,4 bằng 12,5 độ C. Thành phố Hồ Chí Minh có biên độ là 28,9 trừ 25,8 bằng 3,1 độ C, vì Hà Nội chịu gió mùa Đông Bắc lạnh còn Thành phố Hồ Chí Minh gần xích đạo.",
+          "Bài nhiệt độ và lượng mưa dạy đọc biểu đồ: trục hoành ghi 12 tháng, trục tung bên trái là nhiệt độ vẽ bằng đường, trục tung bên phải là lượng mưa vẽ bằng cột. Đọc đúng trục là bước quan trọng nhất. Nhiệt độ trung bình năm bằng tổng nhiệt độ 12 tháng chia 12; biên độ nhiệt năm bằng nhiệt độ cao nhất trừ nhiệt độ thấp nhất; tổng lượng mưa năm bằng tổng lượng mưa 12 tháng. Mùa mưa gồm các tháng có lượng mưa từ 100 mi-li-mét trở lên.",
+          "Ví dụ Hà Nội có tổng nhiệt độ 12 tháng là 281,9 độ C nên nhiệt độ trung bình khoảng 23,5 độ C; tháng 7 nóng nhất 28,9 độ C, tháng 1 lạnh nhất 16,4 độ C nên biên độ 12,5 độ C. Tổng lượng mưa Hà Nội là 1676,2 mi-li-mét; các tháng mưa từ 100 mi-li-mét trở lên là tháng 5 đến 10, chiếm khoảng 85 phần trăm cả năm. Huế có tổng lượng mưa năm 2466 mi-li-mét; các tháng mưa từ 100 mi-li-mét trở lên là tháng 9 đến 12, bốn tháng này chiếm khoảng 80,6 phần trăm.",
+          "Cần nhớ không được tính nhiệt độ trung bình năm bằng trung bình cộng nhiệt độ cao nhất và thấp nhất; với Hà Nội cách sai cho 22,7 độ C còn đúng là 23,5 độ C, phải cộng đủ 12 tháng rồi chia 12. Nhiệt độ trung bình năm tăng dần từ bắc vào nam, biên độ nhiệt giảm dần từ bắc vào nam. Mùa mưa khác nhau: Bắc Bộ tháng 5 đến 10, Trung Bộ tháng 9 đến 12, Nam Bộ tháng 5 đến 11.",
+          "Bài thiên tai nói về bão và áp thấp nhiệt đới: bão hình thành trên vùng biển nhiệt đới nóng ẩm như Biển Đông và tây Thái Bình Dương; mùa bão từ tháng 6 đến 11, tập trung tháng 8 đến 10, thường đổ bộ vào Bắc Bộ, Bắc Trung Bộ và duyên hải Trung Bộ. Bão gây gió mạnh, mưa lớn làm lũ, nước dâng ven biển, lật úp tàu thuyền, tốc mái nhà, sạt lở. Mùa lũ được xác định theo lưu lượng: tháng có lưu lượng lớn hơn lưu lượng trung bình năm. Ví dụ tổng lưu lượng 12 tháng là 43021 mét khối trên giây nên trung bình khoảng 3585 mét khối trên giây; các tháng có lưu lượng lớn hơn trung bình là tháng 6 đến 10, đỉnh lũ tháng 8 đạt 9246 mét khối trên giây, gấp khoảng 2,6 lần trung bình năm.",
+          "Ba miền có mùa lũ khác nhau: Bắc Bộ tháng 6 đến 10, đỉnh tháng 8; Trung Bộ tháng 8 đến 12; Nam Bộ tháng 7 đến 11, đỉnh tháng 9 đến 10. Miền Trung sông ngắn, dốc, lưu vực nhỏ, mưa lớn tập trung nên lũ lên nhanh, rút nhanh; Nam Bộ sông Mê Công dài, lưu vực rộng, đồng bằng thấp và phẳng, chịu ảnh hưởng thủy triều nên lũ lên chậm, ngập rộng nhiều tháng. Ngoài ra còn hạn hán vào mùa khô, nặng nhất ở Nam Bộ, Nam Trung Bộ, Tây Nguyên; xâm nhập mặn khi nước sông giảm và thủy triều đưa nước mặn vào sâu đồng bằng sông Cửu Long; lũ quét, sạt lở đất ở miền núi nơi mất rừng, sườn dốc, mưa lớn; gió Lào khô nóng có thể trên 37 độ C, độ ẩm thấp, dễ gây cháy rừng. Biện pháp là theo dõi bản tin dự báo, cảnh báo bão lũ, sơ tán dân khỏi vùng nguy hiểm, trồng và bảo vệ rừng đầu nguồn, rừng ngập mặn ven biển, củng cố đê điều, xây hồ chứa điều tiết lũ, công trình ngăn mặn, thủy lợi, tiết kiệm nước mùa khô, chuyển dịch mùa vụ và cơ cấu cây trồng phù hợp.",
+          "Ba điều cần nhớ là thứ nhất, nước ta có khí hậu nhiệt đới gió mùa với hai mùa gió hướng gần như ngược nhau. Thứ hai, đọc biểu đồ phải đúng trục, tính nhiệt độ trung bình năm bằng tổng 12 tháng chia 12, biên độ nhiệt bằng cao nhất trừ thấp nhất, mùa mưa là các tháng từ 100 mi-li-mét trở lên. Thứ ba, thiên tai chính gồm bão, lũ, hạn hán, xâm nhập mặn, lũ quét, sạt lở đất và gió Lào; cần dự báo, sơ tán, trồng rừng, làm đê điều, hồ chứa và tiết kiệm nước."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-song-ngoi",
+      "title": "Sông ngòi",
+      "lessons": [
+        {
+          "id": "cac-he-thong-song",
+          "title": "Các hệ thống sông",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày khái niệm sông, phụ lưu, chi lưu, lưu vực, đặc điểm sông ngòi và các hệ thống sông lớn của nước ta, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Sông, phụ lưu, chi lưu, lưu vực sông và lưu lượng nước.",
+            "Sông ngòi nước ta dày đặc, ngắn dốc, nhiều thác ghềnh và nhiều phù sa.",
+            "Hai hướng chảy chính: tây bắc – đông nam và vòng cung.",
+            "Các hệ thống sông lớn: Hồng, Thái Bình, Kỳ Cùng – Bằng Giang, Mã, Cả, Thu Bồn, Ba, Đồng Nai, Cửu Long.",
+            "Ví dụ, lỗi thường gặp và bài tập về hệ thống sông trong bài."
+          ],
+          "blocks": [
+            {
+              "id": "cac-he-thong-song-b1",
+              "kind": "text",
+              "md": "Sông là dòng nước chảy thường xuyên, tương đối ổn định trên bề mặt lục địa, có lòng dẫn nước và hai bên bờ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cac-he-thong-song-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/cac-he-thong-song-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "9cd825ab26807991d0f1ee21996ba21767eef3fa12012a18107edb8957332453",
+                "bytes": 3057
+              },
+              "alt": "Sơ đồ hệ thống sông gồm sông chính, phụ lưu, chi lưu và lưu vực sông",
+              "caption": "Một hệ thống sông: sông chính, phụ lưu, chi lưu và lưu vực",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "cac-he-thong-song-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cac-he-thong-song-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao sông ngòi nước ta phần lớn ngắn và dốc?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Lãnh thổ hẹp ngang và 3/4 diện tích là đồi núi",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Mưa nhiều và tập trung theo mùa rõ rệt",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Đồng bằng rộng và địa hình rất bằng phẳng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Lòng sông nhiều phù sa nên bị bồi lấp nhanh",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Xem hình dạng lãnh thổ và loại địa hình chiếm phần lớn diện tích.",
+                  "explanation": "Nước ta hẹp ngang và 3/4 diện tích là đồi núi nên sông chảy từ núi ra biển ngắn và dốc.",
+                  "option_feedback": {
+                    "B": "Lãnh thổ hẹp ngang và phần lớn là đồi núi chính là nguyên nhân làm sông ngắn, dốc.",
+                    "C": "Đồng bằng bằng phẳng làm sông chảy chậm chứ không làm sông ngắn và dốc.",
+                    "D": "Phù sa gây bồi lấp lòng sông, không phải nguyên nhân làm sông ngắn, dốc."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cac-he-thong-song-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Phụ lưu, chi lưu, lưu vực, lưu lượng",
+              "md": "Phụ lưu là sông nhỏ đổ nước vào sông chính; chi lưu là nhánh đưa nước từ sông chính ra biển hoặc ra hồ.\n\nLưu vực sông là diện tích đất đai cung cấp nước cho sông.\n\nLưu lượng $Q$ là lượng nước chảy qua mặt cắt ngang lòng sông trong 1 giây, đơn vị $m^3/s$.\n\nTrên sông Hồng: sông Đà, sông Thao, sông Lô là phụ lưu; sông Đuống, sông Đáy là chi lưu.",
+              "audio": null
+            },
+            {
+              "id": "cac-he-thong-song-b4",
+              "kind": "text",
+              "md": "Cả nước có khoảng 2.360 con sông dài trên 10 km; trung bình khoảng 20 km bờ biển lại có một cửa sông. Sông Hồng dài 1.150 km nhưng chỉ khoảng 510 km chảy trên đất Việt Nam. Sông ngắn, dốc vì lãnh thổ hẹp ngang và 3/4 diện tích là đồi núi.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cac-he-thong-song-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cac-he-thong-song-q2",
+                  "type": "FILL_TILES",
+                  "stem": "{{gap}} là diện tích đất đai cung cấp nước cho sông; {{gap}} là sông nhỏ đổ nước vào sông chính.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "Lưu vực sông",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "phụ lưu",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "chi lưu",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "lưu lượng",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": "Chi lưu thì đưa nước từ sông chính ra biển hoặc ra hồ.",
+                  "explanation": "Lưu vực sông là diện tích đất cung cấp nước cho sông, còn phụ lưu đổ nước vào sông chính.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cac-he-thong-song-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tỉ lệ lưu vực sông Hồng nằm trong nước ta",
+              "md": "Tổng diện tích lưu vực sông Hồng là 143.700 km², phần thuộc Việt Nam khoảng 86.000 km².\n\n$\\dfrac{86\\,000}{143\\,700} \\times 100\\% \\approx 59,8\\%$, làm tròn khoảng $60\\%$.\n\nKhoảng 40% lưu vực nằm ngoài lãnh thổ, nên lượng nước và phù sa sông Hồng phụ thuộc một phần vào việc dùng nước ở thượng nguồn.",
+              "audio": null
+            },
+            {
+              "id": "cac-he-thong-song-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cac-he-thong-song-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Sông ngòi nước ta chảy chủ yếu theo hai hướng: tây bắc – đông nam và vòng cung."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Sông Hồng dài 1.150 km và toàn bộ chiều dài đó nằm trên đất Việt Nam."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Mùa lũ thường chiếm khoảng 70% – 80% tổng lượng nước cả năm."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Sông miền Trung ngắn, dốc nên lũ lên và xuống đều rất chậm."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Sông Hồng chỉ có khoảng 510 km chảy trên đất Việt Nam, còn sông miền Trung ngắn, dốc nên lũ lên nhanh và xuống nhanh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "cac-he-thong-song-b6",
+              "kind": "text",
+              "md": "Có hai hướng chảy chính: tây bắc - đông nam (sông Đà, sông Mã, sông Cả, sông Hồng) và hướng vòng cung (sông Gâm, sông Cầu, sông Thương, sông Lục Nam).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cac-he-thong-song-b7",
+              "kind": "text",
+              "md": "Chín hệ thống sông lớn: Hồng (khoảng 86.000 km², lớn nhất nước ta), Thái Bình, Kỳ Cùng - Bằng Giang, Mã, Cả, Thu Bồn, Ba, Đồng Nai, Cửu Long (phần Việt Nam khoảng 71.000 km²). Sông Cửu Long có hai nhánh chính là sông Tiền và sông Hậu.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cac-he-thong-song-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cac-he-thong-song-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với định nghĩa tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Phụ lưu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Sông nhỏ đổ nước vào sông chính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Chi lưu",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Nhánh đưa nước từ sông chính ra biển hoặc ra hồ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Lưu vực sông",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Diện tích đất đai cung cấp nước cho sông",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Lưu lượng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Lượng nước qua mặt cắt ngang trong 1 giây",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Bốn khái niệm này mô tả các bộ phận và lượng nước của một hệ thống sông.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cac-he-thong-song-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Nhầm về “lớn nhất”",
+              "md": "Nói “sông Hồng là hệ thống sông lớn nhất Việt Nam” mà không nói rõ là dễ nhầm. Sông Hồng có lưu vực lớn nhất tính trong phạm vi nước ta; còn xét toàn bộ dòng chảy thì sông Mê Kông (hạ lưu là sông Cửu Long) mới lớn nhất Đông Nam Á. Cần nói rõ “lớn nhất trong nước” hay “lớn nhất khu vực”.",
+              "audio": null
+            },
+            {
+              "id": "cac-he-thong-song-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cac-he-thong-song-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước đọc biểu đồ lưu lượng nước sông theo đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Đọc lưu lượng nước của 12 tháng trên biểu đồ",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Tính lưu lượng trung bình năm: $Q_{TB} = \\dfrac{\\text{tổng 12 tháng}}{12}$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Xác định các tháng liên tiếp có lưu lượng lớn hơn $Q_{TB}$ – đó là mùa lũ",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Tính tỉ lệ lượng nước mùa lũ so với tổng lượng nước 12 tháng",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": "Bước tính trung bình năm phải đứng trước bước xác định mùa lũ.",
+                  "explanation": "Phải có lưu lượng trung bình năm làm mốc so sánh rồi mới xác định được mùa lũ và tỉ lệ nước mùa lũ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cac-he-thong-song-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Phụ lưu và chi lưu khác nhau thế nào?",
+                  "answer": "Phụ lưu đổ nước vào sông chính, chi lưu đưa nước từ sông chính ra biển hoặc ra hồ.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao sông ngòi nước ta phần lớn ngắn và dốc?",
+                  "answer": "Vì lãnh thổ hẹp ngang và 3/4 diện tích là đồi núi.",
+                  "image": null
+                },
+                {
+                  "prompt": "Sông ngòi nước ta chảy theo hai hướng chính nào?",
+                  "answer": "Hướng tây bắc – đông nam và hướng vòng cung.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "che-do-nuoc",
+          "title": "Chế độ nước",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày khái niệm chế độ nước, cách xác định mùa lũ theo lưu lượng và mùa lũ ở các vùng, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Chế độ nước là sự thay đổi lưu lượng nước sông theo thời gian trong năm.",
+            "Mùa lũ chiếm 70–80% tổng lượng nước năm; mùa cạn chiếm 20–30%.",
+            "Xác định mùa lũ bằng cách so sánh lưu lượng từng tháng với lưu lượng trung bình năm.",
+            "Mùa lũ Bắc Bộ tháng 6–10, Trung Bộ tháng 9–12, Nam Bộ tháng 7–11.",
+            "Ví dụ, lỗi thường gặp và bài tập đọc biểu đồ lưu lượng trong bài."
+          ],
+          "blocks": [
+            {
+              "id": "che-do-nuoc-b1",
+              "kind": "text",
+              "md": "Chế độ nước sông là sự thay đổi lưu lượng nước sông theo thời gian trong năm. Lưu lượng $Q$ là lượng nước chảy qua mặt cắt ngang lòng sông trong 1 giây, đơn vị $m^3/s$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "che-do-nuoc-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hai mùa nước",
+              "md": "Nước ta có hai mùa rõ rệt trên hầu hết các sông:\n- Mùa lũ: nước nhiều, lưu lượng lớn, chiếm 70% đến 80% tổng lượng nước cả năm.\n- Mùa cạn: nước ít, lưu lượng nhỏ, chiếm 20% đến 30% còn lại.\n\nNguyên nhân: mưa tập trung theo mùa của khí hậu nhiệt đới gió mùa (mùa mưa và mùa khô).",
+              "audio": null
+            },
+            {
+              "id": "che-do-nuoc-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "che-do-nuoc-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Để xác định mùa lũ của một con sông từ bảng lưu lượng nước 12 tháng, ta làm thế nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "So sánh lưu lượng từng tháng với lưu lượng trung bình năm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "So sánh lưu lượng từng tháng với lượng mưa trung bình tháng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Chọn ra ba tháng có lưu lượng lớn nhất trong năm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chọn các tháng có lưu lượng nhỏ hơn mức trung bình năm",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Các tháng liên tiếp có lưu lượng lớn hơn $Q_{TB}$ hợp thành mùa lũ, các tháng còn lại là mùa cạn.",
+                  "option_feedback": {
+                    "B": "Lưu lượng và lượng mưa là hai đại lượng khác nhau, không so sánh trực tiếp để tìm mùa lũ.",
+                    "C": "Ba tháng lớn nhất có thể không liên tiếp và không phải là cách xác định mùa lũ.",
+                    "D": "Các tháng nhỏ hơn mức trung bình năm chính là mùa cạn, không phải mùa lũ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "che-do-nuoc-b3",
+              "kind": "text",
+              "md": "Cách xác định mùa lũ: tính lưu lượng trung bình năm $Q_{TB}=\\dfrac{\\text{tổng 12 tháng}}{12}$. Các tháng liên tiếp có lưu lượng lớn hơn $Q_{TB}$ là mùa lũ; các tháng còn lại là mùa cạn.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "che-do-nuoc-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/che-do-nuoc-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "f28dea1a0e9e7a625aa5c7ff9eba6de69b583a545adfe69b7fd8eeb19f9b357c",
+                "bytes": 4238
+              },
+              "alt": "Biểu đồ lưu lượng 12 tháng với đường trung bình năm 3 567 m³/s, các tháng 6 đến 10 vượt đường trung bình",
+              "caption": "Các tháng 6–10 nằm trên đường trung bình nên thuộc mùa lũ",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "che-do-nuoc-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "che-do-nuoc-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Lưu lượng trung bình năm: $Q_{TB} = \\dfrac{\\text{tổng lưu lượng 12 tháng}}{{{gap}}}$. Mùa lũ gồm các tháng có lưu lượng {{gap}} $Q_{TB}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "12",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "lớn hơn",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "365",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "nhỏ hơn",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "bằng",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Trung bình năm lấy tổng 12 tháng chia cho 12, và mùa lũ là các tháng có lưu lượng vượt mức trung bình đó.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "che-do-nuoc-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Đọc bảng lưu lượng",
+              "md": "Tổng 12 tháng là $42\\,800\\ m^3/s$ nên $Q_{TB} \\approx 3\\,567\\ m^3/s$.\n- Tháng 6 đến 10 có lưu lượng lớn hơn $Q_{TB}$ → mùa lũ tháng 6 đến tháng 10.\n- Đỉnh lũ tháng 8: $9\\,200\\ m^3/s$; tháng kiệt nhất tháng 3: $1\\,000\\ m^3/s$.\n- Tỉ lệ mùa lũ: $\\dfrac{32\\,000}{42\\,800} \\times 100\\% \\approx 74,8\\%$, tức khoảng $75\\%$ lượng nước năm.",
+              "audio": null
+            },
+            {
+              "id": "che-do-nuoc-b6",
+              "kind": "text",
+              "md": "Mùa lũ khác nhau theo vùng. Bắc Bộ: tháng 6 đến 10, trùng mùa mưa hạ. Trung Bộ: tháng 9 đến 12, do mưa tập trung vào thu đông. Nam Bộ và Tây Nguyên: tháng 7 đến 11.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "che-do-nuoc-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "che-do-nuoc-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Nối mỗi khái niệm, đại lượng ở cột trái với nội dung tương ứng ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Mùa lũ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Lưu lượng lớn, chiếm 70–80% lượng nước năm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Mùa cạn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Lưu lượng nhỏ, chiếm 20–30% lượng nước năm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Lưu lượng $Q$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Đơn vị $m^3/s$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Mùa lũ Trung Bộ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Khoảng tháng 9 – 12",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mùa lũ chiếm phần lớn lượng nước năm, còn lưu lượng được đo bằng $m^3/s$. Mùa lũ Trung Bộ muộn hơn Bắc Bộ do mưa tập trung vào thu đông.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "che-do-nuoc-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Nhiều bạn nói \"cả nước có chung một mùa lũ từ tháng 6 đến tháng 10\". Sai, vì mùa lũ phụ thuộc chế độ mưa từng vùng: Bắc Bộ lũ sớm, Trung Bộ lũ muộn (tháng 9 đến tháng 12), Nam Bộ lũ kéo dài (tháng 7 đến tháng 11).",
+              "audio": null
+            },
+            {
+              "id": "che-do-nuoc-b9",
+              "kind": "interactive",
+              "prompt": "Kéo để tổng lưu lượng mùa lũ đạt khoảng 75% lượng nước cả năm",
+              "x": {
+                "symbol": "Q_{lũ}",
+                "label": "Tổng lưu lượng mùa lũ",
+                "unit": "m³/s"
+              },
+              "y": {
+                "symbol": "\\%",
+                "label": "Tỉ lệ lượng nước mùa lũ",
+                "unit": "%"
+              },
+              "expr": "x/42800*100",
+              "x_min": 0.0,
+              "x_max": 42000.0,
+              "x_step": 200.0,
+              "x_start": 8000.0,
+              "target_y": 74.8,
+              "tolerance": 0.6,
+              "praise": "Đúng rồi: 32 000 m³/s trên tổng 42 800 m³/s là khoảng 75% lượng nước năm.",
+              "audio": null
+            },
+            {
+              "id": "che-do-nuoc-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "che-do-nuoc-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước đọc biểu đồ lưu lượng nước để xác định mùa lũ và tỉ lệ lượng nước mùa lũ.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Đọc lưu lượng nước của 12 tháng trên biểu đồ",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Tính lưu lượng trung bình năm bằng tổng 12 tháng chia cho 12",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "So sánh lưu lượng từng tháng với lưu lượng trung bình năm",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Chọn các tháng liên tiếp có lưu lượng lớn hơn mức trung bình làm mùa lũ",
+                      "side": null
+                    },
+                    {
+                      "id": "s5",
+                      "text": "Tính tỉ lệ lượng nước mùa lũ so với tổng lượng nước cả năm",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4",
+                      "s5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Phải tính được mức trung bình năm trước, rồi so sánh từng tháng để tách mùa lũ và mùa cạn. Sau đó mới tính được tỉ lệ lượng nước mùa lũ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "che-do-nuoc-b10",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Chế độ nước sông là gì?",
+                  "answer": "Là sự thay đổi của lưu lượng nước sông theo thời gian trong năm.",
+                  "image": null
+                },
+                {
+                  "prompt": "Làm sao xác định mùa lũ trên biểu đồ lưu lượng?",
+                  "answer": "So sánh lưu lượng từng tháng với lưu lượng trung bình năm; tháng lớn hơn là mùa lũ.",
+                  "image": null
+                },
+                {
+                  "prompt": "Mùa lũ ở Bắc Bộ, Trung Bộ, Nam Bộ khác nhau thế nào?",
+                  "answer": "Bắc Bộ tháng 6–10, Trung Bộ tháng 9–12, Nam Bộ tháng 7–11.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "su-dung-nguon-nuoc",
+          "title": "Sử dụng nguồn nước",
+          "est_minutes": 15,
+          "summary": "Bài này trình bày giá trị của sông ngòi, khó khăn và biện pháp sử dụng nguồn nước, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Giá trị sông ngòi: thủy lợi, thủy điện, giao thông, thủy sản, du lịch, phù sa, sinh hoạt.",
+            "Khó khăn: lũ lụt, hạn hán, ô nhiễm nước, xâm nhập mặn, sạt lở, suy giảm phù sa.",
+            "Biện pháp: bảo vệ rừng, hồ chứa, đê kè, xử lí nước thải, tiết kiệm nước, hợp tác quốc tế.",
+            "Ví dụ tính phù sa và chất ô nhiễm; lỗi thường gặp và bài tập trong bài."
+          ],
+          "blocks": [
+            {
+              "id": "su-dung-nguon-nuoc-b1",
+              "kind": "text",
+              "md": "Sông ngòi cho ta nước tưới, thủy điện, đường giao thông thủy, thủy sản và du lịch. Phù sa bồi đắp đồng bằng màu mỡ: cả nước khoảng 200 triệu tấn/năm, riêng sông Hồng khoảng 100 triệu tấn/năm.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b2",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: phù sa sông đưa ra biển",
+              "md": "Sông có lưu lượng $3\\,700\\ m^3/s$, hàm lượng phù sa $1\\ kg/m^3$.\n\nMột năm có $t = 365 \\times 24 \\times 3\\,600 \\approx 31,5 \\times 10^6$ giây.\n\nLượng nước $V = 3\\,700 \\times 31,5 \\times 10^6 \\approx 116,6 \\times 10^9\\ m^3$.\n\nKhối lượng phù sa: $116,6 \\times 10^9 \\times 1\\ kg \\approx 117$ triệu tấn/năm.",
+              "audio": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-dung-nguon-nuoc-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao mùa lũ ở Trung Bộ lại đến muộn hơn ở Bắc Bộ?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì Trung Bộ mưa lớn vào thu đông do gió mùa đông bắc, địa hình Trường Sơn và bão.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì Trung Bộ mưa lớn vào mùa hạ do gió mùa tây nam hoạt động mạnh.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì sông Trung Bộ ngắn và dốc nên nước dồn về nhanh hơn.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì Trung Bộ nằm sát biển nên nước sông dâng lên chậm hơn.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Mùa lũ gắn với mùa mưa của từng vùng.",
+                  "explanation": "Mùa lũ phụ thuộc chế độ mưa: Trung Bộ mưa lớn vào thu đông nên lũ muộn (tháng 9 – 12), Bắc Bộ mưa lớn vào mùa hạ nên lũ sớm (tháng 6 – 10).",
+                  "option_feedback": {
+                    "B": "Nhầm mùa mưa của Bắc Bộ: Bắc Bộ mới là nơi mưa lớn vào mùa hạ.",
+                    "C": "Sông ngắn, dốc làm lũ lên nhanh chứ không làm mùa lũ đến muộn.",
+                    "D": "Vị trí gần biển không quyết định thời gian mùa lũ; mùa lũ phụ thuộc chế độ mưa."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b3",
+              "kind": "text",
+              "md": "Khó khăn lớn nhất là lũ lụt: mùa lũ chiếm 70% đến 80% lượng nước năm. Mùa cạn thì hạn hán, thiếu nước, nhất là Nam Trung Bộ và Tây Nguyên. Nước còn bị ô nhiễm, nhiễm mặn và sạt lở bờ sông.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-dung-nguon-nuoc-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Một nhà máy xả $5\\,000\\ m^3$ nước thải mỗi ngày, nồng độ chất ô nhiễm $20\\ mg/L$. Mỗi ngày nhà máy thải ra {{gap}} kg chất ô nhiễm, và trong một tháng (30 ngày) là {{gap}} tấn.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "100",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "3",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "1 000",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "30",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": "Đổi $5\\,000\\ m^3 = 5\\,000\\,000\\ L$ và $1\\ mg/L = 1\\ g/m^3$.",
+                  "explanation": "$5\\,000\\,000\\ L \\times 20\\ mg = 100\\,000\\,000\\ mg = 100\\ kg$; nhân 30 ngày được $3\\,000\\ kg = 3$ tấn.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b4",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Đừng chỉ nhìn một mặt",
+              "md": "Hồ chứa điều tiết l",
+              "audio": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: chất ô nhiễm thải ra sông",
+              "md": "Nhà máy xả $5\\,000\\ m^3$ nước thải mỗi ngày, nồng độ chất ô nhiễm $20\\ mg/L$.\n\nĐổi: $5\\,000\\ m^3 = 5\\,000\\,000\\ L$ và $1\\ mg/L = 1\\ g/m^3$.\n\nMột ngày: $5\\,000\\,000 \\times 20\\ mg = 100\\,000\\,000\\ mg = 100\\ kg$.\n\nMột tháng (30 ngày): $100 \\times 30 = 3\\,000\\ kg = 3$ tấn.",
+              "audio": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-dung-nguon-nuoc-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Các nhận định sau về việc sử dụng nguồn nước là đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Mùa lũ thường tập trung khoảng 70% – 80% lượng nước cả năm."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Xây dựng hồ chứa chỉ đem lại lợi ích, không có tác động tiêu cực."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Phù sa chỉ có tác dụng tốt, không gây khó khăn gì cho sông ngòi."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Trồng và bảo vệ rừng đầu nguồn giúp giữ nước và chống xói mòn."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": false,
+                      "d": true
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mùa lũ chiếm 70% – 80% lượng nước năm; hồ chứa và phù sa đều có cả mặt lợi và mặt hại nên không thể nói chỉ có lợi hoặc chỉ tốt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b6",
+              "kind": "interactive",
+              "prompt": "Kéo để lượng chất ô nhiễm mỗi ngày đạt 100 kg (nồng độ 20 mg/L)",
+              "x": {
+                "symbol": "V",
+                "label": "Nước thải",
+                "unit": "m³/ngày"
+              },
+              "y": {
+                "symbol": "m",
+                "label": "Chất ô nhiễm",
+                "unit": "kg/ngày"
+              },
+              "expr": "0.02*x",
+              "x_min": 0.0,
+              "x_max": 10000.0,
+              "x_step": 500.0,
+              "x_start": 1000.0,
+              "target_y": 100.0,
+              "tolerance": 1.0,
+              "praise": "Đúng rồi: 5 000 m³/ngày với 20 mg/L cho ra 100 kg chất ô nhiễm mỗi ngày.",
+              "audio": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-dung-nguon-nuoc-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi giá trị của sông ngòi với ví dụ tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Thủy điện",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Hòa Bình trên sông Đà",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Giao thông thủy",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Kênh rạch đồng bằng Nam Bộ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Du lịch",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Sông Hương ở Huế",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Bồi đắp phù sa",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Đồng bằng châu thổ màu mỡ",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi giá trị của sông ngòi gắn với một ví dụ cụ thể được nêu trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b7",
+              "kind": "text",
+              "md": "Biện pháp: bảo vệ rừng đầu nguồn, xây hồ chứa điều tiết nước, đắp đê và làm kè chống sạt lở. Đồng thời xử lí nước thải, dùng nước tiết kiệm và hợp tác quốc tế trên lưu vực sông Hồng, sông Mê Kông.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "su-dung-nguon-nuoc-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "su-dung-nguon-nuoc-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước tính khối lượng phù sa một con sông vận chuyển ra biển trong một năm, biết lưu lượng $3\\,700\\ m^3/s$ và hàm lượng phù sa $1\\ kg/m^3$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Đổi một năm ra giây: $t \\approx 31,5 \\times 10^6$ giây",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Tính tổng lượng nước: $V = Q \\times t \\approx 116,6 \\times 10^9\\ m^3$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Nhân lượng nước với hàm lượng phù sa $1\\ kg/m^3$",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Đổi kết quả ra triệu tấn: khoảng 117 triệu tấn/năm",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Phải đổi thời gian ra giây trước, rồi tính lượng nước, sau đó mới nhân với hàm lượng phù sa và đổi đơn vị.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "su-dung-nguon-nuoc-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Sông ngòi nước ta có những giá trị nào?",
+                  "answer": "Thủy lợi, thủy điện, giao thông thủy, thủy sản, du lịch, phù sa và nước sinh hoạt.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao nói hồ chứa vừa có lợi vừa có hại?",
+                  "answer": "Điều tiết lũ, cấp điện và nước nhưng giữ phù sa, làm đồng bằng thiếu phù sa.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nêu ba biện pháp sử dụng và bảo vệ nguồn nước.",
+                  "answer": "Bảo vệ rừng đầu nguồn, xây hồ chứa và đê kè, xử lí nước thải và tiết kiệm nước.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về sông ngòi, gồm các hệ thống sông, chế độ nước và việc sử dụng nguồn nước. Sông là dòng nước chảy thường xuyên, tương đối ổn định trên bề mặt lục địa, có lòng dẫn nước và hai bên bờ. Phụ lưu là sông nhỏ đổ nước vào sông chính; chi lưu là nhánh đưa nước từ sông chính ra biển hoặc ra hồ. Lưu vực sông là diện tích đất đai cung cấp nước cho sông. Lưu lượng là lượng nước chảy qua mặt cắt ngang lòng sông trong một giây, đơn vị mét khối trên giây.",
+          "Sông ngòi nước ta dày đặc, ngắn dốc, nhiều thác ghềnh và nhiều phù sa. Cả nước có khoảng 2.360 con sông dài trên 10 ki lô mét; trung bình khoảng 20 ki lô mét bờ biển lại có một cửa sông. Sông ngắn dốc vì lãnh thổ hẹp ngang và ba phần tư diện tích là đồi núi.",
+          "Có hai hướng chảy chính là tây bắc đến đông nam và vòng cung. Chín hệ thống sông lớn là Hồng, Thái Bình, Kỳ Cùng và Bằng Giang, Mã, Cả, Thu Bồn, Ba, Đồng Nai, Cửu Long. Trên sông Hồng, sông Đà, sông Thao, sông Lô là phụ lưu; sông Đuống, sông Đáy là chi lưu.",
+          "Sông Hồng có lưu vực lớn nhất trong nước ta, tổng diện tích 143.700 ki lô mét vuông, phần thuộc Việt Nam khoảng 86.000 ki lô mét vuông, tức khoảng 60 phần trăm. Khoảng 40 phần trăm lưu vực nằm ngoài lãnh thổ nên lượng nước và phù sa phụ thuộc một phần vào việc dùng nước ở thượng nguồn. Sông Cửu Long có hai nhánh chính là sông Tiền và sông Hậu; xét toàn bộ dòng chảy thì Mê Kông lớn nhất Đông Nam Á, còn sông Hồng lớn nhất trong nước.",
+          "Chế độ nước sông là sự thay đổi lưu lượng nước sông theo thời gian trong năm. Nước ta có mùa lũ chiếm 70 đến 80 phần trăm tổng lượng nước năm và mùa cạn chiếm 20 đến 30 phần trăm. Nguyên nhân là mưa tập trung theo mùa của khí hậu nhiệt đới gió mùa.",
+          "Cách xác định mùa lũ là so sánh lưu lượng từng tháng với lưu lượng trung bình năm; lưu lượng trung bình năm bằng tổng lưu lượng mười hai tháng chia cho mười hai. Ví dụ, tổng lưu lượng mười hai tháng là 42.800 mét khối trên giây thì trung bình năm khoảng 3.567 mét khối trên giây; các tháng 6 đến 10 lớn hơn mức đó nên là mùa lũ. Mùa lũ Bắc Bộ từ tháng 6 đến tháng 10, Trung Bộ từ tháng 9 đến tháng 12, Nam Bộ và Tây Nguyên từ tháng 7 đến tháng 11.",
+          "Nhiều bạn nói cả nước có chung một mùa lũ từ tháng 6 đến tháng 10 là sai, vì mùa lũ phụ thuộc chế độ mưa từng vùng: Bắc Bộ lũ sớm, Trung Bộ lũ muộn, Nam Bộ lũ kéo dài. Đỉnh lũ tháng 8 là 9.200 mét khối trên giây, tháng kiệt nhất tháng 3 là 1.000 mét khối trên giây; tỉ lệ mùa lũ khoảng 75 phần trăm lượng nước năm.",
+          "Sông ngòi cho nước tưới, thủy điện, giao thông thủy, thủy sản, du lịch, phù sa và sinh hoạt. Cả nước có khoảng 200 triệu tấn phù sa mỗi năm, riêng sông Hồng khoảng 100 triệu tấn mỗi năm. Với lưu lượng 3.700 mét khối trên giây và hàm lượng phù sa 1 ki lô gam mỗi mét khối, một năm có khoảng 31,5 triệu giây, lượng nước khoảng 116,6 tỉ mét khối, nên phù sa khoảng 117 triệu tấn.",
+          "Khó khăn lớn nhất là lũ lụt; mùa cạn thì hạn hán, thiếu nước, nhất là Nam Trung Bộ và Tây Nguyên. Nước còn bị ô nhiễm, nhiễm mặn và sạt lở bờ sông. Biện pháp là bảo vệ rừng đầu nguồn, xây hồ chứa điều tiết nước, đắp đê và làm kè chống sạt lở, xử lí nước thải, dùng nước tiết kiệm và hợp tác quốc tế trên lưu vực sông Hồng, sông Mê Kông. Ví dụ nhà máy xả 5.000 mét khối nước thải mỗi ngày với nồng độ 20 miligam mỗi lít thì mỗi ngày là 100 ki lô gam chất ô nhiễm, mỗi tháng 30 ngày là 3 tấn.",
+          "Ba điều cần nhớ là: sông ngòi nước ta dày đặc, ngắn dốc, nhiều phù sa và có hai hướng chảy chính là tây bắc đến đông nam và vòng cung. Chế độ nước có mùa lũ và mùa cạn; mùa lũ chiếm 70 đến 80 phần trăm lượng nước năm và mùa lũ khác nhau theo vùng. Sông ngòi có nhiều giá trị nhưng cũng gây lũ lụt, hạn hán, ô nhiễm; cần bảo vệ rừng, xây hồ chứa, làm đê kè, xử lí nước thải và tiết kiệm nước."
+        ],
+        "audio": {
+          "path": "audio/recap-ch-song-ngoi.mp3",
+          "mime": "audio/mpeg",
+          "sha256": "6e1017a7d0490da475024da1f6f25c7694ba52524b8ff2bac86833d1ea71f1b3",
+          "bytes": 1414712
+        },
+        "duration_s": 234.91
+      }
+    }
+  ],
+  "gloss_start": null
+}

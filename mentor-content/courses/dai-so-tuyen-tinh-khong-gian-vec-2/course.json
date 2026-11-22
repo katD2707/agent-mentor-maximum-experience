@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "dai-so-tuyen-tinh-khong-gian-vec-2",
+  "title": "Đại số tuyến tính: Không gian vectơ và trị riêng",
+  "subject": "Đại số tuyến tính",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "u8e599ace0419c15e",
+  "teacher_name": "TS. Đỗ Thu Hà",
+  "description_short": "Khóa học trình bày không gian vectơ, độc lập tuyến tính, cơ sở, số chiều và ánh xạ tuyến tính. Phần tiếp theo gồm trị riêng, vectơ riêng, chéo hóa và các ứng dụng PageRank, nén ảnh cho sinh viên đại học.",
+  "outcomes": [
+    "kiểm tra được tính độc lập tuyến tính và tìm cơ sở, số chiều của không gian vectơ con",
+    "xác định được hạt nhân, ảnh, hạng của ánh xạ tuyến tính và vận dụng định lý rank-nullity",
+    "tính được trị riêng, vectơ riêng, bội đại số và bội hình học của ma trận",
+    "chéo hóa được ma trận khi có đủ vectơ riêng và áp dụng trị riêng vào PageRank, nén ảnh"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 90,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:29:28.044261Z",
+      "published_at": "2026-11-17T07:29:45.565848Z",
+      "pack_sha256": "4e4fe9d91da78175b5de72ac71e04ca71995f7a9eb9caa9cc2fe404c1be5eac9",
+      "pack_bytes": 114599,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

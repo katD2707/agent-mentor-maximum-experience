@@ -105,7 +105,7 @@ class PlannerService:
             out.append(CourseInfo(id=e["course_id"], title=course.get("title") or pack.title, subject=course.get("subject") or "",
                                   lessons=lessons, progress_pct=float(e["progress_pct"]), last_lesson_id=e["last_lesson_id"],
                                   enrolled_at=datetime.fromisoformat(e["enrolled_at"]),
-                                  updated_at=datetime.fromisoformat(e["updated_at"])))
+                                  updated_at=datetime.fromisoformat(e["updated_at"]), age_band=course.get("age_band")))
         return out, item_map
 
     def _goal_rows(self, user_id: str) -> list[StudyGoal]:
@@ -138,7 +138,7 @@ class PlannerService:
         if user.age_band == "uni":  # Nghiên cứu (15.8): deadlines, meetings, action items, reading block
             profile["research"] = research_plan.research_block(self.db, user.id, now)
             profile["research"]["_log"] = research_plan.reminder_log(self.db, user.id)
-        goals.sync_inferred(self.db, user.id, courses, language, now)
+        goals.sync_inferred(self.db, user.id, goals.in_band(courses, user.age_band), language, now)
         infos = goals.build_infos(self._goal_rows(user.id), courses, profile, band, now)
         rec = self._record(user.id)
         study_days = {local(s["start"]).date() for s in sessions(evs)}
@@ -484,7 +484,7 @@ class PlannerService:
     def goal_views(self, user: User) -> list[dict]:
         now = self.clock()
         courses, _ = self.courses(user.id)
-        goals.sync_inferred(self.db, user.id, courses, user.language or "vi", now)
+        goals.sync_inferred(self.db, user.id, goals.in_band(courses, user.age_band), user.language or "vi", now)
         evs = ev.load(self.db, user.id, now)
         profile = compute_profile(evs, now, band_for(user.age_band), None)
         rows = self._goal_rows(user.id)

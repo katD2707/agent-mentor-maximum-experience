@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "kinh-te-vi-mo",
+  "title": "Kinh tế vĩ mô",
+  "subject": "Kinh tế vĩ mô",
+  "age_band": "uni",
+  "language": "vi",
+  "teacher_id": "ud0dc72152f8a8996",
+  "teacher_name": "PGS. TS. Trịnh Hải Yến",
+  "description_short": "Khóa học trình bày các chỉ tiêu kinh tế vĩ mô cơ bản (GDP, lạm phát, thất nghiệp) và các chính sách tiền tệ, tài khóa. Dành cho sinh viên đại học cần nắm lý thuyết, ví dụ, lỗi thường gặp và bài tập của từng bài.",
+  "outcomes": [
+    "Tính được GDP theo phương pháp sản xuất, chi tiêu và thu nhập; phân biệt GDP danh nghĩa với GDP thực.",
+    "Đo được lạm phát bằng CPI và chỉ số giảm phát; phân tích nguyên nhân, tác động đến lãi suất thực và sức mua.",
+    "Tính được tỷ lệ thất nghiệp, LFPR, phân loại thất nghiệp và vận dụng định luật Okun.",
+    "Phân tích được công cụ, cơ chế truyền dẫn và đánh đổi của chính sách tiền tệ và chính sách tài khóa trong bối cảnh Việt Nam."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz",
+    "interactive"
+  ],
+  "lessons_count": 4,
+  "est_minutes": 60,
+  "latest_published": null,
+  "versions": [
+    {
+      "version": 1,
+      "status": "review",
+      "created_at": "2026-11-18T03:37:22.606898Z",
+      "published_at": null,
+      "pack_sha256": null,
+      "pack_bytes": null,
+      "note": "draft by course-builder",
+      "level_suggested": "intermediate",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": null,
+  "status": "live",
+  "outline": []
+}

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <g transform="translate(0,-25)">
+    <!-- ground shadow -->
+    <ellipse cx="200" cy="349" rx="108" ry="9" fill="#E9E5F6"/>
+
+    <!-- inside of the box -->
+    <rect x="92" y="138" width="216" height="80" rx="18" fill="#5A4BC0"/>
+
+    <!-- blocks resting inside -->
+    <rect x="116" y="136" width="56" height="56" rx="10" fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+    <circle cx="144" cy="164" r="11" fill="none" stroke="#2B283F" stroke-width="3.5"/>
+
+    <rect x="178" y="126" width="66" height="66" rx="12" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <circle cx="211" cy="159" r="11" fill="#F7F1E3"/>
+
+    <rect x="254" y="144" width="48" height="48" rx="10" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5"/>
+    <circle cx="278" cy="168" r="7" fill="#5A4BC0"/>
+
+    <!-- crate front -->
+    <rect x="85" y="190" width="230" height="155" rx="18" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="7"/>
+
+    <!-- plank seams -->
+    <line x1="99" y1="266" x2="301" y2="266" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+    <line x1="99" y1="306" x2="301" y2="306" stroke="#5A4BC0" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- top lip of the crate -->
+    <path d="M85 216 V206 Q85 190 101 190 H299 Q315 190 315 206 V216 Z" fill="#5A4BC0"/>
+    <circle cx="102" cy="203" r="4" fill="#2B283F"/>
+    <circle cx="298" cy="203" r="4" fill="#2B283F"/>
+  </g>
+
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

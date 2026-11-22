@@ -31,6 +31,52 @@ def unique_id(base: str, taken: set[str]) -> str:
     return cand
 
 
+_INLINE = re.compile(r"\\\((.+?)\\\)", re.S)
+_DISPLAY = re.compile(r"\\\[(.+?)\\\]", re.S)
+
+
+def _lone_dollars(s: str) -> int:
+    """Single $ signs that open or close inline math (escaped \\$ and $$ pairs left out)."""
+    return re.sub(r"\$\$.+?\$\$", "", s.replace("\\$", ""), flags=re.S).count("$")
+
+
+_PROSE = re.compile(r"\s[A-Za-zÀ-ỹ]{2,}\s")
+
+
+def _escape_prices(s: str) -> str:
+    """'$15' is a price, not the start of a formula: escape a $ in front of a number when no $ closes it, or when what
+    lies before the next $ reads like prose ("costs $15 and the bag $3")."""
+    out, i = [], 0
+    while True:
+        m = re.search(r"(?<![\\$])\$(?=\d)", s[i:])
+        if not m:
+            out.append(s[i:])
+            return "".join(out)
+        at = i + m.start()
+        nxt = re.search(r"(?<!\\)\$", s[at + 1:])
+        span = s[at + 1: at + 1 + nxt.start()] if nxt else ""
+        out.append(s[i:at])
+        out.append("\\$" if (nxt is None or _PROSE.search(span)) else "$")
+        i = at + 1
+
+
+def dollar_math(v: Any) -> Any:
+    """Models sometimes write \\(...\\) and \\[...\\]; the app (and the verify gate) only take $...$ and $$...$$.
+    Only complete pairs are rewritten, so a lone \\( in a regex example stays as it is."""
+    if isinstance(v, str):
+        if "\\(" in v or "\\[" in v:
+            v = _DISPLAY.sub(lambda m: "$$" + m.group(1).strip() + "$$", v)
+            v = _INLINE.sub(lambda m: "$" + m.group(1).strip() + "$", v)
+        if "$" in v:
+            v = _escape_prices(v)
+        return v
+    if isinstance(v, list):
+        return [dollar_math(x) for x in v]
+    if isinstance(v, dict):
+        return {k: dollar_math(x) for k, x in v.items()}
+    return v
+
+
 def ask_json(client: ModelClient, system: str, user: str, *, alias: ModelAlias = ModelAlias.REASONING,
              max_tokens: int = 8000, temperature: float = 0.2, retries: int = 1) -> dict[str, Any]:
     """One model call that must return a JSON object; re-asks once when the reply does not parse."""
@@ -46,7 +92,7 @@ def ask_json(client: ModelClient, system: str, user: str, *, alias: ModelAlias =
             last = str(exc)
             continue
         try:
-            return parse_model_json(raw)
+            return dollar_math(parse_model_json(raw))
         except ValueError as exc:
             last = str(exc)
             msgs = msgs + [{"role": "assistant", "content": raw[:2000]},

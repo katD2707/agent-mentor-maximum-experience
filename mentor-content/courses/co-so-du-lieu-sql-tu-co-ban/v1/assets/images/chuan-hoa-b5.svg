@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5A4BC0"/></marker>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<line x1="170" y1="160" x2="410.0" y2="121.29032258064515" stroke="#5A4BC0" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
+<line x1="170" y1="160" x2="424.6428571428571" y2="275.0" stroke="#5A4BC0" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
+<line x1="480" y1="300" x2="790.0" y2="216.21621621621622" stroke="#5A4BC0" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
+<line x1="480" y1="300" x2="770.0" y2="354.86486486486484" stroke="#5A4BC0" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
+<line x1="170" y1="540" x2="780.0" y2="540.0" stroke="#5A4BC0" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
+<line x1="170" y1="160" x2="380" y2="460" stroke="#5A4BC0" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="170" y1="540" x2="380" y2="460" stroke="#5A4BC0" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="380" y1="460" x2="550.0" y2="488.3333333333333" stroke="#5A4BC0" stroke-width="2.5" marker-end="url(#arrow)" stroke-linecap="round"/>
+<circle cx="380" cy="460" r="6" fill="#F0D76E" stroke="#5A4BC0" stroke-width="2"/>
+<rect x="110.0" y="135.0" width="120" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="170" y="160" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">MaHD</text>
+<rect x="110.0" y="515.0" width="120" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="170" y="540" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">MaSach</text>
+<rect x="410.0" y="85.0" width="140" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="480" y="110" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">NgayLap</text>
+<rect x="420.0" y="275.0" width="120" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="480" y="300" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">MaKH</text>
+<rect x="550.0" y="475.0" width="140" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="620" y="500" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">SoLuong</text>
+<rect x="780.0" y="515.0" width="140" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="850" y="540" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">TenSach</text>
+<rect x="790.0" y="175.0" width="120" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="850" y="200" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">TenKH</text>
+<rect x="770.0" y="345.0" width="160" height="50" rx="12" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<text x="850" y="370" font-family="Lexend, sans-serif" font-size="28" fill="#2B283F" text-anchor="middle" dominant-baseline="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">DiaChiKH</text>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

@@ -104,6 +104,27 @@ async def ask(request: Request, user: User = Depends(student_user), gw: Gateway 
                              headers={"Cache-Control": "no-store", "X-Accel-Buffering": "no"})
 
 
+@router.get("/ask/notes")
+def list_notes(user: User = Depends(student_user), gw: Gateway = Depends(get_gw)) -> list[dict[str, Any]]:
+    """The learner's notes sets (Chụp vở), newest first: `next_review_at` is the next scheduled review reminder, if any."""
+    from sqlalchemy import select
+
+    from mentor_gateway.ask.tables import NotesSet
+    from mentor_gateway.planner.tables import Reminder
+
+    now = gw.clock()
+    with gw.db.session() as s:
+        rows = s.scalars(select(NotesSet).where(NotesSet.user_id == user.id).order_by(NotesSet.created_at.desc())).all()
+        out = []
+        for n in rows:
+            nxt = s.scalars(select(Reminder.at).where(
+                Reminder.user_id == user.id, Reminder.deep_link == f"/luyen-tap?notes={n.id}", Reminder.status == "scheduled",
+                Reminder.at > now).order_by(Reminder.at)).first()
+            out.append({"notes_id": n.id, "title": n.title, "subject": n.subject, "pages": n.pages, "items": len(n.items or []),
+                        "created_at": n.created_at.isoformat(), "next_review_at": nxt.isoformat() if nxt else None})
+        return out
+
+
 @router.post("/ask/notes")
 async def ask_notes(request: Request, user: User = Depends(student_user), gw: Gateway = Depends(get_gw),
                     svc: AskService = Depends(ask_service)) -> dict[str, Any]:

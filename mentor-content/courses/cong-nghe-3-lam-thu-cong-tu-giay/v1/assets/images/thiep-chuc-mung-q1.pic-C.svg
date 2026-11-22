@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper background -->
+  <rect x="0" y="0" width="400" height="400" fill="#F7F1E3"/>
+
+  <g stroke="#5A4BC0" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+
+    <!-- inner back face (left) -->
+    <path d="M200 109.4 L108.6 172 L108.6 244 L200 181.4 Z" fill="#E9E5F6"/>
+    <!-- inner back face (right) -->
+    <path d="M200 109.4 L291.4 172 L291.4 244 L200 181.4 Z" fill="#E9E5F6"/>
+
+    <!-- floor of the box -->
+    <path d="M200 181.4 L291.4 244 L200 306.6 L108.6 244 Z" fill="#9FD8BF"/>
+
+    <!-- outer front face (left) -->
+    <path d="M95 172 L200 244 L200 316 L95 244 Z" fill="#F0D76E"/>
+    <!-- outer front face (right) -->
+    <path d="M200 244 L305 172 L305 244 L200 316 Z" fill="#E8806A"/>
+
+    <!-- thin paper rim around the opening -->
+    <path d="M200 100 L305 172 L200 244 L95 172 Z
+             M200 109.4 L291.4 172 L200 234.6 L108.6 172 Z"
+          fill="#E9E5F6" fill-rule="evenodd"/>
+  </g>
+
+  <!-- soft paper grain over the whole picture -->
+  <rect x="0" y="0" width="400" height="400" filter="url(#grain)"/>
+</svg>

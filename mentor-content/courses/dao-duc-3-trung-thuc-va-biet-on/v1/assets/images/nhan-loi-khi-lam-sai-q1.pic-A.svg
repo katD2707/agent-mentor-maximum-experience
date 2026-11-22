@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/>
+    </filter>
+  </defs>
+
+  <!-- paper -->
+  <rect width="400" height="400" fill="#F7F1E3"/>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="200" cy="324" rx="120" ry="13" fill="#E9E5F6"/>
+
+  <!-- pencil A : yellow, leaning left -->
+  <g transform="translate(140,252) rotate(-12)">
+    <rect x="-13" y="-82" width="26" height="142" rx="8" fill="#F0D76E" stroke="#5A4BC0" stroke-width="5"/>
+    <polygon points="-13,-82 13,-82 0,-118" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+    <polygon points="-6,-99 6,-99 0,-117" fill="#2B283F"/>
+  </g>
+
+  <!-- pencil B : mint, tallest, near upright -->
+  <g transform="translate(202,252) rotate(3)">
+    <rect x="-13" y="-92" width="26" height="152" rx="8" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="5"/>
+    <polygon points="-13,-92 13,-92 0,-128" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+    <polygon points="-6,-109 6,-109 0,-127" fill="#2B283F"/>
+  </g>
+
+  <!-- pencil C : coral, leaning right -->
+  <g transform="translate(264,252) rotate(14)">
+    <rect x="-13" y="-78" width="26" height="138" rx="8" fill="#E8806A" stroke="#5A4BC0" stroke-width="5"/>
+    <polygon points="-13,-78 13,-78 0,-114" fill="#F7F1E3" stroke="#5A4BC0" stroke-width="5" stroke-linejoin="round"/>
+    <polygon points="-6,-95 6,-95 0,-113" fill="#2B283F"/>
+  </g>
+
+  <!-- pencil case body -->
+  <rect x="66" y="190" width="268" height="126" rx="54" fill="#5A4BC0"/>
+
+  <!-- zip tape -->
+  <rect x="88" y="204" width="224" height="17" rx="8.5" fill="#F0D76E"/>
+
+  <!-- zip teeth -->
+  <line x1="95" y1="212.5" x2="305" y2="212.5" stroke="#2B283F" stroke-width="3"
+        stroke-dasharray="3 6" stroke-linecap="round"/>
+
+  <!-- stitched seam -->
+  <path d="M104 292 Q200 314 296 292" fill="none" stroke="#9FD8BF" stroke-width="5"
+        stroke-linecap="round" stroke-dasharray="10 10"/>
+
+  <!-- zip pull -->
+  <rect x="299" y="207" width="18" height="44" rx="9" fill="#E8806A" stroke="#2B283F" stroke-width="3.5"/>
+  <line x1="308" y1="223" x2="308" y2="241" stroke="#2B283F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- paper grain -->
+  <rect width="400" height="400" filter="url(#grain)"/>
+</svg>

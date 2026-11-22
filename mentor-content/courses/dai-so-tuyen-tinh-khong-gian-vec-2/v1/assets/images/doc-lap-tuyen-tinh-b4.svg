@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter></defs>
+<rect width="1000" height="700" fill="#F7F1E3"/>
+<path d="M 290 190 L 260 190 L 260 494 L 290 494" fill="none" stroke="#5A4BC0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 710 190 L 740 190 L 740 494 L 710 494" fill="none" stroke="#5A4BC0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="300" y="210" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="340" cy="250" r="5.5" fill="#5A4BC0"/>
+<rect x="300" y="302" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="325" cy="342" r="5.5" fill="#5A4BC0"/>
+<circle cx="355" cy="342" r="5.5" fill="#5A4BC0"/>
+<rect x="300" y="394" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="325" cy="419" r="5.5" fill="#5A4BC0"/>
+<circle cx="355" cy="419" r="5.5" fill="#5A4BC0"/>
+<circle cx="340" cy="449" r="5.5" fill="#5A4BC0"/>
+<rect x="460" y="210" width="80" height="80" rx="16" fill="#F0D76E" stroke="#5A4BC0" stroke-width="3"/>
+<rect x="460" y="302" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="500" cy="342" r="5.5" fill="#5A4BC0"/>
+<rect x="460" y="394" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="485" cy="419" r="5.5" fill="#5A4BC0"/>
+<circle cx="515" cy="419" r="5.5" fill="#5A4BC0"/>
+<circle cx="485" cy="449" r="5.5" fill="#5A4BC0"/>
+<circle cx="515" cy="449" r="5.5" fill="#5A4BC0"/>
+<rect x="620" y="210" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="645" cy="250" r="5.5" fill="#5A4BC0"/>
+<circle cx="675" cy="250" r="5.5" fill="#5A4BC0"/>
+<rect x="620" y="302" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="645" cy="327" r="5.5" fill="#5A4BC0"/>
+<circle cx="675" cy="327" r="5.5" fill="#5A4BC0"/>
+<circle cx="645" cy="357" r="5.5" fill="#5A4BC0"/>
+<circle cx="675" cy="357" r="5.5" fill="#5A4BC0"/>
+<circle cx="660" cy="342" r="5.5" fill="#5A4BC0"/>
+<rect x="620" y="394" width="80" height="80" rx="16" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="3"/>
+<circle cx="645" cy="414" r="5.5" fill="#5A4BC0"/>
+<circle cx="675" cy="414" r="5.5" fill="#5A4BC0"/>
+<circle cx="645" cy="434" r="5.5" fill="#5A4BC0"/>
+<circle cx="675" cy="434" r="5.5" fill="#5A4BC0"/>
+<circle cx="645" cy="454" r="5.5" fill="#5A4BC0"/>
+<circle cx="675" cy="454" r="5.5" fill="#5A4BC0"/>
+<text x="340" y="150" font-family="Lexend, sans-serif" font-size="34" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">v_1</text>
+<text x="500" y="150" font-family="Lexend, sans-serif" font-size="34" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">v_2</text>
+<text x="660" y="150" font-family="Lexend, sans-serif" font-size="34" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">v_3</text>
+<text x="500" y="610" font-family="Lexend, sans-serif" font-size="34" fill="#5A4BC0" text-anchor="middle" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" stroke-linejoin="round">\det A=-4\ne0</text>
+<rect x="330" y="640" width="340" height="12" rx="6" fill="#E8806A"/>
+<rect width="1000" height="700" filter="url(#grain)"/>
+</svg>

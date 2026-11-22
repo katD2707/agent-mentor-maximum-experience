@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import i18n from "./i18n";
-import { StaticBlock } from "./screens/courses/blocks";
+import { StaticBlock } from "./lang/kit/blocks";
 import type { ImageBlock } from "./api";
 
 const ref = { path: "images/a.webp", sha256: "x", bytes: 1, mime: "image/webp" } as ImageBlock["image"];

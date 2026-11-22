@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<g stroke-linecap="round" stroke-linejoin="round">
+  <path d="M120,205 L500,205 A55,55 0 0 1 500,315 L120,315 Z" fill="#E9E5F6" stroke="#5A4BC0" stroke-width="5"/>
+  <path d="M190,310 Q220,282 270,292 Q320,302 350,310 Z" fill="#2B283F"/>
+  <path d="M350,310 Q380,284 430,292 Q480,300 515,310 Z" fill="#E8806A"/>
+  <path d="M400,330 C365,370 365,405 400,425 C435,405 435,370 400,330 Z" fill="#E8806A" stroke="#5A4BC0" stroke-width="3"/>
+  <path d="M400,352 C382,378 382,400 400,410 C418,400 418,378 400,352 Z" fill="#F0D76E"/>
+  <line x1="35" y1="260" x2="105" y2="260" stroke="#5A4BC0" stroke-width="5"/>
+  <path d="M105,250 L128,260 L105,270 Z" fill="#5A4BC0"/>
+  <rect x="745" y="460" width="150" height="130" fill="#9FD8BF"/>
+  <path d="M555,260 L640,260 L640,380 L780,380 L780,520" fill="none" stroke="#5A4BC0" stroke-width="5"/>
+  <path d="M740,420 L740,600 L900,600 L900,420" fill="none" stroke="#5A4BC0" stroke-width="5"/>
+  <line x1="730" y1="420" x2="750" y2="420" stroke="#5A4BC0" stroke-width="5"/>
+  <line x1="890" y1="420" x2="910" y2="420" stroke="#5A4BC0" stroke-width="5"/>
+  <g fill="#F7F1E3" stroke="none" opacity="0.9">
+    <circle cx="770" cy="500" r="12"/>
+    <circle cx="800" cy="520" r="16"/>
+    <circle cx="840" cy="490" r="14"/>
+    <circle cx="870" cy="540" r="12"/>
+    <circle cx="820" cy="565" r="18"/>
+    <circle cx="785" cy="565" r="10"/>
+    <circle cx="860" cy="505" r="8"/>
+  </g>
+  <g fill="none" stroke="#2B283F" stroke-width="2">
+    <circle cx="780" cy="530" r="5"/>
+    <circle cx="795" cy="495" r="4"/>
+    <circle cx="810" cy="545" r="6"/>
+    <circle cx="835" cy="525" r="5"/>
+    <circle cx="855" cy="565" r="4"/>
+    <circle cx="865" cy="515" r="5"/>
+  </g>
+</g>
+<g font-family="Lexend, sans-serif" font-size="28" fill="#5A4BC0" stroke="#F7F1E3" stroke-width="6" paint-order="stroke" text-anchor="middle" stroke-linejoin="round">
+  <text x="55" y="225" text-anchor="start">CO</text>
+  <text x="250" y="175">CuO (&#273;en)</text>
+  <text x="470" y="175">Cu (&#273;&#7887;)</text>
+  <text x="600" y="220">CO2</text>
+  <text x="820" y="650">n&#432;&#7899;c v&#244;i trong</text>
+</g>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+<rect x="0" y="0" width="1000" height="700" filter="url(#grain)"/>
+</svg>

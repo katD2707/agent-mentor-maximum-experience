@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700">
+<defs>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.5 0 0 0 0.10 0"/></filter>
+</defs>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3"/>
+<line x1="500" y1="140" x2="320" y2="320" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="500" y1="140" x2="680" y2="320" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="320" y1="320" x2="230" y2="500" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="320" y1="320" x2="410" y2="500" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="680" y1="320" x2="590" y2="500" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="680" y1="320" x2="770" y2="500" stroke="#5A4BC0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="500" cy="140" r="27" fill="#F0D76E" stroke="#5A4BC0" stroke-width="4"/>
+<circle cx="320" cy="320" r="27" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+<circle cx="680" cy="320" r="27" fill="#E8806A" stroke="#5A4BC0" stroke-width="4"/>
+<circle cx="230" cy="500" r="27" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+<circle cx="410" cy="500" r="27" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+<circle cx="590" cy="500" r="27" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+<circle cx="770" cy="500" r="27" fill="#9FD8BF" stroke="#5A4BC0" stroke-width="4"/>
+<text x="500" y="65" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">root, depth 0</text>
+<text x="500" y="370" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">depth 1</text>
+<text x="500" y="620" text-anchor="middle" font-family="Lexend, sans-serif" font-size="30" fill="#2B283F" stroke="#F7F1E3" stroke-width="6" paint-order="stroke">depth 2 leaves</text>
+<rect x="0" y="0" width="1000" height="700" fill="#F7F1E3" filter="url(#grain)"/>
+</svg>

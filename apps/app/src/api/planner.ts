@@ -32,7 +32,7 @@ export interface Today {
   week: { done: number; planned: number };
   /** days in a row with a study session (CONTRACTS 12.1) */
   streak?: { days: number; today_done: boolean };
-  /** reminders kept being ignored: Mực reminds every other day for now */
+  /** reminders kept being ignored: the chicken reminds every other day for now */
   reminders_backoff?: boolean;
   due_review_count: number;
   quiet_until: string | null;

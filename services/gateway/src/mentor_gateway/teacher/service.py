@@ -461,6 +461,24 @@ class BuilderService:
     def outline(self, cid: str) -> dict | None:
         return self._json(cid, "outline.json")
 
+    def outline_for_detail(self, cid: str, versions: list[dict]) -> dict | None:
+        """The outline.json when there is one; a course that was published without one (seeded or imported packs)
+        shows the outline of its newest version's pack instead, so the structure page is never empty."""
+        o = self.outline(cid)
+        if o or not versions:
+            return o
+        for v in sorted(versions, key=lambda x: x["version"], reverse=True):
+            try:
+                pack = self.content.store.load_pack(cid, v["version"])
+            except Exception:  # noqa: BLE001
+                continue
+            chapters = [{"id": c.id, "title": c.title,
+                         "lessons": [{"id": ls.id, "title": ls.title, "est_minutes": max(1, min(240, int(ls.est_minutes or 1)))}
+                                     for ls in c.lessons]} for c in pack.chapters if c.lessons]
+            if chapters:
+                return {"title": pack.title, "chapters": chapters}
+        return None
+
     def retake(self, cid: str) -> list[dict]:
         out = []
         pages = {(Path(p["source_file"]).name, p["index"]): p for m in self._json(cid, "intake/pages.json", [])
@@ -534,6 +552,23 @@ class BuilderService:
         work = max(open_v, key=lambda v: v.version) if open_v else max(meta.versions, key=lambda v: v.version)
         confirmed = work.level_confirmed or (meta.level if work.status == "published" else None)
         return {"level": meta.level, "level_suggested": work.level_suggested, "level_confirmed": confirmed}
+
+    def label_state(self, cid: str) -> dict:
+        """Current Mục tiêu / Ngôn ngữ / Chủ đề of the working version (open draft, else latest published) so the UI can
+        prefill; `suggested` is Mentor's guess (outline outcomes, course language, subject as the one topic)."""
+        meta = self._store_meta(cid)
+        o = self.outline(cid) or {}
+        subject = o.get("subject") or (meta.subject if meta else None)
+        sug = {"goals": list(o.get("outcomes") or (meta.outcomes if meta else []))[:6],
+               "language": o.get("language") or (meta.language if meta else None),
+               "topics": [subject] if subject else []}
+        labels: dict = {}
+        if meta is not None and meta.versions:
+            open_v = [v for v in meta.versions if v.status != "published"]
+            work = max(open_v, key=lambda v: v.version) if open_v else max(meta.versions, key=lambda v: v.version)
+            labels = work.labels or {}
+        return {"goals": labels.get("goals", sug["goals"]), "language": labels.get("language", sug["language"]),
+                "topics": labels.get("topics", sug["topics"]), "suggested": sug}
 
     def set_level(self, st: dict, version: int, level: str) -> dict:
         """Teacher confirms or changes the level. On a draft it is stored on that version. On a published version a
@@ -633,7 +668,7 @@ class BuilderService:
     def detail(self, st: dict) -> dict:
         cid = st["course_id"]
         s = self.status_of(st)
-        o = self.outline(cid)
+        o = self.outline_for_detail(cid, s["versions"])
         meta = self._store_meta(cid)
         course = {"id": cid, "title": self.title_of(st), "teacher_note": st.get("note"),
                   "subject": (o or {}).get("subject") or (meta.subject if meta else None),
@@ -643,7 +678,7 @@ class BuilderService:
                   "outcomes": (o or {}).get("outcomes") or (meta.outcomes if meta else []),
                   "cover_sha256": self.cover_sha(cid), "latest_published": s["latest_published"],
                   "latest_version": s["latest_version"], "versions": s["versions"], "created_at": st["created_at"],
-                  **self.level_state(cid)}
+                  "labels": self.label_state(cid), **self.level_state(cid)}
         return {"course": course, "status": s["status"], "status_line_vi": s["status_line_vi"],
                 "status_line_en": s["status_line_en"], "outline": o, "retake": s["retake"],
                 "build": {"lessons": s["lessons"]}, "verify": self.verify_report(cid), "chat": st["chat"],

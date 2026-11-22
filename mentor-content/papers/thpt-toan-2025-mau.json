@@ -1,0 +1,738 @@
+{
+ "id": "thpt-toan-2025-mau",
+ "kind": "thpt",
+ "band": "g10_12",
+ "chicken": "toan",
+ "title_vi": "Đề mẫu Toán THPT, cấu trúc 2025",
+ "title_en": "Sample maths paper, 2025 structure",
+ "year": 2025,
+ "minutes": 90,
+ "parts": [
+  {
+   "id": "p1",
+   "title_vi": "Phần I. Trắc nghiệm nhiều lựa chọn",
+   "title_en": "Part I. Multiple choice",
+   "type": "SINGLE_CHOICE",
+   "points_each": 0.25,
+   "items": [
+    {
+     "id": "math.function.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tiệm cận ngang của đồ thị hàm số $y = \\frac{2x - 1}{x + 3}$ là đường thẳng",
+     "hint": "Tính giới hạn của $y$ khi $x \\to +\\infty$ (hoặc $x \\to -\\infty$).",
+     "explanation": "Ta có $\\lim_{x \\to \\pm\\infty} \\frac{2x - 1}{x + 3} = \\lim_{x \\to \\pm\\infty} \\frac{2 - \\frac{1}{x}}{1 + \\frac{3}{x}} = 2$. Vậy tiệm cận ngang của đồ thị là đường thẳng $y = 2$. Chọn B.",
+     "skill_ids": [
+      "functions.asymptotes"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$y = -3$"
+      },
+      {
+       "id": "B",
+       "text": "$y = 2$"
+      },
+      {
+       "id": "C",
+       "text": "$x = -3$"
+      },
+      {
+       "id": "D",
+       "text": "$y = -\\frac{1}{3}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "C": "$x = -3$ là tiệm cận đứng (nghiệm của mẫu), không phải tiệm cận ngang.",
+      "D": "Đây là tỉ số hai hệ số tự do; tiệm cận ngang là tỉ số hai hệ số của $x$, tức $\\frac{2}{1} = 2$."
+     }
+    },
+    {
+     "id": "math.function.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\frac{x + 1}{x^2 - 1}$ là",
+     "hint": "Rút gọn biểu thức trước, rồi tính giới hạn tại từng nghiệm của mẫu và tại vô cực.",
+     "explanation": "Tập xác định: $x \\ne 1$ và $x \\ne -1$. Khi đó $y = \\frac{x + 1}{(x - 1)(x + 1)} = \\frac{1}{x - 1}$. Vì $\\lim_{x \\to \\pm\\infty} y = 0$ nên $y = 0$ là tiệm cận ngang. Vì $\\lim_{x \\to 1^+} y = +\\infty$ nên $x = 1$ là tiệm cận đứng. Vì $\\lim_{x \\to -1} y = \\lim_{x \\to -1} \\frac{1}{x - 1} = -\\frac{1}{2}$ (hữu hạn) nên $x = -1$ không phải tiệm cận đứng. Vậy đồ thị có $2$ đường tiệm cận. Chọn A.",
+     "skill_ids": [
+      "functions.asymptotes"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$2$"
+      },
+      {
+       "id": "B",
+       "text": "$3$"
+      },
+      {
+       "id": "C",
+       "text": "$1$"
+      },
+      {
+       "id": "D",
+       "text": "$4$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đã coi $x = -1$ là tiệm cận đứng; nhưng $x = -1$ cũng là nghiệm của tử, giới hạn tại đó bằng $-\\frac{1}{2}$ (hữu hạn).",
+      "C": "Quên tiệm cận ngang $y = 0$ (bậc của tử nhỏ hơn bậc của mẫu)."
+     }
+    },
+    {
+     "id": "math.function.008",
+     "type": "SINGLE_CHOICE",
+     "stem": "Từ một tấm bìa hình chữ nhật kích thước $16\\ \\text{cm} \\times 10\\ \\text{cm}$, người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau có cạnh $x$ (cm), rồi gấp phần còn lại thành một chiếc hộp không nắp có dạng hình hộp chữ nhật. Thể tích lớn nhất của chiếc hộp là",
+     "hint": "Biểu diễn thể tích hộp theo $x$, xác định điều kiện của $x$, rồi dùng đạo hàm để tìm giá trị lớn nhất.",
+     "explanation": "Hộp có đáy là hình chữ nhật $(16 - 2x) \\times (10 - 2x)$ và chiều cao $x$, với $0 < x < 5$. Thể tích $V(x) = x(16 - 2x)(10 - 2x) = 4x^3 - 52x^2 + 160x$. Ta có $V'(x) = 12x^2 - 104x + 160 = 4(3x^2 - 26x + 40)$; $V'(x) = 0$ khi $x = 2$ hoặc $x = \\frac{20}{3}$ (loại vì $\\frac{20}{3} > 5$). $V'(x) > 0$ trên $(0; 2)$ và $V'(x) < 0$ trên $(2; 5)$ nên $V$ đạt giá trị lớn nhất tại $x = 2$: $V(2) = 2 \\cdot 12 \\cdot 6 = 144$ ($\\text{cm}^3$). Chọn D.",
+     "skill_ids": [
+      "functions.optimization",
+      "functions.minmax"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$120\\ \\text{cm}^3$"
+      },
+      {
+       "id": "B",
+       "text": "$112\\ \\text{cm}^3$"
+      },
+      {
+       "id": "C",
+       "text": "$160\\ \\text{cm}^3$"
+      },
+      {
+       "id": "D",
+       "text": "$144\\ \\text{cm}^3$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "$120 = V(3) = 3 \\cdot 10 \\cdot 4$; thử vài giá trị nguyên là chưa đủ, cần khảo sát $V'(x)$.",
+      "B": "$112 = V(1) = 1 \\cdot 14 \\cdot 8$, chưa phải giá trị lớn nhất."
+     }
+    },
+    {
+     "id": "math.exp-log.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tập xác định của hàm số $y = \\log_2 (x - 3)$ là",
+     "hint": "Biểu thức bên trong dấu logarit phải thỏa mãn điều kiện gì?",
+     "explanation": "Hàm số $y = \\log_2 (x - 3)$ xác định khi $x - 3 > 0$, tức $x > 3$. Vậy tập xác định là $(3; +\\infty)$. Chọn B.",
+     "skill_ids": [
+      "explog.functions"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$[3; +\\infty)$"
+      },
+      {
+       "id": "B",
+       "text": "$(3; +\\infty)$"
+      },
+      {
+       "id": "C",
+       "text": "$(-\\infty; 3)$"
+      },
+      {
+       "id": "D",
+       "text": "$(0; +\\infty)$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Biểu thức trong logarit phải dương thực sự; tại $x = 3$ ta có $\\log_2 0$ không xác định.",
+      "D": "$(0; +\\infty)$ là tập xác định của $\\log_2 x$; ở đây biểu thức trong logarit là $x - 3$."
+     }
+    },
+    {
+     "id": "math.exp-log.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Nghiệm của phương trình $3^{x - 1} = 27$ là",
+     "hint": "Viết $27$ dưới dạng lũy thừa cơ số $3$.",
+     "explanation": "Vì $27 = 3^3$ nên $3^{x - 1} = 3^3$, suy ra $x - 1 = 3$, tức $x = 4$. Chọn A.",
+     "skill_ids": [
+      "explog.equations",
+      "explog.powers"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$x = 4$"
+      },
+      {
+       "id": "B",
+       "text": "$x = 3$"
+      },
+      {
+       "id": "C",
+       "text": "$x = 2$"
+      },
+      {
+       "id": "D",
+       "text": "$x = 10$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đã giải $3^x = 27$, quên rằng số mũ là $x - 1$.",
+      "D": "Đã lấy $27 : 3 + 1$; phương trình mũ cần đưa về cùng cơ số rồi so sánh số mũ."
+     }
+    },
+    {
+     "id": "math.integral.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Họ nguyên hàm của hàm số $f(x) = 3x^2 + 2$ là",
+     "hint": "Dùng $\\int x^n dx = \\frac{x^{n + 1}}{n + 1} + C$ và $\\int k dx = kx + C$.",
+     "explanation": "$\\int (3x^2 + 2) dx = 3 \\cdot \\frac{x^3}{3} + 2x + C = x^3 + 2x + C$. Chọn C.",
+     "skill_ids": [
+      "integral.antiderivative"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$6x + C$"
+      },
+      {
+       "id": "B",
+       "text": "$3x^3 + 2x + C$"
+      },
+      {
+       "id": "C",
+       "text": "$x^3 + 2x + C$"
+      },
+      {
+       "id": "D",
+       "text": "$x^3 + C$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "$6x$ là đạo hàm của $f(x)$, không phải nguyên hàm.",
+      "B": "Quên chia cho số mũ mới: $\\int x^2 dx = \\frac{x^3}{3} + C$.",
+      "D": "Bỏ sót nguyên hàm của hằng số $2$ là $2x$."
+     }
+    },
+    {
+     "id": "math.integral.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Họ nguyên hàm của hàm số $f(x) = e^x + \\cos x$ là",
+     "hint": "Nhớ lại nguyên hàm của $e^x$ và của $\\cos x$.",
+     "explanation": "Ta có $\\int e^x dx = e^x + C$ và $\\int \\cos x dx = \\sin x + C$. Do đó $\\int (e^x + \\cos x) dx = e^x + \\sin x + C$. Chọn D.",
+     "skill_ids": [
+      "integral.antiderivative"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$e^x - \\sin x + C$"
+      },
+      {
+       "id": "B",
+       "text": "$xe^{x - 1} + \\sin x + C$"
+      },
+      {
+       "id": "C",
+       "text": "$e^x - \\cos x + C$"
+      },
+      {
+       "id": "D",
+       "text": "$e^x + \\sin x + C$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Nhầm dấu: nguyên hàm của $\\cos x$ là $\\sin x$ (không có dấu trừ).",
+      "B": "Áp dụng nhầm công thức lũy thừa cho $e^x$; nguyên hàm của $e^x$ là chính nó.",
+      "C": "$-\\cos x$ là nguyên hàm của $\\sin x$, không phải của $\\cos x$."
+     }
+    },
+    {
+     "id": "math.oxyz.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, cho hai vectơ $\\vec{a} = (2; -1; 3)$ và $\\vec{b} = (1; 4; -2)$. Tọa độ của vectơ $\\vec{a} + 2\\vec{b}$ là",
+     "hint": "Nhân từng tọa độ của $\\vec{b}$ với $2$ rồi cộng theo từng tọa độ tương ứng với $\\vec{a}$.",
+     "explanation": "Ta có $2\\vec{b} = (2; 8; -4)$. Do đó $\\vec{a} + 2\\vec{b} = (2 + 2; -1 + 8; 3 - 4) = (4; 7; -1)$. Chọn B.",
+     "skill_ids": [
+      "oxyz.vectors"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$(3; 3; 1)$"
+      },
+      {
+       "id": "B",
+       "text": "$(4; 7; -1)$"
+      },
+      {
+       "id": "C",
+       "text": "$(5; 2; 4)$"
+      },
+      {
+       "id": "D",
+       "text": "$(0; -9; 7)$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Đây là $\\vec{a} + \\vec{b}$: em quên nhân $\\vec{b}$ với $2$.",
+      "C": "Đây là $2\\vec{a} + \\vec{b}$: em nhân nhầm hệ số $2$ vào $\\vec{a}$.",
+      "D": "Đây là $\\vec{a} - 2\\vec{b}$: em làm sai dấu phép cộng."
+     }
+    },
+    {
+     "id": "math.oxyz.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, mặt cầu $(S): (x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 16$ có tâm $I$ và bán kính $R$ là",
+     "hint": "So sánh với dạng $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$; chú ý vế phải là bình phương bán kính.",
+     "explanation": "Mặt cầu $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$ có tâm $I(a; b; c)$, bán kính $R$. Ở đây $a = 1$, $b = -2$, $c = 3$ và $R^2 = 16$ nên $R = 4$. Vậy $I(1; -2; 3)$, $R = 4$. Chọn D.",
+     "skill_ids": [
+      "oxyz.sphere"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$I(-1; 2; -3)$, $R = 4$"
+      },
+      {
+       "id": "B",
+       "text": "$I(1; -2; 3)$, $R = 16$"
+      },
+      {
+       "id": "C",
+       "text": "$I(-1; 2; -3)$, $R = 16$"
+      },
+      {
+       "id": "D",
+       "text": "$I(1; -2; 3)$, $R = 4$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Em đổi dấu sai: tâm có tọa độ ngược dấu với số trong ngoặc, tức là $(1; -2; 3)$.",
+      "B": "Vế phải là $R^2 = 16$, nên $R = 4$ chứ không phải $16$."
+     }
+    },
+    {
+     "id": "math.probability.001",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho hai biến cố $A$ và $B$ với $P(A) = 0{,}5$, $P(B) = 0{,}4$ và $P(A \\cap B) = 0{,}12$. Xác suất có điều kiện $P(A | B)$ bằng",
+     "hint": "Xác suất của $A$ khi biết $B$ đã xảy ra: chia xác suất của giao cho xác suất của biến cố điều kiện.",
+     "explanation": "Theo định nghĩa, $P(A | B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}12}{0{,}4} = 0{,}3$. Chọn D.",
+     "skill_ids": [
+      "probability.conditional"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$0{,}24$"
+      },
+      {
+       "id": "B",
+       "text": "$0{,}048$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}28$"
+      },
+      {
+       "id": "D",
+       "text": "$0{,}3$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Em chia cho $P(A)$, đó là $P(B | A) = 0{,}24$.",
+      "B": "Em nhân $P(A \\cap B)$ với $P(B)$ thay vì chia.",
+      "C": "Em lấy $P(B) - P(A \\cap B)$; đó không phải công thức xác suất có điều kiện."
+     }
+    },
+    {
+     "id": "math.probability.003",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho hai biến cố độc lập $A$ và $B$ với $P(A) = 0{,}3$ và $P(B) = 0{,}7$. Xác suất có điều kiện $P(A | B)$ bằng",
+     "hint": "Viết định nghĩa $P(A | B)$ và dùng tính chất của hai biến cố độc lập cho $P(A \\cap B)$.",
+     "explanation": "Vì $A$, $B$ độc lập nên $P(A \\cap B) = P(A) \\cdot P(B) = 0{,}21$. Do đó $P(A | B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0{,}21}{0{,}7} = 0{,}3 = P(A)$. Chọn B.",
+     "skill_ids": [
+      "probability.rules",
+      "probability.conditional"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$0{,}21$"
+      },
+      {
+       "id": "B",
+       "text": "$0{,}3$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}7$"
+      },
+      {
+       "id": "D",
+       "text": "$\\dfrac{3}{7}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "$0{,}21$ là $P(A \\cap B)$, chưa chia cho $P(B)$.",
+      "D": "Em lấy $\\dfrac{P(A)}{P(B)}$; công thức đúng là $\\dfrac{P(A \\cap B)}{P(B)}$."
+     }
+    },
+    {
+     "id": "math.probability.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một hộp có $5$ viên bi đỏ và $3$ viên bi xanh, các viên bi có cùng kích thước. Lấy ngẫu nhiên lần lượt hai viên bi, không hoàn lại. Xác suất để viên bi lấy ra ở lần thứ hai có màu đỏ bằng",
+     "hint": "Kết quả lần hai phụ thuộc vào lần một; hãy xét hai trường hợp màu của viên bi thứ nhất.",
+     "explanation": "Gọi $A$: lần một lấy được bi đỏ, $B$: lần hai lấy được bi đỏ. Ta có $P(A) = \\dfrac{5}{8}$, $P(\\overline{A}) = \\dfrac{3}{8}$, $P(B | A) = \\dfrac{4}{7}$, $P(B | \\overline{A}) = \\dfrac{5}{7}$. Theo công thức xác suất toàn phần: $P(B) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} + \\dfrac{3}{8} \\cdot \\dfrac{5}{7} = \\dfrac{20 + 15}{56} = \\dfrac{35}{56} = \\dfrac{5}{8}$. Chọn D.",
+     "skill_ids": [
+      "probability.total_bayes"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\dfrac{4}{7}$"
+      },
+      {
+       "id": "B",
+       "text": "$\\dfrac{5}{7}$"
+      },
+      {
+       "id": "C",
+       "text": "$\\dfrac{15}{56}$"
+      },
+      {
+       "id": "D",
+       "text": "$\\dfrac{5}{8}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "$\\dfrac{4}{7}$ là $P(B | A)$, chỉ đúng khi đã biết lần một lấy được bi đỏ.",
+      "B": "$\\dfrac{5}{7}$ là $P(B | \\overline{A})$, chỉ đúng khi đã biết lần một lấy được bi xanh.",
+      "C": "Em chỉ tính một nhánh (xanh rồi đỏ) mà quên cộng nhánh đỏ rồi đỏ."
+     }
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "title_vi": "Phần II. Đúng/Sai",
+   "title_en": "Part II. True/False",
+   "type": "TRUE_FALSE_GROUP",
+   "points_each": 1.0,
+   "items": [
+    {
+     "id": "math.function.011",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Cho hàm số $y = x^3 - 3x + 1$.",
+     "hint": "Tính $y'$, tìm các điểm làm $y' = 0$ rồi lập bảng biến thiên.",
+     "explanation": "$y' = 3x^2 - 3 = 0 \\Leftrightarrow x = \\pm 1$. Bảng biến thiên: hàm số đồng biến trên $(-\\infty; -1)$ và $(1; +\\infty)$, nghịch biến trên $(-1; 1)$; cực đại $y(-1) = 3$, cực tiểu $y(1) = -1$. Vậy a) Đúng, b) Sai, c) Đúng, d) Đúng.",
+     "skill_ids": [
+      "functions.monotonic.derivative",
+      "functions.extrema"
+     ],
+     "difficulty": 3,
+     "statements": [
+      {
+       "id": "a",
+       "text": "Hàm số đồng biến trên khoảng $(1; +\\infty)$."
+      },
+      {
+       "id": "b",
+       "text": "Hàm số đạt cực đại tại $x = 1$."
+      },
+      {
+       "id": "c",
+       "text": "Giá trị cực tiểu của hàm số bằng $-1$."
+      },
+      {
+       "id": "d",
+       "text": "Phương trình $x^3 - 3x + 1 = m$ có ba nghiệm phân biệt khi và chỉ khi $-1 < m < 3$."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": false,
+       "c": true,
+       "d": true
+      }
+     }
+    },
+    {
+     "id": "math.integral.011",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Cho hàm số $f(x) = 2x + 1$ và $F(x)$ là một nguyên hàm của $f(x)$ thỏa mãn $F(0) = 2$.",
+     "hint": "Tìm $F(x)$ từ điều kiện $F(0) = 2$; với diện tích, xét dấu $f(x)$ trên đoạn $[-1; 0]$.",
+     "explanation": "$F(x) = x^2 + x + 2$ nên $F(1) = 4$. $\\int_0^2 f(x)\\,dx = F(2) - F(0) = 8 - 2 = 6$. Trên $[-1; 0]$, $f(x)$ đổi dấu tại $x = -\\frac{1}{2}$ nên diện tích là $\\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}$. Vậy a) Đúng, b) Sai, c) Đúng, d) Đúng.",
+     "skill_ids": [
+      "integral.antiderivative"
+     ],
+     "difficulty": 3,
+     "statements": [
+      {
+       "id": "a",
+       "text": "$F(x) = x^2 + x + 2$."
+      },
+      {
+       "id": "b",
+       "text": "$F(1) = 3$."
+      },
+      {
+       "id": "c",
+       "text": "$\\int_0^2 f(x)\\,dx = 6$."
+      },
+      {
+       "id": "d",
+       "text": "Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = f(x)$, trục hoành và hai đường thẳng $x = -1$, $x = 0$ bằng $\\frac{1}{2}$."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": false,
+       "c": true,
+       "d": true
+      }
+     }
+    },
+    {
+     "id": "math.oxyz.011",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Trong không gian $Oxyz$, cho hai điểm $A(1; 2; -1)$, $B(3; 0; 1)$ và mặt phẳng $(P): x + y + z - 3 = 0$.",
+     "hint": "Mặt cầu tiếp xúc với mặt phẳng khi khoảng cách từ tâm đến mặt phẳng bằng bán kính.",
+     "explanation": "$I(2; 1; 0)$, $AB = 2\\sqrt{3}$, $A \\notin (P)$. Mặt cầu đường kính $AB$ có tâm $I$, bán kính $R = \\sqrt{3}$, mà $d(I, (P)) = 0 < R$ nên không tiếp xúc. Vậy a) Đúng, b) Đúng, c) Sai, d) Sai.",
+     "skill_ids": [
+      "oxyz.plane",
+      "oxyz.vectors"
+     ],
+     "difficulty": 3,
+     "statements": [
+      {
+       "id": "a",
+       "text": "Trung điểm của đoạn thẳng $AB$ là $I(2; 1; 0)$."
+      },
+      {
+       "id": "b",
+       "text": "$AB = 2\\sqrt{3}$."
+      },
+      {
+       "id": "c",
+       "text": "Điểm $A$ thuộc mặt phẳng $(P)$."
+      },
+      {
+       "id": "d",
+       "text": "Mặt cầu đường kính $AB$ tiếp xúc với mặt phẳng $(P)$."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": true,
+       "c": false,
+       "d": false
+      }
+     }
+    },
+    {
+     "id": "math.probability.011",
+     "type": "TRUE_FALSE_GROUP",
+     "stem": "Một hộp có $5$ viên bi đỏ và $3$ viên bi xanh có cùng kích thước. Lấy ngẫu nhiên đồng thời $2$ viên bi từ hộp.",
+     "hint": "Dùng tổ hợp $C_n^k$; với ý d) dùng xác suất có điều kiện $P(A \\mid B) = \\frac{P(AB)}{P(B)}$.",
+     "explanation": "$n(\\Omega) = C_8^2 = 28$. Hai bi đỏ: $10$ cách, xác suất $\\frac{5}{14}$. Cùng màu: $10 + 3 = 13$ cách, xác suất $\\frac{13}{28}$. Có ít nhất một bi đỏ: $28 - 3 = 25$ cách, trong đó cả hai đỏ $10$ cách, nên xác suất có điều kiện là $\\frac{10}{25} = \\frac{2}{5}$. Vậy a) Đúng, b) Đúng, c) Sai, d) Đúng.",
+     "skill_ids": [
+      "probability.classical",
+      "probability.conditional"
+     ],
+     "difficulty": 3,
+     "statements": [
+      {
+       "id": "a",
+       "text": "Số cách lấy $2$ viên bi là $28$."
+      },
+      {
+       "id": "b",
+       "text": "Xác suất lấy được $2$ viên bi đỏ là $\\frac{5}{14}$."
+      },
+      {
+       "id": "c",
+       "text": "Xác suất lấy được $2$ viên bi cùng màu là $\\frac{1}{2}$."
+      },
+      {
+       "id": "d",
+       "text": "Biết rằng trong $2$ viên lấy ra có ít nhất một viên bi đỏ, xác suất để cả hai viên đều đỏ là $\\frac{2}{5}$."
+      }
+     ],
+     "answer_key": {
+      "statements": {
+       "a": true,
+       "b": true,
+       "c": false,
+       "d": true
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "title_vi": "Phần III. Trả lời ngắn",
+   "title_en": "Part III. Short answer",
+   "type": "SHORT_ANSWER",
+   "points_each": 0.5,
+   "items": [
+    {
+     "id": "math.exp-log.011",
+     "type": "SHORT_ANSWER",
+     "stem": "Bác An gửi tiết kiệm $100$ triệu đồng với lãi suất $6\\%$ một năm theo hình thức lãi kép (tiền lãi mỗi năm được nhập vào vốn). Sau $3$ năm, tổng số tiền (cả vốn lẫn lãi) bác An nhận được là bao nhiêu triệu đồng (làm tròn đến hàng đơn vị)?",
+     "hint": "Sau $n$ năm, số tiền là $A(1 + r)^n$.",
+     "explanation": "$100 \\cdot 1{,}06^3 = 100 \\cdot 1{,}191016 \\approx 119{,}1$ triệu đồng; làm tròn đến hàng đơn vị được $119$.",
+     "skill_ids": [
+      "explog.applications"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "119"
+      ]
+     }
+    },
+    {
+     "id": "math.function.012",
+     "type": "SHORT_ANSWER",
+     "stem": "Tìm giá trị lớn nhất của hàm số $y = -x^3 + 3x^2 + 2$ trên đoạn $[0; 3]$.",
+     "hint": "Tính $y'$, tìm các nghiệm thuộc $[0; 3]$ rồi so sánh giá trị tại các điểm đó và tại hai đầu mút.",
+     "explanation": "$y' = -3x^2 + 6x = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. $y(0) = 2$, $y(2) = -8 + 12 + 2 = 6$, $y(3) = -27 + 27 + 2 = 2$. Giá trị lớn nhất là $6$.",
+     "skill_ids": [
+      "functions.minmax"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "6"
+      ]
+     }
+    },
+    {
+     "id": "math.integral.012",
+     "type": "SHORT_ANSWER",
+     "stem": "Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^2$ và đường thẳng $y = 2x$ (làm tròn đến hàng phần mười).",
+     "hint": "Tìm hoành độ giao điểm rồi tính $\\int |2x - x^2|\\,dx$ giữa hai giao điểm.",
+     "explanation": "$x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. Trên $[0; 2]$, $2x \\ge x^2$ nên $S = \\int_0^2 (2x - x^2)\\,dx = \\left(x^2 - \\frac{x^3}{3}\\right)\\Big|_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3} \\approx 1{,}3$.",
+     "skill_ids": [
+      "integral.area"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "1,3",
+       "1.3"
+      ]
+     }
+    },
+    {
+     "id": "math.oxyz.012",
+     "type": "SHORT_ANSWER",
+     "stem": "Trong không gian $Oxyz$, tính khoảng cách từ điểm $M(1; -2; 3)$ đến mặt phẳng $(P): 2x - y + 2z + 1 = 0$ (làm tròn đến hàng phần trăm).",
+     "hint": "$d(M, (P)) = \\frac{|ax_0 + by_0 + cz_0 + d|}{\\sqrt{a^2 + b^2 + c^2}}$.",
+     "explanation": "$d = \\frac{|2 \\cdot 1 - (-2) + 2 \\cdot 3 + 1|}{\\sqrt{4 + 1 + 4}} = \\frac{11}{3} \\approx 3{,}67$.",
+     "skill_ids": [
+      "oxyz.distance_angle"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "3,67",
+       "3.67"
+      ]
+     }
+    },
+    {
+     "id": "math.probability.012",
+     "type": "SHORT_ANSWER",
+     "stem": "Gieo một đồng xu cân đối và đồng chất $4$ lần liên tiếp. Tính xác suất để có đúng $3$ lần xuất hiện mặt ngửa (viết kết quả dưới dạng số thập phân).",
+     "hint": "Không gian mẫu có $2^4 = 16$ kết quả đồng khả năng.",
+     "explanation": "Có $C_4^3 = 4$ kết quả có đúng ba mặt ngửa trong $2^4 = 16$ kết quả đồng khả năng nên $P = \\frac{4}{16} = 0{,}25$.",
+     "skill_ids": [
+      "probability.classical",
+      "probability.rules"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "0,25",
+       "0.25"
+      ]
+     }
+    },
+    {
+     "id": "math.statistics.011",
+     "type": "SHORT_ANSWER",
+     "stem": "Thời gian tự học mỗi ngày của $20$ học sinh được cho như sau: nhóm $[0; 10)$ phút có $4$ học sinh, nhóm $[10; 20)$ phút có $9$ học sinh, nhóm $[20; 30)$ phút có $7$ học sinh. Tính số trung bình của mẫu số liệu ghép nhóm này (đơn vị: phút, làm tròn đến hàng phần mười).",
+     "hint": "Dùng giá trị đại diện (giá trị giữa) của mỗi nhóm.",
+     "explanation": "Giá trị đại diện: $5$, $15$, $25$. $\\bar{x} = \\frac{4 \\cdot 5 + 9 \\cdot 15 + 7 \\cdot 25}{20} = \\frac{20 + 135 + 175}{20} = \\frac{330}{20} = 16{,}5$ phút.",
+     "skill_ids": [
+      "statistics.grouped.mean_mode"
+     ],
+     "difficulty": 2,
+     "answer_key": {
+      "accepted": [
+       "16,5",
+       "16.5"
+      ]
+     }
+    }
+   ]
+  }
+ ],
+ "source": {
+  "name": "Mentor (đề mẫu từ ngân hàng câu hỏi)",
+  "url": ""
+ },
+ "placeholder": true,
+ "note_vi": "Đề mẫu dựng từ ngân hàng câu hỏi: 12 câu trắc nghiệm, 4 câu Đúng/Sai, 6 câu trả lời ngắn như cấu trúc 2025 (không có câu thống kê vì câu thống kê có bảng số).",
+ "note_en": "Sample built from the question bank: 12 multiple choice, 4 true/false, 6 short answer like the 2025 structure (no statistics items, they need tables)."
+}

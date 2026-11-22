@@ -1,0 +1,2182 @@
+{
+  "schema_version": 1,
+  "course_id": "dai-so-tuyen-tinh-khong-gian-vec-2",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Đại số tuyến tính: Không gian vectơ và trị riêng",
+  "chapters": [
+    {
+      "id": "ch-khong-gian-vecto",
+      "title": "Không gian vectơ",
+      "lessons": [
+        {
+          "id": "doc-lap-tuyen-tinh",
+          "title": "Độc lập tuyến tính",
+          "est_minutes": 15,
+          "summary": "Nhận biết hệ vectơ độc lập hay phụ thuộc tuyến tính qua tổ hợp tuyến tính, hạng ma trận cột và định thức, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Tổ hợp tuyến tính và định nghĩa hệ độc lập, phụ thuộc tuyến tính",
+            "Tiêu chuẩn qua hạng ma trận cột và định thức trong R^n",
+            "Ví dụ trong R^3 và không gian đa thức bậc không quá 2",
+            "Lỗi: chỉ thấy nghiệm tầm thường đã kết luận độc lập tuyến tính",
+            "Bài tập và đáp án về hệ vectơ, tham số k"
+          ],
+          "blocks": [
+            {
+              "id": "doc-lap-tuyen-tinh-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tổ hợp tuyến tính",
+              "md": "Cho các vectơ $v_1,\\dots,v_m$ trong không gian vectơ $V$ trên $\\mathbb R$. Một tổ hợp tuyến tính của chúng là $c_1v_1+\\cdots+c_mv_m$ với các hệ số $c_i\\in\\mathbb R$.",
+              "audio": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Độc lập và phụ thuộc tuyến tính",
+              "md": "Hệ $\\{v_1,\\dots,v_m\\}$ độc lập tuyến tính nếu $c_1v_1+\\cdots+c_mv_m=0$ kéo theo $c_1=\\cdots=c_m=0$. Hệ phụ thuộc tuyến tính nếu tồn tại $c_1,\\dots,c_m$ không đồng thời bằng $0$ sao cho $c_1v_1+\\cdots+c_mv_m=0$.",
+              "audio": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "doc-lap-tuyen-tinh-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho $v_1,\\dots,v_m\\in\\mathbb R^n$ và $A$ là ma trận có các cột là $v_1,\\dots,v_m$. Hệ $\\{v_1,\\dots,v_m\\}$ độc lập tuyến tính khi và chỉ khi",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$\\operatorname{rank}(A)=m$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$\\operatorname{rank}(A)<m$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$Ac=0$ có nghiệm $c\\ne0$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Mọi cột của $A$ đều khác vectơ $0$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Hạng của ma trận cột bằng số cột khi nào?",
+                  "explanation": "Theo tiêu chuẩn hạng, hệ cột độc lập tuyến tính khi $\\operatorname{rank}(A)=m$, tương đương $Ac=0$ chỉ có nghiệm $c=0$.",
+                  "option_feedback": {
+                    "B": "Điều kiện này ứng với hệ phụ thuộc tuyến tính, không phải độc lập.",
+                    "C": "Có nghiệm khác $0$ là dấu hiệu hệ phụ thuộc tuyến tính.",
+                    "D": "Các cột khác $0$ vẫn có thể phụ thuộc tuyến tính."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b3",
+              "kind": "text",
+              "md": "Trong $\\mathbb R^n$, lập ma trận $A$ có các cột là $v_1,\\dots,v_m$. Hệ độc lập tuyến tính khi và chỉ khi $\\operatorname{rank}(A)=m$, tức $Ac=0$ chỉ có nghiệm $c=0$. Nếu $m>n$ thì mọi hệ $m$ vectơ trong $\\mathbb R^n$ đều phụ thuộc tuyến tính; với đúng $n$ vectơ, hệ độc lập khi và chỉ khi định thức của ma trận tạo bởi chúng khác $0$. Mọi hệ chứa vectơ $0$ đều phụ thuộc tuyến tính.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/doc-lap-tuyen-tinh-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "bb80fb3b7c885a625ba792449d74aa8e42aa340c6c2a7eaf3d136ab1b67e0651",
+                "bytes": 3728
+              },
+              "alt": "Ma trận cột từ ba vectơ trong R^3 có định thức -4 khác 0.",
+              "caption": "Ba cột $v_1,v_2,v_3$ lập thành ma trận $A$.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "doc-lap-tuyen-tinh-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Với đúng $n$ vectơ trong $\\mathbb R^n$, hệ độc lập tuyến tính khi và chỉ khi $\\det A\\,{{gap}}\\,0$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "\\neq",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "=",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "\\lt",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": "Định thức bằng $0$ ứng với trường hợp phụ thuộc tuyến tính.",
+                  "explanation": "Định thức khác $0$ tương đương ma trận tạo bởi các vectơ có hạng $n$, nên các cột độc lập tuyến tính.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ trong $\\mathbb R^3$",
+              "md": "Với $v_1=(1,2,3)$, $v_2=(0,1,4)$, $v_3=(2,5,6)$, lập $A=\\begin{pmatrix}1&0&2\\\\2&1&5\\\\3&4&6\\end{pmatrix}$. Tính được $\\det A=-4\\ne0$, nên $Ac=0$ chỉ có $c=0$; do đó $\\{v_1,v_2,v_3\\}$ độc lập tuyến tính.",
+              "audio": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "doc-lap-tuyen-tinh-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $v_1=(1,2)$ và $v_2=(2,k)$ trong $\\mathbb R^2$. Tìm $k$ để $\\{v_1,v_2\\}$ phụ thuộc tuyến tính.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "4"
+                    ]
+                  },
+                  "hint": "Tính $\\det\\begin{pmatrix}1&2\\\\2&k\\end{pmatrix}$.",
+                  "explanation": "Lập ma trận cột có định thức $k-4$; hệ phụ thuộc tuyến tính khi $k-4=0$, tức $k=4$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ với đa thức",
+              "md": "Trong không gian đa thức bậc không quá $2$, xét $p_1=1+x$, $p_2=x+x^2$, $p_3=1-x^2$. Từ $a p_1+b p_2+c p_3=0$, đồng nhất hệ số được $a+c=0$, $a+b=0$, $b-c=0$. Hệ có nghiệm không tầm thường, chẳng hạn $a=1,b=-1,c=-1$; thật vậy $p_1-p_2-p_3=0$. Vậy $\\{p_1,p_2,p_3\\}$ phụ thuộc tuyến tính.",
+              "audio": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Thấy $c_1v_1+\\cdots+c_mv_m=0$ có nghiệm $c_1=\\cdots=c_m=0$ rồi kết luận hệ độc lập tuyến tính. Sai, vì nghiệm tầm thường này luôn tồn tại; phải chứng minh nó là nghiệm duy nhất.",
+              "audio": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "doc-lap-tuyen-tinh-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi điều kiện với kết luận đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$\\operatorname{rank}(A)=m$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "hệ $m$ cột độc lập tuyến tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$\\det A\\ne0$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$n$ vectơ trong $\\mathbb R^n$ độc lập tuyến tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$m>n$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$m$ vectơ trong $\\mathbb R^n$ phụ thuộc tuyến tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Hệ chứa vectơ $0$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "hệ phụ thuộc tuyến tính",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các tiêu chuẩn này suy từ định nghĩa, hạng ma trận cột và tính chất của định thức.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b8",
+              "kind": "interactive",
+              "prompt": "Với $v_1=(1,2), v_2=(2,k)$ trong $\\mathbb R^2$, kéo $k$ để $\\det A=0$",
+              "x": {
+                "symbol": "k",
+                "label": "Tham số k",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "\\det A",
+                "label": "Định thức",
+                "unit": ""
+              },
+              "expr": "x-4",
+              "x_min": -2.0,
+              "x_max": 10.0,
+              "x_step": 0.5,
+              "x_start": 0.0,
+              "target_y": 0.0,
+              "tolerance": 0.01,
+              "praise": "Chính xác: $k=4$ làm $\\det A=0$, nên hệ phụ thuộc tuyến tính; mọi $k\\ne4$ cho hệ độc lập.",
+              "audio": null
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "doc-lap-tuyen-tinh-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng sai của các mệnh đề sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu $c_1v_1+\\cdots+c_mv_m=0$ có nghiệm $c_1=\\cdots=c_m=0$ thì hệ $\\{v_1,\\dots,v_m\\}$ độc lập tuyến tính."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Hệ $\\{1+x,\\,x+x^2,\\,1-x^2\\}$ trong không gian đa thức bậc không quá $2$ là phụ thuộc tuyến tính."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Trong $\\mathbb R^3$, hệ $(1,1,0),(1,0,1),(0,1,1)$ là độc lập tuyến tính."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Nếu $m>n$ thì mọi hệ $m$ vectơ trong $\\mathbb R^n$ đều độc lập tuyến tính."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý lỗi nhầm nghiệm tầm thường là nghiệm duy nhất.",
+                  "explanation": "Mệnh đề đầu sai vì nghiệm tầm thường luôn tồn tại; mệnh đề cuối sai vì khi $m>n$ mọi hệ $m$ vectơ trong $\\mathbb R^n$ đều phụ thuộc tuyến tính.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "doc-lap-tuyen-tinh-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vì sao chỉ ra $c_1v_1+\\cdots+c_mv_m=0$ có nghiệm $c=0$ chưa đủ để kết luận độc lập tuyến tính?",
+                  "answer": "Vì nghiệm tầm thường luôn có; cần chứng minh nó là nghiệm duy nhất.",
+                  "image": null
+                },
+                {
+                  "prompt": "Tiêu chuẩn định thức cho đúng $n$ vectơ trong $\\mathbb R^n$ là gì?",
+                  "answer": "Hệ độc lập tuyến tính khi và chỉ khi định thức của ma trận tạo bởi các vectơ đó khác $0$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hệ vectơ chứa vectơ $0$ có độc lập tuyến tính không?",
+                  "answer": "Không, mọi hệ chứa vectơ $0$ đều phụ thuộc tuyến tính.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "co-so-va-so-chieu",
+          "title": "Cơ sở và số chiều",
+          "est_minutes": 15,
+          "summary": "Xây dựng cơ sở, số chiều, tọa độ trong cơ sở và cơ sở của không gian nghiệm, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Tập sinh, cơ sở và số chiều của không gian con",
+            "Tìm cơ sở bằng ma trận dòng và dạng bậc thang",
+            "Công thức dim W = n - rank(A) cho không gian nghiệm",
+            "Tọa độ của vectơ trong một cơ sở",
+            "Lỗi: nhầm tập sinh với cơ sở"
+          ],
+          "blocks": [
+            {
+              "id": "co-so-va-so-chieu-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tập sinh, cơ sở, số chiều",
+              "md": "Cho $W\\subseteq V$ là không gian con. Tập $S\\subseteq W$ là **tập sinh** của $W$ nếu mọi $w\\in W$ đều viết được dưới dạng tổ hợp tuyến tính của các vectơ trong $S$. Tập $S$ là **cơ sở** của $W$ nếu $S$ vừa độc lập tuyến tính vừa sinh ra $W$. **Số chiều** $\\dim W$ là số vectơ trong một cơ sở của $W$; $\\dim\\{0\\}=0$.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-b2",
+              "kind": "text",
+              "md": "Để tìm cơ sở của $W=\\operatorname{span}\\{v_1,\\dots,v_m\\}\\subseteq\\mathbb R^n$, lập ma trận có các $v_i$ là các dòng rồi đưa về dạng bậc thang. Các dòng khác $0$ tạo thành một cơ sở của $W$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "co-so-va-so-chieu-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "co-so-va-so-chieu-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho $W=\\operatorname{span}\\{(1,0),(0,1),(1,1)\\}\\subseteq\\mathbb R^2$. Phát biểu nào đúng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Hệ $\\{(1,0),(0,1),(1,1)\\}$ là một cơ sở của $W$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Hệ $\\{(1,0),(0,1)\\}$ là một cơ sở của $W$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Mọi tập sinh của $W$ đều có đúng 2 vectơ.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Số chiều của $W$ bằng 3.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": null,
+                  "explanation": "Hai vectơ $(1,0),(0,1)$ độc lập tuyến tính và sinh ra $W=\\mathbb R^2$, nên là cơ sở; vectơ thứ ba phụ thuộc tuyến tính.",
+                  "option_feedback": {
+                    "A": "Hệ này phụ thuộc tuyến tính vì $(1,1)=(1,0)+(0,1)$.",
+                    "C": "Tập $\\{(1,0),(0,1),(1,1)\\}$ sinh ra $W$ nhưng có 3 vectơ.",
+                    "D": "Trong $\\mathbb R^2$, $\\dim W=2$ vì có cơ sở gồm 2 vectơ."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "co-so-va-so-chieu-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cơ sở từ ma trận dòng",
+              "md": "Ví dụ. Cho $W=\\operatorname{span}\\{(1,2,0,1),(2,4,1,3),(0,0,1,1),(1,2,2,4)\\}\\subseteq\\mathbb R^4$. Đưa ma trận dòng về bậc thang: $\\begin{pmatrix}1&2&0&1\\\\2&4&1&3\\\\0&0&1&1\\\\1&2&2&4\\end{pmatrix}\\to\\begin{pmatrix}1&2&0&1\\\\0&0&1&1\\\\0&0&0&0\\\\0&0&0&1\\end{pmatrix}$. Các dòng khác $0$ là $(1,2,0,1),(0,0,1,1),(0,0,0,1)$, nên đây là một cơ sở và $\\dim W=3$.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cơ sở của không gian nghiệm",
+              "md": "Ví dụ. Với hệ $\\begin{cases}x_1+2x_2-x_3+x_4=0,\\\\2x_1+4x_2-3x_3+3x_4=0,\\end{cases}$ ma trận hệ số có hạng $2$. Giải: $x_3=x_4$, đặt $x_2=s,x_4=t$ thì $x_1=-2s$, nên nghiệm tổng quát $(-2s,s,t,t)=s(-2,1,0,0)+t(0,0,1,1)$. Một cơ sở là $\\{(-2,1,0,0),(0,0,1,1)\\}$ và $\\dim W=4-2=2$.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "co-so-va-so-chieu-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Nếu $W=\\{x\\in\\mathbb R^n: Ax=0\\}$ là không gian nghiệm của hệ thuần nhất thì $\\dim W = {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "n-\\operatorname{rank}(A)",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "n+\\operatorname{rank}(A)",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "\\operatorname{rank}(A)-n",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "n",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Theo công thức số chiều không gian nghiệm, $\\dim W$ bằng số ẩn $n$ trừ hạng của $A$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "co-so-va-so-chieu-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Tọa độ trong cơ sở",
+              "md": "Nếu $B=\\{b_1,\\dots,b_k\\}$ là cơ sở của $W$ và $v=c_1b_1+\\cdots+c_kb_k$, thì $(c_1,\\dots,c_k)$ là **tọa độ** của $v$ trong cơ sở $B$, ký hiệu $[v]_B=(c_1,\\dots,c_k)$.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "co-so-va-so-chieu-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Trong $\\mathbb R^5$, mọi cơ sở của $\\mathbb R^5$ có bao nhiêu vectơ?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "5"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mọi cơ sở của $\\mathbb R^n$ đều có đúng $n$ vectơ, nên với $n=5$ câu trả lời là $5$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "co-so-va-so-chieu-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tìm tọa độ",
+              "md": "Ví dụ. Trong $\\mathbb R^3$ với cơ sở $B=\\{(1,1,0),(1,0,1),(0,1,1)\\}$, tìm $[v]_B$ của $v=(2,3,1)$. Giải $(2,3,1)=a(1,1,0)+b(1,0,1)+c(0,1,1)$ được hệ $a+b=2,\\ a+c=3,\\ b+c=1$, suy ra $a=2,b=0,c=1$. Vậy $[v]_B=(2,0,1)$.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Nhầm tập sinh với cơ sở",
+              "md": "Tập $\\{(1,0),(0,1),(1,1)\\}$ sinh ra $\\mathbb R^2$ nhưng không là cơ sở vì $(1,1)=(1,0)+(0,1)$ nên hệ phụ thuộc tuyến tính. Cơ sở bắt buộc vừa sinh ra không gian vừa độc lập tuyến tính.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "co-so-va-so-chieu-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mô tả đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Tập sinh của $W$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Mọi vectơ trong $W$ là tổ hợp tuyến tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Cơ sở của $W$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Vừa độc lập tuyến tính vừa sinh ra $W$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Số chiều $\\dim W$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Số vectơ trong một cơ sở của $W$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Không gian $\\{0\\}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Có số chiều bằng $0$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Tập sinh chỉ cần sinh ra không gian; cơ sở còn phải độc lập tuyến tính. Số chiều là số vectơ của một cơ sở.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "co-so-va-so-chieu-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để $\\operatorname{rank}(A)=2$ trong $\\mathbb R^4$, khi đó $\\dim W=4-\\operatorname{rank}(A)$",
+              "x": {
+                "symbol": "r",
+                "label": "Hạng của A",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "dim W",
+                "label": "Số chiều không gian nghiệm",
+                "unit": ""
+              },
+              "expr": "4 - x",
+              "x_min": 0.0,
+              "x_max": 4.0,
+              "x_step": 1.0,
+              "x_start": 1.0,
+              "target_y": 2.0,
+              "tolerance": 0.0,
+              "praise": "Đúng: hạng $2$ cho số chiều $4-2=2$.",
+              "audio": null
+            },
+            {
+              "id": "co-so-va-so-chieu-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "co-so-va-so-chieu-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xác định mỗi phát biểu sau đúng hay sai.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Mọi tập sinh của một không gian con đều là cơ sở của không gian con đó."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Một cơ sở của $W$ phải vừa độc lập tuyến tính vừa sinh ra $W$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Trong $\\mathbb R^3$, mọi hệ gồm $4$ vectơ đều phụ thuộc tuyến tính."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Nếu $c_1v_1+\\cdots+c_mv_m=0$ có nghiệm $c_1=\\cdots=c_m=0$ thì hệ $\\{v_1,\\dots,v_m\\}$ độc lập tuyến tính."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Tập sinh có thể phụ thuộc tuyến tính nên chưa chắc là cơ sở. Nghiệm tầm thường luôn tồn tại; chỉ khi nó là nghiệm duy nhất thì hệ mới độc lập tuyến tính.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "co-so-va-so-chieu-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Một tập sinh cần thêm điều kiện gì để thành cơ sở?",
+                  "answer": "Phải độc lập tuyến tính.",
+                  "image": null
+                },
+                {
+                  "prompt": "Với $W=\\{x\\in\\mathbb R^n: Ax=0\\}$, số chiều của $W$ bằng gì?",
+                  "answer": "$\\dim W=n-\\operatorname{rank}(A)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Tọa độ $[v]_B$ là gì?",
+                  "answer": "Các hệ số biểu diễn $v$ theo các vectơ của cơ sở $B$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "anh-xa-tuyen-tinh",
+          "title": "Ánh xạ tuyến tính",
+          "est_minutes": 15,
+          "summary": "Kiểm tra tính tuyến tính, tìm hạt nhân, ảnh, ma trận biểu diễn và áp dụng định lý rank-nullity, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Định nghĩa tuyến tính qua tính cộng và tính thuần nhất",
+            "Hạt nhân, ảnh, đơn ánh và ma trận của ánh xạ tuyến tính",
+            "Định lý rank-nullity: dim V = dim ker T + dim Im T",
+            "Ví dụ tìm ker, Im, cơ sở và số chiều",
+            "Lỗi: chỉ kiểm tra T(0)=0 rồi kết luận tuyến tính"
+          ],
+          "blocks": [
+            {
+              "id": "anh-xa-tuyen-tinh-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ánh xạ tuyến tính",
+              "md": "Cho $V,W$ là các không gian vectơ trên cùng trường $K$. Ánh xạ $T:V\\to W$ gọi là **tuyến tính** nếu với mọi $u,v\\in V$ và mọi $\\alpha\\in K$:\n$$T(u+v)=T(u)+T(v),\\qquad T(\\alpha u)=\\alpha T(u).$$\nCũng tương đương: $T(\\alpha u+\\beta v)=\\alpha T(u)+\\beta T(v)$. Điều kiện thứ nhất là tính cộng, thứ hai là tính thuần nhất.",
+              "audio": null
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hạt nhân, ảnh, ma trận",
+              "md": "Hạt nhân $\\ker T=\\{v\\in V:T(v)=0\\}$; ảnh $\\operatorname{Im}T=\\{T(v):v\\in V\\}$. Cả hai đều là không gian con: $\\ker T\\subseteq V$, $\\operatorname{Im}T\\subseteq W$. $T$ **đơn ánh** khi và chỉ khi $\\ker T=\\{0\\}$.\nNếu $T:\\mathbb R^n\\to\\mathbb R^m$ cho bởi $T(x)=Ax$ thì $A$ là ma trận của $T$ theo cơ sở chính tắc, $\\ker T=\\operatorname{Null}(A)$, $\\operatorname{Im}T=\\operatorname{Col}(A)$, và $\\dim(\\operatorname{Im}T)=\\operatorname{rank}(A)$.",
+              "audio": null
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "anh-xa-tuyen-tinh-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Phát biểu nào sau đây đúng về ánh xạ tuyến tính $T:V\\to W$?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$T(0)=0$ là điều kiện đủ để kết luận $T$ là ánh xạ tuyến tính.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Chỉ cần $T(0)=0$ và $T$ đơn ánh là đủ để $T$ tuyến tính.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$T(u+v)=T(u)+T(v)$ và $T(\\alpha u)=\\alpha T(u)$.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Chỉ cần $T(u+v)=T(u)+T(v)$ với mọi $u,v$ là đủ để $T$ tuyến tính.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": null,
+                  "explanation": "Định nghĩa yêu cầu kiểm tra cả tính cộng và tính thuần nhất với mọi vectơ và vô hướng.",
+                  "option_feedback": {
+                    "A": "Đây là lỗi thường gặp: $T(0)=0$ chỉ là điều kiện cần, không đủ.",
+                    "B": "Đơn ánh không bù được việc thiếu tính thuần nhất; $T(0)=0$ chỉ là điều kiện cần.",
+                    "D": "Chỉ kiểm tra tính cộng mà thiếu tính thuần nhất thì chưa đủ để kết luận tuyến tính."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-b3",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Rank-nullity",
+              "md": "Nếu $V$ hữu hạn chiều thì\n$$\\dim V=\\dim(\\ker T)+\\dim(\\operatorname{Im}T).$$\nVới $T:\\mathbb R^n\\to\\mathbb R^m$, $T(x)=Ax$, ta có $\\dim\\ker T=n-\\operatorname{rank}(A)$.",
+              "audio": null
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "anh-xa-tuyen-tinh-q2",
+                  "type": "FILL_TILES",
+                  "stem": "T đơn ánh khi và chỉ khi $\\ker T = {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "\\{0\\}",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "V",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "W",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Theo bài, $T$ đơn ánh khi và chỉ khi hạt nhân chỉ chứa vectơ không.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tìm hạt nhân, ảnh và kiểm tra rank-nullity",
+              "md": "Cho $T:\\mathbb R^3\\to\\mathbb R^3$, $T(x,y,z)=(x+2y,\\ y-z,\\ x+y+z)$. Ma trận của $T$ là\n$$A=\\begin{pmatrix}1&2&0\\\\0&1&-1\\\\1&1&1\\end{pmatrix}.$$\nGiải $T(x,y,z)=0$: từ $x+2y=0$ có $x=-2y$; từ $y-z=0$ có $z=y$; phương trình thứ ba tự thỏa. Vậy $\\ker T=\\operatorname{span}\\{(-2,1,1)\\}$, $\\dim\\ker T=1$.\nẢnh $\\operatorname{Im}T=\\operatorname{Col}(A)=\\operatorname{span}\\{(1,0,1),(2,1,1),(0,-1,1)\\}$. Vì $(0,-1,1)=2(1,0,1)-(2,1,1)$, một cơ sở là $\\{(1,0,1),(2,1,1)\\}$, nên $\\dim\\operatorname{Im}T=2$.\nKiểm tra: $1+2=3=\\dim\\mathbb R^3$.",
+              "audio": null
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "anh-xa-tuyen-tinh-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $T:\\mathbb R^3\\to\\mathbb R^3$ trong Ví dụ 2. Số chiều của $\\ker T$ bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "1"
+                    ]
+                  },
+                  "hint": "Có thể dùng rank-nullity hoặc giải hệ $T(x,y,z)=0$.",
+                  "explanation": "Trong ví dụ, $\\ker T=\\operatorname{span}\\{(-2,1,1)\\}$ nên $\\dim(\\ker T)=1$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Chỉ kiểm tra $T(0)=0$ là chưa đủ",
+              "md": "Nếu $T$ tuyến tính thì $T(0)=0$, nhưng điều ngược lại không đúng. Ví dụ $f(x)=x^2$ có $f(0)=0$ nhưng\n$$f(x+y)=(x+y)^2\\neq x^2+y^2=f(x)+f(y)$$\nnói chung. Muốn kết luận tuyến tính, phải kiểm tra đủ tính cộng và tính thuần nhất.",
+              "audio": null
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "anh-xa-tuyen-tinh-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với mô tả hoặc đẳng thức đúng tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$\\ker T$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$\\{v\\in V: T(v)=0\\}$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$\\operatorname{Im}T$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$\\{T(v): v\\in V\\}$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$T$ đơn ánh",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$\\ker T=\\{0\\}$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "rank-nullity",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$\\dim V=\\dim(\\ker T)+\\dim(\\operatorname{Im}T)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Hạt nhân gồm các vectơ có ảnh bằng 0; ảnh là tập mọi giá trị $T(v)$. Đơn ánh tương đương hạt nhân chỉ chứa 0, và công thức rank-nullity liên hệ các số chiều.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-b6",
+              "kind": "interactive",
+              "prompt": "Kéo để chọn $\\dim\\ker T$ sao cho $\\dim\\operatorname{Im}T=2$ với $V=\\mathbb R^3$.",
+              "x": {
+                "symbol": "k",
+                "label": "dim ker T",
+                "unit": "chiều"
+              },
+              "y": {
+                "symbol": "r",
+                "label": "dim Im T",
+                "unit": "chiều"
+              },
+              "expr": "3 - x",
+              "x_min": 0.0,
+              "x_max": 3.0,
+              "x_step": 1.0,
+              "x_start": 0.0,
+              "target_y": 2.0,
+              "tolerance": 0.01,
+              "praise": "Đúng: $1+2=3$, phù hợp rank-nullity.",
+              "audio": null
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "anh-xa-tuyen-tinh-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu sau về ánh xạ tuyến tính.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu $T$ tuyến tính thì $T(0)=0$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nếu $T(0)=0$ thì $T$ là ánh xạ tuyến tính."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Với $T:\\mathbb R^n\\to\\mathbb R^m$, $T(x)=Ax$, ta có $\\operatorname{Im}T=\\operatorname{Col}(A)$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Với $T:\\mathbb R^n\\to\\mathbb R^m$, $T(x)=Ax$, ta có $\\dim(\\operatorname{Im}T)=n-\\operatorname{rank}(A)$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "$T(0)=0$ chỉ là điều kiện cần; với $T(x)=Ax$, $\\operatorname{Im}T=\\operatorname{Col}(A)$ và $\\dim(\\ker T)=n-\\operatorname{rank}(A)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "anh-xa-tuyen-tinh-b7",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Hai điều kiện để $T$ là ánh xạ tuyến tính là gì?",
+                  "answer": "$T(u+v)=T(u)+T(v)$ và $T(\\alpha u)=\\alpha T(u)$ với mọi $u,v,\\alpha$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Khi nào $T$ đơn ánh?",
+                  "answer": "$T$ đơn ánh khi và chỉ khi $\\ker T=\\{0\\}$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Định lý rank-nullity phát biểu thế nào?",
+                  "answer": "$\\dim V=\\dim(\\ker T)+\\dim(\\operatorname{Im}T)$ khi $V$ hữu hạn chiều.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về không gian vectơ, tập trung vào độc lập tuyến tính, cơ sở và số chiều, và ánh xạ tuyến tính. Trước hết, với các vectơ trong một không gian vectơ trên số thực, tổ hợp tuyến tính là tổng các hệ số thực nhân với từng vectơ. Hệ vectơ độc lập tuyến tính nếu tổ hợp tuyến tính bằng vectơ không chỉ xảy ra khi mọi hệ số bằng không. Ngược lại, hệ phụ thuộc tuyến tính nếu có một tổ hợp tuyến tính bằng vectơ không mà các hệ số không đồng thời bằng không.",
+          "Trong không gian R mũ n, muốn kiểm tra một hệ vectơ, ta lập ma trận có các vectơ đó là các cột. Hệ độc lập tuyến tính khi và chỉ khi hạng của ma trận bằng đúng số vectơ, nghĩa là phương trình ma trận nhân vectơ hệ số bằng vectơ không chỉ có nghiệm hệ số bằng không. Nếu số vectơ nhiều hơn n thì hệ luôn phụ thuộc tuyến tính; nếu có đúng n vectơ thì hệ độc lập khi và chỉ khi định thức của ma trận tạo bởi chúng khác không. Mọi hệ có chứa vectơ không đều phụ thuộc tuyến tính.",
+          "Ví dụ trong R mũ ba, với ba vectơ có tọa độ một hai ba, không một bốn, và hai năm sáu, lập ma trận cột rồi tính định thức được trừ bốn khác không, nên hệ độc lập tuyến tính. Còn trong không gian đa thức bậc không quá hai, xét ba đa thức một cộng x, x cộng x bình phương, và một trừ x bình phương. Đồng nhất hệ số từ tổ hợp bằng không cho thấy có nghiệm không tầm thường, chẳng hạn bộ hệ số một, trừ một, trừ một, nên hệ phụ thuộc tuyến tính.",
+          "Một lỗi thường gặp là chỉ thấy tổ hợp tuyến tính bằng không có nghiệm tất cả hệ số bằng không rồi kết luận hệ độc lập. Sai, vì nghiệm tầm thường đó luôn tồn tại; phải chứng minh nó là nghiệm duy nhất.",
+          "Sang bài cơ sở và số chiều, tập sinh của không gian con là tập mà mọi vectơ trong không gian con đều viết được thành tổ hợp tuyến tính của các vectơ trong tập đó. Cơ sở là tập vừa độc lập tuyến tính vừa sinh ra không gian con. Số chiều là số vectơ trong một cơ sở, và không gian chỉ có vectơ không có số chiều bằng không.",
+          "Để tìm cơ sở của không gian sinh bởi các vectơ trong R mũ n, ta lập ma trận có các vectơ đó là các dòng rồi đưa về dạng bậc thang; các dòng khác không tạo thành một cơ sở. Với không gian nghiệm của một hệ phương trình tuyến tính thuần nhất, số chiều bằng n trừ đi hạng của ma trận hệ số. Chẳng hạn một hệ trong R mũ bốn có hạng hai thì không gian nghiệm có số chiều bằng hai, và một cơ sở gồm hai vectơ tìm từ nghiệm tổng quát.",
+          "Tọa độ của một vectơ trong một cơ sở là bộ hệ số biểu diễn vectơ đó theo các vectơ cơ sở. Ví dụ trong R mũ ba với cơ sở gồm một một không, một không một, không một một, vectơ hai ba một có tọa độ hai không một. Cần nhớ tập sinh chưa chắc là cơ sở: tập gồm một không, không một, và một một sinh ra R mũ hai nhưng phụ thuộc tuyến tính vì vectơ thứ ba bằng tổng hai vectơ đầu, nên không là cơ sở.",
+          "Bài ánh xạ tuyến tính định nghĩa ánh xạ tuyến tính qua hai điều kiện: bảo toàn phép cộng và bảo toàn phép nhân với vô hướng. Hạt nhân là tập các vectơ có ảnh bằng không, ảnh là tập các giá trị của ánh xạ; cả hai đều là không gian con. Ánh xạ đơn ánh khi và chỉ khi hạt nhân chỉ chứa vectơ không.",
+          "Nếu ánh xạ từ R mũ n sang R mũ m cho bởi nhân ma trận A với vectơ, thì hạt nhân là không gian nghiệm của A, ảnh là không gian cột của A, và số chiều của ảnh bằng hạng của A. Định lý về số chiều nói số chiều của không gian nguồn bằng số chiều hạt nhân cộng số chiều ảnh. Ví dụ ánh xạ từ R mũ ba sang R mũ ba cho bởi ba công thức, ma trận tương ứng có hạt nhân sinh bởi vectơ trừ hai một một nên số chiều hạt nhân bằng một, ảnh có cơ sở gồm hai vectơ một không một và hai một một nên số chiều ảnh bằng hai, đúng bằng ba.",
+          "Lỗi cần tránh là chỉ kiểm tra ảnh của vectơ không bằng vectơ không rồi kết luận ánh xạ tuyến tính; điều đó chưa đủ, phải kiểm tra cả tính cộng và tính thuần nhất. Ba điều cần nhớ: một hệ độc lập tuyến tính khi tổ hợp bằng không chỉ có nghiệm tầm thường; một cơ sở phải vừa độc lập tuyến tính vừa sinh ra không gian; và với ánh xạ tuyến tính, số chiều nguồn bằng số chiều hạt nhân cộng số chiều ảnh."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-tri-rieng",
+      "title": "Trị riêng",
+      "lessons": [
+        {
+          "id": "tri-rieng-vecto-rieng",
+          "title": "Trị riêng, vectơ riêng",
+          "est_minutes": 15,
+          "summary": "Tìm trị riêng, vectơ riêng, không gian riêng và phân biệt bội đại số với bội hình học, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Định nghĩa Av = λv với v khác 0",
+            "Đa thức đặc trưng det(A - λI) và phương trình đặc trưng",
+            "Không gian riêng, bội đại số và bội hình học",
+            "Kiểm tra nhanh qua vết và định thức; vectơ riêng ứng với trị riêng phân biệt thì độc lập tuyến tính",
+            "Lỗi: viết phương trình đặc trưng là det(A) - λ = 0"
+          ],
+          "blocks": [
+            {
+              "id": "tri-rieng-vecto-rieng-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Trị riêng, vectơ riêng",
+              "md": "Cho $A\\in M_n(\\mathbb R)$. Số $\\lambda$ (thực hoặc phức) là trị riêng của $A$ nếu tồn tại $\\mathbf v\\neq\\mathbf 0$ sao cho $A\\mathbf v=\\lambda\\mathbf v$. Khi đó $\\mathbf v$ là vectơ riêng ứng với $\\lambda$. Nhớ là phải có $\\mathbf v\\neq\\mathbf 0$. Về hình học, $A$ chỉ kéo giãn, co hoặc đổi dấu $\\mathbf v$ theo hệ số $\\lambda$, không đổi phương của $\\mathbf v$.",
+              "audio": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Đa thức đặc trưng, không gian riêng",
+              "md": "Vì $A\\mathbf v=\\lambda\\mathbf v$ tương đương $(A-\\lambda I)\\mathbf v=\\mathbf 0$, muốn có $\\mathbf v\\neq\\mathbf 0$ thì $A-\\lambda I$ phải suy biến: $p_A(\\lambda)=\\det(A-\\lambda I)=0$. Đa thức $p_A$ bậc $n$ gọi là đa thức đặc trưng, phương trình $p_A(\\lambda)=0$ là phương trình đặc trưng, và các trị riêng chính là nghiệm của nó. Với mỗi trị riêng $\\lambda$, $E_\\lambda=\\ker(A-\\lambda I)$ là không gian con gọi là không gian riêng ứng với $\\lambda$.",
+              "audio": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tri-rieng-vecto-rieng-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho $A=\\begin{pmatrix}4&1\\\\2&3\\end{pmatrix}$. Các trị riêng của $A$ là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "2 và 5",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "-2 và -5",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "7 và 10",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "1 và 2",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Vì $\\det(A-\\lambda I)=\\lambda^2-7\\lambda+10=(\\lambda-2)(\\lambda-5)$.",
+                  "option_feedback": {
+                    "B": "Sai dấu: nghiệm của phương trình đặc trưng là $2$ và $5$.",
+                    "C": "Đây là vết và định thức của $A$, không phải trị riêng.",
+                    "D": "Hai số này không thỏa $\\lambda^2-7\\lambda+10=0$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b3",
+              "kind": "text",
+              "md": "Cách làm: lập $\\det(A-\\lambda I)$ và giải phương trình đặc trưng; với từng $\\lambda$, giải hệ thuần nhất $(A-\\lambda I)\\mathbf v=\\mathbf 0$ bằng khử Gauss; viết nghiệm dạng tham số để được $E_\\lambda$ và cơ sở của nó. Các vectơ riêng ứng với các trị riêng phân biệt thì độc lập tuyến tính.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 1",
+              "md": "Cho $A=\\begin{pmatrix}4&1\\\\2&3\\end{pmatrix}$. Ta có $\\det(A-\\lambda I)=(4-\\lambda)(3-\\lambda)-2=\\lambda^2-7\\lambda+10=(\\lambda-5)(\\lambda-2)$, nên các trị riêng là $5$ và $2$. Kiểm tra nhanh: $\\operatorname{tr}(A)=7=5+2$ và $\\det(A)=10=5\\cdot2$. Với $\\lambda=5$, $A-5I=\\begin{pmatrix}-1&1\\\\2&-2\\end{pmatrix}$ cho $y=x$, nên $E_5=\\operatorname{span}\\{(1,1)^T\\}$. Với $\\lambda=2$, $A-2I$ cho $2x+y=0$, nên $E_2=\\operatorname{span}\\{(1,-2)^T\\}$.",
+              "audio": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tri-rieng-vecto-rieng-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền số còn thiếu: $\\det(A-\\lambda I)=\\lambda^2-7\\lambda+{{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "10",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "7",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "-10",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Vì $(\\lambda-5)(\\lambda-2)=\\lambda^2-7\\lambda+10$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Bội đại số và bội hình học",
+              "md": "Bội đại số của $\\lambda$ là số lần $\\lambda$ lặp lại khi phân tích $p_A$. Bội hình học của $\\lambda$ là $\\dim E_\\lambda$. Luôn có $1\\le\\dim E_\\lambda\\le$ bội đại số.",
+              "audio": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tri-rieng-vecto-rieng-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $A=\\begin{pmatrix}2&1&0\\\\0&2&0\\\\0&0&3\\end{pmatrix}$. Bội hình học của trị riêng $\\lambda=2$ bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "1",
+                      "1.0"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "Vì $E_2=\\operatorname{span}\\{(1,0,0)^T\\}$ nên $\\dim E_2=1$, trong khi bội đại số là $2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ 2",
+              "md": "Cho $A=\\begin{pmatrix}2&1&0\\\\0&2&0\\\\0&0&3\\end{pmatrix}$. Vì $A$ là ma trận tam giác trên, $p_A(\\lambda)=(2-\\lambda)^2(3-\\lambda)$: trị riêng $2$ có bội đại số $2$, trị riêng $3$ có bội đại số $1$. Với $\\lambda=2$, $A-2I$ cho $y=0$, $z=0$, $x$ tự do, nên $E_2=\\operatorname{span}\\{(1,0,0)^T\\}$ có bội hình học $1<2$. Với $\\lambda=3$, $E_3=\\operatorname{span}\\{(0,0,1)^T\\}$.",
+              "audio": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi: trừ $\\lambda$ ra ngoài định thức",
+              "md": "Không được viết phương trình đặc trưng là $\\det(A)-\\lambda=0$. Định thức không phải hàm tuyến tính, nói chung $\\det(A-\\lambda I)\\neq\\det(A)-\\lambda$. Làm cách đó với Ví dụ 1 sẽ ra $\\lambda=10$, nhưng $A\\mathbf v=10\\mathbf v$ chỉ có nghiệm $\\mathbf v=\\mathbf 0$. Đúng ra chỉ trừ $\\lambda$ trên đường chéo, các phần tử ngoài đường chéo giữ nguyên.",
+              "audio": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tri-rieng-vecto-rieng-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi ký hiệu/khái niệm với mô tả đúng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Bội đại số",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "bội của $\\lambda$ trong $p_A$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Bội hình học",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$\\dim E_\\lambda$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$E_\\lambda$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$\\ker(A-\\lambda I)$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$p_A(\\lambda)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$\\det(A-\\lambda I)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Bội đại số đọc từ $p_A$; bội hình học là $\\dim E_\\lambda$, với $E_\\lambda=\\ker(A-\\lambda I)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b8",
+              "kind": "text",
+              "md": "Kiểm tra nhanh: nếu $\\lambda_1,\\dots,\\lambda_n$ là toàn bộ trị riêng (đếm cả bội) thì $\\sum_{i=1}^{n}\\lambda_i=\\operatorname{tr}(A)$ và $\\prod_{i=1}^{n}\\lambda_i=\\det(A)$. Với $A=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$ ta có $p_A(\\lambda)=\\lambda^2+1$, vô nghiệm thực; trên $\\mathbb C$ có $\\lambda=\\pm i$, và $E_i=\\operatorname{span}\\{(1,-i)^T\\}$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "tri-rieng-vecto-rieng-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng sai của các phát biểu sau.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong định nghĩa vectơ riêng, điều kiện $\\mathbf v\\neq\\mathbf 0$ là bắt buộc."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Với mọi ma trận vuông $A$, ta có $\\det(A-\\lambda I)=\\det(A)-\\lambda$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Các vectơ riêng ứng với các trị riêng phân biệt thì độc lập tuyến tính."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Bội hình học của một trị riêng luôn bằng bội đại số của nó."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Điều kiện $\\mathbf v\\neq\\mathbf 0$ là bắt buộc; $\\det$ không tuyến tính nên không được tách $\\det(A)-\\lambda$. Bội hình học chỉ bằng bội đại số khi $A$ chéo hóa được.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "tri-rieng-vecto-rieng-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Trị riêng $\\lambda$ của $A$ được định nghĩa thế nào?",
+                  "answer": "Là số $\\lambda$ sao cho $A\\mathbf v=\\lambda\\mathbf v$ với $\\mathbf v\\neq\\mathbf 0$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Bội đại số và bội hình học của một trị riêng khác nhau ở đâu?",
+                  "answer": "Bội đại số là bội của nghiệm trong $p_A$, bội hình học là $\\dim E_\\lambda$, và luôn nhỏ hơn hoặc bằng bội đại số.",
+                  "image": null
+                },
+                {
+                  "prompt": "Hai kiểm tra nhanh cho các trị riêng là gì?",
+                  "answer": "Tổng các trị riêng (đếm bội) bằng vết, tích bằng định thức của $A$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cheo-hoa",
+          "title": "Chéo hóa",
+          "est_minutes": 15,
+          "summary": "Chéo hóa ma trận qua A = P D P^{-1}, nắm điều kiện cần và đủ, chéo hóa trực giao ma trận đối xứng và ứng dụng tính lũy thừa, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Định nghĩa chéo hóa A = P D P^{-1} và ý nghĩa các cột của P",
+            "Tiêu chuẩn: đủ n vectơ riêng độc lập tuyến tính, bội hình học bằng bội đại số",
+            "Ma trận đối xứng thực luôn chéo hóa trực giao",
+            "Dùng chéo hóa để tính A^k",
+            "Lỗi: cho rằng trị riêng bội thì không chéo hóa được"
+          ],
+          "blocks": [
+            {
+              "id": "cheo-hoa-b1",
+              "kind": "text",
+              "md": "Trị riêng và vectơ riêng cho biết $A$ chỉ kéo giãn theo những hướng nào. Câu hỏi tiếp theo: có thể chọn một hệ $n$ vectơ riêng làm cơ sở để $A$ trở thành phép nhân với các hệ số $\\lambda_i$ hay không? Nếu được, ta nói $A$ chéo hóa được.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cheo-hoa-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Chéo hóa được",
+              "md": "Ma trận $A\\in M_n(\\mathbb{R})$ gọi là **chéo hóa được** nếu tồn tại ma trận khả nghịch $P$ và ma trận chéo $D$ sao cho $A=PDP^{-1}$. Khi đó các cột của $P$ là $n$ vectơ riêng độc lập tuyến tính của $A$, và $D=\\operatorname{diag}(\\lambda_1,\\dots,\\lambda_n)$ với $\\lambda_i$ là trị riêng ứng với cột thứ $i$ của $P$. Thứ tự phải khớp nhau.",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cheo-hoa-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Điều kiện nào là tương đương với việc ma trận vuông $A$ cấp $n$ chéo hóa được?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Có $n$ vectơ riêng độc lập tuyến tính.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Có $n$ trị riêng phân biệt.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Là ma trận khả nghịch.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Là ma trận đối xứng thực.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Theo định lý, $A$ chéo hóa được tương đương với việc có $n$ vectơ riêng độc lập tuyến tính.",
+                  "option_feedback": {
+                    "B": "Đây chỉ là điều kiện đủ, không phải điều kiện cần cho chéo hóa.",
+                    "C": "Khả nghịch không bảo đảm có đủ $n$ vectơ riêng độc lập.",
+                    "D": "Đây là trường hợp đặc biệt luôn chéo hóa, không phải điều kiện tương đương cho mọi $A$."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cheo-hoa-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Điều kiện cần và đủ",
+              "md": "$A$ chéo hóa được $\\iff$ $A$ có $n$ vectơ riêng độc lập tuyến tính $\\iff$ với mọi trị riêng, bội hình học bằng bội đại số $\\iff$ tổng các bội hình học bằng $n$. Bội đại số là bội nghiệm của $\\lambda$ trong $p_A$. Bội hình học là $\\dim E_\\lambda=\\dim\\ker(A-\\lambda I)$. Hệ quả: nếu $A$ có $n$ trị riêng phân biệt thì $A$ chéo hóa được (điều kiện đủ, không cần thiết).",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Chéo hóa trực giao $A=\\begin{pmatrix}1&3\\\\3&1\\end{pmatrix}$",
+              "md": "$\\det(A-\\lambda I)=(1-\\lambda)^2-9=(\\lambda-4)(\\lambda+2)$, nên $\\lambda=4$ với $\\mathbf{v}_1=(1,1)^T$ và $\\lambda=-2$ với $\\mathbf{v}_2=(1,-1)^T$; hai vectơ riêng trực giao vì $A$ đối xứng. Đặt $P=\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$, $D=\\begin{pmatrix}4&0\\\\0&-2\\end{pmatrix}$; do $P^2=2I$ nên $P^{-1}=\\tfrac12P$ và ta kiểm tra được $PDP^{-1}=A$. Chuẩn hóa cột: $Q=\\frac{1}{\\sqrt2}\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$ thỏa $Q^TQ=I$ và $A=QDQ^{T}$.",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cheo-hoa-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Nếu $A = P D P^{-1}$ với $D$ chéo thì $A^k = P {{gap}} P^{-1}$ (với $k$ nguyên dương).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$D^k$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$D$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$kD$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "$D^{-k}$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Vì $D$ chéo nên $D^k$ chỉ nâng từng phần tử trên đường chéo lên lũy thừa $k$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cheo-hoa-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ma trận đối xứng thực",
+              "md": "Nếu $A=A^T$ thì $A$ luôn chéo hóa được, và chéo hóa được **trực giao**: $A=QDQ^{T}$ với $Q^TQ=I$, các cột của $Q$ là một cơ sở trực chuẩn gồm vectơ riêng của $A$. Ngoài ra, vectơ riêng ứng với hai trị riêng khác nhau của ma trận đối xứng thì trực giao với nhau.",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cheo-hoa-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix}$. Tổng các trị riêng của $A$ bằng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "7"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Đa thức đặc trưng là $(\\lambda-5)(\\lambda-2)$ nên tổng các trị riêng là $5+2=7$, cũng bằng $\\operatorname{tr}(A)$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "cheo-hoa-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "“Trị riêng bội thì không chéo hóa được”",
+              "md": "Sai. Điều kiện là bội hình học bằng bội đại số, không phải trị riêng phải đơn. Ma trận $A=2I$ có trị riêng $2$ bội đại số $n$ nhưng $E_2=\\mathbb{R}^n$ nên bội hình học cũng bằng $n$, và $2I=I\\cdot(2I)\\cdot I^{-1}$ là dạng chéo. Ngược lại, $\\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}$ mới không chéo hóa được: $E_2=\\operatorname{span}\\{(1,0)^T\\}$ chỉ có chiều $1<2$.",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-b7",
+              "kind": "callout",
+              "variant": "tip",
+              "title": "Dùng chéo hóa để tính lũy thừa",
+              "md": "Khi đã có $A=PDP^{-1}$ thì $A^{k}=PD^{k}P^{-1}$ với $D^{k}=\\operatorname{diag}(\\lambda_1^{k},\\dots,\\lambda_n^{k})$. Đó là lý do chéo hóa hữu ích. Ví dụ $A=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$ có $\\lambda_1=3$ với $(1,1)^T$, $\\lambda_2=-1$ với $(1,-1)^T$ và $P=\\begin{pmatrix}1&1\\\\1&-1\\end{pmatrix}$, $P^{-1}=\\tfrac12P$, nên phần tử $(1,1)$ của $A^k$ bằng $\\dfrac{3^{k}+(-1)^{k}}{2}$.",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cheo-hoa-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm hoặc biểu thức với mô tả đúng tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Các cột của $P$ trong $A=PD P^{-1}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "các vectơ riêng độc lập tuyến tính của $A$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Ma trận $D$ trong $A=PD P^{-1}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "ma trận chéo chứa các trị riêng, đúng thứ tự cột $P$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Ma trận đối xứng thực",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "luôn chéo hóa trực giao: $A=QDQ^{T}$ với $Q^{T}Q=I$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$A^{k}$ khi $A=PD P^{-1}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "$P D^{k}P^{-1}$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các cột của $P$ là vectơ riêng và $D$ chứa trị riêng theo đúng thứ tự. Ma trận đối xứng thực chéo hóa trực giao, còn $A^{k}=P D^{k}P^{-1}$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cheo-hoa-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để phần tử $(1,1)$ của $A^k$ bằng $5$",
+              "x": {
+                "symbol": "k",
+                "label": "Số mũ",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "a_{11}",
+                "label": "Phần tử (1,1) của A^k",
+                "unit": ""
+              },
+              "expr": "((3^x)+((-1)^x))/2",
+              "x_min": 0.0,
+              "x_max": 8.0,
+              "x_step": 1.0,
+              "x_start": 0.0,
+              "target_y": 5.0,
+              "tolerance": 0.01,
+              "praise": "Đúng rồi: tại $k=2$ ta được $(3^2+(-1)^2)/2=(9+1)/2=5$.",
+              "audio": null
+            },
+            {
+              "id": "cheo-hoa-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cheo-hoa-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các phát biểu sau về chéo hóa.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Nếu mọi trị riêng của $A$ đều có bội đại số bằng 1 thì $A$ chéo hóa được."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Nếu $A$ có một trị riêng bội đại số lớn hơn 1 thì $A$ không chéo hóa được."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Ma trận đối xứng thực luôn chéo hóa được trực giao."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Nếu $A$ chéo hóa được thì $A$ phải có $n$ trị riêng phân biệt."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Trị riêng bội vẫn có thể chéo hóa nếu bội hình học bằng bội đại số; còn $n$ trị riêng phân biệt chỉ là điều kiện đủ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cheo-hoa-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Chéo hóa $A$ nghĩa là gì và các cột của $P$ là gì?",
+                  "answer": "$A=PDP^{-1}$ với $D$ chéo; các cột của $P$ là $n$ vectơ riêng độc lập tuyến tính, xếp khớp thứ tự với các trị riêng trên đường chéo của $D$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Điều kiện cần và đủ để $A$ chéo hóa được là gì?",
+                  "answer": "Với mọi trị riêng, bội hình học bằng bội đại số, tức $A$ có đủ $n$ vectơ riêng độc lập tuyến tính.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao chéo hóa giúp tính $A^k$?",
+                  "answer": "Vì $A^k=PD^kP^{-1}$ và $D^k=\\operatorname{diag}(\\lambda_1^k,\\dots,\\lambda_n^k)$ chỉ cần lũy thừa từng trị riêng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ung-dung-pagerank-va-nen-anh",
+          "title": "Ứng dụng: PageRank và nén ảnh",
+          "est_minutes": 15,
+          "summary": "Dùng trị riêng cho PageRank và SVD cho nén ảnh, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Ma trận chuyển cột-ngẫu nhiên từ đồ thị web",
+            "Vectơ PageRank là vectơ riêng ứng với λ = 1; hệ số tắt dần và ma trận Google",
+            "Ảnh xám là ma trận A; SVD A = UΣV^T và liên hệ σ_i với λ_i(A^T A)",
+            "Xấp xỉ hạng k tốt nhất theo Eckart-Young và sai số Frobenius",
+            "Lỗi: giải M^T x = x thay vì Mx = x khi M đã cột-ngẫu nhiên"
+          ],
+          "blocks": [
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ma trận chuyển và vectơ PageRank",
+              "md": "Mô hình web là đồ thị có hướng: trang là đỉnh, liên kết là cạnh. Ma trận chuyển $M$ cấp $n\\times n$ lập theo cột: $M_{ij}=\\frac{1}{\\operatorname{outdeg}(j)}$ nếu trang $j$ liên kết tới trang $i$, ngược lại $M_{ij}=0$. Mỗi cột của $M$ có tổng $1$ nên $M$ là ma trận cột-ngẫu nhiên; $M_{ij}$ là xác suất chuyển từ $j$ sang $i$. Vectơ PageRank là $\\mathbf{x}>0$, $\\sum_i x_i=1$, thỏa $M\\mathbf{x}=\\mathbf{x}$, tức $\\mathbf{x}$ là vectơ riêng ứng với $\\lambda=1$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/ung-dung-pagerank-va-nen-anh-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "3b7e4a4e3df549049d886f0bb4a40d298fe7508a3b248f7574135394c281e363",
+                "bytes": 1990
+              },
+              "alt": "Đồ thị có hướng ba trang web với các liên kết 1 tới 2, 1 tới 3, 2 tới 3, 3 tới 1.",
+              "caption": "Đồ thị web ba trang của ví dụ PageRank.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-pagerank-va-nen-anh-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Với ma trận chuyển $M$ lập theo cột (cột-ngẫu nhiên) từ đồ thị web, vectơ PageRank $\\mathbf{x}$ là nghiệm của phương trình nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$M\\mathbf{x} = \\mathbf{x}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$M^{T}\\mathbf{x} = \\mathbf{x}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$M\\mathbf{x} = \\mathbf{0}$",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$M^{T}M\\mathbf{x} = \\mathbf{x}$",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "PageRank là vectơ riêng ứng với $\\lambda=1$ của ma trận cột-ngẫu nhiên $M$, tức $M\\mathbf{x}=\\mathbf{x}$ với $\\mathbf{x}>0$ và tổng các thành phần bằng 1.",
+                  "option_feedback": {
+                    "B": "Đây là lỗi chuyển vị: $M$ đã lập theo cột nên vectơ riêng bên phải thỏa $M\\mathbf{x}=\\mathbf{x}$.",
+                    "C": "Vectơ không không phải phân bố xác suất và không phải vectơ riêng ứng với $\\lambda=1$.",
+                    "D": "Đây là phương trình kiểu $A^{T}A$ dùng cho SVD, không phải định nghĩa PageRank."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ PageRank ba trang",
+              "md": "Với đồ thị trên, $M=\\begin{pmatrix}0&0&1\\\\1/2&0&0\\\\1/2&1&0\\end{pmatrix}$. Giải $M\\mathbf{x}=\\mathbf{x}$ cho $x_3=x_1$, $x_2=\\frac12 x_1$. Chuẩn hóa $x_1+\\frac12 x_1+x_1=\\frac52x_1=1$ nên $\\mathbf{x}=\\left(\\frac25,\\frac15,\\frac25\\right)\\approx(0.4,0.2,0.4)$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b4",
+              "kind": "interactive",
+              "prompt": "Kéo $x_1$ để tổng $x_1+x_2+x_3$ bằng $1$, với $x_2=x_1/2$ và $x_3=x_1$.",
+              "x": {
+                "symbol": "x_1",
+                "label": "Giá trị x1",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "S",
+                "label": "Tổng",
+                "unit": ""
+              },
+              "expr": "2.5*x",
+              "x_min": 0.0,
+              "x_max": 1.0,
+              "x_step": 0.01,
+              "x_start": 0.1,
+              "target_y": 1.0,
+              "tolerance": 0.01,
+              "praise": "Đúng: $x_1=2/5$ nên $\\mathbf{x}=(0.4,0.2,0.4)$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-pagerank-va-nen-anh-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Ma trận Google: $G = {{gap}}M + (1-{{gap}})\\dfrac{1}{n}\\mathbf{1}\\mathbf{1}^{T}$, với hệ số tắt dần xấp xỉ $0.85$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "\\alpha",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\alpha",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "1-\\alpha",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "\\beta",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "$G$ là trung bình có trọng số giữa $M$ và ma trận đều: trọng số của $M$ là $\\alpha$, phần còn lại $1-\\alpha$ chia đều cho mọi trang.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Ma trận Google và hệ số tắt dần",
+              "md": "Để tránh trang nút cụt và bảo đảm hội tụ, dùng hệ số tắt dần $\\alpha\\approx0.85$ và ma trận Google $G=\\alpha M+(1-\\alpha)\\frac1n\\mathbf{1}\\mathbf{1}^T$. Vì $G$ dương thực sự, trị riêng $1$ là đơn và vectơ riêng chuẩn hóa là duy nhất; thực tế tính bằng lặp lũy thừa $\\mathbf{x}^{(k+1)}=G\\mathbf{x}^{(k)}$ từ phân bố đều.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Giải $M^T\\mathbf{x}=\\mathbf{x}$ thay vì $M\\mathbf{x}=\\mathbf{x}$",
+              "md": "Khi $M$ đã cột-ngẫu nhiên, phân bố dừng là vectơ riêng bên phải: nghiệm của $M\\mathbf{x}=\\mathbf{x}$ (tương đương $\\mathbf{1}^T M=\\mathbf{1}^T$). Giải $M^T\\mathbf{x}=\\mathbf{x}$ là tìm vectơ riêng bên trái, ứng với đồ thị ngược; chỉ trùng khi $M$ đối xứng. Với ví dụ trên, $M^T\\mathbf{x}=\\mathbf{x}$ cho $(1/2,1/3,1/6)$, khác $(0.4,0.2,0.4)$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-pagerank-va-nen-anh-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Trong ví dụ ba trang web (bỏ qua tắt dần, $\\alpha=1$), vectơ PageRank là $(2/5,\\ 1/5,\\ 2/5)$. Giá trị PageRank của trang 2 bằng bao nhiêu (viết dạng thập phân)?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "0.2",
+                      "1/5",
+                      "0,2"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "Từ $x_2=\\tfrac{1}{2}x_1$ và tổng bằng 1 suy ra $x_1=2/5$, do đó $x_2=1/5=0.2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "SVD và xấp xỉ hạng $k$",
+              "md": "Ảnh xám $m\\times n$ là ma trận $A\\in M_{m\\times n}(\\mathbb{R})$, mỗi phần tử là độ sáng $0$–$255$. SVD: $A=U\\Sigma V^T=\\sum_{i=1}^r\\sigma_i\\mathbf{u}_i\\mathbf{v}_i^T$, $\\sigma_1\\ge\\cdots\\ge\\sigma_r>0$, $r=\\operatorname{rank}(A)$, với $\\sigma_i=\\sqrt{\\lambda_i(A^TA)}$. Xấp xỉ hạng $k$ $A_k=\\sum_{i=1}^k\\sigma_i\\mathbf{u}_i\\mathbf{v}_i^T$ là tốt nhất theo chuẩn Frobenius (Eckart–Young), sai số $\\|A-A_k\\|_F^2=\\sum_{i=k+1}^r\\sigma_i^2$. Dung lượng lưu là $k(m+n+1)$ số thay cho $mn$; năng lượng giữ lại là $\\sum_{i\\le k}\\sigma_i^2/\\sum_{i\\le r}\\sigma_i^2$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ nén hạng 1",
+              "md": "Cho $A=\\begin{pmatrix}3&0\\\\4&5\\end{pmatrix}$. $A^TA=\\begin{pmatrix}25&20\\\\20&25\\end{pmatrix}$ có $\\lambda_1=45,\\lambda_2=5$, nên $\\sigma_1=3\\sqrt5,\\sigma_2=\\sqrt5$. Xấp xỉ hạng $1$: $A_1=\\begin{pmatrix}1.5&1.5\\\\4.5&4.5\\end{pmatrix}$, sai số $\\|A-A_1\\|_F^2=\\sigma_2^2=5$, năng lượng giữ lại $45/(45+5)=90\\%$.",
+              "audio": null
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "ung-dung-pagerank-va-nen-anh-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi ký hiệu với ý nghĩa tương ứng trong bài.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$\\sigma_i$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "căn của trị riêng $A^{T}A$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$\\alpha$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "hệ số tắt dần, cỡ 0.85",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$k(m+n+1)$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "số số phải lưu khi nén hạng $k$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "cột-ngẫu nhiên",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "mỗi cột của $M$ có tổng bằng 1",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Các đại lượng này gắn với SVD của ảnh và mô hình PageRank: $\\sigma_i=\\sqrt{\\lambda_i(A^{T}A)}$, $\\alpha$ là hệ số tắt dần, lưu hạng $k$ tốn $k(m+n+1)$ số.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "ung-dung-pagerank-va-nen-anh-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vì sao vectơ PageRank là vectơ riêng ứng với $\\lambda=1$?",
+                  "answer": "Vì nó thỏa $M\\mathbf{x}=\\mathbf{x}$ với $M$ cột-ngẫu nhiên; Perron–Frobenius bảo đảm tồn tại và duy nhất khi ma trận dương thực sự.",
+                  "image": null
+                },
+                {
+                  "prompt": "SVD liên hệ với trị riêng của $A^TA$ thế nào?",
+                  "answer": "$\\sigma_i=\\sqrt{\\lambda_i(A^TA)}$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Xấp xỉ hạng $k$ tốt nhất có sai số bao nhiêu?",
+                  "answer": "$\\|A-A_k\\|_F^2=\\sum_{i=k+1}^r\\sigma_i^2$; chỉ cần lưu $k(m+n+1)$ số.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về trị riêng và vectơ riêng, cách chéo hóa ma trận, và hai ứng dụng là PageRank với nén ảnh. Mình sẽ đi qua định nghĩa, tiêu chuẩn chéo hóa và các ý cần nhớ trước khi kiểm tra.",
+          "Với ma trận vuông A, số lambda là trị riêng nếu tồn tại vectơ v khác không sao cho A nhân v bằng lambda nhân v. Vectơ v đó là vectơ riêng, và điều kiện v khác không là bắt buộc. Về hình học, A chỉ kéo giãn, co hoặc đổi dấu v theo hệ số lambda mà không đổi phương. Muốn tìm, ta giải phương trình đặc trưng là định thức của A trừ lambda nhân ma trận đơn vị bằng không.",
+          "Đa thức đặc trưng có bậc n, nghiệm của nó chính là các trị riêng. Với mỗi lambda, không gian riêng là hạt nhân của A trừ lambda nhân I; muốn có cơ sở thì giải hệ thuần nhất A trừ lambda I nhân v bằng không bằng khử Gauss. Bội đại số là số lần lambda lặp trong đa thức đặc trưng, còn bội hình học là số chiều của không gian riêng. Luôn có bội hình học ít nhất là một và không vượt quá bội đại số.",
+          "Ví dụ ma trận có dòng một là bốn, một và dòng hai là hai, ba. Đa thức đặc trưng ra lambda bình phương trừ bảy lambda cộng mười, tức lambda trừ năm nhân lambda trừ hai, nên trị riêng là năm và hai. Kiểm tra nhanh: vết bằng bảy, đúng bằng năm cộng hai; định thức bằng mười, đúng bằng năm nhân hai. Với lambda bằng năm, không gian riêng sinh bởi vectơ một, một; với lambda bằng hai, sinh bởi vectơ một, trừ hai.",
+          "Các vectơ riêng ứng với các trị riêng phân biệt thì độc lập tuyến tính. Một lỗi rất hay gặp là viết phương trình đặc trưng là định thức của A trừ lambda bằng không. Định thức không tuyến tính, nên nói chung định thức của A trừ lambda I không bằng định thức của A trừ lambda. Đúng ra chỉ trừ lambda trên đường chéo, còn các phần tử ngoài đường chéo giữ nguyên.",
+          "Ma trận A chéo hóa được nếu A bằng P nhân D nhân P nghịch đảo, với D là ma trận chéo. Các cột của P là các vectơ riêng độc lập tuyến tính, và đường chéo của D là các trị riêng tương ứng, phải khớp thứ tự. Điều kiện tương đương là A có đủ n vectơ riêng độc lập tuyến tính, hay với mọi trị riêng bội hình học bằng bội đại số. Nếu A có n trị riêng phân biệt thì chéo hóa được, nhưng đó chỉ là điều kiện đủ.",
+          "Ma trận đối xứng thực thì luôn chéo hóa được, và chéo hóa trực giao: A bằng Q nhân D nhân Q chuyển vị, với các cột của Q trực chuẩn. Ví dụ ma trận có dòng một là một, hai và dòng hai là hai, một có trị riêng ba và trừ một, với các vectơ riêng một, một và một, trừ một. Khi đã có A bằng P nhân D nhân P nghịch đảo thì A mũ k bằng P nhân D mũ k nhân P nghịch đảo, và D mũ k chỉ cần lũy thừa từng trị riêng trên đường chéo. Đừng nghĩ trị riêng bội là không chéo hóa được: ma trận hai lần I vẫn chéo hóa, còn ma trận có dòng hai, một và không, hai mới không chéo hóa được vì không gian riêng chỉ có chiều một.",
+          "Trong ứng dụng web, ta lập ma trận chuyển theo cột: cột j chia đều cho các trang mà j liên kết tới, nên mỗi cột có tổng bằng một. Vectơ PageRank là phân bố dương, tổng bằng một, thỏa M nhân x bằng x, tức là vectơ riêng bên phải ứng với trị riêng một. Để tránh trang nút cụt và bảo đảm hội tụ, người ta dùng hệ số tắt dần khoảng không phẩy tám lăm và ma trận Google; khi đó trị riêng một là đơn và có thể tính bằng lặp lũy thừa. Lỗi cần tránh là giải M chuyển vị nhân x bằng x; đó là vectơ riêng bên trái, chỉ trùng khi M đối xứng.",
+          "Ảnh xám là một ma trận A, mỗi phần tử là độ sáng. Phân rã giá trị kỳ dị viết A thành tổng các hạng tử sigma nhân u nhân v chuyển vị, với sigma dương giảm dần và bình phương sigma là trị riêng của A chuyển vị nhân A. Xấp xỉ hạng k giữ k hạng tử đầu là xấp xỉ tốt nhất theo chuẩn Frobenius, sai số bình phương bằng tổng bình phương các sigma bị bỏ. Dung lượng lưu là k nhân m cộng n cộng một thay cho m nhân n, và năng lượng giữ lại là tổng bình phương sigma giữ được chia cho tổng tất cả.",
+          "Ba điều cần nhớ. Một, trị riêng phải có vectơ riêng khác không và được tìm từ định thức của A trừ lambda I bằng không. Hai, chéo hóa được khi có đủ vectơ riêng độc lập tuyến tính, tức bội hình học bằng bội đại số; ma trận đối xứng thực luôn chéo hóa trực giao. Ba, PageRank dùng vectơ riêng bên phải của ma trận cột-ngẫu nhiên, còn nén ảnh dùng phân rã giá trị kỳ dị và xấp xỉ hạng k tốt nhất theo chuẩn Frobenius."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

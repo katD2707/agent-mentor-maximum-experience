@@ -1,0 +1,2138 @@
+{
+  "schema_version": 1,
+  "course_id": "cong-nghe-7-trong-trot-va-chan-n",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "g6_9",
+  "title": "Công nghệ 7: Trồng trọt và chăn nuôi",
+  "chapters": [
+    {
+      "id": "ch-trong-trot",
+      "title": "Trồng trọt",
+      "lessons": [
+        {
+          "id": "dat-trong",
+          "title": "Đất trồng",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu khái niệm, thành phần, tính chất của đất trồng và cách chọn, cải tạo đất để trồng rau tốt.",
+          "key_ideas": [
+            "Đất trồng gồm phần rắn, lỏng, khí; đất tốt cân đối ba phần",
+            "Tính chất: thành phần cơ giới, độ phì nhiêu, pH",
+            "Chọn và cải tạo đất theo pH, độ tơi xốp, mùn",
+            "Ví dụ: đo pH ba mẫu đất; tính thể tích hỗn hợp đất",
+            "Lỗi: bón quá nhiều vôi; bài tập tính phân bón theo diện tích"
+          ],
+          "blocks": [
+            {
+              "id": "dat-trong-b1",
+              "kind": "text",
+              "md": "Đất trồng là lớp mặt tơi xốp của vỏ Trái Đất. Cây bám rễ vào đó để hút nước và chất dinh dưỡng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dat-trong-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/dat-trong-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "77c5d1f4707f8ce206742e3a5aecfa07795038e0d1443ae041adaa3342905501",
+                "bytes": 2031
+              },
+              "alt": "Biểu đồ tỉ lệ các thành phần của đất trồng: khoáng 45%, hữu cơ 5%, nước 25%, khí 25%",
+              "caption": "Tỉ lệ các thành phần trong đất tốt",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "dat-trong-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dat-trong-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Một mẫu đất có $pH = 5{,}5$. Theo bài, mẫu đất này thuộc loại nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Đất chua",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Đất trung tính",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Đất kiềm",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Đất mặn",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "So sánh pH với mốc $6{,}5$ và $7{,}5$.",
+                  "explanation": "Vì $pH = 5{,}5 < 6{,}5$ nên đất chua; cần bón vôi đúng liều kèm phân hữu cơ hoai mục.",
+                  "option_feedback": {
+                    "B": "pH $5{,}5$ nhỏ hơn $6{,}5$ nên không phải đất trung tính.",
+                    "C": "pH $5{,}5$ nhỏ hơn $6{,}5$ nên không phải đất kiềm.",
+                    "D": "Đất mặn không phải cách phân loại theo pH trong bài."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dat-trong-b3",
+              "kind": "text",
+              "md": "Đất trồng có ba phần: rắn (khoáng và mùn), lỏng (nước) và khí. Đất tốt cần cân đối cả ba phần.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "dat-trong-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Độ chua – kiềm qua pH",
+              "md": "$pH < 6{,}5$: đất chua. $6{,}5 \\le pH \\le 7{,}5$: đất trung tính. $pH > 7{,}5$: đất kiềm.\n\nPhần lớn rau ăn lá thích $pH$ khoảng $6 - 6{,}5$.",
+              "audio": null
+            },
+            {
+              "id": "dat-trong-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dat-trong-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Một luống rau cần $20$ lít hỗn hợp đất trồng theo tỉ lệ đất thịt : xơ dừa : phân hữu cơ hoai mục là $3:1:1$. Thể tích đất thịt cần dùng là {{gap}} lít.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "12",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "4",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "8",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "20",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": "Tính tổng số phần của hỗn hợp trước.",
+                  "explanation": "Tổng số phần là $3+1+1=5$, mỗi phần $20:5=4$ lít; đất thịt chiếm $3$ phần nên $3 × 4=12$ lít.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dat-trong-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: đo pH ba mẫu đất",
+              "md": "Mẫu A: $pH = 5{,}2 < 6{,}5$ → đất chua, bón vôi kèm phân hữu cơ hoai mục.\n\nMẫu B: $pH = 6{,}4$ → gần trung tính, hợp trồng rau ăn lá; giữ ẩm, bón hữu cơ đều.\n\nMẫu C: $pH = 7{,}8 > 7{,}5$ → hơi kiềm; bón hữu cơ, tưới đủ ẩm, không bón vôi.",
+              "audio": null
+            },
+            {
+              "id": "dat-trong-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dat-trong-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Chọn đúng hoặc sai cho mỗi nhận định về đất trồng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Đất tốt cần cân đối giữa phần rắn, nước và khí."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Đất cát thường giữ nước và dinh dưỡng tốt hơn đất thịt."
+                    },
+                    {
+                      "id": "c",
+                      "text": "$pH > 7{,}5$ được gọi là đất kiềm."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Thấy đất chua thì nên bón càng nhiều vôi càng tốt."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đất tốt cân đối ba phần; đất cát giữ nước kém; $pH > 7{,}5$ là kiềm; bón quá nhiều vôi làm $pH$ tăng cao và đất cứng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "dat-trong-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Bón thật nhiều vôi cho đất chua",
+              "md": "Bón quá nhiều vôi làm $pH$ tăng cao, cây khó hấp thu một số chất dinh dưỡng và đất bị cứng. Chỉ bón vôi đúng liều lượng, kết hợp phân hữu cơ hoai mục.",
+              "audio": null
+            },
+            {
+              "id": "dat-trong-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: trộn 20 lít hỗn hợp theo tỉ lệ 3 : 1 : 1",
+              "md": "Tổng số phần: $3 + 1 + 1 = 5$ (phần). Mỗi phần: $20 : 5 = 4$ (lít).\n\nĐất thịt: $3 \\times 4 = 12$ lít; xơ dừa: $4$ lít; phân hữu cơ hoai mục: $4$ lít.",
+              "audio": null
+            },
+            {
+              "id": "dat-trong-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dat-trong-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khoảng pH hoặc loại đất ở cột trái với mô tả đúng ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$pH < 6{,}5$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Đất chua",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "6,5 ≤ pH ≤ 7,5",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Đất trung tính",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$pH > 7{,}5$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Đất kiềm",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Đất thịt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Tơi xốp, giữ nước tốt",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ba khoảng pH tương ứng đất chua, trung tính, kiềm; đất thịt có hạt vừa, tơi xốp và giữ nước tốt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dat-trong-b9",
+              "kind": "interactive",
+              "prompt": "Kéo để tổng thể tích hỗn hợp là 20 lít, xem cần bao nhiêu lít đất thịt",
+              "x": {
+                "symbol": "V",
+                "label": "Tổng thể tích hỗn hợp",
+                "unit": "lít"
+              },
+              "y": {
+                "symbol": "V_{đất thịt}",
+                "label": "Thể tích đất thịt",
+                "unit": "lít"
+              },
+              "expr": "3*x/5",
+              "x_min": 5.0,
+              "x_max": 50.0,
+              "x_step": 5.0,
+              "x_start": 10.0,
+              "target_y": 12.0,
+              "tolerance": 0.5,
+              "praise": "Chuẩn! Với 20 lít hỗn hợp 3:1:1, cần 12 lít đất thịt.",
+              "audio": null
+            },
+            {
+              "id": "dat-trong-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dat-trong-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xử lý hạt giống trước khi gieo theo đúng thứ tự trong bài.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Phơi hạt nhẹ",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Ngâm nước ấm khoảng 40-50°C",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Ủ ấm đến khi hạt nứt nanh",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Bài nêu thứ tự: phơi hạt nhẹ, ngâm nước ấm rồi ủ ấm đến khi hạt nứt nanh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "dat-trong-b10",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Đất trồng gồm những phần nào?",
+                  "answer": "Phần rắn (khoáng và mùn), phần lỏng (nước) và phần khí.",
+                  "image": null
+                },
+                {
+                  "prompt": "Mẫu đất có pH = 5,5 thuộc loại nào và cải tạo ra sao?",
+                  "answer": "Đất chua vì pH < 6,5; bón vôi kèm phân hữu cơ hoai mục.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao không nên bón quá nhiều vôi?",
+                  "answer": "pH tăng cao, cây khó hấp thu dinh dưỡng và đất bị cứng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "giong-va-gieo-hat",
+          "title": "Giống và gieo hạt",
+          "est_minutes": 15,
+          "summary": "Chọn, kiểm tra, xử lý hạt giống và gieo hạt đúng thời vụ, mật độ, độ sâu, kèm tính tỉ lệ nảy mầm và số cây trên luống.",
+          "key_ideas": [
+            "Chọn giống phù hợp khí hậu, thời vụ; hạt mẩy, tỉ lệ nảy mầm từ 85% trở lên",
+            "Xử lý hạt: phơi nhẹ, ngâm nước ấm 40–50°C, ủ đến nứt nanh",
+            "Gieo đúng độ sâu 1–2 cm, khoảng cách hợp lý, tưới ẩm nhẹ",
+            "Công thức: tỉ lệ nảy mầm; số cây = diện tích luống/(khoảng cách hàng × khoảng cách cây)",
+            "Ví dụ tính tỉ lệ nảy mầm, số cây; lỗi gieo quá dày; bài tập 150 hạt, luống 1×3 m"
+          ],
+          "blocks": [
+            {
+              "id": "giong-va-gieo-hat-b1",
+              "kind": "text",
+              "md": "Chọn giống phù hợp khí hậu, đất trồng và thời vụ. Hạt giống tốt thì đồng đều, mẩy, không mốc; tỉ lệ nảy mầm từ $85\\%$ trở lên.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/giong-va-gieo-hat-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "50e6279c5d15823ed805b92e43047ac8bf9b8ebc5914d488b9cff3809a290d72",
+                "bytes": 4986
+              },
+              "alt": "Sơ đồ gieo hạt trên luống rau với độ sâu và khoảng cách.",
+              "caption": "Gieo hạt đúng độ sâu và khoảng cách.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b3",
+              "kind": "text",
+              "md": "Kiểm tra bằng mắt và thử nảy mầm trên khăn ẩm. Trước khi gieo, phơi hạt nhẹ, ngâm nước ấm $40-50^\\circ C$ rồi ủ đến nứt nanh.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b4",
+              "kind": "callout",
+              "variant": "remember",
+              "title": "Công thức cần nhớ",
+              "md": "Tỉ lệ nảy mầm $= \\dfrac{\\text{số hạt nảy mầm}}{\\text{tổng số hạt gieo}} \\times 100\\%$.\n\nSố cây trên luống $= \\dfrac{\\text{diện tích luống}}{\\text{khoảng cách hàng} \\times \\text{khoảng cách cây}}$.",
+              "audio": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: tỉ lệ nảy mầm",
+              "md": "Gieo thử $200$ hạt cải xanh, có $176$ hạt nảy mầm. Tỉ lệ nảy mầm là $\\dfrac{176}{200} \\times 100\\% = 88\\%$. Vì $88\\% > 85\\%$ nên hạt giống đạt yêu cầu.",
+              "audio": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b6",
+              "kind": "text",
+              "md": "Gieo đúng mùa, tránh mưa lớn hoặc nắng gắt. Độ sâu $1-2$ cm, khoảng cách hợp lý; gieo xong tưới ẩm nhẹ bằng vòi phun.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Gieo thật dày để chắc có nhiều cây. Nhưng gieo quá dày làm cây tranh ánh sáng, nước, dinh dưỡng; cây vươn dài, yếu, dễ sâu bệnh. Cần gieo đúng khoảng cách và tỉa bớt cây yếu.",
+              "audio": null
+            },
+            {
+              "id": "giong-va-gieo-hat-b8",
+              "kind": "interactive",
+              "prompt": "Luống $3\\,m^2$, hàng cách hàng $20\\,cm$: kéo khoảng cách cây để được $150$ cây.",
+              "x": {
+                "symbol": "d",
+                "label": "Khoảng cách cây",
+                "unit": "m"
+              },
+              "y": {
+                "symbol": "N",
+                "label": "Số cây",
+                "unit": "cây"
+              },
+              "expr": "3/(0.2*x)",
+              "x_min": 0.05,
+              "x_max": 0.5,
+              "x_step": 0.01,
+              "x_start": 0.2,
+              "target_y": 150.0,
+              "tolerance": 2.0,
+              "praise": "Đúng rồi: hàng cách hàng 20 cm, cây cách cây 10 cm cho 150 cây trên luống 3 m².",
+              "audio": null
+            },
+            {
+              "id": "giong-va-gieo-hat-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "giong-va-gieo-hat-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Tỉ lệ nảy mầm = ( {{gap}} : {{gap}} ) × 100%",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "số hạt nảy mầm",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "tổng số hạt gieo",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "số cây trên luống",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "khoảng cách cây",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Tỉ lệ nảy mầm được tính bằng số hạt nảy mầm chia cho tổng số hạt gieo, rồi nhân 100%.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "giong-va-gieo-hat-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Hạt giống tốt cần đạt tiêu chí nào về tỉ lệ nảy mầm?",
+                  "answer": "Từ 85% trở lên, hạt đồng đều, mẩy, không mốc.",
+                  "image": null
+                },
+                {
+                  "prompt": "Trước khi gieo, xử lý hạt giống gồm những bước nào?",
+                  "answer": "Phơi nhẹ, ngâm nước ấm 40–50°C, ủ đến nứt nanh.",
+                  "image": null
+                },
+                {
+                  "prompt": "Gieo hạt đúng kỹ thuật cần chú ý gì?",
+                  "answer": "Đúng mùa, sâu 1–2 cm, khoảng cách hợp lý, tưới ẩm nhẹ.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cham-soc-cay",
+          "title": "Chăm sóc cây",
+          "est_minutes": 15,
+          "summary": "Thực hiện các việc tưới nước, bón phân, làm cỏ, tỉa cây và phòng trừ sâu bệnh để cây rau sinh trưởng tốt.",
+          "key_ideas": [
+            "Tưới đủ ẩm 65–80%, sáng sớm hoặc chiều mát, tránh úng",
+            "Bón lót, bón thúc đúng liều; phân chuồng phải ủ hoai",
+            "Làm cỏ, xới đất, vun gốc, tỉa cây, bấm ngọn",
+            "Phòng trừ sâu bệnh: thăm vườn, bắt sâu, biện pháp sinh học, thuốc đúng cách",
+            "Ví dụ tính NPK, nước tưới; lỗi dùng phân chuồng tươi; bài tập 30 cây, luống 1,5×4 m"
+          ],
+          "blocks": [
+            {
+              "id": "cham-soc-cay-b1",
+              "kind": "text",
+              "md": "Tưới nước: giữ đất ẩm khoảng $65-80\\%$. Tưới vào sáng sớm hoặc chiều mát, không tưới giữa trưa nắng. Cây mới trồng tưới nhẹ, nhiều lần. Đừng để đất úng: rễ thiếu không khí sẽ thối.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cham-soc-cay-b2",
+              "kind": "interactive",
+              "prompt": "Kéo để vườn 30 cây nhận đủ 18 lít nước mỗi ngày (mỗi cây 0,3 lít, tưới 2 lần/ngày).",
+              "x": {
+                "symbol": "x",
+                "label": "Số cây",
+                "unit": "cây"
+              },
+              "y": {
+                "symbol": "V",
+                "label": "Nước mỗi ngày",
+                "unit": "L"
+              },
+              "expr": "0.6*x",
+              "x_min": 0.0,
+              "x_max": 50.0,
+              "x_step": 1.0,
+              "x_start": 8.0,
+              "target_y": 18.0,
+              "tolerance": 0.01,
+              "praise": "Đúng rồi: 30 cây cần 18 lít nước mỗi ngày.",
+              "audio": null
+            },
+            {
+              "id": "cham-soc-cay-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cham-soc-cay-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao nên tưới rau vào sáng sớm hoặc chiều mát mà không tưới vào giữa trưa nắng?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì lúc đó trời mát, nước ít bốc hơi, cây không bị sốc nhiệt.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì buổi trưa đất luôn bị úng nước.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì buổi trưa cây không cần nước.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì buổi trưa phân bón không tan được trong đất.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Nghĩ đến nhiệt độ và sự bốc hơi của nước.",
+                  "explanation": "Tưới sáng sớm hoặc chiều mát giúp nước không bốc hơi nhanh và cây không bị sốc vì nắng gắt.",
+                  "option_feedback": {
+                    "B": "Buổi trưa nắng nóng chứ không làm đất úng, nên đây không phải lí do.",
+                    "C": "Cây vẫn cần nước; lí do thật sự là nhiệt độ cao và nước bốc hơi nhanh.",
+                    "D": "Việc tưới không liên quan đến độ tan của phân; lí do chính là nắng nóng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cham-soc-cay-b3",
+              "kind": "text",
+              "md": "Bón lót trước khi gieo trồng bằng phân hữu cơ hoai mục, tro trấu, phân lân. Khi cây đã bén rễ, bón thúc $2-3$ lần trong vụ, cách gốc $5-10\\,cm$, tưới ẩm sau khi bón.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cham-soc-cay-b4",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: bón thúc NPK",
+              "md": "Luống rau $1{,}2\\,m \\times 5\\,m$, liều $20\\,g/m^2$, chia $2$ lần bón.\n\nDiện tích luống: $1{,}2 \\times 5 = 6\\,m^2$\n\nTổng NPK: $6 \\times 20 = 120\\,g$\n\nMỗi lần bón: $120 : 2 = 60\\,g$",
+              "audio": null
+            },
+            {
+              "id": "cham-soc-cay-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cham-soc-cay-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Luống rau $1{,}5\\,m \\times 4\\,m$, bón thúc NPK liều $15\\,g/m^2$, chia làm $3$ lần. Diện tích luống là $1{,}5 \\times 4 = {{gap}}\\,m^2$. Tổng khối lượng NPK là $6 \\times 15 = {{gap}}\\,g$. Mỗi lần bón là $90 : 3 = {{gap}}\\,g$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "6",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "90",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "30",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "9",
+                      "side": null
+                    },
+                    {
+                      "id": "t5",
+                      "text": "60",
+                      "side": null
+                    },
+                    {
+                      "id": "t6",
+                      "text": "45",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2",
+                      "t3"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Diện tích $6\\,m^2$, nhân với liều $15\\,g/m^2$ được $90\\,g$, chia $3$ lần được $30\\,g$ mỗi lần.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cham-soc-cay-b5",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp",
+              "md": "Dùng phân chuồng tươi bón trực tiếp vào gốc cây.\n\nPhân chuồng tươi chứa nhiều mầm bệnh, khi phân hủy làm nóng, cháy rễ và gây ô nhiễm. Phải ủ hoai mục rồi mới bón.",
+              "audio": null
+            },
+            {
+              "id": "cham-soc-cay-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cham-soc-cay-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai về cách chăm sóc cây rau?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Phân chuồng phải ủ hoai mục rồi mới bón cho cây."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Tưới nước vào giữa trưa nắng là cách tốt nhất để cây hút nước."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Bón thúc nên bón cách gốc $5-10\\,cm$ rồi tưới ẩm."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Để đất úng lâu ngày không ảnh hưởng gì đến rễ cây."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Phân chuồng tươi chứa mầm bệnh và làm nóng, cháy rễ nên phải ủ hoai; đất úng làm rễ thiếu không khí và bị thối.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "cham-soc-cay-b6",
+              "kind": "text",
+              "md": "Nhổ cỏ để cỏ không cạnh tranh nước và dinh dưỡng với cây. Xới nhẹ lớp đất mặt cho thoáng khí. Vun đất vào gốc giúp cây đứng vững và ra rễ mới.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cham-soc-cay-b7",
+              "kind": "text",
+              "md": "Tỉa bớt cây yếu, cây bị bệnh để cây khỏe có đủ ánh sáng. Bấm ngọn rau muống, mồng tơi để cây phân cành, cho nhiều lá.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cham-soc-cay-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cham-soc-cay-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi việc chăm sóc cây với tác dụng của nó.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Bón lót",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Bón trước khi gieo trồng bằng phân hữu cơ hoai mục",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Bón thúc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Bón khi cây đã bén rễ, $2-3$ lần trong vụ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Vun gốc",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Giúp cây đứng vững và ra rễ mới",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Bấm ngọn",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Giúp cây phân cành, cho nhiều lá",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi biện pháp có tác dụng riêng: bón lót chuẩn bị đất, bón thúc nuôi cây đang lớn, vun gốc và bấm ngọn giúp cây khỏe, nhiều lá.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "cham-soc-cay-b8",
+              "kind": "text",
+              "md": "Thăm vườn thường xuyên để phát hiện sâu bệnh sớm, ngắt bỏ lá bệnh, dọn sạch cỏ rác. Dùng bẫy, biện pháp sinh học, luân canh. Chỉ dùng thuốc khi thật cần và đúng liều.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "cham-soc-cay-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "cham-soc-cay-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước tính khối lượng NPK mỗi lần bón cho luống $1{,}5\\,m \\times 4\\,m$, liều $15\\,g/m^2$, chia $3$ lần.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Tính diện tích luống: $1{,}5 \\times 4 = 6\\,m^2$",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Tính tổng NPK: $6 \\times 15 = 90\\,g$",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Chia cho số lần bón: $90 : 3 = 30\\,g$ mỗi lần",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3"
+                    ]
+                  },
+                  "hint": "Bắt đầu từ việc tính diện tích luống.",
+                  "explanation": "Phải tính diện tích trước, rồi nhân với liều để ra tổng lượng phân, cuối cùng chia đều cho số lần bón.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "cham-soc-cay-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Tưới nước cho rau thế nào là đúng?",
+                  "answer": "Giữ ẩm 65–80%, tưới sáng sớm hoặc chiều mát, tránh để đất úng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao phải ủ hoai phân chuồng trước khi bón?",
+                  "answer": "Phân tươi nhiều mầm bệnh, khi phân hủy làm nóng và cháy rễ cây.",
+                  "image": null
+                },
+                {
+                  "prompt": "Làm cỏ, xới đất, vun gốc giúp gì cho cây?",
+                  "answer": "Cỏ không cạnh tranh dinh dưỡng, đất thoáng khí, cây đứng vững và ra rễ mới.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương này nói về trồng trọt, gồm ba bài: đất trồng, giống và gieo hạt, chăm sóc cây.",
+          "Đất trồng là lớp mặt tơi xốp của vỏ Trái Đất, cây bám rễ vào đó để hút nước và chất dinh dưỡng. Đất trồng gồm phần rắn là khoáng và mùn, phần lỏng là nước, và phần khí. Đất tốt cần cân đối cả ba phần. Ba tính chất cần chú ý là thành phần cơ giới, độ phì nhiêu và độ pH.",
+          "Dựa vào độ pH, đất chua có pH nhỏ hơn sáu phẩy năm, đất trung tính từ sáu phẩy năm đến bảy phẩy năm, đất kiềm lớn hơn bảy phẩy năm; phần lớn rau ăn lá thích pH khoảng sáu đến sáu phẩy năm. Ví dụ mẫu A có pH năm phẩy hai là đất chua, nên bón vôi kèm phân hữu cơ hoai mục. Mẫu B có pH sáu phẩy bốn gần trung tính, hợp trồng rau ăn lá. Mẫu C có pH bảy phẩy tám là hơi kiềm, không bón vôi mà bón hữu cơ và tưới đủ ẩm.",
+          "Khi trộn đất, có thể tính theo phần: ba phần đất thịt, một phần xơ dừa, một phần phân hữu cơ hoai mục, tổng là năm phần. Nếu có hai mươi lít hỗn hợp thì mỗi phần là bốn lít, vậy cần mười hai lít đất thịt, bốn lít xơ dừa và bốn lít phân hữu cơ. Cần tránh bón quá nhiều vôi vì làm pH tăng cao, cây khó hấp thu một số chất dinh dưỡng và đất bị cứng. Khi chọn và cải tạo đất, cần dựa vào pH, độ tơi xốp và lượng mùn; chỉ bón vôi đúng liều lượng và kết hợp phân hữu cơ hoai mục.",
+          "Bài giống và gieo hạt nhắc chọn giống phù hợp khí hậu, đất trồng và thời vụ. Hạt giống tốt thì đồng đều, mẩy, không mốc, có tỉ lệ nảy mầm từ tám mươi lăm phần trăm trở lên; kiểm tra bằng mắt và thử nảy mầm trên khăn ẩm. Trước khi gieo, phơi hạt nhẹ, ngâm nước ấm bốn mươi đến năm mươi độ C rồi ủ đến nứt nanh. Gieo đúng mùa, tránh mưa lớn hoặc nắng gắt, gieo sâu một đến hai xen-ti-mét, khoảng cách hợp lý và tưới ẩm nhẹ bằng vòi phun.",
+          "Tỉ lệ nảy mầm bằng số hạt nảy mầm chia cho tổng số hạt gieo, nhân với một trăm phần trăm. Ví dụ gieo thử hai trăm hạt cải xanh, có một trăm bảy mươi sáu hạt nảy mầm thì tỉ lệ là tám mươi tám phần trăm, vì lớn hơn tám mươi lăm phần trăm nên hạt đạt yêu cầu. Số cây trên luống bằng diện tích luống chia cho khoảng cách hàng nhân khoảng cách cây. Cần tránh gieo quá dày vì cây tranh ánh sáng, nước và dinh dưỡng, cây vươn dài yếu, dễ sâu bệnh; phải gieo đúng khoảng cách và tỉa bớt cây yếu.",
+          "Bài chăm sóc cây bắt đầu với việc tưới nước: giữ đất ẩm khoảng sáu mươi lăm đến tám mươi phần trăm. Tưới vào sáng sớm hoặc chiều mát, không tưới giữa trưa nắng; cây mới trồng tưới nhẹ và nhiều lần. Đừng để đất úng vì rễ thiếu không khí sẽ thối.",
+          "Bón lót trước khi gieo trồng bằng phân hữu cơ hoai mục, tro trấu, phân lân. Khi cây bén rễ, bón thúc hai đến ba lần trong vụ, cách gốc năm đến mười xen-ti-mét và tưới ẩm sau khi bón. Ví dụ luống rau một phẩy hai mét nhân năm mét là sáu mét vuông, liều hai mươi gam trên mét vuông, tổng cần một trăm hai mươi gam NPK, chia hai lần bón thì mỗi lần sáu mươi gam. Phân chuồng tươi chứa nhiều mầm bệnh, khi phân hủy làm nóng, cháy rễ và gây ô nhiễm, nên phải ủ hoai mục rồi mới bón.",
+          "Ngoài ra cần nhổ cỏ để cỏ không cạnh tranh nước và dinh dưỡng, xới nhẹ lớp đất mặt cho thoáng khí, vun đất vào gốc giúp cây đứng vững và ra rễ mới. Tỉa bớt cây yếu, cây bị bệnh để cây khỏe có đủ ánh sáng; bấm ngọn rau muống, mồng tơi để cây phân cành, cho nhiều lá. Phòng trừ sâu bệnh bằng cách thăm vườn thường xuyên, phát hiện sớm, ngắt bỏ lá bệnh, dọn sạch cỏ rác, dùng bẫy, biện pháp sinh học và luân canh. Chỉ dùng thuốc khi thật cần và đúng liều.",
+          "Ba điều cần nhớ là thứ nhất, đất tốt cân đối phần rắn, lỏng, khí và chọn, cải tạo đất theo pH, độ tơi xốp, mùn. Thứ hai, hạt giống phải phù hợp khí hậu, thời vụ, tỉ lệ nảy mầm từ tám mươi lăm phần trăm trở lên và gieo đúng độ sâu, khoảng cách. Thứ ba, chăm sóc cây cần tưới đủ ẩm, bón phân đúng liều, phân chuồng phải ủ hoai và phòng trừ sâu bệnh đúng cách."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-chan-nuoi",
+      "title": "Chăn nuôi",
+      "lessons": [
+        {
+          "id": "nuoi-ga",
+          "title": "Nuôi gà",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu chọn giống, chuồng nuôi, nhiệt độ úm, thức ăn và nước uống trong chăn nuôi gà.",
+          "key_ideas": [
+            "Gà nội thịt thơm, chịu kham khổ; gà nhập nội lớn nhanh, năng suất trứng cao",
+            "Gà con giống tốt nhanh nhẹn, mắt sáng, lông khô, chân thẳng, nặng 35–40 g",
+            "Chuồng khô thoáng, độn 5–10 cm; mật độ theo tuổi và cách nuôi",
+            "Nhiệt độ úm T_n = 33 - 3(n - 1); ngừng sưởi ở 24–26°C",
+            "Thức ăn M = m × n × t; ví dụ tính số gà, thức ăn; lỗi thả gà con sớm; bài tập 15 m², 150 gà"
+          ],
+          "blocks": [
+            {
+              "id": "nuoi-ga-b1",
+              "kind": "text",
+              "md": "Gà nội (gà ri, gà Mía, gà Đông Tảo, gà Hồ) thịt thơm, chịu kham khổ, lớn chậm, ít bệnh. Gà nhập nội (Tam Hoàng, Lương Phượng, Sasso, ISA Brown) lớn nhanh, năng suất trứng cao, cần chăm sóc tốt hơn.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nuoi-ga-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/nuoi-ga-b2.webp",
+                "mime": "image/webp",
+                "sha256": "2f8e46be34cca2494903a0a1a3b15ed4990891f2ef720ae4ef29254f8165ea1a",
+                "bytes": 16082
+              },
+              "alt": "Gà con giống tốt: mắt sáng, lông khô, chân thẳng, nặng 35–40 g",
+              "caption": "Gà con giống tốt nặng 35–40 g khi 1 ngày tuổi",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "nuoi-ga-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ga-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Gà con giống tốt khi 1 ngày tuổi thường có khối lượng khoảng bao nhiêu?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$20-25$ g",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$35-40$ g",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$50-60$ g",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$70-80$ g",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Xem mục chọn giống.",
+                  "explanation": "Gà con giống tốt nặng $35-40$ g khi 1 ngày tuổi.",
+                  "option_feedback": {
+                    "A": "Đây là mức quá nhẹ so với tiêu chuẩn gà con giống tốt.",
+                    "C": "Mức này cao hơn khoảng $35-40$ g của gà con giống tốt.",
+                    "D": "Mức này quá cao so với khối lượng gà con giống tốt."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ga-b3",
+              "kind": "text",
+              "md": "Chuồng nền cao, khô ráo, thoáng mát, tránh mưa tạt gió lùa. Lớp độn trấu, rơm dày 5 đến 10 cm. Mật độ: gà con 1 đến 4 tuần 20 đến 25 con/m²; gà thịt nuôi nhốt 8 đến 10 con/m²; gà thả vườn (phần chuồng) 5 đến 6 con/m².",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nuoi-ga-b4",
+              "kind": "text",
+              "md": "Gà con: thức ăn hỗn hợp giàu đạm 20 đến 22%, 20 đến 30 g/con/ngày, chia 4 đến 6 lần. Gà lớn: đạm 16 đến 18%, 80 đến 120 g/con/ngày, chia 2 đến 3 lần. Cho gà uống nước sạch tự do, 150 đến 300 ml/con/ngày; thay nước 2 lần/ngày.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nuoi-ga-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ga-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Công thức nhiệt độ úm gà con ở tuần tuổi $n$: $T_n = 33 - {{gap}} \\cdot (n-1)$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "3",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "2",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "5",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi tuần nhiệt độ úm giảm $3^\\circ$C, nên hệ số cần điền là 3.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ga-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/nuoi-ga-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "4cc8d078f88d5cd0a5432746c61acdb1caf5e9edd54463d32d98c515c42c9397",
+                "bytes": 3597
+              },
+              "alt": "Đồ thị nhiệt độ úm giảm 3°C mỗi tuần từ 33°C xuống 24°C",
+              "caption": "Mỗi tuần giảm 3°C, đến 24–26°C thì có thể ngừng sưởi",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "nuoi-ga-b6",
+              "kind": "interactive",
+              "prompt": "Kéo để chọn tuần tuổi sao cho nhiệt độ úm còn 24°C",
+              "x": {
+                "symbol": "n",
+                "label": "Tuần tuổi",
+                "unit": "tuần"
+              },
+              "y": {
+                "symbol": "T",
+                "label": "Nhiệt độ úm",
+                "unit": "°C"
+              },
+              "expr": "33 - 3*(x-1)",
+              "x_min": 1.0,
+              "x_max": 6.0,
+              "x_step": 1.0,
+              "x_start": 2.0,
+              "target_y": 24.0,
+              "tolerance": 0.5,
+              "praise": "Đúng rồi! Tuần 4 còn 24°C, đã bằng nhiệt độ phòng nên có thể ngừng sưởi.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ga-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ga-q3",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi đối tượng với mật độ hoặc độ dày phù hợp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Gà con 1–4 tuần",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$20-25$ con/m²",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Gà thịt nuôi nhốt",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$8-10$ con/m²",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Gà thả vườn (phần chuồng)",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$5-6$ con/m²",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Lớp độn chuồng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "dày $5-10$ cm",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Đây là các mức mật độ tham khảo và độ dày lớp độn chuồng trong bài.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ga-b7",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: 12 m², 9 con/m², 95 g/con/ngày",
+              "md": "Số gà: $n = 12 \\times 9 = 108$ (con).\nThức ăn 1 ngày: $108 \\times 95 = 10\\,260$ g.\nThức ăn 10 ngày: $M = 95 \\times 108 \\times 10 = 102\\,600$ g $= 102{,}6$ kg.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ga-b8",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Thả gà con 1 tuần tuổi ra vườn",
+              "md": "Sai. Gà con chưa đủ lông, mất nhiệt nhanh; ra vườn lạnh gà tụ đống, dễ chết rét, phân lỏng, mắc bệnh hô hấp. Phải úm đủ ấm 3 đến 4 tuần rồi mới thả dần.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ga-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ga-q4",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp nhiệt độ úm gà con theo từng tuần tuổi từ tuần 1 đến tuần 4.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Tuần 1: $33^\\circ$C",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Tuần 2: $30^\\circ$C",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Tuần 3: $27^\\circ$C",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Tuần 4: $24^\\circ$C",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Theo quy tắc $T_n=33-3(n-1)$, mỗi tuần nhiệt độ úm giảm $3^\\circ$C.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ga-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Gà con giống tốt có đặc điểm gì?",
+                  "answer": "Nhanh nhẹn, mắt sáng, lông khô, chân thẳng, không dị tật, nặng 35–40 g khi 1 ngày tuổi.",
+                  "image": null
+                },
+                {
+                  "prompt": "Nhiệt độ úm tính theo tuần như thế nào?",
+                  "answer": "Tuần 1 khoảng 33°C, mỗi tuần giảm 3°C; đến 24–26°C thì có thể ngừng sưởi.",
+                  "image": null
+                },
+                {
+                  "prompt": "Tính lượng thức ăn cả đàn trong t ngày bằng công thức nào?",
+                  "answer": "M = m × n × t, với m là g/con/ngày, n là số con; chia 1000 để ra kg.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "nuoi-ca",
+          "title": "Nuôi cá",
+          "est_minutes": 15,
+          "summary": "Tìm hiểu chuẩn bị ao, chất lượng nước, thả giống ghép đàn và cho cá ăn đúng lượng.",
+          "key_ideas": [
+            "Chuẩn bị ao: nơi sạch, ao 50–500 m², sâu 1,2–1,5 m; tát cạn, phơi đáy, bón vôi 7–10 kg/100 m²",
+            "Nước: pH 6,5–8,5, oxy >3 mg/L, độ trong 20–30 cm, nhiệt độ 25–30°C",
+            "Thả ghép đàn theo tầng nước; N = S × d",
+            "Cho ăn 3–5% khối lượng đàn/ngày; W = N × w, m = p × W",
+            "Ví dụ tính cá giống, thức ăn; lỗi đổ phân tươi xuống ao; bài tập ao 20×15 m"
+          ],
+          "blocks": [
+            {
+              "id": "nuoi-ca-b1",
+              "kind": "text",
+              "md": "Chọn nơi gần nhà, nguồn nước sạch, có ánh nắng và không có nước thải chảy vào. Ao gia đình thường rộng 50-500 m², sâu 1,2-1,5 m, bờ không rò rỉ.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nuoi-ca-b2",
+              "kind": "text",
+              "md": "Cải tạo ao trước khi thả: tát cạn, phơi đáy 3-5 ngày, bón vôi 7-10 kg/100 m² để diệt mầm bệnh. Lấy nước vào ao qua lưới lọc.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nuoi-ca-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ca-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao không nên đổ phân chuồng tươi xuống ao nuôi cá?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì phân tươi làm nước ao quá trong, cá khó tìm thức ăn.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì phân tươi làm nhiệt độ nước ao tăng lên đột ngột.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì phân chưa ủ mang mầm bệnh và khi phân hủy làm mất oxy hòa tan.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì phân tươi làm độ mặn của nước ao tăng lên nhanh.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "C"
+                  },
+                  "hint": "Nhớ lại phần “Lỗi thường gặp” trong bài.",
+                  "explanation": "Phân chưa ủ còn trứng giun sán, vi khuẩn gây bệnh; khi phân hủy trong nước còn lấy mất oxy hòa tan, cá nổi đầu và có thể chết hàng loạt.",
+                  "option_feedback": {
+                    "A": "Độ trong của nước do lượng tảo quyết định, không phải do phân tươi.",
+                    "B": "Nhiệt độ nước ao chủ yếu do thời tiết và độ sâu ao quyết định.",
+                    "D": "Ao nước ngọt không bị tăng độ mặn vì bón phân chuồng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ca-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Chất lượng nước",
+              "md": "Nước tốt cho cá: pH 6,5-8,5; oxy hòa tan > 3 mg/L; độ trong 20-30 cm với màu xanh lục nhạt; nhiệt độ 25-30°C.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ca-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/nuoi-ca-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "01aa81b88dadd09d918b11a8616c8bd0ec8a75b7fd8fee65558e044264367fd0",
+                "bytes": 5871
+              },
+              "alt": "Ba tầng nước ao với ba nhóm cá ăn thức ăn khác nhau",
+              "caption": "Thả ghép đàn để dùng hết thức ăn ở các tầng nước",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "nuoi-ca-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ca-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền kí hiệu thích hợp vào chỗ trống: $N = {{gap}} \\times d$ và $m = p \\times {{gap}}$ (với $S$ là diện tích ao, $W$ là khối lượng đàn cá).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "S",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "W",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "w",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "N",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Số cá giống $N = S \\times d$ với $S$ là diện tích ao (m²); lượng thức ăn $m = p \\times W$ với $W$ là khối lượng đàn cá (kg).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ca-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính cá giống cần thả",
+              "md": "Ao 200 m², thả ghép: trắm cỏ 1 con/m², mè trắng 1,5 con/m², rô phi 2,5 con/m².\n$N = S \\times d$\nTrắm cỏ: $200 \\times 1 = 200$ con; mè trắng: $200 \\times 1{,}5 = 300$ con; rô phi: $200 \\times 2{,}5 = 500$ con. Tổng: $200 + 300 + 500 = 1000$ con.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ca-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ca-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đúng hay sai?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Ao nuôi cá gia đình thường sâu 1,2–1,5 m."
+                    },
+                    {
+                      "id": "b",
+                      "text": "pH nước ao thích hợp cho cá là 6,5–8,5."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Đổ phân chuồng tươi xuống ao vừa cho cá thêm thức ăn vừa không gây hại."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Oxy hòa tan trong ao chỉ cần thấp hơn 3 mg/L là cá sống tốt."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": true,
+                      "c": false,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ao sâu 1,2–1,5 m và pH 6,5–8,5 là phù hợp; phân tươi gây bệnh và làm mất oxy, còn oxy hòa tan phải lớn hơn 3 mg/L.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ca-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Tính lượng thức ăn mỗi ngày",
+              "md": "Đàn 1000 con, bình quân $0{,}2$ kg/con, cho ăn $4\\%$ khối lượng đàn/ngày.\n$W = N \\times w = 1000 \\times 0{,}2 = 200$ kg.\n$m = p \\times W = 4\\% \\times 200 = 8$ kg/ngày.\nChia 2 lần (6-7 giờ và 16-17 giờ): mỗi lần $8 : 2 = 4$ kg.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ca-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Đổ phân chuồng tươi xuống ao",
+              "md": "Làm vậy để cá có thêm thức ăn là sai. Phân chưa ủ còn trứng giun sán, vi khuẩn gây bệnh; khi phân hủy còn lấy mất oxy hòa tan, cá nổi đầu và có thể chết hàng loạt. Chỉ dùng phân đã ủ kỹ, lượng vừa phải.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ca-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ca-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi đối tượng với đặc điểm phù hợp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Cá trắm cỏ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Ăn cỏ, rau — tầng giữa",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Cá mè trắng",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Ăn tảo, phù du — tầng giữa, trên",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Cá rô phi, cá chép",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Ăn tạp — tầng đáy",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Lượng thức ăn mỗi ngày",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "3–5% khối lượng đàn cá",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Thả ghép các loài ăn ở tầng khác nhau để dùng hết thức ăn, và cho ăn 3–5% khối lượng đàn mỗi ngày.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ca-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để số cá giống N đạt 900 con (mật độ 3 con/m²)",
+              "x": {
+                "symbol": "S",
+                "label": "Diện tích ao",
+                "unit": "m²"
+              },
+              "y": {
+                "symbol": "N",
+                "label": "Số cá giống",
+                "unit": "con"
+              },
+              "expr": "3*x",
+              "x_min": 50.0,
+              "x_max": 500.0,
+              "x_step": 10.0,
+              "x_start": 100.0,
+              "target_y": 900.0,
+              "tolerance": 2.0,
+              "praise": "Chuẩn! Ao 300 m² với mật độ 3 con/m² thả đúng 900 con rô phi.",
+              "audio": null
+            },
+            {
+              "id": "nuoi-ca-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nuoi-ca-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước chuẩn bị ao nuôi cá theo đúng thứ tự.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Tát cạn ao, phơi đáy 3–5 ngày",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Bón vôi 7–10 kg cho mỗi 100 m² để diệt mầm bệnh",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Lấy nước vào ao qua lưới lọc",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Thả cá giống",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Phải tát cạn và phơi đáy trước, bón vôi diệt mầm bệnh, rồi mới lấy nước qua lưới lọc và thả cá giống.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nuoi-ca-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Ao cá gia đình rộng và sâu khoảng bao nhiêu?",
+                  "answer": "Rộng 50–500 m², sâu 1,2–1,5 m.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao phải thả ghép nhiều loài cá trong một ao?",
+                  "answer": "Để dùng hết thức ăn ở các tầng nước khác nhau.",
+                  "image": null
+                },
+                {
+                  "prompt": "Mỗi ngày cho cá ăn bao nhiêu?",
+                  "answer": "3–5% khối lượng đàn, chia 2 lần.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "phong-benh",
+          "title": "Phòng bệnh",
+          "est_minutes": 15,
+          "summary": "Hiểu vì sao phải phòng bệnh, nguyên nhân gây bệnh và các biện pháp phòng bệnh cho vật nuôi.",
+          "key_ideas": [
+            "Phòng bệnh hơn chữa bệnh; bệnh làm chậm lớn, giảm năng suất, lây lan",
+            "Nguyên nhân trong và ngoài: di truyền, vi sinh vật, ký sinh trùng, môi trường, thức ăn, cơ học",
+            "Biện pháp: vệ sinh chuồng, cách li, thức ăn sạch, tiêm vắc-xin, tẩy giun, diệt ve mòng",
+            "Pha sát trùng m = C × V; ví dụ 20 lít nồng độ 0,5% cần 100 g",
+            "Lỗi pha thuốc đậm gấp đôi; bài tập 50 lít 0,3%, vắc-xin đàn vịt 400 con"
+          ],
+          "blocks": [
+            {
+              "id": "phong-benh-b1",
+              "kind": "text",
+              "md": "Vật nuôi bị bệnh sẽ chậm lớn, giảm năng suất, có thể chết và lây lan cả đàn. Phòng bệnh tốn ít hơn và hiệu quả hơn chữa bệnh: \"phòng bệnh hơn chữa bệnh\".",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "phong-benh-b2",
+              "kind": "image",
+              "image": {
+                "path": "images/phong-benh-b2.svg",
+                "mime": "image/svg+xml",
+                "sha256": "a8a30f69e3e7271ebcb2294538d5405c0edbc664ad90fc3d7fa8d489b40c140c",
+                "bytes": 5458
+              },
+              "alt": "Sơ đồ hai nhóm nguyên nhân gây bệnh cho vật nuôi: bên trong và bên ngoài",
+              "caption": "Nguyên nhân gây bệnh cho vật nuôi",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "phong-benh-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phong-benh-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Vì sao vật nuôi bị bệnh lại gây thiệt hại lớn cho người chăn nuôi?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Vì vật nuôi bị bệnh vẫn lớn nhanh như bình thường",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Vì vật nuôi chậm lớn, giảm năng suất và bệnh có thể lây lan cả đàn",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Vì chữa bệnh rẻ hơn nhiều so với phòng bệnh",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Vì bệnh chỉ ảnh hưởng một con, không lây sang con khác",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "B"
+                  },
+                  "hint": "Nhớ lại câu \"phòng bệnh hơn chữa bệnh\".",
+                  "explanation": "Bệnh làm vật nuôi chậm lớn, giảm năng suất, có thể chết và lây lan cả đàn. Vì vậy phòng bệnh hơn chữa bệnh.",
+                  "option_feedback": {
+                    "A": "Sai: vật nuôi bị bệnh sẽ chậm lớn chứ không lớn nhanh.",
+                    "C": "Sai: phòng bệnh mới là việc ít tốn kém và hiệu quả hơn.",
+                    "D": "Sai: bệnh có thể lây lan ra cả đàn."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "phong-benh-b3",
+              "kind": "text",
+              "md": "Chuồng trại khô sạch, thoáng, nuôi đúng mật độ; định kỳ quét dọn, phun thuốc sát trùng, rắc vôi bột. Con giống khỏe, rõ nguồn gốc; vật nuôi mới mua về phải nhốt riêng 2 đến 3 tuần.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "phong-benh-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phong-benh-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Pha 20 lít dung dịch sát trùng nồng độ $0{,}5\\%$ cần {{gap}} gam thuốc.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "100",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "10",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "200",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "0,1",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "$m = 0{,}5\\% \\times 20 = 0{,}1$ kg, đổi ra gam là 100 g.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "phong-benh-b4",
+              "kind": "text",
+              "md": "Cho ăn thức ăn sạch, không ôi mốc; nước uống sạch; rửa máng ăn hằng ngày. Tiêm vắc-xin đúng lịch, đúng liều; tẩy giun sán định kỳ và diệt ve, mòng.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "phong-benh-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Pha 20 lít dung dịch sát trùng nồng độ 0,5%",
+              "md": "$m = C \\times V$, với $C$ là nồng độ (dạng thập phân), $V$ là thể tích nước (lít), $m$ là khối lượng thuốc (kg).\n\n$m = 0{,}005 \\times 20 = 0{,}1$ kg, tức $0{,}1 \\times 1000 = 100$ g thuốc.",
+              "audio": null
+            },
+            {
+              "id": "phong-benh-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phong-benh-q3",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Chọn đúng/sai cho các nhận định sau về phòng bệnh cho vật nuôi.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Phòng bệnh tốn kém hơn chữa bệnh nên chỉ cần chữa khi vật nuôi bị ốm."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Vật nuôi mới mua về cần nhốt riêng (cách li) 2–3 tuần rồi mới thả chung."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Thức ăn ôi mốc có thể gây bệnh cho vật nuôi vì chứa độc tố nấm."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Khi có con ốm, có thể mổ thịt hoặc bán con bệnh để giảm thiệt hại."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý câu 'phòng bệnh hơn chữa bệnh' và các việc cần làm khi vật nuôi mới về hoặc bị ốm.",
+                  "explanation": "Theo bài: phòng bệnh ít tốn kém hơn chữa bệnh; vật nuôi mới về phải cách li 2–3 tuần; thức ăn ôi mốc có độc tố nấm; không mổ thịt hoặc bán con bệnh.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "phong-benh-b6",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Pha đậm gấp đôi cho chắc ăn",
+              "md": "Sai. Nồng độ quá cao không diệt khuẩn tốt hơn, mà còn gây độc cho vật nuôi và người, ăn mòn dụng cụ, hỏng nền chuồng và rất lãng phí. Phải pha đúng nồng độ ghi trên nhãn.",
+              "audio": null
+            },
+            {
+              "id": "phong-benh-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phong-benh-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi biện pháp phòng bệnh với tác dụng phù hợp.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Tiêm vắc-xin đúng lịch",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Phòng bệnh do virus, vi khuẩn",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Tẩy giun sán định kỳ",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Loại bỏ ký sinh trùng trong cơ thể",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Phun thuốc sát trùng, rắc vôi",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Làm sạch môi trường chuồng nuôi",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Cách li vật nuôi mới mua",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Tránh mang mầm bệnh vào đàn",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Mỗi biện pháp nhắm vào một nhóm nguyên nhân gây bệnh khác nhau.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "phong-benh-b7",
+              "kind": "interactive",
+              "prompt": "Kéo để pha đủ thuốc cho 20 lít dung dịch nồng độ 0,5%",
+              "x": {
+                "symbol": "V",
+                "label": "Thể tích nước",
+                "unit": "lít"
+              },
+              "y": {
+                "symbol": "m",
+                "label": "Khối lượng thuốc",
+                "unit": "g"
+              },
+              "expr": "5*x",
+              "x_min": 0.0,
+              "x_max": 40.0,
+              "x_step": 1.0,
+              "x_start": 8.0,
+              "target_y": 100.0,
+              "tolerance": 2.0,
+              "praise": "Chuẩn! 20 lít nước cần đúng 100 g thuốc sát trùng.",
+              "audio": null
+            },
+            {
+              "id": "phong-benh-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "phong-benh-q5",
+                  "type": "ORDER_STEPS",
+                  "stem": "Sắp xếp các bước xử lí khi phát hiện vật nuôi bị bệnh.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "s1",
+                      "text": "Phát hiện con vật nuôi có biểu hiện ốm",
+                      "side": null
+                    },
+                    {
+                      "id": "s2",
+                      "text": "Cách li ngay con ốm ra khỏi đàn",
+                      "side": null
+                    },
+                    {
+                      "id": "s3",
+                      "text": "Không mổ thịt và không bán con bệnh",
+                      "side": null
+                    },
+                    {
+                      "id": "s4",
+                      "text": "Báo cán bộ thú y khi trong đàn có dịch",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "order": [
+                      "s1",
+                      "s2",
+                      "s3",
+                      "s4"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Cách li sớm giúp hạn chế lây lan, và không được dùng thịt con bệnh. Khi có dịch phải báo cán bộ thú y.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "phong-benh-b8",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Vì sao phải phòng bệnh cho vật nuôi?",
+                  "answer": "Bệnh làm chậm lớn, giảm năng suất, có thể chết và lây lan cả đàn; phòng bệnh hơn chữa bệnh.",
+                  "image": null
+                },
+                {
+                  "prompt": "Kể các nhóm nguyên nhân bên ngoài gây bệnh.",
+                  "answer": "Vi sinh vật, ký sinh trùng, môi trường, thức ăn và yếu tố cơ học.",
+                  "image": null
+                },
+                {
+                  "prompt": "Pha 50 lít dung dịch sát trùng 0,3% cần bao nhiêu gam thuốc?",
+                  "answer": "$m = 0{,}003 \\times 50 = 0{,}15$ kg, tức 150 g.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương Chăn nuôi gồm ba bài: nuôi gà, nuôi cá và phòng bệnh, giúp em biết chọn giống, chuẩn bị nơi nuôi, cho ăn và phòng bệnh cho vật nuôi.",
+          "Bài nuôi gà phân biệt gà nội và gà nhập nội. Gà nội như gà ri, gà Mía, gà Đông Tảo, gà Hồ có thịt thơm, chịu kham khổ, lớn chậm và ít bệnh; gà nhập nội như Tam Hoàng, Lương Phượng, Sasso, ISA Brown lớn nhanh, năng suất trứng cao nhưng cần chăm sóc tốt hơn. Gà con giống tốt thì nhanh nhẹn, mắt sáng, lông khô, chân thẳng và nặng ba mươi lăm đến bốn mươi gam.",
+          "Chuồng gà phải cao, khô ráo, thoáng mát, tránh mưa tạt gió lùa; lớp độn trấu hoặc rơm dày năm đến mười xăng-ti-mét. Mật độ thay đổi theo tuổi và cách nuôi: gà con một đến bốn tuần là hai mươi đến hai mươi lăm con trên một mét vuông; gà thịt nuôi nhốt là tám đến mười con; gà thả vườn tính phần chuồng là năm đến sáu con. Nhiệt độ úm bằng ba mươi ba trừ đi tích của ba với hiệu số tuần tuổi trừ một, và ngừng sưởi khi nhiệt độ đạt hai mươi tư đến hai mươi sáu độ C. Cần tránh lỗi thả gà con ra vườn quá sớm vì gà chưa đủ lông, dễ chết rét, phân lỏng và mắc bệnh hô hấp; phải úm đủ ấm ba đến bốn tuần rồi mới thả dần.",
+          "Thức ăn cho gà con cần hỗn hợp giàu đạm hai mươi đến hai mươi hai phần trăm, mỗi con ăn hai mươi đến ba mươi gam mỗi ngày, chia bốn đến sáu lần. Gà lớn cần đạm mười sáu đến mười tám phần trăm, mỗi con ăn tám mươi đến một trăm hai mươi gam mỗi ngày, chia hai đến ba lần; cho uống nước sạch tự do một trăm năm mươi đến ba trăm mililít mỗi con mỗi ngày và thay nước hai lần mỗi ngày. Khối lượng thức ăn bằng mức ăn của mỗi con nhân số con nhân số ngày; ví dụ đàn một trăm lẻ tám con, mỗi con ăn chín mươi lăm gam mỗi ngày thì mười ngày cần một trăm lẻ hai phẩy sáu ki-lô-gam.",
+          "Bài nuôi cá bắt đầu từ chuẩn bị ao. Chọn nơi gần nhà, nguồn nước sạch, có ánh nắng và không có nước thải chảy vào; ao gia đình thường rộng năm mươi đến năm trăm mét vuông, sâu một phẩy hai đến một phẩy năm mét, bờ không rò rỉ. Trước khi thả phải tát cạn, phơi đáy ba đến năm ngày, bón vôi bảy đến mười ki-lô-gam cho một trăm mét vuông để diệt mầm bệnh, rồi lấy nước qua lưới lọc. Nước tốt cho cá có độ pH từ sáu phẩy năm đến tám phẩy năm, oxy hòa tan lớn hơn ba miligam trên lít, độ trong hai mươi đến ba mươi xăng-ti-mét với màu xanh lục nhạt và nhiệt độ hai mươi lăm đến ba mươi độ C.",
+          "Cần thả ghép đàn cá theo tầng nước; số cá thả bằng diện tích ao nhân mật độ thả. Ví dụ ao hai trăm mét vuông thả trắm cỏ một con trên mét vuông, mè trắng một phẩy năm con trên mét vuông, rô phi hai phẩy năm con trên mét vuông thì tổng cộng được một nghìn con. Cho cá ăn ba đến năm phần trăm khối lượng đàn mỗi ngày; khối lượng đàn bằng số con nhân khối lượng bình quân một con, còn lượng thức ăn mỗi ngày bằng tỉ lệ phần trăm nhân khối lượng đàn. Với đàn một nghìn con, bình quân không phẩy hai ki-lô-gam một con và cho ăn bốn phần trăm thì mỗi ngày cần tám ki-lô-gam, chia hai lần vào sáu đến bảy giờ và mười sáu đến mười bảy giờ. Cần tránh đổ phân tươi xuống ao vì còn trứng giun sán, vi khuẩn gây bệnh và làm mất oxy, cá có thể nổi đầu và chết hàng loạt; chỉ dùng phân đã ủ kỹ với lượng vừa phải.",
+          "Bài phòng bệnh nhấn mạnh phòng bệnh hơn chữa bệnh. Vật nuôi bị bệnh sẽ chậm lớn, giảm năng suất, có thể chết và lây lan cả đàn; nguyên nhân có thể do di truyền, vi sinh vật, ký sinh trùng, môi trường, thức ăn hoặc yếu tố cơ học. Biện pháp phòng là giữ chuồng khô sạch, thoáng, nuôi đúng mật độ, quét dọn, phun thuốc sát trùng, rắc vôi bột; chọn con giống khỏe, rõ nguồn gốc, nhốt riêng vật nuôi mới mua hai đến ba tuần; cho ăn thức ăn sạch, không ôi mốc, nước uống sạch, rửa máng ăn hằng ngày; tiêm vắc-xin đúng lịch, đúng liều, tẩy giun sán định kỳ và diệt ve, mòng. Khối lượng thuốc sát trùng bằng nồng độ dạng thập phân nhân thể tích nước; ví dụ pha hai mươi lít với nồng độ không phẩy năm phần trăm thì cần một trăm gam thuốc. Cần tránh pha thuốc đậm gấp đôi vì không diệt khuẩn tốt hơn mà còn gây độc cho vật nuôi và người, ăn mòn dụng cụ, hỏng nền chuồng và lãng phí; bài tập thường gặp là pha năm mươi lít với nồng độ không phẩy ba phần trăm và tính vắc-xin cho đàn vịt bốn trăm con.",
+          "Ba điều cần nhớ là: thứ nhất, nuôi gà phải chọn giống tốt, làm chuồng khô thoáng, nuôi đúng mật độ, úm gà đủ ấm và cho ăn đúng lượng. Thứ hai, nuôi cá phải chuẩn bị ao sạch, kiểm tra nước tốt, thả ghép hợp lý, cho ăn đúng tỉ lệ và không đổ phân tươi xuống ao. Thứ ba, phòng bệnh hơn chữa bệnh bằng vệ sinh chuồng trại, cách li, tiêm vắc-xin, tẩy giun và pha thuốc sát trùng đúng nồng độ."
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

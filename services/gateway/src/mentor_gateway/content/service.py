@@ -5,6 +5,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import hmac
+import logging
 from datetime import datetime, timedelta
 
 from mentor_schemas.course import CatalogEntry, Chapter, CoursePack, Lesson, TextBlock
@@ -18,6 +19,7 @@ from mentor_gateway.crypto import SecretBox
 from mentor_gateway.db import Database, User
 from mentor_gateway.settings import Clock, Settings
 
+log = logging.getLogger(__name__)
 
 ACTIVE_LEARNER_DAYS = 30  # a learner counts as active if their enrollment changed within this many days
 
@@ -34,6 +36,9 @@ class ContentService:
         self._packs: dict[str, CoursePack] = {}  # by pack_sha256 (immutable, safe to cache)
         self._docs: dict[str, Doc] = {}  # search documents by catalog entry (id + content hash)
         self._vocab_cache: tuple[str, dict[str, str]] = ("", {})  # did-you-mean words by catalog content
+        # Làng gà XP: `(user_id, course_id, pack, completed_before, completed_after, quiz, quiz_state) -> [xp awards]`, set by app.py;
+        # called after the progress transaction has committed (the awards write to other tables)
+        self.progress_hook = None
 
     # ------------------------------------------------------------ visibility
     @staticmethod
@@ -277,6 +282,7 @@ class ContentService:
                 raise ContentError("unknown_block", ",".join(bad))
             if quiz is not None and quiz["item_id"] not in items:
                 raise ContentError("unknown_quiz_item", quiz["item_id"])
+            before_done = set(row.completed_block_ids)
             if lesson_id is not None:
                 row.last_lesson_id = lesson_id
             if block_id is not None:
@@ -290,7 +296,16 @@ class ContentService:
                     "attempts": int(prev.get("attempts", 0)) + 1}}
             row.updated_at = self.clock()
             s.flush()
-            return self._view(row)
+            view = self._view(row)
+            after_done = set(row.completed_block_ids)
+            quiz_state = dict(row.quiz)
+        if self.progress_hook is not None:
+            try:
+                view["xp"] = self.progress_hook(user_id, course_id, pack, before_done, after_done, quiz, quiz_state)
+            except Exception:  # noqa: BLE001 - XP must never fail a progress save
+                log.exception("progress xp failed")
+                view["xp"] = []
+        return view
 
     def delete_enrollment(self, user_id: str, course_id: str) -> bool:
         with self.db.session() as s:

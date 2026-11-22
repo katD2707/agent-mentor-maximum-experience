@@ -1,5 +1,5 @@
 /** Fixture courses for the mock API (VITE_API_MOCK=1). Same shapes as the real content packs. */
-import coverDien from "../assets/hub/khoa-hoc.jpg";
+import coverDien from "../assets/courses/dien-truong.jpg";
 import coverTao from "../assets/courses/so-den-10.jpg";
 import coverBayes from "../assets/courses/bayes.jpg";
 import imgApple from "../assets/courses/apple.svg";

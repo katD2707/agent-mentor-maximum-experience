@@ -13,7 +13,6 @@ ENV VITE_API_BASE=$VITE_API_BASE VITE_API_MOCK=
 RUN npm install -g pnpm@9.15.9
 COPY apps/app/package.json apps/app/pnpm-lock.yaml apps/app/
 RUN pnpm -C apps/app install --frozen-lockfile
-COPY packages/mentor-mascot packages/mentor-mascot
 COPY apps/app apps/app
 RUN pnpm -C apps/app exec tsc -b && pnpm -C apps/app exec vite build
 

@@ -28,24 +28,53 @@ export const STEP_ICON: Record<StepKind, "text" | "image" | "edit" | "layers" | 
   recall: "refresh",
 };
 
+const TEX: Record<string, string> = { cdot: "·", times: "×", div: "÷", pm: "±", le: "≤", leq: "≤", ge: "≥", geq: "≥", neq: "≠", ne: "≠", approx: "≈", to: "→", rightarrow: "→", infty: "∞", pi: "π", alpha: "α", beta: "β", gamma: "γ", delta: "δ", theta: "θ", lambda: "λ", mu: "μ", sigma: "σ", omega: "ω", Delta: "Δ", Omega: "Ω", sum: "Σ", int: "∫", sqrt: "√", ldots: "…", dots: "…" };
+
+/** Markdown + LaTeX to one plain line: no list dashes, no `**`, no `\cdot`; for titles in a list (the full text renders in the preview). */
+export function plainLine(md: string): string {
+  return md
+    .replace(/\{\{gap\}\}/g, "…")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\$\$?([^$]+)\$\$?/g, (_m, tex: string) =>
+      tex
+        .replace(/\\(?:d|t)?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, "$1/$2")
+        .replace(/\\(?:text|mathrm|mathbf|operatorname)\s*\{([^{}]*)\}/g, "$1")
+        .replace(/\\([A-Za-z]+)/g, (_x, c: string) => TEX[c] ?? "")
+        .replace(/\\[,;:! ]/g, " ")
+        .replace(/[{}]/g, "")
+        .replace(/\^2/g, "²")
+        .replace(/\^3/g, "³"),
+    )
+    .replace(/\\+([A-Za-z]+)/g, (_x, c: string) => TEX[c] ?? "")
+    .replace(/^[\s>]*(?:[-*+]|\d+[.)])\s+/gm, "")
+    .replace(/^#+\s*/gm, "")
+    .replace(/[*_`~>#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+const cut = (s: string) => plainLine(s).slice(0, 60);
+
 /** One short line for a step in a list. */
 export function stepLabel(b: Block): string {
   switch (b.kind) {
     case "text":
     case "callout":
-      return b.md.replace(/[#*_`>$]/g, "").trim().slice(0, 60);
+      return cut(b.md);
     case "quiz":
-      return (b.items[0]?.stem ?? b.title ?? "").replace(/\{\{gap\}\}/g, "…").replace(/[$*_`]/g, "").slice(0, 60);
+      return cut(b.items[0]?.stem ?? b.title ?? "");
     case "interactive":
-      return b.prompt.slice(0, 60);
+      return cut(b.prompt);
     case "recall":
-      return b.items[0]?.prompt.slice(0, 60) ?? "";
+      return cut(b.items[0]?.prompt ?? "");
     case "image":
-      return b.alt.slice(0, 60);
+      return cut(b.alt);
     case "video":
-      return b.title ?? "";
+      return cut(b.title ?? "");
     case "audio":
-      return b.transcript.slice(0, 60);
+      return cut(b.transcript);
   }
 }
 

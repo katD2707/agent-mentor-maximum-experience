@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "giao-duc-kinh-te-va-phap-luat-10",
+  "title": "Giáo dục kinh tế và pháp luật 10",
+  "subject": "Giáo dục kinh tế và pháp luật",
+  "age_band": "g10_12",
+  "language": "vi",
+  "teacher_id": "ue8c1d562efd619fd",
+  "teacher_name": "Cô Thùy Anh",
+  "description_short": "Khóa học giới thiệu các khái niệm cơ bản về thị trường, cung cầu, cạnh tranh, giá cả, tiền, thuế và tín dụng qua ví dụ trà sữa gần gũi. Nội dung phù hợp cho học sinh lớp 10 bắt đầu học Giáo dục kinh tế và pháp luật.",
+  "outcomes": [
+    "Phân biệt được nhu cầu với cầu, cung với cầu và xác định giá, lượng cân bằng trong các ví dụ đơn giản.",
+    "Nhận biết được cạnh tranh lành mạnh, cạnh tranh không lành mạnh và vai trò của cạnh tranh với người tiêu dùng.",
+    "Giải thích được các chức năng của tiền và phân biệt phương tiện trao đổi với phương tiện thanh toán.",
+    "Phân loại được thuế trực thu, thuế gián thu và tính được số thuế phải nộp trong tình huống cơ bản.",
+    "Hiểu được tín dụng, lãi suất, cách tính lãi đơn và biết cân nhắc khi vay tiêu dùng."
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 84,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T08:11:16.229359Z",
+      "published_at": "2026-11-17T08:11:28.858737Z",
+      "pack_sha256": "06c05fe0aae3886aeefd73ffb15b21c8ff5e61c2931e0cc7fa77ba978dd781c4",
+      "pack_bytes": 152253,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

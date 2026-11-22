@@ -312,6 +312,14 @@ export interface Enrollment {
   progress: Progress | null;
   /** last result per quiz item (from GET /enrollments); the mock does not have it */
   quiz?: Record<string, { correct: boolean; seconds: number; attempts: number }>;
+  /** XP the progress call just paid (a PUT response only) */
+  xp?: ProgressXp[];
+}
+export interface ProgressXp {
+  chicken: string;
+  source: string;
+  amount: number;
+  level_up: boolean;
 }
 
 // ---- catalog query (hs-07): GET /catalog/query and GET /search/suggest (CONTRACTS.md section 11)
@@ -375,6 +383,8 @@ export interface WireEnrollment {
   completed_block_ids: string[];
   progress_pct: number;
   quiz?: Record<string, { correct: boolean; seconds: number; attempts: number }>;
+  /** XP this PUT paid (CONTRACTS-LANGGA section 2), only on a progress response */
+  xp?: ProgressXp[];
 }
 
 export function fromWire(w: WireEnrollment): Enrollment {
@@ -385,6 +395,7 @@ export function fromWire(w: WireEnrollment): Enrollment {
     enrolled_at: w.enrolled_at,
     update_available: w.update_available,
     quiz: w.quiz,
+    xp: w.xp,
     progress: started ? { lesson_id: w.last_lesson_id ?? "", block_id: w.last_block_id ?? "", completed_block_ids: w.completed_block_ids, updated_at: w.updated_at ?? undefined } : null,
   };
 }

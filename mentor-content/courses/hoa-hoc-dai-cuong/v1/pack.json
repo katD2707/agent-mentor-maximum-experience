@@ -1,0 +1,2208 @@
+{
+  "schema_version": 1,
+  "course_id": "hoa-hoc-dai-cuong",
+  "version": 1,
+  "min_app_version": "0.2.0",
+  "language": "vi",
+  "age_band": "uni",
+  "title": "Hóa học đại cương",
+  "chapters": [
+    {
+      "id": "ch-cau-tao-chat",
+      "title": "Cấu tạo chất",
+      "lessons": [
+        {
+          "id": "nguyen-tu",
+          "title": "Nguyên tử",
+          "est_minutes": 15,
+          "summary": "Trình bày cấu tạo nguyên tử, cấu hình electron và cách tính nguyên tử khối trung bình, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Hạt nhân gồm proton và neutron; vỏ gồm electron",
+            "Kí hiệu nguyên tử với A = Z + N",
+            "Cấu hình electron theo Klechkovsky, Pauli, Hund",
+            "Ngoại lệ Cr và Cu; electron hóa trị"
+          ],
+          "blocks": [
+            {
+              "id": "nguyen-tu-b1",
+              "kind": "text",
+              "md": "Nguyên tử gồm hạt nhân mang điện dương và vỏ electron mang điện âm. Hạt nhân chứa proton ($p$, điện tích $+1$, khối lượng $\\approx 1$ u) và neutron ($n$, không mang điện, khối lượng $\\approx 1$ u); vỏ chứa electron ($e$, điện tích $-1$, khối lượng $\\approx 0$).",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nguyen-tu-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Kí hiệu nguyên tử",
+              "md": "$^{A}_{Z}X$ với $Z$ = số proton = số electron (nguyên tử trung hòa), $A=Z+N$ là số khối ($N$ là số neutron).",
+              "audio": null
+            },
+            {
+              "id": "nguyen-tu-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nguyen-tu-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi nguyên tử Fe (Z = 26) tạo cation Fe^{2+}, electron bị mất trước hết từ phân lớp nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "4s",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "3d",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "3p",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "4p",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Xem ví dụ về Fe và Fe^{2+} trong bài.",
+                  "explanation": "Khi tạo cation, Fe mất electron từ phân lớp 4s trước, nên Fe^{2+} có cấu hình [Ar]3d^6.",
+                  "option_feedback": {
+                    "B": "Không đúng: với Fe, electron 4s bị mất trước khi tạo Fe^{2+}.",
+                    "C": "Không đúng: 3p là lớp bên trong, không bị mất trước trong Fe^{2+}.",
+                    "D": "Không đúng: 4p không chứa electron trong cấu hình Fe."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nguyen-tu-b3",
+              "kind": "text",
+              "md": "Nguyên tố có nhiều đồng vị thì nguyên tử khối trung bình là trung bình có trọng số theo $x_i$ (dạng thập phân): $\\overline{A}=\\sum_i x_i A_i$ với $\\sum_i x_i=1$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nguyen-tu-b4",
+              "kind": "interactive",
+              "prompt": "Kéo tỉ lệ đồng vị $^{35}$Cl để nguyên tử khối trung bình của Clo đạt 35,45 u.",
+              "x": {
+                "symbol": "x",
+                "label": "Tỉ lệ $^{35}$Cl",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "\\overline{A}",
+                "label": "Nguyên tử khối trung bình",
+                "unit": "u"
+              },
+              "expr": "x*34.96885 + (1-x)*36.96590",
+              "x_min": 0.0,
+              "x_max": 1.0,
+              "x_step": 0.01,
+              "x_start": 0.3,
+              "target_y": 35.45,
+              "tolerance": 0.02,
+              "praise": "Đúng: hỗn hợp khoảng 76% $^{35}$Cl và 24% $^{37}$Cl cho 35,45 u.",
+              "audio": null
+            },
+            {
+              "id": "nguyen-tu-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nguyen-tu-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền số thích hợp: Cấu hình electron của Cr (Z = 26) là $[Ar]3d^{{gap}}4s^{{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "5",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "1",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "4",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": "Chú ý ngoại lệ Cr và Cu.",
+                  "explanation": "Cr là ngoại lệ: cấu hình 3d^5 4s^1 bền hơn 3d^4 4s^2.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nguyen-tu-b5",
+              "kind": "text",
+              "md": "Electron chiếm orbital năng lượng thấp trước. Thứ tự năng lượng theo Klechkovsky: $1s<2s<2p<3s<3p<4s<3d<4p<5s<4d<5p<6s<4f<5d<6p<7s$. Ngoại lệ: Cr ($Z=26$) là $3d^5 4s^1$, Cu ($Z=29$) là $3d^{10}4s^1$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nguyen-tu-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nguyen-tu-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Tính nguyên tử khối trung bình của Clo (u), làm tròn đến 2 chữ số thập phân, với 75,77% là ^{35}Cl (34,96885 u) và 24,23% là ^{37}Cl (36,96590 u).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "35,45",
+                      "35.45"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Đổi phần trăm sang dạng thập phân trước khi tính.",
+                  "explanation": "Áp dụng công thức trung bình có trọng số: 0,7577×34,96885 + 0,2423×36,96590 ≈ 35,45 u.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nguyen-tu-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nguyên lí Pauli và quy tắc Hund",
+              "md": "Mỗi orbital chứa tối đa 2 electron có spin ngược nhau (Pauli). Trong cùng phân lớp, electron phân bố sao cho số electron độc thân là cực đại (Hund).",
+              "audio": null
+            },
+            {
+              "id": "nguyen-tu-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Electron hóa trị",
+              "md": "Electron hóa trị là electron ở lớp ngoài cùng; với kim loại chuyển tiếp thì tính cả electron ở phân lớp $d$ chưa bão hòa.",
+              "audio": null
+            },
+            {
+              "id": "nguyen-tu-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nguyen-tu-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với nội dung tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Nguyên lí Pauli",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "Mỗi orbital tối đa 2 electron, spin ngược nhau",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Quy tắc Hund",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "Số electron độc thân trong phân lớp là cực đại",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Quy tắc Klechkovsky",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "Thứ tự năng lượng tăng dần theo n + l",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "Electron hóa trị",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "Electron lớp ngoài cùng (và d chưa bão hòa ở kim loại chuyển tiếp)",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": "Đọc lại mục Cấu hình electron.",
+                  "explanation": "Các quy tắc Pauli, Hund, Klechkovsky mô tả cách điền electron; electron hóa trị liên quan lớp ngoài cùng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nguyen-tu-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Cấu hình của Fe và $Fe^{2+}$",
+              "md": "Fe ($Z=26$): $[Ar]3d^6 4s^2$. Khi tạo cation, electron bị mất trước hết từ phân lớp $4s$, nên $Fe^{2+}$: $[Ar]3d^6$.",
+              "audio": null
+            },
+            {
+              "id": "nguyen-tu-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nguyen-tu-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Chọn đúng hoặc sai cho mỗi phát biểu.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong nguyên tử trung hòa, số proton bằng số electron."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Theo quy tắc Hund, electron trong cùng phân lớp ưu tiên ghép đôi trước."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Cấu hình electron của Cu (Z = 29) là [Ar]3d^{10}4s^1."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Với Fe, khi tạo Fe^{2+}, electron bị mất trước hết từ phân lớp 3d."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý quy tắc Hund, ngoại lệ Cu và thứ tự mất electron khi tạo cation.",
+                  "explanation": "Pauli và Hund giải thích cách xếp electron; Cr, Cu là ngoại lệ, còn Fe^{2+} mất electron 4s trước.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "nguyen-tu-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Nguyên tử gồm những phần nào, các hạt có điện tích và khối lượng ra sao?",
+                  "answer": "Hạt nhân chứa proton ($+1$, $\\approx 1$ u) và neutron (không điện, $\\approx 1$ u); vỏ chứa electron ($-1$, khối lượng $\\approx 0$).",
+                  "image": null
+                },
+                {
+                  "prompt": "Công thức tính nguyên tử khối trung bình từ các đồng vị là gì?",
+                  "answer": "$\\overline{A}=\\sum_i x_i A_i$ với $\\sum_i x_i=1$, $x_i$ là độ phụ thuộc dạng thập phân.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao Cr có cấu hình $3d^5 4s^1$ thay vì $3d^4 4s^2$?",
+                  "answer": "Cấu hình bán bão hòa $3d^5 4s^1$ bền hơn (năng lượng thấp hơn) so với $3d^4 4s^2$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lien-ket",
+          "title": "Liên kết",
+          "est_minutes": 15,
+          "summary": "Phân loại liên kết hóa học, viết công thức Lewis, xác định lai hóa và hình học phân tử theo VSEPR, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Liên kết ion, cộng hóa trị, kim loại và lực liên phân tử",
+            "Công thức Lewis và mô hình VSEPR",
+            "Lai hóa sp, sp2, sp3",
+            "Momen lưỡng cực là tổng vectơ các momen liên kết"
+          ],
+          "blocks": [
+            {
+              "id": "lien-ket-b1",
+              "kind": "text",
+              "md": "Liên kết hóa học giải thích vì sao các nguyên tử kết hợp với nhau. Có bốn nhóm chính: liên kết ion, liên kết cộng hóa trị, liên kết kim loại và lực liên phân tử. Phân loại nhanh dựa vào hiệu độ âm điện $\\Delta\\chi$ giữa hai nguyên tử.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lien-ket-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Bốn loại liên kết và lực liên phân tử",
+              "md": "- **Liên kết ion**: lực hút tĩnh điện giữa các ion trái dấu, hình thành khi $\\Delta\\chi > 1,7$.\n- **Liên kết cộng hóa trị**: dùng chung cặp electron; phân cực khi $0 < \\Delta\\chi < 1,7$, không phân cực khi $\\Delta\\chi = 0$.\n- **Liên kết kim loại**: các cation trong biển electron tự do.\n- **Liên kết hydrogen và lực van der Waals**: lực liên phân tử, quyết định nhiệt độ sôi, độ tan.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Theo mô hình VSEPR, nguyên tử N trong phân tử $NH_3$ có kiểu lai hóa và hình học phân tử tương ứng là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "$sp^3$, chóp tam giác",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "$sp^2$, tam giác phẳng",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "$sp^3$, tứ diện",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "$sp$, tuyến tính",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "N có 3 liên kết và 1 cặp electron tự do, tức 4 vùng electron nên lai hóa $sp^3$; cặp tự do đẩy mạnh làm phân tử có dạng chóp tam giác với góc $\\approx 107^\\circ$.",
+                  "option_feedback": {
+                    "B": "Chỉ đếm 3 liên kết $N-H$ mà bỏ qua cặp electron tự do trên N.",
+                    "C": "Đó là cách sắp xếp của 4 vùng electron, còn hình học phân tử chỉ tính vị trí các nguyên tử.",
+                    "D": "Lai hóa $sp$ ứng với 2 vùng electron, trong khi N ở đây có 4 vùng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-b3",
+              "kind": "text",
+              "md": "Công thức Lewis cho biết cách dùng chung electron. Mô hình VSEPR đếm các vùng electron quanh nguyên tử trung tâm để suy ra hình học. $AX_2$ tuyến tính ($180^\\circ$), $AX_3$ tam giác phẳng ($120^\\circ$), $AX_4$ tứ diện ($109,5^\\circ$), $AX_3E$ chóp tam giác (khoảng $107^\\circ$), $AX_2E_2$ góc (khoảng $104,5^\\circ$), với $E$ là cặp electron tự do.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "lien-ket-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Lai hóa và momen lưỡng cực",
+              "md": "- **Lai hóa $sp$**: 2 vùng electron, hình học tuyến tính.\n- **Lai hóa $sp^2$**: 3 vùng electron, hình học phẳng.\n- **Lai hóa $sp^3$**: 4 vùng electron, hình học tứ diện.\n- **Momen lưỡng cực phân tử** là tổng vectơ các momen liên kết; phân tử chỉ phân cực khi tổng này khác 0.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Trong phân tử $CO_2$: nguyên tử C có lai hóa {{gap}} và phân tử có dạng {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$sp$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "thẳng hàng",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$sp^2$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "tứ diện",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "C chỉ có 2 vùng electron nên lai hóa $sp$; hai vùng này sắp xếp thẳng hàng với góc $180^\\circ$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: $CO_2$ và $NH_3$",
+              "md": "$CO_2$: $O=C=O$. C có 2 vùng electron nên lai hóa $sp$, phân tử thẳng hàng, góc $180^\\circ$. Hai liên kết $C=O$ phân cực nhưng ngược chiều và bằng nhau nên tổng momen bằng 0: $CO_2$ không phân cực.\n\n$NH_3$: N có 3 liên kết $N-H$ và 1 cặp electron tự do, tức 4 vùng electron, lai hóa $sp^3$, hình học chóp tam giác, góc $HNH \\approx 107^\\circ$ (nhỏ hơn $109,5^\\circ$ do cặp tự do đẩy mạnh hơn).",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-b6",
+              "kind": "image",
+              "image": {
+                "path": "images/lien-ket-b6.svg",
+                "mime": "image/svg+xml",
+                "sha256": "6b45ea5c42d50cd576b9e039c1b4502dba58ee73f40133a98fb905efd008aacb",
+                "bytes": 5411
+              },
+              "alt": "Năm hình học phân tử theo VSEPR",
+              "caption": "Đếm vùng electron quanh nguyên tử trung tâm để suy ra hình học.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "lien-ket-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Đồng có hai đồng vị bền: $^{63}Cu$ (69,15 %; 62,9296 u) và $^{65}Cu$ (30,85 %; 64,9278 u). Tính nguyên tử khối trung bình của Cu theo u (làm tròn đến hàng phần trăm).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "63,55",
+                      "63.55"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Dùng $\\overline{A} = \\sum x_i A_i$ với $x_i$ viết dạng thập phân.",
+                  "explanation": "Nguyên tử khối trung bình là tổng có trọng số theo độ phụ thuộc: $0,6915 \\times 62,9296 + 0,3085 \\times 64,9278 \\approx 63,55$ u.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Lỗi thường gặp: phân tử có liên kết phân cực chưa chắc phân cực",
+              "md": "Không thể kết luận phân tử phân cực chỉ vì từng liên kết phân cực. Momen lưỡng cực là đại lượng vectơ: $CO_2$, $CCl_4$, $BF_3$ có liên kết phân cực nhưng cấu trúc đối xứng làm tổng momen triệt tiêu, nên phân tử không phân cực.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-b8",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: so sánh nhiệt độ sôi",
+              "md": "$H_2O$ ($100^\\circ C$), $H_2S$ ($-60^\\circ C$), $CH_4$ ($-161^\\circ C$). Khối lượng mol tăng dần $CH_4 < H_2O < H_2S$ nhưng nhiệt độ sôi lại $CH_4 < H_2S < H_2O$. Nguyên nhân: $H_2O$ tạo được mạng liên kết hydrogen liên phân tử nên nhiệt độ sôi cao bất thường; $H_2S$ chỉ có lực lưỡng cực – cảm ứng yếu hơn; $CH_4$ chỉ có lực van der Waals.",
+              "audio": null
+            },
+            {
+              "id": "lien-ket-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "lien-ket-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi kiểu phân tử theo VSEPR với hình học tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$AX_2$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "tuyến tính, $180^\\circ$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$AX_3$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "tam giác phẳng, $120^\\circ$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$AX_3E$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "chóp tam giác, $\\approx 107^\\circ$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$AX_2E_2$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "dạng góc, $\\approx 104,5^\\circ$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Số vùng electron quanh nguyên tử trung tâm quyết định hình học; cặp tự do $E$ làm góc liên kết nhỏ hơn so với mẫu tương ứng.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "lien-ket-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Dùng hiệu độ âm điện $\\Delta\\chi$ để phân loại liên kết trong $NaCl$, $HCl$, $Cl_2$.",
+                  "answer": "$NaCl$: $\\Delta\\chi = 2,23 > 1,7$ nên là liên kết ion; $HCl$: $0,96$ nên là cộng hóa trị phân cực; $Cl_2$: $0$ nên là cộng hóa trị không phân cực.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao $CO_2$ có liên kết phân cực nhưng phân tử không phân cực?",
+                  "answer": "Vì momen lưỡng cực là tổng vectơ; hai liên kết $C=O$ ngược chiều và bằng nhau nên triệt tiêu.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao $H_2O$ có nhiệt độ sôi cao hơn $H_2S$ và $CH_4$?",
+                  "answer": "$H_2O$ tạo được liên kết hydrogen liên phân tử; $H_2S$ chỉ có lực lưỡng cực – cảm ứng yếu hơn, còn $CH_4$ chỉ có lực van der Waals.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "trang-thai-chat",
+          "title": "Trạng thái chất",
+          "est_minutes": 15,
+          "summary": "Khảo sát chất khí, lỏng, rắn; phương trình khí lí tưởng, áp suất riêng phần và cấu trúc tinh thể, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "PV = nRT với T tính bằng Kelvin",
+            "Áp suất riêng phần p_i = x_i P",
+            "Khí thực và phương trình van der Waals",
+            "Tinh thể ion, phân tử, nguyên tử, kim loại",
+            "Nước đá có mạng hydrogen rỗng nên đá nổi"
+          ],
+          "blocks": [
+            {
+              "id": "trang-thai-chat-b1",
+              "kind": "text",
+              "md": "Ba trạng thái thường gặp của chất là khí, lỏng, rắn. Ở mức đại cương, khí được mô tả gần đúng bằng mô hình khí lí tưởng; lỏng và rắn được phân biệt bởi cách sắp xếp và chuyển động của phân tử. Với chất khí, nhiệt độ trong mọi công thức phải dùng thang Kelvin: $T(K) = t(°C) + 273$.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "trang-thai-chat-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Khí lí tưởng",
+              "md": "Khí lí tưởng là mô hình trong đó các phân tử không tương tác (trừ va chạm) và tuân theo $PV = nRT$. Dùng $R = 0,082$ L·atm·mol$^{-1}$K$^{-1}$ khi $P$ tính bằng atm, $V$ bằng lít; hoặc $R = 8,314$ J·mol$^{-1}$K$^{-1}$. $T$ luôn là nhiệt độ tuyệt đối (K).",
+              "audio": null
+            },
+            {
+              "id": "trang-thai-chat-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trang-thai-chat-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Khi dùng phương trình $PV=nRT$ với $R=0,082\\ \\text{L·atm·mol}^{-1}\\text{K}^{-1}$, nhiệt độ $27^\\circ C$ phải được thay bằng giá trị nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "300 K",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "27 K",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "246 K",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "273 K",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "$R=0,082$ ứng với Kelvin.",
+                  "explanation": "Nhiệt độ trong $PV=nRT$ phải là nhiệt độ tuyệt đối: $T=27+273=300\\ K$.",
+                  "option_feedback": {
+                    "B": "Đây là giá trị $^\\circ C$ chưa đổi sang nhiệt độ tuyệt đối.",
+                    "C": "Đã trừ 273 thay vì cộng 273 khi đổi sang Kelvin.",
+                    "D": "Đã bỏ qua giá trị $27^\\circ C$ và chỉ dùng điểm đóng băng của nước."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "trang-thai-chat-b3",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Ví dụ: thể tích khí",
+              "md": "Tính thể tích của 0,25 mol khí ở 27 °C và 2 atm. Đổi $T = 27 + 273 = 300$ K, rồi $V = nRT/P = (0,25 × 0,082 × 300)/2 = 3,075$ L. Nếu thay 27 vào công thức, kết quả sai vì $R = 0,082$ ứng với Kelvin.",
+              "audio": null
+            },
+            {
+              "id": "trang-thai-chat-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Áp suất riêng phần",
+              "md": "Với hỗn hợp khí không tương tác, áp suất toàn phần là tổng các áp suất riêng phần: $P = p_1 + p_2 + ...$. Áp suất riêng phần của khí $i$ là $p_i = x_i P$, trong đó $x_i$ là phần mol của khí đó. Ví dụ: $x_{H_2}=0,80$, $P=3,05$ atm thì $p_{H_2}=0,80×3,05=2,44$ atm.",
+              "audio": null
+            },
+            {
+              "id": "trang-thai-chat-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trang-thai-chat-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Phương trình van der Waals: $\\left(P + \\dfrac{an^2}{V^2}\\right)(V - {{gap}}) = nRT$",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "nb",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "b",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "nRT",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "an^2/V^2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": "Số hạng liên quan đến tham số $b$ và số mol $n$.",
+                  "explanation": "Hạng $nb$ hiệu chỉnh thể tích bị chiếm bởi các phân tử khí thực.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "trang-thai-chat-b5",
+              "kind": "image",
+              "image": {
+                "path": "images/trang-thai-chat-b5.svg",
+                "mime": "image/svg+xml",
+                "sha256": "ed812c500a286782fd3129876ea35263afa0e9fab34a905b1c1490d30a4d4ba5",
+                "bytes": 17899
+              },
+              "alt": "Đường đẳng nhiệt của 1 mol khí lí tưởng ở 300 K: P tỉ lệ nghịch với V.",
+              "caption": "Đường đẳng nhiệt khí lí tưởng với n = 1 mol, T = 300 K.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "trang-thai-chat-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trang-thai-chat-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Bình 2 L chứa 0,4 mol $N_2$ và 0,6 mol $H_2$ ở $27^\\circ C$. Tính áp suất riêng phần của $N_2$ theo atm (làm tròn đến hai chữ số thập phân).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "4.92",
+                      "4,92"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Tính áp suất toàn phần rồi nhân với phần mol $N_2$.",
+                  "explanation": "$P=\\frac{nRT}{V}=\\frac{1,0\\times0,082\\times300}{2}=12,3$ atm; $p_{N_2}=0,4\\times12,3\\approx4,92$ atm.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "trang-thai-chat-b6",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Khí thực",
+              "md": "Khí thực không tuân theo $PV = nRT$ chính xác, nhất là ở áp suất cao và nhiệt độ thấp, vì phân tử có thể tích riêng và tương tác với nhau. Khi đó dùng phương trình van der Waals: $(P + a n^2/V^2)(V - n b) = nRT$, với $a$, $b$ là hằng số đặc trưng cho mỗi khí.",
+              "audio": null
+            },
+            {
+              "id": "trang-thai-chat-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Chất lỏng và tinh thể",
+              "md": "Chất lỏng: các phân tử gần nhau nhưng chuyển động trượt; chất lỏng sôi khi áp suất hơi bằng áp suất ngoài. Chất rắn tinh thể có mạng trật tự, gồm tinh thể ion (NaCl), phân tử (nước đá, I₂), nguyên tử cộng hóa trị (kim cương, SiO₂) và kim loại. Nước đá có mạng hydrogen rỗng nên khối lượng riêng $0,917$ g/mL, nhỏ hơn $1,00$ g/mL của nước lỏng, do đó đá nổi.",
+              "audio": null
+            },
+            {
+              "id": "trang-thai-chat-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trang-thai-chat-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi chất với loại tinh thể tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "NaCl",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "tinh thể ion",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Nước đá",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "tinh thể phân tử",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "Kim cương",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "tinh thể nguyên tử cộng hóa trị",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3"
+                    }
+                  },
+                  "hint": "Dựa vào loại hạt cấu thành mạng tinh thể.",
+                  "explanation": "NaCl gồm ion trái dấu; nước đá là tinh thể phân tử; kim cương có mạng nguyên tử cộng hóa trị.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "trang-thai-chat-b8",
+              "kind": "interactive",
+              "prompt": "Kéo phần mol H₂ đến khi áp suất riêng phần bằng 2,44 atm (P = 3,05 atm).",
+              "x": {
+                "symbol": "x_H2",
+                "label": "Phần mol H2",
+                "unit": "mol/mol"
+              },
+              "y": {
+                "symbol": "p_H2",
+                "label": "Áp suất riêng phần H2",
+                "unit": "atm"
+              },
+              "expr": "3.05*x",
+              "x_min": 0.0,
+              "x_max": 1.0,
+              "x_step": 0.01,
+              "x_start": 0.3,
+              "target_y": 2.44,
+              "tolerance": 0.02,
+              "praise": "Đúng: x = 0,80 thì p = 2,44 atm.",
+              "audio": null
+            },
+            {
+              "id": "trang-thai-chat-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "trang-thai-chat-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu sau về trạng thái chất.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Ở áp suất cao và nhiệt độ thấp, mô hình khí lí tưởng vẫn mô tả tốt khí thực."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Trong hỗn hợp khí không tương tác, áp suất riêng phần được tính bằng $p_i=x_iP$."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Nước đá có khối lượng riêng nhỏ hơn nước lỏng do mạng hydrogen rỗng."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Có thể thay nhiệt độ $27^\\circ C$ trực tiếp vào $PV=nRT$ khi dùng $R=0,082$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": "Chú ý đơn vị nhiệt độ và phạm vi đúng của mô hình khí lí tưởng.",
+                  "explanation": "Khí thực ở áp suất cao, nhiệt độ thấp cần phương trình van der Waals; $p_i=x_iP$; mạng đá rỗng nên đá nhẹ hơn nước; nhiệt độ trong công thức phải dùng Kelvin.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 1
+                }
+              ]
+            },
+            {
+              "id": "trang-thai-chat-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Trong $PV = nRT$, nếu cho $27 °C$ thì phải dùng $T$ bằng bao nhiêu?",
+                  "answer": "300 K, vì nhiệt độ phải đổi sang Kelvin.",
+                  "image": null
+                },
+                {
+                  "prompt": "Áp suất riêng phần của khí $i$ trong hỗn hợp được tính thế nào?",
+                  "answer": "$p_i = x_i P$, với $x_i$ là phần mol và $P$ là áp suất toàn phần.",
+                  "image": null
+                },
+                {
+                  "prompt": "Vì sao nước đá nổi trên nước lỏng?",
+                  "answer": "Mạng hydrogen của nước đá rỗng, khối lượng riêng 0,917 g/mL nhỏ hơn 1,00 g/mL của nước lỏng.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương Cấu tạo chất ôn lại cách nguyên tử tạo liên kết và các trạng thái của chất. Ta đi từ cấu tạo nguyên tử, sang liên kết hóa học, rồi đến trạng thái khí, lỏng, rắn.",
+          "Nguyên tử gồm hạt nhân mang điện dương và vỏ electron mang điện âm. Hạt nhân chứa proton điện tích dương và neutron không mang điện, còn vỏ chứa electron điện tích âm. Kí hiệu nguyên tử cho biết Z là số proton bằng số electron, và A bằng Z cộng N, với N là số neutron. Nếu có nhiều đồng vị, nguyên tử khối trung bình là trung bình có trọng số theo tỉ lệ từng đồng vị.",
+          "Electron chiếm orbital năng lượng thấp trước theo thứ tự Klechkovsky, từ một s, hai s, hai p, ba s, ba p, bốn s, rồi ba d và tiếp tục. Mỗi orbital tối đa hai electron có spin ngược nhau theo Pauli. Trong cùng phân lớp, electron phân bố để số electron độc thân cực đại theo Hund. Có hai ngoại lệ cần nhớ là crom với Z bằng 26 có cấu hình ba d năm bốn s một, và đồng với Z bằng 29 có ba d mười bốn s một.",
+          "Electron hóa trị là electron ở lớp ngoài cùng; với kim loại chuyển tiếp thì tính cả electron ở phân lớp d chưa bão hòa. Ví dụ sắt có Z bằng 26, cấu hình là argon ba d sáu bốn s hai. Khi tạo cation, electron mất trước hết từ phân lớp bốn s, nên ion sắt hai có cấu hình argon ba d sáu.",
+          "Liên kết hóa học có bốn nhóm chính: ion, cộng hóa trị, kim loại và lực liên phân tử. Có thể phân loại nhanh theo hiệu độ âm điện: lớn hơn 1,7 là liên kết ion; từ 0 đến 1,7 là cộng hóa trị, trong đó bằng 0 là không phân cực; liên kết kim loại là các cation trong biển electron tự do. Liên kết hydrogen và lực van der Waals là lực liên phân tử, quyết định nhiệt độ sôi và độ tan.",
+          "Công thức Lewis cho biết cách dùng chung electron, còn mô hình VSEPR đếm các vùng electron quanh nguyên tử trung tâm để suy ra hình học. Hai vùng electron cho hình học tuyến tính với góc 180 độ; ba vùng cho tam giác phẳng 120 độ; bốn vùng cho tứ diện 109,5 độ; cặp electron tự do làm góc hẹp lại, như NH ba có góc khoảng 107 độ. Lai hóa sp có hai vùng electron và tuyến tính; sp hai có ba vùng và phẳng; sp ba có bốn vùng và tứ diện.",
+          "Mô men lưỡng cực phân tử là tổng vectơ các mô men liên kết, nên phân tử chỉ phân cực khi tổng này khác không. CO hai có hai liên kết phân cực nhưng ngược chiều và bằng nhau nên tổng mô men bằng không, phân tử không phân cực. Tương tự, CCl bốn và BF ba có liên kết phân cực nhưng cấu trúc đối xứng làm tổng triệt tiêu. Về nhiệt độ sôi, CH bốn nhỏ hơn H hai S nhỏ hơn H hai O, vì nước tạo được mạng liên kết hydrogen liên phân tử, còn H hai S chỉ có lực lưỡng cực cảm ứng yếu hơn và CH bốn chỉ có lực van der Waals.",
+          "Ba trạng thái thường gặp là khí, lỏng, rắn; với chất khí, nhiệt độ trong mọi công thức phải dùng Kelvin, nhiệt độ Kelvin bằng nhiệt độ Celsius cộng 273. Khí lí tưởng là mô hình phân tử không tương tác trừ va chạm và tuân theo áp suất nhân thể tích bằng số mol nhân hằng số khí nhân nhiệt độ tuyệt đối; ví dụ 0,25 mol ở 27 độ C và 2 atm có nhiệt độ 300 K, thể tích bằng 0,25 nhân 0,082 nhân 300 chia 2, được 3,075 lít. Với hỗn hợp khí không tương tác, áp suất toàn phần là tổng các áp suất riêng phần, và áp suất riêng phần của khí i bằng phần mol của nó nhân áp suất toàn phần; ví dụ phần mol hydro 0,80 với áp suất 3,05 atm cho 2,44 atm. Khí thực lệch khỏi khí lí tưởng ở áp suất cao và nhiệt độ thấp vì phân tử có thể tích riêng và tương tác; khi đó dùng phương trình van der Waals với hằng số a và b riêng cho mỗi khí.",
+          "Chất lỏng có phân tử gần nhau nhưng chuyển động trượt, và sôi khi áp suất hơi bằng áp suất ngoài. Chất rắn tinh thể có mạng trật tự, gồm tinh thể ion như natri clorua, phân tử như nước đá và I hai, nguyên tử cộng hóa trị như kim cương và SiO hai, và kim loại. Nước đá có mạng hydrogen rỗng nên khối lượng riêng 0,917 gam trên mililít, nhỏ hơn 1,00 gam trên mililít của nước lỏ"
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    },
+    {
+      "id": "ch-phan-ung",
+      "title": "Phản ứng",
+      "lessons": [
+        {
+          "id": "nhiet-hoa-hoc",
+          "title": "Nhiệt hóa học",
+          "est_minutes": 15,
+          "summary": "Trình bày khái niệm nhiệt phản ứng, định luật Hess và cách tính ΔH từ nhiệt tạo thành, nhiệt đốt cháy, năng lượng liên kết, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Hàm trạng thái U, H, S, G",
+            "Qp = ΔH và Qv = ΔU",
+            "Tỏa nhiệt khi ΔH < 0; thu nhiệt khi ΔH > 0",
+            "Định luật Hess và các công thức tính ΔH"
+          ],
+          "blocks": [
+            {
+              "id": "nhiet-hoa-hoc-b1",
+              "kind": "text",
+              "md": "Hàm trạng thái $U, H, S, G$ chỉ phụ thuộc trạng thái đầu và trạng thái cuối, không phụ thuộc đường đi.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nhiệt phản ứng",
+              "md": "Ở áp suất không đổi: $Q_p = \\Delta H$; ở thể tích không đổi: $Q_v = \\Delta U$. $\\Delta H < 0$: phản ứng tỏa nhiệt; $\\Delta H > 0$: phản ứng thu nhiệt.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-hoa-hoc-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho nhiệt tạo thành chuẩn (kJ/mol): $CaCO_3(r) = -1206,9$; $CaO(r) = -635,1$; $CO_2(k) = -393,5$. Tính $\\Delta H^\\circ$ của phản ứng $CaCO_3(r) \\to CaO(r) + CO_2(k)$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "+178,3 kJ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "-178,3 kJ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "-1028,6 kJ",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "+2235,5 kJ",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "$\\Delta H^\\circ = [(-635,1) + (-393,5)] - (-1206,9) = +178,3$ kJ, tức phản ứng thu nhiệt (nung vôi).",
+                  "option_feedback": {
+                    "B": "Đây là kết quả của việc lấy chất đầu trừ sản phẩm, ngược với quy ước 'sản phẩm − chất đầu'.",
+                    "C": "Chỉ cộng nhiệt tạo thành của các sản phẩm mà quên trừ nhiệt tạo thành của $CaCO_3$.",
+                    "D": "Đã cộng tất cả các giá trị nhiệt tạo thành thay vì lấy tổng sản phẩm trừ tổng chất đầu."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhiet-hoa-hoc-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Định luật Hess",
+              "md": "$\\Delta H$ của phản ứng chỉ phụ thuộc trạng thái đầu và trạng thái cuối, không phụ thuộc đường đi.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nhiệt tạo thành chuẩn và nhiệt đốt cháy chuẩn",
+              "md": "Nhiệt tạo thành chuẩn $\\Delta H_f^\\circ$ của đơn chất bền bằng $0$; $\\Delta H^\\circ_{pu} = \\sum \\Delta H_f^\\circ(\\text{sản phẩm}) - \\sum \\Delta H_f^\\circ(\\text{chất đầu})$. Với nhiệt đốt cháy chuẩn $\\Delta H_c^\\circ$: $\\Delta H^\\circ_{pu} = \\sum \\Delta H_c^\\circ(\\text{chất đầu}) - \\sum \\Delta H_c^\\circ(\\text{sản phẩm})$.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-hoa-hoc-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Điền kí hiệu thích hợp vào chỗ trống: ở thể tích không đổi $Q_v = {{gap}}$; ở áp suất không đổi $Q_p = {{gap}}$.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "\\Delta U",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "\\Delta H",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "\\Delta S",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "\\Delta G",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Ở thể tích không đổi nhiệt trao đổi bằng biến thiên nội năng $\\Delta U$; ở áp suất không đổi bằng biến thiên enthalpy $\\Delta H$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nhiet-hoa-hoc-b5",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Đốt cháy methane",
+              "md": "Tính $\\Delta H^\\circ$ của $CH_4(k) + 2O_2(k) \\to CO_2(k) + 2H_2O(l)$, biết $\\Delta H_f^\\circ$: $CH_4 = -74,8$; $CO_2 = -393,5$; $H_2O(l) = -285,8$ kJ/mol. $\\Delta H^\\circ = [(-393,5) + 2(-285,8)] - [(-74,8) + 2(0)] = (-393,5 - 571,6) + 74,8 = -890,3$ kJ/mol. Phản ứng tỏa nhiệt mạnh.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-hoa-hoc-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Đốt cháy hoàn toàn 1 kg $CH_4$ tỏa ra bao nhiêu kJ? Cho $\\Delta H^\\circ = -890,3$ kJ/mol và $M = 16$ g/mol. Nhập số (kJ), làm tròn đến hàng đơn vị.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "55644",
+                      "55643,75"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": "Đổi 1 kg sang mol rồi nhân với nhiệt đốt cháy của 1 mol.",
+                  "explanation": "$n = 1000/16 = 62,5$ mol nên $Q = 62,5 \\times 890,3 \\approx 55\\,644$ kJ.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "nhiet-hoa-hoc-b6",
+              "kind": "text",
+              "md": "Từ năng lượng liên kết $E$: $\\Delta H^\\circ = \\sum E(\\text{liên kết bị phá}) - \\sum E(\\text{liên kết tạo thành})$. Với $N_2 + 3H_2 \\to 2NH_3$: $(945 + 3 \\times 436) - 6 \\times 391 = -93$ kJ; đây là $\\Delta H$ cho $2$ mol $NH_3$, nên nhiệt tạo thành $NH_3$ là $-46,5$ kJ/mol.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Quên hệ số hoặc lấy ngược công thức",
+              "md": "$\\Delta H$ là đại lượng quảng tính, nên phải nhân với hệ số tỉ lượng. Với $\\Delta H_f^\\circ$, luôn lấy “sản phẩm − chất đầu”. Ở phản ứng $CH_4 + 2O_2 \\to CO_2 + 2H_2O$, nếu bỏ hệ số $2$ của $H_2O$ sẽ được $-604,5$ kJ thay vì $-890,3$ kJ.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-hoa-hoc-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi kí hiệu, khái niệm ở cột trái với nghĩa tương ứng ở cột phải.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$Q_p$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "$\\Delta H$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$Q_v$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "$\\Delta U$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$\\Delta H_f^\\circ$ của đơn chất bền",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "bằng 0",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$\\Delta H < 0$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "phản ứng tỏa nhiệt",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Ở áp suất không đổi $Q_p = \\Delta H$, ở thể tích không đổi $Q_v = \\Delta U$; nhiệt tạo thành chuẩn của đơn chất bền quy ước bằng 0 và $\\Delta H$ âm ứng với phản ứng tỏa nhiệt.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "nhiet-hoa-hoc-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để nhiệt lượng tỏa ra đạt khoảng 44 515 kJ",
+              "x": {
+                "symbol": "n",
+                "label": "Số mol CH4",
+                "unit": "mol"
+              },
+              "y": {
+                "symbol": "Q",
+                "label": "Nhiệt tỏa ra",
+                "unit": "kJ"
+              },
+              "expr": "890.3*x",
+              "x_min": 0.0,
+              "x_max": 100.0,
+              "x_step": 0.5,
+              "x_start": 10.0,
+              "target_y": 44515.0,
+              "tolerance": 5.0,
+              "praise": "Chính xác: 50 mol CH4 tỏa ra 44 515 kJ.",
+              "audio": null
+            },
+            {
+              "id": "nhiet-hoa-hoc-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "nhiet-hoa-hoc-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét tính đúng/sai của các phát biểu sau về nhiệt hóa học và cân bằng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "$\\Delta H$ của phản ứng chỉ phụ thuộc trạng thái đầu và trạng thái cuối, không phụ thuộc đường đi."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Phản ứng có $\\Delta H > 0$ là phản ứng tỏa nhiệt."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Chất xúc tác làm hệ nhanh đạt cân bằng nhưng không làm thay đổi $K$."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Với $N_2(k) + 3H_2(k) \\rightleftharpoons 2NH_3(k)$ có $\\Delta H < 0$, tăng nhiệt độ làm cân bằng dịch sang phải."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "$\\Delta H > 0$ là thu nhiệt; xúc tác không đổi $K$; phản ứng tỏa nhiệt nên khi tăng nhiệt độ cân bằng dịch sang trái (chiều thu nhiệt).",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "nhiet-hoa-hoc-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Hàm trạng thái phụ thuộc vào những gì?",
+                  "answer": "Chỉ phụ thuộc trạng thái đầu và cuối, không phụ thuộc đường đi.",
+                  "image": null
+                },
+                {
+                  "prompt": "Dấu của ΔH cho biết phản ứng tỏa nhiệt hay thu nhiệt?",
+                  "answer": "ΔH < 0 là tỏa nhiệt, ΔH > 0 là thu nhiệt.",
+                  "image": null
+                },
+                {
+                  "prompt": "Công thức tính ΔH° từ nhiệt tạo thành chuẩn là gì?",
+                  "answer": "Lấy tổng nhiệt tạo thành của sản phẩm trừ tổng nhiệt tạo thành của chất đầu.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "can-bang",
+          "title": "Cân bằng",
+          "est_minutes": 15,
+          "summary": "Trình bày hằng số cân bằng, thương số phản ứng và nguyên lí Le Chatelier, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Kc, Kp và quan hệ Kp = Kc(RT)^Δn",
+            "Thương số Q so với K cho chiều phản ứng",
+            "Le Chatelier: nồng độ, áp suất, nhiệt độ",
+            "Chất xúc tác không đổi K và hiệu suất"
+          ],
+          "blocks": [
+            {
+              "id": "can-bang-b1",
+              "kind": "text",
+              "md": "Phản ứng thuận nghịch đạt cân bằng khi tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch. Lúc đó nồng độ các chất không đổi, nhưng phản ứng vẫn tiếp diễn theo cả hai chiều.",
+              "audio": null,
+              "gloss": null
+            },
+            {
+              "id": "can-bang-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Hằng số cân bằng $K_c$, $K_p$",
+              "md": "Với $aA+bB \\rightleftharpoons cC+dD$: $K_c = \\dfrac{[C]^c[D]^d}{[A]^a[B]^b}$. Chất rắn và chất lỏng tinh khiết không có mặt trong biểu thức. Với khí: $K_p = \\dfrac{p_C^c p_D^d}{p_A^a p_B^b}$ và $K_p = K_c(RT)^{\\Delta n}$, trong đó $\\Delta n = (c+d)-(a+b)$.",
+              "audio": null
+            },
+            {
+              "id": "can-bang-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "can-bang-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho cân bằng $CaCO_3(r) \\rightleftharpoons CaO(r) + CO_2(k)$ có $\\Delta H > 0$. Khi tăng áp suất của hệ (giảm thể tích), cân bằng dịch chuyển theo chiều nào?",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "Sang trái, vì phía nghịch có ít mol khí hơn.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "Sang phải, vì tăng áp suất luôn kéo theo chiều tạo thêm khí.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "Sang phải, vì phản ứng thu nhiệt nên được ưu tiên.",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "Không dịch chuyển, vì chất rắn không có mặt trong biểu thức $K$.",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": "Đếm số mol khí ở hai vế; chất rắn không tính.",
+                  "explanation": "$\\Delta n = 1 - 0 = 1 > 0$, nên tăng áp suất đẩy hệ về phía ít mol khí hơn, tức chiều nghịch (sang trái).",
+                  "option_feedback": {
+                    "B": "Tăng áp suất làm hệ dịch về phía ít mol khí hơn, không phải phía tạo thêm khí.",
+                    "C": "Chiều thu nhiệt chỉ quyết định khi thay đổi nhiệt độ, không liên quan đến thay đổi áp suất.",
+                    "D": "Tuy chất rắn bị loại khỏi biểu thức $K$ nhưng $CO_2$ là khí nên áp suất vẫn ảnh hưởng tới cân bằng."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "can-bang-b3",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Thương số phản ứng $Q$",
+              "md": "$Q$ có dạng như $K$ nhưng dùng nồng độ bất kì tại thời điểm xét. So sánh: $Q<K$ phản ứng chạy theo chiều thuận; $Q>K$ theo chiều nghịch; $Q=K$ hệ đang cân bằng.",
+              "audio": null
+            },
+            {
+              "id": "can-bang-b4",
+              "kind": "image",
+              "image": {
+                "path": "images/can-bang-b4.svg",
+                "mime": "image/svg+xml",
+                "sha256": "865951821cdcd9bb001fe6e3a0cb03250e969fc9bac4b135e4ae4ee50d36a25b",
+                "bytes": 3235
+              },
+              "alt": "Sơ đồ so sánh thương số phản ứng Q với hằng số cân bằng K và chiều dịch chuyển.",
+              "caption": "Q so với K quyết định chiều phản ứng.",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "can-bang-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "can-bang-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Viết biểu thức $K_c$ cho $2SO_2(k) + O_2(k) \\rightleftharpoons 2SO_3(k)$: tử số là {{gap}} và mẫu số là {{gap}}.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "$[SO_3]^2$",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "$[SO_2]^2[O_2]$",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "$[SO_3]$",
+                      "side": null
+                    },
+                    {
+                      "id": "t4",
+                      "text": "$[SO_2][O_2]$",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1",
+                      "t2"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Số mũ trong biểu thức $K$ chính là hệ số tỉ lượng, nên phải là $[SO_3]^2$ trên $[SO_2]^2[O_2]$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "can-bang-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Nguyên lí Le Chatelier",
+              "md": "Khi tác động lên hệ cân bằng, hệ dịch chuyển theo chiều làm giảm tác động đó: tăng nồng độ hoặc áp suất chất nào thì hệ tiêu thụ chất đó; tăng áp suất (giảm thể tích) thì dịch về phía có ít mol khí hơn; tăng nhiệt độ thì dịch theo chiều thu nhiệt ($\\Delta H>0$). Chất xúc tác chỉ làm nhanh đạt cân bằng, không đổi $K$ và hiệu suất.",
+              "audio": null
+            },
+            {
+              "id": "can-bang-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "can-bang-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $2SO_2(k) + O_2(k) \\rightleftharpoons 2SO_3(k)$ có $K_c = 4,0$. Ở cân bằng $[SO_2] = 0,20$ M và $[O_2] = 0,10$ M. Tính $[SO_3]$ (mol/L).",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "0,126",
+                      "0.126",
+                      "0,1265",
+                      "0.1265"
+                    ],
+                    "tolerance": 0.02
+                  },
+                  "hint": "Rút $[SO_3]^2$ từ biểu thức $K_c$ rồi lấy căn bậc hai.",
+                  "explanation": "$[SO_3]^2 = K_c[SO_2]^2[O_2] = 4,0 \\times 0,04 \\times 0,10 = 0,016$, nên $[SO_3] \\approx 0,126$ M.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "can-bang-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Dự đoán chiều dịch chuyển",
+              "md": "Cho $N_2(k)+3H_2(k) \\rightleftharpoons 2NH_3(k)$, $\\Delta H<0$. (a) Tăng áp suất: $\\Delta n=2-4=-2<0$ nên dịch sang phải, tăng hiệu suất $NH_3$. (b) Tăng nhiệt độ: chiều thuận tỏa nhiệt nên dịch sang trái, $K$ giảm. (c) Lấy bớt $NH_3$: $Q<K$ nên dịch sang phải.",
+              "audio": null
+            },
+            {
+              "id": "can-bang-b7",
+              "kind": "callout",
+              "variant": "mistake",
+              "title": "Sai số mũ trong $K_c$",
+              "md": "Viết $K_c=\\dfrac{[HI]}{[H_2][I_2]}$ cho $H_2+I_2 \\rightleftharpoons 2HI$ là sai. Số mũ trong biểu thức $K$ là hệ số tỉ lượng, nên phải là $[HI]^2$. Lỗi này làm kết quả sai cả về đơn vị và giá trị.",
+              "audio": null
+            },
+            {
+              "id": "can-bang-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "can-bang-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi kí hiệu với ý nghĩa tương ứng.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "$K_c$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "hằng số cân bằng theo nồng độ",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "$K_p$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "hằng số cân bằng theo áp suất riêng phần",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$Q$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "thương số phản ứng tại thời điểm bất kì",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$\\Delta n$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "biến thiên số mol khí $(c+d)-(a+b)$",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "$K_c$ và $K_p$ chỉ khác nhau ở đại lượng dùng để biểu diễn (nồng độ hay áp suất riêng phần), còn $Q$ dùng giá trị bất kì tại thời điểm xét.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "can-bang-b8",
+              "kind": "interactive",
+              "prompt": "Kéo nhiệt độ $T$ để $K_p$ đạt 41,05 với $K_c=1$ và $\\Delta n=1$ (coi $R=0,0821$).",
+              "x": {
+                "symbol": "T",
+                "label": "Nhiệt độ",
+                "unit": "K"
+              },
+              "y": {
+                "symbol": "K_p",
+                "label": "Hằng số cân bằng Kp",
+                "unit": "—"
+              },
+              "expr": "0.0821*x",
+              "x_min": 200.0,
+              "x_max": 800.0,
+              "x_step": 5.0,
+              "x_start": 250.0,
+              "target_y": 41.05,
+              "tolerance": 0.5,
+              "praise": "Chính xác: với $\\Delta n=1$, $K_p$ tỉ lệ thuận với $T$.",
+              "audio": null
+            },
+            {
+              "id": "can-bang-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "can-bang-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Xét các phát biểu về cân bằng hóa học.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Chất xúc tác làm tăng hằng số cân bằng $K$."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Chất xúc tác chỉ giúp hệ nhanh đạt cân bằng, không làm đổi hiệu suất."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Với phản ứng tỏa nhiệt ($\\Delta H < 0$), tăng nhiệt độ làm $K$ giảm."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Khi $Q < K$, phản ứng đang chạy theo chiều nghịch."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": false,
+                      "b": true,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Chất xúc tác không đổi $K$ và hiệu suất; còn $Q < K$ nghĩa là hệ còn thiếu sản phẩm nên phản ứng chạy theo chiều thuận.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 2
+                }
+              ]
+            },
+            {
+              "id": "can-bang-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Viết biểu thức $K_c$ và quan hệ giữa $K_p$ với $K_c$.",
+                  "answer": "$K_c=\\dfrac{[C]^c[D]^d}{[A]^a[B]^b}$; $K_p=K_c(RT)^{\\Delta n}$ với $\\Delta n=(c+d)-(a+b)$.",
+                  "image": null
+                },
+                {
+                  "prompt": "So sánh $Q$ với $K$ cho biết điều gì?",
+                  "answer": "$Q<K$ chạy theo chiều thuận; $Q>K$ theo chiều nghịch; $Q=K$ hệ cân bằng.",
+                  "image": null
+                },
+                {
+                  "prompt": "Chất xúc tác ảnh hưởng đến cân bằng thế nào?",
+                  "answer": "Chỉ làm nhanh đạt cân bằng, không đổi $K$ và hiệu suất.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dien-hoa",
+          "title": "Điện hóa",
+          "est_minutes": 15,
+          "summary": "Trình bày phản ứng oxi hóa – khử, pin điện hóa, suất điện động và phương trình Nernst, kèm ví dụ, lỗi thường gặp và bài tập.",
+          "key_ideas": [
+            "Số oxi hóa và cân bằng ion–electron",
+            "Anot xảy ra oxi hóa; catot xảy ra khử",
+            "E°pin = E°catot − E°anot",
+            "ΔG° = −nFE° và phương trình Nernst"
+          ],
+          "blocks": [
+            {
+              "id": "dien-hoa-b1",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Số oxi hóa",
+              "md": "Đơn chất có số oxi hóa bằng $0$. Ion đơn nguyên tử có số oxi hóa bằng điện tích ion. Thường $H$ là $+1$, $O$ là $-2$. Tổng số oxi hóa trong phân tử bằng $0$; trong ion đa nguyên tử bằng điện tích ion.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-b2",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Cân bằng ion–electron trong môi trường acid",
+              "md": "Cân bằng nguyên tố trước. Thêm $H_2O$ để cân bằng $O$, thêm $H^+$ để cân bằng $H$. Cuối cùng cân bằng điện tích bằng electron.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-k1",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dien-hoa-q1",
+                  "type": "SINGLE_CHOICE",
+                  "stem": "Cho $E^\\circ(Zn^{2+}/Zn) = -0,76$ V và $E^\\circ(Cu^{2+}/Cu) = +0,34$ V. Suất điện động chuẩn của pin Zn–Cu là",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [
+                    {
+                      "id": "A",
+                      "text": "1,10 V",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "B",
+                      "text": "-1,10 V",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "C",
+                      "text": "0,42 V",
+                      "image": null,
+                      "audio": null
+                    },
+                    {
+                      "id": "D",
+                      "text": "-0,42 V",
+                      "image": null,
+                      "audio": null
+                    }
+                  ],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "correct_option_id": "A"
+                  },
+                  "hint": null,
+                  "explanation": "Zn có $E^\\circ$ nhỏ hơn nên là anot: $E^\\circ_{pin} = 0,34 - (-0,76) = 1,10$ V.",
+                  "option_feedback": {
+                    "B": "Đảo ngược công thức thành anot trừ catot nên kết quả sai dấu.",
+                    "C": "Bỏ dấu âm của $E^\\circ(Zn^{2+}/Zn)$ rồi trừ theo thứ tự 0,76 − 0,34.",
+                    "D": "Bỏ dấu âm của điện cực Zn nên lấy 0,34 − 0,76."
+                  },
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dien-hoa-b3",
+              "kind": "image",
+              "image": {
+                "path": "images/dien-hoa-b3.svg",
+                "mime": "image/svg+xml",
+                "sha256": "75ff2681902158339c46e12ae64371ed38ef5b4a69c2a64318d1ebe8bf6e1f28",
+                "bytes": 3134
+              },
+              "alt": "Sơ đồ pin Zn–Cu với cầu muối và vôn kế",
+              "caption": "Sơ đồ pin Zn–Cu",
+              "audio": null,
+              "attribution": null
+            },
+            {
+              "id": "dien-hoa-b4",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Anot và catot",
+              "md": "Anot là cực âm, xảy ra oxi hóa; catot là cực dương, xảy ra khử. Trong pin Zn–Cu, Zn bị oxi hóa ở anot, $Cu^{2+}$ bị khử ở catot.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-k2",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dien-hoa-q2",
+                  "type": "FILL_TILES",
+                  "stem": "Phương trình Nernst ở 25 °C: $E = E^\\circ - \\dfrac{0,0592}{{{gap}}}\\lg Q$, với kí hiệu cần điền là số electron trao đổi trong phản ứng pin.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "t1",
+                      "text": "n",
+                      "side": null
+                    },
+                    {
+                      "id": "t2",
+                      "text": "F",
+                      "side": null
+                    },
+                    {
+                      "id": "t3",
+                      "text": "n^2",
+                      "side": null
+                    }
+                  ],
+                  "answer_key": {
+                    "gaps": [
+                      "t1"
+                    ]
+                  },
+                  "hint": null,
+                  "explanation": "Mẫu số là số electron trao đổi $n$ của phản ứng oxi hóa – khử trong pin. Với pin Zn–Cu thì $n = 2$.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dien-hoa-b5",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Suất điện động chuẩn và năng lượng Gibbs",
+              "md": "Với pin điện hóa: $E^\\circ_{pin}=E^\\circ_{catot}-E^\\circ_{anot}$. Nếu $E^\\circ_{pin}>0$ thì phản ứng tự xảy ra. Về nhiệt động: $\\Delta G^\\circ=-nFE^\\circ$, với $F=96485$ C/mol và $n$ là số electron trao đổi.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-k3",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dien-hoa-q3",
+                  "type": "SHORT_ANSWER",
+                  "stem": "Cho $E^\\circ(Ag^+/Ag) = +0,80$ V và $E^\\circ(Cu^{2+}/Cu) = +0,34$ V. Tính $E^\\circ_{pin}$ (theo V) của pin Ag–Cu.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "accepted": [
+                      "0,46",
+                      "0.46",
+                      "0,460",
+                      "0.460"
+                    ],
+                    "tolerance": 0.01
+                  },
+                  "hint": null,
+                  "explanation": "$E^\\circ_{pin} = E^\\circ_{catot} - E^\\circ_{anot} = 0,80 - 0,34 = 0,46$ V, với Ag là catot.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dien-hoa-b6",
+              "kind": "callout",
+              "variant": "example",
+              "title": "Pin Zn–Cu",
+              "md": "Cho $E^\\circ(Zn^{2+}/Zn)=-0,76$ V, $E^\\circ(Cu^{2+}/Cu)=+0,34$ V. Zn là anot, Cu là catot. Sơ đồ: $(-)\\ Zn(r)\\mid Zn^{2+}(aq)\\parallel Cu^{2+}(aq)\\mid Cu(r)\\ (+)$. $E^\\circ_{pin}=0,34-(-0,76)=1,10$ V. Với $n=2$: $\\Delta G^\\circ=-nFE^\\circ=-2\\times96485\\times1,10\\approx-212300$ J $\\approx-212,3$ kJ/mol.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-b7",
+              "kind": "callout",
+              "variant": "definition",
+              "title": "Phương trình Nernst",
+              "md": "Ở 25 °C: $E=E^\\circ-\\dfrac{0,0592}{n}\\lg Q$, với $Q$ là thương số phản ứng.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-k4",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dien-hoa-q4",
+                  "type": "MATCH_PAIRS",
+                  "stem": "Ghép mỗi khái niệm với nội dung tương ứng trong pin điện hóa.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [],
+                  "tap": null,
+                  "parts": [
+                    {
+                      "id": "l1",
+                      "text": "Anot",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r1",
+                      "text": "xảy ra oxi hóa",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l2",
+                      "text": "Catot",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r2",
+                      "text": "xảy ra khử",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l3",
+                      "text": "$E^\\circ_{pin}$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r3",
+                      "text": "$E^\\circ_{catot} - E^\\circ_{anot}$",
+                      "side": "right"
+                    },
+                    {
+                      "id": "l4",
+                      "text": "$F$",
+                      "side": "left"
+                    },
+                    {
+                      "id": "r4",
+                      "text": "96485 C/mol",
+                      "side": "right"
+                    }
+                  ],
+                  "answer_key": {
+                    "pairs": {
+                      "l1": "r1",
+                      "l2": "r2",
+                      "l3": "r3",
+                      "l4": "r4"
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Anot là nơi nhường electron (oxi hóa), catot là nơi nhận electron (khử); sức điện động chuẩn bằng hiệu hai thế điện cực chuẩn.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 4
+                }
+              ]
+            },
+            {
+              "id": "dien-hoa-b8",
+              "kind": "interactive",
+              "prompt": "Kéo để E còn 1,041 V (khi [Zn2+]=1,0 M).",
+              "x": {
+                "symbol": "lgQ",
+                "label": "lg Q",
+                "unit": ""
+              },
+              "y": {
+                "symbol": "E",
+                "label": "Suất điện động",
+                "unit": "V"
+              },
+              "expr": "1.10 - (0.0592/2)*x",
+              "x_min": -2.0,
+              "x_max": 3.0,
+              "x_step": 0.1,
+              "x_start": 0.0,
+              "target_y": 1.041,
+              "tolerance": 0.001,
+              "praise": "Đúng: khi lg Q = 2 thì E ≈ 1,041 V.",
+              "audio": null
+            },
+            {
+              "id": "dien-hoa-k5",
+              "kind": "quiz",
+              "title": null,
+              "items": [
+                {
+                  "id": "dien-hoa-q5",
+                  "type": "TRUE_FALSE_GROUP",
+                  "stem": "Đánh giá các phát biểu sau về pin điện hóa.",
+                  "stem_audio": null,
+                  "stem_image": null,
+                  "options": [],
+                  "statements": [
+                    {
+                      "id": "a",
+                      "text": "Trong pin Zn–Cu, Zn có $E^\\circ$ nhỏ hơn nên đóng vai trò anot."
+                    },
+                    {
+                      "id": "b",
+                      "text": "Catot là cực âm và là nơi xảy ra quá trình oxi hóa."
+                    },
+                    {
+                      "id": "c",
+                      "text": "Với $\\Delta G^\\circ = -nFE^\\circ$, nếu $E^\\circ_{pin} > 0$ thì $\\Delta G^\\circ < 0$ và phản ứng tự xảy ra."
+                    },
+                    {
+                      "id": "d",
+                      "text": "Trong pin Zn–Cu, mỗi nguyên tử Zn nhường 1 electron nên $n = 1$."
+                    }
+                  ],
+                  "tap": null,
+                  "parts": [],
+                  "answer_key": {
+                    "statements": {
+                      "a": true,
+                      "b": false,
+                      "c": true,
+                      "d": false
+                    }
+                  },
+                  "hint": null,
+                  "explanation": "Catot là cực dương, nơi xảy ra khử; còn Zn nhường 2 electron nên $n = 2$ cho pin Zn–Cu.",
+                  "option_feedback": {},
+                  "skill_ids": [],
+                  "difficulty": 3
+                }
+              ]
+            },
+            {
+              "id": "dien-hoa-b9",
+              "kind": "recall",
+              "items": [
+                {
+                  "prompt": "Anot và catot xảy ra quá trình gì?",
+                  "answer": "Anot xảy ra oxi hóa; catot xảy ra khử.",
+                  "image": null
+                },
+                {
+                  "prompt": "Công thức $E^\\circ_{pin}$ và điều kiện phản ứng tự xảy ra?",
+                  "answer": "$E^\\circ_{pin}=E^\\circ_{catot}-E^\\circ_{anot}$; tự xảy ra khi $E^\\circ_{pin}>0$.",
+                  "image": null
+                },
+                {
+                  "prompt": "Liên hệ $\\Delta G^\\circ$ với $E^\\circ$ và phương trình Nernst ở 25 °C?",
+                  "answer": "$\\Delta G^\\circ=-nFE^\\circ$; $E=E^\\circ-\\frac{0,0592}{n}\\lg Q$.",
+                  "image": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recap": {
+        "script": [
+          "Chương Phản ứng gồm nhiệt hóa học, cân bằng hóa học và điện hóa, giúp mình xét nhiệt, chiều cân bằng và chiều phản ứng oxi hóa khử.",
+          "Trong nhiệt hóa học, nội năng, entanpi, entropi và năng lượng Gibbs là hàm trạng thái, chỉ phụ thuộc trạng thái đầu và cuối, không phụ thuộc đường đi. Ở áp suất không đổi, nhiệt trao đổi bằng biến thiên entanpi; ở thể tích không đổi, bằng biến thiên nội năng. Biến thiên entanpi âm là tỏa nhiệt, dương là thu nhiệt. Định luật Hess nói biến thiên entanpi của phản ứng cũng chỉ phụ thuộc trạng thái đầu và cuối.",
+          "Với nhiệt tạo thành chuẩn, đơn chất bền có nhiệt tạo thành bằng không, và biến thiên entanpi phản ứng bằng tổng nhiệt tạo thành sản phẩm trừ tổng nhiệt tạo thành chất đầu. Với nhiệt đốt cháy chuẩn thì lấy tổng nhiệt đốt cháy chất đầu trừ tổng nhiệt đốt cháy sản phẩm. Ví dụ cháy metan cho âm tám trăm chín mươi phẩy ba kilojun trên mol, nên tỏa nhiệt mạnh; vì entanpi là đại lượng quảng tính, phải nhân hệ số tỉ lượng, bỏ hệ số hai của nước sẽ ra sai. Tính từ năng lượng liên kết thì lấy tổng liên kết bị phá trừ tổng liên kết tạo thành; với nitơ cộng ba hiđro tạo hai amoniac ra âm chín mươi ba kilojun cho hai mol, nên mỗi mol amoniac là âm bốn mươi sáu phẩy năm.",
+          "Sang cân bằng, phản ứng thuận nghịch đạt cân bằng khi tốc độ thuận bằng tốc độ nghịch; nồng độ không đổi nhưng phản ứng vẫn chạy hai chiều. Hằng số cân bằng nồng độ bằng tích nồng độ sản phẩm lũy thừa hệ số tỉ lượng chia tích nồng độ chất đầu lũy thừa hệ số tỉ lượng; chất rắn và lỏng tinh khiết không có mặt. Với khí, hằng số cân bằng áp suất bằng hằng số cân bằng nồng độ nhân R T tất cả lũy thừa đenta n, với đenta n là số mol khí sản phẩm trừ số mol khí chất đầu.",
+          "Thương số phản ứng có dạng như hằng số cân bằng nhưng dùng nồng độ bất kì tại thời điểm xét. Nếu thương số nhỏ hơn hằng số cân bằng thì phản ứng chạy thuận; lớn hơn thì chạy nghịch; bằng thì cân bằng. Theo Le Chatelier, hệ dịch chuyển"
+        ],
+        "audio": null,
+        "duration_s": 0.0
+      }
+    }
+  ],
+  "gloss_start": null
+}

@@ -8,6 +8,7 @@ Direct mode (dev/live tests only): POST {FPT_API_BASE}/chat/completions with the
 import base64
 import json
 import logging
+from collections.abc import AsyncIterator
 from typing import Any, Protocol
 
 import httpx
@@ -82,6 +83,51 @@ class RouterChatLLM:
         if not text.strip():
             raise LLMError("empty reply")
         return text
+
+    async def stream(self, alias: str, messages: list[dict[str, Any]], *, max_tokens: int = 2000,
+                     temperature: float = 0.3, timeout: float | None = None,
+                     attempts: int | None = None) -> AsyncIterator[str]:
+        """Text deltas as they arrive (the chicken chat). One attempt per call: a failure after the first delta cannot be
+        retried without repeating text, so it is raised as `LLMError`; before any delta the call is retried like `complete`."""
+        import asyncio
+
+        endpoint, model = self._endpoint_and_model(alias)
+        body = {"model": model, "messages": messages, "max_tokens": max_tokens, "temperature": temperature, "stream": True}
+        headers = {"Authorization": f"Bearer {self.key}"} if self.key else {}
+        last: Exception | None = None
+        tries = attempts or self.attempts
+        for attempt in range(tries):
+            started = False
+            try:
+                client = httpx.AsyncClient(timeout=httpx.Timeout(timeout or self.timeout, connect=15.0))
+                async with client, client.stream("POST", endpoint, json=body, headers=headers) as r:
+                    if r.status_code >= 400:
+                        raise LLMError(f"model HTTP {r.status_code}: {(await r.aread())[:200]!r}")
+                    async for line in r.aiter_lines():
+                        if not line.startswith("data:"):
+                            continue
+                        payload = line[5:].strip()
+                        if payload == "[DONE]":
+                            break
+                        try:
+                            piece = (json.loads(payload)["choices"][0].get("delta") or {}).get("content") or ""
+                        except (ValueError, KeyError, IndexError):
+                            continue
+                        if piece:
+                            started = True
+                            yield piece
+                if not started:
+                    raise LLMError("empty reply")
+                return
+            except (LLMError, httpx.HTTPError) as e:
+                last = e
+                if started:
+                    raise LLMError(f"model stream broke ({alias}): {e.__class__.__name__}") from e
+                if isinstance(e, LLMError) and "HTTP 4" in str(e) and "HTTP 429" not in str(e) and "HTTP 408" not in str(e):
+                    break
+                if attempt + 1 < tries:
+                    await asyncio.sleep(1.5 * (attempt + 1))
+        raise LLMError(f"model call failed ({alias}): {last.__class__.__name__}: {str(last)[:200]}") from last
 
     async def complete(self, alias: str, messages: list[dict[str, Any]], *, max_tokens: int = 2000,
                        temperature: float = 0.3, effort: str | None = None) -> str:

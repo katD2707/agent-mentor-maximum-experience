@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "english-grammar-in-use-for-teens",
+  "title": "English Grammar in Use for Teens: Tenses",
+  "subject": "English",
+  "age_band": "g6_9",
+  "language": "en",
+  "teacher_id": "ua8088c9429f9c470",
+  "teacher_name": "Mr. David Nguyen",
+  "description_short": "This course covers present, past and future tenses with theory, examples, common mistakes and exercises. It is for lower secondary students who want clear, practical grammar practice.",
+  "outcomes": [
+    "use present simple and present continuous to talk about routines, facts and actions happening now",
+    "form and use present perfect for experiences, results and unfinished time",
+    "choose between past simple and present perfect using time clues",
+    "describe finished past actions and past actions in progress",
+    "talk about the future with will, be going to, present continuous and present simple"
+  ],
+  "cover": "cover.webp",
+  "media": [
+    "reading",
+    "quiz"
+  ],
+  "lessons_count": 6,
+  "est_minutes": 70,
+  "latest_published": 1,
+  "versions": [
+    {
+      "version": 1,
+      "status": "published",
+      "created_at": "2026-11-17T07:38:21.192968Z",
+      "published_at": "2026-11-17T07:38:26.179686Z",
+      "pack_sha256": "ffa3e3e8f18d7dde1d582735753ab2fd9f63b91f347bea7c85d421edf918ac2d",
+      "pack_bytes": 2767104,
+      "note": "draft by course-builder",
+      "level_suggested": "basic",
+      "level_confirmed": "intermediate"
+    }
+  ],
+  "level": "intermediate",
+  "status": "live",
+  "outline": []
+}

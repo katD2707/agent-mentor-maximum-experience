@@ -350,7 +350,7 @@ function overview(): ResearchOverview {
   return {
     profile: { ...st.profile, asta_connected: st.asta, s2_connected: st.s2 },
     status_line: statusLine(),
-    hero: reading && s ? { paper_id: reading.id, title: s.t, authors_line: authorsLine(s), status: reading.status, minutes_spent: reading.minutes_spent, reason: soon ? tr(`Bài full paper của bạn còn ${soon.days_left} ngày nữa đến hạn, và mục 3 của bài so sánh với paper này.`, `Your full paper is due in ${soon.days_left} days, and section 3 of it compares against this one.`) : reading.reason, deep_link: `/nghien-cuu/paper/${reading.id}` } : null,
+    hero: reading && s ? { paper_id: reading.id, title: s.t, authors_line: authorsLine(s), status: reading.status, minutes_spent: reading.minutes_spent, reason: soon ? tr(`Bài full paper của bạn còn ${soon.days_left} ngày nữa đến hạn, và mục 3 của bài so sánh với paper này.`, `Your full paper is due in ${soon.days_left} days, and section 3 of it compares against this one.`) : reading.reason, deep_link: `/thu-vien/paper/${reading.id}` } : null,
     upcoming: upcoming(),
     reading_list: list,
     suggestions: st.suggestions.filter((x) => x.status === "pending"),

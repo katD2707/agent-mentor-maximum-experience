@@ -1,0 +1,1141 @@
+{
+ "id": "dgnl-toan-mau",
+ "kind": "dgnl",
+ "band": "g10_12",
+ "chicken": "toan",
+ "title_vi": "Đề mẫu Đánh giá năng lực, phần Toán (rút gọn 30 câu)",
+ "title_en": "Sample aptitude test, maths part (30 items)",
+ "year": 2025,
+ "minutes": 60,
+ "parts": [
+  {
+   "id": "p1",
+   "title_vi": "Tư duy định lượng",
+   "title_en": "Quantitative reasoning",
+   "type": "SINGLE_CHOICE",
+   "items": [
+    {
+     "id": "math.exp-log.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Với $a$ là số thực dương tùy ý, $\\log_2 (8a)$ bằng",
+     "hint": "Dùng công thức logarit của một tích.",
+     "explanation": "Ta có $\\log_2 (8a) = \\log_2 8 + \\log_2 a = 3 + \\log_2 a$. Chọn D.",
+     "skill_ids": [
+      "explog.logarithm"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$3\\log_2 a$"
+      },
+      {
+       "id": "B",
+       "text": "$8 + \\log_2 a$"
+      },
+      {
+       "id": "C",
+       "text": "$8\\log_2 a$"
+      },
+      {
+       "id": "D",
+       "text": "$3 + \\log_2 a$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Nhầm logarit của tích thành tích các logarit; đúng là $\\log_2 (8a) = \\log_2 8 + \\log_2 a$.",
+      "B": "Chưa tính $\\log_2 8 = 3$ mà giữ nguyên số $8$."
+     }
+    },
+    {
+     "id": "math.function.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "Gọi $M$, $m$ lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 - 3x + 3$ trên đoạn $[0; 2]$. Giá trị của $M - m$ bằng",
+     "hint": "Tìm các điểm tới hạn thuộc đoạn $[0; 2]$, rồi so sánh giá trị của $f$ tại các điểm đó và tại hai đầu mút.",
+     "explanation": "$f'(x) = 3x^2 - 3$; $f'(x) = 0$ khi $x = 1$ hoặc $x = -1$. Trên đoạn $[0; 2]$ chỉ nhận $x = 1$. Ta có $f(0) = 3$, $f(1) = 1$, $f(2) = 8 - 6 + 3 = 5$. Suy ra $M = 5$, $m = 1$ và $M - m = 4$. Chọn D.",
+     "skill_ids": [
+      "functions.minmax"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$2$"
+      },
+      {
+       "id": "B",
+       "text": "$6$"
+      },
+      {
+       "id": "C",
+       "text": "$5$"
+      },
+      {
+       "id": "D",
+       "text": "$4$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Đã lấy $m = f(0) = 3$, bỏ sót giá trị tại điểm tới hạn $x = 1$ là $f(1) = 1$.",
+      "B": "Đã tính $M + m$ thay vì $M - m$.",
+      "C": "$5$ mới là $M$, chưa trừ đi $m = 1$."
+     }
+    },
+    {
+     "id": "math.integral.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho $\\int_0^2 f(x) dx = 3$ và $\\int_0^2 g(x) dx = -1$. Giá trị của $\\int_0^2 [2f(x) - g(x)] dx$ bằng",
+     "hint": "Dùng tính chất tuyến tính của tích phân để tách thành hai tích phân đã biết.",
+     "explanation": "$\\int_0^2 [2f(x) - g(x)] dx = 2\\int_0^2 f(x) dx - \\int_0^2 g(x) dx = 2 \\cdot 3 - (-1) = 7$. Chọn A.",
+     "skill_ids": [
+      "integral.definite"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$7$"
+      },
+      {
+       "id": "B",
+       "text": "$5$"
+      },
+      {
+       "id": "C",
+       "text": "$4$"
+      },
+      {
+       "id": "D",
+       "text": "$1$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Sai dấu: $-(-1) = +1$, nên kết quả là $6 + 1$, không phải $6 - 1$.",
+      "C": "Quên nhân hệ số $2$ với $\\int_0^2 f(x) dx$."
+     }
+    },
+    {
+     "id": "math.oxyz.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, mặt phẳng $(P): 2x - y + 3z - 5 = 0$ có một vectơ pháp tuyến là",
+     "hint": "Mặt phẳng $Ax + By + Cz + D = 0$ nhận vectơ tạo bởi các hệ số của $x$, $y$, $z$ làm vectơ pháp tuyến.",
+     "explanation": "Mặt phẳng $Ax + By + Cz + D = 0$ có vectơ pháp tuyến $\\vec{n} = (A; B; C)$. Với $(P): 2x - y + 3z - 5 = 0$ ta có $A = 2$, $B = -1$, $C = 3$, nên $\\vec{n} = (2; -1; 3)$. Chọn C.",
+     "skill_ids": [
+      "oxyz.plane"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\vec{n} = (2; 1; 3)$"
+      },
+      {
+       "id": "B",
+       "text": "$\\vec{n} = (2; -1; -5)$"
+      },
+      {
+       "id": "C",
+       "text": "$\\vec{n} = (2; -1; 3)$"
+      },
+      {
+       "id": "D",
+       "text": "$\\vec{n} = (-1; 3; -5)$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Hệ số của $y$ là $-1$, em đã bỏ mất dấu trừ.",
+      "B": "Hệ số tự do $-5$ không thuộc vectơ pháp tuyến; tọa độ thứ ba phải là hệ số của $z$."
+     }
+    },
+    {
+     "id": "math.probability.002",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một hộp có $6$ viên bi đỏ và $4$ viên bi xanh, các viên bi có cùng kích thước. Lấy ngẫu nhiên lần lượt hai viên bi, không hoàn lại. Xác suất để cả hai viên bi lấy ra đều màu đỏ bằng",
+     "hint": "Dùng công thức nhân xác suất: xác suất lần đầu lấy được bi đỏ nhân với xác suất lần hai lấy được bi đỏ khi biết lần đầu đã lấy bi đỏ.",
+     "explanation": "Gọi $A$: lần thứ nhất lấy được bi đỏ, $B$: lần thứ hai lấy được bi đỏ. Ta có $P(A) = \\dfrac{6}{10}$; khi $A$ đã xảy ra, hộp còn $5$ bi đỏ trong $9$ bi nên $P(B | A) = \\dfrac{5}{9}$. Do đó $P(A \\cap B) = P(A) \\cdot P(B | A) = \\dfrac{6}{10} \\cdot \\dfrac{5}{9} = \\dfrac{1}{3}$. Chọn A.",
+     "skill_ids": [
+      "probability.classical",
+      "probability.rules"
+     ],
+     "difficulty": 1,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\dfrac{1}{3}$"
+      },
+      {
+       "id": "B",
+       "text": "$\\dfrac{9}{25}$"
+      },
+      {
+       "id": "C",
+       "text": "$\\dfrac{4}{15}$"
+      },
+      {
+       "id": "D",
+       "text": "$\\dfrac{1}{2}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "$\\dfrac{9}{25} = \\left(\\dfrac{6}{10}\\right)^2$ ứng với lấy có hoàn lại.",
+      "C": "$\\dfrac{6}{10} \\cdot \\dfrac{4}{9} = \\dfrac{4}{15}$ là xác suất lần đầu đỏ, lần hai xanh."
+     }
+    },
+    {
+     "id": "math.exp-log.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tập nghiệm của bất phương trình $\\log_{\\frac{1}{2}} (x - 1) > -2$ là",
+     "hint": "Đặt điều kiện xác định trước; chú ý khi cơ số nhỏ hơn $1$ thì chiều bất phương trình thay đổi.",
+     "explanation": "Điều kiện: $x - 1 > 0$, tức $x > 1$. Vì cơ số $\\frac{1}{2} < 1$ nên bất phương trình tương đương $x - 1 < \\left(\\frac{1}{2}\\right)^{-2} = 4$, tức $x < 5$. Kết hợp điều kiện được $1 < x < 5$. Tập nghiệm là $(1; 5)$. Chọn C.",
+     "skill_ids": [
+      "explog.inequalities"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$(5; +\\infty)$"
+      },
+      {
+       "id": "B",
+       "text": "$(-\\infty; 5)$"
+      },
+      {
+       "id": "C",
+       "text": "$(1; 5)$"
+      },
+      {
+       "id": "D",
+       "text": "$\\left(1; \\frac{5}{4}\\right)$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Quên đổi chiều bất phương trình khi cơ số $\\frac{1}{2} < 1$.",
+      "B": "Thiếu điều kiện xác định $x - 1 > 0$.",
+      "D": "Tính sai $\\left(\\frac{1}{2}\\right)^{-2}$ thành $\\frac{1}{4}$; đúng là $\\left(\\frac{1}{2}\\right)^{-2} = 2^2 = 4$."
+     }
+    },
+    {
+     "id": "math.function.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tìm giá trị của tham số thực $m$ để hàm số $y = \\frac{1}{3}x^3 - mx^2 + (m^2 - 4)x + 3$ đạt cực đại tại $x = 3$.",
+     "hint": "Giải điều kiện $y'(3) = 0$ để tìm $m$, sau đó phải kiểm tra lại dấu của $y'$ ở hai bên $x = 3$ với từng giá trị.",
+     "explanation": "$y' = x^2 - 2mx + m^2 - 4$. Điều kiện cần: $y'(3) = 0$, tức $9 - 6m + m^2 - 4 = 0$, hay $m^2 - 6m + 5 = 0$, suy ra $m = 1$ hoặc $m = 5$. Thử lại: với $m = 1$, $y' = x^2 - 2x - 3 = (x + 1)(x - 3)$ đổi dấu từ âm sang dương khi qua $x = 3$, nên $x = 3$ là điểm cực tiểu (loại). Với $m = 5$, $y' = x^2 - 10x + 21 = (x - 3)(x - 7)$ đổi dấu từ dương sang âm khi qua $x = 3$, nên $x = 3$ là điểm cực đại (nhận). Vậy $m = 5$. Chọn C.",
+     "skill_ids": [
+      "functions.parameter",
+      "functions.extrema"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$m = 1$"
+      },
+      {
+       "id": "B",
+       "text": "$m = 1$ hoặc $m = 5$"
+      },
+      {
+       "id": "C",
+       "text": "$m = 5$"
+      },
+      {
+       "id": "D",
+       "text": "$m = -1$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Với $m = 1$, $y' = (x + 1)(x - 3)$ đổi dấu từ âm sang dương tại $x = 3$, nên đó là điểm cực tiểu.",
+      "B": "Mới dùng điều kiện cần $y'(3) = 0$, chưa thử lại; $m = 1$ cho cực tiểu tại $x = 3$."
+     }
+    },
+    {
+     "id": "math.integral.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "Giá trị của tích phân $\\int_1^2 \\left(2x + \\frac{1}{x}\\right) dx$ bằng",
+     "hint": "Tìm một nguyên hàm của từng số hạng rồi áp dụng công thức Newton – Leibniz.",
+     "explanation": "Một nguyên hàm của $2x + \\frac{1}{x}$ trên $[1; 2]$ là $F(x) = x^2 + \\ln x$. Do đó tích phân bằng $F(2) - F(1) = (4 + \\ln 2) - (1 + \\ln 1) = 4 + \\ln 2 - 1 = 3 + \\ln 2$. Chọn B.",
+     "skill_ids": [
+      "integral.definite"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$4 + \\ln 2$"
+      },
+      {
+       "id": "B",
+       "text": "$3 + \\ln 2$"
+      },
+      {
+       "id": "C",
+       "text": "$3 - \\ln 2$"
+      },
+      {
+       "id": "D",
+       "text": "$\\frac{15}{4}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Chỉ thay cận trên, quên trừ $F(1) = 1$.",
+      "D": "Nhầm nguyên hàm của $\\frac{1}{x}$ thành $-\\frac{1}{x^2}$; đúng phải là $\\ln |x|$."
+     }
+    },
+    {
+     "id": "math.oxyz.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, cho điểm $A(1; 2; -1)$ và đường thẳng $d: \\dfrac{x - 1}{2} = \\dfrac{y + 1}{-1} = \\dfrac{z}{3}$. Mặt phẳng đi qua $A$ và vuông góc với $d$ có phương trình là",
+     "hint": "Mặt phẳng vuông góc với $d$ nhận vectơ chỉ phương của $d$ làm vectơ pháp tuyến; sau đó thay tọa độ điểm $A$.",
+     "explanation": "Đường thẳng $d$ có vectơ chỉ phương $\\vec{u} = (2; -1; 3)$. Mặt phẳng cần tìm vuông góc với $d$ nên nhận $\\vec{u}$ làm vectơ pháp tuyến và đi qua $A(1; 2; -1)$: $2(x - 1) - (y - 2) + 3(z + 1) = 0 \\Leftrightarrow 2x - y + 3z + 3 = 0$. Chọn A.",
+     "skill_ids": [
+      "oxyz.plane",
+      "oxyz.line"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$2x - y + 3z + 3 = 0$"
+      },
+      {
+       "id": "B",
+       "text": "$2x - y + 3z - 3 = 0$"
+      },
+      {
+       "id": "C",
+       "text": "$x + 2y - z - 6 = 0$"
+      },
+      {
+       "id": "D",
+       "text": "$2x + y + 3z - 1 = 0$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Đây là mặt phẳng đi qua điểm $(1; -1; 0)$ của $d$ chứ không đi qua $A$: thay $A$ vào được $2 - 2 - 3 - 3 = -6 \\ne 0$.",
+      "C": "Em đã dùng tọa độ của $A$ làm vectơ pháp tuyến; vectơ pháp tuyến phải là vectơ chỉ phương của $d$.",
+      "D": "Mẫu số ứng với $y$ là $-1$, em đã đọc nhầm thành $1$."
+     }
+    },
+    {
+     "id": "math.probability.004",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một nhà máy có hai phân xưởng. Phân xưởng I sản xuất $60\\%$ tổng số sản phẩm với tỉ lệ phế phẩm $2\\%$; phân xưởng II sản xuất $40\\%$ tổng số sản phẩm với tỉ lệ phế phẩm $5\\%$. Lấy ngẫu nhiên một sản phẩm của nhà máy. Xác suất để sản phẩm đó là phế phẩm bằng",
+     "hint": "Chia trường hợp theo phân xưởng sản xuất ra sản phẩm (sơ đồ cây hai nhánh), rồi cộng xác suất của các nhánh dẫn tới phế phẩm.",
+     "explanation": "Gọi $A$: sản phẩm do phân xưởng I sản xuất, $B$: sản phẩm là phế phẩm. Theo công thức xác suất toàn phần: $P(B) = P(A) \\cdot P(B | A) + P(\\overline{A}) \\cdot P(B | \\overline{A}) = 0{,}6 \\cdot 0{,}02 + 0{,}4 \\cdot 0{,}05 = 0{,}012 + 0{,}02 = 0{,}032$. Chọn C.",
+     "skill_ids": [
+      "probability.total_bayes"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$0{,}035$"
+      },
+      {
+       "id": "B",
+       "text": "$0{,}07$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}032$"
+      },
+      {
+       "id": "D",
+       "text": "$0{,}968$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Em lấy trung bình cộng $\\dfrac{2\\% + 5\\%}{2}$ mà không xét tỉ lệ sản lượng $60\\%$ và $40\\%$.",
+      "B": "Em cộng trực tiếp hai tỉ lệ phế phẩm $2\\% + 5\\%$.",
+      "D": "$0{,}968$ là xác suất sản phẩm đạt chuẩn (biến cố đối)."
+     }
+    },
+    {
+     "id": "math.exp-log.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tổng các nghiệm của phương trình $\\log_2 x + \\log_2 (x - 2) = 3$ là",
+     "hint": "Đặt điều kiện cho cả hai logarit, gộp thành một logarit, giải rồi đối chiếu điều kiện.",
+     "explanation": "Điều kiện: $x > 0$ và $x - 2 > 0$, tức $x > 2$. Phương trình tương đương $\\log_2 [x(x - 2)] = 3$, tức $x(x - 2) = 8$, hay $x^2 - 2x - 8 = 0$, suy ra $x = 4$ hoặc $x = -2$. Đối chiếu điều kiện, chỉ nhận $x = 4$. Vậy tổng các nghiệm là $4$. Chọn D.",
+     "skill_ids": [
+      "explog.equations",
+      "explog.logarithm"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$2$"
+      },
+      {
+       "id": "B",
+       "text": "$-2$"
+      },
+      {
+       "id": "C",
+       "text": "$8$"
+      },
+      {
+       "id": "D",
+       "text": "$4$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "$2$ là tổng hai nghiệm của $x^2 - 2x - 8 = 0$ khi chưa loại nghiệm $x = -2$.",
+      "B": "$x = -2$ không thỏa mãn điều kiện $x > 2$ nên bị loại."
+     }
+    },
+    {
+     "id": "math.function.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x(x - 3)(x + 2)^2$ với mọi $x \\in \\mathbb{R}$. Số điểm cực trị của hàm số $g(x) = f(x^2 - 2x)$ là",
+     "hint": "Tính $g'(x)$ theo quy tắc đạo hàm của hàm hợp, rồi xét xem nhân tử nào thực sự có nghiệm và nghiệm nào làm $g'(x)$ đổi dấu.",
+     "explanation": "$g'(x) = (2x - 2) f'(x^2 - 2x) = (2x - 2)(x^2 - 2x)(x^2 - 2x - 3)(x^2 - 2x + 2)^2$. Vì $x^2 - 2x + 2 = (x - 1)^2 + 1 > 0$ với mọi $x$ nên nhân tử cuối luôn dương. $g'(x) = 0$ khi $2x - 2 = 0$ (cho $x = 1$), hoặc $x^2 - 2x = 0$ (cho $x = 0$, $x = 2$), hoặc $x^2 - 2x - 3 = 0$ (cho $x = -1$, $x = 3$). Năm giá trị $-1, 0, 1, 2, 3$ phân biệt và đều là nghiệm đơn của $g'(x)$, nên $g'(x)$ đổi dấu khi đi qua mỗi giá trị. Vậy $g$ có $5$ điểm cực trị. Chọn B.",
+     "skill_ids": [
+      "functions.extrema",
+      "functions.parameter"
+     ],
+     "difficulty": 4,
+     "options": [
+      {
+       "id": "A",
+       "text": "$4$"
+      },
+      {
+       "id": "B",
+       "text": "$5$"
+      },
+      {
+       "id": "C",
+       "text": "$3$"
+      },
+      {
+       "id": "D",
+       "text": "$7$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Quên nhân tử $(x^2 - 2x)' = 2x - 2$ nên bỏ sót điểm cực trị $x = 1$.",
+      "D": "Phương trình $x^2 - 2x = -2$ vô nghiệm, và $(x + 2)^2$ là nhân tử bậc chẵn của $f'$, nên không sinh thêm điểm cực trị."
+     }
+    },
+    {
+     "id": "math.integral.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Biết $F(x)$ là một nguyên hàm của hàm số $f(x) = 3x^2 - 4x$ và $F(1) = 3$. Giá trị của $F(2)$ bằng",
+     "hint": "Viết dạng tổng quát của $F(x)$ có hằng số $C$, dùng $F(1) = 3$ để tìm $C$.",
+     "explanation": "$F(x) = x^3 - 2x^2 + C$. Từ $F(1) = 1 - 2 + C = 3$ suy ra $C = 4$. Vậy $F(2) = 8 - 8 + 4 = 4$. Chọn A.",
+     "skill_ids": [
+      "integral.antiderivative"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$4$"
+      },
+      {
+       "id": "B",
+       "text": "$0$"
+      },
+      {
+       "id": "C",
+       "text": "$3$"
+      },
+      {
+       "id": "D",
+       "text": "$2$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Quên hằng số $C$ (coi như $C = 0$).",
+      "C": "Đã lấy luôn $C = 3$ từ $F(1) = 3$; cần giải $1 - 2 + C = 3$.",
+      "D": "Sai dấu: $F(2) = F(1) + \\int_1^2 f(x) dx$, không phải $F(1) - \\int_1^2 f(x) dx$."
+     }
+    },
+    {
+     "id": "math.oxyz.005",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, khoảng cách từ điểm $M(1; -2; 3)$ đến mặt phẳng $(P): 2x + y - 2z + 4 = 0$ bằng",
+     "hint": "Dùng công thức $d(M, (P)) = \\dfrac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}$, cẩn thận với dấu của từng số hạng.",
+     "explanation": "Ta có $d(M, (P)) = \\dfrac{|2 \\cdot 1 + (-2) - 2 \\cdot 3 + 4|}{\\sqrt{2^2 + 1^2 + (-2)^2}} = \\dfrac{|-2|}{\\sqrt{9}} = \\dfrac{2}{3}$. Chọn A.",
+     "skill_ids": [
+      "oxyz.distance_angle",
+      "oxyz.plane"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\dfrac{2}{3}$"
+      },
+      {
+       "id": "B",
+       "text": "$\\dfrac{2}{9}$"
+      },
+      {
+       "id": "C",
+       "text": "$2$"
+      },
+      {
+       "id": "D",
+       "text": "$\\dfrac{10}{3}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Em chia cho $A^2 + B^2 + C^2 = 9$ mà quên lấy căn bậc hai.",
+      "C": "Em quên chia cho độ dài vectơ pháp tuyến.",
+      "D": "Em tính sai dấu số hạng $-2z_0 = -6$ thành $+6$."
+     }
+    },
+    {
+     "id": "math.probability.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong một cộng đồng, tỉ lệ người mắc bệnh X là $2\\%$. Một loại xét nghiệm cho kết quả dương tính với $95\\%$ người mắc bệnh và cho kết quả dương tính (nhầm) với $10\\%$ người không mắc bệnh. Chọn ngẫu nhiên một người và người đó có kết quả xét nghiệm dương tính. Xác suất để người đó thực sự mắc bệnh X bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+     "hint": "Đây là bài toán ngược: biết kết quả (dương tính), cần tìm xác suất của nguyên nhân (mắc bệnh). Hãy tính xác suất dương tính trước.",
+     "explanation": "Gọi $A$: người đó mắc bệnh, $B$: xét nghiệm dương tính. Ta có $P(A) = 0{,}02$, $P(B | A) = 0{,}95$, $P(B | \\overline{A}) = 0{,}1$. Xác suất toàn phần: $P(B) = 0{,}02 \\cdot 0{,}95 + 0{,}98 \\cdot 0{,}1 = 0{,}019 + 0{,}098 = 0{,}117$. Theo công thức Bayes: $P(A | B) = \\dfrac{P(A) \\cdot P(B | A)}{P(B)} = \\dfrac{0{,}019}{0{,}117} \\approx 0{,}16$. Chọn A.",
+     "skill_ids": [
+      "probability.total_bayes"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$0{,}16$"
+      },
+      {
+       "id": "B",
+       "text": "$0{,}95$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}12$"
+      },
+      {
+       "id": "D",
+       "text": "$0{,}02$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "$0{,}95$ là $P(B | A)$ (dương tính khi mắc bệnh); câu hỏi hỏi chiều ngược lại $P(A | B)$.",
+      "C": "$0{,}117 \\approx 0{,}12$ là xác suất xét nghiệm dương tính $P(B)$, mới là bước trung gian.",
+      "D": "$0{,}019 \\approx 0{,}02$ là $P(A \\cap B)$, em chưa chia cho $P(B)$."
+     }
+    },
+    {
+     "id": "math.exp-log.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Đạo hàm của hàm số $y = \\log_3 (2x + 1)$ là",
+     "hint": "Áp dụng công thức đạo hàm của $\\log_a u$ với $u = 2x + 1$.",
+     "explanation": "Áp dụng $(\\log_a u)' = \\frac{u'}{u \\ln a}$ với $u = 2x + 1$, $u' = 2$, $a = 3$, ta được $y' = \\frac{2}{(2x + 1)\\ln 3}$. Chọn A.",
+     "skill_ids": [
+      "explog.functions",
+      "calculus.derivative.rules"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$y' = \\frac{2}{(2x + 1)\\ln 3}$"
+      },
+      {
+       "id": "B",
+       "text": "$y' = \\frac{1}{(2x + 1)\\ln 3}$"
+      },
+      {
+       "id": "C",
+       "text": "$y' = \\frac{2\\ln 3}{2x + 1}$"
+      },
+      {
+       "id": "D",
+       "text": "$y' = \\frac{2}{2x + 1}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "A"
+     },
+     "option_feedback": {
+      "B": "Quên nhân với đạo hàm của $u = 2x + 1$ là $u' = 2$.",
+      "C": "$\\ln 3$ phải nằm ở mẫu, không phải ở tử.",
+      "D": "Đây là đạo hàm của $\\ln (2x + 1)$; với cơ số $3$ cần chia thêm cho $\\ln 3$."
+     }
+    },
+    {
+     "id": "math.function.010",
+     "type": "SINGLE_CHOICE",
+     "stem": "Có bao nhiêu số nguyên $m$ thuộc đoạn $[-10; 10]$ để hàm số $y = |x^3 - 3x^2 + m|$ có đúng $3$ điểm cực trị?",
+     "hint": "Xét $h(x) = x^3 - 3x^2 + m$. Số điểm cực trị của $|h(x)|$ phụ thuộc vào số điểm cực trị của $h$ và số điểm mà đồ thị $h$ cắt (xuyên qua) trục hoành.",
+     "explanation": "Đặt $h(x) = x^3 - 3x^2 + m$; $h'(x) = 3x^2 - 6x = 0$ khi $x = 0$ hoặc $x = 2$, với $h(0) = m$, $h(2) = m - 4$. Hàm $h$ luôn có $2$ điểm cực trị. Nếu $0 < m < 4$ thì $h(0) > 0 > h(2)$, phương trình $h(x) = 0$ có $3$ nghiệm đơn, nên $y = |h(x)|$ có $2 + 3 = 5$ điểm cực trị. Nếu $m < 0$ hoặc $m > 4$ thì $h(0)$, $h(2)$ cùng dấu, $h(x) = 0$ có đúng $1$ nghiệm đơn, nên $y$ có $2 + 1 = 3$ điểm cực trị. Nếu $m = 0$: $h(x) = x^2(x - 3)$, các điểm cực trị của $y$ là $x = 0$, $x = 2$, $x = 3$ (đúng $3$ điểm). Nếu $m = 4$: $h(x) = (x + 1)(x - 2)^2$, các điểm cực trị của $y$ là $x = -1$, $x = 0$, $x = 2$ (đúng $3$ điểm). Vậy $y$ có đúng $3$ điểm cực trị khi $m \\le 0$ hoặc $m \\ge 4$. Trên đoạn $[-10; 10]$ có $11$ số nguyên $m \\le 0$ và $7$ số nguyên $m \\ge 4$, tổng cộng $18$ số. Chọn C.",
+     "skill_ids": [
+      "functions.parameter",
+      "functions.extrema"
+     ],
+     "difficulty": 4,
+     "options": [
+      {
+       "id": "A",
+       "text": "$16$"
+      },
+      {
+       "id": "B",
+       "text": "$3$"
+      },
+      {
+       "id": "C",
+       "text": "$18$"
+      },
+      {
+       "id": "D",
+       "text": "$17$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Đã loại $m = 0$ và $m = 4$; khi đó đồ thị $h$ tiếp xúc trục hoành tại một điểm cực trị nhưng $|h(x)|$ vẫn có đúng $3$ điểm cực trị.",
+      "B": "$3$ là số giá trị $m = 1, 2, 3$ làm hàm số có $5$ điểm cực trị, ngược với yêu cầu đề bài.",
+      "D": "Chỉ nhận một trong hai giá trị biên $m = 0$, $m = 4$; cả hai đều thỏa mãn."
+     }
+    },
+    {
+     "id": "math.integral.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Cho hình phẳng $(D)$ giới hạn bởi đồ thị hàm số $y = 2x - x^2$ và trục hoành. Thể tích khối tròn xoay tạo thành khi quay $(D)$ quanh trục $Ox$ bằng",
+     "hint": "Tìm cận từ giao điểm với trục hoành, rồi dùng công thức $V = \\pi\\int_a^b f^2(x) dx$.",
+     "explanation": "Hoành độ giao điểm với trục hoành: $2x - x^2 = 0$, tức $x = 0$ hoặc $x = 2$. Thể tích $V = \\pi\\int_0^2 (2x - x^2)^2 dx = \\pi\\int_0^2 (4x^2 - 4x^3 + x^4) dx = \\pi\\left(\\frac{32}{3} - 16 + \\frac{32}{5}\\right) = \\pi \\cdot \\frac{160 - 240 + 96}{15} = \\frac{16\\pi}{15}$. Chọn D.",
+     "skill_ids": [
+      "integral.volume"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\frac{4}{3}$"
+      },
+      {
+       "id": "B",
+       "text": "$\\frac{4\\pi}{3}$"
+      },
+      {
+       "id": "C",
+       "text": "$\\frac{16}{15}$"
+      },
+      {
+       "id": "D",
+       "text": "$\\frac{16\\pi}{15}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "$\\frac{4}{3}$ là diện tích của $(D)$, không phải thể tích.",
+      "B": "Đã lấy $\\pi$ nhân diện tích; công thức đúng là $\\pi\\int_0^2 (2x - x^2)^2 dx$.",
+      "C": "Quên thừa số $\\pi$ trong công thức thể tích."
+     }
+    },
+    {
+     "id": "math.oxyz.006",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, cho đường thẳng $d: \\begin{cases} x = 1 + t \\\\ y = -2 - t \\\\ z = 3 \\end{cases}$ và mặt phẳng $(P): y - z + 5 = 0$. Góc giữa đường thẳng $d$ và mặt phẳng $(P)$ bằng",
+     "hint": "Gọi $\\alpha$ là góc giữa $d$ và $(P)$; khi đó $\\sin\\alpha = |\\cos(\\vec{u}, \\vec{n})| = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$, không phải $\\cos\\alpha$.",
+     "explanation": "Đường thẳng $d$ có vectơ chỉ phương $\\vec{u} = (1; -1; 0)$, mặt phẳng $(P)$ có vectơ pháp tuyến $\\vec{n} = (0; 1; -1)$. Gọi $\\alpha$ là góc giữa $d$ và $(P)$: $\\sin\\alpha = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|} = \\dfrac{|0 - 1 + 0|}{\\sqrt{2} \\cdot \\sqrt{2}} = \\dfrac{1}{2}$. Suy ra $\\alpha = 30^\\circ$. Chọn B.",
+     "skill_ids": [
+      "oxyz.distance_angle",
+      "oxyz.line",
+      "oxyz.plane"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$60^\\circ$"
+      },
+      {
+       "id": "B",
+       "text": "$30^\\circ$"
+      },
+      {
+       "id": "C",
+       "text": "$45^\\circ$"
+      },
+      {
+       "id": "D",
+       "text": "$90^\\circ$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Em dùng công thức $\\cos$ nên được $60^\\circ$: đó là góc giữa $d$ và đường thẳng vuông góc với $(P)$ (giá của $\\vec{n}$). Góc giữa $d$ và $(P)$ là phần bù: $90^\\circ - 60^\\circ = 30^\\circ$.",
+      "D": "$\\vec{u} \\cdot \\vec{n} = -1 \\ne 0$ nên $d$ không vuông góc với $\\vec{n}$, càng không vuông góc với $(P)$."
+     }
+    },
+    {
+     "id": "math.probability.008",
+     "type": "SINGLE_CHOICE",
+     "stem": "Hộp thứ nhất có $4$ viên bi đỏ và $2$ viên bi xanh; hộp thứ hai có $3$ viên bi đỏ và $5$ viên bi xanh. Các viên bi có cùng kích thước. Lấy ngẫu nhiên một viên bi từ hộp thứ nhất bỏ vào hộp thứ hai, sau đó lấy ngẫu nhiên một viên bi từ hộp thứ hai. Xác suất để viên bi lấy ra từ hộp thứ hai có màu đỏ bằng",
+     "hint": "Xét hai trường hợp theo màu viên bi được chuyển sang; sau khi chuyển, hộp thứ hai có $9$ viên bi.",
+     "explanation": "Gọi $A$: viên bi chuyển sang là bi đỏ, $B$: viên bi lấy từ hộp thứ hai là bi đỏ. $P(A) = \\dfrac{4}{6} = \\dfrac{2}{3}$, $P(\\overline{A}) = \\dfrac{1}{3}$. Nếu chuyển bi đỏ, hộp hai có $4$ đỏ trong $9$ bi: $P(B | A) = \\dfrac{4}{9}$; nếu chuyển bi xanh, hộp hai có $3$ đỏ trong $9$ bi: $P(B | \\overline{A}) = \\dfrac{3}{9}$. Vậy $P(B) = \\dfrac{2}{3} \\cdot \\dfrac{4}{9} + \\dfrac{1}{3} \\cdot \\dfrac{3}{9} = \\dfrac{8}{27} + \\dfrac{3}{27} = \\dfrac{11}{27}$. Chọn B.",
+     "skill_ids": [
+      "probability.total_bayes"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\dfrac{3}{8}$"
+      },
+      {
+       "id": "B",
+       "text": "$\\dfrac{11}{27}$"
+      },
+      {
+       "id": "C",
+       "text": "$\\dfrac{4}{9}$"
+      },
+      {
+       "id": "D",
+       "text": "$\\dfrac{1}{2}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "$\\dfrac{3}{8}$ là tỉ lệ bi đỏ ban đầu của hộp hai; em bỏ qua viên bi được chuyển sang.",
+      "C": "$\\dfrac{4}{9}$ chỉ đúng trong trường hợp viên bi chuyển sang là bi đỏ.",
+      "D": "Em gộp hai hộp lại ($7$ đỏ trong $14$ bi); hai lần lấy diễn ra ở hai hộp khác nhau nên không gộp được."
+     }
+    },
+    {
+     "id": "math.exp-log.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một người gửi $100$ triệu đồng vào ngân hàng theo thể thức lãi kép, kì hạn $1$ năm, lãi suất 6%/năm và không rút tiền trong suốt thời gian gửi. Hỏi sau ít nhất bao nhiêu năm thì tổng số tiền (cả gốc lẫn lãi) người đó có được vượt quá $150$ triệu đồng? (Giả sử lãi suất không thay đổi.)",
+     "hint": "Viết công thức lãi kép $A(1 + r)^n$, giải bất phương trình mũ và lấy số nguyên $n$ nhỏ nhất.",
+     "explanation": "Sau $n$ năm, số tiền là $100 \\cdot 1{,}06^n$ (triệu đồng). Cần $100 \\cdot 1{,}06^n > 150$, tức $1{,}06^n > 1{,}5$, hay $n > \\log_{1{,}06} 1{,}5 \\approx 6{,}96$. Vì $n$ là số nguyên nên $n$ nhỏ nhất bằng $7$ (kiểm tra: $1{,}06^6 \\approx 1{,}419 < 1{,}5$ và $1{,}06^7 \\approx 1{,}504 > 1{,}5$). Chọn B.",
+     "skill_ids": [
+      "explog.applications",
+      "explog.inequalities"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$6$ năm"
+      },
+      {
+       "id": "B",
+       "text": "$7$ năm"
+      },
+      {
+       "id": "C",
+       "text": "$8$ năm"
+      },
+      {
+       "id": "D",
+       "text": "$9$ năm"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Đã làm tròn $6{,}96$ xuống; sau $6$ năm số tiền mới khoảng $141{,}9$ triệu đồng.",
+      "D": "Đây là kết quả khi tính theo lãi đơn $100(1 + 0{,}06n) > 150$; đề bài là lãi kép."
+     }
+    },
+    {
+     "id": "math.integral.008",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một ô tô đang chạy với vận tốc $15\\ \\text{m/s}$ thì người lái đạp phanh; từ thời điểm đó, ô tô chuyển động chậm dần đều với vận tốc $v(t) = 15 - 3t$ ($\\text{m/s}$), trong đó $t$ là thời gian (giây) tính từ lúc đạp phanh. Quãng đường ô tô di chuyển từ lúc đạp phanh đến khi dừng hẳn là",
+     "hint": "Tìm thời điểm ô tô dừng ($v(t) = 0$), rồi tính quãng đường bằng tích phân của vận tốc.",
+     "explanation": "Ô tô dừng khi $v(t) = 0$, tức $15 - 3t = 0$, suy ra $t = 5$ (giây). Quãng đường đi được là $s = \\int_0^5 (15 - 3t) dt = 15 \\cdot 5 - \\frac{3 \\cdot 5^2}{2} = 75 - 37{,}5 = 37{,}5$ (m). Chọn B.",
+     "skill_ids": [
+      "integral.applications"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$75\\ \\text{m}$"
+      },
+      {
+       "id": "B",
+       "text": "$37{,}5\\ \\text{m}$"
+      },
+      {
+       "id": "C",
+       "text": "$45\\ \\text{m}$"
+      },
+      {
+       "id": "D",
+       "text": "$30\\ \\text{m}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Đã lấy $15 \\cdot 5 = 75$, coi như ô tô giữ nguyên vận tốc $15\\ \\text{m/s}$ trong suốt $5$ giây."
+     }
+    },
+    {
+     "id": "math.oxyz.007",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, mặt cầu $(S)$ có tâm thuộc trục $Ox$ và đi qua hai điểm $A(1; 2; -1)$, $B(3; 0; 1)$ có phương trình là",
+     "hint": "Đặt tâm $I(a; 0; 0)$ và dùng điều kiện $IA = IB$ (tức là $IA^2 = IB^2$) để tìm $a$.",
+     "explanation": "Tâm $I \\in Ox$ nên $I(a; 0; 0)$. Điều kiện $IA^2 = IB^2$: $(1 - a)^2 + 4 + 1 = (3 - a)^2 + 0 + 1 \\Leftrightarrow a^2 - 2a + 6 = a^2 - 6a + 10 \\Leftrightarrow 4a = 4 \\Leftrightarrow a = 1$. Khi đó $R^2 = IA^2 = 0 + 4 + 1 = 5$ (kiểm tra $IB^2 = 4 + 0 + 1 = 5$). Vậy $(S): (x - 1)^2 + y^2 + z^2 = 5$. Chọn C.",
+     "skill_ids": [
+      "oxyz.sphere"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$(x + 1)^2 + y^2 + z^2 = 5$"
+      },
+      {
+       "id": "B",
+       "text": "$(x - 1)^2 + y^2 + z^2 = \\sqrt{5}$"
+      },
+      {
+       "id": "C",
+       "text": "$(x - 1)^2 + y^2 + z^2 = 5$"
+      },
+      {
+       "id": "D",
+       "text": "$(x - 2)^2 + y^2 + z^2 = 6$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Với $I(1; 0; 0)$ phương trình là $(x - 1)^2$; em đổi dấu sai khi viết phương trình.",
+      "B": "Vế phải của phương trình mặt cầu là $R^2 = 5$, không phải $R = \\sqrt{5}$.",
+      "D": "Điểm $(2; 0; 0)$ không cách đều $A$ và $B$: $IA^2 = 6$ nhưng $IB^2 = 2$."
+     }
+    },
+    {
+     "id": "math.probability.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Hộp thứ nhất có $4$ viên bi đỏ và $2$ viên bi xanh; hộp thứ hai có $3$ viên bi đỏ và $5$ viên bi xanh. Các viên bi có cùng kích thước. Lấy ngẫu nhiên đồng thời hai viên bi từ hộp thứ nhất bỏ vào hộp thứ hai, sau đó lấy ngẫu nhiên một viên bi từ hộp thứ hai. Biết viên bi lấy ra từ hộp thứ hai có màu đỏ, xác suất để cả hai viên bi đã chuyển sang đều màu đỏ bằng",
+     "hint": "Có ba trường hợp cho hai viên bi được chuyển (2 đỏ, 1 đỏ 1 xanh, 2 xanh). Tính xác suất toàn phần của biến cố lấy được bi đỏ, rồi dùng công thức Bayes.",
+     "explanation": "Gọi $H_1$, $H_2$, $H_3$ lần lượt là các biến cố chuyển sang $2$ bi đỏ, $1$ đỏ $1$ xanh, $2$ bi xanh; $B$: bi lấy từ hộp hai màu đỏ. Ta có $P(H_1) = \\dfrac{C_4^2}{C_6^2} = \\dfrac{6}{15}$, $P(H_2) = \\dfrac{4 \\cdot 2}{15} = \\dfrac{8}{15}$, $P(H_3) = \\dfrac{1}{15}$. Sau khi chuyển, hộp hai có $10$ bi, nên $P(B | H_1) = \\dfrac{5}{10}$, $P(B | H_2) = \\dfrac{4}{10}$, $P(B | H_3) = \\dfrac{3}{10}$. Xác suất toàn phần: $P(B) = \\dfrac{6 \\cdot 5 + 8 \\cdot 4 + 1 \\cdot 3}{150} = \\dfrac{65}{150} = \\dfrac{13}{30}$. Theo công thức Bayes: $P(H_1 | B) = \\dfrac{P(H_1) \\cdot P(B | H_1)}{P(B)} = \\dfrac{30/150}{65/150} = \\dfrac{6}{13}$. Chọn C.",
+     "skill_ids": [
+      "probability.total_bayes",
+      "probability.conditional"
+     ],
+     "difficulty": 4,
+     "options": [
+      {
+       "id": "A",
+       "text": "$\\dfrac{2}{5}$"
+      },
+      {
+       "id": "B",
+       "text": "$\\dfrac{13}{30}$"
+      },
+      {
+       "id": "C",
+       "text": "$\\dfrac{6}{13}$"
+      },
+      {
+       "id": "D",
+       "text": "$\\dfrac{1}{2}$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "$\\dfrac{6}{15} = \\dfrac{2}{5}$ là xác suất tiên nghiệm $P(H_1)$, chưa cập nhật theo thông tin bi lấy ra màu đỏ.",
+      "B": "$\\dfrac{13}{30}$ là $P(B)$, mới là mẫu số của công thức Bayes.",
+      "D": "$\\dfrac{1}{2}$ là $P(B | H_1)$; em nhầm chiều của xác suất có điều kiện."
+     }
+    },
+    {
+     "id": "math.exp-log.008",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tổng các nghiệm của phương trình $4^x - 3 \\cdot 2^{x + 1} + 8 = 0$ là",
+     "hint": "Viết $4^x = (2^x)^2$ và $2^{x + 1} = 2 \\cdot 2^x$, rồi đặt ẩn phụ $t = 2^x$.",
+     "explanation": "Ta có $2^{x + 1} = 2 \\cdot 2^x$. Đặt $t = 2^x > 0$, phương trình trở thành $t^2 - 6t + 8 = 0$, suy ra $t = 2$ hoặc $t = 4$ (đều dương). Với $2^x = 2$ được $x = 1$; với $2^x = 4$ được $x = 2$. Tổng các nghiệm là $1 + 2 = 3$. Chọn D.",
+     "skill_ids": [
+      "explog.equations",
+      "explog.powers"
+     ],
+     "difficulty": 2,
+     "options": [
+      {
+       "id": "A",
+       "text": "$6$"
+      },
+      {
+       "id": "B",
+       "text": "$2$"
+      },
+      {
+       "id": "C",
+       "text": "$8$"
+      },
+      {
+       "id": "D",
+       "text": "$3$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "$6$ là tổng hai nghiệm $t$, chưa đổi về $x$.",
+      "B": "$2$ là tích hai nghiệm $x$, không phải tổng.",
+      "C": "$8$ là tích hai nghiệm $t$, chưa đổi về $x$."
+     }
+    },
+    {
+     "id": "math.integral.010",
+     "type": "SINGLE_CHOICE",
+     "stem": "Một cổng có dạng hình parabol, khoảng cách giữa hai chân cổng là $6\\ \\text{m}$ và chiều cao của cổng là $4{,}5\\ \\text{m}$. Người ta lắp một cửa hình chữ nhật rộng $2\\ \\text{m}$ đặt chính giữa cổng, cạnh dưới nằm trên mặt đất và hai đỉnh phía trên nằm trên parabol. Phần còn lại của mặt cổng (ngoài cửa) được ốp trang trí với giá 150.000 đồng cho mỗi mét vuông. Chi phí ốp trang trí là",
+     "hint": "Gắn hệ trục tọa độ để viết phương trình parabol, tính diện tích mặt cổng bằng tích phân, rồi trừ diện tích cửa.",
+     "explanation": "Chọn hệ trục $Oxy$ với $O$ là trung điểm đoạn nối hai chân cổng, trục $Oy$ là trục đối xứng của cổng. Parabol đi qua $(-3; 0)$, $(3; 0)$ và có đỉnh $(0; 4{,}5)$ nên có phương trình $y = 4{,}5 - \\frac{x^2}{2}$. Diện tích mặt cổng: $S_1 = \\int_{-3}^{3} \\left(4{,}5 - \\frac{x^2}{2}\\right) dx = 2\\left(4{,}5 \\cdot 3 - \\frac{3^3}{6}\\right) = 2(13{,}5 - 4{,}5) = 18$ ($\\text{m}^2$). Cửa rộng $2\\ \\text{m}$ nên hai đỉnh phía trên có hoành độ $x = \\pm 1$, chiều cao cửa là $y(1) = 4{,}5 - 0{,}5 = 4$ (m), diện tích cửa $S_2 = 2 \\cdot 4 = 8$ ($\\text{m}^2$). Diện tích phần ốp là $18 - 8 = 10$ ($\\text{m}^2$), nên chi phí là 10 × 150.000 = 1.500.000 đồng. Chọn D.",
+     "skill_ids": [
+      "integral.applications",
+      "integral.area"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "1.350.000 đồng"
+      },
+      {
+       "id": "B",
+       "text": "2.700.000 đồng"
+      },
+      {
+       "id": "C",
+       "text": "825.000 đồng"
+      },
+      {
+       "id": "D",
+       "text": "1.500.000 đồng"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Đã lấy chiều cao cửa bằng chiều cao cổng $4{,}5\\ \\text{m}$; hai đỉnh trên của cửa nằm trên parabol nên cửa chỉ cao $4\\ \\text{m}$.",
+      "B": "Quên trừ diện tích cửa: $18 \\cdot 150.000$ là chi phí ốp toàn bộ mặt cổng.",
+      "C": "Đã tính mặt cổng như tam giác $\\frac{1}{2} \\cdot 6 \\cdot 4{,}5$; phần dưới parabol có diện tích bằng $\\frac{2}{3}$ hình chữ nhật bao quanh."
+     }
+    },
+    {
+     "id": "math.oxyz.008",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, cho điểm $M(3; -2; 2)$ và mặt phẳng $(P): x - 2y + 2z - 2 = 0$. Hình chiếu vuông góc của $M$ lên $(P)$ là điểm $H$ có tọa độ",
+     "hint": "Viết phương trình đường thẳng qua $M$ nhận vectơ pháp tuyến của $(P)$ làm vectơ chỉ phương, rồi tìm giao điểm với $(P)$.",
+     "explanation": "Vectơ pháp tuyến của $(P)$ là $\\vec{n} = (1; -2; 2)$. Đường thẳng qua $M$ vuông góc với $(P)$: $x = 3 + t$, $y = -2 - 2t$, $z = 2 + 2t$. Thay vào $(P)$: $(3 + t) - 2(-2 - 2t) + 2(2 + 2t) - 2 = 0 \\Leftrightarrow 9 + 9t = 0 \\Leftrightarrow t = -1$. Vậy $H(2; 0; 0)$; kiểm tra: $2 - 0 + 0 - 2 = 0$. Chọn D.",
+     "skill_ids": [
+      "oxyz.distance_angle",
+      "oxyz.plane"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$(1; 2; -2)$"
+      },
+      {
+       "id": "B",
+       "text": "$(4; -4; 4)$"
+      },
+      {
+       "id": "C",
+       "text": "$(0; 4; -4)$"
+      },
+      {
+       "id": "D",
+       "text": "$(2; 0; 0)$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "D"
+     },
+     "option_feedback": {
+      "A": "Đây là điểm đối xứng của $M$ qua $(P)$ (ứng với $t = -2$), không phải hình chiếu.",
+      "B": "Em giải ra $t = 1$ (sai dấu); điểm $(4; -4; 4)$ không thuộc $(P)$.",
+      "C": "Em chia cho $|\\vec{n}| = 3$ thay vì $|\\vec{n}|^2 = 9$ nên được $t = -3$."
+     }
+    },
+    {
+     "id": "math.probability.010",
+     "type": "SINGLE_CHOICE",
+     "stem": "Tỉ lệ người mắc một bệnh hiếm trong cộng đồng là $1\\%$. Một loại xét nghiệm cho kết quả dương tính với $90\\%$ người mắc bệnh và dương tính (nhầm) với $5\\%$ người không mắc bệnh. Một người được chọn ngẫu nhiên và làm xét nghiệm hai lần; giả sử với mỗi nhóm (mắc bệnh hoặc không mắc bệnh), kết quả hai lần xét nghiệm độc lập với nhau. Biết cả hai lần đều dương tính, xác suất để người đó mắc bệnh bằng bao nhiêu (làm tròn kết quả đến hàng phần trăm)?",
+     "hint": "Biến cố quan sát được là “hai lần dương tính”. Tính xác suất của biến cố này trong từng nhóm (mắc bệnh và không mắc bệnh) bằng quy tắc nhân, rồi dùng Bayes.",
+     "explanation": "Gọi $A$: người đó mắc bệnh, $D$: cả hai lần xét nghiệm dương tính. Do tính độc lập trong từng nhóm: $P(D | A) = 0{,}9^2 = 0{,}81$, $P(D | \\overline{A}) = 0{,}05^2 = 0{,}0025$. Xác suất toàn phần: $P(D) = 0{,}01 \\cdot 0{,}81 + 0{,}99 \\cdot 0{,}0025 = 0{,}0081 + 0{,}002475 = 0{,}010575$. Theo công thức Bayes: $P(A | D) = \\dfrac{0{,}0081}{0{,}010575} \\approx 0{,}766 \\approx 0{,}77$. Chọn C.",
+     "skill_ids": [
+      "probability.total_bayes"
+     ],
+     "difficulty": 4,
+     "options": [
+      {
+       "id": "A",
+       "text": "$0{,}15$"
+      },
+      {
+       "id": "B",
+       "text": "$0{,}81$"
+      },
+      {
+       "id": "C",
+       "text": "$0{,}77$"
+      },
+      {
+       "id": "D",
+       "text": "$0{,}02$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "$0{,}15$ là xác suất mắc bệnh khi chỉ có một lần dương tính: $\\dfrac{0{,}009}{0{,}0585} \\approx 0{,}15$.",
+      "B": "$0{,}81$ là $P(D | A)$ (hai lần dương tính khi mắc bệnh), em nhầm chiều có điều kiện.",
+      "D": "Em bình phương kết quả của một lần ($0{,}15^2 \\approx 0{,}02$); không được nhân các xác suất hậu nghiệm với nhau."
+     }
+    },
+    {
+     "id": "math.exp-log.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Có bao nhiêu số nguyên $m$ thuộc đoạn $[-10; 10]$ để phương trình $9^x - 2m \\cdot 3^x + m + 6 = 0$ có hai nghiệm thực phân biệt?",
+     "hint": "Đặt $t = 3^x$ và chuyển về điều kiện để phương trình bậc hai theo $t$ có hai nghiệm dương phân biệt.",
+     "explanation": "Đặt $t = 3^x > 0$; mỗi giá trị $t > 0$ cho đúng một giá trị $x$. Phương trình đã cho có hai nghiệm phân biệt khi và chỉ khi $t^2 - 2mt + m + 6 = 0$ có hai nghiệm dương phân biệt, tức $\\Delta' = m^2 - m - 6 > 0$, $S = 2m > 0$ và $P = m + 6 > 0$. Từ $\\Delta' > 0$ được $m < -2$ hoặc $m > 3$; kết hợp với $m > 0$ và $m > -6$ được $m > 3$. Các số nguyên thỏa mãn trong đoạn $[-10; 10]$ là $4, 5, 6, 7, 8, 9, 10$, gồm $7$ số. Chọn C.",
+     "skill_ids": [
+      "explog.parameter",
+      "explog.equations"
+     ],
+     "difficulty": 3,
+     "options": [
+      {
+       "id": "A",
+       "text": "$8$"
+      },
+      {
+       "id": "B",
+       "text": "$15$"
+      },
+      {
+       "id": "C",
+       "text": "$7$"
+      },
+      {
+       "id": "D",
+       "text": "$6$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "C"
+     },
+     "option_feedback": {
+      "A": "Đã nhận $m = 3$; khi đó $\\Delta' = 0$, phương trình theo $t$ có nghiệm kép $t = 3$ nên chỉ cho một nghiệm $x = 1$.",
+      "B": "Chỉ dùng điều kiện $\\Delta' > 0$, quên yêu cầu hai nghiệm $t$ đều dương ($S > 0$, $P > 0$)."
+     }
+    },
+    {
+     "id": "math.oxyz.009",
+     "type": "SINGLE_CHOICE",
+     "stem": "Trong không gian $Oxyz$, cho hai điểm $A(1; 0; 3)$, $B(3; 2; -1)$ và mặt phẳng $(P): x + 2y + 2z + 3 = 0$. Xét điểm $M$ thay đổi trên $(P)$. Giá trị nhỏ nhất của $MA^2 + MB^2$ bằng",
+     "hint": "Gọi $I$ là trung điểm của $AB$ và biểu diễn $MA^2 + MB^2$ theo $MI$; khi đó bài toán quy về tìm $MI$ nhỏ nhất.",
+     "explanation": "Gọi $I(2; 1; 1)$ là trung điểm $AB$. Ta có $\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\overrightarrow{MI}$ và $\\overrightarrow{IA} + \\overrightarrow{IB} = \\vec{0}$ nên $MA^2 + MB^2 = 2MI^2 + IA^2 + IB^2 = 2MI^2 + \\dfrac{AB^2}{2}$. Với $AB^2 = 2^2 + 2^2 + (-4)^2 = 24$, ta được $MA^2 + MB^2 = 2MI^2 + 12$. $MI$ nhỏ nhất khi $M$ là hình chiếu của $I$ lên $(P)$, khi đó $MI = d(I, (P)) = \\dfrac{|2 + 2 + 2 + 3|}{\\sqrt{1 + 4 + 4}} = 3$. Vậy giá trị nhỏ nhất là $2 \\cdot 9 + 12 = 30$ (đạt tại $M(1; -1; -1)$: $MA^2 = 17$, $MB^2 = 13$). Chọn B.",
+     "skill_ids": [
+      "oxyz.optimization",
+      "oxyz.plane"
+     ],
+     "difficulty": 4,
+     "options": [
+      {
+       "id": "A",
+       "text": "$18$"
+      },
+      {
+       "id": "B",
+       "text": "$30$"
+      },
+      {
+       "id": "C",
+       "text": "$42$"
+      },
+      {
+       "id": "D",
+       "text": "$21$"
+      }
+     ],
+     "answer_key": {
+      "correct_option_id": "B"
+     },
+     "option_feedback": {
+      "A": "Em mới tính $2MI^2 = 18$ mà quên cộng thêm hằng số $\\dfrac{AB^2}{2} = 12$.",
+      "C": "Hằng số đúng là $\\dfrac{AB^2}{2} = 12$, không phải $AB^2 = 24$.",
+      "D": "Hệ thức đúng là $2MI^2$, em đã viết thiếu hệ số $2$."
+     }
+    }
+   ]
+  }
+ ],
+ "source": {
+  "name": "Mentor (đề mẫu từ ngân hàng câu hỏi)",
+  "url": ""
+ },
+ "placeholder": true,
+ "note_vi": "Rút gọn: chỉ 30 câu trắc nghiệm Toán từ ngân hàng câu hỏi (đề thật dài hơn nhiều).",
+ "note_en": "Shortened: 30 maths multiple-choice items from the bank (a real test is much longer)."
+}
