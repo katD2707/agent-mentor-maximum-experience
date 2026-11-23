@@ -24,7 +24,7 @@ Khi chạy:
 Cần `uv`, `pnpm`, Rust trên Windows. Từ gốc repo Mentor:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File integrationsecouild.ps1
+powershell -ExecutionPolicy Bypass -File integrations\feco\build.ps1
 ```
 
 Kết quả: `dist\mentor-<phiên bản>-windows-x64.zip` (khoảng 85 MB, dưới giới hạn 2 GB). Script chỉ ghi vào `dist\` (không cài gì lên máy). Thêm `-Clean` để xóa môi trường dựng tạm `dist\standalone` sau khi xong. Phiên bản lấy từ `apps/app/src-tauri/tauri.conf.json` và được ghi vào `f-app.toml`.
@@ -32,7 +32,7 @@ Kết quả: `dist\mentor-<phiên bản>-windows-x64.zip` (khoảng 85 MB, dư�
 ## Việc chủ dự án phải làm trước khi nộp
 
 1. Điền `license` trong `f-app.toml` (repo Mentor chưa có tệp LICENSE) và `privacy_policy` bằng một địa chỉ https thật (hiện là chỗ giữ chỗ, ghi `TODO`).
-2. **Ký số.** F-Eco bắt buộc chữ ký Authenticode, gói không ký sẽ bị từ chối (`invalid_package`). `Mentor.exe` và `gateway\mentor-gateway.exe` do script dựng **chưa được ký**. Dựng xong, ký cả hai tệp (và các `.dll` trong `_internal` nếu chính sách yêu cầu) ngay trong thư mục `dist\standalone\windows-x64`, rồi nén lại giữ nguyên thư mục đó: `powershell -ExecutionPolicy Bypass -File integrationsecouild.ps1 -SkipGateway -SkipApp -PackStage`. Không dùng `Compress-Archive` của Windows PowerShell 5.1 vì nó ghi đường dẫn có dấu `\` trong zip.
+2. **Ký số.** F-Eco bắt buộc chữ ký Authenticode, gói không ký sẽ bị từ chối (`invalid_package`). `Mentor.exe` và `gateway\mentor-gateway.exe` do script dựng **chưa được ký**. Dựng xong, ký cả hai tệp (và các `.dll` trong `_internal` nếu chính sách yêu cầu) ngay trong thư mục `dist\standalone\windows-x64`, rồi nén lại giữ nguyên thư mục đó: `powershell -ExecutionPolicy Bypass -File integrations\feco\build.ps1 -SkipGateway -SkipApp -PackStage`. Không dùng `Compress-Archive` của Windows PowerShell 5.1 vì nó ghi đường dẫn có dấu `\` trong zip.
 3. `f-dev validate --manifest integrations\feco\f-app.toml`.
 
 ## Chạy thử trên F-Eco dev (không cần ký, không qua duyệt)
