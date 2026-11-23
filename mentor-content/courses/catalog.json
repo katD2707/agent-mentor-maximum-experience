@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-18T03:40:45.614014Z",
+  "generated_at": "2026-11-23T15:24:21.937814Z",
   "courses": [
     {
       "id": "academic-writing-for-university",
@@ -29,7 +29,9 @@
       "pack_bytes": 2688029,
       "published_at": "2026-11-17T07:18:09.714506Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "nna",
+      "topics": []
     },
     {
       "id": "c-110e873a",
@@ -58,7 +60,9 @@
       "pack_bytes": 130470,
       "published_at": "2026-11-06T20:44:40.947120Z",
       "level": "advanced",
-      "status": "live"
+      "status": "live",
+      "chicken": "khdl",
+      "topics": []
     },
     {
       "id": "c-c7063c7c",
@@ -88,7 +92,9 @@
       "pack_bytes": 3181414,
       "published_at": "2026-11-06T22:35:00.187658Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "c-e451e31c",
@@ -117,7 +123,9 @@
       "pack_bytes": 9754163,
       "published_at": "2026-11-06T22:19:28.955376Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "li",
+      "topics": []
     },
     {
       "id": "cau-truc-du-lieu-va-giai-thuat-2",
@@ -145,7 +153,9 @@
       "pack_bytes": 158337,
       "published_at": "2026-11-17T07:25:09.882779Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "khmt",
+      "topics": []
     },
     {
       "id": "co-so-du-lieu-sql-tu-co-ban",
@@ -174,7 +184,9 @@
       "pack_bytes": 89468,
       "published_at": "2026-11-18T03:31:53.510945Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "httt",
+      "topics": []
     },
     {
       "id": "coding-for-kids-scratch-stories",
@@ -203,7 +215,9 @@
       "pack_bytes": 5283326,
       "published_at": "2026-11-17T05:51:59.727909Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "cong-nghe-12-dien-va-dien-tu",
@@ -231,7 +245,9 @@
       "pack_bytes": 308177,
       "published_at": "2026-11-17T06:11:31.235562Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "cn",
+      "topics": []
     },
     {
       "id": "cong-nghe-3-lam-thu-cong-tu-giay",
@@ -260,7 +276,9 @@
       "pack_bytes": 2204916,
       "published_at": "2026-11-17T08:03:59.489428Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "cn",
+      "topics": []
     },
     {
       "id": "cong-nghe-7-trong-trot-va-chan-n",
@@ -288,7 +306,9 @@
       "pack_bytes": 135983,
       "published_at": "2026-11-17T07:22:39.917575Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "cn",
+      "topics": []
     },
     {
       "id": "dai-so-tuyen-tinh-khong-gian-vec-2",
@@ -316,7 +336,9 @@
       "pack_bytes": 114599,
       "published_at": "2026-11-17T07:29:45.565848Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "dao-duc-3-trung-thuc-va-biet-on",
@@ -345,7 +367,9 @@
       "pack_bytes": 1597617,
       "published_at": "2026-11-17T07:02:46.731107Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "cd",
+      "topics": []
     },
     {
       "id": "data-structures-and-algorithms",
@@ -374,7 +398,9 @@
       "pack_bytes": 4592176,
       "published_at": "2026-11-17T07:29:48.077891Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "khmt",
+      "topics": []
     },
     {
       "id": "dia-li-12-cac-vung-kinh-te",
@@ -402,7 +428,9 @@
       "pack_bytes": 1781314,
       "published_at": "2026-11-17T07:48:05.254626Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "dia",
+      "topics": []
     },
     {
       "id": "dia-li-8-khi-hau-va-song-ngoi-vi",
@@ -430,7 +458,9 @@
       "pack_bytes": 1541869,
       "published_at": "2026-11-17T07:42:18.449038Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "dia",
+      "topics": []
     },
     {
       "id": "english-grammar-in-use-for-teens",
@@ -459,7 +489,9 @@
       "pack_bytes": 2767104,
       "published_at": "2026-11-17T07:38:26.179686Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "gdcd-8-phap-luat-va-ki-luat",
@@ -487,7 +519,9 @@
       "pack_bytes": 122052,
       "published_at": "2026-11-17T07:51:58.695363Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "cd",
+      "topics": []
     },
     {
       "id": "giai-tich-1-gioi-han-va-dao-ham",
@@ -516,7 +550,9 @@
       "pack_bytes": 129898,
       "published_at": "2026-11-17T08:12:55.164505Z",
       "level": "advanced",
-      "status": "live"
+      "status": "live",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "giao-duc-kinh-te-va-phap-luat-10",
@@ -545,7 +581,9 @@
       "pack_bytes": 152253,
       "published_at": "2026-11-17T08:11:28.858737Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "cd",
+      "topics": []
     },
     {
       "id": "hoa-hoc-10-cau-tao-nguyen-tu-va",
@@ -574,7 +612,9 @@
       "pack_bytes": 116243,
       "published_at": "2026-11-17T08:11:36.506410Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "hoa",
+      "topics": []
     },
     {
       "id": "hoa-hoc-9-kim-loai-va-phi-kim",
@@ -603,7 +643,9 @@
       "pack_bytes": 151260,
       "published_at": "2026-11-17T08:18:12.141755Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "hoa-hoc-dai-cuong",
@@ -631,7 +673,9 @@
       "pack_bytes": 131096,
       "published_at": "2026-11-17T08:29:57.149052Z",
       "level": "intermediate",
-      "status": "live"
+      "status": "live",
+      "chicken": "hoahoc",
+      "topics": []
     },
     {
       "id": "ielts-listening-and-speaking-for",
@@ -660,7 +704,9 @@
       "pack_bytes": 3116002,
       "published_at": "2026-11-17T08:51:02.565299Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "khoa-hoc-tu-nhien-6-chat-va-su-b",
@@ -688,7 +734,9 @@
       "pack_bytes": 156338,
       "published_at": "2026-11-17T08:47:55.710016Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ki-nang-hoc-tap-hieu-qua",
@@ -717,7 +765,9 @@
       "pack_bytes": 86778,
       "published_at": "2026-11-18T03:40:42.358573Z",
       "level": "basic",
-      "status": "live"
+      "status": "live",
+      "chicken": "kn",
+      "topics": []
     },
     {
       "id": "ph-co-so-du-lieu-sql-tu-co-ban",
@@ -744,7 +794,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "httt",
+      "topics": []
     },
     {
       "id": "ph-cong-nghe-8-ban-ve-ki-thuat",
@@ -771,7 +823,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "cn",
+      "topics": []
     },
     {
       "id": "ph-dai-so-tuyen-tinh-ma-tran-va-he-phuong-trinh",
@@ -798,7 +852,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "ph-english-for-kids-1-hello-colours-and-animals",
@@ -827,7 +883,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-english-for-kids-2-my-family-and-my-day",
@@ -855,7 +913,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-giai-tich-2-tich-phan-va-chuoi",
@@ -882,7 +942,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "ph-giai-tich-nhieu-bien",
@@ -910,7 +972,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "ph-he-dieu-hanh",
@@ -938,7 +1002,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "ktmt",
+      "topics": []
     },
     {
       "id": "ph-hoa-hoc-11-can-bang-hoa-hoc-va-nitrogen",
@@ -966,7 +1032,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "hoa",
+      "topics": []
     },
     {
       "id": "ph-hoa-hoc-12-este-lipid-va-carbohydrate",
@@ -994,7 +1062,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "hoa",
+      "topics": []
     },
     {
       "id": "ph-ielts-reading-foundations",
@@ -1022,7 +1092,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-ielts-writing-task-2-essays",
@@ -1049,7 +1121,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-introduction-to-python-programming",
@@ -1076,7 +1150,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khmt",
+      "topics": []
     },
     {
       "id": "ph-khoa-hoc-4-nuoc-va-khong-khi",
@@ -1104,7 +1180,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-khoa-hoc-5-thuc-vat-va-dong-vat-quanh-em",
@@ -1132,7 +1210,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-khoa-hoc-tu-nhien-7-toc-do-va-am-thanh",
@@ -1159,7 +1239,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-khoa-hoc-tu-nhien-8-luc-ap-suat-phan-ung-hoa",
@@ -1186,7 +1268,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-ki-nang-hoc-tap-hieu-qua",
@@ -1214,7 +1298,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "kn",
+      "topics": []
     },
     {
       "id": "ph-kinh-te-vi-mo",
@@ -1241,7 +1327,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "kinhte",
+      "topics": []
     },
     {
       "id": "ph-kinh-te-vi-mo-cung-cau-va-thi-truong",
@@ -1269,7 +1357,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "kinhte",
+      "topics": []
     },
     {
       "id": "ph-lap-trinh-huong-doi-tuong-voi-java",
@@ -1296,7 +1386,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khmt",
+      "topics": []
     },
     {
       "id": "ph-lap-trinh-python-tu-con-so-khong",
@@ -1323,7 +1415,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khmt",
+      "topics": []
     },
     {
       "id": "ph-lich-su-12-viet-nam-giai-doan-1954-1975",
@@ -1351,7 +1445,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "su",
+      "topics": []
     },
     {
       "id": "ph-lich-su-7-viet-nam-thoi-ly-tran",
@@ -1379,7 +1475,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "su",
+      "topics": []
     },
     {
       "id": "ph-lich-su-va-dia-li-4-vung-dat-que-huong",
@@ -1407,7 +1505,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "su",
+      "topics": []
     },
     {
       "id": "ph-lich-su-va-dia-li-5-dat-nuoc-viet-nam",
@@ -1435,7 +1535,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "su",
+      "topics": []
     },
     {
       "id": "ph-linear-algebra-for-machine-learning",
@@ -1462,7 +1564,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "ph-luyen-thi-danh-gia-nang-luc-tu-duy-dinh-luon",
@@ -1490,7 +1594,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "kn",
+      "topics": []
     },
     {
       "id": "ph-machine-learning-co-ban",
@@ -1517,7 +1623,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khdl",
+      "topics": []
     },
     {
       "id": "ph-machine-learning-foundations",
@@ -1544,7 +1652,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khdl",
+      "topics": []
     },
     {
       "id": "ph-mang-may-tinh",
@@ -1572,7 +1682,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "ktmt",
+      "topics": []
     },
     {
       "id": "ph-microeconomics-principles",
@@ -1599,7 +1711,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "kinhte",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-10-van-hoc-dan-gian-va-tho-trung-dai",
@@ -1627,7 +1741,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-11-tho-moi-va-van-xuoi-hien-thuc",
@@ -1655,7 +1771,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-12-nghi-luan-xa-hoi-va-nghi-luan-van",
@@ -1683,7 +1801,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-6-truyen-co-tich-va-tho-luc-bat",
@@ -1710,7 +1830,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-7-tho-va-truyen-ngan",
@@ -1737,7 +1859,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-8-tho-moi-va-van-nghi-luan",
@@ -1764,7 +1888,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-ngu-van-9-on-thi-vao-lop-10",
@@ -1792,7 +1918,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-nguyen-li-ke-toan",
@@ -1819,7 +1947,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "ketoan",
+      "topics": []
     },
     {
       "id": "ph-phuong-phap-nghien-cuu-khoa-hoc",
@@ -1846,7 +1976,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "daicuong",
+      "topics": []
     },
     {
       "id": "ph-probability-for-data-science",
@@ -1874,7 +2006,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khdl",
+      "topics": []
     },
     {
       "id": "ph-python-cho-phan-tich-du-lieu",
@@ -1901,7 +2035,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khmt",
+      "topics": []
     },
     {
       "id": "ph-python-for-high-school-students",
@@ -1928,7 +2064,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-reading-short-stories-in-english",
@@ -1955,7 +2093,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-sat-math-algebra-and-data-analysis",
@@ -1983,7 +2123,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-sinh-hoc-10-te-bao",
@@ -2010,7 +2152,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "sinh",
+      "topics": []
     },
     {
       "id": "ph-sinh-hoc-12-di-truyen-hoc",
@@ -2037,7 +2181,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "sinh",
+      "topics": []
     },
     {
       "id": "ph-sinh-hoc-8-co-the-nguoi",
@@ -2064,7 +2210,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-thong-ke-ung-dung-kiem-dinh-gia-thuyet",
@@ -2091,7 +2239,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khdl",
+      "topics": []
     },
     {
       "id": "ph-tieng-anh-10-tu-vung-chu-de-va-doc-hieu",
@@ -2118,7 +2268,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-tieng-anh-12-luyen-de-tot-nghiep-thpt",
@@ -2146,7 +2298,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-tieng-anh-6-ngu-phap-nen-tang",
@@ -2173,7 +2327,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-tieng-anh-8-thi-va-cau-dieu-kien",
@@ -2201,7 +2357,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "anh",
+      "topics": []
     },
     {
       "id": "ph-tieng-viet-1-hoc-van-va-tap-doc",
@@ -2229,7 +2387,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-tieng-viet-2-ke-ve-gia-dinh-em",
@@ -2257,7 +2417,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-tieng-viet-3-tu-ngu-va-cau",
@@ -2285,7 +2447,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-tieng-viet-4-doc-hieu-va-viet-doan",
@@ -2314,7 +2478,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-tieng-viet-5-ta-canh-ta-nguoi",
@@ -2342,7 +2508,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "van",
+      "topics": []
     },
     {
       "id": "ph-tin-hoc-11-python-va-thuat-toan",
@@ -2369,7 +2537,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-tin-hoc-12-co-so-du-lieu-va-sql",
@@ -2397,7 +2567,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-tin-hoc-3-lam-quen-voi-may-tinh",
@@ -2425,7 +2597,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-tin-hoc-4-go-phim-va-soan-van-ban",
@@ -2453,7 +2627,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-tin-hoc-7-bang-tinh-co-ban",
@@ -2481,7 +2657,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-tin-hoc-9-lam-quen-lap-trinh-python",
@@ -2508,7 +2686,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "tin",
+      "topics": []
     },
     {
       "id": "ph-toan-1-hinh-vuong-tron-tam-giac",
@@ -2536,7 +2716,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-10-ham-so-bac-hai-va-vecto",
@@ -2564,7 +2746,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-11-luong-giac-va-day-so",
@@ -2592,7 +2776,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-12-dao-ham-va-khao-sat-ham-so",
@@ -2620,7 +2806,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "advanced",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-12-hinh-hoc-khong-gian-oxyz",
@@ -2648,7 +2836,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-2-cong-tru-trong-pham-vi-100",
@@ -2676,7 +2866,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-3-bang-nhan-bang-chia",
@@ -2704,7 +2896,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-4-phan-so-quanh-em",
@@ -2732,7 +2926,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-5-so-thap-phan",
@@ -2760,7 +2956,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-6-so-tu-nhien-va-phan-so",
@@ -2788,7 +2986,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-7-so-huu-ti-va-tam-giac",
@@ -2816,7 +3016,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-8-hang-dang-thuc-va-phan-thuc",
@@ -2844,7 +3046,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-9-he-phuong-trinh-va-duong-tron",
@@ -2871,7 +3075,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toan",
+      "topics": []
     },
     {
       "id": "ph-toan-roi-rac",
@@ -2898,7 +3104,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "toanhoc",
+      "topics": []
     },
     {
       "id": "ph-tu-nhien-va-xa-hoi-2-gia-dinh-va-truong-hoc",
@@ -2926,7 +3134,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-tu-nhien-va-xa-hoi-3-co-the-va-cac-giac-quan",
@@ -2955,7 +3165,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "basic",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-vat-li-10-dong-hoc-va-dong-luc-hoc",
@@ -2982,7 +3194,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "li",
+      "topics": []
     },
     {
       "id": "ph-vat-li-12-dao-dong-co-va-song",
@@ -3009,7 +3223,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "li",
+      "topics": []
     },
     {
       "id": "ph-vat-li-9-dien-tu-hoc-va-anh-sang",
@@ -3037,7 +3253,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-vat-li-dai-cuong-co-hoc-va-nhiet",
@@ -3064,7 +3282,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "vatli",
+      "topics": []
     },
     {
       "id": "ph-wonders-of-science-experiments-at-home",
@@ -3092,7 +3312,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khoahoc",
+      "topics": []
     },
     {
       "id": "ph-xac-suat-thong-ke-bien-ngau-nhien-va-phan-ph",
@@ -3119,7 +3341,9 @@
       "pack_bytes": 0,
       "published_at": null,
       "level": "intermediate",
-      "status": "coming_soon"
+      "status": "coming_soon",
+      "chicken": "khdl",
+      "topics": []
     }
   ]
 }
