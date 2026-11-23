@@ -294,6 +294,21 @@ describe("teacher screens (mock)", () => {
     expect(screen.queryByRole("link", { name: "Quay lại" })).toBeNull(); // no back button on the home screen
   });
 
+  it("home: a stuck draft can be deleted after a confirm; a published course has no delete", async () => {
+    teacherApp("/");
+    await screen.findByText("Vật lí 11: Điện trường");
+    const list = document.querySelector<HTMLElement>(".list")!;
+    expect(within(list).queryByRole("button", { name: /Xóa khóa Xác suất/ })).toBeNull(); // published: students are learning it
+    await userEvent.click(within(list).getByRole("button", { name: "Xóa khóa Hóa 10: Liên kết hóa học" }));
+    const ask = await screen.findByRole("alertdialog");
+    await userEvent.click(within(ask).getByRole("button", { name: "Giữ lại" }));
+    expect(screen.queryByRole("alertdialog")).toBeNull();
+    expect(screen.getByText("Hóa 10: Liên kết hóa học")).toBeInTheDocument();
+    await userEvent.click(within(list).getByRole("button", { name: "Xóa khóa Hóa 10: Liên kết hóa học" }));
+    await userEvent.click(within(await screen.findByRole("alertdialog")).getByRole("button", { name: "Xóa khóa" }));
+    await waitFor(() => expect(screen.queryByText("Hóa 10: Liên kết hóa học")).toBeNull());
+  }, 20000);
+
   it("home: a revising row says 'Đang sửa bản 2' once (pill only, the line is dropped when it repeats it)", async () => {
     const real = await mockTeacherApi.listCourses("mock-u-gv");
     vi.spyOn(mockTeacherApi, "listCourses").mockResolvedValue([
@@ -391,12 +406,12 @@ describe("teacher screens (mock)", () => {
     expect(screen.queryByRole("button", { name: "Thêm bài" })).toBeNull();
   });
 
-  it("review: the difficulty is read-only here and points at the Nhãn step", async () => {
+  it("review: the difficulty is read-only here (step 3 changes it)", async () => {
     teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
     const row = await screen.findByText("Độ khó");
     expect(row.closest(".lvx-row")!.querySelector("[role='radio']")).toBeNull();
-    expect(screen.getByRole("link", { name: "Sửa ở bước Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1");
-    expect(screen.getByRole("link", { name: "Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1");
+    expect(screen.queryByRole("link", { name: "Sửa ở bước Nhãn" })).toBeNull(); // step 3 is the only way to the labels
+    await waitFor(() => expect(screen.getByRole("link", { name: "Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1"));
   }, 20000);
 
   it("review: tabs, step list with a dot for unsure, no app-version note; 'Đã xem' clears the dot", async () => {

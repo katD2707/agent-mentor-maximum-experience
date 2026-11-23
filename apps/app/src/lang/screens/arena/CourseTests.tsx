@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { practice, PracticeError, type PCourseLevels, type StartSource } from "../../../api";
 import { useAuth } from "../../../state/auth";
@@ -21,7 +21,8 @@ type Load = { s: "loading" } | { s: "error" } | { s: "ready"; data: PCourseLevel
 
 /**
  * `/kiem-tra/:courseId` (mockups/lg-07): the course mock exam (only questions of this course) and the practice levels of the
- * course, from easy to hard. Runs opened here return here.
+ * course, from easy to hard. Runs opened here return here. `?state=thi` opens the mock exam's "ready?" dialog and
+ * `?state=luyen&level=N` starts that practice level at once (what a link from outside lands on); `from=chuong` is the default way back.
  */
 export function CourseTests() {
   const { courseId = "" } = useParams();
@@ -29,6 +30,7 @@ export function CourseTests() {
   const { token, user } = useAuth();
   const nav = useNavigate();
   const loc = useLocation();
+  const [params, setParams] = useSearchParams();
   const band = user?.age_band === "g1_5" ? "kid" : user?.age_band === "uni" ? "uni" : "school";
   const [st, setSt] = useState<Load>({ s: "loading" });
   const [attempt, setAttempt] = useState(0);
@@ -70,7 +72,19 @@ export function CourseTests() {
     [here, nav, starting, token],
   );
 
+  // a link with ?state= goes straight to what it names, once
+  const want = useRef({ state: params.get("state"), level: Number(params.get("level")) || 0 });
   const data = st.s === "ready" ? st.data : null;
+  useEffect(() => {
+    if (!data || !want.current.state) return;
+    const { state, level } = want.current;
+    want.current = { state: null, level: 0 };
+    setParams(new URLSearchParams(params.get("from") ? { from: params.get("from") as string } : {}), { replace: true });
+    if (state === "thi" && band !== "kid" && data.levels.reduce((n, l) => n + l.items, 0) >= MIN_MOCK_ITEMS) setConfirm(true);
+    else if (state === "luyen" && level && data.levels.some((l) => l.level === level && l.items > 0 && l.studied >= data.min_items)) void start(`l${level}`, `course:${courseId}`, level);
+    // only when the levels arrive
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
   const levels = (data?.levels ?? []).filter((l) => l.items > 0 && (band !== "kid" || l.level <= 3));
   const totalItems = (data?.levels ?? []).reduce((s, l) => s + l.items, 0);
   const mock = courseMockSize(totalItems);
@@ -131,7 +145,7 @@ export function CourseTests() {
                   {levels.map((l) => {
                     const open = l.studied >= data.min_items;
                     const now = data.suggested === l.level && !l.solid;
-                    const pct = l.studied ? Math.round((l.correct / l.studied) * 100) : 0;
+                    const pct = l.answered ? Math.round((l.correct / l.answered) * 100) : 0;
                     const name = t(`lg.kt.level.${band}.${l.level}`);
                     return (
                       <li key={l.level} className={`${now ? "now" : ""}${open ? "" : " ar-later"}`}>
@@ -140,7 +154,7 @@ export function CourseTests() {
                         </span>
                         <div>
                           <h3>{name}</h3>
-                          <p>{open ? [t("lg.kt.levelMeta", { items: l.items, pct }), l.solid ? t("lg.kt.levelSolid") : now ? t("lg.kt.levelNow") : null].filter(Boolean).join(" · ") : t("lg.kt.levelLater")}</p>
+                          <p>{open ? [l.answered ? t("lg.kt.levelMeta", { items: l.items, pct }) : t("lg.kt.levelItems", { items: l.items }), l.solid ? t("lg.kt.levelSolid") : now ? t("lg.kt.levelNow") : null].filter(Boolean).join(" · ") : t("lg.kt.levelLater")}</p>
                         </div>
                         {open && (
                           <button className={`ar-btn ${now ? "" : "wood"}`} type="button" disabled={!!starting} aria-label={`${name}: ${t(band === "kid" ? "lg.kt.levelStartKid" : "lg.kt.levelStart")}`} onClick={() => void start(`l${l.level}`, `course:${courseId}`, l.level)}>

@@ -143,7 +143,14 @@ function Runner({ loaded, enrollment, chicken }: { loaded: LoadedPack; enrollmen
   const start = useMemo<Pos>(() => {
     const want = params.get("lesson");
     const lesson = lessons.find((l) => l.id === want);
-    return lesson ? { lessonId: lesson.id, blockId: lesson.blocks[0].id } : resumePosition(pack, enrollment.progress);
+    // a link to the lesson the student left in the middle (coop row, village speaker) picks up where they stopped; any other lesson starts at its first block
+    if (lesson) {
+      const saved = enrollment.progress;
+      const done = new Set(saved?.completed_block_ids ?? []);
+      const unfinished = lesson.blocks.some((b) => !done.has(b.id));
+      return saved?.lesson_id === lesson.id && unfinished ? resumePosition(pack, saved) : { lessonId: lesson.id, blockId: lesson.blocks[0].id };
+    }
+    return resumePosition(pack, enrollment.progress);
   }, [pack, lessons, enrollment.progress, params]);
 
   const [pos, setPos] = useState<Pos>(start);
@@ -301,7 +308,12 @@ function LessonView(p: LessonProps) {
   const lang: "vi" | "en" = i18n.language === "en" ? "en" : "vi";
   const kid = user?.age_band === "g1_5";
   const { lesson } = p;
-  const [coach, readCoach] = useCoach(p.chicken, lang);
+  // the XP the server paid for this lesson (the progress PUT's `xp`); it also names the chicken that was credited
+  const [xp, setXp] = useState<ProgressXp[]>([]);
+  useEffect(() => onXp((list, cid) => cid === p.courseId && setXp((x) => [...x, ...list])), [p.courseId]);
+  // the server's answer wins over the course's own label (and over the client mirror used when offline)
+  const chicken = xp.find((x) => x.chicken)?.chicken ?? p.chicken;
+  const [coach, readCoach] = useCoach(chicken, lang);
   const root = useRef<HTMLDivElement>(null);
 
   const base = useMemo(() => stepsOf(lesson), [lesson]);
@@ -319,13 +331,12 @@ function LessonView(p: LessonProps) {
   const t0 = useRef(Date.now());
   const mainRef = useRef<HTMLElement>(null);
 
-  // ---- XP: what the server paid for this lesson (the progress PUT's `xp`), shown on the end screen
-  const [xp, setXp] = useState<ProgressXp[]>([]);
+  // ---- XP, shown on the end screen
   const [after, setAfter] = useState<Coach | null>(null);
   const [counted, setCounted] = useState(false); // the wait for the server is over
   const before = useRef<Coach | null>(null);
+  if (before.current && coach.id && before.current.id !== coach.id) before.current = null; // the server credited another chicken than the guess
   if (!before.current && coach.id) before.current = coach;
-  useEffect(() => onXp((list, cid) => cid === p.courseId && setXp((x) => [...x, ...list])), [p.courseId]);
   useEffect(() => {
     if (!xp.length) return;
     let alive = true;
@@ -338,7 +349,7 @@ function LessonView(p: LessonProps) {
   const leave = () => {
     p.flush();
     const back = (location.state as { back?: string } | null)?.back;
-    if (params.get("from") === "khoa" && p.chicken) nav(`/chuong/${encodeURIComponent(p.chicken)}?khoa=${encodeURIComponent(p.courseId)}`);
+    if (params.get("from") === "khoa" && chicken) nav(`/chuong/${encodeURIComponent(chicken)}?khoa=${encodeURIComponent(p.courseId)}`);
     else if (back) nav(back);
     else nav("/");
   };
@@ -399,8 +410,12 @@ function LessonView(p: LessonProps) {
     // a first miss: the chicken explains it again, then the same question once more
     if (quiz && verdict && !verdict.correct && !cur.retry) {
       const item = (step.block as Extract<Block, { kind: "quiz" }>).items[step.itemIndex!];
-      const detail = verdictDetail(item, verdict, stage?.chosen ?? null, t("lesson.answer")) || item.hint || "";
-      setQueue((q) => [...q.slice(0, i + 1), { key: `t${q.length}`, step, kind: "reteach", retry: true, detail }, { key: `w${q.length}`, step, kind: "twin", retry: true }, ...q.slice(i + 1)]);
+      // the feedback band already showed the answer and the explanation: the chicken only explains again when it has something new (the hint)
+      const shown = verdictDetail(item, verdict, stage?.chosen ?? null, t("lesson.answer"));
+      const hint = (item.hint ?? "").trim();
+      const fresh = hint && !shown.includes(hint) ? hint : "";
+      const again: QStep[] = [...(fresh ? [{ key: `t${queue.length}`, step, kind: "reteach" as const, retry: true, detail: fresh }] : []), { key: `w${queue.length}`, step, kind: "twin" as const, retry: true }];
+      setQueue((q) => [...q.slice(0, i + 1), ...again, ...q.slice(i + 1)]);
       setStage(null);
       setRfoot(null);
       setI(i + 1);

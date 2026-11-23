@@ -41,7 +41,7 @@ function OneLine({ label, placeholder, onSend }: { label: string; placeholder: s
 }
 
 // ---------------------------------------------------------------- tab: lesson
-export function LessonTab({ lesson, ctx, unsure, commented, locked, english, saving, onSave, onSeen, onComment }: { lesson: Lesson; ctx: BlockCtx; unsure: ReadonlyMap<string, UnsureStep>; commented: ReadonlySet<string>; locked: boolean; english: boolean; saving: boolean; onSave(blockId: string, patch: Patch): void; onSeen(blockId: string): void; onComment(blockId: string, text: string): Promise<void> }) {
+export function LessonTab({ lesson, no, ctx, unsure, commented, locked, english, saving, onSave, onSeen, onComment }: { lesson: Lesson; no: number; ctx: BlockCtx; unsure: ReadonlyMap<string, UnsureStep>; commented: ReadonlySet<string>; locked: boolean; english: boolean; saving: boolean; onSave(blockId: string, patch: Patch): void; onSeen(blockId: string): void; onComment(blockId: string, text: string): Promise<void> }) {
   const { t } = useTranslation();
   const [at, setAt] = useState(0);
   useEffect(() => setAt(0), [lesson.id]);
@@ -51,18 +51,27 @@ export function LessonTab({ lesson, ctx, unsure, commented, locked, english, sav
   const un = unsure.get(b.id);
   return (
     <section className="rv" aria-label={t("gv.tabLesson")}>
-      <ul className="rv-list gv-steps" aria-label={t("gv.stepsAria")}>
-        {lesson.blocks.map((x, n) => (
-          <li key={x.id}>
-            <button type="button" className="si" aria-current={n === i} onClick={() => setAt(n)}>
-              <span className="sn">{n + 1}</span>
-              <Icon name={STEP_ICON[stepKind(x)]} />
-              <span className="lb">{stepLabel(x) || t(`gv.kind.${stepKind(x)}`)}</span>
-              {unsure.has(x.id) ? <span className="dot maybe" role="img" aria-label={t("gv.unsureDot")} /> : commented.has(x.id) ? <span className="dot said" role="img" aria-label={t("gv.commentDot")} /> : <span />}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="rv-side">
+        <div className="rv-lesson-h">
+          <span>{t("lg.gvl.rv.stepsOf", { n: no })}</span>
+          <b>{lesson.title}</b>
+        </div>
+        <ul className="rv-list gv-steps" aria-label={t("gv.stepsAria")}>
+          {lesson.blocks.map((x, n) => {
+            const label = stepLabel(x) || t(`gv.kind.${stepKind(x)}`);
+            return (
+              <li key={x.id}>
+                <button type="button" className="si" aria-current={n === i} title={label} onClick={() => setAt(n)}>
+                  <span className="sn">{n + 1}</span>
+                  <Icon name={STEP_ICON[stepKind(x)]} />
+                  <span className="lb">{label}</span>
+                  {unsure.has(x.id) ? <span className="dot maybe" role="img" aria-label={t("gv.unsureDot")} /> : commented.has(x.id) ? <span className="dot said" role="img" aria-label={t("gv.commentDot")} /> : <span />}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
       <div className="phone" role="group" aria-label={t("gv.phoneAria")}>
         <div className="pbar">
           <i style={{ width: `${((i + 1) / lesson.blocks.length) * 100}%` }} />

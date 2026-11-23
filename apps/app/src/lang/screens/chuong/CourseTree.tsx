@@ -67,73 +67,38 @@ export function CourseTree({ row, band, name, recaps, tests, onListen }: { row: 
   );
 }
 
-/** "Luyện tập": the level ladder. Each open level starts a practice on this course; the mock exam sits under it. */
+/**
+ * "Luyện tập và thi thử": the one way from the coop into the course's tests. It opens `/kiem-tra/<course>` (lg-07), which
+ * holds the mock exam and the practice levels: the ladder lives there only.
+ */
 function Ladder({ row, band, tests }: { row: Row; band: string | null | undefined; tests: ChuongTest[] }) {
   const { t } = useTranslation();
   const { token } = useAuth();
   const loc = useLocation();
-  const kind = ladderBand(band);
+  const kid = ladderBand(band) === "kid";
   const [data, setData] = useState<PCourseLevels | null>(null);
   useEffect(() => {
     if (!token) return;
     let alive = true;
     practice.courseLevels(token, row.id).then(
       (d) => alive && setData(d),
-      () => alive && setData(null), // the lessons still work; practice shows once it can be read
+      () => alive && setData(null), // the lessons still work; the tests row shows once it can be read
     );
     return () => {
       alive = false;
     };
   }, [token, row.id]);
-  const names = t(`lg.cg.ladder.${kind}`, { returnObjects: true }) as unknown as string[];
-  const levels = (data?.levels ?? []).filter((l) => l.items > 0 && (kind !== "kid" || l.level <= 3));
-  const mock = kind === "kid" ? undefined : tests.find((x) => x.course_id === row.id);
+  const mock = kid ? undefined : tests.find((x) => x.course_id === row.id);
+  const any = (data?.levels ?? []).some((l) => l.items > 0 && (!kid || l.level <= 3));
+  if (!any && !mock) return null;
   const back = { back: `${loc.pathname}${loc.search}` };
-  const kidMark = kind === "kid";
-  if (!levels.length && !mock) return null;
   return (
-    <>
-      {levels.length > 0 && data && (
-        <details className="ck-grp" open>
-          <Summary icon="layers" title={t("lg.cg.practice")} />
-          <div className="ck-kids">
-            {levels.map((l) => {
-              const open = l.studied >= data.min_items;
-              const now = data.suggested === l.level;
-              const pct = l.studied ? Math.round((l.correct / l.studied) * 100) : 0;
-              const state = l.solid ? "ck-done" : now ? "ck-nowrow" : "";
-              const no = kidMark ? <span className="ck-stars">{"★".repeat(l.level)}</span> : <span className="ck-no">{l.level}</span>;
-              const label = names[l.level - 1] ?? String(l.level);
-              const end = l.solid ? <Icon name="check" /> : kidMark ? (now ? <Icon name="play" /> : null) : <>{pct}%</>;
-              const inner = (
-                <>
-                  {no}
-                  <span className="ck-t">{label}</span>
-                  <span className="ck-end ck-pct">{end}</span>
-                </>
-              );
-              return open ? (
-                <Link key={l.level} className={`ck-node ${state}`} to={`/kiem-tra/${encodeURIComponent(row.id)}?state=luyen&level=${l.level}&from=chuong`} state={back} aria-current={now && !l.solid ? "step" : undefined}>
-                  {inner}
-                </Link>
-              ) : (
-                <span key={l.level} className="ck-node ck-later">
-                  {inner}
-                </span>
-              );
-            })}
-          </div>
-        </details>
-      )}
-      {mock && (
-        <Link className="ck-node" to={`/kiem-tra/${encodeURIComponent(row.id)}?state=thi&from=chuong`} state={back}>
-          <span className="ck-ic">
-            <Icon name="clock" />
-          </span>
-          <span className="ck-t">{t("lg.cg.mock", { items: mock.items, minutes: mock.minutes })}</span>
-          <span className="ck-end" />
-        </Link>
-      )}
-    </>
+    <Link className="ck-node ck-solo" to={`/kiem-tra/${encodeURIComponent(row.id)}?from=chuong`} state={back}>
+      <span className="ck-ic">
+        <Icon name={kid ? "layers" : "clock"} />
+      </span>
+      <span className="ck-t">{t(mock ? "lg.cg.test" : "lg.cg.testKid")}</span>
+      <span className="ck-end">{mock ? t("lg.cg.testMeta", { items: mock.items, minutes: mock.minutes }) : null}</span>
+    </Link>
   );
 }

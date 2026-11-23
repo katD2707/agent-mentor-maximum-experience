@@ -631,7 +631,7 @@ export const vi = {
     open: "Cài đặt",
     birthYear: "Năm sinh",
     language: "Ngôn ngữ",
-    theme: "Nền",
+    theme: "Giao diện",
     themeOptions: { system: "Theo máy", light: "Sáng", dark: "Tối" },
     reminders: "Nhắc học",
     notify: "Thông báo",

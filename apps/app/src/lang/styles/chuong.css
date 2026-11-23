@@ -37,6 +37,8 @@
 .ck .ck-tell svg { width: 16px; height: 16px; color: #1d7052; }
 .ck[data-player="on"] .ck-tell { display: inline-flex; }
 .ck .ck-plate { position: relative; z-index: 3; margin: -22px auto 0; width: max-content; max-width: 100%; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; padding: 5px 18px 5px 5px; border-radius: 999px; background: var(--plate); color: #fff; font-weight: 700; font-size: 1.12em; box-shadow: 0 3px 0 rgba(0,0,0,.25); }
+.ck .ck-plate > span { white-space: nowrap; }
+.ck .ck-plate .ck-plate-s { font-weight: 600; font-size: .8em; color: #ffe9a8; padding: 2px 10px; border-radius: 99px; background: rgba(255, 233, 168, .16); }
 .ck .ck-lv { display: inline-grid; place-items: center; min-width: 34px; height: 34px; padding: 0 8px; border-radius: 999px; background: #ffcf3d; color: var(--lv-ink); font-weight: 800; box-shadow: inset 0 -3px 0 rgba(0,0,0,.15); }
 .ck .ck-lvl { font-weight: 800; }
 .ck .ck-grow { margin-top: 18px; display: grid; gap: 10px; }
@@ -98,6 +100,9 @@
 .ck .ck-grp > summary .ck-t { font-weight: 700; }
 .ck .ck-node .ck-end { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-g2); font-size: .82em; font-weight: 600; }
 .ck .ck-node .ck-end svg { width: 17px; height: 17px; }
+/* the tests row sits under the lessons group, level with its title: icon, words, meta */
+.ck .ck-node.ck-solo { grid-template-columns: 22px minmax(0, 1fr) auto; margin-top: 2px; }
+.ck .ck-node.ck-solo .ck-t { font-weight: 700; }
 .ck .ck-kids { display: grid; gap: 2px; padding-left: 30px; }
 .ck .ck-kids .ck-node { grid-template-columns: minmax(22px, auto) minmax(0, 1fr) auto; }
 .ck .ck-no { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; font-size: .75em; font-weight: 700; color: var(--ink-g2); border: 2px solid #d9b882; background: #fffdf7; }
@@ -146,6 +151,9 @@
   .ck .ck-me-col { position: relative; }
 }
 @media (max-width: 560px) {
+  .ck .ck-wrap { padding-bottom: 96px; } /* the last row scrolls clear of the guide chicken in the corner */
+  .ck .ck-c-body { padding-right: 40px; }
+  .ck .ck-node.ck-solo .ck-end { display: none; } /* the size of the exam is on the test page; here the words need the room */
   .ck .ck-c-head { grid-template-columns: 40px minmax(0, 1fr) 20px; }
   .ck .ck-c-head .ck-tag { display: none; }
   .ck .ck-kids { padding-left: 14px; }
@@ -264,7 +272,7 @@
 }
 
 /* ---- app shell ---- */
-.ck { position: fixed; inset: 0; overflow: auto; font: 16px/1.4 "Lexend", system-ui, sans-serif; color-scheme: light; --font-read: "Literata", Georgia, serif; --ink: #3a2010; --ink-3: #6b4a2e; --tim-ink: #7a2c18; }
+.ck { position: fixed; inset: 0; overflow: auto; font: 16px/1.4 "Lexend", system-ui, sans-serif; color-scheme: light; --font-read: "Literata", "Noto Serif", "Times New Roman", Cambria, serif; --ink: #3a2010; --ink-3: #6b4a2e; --tim-ink: #7a2c18; }
 .ck *, .ck *::before, .ck *::after { box-sizing: border-box; }
 .ck h1, .ck h2, .ck h3, .ck h4, .ck p, .ck ul, .ck ol { margin: 0; }
 .ck button { font-family: inherit; }
@@ -299,3 +307,13 @@
 /* a course that is not out yet: a muted tag, never a green button; tapping it opens the preview */
 .ck .ck-soon { display: inline-flex; align-items: center; min-height: 32px; padding: 0 14px; border-radius: 999px; border: 2px dashed #c9b48e; background: transparent; color: #7a654a; font: inherit; font-weight: 700; font-size: .9em; cursor: pointer; }
 .ck .ck-soon:hover { background: #f6ecd8; }
+
+/* "Sắp có" courses: folded away under the ones that can be added */
+.ck .ck-later-box { margin-top: 14px; }
+.ck .ck-later-box > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border-radius: 10px; font-weight: 700; color: var(--ink-g2); list-style: none; }
+.ck .ck-later-box > summary::-webkit-details-marker { display: none; }
+.ck .ck-later-box > summary::before { content: "▸"; font-size: .9em; transition: transform .15s; }
+.ck .ck-later-box[open] > summary::before { transform: rotate(90deg); }
+.ck .ck-later-box > summary:hover { background: #f8e8c8; }
+.ck .ck-later-box > summary:focus-visible { outline: 3px solid var(--ac); outline-offset: -3px; }
+.ck .ck-later-box > ul { margin-top: 10px; }

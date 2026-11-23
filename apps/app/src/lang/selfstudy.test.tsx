@@ -7,7 +7,7 @@ import { App } from "../App";
 import { AuthProvider } from "../state/auth";
 import { FocusTracker } from "../lib/focus";
 import { lg, mockSeedWeek } from "./api";
-import { sourceRows } from "./screens/progress/Progress";
+import { markStreak, sourceRows } from "./screens/progress/Progress";
 import { resolveDeepLink } from "../lib/deeplink";
 
 const TOKEN = "mock-u-hs";
@@ -86,10 +86,12 @@ describe("study room (lg-06)", () => {
     await pass(5 * 60000 + 500);
     await ui.click(screen.getByRole("button", { name: "Tạm dừng" }));
     expect(screen.getByText("Đang tạm dừng")).toBeInTheDocument();
+    await waitFor(async () => expect((await lg.focusActive(TOKEN))?.status).toBe("paused")); // the server holds the pause
     const frozen = document.querySelector(".time")?.textContent;
     await pass(10 * 60000); // ten minutes of rest do not count
     expect(document.querySelector(".time")?.textContent).toBe(frozen);
     await ui.click(screen.getByRole("button", { name: "Học tiếp" }));
+    await screen.findByRole("button", { name: "Tạm dừng" }); // the server resumed the clock
     await pass(2 * 60000);
     await ui.click(screen.getByRole("button", { name: "Dừng" }));
     expect(await screen.findByText("Em đã học 7 phút")).toBeInTheDocument();
@@ -106,6 +108,18 @@ describe("study room (lg-06)", () => {
     open("/phong-tu-hoc");
     expect(await screen.findByText("Đang học cùng Gà Văn")).toBeInTheDocument();
     expect(screen.getByRole("timer")).toHaveAccessibleName(/Còn 25 phút/);
+  });
+
+  it("a session paused on the server stays paused after a reload; resuming starts the clock again", async () => {
+    seed(2010, [{ id: "van", xp: 0 }]);
+    const f = await lg.focusStart(TOKEN, { minutes: 25, chicken: "van" });
+    await lg.focusPause(TOKEN, f.id);
+    open("/phong-tu-hoc");
+    expect(await screen.findByText("Đang tạm dừng")).toBeInTheDocument();
+    const ui = userEvent.setup();
+    await ui.click(screen.getByRole("button", { name: "Học tiếp" }));
+    expect(await screen.findByRole("button", { name: "Tạm dừng" })).toBeInTheDocument();
+    expect((await lg.focusActive(TOKEN))?.status).toBe("active");
   });
 
   it("with no chicken yet it points back to the village", async () => {
@@ -148,7 +162,7 @@ describe("progress (lg-09)", () => {
     open("/tien-do");
     expect(await screen.findByRole("heading", { name: "Gà của em tuần này" })).toBeInTheDocument();
     const card = (await screen.findByRole("link", { name: "Gà Toán" })).closest("article") as HTMLElement;
-    expect(within(card).getByText("+201 KN")).toBeInTheDocument(); // 20 + 45 + 136
+    expect(within(card).getByText("+201 kinh nghiệm")).toBeInTheDocument(); // 20 + 45 + 136
     expect(within(card).getByText("Cấp 5 thành Trưởng thành.")).toBeInTheDocument();
     expect(within(card).getByText("còn 22 lên cấp 4")).toBeInTheDocument();
     // the six rows: lessons, practice, arena, study room, review cards
@@ -161,15 +175,22 @@ describe("progress (lg-09)", () => {
     expect(within(card).getByText("+90")).toBeInTheDocument();
     // a chicken with no points this week says so
     const van = screen.getByRole("link", { name: "Gà Văn" }).closest("article") as HTMLElement;
-    expect(within(van).getByText("+0 KN")).toBeInTheDocument();
+    expect(within(van).getByText("+0 kinh nghiệm")).toBeInTheDocument();
     expect(within(van).getByText(/Học 10 phút hôm nay/)).toBeInTheDocument();
     // how chickens grow: the approved amounts
     const rules = screen.getByRole("heading", { name: "Cách gà lớn" }).closest("section") as HTMLElement;
-    expect(within(rules).getByText("Phòng tự học: mỗi phút (+5 nếu học trọn buổi)")).toBeInTheDocument();
-    expect(within(rules).getByText("+20 KN")).toBeInTheDocument();
+    expect(within(rules).getByText("Phòng tự học: mỗi phút (+5 nếu học trọn buổi), tối đa 120 kinh nghiệm mỗi ngày")).toBeInTheDocument();
+    expect(within(rules).getByText("+20 kinh nghiệm")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Chuỗi ngày" })).toBeInTheDocument();
   });
 
+  it("the week dots follow the village streak, so the HUD and Tiến độ say the same", () => {
+    const none = [false, false, false, false, false, false, true]; // the chickens only earned today
+    expect(markStreak(none, { days: 6, today_done: true })).toEqual([false, true, true, true, true, true, true]);
+    expect(markStreak([false, true, false, false, false, false, false], { days: 3, today_done: false })).toEqual([false, true, false, true, true, true, false]);
+    expect(markStreak(none, { days: 0, today_done: true })).toEqual(none);
+    expect(markStreak(none, null)).toEqual(none);
+  });
   it("sourceRows works the counts back from what each source pays", () => {
     const t = (k: string, o?: Record<string, unknown>) => `${k}:${JSON.stringify(o ?? {})}`;
     const rows = sourceRows({ focus: 15, focus_full: 5, notes_review: 4 }, t);

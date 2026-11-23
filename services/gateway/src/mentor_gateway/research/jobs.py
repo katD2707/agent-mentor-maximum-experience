@@ -32,7 +32,7 @@ from mentor_gateway.db import JobRow, User
 from mentor_gateway.planner.bands import TZ
 from mentor_gateway.planner.text import clean, unaccent
 from mentor_gateway.research import prompts
-from mentor_gateway.research.profile_keys import title_keywords
+from mentor_gateway.research.profile_keys import specific_keywords, title_keywords
 from mentor_gateway.research.base import JOB_TTL, ModelUnavailable, ResearchBase, fail, iso, new_id
 from mentor_gateway.research.tables import PaperRow, ReadingEntryRow, ResearchProfileRow, SuggestionRow
 
@@ -181,6 +181,7 @@ class JobsMixin(ResearchBase):
     async def _run_discovery(self, job: dict[str, Any], user_id: str, lang: str) -> None:
         job["status"] = "running"
         title, _question, kws = self.topic(user_id)
+        kws = specific_keywords(kws)  # "paper", "study"... would only bring back whatever mentions them
         if self.llm is None:  # no model: only English keywords make a usable arXiv query
             kws = self._usable_keywords(title, kws)
             title = title if title.isascii() else " ".join(kws)

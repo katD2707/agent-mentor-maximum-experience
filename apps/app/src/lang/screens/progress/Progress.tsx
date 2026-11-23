@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { api, type Goal, type PlanItem, type WeekPlan } from "../../../api";
@@ -19,14 +19,12 @@ import "../../styles/fonts";
 import "../../styles/lang.css";
 import "../../styles/progress.css";
 
-const SettingsSheet = lazy(() => import("../village/Sheets").then((m) => ({ default: m.SettingsSheet })));
 
 type Load<T> = { status: "loading" } | { status: "error" } | { status: "ready"; data: T };
 
 /** lg-09 Tiến độ: the chickens' week, the plan, goals, courses, streak and the rules of growth. */
 export function TienDo() {
   const { t } = useTranslation();
-  const [settings, setSettings] = useState(false);
   return (
     <div className="lg lg-back lg-pg" data-age="g10_12">
       <header className="lg-pg-top">
@@ -35,18 +33,10 @@ export function TienDo() {
         </Link>
         <h1 className="lg-pg-ribbon">{t("lg.prog.title")}</h1>
         <span className="lg-pg-grow" />
-        <button className="lg-pg-round" type="button" onClick={() => setSettings(true)} aria-label={t("lg.prog.settings")}>
-          <Icon name="gear" />
-        </button>
       </header>
       <main className="lg-pg-page">
         <ProgressBoards />
       </main>
-      {settings && (
-        <Suspense fallback={null}>
-          <SettingsSheet onClose={() => setSettings(false)} />
-        </Suspense>
-      )}
     </div>
   );
 }
@@ -209,7 +199,7 @@ function ChickenCard({ c, lang }: { c: XpWeekChicken; lang: "vi" | "en" }) {
       <div className="xp">
         <div className="row">
           <span>
-            {c.xp_in_level}/{XP_PER_LEVEL} {lang === "en" ? "XP" : "KN"}
+            {c.xp_in_level}/{XP_PER_LEVEL} {lang === "en" ? "XP" : "kinh nghiệm"}
           </span>
           <span className="lg-pg-muted">{t("lg.prog.toLevel", { n: left, l: c.level + 1 })}</span>
         </div>
@@ -558,10 +548,22 @@ function CourseLine({ c }: { c: MyCourse }) {
 }
 
 // ---------------------------------------------------------------- streak and rules
-function StreakBoard({ vil, dayHas, days }: { vil: Village | null; dayHas: boolean[]; days: string[] }) {
+/**
+ * The week's dots agree with the streak the village shows (the planner's count, CONTRACTS-LANGGA: `streak` comes from the planner):
+ * the days of the run are marked even when the chickens earned nothing on them. The run ends today, or yesterday while today is open.
+ */
+export function markStreak(dayHas: boolean[], streak: { days: number; today_done: boolean } | null | undefined): boolean[] {
+  if (!streak || !dayHas.length) return dayHas;
+  const last = dayHas.length - 1 - (streak.today_done ? 0 : 1);
+  return dayHas.map((on, i) => on || (i <= last && i > last - streak.days));
+}
+
+function StreakBoard({ vil, dayHas: earned, days }: { vil: Village | null; dayHas: boolean[]; days: string[] }) {
   const { t } = useTranslation();
   const wd = t("lg.prog.weekdays", { returnObjects: true }) as unknown as string[];
-  const n = vil?.streak.days ?? 0;
+  const dayHas = markStreak(earned, vil?.streak);
+  // not loaded yet: a dash, never a "0 ngày liền" that is only the lack of an answer
+  const n = vil ? vil.streak.days : null;
   const todayIdx = days.length - 1;
   return (
     <Board id="lg-pg-h-streak" title={t("lg.prog.streak")}>
@@ -570,7 +572,7 @@ function StreakBoard({ vil, dayHas, days }: { vil: Village | null; dayHas: boole
           <FlameIcon />
         </span>
         <div>
-          <b>{n}</b> <span>{t("lg.prog.streakDays")}</span>
+          <b>{n ?? "–"}</b> {n !== null && <span>{t("lg.prog.streakDays")}</span>}
           {vil && <p className="lg-pg-muted">{vil.streak.today_done ? t("lg.prog.streakTodayDone") : t("lg.prog.streakTodayLeft")}</p>}
         </div>
       </div>
@@ -593,12 +595,12 @@ function StreakBoard({ vil, dayHas, days }: { vil: Village | null; dayHas: boole
 }
 
 const RULES: [string, string][] = [
-  ["rLesson", "+20 KN"],
+  ["rLesson", "+20 kinh nghiệm"],
   ["rPractice", "+2"],
   ["rFix", "+3"],
-  ["rBoss", "+50 KN"],
-  ["rMock", "+40 KN"],
-  ["rPaper", "+40 KN"],
+  ["rBoss", "+50 kinh nghiệm"],
+  ["rMock", "+40 kinh nghiệm"],
+  ["rPaper", "+40 kinh nghiệm"],
   ["rFocus", "+1"],
   ["rCard", "+2"],
 ];
@@ -620,18 +622,12 @@ function RulesBoard() {
           <b>100</b>
           {t("lg.prog.perLevel")}
         </span>
-        <span>
-          <b>1–2</b>
-          {t("lg.prog.stage1")}
-        </span>
-        <span>
-          <b>3–5</b>
-          {t("lg.prog.stage2")}
-        </span>
-        <span>
-          <b>6+</b>
-          {t("lg.prog.stage3")}
-        </span>
+        {STAGE_AT.map((from, i) => (
+          <span key={from}>
+            <b>{i === STAGE_AT.length - 1 ? `${from}+` : STAGE_AT[i + 1] - 1 > from ? `${from}–${STAGE_AT[i + 1] - 1}` : `${from}`}</b>
+            {t(`lg.prog.stage${i + 1}`)}
+          </span>
+        ))}
       </div>
     </Board>
   );

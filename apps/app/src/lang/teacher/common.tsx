@@ -10,8 +10,8 @@ import "./teacher.css";
 const ENC = encodeURIComponent;
 
 /** Where step 3 (Nhãn) and step 4 (Duyệt) of a course open: only once Mentor has composed it. */
-export const labelsRoute = (id: string, v: number) => `/khoa/${ENC(id)}/nhan?v=${v || 1}`;
-export const reviewRoute = (id: string, v: number) => `/khoa/${ENC(id)}/duyet?v=${v || 1}`;
+export const labelsRoute = (id: string, v: number) => `/khoa/${ENC(id)}/nhan${v ? `?v=${v}` : ""}`;
+export const reviewRoute = (id: string, v: number) => `/khoa/${ENC(id)}/duyet${v ? `?v=${v}` : ""}`;
 const BUILT = new Set(["review", "published", "revising"]);
 
 /**
@@ -28,8 +28,10 @@ export function TeacherTop({ step, courseId, backTo, children }: { step: 1 | 2 |
     const c = courses?.find((x) => courseRoute(x)?.startsWith("/khoa/") && !courseRoute(x)?.includes("/duyet")) ?? courses?.find((x) => courseRoute(x));
     return c ? `/khoa/${ENC(c.id)}` : null;
   })();
+  // on a course screen the links come from the route's id at once (the screen picks the latest version itself); the list only tells when a course is not composed yet
   const built = (() => {
-    const c = courseId ? own : courses?.find((x) => BUILT.has(x.status));
+    if (courseId) return own ? (BUILT.has(own.status) ? own : null) : courses ? null : { id: courseId, latest_version: 0 };
+    const c = courses?.find((x) => BUILT.has(x.status));
     return c && BUILT.has(c.status) ? c : null;
   })();
   const items: { n: 1 | 2 | 3 | 4; to: string | null }[] = [
@@ -79,6 +81,60 @@ export function TeacherTop({ step, courseId, backTo, children }: { step: 1 | 2 |
       {children}
       <Settings />
     </header>
+  );
+}
+
+/** Rejects with `Error("timeout")` when `p` takes longer than `ms`; the request itself is left to finish. */
+export function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const h = setTimeout(() => reject(new Error("timeout")), ms);
+    p.then(
+      (v) => {
+        clearTimeout(h);
+        resolve(v);
+      },
+      (e) => {
+        clearTimeout(h);
+        reject(e);
+      },
+    );
+  });
+}
+
+/**
+ * What a teacher screen shows while its course opens (the first open can take a while): a grey sketch of the page and a line
+ * that says Mentor is on it, a second line after a few seconds, and, when `failed`, the message with a retry button.
+ */
+export function Opening({ failed, message, onRetry }: { failed?: boolean; message?: string; onRetry?(): void }) {
+  const { t } = useTranslation();
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    if (failed) return;
+    const h = setTimeout(() => setSlow(true), 6000);
+    return () => clearTimeout(h);
+  }, [failed]);
+  if (failed)
+    return (
+      <div className="alert opening-fail" role="alert">
+        <span>{message ?? t("lg.gvl.openFailed")}</span>
+        {onRetry && (
+          <button className="btn btn-ghost" type="button" onClick={onRetry}>
+            {t("gv.retry")}
+          </button>
+        )}
+      </div>
+    );
+  return (
+    <div className="opening" role="status" aria-live="polite">
+      <div className="opening-sk" aria-hidden="true">
+        <i style={{ width: "46%" }} />
+        <i style={{ width: "72%" }} />
+        <i style={{ width: "58%" }} />
+        <i style={{ width: "66%" }} />
+      </div>
+      <p className="muted">{t("lg.gvl.opening")}</p>
+      {slow && <p className="muted small">{t("lg.gvl.openingSlow")}</p>}
+    </div>
   );
 }
 

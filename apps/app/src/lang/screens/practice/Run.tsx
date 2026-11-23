@@ -7,7 +7,7 @@ import { Icon } from "../../../components/Icon";
 import { speak } from "../../../lib/speak";
 import { Md } from "../../kit/blocks";
 import { ItemView } from "./ItemView";
-import { FixFlow } from "./Fix";
+import { FixFlow, lineOf } from "./Fix";
 import { chickenName } from "../../subjects";
 import { BossArt, bossSvg } from "../arena/Bosses";
 import { Shell, chickenPic, f1, useLang } from "../arena/common";
@@ -71,6 +71,12 @@ function addXp(id: string, xp: PXp[] | undefined) {
   if (!xp?.length) return;
   ssSet(xpKey(id), [...(ssGet<PXp[]>(xpKey(id)) ?? []), ...xp]);
 }
+/** "3, 5, 9, 12 và 4 câu nữa": the first few numbers of a list. */
+function numberList(nums: number[], max = 12): string {
+  return nums.length <= max ? nums.join(", ") : `${nums.slice(0, max).join(", ")}, … (+${nums.length - max})`;
+}
+/** Monotonic milliseconds (not the device clock). */
+const mono = () => (typeof performance !== "undefined" ? performance.now() : Date.now());
 const reducedMotion = () => typeof window !== "undefined" && !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 /** Where "Xong" and "Lưu và thoát" go: the screen the run was opened from, else the village. */
@@ -166,13 +172,14 @@ function Player({ session }: { session: PSession }) {
   const [charge, setCharge] = useState(0);
 
   // ---- clocks: seconds on the item (cumulative) and, for an exam, the server's deadline
-  const shownAt = useRef(Date.now());
+  // monotonic clock: moving the device clock can neither end the exam early nor add time (the server deadline stays authoritative)
+  const shownAt = useRef(mono());
   const spent = useRef<Record<number, number>>({});
-  const seconds = useCallback((p: number) => (spent.current[p] ?? 0) + Math.round((Date.now() - shownAt.current) / 1000), []);
+  const seconds = useCallback((p: number) => (spent.current[p] ?? 0) + Math.max(0, Math.round((mono() - shownAt.current) / 1000)), []);
   const bank = useCallback(
     (p: number) => {
       spent.current[p] = seconds(p);
-      shownAt.current = Date.now();
+      shownAt.current = mono();
     },
     [seconds],
   );
@@ -180,7 +187,7 @@ function Player({ session }: { session: PSession }) {
   const total = useRef<number | null>(null);
   const [left, setLeft] = useState<number | null>(() => {
     const r = initialRemaining(session, Date.now());
-    endAt.current = r === null ? null : Date.now() + r * 1000;
+    endAt.current = r === null ? null : mono() + r * 1000;
     total.current = r === null ? null : Math.max(r, (session.minutes ?? 0) * 60);
     return r;
   });
@@ -210,19 +217,35 @@ function Player({ session }: { session: PSession }) {
   useEffect(() => {
     if (!mock) return;
     let n = 0;
+    let verifying = false;
     const timer = window.setInterval(() => {
       if (live.current.finishing) return;
       if (endAt.current !== null) {
-        const r = Math.max(0, Math.ceil((endAt.current - Date.now()) / 1000));
+        const r = Math.max(0, Math.ceil((endAt.current - mono()) / 1000));
         setLeft(r);
-        if (r === 0) return void finish(true);
+        if (r === 0) {
+          // the countdown is over: the server confirms (it holds the real deadline) before the paper is handed in
+          if (verifying) return;
+          verifying = true;
+          return void practice.tick(tk, id, live.current.pos, seconds(live.current.pos)).then(
+            (x) => {
+              verifying = false;
+              if (x.expired || typeof x.remaining_sec !== "number" || x.remaining_sec <= 2) void finish(true);
+              else endAt.current = mono() + x.remaining_sec * 1000;
+            },
+            () => {
+              verifying = false;
+              void finish(true);
+            },
+          );
+        }
       }
       n += 1;
       if (n % 5 === 0) {
         void practice.tick(tk, id, live.current.pos, seconds(live.current.pos)).then(
           (r) => {
             if (r.expired) return void finish(true);
-            if (typeof r.remaining_sec === "number") endAt.current = Date.now() + r.remaining_sec * 1000;
+            if (typeof r.remaining_sec === "number") endAt.current = mono() + r.remaining_sec * 1000;
           },
           () => undefined,
         );
@@ -236,10 +259,18 @@ function Player({ session }: { session: PSession }) {
     const save = () => void practice.tick(tk, id, live.current.pos, seconds(live.current.pos)).catch(() => undefined);
     const hide = () => {
       if (document.visibilityState === "hidden") save();
-      else if (endAt.current !== null) {
-        const r = Math.max(0, Math.ceil((endAt.current - Date.now()) / 1000));
-        setLeft(r);
-        if (r === 0 && mock) void finish(true);
+      else if (endAt.current !== null && mock) {
+        // a tab that slept: the server says how much time is really left
+        void practice.tick(tk, id, live.current.pos, seconds(live.current.pos)).then(
+          (r) => {
+            if (r.expired) return void finish(true);
+            if (typeof r.remaining_sec === "number") {
+              endAt.current = mono() + r.remaining_sec * 1000;
+              setLeft(Math.max(0, Math.ceil(r.remaining_sec)));
+            }
+          },
+          () => undefined,
+        );
       }
     };
     window.addEventListener("pagehide", save);
@@ -396,7 +427,7 @@ function Player({ session }: { session: PSession }) {
   const warn = mock && left !== null && left <= 300 && left > 60;
   const crit = mock && left !== null && left <= 60;
   const bannerSec = total.current ?? Infinity;
-  const banner = crit && bannerSec > 60 ? { text: t("lg.run.left1"), crit: true } : warn && bannerSec > 300 ? { text: t("lg.run.left5"), crit: false } : null;
+  const banner = mock && (left === 0 || finishing) && left !== null && left <= 0 ? { text: t("lg.run.left0"), crit: true } : crit && bannerSec > 60 && left !== null && left > 0 ? { text: t("lg.run.left1"), crit: true } : warn && bannerSec > 300 ? { text: t("lg.run.left5"), crit: false } : null;
   const partLabel = session.parts?.find((p) => p.positions.includes(item.position))?.label;
   const clock = mock && left !== null && (
     <span className={`ar-timer${crit ? " crit" : warn ? " warn" : ""}`} role="timer" aria-label={t("practice.timeLeft")} data-guide="practice-clock">
@@ -481,7 +512,7 @@ function Player({ session }: { session: PSession }) {
             )}
             {out.outcome !== "right" && isStepType(item.type) && result.correct_answer && (
               <span>
-                {t("practice.rightIs")}: <b className="ok">{stepText(item, result.correct_answer)}</b>
+                {t("practice.rightIs")}: <b className="ok"><Md md={stepText(item, result.correct_answer)} className="inline" /></b>
               </span>
             )}
             {out.outcome !== "right" && item.type === "TAP_COUNT" && result.correct_answer && (
@@ -506,7 +537,7 @@ function Player({ session }: { session: PSession }) {
             const p = it.position;
             const isDone = mock ? !isBlank(answers[p]) : !!results[p];
             const label = `${t("courses.player.questionN", { n: p + 1 })}${flags[p] ? `, ${t("practice.flag")}` : ""}${isDone ? `, ${t("practice.answeredCell")}` : ""}`;
-            const cls = `ar-qn ${isDone ? "done" : ""} ${flags[p] ? "flag" : ""}`;
+            const cls = `ar-qn ${isDone ? "done" : mock ? "blank" : ""} ${flags[p] ? "flag" : ""}`;
             return mock ? (
               <button key={p} type="button" className={cls} aria-label={label} aria-current={p === pos ? "true" : undefined} onClick={() => goTo(p)}>
                 {p + 1}
@@ -518,6 +549,20 @@ function Player({ session }: { session: PSession }) {
             );
           })}
         </div>
+
+        {mock && (
+          <ul className="ar-qlegend" aria-hidden="true">
+            <li>
+              <i className="ar-qn done" /> {t("lg.run.legendDone")}
+            </li>
+            <li>
+              <i className="ar-qn blank" /> {t("lg.run.legendBlank")}
+            </li>
+            <li>
+              <i className="ar-qn flag" /> {t("lg.run.legendFlag")}
+            </li>
+          </ul>
+        )}
 
         <div className={`ar-pfoot${mock ? " sticky" : ""}`}>
           {!mock && (
@@ -584,9 +629,9 @@ function Player({ session }: { session: PSession }) {
       )}
       {dialog === "submit" && (
         <ArDialog title={t("lg.run.submitTitle")} onClose={() => setDialog(null)}>
-          <p>{t("practice.handInBody", { answered: stats.answered, total: stats.total })}</p>
-          {stats.blank > 0 && <p>{t("practice.blankLeft", { n: stats.blank })}</p>}
-          {stats.flagged > 0 && <p>{t("practice.flaggedLeft", { n: stats.flagged })}</p>}
+          <p>{stats.blank > 0 ? t("lg.run.submitBlank", { n: stats.blank }) : t("lg.run.submitAll", { total: stats.total })}</p>
+          {stats.blank > 0 && <p className="ar-muted">{t("lg.run.blankList", { list: numberList(items.filter((it) => isBlank(answers[it.position])).map((it) => it.position + 1)) })}</p>}
+          {stats.flagged > 0 && <p className="ar-muted">{t("lg.run.flagList", { list: numberList(items.filter((it) => flags[it.position]).map((it) => it.position + 1)) })}</p>}
           <div className="ar-acts">
             <button className="ar-btn wood" type="button" onClick={() => setDialog(null)}>
               {t("practice.keepGoing")}
@@ -597,7 +642,15 @@ function Player({ session }: { session: PSession }) {
           </div>
         </ArDialog>
       )}
-      {finishing && <div className="ar-busy" role="status" aria-label={t("practice.finishing")} />}
+      {finishing && (
+        <div className="ar-busy" role="status" aria-live="polite">
+          <div className="ar-busy-card">
+            <i className="ar-spin" aria-hidden="true" />
+            <b>{t("lg.run.submitting")}</b>
+            <span>{t("lg.run.submittingSub")}</span>
+          </div>
+        </div>
+      )}
     </Shell>
   );
 }
@@ -775,6 +828,26 @@ function BossReplay({ boss, hero, me, onDone }: { boss: NonNullable<PReport["bos
 
 // =============================================================== the result
 
+/** The replay starts only when the chicken's picture is loaded (or after a short wait), so no frame misses the hero. `url` "" = nothing to wait for. */
+function useArtReady(url: string | null, canWait: boolean): boolean {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    if (url === "" || (typeof navigator !== "undefined" && /jsdom/i.test(navigator.userAgent))) return setReady(true); // nothing to wait for (or no real image loading)
+    if (url === null) return canWait ? setReady(true) : undefined;
+    let alive = true;
+    const done = () => alive && setReady(true);
+    const img = new Image();
+    img.onload = img.onerror = done;
+    img.src = url;
+    const to = window.setTimeout(done, 1500);
+    return () => {
+      alive = false;
+      window.clearTimeout(to);
+    };
+  }, [url, canWait]);
+  return url === "" || ready;
+}
+
 function ResultScreen() {
   const { id = "" } = useParams();
   const [params] = useSearchParams();
@@ -792,6 +865,8 @@ function ResultScreen() {
   const auto = params.get("auto") === "1";
   const [timeup, setTimeup] = useState(auto);
   const [replayed, setReplayed] = useState(() => !!ssGet<boolean>(seenKey(id)));
+  const heroChicken = rep?.boss?.chicken ?? sess?.paper?.chicken ?? rep?.xp?.[0]?.chicken ?? null;
+  const artReady = useArtReady(rep?.boss && !replayed ? (heroChicken ? chickenPic(heroChicken) : null) : "", rep?.boss && !replayed && !heroChicken ? !!sess : true);
 
   useEffect(() => {
     if (rep || !token) return;
@@ -816,10 +891,10 @@ function ResultScreen() {
     };
   }, [token, id]);
   useEffect(() => {
-    if (!timeup) return;
+    if (!timeup || !artReady) return;
     const x = window.setTimeout(() => setTimeup(false), reducedMotion() ? 2200 : 1800);
     return () => window.clearTimeout(x);
-  }, [timeup]);
+  }, [timeup, artReady]);
 
   if (failed)
     return (
@@ -832,11 +907,11 @@ function ResultScreen() {
         </div>
       </Shell>
     );
-  if (!rep) return <div className="boot" />;
+  if (!rep || (rep.boss && !replayed && !artReady)) return <div className="boot" />;
 
   const kind = sess ? kindOf(sess) : rep.boss ? "paper" : rep.session.kind === "mock" ? "bank-mock" : "practice";
   const mock = rep.session.kind === "mock";
-  const chicken = sess?.paper?.chicken ?? rep.xp?.[0]?.chicken ?? (ssGet<PXp[]>(xpKey(id)) ?? [])[0]?.chicken ?? null;
+  const chicken = rep.boss?.chicken ?? sess?.paper?.chicken ?? rep.xp?.[0]?.chicken ?? (ssGet<PXp[]>(xpKey(id)) ?? [])[0]?.chicken ?? null;
   const gaName = chicken ? chickenName(chicken, lang) : "";
   const wrongN = rep.wrong?.length ?? 0;
   const ratio = rep.total ? rep.correct / rep.total : 0;
@@ -923,6 +998,7 @@ function ResultScreen() {
                 {x.source === "boss_beaten" ? t("lg.run.xpBoss", { n: x.amount }) : t("lg.run.xpSubmit", { name: chickenName(x.chicken, lang), n: x.amount })}
               </p>
             ))}
+            {rep.boss && !(rep.xp ?? []).some((x) => x.source === "paper_submit") && <p className="ar-muted">{t("lg.run.noSubmitXp")}</p>}
             {!mock && xpSum > 0 && (
               <>
                 <p className="ar-xp">{t("lg.run.xpRight", { name: gaName, n: xpSum })}</p>
@@ -972,12 +1048,12 @@ function ResultScreen() {
               {t("practice.fixN", { count: wrongN })}
             </button>
           )}
-          {mock && wrongN > 0 && (
-            <button className="ar-btn wood" type="button" onClick={() => nav(`/luyen-tap/${encodeURIComponent(id)}/xem-lai`, { state })}>
-              {t("lg.run.reviewN", { count: wrongN })}
+          {mock && rep.total > 0 && (
+            <button className="ar-btn wood" type="button" onClick={() => nav(`/luyen-tap/${encodeURIComponent(id)}/xem-lai?all=1`, { state })}>
+              {t("lg.run.reviewAll")}
             </button>
           )}
-          <button className={`ar-btn ${!fixed && wrongN > 0 ? "quiet" : ""}`} type="button" onClick={go}>
+          <button className={`ar-btn ${(!fixed && wrongN > 0) || (mock && rep.total > 0) ? "quiet" : ""}`} type="button" onClick={go}>
             {back ? backLabel : t("practice.done")}
           </button>
         </div>
@@ -1000,6 +1076,8 @@ function ReviewScreen() {
   const [items, setItems] = useState<PReviewItem[] | null>(null);
   const [parts, setParts] = useState<PSession["parts"]>(null);
   const [failed, setFailed] = useState(false);
+  const [params] = useSearchParams();
+  const all = params.get("all") === "1";
   useEffect(() => {
     if (!token) return;
     let alive = true;
@@ -1013,9 +1091,11 @@ function ReviewScreen() {
     };
   }, [token, id]);
   const wrong = (items ?? []).filter((it) => it.correct === false);
-  const shownList = wrong.slice(0, 20);
+  const blankN = (items ?? []).filter((it) => it.correct === null || it.correct === undefined).length;
+  const rightN = (items ?? []).filter((it) => it.correct === true).length;
+  const shownList = all ? (items ?? []) : wrong.slice(0, 20);
   return (
-    <Shell title={t("lg.run.reviewTitle")} pr>
+    <Shell title={all ? t("lg.run.reviewAllTitle") : t("lg.run.reviewTitle")} pr>
       <div className="ar-res" data-guide="practice-review">
         <button className="ar-btn wood" type="button" onClick={() => nav(`/luyen-tap/${encodeURIComponent(id)}/ket-qua`, { replace: true, state })}>
           <Icon name="back" />
@@ -1023,7 +1103,8 @@ function ReviewScreen() {
         </button>
         {failed && <p className="ar-muted">{t("practice.loadFailed")}</p>}
         {!items && !failed && <p className="ar-muted">{t("practice.loading")}</p>}
-        {items && (
+        {items && all && <p className="ar-muted">{t("lg.run.reviewAllSum", { right: rightN, wrong: wrong.length, blank: blankN })}</p>}
+        {items && !all && (
           <p className="ar-muted">
             {t("lg.run.reviewSum", { count: wrong.length })}
             {wrong.length > shownList.length ? t("lg.run.reviewShown", { count: shownList.length }) : ""}
@@ -1041,9 +1122,12 @@ function ReviewScreen() {
                 <div className={`feedback pr-fb ${out.outcome}`}>
                   <b>{t(`practice.outcome.${out.outcome}`)}</b>
                   {out.tally && out.outcome !== "right" && <span>{t("practice.tally", { right: out.tally.right, total: out.tally.total })}</span>}
-                  {out.outcome !== "right" && it.correct_answer && (it.type === "SHORT_ANSWER" || it.type === "TAP_COUNT") && (
+                  {out.outcome !== "right" && it.correct_answer && (it.type === "SHORT_ANSWER" || it.type === "TAP_COUNT" || out.outcome === "blank") && (
                     <span>
-                      {t("practice.correctAnswer")}: <b className="ok">{it.correct_answer}</b>
+                      {t("practice.correctAnswer")}:{" "}
+                      <b className="ok">
+                        <Md md={it.type === "SHORT_ANSWER" || it.type === "TAP_COUNT" ? it.correct_answer : lineOf(it, it.correct_answer, t("courses.player.true"), t("courses.player.false"))} className="inline" />
+                      </b>
                     </span>
                   )}
                   {it.explanation && <Md md={it.explanation} />}

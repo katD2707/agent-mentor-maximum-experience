@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Annotated, Literal
 
-from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query, Request
 from fastapi.responses import FileResponse, Response, StreamingResponse
 from pydantic import BaseModel, Field, field_validator
 
@@ -147,7 +147,7 @@ async def thumb(course_id: str, ref: str, user: User = Depends(media_teacher),
 @router.get("/courses")
 async def courses(since: str | None = None, user: User = Depends(teacher_only),
                   svc: BuilderService = Depends(builder)) -> list[dict]:
-    out = svc.list_for(user)
+    out = await asyncio.to_thread(svc.list_for, user)
     if since:
         try:
             cut = datetime.fromisoformat(since.replace("Z", "+00:00"))
@@ -157,9 +157,17 @@ async def courses(since: str | None = None, user: User = Depends(teacher_only),
     return out
 
 
+@router.delete("/courses/{course_id}", status_code=204)
+async def delete_course(course_id: str, user: User = Depends(teacher_only), svc: BuilderService = Depends(builder)) -> Response:
+    """Deletes a course that was never published (a stuck or unwanted draft). A published one answers 409 `published`."""
+    await asyncio.to_thread(svc.delete_course, user, course_id)
+    return Response(status_code=204)
+
+
 @router.get("/courses/{course_id}")
 async def course(course_id: str, user: User = Depends(teacher_only), svc: BuilderService = Depends(builder)) -> dict:
-    return svc.detail(svc.owned(user, course_id))
+    st = svc.owned(user, course_id)
+    return await asyncio.to_thread(svc.detail, st)
 
 
 # ---------------------------------------------------------------- chat and outline
@@ -256,7 +264,7 @@ async def pack(request: Request, course_id: str, version: int, user: User = Depe
     _version(svc, user, course_id, version)
     store = svc.content.store
     info = store.version_info(store.load_meta(course_id), version)
-    raw = store.pack_bytes_raw(course_id, version)
+    raw = await asyncio.to_thread(store.pack_bytes_raw, course_id, version)
     return _cached(request, raw, "application/json", info.pack_sha256 or sha256_bytes(raw),
                    IMMUTABLE if info.status == "published" else "private, no-store")
 
@@ -369,7 +377,7 @@ class LabelsBody(BaseModel):
 
 
 @router.put("/courses/{course_id}/versions/{version}/labels")
-async def put_labels(course_id: str, version: int, body: LabelsBody, user: User = Depends(teacher_only),
+async def put_labels(course_id: str, version: int, body: LabelsBody, tasks: BackgroundTasks, user: User = Depends(teacher_only),
                      svc: BuilderService = Depends(builder)) -> dict:
     """Sets the labels of a version (a draft keeps them until publish; the latest published version takes them at once and
     the catalog follows). 422 `chicken_not_in_band` when the chicken is not one of the band's chickens."""
@@ -386,10 +394,14 @@ async def put_labels(course_id: str, version: int, body: LabelsBody, user: User 
     band = body.band or (info.labels or {}).get("band") or meta.age_band
     if body.chicken is not None and not (body.chicken in subjects.CHICKENS and subjects.valid_for_band(body.chicken, band)):
         raise HTTPException(422, {"error": "chicken_not_in_band"})
-    store.set_labels(course_id, version, chicken=body.chicken, band=body.band, grade=grade, difficulty=difficulty,
-                     goals=body.goals, language=body.language, topics=body.topics)
+    # off the event loop (the store lock may be held by a builder thread); the catalog follows in the background
+    latest = await asyncio.to_thread(store.set_labels, course_id, version, chicken=body.chicken, band=body.band, grade=grade,
+                                     difficulty=difficulty, goals=body.goals, language=body.language, topics=body.topics,
+                                     regen=False)
     svc._save(st)  # noqa: SLF001
     svc.emit(st)
+    if latest:
+        tasks.add_task(store.regenerate_catalog)
     meta = store.load_meta(course_id)
     info = store.version_info(meta, version)
     labels = info.labels or {}
@@ -510,7 +522,7 @@ async def get_review(course_id: str, version: int, user: User = Depends(teacher_
                      svc: BuilderService = Depends(builder)) -> dict:
     """Steps Mentor is not sure about (from the build's checks); `{unsure: [{block_id, item_id?, reason_vi, reason_en}]}`."""
     _version(svc, user, course_id, version)
-    return steps.review_list(svc, course_id, version)
+    return await asyncio.to_thread(steps.review_list, svc, course_id, version)
 
 
 @router.post("/courses/{course_id}/versions/{version}/review/{block_id}/seen")

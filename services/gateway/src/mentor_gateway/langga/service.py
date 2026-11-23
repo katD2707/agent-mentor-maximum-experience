@@ -232,7 +232,7 @@ class LanggaService:
         if cid not in subjects.CHICKENS or not subjects.valid_for_band(cid, user.age_band):
             raise _err(404, "unknown_chicken")
         rows = self.owned(user.id)
-        enrolls = self._enrollments(user)
+        enrolls = [e for e in self._enrollments(user) if self._band_fits(e["course_id"], user.age_band)]
         totals = self.xp.totals(user.id)
         view = self._view(cid, {}, totals, enrolls, self.xp.chickens_active_on(user.id, self.xp.today()),
                           rows[cid].taken_at if cid in rows else None)
@@ -246,6 +246,21 @@ class LanggaService:
         return {"chicken": view, "courses": courses,
                 "suggested": [e.model_dump(mode="json") | {"chicken": cid} for e in sugg[:SUGGESTED_MAX]],
                 "week_xp": self.xp.week(user.id).get(cid, [0] * 7), "tests": self._tests(user, cid, mine)}
+
+    def _band_fits(self, course_id: str, user_band: str | None) -> bool:
+        """A coop lists the courses made for the student's stage: a university student does not see Toán 1 under
+        "Toán học", a pupil does not see a university course (a g6_9 student doing grade 11 stays, it is the next stage)."""
+        try:
+            entry = self.content.entry(course_id)
+        except Exception:  # noqa: BLE001 - an unreadable catalog must never break the page
+            return True
+        if entry is None:
+            return True
+        order = ("g1_5", "g6_9", "g10_12", "uni")
+        mine, theirs = subjects.band_or_default(user_band), entry.age_band
+        if mine not in order or theirs not in order:
+            return True
+        return abs(order.index(mine) - order.index(theirs)) <= (0 if "uni" in (mine, theirs) else 1)
 
     def _course_row(self, e: dict) -> dict:
         last_title = None

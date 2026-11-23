@@ -8,6 +8,7 @@ import { Icon } from "../../../components/Icon";
 import { fmtScore10 } from "../../../lib/practice";
 import { subjectOf } from "../../subjects";
 import { BossArt } from "./Bosses";
+import { Skeleton } from "../../kit/common";
 import { ResumeCard } from "./Resume";
 import { Shell, useLang } from "./common";
 
@@ -192,13 +193,11 @@ export function Arena() {
         <Gate />
         <ResumeCard back="/dau-truong" />
         <p className="ar-muted" style={{ margin: 0 }}>
-          {t(uni ? "lg.ar.leadUni" : "lg.ar.leadSchool")}
+          {t(st.s === "ready" && papers.length > 0 && papers.every((p) => p.placeholder) ? "lg.ar.leadSample" : uni ? "lg.ar.leadUni" : "lg.ar.leadSchool")}
         </p>
 
         {st.s === "loading" && (
-          <p className="ar-muted" role="status">
-            {t("lg.loading")}
-          </p>
+          <Skeleton rows={3} text={t("lg.loading")} />
         )}
         {st.s === "error" && (
           <div className="ar-stack">

@@ -8,7 +8,7 @@ import { ChickenGuide } from "../guide/ChickenGuide";
 import "../styles/fonts";
 import "../styles/lang.css";
 
-type ErrKey = "noRole" | "role_mismatch" | "invalid_credentials" | "network" | "unknown";
+type ErrKey = "required" | "role_mismatch" | "invalid_credentials" | "network" | "unknown";
 const base = import.meta.env.BASE_URL;
 
 /** The teacher picture of the login board (glasses, cardigan, book, small chalkboard). */
@@ -37,20 +37,21 @@ function TeacherArt() {
 export function LgLogin() {
   const { t, i18n } = useTranslation();
   const { login } = useAuth();
-  const [role, setRole] = useState<Role | null>(null);
+  const [role, setRole] = useState<Role>("student"); // most people here are students: the role is picked already
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const [error, setError] = useState<ErrKey | null>(null);
   const [busy, setBusy] = useState(false);
-  const [shake, setShake] = useState(false);
   const roleRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const accRef = useRef<HTMLInputElement>(null);
+  const pwRef = useRef<HTMLInputElement>(null);
   const roles: Role[] = ["student", "teacher"];
   const lang = i18n.language === "en" ? "en" : "vi";
 
   const pick = (r: Role) => {
     setRole(r);
-    if (error === "noRole" || error === "role_mismatch") setError(null);
+    if (error === "role_mismatch") setError(null);
   };
   const onRoleKey = (e: KeyboardEvent) => {
     if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) return;
@@ -62,11 +63,11 @@ export function LgLogin() {
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     if (busy) return;
-    if (!role) {
-      setError("noRole");
-      setShake(false);
-      requestAnimationFrame(() => setShake(true));
-      roleRefs.current[0]?.focus();
+    // both boxes are needed: say so here, do not send an empty login and answer "wrong password"
+    const empty = !account.trim() ? accRef.current : !password ? pwRef.current : null;
+    if (empty) {
+      setError("required");
+      empty.focus();
       return;
     }
     setBusy(true);
@@ -79,6 +80,7 @@ export function LgLogin() {
     }
   };
   const bad = error === "invalid_credentials";
+  const missing = (v: string) => error === "required" && !v.trim();
 
   return (
     <div className="lg lg-back" data-age="g10_12">
@@ -104,7 +106,7 @@ export function LgLogin() {
             </p>
           </div>
 
-          <div className={"lg-roles" + (shake ? " shake" : "")} role="radiogroup" aria-label={t("login.role")} onKeyDown={onRoleKey}>
+          <div className="lg-roles" role="radiogroup" aria-label={t("login.role")} onKeyDown={onRoleKey}>
             {roles.map((r, i) => (
               <button
                 key={r}
@@ -116,7 +118,7 @@ export function LgLogin() {
                 role="radio"
                 aria-checked={role === r}
                 aria-label={t(`login.${r}`)}
-                tabIndex={role === r || (role === null && i === 0) ? 0 : -1}
+                tabIndex={role === r ? 0 : -1}
                 onClick={() => pick(r)}
               >
                 <span className="lg-tick" aria-hidden="true">
@@ -129,11 +131,12 @@ export function LgLogin() {
           </div>
 
           <div className="lg-fields">
-            <div className="lg-field">
+            <div className="lg-field" id="lg-f-acc">
               <label htmlFor="acc">{t("login.account")}</label>
-              <div className={"lg-pill" + (bad ? " bad" : "")}>
+              <div className={"lg-pill" + (bad || missing(account) ? " bad" : "")}>
                 <Icon name="user" />
                 <input
+                  ref={accRef}
                   id="acc"
                   name="acc"
                   autoComplete="username"
@@ -142,16 +145,17 @@ export function LgLogin() {
                   value={account}
                   onChange={(e) => {
                     setAccount(e.target.value);
-                    if (bad) setError(null);
+                    if (bad || error === "required") setError(null);
                   }}
                 />
               </div>
             </div>
-            <div className="lg-field">
+            <div className="lg-field" id="lg-f-pw">
               <label htmlFor="pw">{t("login.password")}</label>
-              <div className={"lg-pill" + (bad ? " bad" : "")}>
+              <div className={"lg-pill" + (bad || missing(password) ? " bad" : "")}>
                 <Icon name="lock" />
                 <input
+                  ref={pwRef}
                   id="pw"
                   name="pw"
                   type={show ? "text" : "password"}
@@ -159,7 +163,7 @@ export function LgLogin() {
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
-                    if (bad) setError(null);
+                    if (bad || error === "required") setError(null);
                   }}
                 />
                 <button type="button" className="lg-eye" aria-pressed={show} aria-label={show ? t("login.hidePassword") : t("login.showPassword")} onClick={() => setShow(!show)}>
@@ -172,7 +176,7 @@ export function LgLogin() {
           {error && (
             <div className="lg-alert" role="alert">
               <Icon name="x" />
-              <span>{t(`login.errors.${error}`)}</span>
+              <span>{error === "required" ? t("lg.login.required") : t(`login.errors.${error}`)}</span>
             </div>
           )}
 

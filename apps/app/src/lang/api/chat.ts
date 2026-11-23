@@ -32,7 +32,8 @@ export function toChatEvent(m: SseMessage): ChatEvent | null {
     try {
       const data = JSON.parse(m.data) as unknown;
       if (m.event === "delta") return { event: "delta", data: { text: typeof data === "string" ? data : String((data as { text?: string }).text ?? "") } };
-      const items = Array.isArray(data) ? data : ((data as { items?: ChatAction[] }).items ?? []);
+      const d = data as { items?: ChatAction[]; actions?: ChatAction[] };
+      const items = Array.isArray(data) ? data : (d.items ?? d.actions ?? []); // the gateway sends `actions`
       return { event: "actions", data: { items: items as ChatAction[] } };
     } catch {
       return null;

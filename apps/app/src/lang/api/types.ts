@@ -94,6 +94,9 @@ export interface FocusActive extends FocusStart {
   chicken?: string;
   minutes?: number;
   remaining_sec?: number;
+  started_at?: string;
+  status?: "active" | "paused";
+  paused_at?: string;
 }
 
 export interface NotesSet {
@@ -145,6 +148,11 @@ export interface LgApi {
   focusStart(token: string, body: { minutes: number; chicken: string }): Promise<FocusActive>;
   focusFinish(token: string, id: string, minutesDone: number): Promise<FocusDone>;
   focusActive(token: string): Promise<FocusActive | null>;
+  /** stop the clock on the server; `agoSec`: the tab went away that long ago */
+  focusPause(token: string, id: string, agoSec?: number): Promise<FocusActive>;
+  focusResume(token: string, id: string): Promise<FocusActive>;
+  /** same as focusPause but survives the page closing (fetch keepalive); never throws */
+  focusPauseOnLeave(token: string, id: string): void;
   listNotes(token: string): Promise<NotesSet[]>;
   arenaPapers(token: string, q?: { chicken?: string; year?: number }): Promise<ArenaPaper[]>;
   chatHistory(token: string, chicken: string, limit?: number): Promise<ChatMessage[]>;

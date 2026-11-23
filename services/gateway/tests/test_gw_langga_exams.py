@@ -150,11 +150,24 @@ def test_paper_session_boss_report_and_xp(client, gw, clock, student):
     assert client.post(f"{P}/sessions/{sid}/finish").json() == r
     paper = next(p for p in client.get("/api/arena/papers").json() if p["id"] == "thpt-toan-2025-mau")
     assert paper["best_score"] == 10.0 and paper["beaten"] is True
-    # a second go: the submit pays again, the boss only the first time
+    # a second go the same day pays nothing more; the next day the submit pays again, the boss only the first time
     s2 = start(client, source="paper:thpt-toan-2025-mau")
     r2 = finish_all_right(client, gw, s2["id"], 22)
-    assert [x["source"] for x in r2["xp"]] == ["paper_submit"] and r2["boss"]["beaten"] is True
+    assert r2["xp"] == [] and r2["boss"]["beaten"] is True
+    clock.advance(days=1)
+    s3 = start(client, source="paper:thpt-toan-2025-mau")
+    r3 = finish_all_right(client, gw, s3["id"], 22)
+    assert [x["source"] for x in r3["xp"]] == ["paper_submit"]
     assert gw.xp.total(student["user_id"], "toan") == 40 + 50 + 40
+
+
+def test_paper_submit_needs_half_the_paper_answered(client, gw, clock, student):
+    sid = start(client, source="paper:thpt-toan-2025-mau")["id"]
+    client.post(f"{P}/sessions/{sid}/answer", json={"position": 0, "answer": right_answer(gw, sid, 0)})
+    r = client.post(f"{P}/sessions/{sid}/finish").json()
+    assert r["xp"] == [] and r["answered"] == 1
+    assert gw.xp.total(student["user_id"], "toan") == 0
+    assert all(t["label"] != "Vững" for t in r["per_topic"])
 
 
 def test_paper_auto_submits_and_a_low_score_leaves_the_boss_standing(client, gw, clock, student):
@@ -165,4 +178,17 @@ def test_paper_auto_submits_and_a_low_score_leaves_the_boss_standing(client, gw,
     r = client.post(f"{P}/sessions/{sid}/finish").json()
     boss = r["boss"]
     assert boss["beaten"] is False and boss["damage"] == 1 and boss["hp"] == 40 and boss["name"] == "Quái Lỗi Ngữ Pháp"
-    assert [x["source"] for x in r["xp"]] == ["paper_submit"]  # submitted: +40, no boss bonus under 5/10
+    assert r["xp"] == []  # one answer out of 40: no submit XP
+
+
+def test_generic_research_keywords_are_not_used_to_match_papers():
+    from mentor_gateway.research.profile_keys import specific_keywords, title_keywords
+    from mentor_gateway.research.reading import ReadingMixin
+
+    assert specific_keywords(["paper", "graph neural network", "Study"]) == ["graph neural network"]
+    assert specific_keywords(["paper"]) == ["paper"]  # nothing else left: kept
+    assert "paper" not in title_keywords("Paper recommendation with graph networks")
+    f = {"title": "Paper Recommendation for Moebius Bands", "abstract": "x"}
+    g = {"title": "Graph neural network potentials", "abstract": "formation energy"}
+    assert ReadingMixin.fallback_reason(g, ["paper", "graph neural network"], "vi") == "Khớp từ khóa graph neural network."
+    assert ReadingMixin.fallback_reason({"title": "Nanopaper tests", "abstract": ""}, ["paper"], "vi").startswith("Bạn đã thêm")

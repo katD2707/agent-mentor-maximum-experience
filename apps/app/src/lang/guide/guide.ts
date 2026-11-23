@@ -50,6 +50,11 @@ interface Step {
 
 const AVOID_DEFAULT = '.cg-dock, .lg-hud, .lg-tray, .lg-place, .lg-sheet, .lg-toast, .lg-actor .lg-hit, a[href], button:not(.cg), input, textarea, select, [role="button"], [tabindex="0"]';
 
+/** Screens whose first-visit tour already ran in this page session: each tip shows once, even if the saved flag is lost. */
+const toured = new Set<string>();
+/** "Xem lại từ đầu": every screen may walk its tour again. */
+export const resetToured = () => toured.clear();
+
 /** Screens where the chicken walks about; on every other screen it waits in the corner dock, out of the content. */
 export const ROAMING = new Set(["village"]);
 /** A timed exam or a lesson is on screen: the guide stays out of the way and gives no tour. */
@@ -240,7 +245,7 @@ export function createGuide(o: GuideOptions): GuideHandle {
     const duration = run ? Math.min(2000, Math.max(520, dist / 0.5)) : 440;
     const arc = run ? -Math.min(70, dist * 0.18) : -Math.min(46, 18 + dist * 0.08);
     el.classList.add(run ? "is-running" : "is-hopping");
-    if (run) startDust(dx);
+    if (run && !o.adult()) startDust(dx); // teachers and university students get no dust trail
     place(to.x, to.y);
     const a = el.animate?.([{ transform: `translate(${-dx}px, ${-dy}px)` }, { transform: `translate(${-dx / 2}px, ${-dy / 2 + arc}px)`, offset: 0.5 }, { transform: "translate(0, 0)" }], { duration, easing: run ? "cubic-bezier(.35,.1,.3,1)" : "cubic-bezier(.3,.7,.4,1)" });
     await settle(a, duration + 120);
@@ -281,15 +286,28 @@ export function createGuide(o: GuideOptions): GuideHandle {
       const h = Math.max(0, Math.min(p.y + bh, avoid.bottom) - Math.max(p.y, avoid.top));
       return w * h;
     };
-    let best: { side: string; x: number; y: number; s: number } | null = null;
+    let best: { side: string; x: number; y: number; s: number; alt?: boolean } | null = null;
     for (const p of opts.filter(fits)) {
       const s = overlap(p);
       if (!best || s < best.s) best = { ...p, s };
     }
+    // every place beside the guide would cover what it is explaining: stand clear above or below the target itself
+    if (avoid && (!best || best.s > 0)) {
+      const alts = [
+        { side: "above", x: clampX(cx - bw * 0.75), y: avoid.top - bh - 14, alt: true },
+        { side: "below", x: clampX(cx - bw * 0.75), y: avoid.bottom + 14, alt: true },
+      ];
+      for (const p of alts.filter(fits)) {
+        const s = overlap(p);
+        if (!best || s < best.s) best = { ...p, s };
+      }
+    }
     if (!best) best = { side: "above", x: clampX(cx - bw / 2), y: clampY(a.top - bh - gap), s: 0 };
     bubble.style.left = best.x + "px";
     bubble.style.top = best.y + "px";
-    const t = ({ above: [cx - 23, a.top - 28], below: [cx - 23, a.bottom + 4], left: [a.left - 40, cy - 22], right: [a.right - 6, cy - 22] } as Record<string, number[]>)[best.side];
+    const t = best.alt
+      ? [Math.min(Math.max(cx - 23, best.x + 14), best.x + bw - 40), best.side === "above" ? best.y + bh - 2 : best.y - 26]
+      : ({ above: [cx - 23, a.top - 28], below: [cx - 23, a.bottom + 4], left: [a.left - 40, cy - 22], right: [a.right - 6, cy - 22] } as Record<string, number[]>)[best.side];
     tail.style.left = Math.min(Math.max(4, t[0]), W - 50) + "px";
     tail.style.top = Math.min(Math.max(4, t[1]), H - 28) + "px";
   }
@@ -448,14 +466,21 @@ export function createGuide(o: GuideOptions): GuideHandle {
     }
     const target = res.el;
     let r = target.getBoundingClientRect();
-    if (r.top < topLimit() || r.bottom > vh()) {
-      target.scrollIntoView?.({ block: "center", behavior: RM.matches ? "auto" : "smooth" });
+    if (r.top < topLimit() || r.bottom > vh() || r.left < 0 || r.right > vw()) {
+      target.scrollIntoView?.({ block: "center", inline: "center", behavior: RM.matches ? "auto" : "smooth" });
       await wait(RM.matches ? 30 : 450);
       r = target.getBoundingClientRect();
     }
-    const vr = clipToView(r, 8);
+    // a chicken on the map: light up the bird and its name tag together, as an oval, not the box of its tap area
+    const who = target.matches(".lg-actor .lg-hit") ? (target.closest(".lg-actor") as HTMLElement | null)?.dataset.id : null;
+    const plate = who ? document.querySelector(`.lg-plate[data-for="${who}"]`) : null;
+    if (plate) {
+      const p = plate.getBoundingClientRect();
+      r = new DOMRect(Math.min(r.left, p.left), Math.min(r.top, p.top), Math.max(r.right, p.right) - Math.min(r.left, p.left), Math.max(r.bottom, p.bottom) - Math.min(r.top, p.top));
+    }
+    const vr = clipToView(r, plate ? 14 : 8);
     spot = document.createElement("div");
-    spot.className = "cg-spot";
+    spot.className = "cg-spot" + (plate ? " round" : "");
     Object.assign(spot.style, { left: vr.left + "px", top: vr.top + "px", width: vr.width + "px", height: vr.height + "px" });
     makeCatcher();
     document.body.appendChild(spot);
@@ -746,6 +771,8 @@ export function createGuide(o: GuideOptions): GuideHandle {
         if (++tries < 20) timers.push(setTimeout(attempt, 1500));
         return;
       }
+      if (toured.has(o.screen)) return; // already walked through in this session (storage may not keep it)
+      toured.add(o.screen);
       o.markSeen();
       startTour();
     };

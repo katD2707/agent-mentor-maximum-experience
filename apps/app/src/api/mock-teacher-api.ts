@@ -346,7 +346,7 @@ function levelOf(c: MCourse) {
 function labelsInfo(c: MCourse): CourseLabelsInfo {
   const l = workingVersion(c)?.labels;
   const suggested = { goals: [] as string[], language: "vi" as const, topics: [] as string[] };
-  return { goals: l?.goals ?? suggested.goals, language: l?.language ?? suggested.language, topics: l?.topics ?? suggested.topics, suggested };
+  return { goals: l?.goals ?? suggested.goals, language: l?.language ?? suggested.language, topics: l?.topics ?? suggested.topics, suggested, chicken: l?.chicken ?? null, band: l?.band ?? null, grade: l?.grade ?? null };
 }
 
 function summary(c: MCourse): TeacherCourseSummary {
@@ -465,6 +465,14 @@ export const mockTeacherApi: TeacherApi = {
       chat: clone(c.chat),
     };
     return detail;
+  },
+  async deleteCourse(_token, id) {
+    await wait(60);
+    const db = load();
+    const c = get(db, id);
+    if (c.versions.some((v) => v.status === "published")) throw new ApiError(409, "bad_request");
+    db.courses = db.courses.filter((x) => x.id !== id);
+    save(db);
   },
   async chat(_token, id, text) {
     await wait(120);

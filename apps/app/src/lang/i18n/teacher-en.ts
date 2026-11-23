@@ -2,6 +2,19 @@ import type { TeacherMessages } from "./teacher";
 
 export const teacherEn: TeacherMessages = {
   gvl: {
+    rv: { stepsOf: "Steps of lesson {{n}}" },
+    opening: "Mentor is opening the course…",
+    openingSlow: "The first open takes a moment. Hang on.",
+    openFailed: "Could not open it. Check your connection and try again.",
+    del: {
+      btn: "Delete",
+      aria: "Delete the course {{title}}",
+      title: "Delete this course?",
+      body: "A course that is not published is deleted for good and cannot be brought back.",
+      ok: "Delete course",
+      keep: "Keep it",
+      failed: "Could not delete it. Try again.",
+    },
     stepsLabel: "Steps",
     step3: "Tags",
     step4: "Review",
@@ -43,10 +56,9 @@ export const teacherEn: TeacherMessages = {
       previewSub: "{{where}} · {{level}}",
       warnLow: "Grade {{grade}} uses integrated science, so it belongs to the Science chicken. Switch?",
       warnHigh: "Grades 10–12 split into Physics, Chemistry, Biology. Switch?",
-      next: "Continue",
-      nextLong: "Continue to review",
-      back: "Back",
-      need: "Pick the level, chicken, grade and difficulty to continue.",
+      save: "Save",
+      saved: "Tags saved.",
+      need: "Pick the level, chicken, grade and difficulty to save.",
       saving: "Saving…",
       saveFailed: "Could not save the tags. Try again.",
       chickenRejected: "That chicken is not in the chosen level.",
@@ -56,8 +68,7 @@ export const teacherEn: TeacherMessages = {
     },
     level: {
       label: "Difficulty",
-      change: "Change in Tags",
-      confirmFirst: "Confirm the tags to publish.",
+      confirmFirst: "Confirm the tags in step 3 to publish.",
       unset: "Not set",
     },
   },

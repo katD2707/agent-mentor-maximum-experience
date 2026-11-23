@@ -258,7 +258,7 @@ class ContentStore:
 
     def set_labels(self, course_id: str, version: int, *, chicken: str | None = None, band: str | None = None,
                    grade: int | None = None, difficulty: str | None = None, goals: list[str] | None = None,
-                   language: str | None = None, topics: list[str] | None = None) -> VersionInfo:
+                   language: str | None = None, topics: list[str] | None = None, regen: bool = True):
         """Teacher labels (Làng gà gv-04). A draft keeps them on its version (copied to the course at publish); the latest
         published version takes them at once: course.json and catalog.json change, the pack does not. Older published
         versions are frozen. Only the fields given change."""
@@ -292,9 +292,11 @@ class ContentStore:
                 if topics is not None:
                     meta.topics = list(topics)
             self._save_meta(meta)
-            if latest:
-                self.regenerate_catalog()
-            return info
+            if regen:
+                if latest:
+                    self.regenerate_catalog()
+                return info
+            return latest  # the caller regenerates the catalog (off its request path) when this is true
 
     def set_status(self, course_id: str, version: int, status: str) -> None:
         """draft <-> review. `published` is only reachable through `publish`."""
@@ -380,7 +382,10 @@ class ContentStore:
             entries: list[CatalogEntry] = []
             soon: list[CatalogEntry] = []
             for cid in self.list_course_ids():
-                meta = self.load_meta(cid)
+                try:
+                    meta = self.load_meta(cid)
+                except Exception:  # noqa: BLE001 - one unreadable course.json must not break the whole catalog
+                    continue
                 if meta.status == "coming_soon":
                     try:
                         cover_sha = sha256_file(self.cover_path(cid))

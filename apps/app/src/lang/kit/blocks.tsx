@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from "react";
+import "katex/dist/katex.min.css";
 import { useTranslation } from "react-i18next";
 import type { AssetRef, AudioBlock, Block, CalloutBlock, ImageAttribution, ImageBlock, Lang, TextBlock, VideoBlock } from "../../api";
 import { Icon } from "../../components/Icon";
@@ -93,7 +94,7 @@ function CalloutView({ b, ctx }: { b: CalloutBlock; ctx: BlockCtx }) {
   return (
     <aside className={`callout callout-${b.variant} ${b.variant === "remember" ? "oli" : ""}`}>
       <div className="callout-body">
-        <b className="callout-title">{b.title || t(`courses.player.calloutTitle.${b.variant}`)}</b>
+        <b className="callout-title">{b.title ? <Md md={b.title} className="inline" /> : t(`courses.player.calloutTitle.${b.variant}`)}</b>
         <Md md={b.md} />
       </div>
       <SpeakButton text={`${b.title ?? ""}. ${b.md}`} audioUrl={ctx.url(b.audio)} lang={ctx.lang} />
@@ -129,7 +130,7 @@ function ImageView({ b, ctx }: { b: ImageBlock; ctx: BlockCtx }) {
       {src ? <img src={src} alt={b.alt} onError={onMediaError} /> : <div className="ph" role="img" aria-label={b.alt} />}
       {b.caption && (
         <figcaption>
-          <span>{b.caption}</span>
+          <Md md={b.caption} className="inline" />
           <SpeakButton text={b.caption} audioUrl={ctx.url(b.audio)} lang={ctx.lang} />
         </figcaption>
       )}
@@ -179,7 +180,11 @@ function VideoView({ b, ctx }: { b: VideoBlock; ctx: BlockCtx }) {
           {mins}:{secs}
         </span>
       </div>
-      {b.title && <figcaption>{b.title}</figcaption>}
+      {b.title && (
+        <figcaption>
+          <Md md={b.title} className="inline" />
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -192,7 +197,7 @@ function AudioView({ b, ctx }: { b: AudioBlock; ctx: BlockCtx }) {
       {src ? <audio controls preload="metadata" src={src} onError={onMediaError} /> : <SpeakButton text={b.transcript} lang={ctx.lang} />}
       <details>
         <summary>{t("courses.player.transcript")}</summary>
-        <p>{b.transcript}</p>
+        <Md md={b.transcript} />
       </details>
     </div>
   );

@@ -145,7 +145,7 @@ export function QuizItemView({ item, ctx, kid, n, onResult, onDone, stepped, onS
                     <b className="k">{s.id}</b>
                     <Md md={s.text} className="inline" />
                   </span>
-                  <span className="tf-btns" role="group" aria-label={s.text}>
+                  <span className="tf-btns" role="group" aria-label={plainText(s.text)}>
                     {[true, false].map((val) => (
                       <button
                         key={String(val)}
@@ -221,7 +221,7 @@ export function QuizItemView({ item, ctx, kid, n, onResult, onDone, stepped, onS
         <div className="hint-line">
           {hint ? (
             <p className="hint" role="status">
-              <b>{t("courses.player.hint")}:</b> {item.hint}
+              <b>{t("courses.player.hint")}:</b> <Md md={item.hint} className="inline" />
             </p>
           ) : (
             <button type="button" className="btn-link" onClick={() => setHint(true)}>
@@ -234,7 +234,7 @@ export function QuizItemView({ item, ctx, kid, n, onResult, onDone, stepped, onS
       {kid && hint && !done && (
         <p className="hint pill-hint" role="status">
           <Icon name="volume" />
-          <span>{item.hint ?? t("courses.player.countAgain")}</span>
+          {item.hint ? <Md md={item.hint} className="inline" /> : <span>{t("courses.player.countAgain")}</span>}
         </p>
       )}
 

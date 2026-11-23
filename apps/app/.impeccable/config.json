@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-11-07T12:38:38.223Z",
         "reason": "Matches the user-approved research mockups hs-09/hs-10 (approved 2026-11-07, 'ok duyệt phần nghiên cứu'): left rules mark quoted text (the research question, cited paper passages) and one review warning callout"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/lang/styles/study.css"
+        ],
+        "createdAt": "2026-11-22T23:32:31.690Z",
+        "reason": "Claude: only hit is the speech-bubble tail (.say::after, rotated square with right+bottom border), not a side-tab card accent"
       }
     ]
   }

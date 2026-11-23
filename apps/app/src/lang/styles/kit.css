@@ -115,9 +115,16 @@
 :is(.lesson, .practice-run) .ask { margin: 0; font-size: clamp(1.25em, 3.4vw, 1.5em); font-weight: 600; line-height: 1.4; }
 :is(.lesson, .practice-run) .slots { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-height: 64px; padding: 10px 4px; margin: 0; list-style: none; border-bottom: 2px solid var(--rule-strong); font-family: var(--font-read); font-size: 1.35em; }
 :is(.lesson, .practice-run) .slot-piece { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+:is(.lesson, .practice-run) .slots > .md { font-family: var(--font-read); line-height: 1.9; }
+/* a blank inside a formula: the tile sits in the line of the maths */
+:is(.lesson, .practice-run) .gap-host { display: inline-block; vertical-align: middle; font-family: var(--font-read); font-size: .8em; margin: 0 2px; }
+:is(.lesson, .practice-run) .gap-host .gap { min-width: 56px; min-height: 40px; vertical-align: middle; }
+:is(.lesson, .practice-run) .gap-host .tile { min-height: 40px; padding: 0 12px; }
 :is(.lesson, .practice-run) .slots .gap { display: inline-block; min-width: 72px; min-height: 52px; border-radius: 14px; border: 2px dashed var(--tim); background: var(--tim-soft); }
 :is(.lesson, .practice-run) .slots.order:empty::before { content: attr(data-empty); color: var(--ink-3); font-family: var(--font-ui); font-size: .75em; }
 :is(.lesson, .practice-run) .bank { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 64px; }
+/* the site-wide `.tile` (course cards: square, clipped, tilted) must not leak into the answer tiles */
+:is(.lesson, .practice-run, .lg-pr) .tile { aspect-ratio: auto; overflow: visible; transform: none; will-change: auto; isolation: auto; }
 :is(.lesson, .practice-run) .tile { min-height: 52px; min-width: 52px; padding: 0 16px; border-radius: 14px; border: 2px solid var(--rule-strong); background: var(--surface); box-shadow: 0 4px 0 var(--rule-strong); font: inherit; font-family: var(--font-read); font-size: 1.15em; color: var(--ink); cursor: pointer; }
 :is(.lesson, .practice-run) .tile:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 var(--rule-strong); }
 :is(.lesson, .practice-run) .tile:disabled { cursor: default; }
@@ -126,9 +133,9 @@
 :is(.lesson, .practice-run) .tile .md { display: inline; }
 :is(.lesson, .practice-run) .slots.right .tile { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: 0 4px 0 var(--xanh); }
 :is(.lesson, .practice-run) .slots.wrong .tile { border-color: var(--do); background: var(--do-soft); box-shadow: 0 4px 0 var(--do); }
-:is(.lesson, .practice-run) .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+:is(.lesson, .practice-run) .pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; align-items: start; }
 :is(.lesson, .practice-run) .pairs-col { display: grid; gap: 10px; align-content: start; }
-:is(.lesson, .practice-run) .pairs .tile { width: 100%; }
+:is(.lesson, .practice-run) .pairs .tile { width: 100%; min-height: 56px; padding: 10px 14px; font-size: 1.05em; line-height: 1.4; }
 :is(.lesson, .practice-run) .pairs .tile[aria-pressed="true"] { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); }
 :is(.lesson, .practice-run) .pairs .tile.done { border-color: var(--xanh); background: var(--xanh-soft); box-shadow: none; color: var(--xanh); opacity: .75; }
 :is(.lesson, .practice-run) .pairs .tile.joined { border-color: var(--tim); background: var(--tim-soft); box-shadow: 0 4px 0 var(--tim); }

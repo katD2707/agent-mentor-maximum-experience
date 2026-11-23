@@ -221,3 +221,17 @@ async def test_live_arxiv_search():
     print([(p.arxiv_id, p.year, p.title[:60]) for p in out])
     assert out, "arXiv returned nothing (rate limited?)"
     assert all(p.arxiv_id and p.title and p.url.startswith("http") and p.year for p in out)
+
+
+@pytest.mark.asyncio
+async def test_strict_search_tells_an_outage_from_no_results():
+    class Tool:
+        def __init__(self, rows, err):
+            self.rows, self.last_error = rows, err
+
+        async def search_papers(self, **kw):
+            return self.rows
+
+    with pytest.raises(papers.ArxivUnavailable):
+        await papers.search_arxiv_strict("graph neural network", searcher=Tool([], "timeout"))
+    assert await papers.search_arxiv_strict("zzzz", searcher=Tool([], None)) == []

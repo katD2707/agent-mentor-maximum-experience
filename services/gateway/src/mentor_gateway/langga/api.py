@@ -92,6 +92,21 @@ def focus_active(user: User = Depends(student_user), svc: FocusService = Depends
     return svc.active(user)
 
 
+class FocusPauseBody(BaseModel):
+    ago_sec: int = Field(0, ge=0, le=3 * 3600)  # the tab went away this long ago (dates the pause back)
+
+
+@router.post("/focus/{focus_id}/pause")
+def focus_pause(focus_id: str, body: FocusPauseBody | None = None, user: User = Depends(student_user),
+                svc: FocusService = Depends(focus_svc)) -> dict:
+    return svc.pause(user, focus_id, body.ago_sec if body else 0)
+
+
+@router.post("/focus/{focus_id}/resume")
+def focus_resume(focus_id: str, user: User = Depends(student_user), svc: FocusService = Depends(focus_svc)) -> dict:
+    return svc.resume(user, focus_id)
+
+
 @router.post("/focus/{focus_id}/finish")
 def focus_finish(focus_id: str, body: FocusFinishBody, user: User = Depends(student_user),
                  svc: FocusService = Depends(focus_svc)) -> dict:
@@ -108,8 +123,8 @@ async def chat(chicken: str, request: Request, user: User = Depends(student_user
                svc: ChatService = Depends(chat_svc), ask: AskService = Depends(ask_service)) -> StreamingResponse:
     _check_chat_chicken(user, chicken)
     inp = await _read_input(request, user, gw)
-    if inp.thread_id and await asyncio.to_thread(ask.load_thread, user.id, inp.thread_id) is None:
-        raise HTTPException(404, {"error": "thread_not_found"})
+    # A chicken chat keeps its memory per (user, chicken) in chat_turns; the thread id is only a label for the client, and the
+    # Ask pipeline starts a fresh state for an id it does not know (so an id issued by a text turn is always accepted).
     if not (inp.text.strip() or inp.image or inp.audio or inp.action):
         raise HTTPException(422, {"error": "empty_question"})
 

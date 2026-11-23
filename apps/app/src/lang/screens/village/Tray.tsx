@@ -18,7 +18,7 @@ import { mockRememberNotes } from "../../api/mock";
 import { ResumeCard } from "../arena/Resume";
 import { artFile, chickenName, subjectOf } from "../../subjects";
 import { cropVars } from "../../chickenArt";
-import { helpTopic, hhmm, laterOptions, routeText, watchSlow, type SlowWatch } from "./logic";
+import { helpTopic, hhmm, laterOptions, routeText, streamSafeMd, watchSlow, type SlowWatch } from "./logic";
 
 export type SheetKey = "none" | "market" | "news" | "progress" | "settings";
 
@@ -116,7 +116,8 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
   const [text, setText] = useState("");
   const [suggest, setSuggest] = useState(false);
   // phones and laptops (up to 1366 wide) start with the tray folded: the short line over the chicken says it, the village stays in view
-  const [min, setMin] = useState(() => typeof matchMedia === "function" && matchMedia("(max-width: 1366px)").matches);
+  // the village is the picture: the chat starts folded to its title bar and opens with a tap
+  const [min, setMin] = useState(true);
   const [camera, setCamera] = useState(false);
   const [listening, setListening] = useState(false);
   const [note, setNote] = useState<string | null>(null);
@@ -161,10 +162,29 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
     r.run?.();
   };
 
+  // keep the newest line in view, also when its content grows later (streamed text, the maths renderer loading); stop following
+  // once the learner scrolls up to read, and follow again when they come back to the bottom
+  const stick = useRef(true);
   useEffect(() => {
     const el = threadEl.current;
+    if (!el) return;
+    const down = () => {
+      if (stick.current) el.scrollTop = el.scrollHeight;
+    };
+    const onScroll = () => void (stick.current = el.scrollHeight - el.scrollTop - el.clientHeight < 40);
+    el.addEventListener("scroll", onScroll, { passive: true });
+    const mo = typeof MutationObserver === "undefined" ? null : new MutationObserver(down);
+    mo?.observe(el, { childList: true, subtree: true, characterData: true });
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+      mo?.disconnect();
+    };
+  }, []);
+  useEffect(() => {
+    stick.current = true;
+    const el = threadEl.current;
     if (el) el.scrollTop = el.scrollHeight;
-  }, [items]);
+  }, [items.length]);
   useEffect(
     () => () => {
       urls.current.forEach((u) => URL.revokeObjectURL(u));
@@ -193,7 +213,15 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
     const lost = (e: unknown, run: () => void) => {
       if (w.cancelled) return finish({ text: t("lg.tray.cancelled") });
       if (c.signal.aborted && !w.timedOut) return;
-      finish({ text: t(e instanceof AskError && e.code === "network" && !w.timedOut ? "lg.tray.offline" : "lg.tray.chatFailed"), replies: retry(run) });
+      const code = e instanceof AskError ? e.code : "";
+      const key =
+        code === "network" && !w.timedOut ? "lg.tray.offline"
+        : code === "file_too_large" ? "lg.tray.errTooBig"
+        : code === "bad_request" || code === "unsupported_image" ? "lg.tray.errBadInput"
+        : e instanceof AskError && e.status === 403 ? "lg.tray.errForbidden"
+        : "lg.tray.chatFailed";
+      // a bad input cannot be fixed by retrying the same thing
+      finish({ text: t(key), replies: key === "lg.tray.chatFailed" || key === "lg.tray.offline" ? retry(run) : undefined });
     };
     const end = () => {
       w.stop();
@@ -266,7 +294,7 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
     await upload();
   };
   // real papers and mock exams live in the arena (one feature, one place): the tray only points there
-  const offerArena = () => say({ text: t("lg.tray.mockGo", { you }), replies: [{ primary: true, label: t("lg.place.arena"), to: "/dau-truong" }] });
+  const offerArena = () => say({ text: t("lg.tray.mockGo", { you }) });
   const offerQuick = async () => {
     const h = await loadHome();
     say(h && h.quick.count > 0 ? { text: t("lg.tray.quickOffer"), replies: [{ primary: true, label: t("lg.go.practice"), dur: t("lg.min", { count: h.quick.minutes }), run: () => void startPractice("quick") }] } : { text: t("lg.tray.quickNone") });
@@ -275,7 +303,6 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
     const h = await loadHome();
     const opts: Reply[] = [];
     if (h && h.quick.count > 0) opts.push({ label: t("lg.tray.optQuick", { count: h.quick.count }), dur: t("lg.min", { count: h.quick.minutes }), run: () => void startPractice("quick") });
-    if (!kid) opts.push({ label: t("lg.place.arena"), to: "/dau-truong" });
     for (const c of village.chickens.filter((c) => c.active_course).slice(0, 2)) opts.push({ label: c.active_course!.title, to: `/khoa-hoc/${encodeURIComponent(c.active_course!.id)}/hoc` });
     if (!kid) opts.push({ label: t("lg.notes.reply"), icon: "camera", run: askNotes });
     say(opts.length ? { text: t("lg.tray.otherIntro", { you }), replies: opts } : { text: t("lg.tray.otherNone") });
@@ -360,12 +387,12 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
           break;
         case "delta":
           acc += ev.data.text;
-          patch(reply, { text: acc, typing: false });
+          patch(reply, { text: <Md md={streamSafeMd(acc)} />, typing: false });
           break;
         case "answer":
         case "message":
           acc = ev.data.text;
-          patch(reply, { text: acc, typing: false });
+          patch(reply, { text: <Md md={acc} />, typing: false });
           break;
         case "intent":
           if (!req.action) logEvent("ask_question", { intent: ev.data.intent, input: req.image ? "photo" : req.audio ? "voice" : "text" });
@@ -495,18 +522,13 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
   };
 
   // ---- the chips under the box
-  const tryIt = (k: "photo" | "notes" | "learn" | "mock" | "practice") => {
+  const tryIt = (k: "photo" | "notes" | "practice") => {
     setSuggest(false);
     if (k === "photo") return openCamera();
     if (k === "notes") {
       me({ text: t("lg.notes.reply") });
       return askNotes();
     }
-    if (k === "learn") {
-      me({ text: t("lg.tray.learnSay") });
-      return say({ text: t("lg.tray.learnReply", { name: chickenName(speakerId, lang) }), replies: [{ primary: true, label: t("lg.market.open"), run: () => openSheet("market") }, { label: t("lg.tray.inCoop"), to: `/chuong/${speakerId}` }] });
-    }
-    if (k === "mock") return nav("/dau-truong", { state: { back: "/" } });
     me({ text: t("lg.chips.practice") });
     return void offerQuick();
   };
@@ -559,7 +581,7 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
     } else if (act) {
       say({ text: `${hi}${t("lg.tray.breakDay")}`, replies: [{ label: t("lg.tray.other"), run: () => void offerOthers() }] }, who);
     } else {
-      say({ text: `${hi}${t("lg.tray.empty", { you })}`, replies: [{ label: t("lg.tray.other"), run: () => void offerOthers() }, { label: t("lg.market.open"), run: () => openSheet("market") }] }, who);
+      say({ text: `${hi}${t("lg.tray.empty", { you })}`, replies: [{ label: t("lg.tray.other"), run: () => void offerOthers() }] }, who);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [village, kid, lang, name, user?.id]);
@@ -707,14 +729,6 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
                     <button type="button" onClick={() => tryIt("notes")}>
                       <Icon name="image" />
                       <span>{t("lg.chips.notes")}</span>
-                    </button>
-                    <button type="button" onClick={() => tryIt("learn")}>
-                      <Icon name="search" />
-                      <span>{t("lg.chips.learn")}</span>
-                    </button>
-                    <button type="button" onClick={() => tryIt("mock")}>
-                      <Icon name="clock" />
-                      <span>{t("lg.chips.mock")}</span>
                     </button>
                     <button type="button" onClick={() => tryIt("practice")}>
                       <Icon name="quiz" />

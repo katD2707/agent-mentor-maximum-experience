@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>So sánh nhân vật</title>
+<style>
+  :root { --bg: #f4ecd8; --ink: #3a2414; --ink2: #7a5a3c; --card: #fffaf0; --edge: #c98a45; --old: #6b5c4c; --new: #23874a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 500 15px/1.5 "Lexend", system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; display: flex; gap: 16px; align-items: center; padding: 12px 20px; background: #2c2440; color: #f4ecd8; }
+  header a { color: #f4ecd8; text-decoration: none; opacity: .85; }
+  header b { font-size: 16px; }
+  main { max-width: 1240px; margin: 0 auto; padding: 24px 16px 64px; display: grid; gap: 28px; }
+  section { background: var(--card); border: 3px solid var(--edge); border-radius: 22px; box-shadow: 0 5px 0 #7d4c22; padding: 20px; }
+  h2 { margin: 0 0 4px; font-size: 22px; }
+  .sub { margin: 0 0 16px; color: var(--ink2); }
+  .row { display: grid; gap: 14px; }
+  .lab { display: inline-block; padding: 2px 12px; border-radius: 999px; font-weight: 700; font-size: 13px; color: #fff; }
+  .lab.old { background: var(--old); }
+  .lab.new { background: var(--new); }
+  .stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+  .row > .lab { justify-self: start; }
+  .st { display: grid; justify-items: center; gap: 4px; padding: 8px 4px 10px; border-radius: 16px; overflow: hidden; background: radial-gradient(ellipse at 50% 85%, #cfe3a8, #eaf2d6 70%); }
+  /* the 512 px frames leave a lot of air around the drawing: enlarge from the feet */
+  .st img { width: 100%; max-width: 240px; aspect-ratio: 1; object-fit: contain; transform: scale(1.45); transform-origin: 50% 88%; }
+  .st:last-child img { transform: scale(1.15); } /* Cao thủ: keep the halo inside the card */
+  .st span { font-weight: 700; font-size: 13px; }
+  .st small { color: var(--ink2); font-size: 12px; }
+  .st.empty { opacity: .45; }
+  .st.empty div { width: 100%; max-width: 240px; aspect-ratio: 1; display: grid; place-items: center; font-size: 13px; color: var(--ink2); text-align: center; padding: 0 12px; }
+  /* map-size strip on a piece of the painted village */
+  .map { position: relative; height: 190px; border-radius: 16px; overflow: hidden; background: url(assets/ga/lang/bg_1_1.webp) 40% 60% / 1300px auto; display: flex; align-items: flex-end; justify-content: space-evenly; padding-bottom: 14px; }
+  .map img { height: 130px; width: auto; margin-bottom: -18px; filter: drop-shadow(0 3px 2px rgba(0,0,0,.25)); }
+  .map .tag { position: absolute; left: 10px; top: 10px; }
+  /* students */
+  .kids { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .kidcard { display: grid; gap: 8px; justify-items: center; padding: 12px; border-radius: 16px; background: radial-gradient(ellipse at 50% 85%, #cfe3a8, #eaf2d6 70%); }
+  .kidcard img.still { width: 100%; max-width: 300px; aspect-ratio: 1; object-fit: contain; }
+  .walkers { display: flex; gap: 6px; }
+  .sheet { width: 150px; height: 150px; background-repeat: no-repeat; background-size: auto 150px; }
+  .walk { animation: walk 1s steps(12) infinite; }
+  .idle { animation: idle 1.333s steps(16) infinite; }
+  @keyframes walk { to { background-position: -1800px 0; } }
+  @keyframes idle { to { background-position: -2400px 0; } }
+  .note { margin: 12px 0 0; padding: 12px 14px; border-radius: 14px; background: #fff3d6; border: 2px dashed var(--edge); }
+  .note ul { margin: 6px 0 0; padding-left: 20px; }
+  details { margin-top: 14px; }
+  summary { cursor: pointer; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e6d3b3; vertical-align: top; }
+  th { background: #f6e6c8; }
+  .village { display: block; width: 100%; border-radius: 16px; border: 2px solid var(--edge); }
+  .btn { display: inline-block; margin-top: 10px; padding: 8px 18px; border-radius: 999px; background: var(--new); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 3px 0 #165c32; }
+  @media (max-width: 720px) {
+    .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .kids { grid-template-columns: 1fr; }
+    .map { height: 150px; }
+    .map img { height: auto; width: 24%; min-width: 0; margin-bottom: -12px; }
+    .sheet { width: 110px; height: 110px; background-size: auto 110px; }
+    @keyframes walk { to { background-position: -1320px 0; } }
+    @keyframes idle { to { background-position: -1760px 0; } }
+  }
+  @media (prefers-reduced-motion: reduce) { .walk, .idle { animation: none; } }
+</style>
+</head>
+<body>
+<header><a href="index.html">← Tất cả màn hình</a><b>So sánh nhân vật: cũ và mới</b></header>
+<main>
+
+  <section>
+    <h2>Gà Toán: trang phục theo cấp</h2>
+    <p class="sub">Mỗi cấp là một bộ đồ, không còn gắn một món đồ lên người gà.</p>
+    <div class="row">
+      <span class="lab old">Cũ</span>
+      <div class="stages">
+        <div class="st"><img src="assets/ga/toan-1-dung.webp" alt="Gà Toán cũ, cấp 1"><span>Gà con</span><small>cấp 1</small></div>
+        <div class="st"><img src="assets/ga/toan-2-dung.webp" alt="Gà Toán cũ, cấp 2"><span>Gà choai</span><small>cấp 2–4</small></div>
+        <div class="st"><img src="assets/ga/toan-dung.webp" alt="Gà Toán cũ, cấp 3"><span>Trưởng thành</span><small>cấp 5–9</small></div>
+        <div class="st empty"><div>Cao thủ dùng lại hình trưởng thành + vương miện</div><span>Cao thủ</span><small>cấp 10+</small></div>
+      </div>
+      <span class="lab new">Mới</span>
+      <div class="stages">
+        <div class="st"><img src="assets/ga/trang-phuc/toan-1-dung.webp" alt="Gà Toán mới, cấp 1"><span>Gà con</span><small>mũ len, yếm</small></div>
+        <div class="st"><img src="assets/ga/trang-phuc/toan-2-dung.webp" alt="Gà Toán mới, cấp 2"><span>Gà choai</span><small>mũ học giả, áo gi-lê, túi</small></div>
+        <div class="st"><img src="assets/ga/trang-phuc/toan-dung.webp" alt="Gà Toán mới, cấp 3"><span>Trưởng thành</span><small>áo khoác, kính, áo choàng</small></div>
+        <div class="st"><img src="assets/ga/trang-phuc/toan-4-dung.webp" alt="Gà Toán mới, cấp 4"><span>Cao thủ</span><small>mũ lễ, áo dài, hào quang</small></div>
+      </div>
+      <div class="map"><span class="lab new tag">Cỡ trên bản đồ</span>
+        <img src="assets/ga/trang-phuc/toan-1-dung.webp" alt=""><img src="assets/ga/trang-phuc/toan-2-dung.webp" alt=""><img src="assets/ga/trang-phuc/toan-dung.webp" alt=""><img src="assets/ga/trang-phuc/toan-4-dung.webp" alt="">
+      </div>
+    </div>
+    <div class="note"><b>Còn thiếu so với Gunny</b>
+      <ul>
+        <li>Thân dưới áo vẫn tròn, chưa có tay áo thật.</li>
+        <li>Cấp 3–4 hơi nhiều viền vàng.</li>
+        <li>Yếm cấp 1 còn nhỏ.</li>
+      </ul>
+      Muốn đẹp hẳn: họa sĩ vẽ phác áo cấp 3–4, mình dựng theo.
+    </div>
+    <details>
+      <summary>Ý tưởng trang phục cho cả 23 môn</summary>
+      <table>
+        <thead><tr><th>Gà</th><th>Chủ đề</th><th>Cao thủ</th></tr></thead>
+        <tbody>
+          <tr><td>Toán</td><td>Nhà toán học</td><td>Mũ lễ, áo gấm, hào quang thước đo góc</td></tr>
+          <tr><td>Văn</td><td>Thi sĩ, thư pháp</td><td>Mũ hoa mai, áo dài thêu thơ, chữ mực bay quanh</td></tr>
+          <tr><td>Anh</td><td>Người lữ hành</td><td>Mũ rộng vành, áo khoác lớn, bong bóng lời nói</td></tr>
+          <tr><td>Lí / Vật lí</td><td>Nhà vật lí</td><td>Mũ tia sét, áo điện, vòng điện tử</td></tr>
+          <tr><td>Hóa / Hóa học</td><td>Nhà hóa học</td><td>Mũ bình cầu, áo dài, phân tử bay quanh</td></tr>
+          <tr><td>Sinh</td><td>Nhà sinh học</td><td>Vương miện lá, áo thêu ADN, lá bay quanh</td></tr>
+          <tr><td>Sử</td><td>Sử gia</td><td>Mũ giáp có mào, áo hoàng bào, cờ và cổ vật</td></tr>
+          <tr><td>Địa</td><td>Nhà thám hiểm</td><td>Mũ quả địa cầu, áo dài, lục địa bay quanh</td></tr>
+          <tr><td>Tin / KHMT</td><td>Lập trình viên</td><td>Mũ trùm {}, áo mạch điện, kí hiệu code</td></tr>
+          <tr><td>Công nghệ</td><td>Kĩ sư</td><td>Mũ bảo hộ vương miện, bánh răng bay quanh</td></tr>
+          <tr><td>GDCD</td><td>Luật</td><td>Mũ thẩm phán, áo lễ, cán cân bay quanh</td></tr>
+          <tr><td>Khoa học</td><td>Nhà khoa học</td><td>Mũ cao, áo dài, nguyên tử và sao</td></tr>
+          <tr><td>Nghệ thuật</td><td>Họa sĩ</td><td>Mũ nồi lớn, áo cầu vồng, giọt màu bay</td></tr>
+          <tr><td>Kĩ năng</td><td>Kĩ năng sống</td><td>Mũ cao, áo dài, đồng hồ cát và sao</td></tr>
+          <tr><td>KTMT</td><td>Kĩ sư máy tính</td><td>Vương miện chip, chip bay quanh</td></tr>
+          <tr><td>HTTT</td><td>Hệ thống thông tin</td><td>Mũ cao, ổ đĩa và đường nối bay quanh</td></tr>
+          <tr><td>KHDL</td><td>Khoa học dữ liệu</td><td>Áo thêu đồ thị, biểu đồ bay quanh</td></tr>
+          <tr><td>Kinh tế</td><td>Chủ ngân hàng</td><td>Áo gấm đồng vàng, đồng xu bay quanh</td></tr>
+          <tr><td>Kế toán</td><td>Kế toán</td><td>Mũ cao, áo dài, chữ số bay quanh</td></tr>
+          <tr><td>Đại cương</td><td>Học giả</td><td>Mũ tốt nghiệp vương miện, sách bay quanh</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </section>
+
+  <section>
+    <h2>Học sinh</h2>
+    <p class="sub">Đồng phục, khăn quàng, ba lô, giày; tóc và mặt chi tiết hơn.</p>
+    <div class="kids">
+      <div class="kidcard"><span class="lab old">Cũ</span><img class="still" src="assets/ga/hs-nam.png" alt="Bạn nam cũ">
+        <div class="walkers"><div class="sheet idle" style="background-image:url(assets/ga/lang/actors/nam-idle-s.webp)"></div><div class="sheet walk" style="background-image:url(assets/ga/lang/actors/nam-walk-se.webp)"></div></div></div>
+      <div class="kidcard"><span class="lab new">Mới</span><img class="still" src="assets/ga/hoc-sinh-moi/hs-nam-moi.png" alt="Bạn nam mới">
+        <div class="walkers"><div class="sheet idle" style="background-image:url(assets/ga/hoc-sinh-moi/actors/nam-idle-s.webp)"></div><div class="sheet walk" style="background-image:url(assets/ga/hoc-sinh-moi/actors/nam-walk-se.webp)"></div></div></div>
+      <div class="kidcard"><span class="lab old">Cũ</span><img class="still" src="assets/ga/hs-nu.png" alt="Bạn nữ cũ">
+        <div class="walkers"><div class="sheet idle" style="background-image:url(assets/ga/lang/actors/nu-idle-s.webp)"></div><div class="sheet walk" style="background-image:url(assets/ga/lang/actors/nu-walk-se.webp)"></div></div></div>
+      <div class="kidcard"><span class="lab new">Mới</span><img class="still" src="assets/ga/hoc-sinh-moi/hs-nu-moi.png" alt="Bạn nữ mới">
+        <div class="walkers"><div class="sheet idle" style="background-image:url(assets/ga/hoc-sinh-moi/actors/nu-idle-s.webp)"></div><div class="sheet walk" style="background-image:url(assets/ga/hoc-sinh-moi/actors/nu-walk-se.webp)"></div></div></div>
+    </div>
+    <div class="map"><span class="lab new tag">Cỡ trên bản đồ: cũ · mới</span>
+      <img src="assets/ga/hs-nam.png" alt=""><img src="assets/ga/hoc-sinh-moi/hs-nam-moi.png" alt=""><img src="assets/ga/hs-nu.png" alt=""><img src="assets/ga/hoc-sinh-moi/hs-nu-moi.png" alt="">
+    </div>
+    <div class="note"><b>Đánh giá thật</b>
+      <ul>
+        <li>Mới: chi tiết và giống học sinh thật hơn.</li>
+        <li>Nhưng dáng còn cứng, bím tóc bạn nữ nhìn trước giống tóc ngắn.</li>
+        <li>Ở cỡ bản đồ, mặt nhỏ, kém dễ thương hơn bản cũ đầu to.</li>
+      </ul>
+      Có thể giữ thân mới và làm đầu to hơn một chút.
+    </div>
+  </section>
+
+  <section>
+    <h2>Cả 23 gà: trang phục theo cấp</h2>
+    <p class="sub">Không còn ô tên: nhìn trang phục là biết môn.</p>
+    <div class="note" style="margin:0 0 14px"><b>Kiểm tra mù</b>: một agent chưa biết thiết kế đoán môn từ ảnh 128px.
+      <ul>
+        <li>Cấp 3: vòng 1 đúng 19/25; sửa Toán, Khoa học, GDCD, Văn, Kế toán; vòng 2 đúng 25/25.</li>
+        <li>Cấp 1: lần đầu đúng 9/14 (phổ thông); làm biểu tượng to hơn; giờ đúng 25/25.</li>
+        <li>Cấp 4: đúng 24/25; sửa Khoa học (bị đoán là Địa lí); giờ đúng hết.</li>
+      </ul>
+    </div>
+    <h3>Trường phổ thông</h3>
+    <img class="village" src="assets/ga/trang-phuc/ss-truong-1.png" alt="Gà con, phổ thông">
+    <img class="village" style="margin-top:8px" src="assets/ga/trang-phuc/ss-truong-2.png" alt="Gà choai, phổ thông">
+    <img class="village" style="margin-top:8px" src="assets/ga/trang-phuc/ss-truong-3.png" alt="Trưởng thành, phổ thông">
+    <img class="village" style="margin-top:8px" src="assets/ga/trang-phuc/ss-truong-4.png" alt="Cao thủ, phổ thông">
+    <h3>Đại học</h3>
+    <img class="village" src="assets/ga/trang-phuc/ss-dai-hoc-1.png" alt="Gà con, đại học">
+    <img class="village" style="margin-top:8px" src="assets/ga/trang-phuc/ss-dai-hoc-2.png" alt="Gà choai, đại học">
+    <img class="village" style="margin-top:8px" src="assets/ga/trang-phuc/ss-dai-hoc-3.png" alt="Trưởng thành, đại học">
+    <img class="village" style="margin-top:8px" src="assets/ga/trang-phuc/ss-dai-hoc-4.png" alt="Cao thủ, đại học">
+    <h3>Gà giận (khóa bị bỏ quá 7 ngày)</h3>
+    <img class="village" src="assets/ga/trang-phuc/ss-gian-3.png" alt="Cả 23 gà giận">
+  </section>
+
+  <section>
+    <h2>Học sinh 2D vẽ bằng AI (thử 1 bạn)</h2>
+    <p class="sub">Nam đại học. Cùng một bạn ở hai góc; trên bản đồ: lật trái phải và nhún.</p>
+    <div class="kids">
+      <div class="kidcard"><span class="lab new">Đứng</span><img class="still" src="assets/ga/hoc-sinh-2d/nam-daihoc.png" alt="Bạn nam đại học, vẽ 2D"></div>
+      <div class="kidcard"><span class="lab new">Đi, nghiêng</span><img class="still" src="assets/ga/hoc-sinh-2d/idle-bob-demo.webp" alt="Bạn nam đại học đi, góc nghiêng"></div>
+    </div>
+    <img class="village" style="margin-top:10px" src="assets/ga/hoc-sinh-2d/map-90px.png" alt="Ở cỡ bản đồ">
+    <div class="note"><b>Đánh giá thật</b>
+      <ul>
+        <li>Ra chất nhân vật game hơn hẳn bản 3D; vẽ lại góc khác vẫn đúng là bạn ấy.</li>
+        <li>Nét hơi sạch so với nền màu nước; tay còn đơn giản.</li>
+        <li>Trên bản đồ chỉ nhún, chưa cử động chân tay.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Từ ảnh 2D sang 3D (thử miễn phí)</h2>
+    <p class="sub">Stable Fast 3D: trước, 3/4, ngang, sau. Dưới: cỡ bản đồ (2D gốc · Stable Fast 3D · TripoSR).</p>
+    <img class="village" src="assets/ga/hoc-sinh-3d/sf3d-4-goc.png" alt="Stable Fast 3D, 4 góc">
+    <img class="village" style="margin-top:10px" src="assets/ga/hoc-sinh-3d/ban-do-90px.png" alt="So sánh ở cỡ bản đồ">
+    <div class="note"><b>Đánh giá thật</b>
+      <ul>
+        <li>Stable Fast 3D: mặt trước gần y bản 2D; mặt ngang, sau bị lem, ba lô tự bịa.</li>
+        <li>Tay dính vào thân: gắn khung xương sẽ phải sửa nhiều.</li>
+        <li>TripoSR: hỏng (đầu trắng, mất mặt).</li>
+        <li>Tripo AI (trả phí) chưa thử được: tài khoản 0 tín dụng.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Học sinh kiểu chibi anime, theo cấp học</h2>
+    <p class="sub">Tiểu học · THCS · THPT · Đại học. Dựng 3D bằng Blender.</p>
+    <img class="village" src="assets/ga/hoc-sinh-anime/lineup-nam.png" alt="Bạn nam từ Tiểu học đến Đại học">
+    <img class="village" style="margin-top:10px" src="assets/ga/hoc-sinh-anime/lineup-nu.png" alt="Bạn nữ từ Tiểu học đến Đại học">
+    <img class="village" style="margin-top:10px" src="assets/ga/hoc-sinh-anime/map-90px-check.png" alt="Cả 8 bạn ở cỡ bản đồ">
+    <div class="note"><b>Đánh giá thật</b>
+      <ul>
+        <li>Đúng trang phục theo cấp, cùng một gương mặt lớn dần.</li>
+        <li>Nhưng còn giống búp bê 3D: tóc dính khối, dáng cứng, áo dài chưa rõ tà.</li>
+        <li>Chưa ra chất nhân vật vẽ tay như hình mẫu.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Làng gà: vẽ lại gọn một màn hình</h2>
+    <p class="sub">Vẽ bằng FLUX (gói trả phí), bảng tên mới không chồng nhau.</p>
+    <a class="btn" href="lg-01-lang.html">Mở Làng gà</a>
+  </section>
+
+</main>
+</body>
+</html>

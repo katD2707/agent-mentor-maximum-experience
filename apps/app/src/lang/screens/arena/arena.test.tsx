@@ -8,6 +8,7 @@ import { AuthProvider } from "../../../state/auth";
 import { setPracticeApi, type PracticeApi } from "../../../api";
 import { createMockPractice } from "../../../api/mock-practice-api";
 import { courseMockSize } from "./CourseTests";
+import { onXp, type XpGain } from "../../xp";
 
 function student(age = "g10_12") {
   localStorage.setItem(
@@ -63,7 +64,7 @@ describe("Đấu trường: the list", () => {
     expect(within(list).getAllByText("Đề mẫu").length).toBeGreaterThanOrEqual(3);
     expect(within(list).getByText(/THPT 2025 Toán/)).toBeInTheDocument();
     expect(within(list).getAllByText(/Boss Quái Sai Số/).length).toBeGreaterThan(0);
-    expect(screen.getByText("Đề thi thật các năm. Bấm giờ như ngày thi.")).toBeInTheDocument();
+    expect(screen.getByText("Đề mẫu để em làm quen cách thi. Bấm giờ như ngày thi.")).toBeInTheDocument();
 
     await ui.click(screen.getByRole("button", { name: "Anh" }));
     expect(within(list).getAllByRole("listitem")).toHaveLength(1);
@@ -84,7 +85,7 @@ describe("Đấu trường: the list", () => {
     student("uni");
     setPracticeApi(createMockPractice({ learner: () => ({ age_band: "uni", language: "vi" }) }));
     open("/dau-truong");
-    expect(await screen.findByText("Đề cuối kỳ các năm trước. Bấm giờ như ngày thi.")).toBeInTheDocument();
+    expect(await screen.findByText("Đề mẫu để em làm quen cách thi. Bấm giờ như ngày thi.")).toBeInTheDocument(); // only samples: an honest lead
     expect(await screen.findByText(/Cuối kỳ Xác suất thống kê/)).toBeInTheDocument();
   });
 
@@ -123,7 +124,7 @@ describe("Đấu trường: sitting a paper", () => {
     expect(screen.getByText("Không có gợi ý")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Bắt đầu" }));
 
-    expect(await screen.findByRole("timer")).toHaveTextContent(/^(01:00|00:59)$/);
+    expect(await screen.findByRole("timer")).toHaveTextContent(/^(01:00|00:5[5-9])$/);
     expect(screen.getByRole("heading", { name: "Đang thi" })).toBeInTheDocument();
     expect(screen.getByText("???")).toBeInTheDocument();
     expect(screen.getByRole("img", { name: /đã tích lực 0\/5\. Máu boss ẩn đến khi nộp bài/ })).toBeInTheDocument();
@@ -165,7 +166,7 @@ describe("Đấu trường: sitting a paper", () => {
     expect(screen.getByText("Quái Sai Số chạy thoát")).toBeInTheDocument();
   }, 30000);
 
-  it("submit: confirm with the blank count, reduced motion shows the boss still, then the result with +40 and +50 KN", async () => {
+  it("submit: confirm with the blank count, reduced motion shows the boss still, then the result with +40 and +50 kinh nghiệm", async () => {
     reduceMotion(true);
     const ui = userEvent.setup();
     await openPaper(createMockPractice({ learner, mockMinutes: 30 }), ui);
@@ -180,8 +181,8 @@ describe("Đấu trường: sitting a paper", () => {
     await ui.click(screen.getByRole("button", { name: /^B/ })); // wrong (A is right)
     await ui.click(screen.getByRole("button", { name: "Nộp bài" }));
     const dlg = screen.getByRole("alertdialog");
-    expect(within(dlg).getByText("Em đã trả lời 4/5 câu. Nộp xong thì không sửa được nữa.")).toBeInTheDocument();
-    expect(within(dlg).getByText("Còn 1 câu chưa làm.")).toBeInTheDocument();
+    expect(within(dlg).getByText("Em còn 1 câu chưa làm. Nộp rồi không sửa được nữa.")).toBeInTheDocument();
+    expect(within(dlg).getByText("Chưa làm: câu 3.")).toBeInTheDocument(); // the number, not just the count
     await ui.click(within(dlg).getByRole("button", { name: "Nộp bài" }));
 
     // reduced motion: no strikes, the final frame at once, no time-up overlay
@@ -189,14 +190,14 @@ describe("Đấu trường: sitting a paper", () => {
     await ui.click(screen.getByRole("button", { name: "Xem kết quả" }));
     expect(await screen.findByText("Hạ Quái Sai Số!")).toBeInTheDocument();
     expect(document.querySelector(".score")).toHaveTextContent("6/10");
-    expect(screen.getByText("Gà Toán +40 KN khi nộp bài")).toBeInTheDocument();
-    expect(screen.getByText("+50 KN hạ boss")).toBeInTheDocument();
+    expect(screen.getByText("Gà Toán +40 kinh nghiệm khi nộp bài")).toBeInTheDocument();
+    expect(screen.getByText("+50 kinh nghiệm hạ boss")).toBeInTheDocument();
     expect(screen.getByText("Chưa làm: 1 câu")).toBeInTheDocument();
 
     // the wrong ones: review list
-    await ui.click(screen.getByRole("button", { name: "Xem 1 câu sai" }));
-    expect(await screen.findByRole("heading", { name: "Câu sai" })).toBeInTheDocument();
-    expect(screen.getByText("1 câu cần xem lại")).toBeInTheDocument();
+    await ui.click(screen.getByRole("button", { name: "Xem lại bài" }));
+    expect(await screen.findByRole("heading", { name: "Xem lại bài" })).toBeInTheDocument();
+    expect(screen.getByText(/^Đúng \d · Sai 1 · Chưa làm 1$/)).toBeInTheDocument(); // every question, the blank one too
     expect(await screen.findByText(/Lực điện tác dụng lên điện tích q/)).toBeInTheDocument();
   }, 40000);
 
@@ -243,24 +244,35 @@ describe("Đấu trường: sitting a paper", () => {
     expect(screen.getByRole("button", { name: "Bỏ đánh dấu" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Câu 1, Đánh dấu, đã làm/ })).toHaveAttribute("aria-current", "true");
     await ui.click(screen.getByRole("button", { name: "Nộp bài" }));
-    expect(screen.getByText("Em đã trả lời 1/5 câu. Nộp xong thì không sửa được nữa.")).toBeInTheDocument();
-    expect(screen.getByText("Còn 4 câu chưa làm.")).toBeInTheDocument();
-    expect(screen.getByText("Còn 1 câu em đã đánh dấu.")).toBeInTheDocument();
+    expect(screen.getByText("Em còn 4 câu chưa làm. Nộp rồi không sửa được nữa.")).toBeInTheDocument();
+    expect(screen.getByText("Chưa làm: câu 2, 3, 4, 5.")).toBeInTheDocument();
+    expect(screen.getByText("Đã đánh dấu: câu 1.")).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Làm tiếp" }));
     expect(screen.queryByRole("alertdialog")).toBeNull();
     await ui.click(screen.getByRole("button", { name: "Nộp bài" }));
     await ui.click(within(screen.getByRole("alertdialog")).getByRole("button", { name: "Nộp bài" }));
     expect(await screen.findByRole("heading", { name: "Kết quả thi thử" })).toBeInTheDocument();
     expect(document.querySelector(".score")).toHaveTextContent("2/10");
-    expect(screen.getByText("Gà Toán +40 KN khi nộp bài")).toBeInTheDocument();
+    expect(screen.getByText("Gà Toán +40 kinh nghiệm khi nộp bài")).toBeInTheDocument();
   }, 40000);
 
   it("the clock runs down on a session opened by link and hands in at zero", async () => {
-    const api = createMockPractice({ learner, mockMinutes: 0.04 });
+    // The screen's own countdown is what is under test, so give it 3 s from the moment the screen asks for the session:
+    // a session whose real deadline is 2.4 s from `start` could already be over before a loaded machine renders it.
+    const real = createMockPractice({ learner, mockMinutes: 1 });
+    let armed = false;
+    let armedAt = 0;
+    const api: PracticeApi = {
+      ...real,
+      get: async (t, i) => (armed ? ((armed = false), (armedAt = performance.now()), { ...(await real.get(t, i)), remaining_sec: 3 }) : real.get(t, i)),
+      // the server agrees with the screen's 3 s (a real one would hold the same deadline)
+      tick: async () => (armedAt ? { remaining_sec: Math.max(0, Math.round(3 - (performance.now() - armedAt) / 1000)) } : {}),
+    };
     setPracticeApi(api);
     const s = await api.start("t", { source: "mock:demo" });
+    armed = true;
     open(`/luyen-tap/${s.id}`);
-    expect(await screen.findByRole("timer")).toHaveTextContent(/^00:0[123]$/);
+    expect(await screen.findByRole("timer")).toHaveTextContent(/^00:0[0123]$/);
     await waitFor(async () => expect((await api.get("t", s.id)).status).toBe("finished"), { timeout: 8000 });
     expect(await screen.findByText("Hết giờ, bài đã được tự nộp.")).toBeInTheDocument();
   }, 20000);
@@ -290,8 +302,8 @@ describe("Kiểm tra khóa", () => {
     await ui.click(screen.getByRole("button", { name: "Nộp bài" }));
     await ui.click(within(screen.getByRole("alertdialog")).getByRole("button", { name: "Nộp bài" }));
     expect(await screen.findByRole("heading", { name: "Kết quả thi thử khóa" })).toBeInTheDocument();
-    expect(await screen.findByText("Theo dạng câu")).toBeInTheDocument();
-    expect(await screen.findByText("Gà Toán +40 KN khi nộp bài")).toBeInTheDocument();
+    expect(await screen.findByText("Theo chủ đề")).toBeInTheDocument();
+    expect(await screen.findByText("Gà Toán +40 kinh nghiệm khi nộp bài")).toBeInTheDocument();
     // Done goes back to the test page of the course
     await ui.click(screen.getByRole("button", { name: "Về khóa" }));
     expect(await screen.findByRole("heading", { name: "Kiểm tra khóa" })).toBeInTheDocument();
@@ -310,6 +322,34 @@ describe("Kiểm tra khóa", () => {
     expect(await screen.findByRole("heading", { name: "Luyện 5 câu" })).toBeInTheDocument();
     expect(screen.getByRole("progressbar")).toHaveAttribute("aria-valuenow", "0");
   }, 30000);
+
+  it("practising a level of the course pays village XP on the bus, once per right answer", async () => {
+    const ui = userEvent.setup();
+    setPracticeApi(createMockPractice({ learner }));
+    const got: XpGain[] = [];
+    const off = onXp((xp) => got.push(...xp));
+    try {
+      open(`/kiem-tra/${COURSE}`);
+      const ladder = await screen.findByRole("list", { name: "Luyện theo mức" });
+      await ui.click(within(ladder).getByRole("button", { name: /Thông hiểu/ }));
+      await ui.click(await screen.findByRole("button", { name: /^A\s*14/ }));
+      await waitFor(() => expect(got).toEqual([{ chicken: "toan", source: "practice_right", amount: 2, level_up: false }]));
+    } finally {
+      off();
+    }
+  }, 40000);
+
+  it("the university stage has its own bank and chicken: Bayes questions pay Gà Khoa học dữ liệu, not the school Toán", async () => {
+    const api = createMockPractice({ learner: () => ({ age_band: "uni", language: "vi" }) });
+    const s = await api.start("t", { source: "course:xac-suat-bayes" });
+    expect(s.items[0].stem).toMatch(/Beta/);
+    expect(JSON.stringify(s.items)).not.toMatch(/điện|Cấp số cộng/i);
+    const r = await api.answer("t", s.id, { position: 0, answer: "B", time_spent_sec: 3 });
+    expect(r.xp).toEqual([{ chicken: "khdl", source: "practice_right", amount: 2, level_up: false }]);
+    const m = await api.start("t", { source: "course-mock:xac-suat-bayes" });
+    await api.answer("t", m.id, { position: 0, answer: "B", time_spent_sec: 3 });
+    expect((await api.finish("t", m.id)).xp).toEqual([{ chicken: "khdl", source: "mock_submit", amount: 40, level_up: false }]);
+  });
 
   it("says kindly when there are too few questions for a mock exam", async () => {
     setPracticeApi({ ...createMockPractice({ learner }), courseLevels: async (_t, id) => ({ course_id: id, title: "Nhỏ", min_items: 3, levels: [{ level: 1, items: 3, studied: 3, answered: 0, correct: 0, solid: false }], suggested: 1, mocks: [] }) });

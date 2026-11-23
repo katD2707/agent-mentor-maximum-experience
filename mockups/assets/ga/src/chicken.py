@@ -8,19 +8,24 @@ from mathutils import Vector, Matrix
 ARGS = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else ["."]
 OUT = ARGS[0]; MODE = ARGS[1] if len(ARGS) > 1 else "lineup"
 SUBJ = ARGS[2] if len(ARGS) > 2 else "toan"; STAGE = int(ARGS[3]) if len(ARGS) > 3 else 3
+# 5th argument "costume": dress the chicken in its Gunny-style costume set (costume.py) instead of the single comb / prop / scarf
+COSTUME = len(ARGS) > 4 and ARGS[4] == "costume"
+# modes gian (still) / ganim (idle loop): the ANGRY state of a neglected course (angry.py)
+ANGRY = MODE in ("gian", "ganim")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 # subject look: body tint, comb, prop
 SUBJECTS = {"toan": "#fff8e8", "van": "#f7d6b4", "anh": "#ffffff", "su": "#f6d3a8", "dia": "#fff3dc", "cd": "#f3e3cc",
             "kinhte": "#f7e2c4", "ketoan": "#fbf0dc", "daicuong": "#f5dcc0"}
 # accent per subject (lit, shade, highlight): neckerchief, tail feathers, prop details
 ACCENTS = {
-    "toan": ("#4a86f2", "#2a56b8", "#a8c6ff"), "van": ("#e3607f", "#b03a5c", "#ffb0c2"), "anh": ("#25a9a3", "#13756f", "#8ae6df"),
+    "toan": ("#4a86f2", "#2a56b8", "#a8c6ff"), "van": ("#a8714a", "#6a4128", "#e0b88e"), "anh": ("#25a9a3", "#13756f", "#8ae6df"),
     "li": ("#f4c21f", "#c9930a", "#ffe58a"), "hoa": ("#9b59d0", "#6d3a9c", "#d2b0f0"), "sinh": ("#3cbf6a", "#26894a", "#9be8b4"),
-    "su": ("#b8452e", "#86301f", "#ec8b74"), "dia": ("#2e9bd6", "#1d6f9c", "#93d0f2"), "tin": ("#3f5b8c", "#283c60", "#8fa8d6"),
-    "cn": ("#ef8a2a", "#bf6412", "#ffc48a"), "cd": ("#2f4f7a", "#1e3352", "#8aa6cc"), "khoahoc": ("#4fb84a", "#338030", "#a6e3a2"),
-    "nghethuat": ("#e94f9a", "#b52f70", "#ffaed4"), "kynang": ("#7d6cf0", "#5446b8", "#c3bbff"),
-    "khmt": ("#1e88e5", "#135fa3", "#8ec5f7"), "ktmt": ("#5d6b78", "#3c4650", "#aab6c2"), "httt": ("#12b39a", "#0b7e6c", "#86e6d6"),
-    "khdl": ("#f06292", "#c03e6e", "#ffb3cc"), "vatli": ("#f6b93b", "#c88a12", "#ffe0a0"), "hoahoc": ("#8e5ad6", "#62389e", "#cdb2f5"),
-    "kinhte": ("#16b5b0", "#0c827e", "#8fe5e1"), "ketoan": ("#8c7ae6", "#6252b8", "#cfc6fb"), "daicuong": ("#3a4552", "#232a33", "#8a96a5"),
+    "su": ("#b8452e", "#86301f", "#ec8b74"), "dia": ("#2e9bd6", "#1d6f9c", "#93d0f2"), "tin": ("#3a4a72", "#232d4a", "#8fa0cc"),
+    "cn": ("#ef8a2a", "#bf6412", "#ffc48a"), "cd": ("#2f4f7a", "#1e3352", "#8aa6cc"), "khoahoc": ("#8bc34a", "#5d8f22", "#cdee9a"),
+    "nghethuat": ("#e94f9a", "#b52f70", "#ffaed4"), "kynang": ("#6a5cf0", "#4639b8", "#b9b2ff"),
+    "khmt": ("#19b5ea", "#0d83b0", "#8fdcf7"), "ktmt": ("#6b7885", "#434c56", "#b4bfca"), "httt": ("#2fb86a", "#1d8a4c", "#98e6b8"),
+    "khdl": ("#f06292", "#c03e6e", "#ffb3cc"), "vatli": ("#f08a1c", "#bf600a", "#ffc888"), "hoahoc": ("#8e5ad6", "#62389e", "#cdb2f5"),
+    "kinhte": ("#e6b422", "#b08410", "#ffe58a"), "ketoan": ("#8c7ae6", "#6252b8", "#cfc6fb"), "daicuong": ("#3a4552", "#232a33", "#8a96a5"),
 }
 os.makedirs(OUT, exist_ok=True)
 
@@ -168,17 +173,25 @@ class Chicken:
         self.parts = {}; self.moods = {}
         g = self.g = link(bpy.data.objects.new(f"ga{stage}_{x}", None)); g.location = (x, 0, 0)
         chick = stage == 1; s = self.s = {1: 0.72, 2: 0.86, 3: 1.0, 4: 1.06}[stage]
+        DRESSED = COSTUME and subject in __import__("costume").SPEC
+        sj = "_dressed" if DRESSED else subject  # costume mode: the old per-subject headwear / props below are replaced by costume.py
         body = toon("body_%s" % ("chick" if chick else subject), "#ffd23a" if chick else SUBJECTS.get(subject, "#fff8e8"), "#e8841a" if chick else "#d89058", "#fff6c8" if chick else "#ffffff")
         wingm = toon("wing%d" % (1 if chick else 2), "#ffbf2a" if chick else "#ffd49a", "#d0700f" if chick else "#c97a36")
         red = toon("comb", "#ff3d3d", "#c22a2a", "#ff8a8a"); orange = toon("beak", "#ffb21f", "#e07a10", "#ffe08a")
         blue = toon("blue", "#3f7df0", "#2a56b8", "#9cc0ff"); pink = flat("blush", "#ffa3b5")
         gold = toon("gold", "#ffcf3d", "#d99a16", "#fff1a8"); ink = toon("eye", "#2a1a14", "#1a100c"); white = flat("white", "#ffffff")
+        bodyh = body
+        if DRESSED and not chick:  # a hat covers the lit top of the head: lift the lit tones so the head stays as bright cream as the old adult
+            bodyh = toon("body_head_" + subject, SUBJECTS.get(subject, "#fff8e8"), "#e9c9a0", "#ffffff")
+            for nd in bodyh.node_tree.nodes:
+                if nd.type == "VALTORGB" and len(nd.color_ramp.elements) >= 4:
+                    e = nd.color_ramp.elements; e[0].position = 0.03; e[1].position = 0.1; e[2].position = 0.24
         if chick:
             rh = 0.98 * s; hc = Vector((0, 0, 1.0 * s)); bc = hc; rb = rh
         else:
             rb = 0.74 * s; rh = 0.8 * s; bc = Vector((0, 0.04, 0.82 * s)); hc = Vector((0, -0.06, 1.86 * s))
         hp = self.hp = link(bpy.data.objects.new("headpivot", None)); hp.parent = g; hp.location = hc if not chick else Vector((0, 0, 0.3 * s))
-        self.bc, self.hc, self.rh = bc, hc, rh
+        self.bc, self.hc, self.rh, self.rb = bc, hc, rh, rb
         def add(o, key=None):
             o.parent = g
             if key: self.parts.setdefault(key, []).append(o)
@@ -187,13 +200,14 @@ class Chicken:
             o.parent = hp; o.location = o.location - hp.location
             if key: self.parts.setdefault(key, []).append(o)
             return o
+        self.add, self.addh = add, addh
         if chick: addh(ball("body", hc, (rh, rh * 0.96, rh * 0.94), body))
         else:
             add(ball("body", bc, (rb, rb * 0.95, rb * 1.02), body), "body")
             bellym = toon("belly_%s" % subject, "#fffdf8", "#ecc79a", "#ffffff")
             db = Vector((0, -1, -0.12)).normalized()
             add(ball("belly", bc + db * rb * 0.9, (rb * 0.6, 0.08 * s, rb * 0.66), bellym, rot=face_rot(db), outline=0))
-            addh(ball("head", hc, (rh, rh * 0.95, rh * 0.93), body))
+            addh(ball("head", hc, (rh, rh * 0.95, rh * 0.93), bodyh))
         er = (0.25 if chick else 0.21) * s
         for mood in moods:
             objs = []
@@ -202,7 +216,7 @@ class Chicken:
                 if mood == "happy":
                     objs.append(addh(torus("eye", p, er * 0.85, er * 0.2, ink, (math.radians(90), 0, math.atan2(d.x, -d.y)), half=True)))
                 else:
-                    k = {"surprised": 1.18, "sad": 0.95}.get(mood, 1.0); sq = 0.78 if mood == "sad" else 1
+                    k = {"surprised": 1.18, "sad": 0.95}.get(mood, 1.0); sq = {"sad": 0.78, "angry": 0.62}.get(mood, 1)
                     # a painted eye in layers: dark rim, amber iris, pupil, two highlights, an upper lash line
                     iris = toon("iris", "#b0662a", "#6e3a17", "#e6a35c"); pupil = flat("pupil", "#1c100b")
                     objs.append(addh(ball("eye", p, (er * 0.92 * k, er * 0.5, er * 1.15 * k * sq), ink, rot=face_rot(d), outline=0)))
@@ -214,6 +228,9 @@ class Chicken:
                     if mood == "sad":  # brows slanting down at the outer end
                         b = rbox("brow", p + Vector((0, -0.05, er * 1.45)), (er * 0.9, 0.04, 0.05), ink, outline=0)
                         b.rotation_euler = (0, sx * 0.4, math.atan2(d.x, -d.y)); objs.append(addh(b))
+                    if mood == "angry":  # deep frowning brows, the inner ends pulled down
+                        b = rbox("brow", p + Vector((0, -0.07, er * 1.0)), (er * 1.3, 0.07, 0.11), ink, outline=0)
+                        b.rotation_euler = (0, -sx * 0.62, math.atan2(d.x, -d.y)); objs.append(addh(b))
             self.moods[mood] = objs
         bk = hc + Vector((0, -rh * 0.97, -0.18 * s))
         addh(cone("beak_up", bk, 0.2 * s, 0.36 * s, orange, (math.radians(94), 0, 0)))
@@ -230,6 +247,7 @@ class Chicken:
         pc = {1: 0.55, 2: 0.78, 3: 1.0, 4: 1.12}[stage]; top = hc + Vector((0, 0.02, rh * 0.93 + 0.2 * pc))
         comb = {"toan": "plus", "li": "bolt", "sinh": "leaf", "khoahoc": "leaf", "khmt": "braces",
                 "su": None, "nghethuat": None, "daicuong": None}.get(subject, "classic")
+        if DRESSED: comb = None
         if comb == "plus":
             addh(rbox("plus_h", top, (0.46 * pc, 0.16 * pc, 0.16 * pc), red)); addh(rbox("plus_v", top, (0.16 * pc, 0.16 * pc, 0.46 * pc), red))
         elif comb == "classic":  # a real chicken comb: three bumps, the middle one tallest
@@ -248,30 +266,30 @@ class Chicken:
             cu = bpy.data.curves.new("braces", "FONT"); cu.body = "{ }"; cu.align_x = "CENTER"; cu.align_y = "CENTER"; cu.size = 0.62 * pc; cu.extrude = 0.05 * pc
             cu.materials.append(red); t = link(bpy.data.objects.new("braces", cu)); t.location = top + Vector((0, 0.0, 0.05 * pc)); t.rotation_euler = (math.radians(90), 0, 0); addh(t)
         # headwear
-        if subject == "su":  # a bronze helmet with a red crest
+        if sj == "su":  # a bronze helmet with a red crest
             bronze = toon("bronze", "#d9a441", "#a0701c", "#ffe08a"); crest = toon("crest", "#d93a2a", "#a02418", "#ff8a7a")
             # a cap on the crown, rim above the eyes; the chick's head is its whole body, so its cap is relatively smaller
             f = 0.78 if chick else 1.0; z0 = rh * (0.52 if chick else 0.36)
             addh(ball("helmet", hc + Vector((0, 0.02, z0 + rh * 0.3 * f)), (rh * 0.9 * f, rh * 0.88 * f, rh * 0.46 * f), bronze))
             addh(torus("brim", hc + Vector((0, 0.02, z0)), rh * 0.84 * f, 0.055 * s, bronze, (0, 0, 0), (1, 0.98, 1), outline=0.012))
             addh(ball("crest", hc + Vector((0, 0.05, z0 + rh * 0.82 * f)), (0.08 * s, rh * 0.72 * f, 0.28 * s * f), crest))
-        if subject == "nghethuat":  # a tilted beret
+        if sj == "nghethuat":  # a tilted beret
             beret = toon("beret", "#e94f9a", "#b52f70", "#ffaed4")
             addh(ball("beret", hc + Vector((0.1 * s, 0, rh * 0.92)), (rh * 0.82, rh * 0.78, rh * 0.24), beret, rot=(0, 0.25, 0)))
             addh(cyl("beretstem", hc + Vector((0.12 * s, 0, rh * 1.17)), 0.04 * s, 0.1 * s, beret))
-        if subject == "daicuong":  # a mortarboard with a gold tassel
+        if sj == "daicuong":  # a mortarboard with a gold tassel
             capm = toon("capm", "#2d3540", "#1a1f26", "#5c6878"); goldt = toon("gold", "#ffcf3d", "#d99a16", "#fff1a8")
             addh(cyl("capbase", hc + Vector((0, 0, rh * 0.82)), rh * 0.55, 0.22 * s, capm))
             addh(rbox("capboard", hc + Vector((0, 0, rh * 0.96)), (rh * 1.5, rh * 1.5, 0.06 * s), capm, rot=(0, 0, math.radians(45))))
             addh(cyl("tassel", hc + Vector((rh * 0.62, -rh * 0.2, rh * 0.82)), 0.025 * s, 0.32 * s, goldt))
             addh(ball("tasselend", hc + Vector((rh * 0.62, -rh * 0.2, rh * 0.62)), (0.06 * s, 0.06 * s, 0.09 * s), goldt))
-        if subject == "tin":  # pixel shades over the eyes
+        if sj == "tin":  # pixel shades over the eyes
             shade_m = toon("shades", "#1f2430", "#10131a", "#4a5468")
             for sx in (-1, 1):
                 d = Vector((0.34 * sx, -0.92, -0.02)).normalized(); p = hc + d * rh * 1.02
                 addh(rbox("shade", p, (0.36 * s, 0.05 * s, 0.2 * s), shade_m, rot=(0, 0, math.atan2(d.x, -d.y))))
             addh(rbox("bridge", hc + Vector((0, -rh * 1.0, 0.03 * s)), (0.18 * s, 0.04 * s, 0.05 * s), shade_m))
-        if subject == "hoahoc":  # lab goggles
+        if sj == "hoahoc":  # lab goggles
             gog = toon("goggle", "#8e5ad6", "#62389e", "#cdb2f5")
             for sx in (-1, 1):
                 d = Vector((0.34 * sx, -0.92, -0.02)).normalized()
@@ -304,16 +322,16 @@ class Chicken:
                 tall = 0.66 - abs(a) * 0.12
                 add(ball("tail", bc + Vector((a * 0.42 * s, rb * 0.9, 0.62 * s + (0.6 - abs(a) * 0.3) * 0.25 * s)), (0.14 * s, 0.15 * s, tall * s),
                          (acc if j % 2 else wingm) if stage < 4 else (gold if j % 2 else wingm), rot=(-0.75, a * 0.85, 0)))
-        if stage in (2, 3):
+        if stage in (2, 3) and not DRESSED:
             add(torus("scarf", Vector((0, -0.04, 1.3 * s)), 0.64 * s, 0.13 * s, acc, (0, 0, 0), (1, 0.92, 0.7), outline=0.012))
             knot = cone("knot", Vector((0, 0, 0)), 0.2 * s, 0.32 * s, acc, (math.radians(180), 0, 0))
             knot.location = Vector((0.12 * s, -0.66 * s, 1.12 * s)); knot.scale = (1.2, 0.45, 1.1); add(knot)
         # where hand-held props go: the chick has no separate body, so hold them low on its round front
         pb, pr = (bc, rb) if not chick else (hc + Vector((0, 0, -0.22 * rh)), rb * 1.22)
-        if subject == "toan":
+        if subject == "toan" and not DRESSED:
             sq = set_square("eke", 0.62 * s * {1: 0.72, 2: 0.85}.get(stage, 1.0), blue)
             sq.location = pb + Vector((pr * 0.72, -pr * 1.02, -0.38 * s)); sq.rotation_euler = (0, math.radians(-8), math.radians(18)); add(sq)
-        if subject == "van":  # a calligraphy brush held upright, ink tip down
+        if sj == "van":  # a calligraphy brush held upright, ink tip down
             from mathutils import Euler
             k = {1: 0.68, 2: 0.82}.get(stage, 1.0); L = 1.05 * s * k
             wood = toon("wood", "#c98a45", "#93592a", "#ecb878"); inkm = toon("inktip", "#2b2320", "#151110"); band = toon("band", "#c0392b", "#8e2a20")
@@ -323,7 +341,7 @@ class Chicken:
             b_ = cyl("band", Vector((0, 0, 0)), 0.085 * s * k, 0.08 * s * k, band); b_.location = base - ax * (L * 0.5 - 0.04 * s * k); b_.rotation_euler = rot; add(b_)
             tip = cone("tip", Vector((0, 0, 0)), 0.11 * s * k, 0.34 * s * k, inkm, (0, 0, 0)); tip.location = base - ax * (L * 0.5 + 0.17 * s * k)
             tip.rotation_euler = (Euler((math.pi, 0, 0)).to_matrix() @ Matrix.Identity(3)).to_euler() if False else (rot.x + math.pi, -rot.y, rot.z); add(tip)
-        if subject == "anh":  # a speech bubble saying "Hi!"
+        if sj == "anh":  # a speech bubble saying "Hi!"
             k = {1: 0.78, 2: 0.82}.get(stage, 1.0)
             bub = rbox("bubble", bc + Vector((rb * 1.25, -0.2, 1.62 * s)), (0.82 * s * k, 0.12 * s, 0.56 * s * k), white); add(bub)
             add(cone("bubtail", bub.location + Vector((-0.26 * s * k, 0, -0.34 * s * k)), 0.1 * s, 0.24 * s, white, (0, math.radians(150), 0)))
@@ -338,97 +356,103 @@ class Chicken:
         P = lambda o: add(o)
         def board(w, h, mat=paper):  # a flat panel facing the viewer
             return P(rbox("board", H + Vector((0, -0.02, 0.1 * u)), (w * u, 0.05 * u, h * u), mat))
-        if subject == "li":  # a horseshoe magnet: red U with silver tips
+        if sj == "li":  # a horseshoe magnet: red U with silver tips
             P(torus("magnet", H + Vector((0, 0, 0.14 * u)), 0.24 * u, 0.08 * u, toon("magred", "#e0413a", "#a82a24", "#ff8f87"), (math.radians(90), 0, math.radians(180)), half=True, outline=0.014))
             for sx in (-1, 1): P(rbox("tip", H + Vector((sx * 0.24 * u, 0, -0.06 * u)), (0.17 * u, 0.17 * u, 0.12 * u), metal))
-        if subject == "hoa":  # a flask with purple liquid and bubbles
+        if sj == "hoa":  # a flask with purple liquid and bubbles
             P(cone("flask", H + Vector((0, 0, 0.0)), 0.3 * u, 0.42 * u, acc, (0, 0, 0)))
             P(cyl("neck", H + Vector((0, 0, 0.27 * u)), 0.08 * u, 0.2 * u, glass))
             for k, (dx, dz) in enumerate(((0.02, 0.46), (-0.06, 0.58), (0.05, 0.7))): P(ball("bubble", H + Vector((dx * u, 0, dz * u)), (0.05 * u + k * 0.012 * u,) * 3, glass, outline=0.008))
-        if subject == "sinh":  # a double helix
+        if sj == "sinh":  # a double helix
             for i in range(9):
                 a = i * 0.75; z = -0.3 * u + i * 0.09 * u
                 p1 = H + Vector((math.cos(a) * 0.17 * u, math.sin(a) * 0.17 * u, z)); p2 = H + Vector((-math.cos(a) * 0.17 * u, -math.sin(a) * 0.17 * u, z))
                 P(ball("dna", p1, (0.06 * u,) * 3, acc, outline=0.008)); P(ball("dna", p2, (0.06 * u,) * 3, greenp, outline=0.008))
                 rung = cyl("rung", (p1 + p2) / 2, 0.018 * u, (p1 - p2).length, paper); rung.rotation_euler = (math.radians(90), 0, a + math.radians(90)); P(rung)
-        if subject == "su":  # a scroll
+        if sj == "su":  # a scroll
             sc_ = cyl("scroll", H, 0.1 * u, 0.6 * u, paper); sc_.rotation_euler = (0, math.radians(90), math.radians(12)); P(sc_)
             for e in (-1, 1):
                 r_ = cyl("rodend", H + Vector((e * 0.32 * u, 0, 0)), 0.12 * u, 0.05 * u, acc); r_.rotation_euler = sc_.rotation_euler; P(r_)
-        if subject == "dia":  # a globe on a stand
+        if sj == "dia":  # a globe on a stand
             P(ball("globe", H + Vector((0, 0, 0.12 * u)), (0.27 * u,) * 3, acc))
             for dx, dz, sz in ((0.08, 0.2, 0.12), (-0.1, 0.05, 0.1), (0.05, -0.02, 0.08)):
                 d = Vector((dx, -0.2, dz)).normalized(); P(ball("land", H + Vector((0, 0, 0.12 * u)) + d * 0.25 * u, (sz * u, 0.03 * u, sz * 0.8 * u), greenp, rot=face_rot(d), outline=0))
             P(torus("meridian", H + Vector((0, 0.02, 0.12 * u)), 0.31 * u, 0.025 * u, metal, (math.radians(90), 0, math.radians(90)), half=True))
             P(cyl("gbase", H + Vector((0, 0, -0.2 * u)), 0.14 * u, 0.06 * u, woodp))
-        if subject in ("tin", "khmt"):  # a small laptop
+        if sj in ("tin", "khmt"):  # a small laptop
             P(rbox("lapbase", H + Vector((0, -0.08 * u, -0.1 * u)), (0.6 * u, 0.36 * u, 0.05 * u), metal))
             scr = rbox("lapscreen", H + Vector((0, 0.08 * u, 0.12 * u)), (0.6 * u, 0.04 * u, 0.4 * u), darkp, rot=(math.radians(-12), 0, 0)); P(scr)
             P(rbox("lapglow", H + Vector((0, 0.05 * u, 0.12 * u)), (0.48 * u, 0.02 * u, 0.3 * u), toon("screen", "#8fe3ff", "#3fa7f2", "#ffffff"), rot=(math.radians(-12), 0, 0), outline=0))
-        if subject == "cn":  # a gear
+        if sj == "cn":  # a gear
             P(torus("gear", H + Vector((0, 0, 0.08 * u)), 0.2 * u, 0.08 * u, acc, (math.radians(90), 0, 0), outline=0.014))
             for i in range(8):
                 a = i / 8 * 2 * math.pi
                 P(rbox("tooth", H + Vector((math.cos(a) * 0.3 * u, 0, 0.08 * u + math.sin(a) * 0.3 * u)), (0.1 * u, 0.12 * u, 0.1 * u), acc, rot=(0, -a, 0)))
-        if subject == "cd":  # balance scales
+        if sj == "cd":  # balance scales
             P(cyl("post", H + Vector((0, 0, 0.05 * u)), 0.03 * u, 0.6 * u, woodp)); P(cyl("sbase", H + Vector((0, 0, -0.25 * u)), 0.12 * u, 0.05 * u, woodp))
             P(rbox("beam", H + Vector((0, 0, 0.34 * u)), (0.62 * u, 0.05 * u, 0.04 * u), acc))
             for sx in (-1, 1):
                 P(cyl("chain", H + Vector((sx * 0.29 * u, 0, 0.22 * u)), 0.01 * u, 0.24 * u, metal))
                 P(ball("pan", H + Vector((sx * 0.29 * u, 0, 0.09 * u)), (0.14 * u, 0.14 * u, 0.04 * u), toon("brass", "#e3b04b", "#a87a1e", "#ffe08a")))
-        if subject == "khoahoc":  # a magnifying glass
+        if sj == "khoahoc":  # a magnifying glass
             P(torus("lensrim", H + Vector((0, 0, 0.16 * u)), 0.18 * u, 0.04 * u, acc, (math.radians(90), 0, 0), outline=0.012))
             P(ball("lens", H + Vector((0, 0, 0.16 * u)), (0.17 * u, 0.02 * u, 0.17 * u), glass, outline=0))
             h_ = cyl("handle", H + Vector((0.14 * u, 0, -0.1 * u)), 0.04 * u, 0.32 * u, woodp); h_.rotation_euler = (0, math.radians(35), 0); P(h_)
-        if subject == "nghethuat":  # a palette with paint
+        if sj == "nghethuat":  # a palette with paint
             P(ball("palette", H + Vector((0, 0, 0.05 * u)), (0.34 * u, 0.04 * u, 0.26 * u), toon("palw", "#e2b07a", "#b07c48", "#f8d9b0"), rot=(0, 0.2, 0)))
             for k, (dx, dz) in enumerate(((-0.16, 0.12), (0.0, 0.17), (0.15, 0.1), (0.12, -0.08))):
                 P(ball("paint", H + Vector((dx * u, -0.05 * u, 0.05 * u + dz * u)), (0.06 * u, 0.02 * u, 0.05 * u), (acc, toon("p2", "#3fa7f2", "#2a77b0"), toon("p3", "#ffd23a", "#d9a20a"), greenp)[k], outline=0))
-        if subject == "kynang":  # an hourglass
+        if sj == "kynang":  # an hourglass
             for sz in (-1, 1):
                 c_ = cone("hg", H + Vector((0, 0, sz * 0.13 * u + 0.08 * u)), 0.16 * u, 0.26 * u, glass, (math.radians(0 if sz > 0 else 180), 0, 0)); P(c_)
                 P(cyl("hgcap", H + Vector((0, 0, sz * 0.28 * u + 0.08 * u)), 0.2 * u, 0.05 * u, woodp))
             P(cone("sand", H + Vector((0, -0.01, -0.1 * u)), 0.12 * u, 0.12 * u, toon("sand", "#f2c25a", "#c9952a"), (0, 0, 0), outline=0))
-        if subject == "ktmt":  # a chip with pins
+        if sj == "ktmt":  # a chip with pins
             P(rbox("chip", H + Vector((0, 0, 0.08 * u)), (0.42 * u, 0.08 * u, 0.42 * u), darkp))
             P(rbox("die", H + Vector((0, -0.05 * u, 0.08 * u)), (0.18 * u, 0.02 * u, 0.18 * u), toon("diegold", "#f3c548", "#c99a20"), outline=0))
             for i in range(4):
                 for sx in (-1, 1): P(rbox("pin", H + Vector((sx * 0.25 * u, 0, 0.08 * u + (-0.15 + i * 0.1) * u)), (0.08 * u, 0.04 * u, 0.03 * u), metal, outline=0.008))
-        if subject == "httt":  # a database: stacked disks
+        if sj == "httt":  # a database: stacked disks
             for i in range(3):
                 P(cyl("dbdisk", H + Vector((0, 0, -0.12 * u + i * 0.15 * u)), 0.22 * u, 0.11 * u, acc))
                 P(torus("dbband", H + Vector((0, 0, -0.06 * u + i * 0.15 * u)), 0.22 * u, 0.012 * u, darkp, (0, 0, 0), outline=0))
-        if subject == "khdl":  # a bar chart board
+        if sj == "khdl":  # a bar chart board
             board(0.6, 0.5)
             for i, h in enumerate((0.16, 0.26, 0.38)):
                 P(rbox("bar", H + Vector(((-0.17 + i * 0.17) * u, -0.06 * u, -0.1 * u + h * u / 2)), (0.11 * u, 0.04 * u, h * u), (acc, toon("bar2", "#3fa7f2", "#2a77b0"), greenp)[i], outline=0.008))
-        if subject == "vatli":  # an atom: nucleus, three orbits and electrons
+        if sj == "vatli":  # an atom: nucleus, three orbits and electrons
             P(ball("nucleus", H + Vector((0, 0, 0.1 * u)), (0.08 * u,) * 3, acc))
             for k, rz in enumerate((0, 60, -60)):
                 P(torus("orbit", H + Vector((0, 0, 0.1 * u)), 0.26 * u, 0.012 * u, toon("orbit", "#3fa7f2", "#2a77b0"), (math.radians(90), math.radians(rz), 0), (1, 0.42, 1), outline=0))
                 a = math.radians(rz + 90); P(ball("electron", H + Vector((math.cos(a) * 0.26 * u * 0.7, -0.02, 0.1 * u + math.sin(a) * 0.26 * u * 0.42)), (0.04 * u,) * 3, darkp, outline=0))
-        if subject == "hoahoc":  # a test tube with liquid
+        if sj == "hoahoc":  # a test tube with liquid
             t_ = cyl("tube", H + Vector((0, 0, 0.08 * u)), 0.07 * u, 0.55 * u, glass); t_.rotation_euler = (0, math.radians(-15), 0); P(t_)
             l_ = cyl("tubeliq", H + Vector((0.03 * u, 0, -0.04 * u)), 0.078 * u, 0.28 * u, acc); l_.rotation_euler = t_.rotation_euler; P(l_)
-        if subject == "kinhte":  # supply and demand board
+        if sj == "kinhte":  # supply and demand board
             board(0.6, 0.5)
             for rz, m in ((0.6, toon("supply", "#3fa7f2", "#2a77b0")), (-0.6, toon("demand", "#e0413a", "#a82a24"))):
                 P(rbox("curve", H + Vector((0, -0.06 * u, 0.1 * u)), (0.46 * u, 0.03 * u, 0.035 * u), m, rot=(0, rz, 0), outline=0))
-        if subject == "ketoan":  # a calculator
+        if sj == "ketoan":  # a calculator
             P(rbox("calc", H + Vector((0, 0, 0.08 * u)), (0.34 * u, 0.07 * u, 0.48 * u), acc))
             P(rbox("calcscreen", H + Vector((0, -0.04 * u, 0.24 * u)), (0.26 * u, 0.02 * u, 0.1 * u), toon("lcd", "#cfe8c0", "#9fbf8f"), outline=0))
             for i in range(3):
                 for j in range(3): P(rbox("key", H + Vector(((-0.09 + i * 0.09) * u, -0.04 * u, (0.1 - j * 0.09) * u)), (0.06 * u, 0.02 * u, 0.055 * u), paper, outline=0.006))
-        if subject == "daicuong":  # a book
+        if sj == "daicuong":  # a book
             P(rbox("book", H + Vector((0, 0, 0.06 * u)), (0.44 * u, 0.12 * u, 0.56 * u), acc))
             P(rbox("pages", H + Vector((0.03 * u, 0, 0.06 * u)), (0.42 * u, 0.1 * u, 0.52 * u), paper, outline=0))
             P(rbox("title", H + Vector((0, -0.065 * u, 0.16 * u)), (0.26 * u, 0.01 * u, 0.08 * u), toon("goldt", "#f3c548", "#c99a20"), outline=0))
-        if stage == 4:
+        if stage == 4 and not DRESSED:
             frame = flat("frame", "#3a2418")
             for sx in (-1, 1):
                 d = Vector((0.34 * sx, -0.92, -0.02)).normalized()
                 addh(torus("glass", hc + d * rh * 1.04, 0.27 * s, 0.03 * s, frame, (math.radians(90), 0, math.atan2(d.x, -d.y))))
             add(torus("scarf", Vector((0, -0.04, 1.3 * s)), 0.56 * s, 0.14 * s, gold, (0, 0, 0), (1, 0.95, 0.75), outline=0.012))
+        if DRESSED:
+            import types, costume
+            self.kit = costume.dress(self, types.SimpleNamespace(**globals()), subject, stage)
+        if ANGRY:
+            import types, angry
+            angry.apply(self, types.SimpleNamespace(**globals()), subject, stage)
         g.rotation_euler = (0, 0, math.radians(turn))
         self.show(moods[0])
 
@@ -440,6 +464,10 @@ class Chicken:
 
 def camera(scale, z=7.0, x=0.0, res=(1800, 760)):
     sc.render.resolution_x, sc.render.resolution_y = res
+    if os.environ.get("MENTOR_FAST"):
+        sc.render.resolution_percentage = int(os.environ.get("MENTOR_PCT", "50"))
+        try: sc.eevee.taa_render_samples = 6
+        except Exception: pass
     sun = bpy.data.lights.new("sun", "SUN"); sun.energy = SUN_E; sun.use_shadow = False; so = link(bpy.data.objects.new("sun", sun))
     so.rotation_euler = (math.radians(55), math.radians(-40), math.radians(-55))
     cam = bpy.data.cameras.new("cam"); cam.type = "ORTHO"; cam.ortho_scale = scale
@@ -455,6 +483,17 @@ if MODE == "lineup":
     for x, st in zip(xs, (1, 2, 3, 4)): Chicken(x, st)
     ground(xs, [(0.75, 0.48)] + [(0.95, 0.6)] * 3); camera(17.5, 7.4)
     sc.render.filepath = os.path.join(OUT, "lineup.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
+elif MODE == "clineup":  # the four costume stages side by side (SUBJ)
+    xs = [-6.3 + i * 4.2 for i in range(4)]
+    for x, st in zip(xs, (1, 2, 3, 4)): Chicken(x, st, subject=SUBJ)
+    ground(xs, [(0.75, 0.48)] + [(0.95, 0.6)] * 3); camera(17.5, 7.6)
+    sc.render.filepath = os.path.join(OUT, "lineup.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
+elif MODE == "still":  # one transparent still of STAGE in the idle pose, same framing as the animation frames
+    sc.render.film_transparent = True
+    c = Chicken(0, STAGE, ("neutral",), subject=SUBJ)
+    for piv, sx in c.parts["wings"]: piv.rotation_euler = (0.3, -sx * 0.3, 0)
+    camera(5.9, 7.75, 0, (512, 512))
+    sc.render.filepath = os.path.join(OUT, "still.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
 elif MODE == "trio":  # the three subjects side by side (STAGE)
     xs = [-4.2, 0, 4.2]
     for x, sj in zip(xs, ("toan", "van", "anh")): Chicken(x, STAGE, subject=sj)
@@ -488,6 +527,35 @@ elif MODE in ("happy", "sad", "surprised"):  # one transparent still, same frami
         for piv, sx in c.parts["wings"]: piv.rotation_euler = (0.3, -sx * 1.0, 0)
     camera(5.9, 7.75, 0, (512, 512))
     sc.render.filepath = os.path.join(OUT, f"{SUBJ}-{ {'happy': 'vui', 'sad': 'buon', 'surprised': 'ngac'}[MODE] }.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
+elif MODE == "gian":  # the angry state, one transparent still, same framing as the others
+    sc.render.film_transparent = True
+    c = Chicken(0, STAGE, ("angry",), subject=SUBJ)
+    camera(5.9, 7.75, 0, (512, 512))
+    sc.render.filepath = os.path.join(OUT, "gian.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
+elif MODE == "ganim":  # the angry idle loop: a little huff and a stomp, 24 frames at 12 fps
+    sc.render.film_transparent = True; sc.render.fps = 12
+    c = Chicken(0, STAGE, ("angry",), subject=SUBJ); g, hp = c.g, c.hp
+    feet = c.parts["feet"]; fz = [fp.location.z for fp, _ in feet]
+    for f in list(range(1, 25)) + [25]:
+        t = ((f - 1) % 24) / 24 * 2 * math.pi
+        # stomp: the left foot hits at frame 7, the right at 19; the body drops a little on each hit
+        def lift(f0): d = abs(((f - f0 + 12) % 24) - 12); return max(0.0, 1 - d / 3.0)
+        for i, (fp, sx) in enumerate(feet):
+            fp.location.z = fz[i] + 0.16 * c.s * lift(4 if sx < 0 else 16); fp.keyframe_insert("location", frame=f)
+        hit = max(lift(7) if True else 0, 0) * 0 + max(0.0, 1 - abs(((f - 7 + 12) % 24) - 12) / 2.0) + max(0.0, 1 - abs(((f - 19 + 12) % 24) - 12) / 2.0)
+        g.location = (0, 0, -0.045 * hit); g.keyframe_insert("location", frame=f)
+        g.scale = (1 + 0.05 * hit, 1 + 0.05 * hit, 1 - 0.05 * hit); g.keyframe_insert("scale", frame=f)
+        hp.rotation_euler = (0.04 * math.sin(t * 4) , 0.03 * math.sin(t * 4 + 1), 0.05 * math.sin(t * 4)); hp.keyframe_insert("rotation_euler", frame=f)
+        for o, kind, base in c.fx:
+            if kind.startswith("flame"):
+                ph = int(kind[5:]) * 2.1; fl = 1 + 0.2 * math.sin(t * 4 + ph) + 0.08 * math.sin(t * 8 + ph)
+                o.scale = (base[0] * (1 - 0.07 * math.sin(t * 4 + ph)), base[1], base[2] * fl)
+            else:
+                o.scale = tuple(b * (1 + 0.22 * hit * 0.5 + 0.1 * (0.5 + 0.5 * math.sin(t * 4))) for b in base)
+            o.keyframe_insert("scale", frame=f)
+    camera(5.9, 7.75, 0, (512, 512))
+    sc.frame_start, sc.frame_end = 1, 24
+    sc.render.filepath = os.path.join(OUT, "f_"); (None if LIVE else bpy.ops.render.render(animation=True))
 else:  # anim: idle (1-24) and jump (25-48) for one adult, transparent frames
     sc.render.film_transparent = True; sc.render.fps = 12
     c = Chicken(0, STAGE, ("neutral", "happy"), subject=SUBJ); g, hp = c.g, c.hp

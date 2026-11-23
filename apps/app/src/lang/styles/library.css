@@ -60,3 +60,15 @@
   .lg-lib .bubble { font-size: .88rem; }
   .lg-lib-ribbon { padding: 8px 20px; }
 }
+
+/* notes shelf: the photo-notes sets, one row each */
+.lg-notes { display: grid; gap: 10px; margin-bottom: 18px; padding: 16px clamp(14px, 3vw, 24px) 18px; background: var(--surface); border: 2px solid var(--wood-dark); border-radius: 18px; }
+.lg-notes h2 { margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--ink); }
+.lg-notes-quiet { margin: 0; color: var(--ink-2); font-size: .95rem; line-height: 1.45; }
+.lg-notes-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lg-notes-list li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 10px 12px; border: 1.5px solid var(--rule-strong); border-radius: 14px; background: var(--paper); min-width: 0; }
+.lg-notes-list .ico { width: 38px; height: 38px; border-radius: 10px; background: var(--vang-soft); color: var(--cam); display: grid; place-items: center; }
+.lg-notes-list .ico svg { width: 22px; height: 22px; }
+.lg-notes-list b { display: block; overflow-wrap: anywhere; }
+.lg-notes-list small { display: block; color: var(--ink-2); font-size: .82rem; }
+@media (max-width: 520px) { .lg-notes-list li { grid-template-columns: auto 1fr; } .lg-notes-list li .btn { grid-column: 1 / -1; width: 100%; } }

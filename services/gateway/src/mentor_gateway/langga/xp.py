@@ -160,6 +160,11 @@ class XpService:
         return dict(out)
 
     def forget(self, s, user_id: str) -> None:
+        """Delete every Làng gà row of a learner (ledger, chickens, flags, study sessions, chat turns). Practice /
+        paper / course-mock sessions are `PracticeService.forget`'s."""
         from sqlalchemy import delete
 
-        s.execute(delete(XpEvent).where(XpEvent.user_id == user_id))
+        from mentor_gateway.langga.tables import ChatTurn, FocusSession, LanggaState, UserChicken
+
+        for model in (XpEvent, UserChicken, LanggaState, FocusSession, ChatTurn):
+            s.execute(delete(model).where(model.user_id == user_id))

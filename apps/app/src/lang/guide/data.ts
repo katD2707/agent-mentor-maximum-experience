@@ -13,9 +13,9 @@ export const G = (sel: string, vt: string, vd: string, et: string, ed: string, p
 
 export const GUIDE_DEFS: GuideDef[] = [
   // login
-  G(".lg-role", "Chọn vai trò", "Chạm hình học sinh hoặc giáo viên. Vai trò phải khớp với tài khoản.", "Pick your role", "Tap student or teacher. It must match your account.", "login"),
-  G("#acc", "Tài khoản", "Nhập tên tài khoản trường hoặc thầy cô đưa cho em.", "Account", "Enter the account your school or teacher gave you.", "login"),
-  G("#pw", "Mật khẩu", "Nhập mật khẩu. Bấm hình con mắt để xem lại.", "Password", "Enter your password. Tap the eye to check it.", "login"),
+  G(".lg-roles", "Chọn vai trò", "Chạm hình học sinh hoặc giáo viên. Vai trò phải khớp với tài khoản.", "Pick your role", "Tap student or teacher. It must match your account.", "login"),
+  G("#lg-f-acc", "Tài khoản", "Nhập tên tài khoản trường hoặc thầy cô đưa cho em.", "Account", "Enter the account your school or teacher gave you.", "login"),
+  G("#lg-f-pw", "Mật khẩu", "Nhập mật khẩu. Bấm hình con mắt để xem lại.", "Password", "Enter your password. Tap the eye to check it.", "login"),
   G("#lg-login", "Đăng nhập", "Bấm sau khi đã chọn vai trò và điền đủ.", "Log in", "Press after picking a role and filling both boxes.", "login"),
   // first run
   G(".lg-lang", "Ngôn ngữ", "Chạm để chọn tiếng Việt hoặc tiếng Anh.", "Language", "Tap to choose Vietnamese or English.", "first"),
@@ -33,11 +33,12 @@ export const GUIDE_DEFS: GuideDef[] = [
   G("[data-guide=\"practice-hint\"]", "Gợi ý", "Bí thì bấm gợi ý, gà nhắc một ý nhỏ.", "Hint", "Stuck? Tap hint and the chicken gives a small nudge.", "run"),
   // the arena, course tests, study room, progress, library
   G(".ar-filters", "Lọc đề", "Chọn năm hoặc môn để tìm đề hợp với em.", "Filter papers", "Pick a year or subject to find the right paper.", "arena"),
-  G(".ar-rows", "Đề thật, mỗi đề một boss", "Đề thi các năm trước, bấm giờ như ngày thi. Nộp bài xong gà đánh boss: đúng từ nửa số câu là hạ boss.", "Real papers, one boss each", "Past exam papers, timed like exam day. After you submit your chicken fights the boss: half right or more beats it.", "arena"),
+  G(".ar-rows", "Mỗi đề một boss", "Đề thi có tính giờ như ngày thi. Nộp bài xong gà đánh boss: đúng từ nửa số câu là hạ boss.", "One boss per paper", "Papers are timed like exam day. After you submit your chicken fights the boss: half right or more beats it.", "arena"),
   G(".ar-rows", "Bài kiểm tra", "Thi thử cả khóa hoặc làm từng mức. Đáp án hiện sau khi nộp.", "Course tests", "Take a mock of the whole course or one level. Answers show after you submit.", "tests"),
   G(".lg-sr-opts.durs", "Học bao lâu", "Chọn số phút. Mỗi phút gà được 1 điểm, học trọn thêm 5 điểm.", "How long", "Pick the minutes. 1 point a minute, 5 more for a full session.", "study"),
   G("#lg-sr-tp-goiy", "Học gì", "Chọn bài gà gợi ý, hoặc tự học bằng sách vở của em.", "What to study", "Pick the suggested lesson, or study from your own books.", "study"),
   G(".lg-sr-rule", "Cách tính điểm", "Giữ đủ giờ thì gà được thưởng thêm. Học đủ 10 phút là giữ chuỗi ngày.", "How points work", "A full session earns a bonus. 10 minutes keeps your streak.", "study"),
+  G(".lg-pg-ga", "Gà của em", "Mỗi gà một ô: tuần này được bao nhiêu kinh nghiệm và còn bao nhiêu nữa thì lên cấp.", "Your chickens", "One box per chicken: this week's points and how many more it needs for the next level.", "progress"),
   G(".lg-pg-goals", "Mục tiêu", "Thanh xanh là phần đã xong. Mentor tự thêm buổi khi em hơi chậm.", "Goals", "The green bar is what is done. Mentor adds sessions when you fall behind.", "progress"),
   G(".lg-pg-week", "Lịch tuần", "Mentor xếp lịch và dời buổi em bỏ lỡ. Ô viền đậm là hôm nay.", "This week", "Mentor plans the week and moves sessions you miss. The outlined box is today.", "progress"),
   G(".lg-pg-rules", "Cách gà lớn", "Mỗi việc học cho gà bao nhiêu điểm kinh nghiệm.", "How chickens grow", "How many points each kind of study gives.", "progress"),
@@ -57,10 +58,11 @@ export const GUIDE_DEFS: GuideDef[] = [
   G(".gv-steps", "Các bước", "Mỗi bước là một màn hình học sinh sẽ thấy. Chọn bước để xem và sửa.", "Steps", "Each step is one screen students see. Pick one to view and edit.", "gv-review"),
   G("[data-guide=\"gv-publish\"]", "Xuất bản", "Đưa bản này tới học sinh. Ai đang học bản cũ vẫn giữ tiến độ.", "Publish", "Sends this version to students. Anyone mid-course keeps their progress.", "gv-review"),
   // the village
-  G("#lg-say", "Việc hôm nay", "Gà nói trước một việc nên làm bây giờ. Trả lời ở khung trò chuyện bên dưới.", "Today", "Your chicken suggests one thing to do now. Answer in the chat below.", "village"),
+  G("#lg-say", "Việc hôm nay", "Gà nói trước một việc nên làm bây giờ. Mở khung trò chuyện ở góc dưới để trả lời.", "Today", "Your chicken suggests one thing to do now. Open the chat in the corner to answer.", "village"),
   G(".lg-actor.ga .lg-hit", "Gà của em", "Mỗi chú gà là một môn. Bấm vào gà để vào chuồng xem các khóa.", "Your chickens", "Each chicken is a subject. Tap one to see its courses.", "village"),
   G("#lg-ring", "Tuần này", "Vòng này cho biết em học được mấy buổi trong tuần. Bấm để xem lịch.", "This week", "The ring shows how many sessions you did this week. Tap to see the plan.", "village"),
-  G("#lg-market", "Chợ gà", "Nhận thêm gà để học thêm môn, miễn phí.", "Chicken market", "Take more chickens to study more subjects, free.", "village"),
+  G(".lg-place[data-sign=\"arena\"]", "Các nơi trong làng", "Chạm bảng gỗ để đến đó: Đấu trường, Phòng tự học, Chợ gà. Chạm lần nữa nếu em muốn đến nhanh hơn.", "Places", "Tap a wooden sign to go there: Arena, Study room, Chicken market. Tap again to get there faster.", "village"),
+  G(".lg-place.lg-market", "Chợ gà", "Nhận thêm gà để học thêm môn, miễn phí.", "Chicken market", "Take more chickens to study more subjects, free.", "village"),
   G("#lg-tray", "Khung trò chuyện", "Nhắn, chụp bài, chụp vở hoặc nói. Gà trả lời ngay tại đây.", "Chat", "Type, snap homework, snap your notes or talk. Your chicken answers right here.", "village"),
   G("[data-settings]", "Cài đặt", "Đổi ngôn ngữ, nền sáng tối, nhắc học. Muốn yên tĩnh thì chọn Tạm im lặng.", "Settings", "Change language, theme and reminders. Pick Quiet for a while to stop them.", "village"),
 ];
@@ -69,14 +71,14 @@ export const HELLO = "hello";
 export type TourStepRef = string | typeof HELLO | GuideDef;
 /** Parts each screen walks through the first time (3 at most); parts missing or hidden at that moment are skipped. */
 export const GUIDE_TOURS: Record<string, TourStepRef[]> = {
-  login: [".lg-role", "#acc"],
+  login: [".lg-roles", "#lg-f-acc"],
   first: [".lg-lang", ".lg-pick", "#lg-perches"],
-  village: [HELLO, "#lg-say", ".lg-actor.ga .lg-hit"],
+  village: [HELLO, ".lg-actor.ga .lg-hit", '.lg-place[data-sign="arena"]'],
   chuong: [".ck-stages", ".ck-says", ".ck-courses"],
   arena: [".ar-rows", ".ar-filters"],
   tests: [".ar-rows"],
   study: [".lg-sr-opts.durs", "#lg-sr-tp-goiy", ".lg-sr-rule"],
-  progress: [".lg-pg-goals", ".lg-pg-week", ".lg-pg-rules"],
+  progress: [".lg-pg-ga", ".lg-pg-week", ".lg-pg-goals"],
   library: [".rs-tabs", ".rs-search"],
   run: ['[data-guide="practice-answer"]', '[data-guide="practice-clock"]'],
   "gv-home": [HELLO, '[data-guide="drop"]', '[data-guide="teacher-courses"]'],

@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent } from "react";
-import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { coverUrl, teacherApi, type CourseLevel, type TeacherCourseDetail } from "../../api";
 import { useAuth } from "../../state/auth";
 import { Icon } from "../../components/Icon";
 import { LEVELS } from "../../lib/teacher/level";
 import { chickenName, subjectsFor, UNI, type Subject } from "../subjects";
-import { TeacherTop, reviewRoute } from "./common";
+import { Opening, TeacherTop, useToast, withTimeout } from "./common";
 import { useTeacherCourses } from "./live";
 import { LevelBars } from "./LevelTag";
 import { putLabels } from "./labelsApi";
@@ -16,6 +16,9 @@ import "./teacher-lg.css";
 const base = import.meta.env.BASE_URL;
 const MAX_GOALS = 6;
 const MAX_TOPICS = 8;
+/** how long a save or an open may take before the screen says so */
+const SAVE_TIMEOUT_MS = 20000;
+const OPEN_TIMEOUT_MS = 60000;
 /** The goal lines the way the gateway keeps them: blank lines dropped, spaces collapsed, at most 6 lines of 160 characters. */
 export const goalLines = (text: string): string[] =>
   text
@@ -45,12 +48,14 @@ function radioKeys(e: KeyboardEvent<HTMLElement>) {
 export default function Labels() {
   const { id = "" } = useParams();
   const [params] = useSearchParams();
-  const nav = useNavigate();
   const { t, i18n } = useTranslation();
   const { token } = useAuth();
   const { refresh: refreshList } = useTeacherCourses();
   const [detail, setDetail] = useState<TeacherCourseDetail | null>(null);
   const [missing, setMissing] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const toast = useToast(3000);
   const [cur, setCur] = useState<Labels | null>(null);
   /** fields Mentor could not decide: the one still open is explained in the note on top */
   const [open, setOpen] = useState<Set<LabelField>>(new Set());
@@ -69,14 +74,19 @@ export default function Labels() {
   useEffect(() => {
     if (!token) return;
     let dead = false;
-    teacherApi.getCourse(token, id).then(
+    setLoadFailed(false);
+    withTimeout(teacherApi.getCourse(token, id), OPEN_TIMEOUT_MS).then(
       (d) => !dead && setDetail(d),
-      (e) => !dead && (e as { status?: number }).status === 404 && setMissing(true),
+      (e) => {
+        if (dead) return;
+        if ((e as { status?: number }).status === 404) setMissing(true);
+        else setLoadFailed(true);
+      },
     );
     return () => {
       dead = true;
     };
-  }, [token, id]);
+  }, [token, id, attempt]);
 
   const version = Number(params.get("v")) || detail?.course.latest_version || 1;
   const vinfo = detail?.course.versions.find((v) => v.version === version);
@@ -85,7 +95,7 @@ export default function Labels() {
   // Mentor's guess, once per course and version
   useEffect(() => {
     if (!detail) return;
-    const g = guessLabels({ title: detail.course.title, subject: detail.course.subject, age_band: detail.course.age_band, level_suggested: detail.course.level_suggested, versions: detail.course.versions }, version);
+    const g = guessLabels({ title: detail.course.title, subject: detail.course.subject, age_band: detail.course.age_band, level_suggested: detail.course.level_suggested, level: detail.course.level, saved: detail.course.labels, versions: detail.course.versions }, version);
     guessed.current = g;
     setCur(g);
     setOpen(new Set(missingFields(g)));
@@ -156,9 +166,10 @@ export default function Labels() {
     setSaving(true);
     setError(null);
     try {
-      await putLabels(token, id, version, { ...body, goals: goalLines(goals), language, topics });
+      await withTimeout(putLabels(token, id, version, { ...body, goals: goalLines(goals), language, topics }), SAVE_TIMEOUT_MS);
       refreshList();
-      nav(reviewRoute(id, version));
+      setTouched(new Set(["bac", "chicken", "grade", "difficulty"]));
+      toast.show(t("lg.gvl.labels.saved"));
     } catch (e) {
       setError(t((e as { status?: number }).status === 422 ? "lg.gvl.labels.chickenRejected" : "lg.gvl.labels.saveFailed"));
     } finally {
@@ -185,16 +196,15 @@ export default function Labels() {
     );
   };
 
-  const nextBtn = (cls: string, label: string, id?: string) => (
-    <button type="button" className={cls} id={id} aria-disabled={!complete || undefined} disabled={saving} onClick={() => void go()}>
-      {saving ? t("lg.gvl.labels.saving") : label}
-    </button>
-  );
 
   return (
     <div className="app lbl">
       <TeacherTop step={3} courseId={id} backTo={`/khoa/${encodeURIComponent(id)}`}>
-        {cur && nextBtn("btn btn-primary act", t("lg.gvl.labels.next"), "go")}
+        {cur && (
+          <button type="button" className="btn btn-primary act" id="go" aria-disabled={!complete || undefined} disabled={saving} onClick={() => void go()}>
+            {saving ? t("lg.gvl.labels.saving") : t("lg.gvl.labels.save")}
+          </button>
+        )}
       </TeacherTop>
       <main className="main lbl-main">
         <div className="course-head lbl-head">
@@ -207,9 +217,7 @@ export default function Labels() {
           </div>
         </div>
         {!cur ? (
-          <p className="muted" role="status">
-            {t("gv.loading")}
-          </p>
+          <Opening failed={loadFailed} message={t("lg.gvl.openFailed")} onRetry={() => setAttempt((n) => n + 1)} />
         ) : (
           <>
             <p className="lead">{t("lg.gvl.labels.lead")}</p>
@@ -219,6 +227,9 @@ export default function Labels() {
                 <span>{t("lg.gvl.labels.unsure", { what: t(`lg.gvl.labels.unsureWhat.${unsureField === "bac" ? "band" : unsureField}`) })}</span>
               </div>
             )}
+            <p className="need-msg" role="status">
+              {nudged && !complete ? t("lg.gvl.labels.need") : ""}
+            </p>
             {published && <p className="muted small">{t("lg.gvl.labels.published")}</p>}
             {error && (
               <div className="alert" role="alert">
@@ -379,15 +390,6 @@ export default function Labels() {
                   <p className="fhint">{t("lg.gvl.labels.topicsHint")}</p>
                 </section>
 
-                <div className="bottom">
-                  {nextBtn("btn btn-primary", t("lg.gvl.labels.nextLong"))}
-                  <Link className="btn btn-ghost" to={`/khoa/${encodeURIComponent(id)}`}>
-                    <span>{t("lg.gvl.labels.back")}</span>
-                  </Link>
-                  <span className="need-msg" role="status">
-                    {nudged && !complete ? t("lg.gvl.labels.need") : ""}
-                  </span>
-                </div>
               </form>
 
               <aside className="side" aria-live="polite">
@@ -409,6 +411,7 @@ export default function Labels() {
           </>
         )}
       </main>
+      {toast.node}
     </div>
   );
 }

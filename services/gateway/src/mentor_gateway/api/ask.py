@@ -133,7 +133,7 @@ async def ask_notes(request: Request, user: User = Depends(student_user), gw: Ga
         raise HTTPException(403, {"error": "band_mismatch"})
     form = await request.form()
     images: list[bytes] = []
-    for f in form.getlist("images"):
+    for f in [*form.getlist("images"), *form.getlist("images[]")]:  # the app sends `images[]`
         if hasattr(f, "read"):
             data = await f.read(MAX_IMAGE_BYTES + 1)
             if len(data) > MAX_IMAGE_BYTES:

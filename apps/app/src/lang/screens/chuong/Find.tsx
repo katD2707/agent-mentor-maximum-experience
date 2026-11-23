@@ -121,6 +121,49 @@ export function FindBoard({ chicken, name, band, owned, onAdded, onSee, onStart 
   const badge = activeFilters(st);
   const chips = FIND_FACETS.flatMap((k) => st.f[k].map((v) => ({ k, v })));
   const openPreview = (id: string | null) => go({ ...st, c: id }, true);
+  const card = (c: CatalogItem) => {
+    const got = own(c.id);
+    const soon = c.status === "coming_soon";
+    return (
+      <li key={c.id} className={`ck-pc${got ? " ck-got" : ""}`} tabIndex={-1} data-testid="course-card">
+        <a className="ck-pcl" href={`#/chuong/${chicken}?c=${encodeURIComponent(c.id)}`} onClick={(e) => (e.preventDefault(), openPreview(c.id))}>
+          <span className="ck-pimg">
+            <Cover id={c.id} sha={c.cover_sha256} />
+          </span>
+          <span className="ck-pbody">
+            <h3>
+              <Highlight text={c.title} words={words} />
+            </h3>
+            {!kid && (
+              <span className="ck-pm">
+                <Highlight text={c.teacher_name} words={words} /> · {t("lg.cg.find.lessonsN", { count: c.lessons_count })} · {formatMinutes(t, c.est_minutes)}
+              </span>
+            )}
+            <Tags lang={c.language} level={c.level ?? null} kid={kid} />
+          </span>
+        </a>
+        <div className="ck-pfoot">
+          {got ? (
+            <span className="ck-own ck-got">
+              <Icon name="check" />
+              {t("lg.cg.find.added")}
+            </span>
+          ) : soon ? (
+            <button type="button" className="ck-soon" onClick={() => openPreview(c.id)}>
+              {t("lg.cg.find.soon")}
+            </button>
+          ) : (
+            <button type="button" className="ck-own" disabled={busy === c.id} onClick={() => void add(c.id)}>
+              {busy === c.id ? t("lg.cg.find.adding") : t("lg.cg.find.add")}
+            </button>
+          )}
+        </div>
+      </li>
+    );
+  };
+  const items = data?.items ?? [];
+  const ready = items.filter((c) => c.status !== "coming_soon");
+  const later = items.filter((c) => c.status === "coming_soon");
 
   return (
     <section className="ck-board" id="tim-khoa" aria-labelledby="ft">
@@ -203,47 +246,15 @@ export function FindBoard({ chicken, name, band, owned, onAdded, onSee, onStart 
       )}
 
       <ul ref={listRef} className={`ck-pcs ck-pager-list${kid ? " ck-kid" : ""}`} aria-busy={load.status === "loading"} data-testid="results">
-        {(data?.items ?? []).map((c: CatalogItem) => {
-          const got = own(c.id);
-          const soon = c.status === "coming_soon";
-          return (
-            <li key={c.id} className={`ck-pc${got ? " ck-got" : ""}`} tabIndex={-1} data-testid="course-card">
-              <a className="ck-pcl" href={`#/chuong/${chicken}?c=${encodeURIComponent(c.id)}`} onClick={(e) => (e.preventDefault(), openPreview(c.id))}>
-                <span className="ck-pimg">
-                  <Cover id={c.id} sha={c.cover_sha256} />
-                </span>
-                <span className="ck-pbody">
-                  <h3>
-                    <Highlight text={c.title} words={words} />
-                  </h3>
-                  {!kid && (
-                    <span className="ck-pm">
-                      <Highlight text={c.teacher_name} words={words} /> · {t("lg.cg.find.lessonsN", { count: c.lessons_count })} · {formatMinutes(t, c.est_minutes)}
-                    </span>
-                  )}
-                  <Tags lang={c.language} level={c.level ?? null} kid={kid} />
-                </span>
-              </a>
-              <div className="ck-pfoot">
-                {got ? (
-                  <span className="ck-own ck-got">
-                    <Icon name="check" />
-                    {t("lg.cg.find.added")}
-                  </span>
-                ) : soon ? (
-                  <button type="button" className="ck-soon" onClick={() => openPreview(c.id)}>
-                    {t("lg.cg.find.soon")}
-                  </button>
-                ) : (
-                  <button type="button" className="ck-own" disabled={busy === c.id} onClick={() => void add(c.id)}>
-                    {busy === c.id ? t("lg.cg.find.adding") : t("lg.cg.find.add")}
-                  </button>
-                )}
-              </div>
-            </li>
-          );
-        })}
+        {ready.map(card)}
       </ul>
+      {later.length > 0 && (
+        // courses that cannot be added yet stay out of the way until asked for
+        <details className="ck-later-box" open={ready.length === 0}>
+          <summary>{t("lg.cg.find.soonN", { count: later.length })}</summary>
+          <ul className={`ck-pcs${kid ? " ck-kid" : ""}`}>{later.map(card)}</ul>
+        </details>
+      )}
 
       {data && (data.total === 0 || data.total < 4) && load.status === "ready" && <Few chicken={chicken} band={band} data={data} st={st} go={go} />}
 

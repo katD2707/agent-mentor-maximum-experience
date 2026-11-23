@@ -235,6 +235,14 @@ describe("offline cache", () => {
 });
 
 describe("markdown and math", () => {
+  it("renders a bare LaTeX chip (no dollars) as maths, but leaves plain words alone", () => {
+    expect(renderMd("\\log_2 n")).toContain("katex");
+    expect(renderMd("\\frac{-b}{a}")).toContain("katex");
+    expect(renderMd("chiều cao $h=2$")).toContain("katex");
+    expect(renderMd("Dùng \\log để tính")).not.toContain("katex");
+    expect(renderMd("hai ba")).not.toContain("katex");
+  });
+
   it("renders KaTeX for $…$, $$…$$ and \\(…\\)", () => {
     const html = renderMd("Với $k = 9$ và \\(r\\).\n\n$$E = k\\frac{q}{r^2}$$");
     expect(html.match(/class="katex"/g)?.length).toBeGreaterThanOrEqual(2);

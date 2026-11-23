@@ -161,6 +161,7 @@ class BuilderService:
         self._tasks: set[asyncio.Task] = set()
         self._waiters: dict[str, asyncio.Event] = {}
         self._started = False
+        self._cover_hash: dict[str, tuple[tuple, str]] = {}
 
     # ------------------------------------------------------------ lifecycle
     async def start(self) -> None:
@@ -199,6 +200,8 @@ class BuilderService:
         return self.base / cid
 
     def _save(self, st: dict) -> None:
+        if st.get("deleted"):  # a stage that was still running when the teacher deleted the course must not bring it back
+            return
         st["updated_at"] = _iso(self.clock())
         atomic_write(self.course_dir(st["course_id"]) / "state.json",
                      json.dumps(st, ensure_ascii=False, indent=1).encode("utf-8"))
@@ -248,6 +251,24 @@ class BuilderService:
             self._states[cid] = st
             self._save(st)
             return st
+
+    def delete_course(self, user: User, cid: str) -> None:
+        """Teacher deletes a course that was never published (a stuck or unwanted draft): its builder folder and its store
+        folder go. A published course has students, so it stays (409 `published`). Jobs still queued are dropped."""
+        st = self.owned(user, cid)
+        meta = self._store_meta(cid)
+        if meta is not None and any(v.status == "published" for v in meta.versions):
+            raise Busy("published", "a published course cannot be deleted")
+        with self._lock:
+            st["deleted"] = True
+            st["jobs"] = [j for j in st["jobs"] if j["status"] != "queued"]
+            self._states.pop(cid, None)
+            if self._running and cid in self._running:
+                term = getattr(self.runner, "terminate_all", None)  # only this one course runs, but kill is all-or-nothing
+                if term and len(self._running) == 1:
+                    term()
+            for d in (self.course_dir(cid), self.content.store.root / cid):  # `owned` already rejected odd ids
+                shutil.rmtree(d, ignore_errors=True)
 
     def list_for(self, user: User) -> list[dict]:
         with self._lock:
@@ -563,12 +584,17 @@ class BuilderService:
                "language": o.get("language") or (meta.language if meta else None),
                "topics": [subject] if subject else []}
         labels: dict = {}
+        base = {"chicken": meta.chicken if meta else None, "band": meta.age_band if meta and meta.latest_published else None,
+                "grade": meta.grade if meta else None}
         if meta is not None and meta.versions:
             open_v = [v for v in meta.versions if v.status != "published"]
             work = max(open_v, key=lambda v: v.version) if open_v else max(meta.versions, key=lambda v: v.version)
             labels = work.labels or {}
         return {"goals": labels.get("goals", sug["goals"]), "language": labels.get("language", sug["language"]),
-                "topics": labels.get("topics", sug["topics"]), "suggested": sug}
+                "topics": labels.get("topics", sug["topics"]), "suggested": sug,
+                # the teacher's saved chicken / band / grade (null until set), so the labels screen shows what students see
+                "chicken": labels.get("chicken") or base["chicken"], "band": labels.get("band") or base["band"],
+                "grade": labels.get("grade") or base["grade"]}
 
     def set_level(self, st: dict, version: int, level: str) -> dict:
         """Teacher confirms or changes the level. On a draft it is stored on that version. On a published version a
@@ -650,10 +676,22 @@ class BuilderService:
                 "lessons": lessons}
 
     def cover_sha(self, cid: str) -> str | None:
+        """Hash of the cover, remembered per file (path, size, mtime): the course list asks for every cover on every poll."""
         try:
-            return sha256_file(self.content.store.cover_path(cid))
-        except ContentError:
+            path = self.content.store.cover_path(cid)
+            stat = path.stat()
+        except (ContentError, OSError):
             return None
+        key = (str(path), stat.st_size, stat.st_mtime_ns)
+        hit = self._cover_hash.get(cid)
+        if hit and hit[0] == key:
+            return hit[1]
+        try:
+            sha = sha256_file(path)
+        except OSError:
+            return None
+        self._cover_hash[cid] = (key, sha)
+        return sha
 
     def view(self, st: dict) -> dict:
         cid = st["course_id"]

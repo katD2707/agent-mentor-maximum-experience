@@ -79,7 +79,9 @@ input:focus-visible + .lg-sr-card { outline: 3px solid #1747c9; outline-offset: 
 .lg-sr-panel.timer { justify-items: center; text-align: center; }
 .lg-sr-study { margin: 0; font-weight: 700; }
 .lg-sr-study small { display: block; color: var(--ink-soft); font-weight: 500; }
-.lg-sr-link { display: inline-block; margin-top: 6px; color: #1747c9; font-weight: 700; }
+.lg-sr-link { display: inline-flex; align-items: center; min-height: 40px; margin-top: 8px; padding: 0 16px; border-radius: 12px; background: #fbecd0; color: var(--ink-g); font-weight: 700; text-decoration: none; box-shadow: 0 3px 0 #e0c294; }
+.lg-sr-link:hover { background: #f6e0b8; }
+.lg-sr-link:focus-visible { outline: 3px solid #23874a; outline-offset: 2px; }
 .lg-sr-linkbtn { border: 0; background: none; padding: 0; font: inherit; font-weight: 700; color: #1747c9; text-decoration: underline; cursor: pointer; min-height: 32px; }
 .lg-sr .ringbox { position: relative; width: min(230px, 62vw); aspect-ratio: 1; display: grid; place-items: center; }
 .lg-sr .ringbox svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }

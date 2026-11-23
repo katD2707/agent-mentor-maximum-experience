@@ -29,6 +29,7 @@ body:has([data-exam], .lp) .cg.parked { display: none; }
 @keyframes cg-dust { from { transform: scale(.4); opacity: .9; } to { transform: translate(var(--dx, 0), -9px) scale(1.7); opacity: 0; } }
 .cg-hint { outline: 2.5px dashed #c98a45 !important; outline-offset: 5px !important; border-radius: 14px; }
 .cg-catch { position: fixed; inset: 0; z-index: 9990; background: transparent; touch-action: none; overscroll-behavior: contain; }
+.cg-spot.round { border-radius: 50%; }
 .cg-spot { position: fixed; z-index: 9991; pointer-events: none; border-radius: 18px; box-shadow: 0 0 0 200vmax rgba(40, 24, 12, .55); animation: cg-spot-in .3s ease-out both; }
 @keyframes cg-spot-in { from { box-shadow: 0 0 0 200vmax rgba(40, 24, 12, 0); } }
 

@@ -7,6 +7,7 @@ import { buildDiagram } from "../../lib/diagram/diagram";
 import { parseExpr } from "../../lib/diagram/expr";
 import type { FunctionPlotSpec } from "../../lib/diagram/types";
 import { onMediaError } from "../../lib/mediaRetry";
+import { plainText } from "../../lib/text";
 import { Md, SpeakButton, type BlockCtx } from "./blocks";
 
 /** "1 800" / "0,25": decimal comma, thin grouping, at most 4 significant digits. */
@@ -108,10 +109,10 @@ export function InteractiveView({ b, muc, onReached }: { b: InteractiveBlock; mu
 
   return (
     <>
-      <p className="ask">{b.prompt}</p>
+      <Md md={b.prompt} className="ask" />
       <div className="figure drag">
         <div className="drag-plot">
-          <Diagram spec={spec} alt={b.prompt} idBase={`drag-${b.id}`.replace(/[^\w-]/g, "_")} />
+          <Diagram spec={spec} alt={plainText(b.prompt)} idBase={`drag-${b.id}`.replace(/[^\w-]/g, "_")} />
           <svg
             ref={svg}
             className="drag-hit"

@@ -1,5 +1,6 @@
 import { ApiError, type User } from "../../api/types";
 import { mockApi, mockUserOf } from "../../api/mock";
+import { chickenOfCourse } from "../chickenOf";
 import { levelOf, stageOf, subjectOf, subjectsFor, xpInLevel } from "../subjects";
 import type { ArenaPaper, Chicken, ChatMessage, FocusActive, LgApi, Market, NewsItem, NotesSet, Speaker, XpWeek } from "./types";
 
@@ -14,7 +15,7 @@ interface State {
   /** chickens let go: their XP is kept and comes back when they are taken again */
   kept: Record<string, number>;
   news: NewsItem[];
-  focus: { id: string; ends_at: string; chicken: string; minutes: number } | null;
+  focus: { id: string; ends_at: string; chicken: string; minutes: number; paused_at?: string } | null;
   chat: Record<string, ChatMessage[]>;
   notes: NotesSet[];
   week: Record<string, number[]>;
@@ -25,6 +26,12 @@ interface State {
 const delay = () => new Promise((r) => setTimeout(r, 60));
 const key = (uid: string) => `mentor.mock.lg.${uid}`;
 const empty = (): State => ({ chickens: [], kept: {}, news: [], focus: null, chat: {}, notes: [], week: {} });
+
+function focusView(f: NonNullable<State["focus"]>): FocusActive {
+  const at = f.paused_at ? new Date(f.paused_at).getTime() : Date.now();
+  const ends = new Date(f.ends_at).getTime();
+  return { id: f.id, ends_at: f.ends_at, chicken: f.chicken, minutes: f.minutes, started_at: new Date(ends - f.minutes * 60000).toISOString(), remaining_sec: Math.max(0, Math.round((ends - at) / 1000)), status: f.paused_at ? "paused" : "active", ...(f.paused_at ? { paused_at: f.paused_at } : {}) };
+}
 
 function load(uid: string): State {
   try {
@@ -83,6 +90,15 @@ export function mockGiveXp(token: string, chicken: string, amount: number): bool
   return up;
 }
 
+/** What a chicken says when today's lesson is another subject's: one of its own courses from the catalog, else a plain greeting. */
+async function ownLesson(token: string, chicken: string): Promise<Speaker> {
+  const cat = await mockApi.getCatalog(token).catch(() => null);
+  const own = cat?.courses.find((c) => chickenOfCourse(c) === chicken);
+  const title = own?.title.split(":").pop()?.trim();
+  if (!own || !title) return { chicken, line_vi: "Hôm nay mình học gì nhỉ?", line_en: "What shall we learn today?", action: null };
+  return { chicken, line_vi: `10 phút ${title}`, line_en: `10 min ${title}`, action: { kind: "lesson", deep_link: `/khoa-hoc/${own.id}`, minutes: 10 } };
+}
+
 export const mockLg: LgApi = {
   async getVillage(token) {
     await delay();
@@ -93,10 +109,14 @@ export const mockLg: LgApi = {
     let speaker: Speaker | null = null;
     if (chickens.length) {
       const t = today?.today ?? null;
-      const who = chickens.find((c) => c.id === "toan") ?? chickens[0];
-      speaker = t
+      // the chicken speaks of its own course: today's lesson belongs to the chicken of that course, else a plain greeting
+      const cid = /^\/khoa-hoc\/([^/?#]+)/.exec(t?.deep_link ?? "")?.[1];
+      const info = cid ? await mockApi.getCourse(token, decodeURIComponent(cid)).catch(() => null) : null;
+      const owner = info ? chickens.find((c) => c.id === chickenOfCourse(info)) : undefined;
+      const who = owner ?? chickens.find((c) => c.id === "toan") ?? chickens[0];
+      speaker = t && owner
         ? { chicken: who.id, line_vi: t.title_vi, line_en: t.title_en, action: { kind: t.kind, deep_link: t.deep_link, minutes: t.minutes } }
-        : { chicken: who.id, line_vi: "Hôm nay mình học gì nhỉ?", line_en: "What shall we learn today?", action: null };
+        : await ownLesson(token, who.id);
     }
     return {
       chickens,
@@ -199,8 +219,32 @@ export const mockLg: LgApi = {
   async focusActive(token) {
     await delay();
     const f = load(mockUserOf(token).id).focus;
-    const a: FocusActive | null = f ? { id: f.id, ends_at: f.ends_at, chicken: f.chicken, minutes: f.minutes, remaining_sec: Math.max(0, Math.round((new Date(f.ends_at).getTime() - Date.now()) / 1000)) } : null;
+    const a: FocusActive | null = f ? focusView(f) : null;
     return a;
+  },
+  async focusPause(token, id, agoSec = 0) {
+    await delay();
+    const u = mockUserOf(token);
+    const s = load(u.id);
+    if (!s.focus || s.focus.id !== id) throw new ApiError(404, "not_found");
+    if (!s.focus.paused_at) s.focus.paused_at = new Date(Date.now() - agoSec * 1000).toISOString();
+    save(u.id, s);
+    return focusView(s.focus);
+  },
+  async focusResume(token, id) {
+    await delay();
+    const u = mockUserOf(token);
+    const s = load(u.id);
+    if (!s.focus || s.focus.id !== id) throw new ApiError(404, "not_found");
+    if (s.focus.paused_at) {
+      s.focus.ends_at = new Date(new Date(s.focus.ends_at).getTime() + Date.now() - new Date(s.focus.paused_at).getTime()).toISOString();
+      delete s.focus.paused_at;
+    }
+    save(u.id, s);
+    return focusView(s.focus);
+  },
+  focusPauseOnLeave() {
+    /* the mock keeps nothing across a closed page */
   },
   async listNotes(token) {
     await delay();

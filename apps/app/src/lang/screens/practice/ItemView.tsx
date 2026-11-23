@@ -54,7 +54,9 @@ export function ItemView({ item, token, lang, value, onChange, locked, result, k
               <thead>
                 <tr>
                   {a.table.headers.map((h, i) => (
-                    <th key={i}>{h}</th>
+                    <th key={i}>
+                      <Md md={h} className="inline" />
+                    </th>
                   ))}
                 </tr>
               </thead>
@@ -62,14 +64,18 @@ export function ItemView({ item, token, lang, value, onChange, locked, result, k
                 {a.table.rows.map((r, i) => (
                   <tr key={i}>
                     {r.map((c, j) => (
-                      <td key={j}>{c}</td>
+                      <td key={j}>
+                        <Md md={c} className="inline" />
+                      </td>
                     ))}
                   </tr>
                 ))}
               </tbody>
             </table>
           )}
-          {a.caption && <figcaption className="muted small">{a.caption}</figcaption>}
+          {a.caption && <figcaption className="muted small">
+              <Md md={a.caption} className="inline" />
+            </figcaption>}
         </figure>
       ))}
 

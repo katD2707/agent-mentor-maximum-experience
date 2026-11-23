@@ -127,6 +127,30 @@ def test_profile_without_model_uses_title_words(client, svc, uni):
     assert r.status_code == 200 and r.json()["keywords"][:3] == ["graph", "neural", "networks"] and r.json()["question"] == ""
 
 
+def test_old_generic_keyword_data_is_dropped_when_read(client, svc, uni):
+    """A "paper" keyword and a "Khớp từ khóa paper" suggestion stored before generic words were filtered never reach the student."""
+    uid = uni["id"]
+    svc.llm.replies["profile"] = {"question": "Q?", "keywords": ["paper", "graph neural network"]}
+    assert client.put("/api/research/profile", json={"title": "Mạng nơ-ron đồ thị"}).status_code == 200
+    with svc.db.session() as s:
+        s.get(ResearchProfileRow, uid).keywords = ["paper", "graph neural network"]  # as seeded before the filter
+    assert client.get("/api/research/profile").json()["keywords"] == ["graph neural network"]
+    assert svc.topic(uid)[2] == ["graph neural network"]
+    f = {"key": "arxiv:2611.00001", "source": "arxiv", "title": "On `Paper` Recommendation **Fairness**", "authors": ["A"], "arxiv_id": "2611.00001",
+         "abstract": "A paper about paper."}
+    g = {**f, "key": "arxiv:2611.00002", "arxiv_id": "2611.00002", "title": "Graph neural network ranking"}
+    now = datetime(2026, 11, 7, tzinfo=UTC)
+    from mentor_gateway.research.tables import SuggestionRow
+    with svc.db.session() as s:
+        for i, (fields, reason) in enumerate(((f, "Khớp từ khóa paper."), (g, "Khớp từ khóa graph neural network."))):
+            pid = svc.upsert_paper(uid, fields)
+            s.add(SuggestionRow(id=f"sg-old{i}", user_id=uid, paper_id=pid, week_of="2026-11-02", reason=reason, query="", featured=True,
+                                status="pending", created_at=now))
+    items = client.get("/api/research/suggestions").json()["items"]
+    assert [i["paper"]["key"] for i in items] == ["arxiv:2611.00002"]
+    from mentor_gateway.research.generic import tidy_title
+    assert tidy_title(f["title"]) == "On Paper Recommendation Fairness"
+
 def test_source_keys_validate_store_never_return(client, svc, uni, gw):
     svc.src.valid_keys = {S2_KEY, ASTA_KEY}
     bad = client.put("/api/research/source-keys/s2", json={"key": "wrong-key-123456"})

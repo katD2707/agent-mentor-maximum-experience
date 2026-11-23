@@ -1,7 +1,7 @@
 # Source: https://github.com/HKUDS/DeepTutor/blob/60fb3bdfddb30b7740c7ce3bd9b28d908f2af6db/deeptutor/tools/paper_search_tool.py
 # Version: DeepTutor v1.7.2 (commit 60fb3bdfddb30b7740c7ce3bd9b28d908f2af6db)
 # Copyright (c) HKUDS and the DeepTutor authors. Licensed under the Apache License 2.0 (see LICENSE in this folder).
-# Modified by Mentor: removed the __main__ demo and the PaperSearchTool compatibility alias; search logic and network limits (3 s delay, 2 retries, 30 s timeout, one 429 retry) unchanged.
+# Modified by Mentor: `last_error` records why a search came back empty (so a caller can tell an outage from no results); removed the __main__ demo and the PaperSearchTool compatibility alias; search logic and network limits (3 s delay, 2 retries, 30 s timeout, one 429 retry) unchanged.
 """
 ArXiv search tool for preprint discovery.
 
@@ -35,6 +35,7 @@ class ArxivSearchTool:
             delay_seconds=3.0,
             num_retries=_MAX_RETRIES,
         )
+        self.last_error: str | None = None  # set when the last search failed (timeout, HTTP error) instead of finding nothing
 
     async def search_papers(
         self,
@@ -83,6 +84,7 @@ class ArxivSearchTool:
         )
 
         papers: list[dict] = []
+        self.last_error = None
         current_year = datetime.now().year
 
         try:
@@ -97,6 +99,7 @@ class ArxivSearchTool:
             return []
         except arxiv.HTTPError as exc:
             logger.warning("arXiv HTTP error (status %s) for query: %s", exc.status, query)
+            self.last_error = f"http_{exc.status}"
             if exc.status == 429:
                 await asyncio.sleep(_RETRY_DELAY_S)
                 try:
@@ -106,11 +109,13 @@ class ArxivSearchTool:
                     )
                 except Exception:
                     logger.warning("arXiv retry also failed for query: %s", query)
+                    self.last_error = "http_429"
                     return []
             else:
                 return []
         except Exception:
             logger.exception("Unexpected error during arXiv search for query: %s", query)
+            self.last_error = "error"
             return []
 
         for result in results:

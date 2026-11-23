@@ -135,3 +135,15 @@ export function Highlight({ text, words }: { text: string; words?: string[] }) {
   flush(chars.length);
   return <>{out}</>;
 }
+
+/** Pale placeholder bars while a page loads, with the plain words under them (screen readers read those). */
+export function Skeleton({ rows = 3, text, className = "" }: { rows?: number; text: string; className?: string }) {
+  return (
+    <div className={"lg-skel " + className} role="status">
+      {Array.from({ length: rows }, (_, i) => (
+        <i key={i} style={{ width: `${100 - (i % 3) * 14}%` }} />
+      ))}
+      <span>{text}</span>
+    </div>
+  );
+}

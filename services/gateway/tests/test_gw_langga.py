@@ -131,6 +131,17 @@ def test_chicken_page(client, gw, student, store):
     assert client.get("/api/chickens/li").status_code == 404  # not a chicken of the g1_5 stage
 
 
+def test_chicken_page_lists_only_courses_for_the_students_stage(client, student, store):
+    set_band(client, "uni")
+    enroll(client, KID, "bai-1")  # a grade 1 course on a university account (an old enrollment or an old link)
+    client.post("/api/chickens", json={"chicken": "toanhoc"})
+    page = client.get("/api/chickens/toanhoc").json()
+    assert page["courses"] == [] and page["chicken"]["courses"] == 0 and page["tests"] == []
+    set_band(client, "g1_5")  # its own stage: it stays
+    client.post("/api/chickens", json={"chicken": "toan"})
+    assert [c["course_id"] for c in client.get("/api/chickens/toan").json()["courses"]] == [KID]
+
+
 def test_xp_week(client, gw, student):
     uid = student["user_id"]
     gw.xp.award(uid, "toan", "practice_right", "a:1")
@@ -225,6 +236,32 @@ def test_focus_pays_a_point_a_minute_a_bonus_for_the_full_session_and_stops_at_1
     assert kinds.count("session_start") >= 4 and kinds.count("session_end") >= 4
 
 
+def test_focus_pause_stops_the_clock_on_the_server(client, gw, clock, student):
+    r = client.post("/api/focus", json={"minutes": 25, "chicken": "toan"}).json()
+    clock.advance(minutes=5)
+    p = client.post(f"/api/focus/{r['id']}/pause", json={}).json()
+    assert p["status"] == "paused" and p["remaining_sec"] == 20 * 60
+    clock.advance(minutes=60)  # an hour away: nothing counts, and a reload still shows the pause
+    act = client.get("/api/focus/active").json()
+    assert act["status"] == "paused" and act["remaining_sec"] == 20 * 60 and act["paused_at"]
+    assert client.post(f"/api/focus/{r['id']}/pause", json={}).json()["remaining_sec"] == 20 * 60  # idempotent
+    back = client.post(f"/api/focus/{r['id']}/resume").json()
+    assert back["status"] == "active" and back["remaining_sec"] == 20 * 60
+    assert client.post(f"/api/focus/{r['id']}/resume").json()["remaining_sec"] == 20 * 60
+    clock.advance(minutes=20)
+    done = client.post(f"/api/focus/{r['id']}/finish", json={"minutes_done": 25}).json()
+    assert done["minutes_done"] == 25 and done["gained"] == 30  # the paused hour did not make it longer, nor shorter
+    # stopping while paused ends where the clock stands; hidden time can be dated back
+    r2 = client.post("/api/focus", json={"minutes": 45, "chicken": "toan"}).json()
+    clock.advance(minutes=50)
+    assert client.post(f"/api/focus/{r2['id']}/pause", json={"ago_sec": 40 * 60}).json()["remaining_sec"] == 35 * 60
+    clock.advance(minutes=30)
+    out = client.post(f"/api/focus/{r2['id']}/finish", json={"minutes_done": 45}).json()
+    assert out["minutes_done"] == 11 and out["gained"] == 11  # 10 minutes seen + 1 slack, no full bonus
+    assert client.post(f"/api/focus/{r2['id']}/pause", json={}).status_code == 409
+    assert client.post("/api/focus/f-nope/pause", json={}).status_code == 404
+
+
 # ---------------------------------------------------------------- avatar, notes list
 def test_avatar_patch(client, student):
     assert client.get("/api/me").json()["avatar"] is None
@@ -249,3 +286,41 @@ def test_notes_list(client, gw, clock, student):
     assert rows[0]["next_review_at"].startswith((now + timedelta(days=1)).strftime("%Y-%m-%d"))
     login(client, "giaovien", "123456", "teacher")
     assert client.get("/api/ask/notes").status_code == 403
+
+
+def test_forget_removes_every_langga_row(client, gw, student):
+    from datetime import UTC, datetime
+
+    from sqlalchemy import func, select
+
+    from mentor_gateway.langga.tables import ChatTurn, FocusSession, LanggaState, UserChicken, XpEvent
+
+    uid, other = student["user_id"], "someone-else"
+    now = datetime.now(UTC)
+    with gw.db.session() as s:
+        for u in (uid, other):
+            s.add(UserChicken(user_id=u, chicken="toan", taken_at=now))
+            s.add(LanggaState(user_id=u, migrated_at=now))
+            s.add(FocusSession(id=f"f-{u[:10]}", user_id=u, chicken="toan", minutes=10, started_at=now, ends_at=now))
+            s.add(ChatTurn(user_id=u, chicken="toan", role="user", text="hi", created_at=now))
+    gw.xp.award(uid, "toan", "lesson", "x1", 5)
+    gw.xp.award(other, "toan", "lesson", "x1", 5)
+    with gw.db.session() as s:
+        gw.xp.forget(s, uid)
+    with gw.db.session() as s:
+        for model in (XpEvent, UserChicken, LanggaState, FocusSession, ChatTurn):
+            assert s.scalar(select(func.count()).select_from(model).where(model.user_id == uid)) == 0, model
+            assert s.scalar(select(func.count()).select_from(model).where(model.user_id == other)) == 1, model
+
+
+def test_course_level_practice_pays_xp_once(client, gw, student, store):
+    """The ladder inside a course's Thi thu (`course:<id>` + level) pays practice_right like any practice, idempotently."""
+    set_band(client, "g1_5")
+    enroll(client, KID, "bai-2")
+    s = start(client, source=f"course:{KID}", level=1)
+    sid, it = s["id"], s["items"][0]
+    ans = {"position": it["position"], "answer": right_answer(gw, sid, it["position"])}
+    r = client.post(f"{P}/sessions/{sid}/answer", json=ans).json()
+    assert r["xp"] == [{"chicken": "toan", "source": "practice_right", "amount": 2, "level_up": False}]
+    assert client.post(f"{P}/sessions/{sid}/answer", json=ans).json()["xp"] == []
+    assert gw.xp.total(student["user_id"], "toan") == 2

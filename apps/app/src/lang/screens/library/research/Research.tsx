@@ -18,7 +18,7 @@ type Load = { status: "loading" } | { status: "error"; code: string } | { status
 const WATCH_MS = 3000;
 
 /** What the Library chicken says: the state of the research home, worked out from one GET /research. */
-export type LibMood = { key: "empty" | "saved" | "searching" | "data" | "dataDue" | "results"; n?: number; what?: string };
+export type LibMood = { key: "empty" | "saved" | "searching" | "data" | "dataDue" | "results" | "none"; n?: number; what?: string };
 
 /** hs-09: the research home, four chapters in tabs (Reading, Schedule, Experiments, Topic). The states are worked out from one GET /research. */
 export function ResearchBody({ onMood }: { onMood?: (m: LibMood | null) => void }) {
@@ -26,9 +26,12 @@ export function ResearchBody({ onMood }: { onMood?: (m: LibMood | null) => void 
   const { token } = useAuth();
   const [ov, setOv] = useState<Load>({ status: "loading" });
   const [query, setQuery] = useState<string | null>(null);
+  /** how the current search ended: still running, found papers, or nothing (no result, or the source did not answer) */
+  const [outcome, setOutcome] = useState<"busy" | "found" | "none">("busy");
   const [tab, setTab] = useChapter();
   const search = (q: string | null) => {
     setQuery(q);
+    setOutcome("busy");
     if (q !== null) setTab("read"); // a search always lands on the Reading tab
   };
 
@@ -55,7 +58,7 @@ export function ResearchBody({ onMood }: { onMood?: (m: LibMood | null) => void 
   const hasContent = !!data && (data.reading_list.items.length > 0 || data.suggestions.length > 0 || data.upcoming.length > 0);
   const firstSearch = hasTopic && running && !hasContent;
   const due = data?.upcoming.filter((u) => u.kind === "deadline" && u.days_left >= 0 && u.days_left <= HOT_DAYS).sort((a, b) => a.days_left - b.days_left)[0];
-  const moodKey: LibMood["key"] | null = !data ? null : !hasTopic ? "empty" : firstSearch && query === null ? "saved" : query !== null ? "results" : running ? "searching" : due ? "dataDue" : "data";
+  const moodKey: LibMood["key"] | null = !data ? null : !hasTopic ? "empty" : firstSearch && query === null ? "saved" : query !== null ? (outcome === "busy" ? "searching" : outcome === "none" ? "none" : "results") : running ? "searching" : due ? "dataDue" : "data";
   useEffect(() => {
     onMood?.(moodKey ? { key: moodKey, n: due?.days_left, what: due?.title } : null);
   }, [moodKey, due?.days_left, due?.title, onMood]);
@@ -64,7 +67,7 @@ export function ResearchBody({ onMood }: { onMood?: (m: LibMood | null) => void 
         <div className="rs-wrap">
           {ov.status === "loading" && (
             <p className="muted" role="status">
-              …
+              {t("lg.lib.loadingOverview")}
             </p>
           )}
           {ov.status === "error" && (
@@ -92,7 +95,7 @@ export function ResearchBody({ onMood }: { onMood?: (m: LibMood | null) => void 
                   <>
                     <SearchBar keywords={data.profile.keywords} value={query ?? ""} onSearch={search} />
                     {query !== null ? (
-                      <Results key={query} query={query} onClear={() => setQuery(null)} onSearch={(q) => { search(q); window.scrollTo?.({ top: 0 }); }} onChanged={() => void load()} />
+                      <Results key={query} query={query} onOutcome={setOutcome} onClear={() => setQuery(null)} onSearch={(q) => { search(q); window.scrollTo?.({ top: 0 }); }} onChanged={() => void load()} />
                     ) : (
                       <>
                   {running && (

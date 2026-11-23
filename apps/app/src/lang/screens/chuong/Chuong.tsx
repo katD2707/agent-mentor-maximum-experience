@@ -5,7 +5,7 @@ import { useAuth } from "../../../state/auth";
 import { Icon } from "../../../components/Icon";
 import { packShaFor } from "../../../lib/sync";
 import { useMyCourses, type MyCourse } from "../../kit/useMyCourses";
-import { DownloadNote, useDownload } from "../../kit/common";
+import { DownloadNote, Skeleton, useDownload } from "../../kit/common";
 import { getChuong, type ChuongData } from "../../api/chuong";
 import { chickenOfCourse } from "../../chickenOf";
 import { Crown } from "../../components/Crown";
@@ -139,9 +139,7 @@ export function Chuong() {
         </div>
 
         {page.status === "loading" && (
-          <p className="ck-msg" role="status" style={{ color: "#fff" }}>
-            {t("lg.cg.loading")}
-          </p>
+          <Skeleton rows={3} text={t("lg.cg.loading")} className="on-dark" />
         )}
         {page.status === "error" && (
           <p className="ck-msg" role="alert" style={{ color: "#fff" }}>
@@ -167,8 +165,8 @@ export function Chuong() {
               </div>
               <div className="ck-plate">
                 <span className="ck-lv">{level}</span>
-                <span>{name}</span>
-                <span style={{ fontWeight: 500, fontSize: ".85em", color: "#ffe9a8" }}>· {stageNames[sIdx - 1]}</span>
+                <span className="ck-plate-n">{name}</span>
+                <span className="ck-plate-s">{stageNames[sIdx - 1]}</span>
                 <Crown stage={sIdx} />
               </div>
               <div className="ck-grow">
@@ -195,14 +193,18 @@ export function Chuong() {
               <div className="ck-says" role="note">
                 <small>{t("lg.cg.saysWho", { name })}</small>
                 <span>{says}</span>
-                <button className="ck-gbtn" type="button" style={{ justifySelf: "start" }} onClick={goCur}>
-                  <Icon name={cur ? "play" : "search"} />
-                  <span>{cur ? t("lg.cg.studyNow") : t("lg.cg.saysFind")}</span>
-                </button>
+                {/* with a course on the go, the one way in is the big "Học tiếp" button of the course board */}
+                {!cur && (
+                  <button className="ck-gbtn" type="button" style={{ justifySelf: "start" }} onClick={goCur}>
+                    <Icon name="search" />
+                    <span>{t("lg.cg.saysFind")}</span>
+                  </button>
+                )}
               </div>
             </section>
 
             <div className="ck-rcol">
+              {(mine.status === "loading" || rows.length > 0) && (
               <section className="ck-board" aria-labelledby="ct">
                 <h2 className="ck-ribbon" id="ct">
                   {t("lg.cg.coursesTitle", { name })}
@@ -221,12 +223,12 @@ export function Chuong() {
                 )}
                 <div className="ck-courses">
                   {mine.status === "loading" && <p className="ck-msg">{t("lg.cg.loading")}</p>}
-                  {mine.status !== "loading" && rows.length === 0 && <p className="ck-msg">{t("lg.cg.noCourses")}</p>}
                   {courses.map((mc, i) => (
                     <CourseItem key={mc.info.id} mc={mc} row={rows[i]} open={openId === mc.info.id} name={name} band={user.age_band} tests={data?.tests ?? []} onToggle={() => toggle(mc.info.id)} onListen={(p) => setListening({ p, course: mc.info.id })} />
                   ))}
                 </div>
               </section>
+              )}
               <FindBoard chicken={c.id} name={name} band={user.age_band} owned={new Set(mine.courses.map((m) => m.info.id))} onAdded={() => mine.reload()} onSee={see} onStart={start} />
             </div>
           </div>

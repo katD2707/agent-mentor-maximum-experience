@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "katex/dist/katex.min.css";
 import { assetUrl, teacherApi, type AssetRef, type Block, type CommentAnchor, type CoursePack, type TeacherComment, type TeacherCourseDetail, type TeacherTest, type UnsureStep } from "../../api";
@@ -11,11 +11,13 @@ import { versionLevel } from "../../lib/teacher/level";
 import { canPublish } from "./labels";
 import { commentPending, latestPublished } from "../../lib/teacher/status";
 import type { BlockCtx } from "../kit/blocks";
-import { TeacherTop, labelsRoute, useToast } from "./common";
+import { Opening, TeacherTop, labelsRoute, useToast, withTimeout } from "./common";
 import { useTeacherCourses } from "./live";
 import { LevelTag } from "./LevelTag";
 import { Notes } from "./ReviewParts";
 import { LessonTab, PracticeTab, RecapTab, TestsTab } from "./ReviewTabs";
+
+const OPEN_TIMEOUT_MS = 60000;
 
 /** gv-03: the lesson exactly as students see it (same player components), with one-line comments in a red-pen margin; Publish is the one action. */
 export default function Review() {
@@ -34,15 +36,19 @@ export default function Review() {
   const toast = useToast(3200);
   const [error, setError] = useState<string | null>(null);
   const [nudged, setNudged] = useState(false);
+  /** the course or its content did not open (a timeout counts): the screen says so and offers a retry */
+  const [openFailed, setOpenFailed] = useState(false);
 
   const loadDetail = useCallback(async () => {
     if (!token) return null;
     try {
-      const d = await teacherApi.getCourse(token, id);
+      const d = await withTimeout(teacherApi.getCourse(token, id), OPEN_TIMEOUT_MS);
       setDetail(d);
+      setOpenFailed(false);
       return d;
     } catch (e) {
       if ((e as { status?: number }).status === 404) setMissing(true);
+      else setOpenFailed(true);
       return null;
     }
   }, [token, id]);
@@ -60,9 +66,10 @@ export default function Review() {
   const loadPack = useCallback(async () => {
     if (!token || !detail) return;
     try {
-      setPack(await teacherApi.getPack(token, id, version));
+      setPack(await withTimeout(teacherApi.getPack(token, id, version), OPEN_TIMEOUT_MS));
+      setOpenFailed(false);
     } catch {
-      setError(t("gv.packFailed"));
+      setOpenFailed(true);
     }
   }, [token, id, version, detail?.course.id, t]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -280,32 +287,32 @@ export default function Review() {
         )}
 
         {!pack || !lesson ? (
-          <p className="muted" role="status">
-            {t("gv.loading")}
-          </p>
+          <Opening failed={openFailed} message={detail && !pack ? t("gv.packFailed") : t("lg.gvl.openFailed")} onRetry={() => {
+            setOpenFailed(false);
+            void (detail ? loadPack() : loadDetail());
+          }} />
         ) : (
           <>
             <div className="crumbs">
               <h1>{pack.title}</h1>
               <span className="grow" />
-              <span className="pager">
-                <button className="icon-btn" type="button" aria-label={t("gv.prevLesson")} disabled={idx === 0} onClick={() => goto(idx - 1)}>
-                  <Icon name="back" />
-                </button>
-                <span>{t("courses.lessonOf", { n: idx + 1, total: lessons.length })}</span>
-                <button className="icon-btn" type="button" aria-label={t("gv.nextLesson")} disabled={idx === lessons.length - 1} onClick={() => goto(idx + 1)}>
-                  <Icon name="next" />
-                </button>
-              </span>
+              {tab === "bai" && (
+                <span className="pager">
+                  <button className="icon-btn" type="button" aria-label={t("gv.prevLesson")} disabled={idx === 0} onClick={() => goto(idx - 1)}>
+                    <Icon name="back" />
+                  </button>
+                  <span>{t("courses.lessonOf", { n: idx + 1, total: lessons.length })}</span>
+                  <button className="icon-btn" type="button" aria-label={t("gv.nextLesson")} disabled={idx === lessons.length - 1} onClick={() => goto(idx + 1)}>
+                    <Icon name="next" />
+                  </button>
+                </span>
+              )}
             </div>
             {detail && version > 1 && !published && <VerNote>{prevPub && prevPub.students > 0 ? t("gv.versionNote", { students: prevPub.students, prev: prevPub.version, version }) : t("gv.versionNoteNone", { version })}</VerNote>}
             {detail && published && <VerNote>{t("gv.publishedNote", { version, students: vinfo?.students ?? 0 })}</VerNote>}
             <div className={`lvx-row${nudged && !levelConfirmed ? " need" : ""}`} id="levelrow" data-guide="gv-level" data-guide-label={t("lg.gvl.level.label")}>
               <span className="lvx-label">{t("lg.gvl.level.label")}</span>
               {levelShown ? <LevelTag level={levelShown} /> : <span className="muted">{t("lg.gvl.level.unset")}</span>}
-              <Link className="btn btn-ghost lvx-ok" to={labelsRoute(id, version)}>
-                <span>{t("lg.gvl.level.change")}</span>
-              </Link>
               {nudged && !levelConfirmed && (
                 <span className="lvx-note" role="status">
                   {t("lg.gvl.level.confirmFirst")}
@@ -321,7 +328,7 @@ export default function Review() {
               ))}
             </div>
             {tab === "bai" && (
-              <LessonTab lesson={lesson} ctx={ctx} unsure={unsureMap} commented={commented} locked={locked} english={pack.language === "en"} saving={saving} onSave={(b, p) => void saveBlock(b, p)} onSeen={(b) => void seen(b)} onComment={sendNote} />
+              <LessonTab lesson={lesson} no={idx + 1} ctx={ctx} unsure={unsureMap} commented={commented} locked={locked} english={pack.language === "en"} saving={saving} onSave={(b, p) => void saveBlock(b, p)} onSeen={(b) => void seen(b)} onComment={sendNote} />
             )}
             {tab === "luyen" && <PracticeTab pack={pack} locked={locked} saving={saving} onSave={(b, p) => void saveBlock(b, p)} />}
             {tab === "kiem" && <TestsTab tests={tests} locked={locked} onSave={(p, b) => void saveTest(p, b)} />}

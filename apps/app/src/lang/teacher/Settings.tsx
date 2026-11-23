@@ -112,7 +112,7 @@ export function Settings() {
         aria-controls="set-pop"
         onClick={() => setOpen((o) => !o)}
       >
-        <Icon name="gear" />
+        <Icon name="cog" />
       </button>
       {open && (
         <div className="set-pop" id="set-pop" data-mascot-avoid role="dialog" aria-label={t("settings.title")}>

@@ -223,12 +223,16 @@ class LanggaSessions:
         paper = params.get("paper")
         if paper:
             boss = dict(paper.get("boss") or boss_for(paper["chicken"]))
-            report["boss"] = {"name": boss["name_vi"], **boss, "hp": int(report.get("total") or 0),
+            report["boss"] = {"name": boss["name_vi"], **boss, "chicken": paper["chicken"], "hp": int(report.get("total") or 0),
                               "damage": int(report.get("correct") or 0), "beaten": score >= BEAT_SCORE}
-            if answered:
-                awards.append((paper["chicken"], "paper_submit", sid, xpm.AMOUNTS["paper_submit"]))
-                if score >= BEAT_SCORE:
-                    awards.append((paper["chicken"], "boss_beaten", paper["id"], xpm.AMOUNTS["boss_beaten"]))
+            total = int(report.get("total") or 0)
+            # the submit XP is for a real attempt: at least half answered, once per paper per day (resubmitting
+            # one answer over and over pays nothing); the boss pays once per paper
+            if answered and answered * 2 >= total:
+                awards.append((paper["chicken"], "paper_submit", f"{paper['id']}:{self.xp.today().isoformat()}",
+                               xpm.AMOUNTS["paper_submit"]))
+            if score >= BEAT_SCORE and answered and answered * 2 >= total:
+                awards.append((paper["chicken"], "boss_beaten", paper["id"], xpm.AMOUNTS["boss_beaten"]))
         elif answered and first is not None:
             awards.append((self._item_chicken(user_id, params, first), "mock_submit", sid, xpm.AMOUNTS["mock_submit"]))
         report["xp"] = self._award(user_id, awards)

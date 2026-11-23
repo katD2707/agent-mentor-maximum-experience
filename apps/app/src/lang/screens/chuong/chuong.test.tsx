@@ -108,37 +108,23 @@ describe("chuồng gà (lg-03)", () => {
     expect(tree.querySelectorAll(".ck-later").length).toBeGreaterThan(0);
     const now = tree.querySelector("a.ck-nowrow") as HTMLAnchorElement;
     expect(now.getAttribute("href")).toMatch(/^\/khoa-hoc\/vat-li-11-dien-truong\/hoc\?lesson=[^&]+&from=khoa$/);
-    expect(await within(tree).findByText("Thông hiểu")).toBeInTheDocument(); // the practice ladder
-    expect(await within(tree).findByRole("link", { name: /Thông hiểu/ })).toHaveAttribute("href", expect.stringMatching(/^\/kiem-tra\/vat-li-11-dien-truong\?state=luyen&level=2&from=chuong$/));
+    // one way into the tests: the mock exam and the practice levels live on /kiem-tra, not twice
+    const tests = await within(tree).findByRole("link", { name: /Luyện tập/ });
+    expect(tests).toHaveAttribute("href", "/kiem-tra/vat-li-11-dien-truong?from=chuong");
+    expect(within(tree).queryByText("Thông hiểu")).toBeNull();
     // the other chickens' courses are not here
     expect(screen.queryByText(/Toán 1/)).toBeNull();
   });
 
-  it("practice inside a course: solid level ticked, Mentor's level marked, closed levels not tappable, the mock exam under it", async () => {
-    seed(THPT, "g10_12");
-    open("/chuong/li");
-    const tree = await screen.findByRole("navigation", { name: /Nội dung khóa/ });
-    const ladder = await waitFor(() => {
-      const el = [...tree.querySelectorAll<HTMLElement>("details.ck-grp")].find((d) => d.querySelector("summary")?.textContent?.includes("Luyện tập"));
-      if (!el) throw new Error("no ladder yet");
-      return el;
-    });
-    const node = (name: string) => [...ladder.querySelectorAll<HTMLElement>(".ck-node")].find((n) => n.textContent?.includes(name))!;
-    expect(node("Nhận biết")).toHaveClass("ck-done");
-    expect(node("Thông hiểu")).toHaveAttribute("aria-current", "step");
-    expect(node("Thông hiểu").tagName).toBe("A");
-    expect(node("Vận dụng cao").tagName).toBe("SPAN"); // nothing studied at that level yet: not tappable
-    expect(node("Vận dụng cao")).toHaveClass("ck-later");
-  });
-
-  it("the big button continues the lesson in progress and the speech bubble offers it too", async () => {
+  it("the one big button continues the lesson in progress (the speech bubble has no second button)", async () => {
     seed(THPT, "g10_12");
     const ui = userEvent.setup();
     open("/chuong/li");
     const cta = await screen.findByTestId("cta");
-    expect(cta).toHaveTextContent("Tiếp tục");
+    expect(cta).toHaveTextContent("Học tiếp");
     expect(cta).toHaveTextContent("Vật lí 11: Điện trường");
     expect(screen.getByText(/Mình học tiếp “Điện trường” nhé\?/)).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Học ngay" })).toBeNull();
     await ui.click(cta);
     await waitFor(() => expect(where()).toMatch(/^\/khoa-hoc\/vat-li-11-dien-truong\/hoc\?lesson=[^&]+&from=khoa$/));
   });

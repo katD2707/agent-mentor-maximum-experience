@@ -5,7 +5,7 @@ import { useAuth } from "../../../state/auth";
 import { Icon } from "../../../components/Icon";
 import { holdFocus } from "../../../lib/behaviour";
 import { lg, type Chicken, type FocusActive, type Village } from "../../api";
-import { XP_PER_LEVEL } from "../../subjects";
+import { chickenName, XP_PER_LEVEL } from "../../subjects";
 import { chickenSrc, jumpSrc } from "../../chickenArt";
 import { Crown } from "../../components/Crown";
 import { ChickenImg, FlameIcon } from "./icons";
@@ -20,6 +20,8 @@ const MORE_MIN = 15;
 const STREAK_MIN = 10;
 const FULL_BONUS = 5;
 const TICK_MS = 250;
+/** a tab hidden longer than this pauses the clock (the hidden time is not counted) */
+const HIDE_GRACE_MS = 30000;
 const RING = 2 * Math.PI * 100;
 
 type Phase = "choose" | "run" | "pause" | "stop" | "done";
@@ -78,6 +80,9 @@ export function StudyRoom() {
   const lang: "vi" | "en" = i18n.language === "en" ? "en" : "vi";
   const [village, setVillage] = useState<Village | null>(null);
   const [failedLoad, setFailedLoad] = useState(false);
+  const [reload, setReload] = useState(0);
+  const [activeReady, setActiveReady] = useState(false);
+  const [autoPaused, setAutoPaused] = useState(false);
   const [phase, setPhase] = useState<Phase>("choose");
   const [pick, setPick] = useState<string>("");
   const [dur, setDur] = useState(25);
@@ -93,13 +98,14 @@ export function StudyRoom() {
 
   const chickens = village?.chickens ?? [];
   const mine = chickens.find((c) => c.id === (run?.chicken ?? pick));
-  const name = (c: Chicken | undefined) => (c ? (lang === "en" ? c.name_en : c.name_vi) : "");
+  const name = (c: Chicken | undefined) => (c ? (lang === "en" ? c.name_en : c.name_vi) : run ? chickenName(run.chicken, lang) : "");
   const stageName = (c: Chicken) => t(`lg.study.stage${c.stage}`);
 
-  // the village (our chickens) and a session that is still running on the server (we left the page, or reloaded)
+  // a session that is still running (or paused) on the server comes first: it needs no village; the village (our chickens) fills in after
   useEffect(() => {
     if (!token) return;
     let alive = true;
+    setFailedLoad(false);
     lg.getVillage(token).then(
       (v) => {
         if (!alive) return;
@@ -110,19 +116,26 @@ export function StudyRoom() {
       () => alive && setFailedLoad(true),
     );
     lg.focusActive(token).then((a: FocusActive | null) => {
+      if (alive) setActiveReady(true);
       if (!alive || !a || !a.chicken || !a.minutes) return;
       const endMs = new Date(a.ends_at).getTime();
       if (Number.isNaN(endMs)) return;
-      setRun({ id: a.id, chicken: a.chicken, minutes: a.minutes, startMs: endMs - a.minutes * 60000 });
+      // the server's remaining seconds (not its clock) decide where the countdown stands
+      const remaining = typeof a.remaining_sec === "number" ? a.remaining_sec : Math.max(0, (endMs - Date.now()) / 1000);
+      const startMs = Date.now() - (a.minutes * 60 - remaining) * 1000;
+      setRun({ id: a.id, chicken: a.chicken, minutes: a.minutes, startMs });
       setPick(a.chicken);
       setDur(a.minutes);
       setNow(Date.now());
-      setPhase("run");
-    }, () => undefined);
+      if (a.status === "paused") {
+        setPausedAt(Date.now());
+        setPhase("pause");
+      } else setPhase("run");
+    }, () => alive && setActiveReady(true));
     return () => {
       alive = false;
     };
-  }, [token]);
+  }, [token, reload]);
 
   // the countdown ticks only while it runs
   useEffect(() => {
@@ -196,16 +209,65 @@ export function StudyRoom() {
       setBusy(false);
     }
   };
-  const pause = () => {
-    setPausedAt(Date.now());
+  const pause = (auto = false, agoMs = 0) => {
+    setPausedAt(Date.now() - agoMs);
+    setAutoPaused(auto);
     setPhase("pause");
+    if (token && run) void lg.focusPause(token, run.id, agoMs / 1000).catch(() => undefined);
   };
-  const resume = () => {
-    if (run && pausedAt !== null) setRun({ ...run, startMs: run.startMs + (Date.now() - pausedAt) });
-    setPausedAt(null);
-    setNow(Date.now());
-    setPhase("run");
+  const resume = async () => {
+    if (!run || pausedAt === null || !token || busy) return;
+    setBusy(true);
+    setErr(null);
+    try {
+      const f = await lg.focusResume(token, run.id);
+      const remaining = typeof f.remaining_sec === "number" ? f.remaining_sec : Math.max(0, run.minutes * 60 - (pausedAt - run.startMs) / 1000);
+      setRun({ ...run, startMs: Date.now() - (run.minutes * 60 - remaining) * 1000 });
+      setPausedAt(null);
+      setAutoPaused(false);
+      setNow(Date.now());
+      setPhase("run");
+    } catch {
+      setErr(t("lg.study.resumeFailed"));
+    } finally {
+      setBusy(false);
+    }
   };
+  // leaving the tab: after a short grace the clock pauses on the server and the hidden time is not counted; closing the page pauses at once
+  const pauseRef = useRef<(auto?: boolean, agoMs?: number) => void>(() => undefined);
+  pauseRef.current = pause;
+  const live2 = useRef({ phase, run, token });
+  live2.current = { phase, run, token };
+  useEffect(() => {
+    let hiddenAt: number | null = null;
+    let timer: number | undefined;
+    const onVis = () => {
+      const l = live2.current;
+      if (document.visibilityState === "hidden") {
+        if (l.phase !== "run") return;
+        hiddenAt = Date.now();
+        timer = window.setTimeout(() => {
+          if (live2.current.phase === "run" && hiddenAt !== null) pauseRef.current(true, Date.now() - hiddenAt);
+          hiddenAt = null;
+        }, HIDE_GRACE_MS);
+      } else {
+        window.clearTimeout(timer);
+        if (hiddenAt !== null && l.phase === "run" && Date.now() - hiddenAt > HIDE_GRACE_MS) pauseRef.current(true, Date.now() - hiddenAt);
+        hiddenAt = null;
+      }
+    };
+    const onLeave = () => {
+      const l = live2.current;
+      if (l.phase === "run" && l.run && l.token) lg.focusPauseOnLeave(l.token, l.run.id);
+    };
+    document.addEventListener("visibilitychange", onVis);
+    window.addEventListener("pagehide", onLeave);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("pagehide", onLeave);
+    };
+  }, []);
   const stop = () => run && void finish(doneMin, "stop");
   const again = (minutes: number) => {
     setDur(minutes);
@@ -313,9 +375,20 @@ export function StudyRoom() {
             {/* 1. choose */}
             {phase === "choose" && (
               <div className="lg-sr-panel">
-                {!village && !failedLoad && <p className="lg-sr-quiet">{t("lg.loading")}</p>}
-                {failedLoad && <p className="lg-sr-note" role="alert">{t("lg.market.failed")}</p>}
-                {village && chickens.length === 0 && (
+                {(!village || !activeReady) && !failedLoad && (
+                  <p className="lg-sr-quiet" role="status">
+                    {t("lg.study.loadingRoom")}
+                  </p>
+                )}
+                {failedLoad && (
+                  <p className="lg-sr-note" role="alert">
+                    {t("lg.study.loadFailed")}{" "}
+                    <button className="lg-sr-linkbtn" type="button" onClick={() => setReload((n) => n + 1)}>
+                      {t("lg.study.reload")}
+                    </button>
+                  </p>
+                )}
+                {village && activeReady && chickens.length === 0 && (
                   <div className="lg-sr-note">
                     <b>{t("lg.study.noChicken")}</b>
                     <Link className="lg-sr-link" to="/" replace>
@@ -323,7 +396,7 @@ export function StudyRoom() {
                     </Link>
                   </div>
                 )}
-                {chickens.length > 0 && (
+                {chickens.length > 0 && activeReady && (
                   <>
                     <fieldset className="lg-sr-opts cards3">
                       <legend>{t("lg.study.who")}</legend>
@@ -443,7 +516,7 @@ export function StudyRoom() {
                 {phase === "pause" && (
                   <p className="lg-sr-note pause">
                     <b>{t("lg.study.pauseTitle")}</b>
-                    <span>{t("lg.study.pauseBody")}</span>
+                    <span>{autoPaused ? t("lg.study.autoPaused") : t("lg.study.pauseBody")}</span>
                   </p>
                 )}
                 {err && (
@@ -456,7 +529,7 @@ export function StudyRoom() {
                 )}
                 {phase === "run" ? (
                   <div className="lg-sr-btns">
-                    <button className="lg-sr-btn alt" type="button" onClick={pause}>
+                    <button className="lg-sr-btn alt" type="button" onClick={() => pause()}>
                       <Icon name="clock" />
                       {t("lg.study.pause")}
                     </button>
@@ -467,7 +540,7 @@ export function StudyRoom() {
                   </div>
                 ) : (
                   <div className="lg-sr-btns">
-                    <button className="lg-sr-btn go" type="button" onClick={resume}>
+                    <button className="lg-sr-btn go" type="button" disabled={busy} onClick={() => void resume()}>
                       <Icon name="play" />
                       {t("lg.study.resume")}
                     </button>

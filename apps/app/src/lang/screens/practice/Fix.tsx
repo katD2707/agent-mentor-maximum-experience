@@ -3,14 +3,13 @@ import { useTranslation } from "react-i18next";
 import { practice, type PFix, type PItem, type PReport, type PReviewItem } from "../../../api";
 import { useAuth } from "../../../state/auth";
 import { canCheck, isStepType, stepText, tfDecode } from "../../../lib/practice";
-import { plainText } from "../../../lib/text";
 import { Md } from "../../kit/blocks";
 import { ItemView } from "./ItemView";
 
 type Phase = { s: "try" } | { s: "right" } | { s: "again"; fix: PFix };
 
-/** The right answer (or the learner's) of an item as a line, by type. */
-function lineOf(item: PItem, raw: string | null | undefined, yes: string, no: string): string {
+/** The right answer (or the learner's) of an item as one line of Markdown, by type (render it with `Md`). */
+export function lineOf(item: PItem, raw: string | null | undefined, yes: string, no: string): string {
   const v = raw ?? "";
   if (!v) return "";
   if (isStepType(item.type)) return stepText(item, v);
@@ -20,7 +19,7 @@ function lineOf(item: PItem, raw: string | null | undefined, yes: string, no: st
   }
   if (item.type === "SINGLE_CHOICE" || item.type === "PICTURE_CHOICE") {
     const o = item.options?.find((x) => x.id === v);
-    return o ? `${o.id}${o.text ? `: ${plainText(o.text)}` : ""}` : v;
+    return o ? `${o.id}${o.text ? `: ${o.text}` : ""}` : v;
   }
   return v;
 }
@@ -120,7 +119,7 @@ export function FixFlow({ id, report, onDone }: { id: string; report: PReport; o
       <ItemView item={item} token={tk} lang={lang} kid={kid} value={value} onChange={change} locked={phase.s !== "try"} result={result} was={choice ? first : undefined} />
       {!choice && first && phase.s === "try" && (
         <p className="muted pr-was">
-          {t("practice.chose")}: {lineOf(item, first, yes, no)}
+          {t("practice.chose")}: <Md md={lineOf(item, first, yes, no)} className="inline" />
         </p>
       )}
       {phase.s === "try" && <p className="muted">{t("practice.fixHint")}</p>}
@@ -133,10 +132,10 @@ export function FixFlow({ id, report, onDone }: { id: string; report: PReport; o
         <div className="feedback pr-fb wrong" role="status">
           {!choice && phase.fix.right && (
             <span>
-              {t("practice.rightIs")}: <b className="ok">{lineOf(item, phase.fix.right, yes, no)}</b>
+              {t("practice.rightIs")}: <b className="ok"><Md md={lineOf(item, phase.fix.right, yes, no)} className="inline" /></b>
             </span>
           )}
-          {phase.fix.note && <p className="why">{phase.fix.note}</p>}
+          {phase.fix.note && <Md className="why" md={phase.fix.note} />}
           {phase.fix.explanation && <Md md={phase.fix.explanation} />}
         </div>
       )}

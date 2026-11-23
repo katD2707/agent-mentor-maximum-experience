@@ -152,7 +152,7 @@ function DepthPicker() {
 const thisYear = new Date().getFullYear();
 
 /** Results of one search, with the filters, the quick review and the card per source. */
-export function Results({ query, onClear, onSearch, onChanged }: { query: string; onClear(): void; onSearch(q: string): void; onChanged(): void }) {
+export function Results({ query, onClear, onSearch, onChanged, onOutcome }: { query: string; onOutcome?(o: "busy" | "found" | "none"): void; onClear(): void; onSearch(q: string): void; onChanged(): void }) {
   const { t } = useTranslation();
   const { token } = useAuth();
   const [yearMin, setYearMin] = useState(0);
@@ -196,6 +196,9 @@ export function Results({ query, onClear, onSearch, onChanged }: { query: string
     [token, query, yearMin, pdf, depth],
   );
   useEffect(() => run(1), [run]);
+  useEffect(() => {
+    onOutcome?.(busy ? "busy" : cards.length > 0 ? "found" : "none");
+  }, [busy, cards.length, onOutcome]);
   useEffect(() => () => void (seq.current += 1), []);
 
   const isAdded = (c: PaperCard) => (c.key in added ? added[c.key] !== null : c.in_reading_list);

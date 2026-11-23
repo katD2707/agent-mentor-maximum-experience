@@ -8,6 +8,7 @@ import { AuthProvider } from "../../../state/auth";
 import { stageIndex } from "../chuong/logic";
 import { drawnStage, spriteVars } from "../../chickenArt";
 import { verdictDetail } from "../../kit/QuizItemView";
+import { TilesInput } from "../../kit/StepInputs";
 import { renderMd } from "../../../lib/md";
 import type { QuizItem } from "../../../api";
 
@@ -86,11 +87,8 @@ describe("lesson with the chicken (lg-04)", () => {
     expect(await screen.findByText("Chưa đúng")).toBeInTheDocument();
     expect(screen.getByText(/Đáp án B: Đẩy nhau/)).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    // the chicken explains it again
-    expect(await screen.findByText("Gà giảng lại")).toBeInTheDocument();
-    expect(screen.getByText(/Đáp án B: Đẩy nhau/)).toBeInTheDocument();
-    await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    // ...and the same question once more
+    // the red band said it all and this question has no hint: no second telling, the same question comes straight back
+    expect(screen.queryByText("Gà giảng lại")).toBeNull();
     expect(await screen.findByText("Thử lại câu này")).toBeInTheDocument();
     await ui.click(await screen.findByRole("button", { name: /Đẩy nhau/ }));
     await ui.click(screen.getByRole("button", { name: "Kiểm tra" }));
@@ -112,9 +110,8 @@ describe("lesson with the chicken (lg-04)", () => {
       expect(await screen.findByText("Chưa đúng")).toBeInTheDocument();
       await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
     };
-    await miss(); // first try: explained again
-    await ui.click(await screen.findByRole("button", { name: "Tiếp tục" }));
-    await miss(); // the second try is wrong too: no more explaining, it waits for the end
+    await miss(); // first try: the same question comes back
+    await miss(); // the second try is wrong too: it waits for the end
     await ui.click(await screen.findByRole("button", { name: /Đẩy nhau/ }));
     await ui.click(screen.getByRole("button", { name: "Kiểm tra" }));
     expect(await screen.findByText("Chính xác!")).toBeInTheDocument();
@@ -162,6 +159,61 @@ describe("lesson with the chicken (lg-04)", () => {
   });
 });
 
+describe("a blank inside a formula", () => {
+  const stem = "Địa chỉ của phần tử thứ $i$ là $addr(a[i]) = addr(a) + i \\cdot {{gap}}$, nhờ đó truy cập nhanh.";
+  const parts = [{ id: "p1", text: "sizeof(T)" }, { id: "p2", text: "O(1)" }] as never;
+  it("shows the formula as maths with the blank in its place, never raw TeX", async () => {
+    const { container, rerender } = render(<TilesInput stem={stem} parts={parts} seed="s" value={[]} onChange={() => {}} locked={false} />);
+    await waitFor(() => expect(container.querySelector(".gap-host .gap")).not.toBeNull());
+    expect(container.querySelector(".katex")).not.toBeNull();
+    expect(container.textContent).not.toContain("$");
+    expect(container.textContent).not.toContain("\\cdot");
+    rerender(<TilesInput stem={stem} parts={parts} seed="s" value={["p1"]} onChange={() => {}} locked={false} />);
+    await waitFor(() => expect(container.querySelector(".gap-host button.tile.placed")?.textContent?.trim()).toBe("sizeof(T)"));
+  });
+  it("a blank in plain text keeps its pieces and renders the text around it", () => {
+    const { container } = render(<TilesInput stem="Có `T a[n]` và {{gap}} ở đây." parts={parts} seed="s" value={[]} onChange={() => {}} locked={false} />);
+    expect(container.querySelector("code.s")?.textContent).toBe("T a[n]");
+    expect(container.textContent).not.toContain("`");
+    expect(container.querySelector(".gap-host")).toBeNull();
+  });
+});
+
+describe("lesson links: resume and start", () => {
+  const saveAt = (lesson: string, block: string, done: string[]) =>
+    localStorage.setItem("mentor.mock.enroll.u-hs", JSON.stringify([{ course_id: "vat-li-11-dien-truong", pinned_version: 1, enrolled_at: "2026-11-01T08:00:00Z", progress: { lesson_id: lesson, block_id: block, completed_block_ids: done } }]));
+
+  it("a link to the lesson left in the middle opens where the student stopped", async () => {
+    seed("g10_12", 2009);
+    saveAt("l1", "l1-b2", ["l1-b1"]);
+    open({ pathname: COURSE, search: "?lesson=l1&from=khoa" });
+    expect(await screen.findByText("Hai điện tích cùng dấu đặt gần nhau sẽ như thế nào?")).toBeInTheDocument(); // the question, not the text step before it
+  });
+
+  it("a link to another lesson starts that lesson from its first step", async () => {
+    seed("g10_12", 2009);
+    saveAt("l1", "l1-b2", ["l1-b1"]);
+    open({ pathname: COURSE, search: "?lesson=l2&from=khoa" });
+    expect(await screen.findByRole("heading", { name: "Bài 2" })).toBeInTheDocument();
+    expect(await screen.findByRole("button", { name: "Tiếp tục" })).toBeInTheDocument();
+    expect(screen.queryByText("Hai điện tích cùng dấu đặt gần nhau sẽ như thế nào?")).toBeNull();
+  });
+
+  it("a miss with a hint the red band did not say gets the chicken's second telling", async () => {
+    seed("g10_12", 2009);
+    saveAt("l2", "l2-b8", []);
+    open({ pathname: COURSE, search: "?lesson=l2" });
+    await screen.findByRole("heading", { name: "Bài 2" });
+    const ui = userEvent.setup();
+    await ui.click(await screen.findByRole("button", { name: /Các đường tròn đồng tâm/ }));
+    await ui.click(screen.getByRole("button", { name: "Kiểm tra" }));
+    expect(await screen.findByText("Chưa đúng")).toBeInTheDocument();
+    await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
+    expect(await screen.findByText("Gà giảng lại")).toBeInTheDocument();
+    expect(screen.getByText(/Nhớ chiều: đường sức đi ra/)).toBeInTheDocument();
+  }, 20000);
+});
+
 describe("lesson with the chicken: every kind of step", () => {
   it("tiles, pairs, order, drag diagram and recall are graded by the bottom bar; forgotten ideas count under Ôn lại", async () => {
     seed("g10_12", 2009);
@@ -178,8 +230,6 @@ describe("lesson with the chicken: every kind of step", () => {
     expect(await screen.findByText("Chưa đúng")).toBeInTheDocument();
     expect(screen.getByText(/Đáp án: r²/)).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    expect(await screen.findByText("Gà giảng lại")).toBeInTheDocument();
-    await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
     await ui.click(await screen.findByRole("button", { name: "r²" }));
     await ui.click(screen.getByRole("button", { name: "Kiểm tra" }));
     expect(await screen.findByText("Chính xác!")).toBeInTheDocument();
@@ -195,7 +245,6 @@ describe("lesson with the chicken: every kind of step", () => {
     await ui.click(screen.getByRole("button", { name: "C" }));
     expect(await screen.findByText("Chưa đúng")).toBeInTheDocument(); // one slip: not right on the first try
     await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    await ui.click(await screen.findByRole("button", { name: "Tiếp tục" })); // explained again
     for (const name of ["Cường độ E", "V/m", "Lực điện F", "N", "Điện tích q", "C"]) await ui.click(await screen.findByRole("button", { name }));
     expect(await screen.findByText(/Chính xác!|Xuất sắc!/)).toBeInTheDocument();
     await ui.click(screen.getByRole("button", { name: "Tiếp tục" }));
@@ -259,5 +308,33 @@ describe("lesson with the chicken: every kind of step", () => {
     await screen.findByRole("button", { name: "Tiếp tục" });
     await ui.keyboard("{Enter}");
     expect(await screen.findByRole("button", { name: "Kiểm tra" })).toBeInTheDocument();
+  });
+});
+
+describe("maths and captions in the practice items and lesson blocks", () => {
+  it("renders stems, options, true/false statements and a figure caption through KaTeX, and a bare \log chip as maths", async () => {
+    const { ItemView } = await import("../practice/ItemView");
+    const { lineOf } = await import("../practice/Fix");
+    const { StaticBlock } = await import("../../kit/blocks");
+    const item = {
+      id: "p1",
+      type: "SINGLE_CHOICE",
+      stem: "Phương trình $ax + b = 0$ ($a \\neq 0$) có nghiệm:",
+      options: [
+        { id: "A", text: "$x = -\\frac{b}{a}$" },
+        { id: "B", text: "$x = \\frac{b}{a}$" },
+      ],
+    } as never;
+    const { container } = render(<ItemView item={item} token="t" lang="vi" value="" onChange={() => undefined} locked={false} />);
+    expect(container.querySelectorAll(".opt .katex").length).toBe(2);
+    expect(container.querySelector(".q-stem .katex")).not.toBeNull();
+    const fig = render(<StaticBlock b={{ id: "i", kind: "image", image: null, alt: "cây", caption: "chiều cao $h=2$" } as never} ctx={{ lang: "vi", url: () => "" }} />);
+    expect(fig.container.querySelector("figcaption .katex")).not.toBeNull();
+    expect(fig.container.textContent).not.toContain("$");
+    // true/false answers read as "a: Đúng, b: Sai", not "TF"
+    const tf = { id: "t1", type: "TRUE_FALSE_GROUP", stem: "", statements: [{ id: "a", text: "x" }, { id: "b", text: "y" }] } as never;
+    expect(lineOf(tf, "TF", "Đúng", "Sai")).toBe("a: Đúng, b: Sai");
+    const tiles = render(<TilesInput stem="T = {{gap}}" parts={[{ id: "p", text: "\\log_2 n" } as never]} seed="s" value={[]} onChange={() => undefined} locked={false} />);
+    expect(tiles.container.querySelector(".bank .tile .katex")).not.toBeNull();
   });
 });

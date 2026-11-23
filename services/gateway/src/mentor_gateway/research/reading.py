@@ -35,6 +35,7 @@ from mentor_gateway.planner.bands import TZ
 from mentor_gateway.planner.text import clean
 from mentor_gateway.research import fulltext, prompts
 from mentor_gateway.research.base import ModelUnavailable, ResearchBase, fail, iso
+from mentor_gateway.research.generic import generic_match, specific_keywords
 from mentor_gateway.research.sources import SourceError, paper_key
 from mentor_gateway.research.tables import (
     PaperNoteRow,
@@ -173,8 +174,8 @@ class ReadingMixin(ResearchBase):
     @staticmethod
     def fallback_reason(f: dict[str, Any], kws: list[str], lang: str, query: str = "") -> str:
         text = f"{f.get('title', '')} {f.get('abstract') or f.get('excerpt') or ''}".lower()
-        for k in kws:
-            if k.lower() in text:
+        for k in specific_keywords(kws):
+            if re.search(r"(?<!\w)" + re.escape(k.lower()) + r"(?!\w)", text):  # a whole word or phrase, not a piece of one
                 return f"Matches keyword {k}." if lang == "en" else f"Khớp từ khóa {k}."
         if query:
             return f"Matches the search \"{query}\"." if lang == "en" else f"Khớp truy vấn \"{query}\"."
@@ -432,9 +433,11 @@ class ReadingMixin(ResearchBase):
                  .order_by(SuggestionRow.featured.desc(), SuggestionRow.created_at, SuggestionRow.id))
             if featured_only:
                 q = q.where(SuggestionRow.featured.is_(True))
-            rows = s.execute(q.limit(10)).all()
+            rows = s.execute(q.limit(40)).all()
             s.expunge_all()
-        return [self.suggestion_model(sg, p) for sg, p in rows]
+        # suggestions seeded before generic keywords were filtered ("Khớp từ khóa paper") are dropped when read
+        rows = [(sg, p) for sg, p in rows if not generic_match(sg.reason)]
+        return [self.suggestion_model(sg, p) for sg, p in rows[:10]]
 
     def suggestion_list(self, user_id: str) -> SuggestionList:
         items = self.suggestions(user_id)

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { cleanup, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import i18n from "./i18n";
@@ -48,12 +48,20 @@ describe("band guard and the old research addresses", () => {
     expect(await screen.findByRole("heading", { name: "Thư viện" })).toBeInTheDocument();
     expect(await screen.findByRole("link", { name: "Về làng" })).toHaveAttribute("href", "/");
   });
-  it("hides it from everyone else and sends them back to the village from the Library routes", async () => {
+  it("grade 6 and up get the notes shelf (no papers); the little ones see a short locked note, not a silent redirect", async () => {
     seed(2010);
     localStorage.setItem("mentor.mock.lg.u-hs", JSON.stringify({ chickens: [{ id: "toan", xp: 0, taken_at: "2026-11-01T00:00:00Z" }] }));
     open("/thu-vien");
-    expect(await screen.findByRole("log", { name: "Trò chuyện với gà" })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: "Thư viện" })).toBeNull();
+    expect(await screen.findByRole("heading", { name: "Thư viện" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Vở ghi của em" })).toBeInTheDocument();
+    expect(screen.getByText(/Phần đọc paper sẽ mở khi em lên đại học/)).toBeInTheDocument();
+    expect(screen.queryByRole("tablist")).toBeNull();
+  });
+  it("the little ones see why the Library is closed", async () => {
+    seed(2018);
+    open("/thu-vien");
+    expect(await screen.findByText(/Thư viện mở khi em lên lớp 6/)).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Vở ghi của em" })).toBeNull();
   });
   it("opens a paper by its address, and by the old research address, for the university band", async () => {
     seed(UNI);
@@ -306,8 +314,8 @@ describe("source key dialog", () => {
   it("connected key: change or remove; Esc closes and focus goes back", async () => {
     seed(UNI, "full", { s2: true });
     const ui = userEvent.setup();
-    open("/");
-    await ui.click(await screen.findByRole("button", { name: /Cài đặt|Settings/ }));
+    open("/thu-vien");
+    await ui.click(await screen.findByRole("button", { name: "Nguồn tìm paper" }));
     const gone = await screen.findByRole("button", { name: "Gỡ Semantic Scholar" });
     await ui.click(gone);
     const d2 = await screen.findByRole("dialog", { name: "Semantic Scholar" });
@@ -316,13 +324,17 @@ describe("source key dialog", () => {
     await ui.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).toBeNull();
   });
-  it("opens from Settings, whose row shows for the university band", async () => {
+  it("opens from the Library's sources button (university band), not from the village settings", async () => {
     seed(UNI);
     const ui = userEvent.setup();
     open("/");
     await ui.click(await screen.findByRole("button", { name: /Cài đặt|Settings/ }));
-    expect(screen.getByText("Tìm paper kỹ hơn (tùy chọn)")).toBeInTheDocument();
-    await ui.click(screen.getByRole("button", { name: "Thêm Asta" }));
+    expect(screen.queryByText("Tìm paper kỹ hơn (tùy chọn)")).toBeNull();
+    cleanup();
+    open("/thu-vien");
+    await ui.click(await screen.findByRole("button", { name: "Nguồn tìm paper" }));
+    expect((await screen.findAllByText("Tìm paper kỹ hơn (tùy chọn)")).length).toBeGreaterThan(0);
+    await ui.click(await screen.findByRole("button", { name: "Thêm Asta" }));
     expect(await screen.findByRole("dialog", { name: "Thêm Asta" })).toBeInTheDocument();
   });
   it("has no settings row for other bands", async () => {

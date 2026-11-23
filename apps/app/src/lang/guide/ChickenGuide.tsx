@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../../state/auth";
 import { hasSeen, markSeen, resetSeen, REPLAY_EVENT } from "../../lib/tours";
 import { WALKERS, artFile, chickenName, subjectOf } from "../subjects";
-import { createGuide, ROAMING, type GuideHandle } from "./guide";
+import { createGuide, resetToured, ROAMING, type GuideHandle } from "./guide";
 import "../styles/guide.css";
 
 /** The picture of the guide chicken: the animated idle sprite where one exists, else the grown chicken's still. */
@@ -44,6 +44,7 @@ export function ChickenGuide({ screen, chicken = "toan" }: { screen: string; chi
     handle.current = g;
     const replay = () => {
       resetSeen(live.current.uid);
+      resetToured();
       markSeen(live.current.uid, tourKey(screen));
       setTimeout(() => g.startTour(), 250); // let a closing sheet go first
     };

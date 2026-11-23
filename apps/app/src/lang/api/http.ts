@@ -1,4 +1,4 @@
-import { request, qs } from "../../api/http";
+import { API_BASE, request, qs } from "../../api/http";
 import type { Chicken, FocusActive, FocusDone, LgApi, XpWeek, Market, ArenaPaper, ChatMessage, NotesSet, Village } from "./types";
 
 export const httpLg: LgApi = {
@@ -23,6 +23,15 @@ export const httpLg: LgApi = {
       return r && r.id ? r : null;
     } catch {
       return null;
+    }
+  },
+  focusPause: (token, id, agoSec = 0) => request<FocusActive>("POST", `/focus/${encodeURIComponent(id)}/pause`, { token, body: { ago_sec: Math.max(0, Math.min(10800, Math.round(agoSec))) } }),
+  focusResume: (token, id) => request<FocusActive>("POST", `/focus/${encodeURIComponent(id)}/resume`, { token }),
+  focusPauseOnLeave(token, id) {
+    try {
+      void fetch(`${API_BASE}/focus/${encodeURIComponent(id)}/pause`, { method: "POST", keepalive: true, headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` }, body: "{}" }).catch(() => undefined);
+    } catch {
+      /* best effort */
     }
   },
   listNotes: (token) => request<NotesSet[]>("GET", "/ask/notes", { token }),

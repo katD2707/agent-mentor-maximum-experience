@@ -1,4 +1,3 @@
-import { plainText } from "./text";
 import type { PAnswerState, PItem, PResult, PSession, StatementResult } from "../api/practice";
 
 /** Pure rules of the practice screens: answer encoding (CONTRACTS 10.9), result wording, the mock clock, resume. */
@@ -46,7 +45,7 @@ export function stepEncode(item: Pick<PItem, "type">, a: StepAnswer): string {
 
 /** An encoded tiles / pairs / order answer (or key) as a line a person can read. */
 export function stepText(item: Pick<PItem, "parts">, value: string | null | undefined): string {
-  const byId = new Map((item.parts ?? []).map((p) => [p.id, plainText(p.text)]));
+  const byId = new Map((item.parts ?? []).map((p) => [p.id, p.text]));
   const name = (id: string) => byId.get(id) ?? id;
   const a = stepDecode(value);
   if (a.gaps) return a.gaps.map((g) => (g ? name(g) : "…")).join(", ");

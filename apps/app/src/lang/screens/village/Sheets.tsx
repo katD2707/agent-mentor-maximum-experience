@@ -5,7 +5,6 @@ import { api, type Goal, type Lang, type Theme, type WeekPlan } from "../../../a
 import { useAuth } from "../../../state/auth";
 import { Icon } from "../../../components/Icon";
 import { UpdateRow } from "../../../components/UpdateRow";
-import { SettingsSourcesRow } from "../library/research/Sources";
 import { setLang } from "../../../i18n";
 import { isQuiet, quietCustom, quietUntil, type QuietPick } from "../../../lib/quiet";
 import { enableWebNotifications, isTauri, notifyState, type NotifyState } from "../../../lib/platform";
@@ -115,6 +114,9 @@ export function MarketSheet({ onClose, onTaken, owned }: { onClose(): void; onTa
 }
 
 // ---------------------------------------------------------------- Bảng tin
+/** "Khóa mới: <tên khóa>." reads like a label; the course title stays as it was written, the words around it are plain Vietnamese. */
+const newsLine = (vi: string): string => vi.replace(/^Khóa mới: /, "Có khóa mới: ");
+
 export function NewsSheet({ news, onClose }: { news: NewsItem[]; onClose(): void }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language === "en" ? "en" : "vi";
@@ -122,10 +124,10 @@ export function NewsSheet({ news, onClose }: { news: NewsItem[]; onClose(): void
     <Sheet id="lg-s-news" title={t("lg.place.news")} onClose={onClose}>
       <div className="lg-feed" aria-live="polite">
         {news.length === 0 && <p>{t("lg.news.empty")}</p>}
-        {news.map((n) => (
-          <p key={n.id}>
+        {news.map((n, i) => (
+          <p key={`${n.id ?? n.kind}-${i}`}>
             {n.chicken && <b>{chickenName(n.chicken, lang)}</b>}
-            <span>{lang === "en" ? n.text_en || n.text_vi : n.text_vi}</span>
+            <span>{lang === "en" ? n.text_en || n.text_vi : newsLine(n.text_vi)}</span>
           </p>
         ))}
       </div>
@@ -243,7 +245,6 @@ export function SettingsSheet({ onClose }: { onClose(): void }) {
     const id = setInterval(() => setNow(Date.now()), 30000);
     return () => clearInterval(id);
   }, []);
-  const gear = useRef<HTMLButtonElement>(null);
   if (!user) return null;
   const quiet = isQuiet(user.quiet_until, now);
   const swallow = (p: Promise<unknown>) => void p.catch(() => undefined);
@@ -293,7 +294,6 @@ export function SettingsSheet({ onClose }: { onClose(): void }) {
             ))}
           </span>
         </div>
-        <SettingsSourcesRow returnTo={gear} onOpen={onClose} />
         <div className="lg-srow sw">
           <span className="lg-slabel">{t("settings.reminders")}</span>
           <button
@@ -434,7 +434,7 @@ export function SettingsSheet({ onClose }: { onClose(): void }) {
 
 // ---------------------------------------------------------------- list view
 /** The same village as a plain list (keyboard, screen readers, small screens): chickens and places. */
-export function ListView({ village, uni, onMarket, onClose }: { village: Village; uni: boolean; onMarket(): void; onClose(): void }) {
+export function ListView({ village, library, onMarket, onClose }: { village: Village; library: boolean; onMarket(): void; onClose(): void }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language === "en" ? "en" : "vi";
   const speaker = village.speaker;
@@ -448,7 +448,7 @@ export function ListView({ village, uni, onMarket, onClose }: { village: Village
     { title: t("lg.market.title"), sub: t("lg.list.market"), run: onMarket },
     { to: "/phong-tu-hoc", title: t("lg.place.study"), sub: t("lg.list.study") },
     { to: "/tien-do", title: t("lg.list.progress"), sub: t("lg.list.progressSub") },
-    ...(uni ? [{ to: "/thu-vien", title: t("lg.place.library"), sub: t("lg.list.library") }] : []),
+    ...(library ? [{ to: "/thu-vien", title: t("lg.place.library"), sub: t("lg.list.library") }] : []),
   ];
   return (
     <aside className="lg-listv" id="lg-listv" aria-label={t("lg.list.aria")}>

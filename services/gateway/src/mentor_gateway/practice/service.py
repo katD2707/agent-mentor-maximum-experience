@@ -788,9 +788,15 @@ class PracticeService(MixedSessions, LanggaSessions):
             d["right"] += 1 if e and e["correct"] else 0
         for t, d in per.items():
             b, a = before.get(t), after.get(t)
-            d["mastery_before"] = round(b.mastery, 3) if b and b.mastery is not None else None
-            d["mastery_after"] = round(a.mastery, 3) if a and a.mastery is not None else None
-            d["label"] = a.label if a else bkt.LABEL_UNKNOWN
+            before_m = b.mastery if b and b.mastery is not None else None
+            after_m = a.mastery if a and a.mastery is not None else None
+            if after_m is not None and d["total"] and d["right"] * 2 < d["total"]:
+                # a mostly-wrong topic in this session never reads as an improvement nor as "Vững"
+                after_m = min(after_m, before_m if before_m is not None else d["right"] / d["total"], bkt.WEAK_BELOW - 0.01)
+            d["mastery_before"] = round(before_m, 3) if before_m is not None else None
+            d["mastery_after"] = round(after_m, 3) if after_m is not None else None
+            d["label"] = (bkt.TopicMastery(t, after_m, a.evidence).label if a and after_m is not None
+                          else a.label if a else bkt.LABEL_UNKNOWN)
         wrong = [{"position": rec["position"], "item_id": rec["doc"]["id"], "type": rec["doc"]["type"],
                   "chosen": answers[rec["position"]].answer}
                  for rec in sess.items if answers.get(rec["position"]) is not None

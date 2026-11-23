@@ -113,6 +113,8 @@ export interface PBoss {
   name_vi: string;
   name_en: string;
   art: string;
+  /** the chicken that fights it (an Arena paper's subject) */
+  chicken?: string;
   hp: number;
   damage: number;
   beaten: boolean;

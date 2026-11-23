@@ -36,7 +36,7 @@ mirrored in the app `src/lang/subjects.ts`). Taken from the mockups (`lg-01` mar
 | practice_right | +2 per right answer in a practice session | `<session>:<item>` |
 | fix_right | +3 per wrong answer fixed | `<session>:<item>` |
 | mock_submit | +40 when a course mock exam is submitted | `<session>` |
-| paper_submit | +40 when an arena paper is submitted | `<session>` |
+| paper_submit | +40 when an arena paper is submitted with at least half of it answered; once per paper per day | `<paper>:<YYYY-MM-DD>` |
 | boss_beaten | +50 when the arena score >= 5/10 (first time per paper) | `<paper>` |
 | focus | +1 per focus minute in the study room | `<focus_id>` |
 | focus_full | +5 more when the planned session is completed in full | `<focus_id>` |
@@ -106,11 +106,13 @@ Same endpoints as today. Additions: the course labels step (gv-03) edits `{chick
 ## 4. App structure
 - Routes (hash): `/` village (lg-01), `/chon-ga` (lg-02 first run), `/chuong/:chicken` (lg-03), `/khoa-hoc/:id/hoc` (lg-04),
   `/dau-truong` and `/dau-truong/:paper` (lg-05), `/phong-tu-hoc` (lg-06), `/kiem-tra/:courseId` (lg-07),
-  `/luyen-tap/:sessionId` (+`/ket-qua`, `/xem-lai`), `/tien-do` (lg-09), `/thu-vien` and `/thu-vien/paper/:id` (lg-10, uni).
+  `/luyen-tap/:sessionId` (+`/ket-qua`, `/xem-lai`), `/tien-do` (lg-09), `/thu-vien` and `/thu-vien/paper/:id` (lg-10; the papers are uni only, `/thu-vien` also holds the "Vở ghi" shelf of photo notes for grade 6 and up, little ones see a locked note).
   Old deep links (`/khoa-hoc/:id`, `/luyen-tap?notes=`, `/hoi-dap`, `/nghien-cuu...`) redirect to their new homes.
 - The chicken guide (`mockups/ga-guide.js/css`) replaces the Mực mascot.
 
 ## 5. As built (gateway, 2026-11-22): details and deviations
+
+- Arena submit XP (2026-11-23): `paper_submit` pays once per paper per day (ref `<paper>:<date>`) and only when at least half of the paper is answered; `boss_beaten` also needs that half. The report's `boss` carries `chicken`. A topic that was mostly wrong in the session never reports a better mastery than before nor the label "Vững".
 
 - **XP amounts** are those of section 1 (the approved lg-09 list). Constants live in `langga/xp.py` (`AMOUNTS`, `FOCUS_*`). Lesson
   XP is paid only for lessons touched by the progress call (earlier progress is not paid back); `lesson_perfect` needs at least one quiz
@@ -140,6 +142,10 @@ Same endpoints as today. Additions: the course labels step (gv-03) edits `{chick
   `min(minutes_done, planned, elapsed + 1 min)` XP (`focus`, +1 a minute) and `focus_full` +5 when that equals the planned minutes;
   the quiet cap is 120 focus XP a day; response `{xp, gained, minutes_done, daily_cap, chicken}`. `GET /focus/active` ->
   `{id, chicken, minutes, started_at, ends_at, remaining_sec, status}` or `null`.
+  `POST /focus/{id}/pause {ago_sec?}` stops the clock on the server (status `paused`, `paused_at`; `ago_sec` dates it back for a
+  tab that was hidden; no schema change: the pause moment lives in `finished_at`), `POST /focus/{id}/resume` shifts `started_at`/`ends_at`
+  forward by the paused time; both idempotent. A paused session finishes where its clock stands. The client pauses a hidden tab after a
+  short grace.
 - Chat: SSE `actions` data is `{actions: [{key, label_vi, label_en, deep_link}]}`; `delta` is `{text}`; the reply is also sent whole as
   `message {kind: "chat", text}`. Keys: practice, lesson, test, arena, study_room, chuong, progress (lesson/test only with an enrolled
   course in that chicken). Body also takes `action`/`problem_id` for Ask follow-ups. `GET /chat/{chicken}/history` -> list of

@@ -150,6 +150,8 @@ export interface TeacherApi {
   addMaterials(token: string, courseId: string, files: File[], replace?: string, onProgress?: UploadProgress): Promise<{ job_id: string }>;
   listCourses(token: string, since?: string): Promise<TeacherCourseSummary[]>;
   getCourse(token: string, courseId: string): Promise<TeacherCourseDetail>;
+  /** DELETE /courses/{id}: a course that was never published (a stuck or unwanted draft). A published one answers 409. */
+  deleteCourse(token: string, courseId: string): Promise<void>;
   chat(token: string, courseId: string, text: string): Promise<ChatMessage[]>;
   putOutline(token: string, courseId: string, ops: OutlineOp[]): Promise<Outline>;
   build(token: string, courseId: string): Promise<void>;
@@ -187,4 +189,8 @@ export interface CourseLabelsValues {
 }
 export interface CourseLabelsInfo extends CourseLabelsValues {
   suggested?: CourseLabelsValues;
+  /** what the teacher saved (or what students see once published); null until set */
+  chicken?: string | null;
+  band?: string | null;
+  grade?: number | null;
 }

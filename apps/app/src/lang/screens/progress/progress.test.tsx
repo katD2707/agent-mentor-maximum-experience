@@ -39,4 +39,14 @@ describe("Tiến độ page (lg-09)", () => {
     for (const l of course) expect(l).toHaveAttribute("href", "/khoa-hoc/vat-li-11-dien-truong");
     expect(screen.getByRole("link", { name: "Về làng" })).toHaveAttribute("href", "/");
   });
+
+  it("the growth chips follow the real rule (1 / 2-4 / 5-9 / 10+) and the rules board lists notes review and the daily study cap", async () => {
+    localStorage.setItem("mentor.tour.seen.u-hs", JSON.stringify(["today", "progress"]));
+    seed(SCHOOL);
+    open("/tien-do");
+    const lv = await screen.findByRole("group", { name: "Cấp và giai đoạn" });
+    expect(Array.from(lv.querySelectorAll("span")).map((x) => x.textContent)).toEqual(["100Kinh nghiệm mỗi cấp", "1Gà con", "2–4Gà choai", "5–9Trưởng thành", "10+Cao thủ"]);
+    expect(screen.getByText(/Ôn lại ghi chú ảnh/)).toBeInTheDocument();
+    expect(screen.getByText(/tối đa 120 kinh nghiệm mỗi ngày/)).toBeInTheDocument();
+  });
 });

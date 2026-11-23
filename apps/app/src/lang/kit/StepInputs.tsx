@@ -1,6 +1,8 @@
-import { useMemo, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import type { QuizPart } from "../../api";
+import { renderMdGaps } from "../../lib/md";
 import { shuffled, stemPieces } from "../../lib/quiz";
 import "../styles/kit.css";
 import { Md } from "./blocks";
@@ -12,6 +14,40 @@ import { Md } from "./blocks";
 export type Tone = "right" | "wrong" | null;
 
 const text = (p: QuizPart) => <Md md={p.text} className="inline" />;
+
+const DOLLAR = /(?<!\\)\$/g;
+
+/** True when some blank of the stem sits inside a $...$ formula (it cannot be cut into pieces: the formula would break). */
+export function gapInMath(stem: string): boolean {
+  let open = false;
+  const pieces = stemPieces(stem);
+  for (let i = 0; i < pieces.length - 1; i++) {
+    if ((pieces[i].match(DOLLAR) ?? []).length % 2) open = !open;
+    if (open) return true;
+  }
+  return false;
+}
+
+/** The stem as one Markdown/KaTeX text with each blank an empty box (`data-gap`) that gets the tile through a portal. */
+function GapStem({ stem, slot }: { stem: string; slot(i: number): ReactNode }) {
+  const html = useMemo(() => renderMdGaps(stem), [stem]);
+  const box = useRef<HTMLDivElement>(null);
+  const [hosts, setHosts] = useState<HTMLElement[]>([]);
+  useLayoutEffect(() => {
+    const els = [...(box.current?.querySelectorAll<HTMLElement>("[data-gap]") ?? [])].sort((a, b) => Number(a.dataset.gap) - Number(b.dataset.gap));
+    for (const e of els) {
+      e.textContent = "";
+      e.classList.add("gap-host");
+    }
+    setHosts(els);
+  }, [html]);
+  return (
+    <>
+      <div className="md inline" ref={box} dangerouslySetInnerHTML={{ __html: html }} />
+      {hosts.map((h, i) => createPortal(slot(i), h))}
+    </>
+  );
+}
 
 /** FILL_TILES: the stem with its gaps, and the tile bank below. `value` has one entry per gap (null = empty). */
 export function TilesInput({ stem, parts, seed, value, onChange, locked, tone }: { stem: string; parts: QuizPart[]; seed: string; value: (string | null)[]; onChange(v: (string | null)[]): void; locked: boolean; tone?: Tone }) {
@@ -29,22 +65,28 @@ export function TilesInput({ stem, parts, seed, value, onChange, locked, tone }:
     onChange(cells.map((c, i) => (i === at ? id : c)));
   };
   const take = (i: number) => !locked && onChange(cells.map((c, k) => (k === i ? null : c)));
+  const inMath = useMemo(() => gapInMath(stem), [stem]);
+  const slot = (i: number) =>
+    cells[i] ? (
+      <button type="button" className="tile placed" disabled={locked} aria-label={t("lesson.takeBack", { text: byId.get(cells[i]!)?.text ?? "" })} onClick={() => take(i)}>
+        {text(byId.get(cells[i]!)!)}
+      </button>
+    ) : (
+      <span className="gap" role="img" aria-label={t("lesson.gap", { n: i + 1 })} />
+    );
   return (
     <>
       <div className={`slots ${tone ?? ""}`}>
-        {pieces.map((piece, i) => (
-          <span key={i} className="slot-piece">
-            {piece.trim() && <Md md={piece} className="inline" />}
-            {i < gaps &&
-              (cells[i] ? (
-                <button type="button" className="tile placed" disabled={locked} aria-label={t("lesson.takeBack", { text: byId.get(cells[i]!)?.text ?? "" })} onClick={() => take(i)}>
-                  {text(byId.get(cells[i]!)!)}
-                </button>
-              ) : (
-                <span className="gap" role="img" aria-label={t("lesson.gap", { n: i + 1 })} />
-              ))}
-          </span>
-        ))}
+        {inMath ? (
+          <GapStem stem={stem} slot={(i) => slot(i)} />
+        ) : (
+          pieces.map((piece, i) => (
+            <span key={i} className="slot-piece">
+              {piece.trim() && <Md md={piece} className="inline" />}
+              {i < gaps && slot(i)}
+            </span>
+          ))
+        )}
       </div>
       <div className="bank" role="group" aria-label={t("lesson.tiles")}>
         {bank.map((p) => (

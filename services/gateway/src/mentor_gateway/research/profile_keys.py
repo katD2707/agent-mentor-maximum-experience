@@ -11,6 +11,7 @@ from mentor_gateway.db import User
 from mentor_gateway.planner.text import clean, unaccent
 from mentor_gateway.research import milestones, prompts
 from mentor_gateway.research.base import ModelUnavailable, ResearchBase, fail, iso
+from mentor_gateway.research.generic import GENERIC_KEYWORDS, specific_keywords  # noqa: F401 (re-exported)
 from mentor_gateway.research.sources import AstaSource, S2Client, SourceError  # noqa: F401 (S2Client/AstaSource: type use in tests)
 from mentor_gateway.research.tables import ResearchProfileRow
 
@@ -22,7 +23,7 @@ def title_keywords(title: str) -> list[str]:
     """No model: keywords from the title words (lower case, 4+ letters, no filler), at most 5."""
     words = []
     for w in re.findall(r"[^\W\d_]{4,}", title.lower()):
-        if w not in _STOP and w not in words:
+        if w not in _STOP and w not in GENERIC_KEYWORDS and w not in words:
             words.append(w)
     return [w[:40] for w in words[:5]] or [title.strip()[:40]]
 
@@ -41,7 +42,7 @@ class ProfileMixin(ResearchBase):
         row = self.profile_row(user_id)
         if row is None:
             return ResearchProfile()
-        return ResearchProfile(title=row.title or "", question=row.question or "", keywords=list(row.keywords or []),
+        return ResearchProfile(title=row.title or "", question=row.question or "", keywords=specific_keywords(list(row.keywords or [])),
                                advisor_name=row.advisor_name or "", asta_connected=bool(row.asta_key_enc),
                                s2_connected=bool(row.s2_key_enc), updated_at=iso(row.updated_at))
 

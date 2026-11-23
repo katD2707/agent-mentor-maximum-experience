@@ -21,7 +21,7 @@ const SettingsSheet = lazy(() => import("./village/Sheets").then((m) => ({ defau
 const ListView = lazy(() => import("./village/Sheets").then((m) => ({ default: m.ListView })));
 
 const base = import.meta.env.BASE_URL;
-const MAX_ON_MAP = 8;
+// where the first chickens like to stand (the rest find an open spot, see VillageEngine.seat)
 const SEATS: Pt[] = [[-0.6, 7.2], [4.6, 7.6], [2.8, 3.6], [-3.4, 6.2], [7.2, 5.4], [-5.8, 8.4], [1.4, 9.4], [6.4, 9.0]];
 
 const FireIcon = () => (
@@ -45,6 +45,7 @@ export function Village() {
   const [taken, setTaken] = useState<string[]>([]);
   const engine = useRef<VillageEngine | null>(null);
   const els = useRef(new Map<string, HTMLElement>());
+  const tags = useRef(new Map<string, HTMLElement>());
   const refs = {
     scene: useRef<HTMLElement>(null),
     world: useRef<HTMLDivElement>(null),
@@ -54,12 +55,14 @@ export function Village() {
     steam: useRef<HTMLDivElement>(null),
   };
   const opener = useRef<HTMLElement | null>(null);
-  const uni = user?.age_band === "uni";
+  // the library holds the photo-notes shelf from grade 6 up; its paper reading stays university-only inside
+  const library = !!user && user.age_band !== "g1_5";
   const kidKey = user?.avatar ?? "nam";
   const kidName = user?.display_name ?? "";
-  const chickens = (village?.chickens ?? []).slice(0, MAX_ON_MAP);
+  const chickens = village?.chickens ?? [];
   const speakerId = village?.speaker?.chicken ?? chickens[0]?.id ?? null;
   const ids = chickens.map((c) => c.id).join(",");
+  const looks = chickens.map((c) => `${c.id}:${c.stage}`).join(",");
 
   useEffect(() => {
     let alive = true;
@@ -95,10 +98,10 @@ export function Village() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, data]);
 
-  // readable at any size: name tags apart, the market icon clear of the signs, no sign cut by the edge
+  // readable at any size: no sign cut by the edge, the student's name tag never behind a canopy
   useEffect(() => {
     if (!ready || !refs.world.current || !refs.scene.current || typeof getComputedStyle !== "function") return;
-    return keepVillageReadable({ world: refs.world.current, scene: refs.scene.current, market: document.getElementById("lg-market") });
+    return keepVillageReadable({ world: refs.world.current, scene: refs.scene.current });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, data]);
 
@@ -107,18 +110,24 @@ export function Village() {
     const e = engine.current;
     if (!e || !ready) return;
     const kidEl = els.current.get("kid");
-    if (kidEl && !e.actors.kid) e.addActor(kidEl, { key: "kid", id: kidKey, kind: "kid", pos: [3.4, 6.4], still: `${base}ga/hs-${kidKey}.png` });
+    if (kidEl && !e.actors.kid) e.addActor(kidEl, { key: "kid", id: kidKey, kind: "kid", pos: [3.4, 6.4], tag: tags.current.get("kid"), still: `${base}ga/hs-${kidKey}.png` });
     else e.setActorId("kid", kidKey);
     chickens.forEach((c, i) => {
       const el = els.current.get(c.id);
       const stay = c.id === speakerId;
-      if (el && !e.actors[c.id]) e.addActor(el, { key: c.id, id: c.id, kind: "ga", pos: stay ? SEATS[0] : SEATS[(i + 1) % SEATS.length], stay, head: WALKERS.has(c.id) && c.id !== "toan" ? 2.6 : 3.0, still: `${base}ga/${artFile(c.art, c.stage)}` });
-      else e.setStay(c.id, stay);
+      const still = `${base}ga/${artFile(c.art, c.stage)}`;
+      // the size of a walking sheet is fixed; a chick or a young chicken is a still drawn at the size of its stage
+      const head = c.stage >= 3 && WALKERS.has(c.id) ? (c.id === "toan" ? 3.0 : 2.6) : undefined;
+      if (el && !e.actors[c.id]) e.addActor(el, { key: c.id, id: c.id, kind: "ga", pos: e.seat(stay ? SEATS[0] : SEATS[(i + 1) % SEATS.length], i), stay, stage: c.stage, head, still, tag: tags.current.get(c.id) });
+      else {
+        e.setStay(c.id, stay);
+        e.setLook(c.id, still, c.stage, head);
+      }
     });
     for (const k of Object.keys(e.actors)) if (k !== "kid" && !ids.split(",").includes(k)) e.removeActor(k);
     e.placeSigns();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ready, ids, speakerId, kidKey]);
+  }, [ready, ids, looks, speakerId, kidKey]);
 
   // a level-up: the chicken jumps, the student waves, a line on the board
   useEffect(() => {
@@ -145,11 +154,23 @@ export function Village() {
     setTimeout(() => opener.current?.focus?.({ preventScroll: true }), 0);
   }, []);
 
-  // places: the student walks to the door, the view leans in, then the page opens
-  const go = async (sign: string, to: string) => {
-    await engine.current?.goPlace(sign);
-    nav(to, { state: { back: "/" } });
+  // places: the student runs to the door (a moment at most; a second tap skips it), then the place opens
+  const going = useRef(false);
+  const go = async (sign: string, run: () => void, lean = true) => {
+    const en = engine.current;
+    if (going.current) {
+      en?.skipWalk();
+      return;
+    }
+    going.current = true;
+    try {
+      await en?.goPlace(sign, lean);
+    } finally {
+      going.current = false;
+    }
+    run();
   };
+  const goTo = (sign: string, to: string) => void go(sign, () => nav(to, { state: { back: "/" } }));
   const tapChicken = async (c: Chicken) => {
     await engine.current?.hop(c.id);
     nav(`/chuong/${c.id}`, { state: { back: "/" } });
@@ -167,6 +188,10 @@ export function Village() {
   const setEl = (key: string) => (el: HTMLElement | null) => {
     if (el) els.current.set(key, el);
     else els.current.delete(key);
+  };
+  const setTag = (key: string) => (el: HTMLElement | null) => {
+    if (el) tags.current.set(key, el);
+    else tags.current.delete(key);
   };
 
   if (status === "ready" && village && village.chickens.length === 0) return <Navigate to="/chon-ga" replace />;
@@ -195,6 +220,12 @@ export function Village() {
 
   return (
     <div className="lg lg-village" data-age={user?.age_band ?? "g10_12"} data-kid={kidKey}>
+      {!ready && (
+        <div className="lg-splash" role="status">
+          <img src={`${base}ga/icon-ga.png`} alt="" width="96" height="96" />
+          <span>{t("lg.opening")}</span>
+        </div>
+      )}
       <main className="lg-scene" id="lg-scene" ref={refs.scene} aria-label={t("lg.village")} onClick={tapGround}>
         <div className="lg-world" ref={refs.world} style={{ ["--ratio" as string]: 3.2 }}>
           <div className="lg-sky" aria-hidden="true">
@@ -216,15 +247,15 @@ export function Village() {
           </div>
           <div ref={refs.occ} style={{ display: "contents" }} aria-hidden="true" />
 
-          <button className="lg-place" type="button" data-sign="arena" onClick={() => void go("arena", "/dau-truong")}>
+          <button className="lg-place" type="button" data-sign="arena" onClick={() => goTo("arena", "/dau-truong")}>
             <span className="lg-sign">{t("lg.place.arena")}</span>
           </button>
-          {uni && (
-            <button className="lg-place" type="button" data-sign="library" onClick={() => void go("library", "/thu-vien")}>
+          {library && (
+            <button className="lg-place" type="button" data-sign="library" onClick={() => goTo("library", "/thu-vien")}>
               <span className="lg-sign">{t("lg.place.library")}</span>
             </button>
           )}
-          <button className="lg-place" type="button" data-sign="spring" onClick={() => void go("spring", "/phong-tu-hoc")}>
+          <button className="lg-place" type="button" data-sign="spring" onClick={() => goTo("spring", "/phong-tu-hoc")}>
             <span className="lg-sign">
               {t("lg.place.study1")}
               <br />
@@ -237,43 +268,31 @@ export function Village() {
               {newsN > 0 && <span className="dot" aria-hidden="true" />}
             </span>
           </button>
+          <button className="lg-place lg-market" id="lg-market" type="button" data-sign="market" aria-label={t("lg.market.aria")} onClick={(e) => {
+              const from = e.currentTarget;
+              void go("market", () => open("market", from), false);
+            }}
+          >
+            <span className="lg-sign">{t("lg.market.title")}</span>
+          </button>
           <span className="lg-burnt" data-sign="gate" aria-hidden="true">
             {t("lg.village")}
           </span>
 
           {village && (
-            <div className="lg-actor is-kid" ref={setEl("kid")} aria-label={t("lg.meAria")}>
+            <div className="lg-actor is-kid" ref={setEl("kid")} aria-label={t("lg.meAria")} data-id="kid">
               <span className="lg-shadow" />
               <span className="lg-spr" />
-              <span className="lg-plate">
-                <span>{kidName}</span>
-                {streak > 0 && (
-                  <span className="fire">
-                    <FireIcon />
-                    {streak}
-                  </span>
-                )}
-              </span>
             </div>
           )}
           {chickens.map((c) => {
             const name = lang === "en" ? c.name_en : c.name_vi;
             const speaker = c.id === speakerId;
             return (
-              <div key={c.id} className={"lg-actor ga" + (speaker ? " speaker" : "")} ref={setEl(c.id)}>
+              <div key={c.id} className={"lg-actor ga" + (speaker ? " speaker" : "")} ref={setEl(c.id)} data-id={c.id}>
                 <span className="lg-shadow" />
                 <span className="lg-spr" />
                 <button className="lg-hit" type="button" aria-label={t("lg.chickenAria", { name, level: c.level, done: c.done_today ? t("lg.doneAria") : "" })} onClick={() => void tapChicken(c)} />
-                <span className="lg-plate">
-                  <span className="lv">{c.level}</span>
-                  <Crown stage={c.stage} />
-                  {name}
-                  {c.done_today && (
-                    <span className="ok">
-                      ✓ {t("lg.done")}
-                    </span>
-                  )}
-                </span>
                 {speaker && speakerLine && (
                   <span className="lg-say" id="lg-say" role="note">
                     <span>{speakerLine}</span>
@@ -282,6 +301,32 @@ export function Village() {
               </div>
             );
           })}
+          {/* the name tags: one layer over the scenery, each hanging under its own actor */}
+          <div className="lg-tags" aria-hidden="true">
+            {village && (
+              <span className="lg-plate is-kid" ref={setTag("kid")} data-for="kid">
+                <span>{kidName}</span>
+                {streak > 0 && (
+                  <span className="fire">
+                    <FireIcon />
+                    {streak}
+                  </span>
+                )}
+              </span>
+            )}
+            {chickens.map((c) => (
+              <span key={c.id} className={"lg-plate ga" + (c.id === speakerId ? " speaker" : "")} ref={setTag(c.id)} data-for={c.id}>
+                <span className="lv">{c.level}</span>
+                <Crown stage={c.stage} />
+                <span className="nm">{lang === "en" ? c.name_en : c.name_vi}</span>
+                {c.done_today && (
+                  <span className="ok">
+                    ✓ {t("lg.done")}
+                  </span>
+                )}
+              </span>
+            ))}
+          </div>
         </div>
       </main>
 
@@ -312,25 +357,13 @@ export function Village() {
           <Icon name="gear" />
         </button>
       </div>
-      <button className="lg-hud lg-mk" id="lg-market" type="button" aria-label={t("lg.market.aria")} onClick={(e) => open("market", e.currentTarget)}>
-        <span className="art">
-          <img src={`${base}ga/cho-icon.webp`} alt="" width="88" height="88" />
-          <i className="tw a" aria-hidden="true" />
-          <i className="tw b" aria-hidden="true" />
-          <span className="plus" aria-hidden="true">
-            +
-          </span>
-        </span>
-        <b>{t("lg.market.title")}</b>
-      </button>
-
       {village && <Tray village={village} openSheet={(s) => open(s)} onChanged={() => void refresh()} />}
 
       <Suspense fallback={null}>
         {list && village && (
           <ListView
             village={village}
-            uni={uni}
+            library={library}
             onMarket={() => {
               setList(false);
               open("market");
@@ -359,7 +392,7 @@ export function Village() {
           {toast}
         </div>
       )}
-      <ChickenGuide screen="village" chicken={speakerId ?? "toan"} />
+      {village && <ChickenGuide screen="village" chicken={speakerId ?? "toan"} />}
     </div>
   );
 }

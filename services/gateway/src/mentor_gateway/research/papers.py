@@ -99,6 +99,21 @@ async def search_arxiv(query: str, max_results: int = 5, years_limit: int | None
     return _dedupe([_paper(r) for r in rows])
 
 
+class ArxivUnavailable(Exception):
+    """arXiv did not answer (timeout, rate limit, outage): different from a search that found nothing."""
+
+
+async def search_arxiv_strict(query: str, max_results: int = 5, years_limit: int | None = 3,
+                              sort: Literal["relevance", "date"] = "relevance", *,
+                              searcher: ArxivSearchTool | None = None) -> list[Paper]:
+    """Like `search_arxiv`, but an outage raises `ArxivUnavailable` instead of looking like "no results"."""
+    tool = searcher or ArxivSearchTool()
+    rows = await tool.search_papers(query=query, max_results=max_results, years_limit=years_limit, sort_by=sort)
+    if not rows and getattr(tool, "last_error", None):
+        raise ArxivUnavailable(tool.last_error)
+    return _dedupe([_paper(r) for r in rows])
+
+
 def _llm_call(llm: ChatLLM | None):
     if llm is None:
         async def _none(system: str, user: str) -> str:

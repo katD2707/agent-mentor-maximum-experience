@@ -1,7 +1,7 @@
 """Teacher labels (gv-04): `PUT /teacher/courses/{id}/versions/{v}/labels`."""
 
 from gateway_fakes import login
-from test_gw_teacher import built_course, confirm, runner, store  # noqa: F401  (fixtures and helpers of the teacher tests)
+from test_gw_teacher import built_course, confirm, runner, store, upload  # noqa: F401  (fixtures and helpers of the teacher tests)
 
 L = "/api/teacher/courses/{cid}/versions/{v}/labels"
 
@@ -60,7 +60,7 @@ def test_labels_are_teacher_only(client, teacher, runner, store):
 def test_goals_language_topics_labels(client, teacher, runner, store):
     cid = built_course(client, runner, store, teacher["id"])
     det = client.get(f"/api/teacher/courses/{cid}").json()["course"]["labels"]
-    assert set(det) == {"goals", "language", "topics", "suggested"} and det["topics"] == det["suggested"]["topics"]
+    assert set(det) == {"goals", "language", "topics", "suggested", "chicken", "band", "grade"} and det["topics"] == det["suggested"]["topics"]
     assert put(client, cid, goals=["a"] * 7).status_code == 422
     assert put(client, cid, topics=["t"] * 9).status_code == 422
     assert put(client, cid, language="fr").status_code == 422
@@ -77,3 +77,29 @@ def test_goals_language_topics_labels(client, teacher, runner, store):
     assert e.outcomes == ["Hiểu lực"] and e.language == "en" and e.topics == ["Lực", "Chuyển động"]
     assert put(client, cid, topics=["Mới"]).status_code == 200
     assert next(e for e in store.load_catalog().courses if e.id == cid).topics == ["Mới"]
+
+
+def test_saved_chicken_band_grade_come_back_in_the_detail(client, teacher, runner, store):
+    cid = built_course(client, runner, store, teacher["id"])
+    ok = "kn" if store.load_meta(cid).age_band != "uni" else "daicuong"
+    assert put(client, cid, chicken=ok, level=7).status_code == 200
+    lab = client.get(f"/api/teacher/courses/{cid}").json()["course"]["labels"]
+    assert lab["chicken"] == ok and lab["grade"] == 7
+    confirm(client, cid, 1, "basic")
+    assert client.post(f"/api/teacher/courses/{cid}/versions/1/publish").status_code == 200
+    lab = client.get(f"/api/teacher/courses/{cid}").json()["course"]["labels"]
+    assert lab["chicken"] == ok and lab["grade"] == 7 and lab["band"]
+
+
+def test_a_teacher_deletes_a_draft_but_not_a_published_course(client, teacher, runner, store):
+    first = upload(client, "a.jpg")
+    cid = first["course_id"]
+    r = client.delete(f"/api/teacher/courses/{cid}")
+    assert r.status_code == 204, r.text
+    assert client.get(f"/api/teacher/courses/{cid}").status_code == 404
+    assert cid not in [c["id"] for c in client.get("/api/teacher/courses").json()]
+    pub = built_course(client, runner, store, teacher["id"])
+    confirm(client, pub, 1, "basic")
+    assert client.post(f"/api/teacher/courses/{pub}/versions/1/publish").status_code == 200
+    r = client.delete(f"/api/teacher/courses/{pub}")
+    assert r.status_code == 409 and r.json()["error"] == "published"

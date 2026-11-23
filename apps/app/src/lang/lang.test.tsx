@@ -94,7 +94,8 @@ describe("tray: what a typed line means", () => {
     expect(routeText("cho em đề thật")).toBe("mock");
     expect(routeText("cho em luyện tập")).toBe("practice");
     expect(routeText("em muốn được 8 điểm Toán")).toBe("goal");
-    expect(routeText("cộng hai phân số thế nào")).toBe("help");
+    expect(routeText("cộng hai phân số thế nào")).toBe("chat"); // a subject question, not app help
+    expect(routeText("đề thật ở đâu")).toBe("help");
     expect(routeText("1 + 1 bằng mấy")).toBe("chat");
     expect(routeText("chụp vở", true)).toBe("chat"); // the little ones have no notes
     expect(routeText("đề thật", true)).toBe("chat");
@@ -164,13 +165,14 @@ beforeEach(async () => {
 afterEach(() => vi.restoreAllMocks());
 
 describe("login", () => {
-  it("asks for a role first, then shows the same errors as before; no Mực", async () => {
+  it("student is picked already; empty boxes are asked for, not sent; then the same errors as before; no Mực", async () => {
     localStorage.setItem("mentor.lang", "vi");
     const ui = userEvent.setup();
     open();
-    await ui.click(await screen.findByRole("button", { name: "Đăng nhập" }));
-    expect(await screen.findByText("Chọn vai trò.")).toBeInTheDocument();
-    await ui.click(screen.getByRole("radio", { name: "Học sinh" }));
+    expect(await screen.findByRole("radio", { name: "Học sinh" })).toBeChecked();
+    await ui.click(screen.getByRole("button", { name: "Đăng nhập" }));
+    expect(await screen.findByText("Điền tài khoản và mật khẩu nhé.")).toBeInTheDocument();
+    expect(screen.queryByText("Sai tài khoản hoặc mật khẩu.")).toBeNull();
     await ui.type(screen.getByLabelText("Tài khoản"), "hocsinh");
     await ui.type(screen.getByLabelText("Mật khẩu"), "sai");
     await ui.click(screen.getByRole("button", { name: "Đăng nhập" }));
@@ -236,7 +238,7 @@ describe("village: the chicken speaks first", () => {
     expect(await screen.findByRole("button", { name: /Gà Toán, cấp 1/ })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Đấu trường" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Bảng tin/ })).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Thư viện" })).toBeNull(); // university only
+    expect(screen.getByRole("button", { name: "Thư viện" })).toBeInTheDocument(); // grade 6 and up: the notes shelf
     expect(document.querySelector("mentor-mascot")).toBeNull();
     expect(document.querySelector(".cg")).not.toBeNull();
   });
@@ -269,7 +271,7 @@ describe("village: the chicken speaks first", () => {
     await ui.click(await within(log).findByRole("button", { name: "Việc khác" }));
     expect(await within(log).findByText(/Hôm nay còn:/)).toBeInTheDocument();
     expect(await within(log).findByRole("button", { name: /5 câu ôn/ })).toBeInTheDocument();
-    expect(within(log).getByRole("link", { name: "Đấu trường" })).toHaveAttribute("href", "/dau-truong"); // mock exams start in the arena only
+    expect(within(log).queryByRole("link", { name: "Đấu trường" })).toBeNull(); // the arena has one door: its sign on the map
     expect(within(log).getByRole("button", { name: "Chụp vở" })).toBeInTheDocument();
   });
 
@@ -292,7 +294,8 @@ describe("village: the chicken speaks first", () => {
     open();
     const log = await thread();
     await ui.type(screen.getByRole("textbox", { name: "Nhắn cho gà" }), "cho em đề thi thử{Enter}");
-    expect(await within(log).findByRole("link", { name: "Đấu trường" })).toHaveAttribute("href", "/dau-truong");
+    expect(await within(log).findByText(/Đề thi thật và thi thử ở Đấu trường/)).toBeInTheDocument(); // words only: the map sign is the one way in
+    expect(within(log).queryByRole("link", { name: "Đấu trường" })).toBeNull();
   });
 
   it("the box: app questions get a local answer, practice offers a session, goals are saved, the rest goes to the chicken", async () => {
@@ -320,7 +323,8 @@ describe("village: the chicken speaks first", () => {
     await ui.keyboard("{Escape}");
 
     await ui.type(box, "xin chào gà{Enter}");
-    expect(await within(log).findByText(/Gà Toán đây! Em hỏi: "xin chào gà"/)).toBeInTheDocument(); // streamed from /chat/toan
+    // the bubble re-renders its Markdown when the stream ends, so wait on the text, not on one node
+    await waitFor(() => expect(within(log).getByText(/Gà Toán đây! Em hỏi: "xin chào gà"/)).toBeInTheDocument()); // streamed from /chat/toan
     expect(await within(log).findByRole("link", { name: "Luyện tập" })).toHaveAttribute("href", "/luyen-tap"); // its action
   });
 
@@ -428,7 +432,7 @@ describe("village: sheets", () => {
     open();
     await ui.click(await screen.findByRole("button", { name: "Cài đặt" }));
     const s = await screen.findByRole("dialog", { name: "Cài đặt" });
-    for (const label of ["Năm sinh", "Ngôn ngữ", "Nền", "Nhắc học", "Tạm im lặng", "Hướng dẫn của gà"]) expect(within(s).getByText(label)).toBeInTheDocument();
+    for (const label of ["Năm sinh", "Ngôn ngữ", "Giao diện", "Nhắc học", "Tạm im lặng", "Hướng dẫn của gà"]) expect(within(s).getByText(label)).toBeInTheDocument();
     expect(within(s).getByRole("switch", { name: "Nhắc học" })).toBeChecked();
     expect(within(s).getByRole("button", { name: "Xem lại từ đầu" })).toBeInTheDocument();
     await ui.click(within(s).getByRole("button", { name: "English" }));
@@ -483,7 +487,8 @@ describe("tray: a slow or broken chicken", () => {
     await ui.type(screen.getByRole("textbox", { name: "Nhắn cho gà" }), "xin chào gà{Enter}");
     expect(await within(log).findByText("Gà chưa trả lời được. Thử lại nhé.")).toBeInTheDocument();
     await ui.click(within(log).getByRole("button", { name: "Thử lại" }));
-    expect(await within(log).findByText(/Gà Toán đây! Em hỏi: "xin chào gà"/)).toBeInTheDocument();
+    // the bubble re-renders its Markdown when the stream ends, so wait on the text, not on one node
+    await waitFor(() => expect(within(log).getByText(/Gà Toán đây! Em hỏi: "xin chào gà"/)).toBeInTheDocument());
     expect(within(log).queryByRole("button", { name: "Thử lại" })).toBeNull();
   });
 

@@ -49,6 +49,9 @@ export const httpTeacherApi: TeacherApi = {
   addMaterials: (token, id, files, replace, onProgress) => postForm(`${P}/courses/${enc(id)}/materials`, token, formOf(files, { replace }), onProgress),
   listCourses: (token, since) => request<TeacherCourseSummary[]>("GET", `${P}/courses${qs({ since })}`, { token }),
   getCourse: (token, id) => request<TeacherCourseDetail>("GET", `${P}/courses/${enc(id)}`, { token }),
+  async deleteCourse(token, id) {
+    await request("DELETE", `${P}/courses/${enc(id)}`, { token });
+  },
   chat: (token, id, text) => request<ChatMessage[]>("POST", `${P}/courses/${enc(id)}/chat`, { token, body: { text } }),
   putOutline: (token, id, ops) => request<Outline>("PUT", `${P}/courses/${enc(id)}/outline`, { token, body: { ops } }),
   async build(token, id) {

@@ -79,6 +79,6 @@ describe("mock practice banks", () => {
     expect(await stem("g1_5", "vi")).toBe("Bao nhiêu quả táo trong 2 + 3?");
     expect(await stem("g6_9", "en")).toBe("Which fraction is the largest?");
     expect(await stem("g10_12", "vi")).toContain("Cấp số cộng");
-    expect(await stem("uni", "vi")).toContain("Cấp số cộng");
+    expect(await stem("uni", "vi")).toContain("Tiên nghiệm"); // the university bank (Bayes), not the school one
   });
 });

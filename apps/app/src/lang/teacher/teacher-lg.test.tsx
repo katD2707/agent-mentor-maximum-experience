@@ -21,6 +21,15 @@ describe("labels (pure)", () => {
     const saved = guessLabels({ title: "Hệ điều hành", age_band: "uni", versions: [{ version: 1, status: "draft", students: 0, labels: { chicken: "khmt", band: "uni", grade: 2 }, level_confirmed: "advanced" }] }, 1);
     expect(saved).toEqual({ bac: "dh", chicken: "khmt", grade: 2, difficulty: "advanced" });
   });
+  it("the gateway's saved chicken/band/grade and a published difficulty come back", () => {
+    const base = { title: "Vật lí 11: Điện trường", subject: "physics", age_band: "g10_12", level: "advanced" as const, saved: { chicken: "hoa", band: "g10_12", grade: 11 } };
+    const pub = [{ version: 1, status: "published" as const, students: 1 }];
+    expect(guessLabels({ ...base, versions: pub }, 1)).toEqual({ bac: "pt", chicken: "hoa", grade: 11, difficulty: "advanced" });
+    // saved labels belong to the working version only: an older published version is not overridden by a newer draft's labels
+    const both = [...pub, { version: 2, status: "draft" as const, students: 0 }];
+    expect(guessLabels({ ...base, versions: both }, 1).chicken).toBe("li");
+    expect(guessLabels({ ...base, versions: both }, 2).chicken).toBe("hoa");
+  });
   it("what it cannot decide stays empty and blocks Continue", () => {
     const g = guessLabels({ title: "Xác suất thống kê: Suy luận Bayes" }, null);
     expect(g.chicken).toBeNull();
@@ -71,10 +80,10 @@ describe("labels and publish gating (mock)", () => {
     vi.restoreAllMocks();
   });
 
-  it("the Nhãn step is step 3 with Mentor's guess filled in; Continue is the one action", async () => {
+  it("the Nhãn step is step 3 with Mentor's guess filled in; Lưu is the one action", async () => {
     teacherApp("/khoa/toan-1-dem-tao/nhan?v=1");
     expect(await screen.findByRole("heading", { name: "Toán 1: Các số đến 10" })).toBeInTheDocument();
-    await screen.findByRole("button", { name: "Tiếp tục" });
+    await screen.findByRole("button", { name: "Lưu" });
     const steps = screen.getByRole("navigation", { name: "Các bước" });
     expect(within(steps).getAllByRole("link").map((a) => a.getAttribute("aria-label"))).toEqual(["Gửi", "Cấu trúc", "Nhãn", "Duyệt"]);
     expect(within(steps).getByRole("link", { name: "Nhãn" })).toHaveAttribute("aria-current", "step");
@@ -83,19 +92,19 @@ describe("labels and publish gating (mock)", () => {
     expect(screen.getByRole("radio", { name: /Cơ bản/ })).toHaveAttribute("aria-checked", "true");
     expect(screen.getAllByText("Mentor điền").length).toBe(4);
     expect(screen.getByText("Gà Toán")).toBeInTheDocument(); // the preview: where students will find it
-    expect(screen.getByRole("button", { name: "Tiếp tục" })).not.toHaveAttribute("aria-disabled");
+    expect(screen.getByRole("button", { name: "Lưu" })).not.toHaveAttribute("aria-disabled");
   }, 20000);
 
   it("a label Mentor is unsure about must be picked: Continue stays dimmed and points at it", async () => {
     teacherApp("/khoa/xac-suat-bayes/nhan?v=1");
     await screen.findByRole("heading", { name: "Xác suất thống kê: Suy luận Bayes" });
-    await screen.findByRole("button", { name: "Tiếp tục" });
+    await screen.findByRole("button", { name: "Lưu" });
     expect(screen.getByText(/Mentor chưa chắc/)).toBeInTheDocument();
-    const go = screen.getByRole("button", { name: "Tiếp tục" });
+    const go = screen.getByRole("button", { name: "Lưu" });
     expect(go).toHaveAttribute("aria-disabled", "true");
     const put = vi.spyOn(mockTeacherApi, "publish");
     await userEvent.click(go);
-    expect(await screen.findByText("Chọn đủ bậc học, gà, lớp và độ khó để tiếp tục.")).toBeInTheDocument();
+    expect(await screen.findByText("Chọn đủ bậc học, gà, lớp và độ khó để lưu.")).toBeInTheDocument();
     expect(screen.getAllByText("Cần chọn", { selector: ".tag" })).toHaveLength(3);
     expect(screen.queryByRole("button", { name: "Xuất bản" })).toBeNull(); // still on the labels step
     expect(put).not.toHaveBeenCalled();
@@ -104,22 +113,23 @@ describe("labels and publish gating (mock)", () => {
   it("Continue saves the labels, which confirms the difficulty, and opens the review", async () => {
     teacherApp("/khoa/toan-1-dem-tao/nhan?v=1");
     await screen.findByRole("heading", { name: "Toán 1: Các số đến 10" });
-    await screen.findByRole("button", { name: "Tiếp tục" });
+    await screen.findByRole("button", { name: "Lưu" });
     await userEvent.click(screen.getByRole("radio", { name: /Nâng cao/ }));
     await userEvent.click(screen.getByRole("radio", { name: "3" }));
     await userEvent.click(screen.getByRole("radio", { name: "Văn" }));
-    await userEvent.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    expect(await screen.findByRole("button", { name: "Xuất bản" })).toBeInTheDocument(); // the review
+    await userEvent.click(screen.getByRole("button", { name: "Lưu" }));
+    expect(await screen.findByText("Đã lưu nhãn.")).toBeInTheDocument(); // saved, and still on the labels step
+    expect(screen.queryByRole("button", { name: "Xuất bản" })).toBeNull();
     const c = (await mockTeacherApi.getCourse("t", "toan-1-dem-tao")).course;
     expect(c.versions[0].level_confirmed).toBe("intermediate");
     expect(c.versions[0].labels).toEqual({ chicken: "van", band: "g1_5", grade: 3, goals: [], language: "vi", topics: [] });
-    await waitFor(() => expect(screen.getByRole("button", { name: "Xuất bản" })).not.toHaveAttribute("aria-disabled"));
+    expect(c.labels).toMatchObject({ chicken: "van", band: "g1_5", grade: 3 }); // reopening shows what was saved
   }, 20000);
 
   it("goals (one a line), language and topic chips are sent with the labels and come back prefilled", async () => {
     teacherApp("/khoa/toan-1-dem-tao/nhan?v=1");
     await screen.findByRole("heading", { name: "Toán 1: Các số đến 10" });
-    await screen.findByRole("button", { name: "Tiếp tục" });
+    await screen.findByRole("button", { name: "Lưu" });
     await userEvent.click(screen.getByRole("radio", { name: /Nâng cao/ }));
     await userEvent.click(screen.getByRole("radio", { name: "3" }));
     await userEvent.click(screen.getByRole("radio", { name: "Văn" }));
@@ -127,8 +137,8 @@ describe("labels and publish gating (mock)", () => {
     await userEvent.click(screen.getByRole("radio", { name: "Tiếng Anh" }));
     await userEvent.type(screen.getByRole("textbox", { name: "Chủ đề" }), "đếm số{Enter}phép cộng{Enter}đếm số{Enter}");
     expect(screen.getAllByText(/^(đếm số|phép cộng)$/)).toHaveLength(2); // no duplicate chip
-    await userEvent.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    expect(await screen.findByRole("button", { name: "Xuất bản" })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Lưu" }));
+    expect(await screen.findByText("Đã lưu nhãn.")).toBeInTheDocument();
     const c = (await mockTeacherApi.getCourse("t", "toan-1-dem-tao")).course;
     expect(c.versions[0].labels).toMatchObject({ goals: ["Đếm đến 10", "Cộng trong phạm vi 10"], language: "en", topics: ["đếm số", "phép cộng"] });
     expect(c.labels).toMatchObject({ goals: ["Đếm đến 10", "Cộng trong phạm vi 10"], language: "en", topics: ["đếm số", "phép cộng"] });
@@ -137,12 +147,12 @@ describe("labels and publish gating (mock)", () => {
   it("switching to Đại học offers the ngành chickens and years, and starts the pick over", async () => {
     teacherApp("/khoa/toan-1-dem-tao/nhan?v=1");
     await screen.findByRole("heading", { name: "Toán 1: Các số đến 10" });
-    await screen.findByRole("button", { name: "Tiếp tục" });
+    await screen.findByRole("button", { name: "Lưu" });
     await userEvent.click(screen.getByRole("radio", { name: "Đại học" }));
     expect(screen.getByRole("radio", { name: "Kỹ thuật máy tính" })).toHaveAttribute("aria-checked", "false");
     expect(screen.getByRole("radio", { name: "Năm 2" })).toBeInTheDocument();
     expect(screen.queryByRole("radio", { name: "Toán" })).toBeNull();
-    expect(screen.getByRole("button", { name: "Tiếp tục" })).toHaveAttribute("aria-disabled", "true");
+    expect(screen.getByRole("button", { name: "Lưu" })).toHaveAttribute("aria-disabled", "true");
   }, 20000);
 
   it("review shows each step the way the student player draws it (the chicken says the text)", async () => {
@@ -158,18 +168,21 @@ describe("labels and publish gating (mock)", () => {
     expect(pub).toHaveAttribute("aria-disabled", "true");
     const pubApi = vi.spyOn(mockTeacherApi, "publish");
     await userEvent.click(pub);
-    expect(await screen.findByText("Xác nhận nhãn để xuất bản.")).toBeInTheDocument();
+    expect(await screen.findByText("Xác nhận nhãn ở bước 3 để xuất bản.")).toBeInTheDocument();
     expect(document.getElementById("levelrow")).toHaveClass("need");
     expect(pubApi).not.toHaveBeenCalled();
-    expect(screen.getByRole("link", { name: "Sửa ở bước Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1");
+    expect(screen.queryByRole("link", { name: "Sửa ở bước Nhãn" })).toBeNull(); // step 3 in the header is the one way back to the labels
+    expect(screen.getByRole("link", { name: "Nhãn" })).toHaveAttribute("href", "/khoa/toan-1-dem-tao/nhan?v=1");
   }, 20000);
 
   it("after the labels are confirmed, publish goes through", async () => {
     await mockTeacherApi.listCourses("t");
     teacherApp("/khoa/toan-1-dem-tao/nhan?v=1");
     await screen.findByRole("heading", { name: "Toán 1: Các số đến 10" });
-    await screen.findByRole("button", { name: "Tiếp tục" });
-    await userEvent.click(screen.getByRole("button", { name: "Tiếp tục" }));
+    await screen.findByRole("button", { name: "Lưu" });
+    await userEvent.click(screen.getByRole("button", { name: "Lưu" }));
+    await screen.findByText("Đã lưu nhãn.");
+    await userEvent.click(screen.getByRole("link", { name: "Duyệt" }));
     const pub = await screen.findByRole("button", { name: "Xuất bản" });
     await waitFor(() => expect(pub).not.toHaveAttribute("aria-disabled"));
     await userEvent.click(pub);
@@ -179,12 +192,12 @@ describe("labels and publish gating (mock)", () => {
   it("a published course takes new labels at once, without a new version", async () => {
     teacherApp("/khoa/xac-suat-bayes/nhan?v=1");
     await screen.findByRole("heading", { name: "Xác suất thống kê: Suy luận Bayes" });
-    await screen.findByRole("button", { name: "Tiếp tục" });
+    await screen.findByRole("button", { name: "Lưu" });
     expect(screen.getByText("Đã xuất bản: nhãn mới có hiệu lực ngay, không thành bản mới.")).toBeInTheDocument();
     await userEvent.click(screen.getByRole("radio", { name: "Toán" }));
     await userEvent.click(screen.getByRole("radio", { name: "12" }));
-    await userEvent.click(screen.getByRole("button", { name: "Tiếp tục" }));
-    await screen.findByRole("button", { name: "Sửa khóa đã xuất bản" });
+    await userEvent.click(screen.getByRole("button", { name: "Lưu" }));
+    await screen.findByText("Đã lưu nhãn.");
     const c = (await mockTeacherApi.getCourse("t", "xac-suat-bayes")).course;
     expect(c.versions.map((v) => v.version)).toEqual([1]);
     expect(c.versions[0].labels).toMatchObject({ chicken: "toan", grade: 12 });
@@ -194,7 +207,7 @@ describe("labels and publish gating (mock)", () => {
     teacherApp("/khoa/toan-1-dem-tao/nhan?v=1", "en");
     expect(await screen.findByText("Main chicken (subject)")).toBeInTheDocument();
     expect(screen.getByRole("radio", { name: "Exam prep" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Continue" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Save" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Tags" })).toHaveAttribute("aria-current", "step");
   }, 20000);
 });

@@ -110,16 +110,29 @@
 .ar-qmap { display: flex; flex-wrap: wrap; gap: 8px; max-height: 176px; overflow: auto; padding: 2px; }
 .ar-qn { position: relative; width: 40px; height: 40px; border-radius: 10px; border: 2px solid var(--line-g); background: #fff; color: #5a3b1a; font: inherit; font-weight: 600; cursor: pointer; display: grid; place-items: center; padding: 0; }
 span.ar-qn { cursor: default; }
-.ar-qn.done { background: #f3e2c0; border-color: var(--edge); }
+.ar-qn.blank { background: #fff; border-style: dashed; border-color: #b9a07a; color: #7d5c3f; }
+.ar-qn.done { background: #dff0cc; border-color: #4d9a2a; color: #2c5d14; }
+.ar-qn.done:not(.blank)::before { content: ""; position: absolute; left: 3px; bottom: 3px; width: 6px; height: 6px; border-radius: 50%; background: #4d9a2a; }
+.ar-qlegend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85em; color: #5a3b1a; }
+.ar-qlegend li { display: inline-flex; align-items: center; gap: 6px; }
+.ar-qlegend .ar-qn { width: 18px; height: 18px; border-radius: 5px; display: inline-block; cursor: default; }
+.ar-qlegend .ar-qn::before, .ar-qlegend .ar-qn::after { display: none; }
+.ar-qlegend .ar-qn.flag { background: #fff; border: 2px solid #d9801a; }
 .ar-qn[aria-current="true"] { border-color: #1a47c8; color: #1a47c8; background: #e8eefc; box-shadow: 0 0 0 2px #1a47c8; }
-.ar-qn.flag::after { content: ""; position: absolute; top: 3px; right: 3px; width: 8px; height: 8px; border-radius: 50%; background: #c2402a; }
+.ar-qn.flag { box-shadow: inset 0 0 0 2px #d9801a; }
+.ar-qn.flag::after { content: ""; position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; border-radius: 50%; background: #c2402a; border: 2px solid #fff; }
 .ar-pfoot { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
 .ar-pfoot .mid { display: flex; gap: 10px; flex-wrap: wrap; }
 .ar-praise { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; padding: 12px 16px; background: var(--ok-soft); border: 2px solid var(--ok); border-radius: 18px; }
 .ar-praise p { margin: 0; }
 .ar-praise b { color: var(--ok); }
 .ar-praise.fix { grid-template-columns: minmax(0, 1fr); }
-.ar-busy { position: fixed; inset: 0; background: rgba(21, 19, 42, .25); z-index: 70; }
+.ar-busy { position: fixed; inset: 0; background: rgba(21, 19, 42, .6); z-index: 100; display: grid; place-items: center; padding: 16px; }
+.ar-busy-card { display: grid; justify-items: center; gap: 8px; text-align: center; padding: 22px 30px; border-radius: 22px; background: #fffdf7; border: 4px solid #7d4c22; box-shadow: 0 8px 0 #5d3a18; max-width: 340px; color: #3a2010; }
+.ar-busy-card b { font-size: 1.2em; }
+.ar-spin { width: 38px; height: 38px; border-radius: 50%; border: 5px solid #f1dcaa; border-top-color: #c2402a; animation: ar-spin .9s linear infinite; }
+@keyframes ar-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ar-spin { animation-duration: 3s; } }
 
 /* ---------- dialog ---------- */
 .ar-scrim { position: fixed; inset: 0; z-index: 90; background: rgba(20, 24, 20, .6); }
@@ -188,7 +201,7 @@ span.ar-qn { cursor: default; }
 .ar-stage[data-fx="thang"] .ar-boss { transform: rotate(16deg) translateY(10%); opacity: .92; }
 .ar-stage[data-fx="thoat"] .ar-face-n { opacity: 0; }
 .ar-stage[data-fx="thoat"] .ar-face-win { opacity: 1; }
-.ar-stage[data-fx="thoat"] .ar-boss { transform: translateX(calc(var(--H) * .5)) scale(.9); opacity: .55; }
+.ar-stage[data-fx="thoat"] .ar-boss { transform: translateX(calc(var(--H) * .08)) scale(.8); opacity: .6; }
 .ar-hero.charge img { animation: ar-charge .55s ease-out; }
 .ar-lucbar.charge { animation: ar-lucflash .55s ease-out; }
 .ar-stage[data-fx="nhanh"] .ar-shot { animation: ar-fly .22s cubic-bezier(.3, .1, .6, 1) both; }
@@ -225,6 +238,7 @@ span.ar-qn { cursor: default; }
 .ar-levels h3 { font-size: 1em; margin: 0; font-weight: 700; }
 .ar-levels p { margin: 2px 0 0; color: var(--muted-g); font-size: .86em; }
 .ar-later { opacity: .65; }
+@media (max-width: 560px) { .ar-levels li { grid-template-columns: auto minmax(0, 1fr); } .ar-levels li > .ar-btn { grid-column: 1 / -1; } }
 
 @media (max-width: 560px) {
   .ar-rows li { grid-template-columns: auto minmax(0, 1fr); }
@@ -255,3 +269,5 @@ span.ar-qn { cursor: default; }
   .ar-stage *, .ar-hero.charge img, .ar-lucbar.charge { animation: none !important; transition: none !important; }
   .ar-shot, .ar-boom, .ar-dmg { display: none !important; }
 }
+/* "Câu 1" in the stem is a label, not the 40px number box of the question map */
+.lg-pr .q-stem .qn { width: auto; height: auto; display: inline-block; padding: 2px 10px; white-space: nowrap; font-weight: 700; }

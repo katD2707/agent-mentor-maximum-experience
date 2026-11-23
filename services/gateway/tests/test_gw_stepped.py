@@ -142,6 +142,12 @@ def test_notes_become_review_questions_and_reminders(client, gw, student, notes_
     assert client.post(f"{P}/sessions", json={"source": "notes:n-zzz"}).json()["code"] == "notes_not_found"
 
 
+def test_notes_accepts_the_apps_images_bracket_field(client, student, notes_llm):
+    r = client.post("/api/ask/notes", files=[("images[]", (f"notes-{i}.jpg", photo_bytes(), "image/jpeg")) for i in range(2)])
+    assert r.status_code == 200 and r.json()["pages"] == 2
+    assert client.post("/api/ask/notes", files=[]).status_code == 422  # no photo: a clear 422 bad_request
+
+
 def test_notes_unreadable_and_band(client, student, notes_llm):
     set_band(client, "g6_9")
     notes_llm.script["mentor-vision"] = j(readable=False, title="", subject="", items=[])

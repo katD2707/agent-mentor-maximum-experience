@@ -163,3 +163,15 @@ def test_chat_photo_goes_through_the_ask_pipeline(client, student):
     # an Ask follow-up needs a thread that has a problem
     ev = chat(client, action="last_step")
     assert any(e == "message" and d["kind"] == "no_problem" for e, d in ev)
+
+
+def test_chat_follow_up_turn_with_the_issued_thread_id(client, student):
+    llm = use_llm(client, FakeLLM(**{"mentor-chat": ["Một mảng nằm liền nhau trong bộ nhớ.", "Danh sách liên kết thì không."]}))
+    first = chat(client, text="Mảng là gì?")
+    tid = next(d for e, d in first if e == "thread")["thread_id"]
+    second = chat(client, text="Còn danh sách liên kết?", thread_id=tid)  # was 404 thread_not_found
+    assert names(second)[-1] == "done" and "error" not in names(second)
+    sent = llm.calls[1][1]
+    assert [m["role"] for m in sent] == ["system", "user", "assistant", "user"]
+    assert sent[2]["content"].startswith("Một mảng")  # the chicken remembers the earlier turn
+    assert "never say" in sent[0]["content"]  # no invented "nhầm" on a first message

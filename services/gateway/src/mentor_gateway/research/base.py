@@ -29,6 +29,7 @@ from mentor_gateway.planner import events as ev
 from mentor_gateway.planner.bands import TZ
 from mentor_gateway.research import papers
 from mentor_gateway.research.fulltext import MAX_PDF_BYTES, TextCache
+from mentor_gateway.research.generic import specific_keywords, tidy_title
 from mentor_gateway.research.sources import AstaSource, S2Client, excerpt
 from mentor_gateway.research.tables import (
     PaperNoteRow,
@@ -114,7 +115,7 @@ class ResearchBase:
         self._checked: dict[str, datetime] = {}  # per-user throttle of the scheduler hook
         self._asta: dict[str, AstaSource] = {}
         # replaceable edges ------------------------------------------------------------------------------------------
-        self.arxiv_search = papers.search_arxiv  # async (query, max_results, years_limit, sort, *, searcher=None)
+        self.arxiv_search = papers.search_arxiv_strict  # async (query, max_results, years_limit, sort, *, searcher=None)
         self.arxiv_searcher = None  # an ArxivSearchTool for discover_frontier (tests inject a fake)
         self.lit_client: prim.ResearchClient | None = None  # literature_pass's client
         self.frontier = papers.discover_frontier
@@ -199,12 +200,12 @@ class ResearchBase:
 
     def topic(self, user_id: str) -> tuple[str, str, list[str]]:
         row = self.profile_row(user_id)
-        return (row.title, row.question, list(row.keywords or [])) if row else ("", "", [])
+        return (row.title, row.question, specific_keywords(list(row.keywords or []))) if row else ("", "", [])
 
     # ---- papers -------------------------------------------------------------------------------------------------------
     @staticmethod
     def card_of(p: PaperRow, in_list: bool = True) -> PaperCard:
-        return PaperCard(key=p.key, source=p.source, title=p.title, authors=list(p.authors or [])[:5], year=p.year,
+        return PaperCard(key=p.key, source=p.source, title=tidy_title(p.title), authors=list(p.authors or [])[:5], year=p.year,
                          venue=p.venue, arxiv_id=p.arxiv_id, doi=p.doi, s2_id=p.s2_id, url=p.url,
                          excerpt=excerpt(p.abstract), tldr=p.tldr, snippet=None, citation_count=p.citation_count,
                          has_pdf=p.has_pdf, in_reading_list=in_list, paper_id=p.id)
@@ -246,7 +247,7 @@ class ResearchBase:
 
     def card_of_arxiv(self, p: papers.Paper) -> PaperCard:
         f = self.fields_of_arxiv(p)
-        return PaperCard(key=f["key"], source="arxiv", title=p.title, authors=p.authors[:5], year=p.year, arxiv_id=f["arxiv_id"],
+        return PaperCard(key=f["key"], source="arxiv", title=tidy_title(p.title), authors=p.authors[:5], year=p.year, arxiv_id=f["arxiv_id"],
                          url=f["url"], excerpt=excerpt(p.abstract), has_pdf=True)
 
     # ---- reading list views -------------------------------------------------------------------------------------------

@@ -117,7 +117,7 @@
   // anywhere in the village a chicken might stroll to: mostly along the paths, sometimes out on the grass,
   // always somewhere that shows on the picture
   const onPicture = (p) => { const [u, v] = aff.toS(p[0], p[1]); return u > 0.05 && u < 0.95 && v > 0.22 && v < 0.95; };
-  function randomMapPoint() {
+  function randomMapPoint(who) {
     const P = L.paths || [], [bx0, by0, bx1, by1] = L.bounds || [-20, -10, 20, 30];
     for (let k = 0; k < 40; k++) {
       let p;
@@ -125,19 +125,59 @@
         const pl = P[Math.floor(Math.random() * P.length)], s = Math.floor(Math.random() * (pl.length - 1)), t = Math.random();
         p = [pl[s][0] + (pl[s + 1][0] - pl[s][0]) * t + (Math.random() - 0.5) * 3, pl[s][1] + (pl[s + 1][1] - pl[s][1]) * t + (Math.random() - 0.5) * 3];
       } else p = [bx0 + Math.random() * (bx1 - bx0), by0 + Math.random() * (by1 - by0)];
-      if (V.walkable(p) && onPicture(p) && !Object.values(V.actors).some((o) => dist(o.pos, p) < 2.6)) return p;
+      if (V.walkable(p) && onPicture(p) && inSight(p) && !Object.values(V.actors).some((o) => o !== who && crowded(o.pos, p, o.kind === "kid")) && (!who || V.plateFree(who, p))) return p;
     }
     return null;
   }
   // ---------- sprites
   const cache = {};
-  function sheet(id, anim, dir) {
+  function sheet(id, anim, dir, base = BASE, suffix = "") {
     const a = A && A.actors[id] && A.actors[id].anims[anim]; if (!a) return null;
     const d = a.dirs.includes(dir) ? dir : a.dirs.includes("s") ? "s" : a.dirs[0];
-    const url = `${BASE}actors/${id}-${anim}-${d}.webp`;
+    const url = `${base}actors/${id}${suffix}-${anim}-${d}.webp`;
     if (!cache[url]) { const im = new Image(); im.src = url; cache[url] = { im, ok: false }; im.onload = () => (cache[url].ok = true); }
     return { url, frames: a.frames, fps: a.fps, loop: a.loop, ready: cache[url].ok, dir: d };
   }
+  // how big each character is drawn. The village is built in units where a door is about 1 unit high, so the 3-unit
+  // sprites of the first version towered over the houses: the student is now about a door high and a chicken clearly
+  // smaller than the student (CSS scale of the 416 px frame; phones get a boost, their world is drawn smaller)
+  // 0.47/0.40 made the costumes unreadable at 1600 px (a chicken was ~45 px): the costume is now the only way to tell the
+  // subjects apart, so characters stay big enough to read it. Phones need no extra boost at this size.
+  const SCALE = { kid: 0.64, ga: 0.55 };
+  const boost = () => 1;
+  // alternative sprite sets for the student: the folder, the drawing scale relative to the first set (1.37 / 1.3), and the
+  // walk stride measured on those sprites (ground per cycle, world units, at scale 1)
+  const SETS = {
+    cu: { base: BASE, mul: 1, stride: null },
+    moi: { base: "assets/ga/hoc-sinh-moi/", mul: 1.37 / 1.3, stride: 1.315 },
+  };
+  // costume sprites of Gà Toán (assets/ga/trang-phuc): a 512 px animated picture (24 frames, 12 fps) per growth stage, facing us,
+  // idle and jump. bbox = the body in the 512 frame (x0, y0, x1, y1), fit = size against the grown chicken (squeezed a little,
+  // so the chick stays readable at map size), ppu = px per world unit (the grown chicken has the same height as the old sprite)
+  const COS_PPU = 93.06, COS_FEET = [256, 432], COS_FRAME = 512;
+  const COSTUME = {
+    toan: {
+      1: { still: "toan-1.png", idle: "toan-1-dung.webp", jump: "toan-1-nhay.webp", bbox: [178, 281, 344, 431], fit: 0.66, head: 1.7 },
+      2: { still: "toan-2.png", idle: "toan-2-dung.webp", jump: "toan-2-nhay.webp", bbox: [179, 214, 347, 434], fit: 0.87, head: 2.5 },
+      3: { still: "toan.png", idle: "toan-dung.webp", jump: "toan-nhay.webp", bbox: [154, 168, 366, 435], fit: 1, head: 3.0 },
+      4: { still: "toan-4.png", idle: "toan-4-dung.webp", jump: "toan-4-nhay.webp", bbox: [145, 147, 378, 438], fit: 1.04, head: 4.7 },   // head: with the halo, for the speech bubble
+    },
+  };
+  // the opaque part of each sprite in its 416 px frame (x0, y0, x1, y1), for name plates to keep clear of
+  const BODY = { toan: [110, 113, 315, 383], van: [123, 154, 293, 381], anh: [123, 154, 313, 381], nam: [87, 27, 326, 384], nu: [55, 36, 368, 384] };
+  const BODY_MOI = { nam: [132, 44, 283, 386], nu: [126, 43, 290, 386] };
+  const COS_DIR ="assets/ga/trang-phuc/", COS_JUMP_MS = 2000;
+  const still = {};
+  function preload(url) {
+    if (!still[url]) { const im = new Image(); im.decoding = "async"; im.src = url; still[url] = im; }
+    return still[url].decode ? still[url].decode().catch(() => {}) : Promise.resolve();
+  }
+  // start fetching and decoding the picture as soon as this script runs (before DOMContentLoaded, which can wait for fonts)
+  (function early() {
+    const L0 = window.LANG_LAYOUT; if (!L0) return;
+    (L0.bg || []).forEach((t) => preload(BASE + t.file));
+    (L0.occ || []).forEach((o) => preload(`${BASE}occ/${o.name}.webp`));
+  })();
   // heading (degrees in world space: 0 = east, 90 = away from the camera) -> one of the 8 sprite directions, with
   // hysteresis: the sprite only turns once the heading is clearly nearer another direction (no flicker on curves)
   const DIR_ANG = { e: 0, ne: 45, n: 90, nw: 135, w: 180, sw: -135, s: -90, se: -45 };
@@ -157,13 +197,31 @@
     }
     return out;
   }
+  // two standing actors too close? chickens keep an oval of room (wide and deep enough for the name plate that hangs under
+  // them), the student a round one
+  const crowded = (a, b, withKid) => {
+    const rx = withKid ? 2.4 : 4.6, ry = withKid ? 2.4 : 2.8;
+    return Math.hypot((a[0] - b[0]) / rx, (a[1] - b[1]) / ry) < 1;
+  };
+  // a box in world px: [left, top, right, bottom]; GAP px of air is kept round a name plate
+  const GAP = 6;
+  const boxHit = (a, b, m = 0) => a[0] < b[2] + m && b[0] < a[2] + m && a[1] < b[3] + m && b[1] < a[3] + m;
   // gait: top speed and acceleration (world units/s, /s^2); stride = ground covered by one walk cycle, so the feet
   // keep pace with the ground instead of sliding
   // `ref` is the speed the walk cycle was drawn for: going faster lengthens the stride a little as well as
   // quickening the step, so a brisk walk does not turn into a frantic shuffle
-  const GAIT = { kid: { max: 4.2, acc: 12, stride: 1.45, ref: 2.5 }, ga: { max: 2.1, acc: 9, stride: 0.62, ref: 1.0 } };
+  // (the characters are drawn smaller now, so one walk cycle covers less ground: the stride is the measured one times the
+  // drawing scale, and the speeds are lower, to keep a natural cadence instead of a frantic shuffle)
+  const GAIT = { kid: { max: 2.3, acc: 8, stride: 0.6, ref: 1.2 }, ga: { max: 1.5, acc: 7, stride: 0.3, ref: 0.5 } };
+  const GA_SPEED = 0.6;   // the speeds below were written for the big chickens
   const puffs = [];   // dust kicked up by footsteps, drawn by the ambient canvas
-  const freeW = (p) => V.walkable(p) && onPicture(p);   // chickens may go anywhere in the village
+  // somewhere the view shows (a phone sees a slice of the village: chickens stay within it, so none is cut off by the screen's edge)
+  function inSight(p, mx = 36, top = 90, bot = 56) {
+    const sc = document.getElementById("scene"); if (!sc || !world || !sc.clientWidth) return true;
+    const [u, v] = aff.toS(p[0], p[1]), x = u * world.clientWidth - sc.scrollLeft, y = v * world.clientHeight - sc.scrollTop;
+    return (sc.scrollWidth <= sc.clientWidth + 8 || (x > mx && x < sc.clientWidth - mx)) && (sc.scrollHeight <= sc.clientHeight + 8 || (y > top && y < sc.clientHeight - bot));
+  }
+  const freeW = (p) => V.walkable(p) && onPicture(p) && inSight(p);   // chickens may go anywhere in the village that shows
 
   class Actor {
     constructor(el) {
@@ -171,13 +229,38 @@
       this.spr = el.querySelector(".spr"); this.shadow = el.querySelector(".shadow");
       this.pos = ((el.dataset.pos ? el.dataset.pos.split(",").map(Number) : null) || randomYardPoint()).slice();
       this.vel = [0, 0]; this.dir = "s"; this.anim = "idle"; this.t0 = performance.now(); this.path = []; this.phase = 0;
-      const g = GAIT[this.kind]; this.base = g.max; this.max = g.max; this.acc = g.acc; this.stride = g.stride; this.ref = g.ref;
-      const w = A && A.actors[this.id] && A.actors[this.id].anims.walk; if (w && w.stride) this.stride = w.stride;   // measured on the sprites
+      const g = GAIT[this.kind]; this.base = g.max; this.max = g.max; this.acc = g.acc; this.ref = g.ref; this.strideDef = g.stride;
+      this.set0 = SETS.cu; this.cos = null; this.fit = 1; this.cosBody = null;   // sprite set, costume stage
       this.stay = el.dataset.stay === "1";   // stands still (e.g. while it has something to say)
       this.head = Number(el.dataset.head || (this.kind === "kid" ? 3.6 : 3.0));   // height of the drawing, world units
       this.wait = 1 + Math.random() * 3; this.busy = false; this.cur = null; this.still = 0;
-      el.style.setProperty("--head", px(this.head * 0.899) + "px");
+      // name plate: hangs under the feet, in the plates layer above the scenery; sizes are measured by the engine
+      this.tag = el.querySelector(".plate"); this.plateW = 120; this.plateH = 38; this.miniW = 30; this.miniH = 24;
+      this.mini = this.kind === "ga"; this.gone = false; this.angry = false; this.miniAt = 0; this.body = [-24, -60, 24, 0]; this.dx = 0; this.prio = 0;
+      if (this.tag) { const th = document.getElementById("tags"); if (th) th.append(this.tag); if (this.mini) { this.tag.classList.add("lg-mini"); this.plateW = this.miniW; this.plateH = this.miniH; } }   // chickens wear only their level badge; the costume says which subject
+      this.dress();
       this.place();
+    }
+    // the drawn size, frame and stride of this character: set (old / new student), costume stage and the window
+    dress() {
+      const sc = SCALE[this.kind] * boost() * this.set0.mul * this.fit;
+      this.sc = sc;
+      this.el.style.setProperty("--s", String(sc));
+      const w = A && A.actors[this.id] && A.actors[this.id].anims.walk, st = this.set0.stride || (w && w.stride) || this.strideDef;
+      this.stride = st * sc;   // the feet keep pace with the ground at the size the sprite is drawn
+      if (this.cos) {
+        this.el.classList.add("cos");
+        this.el.style.setProperty("--frame-w", px(COS_FRAME / COS_PPU) + "px"); this.el.style.setProperty("--frame-h", px(COS_FRAME / COS_PPU) + "px");
+        this.el.style.setProperty("--feet-x", (COS_FEET[0] / COS_FRAME) * 100 + "%"); this.el.style.setProperty("--feet-y", (COS_FEET[1] / COS_FRAME) * 100 + "%");
+        this.head = this.cos.head;
+        const k = (this.sc * px(COS_FRAME / COS_PPU)) / COS_FRAME, b = this.cos.bbox;   // body, from the feet, in CSS px
+        this.cosBody = [(b[0] - COS_FEET[0]) * k, (b[1] - COS_FEET[1]) * k, (b[2] - COS_FEET[0]) * k, Math.min(0, (b[3] - COS_FEET[1]) * k)];
+      } else {
+        this.el.classList.remove("cos");
+        for (const v of ["--frame-w", "--frame-h", "--feet-x", "--feet-y"]) this.el.style.removeProperty(v);
+        this.head = Number(this.el.dataset.head || (this.kind === "kid" ? 3.6 : 3.0)); this.cosBody = null;
+      }
+      this.el.style.setProperty("--head", px(this.head * 0.899) + "px");
     }
     set(anim, dir) {
       if (anim !== this.anim) { this.t0 = performance.now(); this.anim = anim; }
@@ -186,14 +269,27 @@
     place() {
       const [u, v] = aff.toS(this.pos[0], this.pos[1]);
       this.el.style.left = u * 100 + "%"; this.el.style.top = v * 100 + "%"; this.el.style.zIndex = Math.round(v * 10000);
+      if (this.tag) { this.tag.style.left = u * 100 + "%"; this.tag.style.top = v * 100 + "%"; this.tag.style.zIndex = this.el.style.zIndex; }
     }
     draw(now) {
       if (!A) {  // no sprite sheets yet: the single animated sprite of the old village
         if (!this.cur && this.el.dataset.legacy) { this.cur = "legacy"; this.spr.style.backgroundImage = `url("assets/ga/${this.el.dataset.legacy}")`; this.spr.style.backgroundSize = "100% 100%"; }
         return;
       }
-      let s = sheet(this.id, this.anim, this.dir);
-      if (!s || !s.ready) { s = sheet(this.id, "idle", this.dir); if (!s || !s.ready) s = sheet(this.id, "idle", "s"); if (!s || !s.ready) return; }
+      if (this.cos) {   // a costume picture: it only faces us, and has an idle and a jump
+        const jumping = this.anim === "jump", still0 = RM.matches;
+        const url = COS_DIR + (still0 ? this.cos.still : jumping ? this.cos.jump : this.cos.idle) + (jumping && !still0 ? "?r=" + Math.round(this.t0) : "");
+        if (this.cur !== url) {
+          this.spr.style.backgroundImage = `url("${url}")`; this.spr.style.backgroundSize = "100% 100%"; this.spr.style.backgroundPositionX = "0%"; this.cur = url;
+        }
+        if (jumping && now - this.t0 >= COS_JUMP_MS && this.onEnd) { const cb = this.onEnd; this.onEnd = null; cb(); }
+        return;
+      }
+      let s = null;
+      // angry (a neglected course): the "-gian" variant of the sprite sheets (<id>-gian-<anim>-<dir>.webp) when it exists, else the normal one
+      if (this.angry) { s = sheet(this.id, this.anim, this.dir, this.set0.base, "-gian"); if (s && !s.ready) s = sheet(this.id, "idle", this.dir, this.set0.base, "-gian"); if (s && !s.ready) s = null; }
+      if (!s) s = sheet(this.id, this.anim, this.dir, this.set0.base);
+      if (!s || !s.ready) { s = sheet(this.id, "idle", this.dir, this.set0.base); if (!s || !s.ready) s = sheet(this.id, "idle", "s", this.set0.base); if (!s || !s.ready) return; }
       let f;
       if (this.anim === "walk" && s.loop) f = Math.floor((((this.phase % 1) + 1) % 1) * s.frames) % s.frames;   // in step with the ground
       else {
@@ -205,7 +301,7 @@
       this.spr.style.backgroundPositionX = s.frames > 1 ? (f / (s.frames - 1)) * 100 + "%" : "0%";
     }
     walkPath(path, speed) {
-      this.path = path.slice(); this.busy = true; this.max = speed || this.base; this.onEnd = null;
+      this.path = path.slice(); this.busy = true; this.max = speed ? speed * (this.kind === "ga" ? GA_SPEED : 1) : this.base; this.onEnd = null;
       return new Promise((res) => (this.arrive = res));
     }
     steer(dt) {
@@ -225,8 +321,12 @@
       // and whoever walks past it goes round it)
       if (!this.stay) for (const o of Object.values(V.actors)) {
         if (o === this) continue;
-        const d = dist(this.pos, o.pos), r = this.kind === "kid" || o.kind === "kid" ? 2.4 : 2.0;   // room for the name tags too
-        if (d < r && d > 1e-3) { const k = ((r - d) / r) * (this.path.length && !o.stay ? 0.9 : 2.2); want[0] += ((this.pos[0] - o.pos[0]) / d) * k; want[1] += ((this.pos[1] - o.pos[1]) / d) * k; }
+        const d = dist(this.pos, o.pos), withKid = this.kind === "kid" || o.kind === "kid", [sx, sy] = V.unitPx();
+        // an oval of room: chickens stand wider apart than deep (their plates hang under them), and wide and deep enough that the two plates do not touch
+        const rx = Math.max(withKid ? 2.4 : 4.6, (((this.plateW + o.plateW) / 2 + GAP) * 1.15) / sx);
+        const ry = Math.max(withKid ? 2.4 : 2.8, ((Math.max(this.plateH, o.plateH) + GAP) * 1.15) / sy);
+        const e = Math.hypot((this.pos[0] - o.pos[0]) / rx, (this.pos[1] - o.pos[1]) / ry);
+        if (e < 1 && d > 1e-3) { const k = (1 - e) * 3 * (this.path.length && !o.stay ? 0.5 : 1); want[0] += ((this.pos[0] - o.pos[0]) / d) * k; want[1] += ((this.pos[1] - o.pos[1]) / d) * k; }
       }
       // accelerate towards what is wanted, limited: starts and stops take a moment, turns are curves
       let ax = want[0] - this.vel[0], ay = want[1] - this.vel[1]; const al = Math.hypot(ax, ay), lim = this.acc * dt;
@@ -273,7 +373,7 @@
         this.busy = true; this.set("peck"); this.onEnd = () => { this.busy = false; this.set("idle"); this.wait = 0.5 + Math.random() * 2; };
       } else if (r < 0.55) { this.set("idle", ["s", "se", "sw", "e", "w", "ne", "nw"][Math.floor(Math.random() * 7)]); this.wait = 1 + Math.random() * 2.5; }
       else if (r < 0.75) {   // a stroll somewhere else in the village, round whatever is in the way
-        const t = randomMapPoint();
+        const t = randomMapPoint(this);
         if (!t) { this.wait = 0.8; return; }
         this.walkPath(smooth(route(this.pos.slice(), t), 0.4), 1.5 + Math.random() * 0.6).then(() => { this.wait = 0.6 + Math.random() * 2.5; });
       } else {   // a few steps nearby
@@ -281,7 +381,7 @@
         let t = null;
         for (let k = 0; k < 10 && !t; k++) {
           const a = Math.random() * Math.PI * 2, c = [this.pos[0] + Math.cos(a) * len, this.pos[1] + Math.sin(a) * len * 0.8];
-          if (freeW(c) && lineFree(this.pos, c) && !Object.values(V.actors).some((o) => o !== this && dist(o.pos, c) < 2.4)) t = c;
+          if (freeW(c) && lineFree(this.pos, c) && V.plateFree(this, c)) t = c;
         }
         if (!t) { this.wait = 0.8; return; }
         // a little curve on the way, as chickens never quite walk straight
@@ -291,9 +391,151 @@
     }
   }
 
+  // ---------- name plates: each hangs under its own actor; two plates (or a plate and a sign) never overlap
+  let signBoxes = [], measuredAt = -1e9, prioN = 0;
+  const wh = () => [world.clientWidth || 1, world.clientHeight || 1];
+  // CSS px per world unit, across and down
+  V.unitPx = () => { const [W, H] = wh(); return [Math.abs(L.affine.ax) * W || 1, Math.abs(L.affine.ay) * H || 1]; };
+  // the box (world px) of an actor's plate when it stands at p: it hangs under the feet
+  function plateBox(a, p = a.pos, full = true) {
+    const [W, H] = wh(), [u, v] = aff.toS(p[0], p[1]), w = full ? a.plateW : a.miniW, h = full ? a.plateH : a.miniH, cx = u * W, cy = v * H + 5;
+    return [cx - w / 2, cy, cx + w / 2, cy + h];
+  }
+  // the box (world px) of an actor's body (sprite)
+  function bodyBox(a, p = a.pos) {
+    const [W, H] = wh(), [u, v] = aff.toS(p[0], p[1]);
+    return [u * W + a.body[0], v * H + a.body[1], u * W + a.body[2], v * H + a.body[3]];
+  }
+  // would `who` (or a newcomer, when null) standing at p keep its plate clear of every other plate, sign and body?
+  V.plateFree = (who, p) => {
+    measure();
+    const [W, H] = wh(), [u, v] = aff.toS(p[0], p[1]), w = who ? who.plateW : 120, h = who ? who.plateH : 38;
+    const b = [u * W - w / 2, v * H + 5, u * W + w / 2, v * H + 5 + h];
+    if (signBoxes.some((s) => boxHit(b, s, GAP))) return false;
+    return !Object.values(V.actors).some((o) => o !== who && (boxHit(b, plateBox(o), GAP) || boxHit(b, bodyBox(o), 2)));
+  };
+  // the body of a relative to its feet, from the picture on screen (the middle of the frame: its edges are empty)
+  function measureBody(a) {
+    if (a.cosBody) { a.body = a.cosBody.slice(); return; }   // a costume: the body is known from its picture
+    const bb = (a.set0 === SETS.moi ? BODY_MOI : BODY)[a.id];
+    if (bb && A) {   // the opaque part of the sprite (measured on the first frame of the idle strip), from the feet
+      const fr = A.frame, ft = A.feet, k = (a.sc * px(fr[0] / ((A && A.pxPerUnit) || L.pxPerUnit))) / fr[0];
+      a.body = [(bb[0] - ft[0]) * k, (bb[1] - ft[1]) * k, (bb[2] - ft[0]) * k, Math.min(0, (bb[3] - ft[1]) * k)]; return;
+    }
+    const wr = world.getBoundingClientRect(), r = a.el.getBoundingClientRect(); if (r.width <= 0) return;
+    const [W, H] = wh(), [u, v] = aff.toS(a.pos[0], a.pos[1]), fx = u * W, fy = v * H, l = r.left - wr.left, t = r.top - wr.top, trim = r.width * 0.2;
+    a.body = [l + trim - fx, t + r.height * 0.12 - fy, l + r.width - trim - fx, Math.min(0, t + r.height - fy)];
+  }
+  // sizes of the plates, bodies and signs, now and then (they only change with the language or the window)
+  function measure(now = performance.now(), force) {
+    if (!force && now - measuredAt < 150) return;
+    measuredAt = now;
+    for (const a of Object.values(V.actors)) {
+      if (!a.tag) continue;
+      const w = a.tag.offsetWidth, h = a.tag.offsetHeight; if (w <= 0) continue;
+      measureBody(a);
+      if (a.mini) { a.miniW = w; a.miniH = h; if (a.kind === "ga") { a.plateW = w; a.plateH = h; } } else { a.plateW = w; a.plateH = h; }
+    }
+    const wr = world.getBoundingClientRect();
+    signBoxes = [...world.querySelectorAll(".place .sign, .burnt")].map((el) => el.getBoundingClientRect()).filter((r) => r.width > 0)
+      .map((r) => [r.left - wr.left, r.top - wr.top, r.right - wr.left, r.bottom - wr.top]);
+    // painted things a plate must not hang on: the top part of an occluder (the gate's roof beam)
+    const [W, H] = wh();
+    for (const o of L.occ || []) if (OBSTACLE[o.name]) signBoxes.push([o.box[0] * W, o.box[1] * H, o.box[2] * W, (o.box[1] + (o.box[3] - o.box[1]) * OBSTACLE[o.name]) * H]);
+  }
+  const OBSTACLE = { gate: 0.5, board: 1 };
+  // every frame: keep each plate inside the view, and shrink the lower-priority one to its level badge where two would touch
+  function layoutPlates(now) {
+    measure(now);
+    const sc = document.getElementById("scene") || world.parentElement, left = sc.scrollLeft, vw = sc.clientWidth, placed = [];
+    const narrow = vw < 560;   // a phone: badges only
+    const bodies = new Map(Object.values(V.actors).map((o) => [o, bodyBox(o)]));
+    let me = null;
+    const clash = (b, m) => placed.some((q) => boxHit(b, q, m)) || signBoxes.some((s) => boxHit(b, s, m)) || [...bodies].some(([o, bb]) => o !== me && boxHit(b, bb, Math.min(m, 2)));
+    for (const a of Object.values(V.actors).sort((x, y) => x.prio - y.prio)) {
+      if (!a.tag) continue;
+      me = a;
+      const shifted = (full) => {
+        const b = plateBox(a, a.pos, full); let dx = 0;
+        if (b[2] - b[0] < vw - 12) {
+          if (b[0] < left + 6 && b[2] > left) dx = left + 6 - b[0];
+          else if (b[2] > left + vw - 6 && b[0] < left + vw) dx = left + vw - 6 - b[2];
+        }
+        return { box: [b[0] + dx, b[1], b[2] + dx, b[3]], dx };
+      };
+      const full = shifted(true);
+      let mini = a.mini;
+      if (a.kind === "ga") mini = true;   // chickens: the level badge only, always
+      else if (!a.mini) mini = clash(full.box, 2);
+      else mini = now - a.miniAt < 700 || clash(full.box, GAP + 4);
+      if (mini !== a.mini) { a.mini = mini; a.miniAt = now; a.tag.classList.toggle("lg-mini", mini); }
+      const cur = mini ? shifted(false) : full;
+      const gone = mini && clash(cur.box, 1);   // even the badge would touch something: out of sight until there is room
+      if (gone !== a.gone) { a.gone = gone; a.tag.classList.toggle("lg-gone", gone); }
+      if (!gone) placed.push(cur.box);
+      if (Math.abs(cur.dx - a.dx) > 0.5) { a.dx = cur.dx; a.tag.style.setProperty("--dx", cur.dx.toFixed(1) + "px"); }
+    }
+  }
+  // chickens whose plates would touch (each other, the student's, or a sign) are eased apart at once
+  function relax(dt) {
+    if (RM.matches) return;
+    measure();
+    const [W, H] = wh(), k = Math.min(1, dt * 8), movable = (x) => x.kind === "ga" && !x.stay;
+    const move = (x, dx, dy) => {
+      const [u, v] = aff.toS(x.pos[0], x.pos[1]), p = aff.toW(u + dx / W, v + dy / H);
+      if (!freeW(p)) return false;
+      x.pos = p; return true;
+    };
+    // push a (and b when it is a chicken too) so that boxes ba and bb part; the shorter way out first, the other if that is blocked
+    const part = (a, ba, b, bb) => {
+      if (!boxHit(ba, bb, GAP)) return;
+      const ma = movable(a), mb = !!b && movable(b);
+      if (!ma && !mb) return;
+      const ox = Math.min(ba[2], bb[2]) - Math.max(ba[0], bb[0]) + GAP, oy = Math.min(ba[3], bb[3]) - Math.max(ba[1], bb[1]) + GAP;
+      const sx = ba[0] + ba[2] < bb[0] + bb[2] ? -1 : 1, sy = ba[1] + ba[3] < bb[1] + bb[3] ? -1 : 1, sa = ma && mb ? 0.5 : ma ? 1 : 0;
+      const axes = ox < oy ? [[sx, 0, ox], [0, sy, oy], [-sx, 0, ox], [0, -sy, oy]] : [[0, sy, oy], [sx, 0, ox], [0, -sy, oy], [-sx, 0, ox]];
+      for (const [ax, ay, pen] of axes) {
+        const s = pen * k + 0.6; let moved = false;
+        if (sa) moved = move(a, ax * s * sa, ay * s * sa) || moved;
+        if (sa < 1 && b) moved = move(b, -ax * s * (1 - sa), -ay * s * (1 - sa)) || moved;
+        if (moved) return;
+      }
+    };
+    const all = Object.values(V.actors);
+    for (let i = 0; i < all.length; i++) {
+      const a = all[i];
+      for (let j = i + 1; j < all.length; j++) {
+        part(a, plateBox(a), all[j], plateBox(all[j]));
+        part(a, plateBox(a, a.pos, !a.mini), all[j], bodyBox(all[j]));   // a plate hangs off the body of the neighbour: ease apart as well
+        part(all[j], plateBox(all[j], all[j].pos, !all[j].mini), a, bodyBox(a));
+      }
+      if (movable(a)) for (const s of signBoxes) part(a, plateBox(a), null, s);
+    }
+  }
+  // somewhere free for a chicken: `pref` when nobody stands there, else the nearest open spot round the yard
+  function seat(who, pref, n) {
+    // at the start a chicken stands where the view shows all of it (a phone sees a slice of the village)
+    const sc = document.getElementById("scene"), [W, H] = wh();
+    const inView = (p) => {
+      if (!sc || !sc.clientWidth) return true;
+      const [u, v] = aff.toS(p[0], p[1]), x = u * W - sc.scrollLeft, y = v * H - sc.scrollTop;
+      return x > 44 && x < sc.clientWidth - 44 && y > Math.min(110, sc.clientHeight * 0.2) && y < sc.clientHeight - 70;
+    };
+    const ok = (p) => freeW(p) && inView(p) && !Object.values(V.actors).some((o) => o !== who && crowded(o.pos, p, o.kind === "kid")) && V.plateFree(who, p);
+    if (pref && ok(pref)) return pref;
+    const [hx, hy] = L.home;
+    for (let r = 4 + n * 0.8; r < 48; r += 1.8) for (let k = 0; k < 18; k++) {
+      const a = (k / 18) * Math.PI * 2 + n * 2.4, p = [hx + Math.cos(a) * r * 1.6, hy + Math.sin(a) * r * 0.8];
+      if (ok(p)) return p;
+    }
+    return pref && inView(pref) ? pref : randomHomePoint();
+  }
+
   function loop(now) {
     const dt = Math.min(0.05, (now - (last || now)) / 1000); last = now;
+    relax(dt);
     for (const a of Object.values(V.actors)) { a.tick(dt); a.draw(now); }
+    layoutPlates(performance.now());
     raf = requestAnimationFrame(loop);
   }
   // ---------- public
@@ -310,7 +552,25 @@
     if (!a || RM.matches || !(A && A.actors[a.id] && A.actors[a.id].anims.wave)) return res();
     a.set("wave", "s"); a.onEnd = () => { a.set("idle", "s"); res(); };
   });
-  V.setActorId = (who, id) => { const a = V.actors[who]; if (a) { a.id = id; a.cur = null; } };
+  // an angry chicken (its course neglected too long): swaps to the "-gian" sprites when they exist
+  V.setAngry = (who, on = true) => { const a = V.actors[who]; if (a) { a.angry = !!on; a.cur = null; } };
+  V.setActorId = (who, id) => { const a = V.actors[who]; if (a) { a.id = id; a.cur = null; a.dress(); } };
+  // which sprite set the student wears: "cu" (first) or "moi" (new, other drawing scale and stride)
+  V.setSet = (who, key) => { const a = V.actors[who]; if (a && SETS[key]) { a.set0 = SETS[key]; a.cur = null; a.dress(); measure(performance.now(), true); } };
+  // Gà Toán's costume for a growth stage (1..4), or null for the first sprites; returns when the picture is ready
+  V.setCostume = (who, stage) => {
+    const a = V.actors[who], c = a && COSTUME[a.id] && stage ? COSTUME[a.id][stage] : null;
+    if (!a || (stage && !c)) return Promise.resolve();
+    const apply = () => { a.cos = c; a.fit = c ? c.fit : 1; a.cur = null; a.dress(); measure(performance.now(), true); };
+    if (!c) { apply(); return Promise.resolve(); }
+    return Promise.all([preload(COS_DIR + c.idle), preload(COS_DIR + c.jump), preload(COS_DIR + c.still)]).then(apply);
+  };
+  V.costumeStages = () => Object.keys((COSTUME.toan || {})).map(Number);
+  // boxes in world px, for checking that nothing overlaps (plates, signs, bodies)
+  V.debugBoxes = () => {
+    measure(performance.now(), true);
+    return { signs: signBoxes.slice(), bodies: Object.fromEntries(Object.entries(V.actors).map(([k, a]) => [k, bodyBox(a)])) };
+  };
   // a place: the student walks to its door, the view leans in, then the page opens
   V.goPlace = async (el, url) => {
     const key = el.dataset.sign;
@@ -421,6 +681,7 @@
   // ---------- build
   V.ready = new Promise((resolve) => {
     function start() {
+      performance.mark("lg-start");
       L = window.LANG_LAYOUT; A = window.LANG_ACTORS || null; world = document.getElementById("world");
       if (!L || !world) return;
       world.style.setProperty("--ratio", String(L.size[0] / L.size[1]));   // the picture's shape decides the world's
@@ -445,16 +706,40 @@
         const p = L.signs[el.dataset.sign]; if (!p) return; el.style.left = p[0] * 100 + "%"; el.style.top = p[1] * 100 + "%";
       });
       // characters
-      document.querySelectorAll("#world .actor[data-actor]").forEach((el) => { const a = new Actor(el); V.actors[el.dataset.who || a.id] = a; });
+      if (!document.getElementById("tags")) { const th = document.createElement("div"); th.id = "tags"; th.className = "tags"; th.setAttribute("aria-hidden", "true"); world.append(th); }
+      document.querySelectorAll("#world .actor[data-actor]").forEach((el) => { const a = new Actor(el); a.prio = a.kind === "kid" ? 0 : ++prioN; V.actors[el.dataset.who || a.id] = a; });
       const fitSizes = () => {
         const fr = A ? A.frame : [416, 416], ft = A ? A.feet : [208, 380];
         world.style.setProperty("--frame-w", px(fr[0] / A_ppu()) + "px"); world.style.setProperty("--frame-h", px(fr[1] / A_ppu()) + "px");
         world.style.setProperty("--feet-x", (ft[0] / fr[0]) * 100 + "%"); world.style.setProperty("--feet-y", (ft[1] / fr[1]) * 100 + "%");
-        for (const a of Object.values(V.actors)) a.el.style.setProperty("--head", px(a.head * 0.899) + "px");
+        for (const a of Object.values(V.actors)) a.dress();
       };
       const A_ppu = () => (A && A.pxPerUnit) || L.pxPerUnit;
       fitSizes(); addEventListener("resize", fitSizes);
-      ambient(); camera();
+      // the view first (it decides what is in sight), then the chickens: they start where their plate has room too
+      camera();
+      measure(performance.now(), true);
+      Object.values(V.actors).filter((a) => a.kind === "ga").forEach((a, i) => { a.pos = seat(a, a.pos, i); a.place(); });
+      ambient();
+      // nothing shows until the picture is painted: the tiles and the first sprites are decoded
+      // (html gets .lg-ready; the page fades its splash out and the village in)
+      const wait = [];
+      const decode = (im) => (im.decode ? im.decode().catch(() => {}) : new Promise((r) => { im.onload = im.onerror = r; }));
+      bgw.querySelectorAll("img.bgt").forEach((im) => wait.push(decode(im)));
+      // the cut-outs in sight repeat what the tiles show: they are waited for too, but for a moment only (they are preloaded already)
+      const sc0 = document.getElementById("scene"), occWait = [];
+      if (sc0) {
+        const W0 = world.clientWidth, H0 = world.clientHeight, m = 0.05;
+        const x0 = sc0.scrollLeft / W0 - m, x1 = (sc0.scrollLeft + sc0.clientWidth) / W0 + m, y0 = sc0.scrollTop / H0 - m, y1 = (sc0.scrollTop + sc0.clientHeight) / H0 + m;
+        const ims = occ.querySelectorAll("img.occ");
+        (L.occ || []).forEach((o, i) => { if (o.box[0] < x1 && o.box[2] > x0 && o.box[1] < y1 && o.box[3] > y0 && ims[i]) occWait.push(decode(ims[i])); });
+      }
+      Object.values(V.actors).forEach((a) => { const s = sheet(a.id, "idle", "s", a.set0.base); if (s) wait.push(cache[s.url].im.decode ? cache[s.url].im.decode().catch(() => {}) : Promise.resolve()); });
+      V.loaded = Promise.race([Promise.all(wait).then(() => Promise.race([Promise.all(occWait), new Promise((r) => setTimeout(r, 1000))])), new Promise((r) => setTimeout(r, 9000))]).then(() => {
+        // the window may have changed shape since the first seating (fonts, toolbar): look at the start view again and seat anyone it cuts off
+        V.centreOn(L.home, false); measure(performance.now(), true);
+        Object.values(V.actors).filter((a) => a.kind === "ga").forEach((a, i) => { a.pos = seat(a, a.pos, i); a.place(); });
+        performance.mark("lg-ready"); document.documentElement.classList.add("lg-ready"); return V; });
       // one loop for every character (with reduced motion it still runs, so the first frame shows once loaded, but
       // nobody walks and every animation holds its first frame)
       raf = requestAnimationFrame(loop);

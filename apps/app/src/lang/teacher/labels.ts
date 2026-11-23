@@ -54,8 +54,19 @@ export interface GuessInput {
   subject?: string | null;
   age_band?: string | null;
   level_suggested?: CourseLevel | null;
+  /** what students see (latest published) */
+  level?: CourseLevel | null;
+  /** chicken / band / grade the gateway saved for the working version (open draft, else latest published) */
+  saved?: { chicken?: string | null; band?: string | null; grade?: number | null } | null;
   versions?: TeacherVersion[];
 }
+
+/** The version the gateway's saved labels belong to: the open draft, else the latest one. */
+const workingVersion = (vs: TeacherVersion[] | undefined): number | null => {
+  if (!vs?.length) return null;
+  const open = vs.filter((v) => v.status !== "published");
+  return Math.max(...(open.length ? open : vs).map((v) => v.version));
+};
 
 /**
  * What Mentor pre-fills: the saved labels of the version first, then what it read from the files (subject, age band), then
@@ -63,7 +74,8 @@ export interface GuessInput {
  */
 export function guessLabels(c: GuessInput, version: number | null): Labels {
   const v = c.versions?.find((x) => x.version === version) ?? c.versions?.[c.versions.length - 1];
-  const saved = v?.labels ?? null;
+  const server = v && v.version === workingVersion(c.versions) ? c.saved : null;
+  const saved = v?.labels || server ? { ...(server ?? {}), ...(v?.labels ?? {}) } : null;
   const text = strip(`${c.subject ?? ""} ${c.title}`);
   const gm = /\b(?:lop|nam|grade|year)?\s*(\d{1,2})\b/.exec(strip(c.title));
   const titleGrade = gm && +gm[1] >= 1 && +gm[1] <= 12 ? +gm[1] : null;
@@ -79,7 +91,8 @@ export function guessLabels(c: GuessInput, version: number | null): Labels {
       }
     }
   }
-  const difficulty = v?.level_confirmed ?? v?.level_suggested ?? c.level_suggested ?? null;
+  // a published version's difficulty is the one students already see
+  const difficulty = v?.level_confirmed ?? (v?.status === "published" ? c.level : null) ?? v?.level_suggested ?? c.level_suggested ?? null;
   const out: Labels = { bac, chicken, grade, difficulty };
   return fixChicken(out);
 }

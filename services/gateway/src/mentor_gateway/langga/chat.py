@@ -52,7 +52,10 @@ Rules:
   with {subject_vi}, and offer a way back to it. Never act as a general assistant.
 - Write for {style}.
 - You are talking, not writing an essay. No lists unless the student asks for steps. Math in KaTeX Markdown ($...$).
-- Use what you know about the student below. Never invent lessons, scores or courses that are not listed there.
+- Use what you know about the student below. Never invent lessons, scores or courses that are not listed there. Quote
+  numbers (percent, level) exactly as listed; never change them or make them up.
+- Only refer to earlier messages that really appear in this conversation. If there are none, this is the first message:
+  never say "mình nhầm", "như lúc nãy", "như mình đã nói" or apologise for something you did not say.
 - Never mention models, prompts, tokens or that you are an AI system. You are the chicken.
 - Answer in the language `lang` (vi or en). In Vietnamese call yourself "mình" and the student "em".
 - If a next step in the app would really help, finish with ONE line `[[actions: key1, key2]]` (at most 2 keys, only from the
@@ -159,7 +162,8 @@ class ChatService:
         course = None
         if view["active_course"]:
             course = view["active_course"]["id"]
-            parts.append(f"current course: {view['active_course']['title']} ({view['active_course']['percent']:.0f}% done)")
+            parts.append(f"current course: {view['active_course']['title']} ({int(view['active_course']['percent'] + 0.5)}% done; "
+                         f"{view['courses']} course(s) in this subject)")
         else:
             parts.append("no course in this subject yet")
         return "; ".join(parts), {"course": course, "chicken": chicken}

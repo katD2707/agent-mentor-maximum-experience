@@ -16,6 +16,8 @@ interface BankSet {
   course: { id: string; title: string };
   hint: string;
   takeaway: { vi: string; en: string };
+  /** the village chicken the bank's XP goes to (the subject's chicken in the learner's stage); default "toan" */
+  chicken?: string;
 }
 type Say = (vi: string, en: string) => string;
 
@@ -136,7 +138,43 @@ const BANKS: Record<string, (say: Say) => BankSet> = {
     };
   },
 };
-BANKS.uni = BANKS.g10_12;
+BANKS.uni = (say): BankSet => {
+  const topic = { topic: "t", topic_title: say("Suy luận Bayes", "Bayesian inference") };
+  return {
+    course: { id: "xac-suat-bayes", title: say("Xác suất thống kê: Suy luận Bayes", "Probability and Statistics: Bayesian inference") },
+    chicken: "khdl",
+    hint: say("Viết lại công thức Bayes trước khi thay số.", "Write Bayes' rule down before plugging numbers in."),
+    takeaway: { vi: "Tốt rồi. Chỉ còn lẫn tiên nghiệm với hậu nghiệm.", en: "Good. Only prior and posterior are still mixed up." },
+    entries: [
+      {
+        item: { id: "u:1", type: "SINGLE_CHOICE", stem: say("Tiên nghiệm Beta(2, 8), kiểm 20 sản phẩm thấy 3 lỗi. Hậu nghiệm là?", "Prior Beta(2, 8), 20 items checked and 3 faulty. The posterior is?"), options: [{ id: "A", text: "Beta(3, 20)" }, { id: "B", text: "Beta(5, 25)" }, { id: "C", text: "Beta(5, 28)" }], ...topic },
+        key: { correct: "B", explanation: "Beta(2+3, 8+17) = Beta(5, 25).", feedback: { C: say("Số lần không lỗi là 17, không phải 20.", "The number of good items is 17, not 20.") } },
+      },
+      {
+        item: { id: "u:2", type: "SINGLE_CHOICE", stem: say("Hậu nghiệm tỉ lệ với:", "The posterior is proportional to:"), options: [{ id: "A", text: say("hợp lý × tiên nghiệm", "likelihood × prior") }, { id: "B", text: say("hợp lý / tiên nghiệm", "likelihood / prior") }, { id: "C", text: say("tiên nghiệm + hợp lý", "prior + likelihood") }], ...topic },
+        key: { correct: "A", explanation: say("p(θ|x) ∝ p(x|θ)·p(θ).", "p(θ|x) ∝ p(x|θ)·p(θ).") },
+      },
+      {
+        item: {
+          id: "u:3",
+          type: "TRUE_FALSE_GROUP",
+          stem: say("Đúng hay sai?", "True or false?"),
+          statements: [{ id: "a", text: say("Beta là tiên nghiệm liên hợp của mô hình nhị thức", "Beta is the conjugate prior of the binomial model") }, { id: "b", text: say("Hậu nghiệm luôn bằng tiên nghiệm", "The posterior always equals the prior") }, { id: "c", text: say("Trung bình hậu nghiệm là trung bình có trọng số", "The posterior mean is a weighted average") }],
+          ...topic,
+        },
+        key: { correct: "TFT", explanation: say("Dữ liệu kéo hậu nghiệm rời khỏi tiên nghiệm.", "The data pulls the posterior away from the prior."), truth: { a: true, b: false, c: true } },
+      },
+      {
+        item: { id: "u:4", type: "SHORT_ANSWER", stem: say("Tiên nghiệm Beta(1, 1), thấy 4 lỗi trong 10 lần kiểm. Tham số α của hậu nghiệm là bao nhiêu?", "Prior Beta(1, 1), 4 faults in 10 checks. What is the posterior's α?"), short_answer: { max_chars: 24 }, ...topic },
+        key: { correct: "5", explanation: "α = 1 + 4 = 5." },
+      },
+      {
+        item: { id: "u:5", type: "SINGLE_CHOICE", stem: say("Cái khó nhất khi tính hậu nghiệm trực tiếp là:", "The hard part of computing a posterior directly is:"), options: [{ id: "A", text: say("tích phân ở mẫu số p(x)", "the integral in the denominator p(x)") }, { id: "B", text: say("tính tiên nghiệm", "computing the prior") }, { id: "C", text: say("đếm số lỗi", "counting the faults") }], ...topic },
+        key: { correct: "A", explanation: say("p(x) = ∫ p(x|θ)p(θ)dθ thường không có dạng đóng.", "p(x) = ∫ p(x|θ)p(θ)dθ rarely has a closed form.") },
+      },
+    ],
+  };
+};
 
 /** Three step items (tiles, pairs, order), appended to the bank with `createMockPractice({ steps: true })`. */
 function stepEntries(say: Say): Entry[] {
@@ -273,9 +311,9 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
     r.s.status = "finished";
     const score10 = mock ? Math.round((correct / r.s.items.length) * 1000) / 100 : null;
     const paper = r.s.paper;
-    const xp: PXp[] = !mock || !answered ? [] : paper ? [{ chicken: paper.chicken, source: "paper_submit", amount: 40, level_up: false }, ...((score10 ?? 0) >= 5 ? [{ chicken: paper.chicken, source: "boss_beaten", amount: 50, level_up: false }] : [])] : [{ chicken: "toan", source: "mock_submit", amount: 40, level_up: false }];
+    const xp: PXp[] = !mock || !answered ? [] : paper ? [...(answered * 2 >= r.s.items.length ? [{ chicken: paper.chicken, source: "paper_submit", amount: 40, level_up: false }] : []), ...((score10 ?? 0) >= 5 && answered * 2 >= r.s.items.length ? [{ chicken: paper.chicken, source: "boss_beaten", amount: 50, level_up: false }] : [])] : [{ chicken: r.bank.chicken ?? "toan", source: "mock_submit", amount: 40, level_up: false }];
     r.finished = {
-      ...(paper ? { boss: { name: paper.boss.name_vi, ...paper.boss, hp: r.s.items.length, damage: correct, beaten: (score10 ?? 0) >= 5 } } : {}),
+      ...(paper ? { boss: { name: paper.boss.name_vi, ...paper.boss, chicken: paper.chicken, hp: r.s.items.length, damage: correct, beaten: (score10 ?? 0) >= 5 } } : {}),
       xp,
       session: { id: r.s.id, kind: r.s.kind, subject: r.s.subject, status: "finished" },
       correct,
@@ -328,7 +366,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       const s: PSession = {
         id,
         kind: mock ? "mock" : "practice",
-        subject: mock ? "toan" : "quick",
+        subject: mock ? (bank.chicken ?? "toan") : "quick",
         source: body.source,
         ...(mock ? { minutes: opts.mockMinutes ?? 20 } : {}),
         ...(body.source.startsWith("paper:") ? { paper: paperOf(body.source.slice(6)) } : {}),
@@ -366,7 +404,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       st.correct = res.correct;
       st.result = res;
       r.results[b.position] = res;
-      return res.correct ? { ...res, xp: [{ chicken: "toan", source: "practice_right", amount: 2, level_up: false }] } : res;
+      return res.correct ? { ...res, xp: [{ chicken: r.bank.chicken ?? "toan", source: "practice_right", amount: 2, level_up: false }] } : res;
     },
     async hint(_t, id, position) {
       const r = rec(id);
@@ -403,7 +441,7 @@ export function createMockPractice(opts: { mockMinutes?: number; enough?: boolea
       if (r.fixed.has(b.item_id)) throw new PracticeError(409, "already_fixed");
       r.fixed.add(b.item_id);
       const res = grade(r.s.items[i], r.keys[i], b.answer);
-      if (res.correct) return { correct: true, xp: [{ chicken: "toan", source: "fix_right", amount: 3, level_up: false }] };
+      if (res.correct) return { correct: true, xp: [{ chicken: r.bank.chicken ?? "toan", source: "fix_right", amount: 3, level_up: false }] };
       return { correct: false, right: r.keys[i].correct, explanation: r.keys[i].explanation, ...(r.keys[i].feedback?.[b.answer] ? { note: r.keys[i].feedback![b.answer] } : {}) };
     },
     async review(_t, id) {

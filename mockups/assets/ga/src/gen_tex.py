@@ -15,6 +15,10 @@ TEX = {
     "bark": "front view of stylized tree bark: vertical grooves, small moss patches",
     "plaster": "front view of an old lime plaster wall: soft blotches, small cracks, a few chipped spots",
     "roof": "front view of rows of overlapping clay roof tiles, slightly uneven, chipped corners, faint moss",
+    "knit": "close-up of chunky hand-knitted wool fabric: neat rows of V-shaped knit stitches, soft yarn fuzz, cozy",
+    "wool": "close-up of fine woven wool cloth with a subtle diagonal twill weave, soft fibers, tiny slubs, even tone",
+    "brocade": "close-up of ornate woven brocade fabric with a repeating geometric pattern of small diamonds, triangles and circles, raised embroidered thread",
+    "leather": "close-up of smooth worn leather with fine grain, subtle creases, tiny stitched seam",
 }
 env = sys.argv[1]; names = sys.argv[2:] or list(TEX)
 keys = {}

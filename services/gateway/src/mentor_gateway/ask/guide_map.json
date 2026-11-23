@@ -67,9 +67,9 @@
   "vi": "Lọc đề: Chọn năm hoặc môn để tìm đề hợp với em.",
   "en": "Filter papers: Pick a year or subject to find the right paper."
  },
- "arena.real-papers-one-boss-each": {
-  "vi": "Đề thật, mỗi đề một boss: Đề thi các năm trước, bấm giờ như ngày thi. Nộp bài xong gà đánh boss: đúng từ nửa số câu là hạ boss.",
-  "en": "Real papers, one boss each: Past exam papers, timed like exam day. After you submit your chicken fights the boss: half right or more beats it."
+ "arena.one-boss-per-paper": {
+  "vi": "Mỗi đề một boss: Đề thi có tính giờ như ngày thi. Nộp bài xong gà đánh boss: đúng từ nửa số câu là hạ boss.",
+  "en": "One boss per paper: Papers are timed like exam day. After you submit your chicken fights the boss: half right or more beats it."
  },
  "tests.course-tests": {
   "vi": "Bài kiểm tra: Thi thử cả khóa hoặc làm từng mức. Đáp án hiện sau khi nộp.",
@@ -86,6 +86,10 @@
  "study.how-points-work": {
   "vi": "Cách tính điểm: Giữ đủ giờ thì gà được thưởng thêm. Học đủ 10 phút là giữ chuỗi ngày.",
   "en": "How points work: A full session earns a bonus. 10 minutes keeps your streak."
+ },
+ "progress.your-chickens": {
+  "vi": "Gà của em: Mỗi gà một ô: tuần này được bao nhiêu kinh nghiệm và còn bao nhiêu nữa thì lên cấp.",
+  "en": "Your chickens: One box per chicken: this week's points and how many more it needs for the next level."
  },
  "progress.goals": {
   "vi": "Mục tiêu: Thanh xanh là phần đã xong. Mentor tự thêm buổi khi em hơi chậm.",
@@ -156,8 +160,8 @@
   "en": "Publish: Sends this version to students. Anyone mid-course keeps their progress."
  },
  "village.today": {
-  "vi": "Việc hôm nay: Gà nói trước một việc nên làm bây giờ. Trả lời ở khung trò chuyện bên dưới.",
-  "en": "Today: Your chicken suggests one thing to do now. Answer in the chat below."
+  "vi": "Việc hôm nay: Gà nói trước một việc nên làm bây giờ. Mở khung trò chuyện ở góc dưới để trả lời.",
+  "en": "Today: Your chicken suggests one thing to do now. Open the chat in the corner to answer."
  },
  "village.your-chickens": {
   "vi": "Gà của em: Mỗi chú gà là một môn. Bấm vào gà để vào chuồng xem các khóa.",
@@ -166,6 +170,10 @@
  "village.this-week": {
   "vi": "Tuần này: Vòng này cho biết em học được mấy buổi trong tuần. Bấm để xem lịch.",
   "en": "This week: The ring shows how many sessions you did this week. Tap to see the plan."
+ },
+ "village.places": {
+  "vi": "Các nơi trong làng: Chạm bảng gỗ để đến đó: Đấu trường, Phòng tự học, Chợ gà. Chạm lần nữa nếu em muốn đến nhanh hơn.",
+  "en": "Places: Tap a wooden sign to go there: Arena, Study room, Chicken market. Tap again to get there faster."
  },
  "village.chicken-market": {
   "vi": "Chợ gà: Nhận thêm gà để học thêm môn, miễn phí.",

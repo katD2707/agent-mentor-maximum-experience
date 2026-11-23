@@ -1,0 +1,110 @@
+{
+ "pxPerUnit": 94.1,
+ "frame": [
+  416,
+  416
+ ],
+ "feet": [
+  208,
+  370
+ ],
+ "fps": 12,
+ "dirs": [
+  "s",
+  "se",
+  "e",
+  "ne",
+  "n",
+  "nw",
+  "w",
+  "sw"
+ ],
+ "actors": {
+  "nam": {
+   "anims": {
+    "idle": {
+     "frames": 16,
+     "fps": 12,
+     "loop": true,
+     "dirs": [
+      "s",
+      "se",
+      "e",
+      "ne",
+      "n",
+      "nw",
+      "w",
+      "sw"
+     ]
+    },
+    "walk": {
+     "frames": 12,
+     "fps": 12,
+     "loop": true,
+     "dirs": [
+      "s",
+      "se",
+      "e",
+      "ne",
+      "n",
+      "nw",
+      "w",
+      "sw"
+     ],
+     "stride": 1.315
+    },
+    "wave": {
+     "frames": 24,
+     "fps": 12,
+     "loop": false,
+     "dirs": [
+      "s"
+     ]
+    }
+   }
+  },
+  "nu": {
+   "anims": {
+    "idle": {
+     "frames": 16,
+     "fps": 12,
+     "loop": true,
+     "dirs": [
+      "s",
+      "se",
+      "e",
+      "ne",
+      "n",
+      "nw",
+      "w",
+      "sw"
+     ]
+    },
+    "walk": {
+     "frames": 12,
+     "fps": 12,
+     "loop": true,
+     "dirs": [
+      "s",
+      "se",
+      "e",
+      "ne",
+      "n",
+      "nw",
+      "w",
+      "sw"
+     ],
+     "stride": 1.315
+    },
+    "wave": {
+     "frames": 24,
+     "fps": 12,
+     "loop": false,
+     "dirs": [
+      "s"
+     ]
+    }
+   }
+  }
+ }
+}

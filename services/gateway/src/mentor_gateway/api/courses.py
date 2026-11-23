@@ -84,8 +84,13 @@ def catalog(request: Request, age_band: Annotated[str | None, AgeBandQ] = None, 
 
 
 @router.get("/courses/{course_id}")
-def course(course_id: str, user: User = Depends(current_user), content: ContentService = Depends(svc)) -> dict:
-    return content.course_detail(course_id, teacher=content.is_teacher(user))
+def course(request: Request, course_id: str, user: User = Depends(current_user), content: ContentService = Depends(svc)) -> dict:
+    detail = content.course_detail(course_id, teacher=content.is_teacher(user))
+    resolver = getattr(request.app.state, "chicken_resolver", None)
+    if resolver is not None and isinstance(detail, dict) and not content.is_teacher(user):
+        # the chicken this course's XP goes to (the same answer as the progress hook), never a client guess
+        detail = {**detail, "chicken": resolver.of_course(course_id, user.age_band) or resolver.fallback(user.age_band)}
+    return detail
 
 
 def _check_version(content: ContentService, user: User, course_id: str, version: int) -> None:
