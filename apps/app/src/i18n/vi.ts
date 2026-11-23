@@ -554,10 +554,10 @@ export const vi = {
     download: { downloading: "Đang tải về máy {{pct}}%", ready: "Đã tải về máy", partial: "Đã tải một phần", error: "Chưa tải được" },
     player: {
       loading: "Đang mở bài học…",
-      loadFailed: "Chưa mở được bài học. Kiểm tra mạng rồi thử lại.",
-      integrity: "Gói bài học bị lỗi nên mình không mở. Thử lại sau nhé.",
       downloading: "Đang tải khóa học…",
       needsNetwork: "Cần mạng để tải khóa này lần đầu",
+      loadFailed: "Chưa mở được bài học. Kiểm tra mạng rồi thử lại.",
+      integrity: "Gói bài học bị lỗi nên mình không mở. Thử lại sau nhé.",
       tooNew: "Khóa này cần bản Mentor mới hơn (từ {{v}}). Cập nhật ứng dụng rồi mở lại nhé.",
       retry: "Thử lại",
       speak: "Đọc to",

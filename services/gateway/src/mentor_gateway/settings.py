@@ -40,9 +40,6 @@ class Settings(BaseModel):
     database_url: str | None = None  # default: sqlite:///$MENTOR_DATA_DIR/ops.db; Postgres URLs work too
     content_dir: Path = _repo_root() / "mentor-content"
 
-    model_router_url: str | None = None  # LiteLLM router (course search embeddings); unset = lexical search only
-    model_router_key: str | None = None  # MODEL_ROUTER_KEY, or MODEL_ROUTER_MASTER_KEY in dev
-    user_ai: bool | None = None  # MENTOR_USER_AI: each user's own AI key (Cài đặt > Khóa AI), called directly; default: on when no router, not in tests
     # Courses on Google Drive (content/drive.py uploads, content/remote.py downloads). Drive is the course store for now.
     remote_catalog_url: str | None = None  # MENTOR_REMOTE_CATALOG_URL: public URL or Drive file id of the catalog (installed apps)
     drive_api_key: str | None = None  # MENTOR_DRIVE_API_KEY: optional public key, downloads then use files.get alt=media
@@ -51,6 +48,9 @@ class Settings(BaseModel):
     drive_token_file: Path = _repo_root() / ".secrets" / "google-drive-token.json"  # MENTOR_DRIVE_TOKEN_FILE (refresh token, never logged)
     drive_upload: bool | None = None  # MENTOR_DRIVE_UPLOAD: push on publish; default on when the owner has logged in (not in tests)
 
+    model_router_url: str | None = None  # LiteLLM router (course search embeddings); unset = lexical search only
+    model_router_key: str | None = None  # MODEL_ROUTER_KEY, or MODEL_ROUTER_MASTER_KEY in dev
+    user_ai: bool | None = None  # MENTOR_USER_AI: each user's own AI key (Cài đặt > Khóa AI), called directly; default: on when no router, not in tests
     media_token_minutes: int = 240  # lifetime of the `?t=` token for <video>/<img>/<audio> on content routes
 
     public_base_url: str = "http://localhost:8000"  # where the gateway is reachable
@@ -109,6 +109,12 @@ class Settings(BaseModel):
         return self.seed_dev_accounts if self.seed_dev_accounts is not None else self.env == "dev"
 
     @property
+    def drive_upload_on(self) -> bool:
+        if self.drive_upload is not None:
+            return self.drive_upload
+        return self.env != "test" and not self.remote_catalog_url and self.drive_token_file.is_file()
+
+    @property
     def user_ai_enabled(self) -> bool:
         if self.user_ai is not None:
             return self.user_ai
@@ -125,12 +131,6 @@ class Settings(BaseModel):
     @property
     def ops_db_url(self) -> str:
         return self.database_url or f"sqlite:///{(self.data_dir / 'ops.db').as_posix()}"
-    @property
-    def drive_upload_on(self) -> bool:
-        if self.drive_upload is not None:
-            return self.drive_upload
-        return self.env != "test" and not self.remote_catalog_url and self.drive_token_file.is_file()
-
 
     @property
     def web_url(self) -> str:
@@ -157,6 +157,12 @@ class Settings(BaseModel):
             "data_dir": "MENTOR_DATA_DIR",
             "database_url": "MENTOR_DATABASE_URL",
             "content_dir": "MENTOR_CONTENT_DIR",
+            "remote_catalog_url": "MENTOR_REMOTE_CATALOG_URL",
+            "drive_api_key": "MENTOR_DRIVE_API_KEY",
+            "remote_sync_minutes": "MENTOR_REMOTE_SYNC_MINUTES",
+            "drive_client_file": "MENTOR_DRIVE_CLIENT_FILE",
+            "drive_token_file": "MENTOR_DRIVE_TOKEN_FILE",
+            "drive_upload": "MENTOR_DRIVE_UPLOAD",
             "model_router_url": "MODEL_ROUTER_URL",
             "model_router_key": "MODEL_ROUTER_KEY",
             "user_ai": "MENTOR_USER_AI",
@@ -177,12 +183,6 @@ class Settings(BaseModel):
             "builder_deeptutor": "BUILDER_DEEPTUTOR",
             "builder_chat_wait_s": "BUILDER_CHAT_WAIT_S",
             "released_app_version": "RELEASED_APP_VERSION",
-            "remote_catalog_url": "MENTOR_REMOTE_CATALOG_URL",
-            "drive_api_key": "MENTOR_DRIVE_API_KEY",
-            "remote_sync_minutes": "MENTOR_REMOTE_SYNC_MINUTES",
-            "drive_client_file": "MENTOR_DRIVE_CLIENT_FILE",
-            "drive_token_file": "MENTOR_DRIVE_TOKEN_FILE",
-            "drive_upload": "MENTOR_DRIVE_UPLOAD",
             "background_tasks": "GATEWAY_BACKGROUND_TASKS",
             "scheduler_interval_seconds": "SCHEDULER_INTERVAL_SECONDS",
             "backup_dir": "MENTOR_BACKUP_DIR",

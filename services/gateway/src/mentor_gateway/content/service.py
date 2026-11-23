@@ -85,6 +85,13 @@ class ContentService:
             self.remote.ensure_pack(course_id, v)
 
     def pack_for(self, entry: CatalogEntry) -> CoursePack:
+        if entry.status != "coming_soon" and self.remote is not None and not self.remote.has_pack(entry.id, entry.version):
+            # not downloaded yet: search and listings use the empty outline, never trigger a download
+            key = f"{entry.id}:remote:{entry.cover_sha256}"
+            p = self._packs.get(key)
+            if p is None:
+                p = self._packs[key] = self.outline_pack(entry.id)
+            return p
         if entry.status == "coming_soon":
             key = f"{entry.id}:{entry.cover_sha256}"
             p = self._packs.get(key)
@@ -129,19 +136,19 @@ class ContentService:
         tree: list[dict] = []
         if version is not None:
             try:
+                self.ensure_local(course_id, version)
                 tree = self.tree(self.store.load_pack(course_id, version))
             except NotFound:
                 pass
+            except NeedsNetwork:
+                return {**meta.model_dump(mode="json"), "tree": [], "needs_network": True}
         return {**meta.model_dump(mode="json"), "tree": tree}
 
     # ------------------------------------------------------------ search
     def _search_docs(self) -> list[Doc]:
-                self.ensure_local(course_id, version)
         docs = []
         for e in self.store.load_catalog().courses:
             ck = hashlib.sha256(e.model_dump_json().encode()).hexdigest()  # any catalog change makes a new document
-            except NeedsNetwork:
-                return {**meta.model_dump(mode="json"), "tree": [], "needs_network": True}
             doc = self._docs.get(ck)
             if doc is None:
                 fields = retrieval_fields(self.store.load_meta(e.id), self.pack_for(e))
@@ -325,7 +332,7 @@ class ContentService:
         if self.progress_hook is not None:
             try:
                 view["xp"] = self.progress_hook(user_id, course_id, pack, before_done, after_done, quiz, quiz_state)
-            except Exception:  # noqa: BLE001 - XP must never fail a progress save
+            except Exception:
                 log.exception("progress xp failed")
                 view["xp"] = []
         return view

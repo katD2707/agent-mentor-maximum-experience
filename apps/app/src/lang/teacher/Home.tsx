@@ -294,10 +294,10 @@ function CourseRow({ c, onDelete }: { c: TeacherCourseSummary; onDelete(): void 
         <span className="sub">
           {level && <LevelTag level={level} />}
           {pub && <span>{t("gv.subPublished", { version: pub.version, students: pub.students })}</span>}
+          {c.drive_unsynced && <span className="unsynced">{t("gv.unsynced", { defaultValue: "chưa đồng bộ" })}</span>}
         </span>
       </span>
       <span className={`tag ${tag.tone}`}>{tagText}</span>
-          {c.drive_unsynced && <span className="unsynced">{t("gv.unsynced", { defaultValue: "chưa đồng bộ" })}</span>}
     </>
   );
   return (

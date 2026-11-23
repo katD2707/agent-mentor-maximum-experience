@@ -1,2 +1,5 @@
 # shell scripts run on the Linux VM: keep LF even when edited or checked out on Windows
 *.sh text eol=lf
+
+# course content is hashed (pack_sha256, asset sha256): never convert line endings, or packs fail their check on Windows
+mentor-content/** -text

@@ -55,9 +55,9 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         tasks: list[asyncio.Task] = []
         await app.state.builder.start()  # resumes stages that were running when the gateway last stopped
-        if settings.background_tasks:
         if app.state.content.remote is not None and settings.env != "test":  # installed app: the courses come from Drive
             tasks.append(asyncio.create_task(app.state.content.remote.run_forever()))
+        if settings.background_tasks:
             tasks.append(asyncio.create_task(gw.scheduler.run_forever()))
             if settings.model_router_url:  # embed new course documents now, so the first Ask search is not the slow one
                 tasks.append(asyncio.create_task(asyncio.to_thread(_warm_search, app.state.content)))

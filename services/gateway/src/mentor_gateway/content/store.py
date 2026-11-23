@@ -14,7 +14,6 @@ and `publish` is not repeatable. The directory name is the course id.
 from __future__ import annotations
 
 import hashlib
-import json
 import mimetypes
 import os
 import threading
@@ -119,6 +118,7 @@ class ContentStore:
     def __init__(self, root: Path, clock=None) -> None:
         self.root = Path(root)
         self.clock = clock or (lambda: datetime.now(UTC))
+        self._lock = threading.RLock()
         self.on_published = None  # callable(course_id): the Drive uploader (content/drive.py), after publish / label change
 
     def _published(self, course_id: str) -> None:
@@ -127,7 +127,6 @@ class ContentStore:
                 self.on_published(course_id)
             except Exception:  # noqa: BLE001 - an upload problem never fails a publish
                 pass
-        self._lock = threading.RLock()
 
     # ------------------------------------------------------------ paths
     def course_dir(self, course_id: str) -> Path:
@@ -302,11 +301,11 @@ class ContentStore:
             self._save_meta(meta)
             if regen:
                 if latest:
-                    self._published(course_id)
                     self.regenerate_catalog()
+                    self._published(course_id)
+                return info
             if latest:
                 self._published(course_id)
-                return info
             return latest  # the caller regenerates the catalog (off its request path) when this is true
 
     def set_status(self, course_id: str, version: int, status: str) -> None:
@@ -385,8 +384,8 @@ class ContentStore:
                 meta.chicken = labels.get("chicken") or meta.chicken
                 meta.grade = labels.get("grade") or meta.grade
             self._save_meta(meta)
-            self._published(course_id)
             self.regenerate_catalog()
+            self._published(course_id)
             return info
 
     def regenerate_catalog(self) -> Catalog:
