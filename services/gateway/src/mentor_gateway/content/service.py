@@ -12,6 +12,7 @@ from mentor_schemas.course import CatalogEntry, Chapter, CoursePack, Lesson, Tex
 from sqlalchemy import func, select
 
 from mentor_gateway.content import catalog_query as cq
+from mentor_gateway.content.remote import NeedsNetwork, RemoteCourses
 from mentor_gateway.content.search import CourseSearch, Doc, RouterEmbedder, make_key, retrieval_fields, retrieval_text
 from mentor_gateway.content.store import ComingSoon, ContentError, ContentStore, NotFound, block_ids
 from mentor_gateway.content.tables import Enrollment
@@ -30,6 +31,13 @@ class ContentService:
         self.db = db
         self.clock = clock
         self.store = ContentStore(settings.courses_dir, clock)
+        self.remote = RemoteCourses(settings, self.store) if settings.remote_catalog_url else None  # installed apps: courses on Drive
+        self.drive_sync = None  # owner machine: uploads on publish (content/drive.py)
+        if self.remote is None and settings.drive_upload_on:
+            from mentor_gateway.content.drive import DrivePublisher, DriveSync
+
+            self.drive_sync = DriveSync(DrivePublisher(self.store, settings))
+            self.store.on_published = self.drive_sync.notify
         self.search = CourseSearch(settings.data_dir / "embeddings",
                                    RouterEmbedder(settings.model_router_url, settings.model_router_key))
         self._media_key = box.subkey("content-media-token")
@@ -63,6 +71,18 @@ class ContentService:
         """Raises ComingSoon for a placeholder (NotFound when the course does not exist)."""
         if self.store.load_meta(course_id).status == "coming_soon":
             raise ComingSoon()
+
+    def ensure_local(self, course_id: str, version: int | None = None) -> None:
+        """Installed apps: download the course pack from Drive the first time it is needed (no-op with local content).
+        Raises NeedsNetwork offline, BadDownload for a damaged download."""
+        if self.remote is None:
+            return
+        meta = self.store.load_meta(course_id)
+        if meta.status == "coming_soon":
+            return
+        v = version or meta.latest_published
+        if v is not None:
+            self.remote.ensure_pack(course_id, v)
 
     def pack_for(self, entry: CatalogEntry) -> CoursePack:
         if entry.status == "coming_soon":
@@ -116,9 +136,12 @@ class ContentService:
 
     # ------------------------------------------------------------ search
     def _search_docs(self) -> list[Doc]:
+                self.ensure_local(course_id, version)
         docs = []
         for e in self.store.load_catalog().courses:
             ck = hashlib.sha256(e.model_dump_json().encode()).hexdigest()  # any catalog change makes a new document
+            except NeedsNetwork:
+                return {**meta.model_dump(mode="json"), "tree": [], "needs_network": True}
             doc = self._docs.get(ck)
             if doc is None:
                 fields = retrieval_fields(self.store.load_meta(e.id), self.pack_for(e))

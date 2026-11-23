@@ -119,6 +119,14 @@ class ContentStore:
     def __init__(self, root: Path, clock=None) -> None:
         self.root = Path(root)
         self.clock = clock or (lambda: datetime.now(UTC))
+        self.on_published = None  # callable(course_id): the Drive uploader (content/drive.py), after publish / label change
+
+    def _published(self, course_id: str) -> None:
+        if self.on_published is not None:
+            try:
+                self.on_published(course_id)
+            except Exception:  # noqa: BLE001 - an upload problem never fails a publish
+                pass
         self._lock = threading.RLock()
 
     # ------------------------------------------------------------ paths
@@ -294,7 +302,10 @@ class ContentStore:
             self._save_meta(meta)
             if regen:
                 if latest:
+                    self._published(course_id)
                     self.regenerate_catalog()
+            if latest:
+                self._published(course_id)
                 return info
             return latest  # the caller regenerates the catalog (off its request path) when this is true
 
@@ -374,6 +385,7 @@ class ContentStore:
                 meta.chicken = labels.get("chicken") or meta.chicken
                 meta.grade = labels.get("grade") or meta.grade
             self._save_meta(meta)
+            self._published(course_id)
             self.regenerate_catalog()
             return info
 

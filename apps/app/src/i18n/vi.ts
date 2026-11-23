@@ -554,6 +554,8 @@ export const vi = {
       loading: "Đang mở bài học…",
       loadFailed: "Chưa mở được bài học. Kiểm tra mạng rồi thử lại.",
       integrity: "Gói bài học bị lỗi nên mình không mở. Thử lại sau nhé.",
+      downloading: "Đang tải khóa học…",
+      needsNetwork: "Cần mạng để tải khóa này lần đầu",
       tooNew: "Khóa này cần bản Mentor mới hơn (từ {{v}}). Cập nhật ứng dụng rồi mở lại nhé.",
       retry: "Thử lại",
       speak: "Đọc to",

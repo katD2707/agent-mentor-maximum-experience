@@ -28,6 +28,8 @@ export interface TeacherCourseSummary {
   updated_at: string;
   latest_version: number;
   versions: TeacherVersion[];
+  /** the course keeps failing to upload to the Drive course store (the gateway retries on its own) */
+  drive_unsynced?: boolean;
   build?: { done: number; total: number } | null;
   /** what students see (latest published) */
   level?: CourseLevel | null;

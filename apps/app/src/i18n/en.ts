@@ -556,6 +556,8 @@ export const en: Messages = {
       loading: "Opening the lesson…",
       loadFailed: "Couldn't open the lesson. Check your connection and try again.",
       integrity: "The lesson file is damaged so it wasn't opened. Try again later.",
+      downloading: "Downloading the course…",
+      needsNetwork: "You need to be online to download this course the first time",
       tooNew: "This course needs a newer Mentor (version {{v}} or later). Update the app, then open it again.",
       retry: "Try again",
       speak: "Read aloud",

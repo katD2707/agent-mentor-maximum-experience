@@ -40,6 +40,14 @@ class Settings(BaseModel):
 
     model_router_url: str | None = None  # LiteLLM router (course search embeddings); unset = lexical search only
     model_router_key: str | None = None  # MODEL_ROUTER_KEY, or MODEL_ROUTER_MASTER_KEY in dev
+    # Courses on Google Drive (content/drive.py uploads, content/remote.py downloads). Drive is the course store for now.
+    remote_catalog_url: str | None = None  # MENTOR_REMOTE_CATALOG_URL: public URL or Drive file id of the catalog (installed apps)
+    drive_api_key: str | None = None  # MENTOR_DRIVE_API_KEY: optional public key, downloads then use files.get alt=media
+    remote_sync_minutes: float = 30.0  # MENTOR_REMOTE_SYNC_MINUTES: how often the catalog is re-checked
+    drive_client_file: Path = _repo_root() / ".secrets" / "google-oauth-client.json"  # MENTOR_DRIVE_CLIENT_FILE (owner's machine)
+    drive_token_file: Path = _repo_root() / ".secrets" / "google-drive-token.json"  # MENTOR_DRIVE_TOKEN_FILE (refresh token, never logged)
+    drive_upload: bool | None = None  # MENTOR_DRIVE_UPLOAD: push on publish; default on when the owner has logged in (not in tests)
+
     media_token_minutes: int = 240  # lifetime of the `?t=` token for <video>/<img>/<audio> on content routes
 
     public_base_url: str = "http://localhost:8000"  # where the gateway is reachable
@@ -100,6 +108,12 @@ class Settings(BaseModel):
     @property
     def ops_db_url(self) -> str:
         return self.database_url or f"sqlite:///{(self.data_dir / 'ops.db').as_posix()}"
+    @property
+    def drive_upload_on(self) -> bool:
+        if self.drive_upload is not None:
+            return self.drive_upload
+        return self.env != "test" and not self.remote_catalog_url and self.drive_token_file.is_file()
+
 
     @property
     def web_url(self) -> str:
@@ -143,6 +157,12 @@ class Settings(BaseModel):
             "builder_deeptutor": "BUILDER_DEEPTUTOR",
             "builder_chat_wait_s": "BUILDER_CHAT_WAIT_S",
             "released_app_version": "RELEASED_APP_VERSION",
+            "remote_catalog_url": "MENTOR_REMOTE_CATALOG_URL",
+            "drive_api_key": "MENTOR_DRIVE_API_KEY",
+            "remote_sync_minutes": "MENTOR_REMOTE_SYNC_MINUTES",
+            "drive_client_file": "MENTOR_DRIVE_CLIENT_FILE",
+            "drive_token_file": "MENTOR_DRIVE_TOKEN_FILE",
+            "drive_upload": "MENTOR_DRIVE_UPLOAD",
             "background_tasks": "GATEWAY_BACKGROUND_TASKS",
             "scheduler_interval_seconds": "SCHEDULER_INTERVAL_SECONDS",
             "backup_dir": "MENTOR_BACKUP_DIR",

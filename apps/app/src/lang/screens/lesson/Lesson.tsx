@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "katex/dist/katex.min.css";
-import { api, isMock, type AssetRef, type Block, type Enrollment, type Lesson as LessonT, type ProgressXp, type QuizResult, type Today } from "../../../api";
+import { api, ApiError, isMock, type AssetRef, type Block, type Enrollment, type Lesson as LessonT, type ProgressXp, type QuizResult, type Today } from "../../../api";
 import { useAuth } from "../../../state/auth";
 import { Icon } from "../../../components/Icon";
 import { getCourseInfo } from "../../../lib/courseInfo";
@@ -25,7 +25,7 @@ import { stageIndex } from "../chuong/logic";
 import "../../styles/fonts";
 import "../../styles/lesson-lg.css";
 
-type Load = { status: "loading" } | { status: "error"; reason: "integrity" | "tooNew" | "load"; minVersion?: string } | { status: "ready"; loaded: LoadedPack; enrollment: Enrollment; chicken: string | null };
+type Load = { status: "loading" } | { status: "error"; reason: "integrity" | "tooNew" | "needsNetwork" | "load"; minVersion?: string } | { status: "ready"; loaded: LoadedPack; enrollment: Enrollment; chicken: string | null };
 
 interface Coach {
   id: string | null;
@@ -71,6 +71,12 @@ export default function Lesson() {
   const location = useLocation();
   const [load, setLoad] = useState<Load>({ status: "loading" });
   const [attempt, setAttempt] = useState(0);
+  const [slow, setSlow] = useState(false); // a first open can mean downloading the course from Drive
+  useEffect(() => {
+    setSlow(false);
+    const id = setTimeout(() => setSlow(true), 1500);
+    return () => clearTimeout(id);
+  }, [attempt]);
 
   useEffect(() => {
     if (!token || !user) return;
@@ -90,7 +96,7 @@ export default function Lesson() {
         if (loaded.source === "network") void startDownload(token, id, enrollment.pinned_version, packShaFor(info, enrollment.pinned_version));
         setLoad({ status: "ready", loaded, enrollment, chicken: info ? chickenOfCourse(info) : null });
       } catch (e) {
-        if (alive) setLoad(e instanceof PackTooNewError ? { status: "error", reason: "tooNew", minVersion: e.minVersion } : { status: "error", reason: e instanceof PackIntegrityError ? "integrity" : "load" });
+        if (alive) setLoad(e instanceof PackTooNewError ? { status: "error", reason: "tooNew", minVersion: e.minVersion } : e instanceof ApiError && e.code === "needs_network" ? { status: "error", reason: "needsNetwork" } : { status: "error", reason: e instanceof PackIntegrityError ? "integrity" : "load" });
       }
     })();
     return () => {
@@ -116,10 +122,10 @@ export default function Lesson() {
         <main className="lp-stage">
           <div className="lp-msgbox">
             {load.status === "loading" ? (
-              <p role="status">{t("courses.player.loading")}</p>
+              <p role="status">{t(slow ? "courses.player.downloading" : "courses.player.loading")}</p>
             ) : (
               <>
-                <p role="alert">{load.reason === "tooNew" ? t("courses.player.tooNew", { v: load.minVersion }) : load.reason === "integrity" ? t("courses.player.integrity") : t("courses.player.loadFailed")}</p>
+                <p role="alert">{load.reason === "tooNew" ? t("courses.player.tooNew", { v: load.minVersion }) : load.reason === "needsNetwork" ? t("courses.player.needsNetwork") : load.reason === "integrity" ? t("courses.player.integrity") : t("courses.player.loadFailed")}</p>
                 <button className="lp-go" type="button" onClick={() => (setLoad({ status: "loading" }), setAttempt((n) => n + 1))}>
                   {t("courses.player.retry")}
                 </button>

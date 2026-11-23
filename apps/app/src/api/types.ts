@@ -73,7 +73,7 @@ export interface Api {
   pushSubscribe(token: string, subscription: PushSubscriptionJson): Promise<void>;
 }
 
-export type ApiErrorCode = "invalid_credentials" | "role_mismatch" | "unauthorized" | "not_found" | "coming_soon" | "birth_year_locked" | "bad_request" | "bad_time" | "bedtime" | "quiet" | "network" | "unknown";
+export type ApiErrorCode = "invalid_credentials" | "username_taken" | "role_mismatch" | "unauthorized" | "not_found" | "coming_soon" | "birth_year_locked" | "bad_request" | "bad_time" | "bedtime" | "quiet" | "network" | "needs_network" | "unknown";
 
 export class ApiError extends Error {
   constructor(

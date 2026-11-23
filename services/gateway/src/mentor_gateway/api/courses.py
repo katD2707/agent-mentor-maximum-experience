@@ -27,7 +27,8 @@ MIME_FIX = {".vtt": "text/vtt", ".webp": "image/webp", ".mp4": "video/mp4", ".mp
 
 
 def content_error_response(exc: ContentError) -> JSONResponse:
-    status = 404 if isinstance(exc, NotFound) else 409 if isinstance(exc, (Immutable, ComingSoon)) else 422
+    status = (404 if isinstance(exc, NotFound) else 409 if isinstance(exc, (Immutable, ComingSoon))
+              else 503 if exc.code == "needs_network" else 502 if exc.code == "download_corrupt" else 422)
     return JSONResponse({"error": exc.code, "detail": str(exc)}, status_code=status)
 
 
@@ -108,6 +109,8 @@ def cover(request: Request, course_id: str, v: str | None = None, user: User = D
     meta = content.store.load_meta(course_id)
     if meta.latest_published is None and meta.status == "live" and not content.is_teacher(user):
         raise NotFound("course_not_found")
+    if content.remote is not None:
+        content.remote.ensure_cover(course_id)
     path = content.store.cover_path(course_id)
     data = path.read_bytes()
     sha = sha256_bytes(data)
@@ -121,6 +124,7 @@ def pack(request: Request, course_id: str, version: int, user: User = Depends(cu
     _check_version(content, user, course_id, version)
     meta = content.store.load_meta(course_id)
     info = content.store.version_info(meta, version)
+    content.ensure_local(course_id, version)  # installed apps: the first open downloads the course from Drive
     raw = content.store.pack_bytes_raw(course_id, version)
     published = info.status == "published"
     return _cached(request, raw, "application/json", info.pack_sha256 or sha256_bytes(raw),
@@ -132,6 +136,7 @@ def asset(request: Request, course_id: str, version: int, path: str, user: User 
           content: ContentService = Depends(svc)) -> Response:
     """The file with its mime type; `Range` is supported (video seeking)."""
     _check_version(content, user, course_id, version)
+    content.ensure_local(course_id, version)
     file = content.store.asset_path(course_id, version, path)
     mime = MIME_FIX.get(file.suffix.lower()) or mimetypes.guess_type(file.name)[0] or "application/octet-stream"
     published = content.published_version(course_id, version)

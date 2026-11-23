@@ -47,7 +47,11 @@ export async function raw(path: string, token: string, headers: Record<string, s
   } catch {
     throw new ApiError(0, "network");
   }
-  if (!res.ok && res.status !== 304) throw new ApiError(res.status, res.status === 401 ? "unauthorized" : res.status === 404 ? "not_found" : "unknown");
+  if (!res.ok && res.status !== 304) {
+    // 503 needs_network: the course lives on Drive and this device has not downloaded it yet
+    const needs = res.status === 503 && ((await res.json().catch(() => ({}))) as { error?: string }).error === "needs_network";
+    throw new ApiError(res.status, needs ? "needs_network" : res.status === 401 ? "unauthorized" : res.status === 404 ? "not_found" : "unknown");
+  }
   return res;
 }
 

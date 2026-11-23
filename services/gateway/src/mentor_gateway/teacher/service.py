@@ -703,6 +703,9 @@ class BuilderService:
             out["build"] = s["build"]
         return out
 
+        sync = getattr(self.content, "drive_sync", None)
+        if sync is not None and sync.unsynced(cid):
+            out["drive_unsynced"] = True  # keeps failing to reach Drive: the teacher list says "chưa đồng bộ"
     def detail(self, st: dict) -> dict:
         cid = st["course_id"]
         s = self.status_of(st)

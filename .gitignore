@@ -26,3 +26,6 @@ docs/de-xuat-ngan-sach-openai-dev.md
 
 # Cloudflare wrangler cache (infra/share)
 .wrangler/
+
+# owner-only secrets (Google OAuth client and token for the Drive course store)
+.secrets/

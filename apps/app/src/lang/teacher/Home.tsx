@@ -294,6 +294,7 @@ function CourseRow({ c, onDelete }: { c: TeacherCourseSummary; onDelete(): void 
         </span>
       </span>
       <span className={`tag ${tag.tone}`}>{tagText}</span>
+          {c.drive_unsynced && <span className="unsynced">{t("gv.unsynced", { defaultValue: "chưa đồng bộ" })}</span>}
     </>
   );
   return (
