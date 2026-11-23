@@ -4,7 +4,7 @@ AES-256-GCM. A sealed blob is b"v1" + 12-byte nonce + ciphertext||tag. `aad` bin
 (e.g. "push-sub:<user_id>"), so a blob copied into another row or user fails to open.
 
 The master key comes from MENTOR_MASTER_KEY (urlsafe base64 of 32 bytes). In dev/test, if it is unset, a key is
-generated once at $MENTOR_DATA_DIR/master.key. Outside dev/test a missing key is an error.
+generated once at $MENTOR_DATA_DIR/master.key (also in the single-machine standalone package). Elsewhere a missing key is an error.
 """
 
 import base64
@@ -82,7 +82,7 @@ def load_master_key(env: str, data_dir: Path) -> bytes:
         if len(key) != 32:
             raise ValueError("MENTOR_MASTER_KEY must decode to 32 bytes")
         return key
-    if env not in ("dev", "test"):
+    if env not in ("dev", "test", "standalone"):
         raise RuntimeError("MENTOR_MASTER_KEY is required outside dev/test")
     path = data_dir / "master.key"
     if path.is_file():

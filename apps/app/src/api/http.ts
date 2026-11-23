@@ -1,7 +1,29 @@
 import { ApiError, type Api, type ApiErrorCode, type LoginResult, type User } from "./types";
 import { fromWire, type Catalog, type CourseDetail, type ProgressBody, type SearchResult, type WireEnrollment, type CatalogPage, type Suggestions } from "./course";
 
-export const API_BASE: string = (import.meta.env.VITE_API_BASE as string | undefined) || "http://localhost:8000/api";
+/** `export let`: the self-contained desktop package learns its port at start-up (`initApiBase`), every module sees the update. */
+export let API_BASE: string = (import.meta.env.VITE_API_BASE as string | undefined) || "http://localhost:8000/api";
+
+/**
+ * Self-contained desktop package: the Rust shell starts the gateway on a free local port and answers
+ * `gateway_base` with its URL once it is up. Anywhere else (browser, hosted-server installers) the command is absent or
+ * returns null and VITE_API_BASE stays. Returns true when the base came from the shell.
+ */
+export async function initApiBase(): Promise<boolean> {
+  if (typeof window === "undefined" || !("__TAURI_INTERNALS__" in window)) return false;
+  try {
+    const { invoke } = await import("@tauri-apps/api/core");
+    const base = await invoke<string | null>("gateway_base");
+    if (typeof base === "string" && base) {
+      API_BASE = base.replace(/\/+$/, "") + "/api";
+      return true;
+    }
+  } catch (e) {
+    // an older shell has no such command: keep the configured base. Any other failure means the gateway did not start.
+    if (!/not found|unknown command/i.test(String(e))) throw new Error(String(e));
+  }
+  return false;
+}
 
 export async function request<T>(method: string, path: string, opts: { token?: string; body?: unknown } = {}): Promise<T> {
   let res: Response;
@@ -21,7 +43,7 @@ export async function request<T>(method: string, path: string, opts: { token?: s
     let code: ApiErrorCode = res.status === 401 ? "unauthorized" : res.status === 404 ? "not_found" : "unknown";
     try {
       const j = (await res.json()) as { error?: string };
-      if (j.error === "invalid_credentials" || j.error === "role_mismatch" || j.error === "birth_year_locked" || j.error === "bad_request" || j.error === "bad_time" || j.error === "bedtime" || j.error === "quiet") code = j.error;
+      if (j.error === "invalid_credentials" || j.error === "username_taken" || j.error === "role_mismatch" || j.error === "birth_year_locked" || j.error === "bad_request" || j.error === "bad_time" || j.error === "bedtime" || j.error === "quiet") code = j.error;
     } catch {
       /* no JSON body */
     }
@@ -60,6 +82,8 @@ const catalogCache = new Map<string, { etag: string; body: Catalog }>();
 
 export const httpApi: Api = {
   login: (username, password, role) => request<LoginResult>("POST", "/auth/login", { body: { username, password, role } }),
+  signupEnabled: () => request<{ signup: boolean }>("GET", "/auth/config").then((c) => c.signup === true, () => false),
+  register: (username, password, role) => request<LoginResult>("POST", "/auth/register", { body: { username, password, role } }),
   logout: (token) => request<void>("POST", "/auth/logout", { token }),
   getMe: (token) => request<User>("GET", "/me", { token }),
   patchMe: (token, patch) => request<User>("PATCH", "/me", { token, body: patch }),

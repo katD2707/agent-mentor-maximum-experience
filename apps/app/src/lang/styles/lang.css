@@ -419,3 +419,5 @@
 .lg-skel.on-dark span { color: #fff; }
 @keyframes lg-skel { from { opacity: .45; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .lg-skel i { animation: none; } }
+.lg-switch { margin: 0; text-align: center; font-weight: 600; color: #5a3a1c; }
+.lg-link { background: none; border: 0; padding: 4px 2px; font: inherit; font-weight: 800; color: #165c32; text-decoration: underline; cursor: pointer; }

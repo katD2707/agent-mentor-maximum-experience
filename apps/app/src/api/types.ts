@@ -32,6 +32,10 @@ export interface LoginResult {
 /** The whole backend contract the UI depends on (real HTTP and the mock both implement it). */
 export interface Api {
   login(username: string, password: string, role: Role): Promise<LoginResult>;
+  /** Self-contained desktop package only: GET /auth/config says whether the login screen offers "Tạo tài khoản". */
+  signupEnabled?(): Promise<boolean>;
+  /** POST /auth/register: a new local account, signed in at once. */
+  register?(username: string, password: string, role: Role): Promise<LoginResult>;
   logout(token: string): Promise<void>;
   getMe(token: string): Promise<User>;
   patchMe(token: string, patch: UserPatch): Promise<User>;

@@ -1,5 +1,6 @@
 """Composition root: builds every gateway component from Settings. Stored on `app.state.gw`."""
 
+import shutil
 from dataclasses import dataclass
 
 from mentor_gateway import age
@@ -17,6 +18,7 @@ from mentor_gateway.langga import tables as _langga_tables  # noqa: F401  (regis
 from mentor_gateway.langga.papers import PaperStore
 from mentor_gateway.langga.xp import XpService
 from mentor_gateway.mirror import Mirror, WorkspaceSync
+from mentor_gateway.mirror_files import FileMirror, FileWorkspaceSync
 from mentor_gateway.notifications import NotificationHub
 from mentor_gateway.nudges import NudgeService
 from mentor_gateway.outbox import OutboxDispatcher
@@ -57,14 +59,27 @@ class Gateway:
     ai: UserAIClient | None = None  # the single client for every AI call in direct mode
 
 
+def use_file_mirror(settings: Settings) -> bool:
+    """Plain files + an append-only log instead of git: always in the standalone package, and wherever there is no git."""
+    if settings.mirror_backend is not None:
+        return settings.mirror_backend == "files"
+    return settings.env == "standalone" or shutil.which("git") is None
+
+
 def build_gateway(settings: Settings, *, clock: Clock = utc_now, executor: JobExecutor | None = None) -> Gateway:
     settings.data_dir.mkdir(parents=True, exist_ok=True)
     box = SecretBox(load_master_key(settings.env, settings.data_dir))
     db = Database(settings.ops_db_url)
     db.create_all()
     locks = UserLocks()
-    mirror = Mirror(settings.mirrors_dir, locks)
-    sync = WorkspaceSync(settings.workspaces_dir, mirror, locks)
+    mirror: Mirror
+    sync: WorkspaceSync
+    if use_file_mirror(settings):
+        mirror = FileMirror(settings.mirrors_dir, locks)
+        sync = FileWorkspaceSync(settings.workspaces_dir, mirror, locks)
+    else:
+        mirror = Mirror(settings.mirrors_dir, locks)
+        sync = WorkspaceSync(settings.workspaces_dir, mirror, locks)
     users = UserService(db, mirror, settings, clock)
     age.set_today_provider(clock)
     if settings.seed_dev:

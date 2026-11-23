@@ -25,7 +25,7 @@ export const lgEn: LgMessages = {
   place: { arena: "Arena", library: "Library", study: "Study room", study1: "Study", study2: "room", news: "News" },
   ring: { kid: "{{count}} stars", sessions: "{{done}} of {{planned}} sessions", aria: "This week: {{done}} of {{planned}} sessions. Open the week" },
   news: { aria: "Notice board, {{count}} new", empty: "No news yet." },
-  login: { welcome: "Welcome to Mentor", pick: "Pick who you are, then log in.", required: "Fill in your account and password." },
+  login: { welcome: "Welcome to Mentor", pick: "Pick who you are, then log in.", required: "Fill in your account and password.", signup: "Create account", signupPick: "Pick who you are, then choose a name and password.", noAccount: "No account yet?", haveAccount: "Already have an account?", short: "The password needs at least 6 characters.", username_taken: "Someone already uses that name. Pick another.", bad_request: "Use letters without accents, digits, dots or dashes, 2 to 32 characters." },
   first: {
     yearTitle: "What year were you born?",
     yearLead: "Pick it once. Mentor sets your level by itself.",

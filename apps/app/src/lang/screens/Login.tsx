@@ -1,4 +1,4 @@
-import { useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { ApiError, type Role } from "../../api";
 import { useAuth } from "../../state/auth";
@@ -8,7 +8,7 @@ import { ChickenGuide } from "../guide/ChickenGuide";
 import "../styles/fonts";
 import "../styles/lang.css";
 
-type ErrKey = "required" | "role_mismatch" | "invalid_credentials" | "network" | "unknown";
+type ErrKey = "required" | "role_mismatch" | "invalid_credentials" | "network" | "unknown" | "short" | "username_taken" | "bad_request";
 const base = import.meta.env.BASE_URL;
 
 /** The teacher picture of the login board (glasses, cardigan, book, small chalkboard). */
@@ -36,18 +36,28 @@ function TeacherArt() {
 /** Login (mockups/lg-00): pick who you are, then log in. Same flow and errors as the old screen. */
 export function LgLogin() {
   const { t, i18n } = useTranslation();
-  const { login } = useAuth();
+  const { login, register, signupEnabled } = useAuth();
   const [role, setRole] = useState<Role>("student"); // most people here are students: the role is picked already
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const [error, setError] = useState<ErrKey | null>(null);
   const [busy, setBusy] = useState(false);
+  const [canSignup, setCanSignup] = useState(false); // only the self-contained desktop package has local sign-up
+  const [creating, setCreating] = useState(false);
   const roleRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const accRef = useRef<HTMLInputElement>(null);
   const pwRef = useRef<HTMLInputElement>(null);
   const roles: Role[] = ["student", "teacher"];
   const lang = i18n.language === "en" ? "en" : "vi";
+
+  useEffect(() => {
+    let live = true;
+    if (register) void signupEnabled().then((on) => live && setCanSignup(on));
+    return () => {
+      live = false;
+    };
+  }, [register, signupEnabled]);
 
   const pick = (r: Role) => {
     setRole(r);
@@ -70,16 +80,27 @@ export function LgLogin() {
       empty.focus();
       return;
     }
+    if (creating && password.length < 6) {
+      setError("short");
+      pwRef.current?.focus();
+      return;
+    }
     setBusy(true);
     try {
-      await login(account, password, role);
+      if (creating && register) await register(account, password, role);
+      else await login(account, password, role);
     } catch (err) {
       const code = err instanceof ApiError ? err.code : "unknown";
-      setError(code === "role_mismatch" || code === "invalid_credentials" || code === "network" ? code : "unknown");
+      const known: ErrKey[] = creating ? ["username_taken", "bad_request", "network"] : ["role_mismatch", "invalid_credentials", "network"];
+      setError(known.find((k) => k === code) ?? "unknown");
       setBusy(false);
     }
   };
-  const bad = error === "invalid_credentials";
+  const switchMode = (on: boolean) => {
+    setCreating(on);
+    setError(null);
+  };
+  const bad = error === "invalid_credentials" || error === "username_taken" || error === "bad_request";
   const missing = (v: string) => error === "required" && !v.trim();
 
   return (
@@ -95,14 +116,14 @@ export function LgLogin() {
         </div>
 
         <form className="lg-board" id="lg-login" onSubmit={submit} noValidate>
-          <h1 className="lg-ribbon-t">{t("login.submit")}</h1>
+          <h1 className="lg-ribbon-t">{creating ? t("lg.login.signup") : t("login.submit")}</h1>
           <div className="lg-welcome">
             <span className="lg-hen" aria-hidden="true">
               <img src={`${base}ga/toan.png`} alt="" />
             </span>
             <p>
               <b>{t("lg.login.welcome")}</b>
-              <span>{t("lg.login.pick")}</span>
+              <span>{creating ? t("lg.login.signupPick") : t("lg.login.pick")}</span>
             </p>
           </div>
 
@@ -159,7 +180,7 @@ export function LgLogin() {
                   id="pw"
                   name="pw"
                   type={show ? "text" : "password"}
-                  autoComplete="current-password"
+                  autoComplete={creating ? "new-password" : "current-password"}
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -176,13 +197,21 @@ export function LgLogin() {
           {error && (
             <div className="lg-alert" role="alert">
               <Icon name="x" />
-              <span>{error === "required" ? t("lg.login.required") : t(`login.errors.${error}`)}</span>
+              <span>{error === "required" || error === "short" || error === "username_taken" || error === "bad_request" ? t(`lg.login.${error}`) : t(`login.errors.${error}`)}</span>
             </div>
           )}
 
           <button className="lg-submit" type="submit" disabled={busy}>
-            {t("login.submit")}
+            {creating ? t("lg.login.signup") : t("login.submit")}
           </button>
+          {canSignup && (
+            <p className="lg-switch">
+              {creating ? t("lg.login.haveAccount") : t("lg.login.noAccount")}{" "}
+              <button type="button" className="lg-link" onClick={() => switchMode(!creating)}>
+                {creating ? t("login.submit") : t("lg.login.signup")}
+              </button>
+            </p>
+          )}
         </form>
       </div>
       <ChickenGuide screen="login" />

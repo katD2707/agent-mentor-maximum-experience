@@ -1,0 +1,27 @@
+# F-Eco manifest for Mentor (the self-contained desktop package). Check it with:  f-dev validate --manifest f-app.toml
+# `version` is kept equal to apps/app/src-tauri/tauri.conf.json by build.ps1.
+id = "vn.mentor.app"
+name = "Mentor"
+version = "0.2.2"
+# TODO(owner): the Mentor repo has no LICENSE file yet. Put the SPDX id you choose here (for example "MIT" or
+# "Apache-2.0"), or "LicenseRef-Proprietary" if the app stays closed. F-Eco rejects the manifest without a real value.
+license = "TODO"
+# TODO(owner): a real https page that states what Mentor stores about learners. This URL is a placeholder.
+privacy_policy = "https://example.com/TODO-mentor-privacy-policy"
+summary = "Học cùng Làng gà: khóa học, luyện tập và ôn thi cho học sinh lớp 1 đến đại học"
+description = "Mentor là ứng dụng học tập cho học sinh từ lớp 1 tới đại học và cho giáo viên. Mỗi môn là một chú gà trong Làng gà: học bài, luyện tập, ôn đề thi mẫu và theo dõi tiến bộ. Gói này chạy trọn trên máy, không cần máy chủ: cài xong là dùng."
+category = "education"
+features = [
+  "Cài xong là dùng, không cần máy chủ hay tài khoản trực tuyến",
+  "Khóa học, luyện tập và đề thi mẫu cho lớp 1 đến đại học",
+  "Giáo viên soạn khóa học cho học sinh",
+]
+release_notes = "Gói desktop tự chứa: gateway chạy cùng ứng dụng, tạo tài khoản ngay trên máy."
+
+[[platforms]]
+os = "windows"
+arch = "x64"
+entry = "Mentor.exe"
+
+[permissions]
+network = true   # tải khóa học từ kho khóa học và gọi dịch vụ AI bằng khóa của người dùng

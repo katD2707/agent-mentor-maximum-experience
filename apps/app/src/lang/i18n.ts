@@ -24,7 +24,7 @@ export const lgVi = {
   place: { arena: "Đấu trường", library: "Thư viện", study: "Phòng tự học", study1: "Phòng", study2: "tự học", news: "Bảng tin" },
   ring: { kid: "{{count}} sao", sessions: "{{done}}/{{planned}} buổi", aria: "Tuần này: {{done}} trên {{planned}} buổi. Mở lịch tuần" },
   news: { aria: "Bảng tin, {{count}} tin mới", empty: "Chưa có tin mới." },
-  login: { welcome: "Chào mừng đến Mentor", pick: "Chọn em là ai, rồi đăng nhập.", required: "Điền tài khoản và mật khẩu nhé." },
+  login: { welcome: "Chào mừng đến Mentor", pick: "Chọn em là ai, rồi đăng nhập.", required: "Điền tài khoản và mật khẩu nhé.", signup: "Tạo tài khoản", signupPick: "Chọn em là ai, rồi đặt tên và mật khẩu.", noAccount: "Chưa có tài khoản?", haveAccount: "Đã có tài khoản?", short: "Mật khẩu cần ít nhất 6 ký tự.", username_taken: "Tên này có người dùng rồi. Em chọn tên khác nhé.", bad_request: "Tên chỉ gồm chữ không dấu, số, dấu chấm hoặc gạch, dài 2 đến 32 ký tự." },
   first: {
     yearTitle: "Em sinh năm nào?",
     yearLead: "Chọn một lần thôi. Mentor tự chọn cấp học cho em.",

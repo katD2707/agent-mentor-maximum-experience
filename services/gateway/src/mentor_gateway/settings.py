@@ -33,7 +33,9 @@ BUILTIN_ORIGINS = (
 class Settings(BaseModel):
     # Safe default: an unset MENTOR_ENV means prod (no dev accounts, MENTOR_MASTER_KEY required).
     # Development sets MENTOR_ENV=dev explicitly.
-    env: Literal["dev", "test", "prod"] = "prod"
+    # "standalone" = the self-contained desktop package: the gateway runs next to the app on one machine (no dev
+    # accounts, no git, no model router, no scheduled backups, local sign-up on).
+    env: Literal["dev", "test", "prod", "standalone"] = "prod"
     data_dir: Path = Path("var")
     database_url: str | None = None  # default: sqlite:///$MENTOR_DATA_DIR/ops.db; Postgres URLs work too
     content_dir: Path = _repo_root() / "mentor-content"
@@ -57,6 +59,8 @@ class Settings(BaseModel):
     session_days: int = 365  # login tokens are long-lived; the app only logs out from the settings popover
     mobile_token_minutes: int = 15  # phone-upload link lifetime
     seed_dev_accounts: bool | None = None  # hocsinh/giaovien (123456); default: on when MENTOR_ENV=dev
+    signup_enabled: bool | None = None  # SIGNUP_ENABLED: POST /api/auth/register; default: on when MENTOR_ENV=standalone
+    mirror_backend: Literal["git", "files"] | None = None  # MENTOR_MIRROR: default files when standalone or no git binary
 
     # Web Push (VAPID). Push is off unless all three are set; generate the pair once (infra/README "Web Push").
     vapid_public_key: str | None = None  # urlsafe base64 (no padding) of the uncompressed P-256 point, 87 chars
@@ -96,7 +100,9 @@ class Settings(BaseModel):
 
     @property
     def backups_scheduled(self) -> bool:
-        return self.backup_enabled if self.backup_enabled is not None else self.env != "test"
+        if self.backup_enabled is not None:
+            return self.backup_enabled
+        return self.env not in ("test", "standalone")  # backups bundle the git mirrors: not in the git-free package
 
     @property
     def seed_dev(self) -> bool:
@@ -107,6 +113,10 @@ class Settings(BaseModel):
         if self.user_ai is not None:
             return self.user_ai
         return not self.model_router_url and self.env != "test"
+
+    @property
+    def signup(self) -> bool:
+        return self.signup_enabled if self.signup_enabled is not None else self.env == "standalone"
 
     @property
     def push_enabled(self) -> bool:
@@ -155,6 +165,8 @@ class Settings(BaseModel):
             "web_origin": "WEB_ORIGIN",
             "extra_origins": "CORS_ORIGINS",
             "seed_dev_accounts": "SEED_DEV_ACCOUNTS",
+            "signup_enabled": "SIGNUP_ENABLED",
+            "mirror_backend": "MENTOR_MIRROR",
             "vapid_public_key": "VAPID_PUBLIC_KEY",
             "vapid_private_key": "VAPID_PRIVATE_KEY",
             "vapid_subject": "VAPID_SUBJECT",

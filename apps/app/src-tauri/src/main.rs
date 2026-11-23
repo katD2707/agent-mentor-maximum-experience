@@ -7,6 +7,7 @@
 //! window and sends `reminder-open {id, deepLink}` to the page, which opens the link and reports `opened`.
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+mod gateway;
 mod updater;
 
 use std::fs;
@@ -222,7 +223,14 @@ fn main() {
         .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .manage(updater::UpdateState::default())
-        .invoke_handler(tauri::generate_handler![show_reminder, updater::update_check, updater::update_download, updater::update_install])
+        .manage(gateway::Gateway::default())
+        .invoke_handler(tauri::generate_handler![
+            show_reminder,
+            gateway::gateway_base,
+            updater::update_check,
+            updater::update_download,
+            updater::update_install
+        ])
         .on_menu_event(on_menu_event)
         .on_window_event(|window, event| {
             // Closing the window keeps the app (and its reminders) running in the tray; "Thoát Mentor" really quits.
@@ -237,8 +245,13 @@ fn main() {
             let handle = app.handle().clone();
             let toast_app = handle.clone();
             let _ = handle.notification().on_action(move |performed| on_toast_action(&toast_app, performed));
+            // self-contained package: start the bundled gateway first (the page asks for its address with `gateway_base`)
+            gateway::start(&handle);
             build_tray(&handle)?;
-            first_run_autostart(&handle);
+            // the launcher-managed package is not added to the login items on its own; the tray menu still offers it
+            if !gateway::is_standalone(&handle) {
+                first_run_autostart(&handle);
+            }
             if handle.autolaunch().is_enabled().unwrap_or(false) {
                 quote_autostart_entry(&handle);
             }
@@ -250,8 +263,13 @@ fn main() {
             }
             Ok(())
         })
-        .run(tauri::generate_context!())
-        .expect("error while running Mentor");
+        .build(tauri::generate_context!())
+        .expect("error while building Mentor")
+        .run(|app, event| {
+            if let tauri::RunEvent::Exit = event {
+                app.state::<gateway::Gateway>().stop();
+            }
+        });
 }
 
 #[cfg(test)]

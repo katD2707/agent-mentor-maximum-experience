@@ -13,6 +13,9 @@ interface AuthValue {
   /** Session token (for course/media calls). */
   token: string | null;
   login(username: string, password: string, role: Role): Promise<User>;
+  /** Local sign-up of the self-contained package; `null` when this build has none (the login screen then hides it). */
+  register: ((username: string, password: string, role: Role) => Promise<User>) | null;
+  signupEnabled(): Promise<boolean>;
   logout(): Promise<void>;
   updateMe(patch: UserPatch): Promise<void>;
   setQuiet(until: string | null): Promise<void>;
@@ -134,9 +137,8 @@ export function AuthProvider({ children, storage = localTokenStorage }: { childr
     if (user?.language) setLang(user.language);
   }, [user]);
 
-  const login = useCallback(
-    async (username: string, password: string, role: Role) => {
-      const res = await api.login(username, password, role);
+  const open = useCallback(
+    async (res: { token: string; user: User }) => {
       await api.mediaToken(res.token).then(setMediaToken, () => undefined);
       await storage.set(res.token);
       setToken(res.token);
@@ -146,6 +148,9 @@ export function AuthProvider({ children, storage = localTokenStorage }: { childr
     },
     [storage],
   );
+  const login = useCallback(async (username: string, password: string, role: Role) => open(await api.login(username, password, role)), [open]);
+  const register = useMemo(() => (api.register ? async (username: string, password: string, role: Role) => open(await api.register!(username, password, role)) : null), [open]);
+  const signupEnabled = useCallback(() => (api.signupEnabled ? api.signupEnabled() : Promise.resolve(false)), []);
 
   const logout = useCallback(async () => {
     const t = token;
@@ -179,7 +184,7 @@ export function AuthProvider({ children, storage = localTokenStorage }: { childr
     [token],
   );
 
-  const value = useMemo(() => ({ status, user, token, login, logout, updateMe, setQuiet }), [status, user, token, login, logout, updateMe, setQuiet]);
+  const value = useMemo(() => ({ status, user, token, login, register, signupEnabled, logout, updateMe, setQuiet }), [status, user, token, login, register, signupEnabled, logout, updateMe, setQuiet]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
