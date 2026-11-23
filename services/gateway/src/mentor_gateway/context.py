@@ -27,6 +27,7 @@ from mentor_gateway.practice import PracticeService
 from mentor_gateway.push import PushService
 from mentor_gateway.scheduler import Scheduler
 from mentor_gateway.settings import Clock, Settings, utc_now
+from mentor_gateway.userai import UserAIClient, UserAIStore
 from mentor_gateway.users import UserService
 
 
@@ -52,6 +53,8 @@ class Gateway:
     audit: AuditLog
     planner: PlannerService | None = None  # behaviour events, study profile, planner agent, goals, reminders
     xp: XpService | None = None  # Làng gà XP ledger
+    ai_store: UserAIStore | None = None  # the user's own AI key file (direct mode); None when a model router is used
+    ai: UserAIClient | None = None  # the single client for every AI call in direct mode
 
 
 def build_gateway(settings: Settings, *, clock: Clock = utc_now, executor: JobExecutor | None = None) -> Gateway:
@@ -91,8 +94,10 @@ def build_gateway(settings: Settings, *, clock: Clock = utc_now, executor: JobEx
     practice.xp = xp  # Làng gà XP for practice answers, fixes and finished mocks/papers
     practice.papers = PaperStore(settings.content_dir)
     scheduler.practice_sweep = practice.sweep
-    llm = RouterPlannerLLM(settings.model_router_url, settings.model_router_key) if settings.model_router_url else None
+    ai_store = UserAIStore(settings.data_dir) if settings.user_ai_enabled and not settings.model_router_url else None
+    ai = UserAIClient(ai_store) if ai_store is not None else None
+    llm = RouterPlannerLLM(settings.model_router_url, settings.model_router_key) if settings.model_router_url else ai
     planner = PlannerService(db, users, hub, push, clock, practice, llm)
     scheduler.planner = planner.tick
     return Gateway(settings, clock, db, box, mirror, sync, users, hub, dispatcher, jobs, runner, scheduler, backups,
-                   push, nudges, practice, EngagementService(db, mirror, clock), audit, planner, xp)
+                   push, nudges, practice, EngagementService(db, mirror, clock), audit, planner, xp, ai_store, ai)

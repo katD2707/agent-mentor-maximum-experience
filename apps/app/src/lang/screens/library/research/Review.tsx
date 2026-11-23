@@ -4,12 +4,14 @@ import { useTranslation } from "react-i18next";
 import { researchApi, researchPoll, ResearchError, type JobProgress, type PaperCard, type ReviewResult } from "../../../../api/research";
 import { useAuth } from "../../../../state/auth";
 import { errCode, extProps } from "./util";
+import { AiKeyPrompt, useAiKey } from "../../../kit/aiKey";
 
 /** "Tổng quan nhanh": a review job (CONTRACTS.md 15.4), polled every `researchPoll.ms` until it is done. */
 export type ReviewState = { phase: "idle" } | { phase: "running"; progress: JobProgress | null } | { phase: "done"; result: ReviewResult } | { phase: "failed"; error: string };
 
 export function useReview(query: string, yearMin: number | undefined) {
   const { token } = useAuth();
+  const ai = useAiKey();
   const [state, setState] = useState<ReviewState>({ phase: "idle" });
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const gen = useRef(0);
@@ -51,6 +53,7 @@ export function useReview(query: string, yearMin: number | undefined) {
       if (!token) return;
       stop();
       const mine = gen.current;
+      if (ai.configured === false) return setState({ phase: "failed", error: "ai_not_configured" });
       setState({ phase: "running", progress: null });
       try {
         const { job_id } = await researchApi.startReview(token, { query, ...(yearMin ? { year_min: yearMin } : {}), ...(followups?.length ? { followups } : {}) });
@@ -62,7 +65,7 @@ export function useReview(query: string, yearMin: number | undefined) {
         setState({ phase: "failed", error: errCode(e) });
       }
     },
-    [token, query, yearMin, stop, poll],
+    [token, query, yearMin, stop, poll, ai.configured],
   );
   const hide = useCallback(() => {
     stop();
@@ -88,9 +91,13 @@ export function ReviewPanel({ state, onSearch, onHide }: { state: ReviewState; o
   if (state.phase === "failed")
     return (
       <section className="rs-card rs-rv">
-        <p className="rs-rv-note" role="alert">
-          {t(`research.review.error.${state.error}`, { defaultValue: t("research.review.error.internal") })}
-        </p>
+        {state.error === "ai_not_configured" ? (
+          <AiKeyPrompt />
+        ) : (
+          <p className="rs-rv-note" role="alert">
+            {t(`research.review.error.${state.error}`, { defaultValue: t("research.review.error.internal") })}
+          </p>
+        )}
         <div>
           <button className="btn btn-quiet rs-rbtn" type="button" onClick={onHide}>
             {t("research.review.hide")}

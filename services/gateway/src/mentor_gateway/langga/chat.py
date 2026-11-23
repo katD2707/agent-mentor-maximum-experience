@@ -19,7 +19,7 @@ from mentor_schemas import ModelAlias
 from sqlalchemy import delete, select
 
 from mentor_gateway.ask import prompts
-from mentor_gateway.ask.llm import LLMError
+from mentor_gateway.ask.llm import LLMError, NoAIKey
 from mentor_gateway.ask.service import AskInput, AskService
 from mentor_gateway.db import Database, User
 from mentor_gateway.langga import subjects
@@ -198,6 +198,10 @@ class ChatService:
         try:
             async for ev in self._run(user, chicken, inp, ask, lang, thread_id):
                 yield ev
+        except NoAIKey:
+            yield "error", {"code": "ai_not_configured", "message": (
+                "Thêm khóa AI trong Cài đặt để dùng tính năng này." if lang == "vi" else
+                "Add an AI key in Settings to use this feature.")}
         except LLMError as e:
             log.warning("chat model failure: %s", e)
             yield "error", {"code": "model_unavailable", "message": (

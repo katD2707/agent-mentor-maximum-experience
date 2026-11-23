@@ -15,11 +15,12 @@ from fastapi.exception_handlers import http_exception_handler
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from mentor_gateway.api import account, ask, auth, courses, goals, guide, nudges, plan, teacher, workspace
+from mentor_gateway.api import account, ai_key, ask, auth, courses, goals, guide, nudges, plan, teacher, workspace
 from mentor_gateway.api import research as research_api
 from mentor_gateway.api import practice as practice_api
 from mentor_gateway.content.service import ContentService
 from mentor_gateway.content.store import ContentError
+from mentor_gateway import userai
 from mentor_gateway.context import build_gateway
 from mentor_gateway.jobs import JobExecutor
 from mentor_gateway.langga import api as langga_api
@@ -76,6 +77,10 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     app.state.gw = gw
     app.state.content = ContentService(settings, gw.db, gw.box, clock)
     app.state.builder = BuilderService(settings, app.state.content, gw.db, clock, gw.hub)  # /api/teacher stages
+    if gw.ai_store is not None and hasattr(app.state.builder.runner, "extra_env"):  # the course builder gets the user's key too
+        app.state.builder.runner.extra_env = lambda: userai.builder_env(gw.ai_store)
+    if gw.ai is not None:  # direct mode: the one client also serves course-search embeddings (lexical until a key is saved)
+        app.state.content.search.embedder = gw.ai
     gw.planner.content = gw.practice.content = app.state.content  # course quiz items for Luyện tập
     gw.practice.planner = gw.planner
     gw.practice.course_tests = lambda cid: teacher_steps.course_tests(app.state.builder, cid)
@@ -120,6 +125,7 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     api.include_router(courses.router)  # /api/catalog, /api/courses, /api/enrollments, /api/search
     api.include_router(plan.router)  # /api/events, /api/today, /api/plan/week, /api/reminders
     api.include_router(goals.router)  # /api/goals
+    api.include_router(ai_key.router)  # /api/ai-key (the user's own AI key, direct mode)
     api.include_router(ask.router)  # /api/ask (SSE Q&A)
     api.include_router(guide.router)  # /api/guide (guide chicken)
     api.include_router(teacher.router)  # /api/teacher (course authoring)

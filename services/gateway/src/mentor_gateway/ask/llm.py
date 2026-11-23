@@ -28,6 +28,10 @@ class LLMError(Exception):
     pass
 
 
+class NoAIKey(LLMError):
+    """Direct mode without a user AI key (never retried; surfaces as the `ai_not_configured` error code)."""
+
+
 class ChatLLM(Protocol):
     async def complete(self, alias: str, messages: list[dict[str, Any]], *, max_tokens: int = 2000,
                        temperature: float = 0.3) -> str: ...
@@ -56,13 +60,17 @@ class RouterChatLLM:
         except KeyError:
             raise LLMError(f"no direct model for alias {alias}") from None
 
+    def _target(self, alias: str) -> tuple[str, str, dict[str, str]]:
+        """(endpoint, model, headers) for one call; the user-key client overrides this."""
+        endpoint, model = self._endpoint_and_model(alias)
+        return endpoint, model, ({"Authorization": f"Bearer {self.key}"} if self.key else {})
+
     async def _once(self, alias: str, messages: list[dict[str, Any]], max_tokens: int, temperature: float,
                     effort: str | None = None) -> str:
-        endpoint, model = self._endpoint_and_model(alias)
+        endpoint, model, headers = self._target(alias)
         body = {"model": model, "messages": messages, "max_tokens": max_tokens, "temperature": temperature, "stream": True}
         if effort and not self.direct:
             body["reasoning_effort"] = effort
-        headers = {"Authorization": f"Bearer {self.key}"} if self.key else {}
         parts: list[str] = []
         client = httpx.AsyncClient(timeout=httpx.Timeout(self.timeout, connect=15.0))
         async with client, client.stream("POST", endpoint, json=body, headers=headers) as r:
@@ -91,9 +99,8 @@ class RouterChatLLM:
         retried without repeating text, so it is raised as `LLMError`; before any delta the call is retried like `complete`."""
         import asyncio
 
-        endpoint, model = self._endpoint_and_model(alias)
+        endpoint, model, headers = self._target(alias)
         body = {"model": model, "messages": messages, "max_tokens": max_tokens, "temperature": temperature, "stream": True}
-        headers = {"Authorization": f"Bearer {self.key}"} if self.key else {}
         last: Exception | None = None
         tries = attempts or self.attempts
         for attempt in range(tries):
@@ -119,6 +126,8 @@ class RouterChatLLM:
                 if not started:
                     raise LLMError("empty reply")
                 return
+            except NoAIKey:
+                raise
             except (LLMError, httpx.HTTPError) as e:
                 last = e
                 if started:
@@ -137,6 +146,8 @@ class RouterChatLLM:
         for attempt in range(self.attempts):
             try:
                 return await self._once(alias, messages, max_tokens, temperature, effort)
+            except NoAIKey:
+                raise
             except (LLMError, httpx.HTTPError) as e:
                 last = e
                 if isinstance(e, LLMError) and "HTTP 4" in str(e) and "HTTP 429" not in str(e) and "HTTP 408" not in str(e):

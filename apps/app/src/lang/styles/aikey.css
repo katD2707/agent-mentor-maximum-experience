@@ -1,0 +1,28 @@
+/* "Khóa AI" dialog and prompt: self-contained so it looks the same in the village and in the teacher app. */
+.aik-back { position: fixed; inset: 0; z-index: 10050; display: grid; place-items: center; padding: 16px; background: rgba(21, 19, 42, .55); }
+.aik-dlg { width: min(440px, 100%); max-height: calc(100vh - 32px); overflow: auto; display: grid; gap: 12px; padding: 18px; border-radius: 20px; background: #fff7e6; color: #3a2010; border: 3px solid #c98a45; box-shadow: 0 6px 0 #7d4c22, 0 20px 50px rgba(0, 0, 0, .4); font-family: "Lexend", system-ui, sans-serif; font-size: 16px; line-height: 1.4; }
+.aik-dlg *, .aik-dlg *::before, .aik-dlg *::after { box-sizing: border-box; }
+.aik-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.aik-head h2 { margin: 0; font-size: 1.15em; font-weight: 800; }
+.aik-x { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #c98a45; background: #fff; color: #3a2010; font-size: 22px; line-height: 1; cursor: pointer; }
+.aik-desc { margin: 0; color: #6b4a2e; }
+.aik-field { display: grid; gap: 6px; }
+.aik-field label { font-weight: 700; font-size: .92em; }
+.aik-field input { width: 100%; min-height: 44px; padding: 0 12px; border-radius: 12px; border: 2px solid #e0c294; background: #fff; color: #3a2010; font: inherit; }
+.aik-keybox { display: flex; gap: 8px; }
+.aik-keybox input { flex: 1; min-width: 0; }
+.aik-keybox button, .aik-actions button { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid #e0c294; background: #fff; color: #3a2010; font: inherit; font-weight: 700; cursor: pointer; }
+.aik-saved { margin: 0; font-size: .92em; color: #6b4a2e; }
+.aik-saved code { font-weight: 700; color: #3a2010; }
+.aik-msg { min-height: 1.4em; margin: 0; font-weight: 600; }
+.aik-msg.ok { color: #165c32; }
+.aik-msg.bad { color: #a8321e; }
+.aik-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.aik-grow { flex: 1; }
+.aik-actions .aik-primary { background: #23874a; border-color: #165c32; color: #fff; }
+.aik-actions .aik-danger { color: #a8321e; border-color: #e3a79c; }
+.aik-actions button:disabled { opacity: .6; cursor: default; }
+.aik-dlg :focus-visible { outline: 3px solid #1d4fb8; outline-offset: 2px; }
+.aik-prompt { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0; }
+.aik-prompt button { min-height: 40px; padding: 0 14px; border-radius: 999px; border: 2px solid #c98a45; background: #ffcf3d; color: #3a2010; font: inherit; font-weight: 700; cursor: pointer; }
+.aik-bar { padding: 10px 14px; margin: 0 0 12px; border-radius: 14px; background: #fff7e6; border: 2px solid #e0c294; color: #3a2010; font-weight: 600; }

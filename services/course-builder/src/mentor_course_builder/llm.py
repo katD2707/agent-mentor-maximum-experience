@@ -111,7 +111,8 @@ class ModelClient:
         if not self.direct:
             return alias.value
         try:
-            return DIRECT_MODELS[alias]
+            # MENTOR_MODEL_<ALIAS> (e.g. MENTOR_MODEL_CHAT): the user's own model for this alias (set by the gateway)
+            return os.environ.get(f"MENTOR_MODEL_{alias.name}") or DIRECT_MODELS[alias]
         except KeyError:
             raise ModelError(f"no direct model for alias {alias.value}") from None
 

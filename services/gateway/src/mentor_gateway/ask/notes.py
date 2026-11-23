@@ -13,7 +13,7 @@ from mentor_schemas.course import QuizItem
 from pydantic import ValidationError
 
 from mentor_gateway.ask import photo
-from mentor_gateway.ask.llm import LLMError, image_part
+from mentor_gateway.ask.llm import LLMError, NoAIKey, image_part
 from mentor_gateway.ask.service import AskService
 from mentor_gateway.ask.tables import NotesSet
 from mentor_gateway.db import User
@@ -100,6 +100,8 @@ async def make_notes(svc: AskService, planner: Any, user: User, images: list[byt
     try:
         d = await svc._json(ModelAlias.VISION, NOTES_PROMPT, {"lang": lang}, max_tokens=6000, user_parts=parts,
                             temperature=0.2, effort="low")
+    except NoAIKey:
+        raise NotesError(503, "ai_not_configured", "Thêm khóa AI trong Cài đặt để dùng tính năng này.") from None
     except LLMError as e:
         log.warning("notes: model failed: %s", e)
         raise unreadable from e

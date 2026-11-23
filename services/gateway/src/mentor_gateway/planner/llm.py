@@ -38,6 +38,10 @@ class PlannerLLMError(Exception):
     pass
 
 
+class PlannerNoAI(PlannerLLMError):
+    """No user AI key in direct mode: the planner falls back to its rules, silently."""
+
+
 @lru_cache(maxsize=1)
 def skills_text() -> str:
     parts = []

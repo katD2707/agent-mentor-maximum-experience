@@ -10,6 +10,7 @@ import { courseRoute, latestPublished, statusTag } from "../../lib/teacher/statu
 import { LevelTag } from "./LevelTag";
 import { CameraButton, TeacherTop } from "./common";
 import { useTeacherCourses } from "./live";
+import { AiKeyPrompt, useAiKey } from "../kit/aiKey";
 
 interface Sending {
   files: number;
@@ -25,6 +26,7 @@ export const uploadedCount = (files: number, frac: number) => Math.min(files, Ma
 export function TeacherHome() {
   const { t } = useTranslation();
   const { token } = useAuth();
+  const ai = useAiKey();
   const { courses, failed, refresh } = useTeacherCourses();
   const [over, setOver] = useState(false);
   const [note, setNote] = useState("");
@@ -37,7 +39,7 @@ export function TeacherHome() {
 
   const send = useCallback(
     async (files: File[]) => {
-      if (!token || !files.length) return;
+      if (!token || !files.length || ai.configured === false) return; // Mentor reads the pages with the AI: the prompt above says so
       lastFiles.current = files;
       setSending({ files: files.length, frac: 0, phase: "sending" });
       try {
@@ -49,7 +51,7 @@ export function TeacherHome() {
         setSending({ files: files.length, frac: 0, phase: "error" });
       }
     },
-    [token, refresh],
+    [token, refresh, ai.configured],
   );
   const sendRef = useRef(send);
   sendRef.current = send;
@@ -105,6 +107,7 @@ export function TeacherHome() {
     <div className="app">
       <TeacherTop step={1} />
       <main className="main teacher-main">
+        {ai.configured === false && <AiKeyPrompt className="aik-bar" />}
         <section className={`drop oli${over ? " is-over" : ""}`} aria-labelledby="drop-h" data-guide="drop" data-guide-label={t("teacher.dropTitle")}>
           <span className="drop-icon">
             <Icon name="upload" />

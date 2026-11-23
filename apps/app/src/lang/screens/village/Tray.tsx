@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { api, ApiError, AskError, isMock, postGuide, postNotes, practice, PracticeError, type AskStep, type NotesResult, type StartSource } from "../../../api";
 import { useAuth } from "../../../state/auth";
+import { useAiKey } from "../../kit/aiKey";
 import { Icon, type IconName } from "../../../components/Icon";
 import { Camera } from "../../kit/Camera";
 import { resolveDeepLink } from "../../../lib/deeplink";
@@ -103,6 +104,7 @@ const Md = ({ md }: { md: string }) => (
 export function Tray({ village, openSheet, onChanged }: TrayProps) {
   const { t, i18n } = useTranslation();
   const { token, user } = useAuth();
+  const ai = useAiKey();
   const nav = useNavigate();
   const lang: "vi" | "en" = i18n.language === "en" ? "en" : "vi";
   const band = user?.age_band === "g1_5" ? "kid" : user?.age_band === "uni" ? "uni" : "school";
@@ -252,6 +254,8 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
     return home.current.catch(() => null);
   };
 
+  // chat, homework photos, voice and notes all need the user's AI key: say so once, with a button that opens the dialog
+  const keyPrompt = { text: t("aikey.prompt"), replies: [{ primary: true, quiet: true, label: t("aikey.add"), run: ai.open }] };
   const askNotes = () => say({ text: t("lg.notes.asking"), replies: [{ primary: true, label: t("lg.notes.pick"), run: () => notesInput.current?.click() }] });
   const whenOf = (iso: string) => {
     const d = new Date(iso);
@@ -262,6 +266,7 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
   const sendNotes = async (files: File[]) => {
     if (!token || files.length === 0) return;
     me({ text: t("lg.notes.shot"), shot: "notes" });
+    if (ai.configured === false) return say(keyPrompt);
     const upload = async () => {
       const th = think(speakerId);
       if (!th) return;
@@ -285,7 +290,8 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
           ],
         });
       } catch (e) {
-        if (e instanceof AskError && e.code === "unreadable") th.finish({ text: t("lg.notes.unreadable"), replies: [{ label: t("lg.notes.reply"), icon: "camera", run: () => notesInput.current?.click() }] });
+        if (e instanceof AskError && e.code === "ai_not_configured") th.finish(keyPrompt);
+        else if (e instanceof AskError && e.code === "unreadable") th.finish({ text: t("lg.notes.unreadable"), replies: [{ label: t("lg.notes.reply"), icon: "camera", run: () => notesInput.current?.click() }] });
         else th.lost(e, () => void upload());
       } finally {
         th.end();
@@ -367,6 +373,7 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
   // ---- talk to the chicken (POST /chat/{chicken}: streamed)
   const chat = async (req: Omit<ChatRequest, "lang" | "thread_id">, who: string = speakerId) => {
     if (!token) return;
+    if (ai.configured === false) return say(keyPrompt);
     const th = think(who);
     if (!th) return;
     const reply = th.id;
@@ -433,7 +440,8 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
           patch(reply, { typing: false, text: undefined, rich: <ol className="lg-steps">{ev.data.items.map((s, i) => <li key={i}><Md md={s.problem_md} /></li>)}</ol> });
           break;
         case "error":
-          finish({ text: t("lg.tray.chatFailed"), replies: th.retry(() => void chat(req, who)) });
+          if (ev.data.code === "ai_not_configured") finish(keyPrompt);
+          else finish({ text: t("lg.tray.chatFailed"), replies: th.retry(() => void chat(req, who)) });
           break;
         default:
           break;

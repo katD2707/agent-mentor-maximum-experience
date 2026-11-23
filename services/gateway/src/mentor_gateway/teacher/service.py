@@ -20,6 +20,7 @@ import sys
 import threading
 import unicodedata
 from collections import deque
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -73,6 +74,7 @@ class SubprocessRunner:
         self.python = python or sys.executable
         self.cwd = cwd
         self._procs: set[subprocess.Popen] = set()
+        self.extra_env: Callable[[], dict[str, str]] | None = None  # per-run env (the user's own AI key, direct mode)
 
     @staticmethod
     def argv(python: str, job: StageJob) -> list[str]:
@@ -81,7 +83,7 @@ class SubprocessRunner:
 
     def _run(self, job: StageJob) -> int:
         job.log_file.parent.mkdir(parents=True, exist_ok=True)
-        env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8"}
+        env = {**os.environ, "PYTHONUTF8": "1", "PYTHONIOENCODING": "utf-8", **(self.extra_env() if self.extra_env else {})}
         with job.log_file.open("ab") as log_f:
             proc = subprocess.Popen(self.argv(self.python, job), cwd=self.cwd, env=env, stdout=log_f,
                                     stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL)

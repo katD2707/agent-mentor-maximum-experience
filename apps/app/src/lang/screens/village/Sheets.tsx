@@ -15,6 +15,7 @@ import { APP_VERSION } from "../../../lib/version";
 import { lg, type Chicken, type MarketChicken, type NewsItem, type Village } from "../../api";
 import { artFile, chickenName } from "../../subjects";
 import { cropVars } from "../../chickenArt";
+import { AiKeyRow } from "../../kit/aiKey";
 
 const base = import.meta.env.BASE_URL;
 
@@ -405,6 +406,7 @@ export function SettingsSheet({ onClose }: { onClose(): void }) {
             </span>
           )}
         </div>
+        <AiKeyRow rowClass="lg-srow" labelClass="lg-slabel" buttonClass="lg-chipbtn" />
         <div className="lg-srow">
           <span className="lg-slabel">{t("lg.settings.tips")}</span>
           <span>

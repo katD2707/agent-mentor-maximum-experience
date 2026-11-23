@@ -24,8 +24,9 @@ AUDIO_FORMATS = {"wav", "mp3", "webm", "ogg", "m4a", "mp4", "aac", "flac"}
 
 
 def build_llm(gw: Gateway) -> RouterChatLLM | None:
+    """Router mode, else the user's own key (`gw.ai`, direct mode), else no model."""
     s = gw.settings
-    return RouterChatLLM(s.model_router_url, s.model_router_key) if s.model_router_url else None
+    return RouterChatLLM(s.model_router_url, s.model_router_key) if s.model_router_url else gw.ai
 
 
 def ask_service(request: Request, gw: Gateway = Depends(get_gw)) -> AskService:

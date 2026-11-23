@@ -26,6 +26,7 @@ import { SourceKeysProvider } from "./lang/screens/library/research/Sources";
 import { RouteGuide } from "./lang/guide/RouteGuide";
 import { ScrollTop } from "./lang/kit/ScrollTop";
 import { UpdateNotice } from "./components/UpdateNotice";
+import { AiKeyProvider } from "./lang/kit/aiKey";
 
 /** `/khoa-hoc/<id>?lesson=<lesson>` (what the planner and reminders link to) opens the player at that lesson. */
 function CourseRoute() {
@@ -168,11 +169,11 @@ export function App() {
     );
 
   return (
-    <>
+    <AiKeyProvider>
       {body}
       <ScrollTop />
       <RouteGuide />
       <UpdateNotice />
-    </>
+    </AiKeyProvider>
   );
 }

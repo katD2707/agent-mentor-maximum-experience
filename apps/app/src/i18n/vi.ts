@@ -1,7 +1,9 @@
 import { lgVi } from "../lang/i18n";
+import { aikeyVi } from "../lang/i18n/aikey";
 
 export const vi = {
   lg: lgVi,
+  aikey: aikeyVi,
   appName: "Mentor",
   login: {
     language: "Ngôn ngữ",

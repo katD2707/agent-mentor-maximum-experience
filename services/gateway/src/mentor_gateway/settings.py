@@ -40,6 +40,7 @@ class Settings(BaseModel):
 
     model_router_url: str | None = None  # LiteLLM router (course search embeddings); unset = lexical search only
     model_router_key: str | None = None  # MODEL_ROUTER_KEY, or MODEL_ROUTER_MASTER_KEY in dev
+    user_ai: bool | None = None  # MENTOR_USER_AI: each user's own AI key (Cài đặt > Khóa AI), called directly; default: on when no router, not in tests
     # Courses on Google Drive (content/drive.py uploads, content/remote.py downloads). Drive is the course store for now.
     remote_catalog_url: str | None = None  # MENTOR_REMOTE_CATALOG_URL: public URL or Drive file id of the catalog (installed apps)
     drive_api_key: str | None = None  # MENTOR_DRIVE_API_KEY: optional public key, downloads then use files.get alt=media
@@ -102,6 +103,12 @@ class Settings(BaseModel):
         return self.seed_dev_accounts if self.seed_dev_accounts is not None else self.env == "dev"
 
     @property
+    def user_ai_enabled(self) -> bool:
+        if self.user_ai is not None:
+            return self.user_ai
+        return not self.model_router_url and self.env != "test"
+
+    @property
     def push_enabled(self) -> bool:
         return bool(self.vapid_public_key and self.vapid_private_key and self.vapid_subject)
 
@@ -142,6 +149,7 @@ class Settings(BaseModel):
             "content_dir": "MENTOR_CONTENT_DIR",
             "model_router_url": "MODEL_ROUTER_URL",
             "model_router_key": "MODEL_ROUTER_KEY",
+            "user_ai": "MENTOR_USER_AI",
             "media_token_minutes": "MEDIA_TOKEN_MINUTES",
             "public_base_url": "PUBLIC_BASE_URL",
             "web_origin": "WEB_ORIGIN",

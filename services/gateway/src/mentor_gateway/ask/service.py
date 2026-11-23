@@ -23,7 +23,7 @@ from mentor_schemas import ModelAlias
 
 from mentor_gateway.ask import photo, prompts
 from mentor_gateway.ask.jsonparse import parse_model_json
-from mentor_gateway.ask.llm import ChatLLM, LLMError, audio_part, image_part
+from mentor_gateway.ask.llm import ChatLLM, LLMError, NoAIKey, audio_part, image_part
 from mentor_gateway.ask.tables import AskThread
 from mentor_gateway.content.service import ContentService
 from mentor_gateway.db import Database, User
@@ -176,6 +176,10 @@ class AskService:
         try:
             async for ev in self._run(user, inp, lang, state):
                 yield ev
+        except NoAIKey:
+            yield "error", {"code": "ai_not_configured", "message": (
+                "Thêm khóa AI trong Cài đặt để dùng tính năng này." if lang == "vi" else
+                "Add an AI key in Settings to use this feature.")}
         except LLMError as e:
             log.warning("ask model failure: %s", e)
             yield "error", {"code": "model_unavailable", "message": (

@@ -8,6 +8,7 @@ import { resolveDeepLink } from "../../../../lib/deeplink";
 import { RecorderError, startRecording, type Recording } from "../../../../lib/recorder";
 import { SourceChip, SOURCE_NAMES, useSourceKeys } from "./Sources";
 import { byline, errCode, extProps, pk, STATUS_TAG } from "./util";
+import { AiKeyPrompt, useAiKey } from "../../../kit/aiKey";
 
 type Load<T> = { status: "loading" } | { status: "error"; code: string } | { status: "ready"; data: T };
 
@@ -50,6 +51,7 @@ export function PaperReader({ id, onMood }: { id: string; onMood?: (m: PaperMood
 function PaperBody({ id, detail, onMood }: { id: string; detail: PaperDetail; onMood?: (m: PaperMood) => void }) {
   const { t } = useTranslation();
   const { token } = useAuth();
+  const ai = useAiKey();
   const [entry, setEntry] = useState(detail.entry);
   const [note, setNote] = useState(detail.note);
   const [text, setText] = useState(detail.note.my_summary ?? "");
@@ -64,7 +66,7 @@ function PaperBody({ id, detail, onMood }: { id: string; detail: PaperDetail; on
   useEffect(() => onMood?.(mood), [mood, onMood]);
 
   const getFeedback = async (summary: string | null) => {
-    if (!token) return;
+    if (!token || ai.configured === false) return;
     setErr(null);
     try {
       if (summary !== null) {
@@ -158,6 +160,7 @@ function PaperBody({ id, detail, onMood }: { id: string; detail: PaperDetail; on
               </button>
             )}
           </div>
+          {ai.configured === false && <AiKeyPrompt />}
           {busy !== "" && (
             <p className="rs-working" role="status">
               <span className="rs-spin" aria-hidden="true" />
@@ -350,6 +353,7 @@ function Answer({ qa }: { qa: PaperQA }) {
 function AskBar({ id, thread }: { id: string; thread: ThreadApi }) {
   const { t, i18n } = useTranslation();
   const { token } = useAuth();
+  const ai = useAiKey();
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
   const [listening, setListening] = useState(false);
@@ -373,7 +377,7 @@ function AskBar({ id, thread }: { id: string; thread: ThreadApi }) {
   }, [text]);
 
   const ask = async (body: { text: string } | { audio: Blob }, label: string) => {
-    if (!token || busy) return;
+    if (!token || busy || ai.configured === false) return;
     setBusy(true);
     thread.start(label);
     const ac = new AbortController();
@@ -426,6 +430,7 @@ function AskBar({ id, thread }: { id: string; thread: ThreadApi }) {
 
   return (
     <div className="rs-composer-wrap" data-guide="research-ask" data-guide-label={t("research.paper.askPlaceholder")}>
+      {ai.configured === false && <AiKeyPrompt />}
       <form
         className="rs-composer"
         onSubmit={(e) => {

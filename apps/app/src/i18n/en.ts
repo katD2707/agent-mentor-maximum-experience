@@ -1,9 +1,11 @@
 import type { Messages } from "./vi";
 
 import { lgEn } from "../lang/i18n-en";
+import { aikeyEn } from "../lang/i18n/aikey";
 
 export const en: Messages = {
   lg: lgEn,
+  aikey: aikeyEn,
   appName: "Mentor",
   login: {
     language: "Language",

@@ -11,6 +11,7 @@ import { REMIND_KEY as REMIND_STORE, refreshReminders } from "../../lib/behaviou
 import { UpdateRow } from "../../components/UpdateRow";
 import { SettingsSourcesRow } from "../screens/library/research/Sources";
 import { REPLAY_EVENT } from "../../lib/tours";
+import { AiKeyRow } from "../kit/aiKey";
 
 const PICKS: QuietPick[] = ["30", "60", "120", "tomorrow", "week"];
 const THEMES: Theme[] = ["system", "light", "dark"];
@@ -262,6 +263,7 @@ export function Settings() {
               </div>
             </>
           )}
+          <AiKeyRow rowClass="set-row" labelClass="set-label" buttonClass="set-chip-btn" />
           <div className="set-row">
             <span className="set-label">{t("settings.tips")}</span>
             <button

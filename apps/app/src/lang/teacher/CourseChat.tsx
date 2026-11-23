@@ -9,6 +9,7 @@ import { CameraButton, TeacherTop, labelsRoute, useLangText, useToast } from "./
 import { OutlineEditor, type TreeMeta } from "./OutlineEditor";
 import { questionsByLevel, stepKind } from "../../lib/teacher/steps";
 import { useTeacherCourses } from "./live";
+import { AiKeyPrompt, useAiKey } from "../kit/aiKey";
 
 const EDITABLE = new Set(["needs_retake", "outline_ready"]);
 
@@ -17,6 +18,7 @@ export function CourseChat() {
   const { id = "" } = useParams();
   const { t } = useTranslation();
   const { token } = useAuth();
+  const ai = useAiKey();
   const { refresh: refreshList } = useTeacherCourses();
   const [detail, setDetail] = useState<TeacherCourseDetail | null>(null);
   const [missing, setMissing] = useState(false);
@@ -113,7 +115,7 @@ export function CourseChat() {
   const [busy, setBusy] = useState(false);
   const say = async () => {
     const v = text.trim();
-    if (!v || !token || busy) return;
+    if (!v || !token || busy || ai.configured === false) return;
     setBusy(true);
     setText("");
     try {
@@ -131,7 +133,7 @@ export function CourseChat() {
 
   const [starting, setStarting] = useState(false);
   const compose = async () => {
-    if (!token || starting) return;
+    if (!token || starting || ai.configured === false) return;
     setStarting(true);
     try {
       await queue.current;
@@ -179,7 +181,7 @@ export function CourseChat() {
   const done = detail.build.lessons.filter((l) => l.state === "done").length;
   const isBuilt = detail.status === "review" || detail.status === "published" || detail.status === "revising";
   const action = editable ? (
-    <button type="button" className="btn btn-primary act" id="go" onClick={() => void compose()} disabled={starting} data-guide="gv-go" data-guide-label={t("gv.composeBtn")}>
+    <button type="button" className="btn btn-primary act" id="go" onClick={() => void compose()} disabled={starting || ai.configured === false} data-guide="gv-go" data-guide-label={t("gv.composeBtn")}>
       {t("gv.composeBtn")}
     </button>
   ) : building ? (
@@ -196,6 +198,7 @@ export function CourseChat() {
     <div className="app">
       {header(action)}
       <main className="main chat-main">
+        {ai.configured === false && <AiKeyPrompt className="aik-bar" />}
         <div className="course-head">
           <h1>{outline.title || detail.course.title}</h1>
           <p className="meta">

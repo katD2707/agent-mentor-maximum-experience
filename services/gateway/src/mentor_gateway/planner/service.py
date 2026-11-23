@@ -21,7 +21,7 @@ from mentor_gateway.planner import engage, fsrs_items, goals, research_plan
 from mentor_gateway.planner import events as ev
 from mentor_gateway.planner.bands import TZ, band_for, hhmm, to_min
 from mentor_gateway.planner.fallback import deep_link, explain_moves, plan_fallback
-from mentor_gateway.planner.llm import PlannerLLM, PlannerLLMError, llm_plan
+from mentor_gateway.planner.llm import PlannerLLM, PlannerLLMError, PlannerNoAI, llm_plan
 from mentor_gateway.planner.profile import compute_profile, local, sessions
 from mentor_gateway.planner.tables import PlanRecord, Reminder, StudyGoal
 from mentor_gateway.planner.text import clean
@@ -182,6 +182,8 @@ class PlannerService:
             if use_llm and self.llm is not None and ctx.courses:
                 try:
                     result = await llm_plan(self.llm, ctx)
+                except PlannerNoAI:
+                    err = None  # no user AI key: the rule-based plan, nothing to report
                 except PlannerLLMError as e:
                     err = f"llm: {e}"
                 except Exception as e:
