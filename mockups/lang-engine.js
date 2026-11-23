@@ -145,12 +145,9 @@
   // subjects apart, so characters stay big enough to read it. Phones need no extra boost at this size.
   const SCALE = { kid: 0.64, ga: 0.55 };
   const boost = () => 1;
-  // alternative sprite sets for the student: the folder, the drawing scale relative to the first set (1.37 / 1.3), and the
-  // walk stride measured on those sprites (ground per cycle, world units, at scale 1)
-  const SETS = {
-    cu: { base: BASE, mul: 1, stride: null },
-    moi: { base: "assets/ga/hoc-sinh-moi/", mul: 1.37 / 1.3, stride: 1.315 },
-  };
+  // the student is drawn at 1.37 where the first set was drawn at 1.3: scaled by that ratio so the height stays the same. The
+  // walk stride (ground per cycle at scale 1) comes from actors.json.
+  const SET_KID = { base: BASE, mul: 1.37 / 1.3, stride: null }, SET_GA = { base: BASE, mul: 1, stride: null };
   // costume sprites of Gà Toán (assets/ga/trang-phuc): a 512 px animated picture (24 frames, 12 fps) per growth stage, facing us,
   // idle and jump. bbox = the body in the 512 frame (x0, y0, x1, y1), fit = size against the grown chicken (squeezed a little,
   // so the chick stays readable at map size), ppu = px per world unit (the grown chicken has the same height as the old sprite)
@@ -164,8 +161,7 @@
     },
   };
   // the opaque part of each sprite in its 416 px frame (x0, y0, x1, y1), for name plates to keep clear of
-  const BODY = { toan: [110, 113, 315, 383], van: [123, 154, 293, 381], anh: [123, 154, 313, 381], nam: [87, 27, 326, 384], nu: [55, 36, 368, 384] };
-  const BODY_MOI = { nam: [132, 44, 283, 386], nu: [126, 43, 290, 386] };
+  const BODY = { toan: [110, 113, 315, 383], van: [123, 154, 293, 381], anh: [123, 154, 313, 381], nam: [132, 44, 283, 386], nu: [126, 43, 290, 386] };
   const COS_DIR ="assets/ga/trang-phuc/", COS_JUMP_MS = 2000;
   const still = {};
   function preload(url) {
@@ -230,7 +226,7 @@
       this.pos = ((el.dataset.pos ? el.dataset.pos.split(",").map(Number) : null) || randomYardPoint()).slice();
       this.vel = [0, 0]; this.dir = "s"; this.anim = "idle"; this.t0 = performance.now(); this.path = []; this.phase = 0;
       const g = GAIT[this.kind]; this.base = g.max; this.max = g.max; this.acc = g.acc; this.ref = g.ref; this.strideDef = g.stride;
-      this.set0 = SETS.cu; this.cos = null; this.fit = 1; this.cosBody = null;   // sprite set, costume stage
+      this.set0 = this.kind === "kid" ? SET_KID : SET_GA; this.cos = null; this.fit = 1; this.cosBody = null;   // sprite set, costume stage
       this.stay = el.dataset.stay === "1";   // stands still (e.g. while it has something to say)
       this.head = Number(el.dataset.head || (this.kind === "kid" ? 3.6 : 3.0));   // height of the drawing, world units
       this.wait = 1 + Math.random() * 3; this.busy = false; this.cur = null; this.still = 0;
@@ -417,7 +413,7 @@
   // the body of a relative to its feet, from the picture on screen (the middle of the frame: its edges are empty)
   function measureBody(a) {
     if (a.cosBody) { a.body = a.cosBody.slice(); return; }   // a costume: the body is known from its picture
-    const bb = (a.set0 === SETS.moi ? BODY_MOI : BODY)[a.id];
+    const bb = BODY[a.id];
     if (bb && A) {   // the opaque part of the sprite (measured on the first frame of the idle strip), from the feet
       const fr = A.frame, ft = A.feet, k = (a.sc * px(fr[0] / ((A && A.pxPerUnit) || L.pxPerUnit))) / fr[0];
       a.body = [(bb[0] - ft[0]) * k, (bb[1] - ft[1]) * k, (bb[2] - ft[0]) * k, Math.min(0, (bb[3] - ft[1]) * k)]; return;
@@ -555,8 +551,6 @@
   // an angry chicken (its course neglected too long): swaps to the "-gian" sprites when they exist
   V.setAngry = (who, on = true) => { const a = V.actors[who]; if (a) { a.angry = !!on; a.cur = null; } };
   V.setActorId = (who, id) => { const a = V.actors[who]; if (a) { a.id = id; a.cur = null; a.dress(); } };
-  // which sprite set the student wears: "cu" (first) or "moi" (new, other drawing scale and stride)
-  V.setSet = (who, key) => { const a = V.actors[who]; if (a && SETS[key]) { a.set0 = SETS[key]; a.cur = null; a.dress(); measure(performance.now(), true); } };
   // Gà Toán's costume for a growth stage (1..4), or null for the first sprites; returns when the picture is ready
   V.setCostume = (who, stage) => {
     const a = V.actors[who], c = a && COSTUME[a.id] && stage ? COSTUME[a.id][stage] : null;

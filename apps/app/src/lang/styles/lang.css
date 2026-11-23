@@ -126,7 +126,7 @@
 @keyframes lg-sway { from { transform: rotate(-.45deg); } to { transform: rotate(.45deg); } }
 
 .lg-actor { position: absolute; width: var(--frame-w, 12%); height: var(--frame-h, 12%); transform: translate(calc(-1 * var(--feet-x, 50%)), calc(-1 * var(--feet-y, 90%))) scale(var(--s, 1)); transform-origin: var(--feet-x, 50%) var(--feet-y, 90%); border: 0; padding: 0; background: none; pointer-events: none; font: inherit; color: inherit; }
-.lg-actor.is-kid { --s: .84; }
+/* the student's scale (--s) is set by the engine: KID_SCALE in engine/village.ts */
 .lg-spr { position: absolute; inset: 0; background-repeat: no-repeat; background-position: 0 0; }
 .lg-shadow { position: absolute; left: var(--feet-x, 50%); top: var(--feet-y, 90%); width: 36%; aspect-ratio: 2.6; transform: translate(-42%, -55%); border-radius: 50%; background: radial-gradient(closest-side, rgba(30, 60, 50, .42), rgba(30, 60, 50, 0)); }
 .lg-actor.is-kid .lg-shadow { width: 30%; }
@@ -166,7 +166,7 @@
 /* HUD */
 .lg-hud { position: fixed; z-index: 20; }
 .lg-me { top: 12px; left: 12px; display: flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px; background: var(--plate); color: #fff; box-shadow: 0 3px 0 rgba(0,0,0,.25); }
-.lg-me .face { width: 44px; height: 44px; border-radius: 50%; background: #ffe9d6 center 12% / 200% no-repeat; border: 2px solid var(--lv); }
+.lg-me .face { width: 44px; height: 44px; border-radius: 50%; background: #ffe9d6 50% 8% / 270% no-repeat; border: 2px solid var(--lv); }
 .lg-me b { display: block; font-size: 15px; }
 .lg-me .streak { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: #ffcf8a; }
 .lg-me .streak svg { width: 15px; height: 15px; }

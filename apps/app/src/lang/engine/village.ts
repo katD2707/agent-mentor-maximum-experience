@@ -52,6 +52,9 @@ export const stillHead = (stage: number): number => (STILL_FRAC[Math.min(Math.ma
 const FEET_Y_ART = 84.4; // % of the 512 picture where the bird's feet are
 const FEET_X_ART = 51;
 
+/** How big the student is drawn (CSS scale of the 416 px frame): 0.84, times 1.37 / 1.3 because the student's sheets were drawn at 1.37 where the first set used 1.3, so the height stays the same. */
+export const KID_SCALE = 0.84 * (1.37 / 1.3);
+
 /** Are two standing actors too close? Chickens keep an oval of room (wide and deep enough for the name tag that hangs under them), the student a round one. */
 export const crowded = (a: Pt, b: Pt, withKid: boolean): boolean => {
   const rx = withKid ? 2.4 : 4.6;
@@ -135,7 +138,9 @@ export class Actor {
     this.head = spec.head ?? (spec.kind === "kid" ? 3.6 : stillHead(this.stage));
     this.stillUrl = spec.still;
     const w = V.sheets?.actors[spec.id]?.anims.walk;
-    if (w?.stride) this.stride = w.stride;
+    // actors.json gives the ground one cycle covers at scale 1; the student is drawn at KID_SCALE, so the feet keep pace at that size
+    if (w?.stride) this.stride = w.stride * (spec.kind === "kid" ? KID_SCALE : 1);
+    if (spec.kind === "kid") el.style.setProperty("--s", String(KID_SCALE));
     el.style.setProperty("--head", V.px(this.head * 0.899) + "px");
     this.place();
   }

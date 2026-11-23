@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-age="thpt" data-kid="nam" data-list="off" data-next="lesson" data-first="no" data-sheet="none" data-ga="cu" data-hs="cu" data-stage="3">
+<html lang="vi" data-age="thpt" data-kid="nam" data-list="off" data-next="lesson" data-first="no" data-sheet="none" data-ga="cu" data-stage="3">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,11 +125,8 @@
   /* HUD */
   .hud { position: fixed; z-index: 20; }
   .me { top: calc(var(--mock-h, 0px) + 12px); left: 12px; display: flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 999px; background: var(--plate); color: #fff; box-shadow: 0 3px 0 rgba(0,0,0,.25); }
-  .me .face { width: 44px; height: 44px; border-radius: 50%; background: #ffe9d6 url("assets/ga/hs-nam.png") center 12% / 200% no-repeat; border: 2px solid var(--lv); }
+  .me .face { width: 44px; height: 44px; border-radius: 50%; background: #ffe9d6 url("assets/ga/hs-nam.png") 50% 8% / 270% no-repeat; border: 2px solid var(--lv); }
   :root[data-kid="nu"] .me .face { background-image: url("assets/ga/hs-nu.png"); }
-  /* the new student: a full-body picture, so the avatar crops to the head */
-  :root[data-hs="moi"] .me .face { background-image: url("assets/ga/hoc-sinh-moi/hs-nam-moi.png"); background-size: 300%; background-position: 50% 3%; }
-  :root[data-hs="moi"][data-kid="nu"] .me .face { background-image: url("assets/ga/hoc-sinh-moi/hs-nu-moi.png"); }
   .me b { display: block; font-size: 15px; }
   .me span { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: #ffcf8a; }
   .me span svg { width: 15px; height: 15px; }
@@ -360,7 +357,6 @@
   <span class="mock-title">Làng gà: màn chính của học sinh</span>
   <span class="mock-seg"><span>Độ tuổi</span><button data-set="age:tieu-hoc">Tiểu học</button><button data-set="age:thcs">THCS</button><button data-set="age:thpt">THPT</button><button data-set="age:dai-hoc">Đại học</button></span>
   <span class="mock-seg"><span>Nhân vật</span><button data-set="kid:nam">Nam</button><button data-set="kid:nu">Nữ</button></span>
-  <span class="mock-seg"><span>Học sinh</span><button data-set="hs:cu">Cũ</button><button data-set="hs:moi">Mới</button></span>
   <span class="mock-seg"><span>Gà</span><button data-set="ga:cu">Cũ</button><button data-set="ga:trangphuc">Trang phục</button></span>
   <span class="mock-seg" data-when="ga=trangphuc"><span>Gà Toán</span><button data-set="stage:1">Gà con</button><button data-set="stage:2">Gà choai</button><button data-set="stage:3">Trưởng thành</button><button data-set="stage:4">Cao thủ</button></span>
   <span class="mock-seg" data-when="age=thcs|thpt|dai-hoc"><span>Gà gợi ý</span><button data-set="next:lesson">Bài học</button><button data-set="next:practice">Luyện tập</button><button data-set="next:mock">Đề thật</button><button data-set="next:paper" data-when="age=dai-hoc">Đọc paper</button></span>
@@ -830,12 +826,11 @@
     $("feed").prepend(p); $("news-n").hidden = false;
   });
 
-  // ---------- two side-by-side comparisons (reviewer toggles): Gà Toán's costume, and the new student
+  // ---------- reviewer toggle: Gà Toán's costume
   document.addEventListener("mock:change", (e) => {
     const k = e.detail && e.detail.key;
     if (k === "ga") showToan();
     else if (k === "stage" && !syncing) { toanLv = LV_OF[e.detail.value] || toanLv; showToan(); }
-    else if (k === "hs" && window.Village && Village.setSet) { Village.setSet("kid", root.dataset.hs === "moi" ? "moi" : "cu"); }
   });
 
   // ---------- Chợ gà: chickens to take (one per subject, or per ngành at university)
@@ -887,15 +882,15 @@
     if (Q.get("list") === "1") { $("listv").hidden = false; $("listb").setAttribute("aria-pressed", "true"); }
     // the tray starts folded to its title bar, as in the app (?min=0 opens it)
     if (Q.get("min") !== "0") $("g-min").click();
-    // the reviewer toggles; ?ga=trangphuc&hs=moi&stage=4 start them on (the buttons need their pressed state painted too)
+    // the reviewer toggles; ?ga=trangphuc&stage=4 start them on (the buttons need their pressed state painted too)
     if (Q.get("blend") === "0") root.dataset.blend = "0";
-    mockSet("hs", Q.get("hs") === "moi" ? "moi" : "cu"); mockSet("ga", Q.get("ga") === "trangphuc" ? "trangphuc" : "cu");
+    mockSet("ga", Q.get("ga") === "trangphuc" ? "trangphuc" : "cu");
     if (Q.get("stage")) { toanLv = LV_OF[Q.get("stage")] || 7; }
     mockSet("stage", String(stageOf(toanLv)));
     // the village is hidden behind the splash until it is decoded; whatever happens it shows after a while
     const reveal = () => root.classList.add("lg-late");
     const tv = () => (window.Village && Village.ready ? Village.ready.then(() => Village.loaded) : Promise.resolve());
-    tv().then(() => { if (root.dataset.hs === "moi") Village.setSet("kid", "moi"); showToan(); }); setTimeout(reveal, 10000);
+    tv().then(() => { showToan(); }); setTimeout(reveal, 10000);
   });
 })();
 </script>
