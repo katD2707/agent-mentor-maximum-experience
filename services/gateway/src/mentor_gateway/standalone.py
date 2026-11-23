@@ -80,12 +80,17 @@ def seed_content(content_dir: Path, sample: Path | None, *, remote_catalog: bool
     return done
 
 
+DEFAULT_REMOTE_CATALOG = "1AreHj5AxvmCmvHeyDHjJpIUXNWxCWHg1"  # Drive file id of catalog.json (public, anyone with the link)
+
+
 def apply_defaults(environ: dict[str, str], port: int) -> Path:
     """Standalone defaults, set only when not already given. Returns the data dir."""
     environ.setdefault("MENTOR_ENV", "standalone")
     data_dir = Path(environ.get("MENTOR_DATA_DIR") or (Path.home() / "MentorData"))
     environ["MENTOR_DATA_DIR"] = str(data_dir)
     environ.setdefault("MENTOR_CONTENT_DIR", str(data_dir / "content"))
+    # the public course catalog on the owner's Google Drive (content/drive.py push-all); an empty value turns it off
+    environ.setdefault("MENTOR_REMOTE_CATALOG_URL", DEFAULT_REMOTE_CATALOG)
     environ.setdefault("PUBLIC_BASE_URL", f"http://127.0.0.1:{port}")
     # one local machine, nothing to route: AI goes through the user's own key, not a model router
     for var in ("MODEL_ROUTER_URL", "MODEL_ROUTER_KEY", "MODEL_ROUTER_MASTER_KEY"):
