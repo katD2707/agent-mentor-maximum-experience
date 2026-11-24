@@ -48,13 +48,13 @@ writeFileSync(join(DEST, "lang/layout.json"), json);
 n++;
 
 // chickens: the costume pictures, assets/ga/trang-phuc/<id>-1.png (chick), <id>-2.png (young), <id>.png (grown, stage 3), <id>-4.png
-// (master, with the halo) and <id>-gian.png (angry, drawn grown). They are converted to WebP (quality 90, alpha kept) as <id>.webp,
-// <id>-1.webp ... The animated ones (<name>-dung.webp stand, <name>-nhay.webp jump, today only Gà Toán) are copied as they are.
+// (master, with the halo) and the angry ones, <id>-gian.png (grown) and <id>-1-gian.png, <id>-2-gian.png, <id>-4-gian.png. They are converted to WebP (quality 90, alpha kept) as <id>.webp,
+// <id>-1.webp ... The animated ones (<name>-dung.webp stand, <name>-nhay.webp jump; the angry chickens only stand) are copied as they are.
 // src/lang/gaFiles.json lists what exists, so the app never points at a missing file and falls back to a still with a CSS bob.
 // The older per-subject drawings (assets/ga/<id>.png ...) and the old walking sheets of toan / van / anh are not copied any more.
 const COS = join(SRC, "trang-phuc");
-const STILL = /^([a-z]+)(-1|-2|-4|-gian)?\.png$/;
-const ANIM = /^(([a-z]+)(?:-1|-2|-4|-gian)?)-(nhay|dung)\.webp$/;
+const STILL = /^([a-z]+)(-1|-2|-4)?(-gian)?\.png$/;
+const ANIM = /^(([a-z]+)(?:-1|-2|-4)?(?:-gian)?)-(nhay|dung)\.webp$/;
 const manifest = { still: [], dung: [], nhay: [] };
 const jobs = [];
 for (const f of existsSync(COS) ? readdirSync(COS) : []) {

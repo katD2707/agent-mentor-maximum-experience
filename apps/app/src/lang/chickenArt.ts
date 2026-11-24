@@ -2,14 +2,18 @@ import { hasGa, stageName } from "./gaFiles";
 
 /**
  * Which picture shows a chicken: its costume at the growth stage (chick, young, grown, master with the halo), or the angry one
- * (`<art>-gian`, drawn grown, for every stage). Where a picture has an animated stand and jump (`-dung`, `-nhay`, today Gà Toán) they are
+ * (`<art>-1-gian` ..., or the grown `<art>-gian`). Where a picture has an animated stand and jump (`-dung`, `-nhay`) they are
  * used, else the still (the screens give it a CSS bob or hop, see `.ga-bob` and `.ga-hop`). `drawn` = how far the picture is grown (it
  * frames the head in the coop), see mockups/lg-03.
  */
 export type Drawn = 1 | 2 | 3 | 4;
 export const drawnStage = (art: string, stage: number, angry = false): Drawn => {
-  if (angry && hasGa("still", `${art}-gian`)) return 3;
   const s = Math.min(Math.max(stage, 1), 4) as Drawn;
+  if (angry) {
+    const name = stageName(art, s, true);
+    if (name === `${art}-gian`) return 3; // only the grown angry picture exists
+    if (name.endsWith("-gian")) return s;
+  }
   return stageName(art, s) !== art || s === 3 ? s : 3; // a stage without a drawing of its own shows the grown one
 };
 

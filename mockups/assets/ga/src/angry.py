@@ -63,6 +63,7 @@ def apply(ch, H, subject, stage):
         piv.rotation_euler = (math.radians(-12), sx * 1.32, math.radians(sx * 8))
     # ---- flames above the head ----------------------------------------------------------------------------------------------------------------
     top = getattr(kit, "hat_top", hc.z + rh)
+    top = getattr(top, "z", top)  # some hats store a Vector
     fo = H.toon("flame_o", "#ff5a1a", "#d62a08", "#ffa040"); fy = H.toon("flame_y", "#ffd23a", "#f09a10", "#fff0a0")
     room = 4.55 - top
     sizes = [(0.0, 1.0), (-0.62, 0.7), (0.62, 0.72)]

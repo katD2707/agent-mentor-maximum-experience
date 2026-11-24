@@ -464,6 +464,9 @@ class Chicken:
 
 def camera(scale, z=7.0, x=0.0, res=(1800, 760)):
     sc.render.resolution_x, sc.render.resolution_y = res
+    if os.environ.get("MENTOR_SAMPLES"):  # final renders: fewer TAA samples (the flat toon look needs few)
+        try: sc.eevee.taa_render_samples = int(os.environ["MENTOR_SAMPLES"])
+        except Exception: pass
     if os.environ.get("MENTOR_FAST"):
         sc.render.resolution_percentage = int(os.environ.get("MENTOR_PCT", "50"))
         try: sc.eevee.taa_render_samples = 6

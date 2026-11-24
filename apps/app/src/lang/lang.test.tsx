@@ -77,8 +77,8 @@ describe("chickens: levels and growth", () => {
     expect(artFile("toan", 4)).toBe("toan-4.webp"); // the master has its own costume, with the halo
     expect(artFile("zzz", 1)).toBe("zzz.webp"); // no drawing for the stage: the grown one
     expect([1, 2, 3, 4].map((s) => artFile("khmt", s))).toEqual(["khmt-1.webp", "khmt-2.webp", "khmt.webp", "khmt-4.webp"]);
-    // an angry chicken shows the angry picture, drawn grown, whatever its stage
-    expect([1, 2, 4].map((s) => artFile("anh", s, true))).toEqual(["anh-gian.webp", "anh-gian.webp", "anh-gian.webp"]);
+    // an angry chicken shows the angry picture of its stage
+    expect([1, 2, 3, 4].map((s) => artFile("anh", s, true))).toEqual(["anh-1-gian.webp", "anh-2-gian.webp", "anh-gian.webp", "anh-4-gian.webp"]);
     expect(artFile("zzz", 2, true)).toBe("zzz.webp");
   });
   it("lists per stage as in the contract", () => {
