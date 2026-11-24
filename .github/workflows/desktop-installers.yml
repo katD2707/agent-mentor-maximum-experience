@@ -85,10 +85,30 @@ jobs:
           path: ${{ matrix.files }}
           if-no-files-found: error
 
+  feco:
+    # the self-contained package for the F-Eco launcher (bundled gateway, Drive courses), see integrations/feco/README.md
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g pnpm@9.15.9
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: astral-sh/setup-uv@v6
+      - name: Build the F-Eco package
+        shell: powershell
+        run: powershell -ExecutionPolicy Bypass -File integrations/feco/build.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Mentor-feco
+          path: dist/mentor-*-windows-x64.zip
+          if-no-files-found: error
+
   release:
     # publishes whatever platforms built: a failing macOS build must not hold back Windows and Linux
     if: ${{ !cancelled() && startsWith(github.ref, 'refs/tags/v') }}
-    needs: build
+    needs: [build, feco]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -110,6 +130,7 @@ jobs:
           | Ubuntu, Linux Mint, Debian | `Mentor_..._amd64.deb` | Bấm đúp, cửa sổ Software hiện ra, bấm **Install**. |
           | Linux khác | `Mentor_..._amd64.AppImage` | Chuột phải, **Properties**, **Permissions**, bật **Allow executing file as program**, rồi bấm đúp. |
           | macOS | `Mentor_..._universal.dmg` (khi có) | Mở file, kéo Mentor vào Applications. Lần đầu mở: **System Settings**, **Privacy & Security**, **Open Anyway**. |
+          | F-Eco (quản trị viên) | `mentor-...-windows-x64.zip` | Gói tự chứa cho F-Launcher, không cài trực tiếp. Xem `integrations/feco/README.md`. |
 
           Mở app và đăng nhập bằng tài khoản người phụ trách gửi cho bạn. App cần Internet.
           EOF
@@ -123,3 +144,4 @@ jobs:
             dist/**/*.deb
             dist/**/*.AppImage
             dist/**/*.dmg
+            dist/**/mentor-*-windows-x64.zip
