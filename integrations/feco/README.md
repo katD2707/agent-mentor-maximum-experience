@@ -40,7 +40,7 @@ Kết quả: `dist\mentor-<phiên bản>-windows-x64.zip` (khoảng 85 MB, dư�
 Trong repo F-Eco (Git Bash), khi hạ tầng và `feco-server` đang chạy với kho TUF dev (`scripts/dev-launcher.sh setup` đã chạy):
 
 ```bash
-MENTOR_DESKTOP_ZIP=/d/duong-dan/mentor-0.2.2-windows-x64.zip MENTOR_VERSION=0.2.3 scripts/dev-apps.sh mentor
+MENTOR_DESKTOP_ZIP=/d/duong-dan/mentor-0.2.4-windows-x64.zip scripts/dev-apps.sh mentor
 ```
 
 `MENTOR_VERSION` phải lớn hơn bản Mentor đã có trong kho dev (nếu chưa có thì bỏ). Sau đó mở F-Launcher dev, bấm **Đồng bộ**, cài và mở Mentor. Chỉ dùng mục desktop; mục web của lệnh này cần gateway đã vá đăng nhập F-Eco, gói này chưa có.

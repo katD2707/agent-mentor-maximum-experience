@@ -2145,7 +2145,7 @@ dependencies = [
 
 [[package]]
 name = "mentor-app"
-version = "0.2.2"
+version = "0.2.4"
 dependencies = [
  "semver",
  "serde",
