@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../../state/auth";
 import { subjectOf, artFile } from "../../subjects";
+import { hasGa } from "../../gaFiles";
 import "../../styles/fonts";
 import "../../styles/lang.css";
 import "../../styles/arena.css";
@@ -13,10 +14,10 @@ export function useLang(): "vi" | "en" {
   return i18n.language === "en" ? "en" : "vi";
 }
 
-/** Picture of a chicken standing ready (the battle pose exists for the three exam subjects). */
+/** Picture of a chicken standing ready: its grown costume, animated where the art has an animated stand. */
 export function chickenPic(chicken: string, pose: "dung" | "body" = "dung"): string {
   const art = subjectOf(chicken)?.art ?? chicken;
-  if (pose === "dung" && ["toan", "van", "anh"].includes(art)) return `${base}ga/${art}-dung.webp`;
+  if (pose === "dung" && hasGa("dung", art)) return `${base}ga/${art}-dung.webp`;
   return `${base}ga/${artFile(art, 3)}`;
 }
 

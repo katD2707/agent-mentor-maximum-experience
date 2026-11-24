@@ -74,9 +74,12 @@ describe("chickens: levels and growth", () => {
     expect([levelOf(0), levelOf(99), levelOf(100), levelOf(250), levelOf(-5)]).toEqual([1, 1, 2, 3, 1]);
     expect(xpInLevel(250)).toBe(50);
     expect([1, 2, 4, 5, 9, 10, 40].map(stageOf)).toEqual([1, 2, 2, 3, 3, 4, 4]);
-    expect(artFile("toan", 4)).toBe("toan.png"); // the master shows the grown drawing (the crown marks it)
-    expect(artFile("zzz", 1)).toBe("zzz.png"); // no chick drawing: the grown one
-    expect([1, 2, 3].map((s) => artFile("toan", s))).toEqual(["toan-1.png", "toan-2.png", "toan.png"]);
+    expect(artFile("toan", 4)).toBe("toan-4.webp"); // the master has its own costume, with the halo
+    expect(artFile("zzz", 1)).toBe("zzz.webp"); // no drawing for the stage: the grown one
+    expect([1, 2, 3, 4].map((s) => artFile("khmt", s))).toEqual(["khmt-1.webp", "khmt-2.webp", "khmt.webp", "khmt-4.webp"]);
+    // an angry chicken shows the angry picture, drawn grown, whatever its stage
+    expect([1, 2, 4].map((s) => artFile("anh", s, true))).toEqual(["anh-gian.webp", "anh-gian.webp", "anh-gian.webp"]);
+    expect(artFile("zzz", 2, true)).toBe("zzz.webp");
   });
   it("lists per stage as in the contract", () => {
     expect(subjectsFor("g6_9").map((s) => s.id)).toEqual(["toan", "van", "anh", "khoahoc", "su", "dia", "cd", "tin", "cn", "nt", "kn"]);
@@ -141,12 +144,12 @@ describe("mock Làng gà API: taking chickens", () => {
 });
 
 // ---------------------------------------------------------------- screens
-function seed(opts: { birth?: number | null; language?: string | null; avatar?: string | null; chickens?: string[] } = {}) {
-  const { birth = 2010, language = "vi", avatar = "nam", chickens = ["toan", "van", "anh"] } = opts;
+function seed(opts: { birth?: number | null; language?: string | null; avatar?: string | null; chickens?: string[]; angry?: Record<string, string> } = {}) {
+  const { birth = 2010, language = "vi", avatar = "nam", chickens = ["toan", "van", "anh"], angry } = opts;
   localStorage.setItem("mentor.mock.users", JSON.stringify({ hocsinh: { password: "123456", user: { id: "u-hs", role: "student", username: "hocsinh", display_name: "Lan", age_band: null, birth_year: birth, language, theme: "system", quiet_until: null, avatar } } }));
   localStorage.setItem("mentor.token", "mock-u-hs");
   localStorage.setItem("mentor.lang", "vi");
-  if (chickens.length) localStorage.setItem("mentor.mock.lg.u-hs", JSON.stringify({ chickens: chickens.map((id) => ({ id, xp: 0, taken_at: "2026-11-01T00:00:00Z" })) }));
+  if (chickens.length) localStorage.setItem("mentor.mock.lg.u-hs", JSON.stringify({ chickens: chickens.map((id) => ({ id, xp: 0, taken_at: "2026-11-01T00:00:00Z" })), ...(angry ? { angry } : {}) }));
 }
 const open = (path = "/") =>
   render(
@@ -241,6 +244,21 @@ describe("village: the chicken speaks first", () => {
     expect(screen.getByRole("button", { name: "Thư viện" })).toBeInTheDocument(); // grade 6 and up: the notes shelf
     expect(document.querySelector("mentor-mascot")).toBeNull();
     expect(document.querySelector(".cg")).not.toBeNull();
+  });
+
+  it("an angry chicken speaks first: why, and a Học button; chickens wear only a level badge and keep their name in the label", async () => {
+    seed({ angry: { van: "Đọc hiểu" } });
+    seenHello();
+    open();
+    const log = await thread();
+    expect(await within(log).findByText(/Gà Văn giận rồi: 7 ngày chưa học «Đọc hiểu»\. Học 10 phút cho gà vui nhé!/)).toBeInTheDocument();
+    expect(within(log).getByRole("link", { name: /Học/ })).toBeInTheDocument();
+    const btn = await screen.findByRole("button", { name: /Gà Văn, cấp 1/ });
+    expect(btn.getAttribute("title")).toBe("Gà Văn");
+    // the angry picture is drawn (a still: a costume without an animated stand)
+    await waitFor(() => expect(document.querySelector('.lg-actor[data-id="van"]')?.classList.contains("angry")).toBe(true));
+    expect(document.querySelector(".lg-plate.ga .nm")).toBeNull(); // no name plate on a chicken, only the level badge
+    expect(document.querySelector(".lg-plate.ga .lv")?.textContent).toBe("1");
   });
 
   it("Để sau sets a real reminder, with the streak in the greeting", async () => {

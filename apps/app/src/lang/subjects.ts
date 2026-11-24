@@ -50,9 +50,6 @@ export const chickenName = (id: string, lang: "vi" | "en"): string => {
   return s ? (lang === "en" ? `${s.en} chicken` : `Gà ${s.vi}`) : id;
 };
 
-/** Chickens with a walking sprite sheet in the village; the others stand and bob. */
-export const WALKERS = new Set(["toan", "van", "anh"]);
-
 // ---- levels and XP (CONTRACTS-LANGGA.md "Levels and XP"): 100 XP a level, starts at 1
 export const XP_PER_LEVEL = 100;
 export const levelOf = (xp: number): number => Math.floor(Math.max(0, xp) / XP_PER_LEVEL) + 1;
@@ -61,5 +58,5 @@ export const xpInLevel = (xp: number): number => Math.max(0, xp) % XP_PER_LEVEL;
 export type Stage = 1 | 2 | 3 | 4;
 export const STAGE_AT = [1, 2, 5, 10];
 export const stageOf = (level: number): Stage => (level >= 10 ? 4 : level >= 5 ? 3 : level >= 2 ? 2 : 1);
-/** Picture of a chicken at its growth stage (file under `ga/`). Stage 4 shows the grown drawing; the crown badge marks it. */
-export const artFile = (art: string, stage: number): string => `${stageName(art, stage)}.png`;
+/** Picture of a chicken at its growth stage (file under `ga/`): its costume, stage 4 with the halo; angry, the angry one (drawn grown). */
+export const artFile = (art: string, stage: number, angry = false): string => `${stageName(art, stage, angry)}.webp`;

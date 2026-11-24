@@ -2,16 +2,18 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../../state/auth";
 import { hasSeen, markSeen, resetSeen, REPLAY_EVENT } from "../../lib/tours";
-import { WALKERS, artFile, chickenName, subjectOf } from "../subjects";
+import { artFile, chickenName, subjectOf } from "../subjects";
+import { hasGa } from "../gaFiles";
 import { createGuide, resetToured, ROAMING, type GuideHandle } from "./guide";
 import "../styles/guide.css";
 
-/** The picture of the guide chicken: the animated idle sprite where one exists, else the grown chicken's still. */
+/** The picture of the guide chicken: its costume, animated where it has an animated stand, else the grown still. */
 export function guideImage(chicken: string): string {
   const base = import.meta.env.BASE_URL;
   const reduced = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (WALKERS.has(chicken) && !reduced) return `${base}ga/${chicken}-dung.webp`;
-  return `${base}ga/${artFile(subjectOf(chicken)?.art ?? chicken, 3)}`;
+  const art = subjectOf(chicken)?.art ?? chicken;
+  if (!reduced && hasGa("dung", art)) return `${base}ga/${art}-dung.webp`;
+  return `${base}ga/${artFile(art, 3)}`;
 }
 
 /** Local key of the first-visit tour of a screen (shared with Settings > "Xem lại từ đầu"). */

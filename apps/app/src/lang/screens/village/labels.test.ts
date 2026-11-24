@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { nudgeIntoView } from "./labels";
-import { crowded, stillHead } from "../../engine/village";
+import { COS_BODY, COS_FIT, crowded } from "../../engine/village";
 import { cropVars } from "../../chickenArt";
 
 describe("village readability", () => {
@@ -22,7 +22,10 @@ describe("village readability", () => {
     expect(crowded([0, 0], [0, 2], false)).toBe(true); // the name tag hangs under the bird
     expect(crowded([0, 0], [0, 3.2], false)).toBe(false);
     expect(crowded([0, 0], [2.6, 0], true)).toBe(false);
-    expect(stillHead(1)).toBeLessThan(stillHead(2));
-    expect(stillHead(2)).toBeLessThan(stillHead(3));
+    // a costume: the bodies grow with the stage and the squeeze on the small ones stays mild
+    const h = ([1, 2, 3, 4] as const).map((s) => (COS_BODY[s][3] - COS_BODY[s][1]) * COS_FIT[s]);
+    expect(h[0]).toBeLessThan(h[1]);
+    expect(h[1]).toBeLessThan(h[2]);
+    expect(h[2]).toBeLessThanOrEqual(h[3] * 1.0001);
   });
 });

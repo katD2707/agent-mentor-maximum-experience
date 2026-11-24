@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../../state/auth";
 import { Icon } from "../../components/Icon";
 import { loadVillageData, villageBase, VillageEngine, type ActorsData, type Layout, type Pt } from "../engine";
-import { artFile, chickenName, WALKERS } from "../subjects";
+import { chickenName } from "../subjects";
+import { chickenSrc, jumpSrc, reducedMotion } from "../chickenArt";
 import type { Chicken } from "../api";
 import { ChickenGuide } from "../guide/ChickenGuide";
-import { Crown } from "../components/Crown";
 import { Tray, type SheetKey } from "./village/Tray";
 import { useVillage } from "./village/useVillage";
 import { keepVillageReadable } from "./village/labels";
@@ -62,7 +62,7 @@ export function Village() {
   const chickens = village?.chickens ?? [];
   const speakerId = village?.speaker?.chicken ?? chickens[0]?.id ?? null;
   const ids = chickens.map((c) => c.id).join(",");
-  const looks = chickens.map((c) => `${c.id}:${c.stage}`).join(",");
+  const looks = chickens.map((c) => `${c.id}:${c.stage}:${c.angry ? "x" : ""}`).join(",");
 
   useEffect(() => {
     let alive = true;
@@ -115,13 +115,14 @@ export function Village() {
     chickens.forEach((c, i) => {
       const el = els.current.get(c.id);
       const stay = c.id === speakerId;
-      const still = `${base}ga/${artFile(c.art, c.stage)}`;
-      // the size of a walking sheet is fixed; a chick or a young chicken is a still drawn at the size of its stage
-      const head = c.stage >= 3 && WALKERS.has(c.id) ? (c.id === "toan" ? 3.0 : 2.6) : undefined;
-      if (el && !e.actors[c.id]) e.addActor(el, { key: c.id, id: c.id, kind: "ga", pos: e.seat(stay ? SEATS[0] : SEATS[(i + 1) % SEATS.length], i), stay, stage: c.stage, head, still, tag: tags.current.get(c.id) });
+      // the costume of its stage (the angry one when its course is neglected): animated where the art has a stand and a jump, else a still
+      const angry = !!c.angry;
+      const still = chickenSrc(c.art, c.stage, "stand", reducedMotion(), angry);
+      const jump = reducedMotion() ? null : jumpSrc(c.art, c.stage, angry);
+      if (el && !e.actors[c.id]) e.addActor(el, { key: c.id, id: c.id, kind: "ga", pos: e.seat(stay ? SEATS[0] : SEATS[(i + 1) % SEATS.length], i), stay, stage: c.stage, still, jump, angry, tag: tags.current.get(c.id) });
       else {
         e.setStay(c.id, stay);
-        e.setLook(c.id, still, c.stage, head);
+        e.setLook(c.id, still, c.stage, jump, angry);
       }
     });
     for (const k of Object.keys(e.actors)) if (k !== "kid" && !ids.split(",").includes(k)) e.removeActor(k);
@@ -268,13 +269,6 @@ export function Village() {
               {newsN > 0 && <span className="dot" aria-hidden="true" />}
             </span>
           </button>
-          <button className="lg-place lg-market" id="lg-market" type="button" data-sign="market" aria-label={t("lg.market.aria")} onClick={(e) => {
-              const from = e.currentTarget;
-              void go("market", () => open("market", from), false);
-            }}
-          >
-            <span className="lg-sign">{t("lg.market.title")}</span>
-          </button>
           <span className="lg-burnt" data-sign="gate" aria-hidden="true">
             {t("lg.village")}
           </span>
@@ -289,10 +283,10 @@ export function Village() {
             const name = lang === "en" ? c.name_en : c.name_vi;
             const speaker = c.id === speakerId;
             return (
-              <div key={c.id} className={"lg-actor ga" + (speaker ? " speaker" : "")} ref={setEl(c.id)} data-id={c.id}>
+              <div key={c.id} className={"lg-actor ga" + (speaker ? " speaker" : "") + (c.angry ? " angry" : "")} ref={setEl(c.id)} data-id={c.id}>
                 <span className="lg-shadow" />
                 <span className="lg-spr" />
-                <button className="lg-hit" type="button" aria-label={t("lg.chickenAria", { name, level: c.level, done: c.done_today ? t("lg.doneAria") : "" })} onClick={() => void tapChicken(c)} />
+                <button className="lg-hit" type="button" title={name} aria-label={t("lg.chickenAria", { name, level: c.level, done: c.done_today ? t("lg.doneAria") : "" })} onClick={() => void tapChicken(c)} />
                 {speaker && speakerLine && (
                   <span className="lg-say" id="lg-say" role="note">
                     <span>{speakerLine}</span>
@@ -301,7 +295,7 @@ export function Village() {
               </div>
             );
           })}
-          {/* the name tags: one layer over the scenery, each hanging under its own actor */}
+          {/* the student's name tag: one layer over the scenery, hanging under the student */}
           <div className="lg-tags" aria-hidden="true">
             {village && (
               <span className="lg-plate is-kid" ref={setTag("kid")} data-for="kid">
@@ -314,16 +308,13 @@ export function Village() {
                 )}
               </span>
             )}
+          </div>
+          {/* the chickens' level badges: in the same depth order as the chickens, so scenery in front of a chicken covers its badge too */}
+          <div className="lg-tags lg-tags-ga" aria-hidden="true">
             {chickens.map((c) => (
-              <span key={c.id} className={"lg-plate ga" + (c.id === speakerId ? " speaker" : "")} ref={setTag(c.id)} data-for={c.id}>
+              <span key={c.id} className={"lg-plate ga lg-mini" + (c.stage >= 4 ? " master" : "") + (c.done_today ? " done" : "")} ref={setTag(c.id)} data-for={c.id}>
                 <span className="lv">{c.level}</span>
-                <Crown stage={c.stage} />
-                <span className="nm">{lang === "en" ? c.name_en : c.name_vi}</span>
-                {c.done_today && (
-                  <span className="ok">
-                    ✓ {t("lg.done")}
-                  </span>
-                )}
+                {c.done_today && <span className="tick">✓</span>}
               </span>
             ))}
           </div>
@@ -357,6 +348,14 @@ export function Village() {
           <Icon name="gear" />
         </button>
       </div>
+      {/* the chicken market: one door, the stall icon under the top-right buttons (the new village has no stalls to hang a sign on) */}
+      <button className="lg-hud lg-mk" id="lg-market" type="button" aria-label={t("lg.market.aria")} onClick={(e) => open("market", e.currentTarget)}>
+        <span className="art" aria-hidden="true">
+          <img src={`${base}ga/cho-icon.webp`} alt="" width="88" height="88" />
+          <span className="plus">+</span>
+        </span>
+        <b>{t("lg.market.title")}</b>
+      </button>
       {village && <Tray village={village} openSheet={(s) => open(s)} onChanged={() => void refresh()} />}
 
       <Suspense fallback={null}>

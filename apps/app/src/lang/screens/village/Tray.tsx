@@ -73,11 +73,11 @@ function KidPath({ done, total, label }: { done: number; total: number; label: s
 }
 
 /** The face of the speaking chicken (a crop of its picture). */
-function Face({ id, stage }: { id: string; stage: number }) {
+function Face({ id, stage, angry }: { id: string; stage: number; angry?: boolean }) {
   const art = subjectOf(id)?.art ?? id;
   return (
     <span className="lg-ava" aria-hidden="true">
-      <img className="ga-crop" alt="" src={`${import.meta.env.BASE_URL}ga/${artFile(art, stage)}`} style={cropVars(art, stage, { fill: 2.3, pad: 0.12 })} />
+      <img className="ga-crop" alt="" src={`${import.meta.env.BASE_URL}ga/${artFile(art, stage, angry)}`} style={cropVars(art, stage, { fill: 2.3, pad: 0.12, angry })} />
     </span>
   );
 }
@@ -653,7 +653,7 @@ export function Tray({ village, openSheet, onChanged }: TrayProps) {
                 </div>
               ) : (
                 <div className="lg-msg ga" key={it.id}>
-                  <Face id={it.who} stage={village.chickens.find((c) => c.id === it.who)?.stage ?? 3} />
+                  <Face id={it.who} stage={village.chickens.find((c) => c.id === it.who)?.stage ?? 3} angry={!!village.chickens.find((c) => c.id === it.who)?.angry} />
                   <div className="lg-body">
                     {it.typing ? (
                       <>

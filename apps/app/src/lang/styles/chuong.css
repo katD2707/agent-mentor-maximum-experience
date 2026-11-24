@@ -22,6 +22,9 @@
 .ck .ck-stage { position: relative; width: 100%; max-width: 340px; aspect-ratio: 1; margin: 74px auto 0; --head: 33%; }
 .ck .ck-stage[data-drawn="2"] { --head: 41%; }
 .ck .ck-stage[data-drawn="1"] { --head: 54%; }
+.ck .ck-stage[data-drawn="4"] { --head: 22%; }
+/* the master is taller (crown, halo and props): drawn smaller, its feet on the same spot, so the halo is not cut */
+.ck .ck-stage[data-drawn="4"] .ck-chick { left: -13%; top: -19.2%; width: 126%; }
 .ck .ck-stage.ck-noart .ck-chick img { filter: brightness(0) opacity(.16); }
 .ck .ck-stage.ck-noart .ck-tap { display: none; }
 .ck .ck-draw { display: none; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); z-index: 3; font-size: .78em; font-weight: 700; padding: 2px 12px; border-radius: 99px; background: var(--plate); color: #fff; white-space: nowrap; }
@@ -279,6 +282,7 @@
 .ck a { color: inherit; }
 .ck .ck-ic svg, .ck .ck-end svg, .ck .ck-xbtn svg, .ck .ck-back svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .ck .ck-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ck .ck-chick img.ga-bob { animation: ga-bob 3.2s ease-in-out infinite; transform-origin: 50% 84%; }
 .ck .ck-chick img.ck-jump { animation: ck-hop .9s ease-in-out 1; }
 @keyframes ck-hop { 30% { transform: translateY(-9%); } 60% { transform: translateY(0); } 78% { transform: translateY(-3%); } }
 .ck .ck-pager { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 22px 0 8px; }
@@ -317,3 +321,5 @@
 .ck .ck-later-box > summary:hover { background: #f8e8c8; }
 .ck .ck-later-box > summary:focus-visible { outline: 3px solid var(--ac); outline-offset: -3px; }
 .ck .ck-later-box > ul { margin-top: 10px; }
+@keyframes ga-bob { 0%, 100% { transform: translateY(0) scale(1, 1); } 50% { transform: translateY(-1.2%) scale(1.008, .994); } }
+@media (prefers-reduced-motion: reduce) { .ck .ck-chick img.ga-bob { animation: none; } }

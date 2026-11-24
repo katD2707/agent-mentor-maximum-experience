@@ -1,4 +1,4 @@
-import { stageName } from "../../gaFiles";
+import { artFile } from "../../subjects";
 import { cropVars } from "../../chickenArt";
 import "../../styles/lang.css";
 /** Small glyphs the Làng gà screens share and the shared Icon set does not have. */
@@ -13,19 +13,19 @@ export const CheckIcon = () => (
   </svg>
 );
 
-/** A chicken's picture at its growth stage; a stage with no drawing yet shows the grown one. */
-export function ChickenImg({ art, stage, className }: { art: string; stage: number; className?: string }) {
+/** A chicken's costume at its growth stage (the angry one when it is angry); a stage with no drawing shows the grown one. */
+export function ChickenImg({ art, stage, className, angry }: { art: string; stage: number; className?: string; angry?: boolean }) {
   const base = import.meta.env.BASE_URL;
-  const file = `${stageName(art, stage)}.png`;
+  const file = artFile(art, stage, angry);
   return (
     <img
       className={`ga-crop${className ? ` ${className}` : ""}`}
-      style={cropVars(art, stage)}
+      style={cropVars(art, stage, { angry })}
       src={`${base}ga/${file}`}
       alt=""
       onError={(e) => {
         const img = e.currentTarget;
-        const fb = `${base}ga/${art}.png`;
+        const fb = `${base}ga/${art}.webp`;
         if (!img.src.endsWith(fb)) img.src = fb;
       }}
     />

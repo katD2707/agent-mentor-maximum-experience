@@ -117,6 +117,25 @@ def test_village_migrates_enrollments_once_and_speaks(client, student, store):
     assert client.get("/api/village").json()["chickens"] == []
 
 
+def test_chicken_is_angry_after_seven_idle_days_and_calms_when_the_course_is_studied(client, clock, student, store):
+    set_band(client, "g1_5")
+    enroll(client, KID, "bai-1")
+    toan = lambda: client.get("/api/village").json()["chickens"][0]  # noqa: E731
+    assert toan()["angry"] is False and toan()["angry_course"] is None
+    clock.advance(days=6, hours=23)
+    assert toan()["angry"] is False
+    clock.advance(hours=1)  # 7 days without progress
+    got = toan()
+    assert got["angry"] is True and got["angry_course"] == got["active_course"]["title"]
+    assert client.get("/api/chickens/toan").json()["chicken"]["angry"] is True
+    sp = client.get("/api/village").json()["speaker"]
+    assert sp["chicken"] == "toan" and "7 ngày chưa học" in sp["line_vi"] and got["angry_course"] in sp["line_vi"]
+    assert sp["action"]["kind"] == "lesson" and sp["action"]["deep_link"].startswith(f"/khoa-hoc/{KID}")
+    r = client.put(f"/api/enrollments/{KID}/progress", json={"lesson_id": "bai-1"})  # the student studies it
+    assert r.status_code == 200
+    assert toan()["angry"] is False and toan()["angry_course"] is None
+
+
 def test_chicken_page(client, gw, student, store):
     set_band(client, "g1_5")
     enroll(client, KID, "bai-1")

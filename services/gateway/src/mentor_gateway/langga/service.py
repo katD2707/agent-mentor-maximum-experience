@@ -3,7 +3,7 @@ in the thread pool (they read SQLite and course packs)."""
 
 import logging
 from collections import defaultdict
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from fastapi import HTTPException
@@ -22,6 +22,13 @@ log = logging.getLogger(__name__)
 
 SUGGESTED_MAX = 12
 NEWS_MAX = 5
+ANGRY_AFTER_DAYS = 7  # a chicken is angry when one of the student's courses under it has had no progress this long
+
+
+def _utc(dt: Any) -> Any:
+    if isinstance(dt, str):
+        dt = datetime.fromisoformat(dt)
+    return dt if dt.tzinfo else dt.replace(tzinfo=UTC)
 
 
 def _err(status: int, code: str) -> HTTPException:
@@ -121,9 +128,25 @@ class LanggaService:
             e = mine[0]  # list_enrollments is newest first
             title = (e.get("course") or {}).get("title") or e["course_id"]
             active = {"id": e["course_id"], "title": title, "percent": e["progress_pct"]}
+        stale = self._neglected(mine)
+        angry_course = stale[1] if stale else None
         return {"id": cid, "name_vi": c.name_vi, "name_en": c.name_en, "art": c.art, **xpm.level_info(totals.get(cid, 0)),
                 "courses": len(mine), "active_course": active, "done_today": cid in done_today,
-                "taken_at": taken_at.isoformat() if taken_at else None}
+                "taken_at": taken_at.isoformat() if taken_at else None,
+                "angry": stale is not None, "angry_course": angry_course,
+                "angry_course_id": stale[0] if stale else None, "angry_days": stale[2] if stale else None}
+
+    def _neglected(self, mine: list[dict]) -> tuple[str, str, int] | None:
+        """(course id, title, idle days) of the course that has waited longest, when any unfinished enrolled course of this
+        chicken had no progress for ANGRY_AFTER_DAYS or more (its enrollment `updated_at`, the stamp the planner's last-study
+        reads); else None."""
+        now = self.clock()
+        cutoff = now - timedelta(days=ANGRY_AFTER_DAYS)
+        stale = [e for e in mine if (e.get("progress_pct") or 0) < 100 and e.get("updated_at") and _utc(e["updated_at"]) <= cutoff]
+        if not stale:
+            return None
+        e = min(stale, key=lambda x: _utc(x["updated_at"]))
+        return e["course_id"], (e.get("course") or {}).get("title") or e["course_id"], (now - _utc(e["updated_at"])).days
 
     def chicken_view(self, user: User, cid: str) -> dict:
         rows = self.owned(user.id)
@@ -148,9 +171,23 @@ class LanggaService:
             log.warning("village: planner unavailable", exc_info=True)
         days = self.xp.active_days(user.id, today - timedelta(days=400))
         streak = plan.get("streak") or {"days": self._streak(days, today), "today_done": today in days}
-        return {"chickens": chickens, "speaker": self._speaker(user, rows, chickens, plan), "news": self._news(user, rows, enrolls, plan),
+        speaker = self._speaker(user, rows, chickens, plan)
+        return {"chickens": chickens, "speaker": self._angry_speaker(chickens, speaker), "news": self._news(user, rows, enrolls, plan),
                 "streak": streak, "week": plan.get("week") or {"done": 0, "planned": 0}, "avatar": getattr(user, "avatar", None),
                 "stage": subjects.band_or_default(user.age_band)}
+
+    @staticmethod
+    def _angry_speaker(chickens: list[dict], speaker: dict | None) -> dict | None:
+        """An angry chicken speaks first (the longest neglected one): its line says why, and the action opens the course."""
+        angry = [c for c in chickens if c.get("angry")]
+        if not angry:
+            return speaker
+        c = max(angry, key=lambda x: x["angry_days"] or 0)
+        d, title = c["angry_days"], c["angry_course"]
+        return {"chicken": c["id"], "name_vi": c["name_vi"],
+                "line_vi": f"{c['name_vi']} giận rồi: {d} ngày chưa học «{title}». Học 10 phút cho gà vui nhé!",
+                "line_en": f"{c['name_en']} is cross: {d} days without «{title}». Study 10 minutes to cheer it up!",
+                "action": {"kind": "lesson", "deep_link": f"/khoa-hoc/{c['angry_course_id']}/hoc", "minutes": 10}}
 
     @staticmethod
     def _streak(days: set, today) -> int:

@@ -9,7 +9,7 @@ import { DownloadNote, Skeleton, useDownload } from "../../kit/common";
 import { getChuong, type ChuongData } from "../../api/chuong";
 import { chickenOfCourse } from "../../chickenOf";
 import { Crown } from "../../components/Crown";
-import { chickenSrc, drawnStage, jumpSrc, mockAge, reducedMotion } from "../../chickenArt";
+import { chickenSrc, drawnStage, isAnimated, jumpSrc, mockAge, reducedMotion } from "../../chickenArt";
 import { chickenName } from "../../subjects";
 import { CourseTree, lessonTo } from "./CourseTree";
 import { FindBoard } from "./Find";
@@ -103,7 +103,8 @@ export function Chuong() {
   const level = c?.level ?? 1;
   const sIdx = stageIndex(level);
   const xp = c?.xp_in_level ?? 0;
-  const drawn = drawnStage(art, stage);
+  const angry = !!c?.angry;
+  const drawn = drawnStage(art, stage, angry);
   const playerOn = !!listening;
   const stageNames = t("lg.cg.stage", { returnObjects: true }) as unknown as string[];
   const ranges = t("lg.cg.range", { returnObjects: true }) as unknown as string[];
@@ -115,7 +116,9 @@ export function Chuong() {
     if (jumpTimer.current) clearTimeout(jumpTimer.current);
     jumpTimer.current = setTimeout(() => setJump(false), 1950);
   };
-  const imgSrc = jump && jumpSrc(art, stage) ? (jumpSrc(art, stage) as string) : chickenSrc(art, stage, "stand", reducedMotion());
+  const imgSrc = jump && jumpSrc(art, stage, angry) ? (jumpSrc(art, stage, angry) as string) : chickenSrc(art, stage, "stand", reducedMotion(), angry);
+  // a picture without an animated stand gets a gentle CSS bob, and a hop on a tap
+  const bob = !reducedMotion() && !isAnimated(art, stage, angry);
 
   // what the chicken suggests today
   const cur = rows[act];
@@ -159,7 +162,7 @@ export function Chuong() {
               <div className="ck-stage" data-drawn={drawn}>
                 <div className="ck-sky" />
                 <button className="ck-chick" type="button" onClick={hop} aria-label={t("lg.cg.jumpAria")}>
-                  <img className={jump ? "ck-jump" : undefined} src={imgSrc} alt="" onError={(e) => (e.currentTarget.src = chickenSrc(art, stage, "stand", true))} />
+                  <img className={(jump ? "ck-jump " : "") + (bob && !jump ? "ga-bob" : "")} src={imgSrc} alt="" onError={(e) => (e.currentTarget.src = chickenSrc(art, stage, "stand", true, angry))} />
                 </button>
                 <span className="ck-tap">{t("lg.cg.jump")}</span>
               </div>
@@ -234,7 +237,7 @@ export function Chuong() {
           </div>
         )}
       </div>
-      {listening && <MiniPlayer key={listening.p.chapter.id} item={listening.p} kid={!!kid} name={name} face={chickenSrc(art, stage, "stand", true)} onClose={() => setListening(null)} />}
+      {listening && <MiniPlayer key={listening.p.chapter.id} item={listening.p} kid={!!kid} name={name} face={chickenSrc(art, stage, "stand", true, angry)} onClose={() => setListening(null)} />}
     </div>
   );
 }

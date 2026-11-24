@@ -95,7 +95,7 @@ export function MarketSheet({ onClose, onTaken, owned }: { onClose(): void; onTa
           return (
             <div key={m.id} className={"lg-gcard" + (mine ? " mine" : "")}>
               <span className="pic">
-                <img src={`${base}ga/${m.art}.png`} alt="" className="ga-crop" style={cropVars(m.art, 3, { fill: 0.74, pad: 0.14 })} />
+                <img src={`${base}ga/${artFile(m.art, 3)}`} alt="" className="ga-crop" style={cropVars(m.art, 3, { fill: 0.74, pad: 0.14 })} />
               </span>
               <b>{lang === "en" ? m.name_en : m.name_vi}</b>
               <small>{t("lg.first.courses", { count: m.courses })}</small>
@@ -459,7 +459,7 @@ export function ListView({ village, library, onMarket, onClose }: { village: Vil
         {village.chickens.map((c) => (
           <li key={c.id}>
             <Link to={`/chuong/${c.id}`} state={{ back: "/" }}>
-              <img src={`${base}ga/${artFile(c.art, c.stage)}`} alt="" />
+              <img src={`${base}ga/${artFile(c.art, c.stage, !!c.angry)}`} alt="" />
               <span>
                 <b>
                   {lang === "en" ? c.name_en : c.name_vi} · {t("lg.level")} {c.level}

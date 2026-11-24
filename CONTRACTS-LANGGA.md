@@ -52,7 +52,15 @@ These are the amounts of the approved UI (`mockups/lg-09-tien-do.html`, "cách g
   news: NewsItem[], streak:{days,today_done}, week:{done,planned} }`. `speaker` is the chicken that speaks first (today's
   planned session from the planner, else the chicken with the most recent activity). `news`: level-ups, reminders, new courses.
 - `Chicken = { id, name_vi, name_en, art, level, xp, xp_in_level, stage, courses: number, active_course: {id,title,percent}|null,
-  done_today: bool, taken_at }`.
+  done_today: bool, taken_at, angry: bool, angry_course: string|null (+ angry_course_id, angry_days) }`.
+- **Angry chickens (7-day threshold).** A chicken is `angry` when any course of it that the student is enrolled in, and has not
+  finished (progress < 100%), has had no progress for **7 days or more**: the enrollment's `updated_at` (the stamp every progress
+  save sets, the same one the planner reads as "last study") is at least 7 x 24 h before now. `angry_course` is the title of the
+  one that has waited longest (`angry_course_id`, `angry_days`: its id and the whole days idle). Studying that course moves
+  `updated_at`, so the chicken is calm again on the next `/village`. While any chicken is angry, `speaker` is the angriest one
+  (longest wait) with `line_vi` "<Gà X> giận rồi: N ngày chưa học «<course>». Học 10 phút cho gà vui nhé!" and the action
+  `{kind: "lesson", deep_link: "/khoa-hoc/<course id>/hoc", minutes: 10}` (the app's "Học" button). The app draws an angry chicken with
+  its `<art>-gian` picture (grown, for every stage) in the village, the coop and the tray.
 - `GET /market` → `{ stage: band, chickens: [{id, name_vi, name_en, art, courses, owned}] }` (only the band's list).
 - `POST /chickens {chicken}` → `Chicken` (take, free; 409 `already_owned`; 400 `not_in_stage`).
 - `DELETE /chickens/{id}` → 204 (let go; XP kept in the ledger, restored if taken again).

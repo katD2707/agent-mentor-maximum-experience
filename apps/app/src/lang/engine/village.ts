@@ -34,23 +34,32 @@ export interface ActorSpec {
   head?: number;
   /** still picture for an actor without sprite sheets */
   still?: string;
-  /** the name tag: it hangs under the actor's feet and follows it, drawn over the scenery (never behind a tree) */
+  /** the student's name tag, or a chicken's level badge: it hangs under the actor's feet and follows it */
   tag?: HTMLElement | null;
-  /** growth stage of a chicken (1 chick .. 4 master): the still is drawn at a size that fits the stage; before stage 3 it is always a still */
+  /** growth stage of a chicken (1 chick .. 4 master): its costume picture is drawn at a size that fits the stage */
   stage?: number;
+  /** the chicken's jump picture (an animated one), when it has one: a tap plays it, else the still hops */
+  jump?: string | null;
+  /** an angry chicken shows its grown angry picture, so it is drawn at the grown size whatever its stage */
+  angry?: boolean;
 }
 
 /**
- * How big a chicken's still looks, by growth stage. The pictures are 512 squares with the bird at the bottom and the chick fills only
- * ~28% of it, so a chick drawn as is would be a speck beside the student: it is scaled so the bird stands this much of the frame high
- * (grown = 52%), and its feet stay on the same spot. `K` is that scale, `FRAC` the bird's share of the frame afterwards.
+ * The chickens are costume pictures (public/ga/<id>*.webp): 512 px squares facing us, the bird's feet at (256, 432). Every stage is drawn at
+ * the same scale of the picture, squeezed a little for the small ones (`COS_FIT`) so a chick stays readable at map size; the master's halo and
+ * props are drawn above the body and are not part of it (`COS_BODY`: x0, y0, x1, y1 of the body in the picture, from the feet up). A world unit
+ * is `COS_PPU` picture px, so a grown chicken stands as high as the student's old sprite did before it was scaled by `CHICK_SCALE`.
  */
-export const STILL_FRAC = [0.44, 0.5, 0.54, 0.58] as const;
-export const STILL_K = [1.55, 1.14, 1.04, 1.12] as const;
-/** world units a bird of `frac` of the frame stands high: frame (416 px) / pxPerUnit (94.1) = 4.42 u, and `--head` is 0.899 of the height */
-export const stillHead = (stage: number): number => (STILL_FRAC[Math.min(Math.max(stage, 1), 4) - 1] * 4.42) / 0.899;
-const FEET_Y_ART = 84.4; // % of the 512 picture where the bird's feet are
-const FEET_X_ART = 51;
+export const COS_FRAME = 512;
+export const COS_FEET: Pt = [256, 432];
+export const COS_PPU = 93.06;
+export const COS_BODY: Record<1 | 2 | 3 | 4, Box> = { 1: [178, 281, 344, 431], 2: [179, 214, 347, 434], 3: [154, 168, 366, 435], 4: [145, 147, 378, 438] };
+export const COS_FIT: Record<1 | 2 | 3 | 4, number> = { 1: 0.95, 2: 1, 3: 1, 4: 1.04 };
+/** where the picture's top is (halo included) per stage, for the speech bubble to clear it */
+const COS_TOP: Record<1 | 2 | 3 | 4, number> = { 1: 281, 2: 214, 3: 168, 4: 22 };
+/** CSS scale of the 512 picture for a chicken (the student's is `KID_SCALE`, and stands clearly higher) */
+export const CHICK_SCALE = 0.62;
+const costumeStage = (stage: number, angry: boolean): 1 | 2 | 3 | 4 => (angry ? 3 : (Math.min(Math.max(stage, 1), 4) as 1 | 2 | 3 | 4));
 
 /** How big the student is drawn (CSS scale of the 416 px frame): 0.84, times 1.37 / 1.3 because the student's sheets were drawn at 1.37 where the first set used 1.3, so the height stays the same. */
 export const KID_SCALE = 0.84 * (1.37 / 1.3);
@@ -63,12 +72,12 @@ export const crowded = (a: Pt, b: Pt, withKid: boolean): boolean => {
 };
 
 /** a box in world px: left, top, right, bottom */
-type Box = [number, number, number, number];
+export type Box = [number, number, number, number];
 /** px of air kept round a name plate */
 const GAP = 6;
 const boxHit = (a: Box, b: Box, m = 0): boolean => a[0] < b[2] + m && b[0] < a[2] + m && a[1] < b[3] + m && b[1] < a[3] + m;
 
-type Anim ="idle" | "walk" | "peck" | "jump" | "wave";
+type Anim = "idle" | "walk" | "peck" | "jump" | "wave";
 
 export class Actor {
   el: HTMLElement;
@@ -99,6 +108,13 @@ export class Actor {
   miniH = 24;
   mini = false;
   gone = false;
+  /** a chicken whose body is mostly behind scenery: its badge hides too (it never floats alone) */
+  covered = false;
+  /** the chicken's picture has loaded (its badge waits for it: a badge never shows without its chicken) */
+  loaded = false;
+  loadingUrl = "";
+  coverAt = 0;
+  coverNow = false;
   miniAt = 0;
   /** the body, as offsets (world px) from the feet point: left, top, right, bottom; measured by the engine */
   body: Box = [-24, -60, 24, 0];
@@ -111,6 +127,10 @@ export class Actor {
   cur: string | null = null;
   still = 0;
   stillUrl?: string;
+  /** the jump picture (animated) and when it plays; none: the still hops */
+  jumpUrl: string | null = null;
+  jumpAt = 0;
+  angry = false;
   flip = false;
   onEnd: (() => void) | null = null;
   arrive: (() => void) | null = null;
@@ -135,26 +155,56 @@ export class Actor {
     this.stay = !!spec.stay;
     this.tag = spec.tag ?? null;
     this.stage = spec.stage ?? 3;
-    this.head = spec.head ?? (spec.kind === "kid" ? 3.6 : stillHead(this.stage));
+    this.head = spec.head ?? 3.6;
     this.stillUrl = spec.still;
+    this.jumpUrl = spec.jump ?? null;
+    this.angry = !!spec.angry;
+    if (spec.kind === "ga") {
+      this.mini = true; // chickens wear only their level badge, always
+      this.plateW = this.miniW;
+      this.plateH = this.miniH;
+      this.tag?.classList.add("lg-mini");
+    }
     const w = V.sheets?.actors[spec.id]?.anims.walk;
     // actors.json gives the ground one cycle covers at scale 1; the student is drawn at KID_SCALE, so the feet keep pace at that size
     if (w?.stride) this.stride = w.stride * (spec.kind === "kid" ? KID_SCALE : 1);
     if (spec.kind === "kid") el.style.setProperty("--s", String(KID_SCALE));
     el.style.setProperty("--head", V.px(this.head * 0.899) + "px");
+    this.dress();
     this.place();
   }
   get hasSheets(): boolean {
-    // a chick or a young chicken is drawn as its own picture; only the grown ones have walking sheets
-    return !!this.V.sheets?.actors[this.id] && (this.kind === "kid" || this.stage >= 3);
+    // the student walks on sprite sheets; a chicken is its costume picture (a still, or an animated one) with a bob and a hop
+    return this.kind === "kid" && !!this.V.sheets?.actors[this.id];
   }
-  /** A new picture or growth stage (the chicken grew up). */
-  look(still: string | undefined, stage: number, head?: number) {
+  /** The drawn size, frame and body of a chicken: its costume picture at its stage (a student keeps the sheet frame). Call again after a resize. */
+  dress() {
+    if (this.kind !== "ga") return;
+    const e = this.el.style;
+    const st = costumeStage(this.stage, this.angry);
+    const frame = this.V.px(COS_FRAME / COS_PPU); // CSS px of the unscaled picture
+    const sc = CHICK_SCALE * COS_FIT[st];
+    e.setProperty("--frame-w", frame + "px");
+    e.setProperty("--frame-h", frame + "px");
+    e.setProperty("--feet-x", (COS_FEET[0] / COS_FRAME) * 100 + "%");
+    e.setProperty("--feet-y", (COS_FEET[1] / COS_FRAME) * 100 + "%");
+    e.setProperty("--s", String(sc));
+    // the hit area follows the body; the speech bubble rides above the whole picture (the master's halo included)
+    const body = COS_BODY[st];
+    e.setProperty("--head", ((COS_FEET[1] - body[1]) / COS_FRAME) * frame + "px");
+    e.setProperty("--say-up", ((COS_FEET[1] - COS_TOP[st]) / COS_FRAME) * frame + "px");
+    const k = (sc * frame) / COS_FRAME;
+    this.body = [(body[0] - COS_FEET[0]) * k, (body[1] - COS_FEET[1]) * k, (body[2] - COS_FEET[0]) * k, Math.min(0, (body[3] - COS_FEET[1]) * k)];
+  }
+  /** A new picture or growth stage (the chicken grew up, or got angry or calm again). */
+  look(still: string | undefined, stage: number, jump: string | null = null, angry = false) {
     this.stillUrl = still;
     this.stage = stage;
-    this.head = head ?? stillHead(stage);
+    this.jumpUrl = jump;
+    this.angry = angry;
     this.cur = null;
-    this.el.style.setProperty("--head", this.V.px(this.head * 0.899) + "px");
+    this.el.classList.toggle("angry", angry);
+    this.dress();
   }
   set(anim: Anim, dir?: Dir) {
     if (anim !== this.anim) {
@@ -175,21 +225,15 @@ export class Actor {
     }
   }
   draw(now: number) {
+    if (this.kind === "ga") return this.drawCostume(now);
     const A = this.V.sheets;
     if (!this.hasSheets || !A) {
-      // no walking sprites: the still picture, bobbing a little (a small hop while it walks)
+      // no sprite sheets: the still picture, bobbing a little
       if (this.stillUrl && this.cur !== this.stillUrl) {
         this.cur = this.stillUrl;
         this.spr.style.backgroundImage = `url("${this.stillUrl}")`;
         this.spr.style.backgroundSize = "100% 100%";
-        this.spr.style.transformOrigin = `${FEET_X_ART}% ${FEET_Y_ART}%`;
       }
-      const walking = this.anim === "walk" && !this.V.reduced;
-      const bob = this.V.reduced ? 0 : walking ? -Math.abs(Math.sin(this.phase * Math.PI * 2)) * 7 : Math.sin(now / 520 + this.pos[0]) * 1.6;
-      // the bird's feet on the actor's feet (the art stands a little higher in its picture), grown to its stage
-      const sheetFeet = this.V.sheets ? (this.V.sheets.feet[1] / this.V.sheets.frame[1]) * 100 : 91;
-      const k = this.kind === "ga" ? STILL_K[Math.min(Math.max(this.stage, 1), 4) - 1] : 1;
-      this.spr.style.transform = `translateY(${bob.toFixed(1)}px) translateY(${(sheetFeet - FEET_Y_ART).toFixed(1)}%) scale(${k}) scaleX(${this.flip ? -1 : 1})`;
       return;
     }
     let s = this.V.sheet(this.id, this.anim, this.dir);
@@ -221,6 +265,33 @@ export class Actor {
       this.cur = s.url;
     }
     this.spr.style.backgroundPositionX = s.frames > 1 ? (f / (s.frames - 1)) * 100 + "%" : "0%";
+  }
+  /** A costume picture: it only faces us. An animated stand and jump play by themselves; a still gets a gentle bob (a small hop while it walks). */
+  private drawCostume(now: number) {
+    const jumping = !!this.jumpUrl && !this.V.reduced && now - this.jumpAt < COS_JUMP_MS;
+    // the jump picture is restarted by a changing query, so it plays from its first frame each time
+    const url = jumping ? `${this.jumpUrl}?r=${Math.round(this.jumpAt)}` : this.stillUrl;
+    if (url && this.loadingUrl !== this.stillUrl && this.stillUrl) {
+      const want = this.stillUrl;
+      this.loadingUrl = want;
+      this.loaded = false;
+      const im = new Image();
+      im.onload = im.onerror = () => {
+        if (this.loadingUrl === want) this.loaded = true;
+      };
+      im.src = want;
+    }
+    if (url && this.cur !== url) {
+      this.cur = url;
+      this.spr.style.backgroundImage = `url("${url}")`;
+      this.spr.style.backgroundSize = "100% 100%";
+      this.spr.style.transformOrigin = `${(COS_FEET[0] / COS_FRAME) * 100}% ${(COS_FEET[1] / COS_FRAME) * 100}%`;
+    }
+    const frame = this.V.px(COS_FRAME / COS_PPU);
+    const animated = !!this.stillUrl && /-dung\.webp$/.test(this.stillUrl);
+    const walking = this.anim === "walk" && !this.V.reduced;
+    const bob = this.V.reduced || jumping ? 0 : walking ? -Math.abs(Math.sin(this.phase * Math.PI * 2)) * 0.035 * frame : animated ? 0 : Math.sin(now / 520 + this.pos[0]) * 0.008 * frame;
+    this.spr.style.transform = `translateY(${bob.toFixed(1)}px) scaleX(${this.flip ? -1 : 1})`;
   }
   walkPath(path: Pt[], speed?: number): Promise<void> {
     this.path = path.slice();
@@ -369,7 +440,7 @@ export class Actor {
       for (let k = 0; k < 10 && !t; k++) {
         const a = Math.random() * Math.PI * 2;
         const c: Pt = [this.pos[0] + Math.cos(a) * len, this.pos[1] + Math.sin(a) * len * 0.8];
-        if (V.freeW(c) && V.grid.lineFree(this.pos, c) && V.plateFree(this, c)) t = c;
+        if (V.freeW(c) && V.grid.lineFree(this.pos, c) && V.plateFree(this, c) && V.coverOf(this, c) < 0.2) t = c;
       }
       if (!t) {
         this.wait = 0.8;
@@ -383,6 +454,10 @@ export class Actor {
   }
 }
 
+/** a chicken's body, for asking where a newcomer may stand */
+const DEFAULT_CHICK = { body: [-24, -48, 24, 0] as Box, pos: [0, 0] as Pt } as unknown as Actor;
+/** how long the animated jump picture plays (ms) */
+const COS_JUMP_MS = 2000;
 /** the longest the student takes to reach a place before it opens */
 const GO_MS = 1500;
 
@@ -414,6 +489,8 @@ export class VillageEngine {
   private stops: (() => void)[] = [];
   private dead = false;
   private extra: HTMLElement[] = [];
+  /** the cut-outs that stand over the characters, with a coarse opacity map of each (built when first asked) */
+  private occs: { im: HTMLImageElement; box: Box; base: number; mask?: { w: number; h: number; a: Uint8ClampedArray } | null }[] = [];
   private prioN = 0;
   /** place signs as boxes in world px (re-measured now and then) */
   private signBoxes: Box[] = [];
@@ -457,7 +534,10 @@ export class VillageEngine {
     this.world.style.setProperty("--unit", this.px(1) + "px");
     this.world.style.setProperty("--feet-x", (ft[0] / fr[0]) * 100 + "%");
     this.world.style.setProperty("--feet-y", (ft[1] / fr[1]) * 100 + "%");
-    for (const a of Object.values(this.actors)) a.el.style.setProperty("--head", this.px(a.head * 0.899) + "px");
+    for (const a of Object.values(this.actors)) {
+      if (a.kind === "ga") a.dress();
+      else a.el.style.setProperty("--head", this.px(a.head * 0.899) + "px");
+    }
   }
 
   // ---- the painted picture, the cut-outs and the places
@@ -491,6 +571,7 @@ export class VillageEngine {
       im.style.animationDelay = -Math.random() * 6 + "s";
       this.o.occHost.append(im);
       this.extra.push(im);
+      this.occs.push({ im, box: oc.box as Box, base: oc.base });
     }
     this.placeSigns();
   }
@@ -502,6 +583,66 @@ export class VillageEngine {
       el.style.left = p[0] * 100 + "%";
       el.style.top = p[1] * 100 + "%";
     });
+  }
+
+  // ---- scenery in front of a chicken
+  /** Is the picture of this cut-out opaque at (u, v) of the village? A coarse map of its opacity is read once (never throws: no map, no cover). */
+  private opaqueAt(o: VillageEngine["occs"][number], u: number, v: number): boolean {
+    if (u < o.box[0] || u >= o.box[2] || v < o.box[1] || v >= o.box[3]) return false;
+    if (o.mask === undefined) {
+      if (!o.im.complete || !o.im.naturalWidth) return false; // not decoded yet: ask again later
+      o.mask = null;
+      try {
+        const w = Math.min(96, o.im.naturalWidth);
+        const h = Math.max(1, Math.round((w * o.im.naturalHeight) / o.im.naturalWidth));
+        const c = document.createElement("canvas");
+        c.width = w;
+        c.height = h;
+        const cx = c.getContext("2d", { willReadFrequently: true });
+        if (cx) {
+          cx.drawImage(o.im, 0, 0, w, h);
+          const d = cx.getImageData(0, 0, w, h).data;
+          const a = new Uint8ClampedArray(w * h);
+          for (let i = 0; i < a.length; i++) a[i] = d[i * 4 + 3];
+          o.mask = { w, h, a };
+        }
+      } catch {
+        o.mask = null;
+      }
+    }
+    const m = o.mask;
+    if (!m) return false;
+    const x = Math.min(m.w - 1, Math.floor(((u - o.box[0]) / (o.box[2] - o.box[0])) * m.w));
+    const y = Math.min(m.h - 1, Math.floor(((v - o.box[1]) / (o.box[3] - o.box[1])) * m.h));
+    return m.a[y * m.w + x] > 40;
+  }
+  /** Share (0..1) of a chicken's body that scenery in front of it hides when it stands at `p`. */
+  coverOf(a: Actor, p: Pt = a.pos): number {
+    if (!this.occs.length) return 0;
+    const [W, H] = this.wh();
+    const [fu, fv] = this.aff.toS(p[0], p[1]);
+    const near = this.occs.filter((o) => o.base > fv);
+    if (!near.length) return 0;
+    const [x0, y0, x1, y1] = a.body;
+    let hit = 0;
+    let n = 0;
+    for (let i = 0; i < 4; i++)
+      for (let j = 0; j < 5; j++) {
+        const u = fu + (x0 + ((x1 - x0) * (i + 0.5)) / 4) / W;
+        const v = fv + (y0 + ((y1 - y0) * (j + 0.5)) / 5) / H;
+        n++;
+        if (near.some((o) => this.opaqueAt(o, u, v))) hit++;
+      }
+    return hit / n;
+  }
+  /** A badge is hidden with its chicken: when most of the body is behind a tree, a roof or a fence (checked a few times a second). */
+  private isCovered(a: Actor): boolean {
+    const now = performance.now();
+    if (now - a.coverAt > 160) {
+      a.coverAt = now;
+      a.coverNow = this.coverOf(a) > 0.45;
+    }
+    return a.coverNow;
   }
 
   // ---- where one can walk
@@ -534,7 +675,7 @@ export class VillageEngine {
         const t = Math.random();
         p = [pl[s][0] + (pl[s + 1][0] - pl[s][0]) * t + (Math.random() - 0.5) * 3, pl[s][1] + (pl[s + 1][1] - pl[s][1]) * t + (Math.random() - 0.5) * 3];
       } else p = [bx0 + Math.random() * (bx1 - bx0), by0 + Math.random() * (by1 - by0)];
-      if (this.walkable(p) && this.onPicture(p) && !Object.values(this.actors).some((o) => o !== who && crowded(o.pos, p, o.kind === "kid")) && (!who || this.plateFree(who, p))) return p;
+      if (this.walkable(p) && this.onPicture(p) && !Object.values(this.actors).some((o) => o !== who && crowded(o.pos, p, o.kind === "kid")) && (!who || (this.plateFree(who, p) && this.coverOf(who, p) < 0.2))) return p;
     }
     return null;
   }
@@ -565,7 +706,7 @@ export class VillageEngine {
   }
   /** Somewhere free for a new chicken: `pref` when nobody stands there, else the nearest open spot round the yard (nobody stands on anybody). */
   seat(pref: Pt | undefined, n = 0): Pt {
-    const ok = (p: Pt) => this.freeW(p) && !Object.values(this.actors).some((o) => crowded(o.pos, p, o.kind === "kid")) && this.plateFree(null, p);
+    const ok = (p: Pt) => this.freeW(p) && !Object.values(this.actors).some((o) => crowded(o.pos, p, o.kind === "kid")) && this.plateFree(null, p) && this.coverOf(DEFAULT_CHICK, p) < 0.2;
     if (pref && ok(pref)) return pref;
     const [hx, hy] = this.L.home;
     // later chickens start looking further out, each round the yard at its own angle, so a crowd does not form in the middle
@@ -578,9 +719,9 @@ export class VillageEngine {
     return pref ?? this.randomHomePoint();
   }
   /** A chicken grew or changed picture. */
-  setLook(key: string, still: string | undefined, stage: number, head?: number) {
+  setLook(key: string, still: string | undefined, stage: number, jump: string | null = null, angry = false) {
     const a = this.actors[key];
-    if (a && (a.stillUrl !== still || a.stage !== stage)) a.look(still, stage, head);
+    if (a && (a.stillUrl !== still || a.stage !== stage || a.jumpUrl !== jump || a.angry !== angry)) a.look(still, stage, jump, angry);
   }
   removeActor(key: string) {
     delete this.actors[key];
@@ -669,10 +810,14 @@ export class VillageEngine {
       const w = a.tag.offsetWidth;
       const h = a.tag.offsetHeight;
       if (w <= 0) continue;
-      this.measureBody(a);
+      if (a.kind !== "ga") this.measureBody(a); // a chicken's body is known from its picture (see Actor.dress)
       if (a.mini) {
         a.miniW = w;
         a.miniH = h;
+        if (a.kind === "ga") {
+          a.plateW = w;
+          a.plateH = h;
+        }
       } else {
         a.plateW = w;
         a.plateH = h;
@@ -691,7 +836,6 @@ export class VillageEngine {
     const left = sc.scrollLeft;
     const vw = sc.clientWidth;
     const placed: Box[] = [];
-    const narrow = vw < 560; // a phone: badges only, the names are on the chicken's own page
     const bodies = new Map(Object.values(this.actors).map((o) => [o, this.bodyBox(o)] as const));
     let me: Actor | null = null;
     const clash = (b: Box, m: number) =>
@@ -710,7 +854,7 @@ export class VillageEngine {
       };
       const full = shifted(true);
       let mini = a.mini;
-      if (narrow && a.kind === "ga") mini = true;
+      if (a.kind === "ga") mini = true; // chickens: the level badge only, always (the name is in the button's label)
       else if (!a.mini) mini = clash(full.box, 2);
       else mini = now - a.miniAt < 700 || clash(full.box, GAP + 4);
       if (mini !== a.mini) {
@@ -719,8 +863,10 @@ export class VillageEngine {
         a.tag.classList.toggle("lg-mini", mini);
       }
       const cur = mini ? shifted(false) : full;
-      // even the badge would touch something: out of sight until there is room
-      const gone = mini && clash(cur.box, 1);
+      // even the badge would touch something, or its chicken is behind the scenery: out of sight until there is room
+      const covered = a.kind === "ga" && this.isCovered(a);
+      if (covered !== a.covered) a.covered = covered;
+      const gone = (mini && clash(cur.box, 1)) || covered || (a.kind === "ga" && !a.loaded);
       if (gone !== a.gone) {
         a.gone = gone;
         a.tag.classList.toggle("lg-gone", gone);
@@ -819,10 +965,18 @@ export class VillageEngine {
   hop(key: string): Promise<void> {
     const a = this.actors[key];
     if (!a || this.reduced) return Promise.resolve();
+    if (a.jumpUrl) {
+      // an animated jump picture plays from its first frame
+      a.jumpAt = performance.now();
+      return new Promise((res) => setTimeout(res, 600));
+    }
     if (this.sheets?.actors[a.id]?.anims.jump) return this.jump(key);
+    // a still hops
+    const up = -0.07 * this.px(COS_FRAME / COS_PPU);
     return new Promise((res) => {
-      a.spr.animate?.([{ transform: `translateY(0) scaleX(${a.flip ? -1 : 1})` }, { transform: `translateY(-26px) scaleX(${a.flip ? -1 : 1})` }, { transform: `translateY(0) scaleX(${a.flip ? -1 : 1})` }], { duration: 420, easing: "ease-out" });
-      setTimeout(res, 430);
+      const f = a.flip ? -1 : 1;
+      a.spr.animate?.([{ transform: `translateY(0) scaleX(${f})` }, { transform: `translateY(${up}px) scaleX(${f})`, offset: 0.4 }, { transform: `translateY(0) scaleX(${f})` }], { duration: 480, easing: "ease-out" });
+      setTimeout(res, 490);
     });
   }
   /** The student gets to a door in at most `GO_MS`: runs there, and what is left is skipped. */

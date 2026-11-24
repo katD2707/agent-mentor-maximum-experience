@@ -45,9 +45,9 @@ const mmss = (sec: number) => `${String(Math.floor(sec / 60)).padStart(2, "0")}:
 
 /** The sprite of a chicken in the pond: the standing sheet where there is one, else its picture at its growth stage. */
 function pondSprite(c: Chicken | undefined, mode: "idle" | "still" | "jump"): string {
-  if (!c) return `${base}ga/toan.png`;
-  if (mode === "jump") return jumpSrc(c.art, c.stage) ?? chickenSrc(c.art, c.stage, "stand", true);
-  return chickenSrc(c.art, c.stage, "stand", mode !== "idle");
+  if (!c) return `${base}ga/toan.webp`;
+  if (mode === "jump") return jumpSrc(c.art, c.stage, !!c.angry) ?? chickenSrc(c.art, c.stage, "stand", true, !!c.angry);
+  return chickenSrc(c.art, c.stage, "stand", mode !== "idle", !!c.angry);
 }
 
 /** The two rings of rocks around the pond (the same stones every time). */
@@ -347,7 +347,7 @@ export function StudyRoom() {
                   alt=""
                   onError={(e) => {
                     const img = e.currentTarget;
-                    const fb = `${base}ga/${shown.art}.png`;
+                    const fb = `${base}ga/${shown.art}.webp`;
                     if (!img.src.endsWith(fb)) img.src = fb;
                   }}
                 />

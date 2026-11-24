@@ -21,6 +21,8 @@ interface State {
   week: Record<string, number[]>;
   /** week XP by source, per chicken (what lg-09 lists) */
   sources?: Record<string, Record<string, number>>;
+  /** chickens a course of which has been neglected for 7 days (chicken id -> the course's title); test and demo helper `mockSetAngry` */
+  angry?: Record<string, string>;
 }
 
 const delay = () => new Promise((r) => setTimeout(r, 60));
@@ -53,7 +55,7 @@ function save(uid: string, s: State) {
 /** How many courses the mock says a chicken has (stable per id). */
 export const mockCourseCount = (id: string): number => 1 + ((id.charCodeAt(0) + id.length * 3) % 9);
 
-function toChicken(o: Own): Chicken {
+function toChicken(o: Own, angry?: string): Chicken {
   const s = subjectOf(o.id);
   const level = levelOf(o.xp);
   return {
@@ -69,7 +71,20 @@ function toChicken(o: Own): Chicken {
     active_course: o.id === "toan" ? { id: "mock", title: "Cấp số cộng", percent: 40 } : null,
     done_today: o.id === "van",
     taken_at: o.taken_at,
+    angry: !!angry,
+    angry_course: angry ?? null,
   };
+}
+
+/** Test and demo helper: make a chicken angry (a course of it neglected for 7 days; `course` is its title) or calm again (null). */
+export function mockSetAngry(token: string, chicken: string, course: string | null = "Cấp số cộng"): void {
+  const u = mockUserOf(token);
+  const s = load(u.id);
+  const angry = { ...(s.angry ?? {}) };
+  if (course) angry[chicken] = course;
+  else delete angry[chicken];
+  s.angry = angry;
+  save(u.id, s);
 }
 
 const push = (s: State, n: Omit<NewsItem, "id" | "at">) => {
@@ -105,7 +120,7 @@ export const mockLg: LgApi = {
     const u: User = mockUserOf(token);
     const s = load(u.id);
     const today = await mockApi.getToday(token).catch(() => null);
-    const chickens = s.chickens.map(toChicken);
+    const chickens = s.chickens.map((o) => toChicken(o, s.angry?.[o.id]));
     let speaker: Speaker | null = null;
     if (chickens.length) {
       const t = today?.today ?? null;
@@ -114,7 +129,10 @@ export const mockLg: LgApi = {
       const info = cid ? await mockApi.getCourse(token, decodeURIComponent(cid)).catch(() => null) : null;
       const owner = info ? chickens.find((c) => c.id === chickenOfCourse(info)) : undefined;
       const who = owner ?? chickens.find((c) => c.id === "toan") ?? chickens[0];
-      speaker = t && owner
+      const mad = chickens.find((c) => c.angry);
+      speaker = mad
+        ? { chicken: mad.id, line_vi: `${mad.name_vi} giận rồi: 7 ngày chưa học «${mad.angry_course}». Học 10 phút cho gà vui nhé!`, line_en: `${mad.name_en} is cross: 7 days without «${mad.angry_course}». Study 10 minutes to cheer it up!`, action: { kind: "lesson", deep_link: "/khoa-hoc", minutes: 10 } }
+        : t && owner
         ? { chicken: who.id, line_vi: t.title_vi, line_en: t.title_en, action: { kind: t.kind, deep_link: t.deep_link, minutes: t.minutes } }
         : await ownLesson(token, who.id);
     }
@@ -166,7 +184,7 @@ export const mockLg: LgApi = {
     const s = load(u.id);
     const c = s.chickens.find((x) => x.id === chicken);
     if (!c) throw new ApiError(404, "not_found");
-    return { chicken: toChicken(c), week_xp: s.week[chicken] ?? [0, 0, 0, 0, 0, 0, 0] };
+    return { chicken: toChicken(c, s.angry?.[c.id]), week_xp: s.week[chicken] ?? [0, 0, 0, 0, 0, 0, 0] };
   },
   async xpWeek(token) {
     await delay();

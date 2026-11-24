@@ -10,7 +10,8 @@ import { speak } from "../../lib/speak";
 import { lg, type MarketChicken } from "../api";
 import { subjectsFor } from "../subjects";
 import { ChickenGuide } from "../guide/ChickenGuide";
-import { cropVars } from "../chickenArt";
+import { chickenSrc, cropVars, isAnimated, reducedMotion } from "../chickenArt";
+import { artFile } from "../subjects";
 import "../styles/fonts";
 import "../styles/lang.css";
 
@@ -278,7 +279,7 @@ export function LgFirstRun() {
                 const m = list.find((x) => x.id === picked[k]);
                 return m ? (
                   <div className="lg-perch on" key={k}>
-                    <img src={`${base}ga/${m.art}-nhay.webp`} alt="" />
+                    <img className={isAnimated(m.art, 3) || reducedMotion() ? undefined : "ga-bob"} src={chickenSrc(m.art, 3, "stand", reducedMotion())} alt="" />
                     <small>{name(m)}</small>
                   </div>
                 ) : (
@@ -295,7 +296,7 @@ export function LgFirstRun() {
               {list.map((m) => (
                 <button key={m.id} className="lg-ga" type="button" aria-pressed={picked.includes(m.id)} onClick={() => toggle(m.id)}>
                   <span className="pic">
-                    <img src={`${base}ga/${m.art}.png`} alt="" className="ga-crop" style={cropVars(m.art, 3)} />
+                    <img src={`${base}ga/${artFile(m.art, 3)}`} alt="" className="ga-crop" style={cropVars(m.art, 3)} />
                   </span>
                   <b>{name(m)}</b>
                   <small>{t("lg.first.courses", { count: m.courses })}</small>

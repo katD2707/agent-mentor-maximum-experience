@@ -119,7 +119,7 @@ export function LgLogin() {
           <h1 className="lg-ribbon-t">{creating ? t("lg.login.signup") : t("login.submit")}</h1>
           <div className="lg-welcome">
             <span className="lg-hen" aria-hidden="true">
-              <img src={`${base}ga/toan.png`} alt="" />
+              <img src={`${base}ga/toan.webp`} alt="" />
             </span>
             <p>
               <b>{t("lg.login.welcome")}</b>

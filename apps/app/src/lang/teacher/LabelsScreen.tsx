@@ -259,7 +259,7 @@ export default function Labels() {
                     {list.map((s, i) => (
                       <button key={s.id} type="button" className="opt-btn sub-btn" role="radio" aria-checked={cur.chicken === s.id} tabIndex={cur.chicken === s.id || (cur.chicken === null && i === 0) ? 0 : -1} onClick={() => set("chicken", { chicken: s.id })}>
                         <span className="ico" aria-hidden="true">
-                          <img alt="" src={`${base}ga/${s.art}.png`} />
+                          <img alt="" src={`${base}ga/${s.art}.webp`} />
                         </span>
                         <span>{lang === "en" ? s.en : s.vi}</span>
                         <Icon name="check" />
@@ -428,10 +428,10 @@ function GradeBtn({ cur, n, label, first, onPick }: { cur: number | null; n: num
 function Crop({ art }: { art: string }) {
   const top = 0.33;
   const w = 112;
-  const S = w / 0.35;
+  const S = w / 0.42;
   return (
     <span className="crop" style={{ width: w, height: S * (0.85 - top) }}>
-      <img alt="" src={`${base}ga/${art}.png`} style={{ width: S, left: -0.34 * S, top: -top * S }} />
+      <img alt="" src={`${base}ga/${art}.webp`} style={{ width: S, left: -0.3 * S, top: -top * S }} />
     </span>
   );
 }

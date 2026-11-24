@@ -130,6 +130,7 @@
 .lg-spr { position: absolute; inset: 0; background-repeat: no-repeat; background-position: 0 0; }
 .lg-shadow { position: absolute; left: var(--feet-x, 50%); top: var(--feet-y, 90%); width: 36%; aspect-ratio: 2.6; transform: translate(-42%, -55%); border-radius: 50%; background: radial-gradient(closest-side, rgba(30, 60, 50, .42), rgba(30, 60, 50, 0)); }
 .lg-actor.is-kid .lg-shadow { width: 30%; }
+.lg-actor.ga .lg-shadow { width: 46%; transform: translate(-50%, -50%); }
 .lg-hit { position: absolute; left: var(--feet-x, 50%); top: var(--feet-y, 90%); width: 34%; height: var(--head, 30%); transform: translate(-50%, -100%); border-radius: 40%; pointer-events: auto; cursor: pointer; border: 0; padding: 0; background: none; }
 .lg-actor.is-kid .lg-hit { cursor: default; }
 .lg-actor:has(.lg-hit:focus-visible) .lg-spr, .lg-actor:has(.lg-hit:hover) .lg-spr { filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 2px #fff); }
@@ -144,8 +145,16 @@
 /* two chickens (or a chicken and a sign) too close: the lower-priority plate shrinks to its level badge */
 .lg-plate.lg-mini { padding: 1px; gap: 0; border-radius: 999px; max-width: none; }
 .lg-plate.lg-mini .nm, .lg-plate.lg-mini .ok, .lg-plate.lg-mini .lg-crown { display: none; }
+/* a chicken wears only its level badge (the costume says which subject; the name is in the button's label and title) */
+.lg-tags-ga { z-index: auto; }
+.lg-plate.ga { position: absolute; padding: 1px; border-width: 1.5px; gap: 0; }
+.lg-plate.ga .lv { min-width: 18px; height: 18px; font-size: 11px; }
+/* done today: a small green tick on the badge */
+.lg-plate.ga .tick { position: absolute; right: -6px; top: -6px; display: grid; place-items: center; width: 12px; height: 12px; border-radius: 50%; background: #2f9e55; color: #fff; border: 1.5px solid #fff; font-size: 8px; line-height: 1; font-weight: 900; box-shadow: 0 1px 2px rgba(0, 0, 0, .35); }
+/* level 10 and up (the master, with the halo): a gold ring */
+.lg-plate.ga.master { border-color: #e4a915; box-shadow: 0 0 0 2px #ffd54a, 0 2px 0 var(--shade), 0 0 8px 1px rgba(255, 207, 61, .7); }
 .lg-plate.lg-gone { visibility: hidden; }
-.lg-say { position: absolute; left: var(--feet-x, 50%); bottom: calc(100% - var(--feet-y, 90%) + var(--head, 30%) + 14px); transform: translateX(-50%); width: max-content; max-width: 230px; display: grid; gap: 8px; padding: 10px 12px; border-radius: 16px; background: #fff; color: #2b283f; border: 2px solid #3a2418; box-shadow: 0 4px 0 rgba(58, 36, 24, .25); font-size: clamp(12px, 1.05vw, 15px); font-weight: 500; line-height: 1.35; text-align: left; cursor: default; pointer-events: auto; z-index: 2; }
+.lg-say { position: absolute; left: var(--feet-x, 50%); bottom: calc(100% - var(--feet-y, 90%) + var(--say-up, var(--head, 30%)) + 14px); transform: translateX(-50%); width: max-content; max-width: 230px; display: grid; gap: 8px; padding: 10px 12px; border-radius: 16px; background: #fff; color: #2b283f; border: 2px solid #3a2418; box-shadow: 0 4px 0 rgba(58, 36, 24, .25); font-size: clamp(12px, 1.05vw, 15px); font-weight: 500; line-height: 1.35; text-align: left; cursor: default; pointer-events: auto; z-index: 2; }
 .lg-say::before, .lg-say::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); clip-path: polygon(0 0, 100% 0, 50% 100%); pointer-events: none; }
 .lg-say::before { bottom: -13px; width: 22px; height: 13px; background: #3a2418; }
 .lg-say::after { bottom: -9px; width: 16px; height: 11px; background: #fff; }
@@ -399,9 +408,17 @@
 }
 .ar-hubtop .ar-btn, .ar-hubtop .ar-btn span, .ck-back, .ck-back span, .lg-sr-back, .lg-sr-back span, .lg-pg-round { white-space: nowrap; }
 
-/* the market: its sign hangs over the painted stalls and the stalls are the button (one place, one way in) */
-.lg-place.lg-market::after { content: ""; position: absolute; left: 50%; top: 100%; width: calc(var(--unit, 30px) * 17); height: calc(var(--unit, 30px) * 5); transform: translateX(-50%); border-radius: 18px; }
-.lg-place.lg-market:hover::after, .lg-place.lg-market:focus-visible::after { background: rgba(255, 244, 200, .22); box-shadow: 0 0 0 3px rgba(255, 244, 200, .55); }
+/* the market: the stall icon under the top-right buttons (mockups/lg-01 .mk) */
+.lg-mk { top: 74px; right: 8px; display: grid; justify-items: center; border: 0; background: none; padding: 0; cursor: pointer; font: inherit; }
+.lg-mk .art { position: relative; width: 88px; height: 88px; transition: transform .18s cubic-bezier(.3, 1.6, .5, 1); }
+.lg-mk .art::before { content: ""; position: absolute; inset: 4% 2% 10%; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 226, 120, .75), rgba(255, 200, 60, .28) 60%, transparent); }
+.lg-mk .art img { position: relative; width: 100%; height: 100%; filter: drop-shadow(0 4px 5px rgba(60, 30, 10, .35)); animation: lg-mk-bob 4.2s ease-in-out infinite; }
+@keyframes lg-mk-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.lg-mk .plus { position: absolute; right: 2px; top: 6px; width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(#3fb86a, #1f7d44); color: #fff; border: 2px solid #fff; box-shadow: 0 2px 0 #145a30; display: grid; place-items: center; font-weight: 800; font-size: 17px; line-height: 1; }
+.lg-mk b { margin-top: -22px; position: relative; font-weight: 800; font-size: 17px; line-height: 1; background: linear-gradient(#fffbe0 10%, #ffd447 48%, #f29a1f 92%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(1.6px 0 0 #5b2508) drop-shadow(-1.6px 0 0 #5b2508) drop-shadow(0 1.6px 0 #5b2508) drop-shadow(0 -1.6px 0 #5b2508) drop-shadow(0 2px 0 #3d1804); }
+.lg-mk:hover .art, .lg-mk:focus-visible .art { transform: scale(1.07) rotate(-2deg); }
+.lg-mk:focus-visible { outline: 3px solid #ffcf3d; outline-offset: 3px; border-radius: 14px; }
+@media (prefers-reduced-motion: reduce) { .lg-mk .art img { animation: none; } .lg-mk .art { transition: none; } }
 
 /* waiting for the village: the picture's own colours and a chick, not a flat green */
 .lg-splash { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; align-content: center; gap: 14px; background: linear-gradient(#a9d4f0 0 18%, #b6bd8a 18% 62%, #b1a982 100%); color: #3a2010; font-weight: 800; font-size: 1.1rem; text-shadow: 0 1px 0 rgba(255, 244, 216, .8); animation: lg-splash-in .3s ease-out both; }
@@ -421,3 +438,8 @@
 @media (prefers-reduced-motion: reduce) { .lg-skel i { animation: none; } }
 .lg-switch { margin: 0; text-align: center; font-weight: 600; color: #5a3a1c; }
 .lg-link { background: none; border: 0; padding: 4px 2px; font: inherit; font-weight: 800; color: #165c32; text-decoration: underline; cursor: pointer; }
+
+/* a chicken picture without an animated stand: a gentle bob so it looks alive (and nothing under reduced motion) */
+@keyframes ga-bob { 0%, 100% { transform: translateY(0) scale(1, 1); } 50% { transform: translateY(-1.2%) scale(1.008, .994); } }
+.ga-bob { animation: ga-bob 3.2s ease-in-out infinite; transform-origin: 50% 84%; }
+@media (prefers-reduced-motion: reduce) { .ga-bob, .ck .ck-chick img.ga-bob { animation: none; } }

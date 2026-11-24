@@ -12,6 +12,10 @@ export interface Chicken {
   active_course: { id: string; title: string; percent: number } | null;
   done_today: boolean;
   taken_at: string;
+  /** one of its enrolled courses has had no progress for 7 days or more (CONTRACTS-LANGGA.md "Angry chickens") */
+  angry?: boolean;
+  /** title of the course that has waited longest, for the speech line */
+  angry_course?: string | null;
 }
 
 export interface SpeakerAction {
