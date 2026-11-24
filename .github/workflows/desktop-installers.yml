@@ -1,4 +1,5 @@
-# Installers of the desktop app for Windows, macOS and Linux, built on GitHub's machines (macOS can only be built on a Mac).
+# Installers of the desktop app for Windows and Linux, built on GitHub's machines. macOS is left out for now (its build
+# fails); to bring it back, add a macos-latest row to the matrix (--bundles dmg --target universal-apple-darwin).
 # Release: push a tag that matches the app version (git tag v0.2.0 && git push origin v0.2.0); the installers are then
 # published on the repository's Releases page with the install steps. By hand: Actions > "Desktop installers" >
 # Run workflow (artifacts only, no release).
@@ -33,10 +34,6 @@ jobs:
             name: windows
             args: --bundles nsis
             files: apps/app/src-tauri/target/release/bundle/nsis/*.exe
-          - os: macos-latest
-            name: macos
-            args: --bundles dmg --target universal-apple-darwin
-            files: apps/app/src-tauri/target/universal-apple-darwin/release/bundle/dmg/*.dmg
           - os: ubuntu-22.04
             name: linux
             args: --bundles deb,appimage
@@ -106,7 +103,7 @@ jobs:
           if-no-files-found: error
 
   release:
-    # publishes whatever platforms built: a failing macOS build must not hold back Windows and Linux
+    # publishes whatever platforms built: one failing build must not hold back the others
     if: ${{ !cancelled() && startsWith(github.ref, 'refs/tags/v') }}
     needs: [build, feco]
     runs-on: ubuntu-latest
@@ -129,7 +126,6 @@ jobs:
           | Windows 10, 11 | `Mentor_..._x64-setup.exe` | Bấm đúp rồi làm theo trình cài. Nếu hiện "Windows protected your PC", bấm **More info**, rồi **Run anyway** (bản thử chưa có chữ ký số). |
           | Ubuntu, Linux Mint, Debian | `Mentor_..._amd64.deb` | Bấm đúp, cửa sổ Software hiện ra, bấm **Install**. |
           | Linux khác | `Mentor_..._amd64.AppImage` | Chuột phải, **Properties**, **Permissions**, bật **Allow executing file as program**, rồi bấm đúp. |
-          | macOS | `Mentor_..._universal.dmg` (khi có) | Mở file, kéo Mentor vào Applications. Lần đầu mở: **System Settings**, **Privacy & Security**, **Open Anyway**. |
           | F-Eco (quản trị viên) | `mentor-...-windows-x64.zip` | Gói tự chứa cho F-Launcher, không cài trực tiếp. Xem `integrations/feco/README.md`. |
 
           Mở app và đăng nhập bằng tài khoản người phụ trách gửi cho bạn. App cần Internet.
