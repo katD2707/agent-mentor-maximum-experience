@@ -29,11 +29,15 @@ import urllib.parse
 import webbrowser
 import zipfile
 from collections.abc import Callable
+from datetime import datetime
 from pathlib import Path
 
 import httpx
 
-from mentor_gateway.content.store import ContentStore, NotFound, atomic_write, sha256_bytes
+from mentor_schemas.course import CatalogEntry
+
+from mentor_gateway.content.store import ContentStore, NotFound, atomic_write, derive_media, sha256_bytes, sha256_file
+from mentor_gateway.langga.subjects import chicken_of_entry
 from mentor_gateway.settings import Settings
 
 log = logging.getLogger(__name__)
@@ -45,6 +49,7 @@ ROOT_FOLDER = "Mentor courses"
 FOLDER_MIME = "application/vnd.google-apps.folder"
 GOOGLE_TOKEN_URI = "https://oauth2.googleapis.com/token"
 GOOGLE_AUTH_URI = "https://accounts.google.com/o/oauth2/v2/auth"
+USERCONTENT = "https://drive.usercontent.google.com/download"  # public download of a file shared with "anyone with the link"
 
 
 class DriveError(Exception):
@@ -213,6 +218,47 @@ def pack_zip(store: ContentStore, course_id: str, version: int) -> bytes:
     return buf.getvalue()
 
 
+def build_submission(store: ContentStore, course_id: str, version: int, now: datetime) -> dict:
+    """Everything the hub's `/api/courses/submit` needs for one version, without publishing it locally: the catalog `entry`
+    and `meta` (course.json) as they will look once published, the pack zip with its sha256, and the cover."""
+    meta = store.load_meta(course_id)
+    info = store.version_info(meta, version)
+    pack = store.load_pack(course_id, version)
+    asset_bytes = store._verify_assets(course_id, version, pack)  # noqa: SLF001 - same checks as publish
+    raw = store.pack_bytes_raw(course_id, version)
+    cover = store.cover_path(course_id)
+    m = meta.model_copy(deep=True)
+    vi = store.version_info(m, version)
+    vi.status = "published"
+    vi.published_at = info.published_at or now
+    vi.pack_sha256 = sha256_bytes(raw)
+    vi.pack_bytes = len(raw) + asset_bytes
+    if m.latest_published is None or version >= m.latest_published:  # what ContentStore.publish does to course.json
+        m.latest_published = version
+        m.lessons_count = sum(len(c.lessons) for c in pack.chapters)
+        m.est_minutes = sum(ls.est_minutes for c in pack.chapters for ls in c.lessons)
+        m.media = derive_media(pack)  # type: ignore[assignment]
+        labels = vi.labels or {}
+        m.age_band = labels.get("band") or pack.age_band
+        m.language = labels.get("language") or pack.language
+        if labels.get("goals") is not None:
+            m.outcomes = list(labels["goals"])
+        if labels.get("topics") is not None:
+            m.topics = list(labels["topics"])
+        m.level = vi.level_confirmed or m.level
+        m.chicken = labels.get("chicken") or m.chicken
+        m.grade = labels.get("grade") or m.grade
+    entry = CatalogEntry(
+        id=m.id, title=m.title, subject=m.subject, age_band=m.age_band, language=m.language, teacher_name=m.teacher_name,
+        description_short=m.description_short, outcomes=m.outcomes, cover_sha256=sha256_file(cover), media=m.media,
+        lessons_count=m.lessons_count, est_minutes=m.est_minutes, level=m.level, chicken=chicken_of_entry(m),
+        topics=m.topics, version=version, pack_sha256=vi.pack_sha256 or "", pack_bytes=vi.pack_bytes or 0,
+        published_at=vi.published_at)
+    z = pack_zip(store, course_id, version)
+    return {"title": m.title, "entry": entry.model_dump(mode="json"), "meta": json.loads(m.model_dump_json()),
+            "zip": z, "zip_sha256": sha256_bytes(z), "cover": cover.read_bytes(), "cover_name": "cover" + cover.suffix.lower()}
+
+
 class DrivePublisher:
     """Pushes courses and keeps the public catalog. State (Drive ids) lives next to the token, so a second machine
     simply rebuilds it: files are found by name and compared by sha256."""
@@ -278,8 +324,31 @@ class DrivePublisher:
             self._save(idx)
             return {"uploaded": uploaded}
 
+    def _published_catalog(self, idx: dict) -> dict:
+        """The current public catalog.json (what the apps download), or {} when it does not exist yet or cannot be read.
+        Courses published through the hub live only here, so `push_catalog` must merge with it."""
+        fid = idx.get("catalog_id")
+        if not fid:
+            try:
+                hit = self.client.find("catalog.json", self._root_id())
+            except (DriveError, httpx.HTTPError):
+                return {}
+            fid = hit["id"] if hit else None
+        if not fid:
+            return {}
+        try:
+            r = self.client.http.get(USERCONTENT, params={"id": fid, "export": "download", "confirm": "t"},
+                                     follow_redirects=True)
+            doc = r.json() if r.status_code == 200 else {}
+        except (httpx.HTTPError, ValueError):
+            return {}
+        return doc if isinstance(doc, dict) else {}
+
     def push_catalog(self) -> str:
-        """Writes catalog.json (published courses that are on Drive) and returns its Drive file id."""
+        """Writes catalog.json (published courses that are on Drive) and returns its Drive file id.
+
+        Entries (and `remote` records) of course ids that are not in the local store, i.e. teacher courses published
+        through the hub, are kept from the current public catalog."""
         with self._lock:
             idx = self._load()
             cat = self.store.regenerate_catalog()
@@ -293,6 +362,15 @@ class DrivePublisher:
                 meta = json.loads((self.store.course_dir(e.id) / "course.json").read_text("utf-8"))
                 remote[e.id] = {**{k: r[k] for k in ("pack_id", "zip_sha256", "zip_bytes", "cover_id", "cover_name")}, "meta": meta}
             doc = {**cat.model_copy(update={"courses": entries}).model_dump(mode="json"), "remote": remote}
+            local_ids = set(self.store.list_course_ids())
+            current = self._published_catalog(idx)
+            foreign = [c for c in current.get("courses", []) if isinstance(c, dict) and c.get("id") not in local_ids]
+            if foreign:
+                doc["courses"] = [*doc["courses"], *foreign]
+                for c in foreign:
+                    rec = (current.get("remote") or {}).get(c["id"])
+                    if rec is not None:
+                        doc["remote"][c["id"]] = rec
             data = (json.dumps(doc, ensure_ascii=False, separators=(",", ":"))).encode("utf-8")
             sha = sha256_bytes(json.dumps({**doc, "generated_at": ""}, ensure_ascii=False, sort_keys=True).encode("utf-8"))
             if idx.get("catalog_id") and idx.get("catalog_sha") == sha:

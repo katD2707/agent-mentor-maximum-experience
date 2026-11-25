@@ -1,6 +1,7 @@
 import { arenaVi } from "./i18n/arena";
 import { chuongVi } from "./i18n/chuong";
 import { teacherVi } from "./i18n/teacher";
+import { hubVi } from "./i18n/hub";
 import { selfstudyVi } from "./i18n/selfstudy";
 /** Làng gà strings (the `lg` namespace of the app's i18n). Vietnamese first, short, plain words. */
 export const lgVi = {
@@ -171,6 +172,7 @@ export const lgVi = {
     pathAria: "Đã xong {{done}} trên {{total}} chặng",
   },
   ...teacherVi,
+  ...hubVi,
   ...selfstudyVi,
   ...arenaVi,
   ...chuongVi,

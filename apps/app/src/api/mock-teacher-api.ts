@@ -7,6 +7,7 @@ import type {
   CourseLabelsInfo,
   CourseLevel,
   CourseStatus,
+  HubCourse,
   Outline,
   RetakeItem,
   TeacherApi,
@@ -16,6 +17,7 @@ import type {
   TeacherVersion,
 } from "./teacher";
 import { bayesPack, dienPack, mockCoverUrl, taoPack } from "./mock-courses";
+import { mockHubOn } from "./mock";
 import { applyOutlineOps, OutlineEditError, lessonCount } from "../lib/teacher/outline";
 
 /**
@@ -68,6 +70,8 @@ interface MCourse {
   unsure?: Record<string, string[]>;
   /** test size overrides by profile id */
   tests?: Record<string, { items: number; minutes: number }>;
+  /** hub flavour only: where the owner's queue has this course (a live course without an entry counts as `da_dang`) */
+  hub?: HubCourse | null;
 }
 export interface DB {
   courses: MCourse[];
@@ -208,7 +212,24 @@ function seed(now: number): DB {
     level: "advanced",
     packs: { "1": JSON.parse(JSON.stringify(bayesPack)) },
   };
-  return { courses: [chem, phys, math, bayes] };
+  const courses = [chem, phys, math, bayes];
+  if (mockHubOn()) {
+    // the hub flavour shows every state of the list: one course waiting for the owner, one rejected
+    const sent = (id: string, title: string, hub: Omit<HubCourse, "course_id" | "title" | "version" | "kind" | "live_version" | "updated_at">): MCourse => ({
+      ...base(),
+      id,
+      title,
+      status: "review",
+      files: [`${id}.pdf`],
+      outline: outlineOf(taoPack),
+      chat: [],
+      versions: [{ version: 1, status: "draft", students: 0, level_suggested: "basic", level_confirmed: "basic" }],
+      packs: { "1": { ...JSON.parse(JSON.stringify(taoPack)), course_id: id, title } },
+      hub: { course_id: id, title, version: 1, kind: "new", live_version: null, updated_at: iso(now), ...hub },
+    });
+    courses.push(sent("van-9-truyen-kieu", "Ngữ văn 9: Truyện Kiều", { state: "cho_duyet", reason: null }), sent("hoa-8-phan-ung", "Hóa 8: Phản ứng hóa học", { state: "tu_choi", reason: "Bài 3 thiếu đáp án." }));
+  }
+  return { courses };
 }
 
 // ------------------------------------------------------------------ storage + clock
@@ -349,6 +370,14 @@ function labelsInfo(c: MCourse): CourseLabelsInfo {
   return { goals: l?.goals ?? suggested.goals, language: l?.language ?? suggested.language, topics: l?.topics ?? suggested.topics, suggested, chicken: l?.chicken ?? null, band: l?.band ?? null, grade: l?.grade ?? null };
 }
 
+/** The hub's record of a course: what was sent, else "live" for a published one, else nothing yet (a draft). */
+function hubOf(c: MCourse): HubCourse | null {
+  if (c.hub) return { ...c.hub };
+  const pub = c.versions.filter((v) => v.status === "published").reduce((m, v) => Math.max(m, v.version), 0);
+  if (!pub) return null;
+  return { course_id: c.id, title: c.title, version: pub, kind: "new", state: "da_dang", live_version: pub, reason: null, updated_at: iso(c.updatedAt) };
+}
+
 function summary(c: MCourse): TeacherCourseSummary {
   const total = c.build.length;
   const lineVi = c.status === "needs_retake" ? `Cấu trúc ${lessonCount(c.outline!)} bài đã xong, ${c.retake.length} trang chưa đọc được` : LINE[c.status][0];
@@ -364,6 +393,7 @@ function summary(c: MCourse): TeacherCourseSummary {
     updated_at: iso(c.updatedAt),
     latest_version: c.versions.reduce((m, v) => Math.max(m, v.version), 0),
     versions: c.versions.map((v) => ({ ...v })),
+    ...(mockHubOn() ? { hub: hubOf(c) } : {}),
     ...levelOf(c),
     labels: labelsInfo(c),
     build: c.status === "building" || total ? { done: c.build.filter((l) => l.state === "done").length, total } : null,
@@ -559,6 +589,38 @@ export const mockTeacherApi: TeacherApi = {
     c.level = ver.level_confirmed ?? c.level;
     c.status = "published";
     c.updatedAt = Date.now();
+    save(db);
+  },
+  async submit(_token, id, v) {
+    await wait(80);
+    const db = view(load());
+    const c = get(db, id);
+    const ver = c.versions.find((x) => x.version === v);
+    if (!ver) throw new ApiError(404, "not_found");
+    if (c.hub?.state === "cho_duyet") throw new ApiError(409, "pending");
+    if (!ver.level_confirmed) throw new ApiError(409, "level_unconfirmed");
+    const live = c.versions.filter((x) => x.status === "published" && x.version !== v).reduce((m, x) => Math.max(m, x.version), 0) || null;
+    c.hub = { course_id: c.id, title: c.title, version: v, kind: live ? "update" : "new", state: "cho_duyet", live_version: live, reason: null, updated_at: iso(Date.now()) };
+    c.updatedAt = Date.now();
+    save(db);
+    return { ...c.hub };
+  },
+  async withdraw(_token, id) {
+    await wait(60);
+    const db = view(load());
+    const c = get(db, id);
+    const h = hubOf(c);
+    if (!h || h.state !== "cho_duyet") throw new ApiError(409, "bad_request");
+    c.hub = { ...h, state: h.live_version ? "da_dang" : "rut_lai", reason: null, updated_at: iso(Date.now()) };
+    save(db);
+  },
+  async remove(_token, id) {
+    await wait(60);
+    const db = view(load());
+    const c = get(db, id);
+    const h = hubOf(c);
+    if (!h || (h.state !== "da_dang" && h.state !== "cho_duyet")) throw new ApiError(409, "bad_request");
+    c.hub = { ...h, state: "da_go", live_version: null, updated_at: iso(Date.now()) };
     save(db);
   },
   async setLevel(_token, id, v, level) {

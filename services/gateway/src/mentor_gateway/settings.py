@@ -48,6 +48,8 @@ class Settings(BaseModel):
     drive_token_file: Path = _repo_root() / ".secrets" / "google-drive-token.json"  # MENTOR_DRIVE_TOKEN_FILE (refresh token, never logged)
     drive_upload: bool | None = None  # MENTOR_DRIVE_UPLOAD: push on publish; default on when the owner has logged in (not in tests)
 
+    hub_url: str = ""  # MENTOR_HUB_URL: central accounts/teacher approval hub (CONTRACTS-HUB.md); empty = off (local accounts only)
+
     model_router_url: str | None = None  # LiteLLM router (course search embeddings); unset = lexical search only
     model_router_key: str | None = None  # MODEL_ROUTER_KEY, or MODEL_ROUTER_MASTER_KEY in dev
     user_ai: bool | None = None  # MENTOR_USER_AI: each user's own AI key (Cài đặt > Khóa AI), called directly; default: on when no router, not in tests
@@ -121,6 +123,10 @@ class Settings(BaseModel):
         return not self.model_router_url and self.env != "test"
 
     @property
+    def hub_on(self) -> bool:
+        return bool(self.hub_url.strip())
+
+    @property
     def signup(self) -> bool:
         return self.signup_enabled if self.signup_enabled is not None else self.env == "standalone"
 
@@ -163,6 +169,7 @@ class Settings(BaseModel):
             "drive_client_file": "MENTOR_DRIVE_CLIENT_FILE",
             "drive_token_file": "MENTOR_DRIVE_TOKEN_FILE",
             "drive_upload": "MENTOR_DRIVE_UPLOAD",
+            "hub_url": "MENTOR_HUB_URL",
             "model_router_url": "MODEL_ROUTER_URL",
             "model_router_key": "MODEL_ROUTER_KEY",
             "user_ai": "MENTOR_USER_AI",

@@ -2,6 +2,7 @@ import type { LgMessages } from "./i18n";
 import { arenaEn } from "./i18n/arena";
 import { chuongEn } from "./i18n/chuong-en";
 import { teacherEn } from "./i18n/teacher-en";
+import { hubEn } from "./i18n/hub-en";
 import { selfstudyEn } from "./i18n/selfstudy-en";
 
 export const lgEn: LgMessages = {
@@ -172,6 +173,7 @@ export const lgEn: LgMessages = {
     pathAria: "{{done}} of {{total}} steps done",
   },
   ...teacherEn,
+  ...hubEn,
   ...selfstudyEn,
   ...arenaEn,
   ...chuongEn,

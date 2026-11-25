@@ -1,0 +1,9 @@
+# The Mentor hub: accounts, teacher approval, course review queue. Deployed by deploy.ps1.
+name = "hub"
+main = "src/index.js"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "HUB"
+id = "7a432879e62146b4b2c0b6271f59f2c8"

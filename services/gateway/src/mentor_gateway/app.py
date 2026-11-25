@@ -22,6 +22,7 @@ from mentor_gateway.content.service import ContentService
 from mentor_gateway.content.store import ContentError
 from mentor_gateway import userai
 from mentor_gateway.context import build_gateway
+from mentor_gateway.hub import HubError
 from mentor_gateway.jobs import JobExecutor
 from mentor_gateway.langga import api as langga_api
 from mentor_gateway.langga.chat import ChatService
@@ -96,6 +97,7 @@ def create_app(settings: Settings | None = None, *, clock: Clock = utc_now,
     app.add_exception_handler(ContentError, lambda _req, exc: courses.content_error_response(exc))
     app.add_exception_handler(Forbidden, lambda _req, exc: JSONResponse({"error": exc.code, "detail": str(exc)}, 403))
     app.add_exception_handler(Busy, lambda _req, exc: JSONResponse({"error": exc.code, "detail": str(exc)}, 409))
+    app.add_exception_handler(HubError, lambda _req, exc: JSONResponse({"error": exc.code}, exc.status))  # hub answers pass through
     app.add_exception_handler(PracticeError, lambda _req, exc: practice_api.error_response(exc))
 
     @app.exception_handler(HTTPException)

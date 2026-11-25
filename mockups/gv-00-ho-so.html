@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="vi" data-age="thpt" data-state="trong">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kê khai hồ sơ giáo viên</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  /* a plain web page opened from the email: same warm palette and font as the login, no village scenery */
+  :root:root:root { color-scheme: light; --cream: #fff7e6; --edge: #e0c294; --ink-g: #3a2010; --ink-g2: #6b4a2e; --brown: #7d4c22; --green: #1b7340; --green-d: #165c32; --red: #b3321d; --red-soft: #fde4dc; --focus: #1d4fb8; }
+  body { background: #f6ead2; color: var(--ink-g); font-size: 16px; }
+  .page { max-width: 680px; margin: 0 auto; padding: 24px 16px 72px; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-weight: 800; color: var(--brown); }
+  .mark { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--green); color: #fff; font-weight: 800; box-shadow: inset 0 -3px 0 rgba(0,0,0,.2); }
+  .sheet { background: var(--cream); border: 2px solid var(--edge); border-radius: 16px; padding: clamp(18px, 5vw, 34px); display: grid; gap: 24px; box-shadow: 0 4px 0 #e0c294; }
+  .sheet h1 { font-size: clamp(1.4em, 4vw, 1.8em); color: var(--ink-g); font-weight: 800; }
+  .who { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; padding: 4px 12px; border-radius: 99px; background: #f3dcb0; color: var(--ink-g); font-size: .9em; font-weight: 600; overflow-wrap: anywhere; }
+  .who svg { width: 18px; height: 18px; flex: none; color: var(--brown); }
+  .banner { display: flex; gap: 10px; padding: 12px 14px; border-radius: 12px; background: var(--red-soft); color: #7a1f10; font-weight: 600; border: 2px solid var(--red); }
+  .banner svg { flex: none; width: 22px; height: 22px; margin-top: 1px; color: var(--red); }
+  .banner b { display: block; }
+  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 8px; }
+  legend, .lbl { padding: 0; font-weight: 700; font-size: .95em; }
+  .row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 560px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
+  .f { display: grid; gap: 6px; align-content: start; }
+  .f input[type="text"], .multi summary { min-height: 50px; padding: 0 14px; border-radius: 12px; border: 2px solid #d6b27a; background: #fffdf7; width: 100%; color: var(--ink-g); }
+  .f input[type="text"]:focus { outline: 3px solid var(--focus); outline-offset: 0; border-color: var(--focus); }
+  .f.bad input[type="text"], .bad .multi summary, .bad .chips, .bad .drop2 { border-color: var(--red); }
+  .err { display: none; color: var(--red); font-size: .88em; font-weight: 600; }
+  .bad > .err, .bad .err { display: block; }
+  .hint { color: var(--ink-g2); font-size: .88em; }
+
+  /* subjects: one compact multi-select */
+  .multi { position: relative; }
+  .multi summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; list-style: none; font-weight: 500; }
+  .multi summary::-webkit-details-marker { display: none; }
+  .multi summary svg { width: 18px; height: 18px; flex: none; transition: transform .15s; }
+  .multi[open] summary svg { transform: rotate(180deg); }
+  .multi summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 0; }
+  .multi .ph { color: #6b4a2e; }
+  .multi .panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 10px; margin-top: 6px; padding: 8px; border-radius: 12px; border: 2px solid #d6b27a; background: #fffdf7; }
+  .multi label { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 8px; border-radius: 8px; cursor: pointer; }
+  .multi label:hover { background: #f6e3c2; }
+  .multi input { width: 20px; height: 20px; accent-color: var(--green); flex: none; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; border-radius: 12px; border: 2px solid transparent; }
+  .chip { position: relative; }
+  .chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .chip span { display: inline-flex; align-items: center; min-height: 46px; padding: 0 18px; border-radius: 99px; border: 2px solid #d6b27a; background: #fffdf7; font-weight: 600; font-size: .95em; }
+  .chip input:checked + span { background: #ffcf3d; border-color: #c99a10; color: #3a2010; font-weight: 700; }
+  .chip input:focus-visible + span { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+  .drop2 { display: grid; justify-items: center; gap: 6px; padding: 22px 16px; text-align: center; border-radius: 12px; border: 2px dashed #c9a46d; background: #fffdf7; cursor: pointer; }
+  .drop2:hover { border-color: var(--brown); }
+  .drop2:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .drop2 svg { width: 28px; height: 28px; color: var(--brown); }
+  .drop2 b { font-weight: 700; }
+  .shots { display: flex; flex-wrap: wrap; gap: 12px; }
+  .shot { position: relative; width: 112px; height: 84px; border-radius: 8px; overflow: hidden; border: 2px solid var(--edge); background: #fff; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+  .shot button { position: absolute; top: 4px; right: 4px; width: 30px; height: 30px; border-radius: 99px; border: 0; background: rgba(58, 32, 16, .85); color: #fff; display: grid; place-items: center; cursor: pointer; }
+  .shot button svg { width: 16px; height: 16px; }
+
+  .pledge { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 12px; background: #fffdf7; border: 2px solid #d6b27a; cursor: pointer; }
+  .pledge input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--green); flex: none; }
+  .bad.pledge { border-color: var(--red); }
+  .send { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .go { min-width: 200px; min-height: 56px; padding: 0 28px; border-radius: 14px; border: 0; background: var(--green); color: #fff; font: inherit; font-size: 1.1em; font-weight: 800; cursor: pointer; box-shadow: 0 5px 0 var(--green-d); }
+  .go:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--green-d); }
+  .go:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+  .done { display: grid; justify-items: center; gap: 12px; text-align: center; padding: 24px 0 8px; }
+  .done .big { width: 72px; height: 72px; border-radius: 99px; display: grid; place-items: center; background: #d6efdc; color: var(--green); }
+  .done .big svg { width: 38px; height: 38px; }
+  .done p { max-width: 36ch; color: var(--ink-g2); font-weight: 500; }
+  .mock-seg a { padding: 4px 10px; border-radius: 6px; }
+  [data-when][hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Giáo viên: Hồ sơ (trang web từ email)</span>
+  <span class="mock-seg"><span>Trang</span><button data-set="state:trong">Trống</button><button data-set="state:loi">Thiếu ô</button><button data-set="state:nop-lai">Nộp lại</button><button data-set="state:da-gui">Đã gửi</button></span>
+  <span class="mock-seg"><span>Màn chờ trong app</span><a href="lg-00-dang-nhap.html?v=gate-chua-nop">Chưa nộp</a><a href="lg-00-dang-nhap.html?v=gate-cho">Chờ</a><a href="lg-00-dang-nhap.html?v=gate-tu-choi">Từ chối</a><a href="lg-00-dang-nhap.html?v=gate-duyet">Đã duyệt</a></span>
+</div>
+
+<div class="page">
+  <div class="brand"><span class="mark">M</span><span>Mentor</span></div>
+
+  <main class="sheet">
+    <form id="form" data-when="state=trong|loi|nop-lai" novalidate style="display:grid;gap:24px">
+      <header>
+        <h1>Kê khai hồ sơ giáo viên</h1>
+        <span class="who"><i data-i="mail"></i><span>nguyenthuhang.gv@gmail.com</span></span>
+      </header>
+
+      <div class="banner" data-when="state=nop-lai" role="note">
+        <i data-i="x"></i>
+        <span><b>Lần trước bị từ chối</b>Ảnh chứng chỉ mờ, không đọc được số.</span>
+      </div>
+
+      <div class="row2">
+        <div class="f" data-f="name"><label class="lbl" for="name">Họ và tên</label><input type="text" id="name" autocomplete="name"><span class="err">Điền ô này.</span></div>
+        <div class="f" data-f="work"><label class="lbl" for="work">Nơi công tác</label><input type="text" id="work" autocomplete="organization" placeholder="Tên trường, trung tâm"><span class="err">Điền ô này.</span></div>
+      </div>
+
+      <div class="f" data-f="subj">
+        <span class="lbl" id="subjL">Môn dạy</span>
+        <details class="multi" id="multi">
+          <summary aria-labelledby="subjL"><span id="subjTxt" class="ph">Chọn môn</span><i data-i="chev"></i></summary>
+          <div class="panel">
+            <label><input type="checkbox" name="subj" value="Toán">Toán</label>
+            <label><input type="checkbox" name="subj" value="Vật lí">Vật lí</label>
+            <label><input type="checkbox" name="subj" value="Hóa học">Hóa học</label>
+            <label><input type="checkbox" name="subj" value="Sinh học">Sinh học</label>
+            <label><input type="checkbox" name="subj" value="Ngữ văn">Ngữ văn</label>
+            <label><input type="checkbox" name="subj" value="Tiếng Anh">Tiếng Anh</label>
+            <label><input type="checkbox" name="subj" value="Lịch sử">Lịch sử</label>
+            <label><input type="checkbox" name="subj" value="Địa lí">Địa lí</label>
+            <label><input type="checkbox" name="subj" value="Tin học">Tin học</label>
+            <label><input type="checkbox" name="subj" value="Môn khác">Môn khác</label>
+          </div>
+        </details>
+        <span class="err">Chọn ít nhất một môn.</span>
+      </div>
+
+      <fieldset data-f="lvl">
+        <legend>Cấp dạy</legend>
+        <div class="chips" id="lvl">
+          <label class="chip"><input type="checkbox" name="lvl"><span>Tiểu học</span></label>
+          <label class="chip"><input type="checkbox" name="lvl"><span>THCS</span></label>
+          <label class="chip"><input type="checkbox" name="lvl"><span>THPT</span></label>
+          <label class="chip"><input type="checkbox" name="lvl"><span>Đại học</span></label>
+        </div>
+        <span class="err">Chọn ít nhất một cấp.</span>
+      </fieldset>
+
+      <div class="row2">
+        <div class="f" data-f="deg"><label class="lbl" for="deg">Bằng cấp hoặc chứng chỉ sư phạm</label><input type="text" id="deg" placeholder="Ví dụ: Cử nhân Sư phạm Toán"><span class="err">Điền ô này.</span></div>
+        <div class="f" data-f="num"><label class="lbl" for="num">Số hiệu</label><input type="text" id="num" autocomplete="off"><span class="err">Điền ô này.</span></div>
+      </div>
+
+      <fieldset data-f="shots">
+        <legend>Ảnh bằng hoặc chứng chỉ</legend>
+        <label class="drop2" id="drop2">
+          <i data-i="image"></i><b>Chọn 1 đến 3 ảnh</b><span class="hint">Rõ nét, thấy họ tên và số hiệu</span>
+          <input type="file" class="sr" id="pick" accept="image/*" multiple>
+        </label>
+        <div class="shots" id="shots"></div>
+        <span class="err" id="shotsErr">Thêm ít nhất một ảnh.</span>
+      </fieldset>
+
+      <label class="pledge" data-f="pledge"><input type="checkbox" id="pledge"><span>Tôi cam đoan thông tin trên là đúng và chịu trách nhiệm về nội dung khóa học tôi đăng.<span class="err">Cần đánh dấu ô này.</span></span></label>
+
+      <div class="send">
+        <button type="submit" class="go">Gửi hồ sơ</button>
+      </div>
+    </form>
+
+    <div class="done" data-when="state=da-gui" role="status">
+      <span class="big"><i data-i="check"></i></span>
+      <h1>Đã nhận hồ sơ</h1>
+      <p>Thường duyệt trong 1–2 ngày. Có kết quả, chúng tôi gửi email.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+  const shots = $("#shots");
+  let photos = 0;
+
+  function addPhoto(src) {
+    if (photos >= 3) return;
+    photos++;
+    const d = document.createElement("div"); d.className = "shot";
+    d.innerHTML = '<img alt="Ảnh chứng chỉ ' + photos + '" src="' + src + '"><button type="button" aria-label="Bỏ ảnh">' + window.mentorIcon("x") + "</button>";
+    d.querySelector("button").addEventListener("click", () => { d.remove(); photos--; sync(); });
+    shots.appendChild(d); sync();
+  }
+  function sync() {
+    $("#drop2").hidden = photos >= 3;
+    if (photos) $('[data-f="shots"]').classList.remove("bad");
+  }
+  $("#pick").addEventListener("change", (e) => {
+    [...e.target.files].slice(0, 3 - photos).forEach((f) => addPhoto(URL.createObjectURL(f)));
+    e.target.value = "";
+  });
+  window.__addSamplePhoto = () => addPhoto("data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224 168"><rect width="224" height="168" fill="#fbf7ea"/><rect x="8" y="8" width="208" height="152" fill="none" stroke="#b08a3c" stroke-width="3"/><text x="112" y="44" text-anchor="middle" font-size="14" font-family="serif" fill="#7a2a2a">BẰNG TỐT NGHIỆP</text><g stroke="#bbb" stroke-width="3"><path d="M30 70h164M30 90h164M30 110h120"/></g></svg>'));
+
+  // subjects summary: "Toán, Vật lí" or "3 môn"
+  function subjTxt() {
+    const v = $$('input[name="subj"]:checked').map((x) => x.value), t = $("#subjTxt");
+    t.textContent = v.length ? (v.length > 2 ? v.length + " môn: " + v.slice(0, 2).join(", ") + "…" : v.join(", ")) : "Chọn môn";
+    t.classList.toggle("ph", !v.length);
+  }
+
+  function check() {
+    let bad = 0;
+    const flag = (key, isBad) => { const e = $('[data-f="' + key + '"]'); e.classList.toggle("bad", isBad); if (isBad) bad++; };
+    ["name", "work", "deg", "num"].forEach((k) => flag(k, !$("#" + k).value.trim()));
+    flag("subj", !$$('input[name="subj"]:checked').length);
+    flag("lvl", !$$('input[name="lvl"]:checked').length);
+    flag("shots", photos === 0);
+    flag("pledge", !$("#pledge").checked);
+    return bad;
+  }
+  $("#form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (check()) { const f = $(".bad"); if (f) (f.querySelector("input, summary") || f).scrollIntoView({ block: "center" }); return; }
+    window.mockSet("state", "da-gui");
+  });
+  $("#form").addEventListener("input", () => $$(".bad").forEach((e) => { const k = e.dataset.f; if (k && ["name", "work", "deg", "num"].includes(k) && $("#" + k).value.trim()) e.classList.remove("bad"); }));
+  $("#form").addEventListener("change", () => {
+    subjTxt();
+    if ($$('input[name="subj"]:checked').length) $('[data-f="subj"]').classList.remove("bad");
+    if ($$('input[name="lvl"]:checked').length) $('[data-f="lvl"]').classList.remove("bad");
+    if ($("#pledge").checked) $('[data-f="pledge"]').classList.remove("bad");
+  });
+
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key !== "state") return;
+    const s = e.detail.value;
+    $$(".bad").forEach((x) => x.classList.remove("bad"));
+    if (s === "nop-lai") {
+      $("#name").value = "Nguyễn Thu Hằng"; $("#work").value = "THPT Chu Văn An, Hà Nội"; $("#deg").value = "Cử nhân Sư phạm Toán"; $("#num").value = "";
+      $$('input[name="subj"]')[0].checked = true; $$('input[name="lvl"]')[2].checked = true;
+    } else if (s === "trong") {
+      $$("#form input[type=text]").forEach((i) => { i.value = ""; }); $$("#form input[type=checkbox]").forEach((i) => { i.checked = false; });
+    }
+    subjTxt();
+    if (s === "loi") { $("#multi").open = false; check(); }
+  });
+})();
+</script>
+</body>
+</html>

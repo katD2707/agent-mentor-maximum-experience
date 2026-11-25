@@ -17,6 +17,8 @@ uv run python -m mentor_gateway.content.drive status     # còn khóa nào chưa
 ```
 
 `push-all` in ra mã file của catalog công khai. Đó là giá trị `MENTOR_REMOTE_CATALOG_URL` cho bản cài đặt.
+
+`push-all` giữ lại các khóa trong catalog công khai hiện tại mà máy này không có (khóa giáo viên đăng qua hub, xem CONTRACTS-HUB.md): `courses[]` và `remote` của các mã đó được gộp lại, không bị xóa.
 Quyền dùng là `drive.file` (chỉ thấy các file do chính app tạo). Token lưu ở `.secrets/google-drive-token.json`, không đưa vào git.
 
 Sau đó, mỗi lần giáo viên xuất bản (hoặc đổi nhãn một khóa đã xuất bản), gateway tự đẩy lên Drive ở nền, thử lại nếu lỗi.

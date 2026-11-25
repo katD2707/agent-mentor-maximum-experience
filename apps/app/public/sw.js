@@ -1,7 +1,7 @@
 /* Mentor service worker (web): offline shell, updates on the next launch, Web Push and notification taps. */
 const BUILD = "__BUILD_ID__"; // stamped per build by vite.config.ts, so a new build changes this file and browsers notice it
 const SHELL = "mentor-shell-" + BUILD;
-const SHELL_FILES = ["./", "favicon.svg", "manifest.webmanifest"];
+const SHELL_FILES = ["./", "favicon.png", "manifest.webmanifest"];
 
 // A new build installs quietly in the background and waits: no skipWaiting, so it takes over on the next launch
 // (when no tab runs the old one) and never swaps code under a lesson in progress.
@@ -65,7 +65,7 @@ self.addEventListener("push", (event) => {
     self.registration.showNotification(d.title || "Mentor", {
       body: d.body || "",
       tag: id ? "mentor-" + id : "mentor",
-      icon: "favicon.svg",
+      icon: "favicon.png",
       data: { id: d.reminder_id || null, deepLink: route(d.deep_link || d.url) },
     }),
   );

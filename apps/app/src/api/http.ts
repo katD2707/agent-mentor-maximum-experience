@@ -25,6 +25,15 @@ export async function initApiBase(): Promise<boolean> {
   return false;
 }
 
+const KNOWN_CODES: readonly string[] = ["invalid_credentials", "username_taken", "role_mismatch", "birth_year_locked", "bad_request", "bad_time", "bedtime", "quiet", "email_taken", "wrong_code", "hub_offline", "teacher_unverified", "pending", "not_owner", "level_unconfirmed", "verify_failed", "hub_not_linked", "hash_mismatch", "too_big", "script_missing", "script_failed", "bad_state"];
+export const isKnownCode = (c: unknown): c is ApiErrorCode => typeof c === "string" && KNOWN_CODES.includes(c);
+
+/** The gateway refused a course call because the teacher is not verified (any more): the app shows the gate. */
+export const TEACHER_UNVERIFIED_EVENT = "mentor:teacher-unverified";
+export function notifyUnverified(code: string) {
+  if (code === "teacher_unverified" && typeof window !== "undefined") window.dispatchEvent(new Event(TEACHER_UNVERIFIED_EVENT));
+}
+
 export async function request<T>(method: string, path: string, opts: { token?: string; body?: unknown } = {}): Promise<T> {
   let res: Response;
   try {
@@ -43,10 +52,11 @@ export async function request<T>(method: string, path: string, opts: { token?: s
     let code: ApiErrorCode = res.status === 401 ? "unauthorized" : res.status === 404 ? "not_found" : "unknown";
     try {
       const j = (await res.json()) as { error?: string };
-      if (j.error === "invalid_credentials" || j.error === "username_taken" || j.error === "role_mismatch" || j.error === "birth_year_locked" || j.error === "bad_request" || j.error === "bad_time" || j.error === "bedtime" || j.error === "quiet") code = j.error;
+      if (isKnownCode(j.error)) code = j.error;
     } catch {
       /* no JSON body */
     }
+    notifyUnverified(code);
     throw new ApiError(res.status, code);
   }
   if (res.status === 204) return undefined as T;
@@ -81,9 +91,17 @@ export async function raw(path: string, token: string, headers: Record<string, s
 const catalogCache = new Map<string, { etag: string; body: Catalog }>();
 
 export const httpApi: Api = {
-  login: (username, password, role) => request<LoginResult>("POST", "/auth/login", { body: { username, password, role } }),
+  login: (username, password, role) => request<LoginResult>("POST", "/auth/login", { body: role ? { username, password, role } : { username, password } }),
   signupEnabled: () => request<{ signup: boolean }>("GET", "/auth/config").then((c) => c.signup === true, () => false),
-  register: (username, password, role) => request<LoginResult>("POST", "/auth/register", { body: { username, password, role } }),
+  hubEnabled: () => request<{ hub?: boolean }>("GET", "/auth/config").then((c) => c.hub === true, () => false),
+  register: (username, password, role, extra) => request<LoginResult>("POST", "/auth/register", { body: { role, username, password, ...extra } }),
+  forgot: (login) => request("POST", "/auth/forgot", { body: { login } }),
+  forgotRequest: (login, phone) => request<void>("POST", "/auth/forgot/request", { body: phone ? { login, phone } : { login } }),
+  reset: (login, code, password) => request<void>("POST", "/auth/reset", { body: { login, code, password } }),
+  teacherAccount: (token) => request("GET", "/teacher/account", { token }),
+  teacherVerify: (token, code) => request<void>("POST", "/teacher/account/verify", { token, body: { code } }),
+  teacherResendForm: (token) => request<void>("POST", "/teacher/account/resend-form", { token }),
+  teacherResendCode: (token) => request<void>("POST", "/teacher/account/resend-code", { token }),
   logout: (token) => request<void>("POST", "/auth/logout", { token }),
   getMe: (token) => request<User>("GET", "/me", { token }),
   patchMe: (token, patch) => request<User>("PATCH", "/me", { token, body: patch }),

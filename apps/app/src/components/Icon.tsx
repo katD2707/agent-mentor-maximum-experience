@@ -6,6 +6,7 @@ const P: Record<string, string> = {
   play: '<path d="M8 5.5v13l11-6.5z" fill="currentColor" stroke="none"/>',
   volume: '<path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/>',
   check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  mail: '<rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7.5 7.5 6 7.5-6"/>',
   chev: '<path d="m7 10 5 5 5-5"/>',
   x: '<path d="M6 6l12 12M18 6 6 18"/>',
   user: '<circle cx="12" cy="8.5" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>',

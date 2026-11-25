@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi" data-age="thpt" data-first="yes">
+<html lang="vi" data-age="thpt" data-first="yes" data-view="dang-nhap">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,52 +13,90 @@
   body { min-height: 100vh; background: #2c4a2a url("assets/ga/lang.webp") center / cover fixed; }
   body::before { content: ""; position: fixed; inset: 0; background: rgba(30, 40, 30, .38); backdrop-filter: blur(6px); }
   :focus-visible { outline: 3px solid #1d4fb8; outline-offset: 3px; }
-  .stage { position: relative; min-height: calc(100vh - 44px); display: grid; place-items: center; padding: 80px 16px 48px; }
-  .lang-mini { position: absolute; top: 16px; right: 16px; display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px; background: linear-gradient(#f2c68c, #d6a060); border: 3px solid #b27a3d; box-shadow: 0 3px 0 #8a5a2b; }
+  .stage { position: relative; min-height: calc(100vh - 44px); display: grid; place-items: center; padding: 64px 16px 40px; }
+  .lang-mini { position: absolute; top: 12px; right: 16px; display: inline-flex; gap: 2px; padding: 4px; border-radius: 999px; background: linear-gradient(#f2c68c, #d6a060); border: 3px solid #b27a3d; box-shadow: 0 3px 0 #8a5a2b; }
   .lang-mini button { min-height: 34px; min-width: 46px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: #3a2010; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; }
   .lang-mini button[aria-pressed="true"] { background: #3a2010; color: #fff7e6; }
 
-  .board { position: relative; width: min(560px, 100%); display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 40px clamp(16px, 4vw, 32px) 28px; color: var(--ink-g); }
-  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 28px; border-radius: 16px; background: linear-gradient(#c4432a, #a83a24); color: #fff; font-size: clamp(1.1em, 3vw, 1.45em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #86301d; }
+  .board { position: relative; width: min(560px, 100%); display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; background: var(--board); border: 4px solid var(--board-edge); border-radius: 28px; box-shadow: 0 8px 0 var(--board-dark), 0 24px 60px rgba(0,0,0,.35); padding: 38px clamp(16px, 4vw, 32px) 18px; color: var(--ink-g); }
+  .ribbon { position: absolute; left: 50%; top: 0; transform: translate(-50%, -55%); padding: 10px 28px; border-radius: 16px; background: linear-gradient(#c4432a, #a83a24); color: #fff; font-size: clamp(1.1em, 3vw, 1.45em); font-weight: 800; white-space: nowrap; border: 3px solid #fff; box-shadow: 0 5px 0 #86301d; margin: 0; }
   .welcome { display: flex; align-items: center; gap: 14px; }
-  .hen { flex: none; width: 96px; height: 96px; overflow: hidden; position: relative; border-radius: 20px; background: radial-gradient(ellipse 40% 9% at 50% 88%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); border: 3px solid #e7cfa8; }
+  .hen { flex: none; width: 88px; height: 88px; overflow: hidden; position: relative; border-radius: 20px; background: radial-gradient(ellipse 40% 9% at 50% 88%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 60%, #b6e39a 60%); border: 3px solid #e7cfa8; }
   .hen img { position: absolute; width: 240%; max-width: none; left: -64%; top: -84%; }
   .welcome p { margin: 0; font-weight: 600; color: #6b4a2e; }
-  .welcome b { display: block; color: #3a2010; font-size: 1.1em; }
+  .welcome b { display: block; color: #3a2010; font-size: 1.15em; }
 
-  /* role: two pictures, pick one */
-  .roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .role { position: relative; display: grid; justify-items: center; gap: 4px; padding: 10px 8px 12px; border-radius: 22px; border: 3px solid #e7cfa8; background: radial-gradient(ellipse 60% 10% at 50% 74%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 62%, #b6e39a 62%); cursor: pointer; font: inherit; color: var(--ink-g); box-shadow: 0 5px 0 #e0c294; transition: transform .15s ease; }
-  .role:hover { transform: translateY(-2px); }
-  .role img, .role svg { width: 100%; max-width: 150px; height: auto; aspect-ratio: 140 / 170; object-fit: contain; }
-  .role b { font-size: 1.1em; }
-  .role[aria-checked="true"] { border-color: var(--sel); box-shadow: 0 5px 0 #c99a10, 0 0 0 4px rgba(255, 207, 61, .45); transform: translateY(-3px); }
-  .role .tick { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; background: var(--sel); color: #5a3b00; border: 2px solid #fff; display: none; place-items: center; }
-  .role .tick svg { width: 20px; height: 20px; aspect-ratio: auto; }
-  .role[aria-checked="true"] .tick { display: grid; }
-  .roles.shake { animation: shake .4s ease-in-out; }
-  @keyframes shake { 0%, 100% { transform: translateX(0) } 20% { transform: translateX(-8px) } 40% { transform: translateX(7px) } 60% { transform: translateX(-5px) } 80% { transform: translateX(3px) } }
+  /* role: two big cards, pick one first */
+  .roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .role { display: grid; justify-items: center; align-content: end; gap: 6px; padding: 10px 8px 14px; border-radius: 22px; border: 3px solid #e7cfa8; background: radial-gradient(ellipse 60% 9% at 50% 70%, #8fc66d 98%, transparent 100%), linear-gradient(#d8f0fb 0 64%, #b6e39a 64%); cursor: pointer; font: inherit; color: var(--ink-g); box-shadow: 0 5px 0 #e0c294; transition: transform .15s ease; min-height: 210px; }
+  .role:hover { transform: translateY(-2px); border-color: var(--sel); }
+  .role img, .role svg { width: auto; max-width: 100%; height: 138px; object-fit: contain; }
+  .role b { font-size: 1.1em; line-height: 1.2; text-align: center; }
 
-  .fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .field { display: grid; gap: 6px; }
+  .stack { display: grid; gap: 14px; min-width: 0; }
+  .fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .field { display: grid; gap: 5px; }
   .field label { font-size: .95em; font-weight: 700; padding-left: 4px; }
-  .pill { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 8px 0 16px; border-radius: 16px; background: #fffdf7; border: 3px solid #d6b27a; box-shadow: inset 0 2px 0 rgba(125, 76, 34, .12); }
+  .pill { display: flex; align-items: center; gap: 10px; min-height: 54px; padding: 0 8px 0 16px; border-radius: 16px; background: #fffdf7; border: 3px solid #d6b27a; box-shadow: inset 0 2px 0 rgba(125, 76, 34, .12); }
   .pill:focus-within { border-color: #1d4fb8; }
   .pill.bad { border-color: #c0301c; }
   .pill > svg { width: 22px; height: 22px; color: #7d4c22; flex: none; }
-  .pill input { flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; min-height: 48px; font: inherit; color: #3a2010; }
+  .pill input { flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; min-height: 46px; font: inherit; color: #3a2010; }
+  .pill.small { min-height: 44px; border-radius: 12px; border-width: 2px; }
+  .pill.small input { min-height: 38px; font-size: .92em; }
   .eye { width: 44px; height: 44px; border-radius: 12px; border: 0; background: transparent; color: #5a3a1c; display: grid; place-items: center; cursor: pointer; flex: none; }
   .eye:hover { background: #f2c68c; }
   .eye[aria-pressed="true"] { background: #3a2010; color: #fff7e6; }
+  .hint { margin: 0; padding-left: 4px; font-size: .85em; color: #6b4a2e; }
+  .field.uname label { font-size: .85em; font-weight: 600; color: #6b4a2e; }
+
+  .grades { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 8px; border-radius: 16px; border: 3px solid transparent; }
+  .grades.bad { border-color: #c0301c; padding: 4px; }
+  .grade { min-height: 48px; border-radius: 14px; border: 3px solid #d6b27a; background: #fffdf7; color: #3a2010; font: inherit; font-size: 1.1em; font-weight: 800; cursor: pointer; box-shadow: 0 3px 0 #e0c294; padding: 0 4px; }
+  .grade.wide { grid-column: span 2; font-size: 1em; }
+  .grade[aria-checked="true"] { background: var(--sel); border-color: #c99a10; box-shadow: 0 3px 0 #c99a10; }
 
   .alert { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #fde4dc; border: 2px solid #c0301c; color: #3a2010; font-weight: 600; }
   .alert svg { flex: none; width: 22px; height: 22px; color: #a82612; margin-top: 1px; }
-  .submit { min-height: 60px; padding: 0 28px; border-radius: 20px; border: 3px solid #fff; background: linear-gradient(#36a862, #23874a); color: #fff; font: inherit; font-size: 1.15em; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 #165c32; text-shadow: 0 1px 1px rgba(0,0,0,.35); }
+  .alert.soft { background: #e0f2e6; border-color: #23874a; }
+  .alert.soft svg { color: #1d7052; }
+  .note-ok { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #e0f2e6; border: 2px solid #23874a; color: #3a2010; font-weight: 600; }
+  .note-ok svg { flex: none; width: 22px; height: 22px; color: #1d7052; margin-top: 1px; }
+  .ask { display: grid; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #fff0c9; border: 2px solid #c99a10; font-weight: 600; }
+  .ask .two { display: flex; flex-wrap: wrap; gap: 10px; }
+  .ask button { flex: 1; min-width: 120px; }
+  .ask .submit { font-size: 1em; padding: 0 10px; white-space: nowrap; }
+
+  .info { display: grid; justify-items: center; gap: 10px; text-align: center; padding: 6px 0 2px; }
+  .info .big { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: #d8f0fb; border: 3px solid #e7cfa8; color: #7d4c22; }
+  .info .big svg { width: 44px; height: 44px; }
+  .info h2 { margin: 0; font-size: 1.2em; line-height: 1.3; }
+  .info p { margin: 0; color: #6b4a2e; font-weight: 600; overflow-wrap: anywhere; }
+  .info p b { color: #3a2010; }
+  .code { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(4px, 1.6vw, 10px); }
+  .why { padding: 10px 14px; border-radius: 14px; background: #fde4dc; border: 2px solid #c0301c; color: #3a2010; font-weight: 600; }
+  .code input { width: 100%; min-width: 0; min-height: 60px; text-align: center; font: inherit; font-size: 1.5em; font-weight: 800; color: #3a2010; border-radius: 14px; background: #fffdf7; border: 3px solid #d6b27a; box-shadow: inset 0 2px 0 rgba(125, 76, 34, .12); padding: 0; }
+  .code input:focus { outline: 0; border-color: #1d4fb8; }
+  .code.bad input { border-color: #c0301c; }
+
+  .submit, .ghost { min-height: 58px; padding: 0 28px; border-radius: 20px; font: inherit; font-size: 1.15em; font-weight: 800; cursor: pointer; }
+  .submit { border: 3px solid #fff; background: linear-gradient(#25864c, #1b7340); color: #fff; box-shadow: 0 6px 0 #165c32; text-shadow: 0 1px 1px rgba(0,0,0,.35); }
   .submit:active { transform: translateY(4px); box-shadow: 0 2px 0 #23874a; }
-  .demo { margin: 0; text-align: center; font-size: .9em; color: #6b4a2e; }
-  .demo code { font: inherit; font-weight: 700; color: #3a2010; }
-  @media (max-width: 520px) { .welcome .hen { width: 76px; height: 76px; } }
-  @media (prefers-reduced-motion: reduce) { .role { transition: none; } .roles.shake { animation: none; } }
+  .ghost { border: 3px solid #d6b27a; background: #fffdf7; color: #3a2010; box-shadow: 0 4px 0 #e0c294; min-height: 52px; font-size: 1em; }
+  .links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 16px; margin-top: -4px; }
+  .links:empty { display: none; }
+  .link { border: 0; background: none; padding: 0 8px; min-height: 48px; font: inherit; font-weight: 800; color: #7d4c22; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; border-radius: 12px; }
+  .link:hover { color: #3a2010; background: #f6e3c2; }
+  .link:disabled { color: #8a6a4a; text-decoration: none; cursor: default; background: none; }
+  @media (max-width: 520px) {
+    .welcome .hen { width: 72px; height: 72px; }
+    .board { padding-top: 40px; gap: 12px; }
+    .stage { padding: 56px 12px 24px; }
+    .ribbon { padding: 8px 18px; }
+    .submit { position: sticky; bottom: 10px; z-index: 2; }
+    .role { min-height: 190px; } .role img, .role svg { height: 118px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .role { transition: none; } }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -66,9 +104,10 @@
 <div class="mock-bar">
   <a href="index.html">← Tất cả màn hình</a>
   <span class="mock-title">Đăng nhập</span>
+  <span class="mock-seg"><span>Màn</span>
+    <button data-set="view:dang-nhap">Đăng nhập</button><button data-set="view:tao">Tạo: chọn vai</button><button data-set="view:tao-hs">Tạo: học sinh</button><button data-set="view:tao-gv">Tạo: giáo viên</button><button data-set="view:kiem-tra-mail">Kiểm tra email</button><button data-set="view:gate-chua-nop">Chờ: chưa nộp</button><button data-set="view:gate-cho">Chờ: chờ duyệt</button><button data-set="view:gate-tu-choi">Chờ: từ chối</button><button data-set="view:gate-duyet">Chờ: nhập mã</button><button data-set="view:quen">Quên</button><button data-set="view:quen-ma">Quên: mã</button><button data-set="view:quen-hs">Quên: không email</button><button data-set="view:quen-xong">Quên: đã gửi</button></span>
   <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
-  <span class="mock-seg"><span>Học sinh vào</span><button data-set="first:yes">Lần đầu (chọn gà)</button><button data-set="first:no">Đã dùng (vào làng)</button></span>
-  <span class="mock-note">Thử: hocsinh hoặc giaovien, mật khẩu 123456.</span>
+  <span class="mock-note">Thử: hocsinh hoặc giaovien (đã duyệt, chưa nhập mã), mật khẩu 123456. Mã quên mật khẩu: 482913.</span>
 </div>
 
 <div class="stage">
@@ -77,137 +116,377 @@
     <button type="button" data-set="lang:en" aria-pressed="false">EN</button>
   </div>
 
-  <form class="board" id="login" novalidate>
-    <h1 class="ribbon" data-en="Log in">Đăng nhập</h1>
-    <div class="welcome">
-      <span class="hen" aria-hidden="true"><picture><source srcset="assets/ga/toan-dung.webp" media="(prefers-reduced-motion: no-preference)"><img src="assets/ga/toan.png" alt=""></picture></span>
-      <p><b data-en="Welcome to Mentor">Chào mừng đến Mentor</b><span data-en="Pick who you are, then log in.">Chọn em là ai, rồi đăng nhập.</span></p>
-    </div>
+  <form class="board" id="form" novalidate>
+    <h1 class="ribbon" id="ribbon">Đăng nhập</h1>
 
-    <div class="roles" id="roles" role="radiogroup" aria-label="Vai trò">
-      <button type="button" class="role" role="radio" aria-checked="false" data-role="hs" aria-label="Học sinh" data-en-label="Student">
-        <span class="tick" aria-hidden="true"><i data-i="check"></i></span>
-        <img src="assets/ga/hs-nam.png" alt="">
-        <b data-en="Student">Học sinh</b>
-      </button>
-      <button type="button" class="role" role="radio" aria-checked="false" data-role="gv" aria-label="Giáo viên" data-en-label="Teacher">
-        <span class="tick" aria-hidden="true"><i data-i="check"></i></span>
-        <!-- teacher: glasses, cardigan, book, small chalkboard -->
-        <svg viewBox="0 0 140 170" aria-hidden="true">
-          <rect x="84" y="30" width="48" height="36" rx="4" fill="#24453A" stroke="#8A5A2B" stroke-width="3"/>
-          <path d="M92 44 h8 M96 40 v8 M106 44 h8 M92 56 q6 -6 12 0 t12 0" stroke="#E9F2EC" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <rect x="49" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/><rect x="66" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/>
-          <rect x="40" y="62" width="48" height="58" rx="13" fill="#12825A"/>
-          <path d="M56 64 L64 80 L72 64" fill="#fff"/>
-          <rect x="30" y="86" width="26" height="20" rx="3" fill="#4B2EBF" transform="rotate(6 43 96)"/>
-          <path d="M88 82 L112 62" stroke="#8A5A2B" stroke-width="3.5" stroke-linecap="round"/>
-          <circle cx="64" cy="40" r="18" fill="#E2AE85"/>
-          <path d="M46 40 C44 20 84 18 82 40 C80 30 74 26 64 26 C54 26 48 30 46 40 Z" fill="#4A3A35"/>
-          <rect x="53" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/><rect x="66" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/>
-          <path d="M63 41 h3" stroke="#2B2321" stroke-width="1.8"/>
-          <path d="M59 51 Q64 55 69 51" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
-        </svg>
-        <b data-en="Teacher">Giáo viên</b>
-      </button>
-    </div>
-
-    <div class="fields">
-      <div class="field">
-        <label for="acc" data-en="Account">Tài khoản</label>
-        <div class="pill" id="accPill"><i data-i="user"></i><input id="acc" name="acc" autocomplete="username" autocapitalize="off" spellcheck="false"></div>
+    <!-- đăng nhập -->
+    <div class="stack" data-when="view=dang-nhap">
+      <div class="welcome">
+        <span class="hen" aria-hidden="true"><picture><source srcset="assets/ga/toan-dung.webp" media="(prefers-reduced-motion: no-preference)"><img src="assets/ga/toan.png" alt=""></picture></span>
+        <p><b data-en="Welcome to Mentor">Chào mừng đến Mentor</b></p>
       </div>
-      <div class="field">
-        <label for="pw" data-en="Password">Mật khẩu</label>
-        <div class="pill" id="pwPill"><i data-i="lock"></i><input id="pw" name="pw" type="password" autocomplete="current-password">
-          <button type="button" class="eye" id="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div>
+      <div class="note-ok" id="doneNote" hidden><i data-i="check"></i><span data-en="Password changed. Log in.">Đã đổi mật khẩu. Đăng nhập nhé.</span></div>
+      <div class="fields">
+        <div class="field"><label for="acc" data-en="Username or email">Tên đăng nhập hoặc email</label>
+          <div class="pill" data-p="acc"><i data-i="user"></i><input id="acc" autocomplete="username" autocapitalize="off" spellcheck="false"></div></div>
+        <div class="field"><label for="pw" data-en="Password">Mật khẩu</label>
+          <div class="pill" data-p="pw"><i data-i="lock"></i><input id="pw" type="password" autocomplete="current-password"><button type="button" class="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div></div>
+      </div>
+    </div>
+
+    <!-- tạo tài khoản: chọn vai trước -->
+    <div class="stack" data-when="view=tao">
+      <div class="roles" id="roles">
+        <button type="button" class="role" data-role="hs">
+          <img src="assets/ga/hs-nam.png" alt=""><b data-en="I am a student">Em là học sinh</b>
+        </button>
+        <button type="button" class="role" data-role="gv">
+          <svg viewBox="0 0 140 170" aria-hidden="true">
+            <rect x="84" y="30" width="48" height="36" rx="4" fill="#24453A" stroke="#8A5A2B" stroke-width="3"/>
+            <path d="M92 44 h8 M96 40 v8 M106 44 h8 M92 56 q6 -6 12 0 t12 0" stroke="#E9F2EC" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="49" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/><rect x="66" y="112" width="13" height="46" rx="4" fill="#3B3F4A"/>
+            <rect x="40" y="62" width="48" height="58" rx="13" fill="#12825A"/>
+            <path d="M56 64 L64 80 L72 64" fill="#fff"/>
+            <rect x="30" y="86" width="26" height="20" rx="3" fill="#4B2EBF" transform="rotate(6 43 96)"/>
+            <path d="M88 82 L112 62" stroke="#8A5A2B" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="64" cy="40" r="18" fill="#E2AE85"/>
+            <path d="M46 40 C44 20 84 18 82 40 C80 30 74 26 64 26 C54 26 48 30 46 40 Z" fill="#4A3A35"/>
+            <rect x="53" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/><rect x="66" y="38" width="10" height="7" rx="2.5" fill="none" stroke="#2B2321" stroke-width="1.8"/>
+            <path d="M63 41 h3" stroke="#2B2321" stroke-width="1.8"/>
+            <path d="M59 51 Q64 55 69 51" stroke="#2B2321" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg><b data-en="I am a teacher">Tôi là giáo viên</b>
+        </button>
+      </div>
+    </div>
+
+    <!-- học sinh -->
+    <div class="stack" data-when="view=tao-hs">
+      <div class="fields">
+        <div class="field"><label for="s-name" data-en="Your name">Tên của em</label>
+          <div class="pill" data-p="s-name"><i data-i="user"></i><input id="s-name" autocomplete="nickname"></div></div>
+        <div class="field uname"><label for="s-user" data-en="Username (you can change it)">Tên đăng nhập (sửa được)</label>
+          <div class="pill small" data-p="s-user"><i data-i="user"></i><input id="s-user" autocomplete="username" autocapitalize="off" spellcheck="false"></div></div>
+        <div class="field"><label for="s-pw" data-en="Password">Mật khẩu</label>
+          <div class="pill" data-p="s-pw"><i data-i="lock"></i><input id="s-pw" type="password" autocomplete="new-password"><button type="button" class="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div>
+          <p class="hint" data-en="At least 6 characters">Ít nhất 6 ký tự</p></div>
+        <div class="field"><span class="lbl" id="gl" style="font-size:.95em;font-weight:700;padding-left:4px" data-en="Which grade are you in?">Em học lớp mấy?</span>
+          <div class="grades" id="grades" role="radiogroup" aria-labelledby="gl" data-p="s-grade"></div></div>
+        <div class="field"><label for="s-mail" data-en="Parent email">Email bố mẹ</label>
+          <div class="pill" data-p="s-mail"><i data-i="mail"></i><input id="s-mail" type="email" autocomplete="email" autocapitalize="off" spellcheck="false"></div>
+          <p class="hint" data-en="To get your password back if you forget it">Để lấy lại mật khẩu khi quên</p></div>
+      </div>
+      <div class="ask" id="ask" hidden role="alertdialog" aria-label="Email bố mẹ">
+        <span data-en="No email: if you forget your password, ask your teacher.">Không có email thì quên mật khẩu phải nhờ thầy cô.</span>
+        <span class="two"><button type="button" class="submit" id="askAdd" data-en="Add email">Thêm email</button><button type="button" class="ghost" id="askSkip" data-en="Skip">Bỏ qua</button></span>
+      </div>
+    </div>
+
+    <!-- giáo viên -->
+    <div class="stack" data-when="view=tao-gv">
+      <div class="fields">
+        <div class="field"><label for="t-mail">Email</label>
+          <div class="pill" data-p="t-mail"><i data-i="mail"></i><input id="t-mail" type="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="ten@truong.edu.vn"></div></div>
+        <div class="field"><label for="t-user" data-en="Username">Tên đăng nhập</label>
+          <div class="pill" data-p="t-user"><i data-i="user"></i><input id="t-user" autocomplete="username" autocapitalize="off" spellcheck="false"></div></div>
+        <div class="field"><label for="t-name" data-en="Display name">Tên hiển thị</label>
+          <div class="pill" data-p="t-name"><i data-i="user"></i><input id="t-name" autocomplete="nickname"></div></div>
+        <div class="field"><label for="t-pw" data-en="Password">Mật khẩu</label>
+          <div class="pill" data-p="t-pw"><i data-i="lock"></i><input id="t-pw" type="password" autocomplete="new-password"><button type="button" class="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div>
+          <p class="hint" data-en="At least 6 characters">Ít nhất 6 ký tự</p></div>
+      </div>
+    </div>
+
+    <!-- kiểm tra email -->
+    <div class="stack" data-when="view=kiem-tra-mail">
+      <div class="info">
+        <span class="big" aria-hidden="true"><i data-i="mail"></i></span>
+        <h2 data-en="Open your email and tap the link to fill in your profile">Mở email, bấm vào link để kê khai hồ sơ</h2>
+        <p><b class="mailTo">ten@truong.edu.vn</b></p>
+        <p data-en="You can close the app. The email will arrive.">Có thể đóng app. Email vẫn sẽ tới.</p>
+      </div>
+    </div>
+
+    <!-- giáo viên chưa được xác minh: cổng này chặn mọi trang soạn khóa -->
+    <div class="stack" data-when="view=gate-chua-nop">
+      <div class="info">
+        <span class="big" aria-hidden="true"><i data-i="mail"></i></span>
+        <h2 data-en="Open your email and tap the link to fill in your profile">Mở email, bấm vào link để kê khai hồ sơ</h2>
+        <p><b class="mailTo">nguyenthuhang.gv@gmail.com</b></p>
+      </div>
+    </div>
+    <div class="stack" data-when="view=gate-cho">
+      <div class="info">
+        <span class="big" aria-hidden="true"><i data-i="clock"></i></span>
+        <h2 data-en="Your profile is in review">Đang chờ duyệt hồ sơ</h2>
+        <p data-en="Usually 1–2 days. We email the result.">Thường 1–2 ngày. Có kết quả, chúng tôi gửi email.</p>
+        <p data-en="You can close the app.">Có thể đóng app.</p>
+      </div>
+    </div>
+    <div class="stack" data-when="view=gate-tu-choi">
+      <div class="info">
+        <span class="big" aria-hidden="true"><i data-i="x"></i></span>
+        <h2 data-en="Your profile was rejected">Hồ sơ bị từ chối</h2>
+      </div>
+      <p class="why" data-en="The certificate photo is blurry, the number cannot be read.">Ảnh chứng chỉ mờ, không đọc được số.</p>
+    </div>
+    <div class="stack" data-when="view=gate-duyet">
+      <div class="info">
+        <h2><span data-en="6-digit code sent to">Đã gửi mã 6 số về</span> <span class="mailTo" style="display:block;font-size:.88em;font-weight:600">nguyenthuhang.gv@gmail.com</span></h2>
+      </div>
+      <div class="code" data-code="a" role="group" aria-label="Mã 6 số"></div>
+    </div>
+
+    <!-- quên mật khẩu -->
+    <div class="stack" data-when="view=quen">
+      <div class="fields">
+        <div class="field"><label for="f-acc" data-en="Username or email">Tên đăng nhập hoặc email</label>
+          <div class="pill" data-p="f-acc"><i data-i="user"></i><input id="f-acc" autocomplete="username" autocapitalize="off" spellcheck="false"></div></div>
+      </div>
+    </div>
+    <div class="stack" data-when="view=quen-ma">
+      <div class="info"><p><span data-en="Code sent to">Đã gửi mã tới</span> <b class="mailTo">g***@gmail.com</b></p></div>
+      <div class="code" data-code="b" role="group" aria-label="Mã 6 số"></div>
+      <div class="fields">
+        <div class="field"><label for="n-pw" data-en="New password">Mật khẩu mới</label>
+          <div class="pill" data-p="n-pw"><i data-i="lock"></i><input id="n-pw" type="password" autocomplete="new-password"><button type="button" class="eye" aria-pressed="false" aria-label="Hiện mật khẩu"><i data-i="eye"></i></button></div></div>
+      </div>
+    </div>
+    <div class="stack" data-when="view=quen-hs">
+      <div class="info">
+        <span class="big" aria-hidden="true"><i data-i="user"></i></span>
+        <h2 data-en="No email on this account">Tài khoản này chưa có email</h2>
+        <p><span data-en="Username">Tên đăng nhập</span>: <b id="resetUser">hocsinh</b></p>
+      </div>
+      <div class="fields">
+        <div class="field"><label for="r-phone" data-en="Parent phone (so your teacher can call back)">Số điện thoại bố mẹ (để thầy cô gọi lại)</label>
+          <div class="pill" data-p="r-phone"><i data-i="user"></i><input id="r-phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+          <p class="hint" data-en="Optional">Không bắt buộc</p></div>
+      </div>
+    </div>
+    <div class="stack" data-when="view=quen-xong">
+      <div class="info">
+        <span class="big" aria-hidden="true"><i data-i="check"></i></span>
+        <h2 data-en="Sent. Your teacher will contact your parents to reset your password.">Đã gửi. Thầy cô sẽ liên hệ bố mẹ em để đặt lại mật khẩu.</h2>
       </div>
     </div>
 
     <div class="alert" id="alert" role="alert" hidden><i data-i="x"></i><span id="alertText"></span></div>
 
-    <button class="submit" type="submit" data-en="Log in">Đăng nhập</button>
+    <button class="submit" type="submit" id="go">Đăng nhập</button>
+    <div class="links" id="links"></div>
   </form>
 </div>
 
 <script>
 (function () {
-  const ACCOUNTS = { hocsinh: { pw: "123456", role: "hs" }, giaovien: { pw: "123456", role: "gv" } };
-  const MSG = {
-    noRole: { vi: "Chọn vai trò.", en: "Pick a role." },
-    isTeacher: { vi: "Sai vai trò.", en: "Wrong role." },
-    isStudent: { vi: "Sai vai trò.", en: "Wrong role." },
-    wrong: { vi: "Sai tài khoản hoặc mật khẩu.", en: "Wrong account or password." },
+  const L = (vi, en) => ({ vi, en });
+  const T = {
+    "dang-nhap": { ribbon: L("Đăng nhập", "Log in"), go: L("Đăng nhập", "Log in") },
+    "tao": { ribbon: L("Tạo tài khoản", "Create account"), go: null },
+    "tao-hs": { ribbon: L("Tạo tài khoản", "Create account"), go: L("Tạo tài khoản", "Create account") },
+    "tao-gv": { ribbon: L("Tạo tài khoản", "Create account"), go: L("Tạo tài khoản", "Create account") },
+    "kiem-tra-mail": { ribbon: L("Kiểm tra email", "Check email"), go: null },
+    "gate-chua-nop": { ribbon: L("Chưa nộp hồ sơ", "Profile not sent"), go: null },
+    "gate-cho": { ribbon: L("Đang chờ duyệt", "In review"), go: null },
+    "gate-tu-choi": { ribbon: L("Bị từ chối", "Rejected"), go: L("Nộp lại hồ sơ", "Send again") },
+    "gate-duyet": { ribbon: L("Nhập mã", "Enter code"), go: L("Xác nhận", "Confirm") },
+    "quen": { ribbon: L("Quên mật khẩu", "Forgot password"), go: L("Gửi mã", "Send code") },
+    "quen-ma": { ribbon: L("Mật khẩu mới", "New password"), go: L("Đổi mật khẩu", "Change password") },
+    "quen-hs": { ribbon: L("Quên mật khẩu", "Forgot password"), go: L("Gửi yêu cầu đặt lại", "Send reset request") },
+    "quen-xong": { ribbon: L("Đã gửi", "Sent"), go: L("Về đăng nhập", "Back to log in") },
   };
-  const $ = (id) => document.getElementById(id);
-  const roles = $("roles"), alertBox = $("alert"), alertText = $("alertText");
-  let role = null, lastMsg = null;
-  const lang = () => (document.documentElement.lang === "en" ? "en" : "vi");
+  const LINKS = {
+    "dang-nhap": [[L("Tạo tài khoản", "Create account"), "tao"], [L("Quên mật khẩu?", "Forgot password?"), "quen"]],
+    "tao": [[L("Đăng nhập", "Log in"), "dang-nhap"]],
+    "tao-hs": [[L("Chọn lại vai", "Change role"), "tao"], [L("Đăng nhập", "Log in"), "dang-nhap"]],
+    "tao-gv": [[L("Chọn lại vai", "Change role"), "tao"], [L("Đăng nhập", "Log in"), "dang-nhap"]],
+    "kiem-tra-mail": [[L("Gửi lại email", "Resend email"), "@resend"], [L("Đăng xuất", "Log out"), "dang-nhap"]],
+    "gate-chua-nop": [[L("Gửi lại email", "Resend email"), "@resend"], [L("Đăng xuất", "Log out"), "dang-nhap"]],
+    "gate-cho": [[L("Đăng xuất", "Log out"), "dang-nhap"]],
+    "gate-tu-choi": [[L("Đăng xuất", "Log out"), "dang-nhap"]],
+    "gate-duyet": [[L("Gửi lại mã", "Resend code"), "@resend"], [L("Đăng xuất", "Log out"), "dang-nhap"]],
+    "quen": [[L("Đăng nhập", "Log in"), "dang-nhap"]],
+    "quen-ma": [[L("Gửi lại mã", "Resend code"), "@resend"]],
+    "quen-hs": [[L("Quay lại", "Back"), "quen"]],
+    "quen-xong": [],
+  };
+  const MSG = {
+    empty: L("Điền đủ các ô.", "Fill in every field."),
+    wrong: L("Sai tên đăng nhập hoặc mật khẩu.", "Wrong username or password."),
+    gmail: L("Email chưa đúng.", "Email looks wrong."),
+    taken: L("Tên đăng nhập đã có.", "Username taken."),
+    short: L("Mật khẩu ít nhất 6 ký tự.", "Password needs 6+ characters."),
+    email: L("Email chưa đúng.", "Email looks wrong."),
+    grade: L("Chọn lớp của em.", "Pick your grade."),
+    code: L("Mã chưa đúng.", "Wrong code."),
+    phone: L("Số điện thoại chưa đúng.", "Phone number looks wrong."),
+    sent: L("Đã gửi lại.", "Sent again."),
+  };
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+  const root = document.documentElement;
+  const lang = () => (root.lang === "en" ? "en" : "vi");
+  const view = () => root.dataset.view;
+  const alertBox = $("#alert"), alertText = $("#alertText");
+  let resetUser = "hocsinh", lastMsg = null, mailTo = "nguyenthuhang.gv@gmail.com", pwChanged = false, grade = "", userDirty = false;
+  const TAKEN = ["hocsinh", "giaovien", "an", "nam", "lan", "minh"];
 
-  function show(key) { lastMsg = key; alertText.textContent = MSG[key][lang()]; alertBox.hidden = false; }
-  function clear() { alertBox.hidden = true; lastMsg = null; $("accPill").classList.remove("bad"); $("pwPill").classList.remove("bad"); }
+  function show(key, pills) {
+    lastMsg = key; alertText.textContent = MSG[key][lang()]; alertBox.hidden = false;
+    alertBox.classList.toggle("soft", key === "sent");
+    (pills || []).forEach((p) => { const e = $('[data-p="' + p + '"]'); if (e) e.classList.add("bad"); });
+  }
+  function clear() { lastMsg = null; alertBox.hidden = true; $$(".pill.bad, .code.bad, .grades.bad").forEach((e) => e.classList.remove("bad")); }
+  const go = (v) => { clear(); mockSet("view", v); };
+  const val = (id) => $("#" + id).value.trim();
+  function empty(ids) { const miss = ids.filter((i) => !val(i)); if (miss.length) { show("empty", miss); return true; } return false; }
 
-  roles.addEventListener("click", (e) => {
-    const b = e.target.closest(".role"); if (!b) return;
-    role = b.dataset.role;
-    roles.querySelectorAll(".role").forEach((r) => r.setAttribute("aria-checked", String(r === b)));
-    if (lastMsg === "noRole" || lastMsg === "isTeacher" || lastMsg === "isStudent") clear();
+  // student: big grade buttons 1-12 and Đại học
+  const gbox = $("#grades");
+  for (let i = 1; i <= 12; i++) gbox.insertAdjacentHTML("beforeend", '<button type="button" class="grade" role="radio" aria-checked="false" data-g="Lớp ' + i + '">' + i + "</button>");
+  gbox.insertAdjacentHTML("beforeend", '<button type="button" class="grade wide" role="radio" aria-checked="false" data-g="Đại học">Đại học</button>');
+  gbox.addEventListener("click", (e) => {
+    const b = e.target.closest(".grade"); if (!b) return;
+    grade = b.dataset.g; $$(".grade").forEach((x) => x.setAttribute("aria-checked", String(x === b))); gbox.classList.remove("bad");
   });
-  // arrow keys move between the two radios
-  roles.addEventListener("keydown", (e) => {
-    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) return;
-    e.preventDefault();
-    const list = [...roles.querySelectorAll(".role")];
-    const next = list[(list.indexOf(document.activeElement) + 1) % list.length];
-    next.focus(); next.click();
-  });
 
-  $("eye").addEventListener("click", function () {
-    const on = this.getAttribute("aria-pressed") !== "true";
-    this.setAttribute("aria-pressed", String(on));
-    this.setAttribute("aria-label", on ? "Ẩn mật khẩu" : "Hiện mật khẩu");
-    $("pw").type = on ? "text" : "password";
-  });
-  ["acc", "pw"].forEach((id) => $(id).addEventListener("input", () => { if (lastMsg === "wrong") clear(); }));
+  // username filled from the name: no accents, lowercase, digits if taken; the child can still edit it
+  const slug = (n) => n.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/gi, "d").toLowerCase().replace(/[^a-z0-9]/g, "");
+  function autoUser() {
+    if (userDirty) return;
+    let u = slug($("#s-name").value);
+    if (u && TAKEN.includes(u)) u += String(10 + ((u.length * 7) % 90));
+    $("#s-user").value = u;
+  }
+  $("#s-name").addEventListener("input", autoUser);
+  $("#s-user").addEventListener("input", () => { userDirty = !!$("#s-user").value; });
 
-  $("login").addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!role) {
-      show("noRole");
-      roles.classList.remove("shake"); void roles.offsetWidth; roles.classList.add("shake");
-      roles.querySelector(".role").focus();
-      return;
+  $("#roles").addEventListener("click", (e) => { const b = e.target.closest(".role"); if (b) go("tao-" + b.dataset.role); });
+
+  $$(".eye").forEach((eye) => eye.addEventListener("click", () => {
+    const on = eye.getAttribute("aria-pressed") !== "true";
+    eye.setAttribute("aria-pressed", String(on));
+    eye.closest(".pill").querySelector("input").type = on ? "text" : "password";
+  }));
+
+  // 6-digit boxes (forgot password)
+  $$(".code").forEach((box) => {
+    for (let i = 0; i < 6; i++) {
+      const inp = document.createElement("input");
+      inp.inputMode = "numeric"; inp.maxLength = 1; inp.autocomplete = "one-time-code"; inp.setAttribute("aria-label", "Số " + (i + 1));
+      box.appendChild(inp);
     }
-    const acc = ACCOUNTS[$("acc").value.trim().toLowerCase()];
-    if (!acc || acc.pw !== $("pw").value) {
-      show("wrong");
-      $("accPill").classList.add("bad"); $("pwPill").classList.add("bad");
-      return;
-    }
-    if (acc.role !== role) { show(acc.role === "gv" ? "isTeacher" : "isStudent"); return; }
-    // first login on this device: language, birth year, boy/girl, 3 chickens; afterwards straight to the village
-    location.href = role === "gv" ? "gv-01-gui-bai.html" : (document.documentElement.dataset.first === "yes" ? "lg-02-chon-ga.html" : "lg-01-lang.html");
-  });
-
-  // keep the page's own VI/EN switch, role labels and any open message in sync with the language
-  document.addEventListener("mock:change", (e) => {
-    if (e.detail.key !== "lang") return;
-    document.querySelectorAll(".lang-mini button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.set === "lang:" + e.detail.value)));
-    document.querySelectorAll(".role").forEach((r) => {
-      if (!r.dataset.viLabel) r.dataset.viLabel = r.getAttribute("aria-label");
-      r.setAttribute("aria-label", e.detail.value === "en" ? r.dataset.enLabel : r.dataset.viLabel);
+    box.addEventListener("input", (e) => {
+      const ins = $$("input", box), i = ins.indexOf(e.target);
+      e.target.value = e.target.value.replace(/\D/g, "").slice(-1);
+      if (e.target.value && ins[i + 1]) ins[i + 1].focus();
     });
-    if (lastMsg) alertText.textContent = MSG[lastMsg][lang()];
+    box.addEventListener("keydown", (e) => {
+      const ins = $$("input", box), i = ins.indexOf(e.target);
+      if (e.key === "Backspace" && !e.target.value && ins[i - 1]) ins[i - 1].focus();
+    });
+    box.addEventListener("paste", (e) => {
+      const d = (e.clipboardData.getData("text") || "").replace(/\D/g, "").slice(0, 6);
+      if (!d) return; e.preventDefault();
+      $$("input", box).forEach((x, k) => { x.value = d[k] || ""; });
+    });
   });
+  const codeOf = (k) => $$('[data-code="' + k + '"] input').map((x) => x.value).join("");
+  function badCode(k) { show("code"); $('[data-code="' + k + '"]').classList.add("bad"); }
+
+  function paintLinks() {
+    const box = $("#links"); box.innerHTML = "";
+    (LINKS[view()] || []).forEach(([label, target]) => {
+      const b = document.createElement("button"); b.type = "button"; b.className = "link"; b.textContent = label[lang()]; b.dataset.target = target;
+      box.appendChild(b);
+    });
+  }
+  $("#links").addEventListener("click", (e) => {
+    const b = e.target.closest(".link"); if (!b || b.disabled) return;
+    const t = b.dataset.target;
+    if (t === "@resend") { show("sent"); b.disabled = true; setTimeout(() => { b.disabled = false; }, 4000); return; }
+    go(t);
+  });
+
+  function paint() {
+    const v = view(), t = T[v]; if (!t) return;
+    $("#ribbon").textContent = t.ribbon[lang()];
+    $("#go").hidden = !t.go; if (t.go) $("#go").textContent = t.go[lang()];
+    $("#ask").hidden = true;
+    paintLinks();
+    $$(".mailTo").forEach((e) => { e.textContent = v === "quen-ma" ? "g***@gmail.com" : mailTo; });
+    document.title = t.ribbon[lang()];
+    $("#resetUser").textContent = resetUser;
+  }
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key === "view") { clear(); $("#doneNote").hidden = !(e.detail.value === "dang-nhap" && pwChanged); paint(); }
+    if (e.detail.key === "lang") {
+      $$(".lang-mini button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.set === "lang:" + e.detail.value)));
+      paint(); if (lastMsg) alertText.textContent = MSG[lastMsg][lang()];
+    }
+  });
+  $("#form").addEventListener("input", () => { if (lastMsg && lastMsg !== "sent") clear(); $("#ask").hidden = true; $("#go").hidden = !T[view()].go; });
+
+  const TEACHER_HOME = "gv-01-gui-bai.html?state=co-khoa";
+  const finishStudent = () => { location.href = "lg-02-chon-ga.html"; };
+  $("#askAdd").addEventListener("click", () => { $("#ask").hidden = true; $("#go").hidden = false; $("#s-mail").focus(); });
+  $("#askSkip").addEventListener("click", finishStudent);
+
+  $("#form").addEventListener("submit", (e) => {
+    e.preventDefault(); clear();
+    const v = view();
+    if (v === "dang-nhap") {
+      if (empty(["acc", "pw"])) return;
+      const a = val("acc").toLowerCase();
+      if (val("pw") !== "123456" || !["hocsinh", "giaovien", "giaovien@gmail.com"].includes(a)) { show("wrong", ["acc", "pw"]); return; }
+            if (a === "hocsinh") location.href = root.dataset.first === "yes" ? "lg-02-chon-ga.html" : "lg-01-lang.html";
+      else go("gate-duyet"); // verified teachers only reach the course pages; this one still has to type the code
+    } else if (v === "tao-hs") {
+      if (empty(["s-name", "s-user", "s-pw"])) return;
+      if (TAKEN.includes(val("s-user").toLowerCase())) { show("taken", ["s-user"]); return; }
+      if (val("s-pw").length < 6) { show("short", ["s-pw"]); return; }
+      if (!grade) { show("grade"); gbox.classList.add("bad"); return; }
+      if (val("s-mail") && !/^\S+@\S+\.\S+$/.test(val("s-mail"))) { show("email", ["s-mail"]); return; }
+      if (!val("s-mail")) { $("#ask").hidden = false; $("#go").hidden = true; $("#askAdd").focus(); return; }
+      finishStudent();
+    } else if (v === "tao-gv") {
+      if (empty(["t-mail", "t-user", "t-name", "t-pw"])) return;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("t-mail"))) { show("gmail", ["t-mail"]); return; }
+      if (val("t-user").toLowerCase() === "giaovien") { show("taken", ["t-user"]); return; }
+      if (val("t-pw").length < 6) { show("short", ["t-pw"]); return; }
+      mailTo = val("t-mail");
+      // an email already verified goes straight in; any other gets the profile link by email
+      if (mailTo.toLowerCase().startsWith("daduyet@")) location.href = TEACHER_HOME;
+      else go("kiem-tra-mail");
+    } else if (v === "gate-duyet") {
+      if (codeOf("a") !== "482913") { badCode("a"); return; }
+      location.href = TEACHER_HOME;
+    } else if (v === "gate-tu-choi") {
+      location.href = "gv-00-ho-so.html?state=nop-lai";
+    } else if (v === "quen") {
+      if (empty(["f-acc"])) return;
+      if (val("f-acc").toLowerCase() === "hocsinh") { resetUser = val("f-acc"); go("quen-hs"); } else go("quen-ma");
+    } else if (v === "quen-ma") {
+      if (codeOf("b") !== "482913") { badCode("b"); return; }
+      if (val("n-pw").length < 6) { show("short", ["n-pw"]); return; }
+      pwChanged = true; go("dang-nhap");
+    } else if (v === "quen-hs") {
+      const ph = val("r-phone").replace(/[\s.\-]/g, "");
+      if (ph && !/^\+?\d{9,12}$/.test(ph)) { show("phone", ["r-phone"]); return; }
+      try { const x = JSON.parse(sessionStorage.getItem("mentor-mock-reset") || "[]"); x.push({ user: resetUser, phone: val("r-phone") }); sessionStorage.setItem("mentor-mock-reset", JSON.stringify(x)); } catch (e) {}
+      go("quen-xong");
+    } else if (v === "quen-xong") { go("dang-nhap");
+    }
+  });
+
   window.addEventListener("DOMContentLoaded", () => {
     const q = new URLSearchParams(location.search);
-    if (q.get("lan") === "da") mockSet("first", "no"); else mockSet("first", "yes");
-    // reviewer shortcuts: ?vaitro=hs|gv picks a role; ?loi=vaitro|sai|vaisai shows an error
-    const r = q.get("vaitro");
-    if (r) { const b = roles.querySelector('[data-role="' + r + '"]'); if (b) b.click(); }
+    mockSet("first", q.get("lan") === "da" ? "no" : "yes");
+    mockSet("view", T[q.get("v")] ? q.get("v") : "dang-nhap");
     const l = q.get("loi");
-    if (l === "vaitro") show("noRole");
-    if (l === "sai") { show("wrong"); $("accPill").classList.add("bad"); $("pwPill").classList.add("bad"); }
-    if (l === "vaisai") { show("isTeacher"); }
+    if (l === "sai") show("wrong", ["acc", "pw"]);
+    if (l === "trong") show("empty", ["acc", "pw"]);
+    if (l === "ma") badCode("b");
   });
 })();
 </script>

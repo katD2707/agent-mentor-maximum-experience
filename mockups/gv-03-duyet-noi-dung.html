@@ -19,6 +19,8 @@
   .steps a[aria-current] .n { background: var(--tim); color: var(--on-tim); border-color: transparent; }
   .topbar .btn.act { min-height: 44px; padding: 0 18px; white-space: nowrap; flex: none; }
   .pub[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+  .rejnote { margin: 0 0 14px; padding: 10px 14px; border-radius: var(--r-md); background: var(--do-soft); color: var(--do); font-weight: 500; }
+  .pubwrap { display: flex; align-items: center; gap: 10px; }
   @media (max-width: 640px) { .steps .l { display: none; } .steps a { padding: 0 4px; } .topbar > a.icon-btn { display: none; } .topbar .logo .nm { display: none; } .topbar .btn.act { padding: 0 14px; } }
 
   .main { max-width: 1160px; }
@@ -204,7 +206,7 @@
 <div class="mock-bar">
   <a href="index.html">← Tất cả màn hình</a>
   <span class="mock-title">Giáo viên: Duyệt bài</span>
-  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:duyet">Duyệt lần đầu</button><button data-set="state:da-xuat-ban">Sửa khóa đã xuất bản</button></span>
+  <span class="mock-seg"><span>Trạng thái</span><button data-set="state:duyet">Duyệt lần đầu</button><button data-set="state:da-xuat-ban">Sửa khóa đã đăng</button></span>
   <span class="mock-seg"><span>Khóa</span><button data-set="khoa:vat-li">Vật lí</button><button data-set="khoa:anh">Tiếng Anh</button><button data-set="khoa:tieu-hoc">Tiểu học</button></span>
   <span class="mock-seg"><span>Ngôn ngữ</span><button data-set="lang:vi">VI</button><button data-set="lang:en">EN</button></span>
   <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
@@ -222,8 +224,8 @@
       <a href="gv-03-duyet-noi-dung.html?state=duyet" aria-current="step"><span class="n">4</span><span class="l" data-en="Review">Duyệt</span></a>
     </nav>
     <span class="grow"></span>
-    <button class="btn btn-primary act pub" id="pub" data-when="state=duyet"><span data-en="Publish">Xuất bản</span></button>
-    <button class="btn btn-primary act pub" id="pub2" data-when="state=da-xuat-ban"><span data-en="Publish v2">Xuất bản bản 2</span></button>
+    <span class="pubwrap">    <button class="btn btn-primary act pub" id="pub" data-when="state=duyet"><span data-en="Submit">Gửi duyệt</span></button>
+    <button class="btn btn-primary act pub" id="pub2" data-when="state=da-xuat-ban"><span data-en="Submit">Gửi duyệt</span></button></span>
     <button class="icon-btn" type="button" data-settings="teacher" aria-label="Cài đặt"><i data-i="gear"></i></button>
   </header>
 
@@ -237,6 +239,7 @@
         <a class="icon-btn" href="#" aria-label="Bài sau"><i data-i="next"></i></a>
       </span>
     </div>
+    <p class="rejnote" id="rejnote" role="note" hidden></p>
     <p class="vernote" data-when="state=da-xuat-ban" role="note"><i data-i="layers"></i><span data-en="Becomes v2. 38 students stay on v1.">Thành bản 2. 38 học sinh đang học vẫn giữ bản 1.</span></p>
 
     <div class="levelrow" id="levelrow">
@@ -759,8 +762,17 @@
   // ---------- publish ----------
   const toast = $("toast");
   function say(t) { toast.textContent = t; toast.hidden = false; clearTimeout(say.t); say.t = setTimeout(() => (toast.hidden = true), 3200); }
-  $("pub").addEventListener("click", () => say(L("Đã xuất bản.", "Published.")));
-  $("pub2").addEventListener("click", () => say(L("Đã xuất bản bản 2.", "Version 2 published.")));
+  // one publish action: "Gửi duyệt" goes to the owner's queue; the course shows as Chờ duyệt in the list
+  const q = new URLSearchParams(location.search);
+  [$("pub"), $("pub2")].forEach((b) => {
+    b.addEventListener("click", () => {
+      const id = q.get("course") || (b.id === "pub2" ? "bayes" : "toan1");
+      try { const m = JSON.parse(sessionStorage.getItem("mentor-mock-sent") || "{}"); m[id] = 1; sessionStorage.setItem("mentor-mock-sent", JSON.stringify(m)); } catch (e) {}
+      say(L("Đã gửi duyệt.", "Sent for review."));
+      setTimeout(() => { location.href = "gv-01-gui-bai.html?state=co-khoa"; }, 900);
+    });
+  });
+  if (q.get("why")) { const r = $("rejnote"); r.textContent = L("Lần trước bị từ chối: ", "Rejected last time: ") + q.get("why"); r.hidden = false; }
 
   let lastKhoa = null;
   function refresh() {

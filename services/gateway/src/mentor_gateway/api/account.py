@@ -16,7 +16,7 @@ from mentor_gateway.users import Language, Theme, UserView
 router = APIRouter(tags=["account"])
 
 
-@router.get("/me", response_model=UserView)
+@router.get("/me", response_model=UserView, response_model_exclude_unset=True)
 def get_me(user: User = Depends(current_user), gw: Gateway = Depends(get_gw)) -> UserView:
     return gw.users.view(user)
 
@@ -42,7 +42,7 @@ class MePatch(BaseModel):
         return v
 
 
-@router.patch("/me", response_model=UserView)
+@router.patch("/me", response_model=UserView, response_model_exclude_unset=True)
 def patch_me(body: MePatch, user: User = Depends(current_user), gw: Gateway = Depends(get_gw)) -> UserView:
     fields = {k: getattr(body, k) for k in body.model_fields_set}
     if fields.get("theme") is None:  # theme is never null

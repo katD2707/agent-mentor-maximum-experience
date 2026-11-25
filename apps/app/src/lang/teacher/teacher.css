@@ -392,3 +392,27 @@ del { color: var(--do); text-decoration-thickness: 2px; }
 /* phones: the header must fit 390px (back, steps, the one action, settings); the logo is the same link as step 1 */
 .topbar .icon-btn { flex: none; }
 @media (max-width: 480px) { .topbar { gap: 6px; padding-inline: 12px; } .topbar .logo { display: none; } .topbar .steps { margin-left: 0; gap: 2px; } .topbar .btn.act { flex: 0 1 auto; min-width: 0; max-width: 42vw; padding: 0 10px; font-size: .85em; overflow: hidden; text-overflow: ellipsis; } }
+
+/* gv-01 with the hub on: a course row with its status chips and actions (Tiếp tục, Rút lại, Sửa, Gỡ) */
+.teacher-main .list > li.hub-crow { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 6px 14px; align-items: center; min-height: 64px; padding: 12px 8px; border-bottom: 1px solid var(--rule); }
+.hub-crow .media { width: 48px; height: 48px; border-radius: 12px; overflow: hidden; background: #FBF6EA; display: block; }
+.hub-crow .media img { width: 100%; height: 100%; object-fit: cover; }
+.hub-crow .media.pending { display: grid; place-items: center; background: var(--cam-soft); color: var(--cam); }
+.hub-crow .media.pending svg { width: 22px; height: 22px; }
+.hub-crow h3 { font-size: 1em; font-weight: 600; }
+.hub-crow h3 a { color: inherit; text-decoration: none; }
+.hub-crow h3 a:hover { text-decoration: underline; }
+.hub-crow .sub { color: var(--ink-2); font-size: .82em; margin-top: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hub-crow .hub-why, .hub-crow .hub-warn { grid-column: 2 / -1; font-size: .85em; font-weight: 500; }
+.hub-crow .hub-why { color: var(--do); }
+.hub-crow .hub-warn { color: var(--cam); }
+.hub-side { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px 8px; }
+.hub-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.hub-act { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 99px; border: 1.5px solid var(--rule-strong); background: transparent; color: var(--ink); font: inherit; font-weight: 600; font-size: .88em; cursor: pointer; text-decoration: none; }
+.hub-act:hover { border-color: var(--ink-3); }
+.hub-act:disabled { opacity: .55; cursor: default; }
+.hub-act.go { background: var(--tim); border-color: var(--tim); color: var(--on-tim); }
+.hub-act.go:hover { background: var(--tim-ink); }
+.hub-act.del { color: var(--do); border-color: transparent; }
+.hub-act.del:hover { background: var(--do-soft); }
+@media (max-width: 640px) { .teacher-main .list > li.hub-crow { grid-template-columns: 48px minmax(0, 1fr); } .hub-side { grid-column: 2; justify-content: flex-start; } .hub-chips { justify-content: flex-start; } }

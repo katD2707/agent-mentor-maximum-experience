@@ -6,6 +6,8 @@ import i18n from "../../i18n";
 import { App } from "../../App";
 import { AuthProvider } from "../../state/auth";
 import { mockTeacherApi, resetMockTeacher } from "../../api/mock-teacher-api";
+import type { HubCourse, HubState, TeacherCourseSummary } from "../../api/teacher";
+import { hubRowView } from "../../lib/teacher/hubStatus";
 import { canPublish, gradeWarning, guessLabels, labelsBody, labelsComplete, missingFields, type Labels } from "./labels";
 
 const L = (o: Partial<Labels>): Labels => ({ bac: null, chicken: null, grade: null, difficulty: null, ...o });
@@ -210,4 +212,92 @@ describe("labels and publish gating (mock)", () => {
     expect(screen.getByRole("button", { name: "Save" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Tags" })).toHaveAttribute("aria-current", "step");
   }, 20000);
+});
+
+describe("hub on: the course list by hub.state, Gửi duyệt (mock)", () => {
+  beforeEach(async () => {
+    resetMockTeacher();
+    localStorage.removeItem("mentor.mock.teacher");
+    localStorage.setItem("mentor.mock.hub", "1");
+    await i18n.changeLanguage("vi");
+  });
+  afterEach(() => {
+    resetMockTeacher();
+    localStorage.removeItem("mentor.mock.hub");
+    vi.restoreAllMocks();
+  });
+  const row = (title: string) => screen.getByRole("heading", { name: title }).closest("li") as HTMLElement;
+
+  it("each course shows the chip of its state with the actions that fit it", async () => {
+    teacherApp("/");
+    await screen.findByRole("heading", { name: "Ngữ văn 9: Truyện Kiều" });
+    const draft = within(row("Toán 1: Các số đến 10"));
+    expect(draft.getByText("Bản nháp")).toBeInTheDocument();
+    expect(draft.getByRole("link", { name: /Tiếp tục/ })).toBeInTheDocument();
+    const wait = within(row("Ngữ văn 9: Truyện Kiều"));
+    expect(wait.getByText("Chờ duyệt")).toBeInTheDocument();
+    expect(wait.getByRole("button", { name: /Rút lại/ })).toBeInTheDocument();
+    const no = within(row("Hóa 8: Phản ứng hóa học"));
+    expect(no.getByText("Bị từ chối")).toBeInTheDocument();
+    expect(no.getByText("Bài 3 thiếu đáp án.")).toBeInTheDocument();
+    expect(no.getByRole("link", { name: /Sửa/ })).toBeInTheDocument();
+    const live = within(row("Xác suất thống kê: Suy luận Bayes"));
+    expect(live.getByText("Đã đăng")).toBeInTheDocument();
+    expect(live.getByRole("link", { name: /Sửa/ })).toBeInTheDocument();
+    expect(live.getByRole("button", { name: /Gỡ/ })).toBeInTheDocument();
+  }, 20000);
+
+  it("Rút lại sends the course back to a draft; Gỡ asks first, then unpublishes", async () => {
+    const ui = userEvent.setup();
+    teacherApp("/");
+    await screen.findByRole("heading", { name: "Ngữ văn 9: Truyện Kiều" });
+    await ui.click(within(row("Ngữ văn 9: Truyện Kiều")).getByRole("button", { name: /Rút lại/ }));
+    expect(await screen.findByText("Đã rút lại. Bản nháp còn nguyên.")).toBeInTheDocument();
+    await waitFor(() => expect(within(row("Ngữ văn 9: Truyện Kiều")).getByText("Bản nháp")).toBeInTheDocument());
+
+    await ui.click(within(row("Xác suất thống kê: Suy luận Bayes")).getByRole("button", { name: /Gỡ/ }));
+    const dlg = await screen.findByRole("alertdialog");
+    expect(dlg).toHaveTextContent("Học sinh đã tải về vẫn học tiếp được.");
+    await ui.click(within(dlg).getByRole("button", { name: "Giữ lại" }));
+    expect(screen.queryByRole("alertdialog")).toBeNull();
+    expect(within(row("Xác suất thống kê: Suy luận Bayes")).getByText("Đã đăng")).toBeInTheDocument(); // kept
+    await ui.click(within(row("Xác suất thống kê: Suy luận Bayes")).getByRole("button", { name: /Gỡ/ }));
+    await ui.click(within(await screen.findByRole("alertdialog")).getByRole("button", { name: "Gỡ" }));
+    await waitFor(() => expect(within(row("Xác suất thống kê: Suy luận Bayes")).getByText("Bản nháp")).toBeInTheDocument());
+  }, 30000);
+
+  it("the final button is Gửi duyệt: it submits, never publishes, and then waits", async () => {
+    await mockTeacherApi.setLevel("t", "toan-1-dem-tao", 1, "basic");
+    const submit = vi.spyOn(mockTeacherApi, "submit");
+    const publish = vi.spyOn(mockTeacherApi, "publish");
+    teacherApp("/khoa/toan-1-dem-tao/duyet?v=1");
+    const go = await screen.findByRole("button", { name: "Gửi duyệt" });
+    expect(screen.queryByRole("button", { name: "Xuất bản" })).toBeNull();
+    await waitFor(() => expect(go).not.toHaveAttribute("aria-disabled"));
+    await userEvent.click(go);
+    expect(await screen.findByText(/Đã gửi duyệt\./)).toBeInTheDocument();
+    expect(submit).toHaveBeenCalledWith(expect.anything(), "toan-1-dem-tao", 1);
+    expect(publish).not.toHaveBeenCalled();
+    const waiting = await screen.findByRole("button", { name: "Đã gửi, đang chờ duyệt" });
+    expect(waiting).toBeDisabled();
+  }, 30000);
+});
+
+describe("hubRowView (pure)", () => {
+  const c = (over: Partial<TeacherCourseSummary>): TeacherCourseSummary => ({ id: "x", title: "X", status: "review", status_line_vi: "", status_line_en: "", updated_at: "", latest_version: 1, versions: [], ...over });
+  const hub = (state: HubState, over: Partial<HubCourse> = {}): HubCourse => ({ course_id: "x", title: "X", version: 1, kind: "new", state, live_version: null, reason: null, updated_at: "", ...over });
+  it("follows hub.state", () => {
+    expect(hubRowView(c({ hub: null })).actions).toEqual(["continue"]);
+    expect(hubRowView(c({ hub: hub("cho_duyet") }))).toMatchObject({ actions: ["withdraw"], oldVersion: false });
+    expect(hubRowView(c({ hub: hub("cho_duyet", { live_version: 1, version: 2 }) }))).toMatchObject({ actions: ["withdraw", "remove"], oldVersion: true });
+    expect(hubRowView(c({ hub: hub("tu_choi", { reason: "Thiếu đáp án" }) }))).toMatchObject({ actions: ["edit"], why: "Thiếu đáp án" });
+    expect(hubRowView(c({ hub: hub("da_dang", { live_version: 1 }) })).actions).toEqual(["edit", "remove"]);
+    expect(hubRowView(c({ hub: hub("rut_lai") })).chips[0].key).toBe("lg.hub.course.draft");
+    expect(hubRowView(c({ hub: hub("da_go") })).chips[0].key).toBe("lg.hub.course.draft");
+  });
+  it("a course still being read has no actions and keeps its processing chip", () => {
+    const v = hubRowView(c({ status: "reading", hub: null }));
+    expect(v.actions).toEqual([]);
+    expect(v.chips[0].key).toBe("gv.status.reading");
+  });
 });

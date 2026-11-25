@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { api, ApiError, hasMediaToken, localTokenStorage, setMediaToken, setMediaTokenSource, type Role, type User, type UserPatch } from "../api";
+import { api, ApiError, hasMediaToken, localTokenStorage, setMediaToken, setMediaTokenSource, type RegisterExtra, type Role, type User, type UserPatch } from "../api";
+import { TEACHER_UNVERIFIED_EVENT } from "../api/http";
 import { setLang } from "../i18n";
 import { flushOutbox } from "../lib/enrollments";
 import { bandForBirthYear } from "../lib/age";
@@ -12,10 +13,15 @@ interface AuthValue {
   user: User | null;
   /** Session token (for course/media calls). */
   token: string | null;
-  login(username: string, password: string, role: Role): Promise<User>;
-  /** Local sign-up of the self-contained package; `null` when this build has none (the login screen then hides it). */
-  register: ((username: string, password: string, role: Role) => Promise<User>) | null;
+  /** The hub login has no role cards, so `role` is optional. */
+  login(username: string, password: string, role?: Role): Promise<User>;
+  /** Sign-up of the self-contained package; `null` when this build has none (the login screen then hides it). `extra` is the hub form. */
+  register: ((username: string, password: string, role: Role, extra?: RegisterExtra) => Promise<User>) | null;
   signupEnabled(): Promise<boolean>;
+  /** The gateway's hub setting (central accounts, teacher approval): `null` until known. Off keeps the simple local flows. */
+  hub: boolean | null;
+  /** Reads the signed-in user again (the teacher gate calls it once the code is accepted). */
+  refreshMe(): Promise<User | null>;
   logout(): Promise<void>;
   updateMe(patch: UserPatch): Promise<void>;
   setQuiet(until: string | null): Promise<void>;
@@ -50,6 +56,22 @@ export function AuthProvider({ children, storage = localTokenStorage }: { childr
   const [tick, setTick] = useState(0);
   const bandRef = useRef<AgeBand | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [hub, setHub] = useState<boolean | null>(api.hubEnabled ? null : false);
+
+  useEffect(() => {
+    let live = true;
+    if (api.hubEnabled) void api.hubEnabled().then((on) => live && setHub(on), () => live && setHub(false));
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  // a course call answered 403 teacher_unverified: show the gate, which then asks the hub where the teacher really stands
+  useEffect(() => {
+    const on = () => setUser((u) => (u && u.role === "teacher" && (!u.teacher_status || u.teacher_status === "xac_minh") ? { ...u, teacher_status: "cho_duyet" } : u));
+    window.addEventListener(TEACHER_UNVERIFIED_EVENT, on);
+    return () => window.removeEventListener(TEACHER_UNVERIFIED_EVENT, on);
+  }, []);
 
   // The band comes from the birth year and today's date, so it is worked out here on every launch (the server
   // value is only the fallback) and re-checked on focus and every few minutes: the density switches on its own
@@ -148,8 +170,14 @@ export function AuthProvider({ children, storage = localTokenStorage }: { childr
     },
     [storage],
   );
-  const login = useCallback(async (username: string, password: string, role: Role) => open(await api.login(username, password, role)), [open]);
-  const register = useMemo(() => (api.register ? async (username: string, password: string, role: Role) => open(await api.register!(username, password, role)) : null), [open]);
+  const login = useCallback(async (username: string, password: string, role?: Role) => open(await api.login(username, password, role)), [open]);
+  const register = useMemo(() => (api.register ? async (username: string, password: string, role: Role, extra?: RegisterExtra) => open(await api.register!(username, password, role, extra)) : null), [open]);
+  const refreshMe = useCallback(async () => {
+    if (!token) return null;
+    const me = await api.getMe(token);
+    setUser(me);
+    return me;
+  }, [token]);
   const signupEnabled = useCallback(() => (api.signupEnabled ? api.signupEnabled() : Promise.resolve(false)), []);
 
   const logout = useCallback(async () => {
@@ -184,7 +212,7 @@ export function AuthProvider({ children, storage = localTokenStorage }: { childr
     [token],
   );
 
-  const value = useMemo(() => ({ status, user, token, login, register, signupEnabled, logout, updateMe, setQuiet }), [status, user, token, login, register, signupEnabled, logout, updateMe, setQuiet]);
+  const value = useMemo(() => ({ status, user, token, login, register, signupEnabled, hub, refreshMe, logout, updateMe, setQuiet }), [status, user, token, login, register, signupEnabled, hub, refreshMe, logout, updateMe, setQuiet]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 

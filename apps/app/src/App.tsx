@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "./state/auth";
 import { needsFirstRun } from "./lib/gate";
 import { LgLogin } from "./lang/screens/Login";
+import { TeacherGate } from "./lang/screens/TeacherGate";
+import { teacherVerified } from "./api";
 import { LgFirstRun } from "./lang/screens/FirstRun";
 import { Village } from "./lang/screens/Village";
 import { resolveDeepLink } from "./lib/deeplink";
@@ -103,6 +105,7 @@ export function App() {
   let body;
   if (status === "loading") body = <div className="boot" />;
   else if (!user) body = <LgLogin />;
+  else if (user.role === "teacher" && !teacherVerified(user)) body = <TeacherGate />;
   else if (user.role === "teacher") body = (
       <Suspense fallback={<div className="boot" />}>
         <TeacherApp />

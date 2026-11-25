@@ -1,9 +1,9 @@
-import { API_BASE, qs, raw, request } from "./http";
+import { API_BASE, isKnownCode, notifyUnverified, qs, raw, request } from "./http";
 import { getMediaToken, withToken } from "./media";
-import { ApiError } from "./types";
+import { ApiError, type ApiErrorCode } from "./types";
 import type { Block, CoursePack } from "./course";
 import type { PCourseLevels } from "./practice";
-import type { ChatMessage, CommentStatus, Outline, TeacherApi, TeacherComment, TeacherCourseDetail, TeacherCourseSummary, TeacherTest, UnsureStep, UploadProgress } from "./teacher";
+import type { ChatMessage, CommentStatus, HubCourse, Outline, TeacherApi, TeacherComment, TeacherCourseDetail, TeacherCourseSummary, TeacherTest, UnsureStep, UploadProgress } from "./teacher";
 
 const P = "/teacher";
 const enc = encodeURIComponent;
@@ -17,7 +17,17 @@ function postForm<T>(path: string, token: string, form: FormData, onProgress?: U
     x.upload.onprogress = (e) => e.lengthComputable && onProgress?.(e.loaded, e.total);
     x.onerror = () => reject(new ApiError(0, "network"));
     x.onload = () => {
-      if (x.status < 200 || x.status >= 300) return reject(new ApiError(x.status, x.status === 401 ? "unauthorized" : x.status === 404 ? "not_found" : "unknown"));
+      if (x.status < 200 || x.status >= 300) {
+        let code: ApiErrorCode = x.status === 401 ? "unauthorized" : x.status === 404 ? "not_found" : "unknown";
+        try {
+          const e = (JSON.parse(x.responseText) as { error?: string }).error;
+          if (isKnownCode(e)) code = e;
+        } catch {
+          /* no JSON body */
+        }
+        notifyUnverified(code);
+        return reject(new ApiError(x.status, code));
+      }
       try {
         resolve(JSON.parse(x.responseText) as T);
       } catch {
@@ -64,6 +74,15 @@ export const httpTeacherApi: TeacherApi = {
   listComments: (token, id, v) => request<TeacherComment[]>("GET", `${P}/courses/${enc(id)}/versions/${v}/comments`, { token }),
   async publish(token, id, v) {
     await request("POST", `${P}/courses/${enc(id)}/versions/${v}/publish`, { token });
+  },
+  async submit(token, id, v) {
+    return (await request<{ hub?: HubCourse | null }>("POST", `${P}/courses/${enc(id)}/versions/${v}/submit`, { token })).hub ?? null;
+  },
+  async withdraw(token, id) {
+    await request("POST", `${P}/courses/${enc(id)}/withdraw`, { token });
+  },
+  async remove(token, id) {
+    await request("POST", `${P}/courses/${enc(id)}/remove`, { token });
   },
   setLevel: (token, id, v, level) => request<{ version: number; new_version: boolean }>("PUT", `${P}/courses/${enc(id)}/versions/${v}/level`, { token, body: { level } }),
   async newVersion(token, id) {

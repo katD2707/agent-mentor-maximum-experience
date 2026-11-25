@@ -7,8 +7,9 @@ from typing import Literal
 import yaml
 from mentor_schemas import Profile, RoutinesFile, WorkspacePaths
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import func, select
 
+from mentor_gateway.age import school_year_start
 from mentor_gateway.db import Database, User
 from mentor_gateway.mirror import Mirror
 from mentor_gateway.provisioning import default_routines
@@ -36,6 +37,10 @@ class UserView(BaseModel):
     theme: Theme
     quiet_until: datetime | None
     avatar: Literal["nam", "nu"] | None = None  # Làng gà: chosen at first run
+    # Hub accounts only (CONTRACTS-HUB section 3). Left unset (so absent from the JSON) while the hub is off; with the hub on
+    # `teacher_status` is null for students, else chua_nop|cho_duyet|tu_choi|da_duyet|xac_minh for teachers.
+    email: str | None = None
+    teacher_status: str | None = None
 
 
 # Accounts created on startup in dev (infra/README, docs/demo-accounts.md). Passwords are for local use only.
@@ -82,6 +87,59 @@ class UserService:
         with self.db.session() as s:
             return list(s.scalars(select(User).where(User.provisioned_at.is_not(None))))
 
+    def by_login(self, login: str) -> User | None:
+        """A user by username, or by the email on record (hub accounts)."""
+        login = login.strip().lower()
+        user = self.by_username(login)
+        if user is None and "@" in login:
+            with self.db.session() as s:
+                user = s.scalars(select(User).where(func.lower(User.email) == login)).first()
+        return user
+
+    def birth_year_for_grade(self, grade: str | None) -> int | None:
+        """Hub `grade` ("1".."12" or "dh") -> the birth year that `age.grade_for` maps back to that grade; `dh` = 20 years old."""
+        if not grade:
+            return None
+        year = school_year_start(self.clock().date())
+        if grade == "dh":
+            return year - 20
+        try:
+            n = int(grade)
+        except ValueError:
+            return None
+        return year - 5 - n if 1 <= n <= 12 else None
+
+    def mirror_hub(self, account: dict, token: str | None, password: str | None) -> User:
+        """Create or update the local row of a hub account (found by hub id, else by username: that adopts a legacy local
+        account). `password` refreshes the offline login hash; the hub token is kept when none is given."""
+        username = str(account["username"]).strip().lower()
+        fields: dict = {
+            "hub_id": account["id"], "role": account.get("role") or "student", "email": account.get("email"),
+            "teacher_status": account.get("teacher_status"), "reject_reason": account.get("reject_reason"),
+        }
+        if token:
+            fields["hub_token"] = token
+        if account.get("display_name"):
+            fields["display_name"] = account["display_name"]
+        with self.db.session() as s:
+            user = s.scalars(select(User).where(User.hub_id == account["id"])).first() or s.scalars(
+                select(User).where(User.username == username)).first()
+            if user is None:
+                user = User(id=new_id("u"), username=username, password_hash=hash_password(password or new_id("x")),
+                            display_name=account.get("display_name") or username, theme="system", language="vi",
+                            created_at=self.clock(), role=fields["role"])
+                s.add(user)
+            elif password:
+                user.password_hash = hash_password(password)
+            for k, v in fields.items():
+                setattr(user, k, v)
+            user.username = username
+            if user.birth_year is None:
+                user.birth_year = self.birth_year_for_grade(account.get("grade"))
+            s.flush()
+            s.expunge(user)
+            return user
+
     def update(self, user_id: str, **fields: object) -> User:
         with self.db.session() as s:
             user = s.get(User, user_id)
@@ -100,9 +158,10 @@ class UserService:
         """Students with a workspace take part in jobs, routines and notifications."""
         return user.role == "student" and user.provisioned_at is not None
 
-    @staticmethod
-    def view(user: User) -> UserView:
+    def view(self, user: User) -> UserView:
+        extra = {"email": user.email, "teacher_status": user.teacher_status} if self.settings.hub_on else {}
         return UserView(
+            **extra,
             id=user.id, role=user.role, username=user.username, display_name=user.display_name,
             age_band=user.age_band, birth_year=user.birth_year,
             language=user.language if user.language in ("vi", "en") else None,

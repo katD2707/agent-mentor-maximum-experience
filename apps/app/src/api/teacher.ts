@@ -6,6 +6,19 @@ export type CourseStatus = "reading" | "needs_retake" | "outline_ready" | "build
 /** Course difficulty: the agent suggests, the teacher confirms (CONTRACTS section 14). */
 export type CourseLevel = "basic" | "intermediate" | "advanced";
 
+/** The hub's view of a course (CONTRACTS-HUB `course`): where it stands in the owner's queue. */
+export type HubState = "cho_duyet" | "tu_choi" | "da_dang" | "da_go" | "rut_lai";
+export interface HubCourse {
+  course_id: string;
+  title: string;
+  version: number;
+  kind: "new" | "update";
+  state: HubState;
+  live_version: number | null;
+  reason: string | null;
+  updated_at: string;
+}
+
 export interface TeacherVersion {
   version: number;
   status: "draft" | "review" | "published" | string;
@@ -28,6 +41,8 @@ export interface TeacherCourseSummary {
   updated_at: string;
   latest_version: number;
   versions: TeacherVersion[];
+  /** Hub on only: the hub's state of this course; null when the hub does not know it yet (a draft) or is offline; absent when the hub is off. */
+  hub?: HubCourse | null;
   /** the course keeps failing to upload to the Drive course store (the gateway retries on its own) */
   drive_unsynced?: boolean;
   build?: { done: number; total: number } | null;
@@ -161,6 +176,12 @@ export interface TeacherApi {
   postComment(token: string, courseId: string, version: number, c: CommentInput): Promise<{ id: string; status: CommentStatus }>;
   listComments(token: string, courseId: string, version: number): Promise<TeacherComment[]>;
   publish(token: string, courseId: string, version: number): Promise<void>;
+  /** Hub on: POST .../versions/{v}/submit, "Gửi duyệt". 409 `pending` / `not_owner`, 503 `hub_offline`, 403 `teacher_unverified`. */
+  submit(token: string, courseId: string, version: number): Promise<HubCourse | null>;
+  /** Hub on: POST /courses/{id}/withdraw, only while `cho_duyet`. */
+  withdraw(token: string, courseId: string): Promise<void>;
+  /** Hub on: POST /courses/{id}/remove, unpublishes now. */
+  remove(token: string, courseId: string): Promise<void>;
   /** PUT /courses/{id}/versions/{v}/level. On a published version a different level lands in the next draft (`new_version`). */
   setLevel(token: string, courseId: string, version: number, level: CourseLevel): Promise<{ version: number; new_version: boolean }>;
   /** POST /courses/{id}/versions: a new draft v+1 of a published course. Returns its number. */

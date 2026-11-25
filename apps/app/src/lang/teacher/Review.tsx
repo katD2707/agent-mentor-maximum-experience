@@ -24,8 +24,8 @@ export default function Review() {
   const { id = "" } = useParams();
   const [params, setParams] = useSearchParams();
   const { t } = useTranslation();
-  const { token } = useAuth();
-  const { refresh: refreshList } = useTeacherCourses();
+  const { token, hub } = useAuth();
+  const { refresh: refreshList, courses } = useTeacherCourses();
 
   const [detail, setDetail] = useState<TeacherCourseDetail | null>(null);
   const [missing, setMissing] = useState(false);
@@ -58,7 +58,10 @@ export default function Review() {
 
   const version = Number(params.get("v")) || detail?.course.latest_version || 1;
   const vinfo = detail?.course.versions.find((v) => v.version === version);
-  const published = vinfo?.status === "published";
+  // hub on: where the owner's queue has this course; a version already sent waits, an approved one is live
+  const hubCourse = hub ? (courses?.find((c) => c.id === id)?.hub ?? null) : null;
+  const pendingHere = hubCourse?.state === "cho_duyet" && hubCourse.version === version;
+  const published = vinfo?.status === "published" || (hubCourse?.state === "da_dang" && hubCourse.live_version === version);
   const lv = detail ? versionLevel(detail.course, vinfo) : { suggested: null, confirmed: null };
   // the difficulty is confirmed in the Nhãn step; publishing waits for it
   const levelConfirmed = detail ? canPublish(detail.course, version) : false;
@@ -213,13 +216,24 @@ export default function Review() {
     if (!token) return;
     setBusy("publish");
     try {
-      await teacherApi.publish(token, id, version);
+      if (hub) {
+        await teacherApi.submit(token, id, version); // "Gửi duyệt": the owner publishes it after looking
+        refreshList();
+        toast.show(t("lg.hub.submit.done"));
+      } else {
+        await teacherApi.publish(token, id, version);
+        toast.show(version > 1 ? t("gv.publishedOkN", { version }) : t("gv.publishedOk"));
+      }
       await loadDetail();
       refreshList();
-      toast.show(version > 1 ? t("gv.publishedOkN", { version }) : t("gv.publishedOk"));
     } catch (e) {
-      if ((e as { status?: number }).status === 409 && !levelConfirmed) needLevel();
-      else setError(t("gv.publishFailed"));
+      const code = (e as { code?: string }).code;
+      if (hub && code === "pending") setError(t("lg.hub.submit.pending"));
+      else if (hub && code === "not_owner") setError(t("lg.hub.submit.notOwner"));
+      else if (hub && code === "hub_offline") setError(t("lg.hub.err.hub_offline"));
+      else if (hub && code === "teacher_unverified") setError(t("lg.hub.err.teacher_unverified")); // the gate takes over
+      else if ((e as { status?: number }).status === 409 && !levelConfirmed) needLevel();
+      else setError(hub ? t("lg.hub.submit.failed") : t("gv.publishFailed"));
     } finally {
       setBusy(null);
     }
@@ -254,7 +268,7 @@ export default function Review() {
     );
 
   const blocked = anyPending;
-  const publishLabel = version > 1 ? t("gv.publishN", { version }) : t("gv.publish");
+  const publishLabel = hub ? (version > 1 ? t("lg.hub.submit.btnN", { version }) : t("lg.hub.submit.btn")) : version > 1 ? t("gv.publishN", { version }) : t("gv.publish");
 
   return (
     <div className="app review">
@@ -263,6 +277,10 @@ export default function Review() {
           (published ? (
             <button className="btn btn-primary act pub" type="button" onClick={() => void edit()} disabled={busy !== null} data-guide="gv-publish" data-guide-label={t("gv.editPublished")}>
               <span>{t("gv.editPublished")}</span>
+            </button>
+          ) : pendingHere ? (
+            <button className="btn btn-primary act pub" type="button" disabled data-guide="gv-publish" data-guide-label={t("lg.hub.submit.waiting")}>
+              <span>{t("lg.hub.submit.waiting")}</span>
             </button>
           ) : (
             <button className="btn btn-primary act pub" type="button" onClick={() => (levelConfirmed ? void publish() : needLevel())} disabled={busy !== null || blocked} aria-disabled={!levelConfirmed || undefined} aria-describedby={blocked ? "pub-why" : undefined} data-guide="gv-publish" data-guide-label={publishLabel}>
@@ -274,7 +292,7 @@ export default function Review() {
       <main className="main review-main">
         {blocked && (
           <p id="pub-why" className="sr">
-            {t("gv.publishWait")}
+            {hub ? t("lg.hub.submit.wait") : t("gv.publishWait")}
           </p>
         )}
         {error && (

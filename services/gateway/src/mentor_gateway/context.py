@@ -13,6 +13,7 @@ from mentor_gateway.research import tables as _research_tables  # noqa: F401  (r
 from mentor_gateway.db import Database
 from mentor_gateway.engagement import EngagementService
 from mentor_gateway.gitrepo import UserLocks
+from mentor_gateway.hub import HubClient
 from mentor_gateway.jobs import JobExecutor, JobRunner, JobStore
 from mentor_gateway.langga import tables as _langga_tables  # noqa: F401  (registers the Làng gà tables before create_all)
 from mentor_gateway.langga.papers import PaperStore
@@ -57,6 +58,7 @@ class Gateway:
     xp: XpService | None = None  # Làng gà XP ledger
     ai_store: UserAIStore | None = None  # the user's own AI key file (direct mode); None when a model router is used
     ai: UserAIClient | None = None  # the single client for every AI call in direct mode
+    hub_client: HubClient | None = None  # central hub (accounts, teacher approval, course submit); None = off
 
 
 def use_file_mirror(settings: Settings) -> bool:
@@ -115,4 +117,5 @@ def build_gateway(settings: Settings, *, clock: Clock = utc_now, executor: JobEx
     planner = PlannerService(db, users, hub, push, clock, practice, llm)
     scheduler.planner = planner.tick
     return Gateway(settings, clock, db, box, mirror, sync, users, hub, dispatcher, jobs, runner, scheduler, backups,
-                   push, nudges, practice, EngagementService(db, mirror, clock), audit, planner, xp, ai_store, ai)
+                   push, nudges, practice, EngagementService(db, mirror, clock), audit, planner, xp, ai_store, ai,
+                   HubClient(settings.hub_url) if settings.hub_on else None)

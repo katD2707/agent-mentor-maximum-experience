@@ -521,6 +521,12 @@ elif MODE == "icon":  # head and shoulders, happy, for the app icon (transparent
     for piv, sx in c.parts["wings"]: piv.rotation_euler = (0.3, -sx * 1.0, 0)
     camera(2.6, 7.55, 0, (1024, 1024))
     sc.render.filepath = os.path.join(OUT, f"icon-{SUBJ}.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
+elif MODE == "appicon":  # the whole chick of STAGE, happy, filling a 1024 px frame (transparent) for the app icon
+    sc.render.film_transparent = True
+    c = Chicken(0, STAGE, ("happy",), subject=SUBJ, turn=-8)
+    for piv, sx in c.parts["wings"]: piv.rotation_euler = (0.3, -sx * 0.45, 0)  # a small lift: keeps the chick compact
+    camera(float(os.environ.get("MENTOR_ICON_SCALE", "2.9")), float(os.environ.get("MENTOR_ICON_Z", "6.45")), 0, (1024, 1024))
+    sc.render.filepath = os.path.join(OUT, f"appicon-{SUBJ}.png"); (None if LIVE else bpy.ops.render.render(write_still=True))
 elif MODE in ("happy", "sad", "surprised"):  # one transparent still, same framing as the animation frames
     sc.render.film_transparent = True
     c = Chicken(0, STAGE, (MODE,), subject=SUBJ)

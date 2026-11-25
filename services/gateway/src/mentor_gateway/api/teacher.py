@@ -14,7 +14,10 @@ from fastapi.responses import FileResponse, Response, StreamingResponse
 from pydantic import BaseModel, Field, field_validator
 
 from mentor_gateway.api.courses import IMMUTABLE, MIME_FIX, _cached, media_user
-from mentor_gateway.api.deps import current_user
+from mentor_gateway.api.deps import current_user, get_gw
+from mentor_gateway.content.drive import build_submission
+from mentor_gateway.context import Gateway
+from mentor_gateway.hub import SUBMIT_TIMEOUT, HubError
 from mentor_gateway.content.store import ContentError, Immutable, NotFound, sha256_bytes
 from mentor_gateway.db import User
 from mentor_gateway.teacher import steps
@@ -25,9 +28,18 @@ router = APIRouter(prefix="/teacher", tags=["teacher"])
 MAX_UPLOAD_BYTES = 400_000_000
 
 
-def teacher_only(user: User = Depends(current_user)) -> User:
+def teacher_account(user: User = Depends(current_user)) -> User:
+    """A teacher, whatever the hub says about the account (the gate screens and `/teacher/account*` use this)."""
     if user.role != "teacher":
         raise HTTPException(403, {"error": "role_mismatch"})
+    return user
+
+
+def teacher_only(user: User = Depends(teacher_account), gw: Gateway = Depends(get_gw)) -> User:
+    """Course pages: with the hub on only a verified teacher (`xac_minh`) gets in. `teacher_status` null = hub off or a
+    local-only account, treated as verified."""
+    if gw.hub_client is not None and user.teacher_status not in (None, "xac_minh"):
+        raise HTTPException(403, {"error": "teacher_unverified"})
     return user
 
 
@@ -146,8 +158,14 @@ async def thumb(course_id: str, ref: str, user: User = Depends(media_teacher),
 # ---------------------------------------------------------------- list, detail
 @router.get("/courses")
 async def courses(since: str | None = None, user: User = Depends(teacher_only),
-                  svc: BuilderService = Depends(builder)) -> list[dict]:
+                  svc: BuilderService = Depends(builder), gw: Gateway = Depends(get_gw)) -> list[dict]:
     out = await asyncio.to_thread(svc.list_for, user)
+    if gw.hub_client is not None:  # `hub`: the course as the hub knows it (cached 30 s); null when offline or unknown
+        try:
+            mine = await asyncio.to_thread(gw.hub_client.mine, user.hub_token) if user.hub_token else {}
+        except HubError:
+            mine = {}
+        out = [{**c, "hub": mine.get(c.get("course_id") or c.get("id"))} for c in out]
     if since:
         try:
             cut = datetime.fromisoformat(since.replace("Z", "+00:00"))
@@ -430,6 +448,107 @@ async def publish(course_id: str, version: int, user: User = Depends(teacher_onl
     svc._save(st)  # noqa: SLF001
     svc.emit(st)
     return {"version": info.model_dump(mode="json"), "course": svc.view(st)}
+
+
+@router.post("/courses/{course_id}/versions/{version}/submit")
+async def submit(course_id: str, version: int, user: User = Depends(teacher_only), svc: BuilderService = Depends(builder),
+                 gw: Gateway = Depends(get_gw)) -> dict:
+    """Gui duyet (hub on): the same checks as `publish`, then the pack goes to the hub for the owner to approve.
+    The version stays a draft here; students get it once the owner approves and the catalog sync brings it."""
+    if gw.hub_client is None:
+        raise HTTPException(404, {"error": "not_found"})
+    if not user.hub_token:
+        raise HTTPException(409, {"error": "hub_not_linked"})
+    st = _version(svc, user, course_id, version)
+    if svc.active_jobs(st):
+        raise Busy("busy", "the agent is still working on this course")
+    store = svc.content.store
+    vinfo = store.version_info(store.load_meta(course_id), version)
+    if vinfo.status != "published" and not vinfo.level_confirmed:
+        raise HTTPException(409, {"error": "level_unconfirmed"})
+    blockers = await asyncio.to_thread(svc.publish_blockers, course_id, version)
+    if blockers:
+        raise HTTPException(409, {"error": "verify_failed", "issues": blockers})
+    sub = await asyncio.to_thread(build_submission, store, course_id, version, gw.clock())
+    data = {"course_id": course_id, "version": str(version), "title": sub["title"],
+            "entry": json.dumps(sub["entry"], ensure_ascii=False), "meta": json.dumps(sub["meta"], ensure_ascii=False),
+            "zip_sha256": sub["zip_sha256"], "cover_name": sub["cover_name"]}
+    files = {"pack": (f"pack-v{version}.zip", sub["zip"], "application/zip"),
+             "cover": (sub["cover_name"], sub["cover"], "application/octet-stream")}
+    res = await asyncio.to_thread(gw.hub_client.call, "POST", "/api/courses/submit", token=user.hub_token, data=data,
+                                  files=files, timeout=SUBMIT_TIMEOUT)
+    gw.hub_client.forget_mine(user.hub_token)
+    svc.say(st, "agent", "notice", f"Đã gửi bản {version} để duyệt.", f"Sent v{version} for review.")
+    svc._save(st)  # noqa: SLF001
+    svc.emit(st)
+    return {"hub": (res or {}).get("course")}
+
+
+def _hub_course_action(action: str):
+    async def handler(course_id: str, user: User = Depends(teacher_only), svc: BuilderService = Depends(builder),
+                      gw: Gateway = Depends(get_gw)) -> dict:
+        if gw.hub_client is None:
+            raise HTTPException(404, {"error": "not_found"})
+        if not user.hub_token:
+            raise HTTPException(409, {"error": "hub_not_linked"})
+        await asyncio.to_thread(svc.owned, user, course_id)
+        res = await asyncio.to_thread(gw.hub_client.call, "POST", f"/api/courses/{course_id}/{action}", token=user.hub_token)
+        gw.hub_client.forget_mine(user.hub_token)
+        return {"hub": (res or {}).get("course")}
+
+    return handler
+
+
+router.add_api_route("/courses/{course_id}/withdraw", _hub_course_action("withdraw"), methods=["POST"])
+router.add_api_route("/courses/{course_id}/remove", _hub_course_action("remove"), methods=["POST"])
+
+
+# ---------------------------------------------------------------- the teacher's hub account (the gate screens)
+def _account_view(user: User) -> dict:
+    return {"teacher_status": user.teacher_status, "reject_reason": user.reject_reason, "email": user.email}
+
+
+def _hub_for(user: User, gw: Gateway):
+    if gw.hub_client is None:
+        raise HTTPException(404, {"error": "not_found"})
+    if not user.hub_token:
+        raise HTTPException(409, {"error": "hub_not_linked"})
+    return gw.hub_client
+
+
+@router.get("/account")
+async def account(user: User = Depends(teacher_account), gw: Gateway = Depends(get_gw)) -> dict:
+    """`{teacher_status, reject_reason, email}`, refreshed from the hub when it is on."""
+    if gw.hub_client is None:
+        return _account_view(user)
+    hub = _hub_for(user, gw)
+    res = await asyncio.to_thread(hub.call, "GET", "/api/me", token=user.hub_token)
+    user = await asyncio.to_thread(gw.users.mirror_hub, (res or {})["account"], None, None)
+    return _account_view(user)
+
+
+class VerifyBody(BaseModel):
+    code: str = Field(min_length=1, max_length=12)
+
+
+@router.post("/account/verify")
+async def account_verify(body: VerifyBody, user: User = Depends(teacher_account), gw: Gateway = Depends(get_gw)) -> dict:
+    hub = _hub_for(user, gw)
+    res = await asyncio.to_thread(hub.call, "POST", "/api/teacher/verify", token=user.hub_token, json={"code": body.code.strip()})
+    user = await asyncio.to_thread(gw.users.mirror_hub, (res or {})["account"], None, None)
+    return _account_view(user)
+
+
+@router.post("/account/resend-form", status_code=204)
+async def account_resend_form(user: User = Depends(teacher_account), gw: Gateway = Depends(get_gw)) -> Response:
+    await asyncio.to_thread(_hub_for(user, gw).call, "POST", "/api/teacher/resend-form", token=user.hub_token)
+    return Response(status_code=204)
+
+
+@router.post("/account/resend-code", status_code=204)
+async def account_resend_code(user: User = Depends(teacher_account), gw: Gateway = Depends(get_gw)) -> Response:
+    await asyncio.to_thread(_hub_for(user, gw).call, "POST", "/api/teacher/resend-code", token=user.hub_token)
+    return Response(status_code=204)
 
 
 @router.post("/courses/{course_id}/versions", status_code=201)

@@ -59,7 +59,7 @@
     G(".lang", "Ngôn ngữ", "Chạm để chọn tiếng Việt hoặc tiếng Anh.", "Language", "Tap to choose Vietnamese or English."),
     // teacher
     G("#drop", "Thả tài liệu", "Kéo ảnh chụp sách, PDF, slide hay video vào đây. Gửi xong có thể đóng app, khóa soạn xong sẽ tự hiện.", "Drop your material", "Drag book photos, PDFs, slides or videos here. You can close the app; the course appears when it's ready."),
-    G(".list .row", "Khóa của bạn", "Nhãn màu cho biết khóa đang được soạn, cần bạn xem hay đã xuất bản.", "Your courses", "The coloured tag shows if a course is being prepared, needs you, or is published.", "gv-01"),
+    G(".list .row", "Khóa của bạn", "Nhãn màu cho biết khóa đang được soạn, cần bạn xem hay đã đăng.", "Your courses", "The coloured tag shows if a course is being prepared, needs you, or is live.", "gv-01"),
     G(".bad", "Trang chưa đọc được", "Ảnh này mờ hoặc tối. Bấm Chụp lại để gửi lại đúng trang đó.", "Unreadable page", "This photo is blurry or dark. Tap Retake to resend that page."),
     G("#outline", "Cấu trúc khóa", "Sửa thẳng ở đây: đổi tên, kéo để đổi thứ tự, xóa hoặc thêm bài.", "Course structure", "Edit right here: rename, drag to reorder, delete or add lessons."),
     G("#go", "Soạn nội dung", "Bấm khi đã ưng cấu trúc. Mentor soạn xong sẽ báo bạn.", "Write the lessons", "Press when the structure looks right. Mentor tells you when it's done."),
@@ -68,7 +68,7 @@
     G("#phone", "Học sinh thấy gì", "Bản xem trước đúng như trong bài học. Sửa bên phải thì hình đổi theo.", "What students see", "A preview of the real lesson. Edit on the right and it follows.", "gv-03"),
     G("#rv-fields", "Sửa bước này", "Chỉ hiện phần của bước này. Gõ nhận xét cho Mentor ở cuối, Mentor sửa luôn.", "Edit this step", "Only this step's fields. Type a note for Mentor at the bottom; it fixes it.", "gv-03"),
     G(".panel", "Nhận xét của bạn", "Mentor sửa theo từng nhận xét. Xong thì nhãn đổi thành Đã sửa.", "Your comments", "Mentor fixes each one; the tag turns to Fixed.", "gv-03"),
-    G("#pub, #pub2", "Xuất bản", "Đưa bản này tới học sinh. Ai đang học bản cũ vẫn giữ tiến độ.", "Publish", "Sends this version to students. Anyone mid-course keeps their progress."),
+    G("#pub, #pub2", "Gửi duyệt", "Gửi bản này cho chủ duyệt. Học sinh vẫn thấy bản cũ cho đến khi duyệt.", "Submit", "Sends this version for review. Students keep the old one until it is approved."),
     G(".version", "Phiên bản", "Học sinh đang học bản cũ vẫn học tiếp bản cũ. Bản sửa chỉ đến học sinh mới.", "Versions", "Students on the old version keep it; edits go to new students."),
     // everywhere
     G("[data-settings]", "Cài đặt", "Đổi lớp, ngôn ngữ, nền sáng tối. Muốn yên tĩnh thì chọn Tạm im lặng, Mentor sẽ không nhắc trong lúc đó.", "Settings", "Change grade, language and theme. Pick Quiet for a while and Mentor won't remind you."),

@@ -2,7 +2,7 @@
 # `version` is kept equal to apps/app/src-tauri/tauri.conf.json by build.ps1.
 id = "vn.mentor.app"
 name = "Mentor"
-version = "0.2.4"
+version = "0.2.5"
 # TODO(owner): the Mentor repo has no LICENSE file yet. Put the SPDX id you choose here (for example "MIT" or
 # "Apache-2.0"), or "LicenseRef-Proprietary" if the app stays closed. F-Eco rejects the manifest without a real value.
 license = "TODO"

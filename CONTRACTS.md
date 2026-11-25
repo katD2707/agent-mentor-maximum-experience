@@ -172,6 +172,7 @@ but no longer read). The dev student `hocsinh` is born 2010. An operator correct
 |---|---|---|---|
 | POST | `/auth/login` | `{username, password, role}` | 200 `{token, user}`; wrong password or unknown user 401 `invalid_credentials`; right credentials, other role 403 `role_mismatch`; a student's workspace is created on the first login |
 | POST | `/auth/logout` | | 204 |
+| GET/POST | `/auth/config`, `/auth/register`, `/auth/forgot`, `/auth/forgot/request`, `/auth/reset`; `/teacher/account*`, `/teacher/courses/{id}/versions/{v}/submit`, `/withdraw`, `/remove` | | Central hub (accounts, teacher approval, course submit): see CONTRACTS-HUB.md section 3. `role` in login is optional; `User` gains `email`, `teacher_status` (only when the hub is on) |
 | GET | `/me` | | `User` |
 | PATCH | `/me` | `{birth_year?, language?, theme?, display_name?}` (only present fields change; `language` may be `null`; `age_band` is derived and ignored) | `User`; 422 for unknown values (`birth_year` outside 1950-2025, or `null`) or an empty name. `birth_year` is accepted only while it is `null`: afterwards 409 `birth_year_locked`. `role`/`username` cannot change |
 | PUT | `/me/quiet` | `{until: ISO-8601 string \| null}` | `{until}` (UTC, `Z`). A future `until` holds back every notification and proactive routine until then; `null` clears it. Jobs still run |

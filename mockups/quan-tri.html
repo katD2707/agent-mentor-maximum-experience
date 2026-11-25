@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="vi" data-age="dai-hoc" data-tab="gv" data-list="co">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản trị</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap&subset=vietnamese">
+<link rel="stylesheet" href="shared.css">
+<script src="shared.js"></script>
+<style>
+  /* the owner's review page: a calm, dense web page, no village art */
+  :root { --fs: 15px; --tap: 40px; }
+  body { font-size: 15px; }
+  .top { display: flex; align-items: center; gap: 14px; padding: 10px clamp(12px, 3vw, 28px); background: var(--surface); border-bottom: 1px solid var(--rule-strong); }
+  .top .nm { font-weight: 700; }
+  .top .sp { flex: 1; }
+  .top .me { color: var(--ink-2); font-size: .88em; }
+  .tabs2 { display: flex; flex-wrap: wrap; gap: 2px; padding: 0 clamp(12px, 3vw, 28px); background: var(--surface); border-bottom: 1px solid var(--rule-strong); }
+  .tabs2 button { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 14px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: var(--ink-2); font-weight: 500; cursor: pointer; }
+  .tabs2 button:hover { color: var(--ink); }
+  .tabs2 button[aria-selected="true"] { color: var(--tim-ink); border-bottom-color: var(--tim); font-weight: 600; }
+  .count { min-width: 22px; padding: 1px 7px; border-radius: 99px; background: var(--rule); color: var(--ink-2); font-size: .8em; font-weight: 600; text-align: center; }
+  .tabs2 button[aria-selected="true"] .count { background: var(--tim-soft); color: var(--tim-ink); }
+  .count.hot { background: var(--vang); color: #3A3000; }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 18px clamp(12px, 3vw, 28px) 60px; }
+  .split { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 18px; align-items: start; }
+  .queue { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px; overflow: hidden; }
+  .queue li + li { border-top: 1px solid var(--rule); }
+  .qi { display: grid; gap: 2px; width: 100%; padding: 12px 14px; border: 0; background: transparent; text-align: left; cursor: pointer; border-left: 4px solid transparent; min-height: 56px; }
+  .qi:hover { background: var(--paper); }
+  .qi[aria-current="true"] { background: var(--tim-soft); border-left-color: var(--tim); }
+  .qi b { font-weight: 600; }
+  .qi .m { color: var(--ink-2); font-size: .86em; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+
+  .detail { background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px; padding: clamp(14px, 2.5vw, 24px); display: grid; gap: 20px; min-width: 0; }
+  .detail h2 { font-size: 1.25em; }
+  .sheet-bar { display: none; }
+  .dh { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .dh .sp { flex: 1; }
+  dl.kv { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 8px 16px; margin: 0; }
+  dl.kv dt { color: var(--ink-2); }
+  dl.kv dd { margin: 0; overflow-wrap: anywhere; }
+  @media (max-width: 560px) { dl.kv { grid-template-columns: minmax(0, 1fr); gap: 0; } dl.kv dt { margin-top: 8px; font-size: .86em; } }
+  .prev { padding: 10px 12px; border-radius: 8px; background: var(--do-soft); color: var(--do); font-weight: 500; }
+  .prev b { font-weight: 700; }
+  .sec { display: grid; gap: 8px; }
+  .sec > h3 { font-size: .8em; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+  .photos { display: flex; flex-wrap: wrap; gap: 12px; }
+  .photo { padding: 0; border: 1px solid var(--rule-strong); border-radius: 8px; overflow: hidden; background: #fff; cursor: zoom-in; width: 200px; }
+  .photo img { width: 100%; display: block; }
+  .photo span { display: block; padding: 4px 8px; font-size: .8em; color: var(--ink-2); background: var(--paper); text-align: left; }
+  .ok-flag { color: var(--xanh); font-weight: 600; }
+
+  table.t { width: 100%; border-collapse: collapse; }
+  table.t th { text-align: left; font-size: .78em; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); padding: 8px 10px; border-bottom: 1px solid var(--rule-strong); }
+  table.t td { padding: 9px 10px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+  table.t tr:last-child td { border-bottom: 0; }
+  .lessons td:first-child { width: 36px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .diff { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: .78em; font-weight: 600; }
+  .diff.add { background: var(--xanh-soft); color: var(--xanh); }
+  .diff.mod { background: var(--vang); color: #3A3000; }
+  .diff.del { background: var(--do-soft); color: var(--do); }
+  tr.del td:nth-child(2) { text-decoration: line-through; color: var(--ink-3); }
+  .changes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .changes .tag { font-size: .85em; }
+
+  .actions { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--rule); }
+  .actions .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .b { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 8px; border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); font-weight: 600; cursor: pointer; }
+  .b:hover { border-color: var(--ink-3); }
+  .b.yes { background: #1D6F4F; border-color: #1D6F4F; color: #fff; }
+  .b.yes:hover { background: #175B41; }
+  .b.no { color: var(--do); border-color: var(--do); }
+  .b.no:hover { background: var(--do-soft); }
+  .b.no.solid { background: #A93434; border-color: #A93434; color: #fff; }
+  .b svg { width: 18px; height: 18px; }
+  .reason { display: grid; gap: 8px; }
+  .reason label { font-weight: 600; }
+  .reason textarea { width: 100%; min-height: 76px; padding: 10px 12px; border-radius: 8px; border: 1.5px solid var(--rule-strong); background: var(--paper); resize: vertical; }
+  .reason textarea:focus { outline: 3px solid var(--tim); outline-offset: 0; border-color: var(--tim); }
+  .reason.bad textarea { border-color: var(--do); }
+  .reason .e { display: none; color: var(--do); font-size: .85em; font-weight: 500; }
+  .reason.bad .e { display: block; }
+  .quick { display: flex; flex-wrap: wrap; gap: 6px; }
+  .quick button { min-height: 38px; padding: 0 12px; border-radius: 99px; border: 1.5px solid var(--rule-strong); background: var(--surface); font-size: .88em; cursor: pointer; }
+  .quick button:hover { border-color: var(--tim); }
+
+  .empty { padding: 56px 16px; text-align: center; color: var(--ink-2); background: var(--surface); border: 1px dashed var(--rule-strong); border-radius: 10px; }
+  .empty svg { margin: 0 auto 8px; width: 32px; height: 32px; color: var(--xanh); }
+
+  .bar2 { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .bar2 .search { flex: 1; min-width: 220px; max-width: 460px; min-height: 44px; border-radius: 8px; padding: 0 12px; }
+  .bar2 .n { color: var(--ink-2); }
+  .tbl { background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 10px; overflow-x: auto; }
+  .tbl .t td .sub { display: block; color: var(--ink-2); font-size: .85em; }
+  .tbl .t td b { font-weight: 600; }
+  .tbl .b { min-height: 38px; padding: 0 12px; font-size: .9em; white-space: nowrap; }
+  .show-s { display: none !important; }
+
+  dialog { border: 1.5px solid var(--rule-strong); border-radius: 14px; background: var(--surface); color: var(--ink); padding: 22px; box-shadow: var(--shadow); }
+  dialog::backdrop { background: rgba(20, 16, 40, .55); }
+  dialog.sm { width: min(460px, calc(100vw - 32px)); }
+  dialog h2 { font-size: 1.15em; margin-bottom: 6px; }
+  dialog .acts { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+  dialog .reason { margin-top: 12px; }
+  dialog.light { padding: 10px; max-width: min(900px, 96vw); }
+  dialog.light img { max-height: 80vh; width: auto; margin: 0 auto; }
+  dialog.light .acts { margin-top: 8px; }
+  .temp { margin: 14px 0 4px; padding: 14px; border-radius: 10px; background: var(--paper); border: 1.5px dashed var(--rule-strong); text-align: center; }
+  .temp code { display: block; font: 700 1.6em/1.3 ui-monospace, Consolas, monospace; letter-spacing: .06em; user-select: all; }
+  .toast { bottom: 24px; z-index: 80; }
+  [hidden] { display: none !important; }
+
+  /* phone and narrow windows: the list first; an item opens as a full-screen sheet */
+  @media (max-width: 880px) {
+    .split { grid-template-columns: minmax(0, 1fr); }
+    .split .detail { display: none; }
+    .split[data-open] .queue { display: none; }
+    .split[data-open] .detail { display: grid; position: fixed; inset: 0; z-index: 60; border-radius: 0; border: 0; overflow-y: auto; align-content: start; padding: 0 16px; gap: 16px; }
+    .split[data-open] .sheet-bar { display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 2; margin: 0 -16px; padding: 8px 12px; background: var(--surface); border-bottom: 1px solid var(--rule-strong); }
+    .split[data-open] .sheet-bar b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .split[data-open] .actions { position: sticky; bottom: 0; background: var(--surface); margin: 0 -16px; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
+    .split[data-open] .detail > :last-child { margin-bottom: 0; }
+    .hide-s { display: none; }
+    .show-s { display: block !important; }
+    .photo { width: calc(50% - 6px); }
+    table.req, table.req tbody, table.req tr, table.req td { display: block; }
+    table.req td { border-bottom: 0; text-align: left !important; }
+    table.req tr { padding: 6px 4px 12px; border-bottom: 1px solid var(--rule); }
+    table.req tr:last-child { border-bottom: 0; }
+    table.req .b { width: 100%; justify-content: center; margin-top: 4px; }
+  }
+  @media (max-width: 640px) { .tabs2 button { flex: 1 1 45%; justify-content: center; } }
+</style>
+</head>
+<body>
+<div class="mock-bar">
+  <a href="index.html">← Tất cả màn hình</a>
+  <span class="mock-title">Quản trị (trang web của chủ)</span>
+  <span class="mock-seg"><span>Danh sách</span><button data-set="list:co">Có việc</button><button data-set="list:trong">Trống</button></span>
+  <span class="mock-seg"><span>Nền</span><button data-set="theme:light">Sáng</button><button data-set="theme:dark">Tối</button></span>
+</div>
+
+<header class="top">
+  <span class="logo-mark" aria-hidden="true">M</span><span class="nm">Mentor · Quản trị</span>
+  <span class="sp"></span><span class="me">Chủ hệ thống</span>
+</header>
+<nav class="tabs2" role="tablist" aria-label="Mục">
+  <button role="tab" data-t="gv" aria-selected="true">Giáo viên chờ duyệt <span class="count hot" id="c-gv">3</span></button>
+  <button role="tab" data-t="kh" aria-selected="false">Khóa học chờ duyệt <span class="count hot" id="c-kh">4</span></button>
+  <button role="tab" data-t="dang" aria-selected="false">Đang đăng <span class="count" id="c-dang">7</span></button>
+  <button role="tab" data-t="tk" aria-selected="false">Tài khoản <span class="count" id="c-tk">8</span></button>
+</nav>
+
+<main class="wrap">
+  <section id="p-gv" role="tabpanel" aria-label="Giáo viên chờ duyệt"></section>
+  <section id="p-kh" role="tabpanel" aria-label="Khóa học chờ duyệt" hidden></section>
+  <section id="p-dang" role="tabpanel" aria-label="Đang đăng" hidden></section>
+  <section id="p-tk" role="tabpanel" aria-label="Tài khoản" hidden></section>
+</main>
+
+<!-- approve: one confirm -->
+<dialog class="sm" id="cf" aria-labelledby="cf-h">
+  <h2 id="cf-h"></h2>
+  <p class="muted" id="cf-p"></p>
+  <div class="acts"><button type="button" class="b" id="cf-no">Hủy</button><button type="button" class="b yes" id="cf-yes">Duyệt</button></div>
+</dialog>
+<!-- remove a live course: a reason goes to the teacher -->
+<dialog class="sm" id="dlg" aria-labelledby="dlg-h">
+  <h2 id="dlg-h"></h2>
+  <p class="muted">Học sinh đã tải về vẫn học tiếp được.</p>
+  <div class="reason" id="rm-reason">
+    <label for="rm-why">Lý do gỡ</label>
+    <div class="quick"><button type="button" data-q="Nội dung chưa đúng">Nội dung chưa đúng</button><button type="button" data-q="Vi phạm bản quyền">Vi phạm bản quyền</button><button type="button" data-q="Giáo viên xin gỡ">Giáo viên xin gỡ</button></div>
+    <textarea id="rm-why" rows="3"></textarea><span class="e">Cần ghi lý do.</span>
+  </div>
+  <div class="acts"><button type="button" class="b" id="dlg-no">Giữ lại</button><button type="button" class="b no solid" id="dlg-yes">Gỡ và gửi lý do</button></div>
+</dialog>
+<!-- reset a password -->
+<dialog class="sm" id="pw" aria-labelledby="pw-h">
+  <h2 id="pw-h"></h2>
+  <div id="pw-ask"><p class="muted">Mật khẩu cũ sẽ không dùng được nữa.</p>
+    <div class="acts"><button type="button" class="b" id="pw-no">Hủy</button><button type="button" class="b yes" id="pw-yes">Đặt lại</button></div></div>
+  <div id="pw-show" hidden><p class="muted">Mật khẩu tạm. Chỉ hiện một lần.</p><div class="temp"><code id="pw-code"></code></div>
+    <div class="acts"><button type="button" class="b yes" id="pw-done">Xong</button></div></div>
+</dialog>
+<dialog class="light" id="light" aria-label="Ảnh chứng chỉ"><div id="light-box"></div><div class="acts"><button type="button" class="b" id="light-x">Đóng</button></div></dialog>
+
+<script>
+(function () {
+  const root = document.documentElement;
+  const $ = (s, r) => (r || document).querySelector(s);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  // sample certificate: drawn, no real person
+  const cert = (title, line1, line2) => "data:image/svg+xml," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><rect width="400" height="280" fill="#fbf7ea"/><rect x="12" y="12" width="376" height="256" fill="none" stroke="#b08a3c" stroke-width="4"/><rect x="22" y="22" width="356" height="236" fill="none" stroke="#b08a3c" stroke-width="1"/>' +
+    '<text x="200" y="62" text-anchor="middle" font-size="13" font-family="serif" fill="#7a2a2a">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</text><text x="200" y="104" text-anchor="middle" font-size="22" font-weight="bold" font-family="serif" fill="#7a2a2a">' + title + '</text>' +
+    '<text x="200" y="150" text-anchor="middle" font-size="15" font-family="serif" fill="#333">' + line1 + '</text><text x="200" y="176" text-anchor="middle" font-size="13" font-family="serif" fill="#333">' + line2 + '</text>' +
+    '<circle cx="320" cy="222" r="26" fill="none" stroke="#c0392b" stroke-width="2" opacity=".7"/><path d="M60 226h120" stroke="#999"/></svg>');
+
+  const TEACHERS = [
+    { id: "t1", name: "Nguyễn Thu Hằng", mail: "nguyenthuhang.gv@gmail.com", at: "Hôm nay 09:12", work: "THPT Chu Văn An, Hà Nội", subj: "Toán", lvl: "THPT", deg: "Cử nhân Sư phạm Toán", num: "ĐHSP-2011-004827", prev: "Ảnh chứng chỉ mờ, không đọc được số.", photos: [["Mặt trước", cert("BẰNG TỐT NGHIỆP ĐẠI HỌC", "Nguyễn Thu Hằng", "Số hiệu: ĐHSP-2011-004827")], ["Mặt sau", cert("PHỤ LỤC BẰNG", "Ngành: Sư phạm Toán", "Xếp loại: Giỏi")]] },
+    { id: "t2", name: "Trần Văn Minh", mail: "minh.tran.edu@gmail.com", at: "Hôm qua 21:40", work: "Trường Tiểu học Nguyễn Bỉnh Khiêm, Đà Nẵng", subj: "Toán, Tiếng Việt", lvl: "Tiểu học", deg: "Chứng chỉ nghiệp vụ sư phạm", num: "CC-SP-2019-1163", photos: [["Chứng chỉ", cert("CHỨNG CHỈ NGHIỆP VỤ SƯ PHẠM", "Trần Văn Minh", "Số: CC-SP-2019-1163")]] },
+    { id: "t3", name: "Lê Thị Bích Ngọc", mail: "bichngoc@saoviet.edu.vn", at: "23/11 14:05", work: "Trung tâm Anh ngữ Sao Việt, TP. Hồ Chí Minh", subj: "Tiếng Anh", lvl: "THCS, THPT", deg: "Cử nhân Sư phạm Tiếng Anh", num: "SPNN-2016-020391", photos: [["Mặt trước", cert("BẰNG CỬ NHÂN", "Lê Thị Bích Ngọc", "Số hiệu: SPNN-2016-020391")], ["Mặt sau", cert("PHỤ LỤC BẰNG", "Ngành: Sư phạm Tiếng Anh", "Xếp loại: Khá")], ["Chứng chỉ IELTS", cert("IELTS ACADEMIC", "Overall band score 8.0", "Test report form 22VN004517")]] },
+  ];
+  const COURSES = [
+    { id: "c1", kind: "moi", name: "Hóa 8: Phản ứng hóa học", teacher: "Phạm Quốc Bảo", mail: "baopq.hoa@gmail.com", at: "Hôm nay 08:30", subj: "Hóa học", lvl: "THCS (lớp 8)", diff: "Cơ bản", lessons: [["Hiện tượng vật lí và hóa học", "add"], ["Phản ứng hóa học", "add"], ["Định luật bảo toàn khối lượng", "add"], ["Phương trình hóa học", "add"], ["Ôn tập chương 2", "add"], ["Bài tập tổng hợp", "add"]] },
+    { id: "c2", kind: "upd", name: "Xác suất thống kê: Suy luận Bayes", teacher: "Đỗ Khánh Linh", mail: "linh.dk@gmail.com", at: "Hôm nay 07:55", subj: "Toán", lvl: "Đại học", diff: "Nâng cao", ver: "Bản 1 → bản 2", students: 38, lessons: [["Xác suất có điều kiện", ""], ["Công thức Bayes", "mod"], ["Ước lượng hậu nghiệm", ""], ["Tiên nghiệm liên hợp", "add"], ["Suy luận xấp xỉ", "add"], ["Bài tập chương cuối", ""]], changes: ["+2 bài", "Sửa 1 bài", "Xóa 0 bài", "Đổi mô tả khóa"] },
+    { id: "c3", kind: "moi", name: "Ngữ văn 9: Truyện Kiều", teacher: "Hoàng Mai Anh", mail: "maianh.van@gmail.com", at: "Hôm qua 16:20", subj: "Ngữ văn", lvl: "THCS (lớp 9)", diff: "Cơ bản", prev: "Bài 5 thiếu đáp án.", lessons: [["Tác giả Nguyễn Du", "add"], ["Chị em Thúy Kiều", "add"], ["Kiều ở lầu Ngưng Bích", "add"], ["Mã Giám Sinh mua Kiều", "add"], ["Thúy Kiều báo ân báo oán", "add"], ["Nghệ thuật tự sự và miêu tả", "add"], ["Luyện đề đọc hiểu", "add"], ["Ôn tập", "add"]] },
+    { id: "c4", kind: "upd", name: "Sinh 12: Di truyền học", teacher: "Vũ Hải Đăng", mail: "dang.vh@gmail.com", at: "22/11 10:15", subj: "Sinh học", lvl: "THPT (lớp 12)", diff: "Trung bình", ver: "Bản 2 → bản 3", students: 21, lessons: [["Gen và mã di truyền", ""], ["Nhân đôi ADN", ""], ["Phiên mã và dịch mã", "mod"], ["Điều hòa hoạt động gen", ""], ["Đột biến gen", "mod"], ["Quy luật Menđen", ""], ["Hoán vị gen", ""], ["Di truyền quần thể", ""], ["Bài tập chương", "del"]], changes: ["Sửa 2 bài", "Xóa 1 bài", "+0 bài"] },
+  ];
+  const LIVE = [
+    { id: "d1", name: "Xác suất thống kê: Suy luận Bayes", teacher: "Đỗ Khánh Linh", subj: "Toán · Đại học", ver: "Bản 1", st: 38, up: "20/11" },
+    { id: "d2", name: "Sinh 12: Di truyền học", teacher: "Vũ Hải Đăng", subj: "Sinh học · THPT", ver: "Bản 2", st: 21, up: "12/11" },
+    { id: "d3", name: "Toán 1: Các số đến 10", teacher: "Lê Thị Hoa", subj: "Toán · Tiểu học", ver: "Bản 1", st: 112, up: "02/11" },
+    { id: "d4", name: "Vật lí 11: Điện trường", teacher: "Nguyễn Thu Hằng", subj: "Vật lí · THPT", ver: "Bản 3", st: 64, up: "18/11" },
+    { id: "d5", name: "Tiếng Anh 6: Unit 4 Where is it?", teacher: "Lê Thị Bích Ngọc", subj: "Tiếng Anh · THCS", ver: "Bản 1", st: 47, up: "09/11" },
+    { id: "d6", name: "Hệ điều hành: Quản lý bộ nhớ", teacher: "Trịnh Quang Huy", subj: "Tin học · Đại học", ver: "Bản 2", st: 29, up: "15/11" },
+    { id: "d7", name: "Lịch sử 10: Văn minh Đại Việt", teacher: "Bùi Thanh Tâm", subj: "Lịch sử · THPT", ver: "Bản 1", st: 18, up: "05/11" },
+  ];
+  const ACC = [
+    { id: "u1", name: "Nguyễn Thu Hằng", user: "thuhang", mail: "nguyenthuhang.gv@gmail.com", role: "Giáo viên" },
+    { id: "u2", name: "Đỗ Khánh Linh", user: "khanhlinh", mail: "linh.dk@gmail.com", role: "Giáo viên" },
+    { id: "u3", name: "Vũ Hải Đăng", user: "haidang", mail: "dang.vh@gmail.com", role: "Giáo viên" },
+    { id: "u4", name: "Bé An", user: "bean", mail: "", role: "Học sinh" },
+    { id: "u5", name: "Minh Khôi", user: "minhkhoi12", mail: "bo.khoi@gmail.com", role: "Học sinh" },
+    { id: "u6", name: "Ngọc Anh", user: "ngocanh", mail: "", role: "Học sinh" },
+    { id: "u7", name: "Phạm Gia Huy", user: "giahuy2012", mail: "me.huy@gmail.com", role: "Học sinh" },
+    { id: "u8", name: "Trần Bảo Châu", user: "baochau", mail: "", role: "Học sinh" },
+  ];
+  // pupils with no email ask for a reset from the login page; sample rows plus any sent in this session
+  const REQ0 = [{ id: "r1", user: "bean", name: "Bé An", at: "Hôm nay 08:05", phone: "0912 345 678" }, { id: "r2", user: "ngocanh", name: "Ngọc Anh", at: "Hôm qua 19:30", phone: "" }];
+  let REQ = REQ0.slice();
+  try { const x = JSON.parse(sessionStorage.getItem("mentor-mock-reset") || "[]"); x.forEach((r, i) => REQ.unshift({ id: "rs" + i, user: r.user, name: "", at: "Vừa xong", phone: r.phone || "" })); } catch (e) {}
+  let T = TEACHERS.slice(), C = COURSES.slice(), D = LIVE.slice();
+  const sel = { gv: "t1", kh: "c1" };
+  let q = "", qa = "", opened = false, pendingConfirm = null, pendingRm = null, pendingPw = null;
+
+  function toast(msg) {
+    const old = $(".toast"); if (old) old.remove();
+    const el = document.createElement("div"); el.className = "toast"; el.setAttribute("role", "status"); el.textContent = msg;
+    document.body.appendChild(el); setTimeout(() => el.remove(), 3600);
+  }
+  const empty = (msg) => '<div class="empty">' + window.mentorIcon("check") + msg + "</div>";
+
+  // ----- review block: approve (one confirm), or reject with a reason -----
+  function actions(kind) {
+    return '<div class="actions" data-kind="' + kind + '">' +
+      '<div class="btns"><button type="button" class="b yes" data-do="yes">' + window.mentorIcon("check") + 'Duyệt</button><button type="button" class="b no" data-do="no">Từ chối</button></div>' +
+      '<div class="reason" hidden><label for="why-' + kind + '">Lý do từ chối</label>' +
+      '<div class="quick">' + (kind === "gv" ? ["Ảnh mờ, không đọc được", "Số hiệu không khớp", "Thiếu thông tin"] : ["Thiếu đáp án", "Nội dung chưa đúng cấp", "Tên khóa chưa rõ"]).map((x) => '<button type="button" data-q="' + esc(x) + '">' + x + "</button>").join("") + "</div>" +
+      '<textarea id="why-' + kind + '" rows="3"></textarea><span class="e">Cần ghi lý do.</span>' +
+      '<div class="btns"><button type="button" class="b no solid" data-do="send">Từ chối và gửi lý do</button><button type="button" class="b" data-do="back">Hủy</button></div></div></div>';
+  }
+  const bar = (title) => '<div class="sheet-bar"><button type="button" class="b" data-back>← Danh sách</button><b>' + esc(title) + "</b></div>";
+  const prevBox = (r) => r ? '<div class="prev"><b>Lần trước bị từ chối:</b> ' + esc(r) + "</div>" : "";
+
+  function renderGV() {
+    const p = $("#p-gv");
+    if (!T.length) { p.innerHTML = empty("Không có hồ sơ chờ duyệt."); return; }
+    if (!T.some((t) => t.id === sel.gv)) sel.gv = T[0].id;
+    const t = T.find((x) => x.id === sel.gv);
+    p.innerHTML = '<div class="split"' + (opened ? " data-open" : "") + '><ul class="queue">' + T.map((x) =>
+      '<li><button class="qi" data-id="' + x.id + '" aria-current="' + (x.id === sel.gv) + '"><b>' + esc(x.name) + '</b><span class="m"><span>' + esc(x.at) + "</span>" + (x.prev ? '<span class="tag err">Nộp lại</span>' : "") + "</span></button></li>").join("") +
+      '</ul><article class="detail">' + bar(t.name) + '<div class="dh"><h2>' + esc(t.name) + '</h2><span class="sp"></span><span class="muted small">Nộp ' + esc(t.at) + "</span></div>" + prevBox(t.prev) +
+      '<dl class="kv"><dt>Email</dt><dd>' + esc(t.mail) + "</dd><dt>Nơi công tác</dt><dd>" + esc(t.work) + "</dd><dt>Môn dạy</dt><dd>" + esc(t.subj) + "</dd><dt>Cấp dạy</dt><dd>" + esc(t.lvl) + "</dd><dt>Bằng, chứng chỉ</dt><dd>" + esc(t.deg) + "</dd><dt>Số hiệu</dt><dd>" + esc(t.num) + "</dd><dt>Cam đoan</dt><dd><span class=\"ok-flag\">Đã cam đoan</span></dd></dl>" +
+      '<div class="sec"><h3>Ảnh (' + t.photos.length + ')</h3><div class="photos">' + t.photos.map((ph) => '<button type="button" class="photo" data-src="' + ph[1] + '"><img src="' + ph[1] + '" alt="' + esc(ph[0]) + '"><span>' + esc(ph[0]) + "</span></button>").join("") + "</div></div>" +
+      actions("gv") + "</article></div>";
+  }
+
+  function lessonRows(ls) {
+    return '<table class="t lessons"><tbody>' + ls.map((l, i) => '<tr class="' + (l[1] === "del" ? "del" : "") + '"><td>' + (i + 1) + "</td><td>" + esc(l[0]) + "</td><td>" + ({ add: '<span class="diff add">Mới</span>', mod: '<span class="diff mod">Sửa</span>', del: '<span class="diff del">Xóa</span>' }[l[1]] || "") + "</td></tr>").join("") + "</tbody></table>";
+  }
+  function renderKH() {
+    const p = $("#p-kh");
+    if (!C.length) { p.innerHTML = empty("Không có khóa chờ duyệt."); return; }
+    if (!C.some((c) => c.id === sel.kh)) sel.kh = C[0].id;
+    const c = C.find((x) => x.id === sel.kh);
+    p.innerHTML = '<div class="split"' + (opened ? " data-open" : "") + '><ul class="queue">' + C.map((x) =>
+      '<li><button class="qi" data-id="' + x.id + '" aria-current="' + (x.id === sel.kh) + '"><b>' + esc(x.name) + '</b><span class="m"><span class="tag ' + (x.kind === "moi" ? "new" : "wait") + '">' + (x.kind === "moi" ? "Mới" : "Cập nhật") + "</span>" + (x.prev ? '<span class="tag err">Nộp lại</span>' : "") + "<span>" + esc(x.teacher) + "</span><span>" + esc(x.at) + "</span></span></button></li>").join("") +
+      '</ul><article class="detail">' + bar(c.name) + '<div class="dh"><h2>' + esc(c.name) + '</h2><span class="tag ' + (c.kind === "moi" ? "new" : "wait") + '">' + (c.kind === "moi" ? "Khóa mới" : "Cập nhật " + esc(c.ver)) + '</span></div>' + prevBox(c.prev) +
+      '<dl class="kv"><dt>Giáo viên</dt><dd>' + esc(c.teacher) + ' <span class="muted">· ' + esc(c.mail) + ' · hồ sơ đã duyệt</span></dd><dt>Môn</dt><dd>' + esc(c.subj) + "</dd><dt>Cấp, lớp</dt><dd>" + esc(c.lvl) + "</dd><dt>Độ khó</dt><dd>" + esc(c.diff) + "</dd><dt>Số bài</dt><dd>" + c.lessons.filter((l) => l[1] !== "del").length + "</dd>" +
+      (c.kind === "upd" ? "<dt>Đang học</dt><dd>" + c.students + " học sinh, vẫn thấy bản cũ cho đến khi duyệt</dd>" : "") + "</dl>" +
+      (c.changes ? '<div class="sec"><h3>Thay đổi</h3><div class="changes">' + c.changes.map((x) => '<span class="tag">' + esc(x) + "</span>").join("") + "</div></div>" : "") +
+      '<div class="sec"><h3>Danh sách bài</h3>' + lessonRows(c.lessons) + "</div>" + actions("kh") + "</article></div>";
+  }
+
+  function renderDang() {
+    const p = $("#p-dang");
+    const rows = D.filter((d) => (d.name + " " + d.teacher + " " + d.subj).toLowerCase().includes(q.toLowerCase()));
+    p.innerHTML = '<div class="bar2"><label class="search"><i data-i="search"></i><input id="q" type="search" placeholder="Tìm khóa, giáo viên, môn" value="' + esc(q) + '" aria-label="Tìm"></label><span class="n">' + rows.length + " khóa</span></div>" +
+      '<div class="tbl"><table class="t"><thead><tr><th>Khóa học</th><th class="hide-s">Giáo viên</th><th class="hide-s">Môn, cấp</th><th class="hide-s">Bản</th><th class="hide-s">Học sinh</th><th class="hide-s">Cập nhật</th><th></th></tr></thead><tbody>' +
+      (rows.length ? rows.map((d) => '<tr><td><b>' + esc(d.name) + '</b><span class="sub show-s">' + esc(d.teacher) + " · " + esc(d.ver) + " · " + d.st + ' học sinh</span></td><td class="hide-s">' + esc(d.teacher) + '</td><td class="hide-s">' + esc(d.subj) + '</td><td class="hide-s">' + esc(d.ver) + '</td><td class="hide-s">' + d.st + '</td><td class="hide-s">' + d.up + '</td><td style="text-align:right"><button class="b no" data-rm="' + d.id + '">Gỡ</button></td></tr>').join("") : '<tr><td colspan="7" class="muted" style="padding:28px;text-align:center">Không thấy khóa nào.</td></tr>') +
+      "</tbody></table></div>";
+    window.mockPaint(p);
+    const inp = $("#q"); inp.addEventListener("input", () => { q = inp.value; const pos = inp.selectionStart; renderDang(); const n = $("#q"); n.focus(); n.setSelectionRange(pos, pos); });
+  }
+
+  function renderTK() {
+    const p = $("#p-tk");
+    const s = qa.toLowerCase();
+    const rows = ACC.filter((a) => (a.name + " " + a.user + " " + a.mail).toLowerCase().includes(s));
+    const reqs = REQ.length ? '<div class="sec" style="margin-bottom:18px"><h3>Yêu cầu đặt lại (' + REQ.length + ')</h3><div class="tbl"><table class="t req"><tbody>' +
+      REQ.map((r) => '<tr><td><b>@' + esc(r.user) + '</b>' + (r.name ? " · " + esc(r.name) : "") + '<span class="sub">' + esc(r.at) + (r.phone ? " · gọi " + esc(r.phone) : " · không để số điện thoại") + '</span></td><td style="text-align:right"><button class="b" data-rq="' + r.id + '">Đặt lại mật khẩu</button></td></tr>').join("") + "</tbody></table></div></div>" : "";
+    p.innerHTML = reqs + '<div class="bar2"><label class="search"><i data-i="search"></i><input id="qa" type="search" placeholder="Tìm tên, tên đăng nhập, email" value="' + esc(qa) + '" aria-label="Tìm"></label><span class="n">' + rows.length + " tài khoản</span></div>" +
+      '<div class="tbl"><table class="t"><thead><tr><th>Tên</th><th class="hide-s">Tên đăng nhập</th><th class="hide-s">Email</th><th>Vai</th><th></th></tr></thead><tbody>' +
+      (rows.length ? rows.map((a) => '<tr><td><b>' + esc(a.name) + '</b><span class="sub show-s">@' + esc(a.user) + (a.mail ? " · " + esc(a.mail) : "") + '</span></td><td class="hide-s">' + esc(a.user) + '</td><td class="hide-s">' + (a.mail ? esc(a.mail) : '<span class="tag wait">Không có email</span>') + '</td><td>' + a.role + '</td><td style="text-align:right"><button class="b" data-pw="' + a.id + '">Đặt lại mật khẩu</button></td></tr>').join("") : '<tr><td colspan="5" class="muted" style="padding:28px;text-align:center">Không thấy tài khoản nào.</td></tr>') +
+      "</tbody></table></div>";
+    window.mockPaint(p);
+    const inp = $("#qa"); inp.addEventListener("input", () => { qa = inp.value; const pos = inp.selectionStart; renderTK(); const n = $("#qa"); n.focus(); n.setSelectionRange(pos, pos); });
+  }
+
+  function counts() {
+    $("#c-gv").textContent = T.length; $("#c-kh").textContent = C.length; $("#c-dang").textContent = D.length; $("#c-tk").textContent = ACC.length;
+    $("#c-gv").classList.toggle("hot", T.length > 0); $("#c-kh").classList.toggle("hot", C.length > 0);
+  }
+  function all() { renderGV(); renderKH(); renderDang(); renderTK(); counts(); window.mockPaint(document); }
+
+  function tab(t) {
+    root.dataset.tab = t; opened = false;
+    document.querySelectorAll(".tabs2 button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.t === t)));
+    ["gv", "kh", "dang", "tk"].forEach((k) => { $("#p-" + k).hidden = k !== t; });
+    all();
+  }
+  document.querySelector(".tabs2").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) tab(b.dataset.t); });
+
+  function approve(kind) {
+    const id = sel[kind];
+    if (kind === "gv") {
+      const t = T.find((x) => x.id === id); T = T.filter((x) => x.id !== id);
+      toast("Đã duyệt. Mã 6 số đã gửi về " + t.mail + ".");
+    } else {
+      const c = C.find((x) => x.id === id); C = C.filter((x) => x.id !== id);
+      if (c.kind === "moi") D.unshift({ id: "n" + id, name: c.name, teacher: c.teacher, subj: c.subj.split(" ")[0] + " · " + c.lvl.split(" ")[0], ver: "Bản 1", st: 0, up: "hôm nay" });
+      toast(c.kind === "moi" ? "Đã duyệt. Khóa đã hiện cho học sinh." : "Đã duyệt. Học sinh thấy bản mới.");
+    }
+    opened = false; all();
+  }
+
+  document.addEventListener("click", (e) => {
+    const bk = e.target.closest("[data-back]");
+    if (bk) { opened = false; all(); return; }
+    const qi = e.target.closest(".qi");
+    if (qi) { sel[root.dataset.tab] = qi.dataset.id; opened = true; all(); const d = $(".split[data-open] .detail"); if (d) d.scrollTop = 0; return; }
+    const ph = e.target.closest(".photo");
+    if (ph) { $("#light-box").innerHTML = '<img alt="Ảnh chứng chỉ" src="' + ph.dataset.src + '">'; $("#light").showModal(); return; }
+    const q2 = e.target.closest("[data-q]");
+    if (q2) { const box = q2.closest(".reason"); box.querySelector("textarea").value = q2.dataset.q; box.classList.remove("bad"); return; }
+    const a = e.target.closest("[data-do]");
+    if (a) {
+      const wrap = a.closest(".actions"), kind = wrap.dataset.kind, reason = wrap.querySelector(".reason"), btns = wrap.querySelector(".btns");
+      const act = a.dataset.do;
+      if (act === "no") { reason.hidden = false; btns.hidden = true; reason.querySelector("textarea").focus(); }
+      else if (act === "back") { reason.hidden = true; btns.hidden = false; }
+      else if (act === "yes") {
+        const it = kind === "gv" ? T.find((x) => x.id === sel.gv) : C.find((x) => x.id === sel.kh);
+        pendingConfirm = kind;
+        $("#cf-h").textContent = kind === "gv" ? "Duyệt hồ sơ của " + it.name + "?" : "Duyệt khóa “" + it.name + "”?";
+        $("#cf-p").textContent = kind === "gv" ? "Mã 6 số sẽ gửi về email của giáo viên." : (it.kind === "moi" ? "Khóa hiện cho học sinh ngay." : "Học sinh sẽ thấy bản mới.");
+        $("#cf").showModal();
+      } else {
+        if (!reason.querySelector("textarea").value.trim()) { reason.classList.add("bad"); reason.querySelector("textarea").focus(); return; }
+        if (kind === "gv") { const t = T.find((x) => x.id === sel.gv); T = T.filter((x) => x !== t); toast("Đã từ chối. Lý do đã gửi về " + t.mail + "."); }
+        else { const c = C.find((x) => x.id === sel.kh); C = C.filter((x) => x !== c); toast("Đã từ chối. Lý do đã gửi cho " + c.teacher + "."); }
+        opened = false; all();
+      }
+      return;
+    }
+    const rm = e.target.closest("[data-rm]");
+    if (rm) {
+      const d = D.find((x) => x.id === rm.dataset.rm); pendingRm = d;
+      $("#dlg-h").textContent = "Gỡ “" + d.name + "”?"; $("#rm-why").value = ""; $("#rm-reason").classList.remove("bad");
+      $("#dlg").showModal(); return;
+    }
+    const pw = e.target.closest("[data-pw], [data-rq]");
+    if (pw) {
+      const u = pw.dataset.rq ? REQ.find((x) => x.id === pw.dataset.rq) : ACC.find((x) => x.id === pw.dataset.pw);
+      pendingPw = u; pendingPw.req = !!pw.dataset.rq; if (!u.name) u.name = "@" + u.user;
+      $("#pw-h").textContent = "Đặt lại mật khẩu của " + u.name + "?";
+      $("#pw-ask").hidden = false; $("#pw-show").hidden = true; $("#pw").showModal();
+    }
+  });
+  $("#cf-no").addEventListener("click", () => $("#cf").close());
+  $("#cf-yes").addEventListener("click", () => { $("#cf").close(); if (pendingConfirm) { approve(pendingConfirm); pendingConfirm = null; } });
+  $("#dlg-no").addEventListener("click", () => $("#dlg").close());
+  $("#dlg-yes").addEventListener("click", () => {
+    if (!$("#rm-why").value.trim()) { $("#rm-reason").classList.add("bad"); $("#rm-why").focus(); return; }
+    $("#dlg").close();
+    if (pendingRm) { const d = pendingRm; D = D.filter((x) => x !== d); pendingRm = null; toast("Đã gỡ. Lý do đã gửi cho " + d.teacher + "."); all(); }
+  });
+  $("#rm-reason").addEventListener("input", () => $("#rm-reason").classList.remove("bad"));
+  $("#pw-no").addEventListener("click", () => $("#pw").close());
+  $("#pw-yes").addEventListener("click", () => {
+    const chars = "abcdefghjkmnpqrstuvwxyz", pick = () => chars[Math.floor(Math.random() * chars.length)];
+    $("#pw-code").textContent = "Mk-" + (1000 + Math.floor(Math.random() * 9000)) + "-" + pick() + pick();
+    $("#pw-ask").hidden = true; $("#pw-show").hidden = false;
+  });
+  $("#pw-done").addEventListener("click", () => { $("#pw").close(); $("#pw-code").textContent = ""; if (pendingPw.req) { REQ = REQ.filter((x) => x !== pendingPw); renderTK(); } toast("Đã đặt lại mật khẩu của " + pendingPw.name + "."); });
+  $("#light-x").addEventListener("click", () => $("#light").close());
+  $("#light").addEventListener("click", (e) => { if (e.target.id === "light") $("#light").close(); });
+
+  document.addEventListener("mock:change", (e) => {
+    if (e.detail.key !== "list") return;
+    if (e.detail.value === "trong") { T = []; C = []; } else { T = TEACHERS.slice(); C = COURSES.slice(); }
+    opened = false; all();
+  });
+  window.addEventListener("DOMContentLoaded", () => {
+    const qp = new URLSearchParams(location.search);
+    window.mockSet("list", qp.get("list") === "trong" ? "trong" : "co");
+    const t = qp.get("tab"); if (["gv", "kh", "dang", "tk"].includes(t)) tab(t);
+    if (qp.get("mo") === "1") { const f = $(".qi"); if (f) f.click(); }
+  });
+})();
+</script>
+</body>
+</html>

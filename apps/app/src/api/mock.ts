@@ -1,4 +1,4 @@
-import { ApiError, type Api, type User } from "./types";
+import { ApiError, type Api, type TeacherAccount, type TeacherStatus, type User } from "./types";
 import { bandForBirthYear } from "../lib/age";
 import { makeMockCourseApi } from "./mock-course-api";
 import { makeMockPlannerApi } from "./mock-planner-api";
@@ -9,6 +9,42 @@ const DB_KEY = "mentor.mock.users";
 interface Seed {
   password: string;
   user: User;
+  /** hub demo: why a teacher was rejected */
+  reject_reason?: string | null;
+  parent_email?: string | null;
+}
+
+/**
+ * The hub flavour of the mock (central accounts, teacher approval, "Gửi duyệt"): off by default so the plain mock keeps
+ * today's behaviour. Turn it on with `?hub=1` in the address (remembered) or `localStorage["mentor.mock.hub"] = "1"`; `?hub=0` turns it off.
+ */
+const HUB_KEY = "mentor.mock.hub";
+export function mockHubOn(): boolean {
+  try {
+    const q = typeof location !== "undefined" ? new URLSearchParams(location.search).get("hub") : null;
+    if (q === "1" || q === "0") localStorage.setItem(HUB_KEY, q);
+    return localStorage.getItem(HUB_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+/** The code every mock mail carries (reset and teacher verification). */
+export const MOCK_CODE = "482913";
+
+/** Teacher accounts in each approval state, to see every gate screen: log in as one of these (password 123456). */
+function hubDemos(): Record<string, Seed> {
+  const t = (id: string, username: string, name: string, status: TeacherStatus, email: string, reason?: string): Seed => ({
+    password: "123456",
+    reject_reason: reason ?? null,
+    user: { id, role: "teacher", username, display_name: name, age_band: null, birth_year: null, language: "vi", theme: "system", quiet_until: null, email, teacher_status: status },
+  });
+  return {
+    "gv-chuanop": t("u-gv1", "gv-chuanop", "Cô Hằng", "chua_nop", "nguyenthuhang.gv@gmail.com"),
+    "gv-cho": t("u-gv2", "gv-cho", "Thầy Nam", "cho_duyet", "nam.gv@gmail.com"),
+    "gv-tuchoi": t("u-gv3", "gv-tuchoi", "Cô Lan", "tu_choi", "lan.gv@gmail.com", "Ảnh chứng chỉ mờ, không đọc được số."),
+    "gv-duyet": t("u-gv4", "gv-duyet", "Thầy Bình", "da_duyet", "binh.gv@gmail.com"),
+    "gv-xacminh": t("u-gv5", "gv-xacminh", "Cô Mai", "xac_minh", "mai.gv@gmail.com"),
+  };
 }
 
 function seed(): Record<string, Seed> {
@@ -19,19 +55,20 @@ function seed(): Record<string, Seed> {
     },
     giaovien: {
       password: "123456",
-      user: { id: "u-gv", role: "teacher", username: "giaovien", display_name: "Thầy Minh", age_band: null, birth_year: null, language: "vi", theme: "system", quiet_until: null },
+      user: { id: "u-gv", role: "teacher", username: "giaovien", display_name: "Thầy Minh", age_band: null, birth_year: null, language: "vi", theme: "system", quiet_until: null, email: "giaovien@gmail.com" },
     },
   };
 }
 
 function load(): Record<string, Seed> {
+  const demos = mockHubOn() ? hubDemos() : {};
   try {
     const raw = localStorage.getItem(DB_KEY);
-    if (raw) return JSON.parse(raw) as Record<string, Seed>;
+    if (raw) return { ...demos, ...(JSON.parse(raw) as Record<string, Seed>) };
   } catch {
     /* fall through to a fresh seed */
   }
-  return seed();
+  return { ...seed(), ...demos };
 }
 
 function save(db: Record<string, Seed>) {
@@ -60,14 +97,95 @@ function byToken(db: Record<string, Seed>, token: string): Seed {
 /** The signed-in mock user (throws 401 for an unknown token), shared with the other mock APIs. */
 export const mockUserOf = (token: string): User => byToken(load(), token).user;
 
+const maskMail = (m: string) => {
+  const [a, b] = m.split("@");
+  return `${a.slice(0, 1)}•••@${b}`;
+};
+/** A user by username or by email (the hub login takes either). */
+function find(db: Record<string, Seed>, login: string): Seed | undefined {
+  const k = login.trim().toLowerCase();
+  return db[k] ?? Object.values(db).find((s) => s.user.email?.toLowerCase() === k || s.parent_email === k);
+}
+
 export const mockApi: Api = {
   async login(username, password, role) {
     await delay();
     const db = load();
-    const hit = db[username.trim().toLowerCase()];
+    const hit = find(db, username);
     if (!hit || hit.password !== password) throw new ApiError(401, "invalid_credentials");
-    if (hit.user.role !== role) throw new ApiError(403, "role_mismatch");
+    if (role && hit.user.role !== role) throw new ApiError(403, "role_mismatch");
     return { token: `mock-${hit.user.id}`, user: fresh(hit).user };
+  },
+  async hubEnabled() {
+    return mockHubOn();
+  },
+  async signupEnabled() {
+    return mockHubOn();
+  },
+  async register(username, password, role, extra) {
+    await delay();
+    if (!mockHubOn()) throw new ApiError(404, "not_found");
+    const db = load();
+    const name = username.trim().toLowerCase();
+    if (!/^[a-z0-9][a-z0-9._-]{1,31}$/.test(name) || password.length < 6 || (role === "teacher" && !extra?.email)) throw new ApiError(422, "bad_request");
+    if (db[name]) throw new ApiError(409, "username_taken");
+    const mail = extra?.email?.trim().toLowerCase();
+    if (mail && Object.values(db).some((s) => s.user.email?.toLowerCase() === mail)) throw new ApiError(409, "email_taken");
+    const year = new Date().getFullYear();
+    const g = extra?.grade;
+    const birth = role === "student" && g ? (g === "dh" ? year - 20 : year - 6 - Number(g)) : null;
+    const seed: Seed = {
+      password,
+      parent_email: extra?.parent_email?.trim().toLowerCase() || null,
+      user: { id: `u-${name}`, role, username: name, display_name: extra?.display_name?.trim() || name, age_band: null, birth_year: birth, language: null, theme: "system", quiet_until: null, email: mail ?? null, teacher_status: role === "teacher" ? "chua_nop" : null },
+    };
+    db[name] = seed;
+    save(db);
+    return { token: `mock-${seed.user.id}`, user: fresh(seed).user };
+  },
+  async forgot(login) {
+    await delay();
+    const hit = find(load(), login);
+    const mail = hit?.user.email ?? hit?.parent_email;
+    return mail ? { via: "email", to: maskMail(mail) } : { via: "none" };
+  },
+  async forgotRequest(login, phone) {
+    await delay();
+    try {
+      const x = JSON.parse(sessionStorage.getItem("mentor-mock-reset") || "[]") as unknown[];
+      x.push({ user: login, phone: phone ?? "" });
+      sessionStorage.setItem("mentor-mock-reset", JSON.stringify(x));
+    } catch {
+      /* the mock list is only for show */
+    }
+  },
+  async reset(login, code, password) {
+    await delay();
+    const db = load();
+    const hit = find(db, login);
+    if (!hit || code !== MOCK_CODE) throw new ApiError(400, "wrong_code");
+    hit.password = password;
+    save(db);
+  },
+  async teacherAccount(token) {
+    await delay();
+    const hit = byToken(load(), token);
+    const a: TeacherAccount = { teacher_status: hit.user.teacher_status ?? null, reject_reason: hit.reject_reason ?? null, email: hit.user.email ?? null };
+    return a;
+  },
+  async teacherVerify(token, code) {
+    await delay();
+    const db = load();
+    const hit = byToken(db, token);
+    if (hit.user.teacher_status !== "da_duyet" || code !== MOCK_CODE) throw new ApiError(400, "wrong_code");
+    hit.user = { ...hit.user, teacher_status: "xac_minh" };
+    save(db);
+  },
+  async teacherResendForm() {
+    await delay();
+  },
+  async teacherResendCode() {
+    await delay();
   },
   async logout() {
     await delay();

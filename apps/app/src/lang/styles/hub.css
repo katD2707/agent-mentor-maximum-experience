@@ -1,0 +1,40 @@
+/* Accounts, forgot password and the teacher gate (mockups/lg-00): extra pieces on the wooden board of lang.css, all under .hub-board. */
+.hub-board { gap: 18px; }
+.hub-board .lg-field .hub-hint { margin: 0; padding-left: 4px; font-size: .85em; color: #6b4a2e; }
+.hub-board .lg-pill.small { min-height: 44px; border-radius: 12px; border-width: 2px; }
+.hub-board .lg-pill.small input { min-height: 38px; font-size: .92em; }
+.hub-stack { display: grid; gap: 14px; }
+
+.hub-grades { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 8px; border-radius: 16px; border: 3px solid transparent; }
+.hub-grades.bad { border-color: #c0301c; padding: 4px; }
+.hub-grade { min-height: 48px; border-radius: 14px; border: 3px solid #d6b27a; background: #fffdf7; color: #3a2010; font: inherit; font-size: 1.1em; font-weight: 800; cursor: pointer; box-shadow: 0 3px 0 #e0c294; padding: 0 4px; }
+.hub-grade.wide { grid-column: span 2; font-size: 1em; }
+.hub-grade[aria-checked="true"] { background: var(--sel); border-color: #c99a10; box-shadow: 0 3px 0 #c99a10; }
+.hub-grade-label { font-size: .95em; font-weight: 700; padding-left: 4px; }
+
+.hub-board .lg-alert.soft { background: #e0f2e6; border-color: #23874a; }
+.hub-board .lg-alert.soft svg { color: #1d7052; }
+.hub-note-ok { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #e0f2e6; border: 2px solid #23874a; color: #3a2010; font-weight: 600; }
+.hub-note-ok svg { flex: none; width: 22px; height: 22px; color: #1d7052; margin-top: 1px; }
+.hub-ask { display: grid; gap: 12px; padding: 12px 14px; border-radius: 16px; background: #fff0c9; border: 2px solid #c99a10; font-weight: 600; }
+.hub-ask .two { display: flex; flex-wrap: wrap; gap: 10px; }
+.hub-ask .lg-submit { flex: 1; min-width: 120px; font-size: 1em; padding: 0 10px; white-space: nowrap; }
+.hub-ghost { flex: 1; min-width: 120px; min-height: 52px; padding: 0 20px; border-radius: 20px; border: 3px solid #d6b27a; background: #fffdf7; color: #3a2010; box-shadow: 0 4px 0 #e0c294; font: inherit; font-weight: 800; cursor: pointer; }
+
+.hub-info { display: grid; justify-items: center; gap: 10px; text-align: center; padding: 6px 0 2px; }
+.hub-info .big { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; background: #d8f0fb; border: 3px solid #e7cfa8; color: #7d4c22; }
+.hub-info .big svg { width: 44px; height: 44px; }
+.hub-info h2 { margin: 0; font-size: 1.2em; line-height: 1.3; color: #3a2010; }
+.hub-info p { margin: 0; color: #6b4a2e; font-weight: 600; overflow-wrap: anywhere; }
+.hub-info p b { color: #3a2010; }
+.hub-why { margin: 0; padding: 10px 14px; border-radius: 14px; background: #fde4dc; border: 2px solid #c0301c; color: #3a2010; font-weight: 600; }
+
+.hub-code { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(4px, 1.6vw, 10px); }
+.hub-code input { width: 100%; min-width: 0; min-height: 60px; text-align: center; font: inherit; font-size: 1.5em; font-weight: 800; color: #3a2010; border-radius: 14px; background: #fffdf7; border: 3px solid #d6b27a; box-shadow: inset 0 2px 0 rgba(125, 76, 34, .12); padding: 0; }
+.hub-code input:focus { outline: 0; border-color: #1d4fb8; }
+.hub-code.bad input { border-color: #c0301c; }
+
+.hub-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 16px; margin-top: -4px; }
+.hub-link { border: 0; background: none; padding: 0 8px; min-height: 48px; font: inherit; font-weight: 800; color: #7d4c22; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; border-radius: 12px; }
+.hub-link:hover { color: #3a2010; background: #f6e3c2; }
+.hub-link:disabled { color: #8a6a4a; text-decoration: none; cursor: default; background: none; }

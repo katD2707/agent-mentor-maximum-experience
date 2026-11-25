@@ -36,7 +36,7 @@ export async function webShow(n: { id: string; title: string; body: string; deep
   if (!webSupported() || Notification.permission !== "granted") return;
   const reg = (await navigator.serviceWorker.getRegistration()) ?? (await registerWorker());
   if (!reg) return;
-  await reg.showNotification(n.title, { body: n.body, tag: `mentor-${n.id}`, icon: "favicon.svg", data: { id: n.id, deepLink: n.deepLink } });
+  await reg.showNotification(n.title, { body: n.body, tag: `mentor-${n.id}`, icon: "favicon.png", data: { id: n.id, deepLink: n.deepLink } });
 }
 
 /** Web: the service worker tells an open tab that a notification was clicked. */

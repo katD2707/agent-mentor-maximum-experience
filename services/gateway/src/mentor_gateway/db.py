@@ -33,7 +33,14 @@ log = logging.getLogger(__name__)
 # Columns added after first release (Nghiên cứu, CONTRACTS 15.8): study_goals.source / milestones
 _ADDED_COLUMNS: dict[str, list[tuple[str, str]]] = {
     "study_goals": [("source", "VARCHAR(10) NOT NULL DEFAULT 'learning'"), ("milestones", "JSON")],
-    "users": [("avatar", "VARCHAR(8)")],  # Làng gà: the student's avatar, "nam" | "nu"
+    "users": [
+        ("avatar", "VARCHAR(8)"),  # Làng gà: the student's avatar, "nam" | "nu"
+        ("hub_id", "VARCHAR(64)"),  # central hub (CONTRACTS-HUB): the hub account id, token, teacher status, email
+        ("hub_token", "VARCHAR(200)"),
+        ("teacher_status", "VARCHAR(16)"),
+        ("email", "VARCHAR(200)"),
+        ("reject_reason", "TEXT"),
+    ],
 }
 
 
@@ -79,6 +86,12 @@ class User(Base):
     theme: Mapped[str] = mapped_column(String(8), default="system")  # light | dark | system
     avatar: Mapped[str | None] = mapped_column(String(8), nullable=True)  # nam | nu (Làng gà first run)
     quiet_until: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)  # no notifications before this
+    # Mirror of the hub account (only set when MENTOR_HUB_URL is on; null for local-only accounts)
+    hub_id: Mapped[str | None] = mapped_column(String(64), nullable=True, index=True)
+    hub_token: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    teacher_status: Mapped[str | None] = mapped_column(String(16), nullable=True)  # chua_nop|cho_duyet|tu_choi|da_duyet|xac_minh
+    email: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    reject_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     provisioned_at: Mapped[datetime | None] = mapped_column(UTCDateTime, nullable=True)  # learner workspace created
     created_at: Mapped[datetime] = mapped_column(UTCDateTime)
 

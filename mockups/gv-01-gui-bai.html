@@ -65,6 +65,39 @@
   .lvbars i { display: block; width: 3px; border-radius: 1px; background: var(--rule-strong); }
   .lvbars i:nth-child(1) { height: 5px; } .lvbars i:nth-child(2) { height: 8px; } .lvbars i:nth-child(3) { height: 12px; }
   .lvbars i.on { background: var(--tim); }
+
+  /* the one course list: status chip and actions on each row */
+  .crow { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 6px 14px; align-items: center; min-height: 64px; padding: 12px 8px; border-bottom: 1px solid var(--rule); }
+  .crow .media { width: 48px; height: 48px; border-radius: 12px; overflow: hidden; background: #FBF6EA; }
+  .crow .media img { width: 100%; height: 100%; object-fit: cover; }
+  .crow .media.pending { display: grid; place-items: center; background: var(--cam-soft); color: var(--cam); }
+  .crow .media.pending svg { width: 22px; height: 22px; }
+  .crow h3 { font-size: 1em; font-weight: 600; }
+  .crow h3 a { color: inherit; text-decoration: none; }
+  .crow h3 a:hover { text-decoration: underline; }
+  .crow .sub { color: var(--ink-2); font-size: .82em; margin-top: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .crow .why { grid-column: 2 / -1; font-size: .85em; color: var(--do); font-weight: 500; }
+  .crow .warn { grid-column: 2 / -1; font-size: .85em; color: var(--cam); font-weight: 500; }
+  .side { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px 8px; }
+  .side .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+  .mini { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 99px; border: 1.5px solid var(--rule-strong); background: transparent; color: var(--ink); font-weight: 600; font-size: .88em; cursor: pointer; text-decoration: none; }
+  .mini:hover { border-color: var(--ink-3); }
+  .mini.go { background: var(--tim); border-color: var(--tim); color: var(--on-tim); }
+  .mini.go:hover { background: var(--tim-ink); }
+  .mini.off { opacity: .55; }
+  .mini.del { color: var(--do); border-color: transparent; }
+  .mini.del:hover { background: var(--do-soft); }
+  @media (max-width: 640px) { .crow { grid-template-columns: 48px minmax(0, 1fr); } .side { grid-column: 2; justify-content: flex-start; } .side .chips { justify-content: flex-start; } }
+
+  /* confirm before removing */
+  dialog.confirm { width: min(420px, calc(100vw - 32px)); padding: 24px; border-radius: var(--r-lg); border: 1.5px solid var(--rule-strong); background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+  dialog.confirm::backdrop { background: rgba(20, 16, 40, .5); }
+  dialog.confirm h2 { font-size: 1.2em; margin-bottom: 8px; }
+  dialog.confirm p { color: var(--ink-2); }
+  dialog.confirm .acts { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+  dialog.confirm .btn { min-height: 48px; }
+  .btn-danger { background: #A93434; color: #fff; box-shadow: inset 0 -3px 0 rgba(0,0,0,.2); }
+  .btn-danger:hover { filter: brightness(.92); }
 </style>
 </head>
 <body>
@@ -122,33 +155,50 @@
         <li data-when="state=dang-gui"><div class="row">
           <span class="media pending" aria-hidden="true"><i data-i="clock"></i></span>
           <span><h3 data-en="New course">Khóa mới</h3><span class="sub" data-en="24 photos · 5–10 min">24 ảnh · 5–10 phút</span></span>
-          <span class="tag wait" data-en="Reading">Đang đọc</span>
+          <span class="tag wait" data-en="Processing files">Đang xử lý tài liệu</span>
         </div></li>
-        <li data-when="state=co-khoa"><div class="row">
+        <li data-when="state=co-khoa"><div class="crow">
           <span class="media pending" aria-hidden="true"><i data-i="clock"></i></span>
           <span><h3 data-en="Chemistry 10: Chemical bonds">Hóa 10: Liên kết hóa học</h3><span class="sub" data-en="Slides · 32 pages · 4 min ago">Slide · 32 trang · 4 phút trước</span></span>
-          <span class="tag wait" data-en="Reading">Đang đọc</span>
+          <span class="side"><span class="tag wait" data-en="Processing files">Đang xử lý tài liệu</span></span>
         </div></li>
         <li data-when="state=dang-gui"><a class="row" href="gv-02-cau-truc.html?state=xem">
           <span class="media" aria-hidden="true"><img src="assets/courses/dien-truong.jpg" alt=""></span>
           <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3><span class="sub" data-en="7 lessons">7 bài</span></span>
           <span class="tag" data-en="Outline">Cấu trúc</span>
         </a></li>
-        <li data-when="state=co-khoa"><a class="row" href="gv-02-cau-truc.html?state=loi">
+        <li data-when="state=co-khoa"><div class="crow">
           <span class="media" aria-hidden="true"><img src="assets/courses/dien-truong.jpg" alt=""></span>
-          <span><h3 data-en="Physics 11: Electric field">Vật lí 11: Điện trường</h3><span class="sub" data-en="7 lessons · 2 pages unread">7 bài · 2 trang lỗi</span></span>
-          <span class="tag err" data-en="Retake">Chụp lại</span>
-        </a></li>
-        <li data-when="state=co-khoa"><a class="row" href="gv-03-duyet-noi-dung.html?state=duyet">
+          <span><h3><a href="gv-02-cau-truc.html?state=loi" data-en="Physics 11: Electric field">Vật lí 11: Điện trường</a></h3><span class="sub" data-en="7 lessons · 2 pages unread">7 bài · 2 trang lỗi</span></span>
+          <span class="side"><span class="chips"><span class="tag" data-en="Draft">Bản nháp</span></span><a class="mini" data-flow href="gv-02-cau-truc.html?state=loi" data-en="Continue">Tiếp tục</a></span>
+        </div></li>
+        <li data-when="state=co-khoa"><div class="crow" data-course="toan1">
           <span class="media" aria-hidden="true"><img src="assets/courses/so-den-10.jpg" alt=""></span>
-          <span><h3 data-en="Math 1: Numbers to 10">Toán 1: Các số đến 10</h3><span class="sub"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span data-en="Basic · 5 lessons">Cơ bản · 5 bài</span></span></span>
-          <span class="tag" data-en="Review">Duyệt</span>
-        </a></li>
-        <li data-when="state=co-khoa"><a class="row" href="gv-03-duyet-noi-dung.html?state=da-xuat-ban">
+          <span><h3><a href="gv-03-duyet-noi-dung.html?state=duyet" data-en="Math 1: Numbers to 10">Toán 1: Các số đến 10</a></h3><span class="sub"><span class="lvbars" aria-hidden="true"><i class="on"></i><i></i><i></i></span><span data-en="Basic · 5 lessons">Cơ bản · 5 bài</span></span></span>
+          <span class="side"><span class="chips"><span class="tag st" data-en="Draft">Bản nháp</span></span><a class="mini go" data-flow href="gv-03-duyet-noi-dung.html?state=duyet&course=toan1" data-en="Continue">Tiếp tục</a></span>
+        </div></li>
+        <li data-when="state=co-khoa"><div class="crow" data-course="van9">
+          <span class="media" aria-hidden="true"><img src="assets/courses/chu-cai.jpg" alt=""></span>
+          <span><h3><a href="gv-03-duyet-noi-dung.html?state=duyet" data-en="Literature 9: Truyện Kiều">Ngữ văn 9: Truyện Kiều</a></h3><span class="sub" data-en="8 lessons · sent 2 h ago">8 bài · gửi 2 giờ trước</span></span>
+          <span class="side"><span class="chips"><span class="tag wait st" data-en="In review">Chờ duyệt</span></span><button type="button" class="mini" data-act="withdraw" data-en="Withdraw">Rút lại</button></span>
+        </div></li>
+        <li data-when="state=co-khoa"><div class="crow" data-course="hoa8">
+          <span class="media" aria-hidden="true"><img src="assets/courses/hoa-lien-ket.jpg" alt=""></span>
+          <span><h3><a href="gv-03-duyet-noi-dung.html?state=duyet" data-en="Chemistry 8: Reactions">Hóa 8: Phản ứng hóa học</a></h3><span class="sub" data-en="6 lessons">6 bài</span></span>
+          <span class="side"><span class="chips"><span class="tag err st" data-en="Rejected">Bị từ chối</span></span><a class="mini go" data-flow href="gv-03-duyet-noi-dung.html?state=duyet&course=hoa8&why=Bài 3 thiếu đáp án." data-en="Edit">Sửa</a></span>
+          <span class="why" data-en="Lesson 3 has no answers.">Bài 3 thiếu đáp án.</span>
+        </div></li>
+        <li data-when="state=co-khoa"><div class="crow" data-course="bayes">
           <span class="media" aria-hidden="true"><img src="assets/courses/bayes.jpg" alt=""></span>
-          <span><h3 data-en="Probability: Bayesian inference">Xác suất thống kê: Suy luận Bayes</h3><span class="sub"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span data-en="6 chapters · v1 · 38 students">6 chương · bản 1 · 38 học sinh</span></span></span>
-          <span class="tag ok" data-en="Published">Đã xuất bản</span>
-        </a></li>
+          <span><h3><a href="gv-03-duyet-noi-dung.html?state=da-xuat-ban" data-en="Probability: Bayesian inference">Xác suất thống kê: Suy luận Bayes</a></h3><span class="sub"><span class="lvbars" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></span><span data-en="6 chapters · v1 · 38 students">6 chương · bản 1 · 38 học sinh</span></span></span>
+          <span class="side"><span class="chips"><span class="tag ok st" data-en="Live">Đã đăng</span></span><a class="mini" data-flow href="gv-03-duyet-noi-dung.html?state=da-xuat-ban&course=bayes" data-en="Edit">Sửa</a><button type="button" class="mini del" data-act="remove" data-en="Remove">Gỡ</button></span>
+        </div></li>
+        <li data-when="state=co-khoa"><div class="crow" data-course="sinh12">
+          <span class="media" aria-hidden="true"><img src="assets/courses/hoc-may.jpg" alt=""></span>
+          <span><h3><a href="gv-03-duyet-noi-dung.html?state=da-xuat-ban" data-en="Biology 12: Genetics">Sinh 12: Di truyền học</a></h3><span class="sub" data-en="9 lessons · v2 · 21 students">9 bài · bản 2 · 21 học sinh</span></span>
+          <span class="side"><span class="chips"><span class="tag ok st" data-en="Live">Đã đăng</span><span class="tag wait" data-en="New version in review">Bản mới chờ duyệt</span></span><button type="button" class="mini" data-act="withdraw" data-en="Withdraw">Rút lại</button><button type="button" class="mini del" data-act="remove" data-en="Remove">Gỡ</button></span>
+          <span class="warn" data-en="Students still see the old version.">Học sinh vẫn thấy bản cũ.</span>
+        </div></li>
       </ul>
     </div>
   </main>
@@ -198,6 +248,97 @@
   }
   document.addEventListener("mock:change", (e) => { if (e.detail.key === "state" && e.detail.value === "dang-gui") fill(); });
   document.addEventListener("DOMContentLoaded", () => { if (document.documentElement.dataset.state === "dang-gui") fill(); });
+})();
+</script>
+
+<dialog class="confirm" id="dlg" aria-labelledby="dlg-h">
+  <h2 id="dlg-h"></h2>
+  <p id="dlg-p">Học sinh đã tải về vẫn học tiếp được.</p>
+  <div class="acts"><button type="button" class="btn btn-ghost" id="dlg-no">Giữ lại</button><button type="button" class="btn btn-danger" id="dlg-yes">Gỡ</button></div>
+</dialog>
+
+<script>
+(function () {
+  const root = document.documentElement, $ = (id) => document.getElementById(id);
+  const t = (vi, en) => (root.lang === "en" ? en : vi);
+  // changed rows must not be reset by the VI/EN switch
+  const plain = (el, text) => { el.removeAttribute("data-en"); el.removeAttribute("data-vi"); el.textContent = text; };
+  function toast(msg) {
+    const old = document.querySelector(".ho-toast"); if (old) old.remove();
+    const el = document.createElement("div"); el.className = "toast ho-toast"; el.setAttribute("role", "status"); el.textContent = msg;
+    document.body.appendChild(el); setTimeout(() => el.remove(), 3200);
+  }
+
+  // ---- course actions ----
+  let target = null;
+  const dlg = $("dlg");
+  const G3 = "gv-03-duyet-noi-dung.html";
+  // where "Tiếp tục" / "Sửa" opens the course flow
+  const EDIT = {
+    toan1: G3 + "?state=duyet&course=toan1", van9: G3 + "?state=duyet&course=van9",
+    hoa8: G3 + "?state=duyet&course=hoa8&why=Bài 3 thiếu đáp án.",
+    bayes: G3 + "?state=da-xuat-ban&course=bayes", sinh12: G3 + "?state=da-xuat-ban&course=sinh12",
+  };
+  const WD = '<button type="button" class="mini" data-act="withdraw">' + "Rút lại" + "</button>";
+  const DEL = '<button type="button" class="mini del" data-act="remove">Gỡ</button>';
+  const flowLink = (id, label, go) => '<a class="mini' + (go ? " go" : "") + '" data-flow href="' + EDIT[id] + '">' + label + "</a>";
+  const sentMap = () => { try { return JSON.parse(sessionStorage.getItem("mentor-mock-sent") || "{}"); } catch (e) { return {}; } };
+  const saveSent = (m) => { try { sessionStorage.setItem("mentor-mock-sent", JSON.stringify(m)); } catch (e) {} };
+
+  // sent for review: row shows Chờ duyệt (new course) or Bản mới chờ duyệt (live course)
+  function toPending(row) {
+    const side = row.querySelector(".side"), chips = row.querySelector(".chips");
+    side.querySelectorAll("[data-flow]").forEach((x) => x.remove());
+    if (chips.querySelector(".ok")) {
+      chips.insertAdjacentHTML("beforeend", '<span class="tag wait">' + t("Bản mới chờ duyệt", "New version in review") + "</span>");
+      if (!row.querySelector(".warn")) { const w = document.createElement("span"); w.className = "warn"; w.textContent = t("Học sinh vẫn thấy bản cũ.", "Students still see the old version."); row.appendChild(w); }
+      side.insertAdjacentHTML("afterbegin", WD);
+    } else {
+      const st = row.querySelector(".st"); st.className = "tag wait st"; plain(st, t("Chờ duyệt", "In review"));
+      const why = row.querySelector(".why"); if (why) why.remove();
+      side.insertAdjacentHTML("beforeend", WD);
+    }
+  }
+  // withdrawn: back to what it was (draft, or live without the pending version)
+  function withdraw(row) {
+    const id = row.dataset.course, side = row.querySelector(".side"), chips = row.querySelector(".chips");
+    const m = sentMap(); delete m[id]; saveSent(m);
+    side.querySelectorAll('[data-act="withdraw"]').forEach((x) => x.remove());
+    if (chips.querySelector(".ok")) {
+      chips.querySelectorAll(".tag.wait").forEach((x) => x.remove());
+      const w = row.querySelector(".warn"); if (w) w.remove();
+      side.insertAdjacentHTML("afterbegin", flowLink(id, t("Sửa", "Edit"), false));
+    } else {
+      const st = row.querySelector(".st"); st.className = "tag st"; plain(st, t("Bản nháp", "Draft"));
+      side.insertAdjacentHTML("afterbegin", flowLink(id, t("Tiếp tục", "Continue"), true));
+    }
+    toast(t("Đã rút lại. Bản nháp còn nguyên.", "Withdrawn. Your draft is kept."));
+  }
+
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-act]"); if (!b) return;
+    const row = b.closest(".crow"), act = b.dataset.act, name = row.querySelector("h3").textContent;
+    if (act === "withdraw") withdraw(row);
+    if (act === "remove") {
+      target = row;
+      $("dlg-h").textContent = t("Gỡ “" + name + "”?", "Remove “" + name + "”?");
+      $("dlg-p").textContent = t("Học sinh đã tải về vẫn học tiếp được.", "Students who already downloaded it can keep studying.");
+      $("dlg-no").textContent = t("Giữ lại", "Keep"); $("dlg-yes").textContent = t("Gỡ", "Remove");
+      dlg.showModal();
+    }
+  });
+  $("dlg-no").addEventListener("click", () => dlg.close());
+  $("dlg-yes").addEventListener("click", () => { dlg.close(); if (target) { target.closest("li").remove(); target = null; toast(t("Đã gỡ.", "Removed.")); } });
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+
+  function applySent() {
+    const sent = sentMap();
+    Object.keys(sent).forEach((id) => {
+      const row = document.querySelector('.crow[data-course="' + id + '"]'); if (!row || row.dataset.sent) return;
+      row.dataset.sent = "1"; toPending(row);
+    });
+  }
+  document.addEventListener("DOMContentLoaded", applySent);
 })();
 </script>
 </body>
